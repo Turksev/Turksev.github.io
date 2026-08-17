@@ -40,7 +40,14 @@
           '<i>' + tamam + ' / ' + e.u.length + ' ünite</i>' +
         '</button>';
     }).join('');
-    $('eksenAciklama').textContent = EKSENLER[eksenIndex].aciklama;
+
+    var e = EKSENLER[eksenIndex];
+    var metinli = e.u.filter(function (u) { return METINLER[u.k]; }).length;
+    $('eksenAciklama').innerHTML = kacar(e.aciklama) +
+      '<br><b>' + metinli + '/' + e.u.length + '</b> ünitenin anlatımı hazır' +
+      (metinli < e.u.length
+        ? '; kalanlar için harita, kapsam ve takip alanları çalışıyor.'
+        : '.');
   }
 
   /* ---------- filtre ---------- */
@@ -83,7 +90,8 @@
           '<span class="unite-ad">' + kacar(u.ad) + '</span>' +
           (metinVar
             ? '<button class="btn sm unite-ac" type="button">Konuyu aç</button>'
-            : '<span class="badge">anlatım yok</span>') +
+            : '<span class="badge" title="Bu ünitenin anlatımı henüz yazılmadı; ' +
+              'harita bilgisi ve takip alanları yine de kullanılabilir">anlatım hazırlanıyor</span>') +
         '</div>' +
 
         '<div class="unite-kapsam">' + kacar(u.kapsam) + '</div>' +

@@ -40,7 +40,9 @@ EKSENLER = [
      'doğru ilerleyen klasik omurga.'),
 ]
 
-METIN_KLASORU = os.path.join(KAYNAK, 'Türkçe Eksenli')
+# Konu anlatimlari kaynak klasorun HERHANGI bir yerinde olabilir; alt klasorler
+# de taranir. Dosya adi T01_… ya da E14_… gibi kodla baslasin yeterli.
+DOSYA_DESENI = re.compile(r'^([TE]\d+)[_\-. ]')
 
 
 # ---------------------------------------------------------------- harita
@@ -161,22 +163,50 @@ def metni_html_yap(ham):
     return '\n'.join(cikti)
 
 
-def konu_metinlerini_oku():
-    if not os.path.isdir(METIN_KLASORU):
-        return {}
+def docx_dosyalarini_bul():
+    """Kaynak klasoru ve butun alt klasorlerini tara; kodla baslayan docx'leri topla."""
+    bulunan = {}
+    for kok, _klasorler, dosyalar in os.walk(KAYNAK):
+        for ad in sorted(dosyalar):
+            if not ad.lower().endswith('.docx') or ad.startswith('~$'):
+                continue
+            m = DOSYA_DESENI.match(ad)
+            if not m:
+                continue
+            kod = m.group(1)
+            if kod in bulunan:
+                print('  UYARI: %s icin birden cok dosya var, ilki kullanildi (%s)'
+                      % (kod, os.path.relpath(bulunan[kod], KAYNAK)))
+                continue
+            bulunan[kod] = os.path.join(kok, ad)
+    return bulunan
+
+
+def konu_metinlerini_oku(gecerli_kodlar):
     metinler = {}
-    for ad in sorted(os.listdir(METIN_KLASORU)):
-        if not ad.lower().endswith('.docx') or ad.startswith('~$'):
+    dosyalar = docx_dosyalarini_bul()
+
+    for kod, yol in sorted(dosyalar.items()):
+        if kod not in gecerli_kodlar:
+            print('  UYARI: %s haritada yok, atlandi (%s)'
+                  % (kod, os.path.relpath(yol, KAYNAK)))
             continue
-        kod = ad.split('_')[0]
-        if not re.fullmatch(r'[TE]\d+', kod):
+        try:
+            ham = docx_metni(yol)
+        except Exception as e:                      # bozuk/kilitli dosya isi durdurmasin
+            print('  UYARI: %s okunamadi — %s' % (kod, e))
             continue
-        ham = docx_metni(os.path.join(METIN_KLASORU, ad))
+
         basliklar = [x[2:] for x in ham.splitlines() if x.startswith('# ')]
+        html_govde = metni_html_yap(ham)
+        if len(html_govde) < 400:
+            print('  UYARI: %s cok kisa (%d karakter), yine de eklendi'
+                  % (kod, len(html_govde)))
+
         metinler[kod] = {
             'baslik': basliklar[0] if basliklar else kod,
             'ozet': basliklar[1] if len(basliklar) > 1 else '',
-            'html': metni_html_yap(ham),
+            'html': html_govde,
             'kelime': len(ham.split()),
         }
     return metinler
@@ -196,8 +226,19 @@ def main():
         eksenler.append({'e': anahtar, 'ad': ad, 'aciklama': aciklama, 'u': uniteler})
         print('%-16s %3d ünite' % (ad, len(uniteler)))
 
-    metinler = konu_metinlerini_oku()
-    print('Yazılmış konu   : %d (%s)' % (len(metinler), ', '.join(sorted(metinler))))
+    gecerli = set()
+    for x in eksenler:
+        for u in x['u']:
+            gecerli.add(u['k'])
+
+    metinler = konu_metinlerini_oku(gecerli)
+
+    print()
+    print('Anlatımı olan   : %d / %d' % (len(metinler), len(gecerli)))
+    for x in eksenler:
+        var = [u['k'] for u in x['u'] if u['k'] in metinler]
+        print('  %-16s %2d / %d   %s' % (x['ad'], len(var), len(x['u']),
+                                         ', '.join(var) if var else '—'))
 
     govde = ',\n'.join(
         '{e:%s,ad:%s,aciklama:%s,u:[\n%s\n]}' % (

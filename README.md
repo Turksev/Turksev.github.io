@@ -188,6 +188,37 @@ kopyala, yeni bir `id` ver, içindekiler listesine (`nav.toc`) bir satır ekle v
 listesine ve `sitemap.xml`'e ekle; `sw.js` içindeki `SURUM` değerini artır ki eski
 önbellek temizlensin.
 
+## Konu anlatımı ekleme (düzenli iş akışı)
+
+Konu haritasındaki 129 ünitenin şu an **6'sının** anlatımı var. Yenisini eklemek için:
+
+1. Anlatımı `.docx` olarak hazırla. Dosya adı **ünite koduyla başlasın**:
+   `T07_Niceleyici_ve_Butun_Parca.docx`, `E14_Zaman_ve_Kosul_Yan_Cumleleri.docx`
+2. Dosyayı `C:\Users\Trk\Desktop\English konu - chatgpt` klasörünün **herhangi bir yerine**
+   koy — alt klasörler de taranır, ayrı bir yere koyman gerekmez.
+3. Aktarıcıyı çalıştır:
+
+```bash
+"C:/Users/Trk/Desktop/english claude/.venv/Scripts/python.exe" tools/konu-aktar.py
+```
+
+Betik hangi ünitelerin dolduğunu ve hangilerinin boş kaldığını yazar; haritada olmayan bir
+kod, okunamayan dosya ya da şüpheli kısalıkta bir metin varsa uyarır.
+
+**Belge yapısı.** Dönüştürücü mevcut altı konunun iskeletini bekler; aynı biçimi korursan
+sayfa kendiliğinden doğru çıkar:
+
+| Belgede | Sitede |
+| --- | --- |
+| İlk iki `Başlık 1` | Konu adı ve alt başlık (sayfa üstünde ayrıca yazılır) |
+| Sonraki `Başlık 1`'ler | Bölüm başlıkları — içindekiler bunlardan üretilir |
+| `Başlık 2` | Alt başlık |
+| Word tablosu | Tablo (tek hücreli olan vurgu kutusu olur) |
+| Madde imli liste | Liste |
+
+Yeni ünite **kodu** eklemek istersen (haritada olmayan bir konu), önce iki `.md`
+haritasından ilgili olanına satır ekle; aktarıcı kodu haritada bulamazsa belgeyi atlar.
+
 ## Word belgesinden içerik aktarma
 
 `tools/docx-aktar.js` bir .docx dosyasını başlık ve tablo yapısını koruyarak düz metne
