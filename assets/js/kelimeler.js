@@ -97,6 +97,11 @@
       ? (havuz.length ? 'Bugünlük bitti 🎉' : 'Katman seç')
       : 'Bugünü çalış (' + o.bugun + ' kart)';
 
+    // Kota dolduysa ama havuzda yeni kelime kaldıysa devam edebilsin.
+    var devam = $('devamEt');
+    devam.hidden = !(o.bugun === 0 && o.yeni > 0);
+    devam.textContent = 'Devam et (' + Math.min(o.yeni, o.hedef) + ' kelime daha aç)';
+
     // Destenin neyden oluştuğunu açıkça yaz: tekrar ≠ yeni
     var parcalar = [];
     if (o.tekrar) parcalar.push('<b>' + o.tekrar + '</b> tekrarı gelen');
@@ -107,8 +112,8 @@
       metin = '';
     } else if (!o.bugun) {
       metin = o.yeni
-        ? 'Bugünkü yeni kelime kotan doldu (' + o.hedef + '). Yarın ' +
-          Math.min(o.yeni, o.hedef) + ' yeni kelime daha açılacak; havuzda ' + o.yeni + ' kelime bekliyor.'
+        ? 'Bugünkü kota doldu (' + o.hedef + ' yeni kelime). Havuzda <b>' + o.yeni +
+          '</b> kelime bekliyor — yarın açılır ya da <b>Devam et</b> ile bugün devam edersin.'
         : 'Seçili katmandaki bütün kelimelere başladın. Tekrarlar geldikçe burada görünecek.';
     } else {
       metin = 'Deste: ' + parcalar.join(' + ') + '.';
@@ -297,11 +302,13 @@
     kartCiz();
   }
 
-  function kartCevap(dogruMu) {
+  /* ne: 'dogru' | 'yanlis' | 'zaten' */
+  function kartCevap(ne) {
     var d = suzulmus[kartIndex];
     if (!d) return;
 
-    if (!dogruMu) Il.yanlis(d.e);
+    if (ne === 'zaten') Il.zatenBiliyorum(d.e);
+    else if (ne === 'yanlis') Il.yanlis(d.e);
     else if (ipucuAcik) Il.ipucuyla(d.e);
     else Il.dogru(d.e);
 
@@ -429,6 +436,13 @@
     desteyiCiz();
   });
 
+  /* Kotayı bugünlük genişletip desteyi yeniden aç. Günlük hedef değişmez. */
+  $('devamEt').addEventListener('click', function () {
+    Il.kotaArtir();
+    desteyiCiz();
+    $('desteBasla').click();
+  });
+
   elKart.addEventListener('click', function () {
     kartAcik = !kartAcik;
     kartCiz();
@@ -443,8 +457,9 @@
 
   $('onceki').addEventListener('click', function () { kartGit(-1); });
   $('sonraki').addEventListener('click', function () { kartGit(1); });
-  $('bildim').addEventListener('click', function () { kartCevap(true); });
-  $('bilmedim').addEventListener('click', function () { kartCevap(false); });
+  $('bildim').addEventListener('click', function () { kartCevap('dogru'); });
+  $('bilmedim').addEventListener('click', function () { kartCevap('yanlis'); });
+  $('zatenBiliyorum').addEventListener('click', function () { kartCevap('zaten'); });
   $('seslendir').addEventListener('click', function (e) {
     e.stopPropagation();
     var d = suzulmus[kartIndex];
@@ -476,8 +491,9 @@
       e.preventDefault();
       if (!$('ipucuBtn').hidden) { ipucuAcik = true; kartCiz(); }
     }
-    else if (e.key === '1') { e.preventDefault(); kartCevap(false); }
-    else if (e.key === '2') { e.preventDefault(); kartCevap(true); }
+    else if (e.key === '1') { e.preventDefault(); kartCevap('yanlis'); }
+    else if (e.key === '2') { e.preventDefault(); kartCevap('dogru'); }
+    else if (e.key === '3') { e.preventDefault(); kartCevap('zaten'); }
     else if (e.key.toLowerCase() === 's') {
       e.preventDefault();
       var d = suzulmus[kartIndex];

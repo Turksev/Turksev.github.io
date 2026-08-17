@@ -60,6 +60,10 @@
       ? 'Bugünlük bitti 🎉'
       : 'Bugünü çalış (' + o.bugun + ' kart)';
 
+    var devam = $('devamEt');
+    devam.hidden = !(o.bugun === 0 && o.yeni > 0);
+    devam.textContent = 'Devam et (' + Math.min(o.yeni, o.hedef) + ' öbek daha aç)';
+
     var parcalar = [];
     if (o.tekrar) parcalar.push('<b>' + o.tekrar + '</b> tekrarı gelen');
     if (o.acilacakYeni) parcalar.push('<b>' + o.acilacakYeni + '</b> yeni öbek');
@@ -67,7 +71,8 @@
     var metin;
     if (!o.bugun) {
       metin = o.yeni
-        ? 'Bugünkü yeni öbek kotan doldu (' + o.hedef + '). Havuzda ' + o.yeni + ' öbek bekliyor.'
+        ? 'Bugünkü kota doldu (' + o.hedef + ' yeni öbek). Havuzda <b>' + o.yeni +
+          '</b> öbek bekliyor — yarın açılır ya da <b>Devam et</b> ile bugün devam edersin.'
         : 'Bütün öbeklere başladın. Tekrarlar geldikçe burada görünecek.';
     } else {
       metin = 'Deste: ' + parcalar.join(' + ') + '.';
@@ -236,11 +241,13 @@
     kartCiz();
   }
 
-  function kartCevap(dogruMu) {
+  /* ne: 'dogru' | 'yanlis' | 'zaten' */
+  function kartCevap(ne) {
     var o = suzulmus[kartIndex];
     if (!o) return;
 
-    if (!dogruMu) Il.yanlis(o.f);
+    if (ne === 'zaten') Il.zatenBiliyorum(o.f);
+    else if (ne === 'yanlis') Il.yanlis(o.f);
     else if (ipucuAcik) Il.ipucuyla(o.f);
     else Il.dogru(o.f);
 
@@ -355,13 +362,20 @@
     desteyiCiz();
   });
 
+  $('devamEt').addEventListener('click', function () {
+    Il.kotaArtir();
+    desteyiCiz();
+    $('desteBasla').click();
+  });
+
   elKart.addEventListener('click', function () { kartAcik = !kartAcik; kartCiz(); });
   $('ipucuBtn').addEventListener('click', function (e) { e.stopPropagation(); ipucuAcik = true; kartCiz(); });
   $('ipucuAlan').addEventListener('click', function (e) { e.stopPropagation(); });
   $('onceki').addEventListener('click', function () { kartGit(-1); });
   $('sonraki').addEventListener('click', function () { kartGit(1); });
-  $('bildim').addEventListener('click', function () { kartCevap(true); });
-  $('bilmedim').addEventListener('click', function () { kartCevap(false); });
+  $('bildim').addEventListener('click', function () { kartCevap('dogru'); });
+  $('bilmedim').addEventListener('click', function () { kartCevap('yanlis'); });
+  $('zatenBiliyorum').addEventListener('click', function () { kartCevap('zaten'); });
   $('seslendir').addEventListener('click', function (e) {
     e.stopPropagation();
     var o = suzulmus[kartIndex];
@@ -393,8 +407,9 @@
       e.preventDefault();
       if (!$('ipucuBtn').hidden) { ipucuAcik = true; kartCiz(); }
     }
-    else if (e.key === '1') { e.preventDefault(); kartCevap(false); }
-    else if (e.key === '2') { e.preventDefault(); kartCevap(true); }
+    else if (e.key === '1') { e.preventDefault(); kartCevap('yanlis'); }
+    else if (e.key === '2') { e.preventDefault(); kartCevap('dogru'); }
+    else if (e.key === '3') { e.preventDefault(); kartCevap('zaten'); }
     else if (e.key.toLowerCase() === 's') {
       e.preventDefault();
       var o = suzulmus[kartIndex];

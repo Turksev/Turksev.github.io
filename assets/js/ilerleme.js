@@ -86,19 +86,39 @@
     Depo.yaz(K_GUNLUK, Math.max(1, parseInt(n, 10) || GUNLUK_VARSAYILAN));
   }
 
-  function bugunAcilanYeni() {
+  function bugunkuSayac() {
     var s = Depo.oku(K_YENI_SAYAC, null);
-    return (s && s.g === bugun()) ? s.n : 0;
+    return (s && s.g === bugun()) ? { n: s.n || 0, ek: s.ek || 0 } : { n: 0, ek: 0 };
   }
 
+  function bugunAcilanYeni() { return bugunkuSayac().n; }
+
+  /* Bugünün kotası = günlük hedef + kullanıcının elle eklediği pay. */
   function yeniKotasiKalan() {
-    return Math.max(0, gunlukHedef() - bugunAcilanYeni());
+    var s = bugunkuSayac();
+    return Math.max(0, gunlukHedef() + s.ek - s.n);
+  }
+
+  /* "Devam et": kotayı bugünlük genişletir. Hedefi kalıcı değiştirmez. */
+  function kotaArtir(n) {
+    var s = bugunkuSayac();
+    Depo.yaz(K_YENI_SAYAC, { g: bugun(), n: s.n, ek: s.ek + (parseInt(n, 10) || gunlukHedef()) });
   }
 
   function yeniAcildiSay() {
-    var b = bugun();
-    var s = Depo.oku(K_YENI_SAYAC, null);
-    Depo.yaz(K_YENI_SAYAC, { g: b, n: (s && s.g === b ? s.n : 0) + 1 });
+    var s = bugunkuSayac();
+    Depo.yaz(K_YENI_SAYAC, { g: bugun(), n: s.n + 1, ek: s.ek });
+  }
+
+  /* Ayıklama: "bunu zaten biliyorum". Kelimeyi en üst kutuya koyar, yani
+     30 gün sonraya atar. Hızlıca "Bildim" demekten farkı, kelimenin 1. kutuya
+     düşüp ertesi gün tekrara gelmemesidir — 4.760 kelimeyi elden geçirirken
+     yarın 4.760 tekrarlık çığ oluşmasın diye. */
+  function zatenBiliyorum(en) {
+    ilkKezIse(en);
+    leitner[en] = { k: EN_UST_KUTU, g: bugun() + ARALIK[EN_UST_KUTU] };
+    kaydet();
+    return EN_UST_KUTU;
   }
 
   function kalanGun(en) {
@@ -304,6 +324,8 @@
     gunlukHedefAyarla: gunlukHedefAyarla,
     bugunAcilanYeni: bugunAcilanYeni,
     yeniKotasiKalan: yeniKotasiKalan,
+    kotaArtir: kotaArtir,
+    zatenBiliyorum: zatenBiliyorum,
     destelik: destelik,
     dogru: dogru,
     ipucuyla: ipucuyla,
