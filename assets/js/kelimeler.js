@@ -202,11 +202,15 @@
         }).join('')
       : '<div class="ex"><i>' + kacar(d.t) + '</i></div>';
 
+    // Tam kayıt yüklüyse anlamlar aşağıda kalın olarak zaten yazılıyor;
+    // dizindeki kısa anlamı tekrar göstermeyelim.
+    var kisaAnlam = tam ? '' : '<div class="tr">' + kacar(d.t) + '</div>';
+
     return '' +
       '<article class="word' + (kutu >= 4 ? ' known' : '') + '" data-en="' + kacar(d.e) + '">' +
         '<div>' +
           '<div class="en">' + kacar(d.e) + '</div>' +
-          '<div class="tr">' + kacar(d.t) + '</div>' +
+          kisaAnlam +
           '<div class="meta">' +
             '<span class="badge">' + kacar(d.y) + '</span>' +
             '<span class="badge accent">' + Veri.KATMAN_ADI[d.k] + '</span>' +

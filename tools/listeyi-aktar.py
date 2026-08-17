@@ -52,6 +52,25 @@ def katman_bul(puan):
 # cok kisaltmanin egik cizgiyle baglanmis hali.
 TUR_ONEKI = re.compile(r'^\s*[ifsze]\.(?:/[ifsze]\.)*\s*')
 
+# Bir anlam satirinda birden cok tur olabiliyor: "i. fotoğraf; f. fotoğrafını çekmek".
+# Bunlari ayri anlamlara boleriz ki her turun kendi ornek cumlesi olabilsin.
+# Yalniz ARDINDAN tur kisaltmasi gelen noktali virgulden boler; boylece
+# "f. denemek; çabalamak; i. deneme" -> ["f. denemek; çabalamak", "i. deneme"]
+ANLAM_BASI = re.compile(r'(^|;\s*)((?:[ifsze]\.(?:/[ifsze]\.)*)\s)')
+
+
+def anlamlari_bol(tr):
+    kesme = []
+    for m in ANLAM_BASI.finditer(tr):
+        kesme.append(m.start() + len(m.group(1)))
+    if len(kesme) < 2:
+        return [tr]
+    parcalar = []
+    for i, bas in enumerate(kesme):
+        son = kesme[i + 1] if i + 1 < len(kesme) else len(tr)
+        parcalar.append(tr[bas:son].rstrip('; ').strip())
+    return parcalar
+
 
 def kisa_anlam(anlamlar, sinir=60):
     """Dizin icin kisa ozet: tur onekleri atilir, anlamlar birlestirilir."""
@@ -109,9 +128,31 @@ def site_kelimelerini_oku():
     return kayitlar
 
 
+def ek_ornekleri_oku():
+    """tools/ek-ornekler.js — cok turlu kelimelerin ikinci/ucuncu ornekleri.
+
+    Bicim:  window.EK_ORNEKLER = {
+              "photograph": [
+                {tr:"i. fotoğraf",            ex:"…", exTr:"…"},
+                {tr:"f. fotoğrafını çekmek",  ex:"…", exTr:"…"}
+              ], … };
+
+    Bir kelime burada gecerse, listeden gelen tek anlamli kaydin YERINE
+    bu anlamlar kullanilir. Boylece her turun kendi ornegi olur.
+    """
+    yol = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'ek-ornekler.js')
+    if not os.path.exists(yol):
+        return {}
+    metin = open(yol, encoding='utf-8').read()
+    bas = metin.index('{', metin.index('EK_ORNEKLER'))
+    son = metin.rindex('}') + 1
+    return json.loads(metin[bas:son])
+
+
 def birlestir():
     kelimeler = kelimeleri_topla()
     site = site_kelimelerini_oku()
+    ek = ek_ornekleri_oku()
 
     ortak, yalniz_site = 0, 0
     # Sitedeki es anlamli bilgisini tasi
@@ -131,10 +172,21 @@ def birlestir():
             }
             yalniz_site += 1
 
+    # Cok turlu anlamlari ayri ornekleriyle degistir
+    ek_uygulanan = 0
+    for en, anlamlar in ek.items():
+        if en in kelimeler:
+            kelimeler[en]['anlamlar'] = anlamlar
+            ek_uygulanan += 1
+
     for en, k in kelimeler.items():
         k['katman'] = k.get('katman_zorla') or katman_bul(k['puan'])
 
-    return kelimeler, ortak, yalniz_site
+    # Hala bolunmesi gereken (cok turlu ama tek ornekli) kayitlari say
+    bekleyen = [en for en, k in kelimeler.items()
+                if len(k['anlamlar']) == 1 and len(anlamlari_bol(k['anlamlar'][0]['tr'])) > 1]
+
+    return kelimeler, ortak, yalniz_site, ek_uygulanan, bekleyen
 
 
 def kelimeleri_yaz(kelimeler):
@@ -279,7 +331,7 @@ def sayilari_yaz(sirali, ozet, obekler):
 
 
 def main():
-    kelimeler, ortak, yalniz_site = birlestir()
+    kelimeler, ortak, yalniz_site, ek_uygulanan, bekleyen = birlestir()
     sirali, ozet = kelimeleri_yaz(kelimeler)
     obekler, obek_boyut = obekleri_yaz()
     sayilari_yaz(sirali, ozet, obekler)
@@ -290,6 +342,8 @@ def main():
     print('  yalniz sitede olan :', yalniz_site, '(puansiz, seviyesine gore katmanlandi)')
     print('  es anlamli tasinan :', ortak)
     print('  cok anlamli        :', sum(1 for _e, k in sirali if len(k['anlamlar']) > 1))
+    print('  ek ornek uygulanan :', ek_uygulanan)
+    print('  ornegi eksik kalan :', len(bekleyen), '(cok turlu ama tek ornekli)')
     print()
     print('  katman              kelime      dosya')
     for kno, ad, n, boyut in ozet:

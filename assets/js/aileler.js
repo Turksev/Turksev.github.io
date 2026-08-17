@@ -108,7 +108,9 @@
                                d.p + ' p</span>' : '') +
           kutuRozeti(w) +
         '</div>' +
-        '<div class="uye-tr">' + kacar(d.t) + '</div>' +
+        // Tam kayıt açıldıysa anlamlar örneklerin başında kalın yazılıyor;
+        // dizindeki kısa anlamı tekrarlamayalım.
+        (tamKayit ? '' : '<div class="uye-tr">' + kacar(d.t) + '</div>') +
         ornekler +
       '</div>';
   }
