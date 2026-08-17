@@ -8,10 +8,17 @@
   var Depo = window.YDS.Depo;
   var karistir = window.YDS.karistir;
   var kacar = window.YDS.kacar;
+  var Il = window.YDS.Ilerleme;
 
   var REKOR_ANAHTAR = 'yds-rekor';
   var HAVUZ = window.SORULAR || [];
+  var PARCALAR = window.PARCALAR || {};
   var HARF = ['A', 'B', 'C', 'D', 'E'];
+
+  /* Sorunun uzun metni: ya soruya gömülü (cloze) ya da parça tablosunda (okuma). */
+  function soruMetni(s) {
+    return s.metin || (s.pid ? PARCALAR[s.pid] : '') || '';
+  }
 
   var $ = function (id) { return document.getElementById(id); };
 
@@ -24,11 +31,11 @@
   /* ---------- kurulum ---------- */
 
   function kategorileriDoldur() {
+    var sel = $('kategori');
     var gorulen = [];
     HAVUZ.forEach(function (s) {
       if (gorulen.indexOf(s.kat) === -1) gorulen.push(s.kat);
     });
-    var sel = $('kategori');
     gorulen.forEach(function (k) {
       var sayi = HAVUZ.filter(function (s) { return s.kat === k; }).length;
       var o = document.createElement('option');
@@ -36,31 +43,71 @@
       o.textContent = k + ' (' + sayi + ')';
       sel.appendChild(o);
     });
+
+    var y = document.createElement('option');
+    y.value = '__yanlis';
+    y.id = 'secYanlis';
+    sel.appendChild(y);
+    yanlisSecenegiGuncelle();
+  }
+
+  function yanlisSecenegiGuncelle() {
+    var o = $('secYanlis');
+    if (!o) return;
+    var n = havuzSecSayisi('__yanlis');
+    o.textContent = 'Yanlış defterim (' + n + ')';
+    o.disabled = n === 0;
+  }
+
+  function havuzSecSayisi(kat) {
+    if (kat === '__yanlis') {
+      var defterde = Il.yanlisAnahtarlari();
+      return HAVUZ.filter(function (s) {
+        return defterde[Il.yanlisAnahtar({ kat: s.kat, s: s.s })];
+      }).length;
+    }
+    return kat ? HAVUZ.filter(function (s) { return s.kat === kat; }).length : HAVUZ.length;
   }
 
   function havuzBilgisiniGuncelle() {
     var kat = $('kategori').value;
-    var n = kat ? HAVUZ.filter(function (s) { return s.kat === kat; }).length : HAVUZ.length;
-    $('havuzBilgi').textContent = 'Bu seçimde ' + n + ' soru var. Sorular ve şıklar her turda karıştırılır.';
+    var n = havuzSecSayisi(kat);
+    $('havuzBilgi').textContent = kat === '__yanlis'
+      ? n + ' soruyu daha önce yanlış yaptın. Doğru cevaplarsan defterden düşer.'
+      : 'Bu seçimde ' + n + ' soru var. Sorular ve şıklar her turda karıştırılır.';
   }
 
   function rekoruGoster() {
     var r = Depo.oku(REKOR_ANAHTAR, null);
+    var parcalar = [];
     if (r && r.yuzde != null) {
-      $('rekor').textContent = 'En iyi sonucun: %' + r.yuzde + ' (' + r.dogru + '/' + r.toplam + ')';
-    } else {
-      $('rekor').textContent = '';
+      parcalar.push('En iyi sonucun: %' + r.yuzde + ' (' + r.dogru + '/' + r.toplam + ')');
     }
+    var zayif = Il.kategoriOzet().filter(function (k) { return k.toplam >= 3; })[0];
+    if (zayif) {
+      parcalar.push('En zayıf kategorin: ' + zayif.kat + ' (%' + zayif.yuzde + ')');
+    }
+    $('rekor').innerHTML = parcalar.join(' &nbsp;·&nbsp; ');
   }
 
   /* ---------- test hazırlama ---------- */
 
-  function testHazirla() {
+  function havuzSec() {
     var kat = $('kategori').value;
+
+    if (kat === '__yanlis') {
+      var defterde = Il.yanlisAnahtarlari();
+      return HAVUZ.filter(function (s) {
+        return defterde[Il.yanlisAnahtar({ kat: s.kat, s: s.s })];
+      });
+    }
+    return kat ? HAVUZ.filter(function (s) { return s.kat === kat; }) : HAVUZ.slice();
+  }
+
+  function testHazirla() {
     var adet = parseInt($('adet').value, 10);
 
-    var secilen = kat ? HAVUZ.filter(function (s) { return s.kat === kat; }) : HAVUZ.slice();
-    secilen = karistir(secilen);
+    var secilen = karistir(havuzSec());
     if (adet > 0) secilen = secilen.slice(0, adet);
 
     // Şıkları karıştır, doğru cevabın yeni yerini takip et.
@@ -69,7 +116,7 @@
       esli = karistir(esli);
       return {
         kat: s.kat,
-        metin: s.metin || '',
+        metin: soruMetni(s),
         soru: s.s,
         ac: s.ac,
         secenekler: esli.map(function (x) { return x.metin; }),
@@ -129,9 +176,14 @@
       else if (i === secim) b.classList.add('wrong');
     });
 
-    if (secim === s.dogruIndex) {
+    var dogruMu = secim === s.dogruIndex;
+    Il.kategoriKaydet(s.kat, dogruMu);
+
+    if (dogruMu) {
       dogru++;
+      Il.yanlisCoz({ kat: s.kat, soru: s.soru });   // defterden düş
     } else {
+      Il.yanlisEkle({ kat: s.kat, soru: s.soru });
       yanlislar.push({
         soru: s.soru,
         kat: s.kat,
@@ -171,6 +223,10 @@
     $('sYuzde').textContent = '%' + yuzde;
     $('sOzet').textContent = cozulen + ' soruda ' + dogru + ' doğru, ' + yanlislar.length + ' yanlış.';
 
+    Il.sonucEkle({ dogru: dogru, toplam: cozulen, yuzde: yuzde, mod: 'alistirma' });
+    kategoriKarnesiCiz();
+    yanlisSecenegiGuncelle();
+
     var inceleme = $('sInceleme');
     if (!yanlislar.length) {
       inceleme.innerHTML = '<p class="center muted" style="margin:0">Hiç yanlışın yok. 👏</p>';
@@ -194,11 +250,32 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  /* Tüm zamanların kategori başarısı — sonuç ekranında gösterilir. */
+  function kategoriKarnesiCiz() {
+    var kutu = $('sKarne');
+    if (!kutu) return;
+    var ozet = Il.kategoriOzet().filter(function (k) { return k.toplam > 0; });
+    if (!ozet.length) { kutu.innerHTML = ''; return; }
+
+    kutu.innerHTML = '<h2 style="margin-top:34px">Kategori karnen</h2>' +
+      '<p class="small muted" style="margin-top:-6px">Bugüne kadar çözdüğün tüm sorular. En zayıf kategori üstte.</p>' +
+      '<div class="card">' + ozet.map(function (k) {
+        var renk = k.yuzde >= 75 ? 'var(--ok)' : (k.yuzde >= 50 ? 'var(--warn)' : 'var(--err)');
+        return '<div class="karne-satir">' +
+            '<span class="karne-ad">' + kacar(k.kat) + '</span>' +
+            '<span class="karne-cubuk"><i style="width:' + k.yuzde + '%;background:' + renk + '"></i></span>' +
+            '<span class="karne-sayi">%' + k.yuzde + ' <span class="muted">(' + k.dogru + '/' + k.toplam + ')</span></span>' +
+          '</div>';
+      }).join('') + '</div>';
+  }
+
   function basaDon() {
     $('sonuc').hidden = true;
     $('test').hidden = true;
     $('kurulum').hidden = false;
     rekoruGoster();
+    yanlisSecenegiGuncelle();
+    havuzBilgisiniGuncelle();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Süreli Deneme Sınavı — YDS Hazırlık</title>
+<meta name="description" content="Gerçek sınav düzeninde süreli YDS denemesi: geri sayım, soru arası gezinme, işaretleme ve kategori dağılımlı karne.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%233b5bdb'/><text y='68' x='50' text-anchor='middle' font-size='46' font-family='sans-serif' font-weight='bold' fill='white'>Y</text></svg>">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#3b5bdb">
+<link rel="apple-touch-icon" href="assets/img/icon-192.png">
+<link rel="canonical" href="https://turksev.github.io/deneme.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="YDS Hazırlık">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="Süreli Deneme Sınavı — YDS Hazırlık">
+<meta property="og:description" content="Gerçek sınav düzeninde süreli YDS denemesi: geri sayım, soru arası gezinme, işaretleme ve kategori dağılımlı karne.">
+<meta property="og:url" content="https://turksev.github.io/deneme.html">
+<meta property="og:image" content="https://turksev.github.io/assets/img/icon-512.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="assets/js/main.js"></script>
+</head>
+<body>
+
+<header class="site-header" id="ustBar">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="dot">YDS</span> Hazırlık</a>
+    <nav class="site-nav">
+      <a href="index.html">Ana Sayfa</a>
+      <a href="kelimeler.html">Kelimeler</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="deneme.html">Deneme</a>
+      <a href="gramer.html">Gramer</a>
+      <a href="baglaclar.html">Bağlaçlar</a>
+      <a href="ara.html">Ara</a>
+    </nav>
+    <button class="theme-toggle" type="button" title="Temayı değiştir">☾</button>
+  </div>
+</header>
+
+<main class="section">
+  <div class="wrap">
+
+    <!-- ---------- kurulum ---------- -->
+    <section id="kurulum" style="max-width:760px;margin:0 auto">
+      <h1>Süreli Deneme Sınavı</h1>
+      <p class="muted">
+        Gerçek sınav düzeni: geri sayım çalışır, sorular arasında serbestçe gezinebilir,
+        emin olmadıklarını işaretleyip sonra dönebilirsin. <b>Cevaplar sınav bitene kadar gösterilmez.</b>
+      </p>
+
+      <div class="card" style="margin-top:22px">
+        <div class="toolbar" style="margin-bottom:0">
+          <label class="grow">
+            <span class="small muted">Soru sayısı</span><br>
+            <select id="adet" style="width:100%;margin-top:5px">
+              <option value="20">20 soru · 45 dakika</option>
+              <option value="40" selected>40 soru · 90 dakika</option>
+              <option value="80">80 soru · 180 dakika (tam deneme)</option>
+            </select>
+          </label>
+        </div>
+        <p class="small muted" style="margin:14px 0 0" id="dagilimBilgi"></p>
+        <button class="btn" type="button" id="basla" style="margin-top:16px">Sınavı başlat</button>
+      </div>
+
+      <div id="gecmisAlan" style="margin-top:30px"></div>
+    </section>
+
+    <!-- ---------- sınav ---------- -->
+    <section id="sinav" hidden>
+      <div class="sinav-duzen">
+
+        <div>
+          <div class="q-head">
+            <span class="badge accent" id="qKat">—</span>
+            <span class="small muted" id="qSayac">1 / 40</span>
+          </div>
+          <div class="progress"><i id="qBar"></i></div>
+
+          <div class="card">
+            <p class="okuma-metin" id="qMetin" hidden></p>
+            <div class="q-text" id="qText"></div>
+            <div class="options" id="qSecenekler"></div>
+          </div>
+
+          <div class="q-foot">
+            <button class="btn ghost" type="button" id="geri">‹ Önceki</button>
+            <button class="btn ghost" type="button" id="isaretle">⚑ İşaretle</button>
+            <button class="btn" type="button" id="ileri">Sonraki ›</button>
+          </div>
+          <p class="center small muted" style="margin-top:12px">
+            Klavye: <code>1</code>–<code>5</code> cevapla · <code>←</code> <code>→</code> gezin ·
+            <code>M</code> işaretle · <code>Esc</code> cevabı sil
+          </p>
+        </div>
+
+        <aside class="sinav-yan">
+          <div class="card" style="padding:14px">
+            <div class="sayac-kutu">
+              <div class="sayac" id="sure">--:--</div>
+              <div class="small muted">kalan süre</div>
+            </div>
+            <div class="izgara" id="izgara"></div>
+            <div class="small muted izgara-anahtar">
+              <span><i class="ik cevapli"></i> cevaplı</span>
+              <span><i class="ik isaretli"></i> işaretli</span>
+              <span><i class="ik bos"></i> boş</span>
+            </div>
+            <button class="btn ghost sm" type="button" id="bitir" style="width:100%;margin-top:14px">Sınavı bitir</button>
+          </div>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- ---------- sonuç ---------- -->
+    <section id="sonuc" hidden style="max-width:820px;margin:0 auto">
+      <div class="card center">
+        <p class="muted small" style="margin-bottom:4px" id="sBaslik">Deneme sonucun</p>
+        <div class="score-ring" id="sNet">0</div>
+        <p class="muted" style="margin-top:6px">net</p>
+        <p id="sOzet" class="muted"></p>
+        <div class="hero-actions" style="justify-content:center">
+          <button class="btn" type="button" id="tekrar">Yeni deneme</button>
+          <a class="btn ghost" href="quiz.html">Eksiklerini çalış</a>
+        </div>
+      </div>
+
+      <h2 style="margin-top:34px">Kategori dağılımı</h2>
+      <div class="card" id="sKarne"></div>
+
+      <h2 style="margin-top:34px">Soru soru inceleme</h2>
+      <div class="card" id="sInceleme"></div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span data-yil>2026</span> YDS Hazırlık</span>
+    <span>Tüm ilerleme yalnızca kendi tarayıcında saklanır.</span>
+  </div>
+</footer>
+
+<script src="data/sorular.js"></script>
+<script src="assets/js/ilerleme.js"></script>
+<script src="assets/js/deneme.js"></script>
+</body>
+</html>

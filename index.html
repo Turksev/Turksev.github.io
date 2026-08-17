@@ -6,6 +6,18 @@
 <title>YDS Hazırlık — Kelime, Gramer ve Deneme Soruları</title>
 <meta name="description" content="YDS'ye hazırlananlar için ücretsiz kelime listesi, konu anlatımlı gramer notları ve çözümlü deneme soruları.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%233b5bdb'/><text y='68' x='50' text-anchor='middle' font-size='46' font-family='sans-serif' font-weight='bold' fill='white'>Y</text></svg>">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#3b5bdb">
+<link rel="apple-touch-icon" href="assets/img/icon-192.png">
+<link rel="canonical" href="https://turksev.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="YDS Hazırlık">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="YDS Hazırlık — Kelime, Gramer ve Deneme Soruları">
+<meta property="og:description" content="YDS'ye hazırlananlar için ücretsiz kelime listesi, konu anlatımlı gramer notları ve çözümlü deneme soruları.">
+<meta property="og:url" content="https://turksev.github.io/">
+<meta property="og:image" content="https://turksev.github.io/assets/img/icon-512.png">
+<meta name="twitter:card" content="summary">
 <link rel="stylesheet" href="assets/css/style.css">
 <script src="assets/js/main.js"></script>
 </head>
@@ -18,8 +30,10 @@
       <a href="index.html">Ana Sayfa</a>
       <a href="kelimeler.html">Kelimeler</a>
       <a href="quiz.html">Quiz</a>
+      <a href="deneme.html">Deneme</a>
       <a href="gramer.html">Gramer</a>
       <a href="baglaclar.html">Bağlaçlar</a>
+      <a href="ara.html">Ara</a>
     </nav>
     <button class="theme-toggle" type="button" title="Temayı değiştir">☾</button>
   </div>
@@ -36,8 +50,8 @@
         tek yerde. İlerlemen tarayıcında saklanır; istediğin yerden devam edersin.
       </p>
       <div class="hero-actions">
-        <a class="btn" href="quiz.html">Denemeye başla</a>
-        <a class="btn ghost" href="kelimeler.html">Kelimelere göz at</a>
+        <a class="btn" href="kelimeler.html" id="btnDeste">Bugünün destesini çalış</a>
+        <a class="btn ghost" href="deneme.html">Süreli deneme çöz</a>
       </div>
 
       <div class="stats">
@@ -45,8 +59,48 @@
         <div class="stat"><div class="n" id="st-soru">—</div><div class="l">Soru</div></div>
         <div class="stat"><div class="n" id="st-baglac">—</div><div class="l">Bağlaç</div></div>
         <div class="stat"><div class="n" id="st-konu">10</div><div class="l">Gramer konusu</div></div>
-        <div class="stat"><div class="n" id="st-ogrenilen">0</div><div class="l">Öğrendiğin kelime</div></div>
       </div>
+    </div>
+  </section>
+
+  <!-- ---------- ilerleme paneli ---------- -->
+  <section class="section" id="panel" hidden>
+    <div class="wrap">
+      <h2>İlerlemen</h2>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+
+        <div class="card">
+          <h3>Kelime tekrarı</h3>
+          <div class="stats" style="margin:0;padding:0;border:0;gap:20px">
+            <div class="stat"><div class="n" id="p-bugun">0</div><div class="l">bugün tekrar</div></div>
+            <div class="stat"><div class="n" id="p-ogrenilen">0</div><div class="l">öğrenilen</div></div>
+          </div>
+          <div class="progress" style="margin:14px 0 8px"><i id="p-bar"></i></div>
+          <p class="small muted" id="p-kelimeOzet" style="margin:0"></p>
+        </div>
+
+        <div class="card">
+          <h3>Yanlış defterin</h3>
+          <div class="n" id="p-yanlis" style="font-size:1.7rem;font-weight:800">0</div>
+          <p class="small muted" id="p-yanlisOzet">Henüz yanlışın yok.</p>
+          <a class="btn ghost sm" href="quiz.html" id="p-yanlisBtn" hidden>Yanlışlarımı çöz</a>
+        </div>
+
+        <div class="card">
+          <h3>Son denemeler</h3>
+          <div id="p-gecmis"><p class="small muted" style="margin:0">Henüz deneme çözmedin.</p></div>
+        </div>
+
+      </div>
+
+      <div id="p-karneAlan" hidden style="margin-top:16px">
+        <h3>Kategori karnen</h3>
+        <div class="card" id="p-karne"></div>
+      </div>
+
+      <p class="small muted" style="margin-top:18px">
+        <button class="btn ghost sm" type="button" id="p-sifirla">Tüm ilerlememi sıfırla</button>
+      </p>
     </div>
   </section>
 
@@ -64,9 +118,16 @@
 
         <a class="card card-link" href="quiz.html">
           <span class="ico">📝</span>
-          <h3>Deneme Soruları</h3>
-          <p>Kelime, dil bilgisi, bağlaç, preposition, cloze test ve çeviri. Her sorunun ardından
-             ayrıntılı çözüm.</p>
+          <h3>Alıştırma Soruları</h3>
+          <p>12 kategoride çözümlü soru: kelime, dil bilgisi, bağlaç, cloze, çeviri, cümle tamamlama,
+             restatement, okuma… Her cevaptan sonra anında çözüm.</p>
+        </a>
+
+        <a class="card card-link" href="deneme.html">
+          <span class="ico">⏱️</span>
+          <h3>Süreli Deneme</h3>
+          <p>Gerçek sınav düzeni: geri sayım, soru arası gezinme, işaretleme ve sonunda net hesabıyla
+             kategori dağılımlı karne.</p>
         </a>
 
         <a class="card card-link" href="gramer.html">
@@ -97,14 +158,14 @@
              seçip sadece o tür sorulara odaklan.</p>
         </div>
         <div class="card">
-          <h3>2. Günde 20 kelime</h3>
-          <p class="muted small">Kelime sayfasında kart moduna geç, bildiklerini ✓ ile işaretle. Ertesi gün
-             "sadece öğrenilmemişler" filtresiyle tekrar bak.</p>
+          <h3>2. Her gün desteyi bitir</h3>
+          <p class="muted small">Kelime sayfasında "Bugünü çalış"a bas. Doğru bildiğin kelime bir üst kutuya
+             çıkıp seyrekleşir, bilemediğin yarın yine karşına gelir. Günde 10 dakika yeter.</p>
         </div>
         <div class="card">
-          <h3>3. Haftada bir deneme</h3>
-          <p class="muted small">Karışık modda 20 soruluk bir deneme çöz. Yanlışlarının açıklamalarını
-             not al; aynı hata iki kez tekrarlanıyorsa konuya dön.</p>
+          <h3>3. Haftada bir süreli deneme</h3>
+          <p class="muted small">Deneme sayfasında 40 soruluk bir sınav çöz. Karnede en düşük kategoriyi gör,
+             o hafta onu çalış. Yanlışların deftere düşer; quizde "Yanlış defterim" ile tekrar çöz.</p>
         </div>
       </div>
     </div>
@@ -122,18 +183,85 @@
 <script src="data/kelimeler.js"></script>
 <script src="data/sorular.js"></script>
 <script src="data/baglaclar.js"></script>
+<script src="assets/js/ilerleme.js"></script>
 <script>
 (function () {
-  function yaz(id, deger) {
-    var el = document.getElementById(id);
-    if (el) el.textContent = deger;
-  }
-  yaz('st-kelime', (window.KELIMELER || []).length);
+  'use strict';
+  var Il = window.YDS.Ilerleme;
+  var kacar = window.YDS.kacar;
+  var KELIMELER = window.KELIMELER || [];
+
+  function $(id) { return document.getElementById(id); }
+  function yaz(id, d) { var el = $(id); if (el) el.textContent = d; }
+
+  yaz('st-kelime', KELIMELER.length);
   yaz('st-soru', (window.SORULAR || []).length);
   yaz('st-baglac', (window.BAGLACLAR || []).length);
 
-  var bilinen = window.YDS ? window.YDS.Depo.oku('yds-bilinen', []) : [];
-  yaz('st-ogrenilen', Array.isArray(bilinen) ? bilinen.length : 0);
+  var o = Il.leitnerOzet(KELIMELER);
+  var defter = Il.yanlisDefter();
+  var karne = Il.kategoriOzet().filter(function (k) { return k.toplam > 0; });
+  var gecmis = Il.gecmis();
+
+  // Hiç çalışılmamışsa paneli hiç gösterme; boş kutularla karşılamanın anlamı yok.
+  var basladi = o.calisilan > 0 || defter.length > 0 || karne.length > 0 || gecmis.length > 0;
+  $('panel').hidden = !basladi;
+
+  $('btnDeste').textContent = o.bugun > 0
+    ? 'Bugünün destesini çalış (' + o.bugun + ')'
+    : 'Kelimelere göz at';
+
+  if (!basladi) return;
+
+  /* kelime kutusu */
+  yaz('p-bugun', o.bugun);
+  yaz('p-ogrenilen', o.ogrenilen);
+  $('p-bar').style.width = (KELIMELER.length ? o.ogrenilen / KELIMELER.length * 100 : 0) + '%';
+  yaz('p-kelimeOzet', o.calisilan + ' / ' + KELIMELER.length + ' kelimeye başladın · ' +
+    'zayıf (1-2. kutu): ' + (o.k1 + o.k2));
+
+  /* yanlış defteri */
+  yaz('p-yanlis', defter.length);
+  if (defter.length) {
+    var enCok = defter.slice().sort(function (a, b) { return (b.n || 1) - (a.n || 1); })[0];
+    yaz('p-yanlisOzet', 'En çok zorlandığın kategori: ' + enCok.kat +
+      ' · doğru cevaplayınca defterden düşer.');
+    $('p-yanlisBtn').hidden = false;
+  }
+
+  /* son denemeler */
+  var denemeler = gecmis.filter(function (g) { return g.m === 'deneme'; }).slice(-5).reverse();
+  if (denemeler.length) {
+    $('p-gecmis').innerHTML = denemeler.map(function (g) {
+      var t = new Date(g.t);
+      var renk = g.y >= 75 ? 'var(--ok)' : (g.y >= 50 ? 'var(--warn)' : 'var(--err)');
+      return '<div class="karne-satir">' +
+          '<span class="karne-ad small muted">' +
+            t.toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' }) + '</span>' +
+          '<span class="karne-cubuk"><i style="width:' + g.y + '%;background:' + renk + '"></i></span>' +
+          '<span class="karne-sayi">%' + g.y + '</span>' +
+        '</div>';
+    }).join('');
+  }
+
+  /* kategori karnesi */
+  if (karne.length) {
+    $('p-karneAlan').hidden = false;
+    $('p-karne').innerHTML = karne.map(function (k) {
+      var renk = k.yuzde >= 75 ? 'var(--ok)' : (k.yuzde >= 50 ? 'var(--warn)' : 'var(--err)');
+      return '<div class="karne-satir">' +
+          '<span class="karne-ad">' + kacar(k.kat) + '</span>' +
+          '<span class="karne-cubuk"><i style="width:' + k.yuzde + '%;background:' + renk + '"></i></span>' +
+          '<span class="karne-sayi">%' + k.yuzde + ' <span class="muted">(' + k.dogru + '/' + k.toplam + ')</span></span>' +
+        '</div>';
+    }).join('');
+  }
+
+  $('p-sifirla').addEventListener('click', function () {
+    if (!confirm('Kelime kutuların, yanlış defterin, kategori karnen ve deneme geçmişin silinecek. Emin misin?')) return;
+    Il.hepsiniSifirla();
+    location.reload();
+  });
 })();
 </script>
 

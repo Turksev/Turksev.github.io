@@ -107,9 +107,22 @@
     });
   }
 
+  /* ---------- çevrimdışı çalışma ---------- */
+
+  function servisCalisaniniKaydet() {
+    // file:// üzerinde ve HTTPS olmayan sunucularda çalışmaz; sessizce geç.
+    if (!('serviceWorker' in navigator)) return;
+    if (location.protocol !== 'https:' && location.hostname !== 'localhost') return;
+
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('sw.js').catch(function () { /* önemli değil */ });
+    });
+  }
+
   /* ---------- başlat ---------- */
 
   function baslat() {
+    servisCalisaniniKaydet();
     var btn = document.querySelector('.theme-toggle');
     if (btn) btn.addEventListener('click', temaDegistir);
     butonuGuncelle();

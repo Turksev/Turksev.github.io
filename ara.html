@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arama — YDS Hazırlık</title>
+<meta name="description" content="Sitedeki kelimeler, bağlaçlar, sorular ve gramer konuları arasında tek yerden arama yap.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%233b5bdb'/><text y='68' x='50' text-anchor='middle' font-size='46' font-family='sans-serif' font-weight='bold' fill='white'>Y</text></svg>">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#3b5bdb">
+<link rel="apple-touch-icon" href="assets/img/icon-192.png">
+<link rel="canonical" href="https://turksev.github.io/ara.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="YDS Hazırlık">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="Arama — YDS Hazırlık">
+<meta property="og:description" content="Sitedeki kelimeler, bağlaçlar, sorular ve gramer konuları arasında tek yerden arama yap.">
+<meta property="og:url" content="https://turksev.github.io/ara.html">
+<meta property="og:image" content="https://turksev.github.io/assets/img/icon-512.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="assets/js/main.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="dot">YDS</span> Hazırlık</a>
+    <nav class="site-nav">
+      <a href="index.html">Ana Sayfa</a>
+      <a href="kelimeler.html">Kelimeler</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="deneme.html">Deneme</a>
+      <a href="gramer.html">Gramer</a>
+      <a href="baglaclar.html">Bağlaçlar</a>
+      <a href="ara.html">Ara</a>
+    </nav>
+    <button class="theme-toggle" type="button" title="Temayı değiştir">☾</button>
+  </div>
+</header>
+
+<main class="section">
+  <div class="wrap" style="max-width:820px">
+
+    <h1>Arama</h1>
+    <p class="muted">
+      Bir kelime, bağlaç ya da konu ara — sitenin her yerinde nerede geçtiğini birden gör.
+      İngilizce veya Türkçe yazabilirsin.
+    </p>
+
+    <div class="toolbar">
+      <input class="grow" type="search" id="ara" placeholder="Örnek: despite, tutarlı, passive, cloze…"
+             autocomplete="off" autofocus>
+      <select id="tur" aria-label="Sonuç türü">
+        <option value="">Her yerde</option>
+        <option value="kelime">Kelimeler</option>
+        <option value="baglac">Bağlaçlar</option>
+        <option value="soru">Sorular</option>
+        <option value="konu">Gramer konuları</option>
+      </select>
+    </div>
+
+    <p class="small muted" id="sayac">Aramak için yazmaya başla.</p>
+    <div id="sonuclar"></div>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span data-yil>2026</span> YDS Hazırlık</span>
+    <span>Tüm ilerleme yalnızca kendi tarayıcında saklanır.</span>
+  </div>
+</footer>
+
+<script src="data/kelimeler.js"></script>
+<script src="data/baglaclar.js"></script>
+<script src="data/sorular.js"></script>
+<script src="assets/js/ara.js"></script>
+</body>
+</html>

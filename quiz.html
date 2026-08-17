@@ -3,9 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Deneme Soruları — YDS Hazırlık</title>
-<meta name="description" content="Çözümlü YDS deneme soruları: kelime, dil bilgisi, bağlaç, preposition, cloze test ve çeviri.">
+<title>Alıştırma Soruları — YDS Hazırlık</title>
+<meta name="description" content="12 kategoride çözümlü YDS alıştırma soruları: kelime, dil bilgisi, bağlaç, cloze test, çeviri, cümle tamamlama, restatement, okuma ve daha fazlası.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%233b5bdb'/><text y='68' x='50' text-anchor='middle' font-size='46' font-family='sans-serif' font-weight='bold' fill='white'>Y</text></svg>">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#3b5bdb">
+<link rel="apple-touch-icon" href="assets/img/icon-192.png">
+<link rel="canonical" href="https://turksev.github.io/quiz.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="YDS Hazırlık">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="Alıştırma Soruları — YDS Hazırlık">
+<meta property="og:description" content="12 kategoride çözümlü YDS alıştırma soruları: kelime, dil bilgisi, bağlaç, cloze test, çeviri, cümle tamamlama, restatement, okuma ve daha fazlası.">
+<meta property="og:url" content="https://turksev.github.io/quiz.html">
+<meta property="og:image" content="https://turksev.github.io/assets/img/icon-512.png">
+<meta name="twitter:card" content="summary">
 <link rel="stylesheet" href="assets/css/style.css">
 <script src="assets/js/main.js"></script>
 </head>
@@ -18,8 +30,10 @@
       <a href="index.html">Ana Sayfa</a>
       <a href="kelimeler.html">Kelimeler</a>
       <a href="quiz.html">Quiz</a>
+      <a href="deneme.html">Deneme</a>
       <a href="gramer.html">Gramer</a>
       <a href="baglaclar.html">Bağlaçlar</a>
+      <a href="ara.html">Ara</a>
     </nav>
     <button class="theme-toggle" type="button" title="Temayı değiştir">☾</button>
   </div>
@@ -30,9 +44,10 @@
 
     <!-- ---------- kurulum ---------- -->
     <section id="kurulum">
-      <h1>Deneme Soruları</h1>
+      <h1>Alıştırma Soruları</h1>
       <p class="muted">
-        Kategori ve soru sayısını seç, başla. Her cevaptan sonra doğrusunu ve nedenini görürsün.
+        Kategori ve soru sayısını seç, başla. Her cevaptan sonra doğrusunu ve nedenini hemen görürsün.
+        Süre tutmadan, rahat rahat çalışmak için. Sınav provası istiyorsan <a href="deneme.html">süreli denemeye</a> geç.
       </p>
 
       <div class="card" style="margin-top:22px">
@@ -68,7 +83,7 @@
       <div class="progress"><i id="qBar"></i></div>
 
       <div class="card">
-        <p class="small muted" id="qMetin" hidden style="white-space:pre-line"></p>
+        <p class="okuma-metin" id="qMetin" hidden></p>
         <div class="q-text" id="qText"></div>
         <div class="options" id="qSecenekler"></div>
         <div class="explain" id="qAcik" hidden></div>
@@ -98,6 +113,8 @@
 
       <h2 style="margin-top:34px">Yanlışların</h2>
       <div class="card" id="sInceleme"></div>
+
+      <div id="sKarne"></div>
     </section>
 
   </div>
@@ -111,6 +128,7 @@
 </footer>
 
 <script src="data/sorular.js"></script>
+<script src="assets/js/ilerleme.js"></script>
 <script src="assets/js/quiz.js"></script>
 </body>
 </html>
