@@ -32,6 +32,15 @@
 
   /* ---------- yardımcılar ---------- */
 
+  /* Olumsuz karşılık: sufficient → insufficient */
+  function olumsuzSatiri(en) {
+    var liste = (window.OLUMSUZLAR || {})[en];
+    if (!liste || !liste.length) return '';
+    return '<div class="olumsuz">⊘ Olumsuzu: ' + liste.map(function (o) {
+      return '<b>' + kacar(o.f) + '</b> — ' + kacar(o.tr);
+    }).join(' · ') + '</div>';
+  }
+
   function kutuRozeti(w) {
     var k = Il.kutu(w);
     if (k === 0) return '<span class="badge">yeni</span>';
@@ -112,6 +121,7 @@
         // dizindeki kısa anlamı tekrarlamayalım.
         (tamKayit ? '' : '<div class="uye-tr">' + kacar(d.t) + '</div>') +
         ornekler +
+        olumsuzSatiri(w) +
       '</div>';
   }
 

@@ -719,6 +719,22 @@ input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible
 }
 .tip b { color: var(--warn); }
 
+/* ---------- olumsuz karşılık ---------- */
+
+.olumsuz {
+  grid-column: 1 / -1;
+  margin-top: 9px;
+  padding: 7px 11px;
+  border-radius: 8px;
+  background: var(--err-soft);
+  border-left: 3px solid var(--err);
+  font-size: .87rem;
+  color: var(--text);
+}
+.olumsuz b { color: var(--err); }
+
+.flash .olumsuz { text-align: left; margin-top: 14px; }
+
 /* ---------- kelime aileleri ---------- */
 
 .aile-listesi { display: grid; gap: 10px; }

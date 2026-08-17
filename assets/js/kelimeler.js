@@ -40,6 +40,15 @@
 
   var KUTU_ADI = ['hiç çalışılmadı', '1. kutu', '2. kutu', '3. kutu', '4. kutu', '5. kutu'];
 
+  /* Olumsuz karşılık: sufficient → insufficient. Veri data/olumsuzlar.js'de. */
+  function olumsuzSatiri(en) {
+    var liste = (window.OLUMSUZLAR || {})[en];
+    if (!liste || !liste.length) return '';
+    return '<div class="olumsuz">⊘ Olumsuzu: ' + liste.map(function (o) {
+      return '<b>' + kacar(o.f) + '</b> — ' + kacar(o.tr);
+    }).join(' · ') + '</div>';
+  }
+
   /* ---------- katman seçici ---------- */
 
   function katmanlariCiz() {
@@ -225,6 +234,7 @@
           '<button class="star" type="button" data-ne="ses" title="Telaffuzu dinle">🔊</button>' +
         '</div>' +
         anlamlar +
+        olumsuzSatiri(d.e) +
       '</article>';
   }
 
@@ -278,7 +288,7 @@
       '<div class="muted small" style="font-weight:400;margin-top:4px">' + kacar(d.y) + '</div>';
     $('kartOrnek').innerHTML = tam.a.filter(function (a) { return a.ex; }).map(function (a) {
       return kacar(a.ex) + '<br><span style="opacity:.8">' + kacar(a.exTr) + '</span>';
-    }).join('<br><br>');
+    }).join('<br><br>') + olumsuzSatiri(d.e);
 
     $('kartArka').hidden = !kartAcik;
     $('kartSayac').textContent = (kartIndex + 1) + ' / ' + suzulmus.length;
