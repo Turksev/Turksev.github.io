@@ -19,6 +19,7 @@
       <a href="kelimeler.html">Kelimeler</a>
       <a href="quiz.html">Quiz</a>
       <a href="gramer.html">Gramer</a>
+      <a href="baglaclar.html">Bağlaçlar</a>
     </nav>
     <button class="theme-toggle" type="button" title="Temayı değiştir">☾</button>
   </div>
@@ -42,6 +43,7 @@
       <div class="stats">
         <div class="stat"><div class="n" id="st-kelime">—</div><div class="l">Kelime</div></div>
         <div class="stat"><div class="n" id="st-soru">—</div><div class="l">Soru</div></div>
+        <div class="stat"><div class="n" id="st-baglac">—</div><div class="l">Bağlaç</div></div>
         <div class="stat"><div class="n" id="st-konu">10</div><div class="l">Gramer konusu</div></div>
         <div class="stat"><div class="n" id="st-ogrenilen">0</div><div class="l">Öğrendiğin kelime</div></div>
       </div>
@@ -72,6 +74,13 @@
           <h3>Gramer Notları</h3>
           <p>Zamanlar, edilgen yapı, koşul cümleleri, isim ve sıfat cümlecikleri… Tablolarla özet,
              örneklerle pekiştirme.</p>
+        </a>
+
+        <a class="card card-link" href="baglaclar.html">
+          <span class="ico">🔗</span>
+          <h3>Bağlaçlar</h3>
+          <p>Anlam ilişkisine göre dizilmiş 155 bağlaç ve geçiş ifadesi. Her biri örnek cümlesiyle;
+             karıştırılan çiftler ayrı ayrı açıklanmış.</p>
         </a>
 
       </div>
@@ -112,6 +121,7 @@
 
 <script src="data/kelimeler.js"></script>
 <script src="data/sorular.js"></script>
+<script src="data/baglaclar.js"></script>
 <script>
 (function () {
   function yaz(id, deger) {
@@ -120,6 +130,7 @@
   }
   yaz('st-kelime', (window.KELIMELER || []).length);
   yaz('st-soru', (window.SORULAR || []).length);
+  yaz('st-baglac', (window.BAGLACLAR || []).length);
 
   var bilinen = window.YDS ? window.YDS.Depo.oku('yds-bilinen', []) : [];
   yaz('st-ogrenilen', Array.isArray(bilinen) ? bilinen.length : 0);
