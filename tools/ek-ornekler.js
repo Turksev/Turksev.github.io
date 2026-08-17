@@ -170,6 +170,188 @@ window.EK_ORNEKLER = {
 "necessary": [
   {"tr":"s. gerekli, zorunlu","ex":"Regulators determined that additional safety inspections were necessary before the bridge could reopen.","exTr":"Düzenleyici kurumlar, köprünün yeniden açılabilmesi için ek güvenlik denetimlerinin gerekli olduğuna karar verdi."},
   {"tr":"i. (the necessary) gereken şey","ex":"Give me a day and I will do the necessary to get the permit approved.","exTr":"Bana bir gün ver, iznin onaylanması için gerekeni yapayım."}
+],
+
+/* ---- 2. parti ---- */
+
+"short": [
+  {"tr":"s. kısa; yetersiz","ex":"The report was short but covered every essential point with remarkable clarity.","exTr":"Rapor kısaydı ama her temel noktayı dikkat çekici bir açıklıkla kapsıyordu."},
+  {"tr":"z. aniden, birden","ex":"The driver stopped short when a deer suddenly crossed the mountain road.","exTr":"Bir geyik aniden dağ yoluna çıkınca sürücü birden durdu."},
+  {"tr":"f. kısa devre yapmak","ex":"The wiring shorted during the storm and plunged the whole building into darkness.","exTr":"Kablolar fırtına sırasında kısa devre yaptı ve tüm binayı karanlığa gömdü."}
+],
+
+"half": [
+  {"tr":"i. yarı, yarım","ex":"Nearly half of the coral reefs studied showed clear signs of bleaching caused by warmer waters.","exTr":"İncelenen mercan resiflerinin neredeyse yarısı, daha sıcak sulardan kaynaklanan ağarma belirtileri gösterdi."},
+  {"tr":"s. yarım","ex":"A half portion is available for children under twelve at no extra charge.","exTr":"On iki yaşın altındaki çocuklar için ek ücret olmadan yarım porsiyon sunulmaktadır."},
+  {"tr":"z. yarı yarıya, yarım","ex":"The fuel tank was still half full when the engine unexpectedly stopped.","exTr":"Motor beklenmedik biçimde durduğunda yakıt deposu hâlâ yarı yarıya doluydu."}
+],
+
+"size": [
+  {"tr":"i. boyut, büyüklük, beden","ex":"Researchers found that the size of a galaxy's central black hole correlates with its total mass.","exTr":"Araştırmacılar, bir galaksinin merkezi kara deliğinin boyutunun galaksinin toplam kütlesiyle ilişkili olduğunu tespit etti."},
+  {"tr":"f. boyutlandırmak, ölçüsünü belirlemek","ex":"Engineers must size the beams correctly to support the full weight of the roof.","exTr":"Mühendisler, çatının tüm ağırlığını taşıyabilmek için kirişleri doğru boyutlandırmalıdır."}
+],
+
+"nothing": [
+  {"tr":"i. hiçbir şey","ex":"Despite years of research, nothing has proven more effective than early diagnosis in treating cancer.","exTr":"Yıllarca süren araştırmalara rağmen, kanser tedavisinde erken teşhisten daha etkili hiçbir şey kanıtlanmadı."},
+  {"tr":"z. hiç, hiçbir şekilde","ex":"The final version of the building looks nothing like the architect's original design.","exTr":"Binanın son hâli, mimarın özgün tasarımına hiç benzemiyor."}
+],
+
+"unlike": [
+  {"tr":"e. -in aksine","ex":"Reptiles, unlike mammals, depend on external heat sources to regulate their body temperature.","exTr":"Sürüngenler, memelilerin aksine, vücut sıcaklıklarını düzenlemek için dış ısı kaynaklarına bağımlıdır."},
+  {"tr":"s. farklı, benzemeyen","ex":"The two theories are not so unlike as their supporters usually claim.","exTr":"İki kuram, savunucularının genellikle iddia ettiği kadar birbirinden farklı değil."}
+],
+
+"daily": [
+  {"tr":"s. günlük","ex":"Experts recommend thirty minutes of daily exercise to maintain cardiovascular health.","exTr":"Uzmanlar, kalp-damar sağlığını korumak için günlük otuz dakika egzersiz öneriyor."},
+  {"tr":"z. her gün","ex":"The medication must be taken daily for at least six consecutive weeks.","exTr":"İlaç, en az altı hafta boyunca her gün alınmalıdır."},
+  {"tr":"i. günlük gazete","ex":"The story appeared on the front page of every national daily the following morning.","exTr":"Haber, ertesi sabah bütün ulusal günlük gazetelerin birinci sayfasında yer aldı."}
+],
+
+"free": [
+  {"tr":"s. özgür; ücretsiz; serbest","ex":"The city offers free public transport to reduce traffic congestion and air pollution.","exTr":"Şehir, trafik sıkışıklığını ve hava kirliliğini azaltmak için ücretsiz toplu taşıma sunuyor."},
+  {"tr":"f. serbest bırakmak, kurtarmak","ex":"Rescuers worked for hours to free the driver trapped inside the wreckage.","exTr":"Kurtarma ekipleri, enkazın içinde sıkışan sürücüyü kurtarmak için saatlerce çalıştı."}
+],
+
+"real": [
+  {"tr":"s. gerçek, hakiki","ex":"Virtual experiments can never fully replace real laboratory work in science education.","exTr":"Sanal deneyler, fen eğitiminde gerçek laboratuvar çalışmasının yerini asla tam anlamıyla tutamaz."},
+  {"tr":"z. gerçekten (gayriresmî)","ex":"In casual American speech you often hear \"real good\", though \"really good\" is the standard form.","exTr":"Gündelik Amerikan konuşmasında sık sık \"real good\" duyulur; ancak standart biçim \"really good\"tur."}
+],
+
+"wide": [
+  {"tr":"s. geniş; yaygın","ex":"The new policy has attracted support from a wide range of political groups.","exTr":"Yeni politika, çok çeşitli siyasi gruplardan destek topladı."},
+  {"tr":"z. ardına kadar, tamamen","ex":"She left the window wide open despite the freezing night air.","exTr":"Dondurucu gece havasına rağmen pencereyi ardına kadar açık bıraktı."}
+],
+
+"behind": [
+  {"tr":"e. arkasında, gerisinde","ex":"Rural schools often fall behind urban ones in access to modern technology.","exTr":"Kırsal okullar, modern teknolojiye erişim konusunda çoğu zaman kentteki okulların gerisinde kalır."},
+  {"tr":"z. geride","ex":"The rest of the group had fallen far behind by the time we reached the ridge.","exTr":"Sırta ulaştığımızda grubun geri kalanı epeyce geride kalmıştı."}
+],
+
+"fossil": [
+  {"tr":"i. fosil","ex":"The museum acquired a rare fossil of a winged reptile discovered in the desert.","exTr":"Müze, çölde keşfedilen kanatlı bir sürüngene ait nadir bir fosil edindi."},
+  {"tr":"s. fosil (yakıt)","ex":"Burning fossil fuels releases carbon dioxide, the main driver of global warming.","exTr":"Fosil yakıtların yakılması, küresel ısınmanın başlıca etkeni olan karbondioksiti açığa çıkarır."}
+],
+
+"standard": [
+  {"tr":"i. standart, ölçüt","ex":"Living standards have risen sharply in many Asian countries since the 1980s.","exTr":"1980'lerden bu yana birçok Asya ülkesinde yaşam standartları keskin biçimde yükseldi."},
+  {"tr":"s. standart, alışılmış","ex":"The laboratory follows the standard procedure for handling contaminated samples.","exTr":"Laboratuvar, kirlenmiş numunelerin işlenmesinde standart prosedürü izler."}
+],
+
+"white": [
+  {"tr":"s. beyaz","ex":"Coral reefs often turn white when ocean temperatures rise above a critical threshold.","exTr":"Mercan resifleri, okyanus sıcaklıkları kritik bir eşiği aştığında genellikle beyaza döner."},
+  {"tr":"i. beyaz renk","ex":"The artist used almost no white in the entire painting, relying instead on pale greys.","exTr":"Sanatçı, resmin tamamında neredeyse hiç beyaz kullanmadı; bunun yerine soluk grilere başvurdu."},
+  {"tr":"f. beyazlatmak, örtmek","ex":"Heavy snow whited out the runway and all departures were suspended until morning.","exTr":"Yoğun kar pisti bembeyaz kaplayınca bütün kalkışlar sabaha kadar durduruldu."}
+],
+
+"online": [
+  {"tr":"s. çevrimiçi","ex":"The university launched an online library accessible to students in forty countries.","exTr":"Üniversite, kırk ülkedeki öğrencilerin erişebildiği çevrimiçi bir kütüphane açtı."},
+  {"tr":"z. çevrimiçi olarak","ex":"More universities are now offering degree programs entirely online to reach international students.","exTr":"Daha fazla üniversite, uluslararası öğrencilere ulaşmak için artık tamamen çevrimiçi lisans programları sunuyor."}
+],
+
+"here": [
+  {"tr":"z. burada, buraya","ex":"The fossils found here suggest that this region was once covered by a shallow sea.","exTr":"Burada bulunan fosiller, bu bölgenin bir zamanlar sığ bir denizle kaplı olduğunu gösteriyor."},
+  {"tr":"i. burası","ex":"From here to the summit is another four hours of steep and exposed climbing.","exTr":"Burasıyla zirve arası, dört saatlik dik ve korunaksız bir tırmanış daha."}
+],
+
+"quick": [
+  {"tr":"s. hızlı, çabuk","ex":"A quick response by emergency teams saved hundreds of lives after the powerful earthquake.","exTr":"Acil durum ekiplerinin hızlı müdahalesi, şiddetli depremin ardından yüzlerce hayat kurtardı."},
+  {"tr":"z. çabuk (gayriresmî)","ex":"Come quick — the committee is finally announcing the results.","exTr":"Çabuk gel, komite nihayet sonuçları açıklıyor."}
+],
+
+"equivalent": [
+  {"tr":"s. eşdeğer, denk","ex":"Walking briskly for an hour burns an amount of energy roughly equivalent to a light jog.","exTr":"Bir saat tempolu yürüyüş, hafif bir koşuya kabaca eşdeğer miktarda enerji yakar."},
+  {"tr":"i. karşılık, eşdeğer","ex":"There is no exact Turkish equivalent for this English legal term.","exTr":"Bu İngilizce hukuk teriminin tam bir Türkçe karşılığı yok."}
+],
+
+"dark": [
+  {"tr":"s. karanlık","ex":"Deep-sea creatures inhabit permanently dark waters where sunlight has never penetrated.","exTr":"Derin deniz canlıları, güneş ışığının hiçbir zaman ulaşmadığı sürekli karanlık sularda yaşar."},
+  {"tr":"i. (the dark) karanlık","ex":"Many children are afraid of the dark until they are six or seven years old.","exTr":"Birçok çocuk, altı yedi yaşına gelene kadar karanlıktan korkar."}
+],
+
+"black": [
+  {"tr":"s. siyah, kara","ex":"Astronomers detected radiation escaping from the edge of a distant black hole for the first time.","exTr":"Gökbilimciler, ilk kez uzak bir kara deliğin kenarından kaçan radyasyonu tespit etti."},
+  {"tr":"i. siyah renk","ex":"She always wears black to formal academic ceremonies.","exTr":"Resmî akademik törenlere hep siyah giyer."}
+],
+
+"male": [
+  {"tr":"s. erkek","ex":"Male lions are easily distinguished by the thick mane surrounding the head.","exTr":"Erkek aslanlar, başlarını çevreleyen kalın yeleyle kolayca ayırt edilir."},
+  {"tr":"i. erkek (birey)","ex":"In many bird species, only the male develops brightly colored feathers during mating season.","exTr":"Birçok kuş türünde, çiftleşme mevsiminde yalnızca erkek birey parlak renkli tüyler geliştirir."}
+],
+
+"immune": [
+  {"tr":"s. bağışık, muaf","ex":"Vaccinated individuals are largely immune to the virus that caused last winter's outbreak.","exTr":"Aşılanmış bireyler, geçen kışki salgına yol açan virüse karşı büyük ölçüde bağışıktır."},
+  {"tr":"i. bağışıklık kazanmış kimse","ex":"Statisticians count the immunes separately from those who have never been exposed.","exTr":"İstatistikçiler, bağışıklık kazanmış olanları hiç maruz kalmamış olanlardan ayrı sayar."}
+],
+
+"extreme": [
+  {"tr":"s. aşırı, uç","ex":"Global warming has increased the frequency of extreme weather events around the world.","exTr":"Küresel ısınma, dünya genelinde aşırı hava olaylarının sıklığını artırdı."},
+  {"tr":"i. uç nokta, aşırılık","ex":"Her opinions swing between the two extremes with no middle ground whatsoever.","exTr":"Görüşleri, hiçbir orta yol bırakmadan iki uç arasında gidip geliyor."}
+],
+
+"five": [
+  {"tr":"s. beş","ex":"The human hand contains five fingers, each controlled by a complex network of tendons.","exTr":"İnsan eli, her biri karmaşık bir tendon ağıyla kontrol edilen beş parmaktan oluşur."},
+  {"tr":"i. beş (sayısı)","ex":"The children were asked to write the number five clearly on the board.","exTr":"Çocuklardan tahtaya beş sayısını okunaklı biçimde yazmaları istendi."}
+],
+
+"liquid": [
+  {"tr":"i. sıvı","ex":"Water is the only substance on Earth that naturally exists as a solid, liquid, and gas.","exTr":"Su, Dünya'da doğal olarak katı, sıvı ve gaz hâllerinde bulunan tek maddedir."},
+  {"tr":"s. sıvı, akışkan","ex":"Liquid nitrogen is used to preserve biological samples at extremely low temperatures.","exTr":"Sıvı azot, biyolojik numuneleri çok düşük sıcaklıklarda saklamak için kullanılır."}
+],
+
+"electric": [
+  {"tr":"s. elektrikli, elektrik","ex":"Sales of electric cars have risen sharply as battery prices continue to fall.","exTr":"Batarya fiyatları düşmeye devam ederken elektrikli otomobil satışları keskin biçimde arttı."},
+  {"tr":"i. elektrikli taşıt","ex":"Half the city's bus fleet has already been replaced with electrics.","exTr":"Kentin otobüs filosunun yarısı çoktan elektriklilerle değiştirildi."}
+],
+
+"permanent": [
+  {"tr":"s. kalıcı, daimi","ex":"Severe sunburn during childhood can cause permanent damage to the skin.","exTr":"Çocuklukta geçirilen şiddetli güneş yanığı, ciltte kalıcı hasara neden olabilir."},
+  {"tr":"i. perma","ex":"She had a permanent done before the wedding and regretted it immediately.","exTr":"Düğünden önce perma yaptırdı ve hemen pişman oldu."}
+],
+
+"female": [
+  {"tr":"s. dişi, kadınlara özgü","ex":"Female elephants remain with their birth herd for their entire lives.","exTr":"Dişi filler, yaşamları boyunca doğdukları sürüde kalır."},
+  {"tr":"i. dişi","ex":"In many bird species, the female builds the nest while the male gathers food.","exTr":"Birçok kuş türünde, erkek yiyecek toplarken yuvayı dişi kurar."}
+],
+
+"incorporate": [
+  {"tr":"f. dahil etmek, birleştirmek","ex":"Architects now incorporate energy-saving features into the design of most new buildings.","exTr":"Mimarlar artık çoğu yeni binanın tasarımına enerji tasarrufu sağlayan özellikler dahil ediyor."},
+  {"tr":"s. birleşmiş, tüzel","ex":"The charter refers to the university as an incorporate body founded in 1451.","exTr":"Berat, üniversiteden 1451'de kurulmuş tüzel bir birlik olarak söz eder."}
+],
+
+"manufacture": [
+  {"tr":"f. üretmek, imal etmek","ex":"Several companies now manufacture solar panels using cheaper and more efficient materials.","exTr":"Artık birçok şirket, daha ucuz ve daha verimli malzemeler kullanarak güneş paneli üretiyor."},
+  {"tr":"i. üretim, imalat","ex":"The manufacture of semiconductors requires facilities of extraordinary cleanliness.","exTr":"Yarı iletken üretimi, olağanüstü temizlikte tesisler gerektirir."}
+],
+
+"sugar": [
+  {"tr":"i. şeker","ex":"Excessive sugar consumption has been linked to obesity and type 2 diabetes worldwide.","exTr":"Aşırı şeker tüketimi, dünya genelinde obezite ve tip 2 diyabetle ilişkilendirilmiştir."},
+  {"tr":"f. şeker katmak","ex":"He sugared his tea heavily despite his doctor's repeated warnings.","exTr":"Doktorunun tekrarlanan uyarılarına rağmen çayını bolca şekerledi."}
+],
+
+"temporary": [
+  {"tr":"s. geçici","ex":"The government built temporary shelters for families displaced by the devastating floods.","exTr":"Hükümet, yıkıcı seller nedeniyle evlerinden olan aileler için geçici barınaklar inşa etti."},
+  {"tr":"i. geçici işçi","ex":"The company hired forty temporaries to handle the seasonal rush.","exTr":"Şirket, mevsimlik yoğunluğu karşılamak için kırk geçici işçi aldı."}
+],
+
+"phase": [
+  {"tr":"i. evre, aşama, safha","ex":"The clinical trial has now entered its final phase, involving over ten thousand volunteers.","exTr":"Klinik deney, on binden fazla gönüllüyü kapsayan son evresine girmiş bulunuyor."},
+  {"tr":"f. aşamalı olarak uygulamak","ex":"The government will phase the new tax in over a period of three years.","exTr":"Hükümet yeni vergiyi üç yıllık bir süreye yayarak aşamalı olarak uygulayacak."}
+],
+
+"disadvantage": [
+  {"tr":"i. dezavantaj, sakınca","ex":"The main disadvantage of solar power is its dependence on weather conditions.","exTr":"Güneş enerjisinin başlıca dezavantajı, hava koşullarına bağımlı olmasıdır."},
+  {"tr":"f. zarara uğratmak","ex":"The rule change disadvantages smaller teams with limited budgets.","exTr":"Kural değişikliği, bütçesi kısıtlı küçük takımları zarara uğratıyor."}
+],
+
+"escape": [
+  {"tr":"f. kaçmak, kurtulmak","ex":"Thousands of refugees managed to escape the conflict zone before the borders closed.","exTr":"Binlerce mülteci, sınırlar kapanmadan önce çatışma bölgesinden kaçmayı başardı."},
+  {"tr":"i. kaçış, firar","ex":"Their escape from the besieged city took three nights of walking through the hills.","exTr":"Kuşatılmış kentten kaçışları, tepelerde yürüyerek geçen üç gece sürdü."}
+],
+
+"motor": [
+  {"tr":"i. motor","ex":"The new electric motor converts almost all of its energy directly into motion.","exTr":"Yeni elektrik motoru, enerjisinin neredeyse tamamını doğrudan harekete dönüştürüyor."},
+  {"tr":"s. motorlu; hareket ettiren","ex":"Motor vehicles account for a large share of urban air pollution.","exTr":"Motorlu taşıtlar, kentsel hava kirliliğinin büyük bir bölümünü oluşturuyor."},
+  {"tr":"f. arabayla gitmek","ex":"They motored down the coast road, stopping at every village along the way.","exTr":"Sahil yolundan arabayla ilerlediler, yol boyunca her köyde durdular."}
 ]
 
 };

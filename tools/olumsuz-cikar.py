@@ -72,7 +72,10 @@ def elle_yazilan_oku():
         return {}
     metin = open(yol, encoding='utf-8').read()
     bas = metin.index('{', metin.index('EK_OLUMSUZLAR'))
-    return json.loads(metin[bas:metin.rindex('}') + 1])
+    govde = metin[bas:metin.rindex('}') + 1]
+    # Bolum basliklari icin /* … */ yorumu konabiliyor; JSON bunlari kabul etmez.
+    govde = re.sub(r'/\*.*?\*/', '', govde, flags=re.S)
+    return json.loads(govde)
 
 
 def masteri_oku():

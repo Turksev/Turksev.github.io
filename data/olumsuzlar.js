@@ -136,7 +136,7 @@ window.OLUMSUZLAR = {
 "knowing":[{f:"unknowing",tr:"habersiz, farkında olmayan"}],
 "known":[{f:"unknown",tr:"bilinmeyen; bilinmeyen kişi/şey",s:1}],
 "legitimate":[{f:"illegitimate",tr:"gayrimeşru, yasa dışı"}],
-"like":[{f:"unlike",tr:"-in aksine; s. farklı, benzemeyen",s:1}],
+"like":[{f:"unlike",tr:"-in aksine; farklı, benzemeyen",s:1}],
 "limited":[{f:"unlimited",tr:"sınırsız, sonsuz"}],
 "linear":[{f:"nonlinear",tr:"doğrusal olmayan"}],
 "listed":[{f:"unlisted",tr:"listede olmayan, kayıtsız"}],

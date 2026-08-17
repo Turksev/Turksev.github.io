@@ -145,8 +145,10 @@ def ek_ornekleri_oku():
         return {}
     metin = open(yol, encoding='utf-8').read()
     bas = metin.index('{', metin.index('EK_ORNEKLER'))
-    son = metin.rindex('}') + 1
-    return json.loads(metin[bas:son])
+    govde = metin[bas:metin.rindex('}') + 1]
+    # Dosyada bolum basliklari icin /* … */ yorumlari var; JSON bunlari kabul etmez.
+    govde = re.sub(r'/\*.*?\*/', '', govde, flags=re.S)
+    return json.loads(govde)
 
 
 def birlestir():
