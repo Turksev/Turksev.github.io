@@ -719,6 +719,91 @@ input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible
 }
 .tip b { color: var(--warn); }
 
+/* ---------- kelime aileleri ---------- */
+
+.aile-listesi { display: grid; gap: 10px; }
+
+.aile {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.aile.acik { border-color: var(--accent); }
+
+.aile-baslik {
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+  padding: 12px 16px;
+  background: none;
+  border: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+.aile-baslik:hover .aile-kok { color: var(--accent); }
+
+.aile-kok { font-weight: 700; font-size: 1.05rem; }
+.aile-sayi { font-size: .8rem; color: var(--muted); white-space: nowrap; }
+.aile-ilerleme {
+  height: 6px;
+  background: var(--surface-2);
+  border-radius: 999px;
+  overflow: hidden;
+  min-width: 40px;
+}
+.aile-ilerleme > i { display: block; height: 100%; border-radius: 999px; }
+.aile-ok { color: var(--muted); font-size: .7rem; }
+
+.aile-ozet {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0 16px 13px;
+}
+.cip {
+  font-size: .85rem;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+.cip.kok { font-weight: 700; color: var(--text); }
+.cip.baslandi { background: var(--warn-soft); color: var(--warn); border-color: transparent; }
+.cip.ogrenildi { background: var(--ok-soft); color: var(--ok); border-color: transparent; }
+
+.aile-uyeler { border-top: 1px solid var(--border); }
+
+.uye { padding: 13px 16px; border-top: 1px solid var(--border); }
+.uye:first-child { border-top: 0; }
+.uye.kok { background: var(--accent-soft); }
+
+.uye-bas { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.uye-en { font-weight: 700; font-size: 1.02rem; }
+.uye.kok .uye-en { color: var(--accent); }
+.uye-tr { margin-top: 2px; font-size: .94rem; }
+
+.uye-ornek {
+  margin-top: 8px;
+  padding-left: 10px;
+  border-left: 3px solid var(--border);
+  font-size: .88rem;
+  color: var(--muted);
+}
+.uye-ornek b { display: block; color: var(--text); font-weight: 650; margin-bottom: 2px; }
+.uye-ornek i { display: block; font-style: normal; }
+.uye-ornek .tr-ex { opacity: .82; }
+
+@media (max-width: 560px) {
+  .aile-baslik { grid-template-columns: 1fr auto auto; gap: 8px; }
+  .aile-ilerleme { grid-column: 1 / -1; }
+}
+
 /* ---------- arama sonuçları ---------- */
 
 .ara-satir {
