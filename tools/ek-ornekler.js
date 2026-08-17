@@ -352,6 +352,137 @@ window.EK_ORNEKLER = {
   {"tr":"i. motor","ex":"The new electric motor converts almost all of its energy directly into motion.","exTr":"Yeni elektrik motoru, enerjisinin neredeyse tamamını doğrudan harekete dönüştürüyor."},
   {"tr":"s. motorlu; hareket ettiren","ex":"Motor vehicles account for a large share of urban air pollution.","exTr":"Motorlu taşıtlar, kentsel hava kirliliğinin büyük bir bölümünü oluşturuyor."},
   {"tr":"f. arabayla gitmek","ex":"They motored down the coast road, stopping at every village along the way.","exTr":"Sahil yolundan arabayla ilerlediler, yol boyunca her köyde durdular."}
+],
+
+"mouse": [
+  {"tr":"i. fare","ex":"Laboratory studies on the house mouse have contributed enormously to modern genetics.","exTr":"Ev faresi üzerinde yapılan laboratuvar çalışmaları, modern genetiğe büyük katkılar sağlamıştır."},
+  {"tr":"f. fare avlamak","ex":"The barn cat mouses all night and then sleeps through most of the day.","exTr":"Ahırdaki kedi bütün gece fare avlar, sonra günün çoğunu uyuyarak geçirir."}
+],
+
+"noise": [
+  {"tr":"i. gürültü, ses","ex":"Constant traffic noise in large cities can lead to stress and sleep disorders.","exTr":"Büyük şehirlerdeki sürekli trafik gürültüsü, strese ve uyku bozukluklarına yol açabilir."},
+  {"tr":"f. (noise about/abroad) yaymak, ortalığa duyurmak","ex":"Rumours of the merger were noised abroad long before any official statement appeared.","exTr":"Birleşme söylentileri, resmî bir açıklama çıkmadan çok önce ortalığa yayılmıştı."}
+],
+
+"mature": [
+  {"tr":"s. olgun, yetişkin","ex":"Mature students often bring valuable work experience into the university classroom.","exTr":"Yetişkin öğrenciler, üniversite sınıfına çoğu zaman değerli iş deneyimi getirir."},
+  {"tr":"f. olgunlaşmak","ex":"Some tree species take more than fifty years to fully mature in the wild.","exTr":"Bazı ağaç türlerinin doğal ortamda tamamen olgunlaşması elli yıldan fazla sürer."}
+],
+
+"lots": [
+  {"tr":"i. çok miktar","ex":"Growing children need lots of sleep, balanced meals, and regular physical activity.","exTr":"Büyüme çağındaki çocukların bol uykuya, dengeli öğünlere ve düzenli fiziksel aktiviteye ihtiyacı vardır."},
+  {"tr":"z. çok, epeyce (gayriresmî)","ex":"She feels lots better since she started sleeping eight hours a night.","exTr":"Gecede sekiz saat uyumaya başladığından beri kendini epeyce daha iyi hissediyor."}
+],
+
+"park": [
+  {"tr":"i. park","ex":"The city converted an abandoned railway line into a long, narrow public park.","exTr":"Kent, terk edilmiş bir demiryolu hattını uzun ve dar bir kamu parkına dönüştürdü."},
+  {"tr":"f. park etmek","ex":"Visitors are asked not to park their vehicles near the main entrance.","exTr":"Ziyaretçilerden araçlarını ana girişin yakınına park etmemeleri isteniyor."}
+],
+
+"peak": [
+  {"tr":"i. zirve, doruk","ex":"The climbers reached the peak shortly after sunrise on the fourth day.","exTr":"Tırmanıcılar, dördüncü gün gün doğumundan kısa süre sonra zirveye ulaştı."},
+  {"tr":"f. zirveye ulaşmak, doruğa çıkmak","ex":"Energy consumption tends to peak during the hottest hours of summer afternoons.","exTr":"Enerji tüketimi, yaz öğleden sonralarının en sıcak saatlerinde zirveye ulaşma eğilimindedir."}
+],
+
+"shop": [
+  {"tr":"i. dükkân, mağaza","ex":"The corner shop has served the neighbourhood for more than sixty years.","exTr":"Köşedeki dükkân, mahalleye altmış yılı aşkın süredir hizmet veriyor."},
+  {"tr":"f. alışveriş yapmak","ex":"More consumers now shop online rather than visiting a store in person.","exTr":"Artık daha fazla tüketici, bizzat bir mağazaya gitmek yerine internetten alışveriş yapıyor."}
+],
+
+"firm": [
+  {"tr":"s. sağlam, kararlı","ex":"The government took a firm stance against any further delay in the negotiations.","exTr":"Hükümet, müzakerelerde daha fazla gecikmeye karşı kararlı bir tutum aldı."},
+  {"tr":"i. firma, şirket","ex":"The pharmaceutical firm announced that it would lower the price of its medication.","exTr":"İlaç firması, ilacının fiyatını düşüreceğini açıkladı."}
+],
+
+"beneath": [
+  {"tr":"e. altında, altına","ex":"Archaeologists discovered an ancient Roman settlement buried beneath the modern city center.","exTr":"Arkeologlar, modern şehir merkezinin altında gömülü antik bir Roma yerleşimi keşfetti."},
+  {"tr":"z. altta, aşağıda","ex":"From the ridge we could see the whole valley spread out beneath.","exTr":"Sırttan, bütün vadinin aşağıda serildiğini görebiliyorduk."}
+],
+
+"court": [
+  {"tr":"i. mahkeme; saray; (spor) kort","ex":"The court ruled that the company had violated environmental regulations for nearly a decade.","exTr":"Mahkeme, şirketin neredeyse on yıldır çevre düzenlemelerini ihlal ettiğine hükmetti."},
+  {"tr":"f. gönlünü kazanmaya çalışmak, kur yapmak","ex":"The candidate spent months courting voters in the rural districts.","exTr":"Aday, kırsal ilçelerdeki seçmenlerin gönlünü kazanmak için aylarını harcadı."}
+],
+
+"gross": [
+  {"tr":"s. brüt; kaba, iğrenç","ex":"The company reported a gross profit of nearly ten million dollars before taxes were deducted.","exTr":"Şirket, vergiler düşülmeden önce yaklaşık on milyon dolarlık brüt kâr bildirdi."},
+  {"tr":"f. brüt hasılat elde etmek","ex":"The film grossed more than two hundred million dollars in its first month.","exTr":"Film, ilk ayında iki yüz milyon doların üzerinde hasılat elde etti."}
+],
+
+"innocent": [
+  {"tr":"s. masum, suçsuz; saf","ex":"After a lengthy trial, the jury concluded that the defendant was completely innocent.","exTr":"Uzun süren bir yargılamanın ardından jüri, sanığın tamamen masum olduğu sonucuna vardı."},
+  {"tr":"i. masum kişi","ex":"The bombing killed dozens of innocents who had no part in the conflict.","exTr":"Bombalama, çatışmayla hiçbir ilgisi olmayan onlarca masumun ölümüne yol açtı."}
+],
+
+"minimum": [
+  {"tr":"s. asgari, en az","ex":"Factory workers are legally entitled to a minimum wage that reflects the cost of living.","exTr":"Fabrika işçileri, yaşam maliyetini yansıtan asgari bir ücrete yasal olarak hak kazanır."},
+  {"tr":"i. asgari düzey, en az miktar","ex":"Costs must be kept to a minimum if the project is to remain viable.","exTr":"Projenin sürdürülebilir kalması için maliyetler asgaride tutulmalıdır."}
+],
+
+"parallel": [
+  {"tr":"s. paralel, koşut","ex":"The two roads run parallel to each other for almost thirty kilometres.","exTr":"İki yol, neredeyse otuz kilometre boyunca birbirine paralel uzanır."},
+  {"tr":"i. benzerlik, koşutluk","ex":"Historians often draw a parallel between the fall of ancient empires and modern political instability.","exTr":"Tarihçiler, antik imparatorlukların çöküşü ile modern siyasi istikrarsızlık arasında sık sık bir paralellik kurar."},
+  {"tr":"f. benzemek, koşut olmak","ex":"Her academic career closely parallels that of her older sister.","exTr":"Akademik kariyeri, ablasınınkine yakından benzer."}
+],
+
+"bed": [
+  {"tr":"i. yatak; (nehir/deniz) taban","ex":"Geologists examined the dry river bed to understand how the waterway had shifted over centuries.","exTr":"Jeologlar, su yolunun yüzyıllar içinde nasıl değiştiğini anlamak için kuru nehir yatağını inceledi."},
+  {"tr":"f. yerleştirmek, oturtmak","ex":"The stones were bedded in mortar to keep the retaining wall stable.","exTr":"İstinat duvarının sağlam kalması için taşlar harca oturtuldu."}
+],
+
+"cease": [
+  {"tr":"f. durmak, sona ermek, bırakmak","ex":"The factory was ordered to cease all operations until the safety violations were corrected.","exTr":"Fabrikaya, güvenlik ihlalleri giderilene kadar tüm faaliyetlerini durdurması emredildi."},
+  {"tr":"i. (without cease) durma, ara verme","ex":"The shelling continued without cease for three days and nights.","exTr":"Bombardıman üç gün üç gece boyunca hiç durmadan sürdü."}
+],
+
+"custom": [
+  {"tr":"i. gelenek, âdet","ex":"According to local custom, guests remove their shoes before entering someone's home.","exTr":"Yerel geleneğe göre konuklar, birinin evine girmeden önce ayakkabılarını çıkarır."},
+  {"tr":"s. ısmarlama, özel yapım","ex":"The workshop builds custom furniture designed to fit unusually shaped rooms.","exTr":"Atölye, alışılmadık biçimli odalara uyacak şekilde tasarlanmış ısmarlama mobilya üretiyor."}
+],
+
+"dependent": [
+  {"tr":"s. bağımlı, bağlı","ex":"Economic growth in the small nation remains heavily dependent on tourism and agricultural exports.","exTr":"Küçük ulustaki ekonomik büyüme, büyük ölçüde turizme ve tarımsal ihracata bağımlı olmaya devam ediyor."},
+  {"tr":"i. bakmakla yükümlü olunan kişi","ex":"Employees may add a spouse and up to three dependents to the health plan.","exTr":"Çalışanlar sağlık planına bir eş ve en fazla üç bakmakla yükümlü kişi ekleyebilir."}
+],
+
+"fan": [
+  {"tr":"i. hayran; yelpaze, vantilatör","ex":"The ceiling fan did little to relieve the heat in the crowded lecture hall.","exTr":"Tavan vantilatörü, kalabalık amfideki sıcaklığı gidermeye pek yaramadı."},
+  {"tr":"f. yelpazelemek, körüklemek","ex":"Strong winds began to fan the wildfire, causing it to spread rapidly across the dry hillside.","exTr":"Güçlü rüzgârlar orman yangınını körüklemeye başlayarak kuru yamaç boyunca hızla yayılmasına neden oldu."}
+],
+
+"resident": [
+  {"tr":"i. sakin, oturan kişi","ex":"Long-term residents of the valley have noticed a gradual shift in seasonal rainfall patterns.","exTr":"Vadinin uzun süredir sakinleri, mevsimsel yağış düzenlerinde kademeli bir değişim fark etti."},
+  {"tr":"s. yerleşik, ikamet eden","ex":"The hospital employs a resident physician who lives on the premises.","exTr":"Hastane, tesiste ikamet eden yerleşik bir hekim çalıştırıyor."}
+],
+
+"segment": [
+  {"tr":"i. kesim, bölüm, dilim","ex":"This segment of the population has been largely ignored by policymakers.","exTr":"Nüfusun bu kesimi, politika yapıcılar tarafından büyük ölçüde göz ardı edildi."},
+  {"tr":"f. bölmek, ayırmak","ex":"Marketing teams often segment consumers into groups based on age, income, and purchasing habits.","exTr":"Pazarlama ekipleri, tüketicileri genellikle yaş, gelir ve satın alma alışkanlıklarına göre gruplara ayırır."}
+],
+
+"spray": [
+  {"tr":"i. sprey, püskürtü; deniz serpintisi","ex":"A fine spray of seawater covered the windows of the coastal houses.","exTr":"İnce bir deniz suyu serpintisi, kıyı evlerinin pencerelerini kaplıyordu."},
+  {"tr":"f. püskürtmek","ex":"Farmers began to spray a natural pesticide on the crops instead of chemical alternatives.","exTr":"Çiftçiler, kimyasal alternatifler yerine ürünlere doğal bir haşere ilacı püskürtmeye başladı."}
+],
+
+"ban": [
+  {"tr":"i. yasak","ex":"Several countries have introduced a ban on single-use plastic bags to reduce ocean pollution.","exTr":"Birçok ülke, okyanus kirliliğini azaltmak amacıyla tek kullanımlık plastik torbalara yasak getirdi."},
+  {"tr":"f. yasaklamak","ex":"Several cities have banned older diesel vehicles from the historic centre.","exTr":"Birkaç kent, eski dizel araçların tarihî merkeze girmesini yasakladı."}
+],
+
+"box": [
+  {"tr":"i. kutu","ex":"Laboratory technicians carefully sealed each box containing samples before shipping them abroad.","exTr":"Laboratuvar teknisyenleri, örnekleri içeren her kutuyu yurt dışına göndermeden önce dikkatle mühürledi."},
+  {"tr":"f. kutulamak; boks yapmak","ex":"He boxed as an amateur for six years before turning professional.","exTr":"Profesyonelliğe geçmeden önce altı yıl amatör olarak boks yaptı."}
+],
+
+"branch": [
+  {"tr":"i. dal, kol; şube","ex":"Genetics is considered a branch of biology that examines how traits pass between generations.","exTr":"Genetik, özelliklerin nesiller arasında nasıl aktarıldığını inceleyen bir biyoloji dalı olarak kabul edilir."},
+  {"tr":"f. dallanmak, kollara ayrılmak","ex":"The path branches just beyond the bridge; take the left fork for the waterfall.","exTr":"Patika köprünün hemen ötesinde ikiye ayrılıyor; şelale için soldaki kolu tut."}
+],
+
+"foster": [
+  {"tr":"f. teşvik etmek, geliştirmek","ex":"Schools are increasingly designing group projects to foster teamwork among students.","exTr":"Okullar, öğrenciler arasında takım çalışmasını geliştirmek için giderek daha fazla grup projesi tasarlıyor."},
+  {"tr":"s. koruyucu (aile)","ex":"The children were placed with a foster family while the case was being resolved.","exTr":"Dava çözüme kavuşturulurken çocuklar bir koruyucu aileye yerleştirildi."}
 ]
 
 };
