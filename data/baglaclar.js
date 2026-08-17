@@ -11,6 +11,7 @@
      nt → (opsiyonel) kullanım notu
      es → yakın anlamlılar (tools/baglac-esanlam.js ile eklenir)
      es → yakın anlamlılar (tools/baglac-esanlam.js ile eklenir)
+     es → yakın anlamlılar (tools/baglac-esanlam.js ile eklenir)
    ============================================================ */
 
 window.BAGLACLAR = [

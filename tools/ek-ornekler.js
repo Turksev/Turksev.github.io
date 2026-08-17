@@ -483,6 +483,141 @@ window.EK_ORNEKLER = {
 "foster": [
   {"tr":"f. teşvik etmek, geliştirmek","ex":"Schools are increasingly designing group projects to foster teamwork among students.","exTr":"Okullar, öğrenciler arasında takım çalışmasını geliştirmek için giderek daha fazla grup projesi tasarlıyor."},
   {"tr":"s. koruyucu (aile)","ex":"The children were placed with a foster family while the case was being resolved.","exTr":"Dava çözüme kavuşturulurken çocuklar bir koruyucu aileye yerleştirildi."}
+],
+
+"stock": [
+  {"tr":"i. stok, envanter; hisse senedi","ex":"The company increased its stock of raw materials in anticipation of rising global demand.","exTr":"Şirket, küresel talepteki artışı öngörerek hammadde stokunu artırdı."},
+  {"tr":"s. basmakalıp, klişe","ex":"The politician gave a stock answer that satisfied nobody in the room.","exTr":"Politikacı, odadaki hiç kimseyi tatmin etmeyen basmakalıp bir cevap verdi."},
+  {"tr":"f. stoklamak, bulundurmak","ex":"Pharmacies were told to stock extra vaccine ahead of the winter season.","exTr":"Eczanelere, kış mevsimi öncesinde fazladan aşı bulundurmaları söylendi."}
+],
+
+"breed": [
+  {"tr":"i. tür, cins, ırk (hayvan)","ex":"This breed of sheep is unusually well suited to cold mountain pastures.","exTr":"Bu koyun cinsi, soğuk dağ meralarına alışılmadık ölçüde uygundur."},
+  {"tr":"f. üretmek, yol açmak; üremek","ex":"Overcrowded living conditions can breed the rapid spread of infectious diseases.","exTr":"Aşırı kalabalık yaşam koşulları, bulaşıcı hastalıkların hızla yayılmasına yol açabilir."}
+],
+
+"compact": [
+  {"tr":"s. kompakt, küçük ve pratik","ex":"Engineers designed a compact device capable of purifying water without an external power source.","exTr":"Mühendisler, harici bir güç kaynağı olmadan suyu arıtabilen kompakt bir cihaz tasarladı."},
+  {"tr":"i. anlaşma, sözleşme","ex":"The two nations signed a compact limiting military activity in the disputed region.","exTr":"İki ulus, tartışmalı bölgedeki askerî faaliyeti sınırlayan bir anlaşma imzaladı."},
+  {"tr":"f. sıkıştırmak","ex":"Heavy machinery had compacted the soil so severely that nothing would grow there.","exTr":"Ağır makineler toprağı öyle sıkıştırmıştı ki orada hiçbir şey yetişmiyordu."}
+],
+
+"cross": [
+  {"tr":"f. karşıdan karşıya geçmek, kesişmek","ex":"Migrating birds cross vast oceans twice a year, guided partly by the Earth's magnetic field.","exTr":"Göçmen kuşlar, kısmen Dünya'nın manyetik alanıyla yönlenerek yılda iki kez geniş okyanusları geçer."},
+  {"tr":"i. haç; çarpı","ex":"A stone cross marks the spot where the first pilgrims came ashore.","exTr":"Taştan bir haç, ilk hacıların karaya çıktığı yeri işaretliyor."},
+  {"tr":"s. kızgın, ters","ex":"She was cross with me for forgetting the appointment a second time.","exTr":"Randevuyu ikinci kez unuttuğum için bana kızgındı."}
+],
+
+"organic": [
+  {"tr":"s. organik","ex":"Sales of organic produce have risen steadily as consumers worry about pesticide exposure.","exTr":"Tüketiciler pestisit maruziyetinden endişe duydukça organik ürün satışları istikrarlı biçimde arttı."},
+  {"tr":"i. organik ürün","ex":"Supermarkets now stock organics alongside conventionally grown vegetables.","exTr":"Süpermarketler artık organikleri geleneksel yöntemle yetiştirilen sebzelerin yanında bulunduruyor."}
+],
+
+"ruin": [
+  {"tr":"i. yıkıntı, harabe; mahvolma","ex":"The ruins of the ancient theatre still stand on the hillside above the town.","exTr":"Antik tiyatronun kalıntıları hâlâ kasabanın üzerindeki yamaçta duruyor."},
+  {"tr":"f. mahvetmek, harap etmek","ex":"A prolonged drought threatened to ruin the region's wheat harvest for the third year.","exTr":"Uzun süren bir kuraklık, bölgenin buğday hasadını üçüncü yıl da mahvetmekle tehdit etti."}
+],
+
+"dog": [
+  {"tr":"i. köpek","ex":"Guide dogs undergo two years of training before being placed with an owner.","exTr":"Rehber köpekler, bir sahibe verilmeden önce iki yıllık eğitimden geçer."},
+  {"tr":"f. peşini bırakmamak, musallat olmak","ex":"Persistent rumors continued to dog the senator throughout his final campaign.","exTr":"Israrlı söylentiler, senatörün son kampanyası boyunca peşini bırakmadı."}
+],
+
+"dominant": [
+  {"tr":"s. baskın, egemen, hâkim","ex":"In many ecosystems, a single species can quickly become dominant if its predators disappear.","exTr":"Birçok ekosistemde, yırtıcıları ortadan kalkarsa tek bir tür hızla baskın hâle gelebilir."},
+  {"tr":"i. (genetik) baskın gen","ex":"In this cross, brown eye colour behaves as the dominant.","exTr":"Bu çaprazlamada kahverengi göz rengi baskın olan olarak davranır."}
+],
+
+"edge": [
+  {"tr":"i. kenar, kıyı; üstünlük","ex":"New battery technology could give electric car makers a significant edge over competitors.","exTr":"Yeni pil teknolojisi, elektrikli araç üreticilerine rakiplerine karşı önemli bir üstünlük sağlayabilir."},
+  {"tr":"f. yavaşça ilerlemek","ex":"The climbers edged along the narrow ledge with their backs pressed to the rock.","exTr":"Tırmanıcılar, sırtları kayaya yaslı hâlde dar çıkıntı boyunca yavaşça ilerledi."}
+],
+
+"mediate": [
+  {"tr":"f. arabuluculuk yapmak, aracılık etmek","ex":"The United Nations agreed to mediate peace talks between the two warring nations.","exTr":"Birleşmiş Milletler, savaşan iki ulus arasındaki barış görüşmelerine arabuluculuk yapmayı kabul etti."},
+  {"tr":"s. dolaylı","ex":"Philosophers distinguish immediate knowledge from mediate knowledge obtained through inference.","exTr":"Filozoflar, dolaysız bilgiyi çıkarım yoluyla elde edilen dolaylı bilgiden ayırır."}
+],
+
+"stream": [
+  {"tr":"i. dere, akış","ex":"A small mountain stream supplies the entire village with drinking water.","exTr":"Küçük bir dağ deresi, tüm köyün içme suyunu sağlıyor."},
+  {"tr":"f. akmak; (çevrimiçi) yayın yapmak","ex":"Melting glaciers now stream directly into the valley, raising water levels in the river below.","exTr":"Eriyen buzullar artık doğrudan vadiye akıyor ve aşağıdaki nehrin su seviyesini yükseltiyor."}
+],
+
+"thin": [
+  {"tr":"s. ince, zayıf; seyrek","ex":"At high altitudes, the thin air makes it significantly harder for the body to absorb oxygen.","exTr":"Yüksek rakımlarda ince hava, vücudun oksijeni emmesini önemli ölçüde zorlaştırır."},
+  {"tr":"f. inceltmek, seyreltmek","ex":"Gardeners thin the seedlings so the strongest plants have room to grow.","exTr":"Bahçıvanlar, en güçlü bitkilere yer kalsın diye fideleri seyreltir."}
+],
+
+"climb": [
+  {"tr":"i. tırmanış, yokuş","ex":"The final climb to the monastery takes about ninety minutes on foot.","exTr":"Manastıra son tırmanış, yürüyerek yaklaşık doksan dakika sürüyor."},
+  {"tr":"f. tırmanmak, çıkmak","ex":"Mountaineers must acclimatize gradually before attempting to climb peaks above five thousand meters.","exTr":"Dağcılar, beş bin metrenin üzerindeki zirvelere tırmanmayı denemeden önce kademeli olarak yüksekliğe alışmalıdır."}
+],
+
+"farming": [
+  {"tr":"i. tarım, çiftçilik","ex":"Farming employs less than three per cent of the workforce in most rich countries.","exTr":"Zengin ülkelerin çoğunda tarım, işgücünün yüzde üçünden azını istihdam ediyor."},
+  {"tr":"s. tarıma ait","ex":"Modern farming techniques have increased crop yields while reducing water consumption.","exTr":"Modern tarım teknikleri, su tüketimini azaltırken ürün verimini artırdı."}
+],
+
+"flavour": [
+  {"tr":"i. tat, lezzet","ex":"Chefs often add local spices to enhance the natural flavour of the dish.","exTr":"Şefler, yemeğin doğal tadını artırmak için genellikle yerel baharatlar ekler."},
+  {"tr":"f. tat katmak, lezzetlendirmek","ex":"The soup is flavoured with wild herbs gathered from the surrounding hills.","exTr":"Çorba, çevredeki tepelerden toplanan yabani otlarla lezzetlendiriliyor."}
+],
+
+"grasp": [
+  {"tr":"i. kavrayış, hâkimiyet","ex":"A firm grasp of statistics is essential for anyone reading medical research.","exTr":"Tıbbi araştırma okuyan herkes için istatistiğe sağlam bir hâkimiyet şarttır."},
+  {"tr":"f. kavramak, anlamak; sıkıca tutmak","ex":"Young children gradually grasp the concept of gravity through everyday physical experience.","exTr":"Küçük çocuklar, yer çekimi kavramını günlük fiziksel deneyimler yoluyla zamanla kavrar."}
+],
+
+"probe": [
+  {"tr":"i. soruşturma; (uzay) sonda","ex":"NASA launched a new probe to examine the icy moons orbiting the outer planets.","exTr":"NASA, dış gezegenlerin etrafında dönen buzlu ayları incelemek için yeni bir uzay sondası fırlattı."},
+  {"tr":"f. araştırmak, didiklemek","ex":"Journalists continued to probe the company's accounts long after the trial had ended.","exTr":"Gazeteciler, dava bittikten çok sonra bile şirketin hesaplarını araştırmayı sürdürdü."}
+],
+
+"proof": [
+  {"tr":"i. kanıt, delil","ex":"Scientists finally found proof that the new particle behaves exactly as the theory predicted.","exTr":"Bilim insanları sonunda, yeni parçacığın kuramın öngördüğü gibi davrandığına dair kanıt buldu."},
+  {"tr":"s. dayanıklı, geçirmez","ex":"The new coating makes the fabric completely proof against water and wind.","exTr":"Yeni kaplama, kumaşı suya ve rüzgâra tamamen dayanıklı kılıyor."},
+  {"tr":"f. (metin) düzeltisini yapmak","ex":"The editor proofed the manuscript twice before sending it to the printer.","exTr":"Editör, el yazmasını matbaaya göndermeden önce iki kez düzeltisini yaptı."}
+],
+
+"third": [
+  {"tr":"s. üçüncü","ex":"This is the third consecutive year of below-average rainfall in the region.","exTr":"Bu, bölgede ortalamanın altında yağışın görüldüğü art arda üçüncü yıl."},
+  {"tr":"i. üçte bir","ex":"Nearly a third of the population in that region lacks reliable access to clean water.","exTr":"O bölgedeki nüfusun neredeyse üçte biri, güvenilir temiz suya erişimden yoksun."},
+  {"tr":"z. üçüncü olarak","ex":"Third, the committee recommended a complete review of all safety procedures.","exTr":"Üçüncü olarak komite, bütün güvenlik prosedürlerinin baştan gözden geçirilmesini önerdi."}
+],
+
+"abuse": [
+  {"tr":"i. istismar, kötüye kullanma","ex":"The new regulations aim to prevent the abuse of antibiotics in large-scale livestock farming.","exTr":"Yeni düzenlemeler, büyük ölçekli hayvancılıkta antibiyotiklerin kötüye kullanılmasını önlemeyi amaçlıyor."},
+  {"tr":"f. kötüye kullanmak; kötü davranmak","ex":"Officials were accused of abusing their authority to award contracts to relatives.","exTr":"Yetkililer, akrabalarına ihale vermek için yetkilerini kötüye kullanmakla suçlandı."}
+],
+
+"boat": [
+  {"tr":"i. tekne, kayık","ex":"Fishermen used a small wooden boat to reach the reef before modern engines existed.","exTr":"Balıkçılar, modern motorlar yokken resife ulaşmak için küçük ahşap bir tekne kullanırdı."},
+  {"tr":"f. tekneyle gitmek","ex":"They boated down the river for three days, camping on the banks each night.","exTr":"Üç gün boyunca nehirde tekneyle ilerlediler, her gece kıyıda kamp kurdular."}
+],
+
+"bulk": [
+  {"tr":"i. büyük kısım, çoğunluk; hacim","ex":"The bulk of the country's electricity still comes from coal-fired power plants.","exTr":"Ülkenin elektriğinin büyük kısmı hâlâ kömürle çalışan santrallerden geliyor."},
+  {"tr":"f. iri görünmek, kabarmak","ex":"The mountain bulked large on the horizon as we approached the coast.","exTr":"Kıyıya yaklaştıkça dağ ufukta iri iri belirdi."}
+],
+
+"chicken": [
+  {"tr":"i. tavuk","ex":"Rising grain prices have made chicken feed considerably more expensive for small farms.","exTr":"Yükselen tahıl fiyatları, küçük çiftlikler için tavuk yemini önemli ölçüde pahalılaştırdı."},
+  {"tr":"s. (günlük dil) korkak","ex":"He called me chicken for refusing to jump from the rock into the sea.","exTr":"Kayadan denize atlamayı reddettiğim için bana korkak dedi."}
+],
+
+"dish": [
+  {"tr":"i. tabak; yemek","ex":"Local chefs turned a simple regional dish into a popular item on menus worldwide.","exTr":"Yerel şefler, basit bir yöresel yemeği dünya çapındaki menülerde popüler bir ürüne dönüştürdü."},
+  {"tr":"f. dağıtmak, servis yapmak","ex":"Volunteers dished out hot meals to families queuing outside the shelter.","exTr":"Gönüllüler, barınağın önünde sıra bekleyen ailelere sıcak yemek dağıttı."}
+],
+
+"ride": [
+  {"tr":"i. yolculuk, biniş","ex":"The ride from the airport to the city centre takes about forty minutes.","exTr":"Havalimanından şehir merkezine yolculuk yaklaşık kırk dakika sürüyor."},
+  {"tr":"f. binmek (ata, bisiklete vb.)","ex":"Commuters increasingly ride bicycles to work as cities expand their bike lane networks.","exTr":"Şehirler bisiklet yolu ağlarını genişlettikçe, işe gidip gelenler giderek daha fazla bisiklete biniyor."}
+],
+
+"tape": [
+  {"tr":"i. bant, şerit; kaset","ex":"Investigators reviewed hours of security tape to identify the vehicle involved in the accident.","exTr":"Soruşturmacılar, kazaya karışan aracı tespit etmek için saatlerce güvenlik kaydını inceledi."},
+  {"tr":"f. bantla yapıştırmak; kayda almak","ex":"The interview was taped and later transcribed for the official record.","exTr":"Görüşme kayda alındı ve sonra resmî tutanak için deşifre edildi."}
 ]
 
 };
