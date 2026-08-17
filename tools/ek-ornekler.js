@@ -618,6 +618,13 @@ window.EK_ORNEKLER = {
 "tape": [
   {"tr":"i. bant, şerit; kaset","ex":"Investigators reviewed hours of security tape to identify the vehicle involved in the accident.","exTr":"Soruşturmacılar, kazaya karışan aracı tespit etmek için saatlerce güvenlik kaydını inceledi."},
   {"tr":"f. bantla yapıştırmak; kayda almak","ex":"The interview was taped and later transcribed for the official record.","exTr":"Görüşme kayda alındı ve sonra resmî tutanak için deşifre edildi."}
+],
+
+/* 6. katmandan gelen çok türlü üye */
+"tender": [
+  {"tr":"s. yumuşak; hassas, şefkatli","ex":"The meat becomes tender only after several hours of slow cooking.","exTr":"Et, ancak birkaç saat ağır ateşte piştikten sonra yumuşuyor."},
+  {"tr":"i. ihale, teklif","ex":"Three firms submitted a tender for the construction of the new bridge.","exTr":"Üç firma, yeni köprünün inşası için ihaleye teklif verdi."},
+  {"tr":"f. (resmî olarak) sunmak, teklif vermek","ex":"She tendered her resignation the morning after the vote.","exTr":"Oylamanın ertesi sabahı istifasını sundu."}
 ]
 
 };

@@ -79,6 +79,66 @@ window.EK_AILE_UYELERI = {
 
 "dependency": {"tip":"isim","p":14.1,"tr":"i. bağımlılık","ex":"Reducing the country's dependency on imported grain has become a strategic priority.","exTr":"Ülkenin ithal tahıla bağımlılığını azaltmak stratejik bir öncelik hâline geldi."},
 
-"generator": {"tip":"isim","p":14.0,"tr":"i. jeneratör; üretici","ex":"A backup generator kept the intensive care unit running throughout the blackout.","exTr":"Yedek bir jeneratör, elektrik kesintisi boyunca yoğun bakım ünitesini çalışır tuttu."}
+"generator": {"tip":"isim","p":14.0,"tr":"i. jeneratör; üretici","ex":"A backup generator kept the intensive care unit running throughout the blackout.","exTr":"Yedek bir jeneratör, elektrik kesintisi boyunca yoğun bakım ünitesini çalışır tuttu."},
+
+"universally": {"tip":"zarf","p":13.9,"tr":"z. evrensel olarak, herkesçe","ex":"The theory is now universally accepted among researchers in the field.","exTr":"Kuram artık alandaki araştırmacılar arasında evrensel olarak kabul görüyor."},
+
+"generalize": {"tip":"fiil","p":13.7,"tr":"f. genelleme yapmak","ex":"It is risky to generalize from a study that examined only forty participants.","exTr":"Yalnızca kırk katılımcıyı inceleyen bir çalışmadan genelleme yapmak risklidir."},
+
+"reliance": {"tip":"isim","p":13.7,"tr":"i. güvenme, bağımlılık","ex":"The country's heavy reliance on imported energy leaves it exposed to price shocks.","exTr":"Ülkenin ithal enerjiye ağır bağımlılığı, onu fiyat şoklarına açık bırakıyor."},
+
+"demonstrator": {"tip":"isim","p":13.7,"tr":"i. gösterici; tanıtımcı","ex":"Thousands of demonstrators gathered outside parliament to protest the new law.","exTr":"Binlerce gösterici, yeni yasayı protesto etmek için parlamentonun önünde toplandı."},
+
+"educator": {"tip":"isim","p":13.7,"tr":"i. eğitimci","ex":"Educators warn that reducing classroom hours will widen the gap between students.","exTr":"Eğitimciler, ders saatlerinin azaltılmasının öğrenciler arasındaki farkı büyüteceği konusunda uyarıyor."},
+
+"restrictive": {"tip":"sıfat","p":13.7,"tr":"s. kısıtlayıcı, sınırlayıcı","ex":"The contract contained unusually restrictive clauses about working for competitors.","exTr":"Sözleşme, rakipler için çalışmaya dair alışılmadık ölçüde kısıtlayıcı maddeler içeriyordu."},
+
+"presenter": {"tip":"isim","p":13.6,"tr":"i. sunucu","ex":"The presenter interrupted the broadcast to announce the election result.","exTr":"Sunucu, seçim sonucunu duyurmak için yayını kesti."},
+
+"publicly": {"tip":"zarf","p":13.6,"tr":"z. açıkça, kamuoyu önünde","ex":"The minister publicly apologised for the delay in releasing the report.","exTr":"Bakan, raporun açıklanmasındaki gecikme için kamuoyu önünde özür diledi."},
+
+"inventive": {"tip":"sıfat","p":13.6,"tr":"s. yaratıcı, buluşçu","ex":"Engineers found an inventive way to cool the building without air conditioning.","exTr":"Mühendisler, binayı klima olmadan serinletmenin yaratıcı bir yolunu buldu."},
+
+"tension": {"tip":"isim","p":13.5,"tr":"i. gerginlik, gerilim","ex":"Tension between the two countries rose sharply after the border incident.","exTr":"Sınır olayının ardından iki ülke arasındaki gerginlik keskin biçimde arttı."},
+
+"detector": {"tip":"isim","p":13.5,"tr":"i. dedektör, algılayıcı","ex":"A smoke detector on every floor is now required by the building regulations.","exTr":"Yapı yönetmeliği artık her katta bir duman dedektörü zorunlu kılıyor."},
+
+"creator": {"tip":"isim","p":13.5,"tr":"i. yaratıcı, yapımcı","ex":"The creator of the series spent four years researching the historical period.","exTr":"Dizinin yaratıcısı, tarihsel dönemi araştırmak için dört yıl harcadı."},
+
+"nationalist": {"tip":"isim, sıfat","p":13.4,"tr":"i./s. milliyetçi","ex":"Nationalist parties gained ground in several European elections that year.","exTr":"O yıl birçok Avrupa seçiminde milliyetçi partiler oy kazandı."},
+
+"postal": {"tip":"sıfat","p":13.4,"tr":"s. posta ile ilgili","ex":"Rural areas still depend on the postal service for official documents.","exTr":"Kırsal bölgeler resmî belgeler için hâlâ posta hizmetine bağımlı."},
+
+"organizational": {"tip":"sıfat","p":13.3,"tr":"s. örgütsel, kurumsal","ex":"The failure was organizational rather than technical: nobody knew who was responsible.","exTr":"Başarısızlık teknik değil kurumsaldı: kimin sorumlu olduğunu kimse bilmiyordu."},
+
+"excessively": {"tip":"zarf","p":13.3,"tr":"z. aşırı derecede","ex":"The report was criticised for being excessively cautious in its conclusions.","exTr":"Rapor, sonuçlarında aşırı derecede temkinli olmakla eleştirildi."},
+
+"tender": {"tip":"sıfat, isim, fiil","p":13.3,"tr":"s. yumuşak, hassas; i. ihale; f. teklif vermek","ex":"Three firms submitted a tender for the construction of the new bridge.","exTr":"Üç firma, yeni köprünün inşası için ihaleye teklif verdi."},
+
+"governance": {"tip":"isim","p":13.2,"tr":"i. yönetişim, yönetim biçimi","ex":"Weak corporate governance allowed the losses to go unreported for two years.","exTr":"Zayıf kurumsal yönetişim, zararların iki yıl boyunca bildirilmemesine olanak tanıdı."},
+
+"reasonably": {"tip":"zarf","p":13.1,"tr":"z. makul biçimde; oldukça","ex":"The forecast is reasonably accurate for the first three days but not beyond.","exTr":"Tahmin ilk üç gün için oldukça isabetli ama ötesinde değil."},
+
+"ignorant": {"tip":"sıfat","p":13.1,"tr":"s. cahil; habersiz","ex":"Most passengers were entirely ignorant of the danger until the announcement came.","exTr":"Yolcuların çoğu, anons gelene kadar tehlikeden tamamen habersizdi."},
+
+"equation": {"tip":"isim","p":13.1,"tr":"i. denklem; eşitleme","ex":"The equation predicts how quickly a population will grow under ideal conditions.","exTr":"Denklem, ideal koşullarda bir popülasyonun ne kadar hızlı büyüyeceğini öngörür."},
+
+"emotionally": {"tip":"zarf","p":13.1,"tr":"z. duygusal olarak","ex":"Working in emergency medicine is emotionally demanding even for experienced staff.","exTr":"Acil tıpta çalışmak, deneyimli personel için bile duygusal olarak yıpratıcıdır."},
+
+"nationality": {"tip":"isim","p":13.0,"tr":"i. uyruk, vatandaşlık","ex":"Applicants must state their nationality and the country where they were born.","exTr":"Başvuranlar uyruklarını ve doğdukları ülkeyi belirtmek zorundadır."},
+
+"secretly": {"tip":"zarf","p":13.0,"tr":"z. gizlice","ex":"The documents had been secretly copied months before the investigation began.","exTr":"Belgeler, soruşturma başlamadan aylar önce gizlice kopyalanmıştı."},
+
+"innovator": {"tip":"isim","p":13.0,"tr":"i. yenilikçi","ex":"She is remembered as an innovator who transformed how surgeons train.","exTr":"Cerrahların nasıl yetiştiğini dönüştüren bir yenilikçi olarak anılıyor."},
+
+"continuation": {"tip":"isim","p":13.0,"tr":"i. devam, sürdürülme","ex":"The committee approved the continuation of the project for another three years.","exTr":"Komite, projenin üç yıl daha sürdürülmesini onayladı."},
+
+"responsive": {"tip":"sıfat","p":13.0,"tr":"s. duyarlı, karşılık veren","ex":"The tumour proved responsive to the new drug within the first month.","exTr":"Tümörün ilk ay içinde yeni ilaca duyarlı olduğu görüldü."},
+
+"perfection": {"tip":"isim","p":13.0,"tr":"i. mükemmellik, kusursuzluk","ex":"Waiting for perfection is the most common reason research never gets published.","exTr":"Mükemmelliği beklemek, araştırmaların hiç yayımlanmamasının en yaygın nedenidir."},
+
+"financially": {"tip":"zarf","p":13.0,"tr":"z. mali açıdan","ex":"The scheme is financially viable only if enough households take part.","exTr":"Program, ancak yeterli sayıda hane katılırsa mali açıdan sürdürülebilir."},
+
+"succession": {"tip":"isim","p":12.9,"tr":"i. ardıllık, art arda gelme; veraset","ex":"A succession of mild winters allowed the insect population to expand rapidly.","exTr":"Art arda gelen ılıman kışlar, böcek nüfusunun hızla artmasına olanak tanıdı."}
 
 };

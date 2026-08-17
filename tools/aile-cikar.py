@@ -77,6 +77,11 @@ ENGELLI = {
     ('native', 'nation'),
     ('intense', 'tense'),
     ('currency', 'cure'), ('current', 'cure'),
+    # 6. katman uyeleri eklenince ortaya cikanlar
+    ('tension', 'tend'), ('tender', 'tend'),
+    ('secretary', 'secret'),
+    ('equator', 'equate'),
+    ('succession', 'success'),
 }
 
 

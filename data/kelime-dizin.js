@@ -1,5 +1,5 @@
 /* ============================================================
-   Kelime dizini — 4790 kelime
+   Kelime dizini — 4820 kelime
    Her sayfada yüklenir; liste, arama ve tekrar özeti bunu kullanır.
    Alanlar: e=kelime, t=kısa anlam, p=YDS öncelik puanı, k=katman, y=tür
    Örnek cümleler katman dosyalarındadır (data/kelime-k1..k5.js).
@@ -4745,6 +4745,36 @@ window.KELIME_DIZIN = [
 {e:"donate",t:"bağışlamak",p:14.2,k:6,y:"fiil"},
 {e:"dependency",t:"bağımlılık",p:14.1,k:6,y:"isim"},
 {e:"generator",t:"jeneratör; üretici",p:14.0,k:6,y:"isim"},
+{e:"universally",t:"evrensel olarak, herkesçe",p:13.9,k:6,y:"zarf"},
+{e:"demonstrator",t:"gösterici; tanıtımcı",p:13.7,k:6,y:"isim"},
+{e:"educator",t:"eğitimci",p:13.7,k:6,y:"isim"},
+{e:"generalize",t:"genelleme yapmak",p:13.7,k:6,y:"fiil"},
+{e:"reliance",t:"güvenme, bağımlılık",p:13.7,k:6,y:"isim"},
+{e:"restrictive",t:"kısıtlayıcı, sınırlayıcı",p:13.7,k:6,y:"sıfat"},
+{e:"inventive",t:"yaratıcı, buluşçu",p:13.6,k:6,y:"sıfat"},
+{e:"presenter",t:"sunucu",p:13.6,k:6,y:"isim"},
+{e:"publicly",t:"açıkça, kamuoyu önünde",p:13.6,k:6,y:"zarf"},
+{e:"creator",t:"yaratıcı, yapımcı",p:13.5,k:6,y:"isim"},
+{e:"detector",t:"dedektör, algılayıcı",p:13.5,k:6,y:"isim"},
+{e:"tension",t:"gerginlik, gerilim",p:13.5,k:6,y:"isim"},
+{e:"nationalist",t:"milliyetçi",p:13.4,k:6,y:"isim, sıfat"},
+{e:"postal",t:"posta ile ilgili",p:13.4,k:6,y:"sıfat"},
+{e:"excessively",t:"aşırı derecede",p:13.3,k:6,y:"zarf"},
+{e:"organizational",t:"örgütsel, kurumsal",p:13.3,k:6,y:"sıfat"},
+{e:"tender",t:"yumuşak; hassas, şefkatli; ihale, teklif; (resmî olarak)…",p:13.3,k:6,y:"sıfat, isim, fiil"},
+{e:"governance",t:"yönetişim, yönetim biçimi",p:13.2,k:6,y:"isim"},
+{e:"emotionally",t:"duygusal olarak",p:13.1,k:6,y:"zarf"},
+{e:"equation",t:"denklem; eşitleme",p:13.1,k:6,y:"isim"},
+{e:"ignorant",t:"cahil; habersiz",p:13.1,k:6,y:"sıfat"},
+{e:"reasonably",t:"makul biçimde; oldukça",p:13.1,k:6,y:"zarf"},
+{e:"continuation",t:"devam, sürdürülme",p:13.0,k:6,y:"isim"},
+{e:"financially",t:"mali açıdan",p:13.0,k:6,y:"zarf"},
+{e:"innovator",t:"yenilikçi",p:13.0,k:6,y:"isim"},
+{e:"nationality",t:"uyruk, vatandaşlık",p:13.0,k:6,y:"isim"},
+{e:"perfection",t:"mükemmellik, kusursuzluk",p:13.0,k:6,y:"isim"},
+{e:"responsive",t:"duyarlı, karşılık veren",p:13.0,k:6,y:"sıfat"},
+{e:"secretly",t:"gizlice",p:13.0,k:6,y:"zarf"},
+{e:"succession",t:"ardıllık, art arda gelme; veraset",p:12.9,k:6,y:"isim"},
 {e:"abolish",t:"kaldırmak, yürürlükten kaldırmak",k:4,y:"fiil"},
 {e:"abundant",t:"bol, bereketli",k:3,y:"sıfat"},
 {e:"aggravate",t:"kötüleştirmek, ağırlaştırmak",k:4,y:"fiil"},
