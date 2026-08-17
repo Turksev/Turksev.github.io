@@ -64,6 +64,16 @@
     return leitner[en] ? leitner[en].k : 0;
   }
 
+  /* Calisilmis her sey: {"abandon": {k: kutu, g: tekrar gunu}, …}
+     Durum sayfasi bunu kullanir — kelime, obek, aile uyesi hepsi ayni tabloda. */
+  function tumKayitlar() {
+    var kopya = {};
+    Object.keys(leitner).forEach(function (a) {
+      kopya[a] = { k: leitner[a].k, g: leitner[a].g, kalan: Math.max(0, leitner[a].g - bugun()) };
+    });
+    return kopya;
+  }
+
   /* Yalnizca BASLANMIS kelimeler icin: tekrar gunu geldi mi?
      Hic calisilmamis kelime "vadesi gelmis" sayilmaz — o yeni kelimedir ve
      gunluk kotayla acilir. Ikisini ayirmazsak ilk gun 4.760 kart cikardi. */
@@ -317,6 +327,7 @@
     ARALIK: ARALIK,
     bugun: bugun,
     kutu: kutu,
+    tumKayitlar: tumKayitlar,
     vadesiGeldiMi: vadesiGeldiMi,
     yeniMi: yeniMi,
     kalanGun: kalanGun,

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Durumum — YDS Hazırlık</title>
+<meta name="description" content="Çalıştığın bütün kelime ve öbekler tek listede: hangisi hangi tekrar kutusunda, bilemediklerin neler, ne zaman tekrar gelecek.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%233b5bdb'/><text y='68' x='50' text-anchor='middle' font-size='46' font-family='sans-serif' font-weight='bold' fill='white'>Y</text></svg>">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#3b5bdb">
+<link rel="apple-touch-icon" href="assets/img/icon-192.png">
+<link rel="canonical" href="https://turksev.github.io/durum.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="YDS Hazırlık">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="Durumum — YDS Hazırlık">
+<meta property="og:description" content="Çalıştığın bütün kelime ve öbekler tek listede: hangisi hangi tekrar kutusunda, bilemediklerin neler.">
+<meta property="og:url" content="https://turksev.github.io/durum.html">
+<meta property="og:image" content="https://turksev.github.io/assets/img/icon-512.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="assets/js/main.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="dot">YDS</span> Hazırlık</a>
+    <nav class="site-nav">
+      <a href="index.html">Ana Sayfa</a>
+      <a href="durum.html">Durumum</a>
+      <a href="kelimeler.html">Kelimeler</a>
+      <a href="aileler.html">Aileler</a>
+      <a href="obekler.html">Öbekler</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="deneme.html">Deneme</a>
+      <a href="gramer.html">Gramer</a>
+      <a href="baglaclar.html">Bağlaçlar</a>
+      <a href="ara.html">Ara</a>
+    </nav>
+    <button class="theme-toggle" type="button" title="Temayı değiştir">☾</button>
+  </div>
+</header>
+
+<main class="section">
+  <div class="wrap">
+
+    <h1>Durumum</h1>
+    <p class="muted" style="max-width:70ch">
+      Çalıştığın her şey burada — kelime, öbek, aile üyesi hepsi bir arada.
+      Kelime sayfasındaki katman seçimi burayı <b>kısıtlamaz</b>: hangi katmandan olursa olsun,
+      bir kez çalıştıysan bu listede görürsün.
+    </p>
+
+    <!-- kutu özeti / sekmeler -->
+    <div class="kutu-sekme" id="sekmeler"></div>
+
+    <div class="toolbar" style="margin-top:18px">
+      <input class="grow" type="search" id="ara" placeholder="Ara: kelime, öbek veya Türkçe anlam…" autocomplete="off">
+
+      <select id="tur" aria-label="Tür">
+        <option value="">Kelime + öbek</option>
+        <option value="kelime">Yalnız kelimeler</option>
+        <option value="obek">Yalnız öbekler</option>
+      </select>
+
+      <select id="sirala" aria-label="Sıralama">
+        <option value="vade">Tekrar tarihine göre</option>
+        <option value="kutu">Kutuya göre</option>
+        <option value="alfabe">Alfabetik</option>
+        <option value="puan">YDS puanına göre</option>
+      </select>
+    </div>
+
+    <p class="small muted" id="sayac">Yükleniyor…</p>
+    <div id="liste" class="word-list"></div>
+    <p class="center" style="margin-top:16px">
+      <button class="btn ghost" type="button" id="dahaFazla" hidden>Daha fazla göster</button>
+    </p>
+
+    <div class="empty" id="bos" hidden>
+      <p id="bosMetin">Bu filtrelerle eşleşen kayıt yok.</p>
+      <button class="btn ghost sm" type="button" id="temizle">Filtreleri temizle</button>
+    </div>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span data-yil>2026</span> YDS Hazırlık</span>
+    <span>Tüm ilerleme yalnızca kendi tarayıcında saklanır.</span>
+  </div>
+</footer>
+
+<script src="data/kelime-dizin.js"></script>
+<script src="data/olumsuzlar.js"></script>
+<script src="assets/js/ilerleme.js"></script>
+<script src="assets/js/veri.js"></script>
+<script src="assets/js/durum.js"></script>
+</body>
+</html>

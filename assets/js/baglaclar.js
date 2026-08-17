@@ -50,11 +50,11 @@
     }).join('');
   }
 
-  function satir(b) {
+  function satir(b, sira) {
     return '' +
       '<article class="word">' +
         '<div>' +
-          '<div class="en">' + kacar(b.f) + '</div>' +
+          '<div class="en"><span class="sira">' + sira + '.</span> ' + kacar(b.f) + '</div>' +
           '<div class="tr">' + kacar(b.tr) + '</div>' +
           '<div class="meta">' +
             '<span class="badge accent">' + kacar(b.il) + '</span>' +
@@ -67,6 +67,11 @@
         '<div style="grid-column:1 / -1">' +
           ornekler(b) +
           (b.nt ? '<div class="tip" style="margin:10px 0 0">' + b.nt + '</div>' : '') +
+          (b.es && b.es.length
+            ? '<div class="esanlam">≈ Yakın anlamlılar: ' +
+              b.es.map(function (x) { return '<b>' + kacar(x) + '</b>'; }).join(' · ') +
+              '</div>'
+            : '') +
         '</div>' +
       '</article>';
   }
@@ -88,12 +93,15 @@
       return true;
     });
 
-    elSayac.textContent = suzulmus.length + ' bağlaç gösteriliyor · toplam ' + TUM.length;
+    elSayac.textContent = suzulmus.length + ' bağlaç numaralandırıldı (1–' + suzulmus.length +
+      ') · toplam ' + TUM.length;
 
     var bosMu = suzulmus.length === 0;
     elBos.hidden = !bosMu;
     elListe.hidden = bosMu;
-    if (!bosMu) elListe.innerHTML = suzulmus.map(satir).join('');
+    if (!bosMu) {
+      elListe.innerHTML = suzulmus.map(function (b, i) { return satir(b, i + 1); }).join('');
+    }
   }
 
   /* ---------- olaylar ---------- */

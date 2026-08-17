@@ -800,6 +800,17 @@ input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible
 .uye.kok { background: var(--accent-soft); }
 
 .uye-bas { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.uye-act { display: flex; gap: 4px; margin-left: auto; }
+.uye-act .star { width: 30px; height: 30px; font-size: .82rem; }
+
+.aile-toplu {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 12px 16px;
+  border-top: 1px solid var(--border);
+  background: var(--surface-2);
+}
 .uye-en { font-weight: 700; font-size: 1.02rem; }
 .uye.kok .uye-en { color: var(--accent); }
 .uye-tr { margin-top: 2px; font-size: .94rem; }
@@ -882,3 +893,59 @@ mark {
 @media print {
   .site-header, .site-footer, .toolbar, .theme-toggle { display: none; }
 }
+
+/* ---------- bağlaç numarası ve yakın anlamlılar ---------- */
+
+.word .en .sira {
+  color: var(--muted);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  margin-right: 2px;
+}
+
+.esanlam {
+  grid-column: 1 / -1;
+  margin-top: 9px;
+  padding: 7px 11px;
+  border-radius: 8px;
+  background: var(--accent-soft);
+  border-left: 3px solid var(--accent);
+  font-size: .87rem;
+}
+.esanlam b { color: var(--accent); font-weight: 650; }
+
+/* ---------- durum sayfası kutu sekmeleri ---------- */
+
+.kutu-sekme {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.ks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  min-width: 78px;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+.ks:hover { border-color: var(--accent); }
+.ks b { font-size: 1.15rem; line-height: 1.1; }
+.ks i { font-style: normal; font-size: .74rem; color: var(--muted); white-space: nowrap; }
+.ks.acik { border-color: var(--accent); background: var(--accent-soft); }
+.ks.acik b { color: var(--accent); }
+.ks.err b { color: var(--err); }
+.ks.warn b { color: var(--warn); }
+.ks.ok b { color: var(--ok); }
+.ks.acik.err, .ks.acik.warn, .ks.acik.ok { border-color: currentColor; }
+
+.ks-not { font-size: .84rem; color: var(--muted); margin-left: 4px; }
+.ks-not b { color: var(--text); }

@@ -109,13 +109,18 @@
       }).join('');
     }
 
-    return '<div class="uye' + (kokMu ? ' kok' : '') + '">' +
+    return '<div class="uye' + (kokMu ? ' kok' : '') + '" data-w="' + kacar(w) + '">' +
         '<div class="uye-bas">' +
           '<span class="uye-en">' + kacar(w) + '</span>' +
           '<span class="badge">' + kacar(d.y) + '</span>' +
           (d.p !== undefined ? '<span class="badge accent" title="YDS öncelik puanı">' +
                                d.p + ' p</span>' : '') +
           kutuRozeti(w) +
+          '<span class="uye-act">' +
+            '<button class="star" type="button" data-ne="bilmedim" title="Bilemedim — 1. kutuya döner">✗</button>' +
+            '<button class="star" type="button" data-ne="bildim" title="Bildim — bir üst kutuya çıkar">✓</button>' +
+            '<button class="star" type="button" data-ne="zaten" title="Zaten biliyorum — en üst kutuya at">✓✓</button>' +
+          '</span>' +
         '</div>' +
         // Tam kayıt açıldıysa anlamlar örneklerin başında kalın yazılıyor;
         // dizindeki kısa anlamı tekrarlamayalım.
@@ -145,16 +150,28 @@
       }).join('') + '</div>';
     }
 
+    /* Aileyi topluca işaretlemek, listede aşağı inebilmenin en hızlı yolu:
+       bildiğin aileyi tek dokunuşla kapatıp "eksik olanlar" filtresinden düşürürsün. */
+    var topluca = acikMi
+      ? '<div class="aile-toplu">' +
+          '<button class="btn ghost sm" type="button" data-toplu="zaten">' +
+            '✓✓ Bu ailenin tamamını biliyorum</button>' +
+          '<button class="btn ghost sm" type="button" data-toplu="bilmedim">' +
+            '✗ Tamamını tekrara al</button>' +
+        '</div>'
+      : '';
+
     return '<article class="aile' + (acikMi ? ' acik' : '') + '" data-kok="' + kacar(a.k) + '">' +
         '<button class="aile-baslik" type="button">' +
           '<span class="aile-kok">' + kacar(a.k) + '</span>' +
-          '<span class="aile-sayi">' + d.toplam + ' tür</span>' +
+          '<span class="aile-sayi">' + d.ogrenilen + '/' + d.toplam + ' tür</span>' +
           '<span class="aile-ilerleme" title="' + d.ogrenilen + '/' + d.toplam + ' öğrenildi">' +
             '<i style="width:' + yuzde + '%;background:' + renk + '"></i>' +
           '</span>' +
           '<span class="aile-ok">' + (acikMi ? '▲' : '▼') + '</span>' +
         '</button>' +
         govde +
+        topluca +
       '</article>';
   }
 
@@ -197,7 +214,37 @@
 
   /* ---------- olaylar ---------- */
 
+  function isaretle(w, ne) {
+    if (ne === 'zaten') Il.zatenBiliyorum(w);
+    else if (ne === 'bilmedim') Il.yanlis(w);
+    else Il.dogru(w);
+  }
+
   elListe.addEventListener('click', function (e) {
+    /* Tek üye işaretleme */
+    var yildiz = e.target.closest('.star');
+    if (yildiz) {
+      e.stopPropagation();
+      isaretle(yildiz.closest('.uye').getAttribute('data-w'),
+               yildiz.getAttribute('data-ne'));
+      ciz();
+      return;
+    }
+
+    /* Ailenin tamamını işaretleme */
+    var toplu = e.target.closest('[data-toplu]');
+    if (toplu) {
+      e.stopPropagation();
+      var kokAdi = toplu.closest('.aile').getAttribute('data-kok');
+      var aile = AILELER.filter(function (a) { return a.k === kokAdi; })[0];
+      if (aile) {
+        aile.u.forEach(function (w) { isaretle(w, toplu.getAttribute('data-toplu')); });
+      }
+      ciz();
+      return;
+    }
+
+    /* Aileyi aç / kapat */
     var bas = e.target.closest('.aile-baslik');
     if (!bas) return;
     var kok = bas.closest('.aile').getAttribute('data-kok');
