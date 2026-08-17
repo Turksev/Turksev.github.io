@@ -1,7 +1,15 @@
 /* ============================================================
-   YDS kelime listesi
-   Alanlar: en (İngilizce), tr (Türkçe), tip, sv (seviye), ex/exTr (örnek), es (eş anlamlı)
-   Yeni kelime eklemek için listenin sonuna aynı biçimde bir satır ekle.
+   Ek kelimeler — dönüştürücü girdisi (site bu dosyayı YÜKLEMEZ)
+
+   Sitenin ilk sürümünde elle yazılmış 181 kelime. tools/listeyi-aktar.py
+   çalışırken okunur ve iki iş görür:
+     1. Calisma_Listesi_v3 içinde bulunmayan 52 kelime listeye eklenir
+        (abolish, alleviate, ascribe, augment, commence, compelling…)
+     2. Ortak 129 kelimenin eş anlamlı bilgisi (es alanı) taşınır
+
+   Alanlar: en, tr, tip, sv (temel/orta/ileri), ex, exTr, es
+   Buraya yeni kelime eklersen dönüştürücüyü yeniden çalıştır:
+     "…/english claude/.venv/Scripts/python.exe" tools/listeyi-aktar.py
    ============================================================ */
 
 window.KELIMELER = [

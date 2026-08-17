@@ -105,6 +105,13 @@
     Depo.sil(K_BILINEN);
   }
 
+  /* Yalnizca verilen kayitlari sil. Kelimeler ve obekler ayni tabloyu
+     paylastigi icin, bir sayfanin "sifirla" dugmesi digerini silmesin diye. */
+  function listeyiSifirla(adlar) {
+    (adlar || []).forEach(function (a) { delete leitner[a]; });
+    kaydet();
+  }
+
   /* Kutu dağılımı ve bugün tekrarı gelen kelime sayısı. */
   function leitnerOzet(tumKelimeler) {
     var o = { k0: 0, k1: 0, k2: 0, k3: 0, k4: 0, k5: 0, bugun: 0, ogrenilen: 0, calisilan: 0 };
@@ -231,6 +238,7 @@
     yanlis: yanlis,
     sifirlaKelime: sifirlaKelime,
     leitnerSifirla: leitnerSifirla,
+    listeyiSifirla: listeyiSifirla,
     leitnerOzet: leitnerOzet,
     yanlisAnahtar: yanlisAnahtar,
     yanlisEkle: yanlisEkle,

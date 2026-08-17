@@ -29,6 +29,7 @@
     <nav class="site-nav">
       <a href="index.html">Ana Sayfa</a>
       <a href="kelimeler.html">Kelimeler</a>
+      <a href="obekler.html">Öbekler</a>
       <a href="quiz.html">Quiz</a>
       <a href="deneme.html">Deneme</a>
       <a href="gramer.html">Gramer</a>
@@ -56,6 +57,7 @@
 
       <div class="stats">
         <div class="stat"><div class="n" id="st-kelime">—</div><div class="l">Kelime</div></div>
+        <div class="stat"><div class="n" id="st-obek">—</div><div class="l">Öbek</div></div>
         <div class="stat"><div class="n" id="st-soru">—</div><div class="l">Soru</div></div>
         <div class="stat"><div class="n" id="st-baglac">—</div><div class="l">Bağlaç</div></div>
         <div class="stat"><div class="n" id="st-konu">10</div><div class="l">Gramer konusu</div></div>
@@ -112,8 +114,15 @@
         <a class="card card-link" href="kelimeler.html">
           <span class="ico">📚</span>
           <h3>Kelime Listesi</h3>
-          <p>Örnek cümleli, seviyeye göre filtrelenebilir kelime listesi. Kart modunda kendini test et,
-             bildiklerini işaretle.</p>
+          <p>49 gerçek YDS sınavındaki geçme sıklığına göre puanlanmış <b id="k-kelime">4.760</b> kelime,
+             beş katman hâlinde. Aralıklı tekrarla çalışılır; her kelimenin örnek cümlesi var.</p>
+        </a>
+
+        <a class="card card-link" href="obekler.html">
+          <span class="ico">🧩</span>
+          <h3>Kelime Öbekleri</h3>
+          <p><b id="k-obek">2.067</b> phrasal verb, deyimsel fiil ve sabit ifade — <i>cope with</i>,
+             <i>stem from</i>, <i>put up with</i>… Kelimelerden ayrı bir deste olarak çalışılır.</p>
         </a>
 
         <a class="card card-link" href="quiz.html">
@@ -180,23 +189,34 @@
   </div>
 </footer>
 
-<script src="data/kelimeler.js"></script>
+<script src="data/kelime-dizin.js"></script>
+<script src="data/sayilar.js"></script>
 <script src="data/sorular.js"></script>
 <script src="data/baglaclar.js"></script>
 <script src="assets/js/ilerleme.js"></script>
+<script src="assets/js/veri.js"></script>
 <script>
 (function () {
   'use strict';
   var Il = window.YDS.Ilerleme;
+  var Veri = window.YDS.Veri;
   var kacar = window.YDS.kacar;
-  var KELIMELER = window.KELIMELER || [];
+
+  // Leitner özeti {en:…} bekliyor; dizin kayıtlarının alanı e.
+  var KELIMELER = Veri.dizin.map(function (d) { return { en: d.e }; });
 
   function $(id) { return document.getElementById(id); }
   function yaz(id, d) { var el = $(id); if (el) el.textContent = d; }
 
-  yaz('st-kelime', KELIMELER.length);
+  var sayilar = window.SAYILAR || { kelime: Veri.dizin.length, obek: 0 };
+  var tr = function (n) { return n.toLocaleString('tr-TR'); };
+
+  yaz('st-kelime', tr(sayilar.kelime));
+  yaz('st-obek', tr(sayilar.obek));
   yaz('st-soru', (window.SORULAR || []).length);
   yaz('st-baglac', (window.BAGLACLAR || []).length);
+  yaz('k-kelime', tr(sayilar.kelime));
+  yaz('k-obek', tr(sayilar.obek));
 
   var o = Il.leitnerOzet(KELIMELER);
   var defter = Il.yanlisDefter();

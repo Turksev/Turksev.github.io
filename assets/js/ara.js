@@ -62,17 +62,36 @@
     var gruplar = [];
 
     if (!tur || tur === 'kelime') {
-      var kelimeler = (window.KELIMELER || []).filter(function (k) {
-        return eslesir(k.en + ' ' + k.tr + ' ' + (k.es || '') + ' ' + k.ex + ' ' + k.exTr, q);
+      var Veri = window.YDS.Veri;
+      var kelimeler = Veri.dizin.filter(function (d) {
+        return eslesir(d.e + ' ' + d.t + ' ' + d.y, q);
       });
       gruplar.push({
         ad: 'Kelimeler', url: 'kelimeler.html', n: kelimeler.length,
-        satirlar: kelimeler.slice(0, SINIR).map(function (k) {
+        satirlar: kelimeler.slice(0, SINIR).map(function (d) {
           return {
-            bas: vurgula(k.en, q),
-            alt: vurgula(k.tr, q),
-            ek: kesit(k.ex, q, 45),
-            rozet: k.sv
+            bas: vurgula(d.e, q),
+            alt: vurgula(d.t, q),
+            ek: '',
+            rozet: Veri.KATMAN_ADI[d.k]
+          };
+        })
+      });
+    }
+
+    if (!tur || tur === 'obek') {
+      var obekler = (window.OBEKLER || []).filter(function (o) {
+        var havuz = o.f + ' ' + o.y + ' ' + o.a.map(function (a) { return a.tr + ' ' + a.ex; }).join(' ');
+        return eslesir(havuz, q);
+      });
+      gruplar.push({
+        ad: 'Öbekler', url: 'obekler.html', n: obekler.length,
+        satirlar: obekler.slice(0, SINIR).map(function (o) {
+          return {
+            bas: vurgula(o.f, q),
+            alt: vurgula(o.a[0].tr, q),
+            ek: kesit(o.a[0].ex, q, 45),
+            rozet: o.y
           };
         })
       });
@@ -167,13 +186,25 @@
     }).join('');
   }
 
+  /* ---------- öbekler: ilk aramada arka planda yükle ---------- */
+
+  /* Öbek dosyası 630 KB; sayfa açılır açılmaz indirmenin anlamı yok.
+     Kullanıcı ilk kez arama yapınca getirilir, gelince sonuçlar tazelenir. */
+  var obekIstendi = false;
+
+  function obekleriGerekirseYukle() {
+    if (obekIstendi || window.OBEKLER) return;
+    obekIstendi = true;
+    window.YDS.Veri.obekleriYukle().then(function () { ciz(); }).catch(function () { });
+  }
+
   /* ---------- olaylar ---------- */
 
-  elAra.addEventListener('input', ciz);
-  elTur.addEventListener('change', ciz);
+  elAra.addEventListener('input', function () { obekleriGerekirseYukle(); ciz(); });
+  elTur.addEventListener('change', function () { obekleriGerekirseYukle(); ciz(); });
 
   // Adres çubuğundan gelen ?q=... aramasını uygula (arama motoru bağlantıları için).
   var q0 = new URLSearchParams(location.search).get('q');
-  if (q0) { elAra.value = q0; }
+  if (q0) { elAra.value = q0; obekleriGerekirseYukle(); }
   ciz();
 })();

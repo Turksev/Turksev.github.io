@@ -10,41 +10,73 @@ Yayında: <https://turksev.github.io>
 | Dosya | İçerik |
 | --- | --- |
 | `index.html` | Ana sayfa ve ilerleme paneli: tekrar durumu, yanlış defteri, deneme geçmişi, kategori karnesi |
-| `kelimeler.html` | Kelime listesi + **aralıklı tekrar (Leitner)**: bugünün destesi, 5 kutu, kart modu, sesli okuma |
+| `kelimeler.html` | 4.760 kelime, 5 katman + **aralıklı tekrar (Leitner)**: bugünün destesi, kart modu, ipucu, sesli okuma |
+| `obekler.html` | 2.067 kelime öbeği (phrasal verb, deyimsel fiil, sabit ifade) — ayrı Leitner destesi |
 | `quiz.html` | Alıştırma soruları: 12 kategori, anında çözüm, yanlış defterinden çalışma |
 | `deneme.html` | **Süreli deneme sınavı**: geri sayım, soru ızgarası, işaretleme, net hesabı, kategori karnesi |
 | `gramer.html` | 10 başlıkta konu anlatımı, kural tabloları ve sınav tuzakları |
 | `baglaclar.html` | Bağlaçlar ve geçiş ifadeleri: çözüm yöntemi, yapı tabloları, filtrelenebilir 155 kayıtlık banka |
-| `ara.html` | Site geneli arama: kelimeler, bağlaçlar, sorular ve gramer konuları tek yerde |
+| `ara.html` | Site geneli arama: kelimeler, öbekler, bağlaçlar, sorular ve gramer konuları |
 
 ## İçerik
 
-- **181 kelime** — örnek cümleli, seviye ve tür etiketli
+- **4.760 kelime** — 49 gerçek YDS sınavındaki geçme sıklığına göre puanlanmış, beş katmana ayrılmış;
+  her birinde Türkçe anlam + İngilizce örnek cümle + çeviri (1.113'ünde ikinci anlam da var)
+- **2.067 kelime öbeği** — phrasal verb, deyimsel fiil ve sabit ifadeler, kaç sınavda geçtiği bilgisiyle
 - **125 soru** — 12 kategori: Kelime, Dil Bilgisi, Bağlaç, Preposition, Cloze Test, Çeviri,
   Cümle Tamamlama, Restatement, Paragraf Tamamlama, Anlamı Bozan Cümle, Diyalog, Okuma
 - **155 bağlaç** — anlam ilişkisi ve "sonrasında ne gelir" etiketleriyle
 - **10 gramer konusu** — tablolar ve örneklerle
 
+### Kelime katmanları
+
+Kelimeler, `YDS Öncelik Puanı`na göre beşe ayrıldı. Puan
+`100 × (0.50·S + 0.20·F + 0.30·P)` formülünden gelir — S: kaç farklı sınavda geçtiği (ana kriter),
+F: toplam frekans, P: akademik önsel (NGSL/NAWL/AWL üyeliği + Zipf).
+
+| Katman | Puan | Kelime | Dosya (gzip) |
+| --- | --- | --- | --- |
+| 1 · Temel | ≥ 40 | 658 | 88 K |
+| 2 · Çekirdek | 30–40 | 720 | 94 K |
+| 3 · Orta | 25–30 | 719 | 88 K |
+| 4 · İleri | 20–25 | 1.099 | 122 K |
+| 5 · Geniş | 15–20 | 1.564 | 155 K |
+
+Kullanıcı hangi katmanları seçerse yalnız onlar indirilir. Çekirdekten çalışan biri toplam
+**~229 K** veri indirir; hepsini açan 883 K. Dizin (`data/kelime-dizin.js`, 99 K gzip) her sayfada
+yüklüdür ve yazılış + kısa anlam + puan + katman bilgisini taşır; örnek cümleler katman
+dosyalarındadır.
+
+1. katman sınavın her yerinde geçen çok temel kelimelerdir (*much, can, people, make*) — büyük
+olasılıkla zaten biliyorsundur, atlanabilir. Gerçek YDS kelimeleri 2. katmandan itibaren başlar.
+
 ## Dosya düzeni
 
 ```
-index.html  kelimeler.html  quiz.html  deneme.html
+index.html  kelimeler.html  obekler.html  quiz.html  deneme.html
 gramer.html  baglaclar.html  ara.html
 assets/
   css/style.css       tüm sayfaların ortak stili (açık/koyu tema)
   js/main.js          tema, gezinme, localStorage, service worker kaydı
   js/ilerleme.js      Leitner, yanlış defteri, kategori istatistiği, geçmiş
+  js/veri.js          kelime katmanlarını ve öbekleri istendiğinde yükler
   js/kelimeler.js     kelime sayfası
+  js/obekler.js       öbek sayfası
   js/quiz.js          alıştırma soruları
   js/deneme.js        süreli sınav
   js/baglaclar.js     bağlaç bankası
   js/ara.js           site geneli arama
   img/                PWA ikonları (tools ile üretildi)
 data/
-  kelimeler.js        kelime verisi
+  kelime-dizin.js     4.760 kelime: yazılış, kısa anlam, puan, katman, tür
+  kelime-k1..k5.js    katman katman tam kayıtlar (örnek cümleler)
+  obekler.js          2.067 kelime öbeği
+  sayilar.js          içerik sayaçları (üretilir)
   sorular.js          soru bankası + okuma parçaları
   baglaclar.js        bağlaç verisi
 tools/
+  listeyi-aktar.py    XLSX kaynaklardan kelime/öbek veri dosyalarını üretir
+  ek-kelimeler.js     dönüştürücü girdisi: elle yazılmış 181 kelime
   docx-aktar.js       Word belgelerini düz metne çevirir
 manifest.webmanifest  telefona kurulum
 sw.js                 çevrimdışı çalışma
@@ -68,7 +100,9 @@ Her kelime 1–5 arası bir kutuda durur. Kart modunda **✓ Bildim** dersen bir
 | 4 | 15 gün sonra |
 | 5 | 30 gün sonra |
 
-4. ve 5. kutudakiler "öğrenilmiş" sayılır. Aralıkları değiştirmek istersen
+4. ve 5. kutudakiler "öğrenilmiş" sayılır. Kelimeler ve öbekler aynı kutu tablosunu paylaşır
+(anahtarlar çakışmaz: öbeklerde boşluk var), ama her sayfanın "sıfırla" düğmesi yalnız kendi
+kayıtlarını siler. Aralıkları değiştirmek istersen
 `assets/js/ilerleme.js` içindeki `ARALIK` tablosunu düzenle.
 
 **İpucu düğmesi.** Kartın ön yüzünde, kelimenin kendi örnek cümlesini hedef sözcük
@@ -77,13 +111,33 @@ sonra "Bildim" dersen kelime **terfi etmez**, aynı kutuda kalıp yeniden zamanl
 bağlamla hatırlamak, kelimeyi tek başına bilmekle aynı sayılmaz.
 
 Kelimeyi cümlede bulmak düz aramayla olmuyor, çünkü örnekler çekimli biçim kullanabiliyor
-(`accumulate` → "accumulated"). `bosluklaCumle()` sondaki `e`/`y` harfini atıp kökle
-başlayan sözcüğü arıyor; bu 181 kelimenin 180'ini yakalıyor. Eşleşme bulunamayan tek kelime
-(`undertake` → "undertook") için ipucu düğmesi o kartta hiç gösterilmiyor.
+(`accumulate` → "accumulated"). `bosluklaCumle()` sondaki `e`/`y` harfini atıp kökle başlayan
+sözcüğü arıyor; bu **4.760 kelimenin 4.747'sini** (%99,7) ve **2.067 öbeğin tamamını** yakalıyor.
+Yakalanamayan 13 kelime çoğunlukla düzensiz çekim (`undertake` → "undertook") ya da tireli
+varyant (`give-up`, `turn-out`); o kartlarda ipucu düğmesi hiç gösterilmiyor.
 
-## İçerik eklemek
+Öbeklerde her sözcük ayrı ayrı maskeleniyor (`stem from` → "----  ---- " birleştirilip tek `----`
+oluyor), çünkü çekim öbeğin herhangi bir parçasında olabiliyor: *stems from*, *coped with*.
 
-**Yeni kelime** — `data/kelimeler.js` sonuna ekle:
+## Kelime ve öbek verisini yeniden üretmek
+
+`data/kelime-*.js` ve `data/obekler.js` **elle düzenlenmez** — kaynak XLSX dosyalarından üretilir:
+
+```bash
+"C:/Users/Trk/Desktop/english claude/.venv/Scripts/python.exe" tools/listeyi-aktar.py
+```
+
+Okuduğu kaynaklar (salt okunur, hiçbirine yazılmaz):
+
+| Kaynak | Ne verir |
+| --- | --- |
+| `english claude/04_cikti/Calisma_Listesi_v3.xlsx` | 4.711 puanlanmış kelime, anlam ve örnek cümlelerle |
+| `english claude/04_cikti/Kelime_Obekleri_v3.xlsx` | 2.067 öbek |
+| `tools/ek-kelimeler.js` | Listede olmayan 52 kelime + ortak 129 kelimenin eş anlamlıları |
+
+Betik `ii`, `iii`, `iv` gibi cloze şık numarası artıklarını atar, harf varyantlarını birleştirir ve
+`data/sayilar.js` içindeki sayaçları günceller. Yeni kelimeyi elle eklemek istersen
+`tools/ek-kelimeler.js` sonuna yaz ve betiği yeniden çalıştır:
 
 ```js
 {en:"prudent", tr:"tedbirli, sağduyulu", tip:"sıfat", sv:"ileri",
@@ -91,8 +145,9 @@ başlayan sözcüğü arıyor; bu 181 kelimenin 180'ini yakalıyor. Eşleşme bu
  exTr:"Sonuçları beklemek tedbirli olur.", es:"cautious, sensible"}
 ```
 
-`sv` alanı `temel`, `orta` ya da `ileri`; `tip` alanı filtrelerde `fiil`, `isim`,
-`sıfat`, `zarf` sözcükleriyle eşleşir.
+`sv` alanı (`temel`/`orta`/`ileri`) bu kelimenin hangi katmana gireceğini belirler: sırasıyla 2, 3, 4.
+
+## İçerik eklemek
 
 **Yeni soru** — `data/sorular.js` sonuna ekle:
 

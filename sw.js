@@ -11,13 +11,19 @@
    eklediğinde hem SÜRÜM'ü artır hem de listeye ekle.
    ============================================================ */
 
-var SURUM = 'yds-v2';
+var SURUM = 'yds-v3';
 var ONBELLEK = SURUM;
 
+/* Kurulumda indirilenler: sayfalar, kod ve küçük veri dosyaları.
+   Kelime katmanları (data/kelime-k1..k5.js, ~1,5 MB) ve öbekler
+   (630 KB) BİLEREK burada değil — kullanıcı hangisini açarsa o,
+   fetch sırasında önbelleğe alınır. Hepsini peşin indirmek, tek
+   katman çalışan birine 2,4 MB yüklemek olurdu. */
 var TEMEL_DOSYALAR = [
   './',
   './index.html',
   './kelimeler.html',
+  './obekler.html',
   './quiz.html',
   './deneme.html',
   './gramer.html',
@@ -26,12 +32,15 @@ var TEMEL_DOSYALAR = [
   './assets/css/style.css',
   './assets/js/main.js',
   './assets/js/ilerleme.js',
+  './assets/js/veri.js',
   './assets/js/kelimeler.js',
+  './assets/js/obekler.js',
   './assets/js/quiz.js',
   './assets/js/deneme.js',
   './assets/js/baglaclar.js',
   './assets/js/ara.js',
-  './data/kelimeler.js',
+  './data/kelime-dizin.js',
+  './data/sayilar.js',
   './data/sorular.js',
   './data/baglaclar.js',
   './manifest.webmanifest',

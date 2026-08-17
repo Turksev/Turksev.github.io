@@ -29,6 +29,7 @@
     <nav class="site-nav">
       <a href="index.html">Ana Sayfa</a>
       <a href="kelimeler.html">Kelimeler</a>
+      <a href="obekler.html">Öbekler</a>
       <a href="quiz.html">Quiz</a>
       <a href="deneme.html">Deneme</a>
       <a href="gramer.html">Gramer</a>
@@ -45,7 +46,8 @@
     <h1>Arama</h1>
     <p class="muted">
       Bir kelime, bağlaç ya da konu ara — sitenin her yerinde nerede geçtiğini birden gör.
-      İngilizce veya Türkçe yazabilirsin.
+      İngilizce veya Türkçe yazabilirsin. Kelimelerde yazılış ve anlam taranır;
+      bağlaç, öbek ve sorularda örnek cümleler de aranır.
     </p>
 
     <div class="toolbar">
@@ -54,6 +56,7 @@
       <select id="tur" aria-label="Sonuç türü">
         <option value="">Her yerde</option>
         <option value="kelime">Kelimeler</option>
+        <option value="obek">Öbekler</option>
         <option value="baglac">Bağlaçlar</option>
         <option value="soru">Sorular</option>
         <option value="konu">Gramer konuları</option>
@@ -73,9 +76,10 @@
   </div>
 </footer>
 
-<script src="data/kelimeler.js"></script>
+<script src="data/kelime-dizin.js"></script>
 <script src="data/baglaclar.js"></script>
 <script src="data/sorular.js"></script>
+<script src="assets/js/veri.js"></script>
 <script src="assets/js/ara.js"></script>
 </body>
 </html>
