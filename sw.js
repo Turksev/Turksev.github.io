@@ -11,7 +11,7 @@
    eklediğinde hem SÜRÜM'ü artır hem de listeye ekle.
    ============================================================ */
 
-var SURUM = 'yds-v13';
+var SURUM = 'yds-v14';
 var ONBELLEK = SURUM;
 
 /* Kurulumda indirilenler: sayfalar, kod ve küçük veri dosyaları.
@@ -23,6 +23,7 @@ var TEMEL_DOSYALAR = [
   './',
   './index.html',
   './durum.html',
+  './konular.html',
   './kelimeler.html',
   './aileler.html',
   './obekler.html',
@@ -36,6 +37,7 @@ var TEMEL_DOSYALAR = [
   './assets/js/ilerleme.js',
   './assets/js/veri.js',
   './assets/js/durum.js',
+  './assets/js/konular.js',
   './assets/js/kelimeler.js',
   './assets/js/aileler.js',
   './assets/js/obekler.js',
@@ -45,6 +47,8 @@ var TEMEL_DOSYALAR = [
   './assets/js/ara.js',
   './data/kelime-dizin.js',
   './data/aileler.js',
+  './data/konular.js',
+  './data/konu-metinleri.js',
   './data/olumsuzlar.js',
   './data/sayilar.js',
   './data/sorular.js',

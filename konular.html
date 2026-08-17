@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Konu Haritası — YDS Hazırlık</title>
+<meta name="description" content="YDS için iki eksenli konu haritası: Türkçe–İngilizce çarpışma noktalarından ve İngilizce yapı omurgasından 129 ünite, ilerleme takibiyle.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%233b5bdb'/><text y='68' x='50' text-anchor='middle' font-size='46' font-family='sans-serif' font-weight='bold' fill='white'>Y</text></svg>">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#3b5bdb">
+<link rel="apple-touch-icon" href="assets/img/icon-192.png">
+<link rel="canonical" href="https://turksev.github.io/konular.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="YDS Hazırlık">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="Konu Haritası — YDS Hazırlık">
+<meta property="og:description" content="İki eksenli YDS konu haritası: 129 ünite, ön koşullarıyla ve ilerleme takibiyle.">
+<meta property="og:url" content="https://turksev.github.io/konular.html">
+<meta property="og:image" content="https://turksev.github.io/assets/img/icon-512.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="assets/js/main.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="dot">YDS</span> Hazırlık</a>
+    <nav class="site-nav">
+      <a href="index.html">Ana Sayfa</a>
+      <a href="durum.html">Durumum</a>
+      <a href="konular.html">Konular</a>
+      <a href="kelimeler.html">Kelimeler</a>
+      <a href="aileler.html">Aileler</a>
+      <a href="obekler.html">Öbekler</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="deneme.html">Deneme</a>
+      <a href="gramer.html">Gramer</a>
+      <a href="baglaclar.html">Bağlaçlar</a>
+      <a href="ara.html">Ara</a>
+    </nav>
+    <button class="theme-toggle" type="button" title="Temayı değiştir">☾</button>
+  </div>
+</header>
+
+<main class="section">
+  <div class="wrap">
+
+    <!-- ---------- harita görünümü ---------- -->
+    <div id="harita">
+      <h1>Konu Haritası</h1>
+      <p class="muted" style="max-width:72ch">
+        <b id="toplamUnite">129</b> ünite, iki ayrı eksende. Aynı dilbilgisine iki farklı kapıdan
+        giriyorlar: biri Türkçeden, biri İngilizceden. Hangi ünitede olduğunu, tanı testinde kaç
+        aldığını ve bir hafta sonra ne kadarını hatırladığını buradan izleyebilirsin.
+      </p>
+
+      <div class="eksen-sekme" id="eksenler"></div>
+      <p class="small muted" id="eksenAciklama" style="margin:12px 0 0"></p>
+
+      <div class="toolbar" style="margin-top:18px">
+        <input class="grow" type="search" id="ara" placeholder="Ara: konu, kapsam veya kod…" autocomplete="off">
+
+        <select id="katman" aria-label="Katman">
+          <option value="">Tüm katmanlar</option>
+          <option value="Çekirdek 1">Çekirdek 1</option>
+          <option value="Çekirdek 2">Çekirdek 2</option>
+          <option value="İsteğe bağlı">İsteğe bağlı</option>
+        </select>
+
+        <select id="etki" aria-label="YDS etkisi">
+          <option value="">Tüm etkiler</option>
+          <option value="Doğrudan">Doğrudan</option>
+          <option value="Dolaylı">Dolaylı</option>
+        </select>
+
+        <select id="durum" aria-label="Durum">
+          <option value="">Tüm durumlar</option>
+          <option value="0">Başlamadıklarım</option>
+          <option value="1">Çalıştıklarım</option>
+          <option value="2">Tamamladıklarım</option>
+          <option value="metinli">Anlatımı olanlar</option>
+        </select>
+
+        <button class="btn ghost sm" type="button" id="temizle">Filtreleri temizle</button>
+      </div>
+
+      <p class="small muted" id="sayac">Yükleniyor…</p>
+      <div id="liste"></div>
+
+      <div class="tip" style="margin-top:26px;max-width:72ch">
+        <b>Nasıl çalışmalı:</b> Önce süreli bir soru seti çöz ve yanlışını ilgili koda bağla.
+        Konuyu kural listesi olarak değil, anlam ayrımı üzerinden çalış. Ardından en az 10 YDS tipi
+        soru çöz ve <b>Tanı %</b> alanını doldur. Aynı konuyu 1, 7 ve 21 gün sonra kısa testlerle
+        yokla; bir hafta sonraki testte <b>%90</b> almadan tamamlandı işaretleme —
+        <b>Gecikmeli %</b> alanı bunun içindir.
+      </div>
+    </div>
+
+    <!-- ---------- konu anlatımı ---------- -->
+    <article id="konu" hidden>
+      <p><button class="btn ghost sm" type="button" id="geri">‹ Konu haritasına dön</button></p>
+      <div id="konuBaslik"></div>
+      <div class="doc" style="margin-top:22px">
+        <nav class="toc" id="konuToc" aria-label="Bölümler"></nav>
+        <div id="konuGovde"></div>
+      </div>
+      <p class="center" style="margin-top:34px">
+        <button class="btn ghost" type="button" id="geri2">‹ Konu haritasına dön</button>
+      </p>
+    </article>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span data-yil>2026</span> YDS Hazırlık</span>
+    <span>Tüm ilerleme yalnızca kendi tarayıcında saklanır.</span>
+  </div>
+</footer>
+
+<script src="data/konular.js"></script>
+<script src="data/konu-metinleri.js"></script>
+<script src="assets/js/ilerleme.js"></script>
+<script src="assets/js/konular.js"></script>
+</body>
+</html>

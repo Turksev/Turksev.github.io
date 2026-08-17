@@ -313,11 +313,48 @@
 
   function gecmisSifirla() { Depo.sil(K_GECMIS); }
 
+  /* ---------- konu takibi ---------- */
+
+  /* Kaynak Excel'de her ünite için Durum / Tanı % / Gecikmeli % / Not
+     sütunları vardı; onları burada tutuyoruz.
+       d → 0 başlamadı · 1 çalışılıyor · 2 tamamlandı
+       t → ilk çalışmadan sonraki test yüzdesi
+       g → bir hafta sonraki gecikmeli test yüzdesi
+       n → hata / örnek notu                                        */
+  var K_KONU = 'yds-konular';
+
+  function konuKayitlari() {
+    var s = Depo.oku(K_KONU, {});
+    return (s && typeof s === 'object') ? s : {};
+  }
+
+  function konu(kod) {
+    return konuKayitlari()[kod] || { d: 0, t: null, g: null, n: '' };
+  }
+
+  function konuYaz(kod, alanlar) {
+    var hepsi = konuKayitlari();
+    var mevcut = hepsi[kod] || { d: 0, t: null, g: null, n: '' };
+    Object.keys(alanlar).forEach(function (a) { mevcut[a] = alanlar[a]; });
+
+    // Tamamen boş kayıt tutmaya gerek yok
+    if (!mevcut.d && mevcut.t == null && mevcut.g == null && !mevcut.n) {
+      delete hepsi[kod];
+    } else {
+      hepsi[kod] = mevcut;
+    }
+    Depo.yaz(K_KONU, hepsi);
+    return mevcut;
+  }
+
+  function konuSifirla() { Depo.sil(K_KONU); }
+
   /* ---------- hepsini sıfırla ---------- */
 
   function hepsiniSifirla() {
     leitnerSifirla();
     yanlisTemizle();
+    konuSifirla();
     kategoriSifirla();
     gecmisSifirla();
     Depo.sil('yds-rekor');
@@ -354,6 +391,10 @@
     kategoriKaydet: kategoriKaydet,
     kategoriOzet: kategoriOzet,
     kategoriSifirla: kategoriSifirla,
+    konu: konu,
+    konuYaz: konuYaz,
+    konuKayitlari: konuKayitlari,
+    konuSifirla: konuSifirla,
     sonucEkle: sonucEkle,
     gecmis: gecmis,
     gecmisSifirla: gecmisSifirla,
