@@ -45,9 +45,9 @@
   function desteyiCiz() {
     var o = Il.leitnerOzet(leitnerListesi());
 
-    $('desteBilgi').textContent = o.bugun + ' öbek tekrarı bekliyor · ' +
-      o.ogrenilen + ' öğrenildi · ' + o.calisilan + '/' + TUM.length + ' çalışıldı';
-    $('desteBar').style.width = (TUM.length ? (TUM.length - o.bugun) / TUM.length * 100 : 0) + '%';
+    $('desteBilgi').textContent = o.calisilan + '/' + TUM.length + ' öbeğe başlandı · ' +
+      o.ogrenilen + ' öğrenildi';
+    $('desteBar').style.width = (TUM.length ? o.ogrenilen / TUM.length * 100 : 0) + '%';
 
     $('kutular').innerHTML =
       '<span class="kutu"><b>' + o.k0 + '</b><i>yeni</i></span>' +
@@ -56,7 +56,27 @@
       }).join('');
 
     $('desteBasla').disabled = o.bugun === 0;
-    $('desteBasla').textContent = o.bugun === 0 ? 'Bugünlük bitti 🎉' : 'Bugünü çalış (' + o.bugun + ')';
+    $('desteBasla').textContent = o.bugun === 0
+      ? 'Bugünlük bitti 🎉'
+      : 'Bugünü çalış (' + o.bugun + ' kart)';
+
+    var parcalar = [];
+    if (o.tekrar) parcalar.push('<b>' + o.tekrar + '</b> tekrarı gelen');
+    if (o.acilacakYeni) parcalar.push('<b>' + o.acilacakYeni + '</b> yeni öbek');
+
+    var metin;
+    if (!o.bugun) {
+      metin = o.yeni
+        ? 'Bugünkü yeni öbek kotan doldu (' + o.hedef + '). Havuzda ' + o.yeni + ' öbek bekliyor.'
+        : 'Bütün öbeklere başladın. Tekrarlar geldikçe burada görünecek.';
+    } else {
+      metin = 'Deste: ' + parcalar.join(' + ') + '.';
+      if (o.yeni > o.acilacakYeni) {
+        metin += ' Havuzda <b>' + o.yeni + '</b> yeni öbek var; günde ' + o.hedef +
+          ' tanesi açılıyor, hepsi ' + Math.ceil(o.yeni / o.hedef) + ' günde biter.';
+      }
+    }
+    $('desteAciklama').innerHTML = metin;
   }
 
   /* ---------- filtreleme ---------- */
@@ -312,16 +332,27 @@
   });
 
   $('desteBasla').addEventListener('click', function () {
-    elAra.value = ''; elTur.value = ''; elSinav.value = '';
-    elDurum.value = 'vadesi';
+    var destelik = Il.destelik(leitnerListesi());
+    var kume = {};
+    destelik.forEach(function (x) { kume[x.en] = true; });
+
+    elAra.value = ''; elTur.value = ''; elSinav.value = ''; elDurum.value = '';
+    suzulmus = karistir(TUM.filter(function (o) { return kume[o.f]; }));
+
     desteModu = true;
     kartModu = true;
     kartIndex = 0;
     kartAcik = false;
     ipucuAcik = false;
+    gosterilen = SAYFA_BOYU;
     $('mod').textContent = 'Liste moduna dön';
-    filtrele(true);
+    ciz();
     elKartAlan.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  $('gunlukHedef').addEventListener('change', function () {
+    Il.gunlukHedefAyarla(this.value);
+    desteyiCiz();
   });
 
   elKart.addEventListener('click', function () { kartAcik = !kartAcik; kartCiz(); });
@@ -374,6 +405,7 @@
   /* ---------- başlat ---------- */
 
   if (window.SAYILAR) $('toplamObek').textContent = window.SAYILAR.obek.toLocaleString('tr-TR');
+  $('gunlukHedef').value = String(Il.gunlukHedef());
 
   elSayac.textContent = 'Öbekler yükleniyor…';
   Veri.obekleriYukle().then(function (liste) {

@@ -22,11 +22,17 @@
   var K_KATEGORI = 'yds-kategori';
   var K_GECMIS = 'yds-gecmis';
   var K_BILINEN = 'yds-bilinen';
+  var K_GUNLUK = 'yds-gunluk-yeni';     // günlük yeni kelime kotası
+  var K_YENI_SAYAC = 'yds-yeni-sayac';  // {g: gün, n: bugün açılan yeni kelime}
 
   /* Kutu numarasına göre tekrar aralığı (gün). */
   var ARALIK = { 1: 1, 2: 3, 3: 7, 4: 15, 5: 30 };
   var EN_UST_KUTU = 5;
   var GECMIS_SINIRI = 50;
+
+  /* Günde kaç YENİ kelime açılacağı. Tekrarı gelenler bu kotaya dahil
+     değildir — onlar zaten başlanmış kelimelerdir ve ertelenirse birikir. */
+  var GUNLUK_VARSAYILAN = 20;
 
   // Yerel gece yarısına göre gün numarası. Tüm karşılaştırmalar aynı
   // referansı kullandığı için saat dilimi kayması sorun çıkarmaz.
@@ -58,10 +64,41 @@
     return leitner[en] ? leitner[en].k : 0;
   }
 
+  /* Yalnizca BASLANMIS kelimeler icin: tekrar gunu geldi mi?
+     Hic calisilmamis kelime "vadesi gelmis" sayilmaz — o yeni kelimedir ve
+     gunluk kotayla acilir. Ikisini ayirmazsak ilk gun 4.760 kart cikardi. */
   function vadesiGeldiMi(en) {
     var kayit = leitner[en];
-    if (!kayit) return true;              // hiç çalışılmamış → bugünün destesinde
+    if (!kayit) return false;
     return kayit.g <= bugun();
+  }
+
+  function yeniMi(en) { return !leitner[en]; }
+
+  /* ---------- günlük yeni kelime kotası ---------- */
+
+  function gunlukHedef() {
+    var n = Depo.oku(K_GUNLUK, GUNLUK_VARSAYILAN);
+    return (typeof n === 'number' && n > 0) ? n : GUNLUK_VARSAYILAN;
+  }
+
+  function gunlukHedefAyarla(n) {
+    Depo.yaz(K_GUNLUK, Math.max(1, parseInt(n, 10) || GUNLUK_VARSAYILAN));
+  }
+
+  function bugunAcilanYeni() {
+    var s = Depo.oku(K_YENI_SAYAC, null);
+    return (s && s.g === bugun()) ? s.n : 0;
+  }
+
+  function yeniKotasiKalan() {
+    return Math.max(0, gunlukHedef() - bugunAcilanYeni());
+  }
+
+  function yeniAcildiSay() {
+    var b = bugun();
+    var s = Depo.oku(K_YENI_SAYAC, null);
+    Depo.yaz(K_YENI_SAYAC, { g: b, n: (s && s.g === b ? s.n : 0) + 1 });
   }
 
   function kalanGun(en) {
@@ -70,8 +107,14 @@
     return Math.max(0, kayit.g - bugun());
   }
 
+  /* Bir kelime ilk kez cevaplandığında günlük yeni sayacı artar. */
+  function ilkKezIse(en) {
+    if (yeniMi(en)) yeniAcildiSay();
+  }
+
   /* Doğru bilindi: bir üst kutuya çık, tekrarı ilerlet. */
   function dogru(en) {
+    ilkKezIse(en);
     var k = Math.min(EN_UST_KUTU, kutu(en) + 1);
     leitner[en] = { k: k, g: bugun() + ARALIK[k] };
     kaydet();
@@ -81,6 +124,7 @@
   /* İpucuyla bilindi: terfi ettirme, aynı kutuda bırak ve yeniden zamanla.
      Hiç çalışılmamış bir kelime bu yolla en fazla 1. kutuya girer. */
   function ipucuyla(en) {
+    ilkKezIse(en);
     var k = Math.max(1, kutu(en));
     leitner[en] = { k: k, g: bugun() + ARALIK[k] };
     kaydet();
@@ -89,6 +133,7 @@
 
   /* Yanlış bilindi: birinci kutuya dön, yarın tekrar sor. */
   function yanlis(en) {
+    ilkKezIse(en);
     leitner[en] = { k: 1, g: bugun() + ARALIK[1] };
     kaydet();
     return 1;
@@ -112,17 +157,38 @@
     kaydet();
   }
 
-  /* Kutu dağılımı ve bugün tekrarı gelen kelime sayısı. */
+  /* Kutu dağılımı ve bugünün iş yükü.
+       tekrar → tekrar günü gelmiş, başlanmış kelimeler (hepsi yapılmalı)
+       yeni   → hiç çalışılmamış kelime havuzu
+       acilacakYeni → bunlardan bugün kotaya sığan kadarı
+       bugun  → destedeki toplam kart = tekrar + acilacakYeni            */
   function leitnerOzet(tumKelimeler) {
-    var o = { k0: 0, k1: 0, k2: 0, k3: 0, k4: 0, k5: 0, bugun: 0, ogrenilen: 0, calisilan: 0 };
+    var o = {
+      k0: 0, k1: 0, k2: 0, k3: 0, k4: 0, k5: 0,
+      tekrar: 0, yeni: 0, acilacakYeni: 0, bugun: 0,
+      ogrenilen: 0, calisilan: 0,
+      hedef: gunlukHedef(), kotaKalan: yeniKotasiKalan()
+    };
     (tumKelimeler || []).forEach(function (kel) {
       var k = kutu(kel.en);
       o['k' + k]++;
-      if (k > 0) o.calisilan++;
+      if (k > 0) o.calisilan++; else o.yeni++;
       if (k >= 4) o.ogrenilen++;
-      if (vadesiGeldiMi(kel.en)) o.bugun++;
+      if (vadesiGeldiMi(kel.en)) o.tekrar++;
     });
+    o.acilacakYeni = Math.min(o.yeni, o.kotaKalan);
+    o.bugun = o.tekrar + o.acilacakYeni;
     return o;
+  }
+
+  /* Bugünün destesi: tekrarı gelen her kelime + kotaya sığan yeni kelimeler.
+     Liste [{en:…}] biçiminde gelir, aynı biçimde döner. */
+  function destelik(tumKelimeler) {
+    var liste = tumKelimeler || [];
+    var tekrarlar = liste.filter(function (k) { return vadesiGeldiMi(k.en); });
+    var yeniler = liste.filter(function (k) { return yeniMi(k.en); })
+                       .slice(0, yeniKotasiKalan());
+    return tekrarlar.concat(yeniler);
   }
 
   /* ---------- yanlış defteri ---------- */
@@ -232,7 +298,13 @@
     bugun: bugun,
     kutu: kutu,
     vadesiGeldiMi: vadesiGeldiMi,
+    yeniMi: yeniMi,
     kalanGun: kalanGun,
+    gunlukHedef: gunlukHedef,
+    gunlukHedefAyarla: gunlukHedefAyarla,
+    bugunAcilanYeni: bugunAcilanYeni,
+    yeniKotasiKalan: yeniKotasiKalan,
+    destelik: destelik,
     dogru: dogru,
     ipucuyla: ipucuyla,
     yanlis: yanlis,

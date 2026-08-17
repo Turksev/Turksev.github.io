@@ -59,7 +59,21 @@
       </div>
       <div class="progress"><i id="desteBar"></i></div>
       <div class="kutular" id="kutular"></div>
-      <button class="btn" type="button" id="desteBasla" style="margin-top:14px">Bugünü çalış</button>
+
+      <div class="toolbar" style="margin:14px 0 0">
+        <button class="btn" type="button" id="desteBasla">Bugünü çalış</button>
+        <label class="small muted" style="display:flex;align-items:center;gap:7px">
+          Günde yeni öbek:
+          <select id="gunlukHedef" aria-label="Günlük yeni öbek hedefi">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20" selected>20</option>
+            <option value="30">30</option>
+            <option value="50">50</option>
+          </select>
+        </label>
+      </div>
+      <p class="small muted" style="margin:10px 0 0" id="desteAciklama"></p>
     </div>
 
     <div class="toolbar">

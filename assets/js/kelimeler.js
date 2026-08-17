@@ -80,11 +80,11 @@
     var o = Il.leitnerOzet(havuz.map(function (d) { return { en: d.e }; }));
 
     $('desteBilgi').textContent = havuz.length
-      ? o.bugun + ' kelime tekrarı bekliyor · ' + o.ogrenilen + ' öğrenildi · ' +
-        o.calisilan + '/' + havuz.length + ' çalışıldı'
+      ? o.calisilan + '/' + havuz.length + ' kelimeye başlandı · ' + o.ogrenilen + ' öğrenildi'
       : 'Önce bir katman seç';
 
-    $('desteBar').style.width = (havuz.length ? (havuz.length - o.bugun) / havuz.length * 100 : 0) + '%';
+    // Çubuk genel ilerlemeyi gösterir: öğrenilen / seçili havuz
+    $('desteBar').style.width = (havuz.length ? o.ogrenilen / havuz.length * 100 : 0) + '%';
 
     $('kutular').innerHTML =
       '<span class="kutu"><b>' + o.k0 + '</b><i>yeni</i></span>' +
@@ -95,7 +95,29 @@
     $('desteBasla').disabled = o.bugun === 0;
     $('desteBasla').textContent = o.bugun === 0
       ? (havuz.length ? 'Bugünlük bitti 🎉' : 'Katman seç')
-      : 'Bugünü çalış (' + o.bugun + ')';
+      : 'Bugünü çalış (' + o.bugun + ' kart)';
+
+    // Destenin neyden oluştuğunu açıkça yaz: tekrar ≠ yeni
+    var parcalar = [];
+    if (o.tekrar) parcalar.push('<b>' + o.tekrar + '</b> tekrarı gelen');
+    if (o.acilacakYeni) parcalar.push('<b>' + o.acilacakYeni + '</b> yeni kelime');
+
+    var metin;
+    if (!havuz.length) {
+      metin = '';
+    } else if (!o.bugun) {
+      metin = o.yeni
+        ? 'Bugünkü yeni kelime kotan doldu (' + o.hedef + '). Yarın ' +
+          Math.min(o.yeni, o.hedef) + ' yeni kelime daha açılacak; havuzda ' + o.yeni + ' kelime bekliyor.'
+        : 'Seçili katmandaki bütün kelimelere başladın. Tekrarlar geldikçe burada görünecek.';
+    } else {
+      metin = 'Deste: ' + parcalar.join(' + ') + '.';
+      if (o.yeni > o.acilacakYeni) {
+        metin += ' Havuzda <b>' + o.yeni + '</b> yeni kelime var; günde ' + o.hedef +
+          ' tanesi açılıyor, hepsi ' + Math.ceil(o.yeni / o.hedef) + ' günde biter.';
+      }
+    }
+    $('desteAciklama').innerHTML = metin;
   }
 
   /* ---------- filtreleme ---------- */
@@ -381,16 +403,30 @@
   });
 
   $('desteBasla').addEventListener('click', function () {
-    elAra.value = ''; elTip.value = '';
-    elDurum.value = 'vadesi';
+    // Deste filtreden değil, doğrudan Ilerleme'den kurulur: tekrarı gelenlerin
+    // tamamı + günlük kotaya sığan yeni kelimeler.
+    var destelik = Il.destelik(havuz.map(function (d) { return { en: d.e }; }));
+    var kume = {};
+    destelik.forEach(function (x) { kume[x.en] = true; });
+
+    elAra.value = ''; elTip.value = ''; elDurum.value = '';
+    suzulmus = karistir(havuz.filter(function (d) { return kume[d.e]; }));
+
     desteModu = true;
     kartModu = true;
     kartIndex = 0;
     kartAcik = false;
     ipucuAcik = false;
+    gosterilen = SAYFA_BOYU;
     $('mod').textContent = 'Liste moduna dön';
-    filtrele(true);
+    $('disKatman').hidden = true;
+    ciz();
     elKartAlan.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  $('gunlukHedef').addEventListener('change', function () {
+    Il.gunlukHedefAyarla(this.value);
+    desteyiCiz();
   });
 
   elKart.addEventListener('click', function () {
@@ -451,6 +487,7 @@
 
   /* ---------- başlat ---------- */
   $('toplamKelime').textContent = DIZIN.length.toLocaleString('tr-TR');
+  $('gunlukHedef').value = String(Il.gunlukHedef());
   katmanlariCiz();
   katmanlariUygula();
 })();

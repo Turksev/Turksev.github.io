@@ -228,7 +228,7 @@
   $('panel').hidden = !basladi;
 
   $('btnDeste').textContent = o.bugun > 0
-    ? 'Bugünün destesini çalış (' + o.bugun + ')'
+    ? 'Bugünün destesini çalış (' + o.bugun + ' kart)'
     : 'Kelimelere göz at';
 
   if (!basladi) return;
@@ -237,8 +237,10 @@
   yaz('p-bugun', o.bugun);
   yaz('p-ogrenilen', o.ogrenilen);
   $('p-bar').style.width = (KELIMELER.length ? o.ogrenilen / KELIMELER.length * 100 : 0) + '%';
-  yaz('p-kelimeOzet', o.calisilan + ' / ' + KELIMELER.length + ' kelimeye başladın · ' +
-    'zayıf (1-2. kutu): ' + (o.k1 + o.k2));
+  yaz('p-kelimeOzet',
+    (o.tekrar ? o.tekrar + ' tekrar' : 'tekrar yok') +
+    ' + ' + o.acilacakYeni + ' yeni (günlük hedef ' + o.hedef + ') · ' +
+    o.calisilan + '/' + KELIMELER.length + ' kelimeye başlandı · zayıf: ' + (o.k1 + o.k2));
 
   /* yanlış defteri */
   yaz('p-yanlis', defter.length);
