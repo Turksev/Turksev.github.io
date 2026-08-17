@@ -1,11 +1,11 @@
 /* ============================================================
    Veri katmanı — kelime dizini ve katman dosyalarının yüklenmesi
 
-   Dizin (data/kelime-dizin.js) her sayfada yüklüdür: 4.760 kelimenin
+   Dizin (data/kelime-dizin.js) her sayfada yüklüdür: dizindeki bütün kelimelerin
    yazılışı, kısa anlamı, puanı, katmanı ve türü. Liste, arama, filtre
    ve tekrar özeti yalnız bunu kullanır.
 
-   Örnek cümleler katman dosyalarındadır (data/kelime-k1..k5.js) ve
+   Örnek cümleler katman dosyalarındadır (data/kelime-k1..k6.js) ve
    ancak o katmandan çalışılmak istendiğinde indirilir. Böylece kelime
    sayfası 2,4 MB'ı bir kerede yüklemek zorunda kalmaz.
    ============================================================ */
@@ -13,13 +13,17 @@
 (function () {
   'use strict';
 
-  var KATMAN_ADI = { 1: 'Temel', 2: 'Çekirdek', 3: 'Orta', 4: 'İleri', 5: 'Geniş' };
+  var KATMANLAR = [1, 2, 3, 4, 5, 6];
+  var KATMAN_ADI = {
+    1: 'Temel', 2: 'Çekirdek', 3: 'Orta', 4: 'İleri', 5: 'Geniş', 6: 'Aile üyeleri'
+  };
   var KATMAN_ACIKLAMA = {
     1: 'Sınavın her yerinde geçen çok temel kelimeler — büyük olasılıkla zaten biliyorsun.',
     2: 'YDS çekirdeği. Buradan başlamak en verimlisi.',
     3: 'Orta sıklıkta, sınavda düzenli çıkan kelimeler.',
     4: 'Daha seyrek ama puan getiren ileri kelimeler.',
-    5: 'Uzun kuyruk. Çekirdeği bitirdiysen buraya geç.'
+    5: 'Uzun kuyruk. Çekirdeği bitirdiysen buraya geç.',
+    6: 'Kelime ailelerini tamamlayan türevler. Sınav kanıtı zayıf ama türetme sorusu için değerli.'
   };
 
   var dizin = window.KELIME_DIZIN || [];
@@ -100,12 +104,13 @@
   /* ---------- özet ---------- */
 
   function katmanSayilari() {
-    var s = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+    var s = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 };
     dizin.forEach(function (d) { s[d.k]++; });
     return s;
   }
 
   window.YDS.Veri = {
+    KATMANLAR: KATMANLAR,
     KATMAN_ADI: KATMAN_ADI,
     KATMAN_ACIKLAMA: KATMAN_ACIKLAMA,
     dizin: dizin,

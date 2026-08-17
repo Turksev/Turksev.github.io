@@ -53,7 +53,7 @@
 
   function katmanlariCiz() {
     var sayilar = Veri.katmanSayilari();
-    $('katmanlar').innerHTML = [1, 2, 3, 4, 5].map(function (k) {
+    $('katmanlar').innerHTML = Veri.KATMANLAR.map(function (k) {
       var acik = secili.indexOf(k) !== -1;
       return '<button type="button" class="katman' + (acik ? ' acik' : '') + '" data-k="' + k + '"' +
         ' title="' + kacar(Veri.KATMAN_ACIKLAMA[k]) + '">' +

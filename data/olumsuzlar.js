@@ -1,5 +1,5 @@
 /* ============================================================
-   Olumsuz karşılıklar — 239 kelime, 244 form
+   Olumsuz karşılıklar — 240 kelime, 245 form
    Alanlar: anahtar = kelime, f = olumsuz biçim, tr = Türkçe karşılık,
             s:1 = bu biçim sitede ayrı bir kelime olarak da var
    tools/olumsuz-cikar.py ile üretilir; elle düzenleme.
@@ -152,7 +152,7 @@ window.OLUMSUZLAR = {
 "moved":[{f:"unmoved",tr:"etkilenmemiş, duygulanmamış"}],
 "named":[{f:"unnamed",tr:"adı açıklanmayan, isimsiz"}],
 "naturally":[{f:"unnaturally",tr:"doğal olmayan biçimde"}],
-"necessarily":[{f:"unnecessarily",tr:"gereksiz yere"}],
+"necessarily":[{f:"unnecessarily",tr:"gereksiz yere",s:1}],
 "necessary":[{f:"unnecessary",tr:"gereksiz, lüzumsuz",s:1}],
 "needed":[{f:"unneeded",tr:"gereksiz"}],
 "noticed":[{f:"unnoticed",tr:"fark edilmemiş, gözden kaçmış"}],
@@ -174,6 +174,7 @@ window.OLUMSUZLAR = {
 "possible":[{f:"impossible",tr:"imkânsız",s:1}],
 "practical":[{f:"impractical",tr:"uygulanamaz, pratik olmayan"}],
 "precise":[{f:"imprecise",tr:"kesin olmayan, muğlak"}],
+"predictable":[{f:"unpredictable",tr:"önceden kestirilemeyen, tahmin edilemez",s:1}],
 "prepared":[{f:"unprepared",tr:"hazırlıksız"}],
 "productive":[{f:"unproductive",tr:"verimsiz, sonuçsuz"}],
 "professional":[{f:"unprofessional",tr:"profesyonellikten uzak"}],

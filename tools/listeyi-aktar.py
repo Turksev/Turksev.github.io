@@ -20,7 +20,9 @@ import os
 import re
 import sys
 
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+# Yeni bir sarmalayici kurmak yerine kodlamayi yerinde degistir: sarmalayici,
+# betik baska bir yerden ice aktarildiginda alttaki tamponu kapatiyor.
+sys.stdout.reconfigure(encoding='utf-8')
 
 import openpyxl
 
@@ -29,12 +31,15 @@ SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 VERI = os.path.join(SITE, 'data')
 
 # Katman sinirlari: (anahtar, ad, alt puan, ust puan)
+# 6. katman puana gore degil, kaynagina gore olusur: kelime ailelerini
+# tamamlamak icin eklenen, puani 15'in altinda kalmis turevler.
 KATMANLAR = [
-    (1, 'Temel',    40, 1e9),
-    (2, 'Çekirdek', 30, 40),
-    (3, 'Orta',     25, 30),
-    (4, 'İleri',    20, 25),
-    (5, 'Geniş',    15, 20),
+    (1, 'Temel',        40, 1e9),
+    (2, 'Çekirdek',     30, 40),
+    (3, 'Orta',         25, 30),
+    (4, 'İleri',        20, 25),
+    (5, 'Geniş',        15, 20),
+    (6, 'Aile üyeleri', -1, 15),
 ]
 
 # Cloze sik numaralarindan sizan artiklar
@@ -151,10 +156,31 @@ def ek_ornekleri_oku():
     return json.loads(govde)
 
 
+def aile_uyelerini_oku():
+    """tools/ek-aile-uyeleri.js — kelime ailelerini tamamlayan turevler.
+
+    Bunlar Calisma_Listesi'nde yok cunku puanlari 15'in altinda kalmis
+    (cogu 49 sinavin hicbirinde gecmemis). Ama aileyi eksik birakiyorlar:
+    sufficient/sufficiently var, suffice/sufficiency yok. Zipf >= 2.5
+    suzgecinden gecmis, yani gercekten kullanilan kelimeler.
+
+    Bicim: {"suffice": {"tip":"fiil","p":7.4,"tr":"f. yeterli olmak",
+                        "ex":"…","exTr":"…"}, …}
+    """
+    yol = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'ek-aile-uyeleri.js')
+    if not os.path.exists(yol):
+        return {}
+    metin = open(yol, encoding='utf-8').read()
+    bas = metin.index('{', metin.index('EK_AILE_UYELERI'))
+    govde = re.sub(r'/\*.*?\*/', '', metin[bas:metin.rindex('}') + 1], flags=re.S)
+    return json.loads(govde)
+
+
 def birlestir():
     kelimeler = kelimeleri_topla()
     site = site_kelimelerini_oku()
     ek = ek_ornekleri_oku()
+    aile_uye = aile_uyelerini_oku()
 
     ortak, yalniz_site = 0, 0
     # Sitedeki es anlamli bilgisini tasi
@@ -174,6 +200,19 @@ def birlestir():
             }
             yalniz_site += 1
 
+    # Aile uyeleri: her zaman 6. katman
+    aile_eklenen = 0
+    for en, v in aile_uye.items():
+        if en in kelimeler:
+            continue                      # zaten listede, dokunma
+        kelimeler[en] = {
+            'tip': v['tip'],
+            'puan': v.get('p'),
+            'katman_zorla': 6,
+            'anlamlar': [{'tr': v['tr'], 'ex': v['ex'], 'exTr': v['exTr']}],
+        }
+        aile_eklenen += 1
+
     # Cok turlu anlamlari ayri ornekleriyle degistir
     ek_uygulanan = 0
     for en, anlamlar in ek.items():
@@ -188,7 +227,7 @@ def birlestir():
     bekleyen = [en for en, k in kelimeler.items()
                 if len(k['anlamlar']) == 1 and len(anlamlari_bol(k['anlamlar'][0]['tr'])) > 1]
 
-    return kelimeler, ortak, yalniz_site, ek_uygulanan, bekleyen
+    return kelimeler, ortak, yalniz_site, ek_uygulanan, bekleyen, aile_eklenen
 
 
 def kelimeleri_yaz(kelimeler):
@@ -333,7 +372,7 @@ def sayilari_yaz(sirali, ozet, obekler):
 
 
 def main():
-    kelimeler, ortak, yalniz_site, ek_uygulanan, bekleyen = birlestir()
+    kelimeler, ortak, yalniz_site, ek_uygulanan, bekleyen, aile_eklenen = birlestir()
     sirali, ozet = kelimeleri_yaz(kelimeler)
     obekler, obek_boyut = obekleri_yaz()
     sayilari_yaz(sirali, ozet, obekler)
@@ -346,6 +385,7 @@ def main():
     print('  cok anlamli        :', sum(1 for _e, k in sirali if len(k['anlamlar']) > 1))
     print('  ek ornek uygulanan :', ek_uygulanan)
     print('  ornegi eksik kalan :', len(bekleyen), '(cok turlu ama tek ornekli)')
+    print('  aile uyesi eklenen :', aile_eklenen, '(6. katman)')
     print()
     print('  katman              kelime      dosya')
     for kno, ad, n, boyut in ozet:

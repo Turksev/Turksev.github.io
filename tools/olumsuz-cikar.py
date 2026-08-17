@@ -27,7 +27,9 @@ import re
 import sys
 from collections import defaultdict
 
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+# Yeni bir sarmalayici kurmak yerine kodlamayi yerinde degistir: sarmalayici,
+# betik baska bir yerden ice aktarildiginda alttaki tamponu kapatiyor.
+sys.stdout.reconfigure(encoding='utf-8')
 
 SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 VERI = os.path.join(SITE, 'data')
