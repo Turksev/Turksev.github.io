@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YDS Hazırlık — Kelime, Gramer ve Deneme Soruları</title>
+<meta name="description" content="YDS'ye hazırlananlar için ücretsiz kelime listesi, konu anlatımlı gramer notları ve çözümlü deneme soruları.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%233b5bdb'/><text y='68' x='50' text-anchor='middle' font-size='46' font-family='sans-serif' font-weight='bold' fill='white'>Y</text></svg>">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="assets/js/main.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="dot">YDS</span> Hazırlık</a>
+    <nav class="site-nav">
+      <a href="index.html">Ana Sayfa</a>
+      <a href="kelimeler.html">Kelimeler</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="gramer.html">Gramer</a>
+    </nav>
+    <button class="theme-toggle" type="button" title="Temayı değiştir">☾</button>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap">
+      <span class="badge accent">Ücretsiz · Kayıt gerektirmez</span>
+      <h1>YDS'ye çalışmanın<br>düzenli yolu</h1>
+      <p class="lead">
+        Sınavda en çok çıkan kelimeler, konu konu gramer notları ve çözümlü deneme soruları
+        tek yerde. İlerlemen tarayıcında saklanır; istediğin yerden devam edersin.
+      </p>
+      <div class="hero-actions">
+        <a class="btn" href="quiz.html">Denemeye başla</a>
+        <a class="btn ghost" href="kelimeler.html">Kelimelere göz at</a>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="n" id="st-kelime">—</div><div class="l">Kelime</div></div>
+        <div class="stat"><div class="n" id="st-soru">—</div><div class="l">Soru</div></div>
+        <div class="stat"><div class="n" id="st-konu">10</div><div class="l">Gramer konusu</div></div>
+        <div class="stat"><div class="n" id="st-ogrenilen">0</div><div class="l">Öğrendiğin kelime</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Nereden başlamak istersin?</h2>
+      <div class="grid">
+
+        <a class="card card-link" href="kelimeler.html">
+          <span class="ico">📚</span>
+          <h3>Kelime Listesi</h3>
+          <p>Örnek cümleli, seviyeye göre filtrelenebilir kelime listesi. Kart modunda kendini test et,
+             bildiklerini işaretle.</p>
+        </a>
+
+        <a class="card card-link" href="quiz.html">
+          <span class="ico">📝</span>
+          <h3>Deneme Soruları</h3>
+          <p>Kelime, dil bilgisi, bağlaç, preposition, cloze test ve çeviri. Her sorunun ardından
+             ayrıntılı çözüm.</p>
+        </a>
+
+        <a class="card card-link" href="gramer.html">
+          <span class="ico">📖</span>
+          <h3>Gramer Notları</h3>
+          <p>Zamanlar, edilgen yapı, koşul cümleleri, isim ve sıfat cümlecikleri… Tablolarla özet,
+             örneklerle pekiştirme.</p>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>Nasıl çalışmalı?</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>1. Önce gramer</h3>
+          <p class="muted small">Bir konuyu okuyup örnekleri sesli tekrar et. Konu bitince quizde o kategoriyi
+             seçip sadece o tür sorulara odaklan.</p>
+        </div>
+        <div class="card">
+          <h3>2. Günde 20 kelime</h3>
+          <p class="muted small">Kelime sayfasında kart moduna geç, bildiklerini ✓ ile işaretle. Ertesi gün
+             "sadece öğrenilmemişler" filtresiyle tekrar bak.</p>
+        </div>
+        <div class="card">
+          <h3>3. Haftada bir deneme</h3>
+          <p class="muted small">Karışık modda 20 soruluk bir deneme çöz. Yanlışlarının açıklamalarını
+             not al; aynı hata iki kez tekrarlanıyorsa konuya dön.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span data-yil>2026</span> YDS Hazırlık</span>
+    <span>Tüm ilerleme yalnızca kendi tarayıcında saklanır.</span>
+  </div>
+</footer>
+
+<script src="data/kelimeler.js"></script>
+<script src="data/sorular.js"></script>
+<script>
+(function () {
+  function yaz(id, deger) {
+    var el = document.getElementById(id);
+    if (el) el.textContent = deger;
+  }
+  yaz('st-kelime', (window.KELIMELER || []).length);
+  yaz('st-soru', (window.SORULAR || []).length);
+
+  var bilinen = window.YDS ? window.YDS.Depo.oku('yds-bilinen', []) : [];
+  yaz('st-ogrenilen', Array.isArray(bilinen) ? bilinen.length : 0);
+})();
+</script>
+
+</body>
+</html>

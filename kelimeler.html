@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kelime Listesi — YDS Hazırlık</title>
+<meta name="description" content="Örnek cümleli YDS kelime listesi. Seviyeye ve türe göre filtrele, kart modunda kendini test et.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%233b5bdb'/><text y='68' x='50' text-anchor='middle' font-size='46' font-family='sans-serif' font-weight='bold' fill='white'>Y</text></svg>">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="assets/js/main.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="dot">YDS</span> Hazırlık</a>
+    <nav class="site-nav">
+      <a href="index.html">Ana Sayfa</a>
+      <a href="kelimeler.html">Kelimeler</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="gramer.html">Gramer</a>
+    </nav>
+    <button class="theme-toggle" type="button" title="Temayı değiştir">☾</button>
+  </div>
+</header>
+
+<main class="section">
+  <div class="wrap">
+
+    <h1>Kelime Listesi</h1>
+    <p class="muted">
+      Bir kelimeyi öğrendiğinde sağdaki <b>✓</b> düğmesine bas — işaretin tarayıcında saklanır,
+      sonraki ziyaretinde de durur.
+    </p>
+
+    <div class="toolbar">
+      <input class="grow" type="search" id="ara" placeholder="Ara: İngilizce veya Türkçe…" autocomplete="off">
+
+      <select id="seviye" aria-label="Seviye">
+        <option value="">Tüm seviyeler</option>
+        <option value="temel">Temel</option>
+        <option value="orta">Orta</option>
+        <option value="ileri">İleri</option>
+      </select>
+
+      <select id="tip" aria-label="Kelime türü">
+        <option value="">Tüm türler</option>
+        <option value="fiil">Fiil</option>
+        <option value="isim">İsim</option>
+        <option value="sıfat">Sıfat</option>
+        <option value="zarf">Zarf</option>
+      </select>
+
+      <select id="durum" aria-label="Öğrenme durumu">
+        <option value="">Hepsi</option>
+        <option value="yeni">Öğrenilmemişler</option>
+        <option value="bilinen">Öğrendiklerim</option>
+      </select>
+
+      <button class="btn ghost sm" type="button" id="mod">Kart moduna geç</button>
+    </div>
+
+    <p class="small muted" id="sayac">Yükleniyor…</p>
+
+    <!-- liste görünümü -->
+    <div id="liste" class="word-list"></div>
+
+    <!-- kart görünümü -->
+    <div id="kartAlan" hidden>
+      <div class="card flash" id="kart">
+        <div>
+          <div class="big" id="kartOn">—</div>
+          <div class="back" id="kartArka" hidden>
+            <div style="font-size:1.05rem;font-weight:600" id="kartTr"></div>
+            <div class="muted small" style="margin-top:10px" id="kartOrnek"></div>
+          </div>
+          <div class="hint" id="kartIpucu">Çevirmek için karta tıkla · boşluk tuşu</div>
+        </div>
+      </div>
+      <div class="flash-nav">
+        <button class="btn ghost sm" type="button" id="onceki">‹ Önceki</button>
+        <span class="small muted" id="kartSayac">0 / 0</span>
+        <button class="btn ghost sm" type="button" id="sonraki">Sonraki ›</button>
+        <button class="btn sm" type="button" id="biliyorum">✓ Biliyorum</button>
+      </div>
+      <p class="center small muted" style="margin-top:14px">
+        Klavye: <code>←</code> <code>→</code> geçiş, <code>boşluk</code> çevir, <code>Enter</code> biliyorum
+      </p>
+    </div>
+
+    <div class="empty" id="bos" hidden>
+      Bu filtrelerle eşleşen kelime yok.
+      <br><button class="btn ghost sm" type="button" id="temizle" style="margin-top:12px">Filtreleri temizle</button>
+    </div>
+
+    <p class="small muted" style="margin-top:28px">
+      İşaretlerini sıfırlamak istersen:
+      <button class="btn ghost sm" type="button" id="sifirla">Öğrendiklerimi sıfırla</button>
+    </p>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span data-yil>2026</span> YDS Hazırlık</span>
+    <span>Tüm ilerleme yalnızca kendi tarayıcında saklanır.</span>
+  </div>
+</footer>
+
+<script src="data/kelimeler.js"></script>
+<script src="assets/js/kelimeler.js"></script>
+</body>
+</html>
