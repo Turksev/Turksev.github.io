@@ -17,7 +17,8 @@
   var kartIndex = 0;
   var kartAcik = false;
   var kartModu = false;
-  var desteModu = false;   // "bugünü çalış" ile girilen odaklı tekrar
+  var desteModu = false;      // "bugünü çalış" ile girilen odaklı tekrar
+  var ipucuAcik = false;      // bu kartta ipucu görüntülendi mi
 
   var $ = function (id) { return document.getElementById(id); };
   var elAra = $('ara'), elSeviye = $('seviye'), elTip = $('tip'), elDurum = $('durum');
@@ -74,6 +75,7 @@
 
     if (sirala) suzulmus = karistir(suzulmus);
     if (kartIndex >= suzulmus.length) kartIndex = 0;
+    ipucuAcik = false;      // liste değişti, gösterilen kart da değişmiş olabilir
     ciz();
   }
 
@@ -130,6 +132,21 @@
     } catch (e) { /* tarayıcı izin vermiyorsa sessizce geç */ }
   }
 
+  /* ---------- ipucu: kelimeyi kendi örnek cümlesinde gizle ---------- */
+
+  /* Örnekler kelimeyi çekimli kullanabiliyor (accumulate → accumulated),
+     bu yüzden düz arama yetmez: sondaki e/y atılıp kökle başlayan sözcük aranır.
+     Eşleşme bulunamazsa null döner ve o kartta ipucu hiç sunulmaz. */
+  function bosluklaCumle(kelime, cumle) {
+    var kok = String(kelime).toLowerCase().replace(/(e|y)$/, '');
+    if (kok.length < 3) kok = String(kelime).toLowerCase();
+    var kacisli = kok.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    var kalip = new RegExp('\\b' + kacisli + '[a-z]*\\b', 'gi');
+    if (!kalip.test(cumle)) return null;
+    kalip.lastIndex = 0;
+    return cumle.replace(kalip, '----');
+  }
+
   /* ---------- kart görünümü ---------- */
 
   function kartCiz() {
@@ -143,26 +160,43 @@
     $('kartOrnek').innerHTML = kacar(k.ex) +
       '<br><span style="opacity:.8">' + kacar(k.exTr) + '</span>';
     $('kartArka').hidden = !kartAcik;
-    $('kartIpucu').textContent = kartAcik
-      ? 'Bildin mi? Aşağıdan işaretle.'
-      : 'Çevirmek için karta tıkla · boşluk tuşu';
     $('kartSayac').textContent = (kartIndex + 1) + ' / ' + suzulmus.length;
     $('seslendir').hidden = !sesDestegi;
+
+    // İpucu yalnızca kart kapalıyken ve cümle boşluklanabiliyorsa anlamlı.
+    var bosluklu = bosluklaCumle(k.en, k.ex);
+    var sunulabilir = !kartAcik && bosluklu !== null;
+
+    $('ipucuBtn').hidden = !sunulabilir || ipucuAcik;
+    $('ipucuAlan').hidden = !(sunulabilir && ipucuAcik);
+    if (sunulabilir && ipucuAcik) {
+      $('ipucuAlan').innerHTML = kacar(bosluklu).replace(/----/g, '<span class="blank">----</span>');
+    }
+
+    $('kartIpucu').textContent = kartAcik
+      ? (ipucuAcik ? 'İpucu kullandın — "Bildim" dersen kelime aynı kutuda kalır.'
+                   : 'Bildin mi? Aşağıdan işaretle.')
+      : 'Çevirmek için karta tıkla · boşluk tuşu';
   }
 
   function kartGit(adim) {
     if (!suzulmus.length) return;
     kartIndex = (kartIndex + adim + suzulmus.length) % suzulmus.length;
     kartAcik = false;
+    ipucuAcik = false;
     kartCiz();
   }
 
-  /* Kartta cevap ver: kutuyu güncelle, deste modundaysa kartı listeden düşür. */
+  /* Kartta cevap ver: kutuyu güncelle, deste modundaysa kartı listeden düşür.
+     İpucuya bakıp bildiyse terfi yok — kelime aynı kutuda kalır. */
   function kartCevap(dogruMu) {
     var k = suzulmus[kartIndex];
     if (!k) return;
 
-    if (dogruMu) Il.dogru(k.en); else Il.yanlis(k.en);
+    if (!dogruMu) Il.yanlis(k.en);
+    else if (ipucuAcik) Il.ipucuyla(k.en);
+    else Il.dogru(k.en);
+
     desteyiCiz();
 
     if (desteModu) {
@@ -170,6 +204,7 @@
       if (!suzulmus.length) { desteBitti(); return; }
       if (kartIndex >= suzulmus.length) kartIndex = 0;
       kartAcik = false;
+      ipucuAcik = false;
       kartCiz();
       guncelleSayac();
     } else {
@@ -239,6 +274,7 @@
   $('mod').addEventListener('click', function () {
     kartModu = !kartModu;
     kartAcik = false;
+    ipucuAcik = false;
     desteModu = false;
     this.textContent = kartModu ? 'Liste moduna dön' : 'Kart moduna geç';
     ciz();
@@ -251,6 +287,7 @@
     kartModu = true;
     kartIndex = 0;
     kartAcik = false;
+    ipucuAcik = false;
     $('mod').textContent = 'Liste moduna dön';
     filtrele(true);                       // deste karışık sırayla
     elKartAlan.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -260,6 +297,14 @@
     kartAcik = !kartAcik;
     kartCiz();
   });
+
+  $('ipucuBtn').addEventListener('click', function (e) {
+    e.stopPropagation();          // karta tıklama sayılıp çevirmesin
+    ipucuAcik = true;
+    kartCiz();
+  });
+
+  $('ipucuAlan').addEventListener('click', function (e) { e.stopPropagation(); });
 
   $('onceki').addEventListener('click', function () { kartGit(-1); });
   $('sonraki').addEventListener('click', function () { kartGit(1); });
@@ -292,6 +337,10 @@
     if (e.key === 'ArrowRight') { e.preventDefault(); kartGit(1); }
     else if (e.key === 'ArrowLeft') { e.preventDefault(); kartGit(-1); }
     else if (e.key === ' ') { e.preventDefault(); kartAcik = !kartAcik; kartCiz(); }
+    else if (e.key.toLowerCase() === 'h') {
+      e.preventDefault();
+      if (!$('ipucuBtn').hidden) { ipucuAcik = true; kartCiz(); }
+    }
     else if (e.key === '1') { e.preventDefault(); kartCevap(false); }
     else if (e.key === '2') { e.preventDefault(); kartCevap(true); }
     else if (e.key.toLowerCase() === 's') {

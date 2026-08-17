@@ -11,7 +11,7 @@
    eklediğinde hem SÜRÜM'ü artır hem de listeye ekle.
    ============================================================ */
 
-var SURUM = 'yds-v1';
+var SURUM = 'yds-v2';
 var ONBELLEK = SURUM;
 
 var TEMEL_DOSYALAR = [

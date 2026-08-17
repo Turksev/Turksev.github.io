@@ -78,6 +78,15 @@
     return k;
   }
 
+  /* İpucuyla bilindi: terfi ettirme, aynı kutuda bırak ve yeniden zamanla.
+     Hiç çalışılmamış bir kelime bu yolla en fazla 1. kutuya girer. */
+  function ipucuyla(en) {
+    var k = Math.max(1, kutu(en));
+    leitner[en] = { k: k, g: bugun() + ARALIK[k] };
+    kaydet();
+    return k;
+  }
+
   /* Yanlış bilindi: birinci kutuya dön, yarın tekrar sor. */
   function yanlis(en) {
     leitner[en] = { k: 1, g: bugun() + ARALIK[1] };
@@ -218,6 +227,7 @@
     vadesiGeldiMi: vadesiGeldiMi,
     kalanGun: kalanGun,
     dogru: dogru,
+    ipucuyla: ipucuyla,
     yanlis: yanlis,
     sifirlaKelime: sifirlaKelime,
     leitnerSifirla: leitnerSifirla,

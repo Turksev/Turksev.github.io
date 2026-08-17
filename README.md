@@ -71,6 +71,16 @@ Her kelime 1–5 arası bir kutuda durur. Kart modunda **✓ Bildim** dersen bir
 4. ve 5. kutudakiler "öğrenilmiş" sayılır. Aralıkları değiştirmek istersen
 `assets/js/ilerleme.js` içindeki `ARALIK` tablosunu düzenle.
 
+**İpucu düğmesi.** Kartın ön yüzünde, kelimenin kendi örnek cümlesini hedef sözcük
+`----` ile gizlenmiş olarak gösterir — YDS'nin kelime sorusu formatı. İpucuya baktıktan
+sonra "Bildim" dersen kelime **terfi etmez**, aynı kutuda kalıp yeniden zamanlanır; böylece
+bağlamla hatırlamak, kelimeyi tek başına bilmekle aynı sayılmaz.
+
+Kelimeyi cümlede bulmak düz aramayla olmuyor, çünkü örnekler çekimli biçim kullanabiliyor
+(`accumulate` → "accumulated"). `bosluklaCumle()` sondaki `e`/`y` harfini atıp kökle
+başlayan sözcüğü arıyor; bu 181 kelimenin 180'ini yakalıyor. Eşleşme bulunamayan tek kelime
+(`undertake` → "undertook") için ipucu düğmesi o kartta hiç gösterilmiyor.
+
 ## İçerik eklemek
 
 **Yeni kelime** — `data/kelimeler.js` sonuna ekle:
