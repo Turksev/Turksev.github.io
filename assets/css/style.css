@@ -655,6 +655,11 @@ input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible
   align-items: start;
 }
 
+/* Grid hücresinin varsayılan min-width'i "auto"dur: geniş bir çocuk (uzun
+   tablo, kırılmayan bağlantı) hücreyi şişirip taşmayı sayfaya taşır. Sıfırlanınca
+   taşma, taşan öğenin kendi kaydırma kutusunda kalır. */
+.doc > * { min-width: 0; }
+
 .toc {
   position: sticky;
   top: 84px;
@@ -695,6 +700,26 @@ input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible
   vertical-align: top;
 }
 .rule-table th { background: var(--surface-2); font-weight: 700; }
+
+/* Konu anlatımı tabloları düzyazı taşır (çoğu hücre bir tam cümle); tek satıra
+   zorlanınca tablo ekranın kat kat dışına çıkıyordu. Burada hücreler sarılır ve
+   sütunlar eşit bölünür. Kaydırma tablonun kendisinde değil sarmalayıcıda:
+   kaydırma kutusuna verilen min-width kutuyu genişletip taşmayı sayfaya taşır. */
+.tablo-kutu { overflow-x: auto; margin: 0 0 16px; }
+
+#konuGovde .rule-table {
+  display: table;
+  width: 100%;
+  min-width: 480px;          /* bunun altında hücreler okunmaz hâle geliyor */
+  table-layout: fixed;
+  white-space: normal;
+  margin: 0;
+}
+#konuGovde .rule-table th,
+#konuGovde .rule-table td { overflow-wrap: anywhere; }
+
+/* Tirelerle uzayan terimler ("Opinion-size-age-shape-…") dar sütunu taşırmasın */
+#konuGovde { overflow-wrap: break-word; }
 
 .eg {
   background: var(--surface);
@@ -874,10 +899,24 @@ mark {
 }
 .site-footer .wrap { display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
 
+/* ---------- konu okuma görünümü ---------- */
+
+/* Bir konu açıkken sayfanın kenarlarındaki boşluk içeriğe verilir: içindekiler
+   sütunu genişler, tablolar rahat eder. Harita görünümünde kap yine dar kalır. */
+.wrap.okuma { max-width: 1320px; }
+.wrap.okuma .doc { grid-template-columns: 264px 1fr; gap: 44px; }
+
+/* Kap genişledi diye satırlar okunmaz uzunluğa çıkmasın: düzyazı ölçülü kalır,
+   fazladan genişliği yalnız tablolar kullanır. */
+#konuGovde p,
+#konuGovde li,
+#konuGovde .tip { max-width: 82ch; }
+
 /* ---------- duyarlı ---------- */
 
 @media (max-width: 800px) {
   .doc { grid-template-columns: 1fr; gap: 18px; }
+  .wrap.okuma .doc { grid-template-columns: 1fr; gap: 18px; }
   .toc { position: static; max-height: none; border: 1px solid var(--border); border-radius: 12px; padding: 12px; background: var(--surface); }
 }
 

@@ -191,6 +191,7 @@
 
     $('harita').hidden = true;
     $('konu').hidden = false;
+    $('kap').classList.add('okuma');      // okurken kenar boşluklarını içeriğe ver
     window.scrollTo({ top: 0, behavior: 'smooth' });
     location.hash = kod;
   }
@@ -198,6 +199,7 @@
   function haritayaDon() {
     $('konu').hidden = true;
     $('harita').hidden = false;
+    $('kap').classList.remove('okuma');
     if (location.hash) history.replaceState(null, '', location.pathname);
     eksenleriCiz();
     ciz();

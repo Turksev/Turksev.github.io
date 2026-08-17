@@ -625,6 +625,153 @@ window.EK_ORNEKLER = {
   {"tr":"s. yumuşak; hassas, şefkatli","ex":"The meat becomes tender only after several hours of slow cooking.","exTr":"Et, ancak birkaç saat ağır ateşte piştikten sonra yumuşuyor."},
   {"tr":"i. ihale, teklif","ex":"Three firms submitted a tender for the construction of the new bridge.","exTr":"Üç firma, yeni köprünün inşası için ihaleye teklif verdi."},
   {"tr":"f. (resmî olarak) sunmak, teklif vermek","ex":"She tendered her resignation the morning after the vote.","exTr":"Oylamanın ertesi sabahı istifasını sundu."}
+],
+
+/* ---------------------------------------------------------------- 5. parti */
+
+"amino": [
+  {"tr":"s. amino (–NH2 grubuna ait)","ex":"Every living cell depends on amino acids, which link together to form long, complex protein chains.","exTr":"Her canlı hücre, birbirine bağlanarak uzun ve karmaşık protein zincirleri oluşturan amino asitlere bağımlıdır."},
+  {"tr":"i. (günl.) amino asit","ex":"Some athletes take aminos before training, though the evidence for their benefit remains thin.","exTr":"Bazı sporcular antrenman öncesinde amino asit alıyor, ancak yararına dair kanıtlar hâlâ zayıf."}
+],
+
+"driving": [
+  {"tr":"i. araç kullanma, sürüş","ex":"Driving while fatigued is nearly as dangerous as driving under the influence of alcohol.","exTr":"Yorgunken araç kullanmak, neredeyse alkollü araç kullanmak kadar tehlikelidir."},
+  {"tr":"s. itici, sürükleyici","ex":"Rising fuel costs have become the driving force behind the shift toward electric vehicles.","exTr":"Artan yakıt maliyetleri, elektrikli araçlara geçişin ardındaki itici güç hâline geldi."}
+],
+
+"score": [
+  {"tr":"i. skor, puan","ex":"Researchers use a standardized score to compare cognitive performance across different age groups.","exTr":"Araştırmacılar, farklı yaş gruplarının bilişsel performansını karşılaştırmak için standartlaştırılmış bir puan kullanır."},
+  {"tr":"f. puan kaydetmek, sayı yapmak","ex":"The team scored twice in the final ten minutes and salvaged a draw.","exTr":"Takım son on dakikada iki gol atarak beraberliği kurtardı."},
+  {"tr":"f. (müzik) beste yazmak, müziğini yapmak","ex":"The composer was invited to score the documentary after his work on the earlier series.","exTr":"Besteci, önceki dizideki çalışmasının ardından belgeselin müziğini yapmaya davet edildi."}
+],
+
+"collective": [
+  {"tr":"s. ortak, kolektif, toplu","ex":"Reducing plastic pollution requires the collective effort of governments, businesses, and individual consumers.","exTr":"Plastik kirliliğini azaltmak; hükûmetlerin, işletmelerin ve bireysel tüketicilerin ortak çabasını gerektirir."},
+  {"tr":"i. kolektif, ortak girişim","ex":"The farmers formed a collective in order to negotiate better prices with distributors.","exTr":"Çiftçiler, dağıtımcılarla daha iyi fiyat pazarlığı yapabilmek için bir üretici kolektifi kurdu."}
+],
+
+"drain": [
+  {"tr":"i. gider, drenaj borusu","ex":"A blocked drain caused water to accumulate in the basement for days.","exTr":"Tıkanan bir gider, bodrumda günlerce su birikmesine yol açtı."},
+  {"tr":"f. boşaltmak, akıtmak; (seviyeyi) düşürmek","ex":"Prolonged drought can drain a reservoir's water level far below safe operating limits.","exTr":"Uzun süreli kuraklık, bir barajın su seviyesini güvenli işletme sınırlarının çok altına düşürebilir."},
+  {"tr":"f. tüketmek, zayıflatmak (enerji, kaynak)","ex":"Constant night shifts drained the nurses of both energy and morale.","exTr":"Sürekli gece vardiyaları hemşirelerin hem enerjisini hem moralini tüketti."}
+],
+
+"hearing": [
+  {"tr":"i. işitme, duyma","ex":"Prolonged exposure to loud machinery can permanently damage a worker's hearing.","exTr":"Gürültülü makinelere uzun süre maruz kalmak, bir işçinin işitme duyusuna kalıcı zarar verebilir."},
+  {"tr":"i. duruşma, oturum (mahkeme, komisyon)","ex":"The committee scheduled a public hearing to gather testimony from affected residents.","exTr":"Komite, etkilenen sakinlerin ifadelerini almak için kamuya açık bir oturum düzenledi."},
+  {"tr":"s. işiten, işitebilen","ex":"Deaf children educated alongside hearing peers often develop stronger social skills.","exTr":"İşiten akranlarıyla birlikte eğitim gören sağır çocuklar çoğu zaman daha güçlü sosyal beceriler geliştirir."}
+],
+
+"holiday": [
+  {"tr":"i. tatil","ex":"Many families in the region travel abroad during the summer holiday season.","exTr":"Bölgedeki pek çok aile, yaz tatili döneminde yurt dışına seyahat ediyor."},
+  {"tr":"i. bayram, resmî tatil günü","ex":"Banks remain closed on the national holiday, so transfers are processed the following day.","exTr":"Bankalar resmî tatilde kapalı olduğundan, havaleler ertesi gün işleme alınır."},
+  {"tr":"f. tatil yapmak, tatile gitmek","ex":"Families who once holidayed abroad are now choosing destinations closer to home.","exTr":"Eskiden yurt dışında tatil yapan aileler, artık eve daha yakın yerleri tercih ediyor."}
+],
+
+"club": [
+  {"tr":"i. kulüp, dernek","ex":"Students formed a science club to organize weekly experiments and lectures.","exTr":"Öğrenciler, haftalık deney ve konferanslar düzenlemek için bir bilim kulübü kurdu."},
+  {"tr":"i. sopa, cop","ex":"Archaeologists unearthed a wooden club used by hunters thousands of years ago.","exTr":"Arkeologlar, binlerce yıl önce avcıların kullandığı ahşap bir sopayı gün yüzüne çıkardı."},
+  {"tr":"f. sopayla vurmak, coplamak","ex":"Witnesses accused the guards of clubbing demonstrators who refused to disperse.","exTr":"Tanıklar, muhafızları dağılmayı reddeden göstericileri coplamakla suçladı."}
+],
+
+"defeat": [
+  {"tr":"i. yenilgi, mağlubiyet","ex":"After weeks of relentless fighting, the general's forces suffered a crushing defeat.","exTr":"Haftalarca süren amansız çatışmaların ardından generalin kuvvetleri ağır bir yenilgiye uğradı."},
+  {"tr":"f. yenmek, mağlup etmek; (tasarıyı) düşürmek","ex":"Opposition parties defeated the bill in parliament by a margin of seven votes.","exTr":"Muhalefet partileri, tasarıyı parlamentoda yedi oy farkla düşürdü."}
+],
+
+"gold": [
+  {"tr":"i. altın","ex":"Prospectors discovered gold deposits in the riverbed during the nineteenth century.","exTr":"Arayıcılar, on dokuzuncu yüzyılda nehir yatağında altın yatakları keşfetti."},
+  {"tr":"s. altından yapılmış; altın rengi","ex":"The museum displays a gold mask that once covered a pharaoh's face.","exTr":"Müze, bir zamanlar bir firavunun yüzünü örten altın bir maskeyi sergiliyor."}
+],
+
+"hawk": [
+  {"tr":"i. şahin, atmaca","ex":"Ecologists tracked a rare hawk species across the mountains using satellite transmitters.","exTr":"Ekologlar, nadir bir şahin türünü uydu vericileri kullanarak dağlar boyunca izledi."},
+  {"tr":"f. seyyar satıcılık yapmak, gezerek satmak","ex":"Vendors hawking souvenirs crowd the narrow streets around the temple every summer.","exTr":"Hediyelik eşya satan seyyar satıcılar her yaz tapınağın çevresindeki dar sokakları doldurur."}
+],
+
+"intermediate": [
+  {"tr":"s. orta düzey, ara","ex":"Students must complete an intermediate course in statistics before enrolling in advanced research methods.","exTr":"Öğrenciler, ileri araştırma yöntemlerine kayıt olmadan önce orta düzey bir istatistik dersini tamamlamalıdır."},
+  {"tr":"i. ara aşama, ara ürün","ex":"In this reaction, the unstable intermediate breaks down before it can be isolated.","exTr":"Bu tepkimede kararsız ara ürün, izole edilemeden parçalanır."}
+],
+
+"narrative": [
+  {"tr":"i. anlatı, öykü","ex":"Historians often construct a single narrative that oversimplifies the complexity of past events.","exTr":"Tarihçiler çoğu zaman, geçmiş olayların karmaşıklığını aşırı basitleştiren tek bir anlatı kurar."},
+  {"tr":"s. anlatısal, öyküleyici","ex":"The novel's narrative structure shifts between three different time periods.","exTr":"Romanın anlatı yapısı üç farklı zaman dilimi arasında gidip gelir."}
+],
+
+"shelter": [
+  {"tr":"i. sığınak, barınak","ex":"Local volunteers built a temporary shelter for families displaced by the flood.","exTr":"Yerel gönüllüler, selden evsiz kalan aileler için geçici bir barınak inşa etti."},
+  {"tr":"f. barındırmak, korumak; sığınmak","ex":"The cliffs shelter the harbour from the strongest winter storms.","exTr":"Kayalıklar, limanı en şiddetli kış fırtınalarından korur."}
+],
+
+"sight": [
+  {"tr":"i. görme yetisi, görme duyusu","ex":"Regular screening can prevent the loss of sight in patients with diabetes.","exTr":"Düzenli tarama, diyabet hastalarında görme kaybını önleyebilir."},
+  {"tr":"i. görüntü, manzara","ex":"The flooded streets were a distressing sight for residents returning home.","exTr":"Su altında kalan sokaklar, evlerine dönen sakinler için üzücü bir görüntüydü."},
+  {"tr":"f. görmek, gözle görmek, fark etmek","ex":"The crew sighted land after eleven weeks at sea.","exTr":"Mürettebat, denizde geçen on bir haftanın ardından karayı gördü."}
+],
+
+"tie": [
+  {"tr":"i. bağ, ilişki","ex":"Strong economic ties between the two nations helped prevent the conflict from escalating further.","exTr":"İki ülke arasındaki güçlü ekonomik bağlar, çatışmanın daha da tırmanmasını önlemeye yardımcı oldu."},
+  {"tr":"i. kravat","ex":"Formal dress at the ceremony requires a dark suit and a plain tie.","exTr":"Törendeki resmî kıyafet kuralı koyu bir takım elbise ve sade bir kravat gerektiriyor."},
+  {"tr":"i. beraberlik, berabere biten maç","ex":"The match ended in a tie, forcing both teams into a penalty shoot-out.","exTr":"Maç berabere bitti ve iki takımı penaltı atışlarına zorladı."},
+  {"tr":"f. bağlamak; (be tied to) bağlı kılmak, kısıtlamak","ex":"Bonuses are tied to individual performance rather than to length of service.","exTr":"İkramiyeler, hizmet süresine değil bireysel performansa bağlanmıştır."}
+],
+
+"jump": [
+  {"tr":"i. sıçrama, atlama; ani artış","ex":"Consumer prices saw a sudden jump after the government reduced fuel subsidies.","exTr":"Hükûmet yakıt sübvansiyonlarını azalttıktan sonra tüketici fiyatlarında ani bir sıçrama görüldü."},
+  {"tr":"f. atlamak, sıçramak","ex":"Startled by the noise, the deer jumped over the fence and disappeared into the woods.","exTr":"Sesten ürken geyik, çitin üzerinden atlayıp ormanda kayboldu."}
+],
+
+"lunch": [
+  {"tr":"i. öğle yemeği","ex":"Hospital staff often skip lunch entirely during particularly demanding shifts.","exTr":"Hastane personeli, özellikle yoğun vardiyalarda çoğu zaman öğle yemeğini tamamen atlıyor."},
+  {"tr":"f. öğle yemeği yemek","ex":"The delegates lunched together before resuming negotiations in the afternoon.","exTr":"Delegeler, öğleden sonra müzakerelere yeniden başlamadan önce birlikte öğle yemeği yedi."}
+],
+
+"round": [
+  {"tr":"s. yuvarlak","ex":"Ancient astronomers had already argued that the Earth was round.","exTr":"Antik dönem gökbilimcileri, Dünya'nın yuvarlak olduğunu çoktan öne sürmüştü."},
+  {"tr":"i. tur, aşama, raunt","ex":"The negotiations entered a third round without producing any agreement.","exTr":"Müzakereler, herhangi bir anlaşma sağlanmadan üçüncü tura girdi."},
+  {"tr":"z./e. (BrE) etrafında, çevresinde","ex":"The children sat round the fire and listened to the old stories.","exTr":"Çocuklar ateşin etrafında oturup eski hikâyeleri dinledi."},
+  {"tr":"f. (sayıyı) yuvarlamak","ex":"Statisticians typically round large figures to the nearest thousand for easier comparison.","exTr":"İstatistikçiler, karşılaştırmayı kolaylaştırmak için büyük rakamları genellikle en yakın bine yuvarlar."}
+],
+
+"seat": [
+  {"tr":"i. koltuk, oturma yeri","ex":"Passengers must remain in their seats until the aircraft comes to a complete stop.","exTr":"Yolcular, uçak tamamen durana kadar koltuklarında kalmalıdır."},
+  {"tr":"i. (parlamentoda) sandalye, milletvekilliği","ex":"The governing party lost twelve seats in the general election.","exTr":"İktidar partisi, genel seçimde on iki sandalye kaybetti."},
+  {"tr":"f. oturtmak; (kapasite olarak) almak","ex":"During major events, the newly built stadium can seat more than sixty thousand spectators.","exTr":"Büyük etkinliklerde, yeni yapılan stadyum altmış binden fazla seyirci alabiliyor."}
+],
+
+"superior": [
+  {"tr":"s. üstün, daha iyi","ex":"In both strength and resistance to corrosion, the new alloy proved superior to steel.","exTr":"Yeni alaşım, hem dayanıklılık hem de korozyona direnç bakımından çelikten üstün çıktı."},
+  {"tr":"i. üst, amir","ex":"Any complaint must first be reported to your immediate superior.","exTr":"Her şikâyet, öncelikle doğrudan bağlı olduğunuz amire bildirilmelidir."}
+],
+
+"yellow": [
+  {"tr":"s. sarı","ex":"The warning signs are printed in black on a bright yellow background.","exTr":"Uyarı işaretleri, parlak sarı zemin üzerine siyahla basılmıştır."},
+  {"tr":"f. sararmak","ex":"Old newspapers stored in the archive had turned yellow after decades of exposure to light.","exTr":"Arşivde saklanan eski gazeteler, onlarca yıl ışığa maruz kaldıktan sonra sararmıştı."}
+],
+
+"ageing": [
+  {"tr":"i. yaşlanma","ex":"Scientists still disagree about which biological processes actually drive ageing.","exTr":"Bilim insanları, yaşlanmayı asıl hangi biyolojik süreçlerin yönlendirdiği konusunda hâlâ görüş ayrılığı içinde."},
+  {"tr":"s. yaşlanan, yaşlı","ex":"Public health systems in many countries are struggling to cope with a rapidly ageing population.","exTr":"Pek çok ülkedeki kamu sağlık sistemleri, hızla yaşlanan bir nüfusla baş etmekte zorlanıyor."}
+],
+
+"bubble": [
+  {"tr":"i. kabarcık, baloncuk","ex":"Tiny bubbles of gas trapped in ancient ice reveal the composition of the atmosphere.","exTr":"Eski buz katmanlarında hapsolmuş minik gaz kabarcıkları, atmosferin bileşimini ortaya koyar."},
+  {"tr":"i. (ekonomik) balon","ex":"Many economists warned that housing prices were forming a dangerous financial bubble before the crash.","exTr":"Pek çok iktisatçı, çöküşten önce konut fiyatlarının tehlikeli bir finansal balon oluşturduğu konusunda uyarmıştı."},
+  {"tr":"f. kabarcık çıkarmak, fokurdamak","ex":"The mixture must bubble gently for twenty minutes before the heat is turned off.","exTr":"Karışım, ateş kapatılmadan önce yirmi dakika hafifçe fokurdamalıdır."}
+],
+
+"exhaust": [
+  {"tr":"f. tüketmek, bitirmek","ex":"Continuous overfishing has begun to exhaust fish populations along the northern coastline.","exTr":"Sürekli aşırı avlanma, kuzey kıyısı boyunca balık popülasyonlarını tüketmeye başladı."},
+  {"tr":"f. yormak, bitkin düşürmek","ex":"Three consecutive night shifts had exhausted the entire medical team.","exTr":"Üst üste üç gece vardiyası tüm sağlık ekibini bitkin düşürmüştü."},
+  {"tr":"i. egzoz, egzoz gazı","ex":"Vehicle exhaust remains the main source of nitrogen dioxide in city centres.","exTr":"Araç egzozu, şehir merkezlerinde azot dioksitin başlıca kaynağı olmayı sürdürüyor."}
+],
+
+"tap": [
+  {"tr":"i. musluk","ex":"Residents were advised not to drink tap water until the tests were complete.","exTr":"Sakinlere, testler tamamlanana kadar musluk suyu içmemeleri önerildi."},
+  {"tr":"i. hafif vuruş, dokunuş","ex":"A gentle tap on the screen is enough to activate the sensor.","exTr":"Ekrana hafifçe bir dokunuş, sensörü etkinleştirmek için yeterlidir."},
+  {"tr":"f. hafifçe vurmak, dokunmak","ex":"She tapped the microphone twice to check whether it was working.","exTr":"Mikrofonun çalışıp çalışmadığını anlamak için ona iki kez hafifçe vurdu."},
+  {"tr":"f. (kaynağı) kullanmak, yararlanmak","ex":"Engineers are exploring new ways to tap geothermal energy beneath the region's volcanic plains.","exTr":"Mühendisler, bölgenin volkanik ovalarının altındaki jeotermal enerjiden yararlanmanın yeni yollarını araştırıyor."}
 ]
 
 };

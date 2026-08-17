@@ -44,6 +44,12 @@ EKSENLER = [
 # de taranir. Dosya adi T01_… ya da E14_… gibi kodla baslasin yeterli.
 DOSYA_DESENI = re.compile(r'^([TE]\d+)[_\-. ]')
 
+# Vurgu kutularinin basindaki etiket ("Ana fikir:", "Not:") koyulastirilir.
+# Kaynak belgelerin bir kisminda etiket iki kez yazilmis ("Ana fikir: Ana fikir:");
+# kaynaga dokunmadigimiz icin tekrari burada temizliyoruz.
+TEKRAR_ETIKET = re.compile(r'^([^:|]{2,30}:)\s*\1\s*', re.I)
+ETIKET = re.compile(r'^([^:|.!?]{2,30}):\s+')
+
 
 # ---------------------------------------------------------------- harita
 
@@ -118,15 +124,24 @@ def metni_html_yap(ham):
 
             # Tek hücreli tablo = vurgu kutusu (Ana fikir, Not gibi)
             if len(satir_listesi) == 1 and len(satir_listesi[0]) == 1:
-                cikti.append('<div class="tip">' + k(satir_listesi[0][0]) + '</div>')
+                metin = TEKRAR_ETIKET.sub(r'\1 ', satir_listesi[0][0])
+                etiket = ETIKET.match(metin)
+                if etiket:
+                    cikti.append('<div class="tip"><b>%s:</b> %s</div>'
+                                 % (k(etiket.group(1)), k(metin[etiket.end():])))
+                else:
+                    cikti.append('<div class="tip">' + k(metin) + '</div>')
                 continue
 
-            gov = ['<table class="rule-table">']
+            # Dar ekranda tablo sayfayi degil kendi kutusunu kaydirsin diye
+            # sarmalayici veriliyor; kaydirma tablonun kendisinde olursa
+            # min-width kaydirma kutusunu genisletip tasmayi sayfaya taşır.
+            gov = ['<div class="tablo-kutu"><table class="rule-table">']
             for j, r in enumerate(satir_listesi):
                 etiket = 'th' if j == 0 else 'td'
                 gov.append('<tr>' + ''.join(
                     '<%s>%s</%s>' % (etiket, k(c), etiket) for c in r) + '</tr>')
-            gov.append('</table>')
+            gov.append('</table></div>')
             cikti.append(''.join(gov))
             continue
 
