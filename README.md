@@ -59,6 +59,7 @@ assets/
   css/style.css       tüm sayfaların ortak stili (açık/koyu tema)
   js/main.js          tema, gezinme, localStorage, service worker kaydı
   js/ilerleme.js      Leitner, yanlış defteri, kategori istatistiği, geçmiş
+  js/yedek.js         ilerlemeyi dosyaya indirme / dosyadan birleştirerek yükleme
   js/veri.js          kelime katmanlarını ve öbekleri istendiğinde yükler
   js/kelimeler.js     kelime sayfası
   js/obekler.js       öbek sayfası
@@ -118,6 +119,21 @@ varyant (`give-up`, `turn-out`); o kartlarda ipucu düğmesi hiç gösterilmiyor
 
 Öbeklerde her sözcük ayrı ayrı maskeleniyor (`stem from` → "----  ---- " birleştirilip tek `----`
 oluyor), çünkü çekim öbeğin herhangi bir parçasında olabiliyor: *stems from*, *coped with*.
+
+## İlerlemeyi başka bilgisayara taşımak
+
+İlerleme sunucuda değil, o anki tarayıcının `localStorage`'ında durur; bu yüzden iş
+yerindeki çalışma eve kendiliğinden geçmez. **Durumum** sayfasının altındaki yedekleme
+kutusu bunun için var:
+
+1. Çalıştığın bilgisayarda **Yedeği indir** → `yds-yedek-2026-08-20.json` gibi bir dosya iner.
+2. Dosyayı diğer bilgisayara taşı (e-posta, USB, Drive…).
+3. Orada **Yedekten yükle** ile dosyayı seç.
+
+Yükleme mevcut ilerlemeyi silmez, iki tarafı **birleştirir**: her kelimede en son
+çalışılan kayıt geçerli olur (tekrar gününden geriye hesaplanır), yanlış defteri ve test
+geçmişi birleşir, rekorun yükseği kalır, katman/eksen tercihleri yalnız boşsa yedekten
+alınır. Mantık `assets/js/yedek.js` içinde.
 
 ## Kelime ve öbek verisini yeniden üretmek
 
