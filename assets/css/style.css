@@ -182,6 +182,10 @@ code {
 }
 .theme-toggle:hover { color: var(--text); border-color: var(--accent); }
 
+/* Eşitleme düğmesi (esitleme.js başlığa ekler). Girişliyken kullanıcının
+   baş harfini gösterir. */
+.esit-dugme.acik { color: var(--ok); border-color: var(--ok); font-weight: 700; }
+
 /* ---------- kartlar ---------- */
 
 .card {

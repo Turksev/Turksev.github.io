@@ -59,6 +59,8 @@ assets/
   css/style.css       tüm sayfaların ortak stili (açık/koyu tema)
   js/main.js          tema, gezinme, localStorage, service worker kaydı
   js/ilerleme.js      Leitner, yanlış defteri, kategori istatistiği, geçmiş
+  js/esitleme-ayar.js Firebase yapılandırması (null ise eşitleme kapalı)
+  js/esitleme.js      cihazlar arası eşitleme: Google girişi + Firestore
   js/veri.js          kelime katmanlarını ve öbekleri istendiğinde yükler
   js/kelimeler.js     kelime sayfası
   js/obekler.js       öbek sayfası
@@ -118,6 +120,42 @@ varyant (`give-up`, `turn-out`); o kartlarda ipucu düğmesi hiç gösterilmiyor
 
 Öbeklerde her sözcük ayrı ayrı maskeleniyor (`stem from` → "----  ---- " birleştirilip tek `----`
 oluyor), çünkü çekim öbeğin herhangi bir parçasında olabiliyor: *stems from*, *coped with*.
+
+## Cihazlar arası eşitleme (Firebase)
+
+İlerleme localStorage'da yaşar; eşitleme açıksa bunun bir bulut kopyası da tutulur.
+Başlıktaki **⇅** düğmesiyle Google hesabına bir kez giriş yapılır; sonrası görünmezdir:
+
+- Açılışta bulut ile yerel **birleştirilir** — her kelimede en son çalışılan kayıt
+  kazanır (tekrar gününden geriye hesaplanır), yanlış defteri ve geçmiş birleşir,
+  rekorun yükseği kalır, katman/eksen tercihleri yalnız boşsa buluttan alınır.
+  Yerel veri değiştiyse sayfa bir kez yenilenir (sessionStorage işareti döngüyü keser).
+- Sonraki her değişiklik 2,5 sn gecikmeyle buluta yazılır; sekme kapanırken hemen.
+- Veri, kullanıcı başına tek Firestore belgesidir: `kullanicilar/{uid}` içinde
+  `{ surum, zaman, json }`. Bütün yds-* anahtarları tek JSON metni olarak durur
+  (Firestore alan adları her karakteri kaldırmıyor). Karşılaştırmalar anahtar
+  sıralayan kararlı JSON ile yapılır ki iki cihaz aynı veriyi farklı sırayla
+  yazıp durmasın.
+- `esitleme-ayar.js` içindeki `FIREBASE_AYAR` null ise her şey kapalıdır; site
+  yalnız yerel depoyla çalışır. Çıkış yapmak yerel veriyi silmez.
+
+Firebase tarafı (bir kerelik kurulum): konsolda proje aç → Web uygulaması ekle ve
+çıkan yapılandırmayı `esitleme-ayar.js`'e koy → Authentication'da Google
+sağlayıcısını aç → Authorized domains'e `turksev.github.io` ekle → Firestore
+veritabanı oluştur ve şu kuralları yayınla:
+
+```
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /kullanicilar/{uid} {
+      allow read, write: if request.auth != null && request.auth.uid == uid;
+    }
+  }
+}
+```
+
+`apiKey` gizli değildir (tarayıcıya zaten iner); veriyi koruyan bu kurallardır.
 
 ## Kelime ve öbek verisini yeniden üretmek
 
