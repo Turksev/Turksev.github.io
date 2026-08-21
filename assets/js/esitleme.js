@@ -248,8 +248,8 @@
         try { sessionStorage.removeItem(YENILEME_ISARETI); } catch (e) {}
         if (birikti) { birikti = false; gonder(); }
       });
-    }).catch(function () {
-      durumuYaz('Bulut şu an ulaşılamıyor; ilerleme yerelde birikiyor');
+    }).catch(function (e) {
+      durumuYaz('Bulut şu an ulaşılamıyor; ilerleme yerelde birikiyor (' + hataKodu(e) + ')');
       // Bağlantı gelince ilk değişiklik yeniden dener; hazir=false kaldığı
       // için birleştirilmemiş veri bulutun üstüne yazılmaz.
     });
@@ -274,8 +274,8 @@
         sonGonderilen = json;
         durumuYaz('Eşitlendi ' + saat());
       })
-      .catch(function () {
-        durumuYaz('Yazılamadı, yeniden denenecek');
+      .catch(function (e) {
+        durumuYaz('Yazılamadı, yeniden denenecek (' + hataKodu(e) + ')');
         zamanlayici = setTimeout(gonder, 15000);
       });
   }
@@ -325,6 +325,11 @@
       dugme.classList.remove('acik');
       dugme.title = 'İlerlemeni cihazların arasında eşitle — Google ile giriş yap';
     }
+  }
+
+  function hataKodu(e) {
+    if (!e) return 'bilinmiyor';
+    return String(e.code || e.message || e).slice(0, 120);
   }
 
   function durumuYaz(metin) {
