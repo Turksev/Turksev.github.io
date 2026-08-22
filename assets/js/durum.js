@@ -125,6 +125,9 @@
           '<div class="meta">' +
             '<span class="badge ' + b.sinif + '">' + b.ad + ' · ' + vade + '</span>' +
             '<span class="badge">' + (k.tur === 'obek' ? 'öbek' : 'kelime') + '</span>' +
+            (Il.testYanlisSayisi && Il.testYanlisSayisi(k.en)
+              ? '<span class="badge err" title="Günün testinde bilinemedi">testte ✗' +
+                (Il.testYanlisSayisi(k.en) > 1 ? ' ×' + Il.testYanlisSayisi(k.en) : '') + '</span>' : '') +
             (k.y ? '<span class="badge">' + kacar(k.y) + '</span>' : '') +
             (k.p !== undefined && k.p !== null
               ? '<span class="badge accent" title="YDS öncelik puanı">' + k.p + ' p</span>' : '') +

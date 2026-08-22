@@ -38,7 +38,7 @@
   /* Eşitlenen anahtarlar. Tema bilerek dışarıda: cihaz tercihi. */
   var ANAHTARLAR = [
     'yds-leitner', 'yds-yanlis', 'yds-kategori', 'yds-gecmis',
-    'yds-konular', 'yds-rekor', 'yds-yeni-sayac',
+    'yds-konular', 'yds-rekor', 'yds-yeni-sayac', 'yds-test-yanlis',
     'yds-gunluk-yeni', 'yds-katmanlar', 'yds-eksen'
   ];
   var ANAHTAR_KUMESI = {};
@@ -169,6 +169,19 @@
     return yerel;
   }
 
+  /* Testte bilinemeyenler: birlik; aynı kelimede yüksek sayı ve son zaman. */
+  function testYanlisBirlestir(yerel, gelen) {
+    var s = {};
+    [yerel, gelen].forEach(function (kaynak) {
+      Object.keys(kaynak).forEach(function (en) {
+        var k = kaynak[en] || {};
+        var m = s[en] || { n: 0, t: 0 };
+        s[en] = { n: Math.max(m.n, k.n || 1), t: Math.max(m.t, k.t || 0) };
+      });
+    });
+    return s;
+  }
+
   /* Yerel paketi (yerinde değiştirerek) bulutla birleştirir. */
   function paketBirlestir(y, g) {
     var nesne = function (v) { return (v && typeof v === 'object' && !Array.isArray(v)) ? v : null; };
@@ -188,6 +201,9 @@
     }
     if (nesne(y['yds-konular']) || nesne(g['yds-konular'])) {
       y['yds-konular'] = konuBirlestir(nesne(y['yds-konular']) || {}, nesne(g['yds-konular']) || {});
+    }
+    if (nesne(y['yds-test-yanlis']) || nesne(g['yds-test-yanlis'])) {
+      y['yds-test-yanlis'] = testYanlisBirlestir(nesne(y['yds-test-yanlis']) || {}, nesne(g['yds-test-yanlis']) || {});
     }
     var rekor = rekorBirlestir(y['yds-rekor'] || null, g['yds-rekor'] || null);
     if (rekor) y['yds-rekor'] = rekor;

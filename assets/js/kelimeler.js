@@ -107,6 +107,7 @@
       }).join('');
 
     $('desteBasla').disabled = o.bugun === 0;
+    testDugmesiGuncelle();
     $('desteBasla').textContent = o.bugun === 0
       ? (havuz.length ? 'Bugünlük bitti 🎉' : 'Katman seç')
       : 'Bugünü çalış (' + o.bugun + ' kart)';
@@ -137,6 +138,44 @@
       }
     }
     $('desteAciklama').innerHTML = metin;
+  }
+
+  /* ---------- günün testi ---------- */
+
+  var Test = window.YDS.KelimeTesti;
+
+  function testDugmesiGuncelle() {
+    var b = $('testBasla');
+    if (!Test) { b.hidden = true; return; }
+    var n = Test.bugunSayisi(havuz);
+    b.hidden = n < Test.EN_AZ;
+    b.textContent = 'Günün testi (' + Math.min(n, Test.EN_COK) + ' soru)';
+  }
+
+  function testiBaslat() {
+    if (!Test) return;
+    var b = $('testBasla');
+    b.disabled = true;
+    Test.baslat(havuz, secili, function () { listeyeDon(); }).then(function (r) {
+      b.disabled = false;
+      if (r.acildi) {
+        kartModu = false; desteModu = false;
+        elListe.hidden = true; elKartAlan.hidden = true; elBos.hidden = true;
+        $('dahaFazla').hidden = true;
+        $('testDavet').hidden = true;
+      } else {
+        $('desteAciklama').innerHTML = r.calisilan
+          ? 'Bugün çalıştığın ' + r.calisilan + ' kelimeden yalnız ' + r.soru + ' tanesinin test cümlesi hazır; test için en az ' + Test.EN_AZ + ' gerekiyor.'
+          : 'Bugün henüz kelime çalışmadın; önce desteyi bitir.';
+      }
+    }).catch(function () { b.disabled = false; });
+  }
+
+  function listeyeDon() {
+    $('testDavet').hidden = true;
+    filtrele();
+    desteyiCiz();
+    $('deste').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
   /* ---------- filtreleme ---------- */
@@ -205,6 +244,11 @@
     return '<span class="' + sinif + '">' + k + '. kutu · ' + (gun === 0 ? 'bugün' : gun + ' gün') + '</span>';
   }
 
+  function testRozeti(en) {
+    var n = Il.testYanlisSayisi(en);
+    return n ? '<span class="badge err" title="Günün testinde bilinemedi">testte ✗' + (n > 1 ? ' ×' + n : '') + '</span>' : '';
+  }
+
   function satir(d) {
     var tam = Veri.kayit(d.e);
     var kutu = Il.kutu(d.e);
@@ -230,6 +274,7 @@
             '<span class="badge accent">' + Veri.KATMAN_ADI[d.k] + '</span>' +
             (d.p !== undefined ? '<span class="badge" title="YDS öncelik puanı">' + d.p + ' p</span>' : '') +
             kutuRozeti(d.e) +
+            testRozeti(d.e) +
             (tam && tam.es ? '<span class="badge">≈ ' + kacar(tam.es) + '</span>' : '') +
           '</div>' +
         '</div>' +
@@ -353,6 +398,16 @@
     elDurum.value = '';
     filtrele();
     elSayac.textContent = 'Bugünün destesi bitti. Yarın yeni tekrarlar açılacak.';
+
+    // Deste bitince test daveti: bugün çalışılanlar yeterliyse göster.
+    var davet = $('testDavet');
+    var n = Test ? Test.bugunSayisi(havuz) : 0;
+    davet.hidden = n < (Test ? Test.EN_AZ : 99);
+    if (!davet.hidden) {
+      $('testDavetMetin').textContent = 'Bugünkü desteni bitirdin 🎉 Şimdi bu kelimeleri cümle içinde gör: ' +
+        Math.min(n, Test.EN_COK) + ' soruluk boşluk doldurma testi.';
+      davet.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
   }
 
   /* ---------- ortak ---------- */
@@ -456,6 +511,10 @@
   });
 
   /* Kotayı bugünlük genişletip desteyi yeniden aç. Günlük hedef değişmez. */
+  $('testBasla').addEventListener('click', testiBaslat);
+  $('testDavetBasla').addEventListener('click', testiBaslat);
+  $('testDavetKapat').addEventListener('click', function () { $('testDavet').hidden = true; });
+
   $('devamEt').addEventListener('click', function () {
     Il.kotaArtir();
     desteyiCiz();

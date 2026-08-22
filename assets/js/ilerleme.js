@@ -22,6 +22,7 @@
   var K_KATEGORI = 'yds-kategori';
   var K_GECMIS = 'yds-gecmis';
   var K_BILINEN = 'yds-bilinen';
+  var K_TEST_YANLIS = 'yds-test-yanlis';  // günün testinde bilinemeyen kelimeler {en: {n, t}}
   var K_GUNLUK = 'yds-gunluk-yeni';     // günlük yeni kelime kotası
   var K_YENI_SAYAC = 'yds-yeni-sayac';  // {g: gün, n: bugün açılan yeni kelime}
 
@@ -313,6 +314,34 @@
 
   function gecmisSifirla() { Depo.sil(K_GECMIS); }
 
+  /* ---------- günün testi: bilinemeyenler ----------
+     Test Leitner kutusunu değiştirmez; yalnız bu defteri tutar. Doğru bilinince düşer. */
+
+  function testDefteri() {
+    var d = Depo.oku(K_TEST_YANLIS, {});
+    return (d && typeof d === 'object' && !Array.isArray(d)) ? d : {};
+  }
+
+  function testYanlis(en) {
+    var d = testDefteri();
+    var k = d[en] || { n: 0 };
+    k.n = (k.n || 0) + 1;
+    k.t = Date.now();
+    d[en] = k;
+    Depo.yaz(K_TEST_YANLIS, d);
+  }
+
+  function testDogru(en) {
+    var d = testDefteri();
+    if (!d[en]) return;
+    delete d[en];
+    if (Object.keys(d).length) Depo.yaz(K_TEST_YANLIS, d); else Depo.sil(K_TEST_YANLIS);
+  }
+
+  function testYanlisKumesi() { return testDefteri(); }
+  function testYanlisSayisi(en) { var k = testDefteri()[en]; return k ? (k.n || 1) : 0; }
+  function testTemizle() { Depo.sil(K_TEST_YANLIS); }
+
   /* ---------- konu takibi ---------- */
 
   /* Kaynak Excel'de her ünite için Durum / Tanı % / Gecikmeli % / Not
@@ -357,6 +386,7 @@
     konuSifirla();
     kategoriSifirla();
     gecmisSifirla();
+    testTemizle();
     Depo.sil('yds-rekor');
   }
 
@@ -398,6 +428,11 @@
     sonucEkle: sonucEkle,
     gecmis: gecmis,
     gecmisSifirla: gecmisSifirla,
+    testYanlis: testYanlis,
+    testDogru: testDogru,
+    testYanlisKumesi: testYanlisKumesi,
+    testYanlisSayisi: testYanlisSayisi,
+    testTemizle: testTemizle,
     hepsiniSifirla: hepsiniSifirla
   };
 })();

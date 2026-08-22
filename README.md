@@ -63,6 +63,8 @@ gramer.html  baglaclar.html  ara.html
 assets/
   css/style.css       tüm sayfaların ortak stili (açık/koyu tema)
   js/main.js          tema, gezinme, localStorage, service worker kaydı
+  js/cekim.js         çekim motoru (test şıkları için)
+  js/kelime-testi.js  günün testi: soru kurma, şıklar, sonuç
   js/ilerleme.js      Leitner, yanlış defteri, kategori istatistiği, geçmiş
   js/esitleme-ayar.js Firebase yapılandırması (null ise eşitleme kapalı)
   js/esitleme.js      cihazlar arası eşitleme: Google girişi + Firestore
@@ -76,6 +78,7 @@ assets/
   img/                PWA ikonları (tools ile üretildi)
 data/
   kelime-dizin.js     7.859 kelime: yazılış, kısa anlam, puan, katman, tür
+  test-k1..k7.js      günün testi cümleleri (katman başına, üretildikçe)
   kelime-k1..k7.js    katman katman tam kayıtlar (örnek cümleler)
   obekler.js          2.067 kelime öbeği
   sayilar.js          içerik sayaçları (üretilir)
@@ -125,6 +128,27 @@ varyant (`give-up`, `turn-out`); o kartlarda ipucu düğmesi hiç gösterilmiyor
 
 Öbeklerde her sözcük ayrı ayrı maskeleniyor (`stem from` → "----  ---- " birleştirilip tek `----`
 oluyor), çünkü çekim öbeğin herhangi bir parçasında olabiliyor: *stems from*, *coped with*.
+
+## Günün testi (boşluk doldurma)
+
+Deste bitince (ya da deste kartındaki **Günün testi** düğmesiyle) bugün çalışılan kelimelerden
+en çok 20 soruluk, 5 şıklı boşluk doldurma testi açılır. Cümleler **karttaki örnekten bağımsız**,
+YDS okuma parçası kayıtında özgün cümlelerdir; `data/test-k{n}.js` içinde durur
+(`{kelime: {c, b, f, tr}}` — c boşluklu cümle, b boşluğa gelen çekimli biçim, f çekim türü
+`'' | s | past | pp | ing | pl`, tr Türkçesi). Katman dosyası yoksa o katmanın kelimeleri teste girmez.
+
+Şıklar aynı türden, yakın katmandan kelimelerden kurulur ve boşluktaki biçimle **aynı çekime**
+sokulur (`assets/js/cekim.js`: düzenli kurallar + düzensiz fiil/isim tablosu); biçim uyumu
+cevabı ele vermez. Aynı kök, eş anlamlı ve cümlede geçen kelimeler çeldirici olmaz.
+
+Sonuç Leitner kutusunu **değiştirmez**; bilinemeyen kelime `yds-test-yanlis` defterine girer
+(listede ve Durumum'da "testte ✗" rozeti), sonraki testte önce sorulur, doğru bilinince düşer.
+Defter cihazlar arasında eşitlenir.
+
+Cümle üretimi: kelimeler 70'lik paketlere bölünüp (scratchpad `test/paketle.js`) brief ile
+yazdırılır, `test/dogrula.js` her kaydı denetler (tek boşluk, 15–36 kelime, çekim-b uyumu,
+tür-biçim tutarlılığı, kökün cümlede tekrar etmemesi, kart örneğine benzememe) ve geçenleri
+`data/test-k{n}.js` olarak yazar.
 
 ## Cihazlar arası eşitleme (Firebase)
 

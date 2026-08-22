@@ -37,6 +37,7 @@
   /* ---------- katman yükleme ---------- */
 
   function dosyaYolu(k) { return 'data/kelime-k' + k + '.js'; }
+  function testYolu(k) { return 'data/test-k' + k + '.js'; }
 
   function katmanYukle(k) {
     if (yukluKatmanlar[k]) return Promise.resolve(k);
@@ -62,6 +63,27 @@
 
   function katmanlariYukle(liste) {
     return Promise.all((liste || []).map(katmanYukle));
+  }
+
+  /* ---------- günün testi cümleleri (data/test-k{n}.js) ---------- */
+
+  var testYukleniyor = {};
+  function testYukle(k) {
+    if (window['TEST_K' + k]) return Promise.resolve(k);
+    if (testYukleniyor[k]) return testYukleniyor[k];
+    testYukleniyor[k] = new Promise(function (coz) {
+      var s = document.createElement('script');
+      s.src = testYolu(k);
+      s.async = true;
+      // Dosya yoksa (o katman için cümle üretilmediyse) sessizce geç: test o kelimeleri atlar.
+      s.onload = function () { delete testYukleniyor[k]; coz(k); };
+      s.onerror = function () { delete testYukleniyor[k]; window['TEST_K' + k] = window['TEST_K' + k] || {}; coz(k); };
+      document.head.appendChild(s);
+    });
+    return testYukleniyor[k];
+  }
+  function testleriYukle(liste) {
+    return Promise.all((liste || []).map(testYukle));
   }
 
   function katmanYukluMu(k) { return !!yukluKatmanlar[k]; }
@@ -122,6 +144,7 @@
     katmanlariYukle: katmanlariYukle,
     katmanYukluMu: katmanYukluMu,
     katmanSayilari: katmanSayilari,
-    obekleriYukle: obekleriYukle
+    obekleriYukle: obekleriYukle,
+    testleriYukle: testleriYukle
   };
 })();
