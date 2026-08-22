@@ -76,7 +76,7 @@
 
   /* Yalnizca BASLANMIS kelimeler icin: tekrar gunu geldi mi?
      Hic calisilmamis kelime "vadesi gelmis" sayilmaz — o yeni kelimedir ve
-     gunluk kotayla acilir. Ikisini ayirmazsak ilk gun 4.760 kart cikardi. */
+     gunluk kotayla acilir. Ikisini ayirmazsak ilk gun 7.859 kart cikardi. */
   function vadesiGeldiMi(en) {
     var kayit = leitner[en];
     if (!kayit) return false;

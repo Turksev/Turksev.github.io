@@ -10,7 +10,7 @@ Yayında: <https://turksev.github.io>
 | Dosya | İçerik |
 | --- | --- |
 | `index.html` | Ana sayfa ve ilerleme paneli: tekrar durumu, yanlış defteri, deneme geçmişi, kategori karnesi |
-| `kelimeler.html` | 4.760 kelime, 5 katman + **aralıklı tekrar (Leitner)**: bugünün destesi, kart modu, ipucu, sesli okuma |
+| `kelimeler.html` | 7.859 kelime, 7 katman + **aralıklı tekrar (Leitner)**: bugünün destesi, kart modu, ipucu, sesli okuma |
 | `obekler.html` | 2.067 kelime öbeği (phrasal verb, deyimsel fiil, sabit ifade) — ayrı Leitner destesi |
 | `quiz.html` | Alıştırma soruları: 12 kategori, anında çözüm, yanlış defterinden çalışma |
 | `deneme.html` | **Süreli deneme sınavı**: geri sayım, soru ızgarası, işaretleme, net hesabı, kategori karnesi |
@@ -20,7 +20,7 @@ Yayında: <https://turksev.github.io>
 
 ## İçerik
 
-- **4.760 kelime** — 49 gerçek YDS sınavındaki geçme sıklığına göre puanlanmış, beş katmana ayrılmış;
+- **7.859 kelime** — 49 gerçek YDS sınavındaki geçme sıklığına göre puanlanmış, yedi katmana ayrılmış;
   her birinde Türkçe anlam + İngilizce örnek cümle + çeviri (1.113'ünde ikinci anlam da var)
 - **2.067 kelime öbeği** — phrasal verb, deyimsel fiil ve sabit ifadeler, kaç sınavda geçtiği bilgisiyle
 - **125 soru** — 12 kategori: Kelime, Dil Bilgisi, Bağlaç, Preposition, Cloze Test, Çeviri,
@@ -36,14 +36,19 @@ F: toplam frekans, P: akademik önsel (NGSL/NAWL/AWL üyeliği + Zipf).
 
 | Katman | Puan | Kelime | Dosya (gzip) |
 | --- | --- | --- | --- |
-| 1 · Temel | ≥ 40 | 658 | 88 K |
-| 2 · Çekirdek | 30–40 | 720 | 94 K |
-| 3 · Orta | 25–30 | 719 | 88 K |
-| 4 · İleri | 20–25 | 1.099 | 122 K |
-| 5 · Geniş | 15–20 | 1.564 | 155 K |
+| 1 · Temel | ≥ 40 | 657 | 92 K |
+| 2 · Çekirdek | 30–40 | 720 | 95 K |
+| 3 · Orta | 25–30 | 708 | 90 K |
+| 4 · İleri | 20–25 | 1.073 | 151 K |
+| 5 · Geniş | 15–20 | 1.565 | 205 K |
+| 6 · Geniş+ | 10–15 | 3.135 | 353 K |
+| 7 · Aile üyeleri | puansız | (kaynağa göre) | — |
+
+6. katman 21.08.2026'da eşik 15 → 10'a indirilince geldi (`Calisma_Listesi_v4_site_tam.xlsx`);
+5. katmanı genişletmek yerine ayrı katman açıldı ki isteyen açsın, mevcut desteler değişmesin.
 
 Kullanıcı hangi katmanları seçerse yalnız onlar indirilir. Çekirdekten çalışan biri toplam
-**~229 K** veri indirir; hepsini açan 883 K. Dizin (`data/kelime-dizin.js`, 99 K gzip) her sayfada
+**~263 K** veri indirir; hepsini açan ~1,15 MB. Dizin (`data/kelime-dizin.js`, 168 K gzip) her sayfada
 yüklüdür ve yazılış + kısa anlam + puan + katman bilgisini taşır; örnek cümleler katman
 dosyalarındadır.
 
@@ -70,8 +75,8 @@ assets/
   js/ara.js           site geneli arama
   img/                PWA ikonları (tools ile üretildi)
 data/
-  kelime-dizin.js     4.760 kelime: yazılış, kısa anlam, puan, katman, tür
-  kelime-k1..k5.js    katman katman tam kayıtlar (örnek cümleler)
+  kelime-dizin.js     7.859 kelime: yazılış, kısa anlam, puan, katman, tür
+  kelime-k1..k7.js    katman katman tam kayıtlar (örnek cümleler)
   obekler.js          2.067 kelime öbeği
   sayilar.js          içerik sayaçları (üretilir)
   sorular.js          soru bankası + okuma parçaları
@@ -169,7 +174,7 @@ Okuduğu kaynaklar (salt okunur, hiçbirine yazılmaz):
 
 | Kaynak | Ne verir |
 | --- | --- |
-| `english claude/04_cikti/Calisma_Listesi_v3.xlsx` | 4.711 puanlanmış kelime, anlam ve örnek cümlelerle |
+| `english claude/04_cikti/Calisma_Listesi_v4_site_tam.xlsx` | 7.837 puanlanmış kelime (puan ≥ 10), anlam ve örnek cümlelerle; Tür sütunundaki `· temel` / `· çekim` etiketleri atılır |
 | `english claude/04_cikti/Kelime_Obekleri_v3.xlsx` | 2.067 öbek |
 | `tools/ek-kelimeler.js` | Listede olmayan 52 kelime + ortak 129 kelimenin eş anlamlıları |
 

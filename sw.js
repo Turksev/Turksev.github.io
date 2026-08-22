@@ -11,11 +11,11 @@
    eklediğinde hem SÜRÜM'ü artır hem de listeye ekle.
    ============================================================ */
 
-var SURUM = 'yds-v22';
+var SURUM = 'yds-v23';
 var ONBELLEK = SURUM;
 
 /* Kurulumda indirilenler: sayfalar, kod ve küçük veri dosyaları.
-   Kelime katmanları (data/kelime-k1..k5.js, ~1,5 MB) ve öbekler
+   Kelime katmanları (data/kelime-k1..k7.js, ~2,7 MB) ve öbekler
    (630 KB) BİLEREK burada değil — kullanıcı hangisini açarsa o,
    fetch sırasında önbelleğe alınır. Hepsini peşin indirmek, tek
    katman çalışan birine 2,4 MB yüklemek olurdu. */

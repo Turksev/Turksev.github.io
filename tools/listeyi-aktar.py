@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-Calisma_Listesi_v3.xlsx + Kelime_Obekleri_v3.xlsx  ->  site veri dosyalari
+Calisma_Listesi_v4_site_tam.xlsx + Kelime_Obekleri_v3.xlsx  ->  site veri dosyalari
 
 Uretilen dosyalar:
   data/kelime-dizin.js    tum kelimeler: yazilis, kisa anlam, puan, katman, tur
                           (her sayfada yuklenir; liste, arama ve Leitner ozeti bunu kullanir)
-  data/kelime-k1..k5.js   katman katman tam kayitlar: anlamlar + ornek cumleler
+  data/kelime-k1..k7.js   katman katman tam kayitlar: anlamlar + ornek cumleler
                           (yalniz gerekince yuklenir)
   data/obekler.js         kelime obekleri, ayri deste
 
@@ -31,16 +31,24 @@ SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 VERI = os.path.join(SITE, 'data')
 
 # Katman sinirlari: (anahtar, ad, alt puan, ust puan)
-# 6. katman puana gore degil, kaynagina gore olusur: kelime ailelerini
-# tamamlamak icin eklenen, puani 15'in altinda kalmis turevler.
+# 6. katman (Genis+) v4 listesiyle geldi: esik 15'ten 10'a indi (21.08.2026).
+# 7. katman puana gore degil, kaynagina gore olusur: kelime ailelerini
+# tamamlamak icin eklenen, puani 10'un altinda kalmis turevler.
 KATMANLAR = [
     (1, 'Temel',        40, 1e9),
     (2, 'Çekirdek',     30, 40),
     (3, 'Orta',         25, 30),
     (4, 'İleri',        20, 25),
     (5, 'Geniş',        15, 20),
-    (6, 'Aile üyeleri', -1, 15),
+    (6, 'Geniş+',       10, 15),
+    (7, 'Aile üyeleri', -1, 10),
 ]
+AILE_KATMANI = 7
+
+# v4_site_tam'da Tur sutunu "sıfat · temel" / "isim · çekim" etiketi tasir:
+# temel = bilindigi varsayilan yaygin kelime, cekim = koke birlestirilmis bicim.
+# Site icin ikisi de siradan kelimedir; etiket atilir.
+TUR_ETIKETI = re.compile(r'\s*·\s*(temel|çekim)\s*$')
 
 # Cloze sik numaralarindan sizan artiklar
 ARTIKLAR = {'ii', 'iii', 'iv'}
@@ -50,7 +58,7 @@ def katman_bul(puan):
     for k, _ad, alt, ust in KATMANLAR:
         if alt <= puan < ust:
             return k
-    return 5
+    return 6
 
 
 # Anlam sutunundaki tur oneki: "i." "s." "s./z." "z./i./s." gibi bir veya daha
@@ -100,13 +108,13 @@ def xlsx_oku(dosya, sayfa):
 # ---------------------------------------------------------------- kelimeler
 
 def kelimeleri_topla():
-    _bas, satirlar = xlsx_oku('Calisma_Listesi_v3.xlsx', 'Calisma_Listesi')
+    _bas, satirlar = xlsx_oku('Calisma_Listesi_v4_site_tam.xlsx', 'Calisma_Listesi')
     kelimeler = {}
     for _sira, kelime, tur, puan, anlam, ornek, ceviri in satirlar:
         if not kelime or kelime.lower() in ARTIKLAR:
             continue
         kayit = kelimeler.setdefault(kelime, {
-            'tip': (tur or '').strip(),
+            'tip': TUR_ETIKETI.sub('', (tur or '').strip()),
             'puan': round(float(puan), 1),
             'anlamlar': [],
         })
@@ -200,7 +208,7 @@ def birlestir():
             }
             yalniz_site += 1
 
-    # Aile uyeleri: her zaman 6. katman
+    # Aile uyeleri: her zaman son katman
     aile_eklenen = 0
     for en, v in aile_uye.items():
         if en in kelimeler:
@@ -208,7 +216,7 @@ def birlestir():
         kelimeler[en] = {
             'tip': v['tip'],
             'puan': v.get('p'),
-            'katman_zorla': 6,
+            'katman_zorla': AILE_KATMANI,
             'anlamlar': [{'tr': v['tr'], 'ex': v['ex'], 'exTr': v['exTr']}],
         }
         aile_eklenen += 1
@@ -252,7 +260,7 @@ def kelimeleri_yaz(kelimeler):
         '   Kelime dizini — %d kelime\n'
         '   Her sayfada yüklenir; liste, arama ve tekrar özeti bunu kullanır.\n'
         '   Alanlar: e=kelime, t=kısa anlam, p=YDS öncelik puanı, k=katman, y=tür\n'
-        '   Örnek cümleler katman dosyalarındadır (data/kelime-k1..k5.js).\n'
+        '   Örnek cümleler katman dosyalarındadır (data/kelime-k1..k7.js).\n'
         '   Bu dosya tools/listeyi-aktar.py ile üretilir; elle düzenleme.\n'
         '   ============================================================ */\n\n'
         'window.KELIME_DIZIN = [\n' % len(sirali)
@@ -385,7 +393,7 @@ def main():
     print('  cok anlamli        :', sum(1 for _e, k in sirali if len(k['anlamlar']) > 1))
     print('  ek ornek uygulanan :', ek_uygulanan)
     print('  ornegi eksik kalan :', len(bekleyen), '(cok turlu ama tek ornekli)')
-    print('  aile uyesi eklenen :', aile_eklenen, '(6. katman)')
+    print('  aile uyesi eklenen :', aile_eklenen, '(%d. katman)' % AILE_KATMANI)
     print()
     print('  katman              kelime      dosya')
     for kno, ad, n, boyut in ozet:

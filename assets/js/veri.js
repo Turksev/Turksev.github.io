@@ -5,7 +5,7 @@
    yazılışı, kısa anlamı, puanı, katmanı ve türü. Liste, arama, filtre
    ve tekrar özeti yalnız bunu kullanır.
 
-   Örnek cümleler katman dosyalarındadır (data/kelime-k1..k6.js) ve
+   Örnek cümleler katman dosyalarındadır (data/kelime-k1..k7.js) ve
    ancak o katmandan çalışılmak istendiğinde indirilir. Böylece kelime
    sayfası 2,4 MB'ı bir kerede yüklemek zorunda kalmaz.
    ============================================================ */
@@ -13,9 +13,9 @@
 (function () {
   'use strict';
 
-  var KATMANLAR = [1, 2, 3, 4, 5, 6];
+  var KATMANLAR = [1, 2, 3, 4, 5, 6, 7];
   var KATMAN_ADI = {
-    1: 'Temel', 2: 'Çekirdek', 3: 'Orta', 4: 'İleri', 5: 'Geniş', 6: 'Aile üyeleri'
+    1: 'Temel', 2: 'Çekirdek', 3: 'Orta', 4: 'İleri', 5: 'Geniş', 6: 'Geniş+', 7: 'Aile üyeleri'
   };
   var KATMAN_ACIKLAMA = {
     1: 'Sınavın her yerinde geçen çok temel kelimeler — büyük olasılıkla zaten biliyorsun.',
@@ -23,7 +23,8 @@
     3: 'Orta sıklıkta, sınavda düzenli çıkan kelimeler.',
     4: 'Daha seyrek ama puan getiren ileri kelimeler.',
     5: 'Uzun kuyruk. Çekirdeği bitirdiysen buraya geç.',
-    6: 'Kelime ailelerini tamamlayan türevler. Sınav kanıtı zayıf ama türetme sorusu için değerli.'
+    6: 'Seyrek kelimeler (10–15 puan). Okuma parçalarında rastlarsın; çok geniş bir havuz.',
+    7: 'Kelime ailelerini tamamlayan türevler. Sınav kanıtı zayıf ama türetme sorusu için değerli.'
   };
 
   var dizin = window.KELIME_DIZIN || [];
@@ -104,7 +105,7 @@
   /* ---------- özet ---------- */
 
   function katmanSayilari() {
-    var s = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 };
+    var s = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0 };
     dizin.forEach(function (d) { s[d.k]++; });
     return s;
   }

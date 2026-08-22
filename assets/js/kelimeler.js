@@ -2,7 +2,7 @@
    Kelime sayfası — katman seçimi, aralıklı tekrar (Leitner),
    arama/filtre, kart modu, ipucu ve sesli okuma
 
-   Dizin (4.760 kelime) her zaman bellektedir; örnek cümleler yalnız
+   Dizin (7.859 kelime) her zaman bellektedir; örnek cümleler yalnız
    seçili katmanlar için indirilir. Bu yüzden liste ve deste hep
    "seçili katmanlar" üzerinde çalışır.
    ============================================================ */
@@ -22,6 +22,11 @@
 
   var DIZIN = Veri.dizin;
   var secili = Depo.oku(KATMAN_ANAHTAR, [2]);
+  // Aile üyeleri 6'dan 7'ye taşındı (Geniş+ araya girdi); eski seçimi bir kez taşı.
+  if (!Depo.oku('yds-katman7', false)) {
+    if (secili.indexOf(6) !== -1) { secili = secili.filter(function (k) { return k !== 6; }).concat([7]); Depo.yaz(KATMAN_ANAHTAR, secili); }
+    Depo.yaz('yds-katman7', true);
+  }
   if (!Array.isArray(secili) || !secili.length) secili = [2];
 
   var havuz = [];          // seçili katmanlardaki kelimeler (dizin kaydı)
