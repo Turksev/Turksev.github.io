@@ -14,8 +14,9 @@
 
    Biçimler: '' (sözlük), 's', 'past', 'pp', 'ing', 'pl'.
    Düzensiz fiil ve isimler tabloda; önekli türevler (undertake,
-   withstand) tablodaki köke indirgenir. Üretilemeyen biçim için null
-   döner; test o çeldiriciyi kullanmaz.
+   undergo) ayrı açık listede — otomatik önek ayırma "behave"i be+have
+   sanıp bozuyordu. Üretilemeyen biçim için null döner; test o
+   çeldiriciyi kullanmaz.
    ============================================================ */
 (function () {
   'use strict';
@@ -60,8 +61,33 @@
     withstand: ['withstood'], wring: ['wrung'], write: ['wrote', 'written']
   };
 
-  /* Kökü tabloda olan önekli fiiller (undertake -> take). */
-  var ONEKLER = ['under', 'over', 'out', 'mis', 're', 'un', 'fore', 'with', 'up', 'be', 'inter'];
+  /* Önekli düzensiz fiiller. Önek + kök diye otomatik türetmiyoruz: "behave"
+     be+have sanılıp "behad" olur, "relay" re+lay olur. Bu yüzden açık liste. */
+  var ONEKLI_FIIL = {
+    undergo: ['underwent', 'undergone'], undertake: ['undertook', 'undertaken'],
+    understand: ['understood'], misunderstand: ['misunderstood'],
+    underwrite: ['underwrote', 'underwritten'], undercut: ['undercut'],
+    underlie: ['underlay', 'underlain'], undo: ['undid', 'undone'], unwind: ['unwound'],
+    overcome: ['overcame', 'overcome'], oversee: ['oversaw', 'overseen'],
+    overtake: ['overtook', 'overtaken'], overthrow: ['overthrew', 'overthrown'],
+    override: ['overrode', 'overridden'], overhear: ['overheard'],
+    overrun: ['overran', 'overrun'], overdo: ['overdid', 'overdone'],
+    overeat: ['overate', 'overeaten'], oversleep: ['overslept'],
+    overspend: ['overspent'], overpay: ['overpaid'],
+    rebuild: ['rebuilt'], redo: ['redid', 'redone'], remake: ['remade'],
+    rethink: ['rethought'], rewrite: ['rewrote', 'rewritten'], reread: ['reread'],
+    resell: ['resold'], resend: ['resent'], reset: ['reset'],
+    retake: ['retook', 'retaken'], retell: ['retold'], rerun: ['reran', 'rerun'],
+    repay: ['repaid'], rewind: ['rewound'],
+    outgrow: ['outgrew', 'outgrown'], outrun: ['outran', 'outrun'],
+    outdo: ['outdid', 'outdone'], outbid: ['outbid'],
+    foresee: ['foresaw', 'foreseen'], foretell: ['foretold'],
+    mistake: ['mistook', 'mistaken'], mislead: ['misled'], misread: ['misread'],
+    mishear: ['misheard'], misspend: ['misspent'],
+    behold: ['beheld'], uphold: ['upheld'], offset: ['offset'], inset: ['inset'],
+    interbreed: ['interbred'], rebuild2: undefined
+  };
+  delete ONEKLI_FIIL.rebuild2;
 
   var DUZENSIZ_ISIM = {
     child: 'children', man: 'men', woman: 'women', person: 'people', foot: 'feet',
@@ -97,6 +123,7 @@
     control: 1, patrol: 1, enrol: 1, compel: 1, propel: 1, expel: 1, dispel: 1, rebel: 1,
     excel: 1, repel: 1, equip: 1, acquit: 1, allot: 1, format: 1, kidnap: 1, handicap: 1,
     program: 1, worship: 1, unwrap: 1, outwit: 1, forbid: 1, beset: 1, abet: 1,
+    outfit: 1, retrofit: 1, backfit: 1,
     travel: 1, label: 1, model: 1, cancel: 1, channel: 1, fuel: 1, level: 1, quarrel: 1,
     signal: 1, total: 1, marvel: 1, counsel: 1, tunnel: 1, rival: 1, equal: 1
   };
@@ -140,15 +167,7 @@
   }
 
   function duzensizFiil(k) {
-    if (DUZENSIZ_FIIL[k]) return DUZENSIZ_FIIL[k];
-    for (var i = 0; i < ONEKLER.length; i++) {
-      var on = ONEKLER[i];
-      if (k.length > on.length + 2 && k.indexOf(on) === 0) {
-        var kok = duzensizFiil(k.slice(on.length));          // misunderstand -> understand -> stand
-        if (kok) return kok.map(function (b) { return on + b; });
-      }
-    }
-    return null;
+    return DUZENSIZ_FIIL[k] || ONEKLI_FIIL[k] || null;
   }
 
   function cogul(k) {
