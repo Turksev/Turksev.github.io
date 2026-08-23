@@ -1,0 +1,58 @@
+<!DOCTYPE html><meta charset="utf-8"><title>ara testi</title>
+<iframe id="f" src="file:///C:/Users/Trk/Desktop/Turksev.github.io/ara.html" style="width:1100px;height:800px;border:0"></iframe>
+<pre id="log"></pre>
+<script>
+var L=[],hata=0; function P(m){L.push(m);document.getElementById('log').textContent=L.join('\n');}
+function esit(ad,olan,bek){var ok=(olan===bek);if(!ok)hata++;P((ok?'OK   ':'HATA ')+ad+' = '+JSON.stringify(olan)+(ok?'':' (beklenen '+JSON.stringify(bek)+')'));}
+var f=document.getElementById('f');
+f.onload=function(){var w=f.contentWindow,d=f.contentDocument;
+ setTimeout(function(){try{
+  var ara=d.getElementById('ara');
+  function yaz(q){ara.value=q;ara.dispatchEvent(new w.Event('input'));}
+  yaz('passive');
+  var basliklar=[].map.call(d.querySelectorAll('#sonuclar h2'),function(h){return h.textContent.trim().split(' ')[0];});
+  P('gruplar (passive): '+basliklar.join(' | '));
+  yaz('articles');
+  P('gruplar (articles): '+[].map.call(d.querySelectorAll('#sonuclar h2'),function(h){return h.textContent.trim();}).join(' | '));
+  yaz('form');
+  var aileVar=[].some.call(d.querySelectorAll('#sonuclar h2'),function(h){return /aile/i.test(h.textContent);});
+  esit('aile grubu çıkıyor', aileVar, true);
+  // kelime kartı
+  yaz('abandon');
+  var satir=d.querySelector('.ara-satir[data-tip="kelime"]');
+  esit('kelime satırında data-tip var', !!satir, true);
+  satir.dispatchEvent(new w.MouseEvent('dblclick',{bubbles:true}));
+  setTimeout(function(){
+    esit('kart açıldı', d.getElementById('kartPerde').hidden, false);
+    var t=d.getElementById('kartIcerik').textContent;
+    P('kart başlığı: '+d.querySelector('#kartIcerik h3').textContent);
+    P('kart bölümleri: '+[].map.call(d.querySelectorAll('#kartIcerik h4'),function(x){return x.textContent;}).join(' | '));
+    esit('anlam var', t.length>80, true);
+    // esc ile kapan
+    d.dispatchEvent(new w.KeyboardEvent('keydown',{key:'Escape',bubbles:true}));
+    esit('esc kapattı', d.getElementById('kartPerde').hidden, true);
+    // ünite kartı
+    yaz('articles');
+    var u=d.querySelector('.ara-satir[data-tip="unite"]');
+    esit('ünite satırı var', !!u, true);
+    if(u){u.dispatchEvent(new w.MouseEvent('dblclick',{bubbles:true}));
+      setTimeout(function(){
+        P('ünite kartı: '+(d.querySelector('#kartIcerik h3')||{textContent:'-'}).textContent);
+        P('ünite bölümleri: '+[].map.call(d.querySelectorAll('#kartIcerik h4'),function(x){return x.textContent;}).join(' | '));
+        d.getElementById('kartKapat').click();
+        // aile kartı
+        yaz('vary');
+        var a=d.querySelector('.ara-satir[data-tip="aile"]');
+        esit('aile satırı var', !!a, true);
+        if(a){a.dispatchEvent(new w.MouseEvent('dblclick',{bubbles:true}));
+          setTimeout(function(){
+            P('aile kartı: '+(d.querySelector('#kartIcerik h3')||{textContent:'-'}).textContent);
+            P(hata?hata+' HATA':'HEPSI GECTI'); P('DONE');
+          },300);
+        } else {P(hata+' HATA'); P('DONE');}
+      },300);
+    }
+  },900);
+ }catch(e){P('ERR '+e.message+' | '+e.stack.split('\n')[1]);}},1800);
+};
+</script>

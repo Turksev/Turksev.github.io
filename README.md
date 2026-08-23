@@ -16,7 +16,7 @@ Yayında: <https://turksev.github.io>
 | `deneme.html` | **Süreli deneme sınavı**: geri sayım, soru ızgarası, işaretleme, net hesabı, kategori karnesi |
 | `gramer.html` | 10 başlıkta konu anlatımı, kural tabloları ve sınav tuzakları |
 | `baglaclar.html` | Bağlaçlar ve geçiş ifadeleri: çözüm yöntemi, yapı tabloları, filtrelenebilir 155 kayıtlık banka |
-| `ara.html` | Site geneli arama: kelimeler, öbekler, bağlaçlar, sorular ve gramer konuları |
+| `ara.html` | Site geneli arama: kelimeler, öbekler, bağlaçlar, sorular, gramer konuları, YDS konu haritası üniteleri ve kelime aileleri — sonuca **çift tıklayınca ayrıntı kartı** açılır |
 
 ## İçerik
 
@@ -135,6 +135,17 @@ zirve yapıp 180. günde 3'e iner, 220. günde bütün kelimeler mezun olur. Esk
 (anahtarlar çakışmaz: öbeklerde boşluk var), ama her sayfanın "sıfırla" düğmesi yalnız kendi
 kayıtlarını siler. Aralıkları değiştirmek istersen
 `assets/js/ilerleme.js` içindeki `ARALIK` tablosunu düzenle.
+
+### Arama sonucu ayrıntı kartı
+
+`ara.html` içinde bir sonuca çift tıklamak, sayfadan ayrılmadan kaydın tamamını gösterir:
+kelimede bütün anlamlar + örnek cümleler + yakın anlamlılar + olumsuzu + kelime ailesi +
+tekrar kutusu + varsa günün testi cümlesi; öbek/bağlaç/soruda tam kayıt; ünitede kapsam,
+soru türleri ve TR-hata riski; ailede bütün üyeler ve anlamları. Kelimenin örnek cümleleri
+o katman dosyasındaysa kart açıkken arka planda indirilip tazelenir.
+
+Karttaki "… sayfasında aç" düğmesi hedef sayfaya sorguyla gider:
+`kelimeler.html?q=`, `aileler.html?a=`, `konular.html#KOD`.
 
 **İpucu düğmesi.** Kartın ön yüzünde, kelimenin kendi örnek cümlesini hedef sözcük
 `----` ile gizlenmiş olarak gösterir — YDS'nin kelime sorusu formatı. İpucuya baktıktan

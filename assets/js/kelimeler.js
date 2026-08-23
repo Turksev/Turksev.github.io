@@ -612,6 +612,10 @@
   $('toplamKelime').textContent = DIZIN.length.toLocaleString('tr-TR');
   $('gunlukHedef').value = String(Il.gunlukHedef());
   $('gunlukTavan').value = String(Il.gunlukTavan());
+  // Arama sayfasından "Kelime sayfasında aç" ile gelen ?q=... sorgusu
+  var gelenQ = new URLSearchParams(location.search).get('q');
+  if (gelenQ) elAra.value = gelenQ;
+
   katmanlariCiz();
   katmanlariUygula();
 })();

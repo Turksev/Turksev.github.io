@@ -295,5 +295,10 @@
   $('toplamAile').textContent = AILELER.length.toLocaleString('tr-TR');
   $('toplamUye').textContent = AILELER
     .reduce(function (t, a) { return t + a.u.length; }, 0).toLocaleString('tr-TR');
+  // Arama sayfasından "Aileler sayfasında aç" ile gelen ?a=... ailesi
+  var gelenA = new URLSearchParams(location.search).get('a');
+  if (gelenA) elAra.value = gelenA;
+
   filtrele();
+  if (gelenA) aileAc(gelenA);
 })();

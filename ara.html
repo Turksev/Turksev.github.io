@@ -51,6 +51,8 @@
       Bir kelime, bağlaç ya da konu ara — sitenin her yerinde nerede geçtiğini birden gör.
       İngilizce veya Türkçe yazabilirsin. Kelimelerde yazılış ve anlam taranır;
       bağlaç, öbek ve sorularda örnek cümleler de aranır.
+      Bir sonuca <b>çift tıklarsan</b> ayrıntı kartı açılır: bütün anlamlar, örnek cümleler,
+      kelime ailesi ve tekrar kutusu tek ekranda.
     </p>
 
     <div class="toolbar">
@@ -63,11 +65,21 @@
         <option value="baglac">Bağlaçlar</option>
         <option value="soru">Sorular</option>
         <option value="konu">Gramer konuları</option>
+        <option value="unite">YDS konu haritası</option>
+        <option value="aile">Kelime aileleri</option>
       </select>
     </div>
 
     <p class="small muted" id="sayac">Aramak için yazmaya başla.</p>
     <div id="sonuclar"></div>
+
+    <!-- çift tıklamada açılan ayrıntı kartı -->
+    <div class="kart-perde" id="kartPerde" hidden>
+      <div class="kart-kutu" role="dialog" aria-modal="true" aria-labelledby="kartBaslik">
+        <button class="kart-kapat" type="button" id="kartKapat" title="Kapat (Esc)">✕</button>
+        <div id="kartIcerik"></div>
+      </div>
+    </div>
 
   </div>
 </main>
@@ -82,6 +94,10 @@
 <script src="data/kelime-dizin.js"></script>
 <script src="data/baglaclar.js"></script>
 <script src="data/sorular.js"></script>
+<script src="data/konular.js"></script>
+<script src="data/aileler.js"></script>
+<script src="data/olumsuzlar.js"></script>
+<script src="assets/js/ilerleme.js"></script>
 <script src="assets/js/veri.js"></script>
 <script src="assets/js/ara.js"></script>
 <script src="assets/js/esitleme-ayar.js"></script>

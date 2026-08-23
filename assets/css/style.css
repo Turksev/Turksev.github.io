@@ -875,6 +875,42 @@ a.ara-satir:hover .ara-bas { color: var(--accent); }
 .ara-bas { font-weight: 650; }
 .ara-alt { color: var(--text); font-size: .93rem; }
 .ara-ek { color: var(--muted); font-size: .87rem; margin-top: 3px; }
+.ara-satir { cursor: default; }
+.ara-satir[data-tip] { cursor: pointer; }
+
+/* Arama sonucu ayrıntı kartı */
+.kart-perde {
+  position: fixed; inset: 0; z-index: 60;
+  background: rgba(15, 20, 32, .55);
+  display: flex; align-items: flex-start; justify-content: center;
+  padding: 40px 16px; overflow-y: auto;
+}
+.kart-kutu {
+  position: relative;
+  width: min(680px, 100%);
+  background: var(--surface); color: var(--text);
+  border: 1px solid var(--border); border-radius: 16px;
+  padding: 26px 26px 22px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .28);
+}
+.kart-kapat {
+  position: absolute; top: 12px; right: 12px;
+  width: 34px; height: 34px; border-radius: 10px;
+  border: 1px solid var(--border); background: var(--bg);
+  color: var(--muted); font-size: 1rem; cursor: pointer;
+}
+.kart-kapat:hover { color: var(--text); border-color: var(--accent); }
+.kart-kutu h3 { margin: 0 0 4px; font-size: 1.5rem; }
+.kart-kutu .kart-rozetler { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 16px; }
+.kart-bolum { border-top: 1px solid var(--border); padding-top: 14px; margin-top: 14px; }
+.kart-bolum:first-of-type { border-top: 0; padding-top: 0; margin-top: 0; }
+.kart-bolum h4 { margin: 0 0 8px; font-size: .82rem; text-transform: uppercase;
+  letter-spacing: .05em; color: var(--muted); font-weight: 700; }
+.kart-anlam { margin: 0 0 12px; }
+.kart-anlam b { display: block; margin-bottom: 3px; }
+.kart-anlam i { display: block; font-style: normal; color: var(--text); }
+.kart-anlam span { display: block; color: var(--muted); font-size: .92rem; }
+.kart-kutu .kart-git { margin-top: 16px; }
 
 mark {
   background: var(--accent-soft);

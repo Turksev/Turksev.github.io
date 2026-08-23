@@ -1,5 +1,9 @@
 /* ============================================================
-   Site geneli arama: kelimeler, bağlaçlar, sorular ve gramer konuları
+   Site geneli arama: kelimeler, öbekler, bağlaçlar, sorular, gramer konuları,
+   YDS konu haritası üniteleri ve kelime aileleri.
+
+   Bir sonuca çift tıklamak ayrıntı kartını açar: kaydın tamamı (bütün anlamlar,
+   örnek cümleler, ailesi, tekrar kutusu) sayfadan ayrılmadan görünür.
    ============================================================ */
 
 (function () {
@@ -27,6 +31,23 @@
     { b: 'Bağlaç: üç dilbilgisi grubu', u: 'baglaclar.html#gruplar', a: 'coordinating subordinating correlative fanboys paralellik' },
     { b: 'Bağlaç: karıştırılan çiftler', u: 'baglaclar.html#nuans', a: 'because because of although despite so so that while whereas even if even though' }
   ];
+
+  /* Konu haritasındaki bütün üniteler (iki eksenin birleşimi). */
+  var uniteOnbellek = null;
+  function tumUniteler() {
+    if (uniteOnbellek) return uniteOnbellek;
+    uniteOnbellek = [];
+    (window.KONULAR || []).forEach(function (eksen) {
+      (eksen.u || []).forEach(function (u) {
+        uniteOnbellek.push({
+          k: u.k, ad: u.ad, kapsam: u.kapsam || '', kat: u.kat || '',
+          etki: u.etki, zor: u.zor, soru: u.soru, risk: u.risk, on: u.on,
+          eksen: eksen.ad
+        });
+      });
+    });
+    return uniteOnbellek;
+  }
 
   var $ = function (id) { return document.getElementById(id); };
   var elAra = $('ara'), elTur = $('tur'), elSayac = $('sayac'), elSonuc = $('sonuclar');
@@ -73,7 +94,8 @@
             bas: vurgula(d.e, q),
             alt: vurgula(d.t, q),
             ek: '',
-            rozet: Veri.KATMAN_ADI[d.k]
+            rozet: Veri.KATMAN_ADI[d.k],
+            tip: 'kelime', anahtar: d.e
           };
         })
       });
@@ -91,7 +113,8 @@
             bas: vurgula(o.f, q),
             alt: vurgula(o.a[0].tr, q),
             ek: kesit(o.a[0].ex, q, 45),
-            rozet: o.y
+            rozet: o.y,
+            tip: 'obek', anahtar: o.f
           };
         })
       });
@@ -109,7 +132,8 @@
             bas: vurgula(b.f, q),
             alt: vurgula(b.tr, q),
             ek: kesit(b.or[0] ? b.or[0].en : '', q, 45),
-            rozet: b.il
+            rozet: b.il,
+            tip: 'baglac', anahtar: b.f
           };
         })
       });
@@ -121,12 +145,13 @@
       });
       gruplar.push({
         ad: 'Sorular', url: 'quiz.html', n: sorular.length,
-        satirlar: sorular.slice(0, SINIR).map(function (s) {
+        satirlar: sorular.slice(0, SINIR).map(function (s, i) {
           return {
             bas: kesit(s.s, q, 60),
             alt: '',
             ek: kesit(String(s.ac).replace(/<[^>]+>/g, ''), q, 55),
-            rozet: s.kat
+            rozet: s.kat,
+            tip: 'soru', anahtar: String(i)
           };
         })
       });
@@ -138,6 +163,44 @@
         ad: 'Gramer konuları', url: 'gramer.html', n: konular.length,
         satirlar: konular.map(function (k) {
           return { bas: vurgula(k.b, q), alt: '', ek: '', rozet: '', link: k.u };
+        })
+      });
+    }
+
+    if (!tur || tur === 'unite') {
+      var uniteler = tumUniteler().filter(function (u) {
+        return eslesir(u.ad + ' ' + u.kapsam + ' ' + u.kat + ' ' + (u.soru || ''), q);
+      });
+      gruplar.push({
+        ad: 'YDS konu haritası', url: 'konular.html', n: uniteler.length,
+        satirlar: uniteler.slice(0, SINIR).map(function (u) {
+          return {
+            bas: vurgula(u.ad, q),
+            alt: vurgula(u.kapsam, q),
+            ek: u.kat,
+            rozet: u.k,
+            link: 'konular.html#' + u.k,
+            tip: 'unite', anahtar: u.k
+          };
+        })
+      });
+    }
+
+    if (!tur || tur === 'aile') {
+      var aileler = (window.AILELER || []).filter(function (a) {
+        return eslesir(a.k + ' ' + a.u.join(' '), q);
+      });
+      gruplar.push({
+        ad: 'Kelime aileleri', url: 'aileler.html', n: aileler.length,
+        satirlar: aileler.slice(0, SINIR).map(function (a) {
+          return {
+            bas: vurgula(a.k, q),
+            alt: a.u.map(function (x) { return vurgula(x, q); }).join(' · '),
+            ek: '',
+            rozet: a.u.length + ' tür',
+            link: 'aileler.html?a=' + encodeURIComponent(a.k),
+            tip: 'aile', anahtar: a.k
+          };
         })
       });
     }
@@ -179,12 +242,192 @@
             '<div class="ara-bas">' + r.bas + (r.rozet ? ' <span class="badge">' + kacar(r.rozet) + '</span>' : '') + '</div>' +
             (r.alt ? '<div class="ara-alt">' + r.alt + '</div>' : '') +
             (r.ek ? '<div class="ara-ek">' + r.ek + '</div>' : '');
+          var nitelik = r.tip
+            ? ' data-tip="' + r.tip + '" data-anahtar="' + kacar(r.anahtar) + '"' +
+              ' title="Ayrıntı kartı için çift tıkla"'
+            : '';
           return r.link
-            ? '<a class="ara-satir" href="' + r.link + '">' + ic + '</a>'
-            : '<div class="ara-satir">' + ic + '</div>';
+            ? '<a class="ara-satir" href="' + r.link + '"' + nitelik + '>' + ic + '</a>'
+            : '<div class="ara-satir"' + nitelik + '>' + ic + '</div>';
         }).join('') + fazla + '</div>';
     }).join('');
   }
+
+  /* ---------- ayrıntı kartı (çift tıklama) ---------- */
+
+  var Il = window.YDS.Ilerleme;
+  var KUTU_ADI = ['hiç çalışılmadı', '1. kutu', '2. kutu', '3. kutu', '4. kutu', '5. kutu (öğrenildi)'];
+
+  function rozet(metin, sinif) {
+    return metin ? '<span class="badge ' + (sinif || '') + '">' + kacar(metin) + '</span>' : '';
+  }
+
+  function bolum(baslik, govde) {
+    return govde ? '<div class="kart-bolum"><h4>' + baslik + '</h4>' + govde + '</div>' : '';
+  }
+
+  function anlamlar(liste) {
+    return liste.map(function (a) {
+      return '<div class="kart-anlam"><b>' + kacar(a.tr) + '</b>' +
+        (a.ex ? '<i>' + kacar(a.ex) + '</i>' : '') +
+        (a.exTr ? '<span>' + kacar(a.exTr) + '</span>' : '') + '</div>';
+    }).join('');
+  }
+
+  function git(url, metin) {
+    return '<p class="kart-git"><a class="btn ghost sm" href="' + url + '">' + metin + '</a></p>';
+  }
+
+  function kelimeKarti(en) {
+    var Veri = window.YDS.Veri;
+    var d = Veri.dizinKaydi(en);
+    if (!d) return null;
+    var tam = Veri.kayit(en);
+    var kutu = Il ? Il.kutu(en) : 0;
+    var aile = (window.AILELER || []).filter(function (a) { return a.u.indexOf(en) !== -1; })[0];
+    var olumsuz = (window.OLUMSUZLAR || {})[en];
+
+    var bas = '<h3>' + kacar(d.e) + '</h3>' +
+      '<div class="kart-rozetler">' + rozet(d.y) + rozet(Veri.KATMAN_ADI[d.k], 'accent') +
+      (d.p !== undefined ? rozet(d.p + ' puan') : '') +
+      rozet(Il && Il.mezunMu(en) ? 'öğrenildi ✓' : KUTU_ADI[kutu], kutu >= 4 ? 'ok' : (kutu ? 'warn' : '')) +
+      '</div>';
+
+    var govde = tam
+      ? bolum('Anlamlar ve örnekler', anlamlar(tam.a))
+      : bolum('Anlamı', '<p style="margin:0">' + kacar(d.t) + '</p>' +
+              '<p class="small muted" style="margin:6px 0 0">Örnek cümleler yükleniyor…</p>');
+
+    if (tam && tam.es) govde += bolum('Yakın anlamlılar', '<p style="margin:0">' + kacar(tam.es) + '</p>');
+    if (olumsuz) {
+      govde += bolum('Olumsuzu', '<p style="margin:0">' + olumsuz.map(function (o) {
+        return '<b>' + kacar(o.f) + '</b> — ' + kacar(o.tr);
+      }).join('<br>') + '</p>');
+    }
+    if (aile) {
+      govde += bolum('Kelime ailesi', '<p style="margin:0">' + aile.u.map(function (x) {
+        return x === en ? '<b>' + kacar(x) + '</b>' : kacar(x);
+      }).join(' · ') + '</p>');
+    }
+    var test = window['TEST_K' + d.k] && window['TEST_K' + d.k][en];
+    if (test) {
+      govde += bolum('Günün testi cümlesi',
+        '<p style="margin:0 0 4px">' + kacar(test.c).replace('----', '<b>' + kacar(test.b) + '</b>') + '</p>' +
+        '<p class="small muted" style="margin:0">' + kacar(test.tr) + '</p>');
+    }
+    return bas + govde + git('kelimeler.html?q=' + encodeURIComponent(en), 'Kelime sayfasında aç');
+  }
+
+  function obekKarti(f) {
+    var o = (window.OBEKLER || []).filter(function (x) { return x.f === f; })[0];
+    if (!o) return null;
+    return '<h3>' + kacar(o.f) + '</h3>' +
+      '<div class="kart-rozetler">' + rozet(o.y) + rozet(o.s + ' sınavda', 'accent') + rozet(o.kn) + '</div>' +
+      bolum('Anlamlar ve örnekler', anlamlar(o.a)) +
+      git('obekler.html', 'Öbekler sayfasında aç');
+  }
+
+  function baglacKarti(f) {
+    var b = (window.BAGLACLAR || []).filter(function (x) { return x.f === f; })[0];
+    if (!b) return null;
+    return '<h3>' + kacar(b.f) + '</h3>' +
+      '<div class="kart-rozetler">' + rozet(b.il, 'accent') + rozet(b.yp) + rozet(b.dz) + '</div>' +
+      bolum('Türkçesi', '<p style="margin:0">' + kacar(b.tr) + '</p>') +
+      bolum('Örnekler', b.or.map(function (o) {
+        return '<div class="kart-anlam"><i>' + kacar(o.en) + '</i><span>' + kacar(o.tr) + '</span></div>';
+      }).join('')) +
+      (b.es && b.es.length ? bolum('Yakın kullanım', '<p style="margin:0">' + kacar(b.es.join(', ')) + '</p>') : '') +
+      git('baglaclar.html#banka', 'Bağlaçlar sayfasında aç');
+  }
+
+  function soruKarti(i) {
+    var s = (window.SORULAR || [])[Number(i)];
+    if (!s) return null;
+    var harf = ['A', 'B', 'C', 'D', 'E'];
+    return '<h3 style="font-size:1.15rem">' + kacar(s.s) + '</h3>' +
+      '<div class="kart-rozetler">' + rozet(s.kat, 'accent') + '</div>' +
+      bolum('Şıklar', '<p style="margin:0">' + s.se.map(function (x, j) {
+        return (j === s.d ? '<b>' + harf[j] + ') ' + kacar(x) + ' ✓</b>' : harf[j] + ') ' + kacar(x));
+      }).join('<br>') + '</p>') +
+      bolum('Açıklama', '<p style="margin:0">' + s.ac + '</p>') +
+      git('quiz.html', 'Quiz sayfasında çöz');
+  }
+
+  function uniteKarti(kod) {
+    var u = tumUniteler().filter(function (x) { return x.k === kod; })[0];
+    if (!u) return null;
+    var metin = (window.KONU_METINLERI || {})[kod];
+    return '<h3 style="font-size:1.25rem">' + kacar(u.ad) + '</h3>' +
+      '<div class="kart-rozetler">' + rozet(u.k, 'accent') + rozet(u.eksen) + rozet(u.kat) +
+      (u.etki ? rozet('YDS etkisi: ' + u.etki) : '') + (u.zor ? rozet('zorluk: ' + u.zor) : '') + '</div>' +
+      bolum('Kapsam', '<p style="margin:0">' + kacar(u.kapsam) + '</p>') +
+      (u.soru ? bolum('Soru türleri', '<p style="margin:0">' + kacar(u.soru) + '</p>') : '') +
+      (u.risk ? bolum('Türkçe kaynaklı hata riski', '<p style="margin:0">' + kacar(u.risk) + '</p>') : '') +
+      (metin ? bolum('Anlatım özeti', '<p style="margin:0">' + kacar(metin.ozet) + '</p>') : '') +
+      git('konular.html#' + u.k, metin ? 'Konu anlatımını aç' : 'Konu haritasında aç');
+  }
+
+  function aileKarti(kok) {
+    var a = (window.AILELER || []).filter(function (x) { return x.k === kok; })[0];
+    if (!a) return null;
+    var Veri = window.YDS.Veri;
+    return '<h3>' + kacar(a.k) + ' ailesi</h3>' +
+      '<div class="kart-rozetler">' + rozet(a.u.length + ' tür', 'accent') + '</div>' +
+      bolum('Üyeler', '<p style="margin:0">' + a.u.map(function (x) {
+        var d = Veri.dizinKaydi(x);
+        return '<b>' + kacar(x) + '</b>' + (d ? ' <span class="muted">— ' + kacar(d.t) + '</span>' : '');
+      }).join('<br>') + '</p>') +
+      git('aileler.html', 'Aileler sayfasında aç');
+  }
+
+  function kartiKapat() {
+    $('kartPerde').hidden = true;
+    document.body.style.overflow = '';
+  }
+
+  function kartiAc(tip, anahtar) {
+    var ic = null;
+    if (tip === 'kelime') ic = kelimeKarti(anahtar);
+    else if (tip === 'obek') ic = obekKarti(anahtar);
+    else if (tip === 'baglac') ic = baglacKarti(anahtar);
+    else if (tip === 'soru') ic = soruKarti(anahtar);
+    else if (tip === 'unite') ic = uniteKarti(anahtar);
+    else if (tip === 'aile') ic = aileKarti(anahtar);
+    if (!ic) return;
+
+    $('kartIcerik').innerHTML = ic;
+    $('kartPerde').hidden = false;
+    document.body.style.overflow = 'hidden';
+    $('kartKapat').focus();
+
+    // Kelimenin tam kaydı (örnek cümleler) o katman dosyasındadır; gerekirse indir.
+    if (tip === 'kelime') {
+      var Veri = window.YDS.Veri;
+      var k = Veri.katmani(anahtar);
+      if (k && !Veri.katmanYukluMu(k)) {
+        Veri.katmanYukle(k).then(function () {
+          if ($('kartPerde').hidden) return;
+          var yeni = kelimeKarti(anahtar);
+          if (yeni) $('kartIcerik').innerHTML = yeni;
+        }).catch(function () {});
+      }
+    }
+  }
+
+  elSonuc.addEventListener('dblclick', function (e) {
+    var satir = e.target.closest('.ara-satir[data-tip]');
+    if (!satir) return;
+    e.preventDefault();
+    kartiAc(satir.getAttribute('data-tip'), satir.getAttribute('data-anahtar'));
+  });
+
+  $('kartKapat').addEventListener('click', kartiKapat);
+  $('kartPerde').addEventListener('click', function (e) {
+    if (e.target === $('kartPerde')) kartiKapat();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !$('kartPerde').hidden) kartiKapat();
+  });
 
   /* ---------- öbekler: ilk aramada arka planda yükle ---------- */
 
