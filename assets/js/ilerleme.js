@@ -23,6 +23,7 @@
   var K_GECMIS = 'yds-gecmis';
   var K_BILINEN = 'yds-bilinen';
   var K_TEST_YANLIS = 'yds-test-yanlis';  // günün testinde bilinemeyen kelimeler {en: {n, t}}
+  var K_YEDEK = 'yds-son-yedek';          // sıfırlamadan hemen önceki hal (geri almak için)
   var K_GUNLUK = 'yds-gunluk-yeni';     // günlük yeni kelime kotası
   var K_YENI_SAYAC = 'yds-yeni-sayac';  // {g: gün, n: bugün açılan yeni kelime}
   var K_TAVAN = 'yds-gunluk-tavan';     // günlük TOPLAM kart sınırı (yeni + tekrar)
@@ -220,12 +221,53 @@
     return { tasinan: gecikmis.length - pay, gun: Math.ceil(gecikmis.length / pay) };
   }
 
+  /* ---------- sıfırlama öncesi yedek ----------
+     Sıfırlama geri alınamaz bir işlem; yanlışlıkla basıldığında tek çare kalmasın
+     diye silinen hal buraya kopyalanır. Yalnız SON sıfırlama saklanır. */
+
+  function yedekAl(kapsam) {
+    var kopya = { z: Date.now(), kapsam: kapsam, veri: {} };
+    ['yds-leitner', 'yds-yanlis', 'yds-kategori', 'yds-gecmis', 'yds-konular',
+     'yds-test-yanlis', 'yds-rekor'].forEach(function (a) {
+      var v = Depo.oku(a, null);
+      if (v !== null && v !== undefined) kopya.veri[a] = v;
+    });
+    Depo.yaz(K_YEDEK, kopya);
+  }
+
+  function yedekBilgisi() {
+    var y = Depo.oku(K_YEDEK, null);
+    if (!y || !y.veri) return null;
+    var n = (y.veri['yds-leitner'] && Object.keys(y.veri['yds-leitner']).length) || 0;
+    return { zaman: y.z, kapsam: y.kapsam, kayit: n };
+  }
+
+  /* Yedeği geri yükler; mevcut kayıtların üzerine BİRLEŞTİRİR, silmez. */
+  function yedegiGeriAl() {
+    var y = Depo.oku(K_YEDEK, null);
+    if (!y || !y.veri) return false;
+    var eskiLeitner = y.veri['yds-leitner'];
+    if (eskiLeitner && typeof eskiLeitner === 'object') {
+      Object.keys(eskiLeitner).forEach(function (en) {
+        if (!leitner[en]) leitner[en] = eskiLeitner[en];
+      });
+      kaydet();
+    }
+    ['yds-yanlis', 'yds-kategori', 'yds-gecmis', 'yds-konular',
+     'yds-test-yanlis', 'yds-rekor'].forEach(function (a) {
+      if (y.veri[a] !== undefined && Depo.oku(a, null) === null) Depo.yaz(a, y.veri[a]);
+    });
+    Depo.sil(K_YEDEK);
+    return true;
+  }
+
   function sifirlaKelime(en) {
     delete leitner[en];
     kaydet();
   }
 
   function leitnerSifirla() {
+    yedekAl('kelime ve öbek kutuları');
     leitner = {};
     Depo.yaz(K_LEITNER, leitner);
     Depo.sil(K_BILINEN);
@@ -450,6 +492,7 @@
   /* ---------- hepsini sıfırla ---------- */
 
   function hepsiniSifirla() {
+    yedekAl('her şey');
     leitnerSifirla();
     yanlisTemizle();
     konuSifirla();
@@ -468,6 +511,9 @@
     yeniMi: yeniMi,
     kalanGun: kalanGun,
     mezunMu: mezunMu,
+    yedekAl: yedekAl,
+    yedekBilgisi: yedekBilgisi,
+    yedegiGeriAl: yedegiGeriAl,
     gunlukHedef: gunlukHedef,
     gunlukHedefAyarla: gunlukHedefAyarla,
     gunlukTavan: gunlukTavan,

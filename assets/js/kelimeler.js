@@ -586,6 +586,7 @@
     Il.leitnerSifirla();
     desteyiCiz();
     filtrele();
+    if (geriAlCiz) geriAlCiz();
   });
 
   document.addEventListener('keydown', function (e) {
@@ -617,6 +618,8 @@
   // Arama sayfasından "Kelime sayfasında aç" ile gelen ?q=... sorgusu
   var gelenQ = new URLSearchParams(location.search).get('q');
   if (gelenQ) elAra.value = gelenQ;
+
+  var geriAlCiz = window.YDS.geriAlKutusu(function () { desteyiCiz(); filtrele(); });
 
   katmanlariCiz();
   katmanlariUygula();

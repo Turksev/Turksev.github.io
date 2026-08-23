@@ -293,6 +293,7 @@
   /* ---------- günün testi ---------- */
 
   var Test = window.YDS.GununTesti;
+  var geriAlCiz = null;
 
   function testDugmesiGuncelle() {
     var b = $('testBasla');
@@ -455,9 +456,11 @@
     var n = adlar().filter(function (a) { return kayitli[a]; }).length;
     if (!window.YDS.ikiKereSor(
         'Öbek tekrar ilerlemen silinecek. Kelime ilerlemene dokunulmaz.', n)) return;
+    Il.yedekAl('öbek kutuları');
     Il.listeyiSifirla(adlar());
     desteyiCiz();
     filtrele();
+    if (geriAlCiz) geriAlCiz();
   });
 
   document.addEventListener('keydown', function (e) {
@@ -504,6 +507,7 @@
 
     desteyiCiz();
     filtrele();
+    geriAlCiz = window.YDS.geriAlKutusu(function () { desteyiCiz(); filtrele(); });
   }).catch(function (e) {
     elSayac.textContent = 'Öbekler yüklenemedi: ' + e.message;
   });

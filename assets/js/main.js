@@ -114,8 +114,23 @@
     if (!('serviceWorker' in navigator)) return;
     if (location.protocol !== 'https:' && location.hostname !== 'localhost') return;
 
+    /* Yeni sürüm yayımlandığında sayfa ESKİ kodla çalışmaya devam ediyordu:
+       servis çalışanı dosyaları arka planda tazeliyor, sayfa ancak BİR SONRAKİ
+       açılışta yeni kodu görüyordu. Bu yüzden bir düzeltme (ör. sıfırlamada çift
+       onay) kullanıcıya bir tur geç ulaşıyordu. Yeni sürüm devralır almaz sayfayı
+       bir kez tazeliyoruz; bayrak, tazeleme döngüsünü keser. */
+    var tazelendi = false;
+    navigator.serviceWorker.addEventListener('controllerchange', function () {
+      if (tazelendi) return;
+      tazelendi = true;
+      location.reload();
+    });
+
     window.addEventListener('load', function () {
-      navigator.serviceWorker.register('sw.js').catch(function () { /* önemli değil */ });
+      navigator.serviceWorker.register('sw.js').then(function (kayit) {
+        kayit.update();                                  // her açılışta yeni sürümü sor
+        setInterval(function () { kayit.update(); }, 30 * 60 * 1000);
+      }).catch(function () { /* önemli değil */ });
     });
   }
 
@@ -155,8 +170,37 @@
       (sayi ? sayi + ' kayıt' : 'İlerlemen') + ' kalıcı olarak silinecek. Gerçekten emin misin?');
   }
 
+  /* Sıfırlamadan sonra "Geri al" kutusunu yönetir. Yedek Ilerleme modülünde
+     tutulur; burada yalnız gösterim ve tıklama vardır. */
+  function geriAlKutusu(sonra) {
+    var kutu = document.getElementById('geriAlKutu');
+    if (!kutu || !window.YDS.Ilerleme || !window.YDS.Ilerleme.yedekBilgisi) return function () {};
+    var Il = window.YDS.Ilerleme;
+
+    function ciz() {
+      var y = Il.yedekBilgisi();
+      // Yedek yalnız 7 gün sunulur; sonrası kullanıcıyı yanıltır.
+      if (!y || Date.now() - y.zaman > 7 * 86400000) { kutu.hidden = true; return; }
+      kutu.hidden = false;
+      var d = new Date(y.zaman);
+      document.getElementById('geriAlMetin').textContent =
+        'Son sıfırlama (' + d.toLocaleDateString('tr-TR') + ' ' +
+        d.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' }) + ', ' +
+        y.kayit + ' kayıt) geri alınabilir.';
+    }
+
+    document.getElementById('geriAl').addEventListener('click', function () {
+      if (!Il.yedegiGeriAl()) return;
+      kutu.hidden = true;
+      if (sonra) sonra();
+    });
+
+    ciz();
+    return ciz;
+  }
+
   window.YDS = {
     Depo: Depo, sadelestir: sadelestir, karistir: karistir, kacar: kacar,
-    ikiKereSor: ikiKereSor
+    ikiKereSor: ikiKereSor, geriAlKutusu: geriAlKutusu
   };
 })();

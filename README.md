@@ -148,6 +148,15 @@ o katman dosyasındaysa kart açıkken arka planda indirilip tazelenir.
 Karttaki "… sayfasında aç" düğmesi hedef sayfaya sorguyla gider:
 `kelimeler.html?q=`, `aileler.html?a=`, `konular.html#KOD`.
 
+**Sıfırlama koruması.** Sıfırlama düğmeleri `YDS.ikiKereSor()` ile **iki ayrı onay** ister
+(ilkinde kaç kayıt silineceği ve eşitleme uyarısı yazar). Silmeden önce
+`Ilerleme.yedekAl()` son hali `yds-son-yedek` altına kopyalar; düğmenin yanında çıkan
+**Geri al** 7 gün boyunca kayıtları geri koyar (birleştirir, hiçbir şeyi silmez).
+
+Not: servis çalışanı dosyaları önbellekten sunup arka planda tazeliyordu, bu yüzden yeni
+kod kullanıcıya bir açılış geç ulaşıyordu. Artık `controllerchange` olayında sayfa bir kez
+kendini yeniliyor ve her açılışta `registration.update()` çağrılıyor.
+
 **İpucu düğmesi.** Kartın ön yüzünde, kelimenin kendi örnek cümlesini hedef sözcük
 `----` ile gizlenmiş olarak gösterir — YDS'nin kelime sorusu formatı. İpucuya baktıktan
 sonra "Bildim" dersen kelime **terfi etmez**, aynı kutuda kalıp yeniden zamanlanır; böylece

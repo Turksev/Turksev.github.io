@@ -1,0 +1,28 @@
+<!DOCTYPE html><meta charset="utf-8"><title>geri al testi</title>
+<pre id="log"></pre>
+<script>
+var L=[],hata=0;function P(m){L.push(m);document.getElementById('log').textContent=L.join('\n');}
+function esit(a,o,b){var ok=(o===b);if(!ok)hata++;P((ok?'OK   ':'HATA ')+a+' = '+JSON.stringify(o)+(ok?'':' (beklenen '+JSON.stringify(b)+')'));}
+localStorage.clear();
+var f=document.createElement('iframe');
+f.style.cssText='width:1000px;height:600px;border:0';
+f.src='file:///C:/Users/Trk/Desktop/Turksev.github.io/kelimeler.html';
+f.onload=function(){var w=f.contentWindow,d=f.contentDocument;
+setTimeout(function(){try{
+  var Il=w.YDS.Ilerleme;
+  (w.KELIME_DIZIN||[]).slice(0,15).forEach(function(x){Il.dogru(x.e);});
+  esit('kayıt', Object.keys(Il.tumKayitlar()).length, 15);
+  esit('geri al kutusu başta gizli', d.getElementById('geriAlKutu').hidden, true);
+  w.confirm=function(){return true;};
+  d.getElementById('sifirla').click();
+  esit('silindi', Object.keys(Il.tumKayitlar()).length, 0);
+  esit('geri al kutusu göründü', d.getElementById('geriAlKutu').hidden, false);
+  P('metin: '+d.getElementById('geriAlMetin').textContent);
+  d.getElementById('geriAl').click();
+  esit('geri alındı', Object.keys(Il.tumKayitlar()).length, 15);
+  esit('kutu tekrar gizli', d.getElementById('geriAlKutu').hidden, true);
+  esit('yedek tüketildi', localStorage.getItem('yds-son-yedek'), null);
+  P(hata?hata+' HATA':'HEPSI GECTI'); P('DONE'); localStorage.clear();
+}catch(e){P('ERR '+e.message);}},1500);};
+document.body.appendChild(f);
+</script>
