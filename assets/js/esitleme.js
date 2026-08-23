@@ -39,13 +39,13 @@
   var ANAHTARLAR = [
     'yds-leitner', 'yds-yanlis', 'yds-kategori', 'yds-gecmis',
     'yds-konular', 'yds-rekor', 'yds-yeni-sayac', 'yds-test-yanlis',
-    'yds-gunluk-yeni', 'yds-katmanlar', 'yds-eksen'
+    'yds-gunluk-yeni', 'yds-gunluk-tavan', 'yds-katmanlar', 'yds-eksen'
   ];
   var ANAHTAR_KUMESI = {};
   ANAHTARLAR.forEach(function (a) { ANAHTAR_KUMESI[a] = 1; });
 
   /* Yalnız yerelde YOKSA buluttan alınan tercihler. */
-  var TERCIHLER = { 'yds-gunluk-yeni': 1, 'yds-katmanlar': 1, 'yds-eksen': 1 };
+  var TERCIHLER = { 'yds-gunluk-yeni': 1, 'yds-gunluk-tavan': 1, 'yds-katmanlar': 1, 'yds-eksen': 1 };
 
   var auth = null, db = null;
   var kullanici = null;

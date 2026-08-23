@@ -1,0 +1,57 @@
+<!DOCTYPE html><meta charset="utf-8"><title>tavan testi</title>
+<script>
+// ilerleme.js yüklenirken veriyi belleğe alıyor: kurulumu ÖNCE yap.
+(function () {
+  var bugun = Math.floor(new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()).getTime() / 86400000);
+  var tablo = {};
+  for (var i = 0; i < 205; i++) tablo['t' + i] = { k: (i % 4) + 1, g: bugun - (i % 60) };
+  tablo['mezun1'] = { k: 5, g: bugun - 100 };
+  localStorage.setItem('yds-leitner', JSON.stringify(tablo));
+  localStorage.removeItem('yds-yeni-sayac');
+  localStorage.setItem('yds-gunluk-tavan', '30');
+  localStorage.setItem('yds-gunluk-yeni', '5');
+  window.__bugun = bugun; window.__tablo = tablo;
+})();
+</script>
+<script src="file:///C:/Users/Trk/Desktop/Turksev.github.io/assets/js/main.js"></script>
+<script src="file:///C:/Users/Trk/Desktop/Turksev.github.io/assets/js/ilerleme.js"></script>
+<pre id="out"></pre>
+<script>
+var Il = window.YDS.Ilerleme, log = [], hata = 0, bugun = window.__bugun, tablo = window.__tablo;
+function esit(ad, olan, bek) {
+  var ok = JSON.stringify(olan) === JSON.stringify(bek);
+  if (!ok) hata++;
+  log.push((ok ? 'OK  ' : 'HATA ') + ad + '  olan=' + JSON.stringify(olan) + ' beklenen=' + JSON.stringify(bek));
+}
+var liste = [];
+for (var i = 0; i < 205; i++) liste.push({ en: 't' + i });
+for (var j = 0; j < 500; j++) liste.push({ en: 'n' + j });
+liste.push({ en: 'mezun1' });
+
+var o = Il.leitnerOzet(liste);
+esit('vadesi gelen toplam', o.tekrar, 205);
+esit('deste tavanla sınırlı', o.bugun, 30);
+esit('yeni garanti', o.acilacakYeni, 5);
+esit('gösterilecek tekrar', o.gosterilecekTekrar, 25);
+esit('bekleyen tekrar', o.bekleyen, 180);
+var deste = Il.destelik(liste);
+esit('destelik boyu', deste.length, 30);
+esit('destede yeni sayısı', deste.filter(function (x) { return Il.kutu(x.en) === 0; }).length, 5);
+esit('mezun destede yok', deste.filter(function (x) { return x.en === 'mezun1'; }).length, 0);
+esit('ilk kart en eski vadeli', Il.tumKayitlar()[deste[0].en].g, bugun - 59);
+Il.gunlukTavanAyarla(80);
+esit('tavan 80 -> deste', Il.destelik(liste).length, 80);
+Il.gunlukTavanAyarla(9999);
+esit('sınırsız -> hepsi', Il.destelik(liste).length, 210);
+Il.gunlukTavanAyarla(30);
+var s = Il.birikmisiYay(30);
+esit('dağıtılan', s.tasinan, 175);
+esit('kaç günde erir', s.gun, 7);
+var o2 = Il.leitnerOzet(liste);
+esit('dağıtım sonrası bugünkü tekrar', o2.tekrar, 30);
+esit('dağıtım sonrası deste', o2.bugun, 30);
+esit('dağıtım kayıt silmedi', Object.keys(Il.tumKayitlar()).length, 206);
+esit('mezun dokunulmadı', Il.tumKayitlar()['mezun1'].g, bugun - 100);
+['yds-leitner','yds-gunluk-tavan','yds-gunluk-yeni','yds-yeni-sayac'].forEach(function (k) { localStorage.removeItem(k); });
+document.getElementById('out').textContent = log.join('\n') + '\n' + (hata ? hata + ' HATA' : 'HEPSI GECTI');
+</script>

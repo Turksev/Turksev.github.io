@@ -117,6 +117,18 @@ bildiğin kelimeyi tek şaşırmada baştan başlatmak tekrar yükünü katlıyo
 Oraya çıkmak için kelimeyi 26 güne yayılmış dört tekrarda doğru bilmek gerekir. Böylece
 deste zamanla erir; hepsini yeniden çalışmak istersen "Kelime ilerlememi sıfırla".
 
+**Günlük toplam kart tavanı.** Kelime sayfasındaki "Bugün toplam kart" seçicisi destenin
+boyunu sınırlar (`yds-gunluk-tavan`, varsayılan 30). Sıra şu: önce "bunun yenisi" kadar yeni
+kelime yer ayırtır — tekrar borcu ne olursa olsun yeni kelime öğrenmen durmaz — kalan yeri
+**en çok gecikmiş** tekrarlar doldurur, sığmayan sıradaki güne kalır. Sığmayan varsa deste
+kutusunda "N tekrar bugünkü sınıra sığmadı" notu çıkar.
+
+**Birikmiş yığını dağıtma.** Eski kurgudan (her "Bilemedim" 1. kutuya atıyordu, tekrara tavan
+yoktu) yüzlerce gecikmiş tekrar kalmış olabilir. Bekleyen 40'ı geçince çıkan
+"Birikmiş tekrarları günlere dağıt" düğmesi `Ilerleme.birikmisiYay()` çağırır: hiçbir kayıt
+silinmez, vadesi geçmiş kelimeler en çok gecikmiş olan önce gelecek şekilde günlük tavana
+bölünüp önümüzdeki günlere yayılır.
+
 Simülasyon (2.501 kelime, günde 20 yeni, %82 doğruluk): günlük deste 76. günde 150 kartla
 zirve yapıp 180. günde 3'e iner, 220. günde bütün kelimeler mezun olur. Eski kurguda
 (yanlış → 1. kutu, 5. kutu 30 günde bir sonsuza dek) yük 365. günde hâlâ 162 karttı. Kelimeler ve öbekler aynı kutu tablosunu paylaşır

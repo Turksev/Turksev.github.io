@@ -1,0 +1,48 @@
+<!DOCTYPE html><meta charset="utf-8"><title>tavan sayfa</title>
+<pre id="log"></pre>
+<script>
+var L=[]; function P(m){L.push(m);document.getElementById('log').textContent=L.join('\n');}
+// Sayfa yüklenmeden önce durumu kur (ilerleme.js veriyi açılışta belleğe alıyor)
+var bugun=Math.floor(new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate()).getTime()/86400000);
+fetch('file:///C:/Users/Trk/Desktop/Turksev.github.io/data/kelime-dizin.js').then(function(r){return r.text();}).then(function(src){
+  var kelimeler=[],re=/\{e:"(.*?)",t:.*?,k:2,/g,m;
+  while((m=re.exec(src))&&kelimeler.length<205) kelimeler.push(m[1]);
+  var tablo={};
+  kelimeler.forEach(function(e,i){ tablo[e]={k:(i%4)+1,g:bugun-(i%60)}; });
+  localStorage.setItem('yds-leitner',JSON.stringify(tablo));
+  localStorage.setItem('yds-katmanlar','[2]');
+  localStorage.setItem('yds-gunluk-tavan','30');
+  localStorage.setItem('yds-gunluk-yeni','5');
+  localStorage.removeItem('yds-yeni-sayac');
+  P('kurulum: '+Object.keys(tablo).length+' gecikmiş tekrar');
+  var f=document.createElement('iframe');
+  f.style.cssText='width:1200px;height:900px;border:0';
+  f.src='file:///C:/Users/Trk/Desktop/Turksev.github.io/kelimeler.html';
+  f.onload=function(){ setTimeout(function(){ dene(f); }, 1500); };
+  document.body.appendChild(f);
+});
+function dene(f){
+  var w=f.contentWindow,d=f.contentDocument;
+  try{
+    P('düğme: '+d.getElementById('desteBasla').textContent);
+    P('açıklama: '+d.getElementById('desteAciklama').textContent);
+    P('bekleyen: '+d.getElementById('bekleyenNot').textContent.slice(0,150));
+    P('dağıt düğmesi: '+!!d.getElementById('yigiiniDagit'));
+    var t=d.getElementById('gunlukTavan'); t.value='150'; t.dispatchEvent(new w.Event('change'));
+    P('tavan 150 -> '+d.getElementById('desteBasla').textContent);
+    t.value='30'; t.dispatchEvent(new w.Event('change'));
+    w.confirm=function(){return true;};
+    d.getElementById('yigiiniDagit').click();
+    setTimeout(function(){
+      P('dağıtım sonrası düğme: '+d.getElementById('desteBasla').textContent);
+      P('dağıtım notu: '+d.getElementById('bekleyenNot').textContent.slice(0,120));
+      d.getElementById('desteBasla').click();
+      setTimeout(function(){
+        P('deste açıldı: '+d.getElementById('kartSayac').textContent);
+        ['yds-leitner','yds-gunluk-tavan','yds-gunluk-yeni','yds-yeni-sayac','yds-katmanlar'].forEach(function(k){localStorage.removeItem(k);});
+        P('DONE');
+      },500);
+    },400);
+  }catch(e){P('ERR '+e.message);}
+}
+</script>

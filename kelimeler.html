@@ -81,8 +81,22 @@
         <button class="btn ghost" type="button" id="devamEt" hidden>Devam et</button>
         <button class="btn ghost" type="button" id="testBasla" hidden title="Bugün çalıştığın kelimeleri özgün cümlelerde boşluk doldurarak sına">Günün testi</button>
         <label class="small muted" style="display:flex;align-items:center;gap:7px">
-          Günde yeni kelime:
-          <select id="gunlukHedef" aria-label="Günlük yeni kelime hedefi">
+          Bugün toplam kart:
+          <select id="gunlukTavan" aria-label="Günlük toplam kart sınırı"
+                  title="Destede en çok kaç kart olsun — yeni kelimeler + tekrarlar">
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="30" selected>30</option>
+            <option value="50">50</option>
+            <option value="80">80</option>
+            <option value="150">150</option>
+            <option value="9999">sınırsız</option>
+          </select>
+        </label>
+        <label class="small muted" style="display:flex;align-items:center;gap:7px">
+          Bunun yenisi:
+          <select id="gunlukHedef" aria-label="Günlük yeni kelime hedefi"
+                  title="Her gün kaç yeni kelime açılsın — tekrar borcu ne olursa olsun bu sayı kesilmez">
             <option value="5">5</option>
             <option value="10">10</option>
             <option value="20" selected>20</option>
@@ -92,6 +106,7 @@
         </label>
       </div>
       <p class="small muted" style="margin:10px 0 0" id="desteAciklama"></p>
+      <p class="small muted" style="margin:8px 0 0" id="bekleyenNot" hidden></p>
     </div>
 
     <div class="toolbar">

@@ -106,6 +106,12 @@
         return '<span class="kutu"><b>' + o['k' + k] + '</b><i>' + k + '. kutu</i></span>';
       }).join('');
 
+    $('bekleyenNot').hidden = !o.bekleyen;
+    if (o.bekleyen) {
+      $('bekleyenNot').innerHTML = '<b>' + o.bekleyen + '</b> tekrar bugünkü sınıra sığmadı, ' +
+        'sıradaki günlere kaldı. Daha hızlı eritmek istersen üstteki <b>toplam kart</b> sayısını artır.' +
+        (o.bekleyen >= 40 ? ' <button class="btn ghost sm" type="button" id="yigiiniDagit">Birikmiş tekrarları günlere dağıt</button>' : '');
+    }
     $('desteBasla').disabled = o.bugun === 0;
     testDugmesiGuncelle();
     $('desteBasla').textContent = o.bugun === 0
@@ -119,7 +125,7 @@
 
     // Destenin neyden oluştuğunu açıkça yaz: tekrar ≠ yeni
     var parcalar = [];
-    if (o.tekrar) parcalar.push('<b>' + o.tekrar + '</b> tekrarı gelen');
+    if (o.gosterilecekTekrar) parcalar.push('<b>' + o.gosterilecekTekrar + '</b> tekrar');
     if (o.acilacakYeni) parcalar.push('<b>' + o.acilacakYeni + '</b> yeni kelime');
 
     var metin;
@@ -512,6 +518,27 @@
     desteyiCiz();
   });
 
+  $('gunlukTavan').addEventListener('change', function () {
+    Il.gunlukTavanAyarla(this.value);
+    desteyiCiz();
+  });
+
+  /* Birikmiş tekrarları takvime yay (tek seferlik düzeltme). */
+  $('deste').addEventListener('click', function (e) {
+    if (!e.target.closest('#yigiiniDagit')) return;
+    var o = Il.leitnerOzet(havuz.map(function (d) { return { en: d.e }; }));
+    var soru = 'Vadesi geçmiş ' + (o.tekrar) + ' tekrar, günde ' + Il.gunlukTavan() +
+               ' karta göre önümüzdeki günlere dağıtılsın mı? Hiçbir kayıt silinmez, ' +
+               'yalnız tekrar tarihleri ileri alınır.';
+    if (!window.confirm(soru)) return;
+    var s = Il.birikmisiYay(Il.gunlukTavan());
+    desteyiCiz();
+    $('bekleyenNot').innerHTML = s.tasinan
+      ? '<b>' + s.tasinan + '</b> tekrar ileriki günlere yayıldı; yığın ' + s.gun + ' günde erir.'
+      : 'Dağıtılacak birikmiş tekrar yoktu.';
+    $('bekleyenNot').hidden = false;
+  });
+
   /* Kotayı bugünlük genişletip desteyi yeniden aç. Günlük hedef değişmez. */
   $('testBasla').addEventListener('click', testiBaslat);
   $('testDavetBasla').addEventListener('click', testiBaslat);
@@ -584,6 +611,7 @@
   /* ---------- başlat ---------- */
   $('toplamKelime').textContent = DIZIN.length.toLocaleString('tr-TR');
   $('gunlukHedef').value = String(Il.gunlukHedef());
+  $('gunlukTavan').value = String(Il.gunlukTavan());
   katmanlariCiz();
   katmanlariUygula();
 })();
