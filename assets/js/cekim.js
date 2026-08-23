@@ -123,7 +123,7 @@
     control: 1, patrol: 1, enrol: 1, compel: 1, propel: 1, expel: 1, dispel: 1, rebel: 1,
     excel: 1, repel: 1, equip: 1, acquit: 1, allot: 1, format: 1, kidnap: 1, handicap: 1,
     program: 1, worship: 1, unwrap: 1, outwit: 1, forbid: 1, beset: 1, abet: 1,
-    outfit: 1, retrofit: 1, backfit: 1,
+    outfit: 1, retrofit: 1, backfit: 1, quiz: 1, whiz: 1, fez: 1,
     travel: 1, label: 1, model: 1, cancel: 1, channel: 1, fuel: 1, level: 1, quarrel: 1,
     signal: 1, total: 1, marvel: 1, counsel: 1, tunnel: 1, rival: 1, equal: 1
   };
@@ -145,7 +145,12 @@
     return unluSayisi(k) === 1;
   }
 
+  /* quiz -> quizzes: tek heceli, ünlü + z ile biten kelimeler ek almadan önce
+     z'yi ikiler. Kalıp yerine açık liste: "topaz" ikilenmez (topazes). */
+  var Z_IKILE = { quiz: 1, whiz: 1, fez: 1, biz: 1 };
+
   function ucuncuTekil(k) {
+    if (Z_IKILE[k]) return k + 'zes';
     if (/(s|x|z|ch|sh)$/.test(k)) return k + 'es';
     if (/[^aeiou]y$/.test(k)) return k.slice(0, -1) + 'ies';
     if (/[^aeiou]o$/.test(k)) return k + 'es';                // go, do, echo, veto
@@ -173,6 +178,7 @@
   function cogul(k) {
     if (SAYILMAZ[k]) return null;
     if (DUZENSIZ_ISIM[k]) return DUZENSIZ_ISIM[k];
+    if (Z_IKILE[k]) return k + 'zes';
     if (/(s|x|z|ch|sh)$/.test(k)) return k + 'es';
     if (/[^aeiou]y$/.test(k)) return k.slice(0, -1) + 'ies';
     if (/[^aeiou]o$/.test(k) && !/(photo|piano|radio|video|memo|logo|kilo|zero|solo)$/.test(k)) return k + 'es';

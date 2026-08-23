@@ -60,7 +60,12 @@ def ikilenir_mi(k):
     return _unlu_sayisi(k) == 1
 
 
+Z_IKILE = {'quiz', 'whiz', 'fez', 'biz'}   # quiz -> quizzes (topaz -> topazes, ikilenmez)
+
+
 def ucuncu_tekil(k):
+    if k in Z_IKILE:
+        return k + 'zes'
     if re.search(r'(s|x|z|ch|sh)$', k):
         return k + 'es'
     if re.search(r'[^aeiou]y$', k):
@@ -99,6 +104,8 @@ def cogul(k):
         return None
     if k in DUZENSIZ_ISIM:
         return DUZENSIZ_ISIM[k]
+    if k in Z_IKILE:
+        return k + 'zes'
     if re.search(r'(s|x|z|ch|sh)$', k):
         return k + 'es'
     if re.search(r'[^aeiou]y$', k):
