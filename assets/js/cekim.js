@@ -202,9 +202,17 @@
   /* Verilen biçim bu kelimeden üretilebiliyor mu? (Veri doğrulaması için.) */
   function uyarMi(kelime, bicim, hedef) {
     var k = String(kelime || '').toLowerCase();
-    if (/[^a-z]/.test(k)) {                       // have-not, give up: yalnız basit ekler
-      var duz = k.replace(/-/g, ' ');               // give-up -> give up
-      return hedef === k || hedef === duz || ((bicim === 's' || bicim === 'pl') && (hedef === k + 's' || hedef === k + 'es'));
+    if (/[^a-z]/.test(k)) {
+      // Öbek fiil / tireli kelime: "bring-up" + pp -> "brought up" (ilk parça çekilir),
+      // "have-not" + pl -> "have-nots" (bütün olarak çoğullanır). İkisi de kabul.
+      var parcalar = k.split(/[-\s]+/);
+      var duz = parcalar.join(' ');
+      if (hedef === k || hedef === duz) return true;
+      if ((bicim === 's' || bicim === 'pl') &&
+          (hedef === k + 's' || hedef === k + 'es' || hedef === duz + 's' || hedef === duz + 'es')) return true;
+      if (!/^[a-z]+$/.test(parcalar[0])) return false;
+      var cekili = cek(parcalar[0], bicim);
+      return !!cekili && hedef === [cekili].concat(parcalar.slice(1)).join(' ');
     }
     var u = cek(k, bicim);
     if (u === null) return false;

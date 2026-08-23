@@ -132,8 +132,17 @@ def cek(kelime, bicim=''):
 def uyar_mi(kelime, bicim, hedef):
     k = (kelime or '').lower()
     if re.search(r'[^a-z]', k):
-        duz = k.replace('-', ' ')
-        return hedef == k or hedef == duz or (bicim in ('s', 'pl') and hedef in (k + 's', k + 'es'))
+        # Öbek fiil: "bring-up" + pp -> "brought up"; "have-not" + pl -> "have-nots"
+        parcalar = re.split(r'[-\s]+', k)
+        duz = ' '.join(parcalar)
+        if hedef in (k, duz):
+            return True
+        if bicim in ('s', 'pl') and hedef in (k + 's', k + 'es', duz + 's', duz + 'es'):
+            return True
+        if not re.fullmatch(r'[a-z]+', parcalar[0]):
+            return False
+        cekili = cek(parcalar[0], bicim)
+        return bool(cekili) and hedef == ' '.join([cekili] + parcalar[1:])
     u = cek(k, bicim)
     if u is None:
         return False

@@ -20,22 +20,10 @@ Kullanıcı **"kuyruğu başlat"** (ya da "test cümlelerine devam et") dediğin
 Aynı anda 6'dan fazla ajan çalıştırma: 11 ajanla oturum limitine, ikinci denemede
 haftalık limite çarpıldı. Paket başına yaklaşık **100 bin token**.
 
-## Sıradaki paketler (23.08.2026)
+## Sıradaki paketler
 
-4. katman (İleri) — 8 paket, 513 kelime:
-
-| Paket | Kelime | İlk kelimeler |
-| --- | --- | --- |
-| k4-p31 | 70 | seat, sensitivity, superior, yellow, acquisition |
-| k4-p32 | 70 | witness, absolutely, admire, assure, attain |
-| k4-p33 | 70 | fungus, hands, hobby, informal, intensity |
-| k4-p34 | 70 | payment, preparation, prison, proposal, secret |
-| k4-p35 | 70 | tiger, twin, approval, arrange, array |
-| k4-p36 | 70 | correction, crude, deadly, dense, door |
-| k4-p37 | 70 | positively, practised, rejection, reservoir, rice |
-| k4-p38 | 23 | pop, remind, sorry, stadium, steal |
-
-Bunlar bitince 4. katman tamamlanır (1.073 kelime).
+4. katman **tamamlandı** (23.08.2026): 38 paketin hepsi yazıldı, 1.073 cümle.
+Sırada 5. katman var; girdi paketleri henüz üretilmedi (aşağıya bak).
 
 ## Sonraki katmanlar (girdi paketleri henüz üretilmedi)
 
@@ -56,7 +44,7 @@ Bunlar bitince 4. katman tamamlanır (1.073 kelime).
 | --- | --- | --- |
 | 2 · Çekirdek | 720 | tamam |
 | 3 · Orta | 708 | tamam |
-| 4 · İleri | 560 / 1.073 | 8 paket kaldı |
+| 4 · İleri | 1.073 | tamam |
 
 ## Dosyalar
 
