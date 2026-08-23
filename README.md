@@ -11,7 +11,7 @@ Yayında: <https://turksev.github.io>
 | --- | --- |
 | `index.html` | Ana sayfa ve ilerleme paneli: tekrar durumu, yanlış defteri, deneme geçmişi, kategori karnesi |
 | `kelimeler.html` | 7.859 kelime, 7 katman + **aralıklı tekrar (Leitner)**: bugünün destesi, kart modu, ipucu, sesli okuma |
-| `obekler.html` | 2.067 kelime öbeği (phrasal verb, deyimsel fiil, sabit ifade) — ayrı Leitner destesi |
+| `obekler.html` | 1.623 kelime öbeği (560 deyimsel fiil, 332 edat kalıbı, sabit/geçiş ifadeleri) — ayrı Leitner destesi |
 | `quiz.html` | Alıştırma soruları: 12 kategori, anında çözüm, yanlış defterinden çalışma |
 | `deneme.html` | **Süreli deneme sınavı**: geri sayım, soru ızgarası, işaretleme, net hesabı, kategori karnesi |
 | `gramer.html` | 10 başlıkta konu anlatımı, kural tabloları ve sınav tuzakları |
@@ -22,7 +22,7 @@ Yayında: <https://turksev.github.io>
 
 - **7.859 kelime** — 49 gerçek YDS sınavındaki geçme sıklığına göre puanlanmış, yedi katmana ayrılmış;
   her birinde Türkçe anlam + İngilizce örnek cümle + çeviri (1.113'ünde ikinci anlam da var)
-- **2.067 kelime öbeği** — phrasal verb, deyimsel fiil ve sabit ifadeler, kaç sınavda geçtiği bilgisiyle
+- **1.623 kelime öbeği** — deyimsel fiil (phrasal verb), edat kalıbı, sabit ve geçiş ifadeleri, kaç sınavda geçtiği bilgisiyle
 - **125 soru** — 12 kategori: Kelime, Dil Bilgisi, Bağlaç, Preposition, Cloze Test, Çeviri,
   Cümle Tamamlama, Restatement, Paragraf Tamamlama, Anlamı Bozan Cümle, Diyalog, Okuma
 - **155 bağlaç** — anlam ilişkisi ve "sonrasında ne gelir" etiketleriyle
@@ -80,7 +80,7 @@ data/
   kelime-dizin.js     7.859 kelime: yazılış, kısa anlam, puan, katman, tür
   test-k1..k7.js      günün testi cümleleri (katman başına, üretildikçe)
   kelime-k1..k7.js    katman katman tam kayıtlar (örnek cümleler)
-  obekler.js          2.067 kelime öbeği
+  obekler.js          1.623 kelime öbeği
   sayilar.js          içerik sayaçları (üretilir)
   sorular.js          soru bankası + okuma parçaları
   baglaclar.js        bağlaç verisi
@@ -154,7 +154,7 @@ bağlamla hatırlamak, kelimeyi tek başına bilmekle aynı sayılmaz.
 
 Kelimeyi cümlede bulmak düz aramayla olmuyor, çünkü örnekler çekimli biçim kullanabiliyor
 (`accumulate` → "accumulated"). `bosluklaCumle()` sondaki `e`/`y` harfini atıp kökle başlayan
-sözcüğü arıyor; bu **4.760 kelimenin 4.747'sini** (%99,7) ve **2.067 öbeğin tamamını** yakalıyor.
+sözcüğü arıyor; bu **4.760 kelimenin 4.747'sini** (%99,7) ve **öbeklerin tamamını** yakalıyor.
 Yakalanamayan 13 kelime çoğunlukla düzensiz çekim (`undertake` → "undertook") ya da tireli
 varyant (`give-up`, `turn-out`); o kartlarda ipucu düğmesi hiç gösterilmiyor.
 
@@ -233,7 +233,9 @@ Okuduğu kaynaklar (salt okunur, hiçbirine yazılmaz):
 | Kaynak | Ne verir |
 | --- | --- |
 | `english claude/04_cikti/Calisma_Listesi_v4_site_tam.xlsx` | 7.837 puanlanmış kelime (puan ≥ 10), anlam ve örnek cümlelerle; Tür sütunundaki `· temel` / `· çekim` etiketleri atılır |
-| `english claude/04_cikti/Kelime_Obekleri_v3.xlsx` | 2.067 öbek |
+| `english claude/04_cikti/Kelime_Obekleri_v3.xlsx` | 2.067 öbek (561'i "sıradan" diye elenir) |
+| `tools/obek-turleri.js` | Öbeklerin düzeltilmiş tür etiketleri; kaynağın üzerine yazar, "sıradan" olanları listeden düşürür |
+| `tools/ek-obekler.js` | Kaynak listede olmayan 119 deyimsel fiil / edat kalıbı |
 | `tools/ek-kelimeler.js` | Listede olmayan 52 kelime + ortak 129 kelimenin eş anlamlıları |
 
 Betik `ii`, `iii`, `iv` gibi cloze şık numarası artıklarını atar, harf varyantlarını birleştirir ve

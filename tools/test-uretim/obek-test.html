@@ -1,0 +1,18 @@
+<!DOCTYPE html><meta charset="utf-8"><title>öbek testi</title>
+<iframe id="f" src="file:///C:/Users/Trk/Desktop/Turksev.github.io/obekler.html" style="width:1100px;height:800px;border:0"></iframe>
+<pre id="log"></pre>
+<script>
+var L=[];function P(m){L.push(m);document.getElementById('log').textContent=L.join('\n');}
+document.getElementById('f').onload=function(){var w=this.contentWindow,d=this.contentDocument;
+setTimeout(function(){try{
+ P('toplam: '+d.getElementById('toplamObek').textContent);
+ P('tür seçenekleri: '+[].map.call(d.querySelectorAll('#tur option'),function(o){return o.textContent;}).join(' | '));
+ P('tavan seçici var mı: '+!!d.getElementById('gunlukTavan')+' değer='+(d.getElementById('gunlukTavan')||{}).value);
+ var t=d.getElementById('tur'); t.value='deyimsel fiil'; t.dispatchEvent(new w.Event('input'));
+ setTimeout(function(){
+  P('filtre sonrası sayaç: '+d.getElementById('sayac').textContent.slice(0,70));
+  var a=d.getElementById('ara'); a.value='give rise'; a.dispatchEvent(new w.Event('input'));
+  setTimeout(function(){P('arama: '+d.getElementById('sayac').textContent.slice(0,60)); P('DONE');},300);
+ },300);
+}catch(e){P('ERR '+e.message);}},1500);};
+</script>

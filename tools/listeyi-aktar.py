@@ -296,6 +296,32 @@ def kelimeleri_yaz(kelimeler):
 
 # ---------------------------------------------------------------- obekler
 
+def obek_turlerini_oku():
+    """tools/obek-turleri.js — elle duzeltilmis tur etiketleri {obek: tur}.
+
+    Kaynak xlsx'teki etiketler karisik: gercek phrasal verb'lerle duz fiil+edat
+    birlesmeleri ayni torbada. Bu dosya siniflandirma sonucunu tasir ve
+    kaynak etiketin uzerine yazar."""
+    yol = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'obek-turleri.js')
+    if not os.path.exists(yol):
+        return {}
+    metin = open(yol, encoding='utf-8').read()
+    return {m.group(1): m.group(2)
+            for m in re.finditer(r'"(.*?)"\s*:\s*"(.*?)"', metin)}
+
+
+def ek_obekleri_oku():
+    """tools/ek-obekler.js — kaynak listede olmayan, elle eklenen obekler."""
+    yol = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'ek-obekler.js')
+    if not os.path.exists(yol):
+        return []
+    metin = open(yol, encoding='utf-8').read()
+    desen = re.compile(
+        r'\{f:"(.*?)",\s*t:"(.*?)",\s*tr:"(.*?)",\s*ex:"(.*?)",\s*exTr:"(.*?)"\}', re.S)
+    return [{'f': m.group(1), 't': m.group(2), 'tr': m.group(3),
+             'ex': m.group(4), 'exTr': m.group(5)} for m in desen.finditer(metin)]
+
+
 def obekleri_yaz():
     obekler = {}
 
@@ -330,6 +356,30 @@ def obekleri_yaz():
                               'ex': (ornek or '').strip(),
                               'exTr': (ceviri or '').strip()})
 
+    # Elle eklenen obekler (kaynak listede yok)
+    ek_eklenen = 0
+    for e in ek_obekleri_oku():
+        if e['f'] in obekler:
+            continue
+        obekler[e['f']] = {
+            'tip': e['t'], 'puan': None, 'sinav': 0, 'kaynak': 'ek',
+            'anlamlar': [{'tr': e['tr'], 'ex': e['ex'], 'exTr': e['exTr']}],
+        }
+        ek_eklenen += 1
+
+    # Elle duzeltilmis tur etiketleri kaynagin uzerine yazar; "siradan" atilir.
+    turler = obek_turlerini_oku()
+    atilan = 0
+    for ad in list(obekler.keys()):
+        yeni = turler.get(ad)
+        if not yeni:
+            continue
+        if yeni == 'sıradan':
+            del obekler[ad]
+            atilan += 1
+        else:
+            obekler[ad]['tip'] = yeni
+
     sirali = sorted(obekler.items(), key=lambda x: (-x[1]['sinav'], x[0]))
     govde = []
     for ad, o in sirali:
@@ -357,7 +407,7 @@ def obekleri_yaz():
     )
     yol = os.path.join(VERI, 'obekler.js')
     yaz(yol, basli + ',\n'.join(govde) + '\n];\n')
-    return sirali, os.path.getsize(yol)
+    return sirali, os.path.getsize(yol), ek_eklenen, atilan
 
 
 def yaz(yol, icerik):
@@ -382,7 +432,7 @@ def sayilari_yaz(sirali, ozet, obekler):
 def main():
     kelimeler, ortak, yalniz_site, ek_uygulanan, bekleyen, aile_eklenen = birlestir()
     sirali, ozet = kelimeleri_yaz(kelimeler)
-    obekler, obek_boyut = obekleri_yaz()
+    obekler, obek_boyut, obek_ek, obek_atilan = obekleri_yaz()
     sayilari_yaz(sirali, ozet, obekler)
 
     print('KELIMELER')
@@ -404,6 +454,11 @@ def main():
     print('OBEKLER')
     print('  toplam            :', len(obekler))
     print('  cok anlamli       :', sum(1 for _f, o in obekler if len(o['anlamlar']) > 1))
+    print('  elle eklenen      :', obek_ek)
+    print('  siradan diye atilan:', obek_atilan)
+    import collections as _c
+    for tur, n in _c.Counter(o['tip'] for _f, o in obekler).most_common():
+        print('    %-16s %5d' % (tur, n))
     print('  dosya             : %.0f KB' % (obek_boyut / 1024))
 
 

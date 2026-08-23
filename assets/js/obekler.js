@@ -357,6 +357,11 @@
     elKartAlan.scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
 
+  $('gunlukTavan').addEventListener('change', function () {
+    Il.gunlukTavanAyarla(this.value);
+    desteyiCiz();
+  });
+
   $('gunlukHedef').addEventListener('change', function () {
     Il.gunlukHedefAyarla(this.value);
     desteyiCiz();
@@ -421,6 +426,7 @@
 
   if (window.SAYILAR) $('toplamObek').textContent = window.SAYILAR.obek.toLocaleString('tr-TR');
   $('gunlukHedef').value = String(Il.gunlukHedef());
+  $('gunlukTavan').value = String(Il.gunlukTavan());
 
   elSayac.textContent = 'Öbekler yükleniyor…';
   Veri.obekleriYukle().then(function (liste) {
