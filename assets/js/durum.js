@@ -21,8 +21,8 @@
     1: { ad: '1. kutu', not: 'bilemediklerin — yarın tekrar', sinif: 'err' },
     2: { ad: '2. kutu', not: 'henüz oturmadı — 3 günde bir', sinif: 'warn' },
     3: { ad: '3. kutu', not: 'oturuyor — haftada bir', sinif: '' },
-    4: { ad: '4. kutu', not: 'öğrenildi — 15 günde bir', sinif: 'ok' },
-    5: { ad: '5. kutu', not: 'sağlam — ayda bir', sinif: 'ok' }
+    4: { ad: '4. kutu', not: 'neredeyse tamam — 15 günde bir', sinif: 'ok' },
+    5: { ad: '5. kutu', not: 'öğrenildi — artık tekrara gelmiyor', sinif: 'ok' }
   };
 
   var kayitlar = [];        // {ad, tur, kutu, kalan, tr, y, p}
@@ -73,7 +73,8 @@
     var say = { 0: kayitlar.length, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
     kayitlar.forEach(function (k) { say[k.kutu] = (say[k.kutu] || 0) + 1; });
 
-    var vadesi = kayitlar.filter(function (k) { return k.kalan === 0; }).length;
+    // Mezunlar (5. kutu) tekrara gelmez; sayaca girmesin.
+    var vadesi = kayitlar.filter(function (k) { return k.kalan === 0 && k.kutu < 5; }).length;
 
     var html = '<button type="button" class="ks' + (seciliKutu === 0 ? ' acik' : '') +
       '" data-k="0"><b>' + say[0] + '</b><i>hepsi</i></button>';
@@ -116,7 +117,8 @@
 
   function satir(k) {
     var b = KUTU_BILGI[k.kutu] || { ad: k.kutu + '. kutu', sinif: '' };
-    var vade = k.kalan === 0 ? 'bugün tekrar' : k.kalan + ' gün sonra';
+    var vade = k.kutu >= 5 ? 'tekrar yok'
+             : (k.kalan === 0 ? 'bugün tekrar' : k.kalan + ' gün sonra');
 
     return '<article class="word" data-ad="' + kacar(k.ad) + '">' +
         '<div>' +
@@ -134,7 +136,7 @@
           '</div>' +
         '</div>' +
         '<div class="act">' +
-          '<button class="star" type="button" data-ne="bilmedim" title="Bilemedim — 1. kutuya döner">✗</button>' +
+          '<button class="star" type="button" data-ne="bilmedim" title="Bilemedim — bir kutu geri düşer, yarın tekrar gelir">✗</button>' +
           '<button class="star" type="button" data-ne="bildim" title="Bildim — bir üst kutuya çıkar">✓</button>' +
           '<button class="star" type="button" data-ne="zaten" title="Zaten biliyorum — en üst kutuya at">✓✓</button>' +
           '<button class="star" type="button" data-ne="sil" title="Listeden çıkar (hiç çalışılmamış say)">⌫</button>' +

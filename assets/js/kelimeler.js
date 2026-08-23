@@ -43,7 +43,7 @@
   var elListe = $('liste'), elSayac = $('sayac'), elBos = $('bos');
   var elKartAlan = $('kartAlan'), elKart = $('kart');
 
-  var KUTU_ADI = ['hiç çalışılmadı', '1. kutu', '2. kutu', '3. kutu', '4. kutu', '5. kutu'];
+  var KUTU_ADI = ['hiç çalışılmadı', '1. kutu', '2. kutu', '3. kutu', '4. kutu', '5. kutu (öğrenildi)'];
 
   /* Olumsuz karşılık: sufficient → insufficient. Veri data/olumsuzlar.js'de. */
   function olumsuzSatiri(en) {
@@ -193,7 +193,7 @@
       var kutu = Il.kutu(d.e);
       if (dr === 'vadesi' && !Il.vadesiGeldiMi(d.e)) return false;
       if (dr === 'yeni' && kutu !== 0) return false;
-      if (dr === 'ogrenilen' && kutu < 4) return false;
+      if (dr === 'ogrenilen' && kutu < 5) return false;    // mezun olanlar
       if (dr === 'zayif' && !(kutu === 1 || kutu === 2)) return false;
       if (q && !esles(d, q)) return false;
       return true;
@@ -239,6 +239,7 @@
   function kutuRozeti(en) {
     var k = Il.kutu(en);
     if (k === 0) return '<span class="badge">yeni</span>';
+    if (Il.mezunMu(en)) return '<span class="badge ok" title="Öğrenildi — artık tekrara gelmiyor">öğrenildi ✓</span>';
     var gun = Il.kalanGun(en);
     var sinif = k >= 4 ? 'badge ok' : (k <= 2 ? 'badge warn' : 'badge');
     return '<span class="' + sinif + '">' + k + '. kutu · ' + (gun === 0 ? 'bugün' : gun + ' gün') + '</span>';
@@ -265,7 +266,7 @@
     var kisaAnlam = tam ? '' : '<div class="tr">' + kacar(d.t) + '</div>';
 
     return '' +
-      '<article class="word' + (kutu >= 4 ? ' known' : '') + '" data-en="' + kacar(d.e) + '">' +
+      '<article class="word' + (kutu >= 5 ? ' known' : '') + '" data-en="' + kacar(d.e) + '">' +
         '<div>' +
           '<div class="en">' + kacar(d.e) + '</div>' +
           kisaAnlam +
@@ -280,7 +281,7 @@
         '</div>' +
         '<div class="act">' +
           '<button class="star" type="button" data-ne="bildim" title="Bildim — bir üst kutuya çıkar">✓</button>' +
-          '<button class="star" type="button" data-ne="bilmedim" title="Bilemedim — 1. kutuya döner">✗</button>' +
+          '<button class="star" type="button" data-ne="bilmedim" title="Bilemedim — bir kutu geri düşer, yarın tekrar gelir">✗</button>' +
           '<button class="star" type="button" data-ne="ses" title="Telaffuzu dinle">🔊</button>' +
         '</div>' +
         anlamlar +
@@ -332,7 +333,8 @@
 
     $('kartOn').textContent = d.e;
     $('kartKutu').innerHTML = KUTU_ADI[Il.kutu(d.e)] +
-      (Il.vadesiGeldiMi(d.e) ? ' · tekrar zamanı' : '');
+      (Il.mezunMu(d.e) ? ' · öğrenildi, tekrara gelmez'
+                       : (Il.vadesiGeldiMi(d.e) ? ' · tekrar zamanı' : ''));
 
     $('kartTr').innerHTML = tam.a.map(function (a) { return kacar(a.tr); }).join('<br>') +
       '<div class="muted small" style="font-weight:400;margin-top:4px">' + kacar(d.y) + '</div>';

@@ -50,7 +50,8 @@
     <p class="muted" style="max-width:68ch">
       <b id="toplamKelime">7.859</b> kelime, gerçek YDS sınavlarındaki geçme sıklığına göre yedi katmana
       ayrıldı. Kelimeler <b>aralıklı tekrar</b> ile çalışılır: doğru bildiğin bir üst kutuya çıkıp
-      seyrekleşir, bilemediğin 1. kutuya döner.
+      seyrekleşir, bilemediğin bir kutu geri düşüp yarın yeniden gelir.
+      5. kutuya çıkan kelime öğrenilmiş sayılır ve bir daha tekrara gelmez.
     </p>
 
     <!-- katman seçici -->
@@ -108,7 +109,7 @@
         <option value="">Hepsi</option>
         <option value="vadesi">Bugün tekrarı gelenler</option>
         <option value="yeni">Hiç çalışılmamışlar</option>
-        <option value="ogrenilen">Öğrendiklerim (4-5. kutu)</option>
+        <option value="ogrenilen">Öğrendiklerim (5. kutu)</option>
         <option value="zayif">Zayıflarım (1-2. kutu)</option>
       </select>
 
@@ -192,7 +193,7 @@
         <button class="btn ghost sm" type="button" id="bilmedim" style="border-color:var(--err);color:var(--err)">✗ Bilemedim</button>
         <button class="btn sm" type="button" id="bildim">✓ Bildim</button>
         <button class="btn ghost sm" type="button" id="zatenBiliyorum"
-                title="Bu kelimeyi zaten biliyorum — en üst kutuya at, 30 gün sorma">
+                title="Bu kelimeyi zaten biliyorum — öğrenildi say, bir daha sorma">
           ✓✓ Zaten biliyorum
         </button>
       </div>

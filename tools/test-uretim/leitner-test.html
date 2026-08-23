@@ -1,0 +1,36 @@
+<!DOCTYPE html><meta charset="utf-8"><title>leitner testi</title>
+<script src="file:///C:/Users/Trk/Desktop/Turksev.github.io/assets/js/main.js"></script>
+<script src="file:///C:/Users/Trk/Desktop/Turksev.github.io/assets/js/ilerleme.js"></script>
+<pre id="out"></pre>
+<script>
+var Il = window.YDS.Ilerleme, log = [], hata = 0;
+function esit(ad, olan, olmasi) {
+  var ok = JSON.stringify(olan) === JSON.stringify(olmasi);
+  if (!ok) hata++;
+  log.push((ok ? 'OK  ' : 'HATA ') + ad + '  olan=' + JSON.stringify(olan) + ' beklenen=' + JSON.stringify(olmasi));
+}
+var w = 'testkelime';
+esit('yeni kelime kutusu', Il.kutu(w), 0);
+esit('yeni kelime yanlış -> 1. kutu', Il.yanlis(w), 1);
+esit('1 -> 2', Il.dogru(w), 2);
+esit('2 -> 3', Il.dogru(w), 3);
+esit('3. kutuda yanlış -> 2 (sıfırlanmaz)', Il.yanlis(w), 2);
+esit('yanlış sonrası yarın gelir', Il.kalanGun(w), 1);
+esit('2 -> 3', Il.dogru(w), 3);
+esit('3 -> 4', Il.dogru(w), 4);
+esit('4 -> 5', Il.dogru(w), 5);
+esit('5. kutu mezun', Il.mezunMu(w), true);
+esit('mezun vadeye gelmez', Il.vadesiGeldiMi(w), false);
+esit('mezun destede yok', Il.destelik([{en: w}]).length, 0);
+var o = Il.leitnerOzet([{en: w}]);
+esit('özet: öğrenilen', o.ogrenilen, 1);
+esit('özet: bugün', o.bugun, 0);
+esit('özet: tekrar', o.tekrar, 0);
+Il.sifirlaKelime(w);
+esit('sıfırlama sonrası kutu', Il.kutu(w), 0);
+var z = 'zaten';
+esit('zaten biliyorum -> mezun', Il.zatenBiliyorum(z), 5);
+esit('zaten biliyorum tekrara gelmez', Il.vadesiGeldiMi(z), false);
+Il.leitnerSifirla();
+document.getElementById('out').textContent = log.join('\n') + '\n' + (hata ? hata + ' HATA' : 'HEPSI GECTI');
+</script>

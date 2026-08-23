@@ -108,9 +108,18 @@ Her kelime 1–5 arası bir kutuda durur. Kart modunda **✓ Bildim** dersen bir
 | 2 | 3 gün sonra |
 | 3 | 7 gün sonra |
 | 4 | 15 gün sonra |
-| 5 | 30 gün sonra |
+| 5 | **tekrar yok — öğrenildi** |
 
-4. ve 5. kutudakiler "öğrenilmiş" sayılır. Kelimeler ve öbekler aynı kutu tablosunu paylaşır
+**Yanlış cevap bir kutu geri düşürür** (sıfırlamaz) ve kelimeyi ertesi güne alır: bir aydır
+bildiğin kelimeyi tek şaşırmada baştan başlatmak tekrar yükünü katlıyordu.
+
+**5. kutu mezuniyettir**: oraya çıkan kelime bir daha tekrara gelmez, "öğrenildi" sayılır.
+Oraya çıkmak için kelimeyi 26 güne yayılmış dört tekrarda doğru bilmek gerekir. Böylece
+deste zamanla erir; hepsini yeniden çalışmak istersen "Kelime ilerlememi sıfırla".
+
+Simülasyon (2.501 kelime, günde 20 yeni, %82 doğruluk): günlük deste 76. günde 150 kartla
+zirve yapıp 180. günde 3'e iner, 220. günde bütün kelimeler mezun olur. Eski kurguda
+(yanlış → 1. kutu, 5. kutu 30 günde bir sonsuza dek) yük 365. günde hâlâ 162 karttı. Kelimeler ve öbekler aynı kutu tablosunu paylaşır
 (anahtarlar çakışmaz: öbeklerde boşluk var), ama her sayfanın "sıfırla" düğmesi yalnız kendi
 kayıtlarını siler. Aralıkları değiştirmek istersen
 `assets/js/ilerleme.js` içindeki `ARALIK` tablosunu düzenle.

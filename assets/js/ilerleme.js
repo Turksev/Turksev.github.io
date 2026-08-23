@@ -78,9 +78,14 @@
   /* Yalnizca BASLANMIS kelimeler icin: tekrar gunu geldi mi?
      Hic calisilmamis kelime "vadesi gelmis" sayilmaz — o yeni kelimedir ve
      gunluk kotayla acilir. Ikisini ayirmazsak ilk gun 7.859 kart cikardi. */
+  /* En üst kutuya çıkan kelime MEZUN olur: bir daha tekrara gelmez.
+     Oraya çıkmak için kelimeyi 26 güne yayılmış dört tekrarda doğru bilmen
+     gerekir. Baştan çalışmak istersen "Kelime ilerlememi sıfırla". */
+  function mezunMu(en) { return kutu(en) >= EN_UST_KUTU; }
+
   function vadesiGeldiMi(en) {
     var kayit = leitner[en];
-    if (!kayit) return false;
+    if (!kayit || kayit.k >= EN_UST_KUTU) return false;
     return kayit.g <= bugun();
   }
 
@@ -122,7 +127,7 @@
   }
 
   /* Ayıklama: "bunu zaten biliyorum". Kelimeyi en üst kutuya koyar, yani
-     30 gün sonraya atar. Hızlıca "Bildim" demekten farkı, kelimenin 1. kutuya
+     doğrudan mezun eder. Hızlıca "Bildim" demekten farkı, kelimenin 1. kutuya
      düşüp ertesi gün tekrara gelmemesidir — 4.760 kelimeyi elden geçirirken
      yarın 4.760 tekrarlık çığ oluşmasın diye. */
   function zatenBiliyorum(en) {
@@ -162,12 +167,15 @@
     return k;
   }
 
-  /* Yanlış bilindi: birinci kutuya dön, yarın tekrar sor. */
+  /* Yanlış bilindi: BİR kutu geri düş (sıfırlanma yok), yarın tekrar sor.
+     Bir aydır bildiğin kelimeyi tek şaşırmada baştan başlatmak, tekrar yükünü
+     katlıyordu; bir kutu geri düşmek hem cezayı hem yükü ölçülü tutar. */
   function yanlis(en) {
     ilkKezIse(en);
-    leitner[en] = { k: 1, g: bugun() + ARALIK[1] };
+    var k = Math.max(1, kutu(en) - 1);
+    leitner[en] = { k: k, g: bugun() + 1 };   // hangi kutuya düşerse düşsün yarın sorulur
     kaydet();
-    return 1;
+    return k;
   }
 
   function sifirlaKelime(en) {
@@ -204,7 +212,7 @@
       var k = kutu(kel.en);
       o['k' + k]++;
       if (k > 0) o.calisilan++; else o.yeni++;
-      if (k >= 4) o.ogrenilen++;
+      if (k >= EN_UST_KUTU) o.ogrenilen++;      // mezun: artık tekrara gelmiyor
       if (vadesiGeldiMi(kel.en)) o.tekrar++;
     });
     o.acilacakYeni = Math.min(o.yeni, o.kotaKalan);
@@ -398,6 +406,7 @@
     vadesiGeldiMi: vadesiGeldiMi,
     yeniMi: yeniMi,
     kalanGun: kalanGun,
+    mezunMu: mezunMu,
     gunlukHedef: gunlukHedef,
     gunlukHedefAyarla: gunlukHedefAyarla,
     bugunAcilanYeni: bugunAcilanYeni,
