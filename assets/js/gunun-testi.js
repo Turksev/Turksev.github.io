@@ -1,9 +1,10 @@
 /* ============================================================
    Günün testi — deste bittikten sonra boşluk doldurma sınavı
 
-   Bugün çalışılan kelimeler (en çok 20) için, karttaki örnekten
-   bağımsız, YDS düzeyinde özgün cümlelerle 5 şıklı boşluk doldurma.
-   Cümleler data/test-k{n}.js dosyalarındadır: {kelime: {c, b, f, tr}}
+   Hem kelime hem öbek sayfasında çalışır (kaynak: 'kelime' | 'obek').
+   Bugün çalışılanlar (en çok 20) için, karttaki örnekten bağımsız,
+   YDS düzeyinde özgün cümlelerle 5 şıklı boşluk doldurma.
+   Cümleler data/test-k{n}.js ve data/test-obek.js içindedir: {anahtar: {c, b, f, tr}}
      c  = boşluklu cümle ("----")
      b  = boşluğa gelen biçim (çekimli olabilir)
      f  = çekim türü ('', 's', 'past', 'pp', 'ing', 'pl')
@@ -19,7 +20,40 @@
 
   var Veri = window.YDS.Veri, Il = window.YDS.Ilerleme, Cekim = window.YDS.Cekim;
   var kacar = window.YDS.kacar;
-  var DIZIN = window.KELIME_DIZIN || [];
+
+  /* ---------- kaynaklar ----------
+     Test iki havuzda çalışır. Her kaynak kendi dizinini, cümle tablosunu ve
+     çeldirici ölçütünü verir; gerisi ortaktır. */
+
+  var KAYNAKLAR = {
+    kelime: {
+      ad: 'kelime',
+      dizin: function () { return window.KELIME_DIZIN || []; },
+      cumle: function (en) {
+        var k = Veri.katmani(en);
+        var t = k && window['TEST_K' + k];
+        return (t && t[en]) || null;
+      },
+      yukle: function (secili) { return Veri.testleriYukle(secili); }
+    },
+    obek: {
+      ad: 'öbek',
+      dizin: function () {
+        if (!obekDizin && window.OBEKLER) {
+          obekDizin = window.OBEKLER.map(function (o) {
+            return { e: o.f, t: (o.a[0] || {}).tr || '', y: o.y, k: 0 };
+          });
+        }
+        return obekDizin || [];
+      },
+      cumle: function (f) { return (window.TEST_OBEK && window.TEST_OBEK[f]) || null; },
+      yukle: function () { return Veri.obekTestleriniYukle(); }
+    }
+  };
+
+  var obekDizin = null;
+  var aktif = KAYNAKLAR.kelime;
+  function DIZINI() { return aktif.dizin(); }
 
   var EN_COK = 20;           // bir testte en çok soru
   var EN_AZ = 3;             // bundan az soru varsa test açılmaz
@@ -54,10 +88,16 @@
   /* Dizinde "parts", "used", "growing" gibi çekimli girdiler de var (v4 listesi
      çekimleri köke bağlamadan taşıyor). Bunları bir daha çekmek "partses",
      "useded" üretir; kökü dizinde varsa çeldirici olarak kullanma. */
-  var SOZLUK = {};
-  DIZIN.forEach(function (d) { SOZLUK[d.e] = 1; });
-
-  function sozlukte(e) { return e.length > 2 && SOZLUK[e]; }
+  var sozlukOnbellek = {};
+  function sozlukte(e) {
+    var ad = aktif.ad;
+    if (!sozlukOnbellek[ad]) {
+      var s = {};
+      DIZINI().forEach(function (d) { s[d.e] = 1; });
+      sozlukOnbellek[ad] = s;
+    }
+    return e.length > 2 && sozlukOnbellek[ad][e];
+  }
 
   function zatenCekimli(e, f) {
     if (!f) return false;
@@ -80,6 +120,10 @@
 
   /* Aynı kökten mi? (prompt / promptly, economy / economic) */
   function ayniKok(a, b) {
+    // Öbeklerde ilk kelime belirleyici: "give up" ile "give in" aynı kökten.
+    if (/[\s-]/.test(a) || /[\s-]/.test(b)) {
+      return a.split(/[\s-]+/)[0] === b.split(/[\s-]+/)[0];
+    }
     var n = Math.min(a.length, b.length, 5);
     if (n < 4) return a === b;
     return a.slice(0, n) === b.slice(0, n);
@@ -108,7 +152,16 @@
     var cumle = soru.c.toLowerCase();
 
     function uygun(d, mesafe) {
-      if (d.e === hedef.e || /[^a-z]/.test(d.e)) return false;
+      if (d.e === hedef.e) return false;
+      if (aktif === KAYNAKLAR.obek) {
+        // Öbekte ölçüt: aynı tür (deyimsel fiil / edat kalıbı) ve aynı çekime girebilmek
+        if (d.y !== hedef.y) return false;
+        if (ayniKok(d.e, hedef.e)) return false;
+        if (cumledeGeciyorMu(cumle, d.e.split(/[\s-]+/)[0])) return false;
+        var ob = Cekim.cek(d.e, f);
+        return !!ob && ob !== soru.b;
+      }
+      if (/[^a-z]/.test(d.e)) return false;
       if (Math.abs(d.k - hedef.k) > mesafe) return false;
       var t = turler(d);
       if (gerekli === 'fiil') {
@@ -130,7 +183,7 @@
     var aday;
     // Önce baş türü aynı (ilk listelenen tür) ve komşu katman; yetmezse genişlet
     [[0, true], [1, true], [2, false], [7, false]].some(function (asama) {
-      aday = karistir(DIZIN.filter(function (d) {
+      aday = karistir(DIZINI().filter(function (d) {
         if (kume[d.e] || !uygun(d, asama[0])) return false;
         return !asama[1] || turler(d)[0] === (gerekli || hedefTurler[0]);
       }));
@@ -144,6 +197,9 @@
 
   /* ---------- soru kurma ---------- */
 
+  /* Bugün çalışılanlar. Dönen kayıtlar HER ZAMAN kaynağın dizin kayıtlarıdır
+     (tür/katman alanları çeldirici için gerekir); havuz yalnız sınırlama içindir
+     ve hem {e:…} hem {en:…} biçimini kabul eder. */
   function bugunCalisilanlar(havuz) {
     var bugun = Il.bugun();
     var kayitlar = Il.tumKayitlar();
@@ -152,14 +208,17 @@
       var r = kayitlar[en];
       if (r && r.k && r.g - Il.ARALIK[r.k] === bugun) kume[en] = true;
     });
-    return havuz.filter(function (d) { return kume[d.e]; });
+    var sinir = null;
+    if (havuz && havuz.length) {
+      sinir = {};
+      havuz.forEach(function (x) { sinir[x.e || x.en] = 1; });
+    }
+    return DIZINI().filter(function (d) {
+      return kume[d.e] && (!sinir || sinir[d.e]);
+    });
   }
 
-  function testCumlesi(en) {
-    var k = Veri.katmani(en);
-    var tablo = k && window['TEST_K' + k];
-    return (tablo && tablo[en]) || null;
-  }
+  function testCumlesi(en) { return aktif.cumle(en); }
 
   function soruKur(d) {
     var s = testCumlesi(d.e);
@@ -273,11 +332,15 @@
   /* Bugün çalışılan ve seçili havuzdaki kelime sayısı (test düğmesi için). */
   function bugunSayisi(havuz) { return bugunCalisilanlar(havuz).length; }
 
+  /* Sayfa açılışında hangi kaynağı kullanacağımızı bildir (düğme metni vb. için). */
+  function kaynakSec(kaynak) { aktif = KAYNAKLAR[kaynak] || KAYNAKLAR.kelime; }
+
   /* Testi başlat: gereken test dosyalarını indirir, soruları kurar, ekranı açar.
      Söz: {acildi: bool, soru: n, calisilan: n} */
-  function baslat(havuz, secili, onKapat) {
+  function baslat(havuz, secili, onKapat, kaynak) {
     kapandiginda = onKapat || null;
-    return Veri.testleriYukle(secili).then(function () {
+    aktif = KAYNAKLAR[kaynak || 'kelime'] || KAYNAKLAR.kelime;
+    return aktif.yukle(secili).then(function () {
       var h = hazirla(havuz);
       if (h.sorular.length < EN_AZ) return { acildi: false, soru: h.sorular.length, calisilan: h.calisilan };
       sorular = h.sorular; sira = 0; dogru = 0; yanlislar = [];
@@ -313,5 +376,9 @@
     });
   });
 
-  window.YDS.KelimeTesti = { baslat: baslat, bugunSayisi: bugunSayisi, EN_AZ: EN_AZ, EN_COK: EN_COK };
+  window.YDS.GununTesti = {
+    baslat: baslat, bugunSayisi: bugunSayisi, kaynakSec: kaynakSec,
+    EN_AZ: EN_AZ, EN_COK: EN_COK
+  };
+  window.YDS.KelimeTesti = window.YDS.GununTesti;   // eski ad
 })();

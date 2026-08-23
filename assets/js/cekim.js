@@ -181,8 +181,17 @@
 
   /* Tek kelimelik sözlük biçimini istenen biçime çevirir; üretilemezse null. */
   function cek(kelime, bicim) {
-    var k = String(kelime || '').toLowerCase();
-    if (!k || /[^a-z]/.test(k)) return bicim ? null : k;   // "give up" gibi çok kelimeliler çekilmez
+    var k = String(kelime || '').toLowerCase().trim();
+    if (!k) return bicim ? null : k;
+    // Öbek ("give up", "bring-up"): ilk kelime çekilir, kalanı olduğu gibi kalır.
+    if (/[-\s]/.test(k)) {
+      var parcalar = k.split(/[-\s]+/);
+      if (!bicim) return parcalar.join(' ');
+      if (!/^[a-z]+$/.test(parcalar[0])) return null;
+      var ilk = cek(parcalar[0], bicim);
+      return ilk ? [ilk].concat(parcalar.slice(1)).join(' ') : null;
+    }
+    if (/[^a-z]/.test(k)) return bicim ? null : k;
     var d;
     switch (bicim || '') {
       case '': return k;

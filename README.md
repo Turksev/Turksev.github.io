@@ -64,7 +64,7 @@ assets/
   css/style.css       tüm sayfaların ortak stili (açık/koyu tema)
   js/main.js          tema, gezinme, localStorage, service worker kaydı
   js/cekim.js         çekim motoru (test şıkları için)
-  js/kelime-testi.js  günün testi: soru kurma, şıklar, sonuç
+  js/gunun-testi.js   günün testi (kelime + öbek): soru kurma, şıklar, sonuç
   js/ilerleme.js      Leitner, yanlış defteri, kategori istatistiği, geçmiş
   js/esitleme-ayar.js Firebase yapılandırması (null ise eşitleme kapalı)
   js/esitleme.js      cihazlar arası eşitleme: Google girişi + Firestore
@@ -79,6 +79,7 @@ assets/
 data/
   kelime-dizin.js     7.859 kelime: yazılış, kısa anlam, puan, katman, tür
   test-k1..k7.js      günün testi cümleleri (katman başına, üretildikçe)
+  test-obek.js        öbekler için günün testi cümleleri
   kelime-k1..k7.js    katman katman tam kayıtlar (örnek cümleler)
   obekler.js          1.623 kelime öbeği
   sayilar.js          içerik sayaçları (üretilir)
@@ -176,6 +177,11 @@ cevabı ele vermez. Aynı kök, eş anlamlı ve cümlede geçen kelimeler çeldi
 Sonuç Leitner kutusunu **değiştirmez**; bilinemeyen kelime `yds-test-yanlis` defterine girer
 (listede ve Durumum'da "testte ✗" rozeti), sonraki testte önce sorulur, doğru bilinince düşer.
 Defter cihazlar arasında eşitlenir.
+
+**Öbekler için de test var.** `obekler.html` aynı test modülünü `kaynak='obek'` ile çağırır;
+cümleler `data/test-obek.js` içindedir (deyimsel fiil + edat kalıbı). Şıklar aynı türden
+öbeklerden seçilir ve aynı çekime sokulur — çekim öbeğin ilk kelimesine uygulanır
+(`bring about` + past → `brought about`), edat aynen kalır.
 
 Cümle üretimi `tools/test-uretim/` altındadır (kuyruk ve çalıştırma yönergesi:
 `tools/test-uretim/KUYRUK.md`). Kelimeler 70'lik paketlere bölünüp brief ile

@@ -68,6 +68,7 @@
       <div class="toolbar" style="margin:14px 0 0">
         <button class="btn" type="button" id="desteBasla">Bugünü çalış</button>
         <button class="btn ghost" type="button" id="devamEt" hidden>Devam et</button>
+        <button class="btn ghost" type="button" id="testBasla" hidden title="Bugün çalıştığın öbekleri özgün cümlelerde boşluk doldurarak sına">Günün testi</button>
         <label class="small muted" style="display:flex;align-items:center;gap:7px">
           Bugün toplam kart:
           <select id="gunlukTavan" aria-label="Günlük toplam kart sınırı"
@@ -93,6 +94,7 @@
         </label>
       </div>
       <p class="small muted" style="margin:10px 0 0" id="desteAciklama"></p>
+      <p class="small muted" style="margin:8px 0 0" id="bekleyenNot" hidden></p>
     </div>
 
     <div class="toolbar">
@@ -126,6 +128,40 @@
     <p class="center" style="margin-top:16px">
       <button class="btn ghost" type="button" id="dahaFazla" hidden>Daha fazla göster</button>
     </p>
+
+    <!-- deste bitince test daveti -->
+    <div class="tip" id="testDavet" hidden style="margin-bottom:14px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between">
+      <span id="testDavetMetin"></span>
+      <span style="display:flex;gap:8px">
+        <button class="btn sm" type="button" id="testDavetBasla">Teste başla</button>
+        <button class="btn ghost sm" type="button" id="testDavetKapat">Şimdi değil</button>
+      </span>
+    </div>
+
+    <!-- günün testi -->
+    <div id="testAlan" hidden>
+      <div class="card" id="tSoru">
+        <div class="q-head">
+          <span class="badge accent">Günün testi</span>
+          <span class="small muted" id="tSayac">—</span>
+        </div>
+        <div class="progress" style="margin:10px 0 16px"><i id="tBar"></i></div>
+        <p class="q-text" id="tMetin"></p>
+        <div class="options" id="tSecenekler"></div>
+        <div class="tip" id="tAcik" hidden style="margin-top:14px"></div>
+        <div class="toolbar" style="margin-top:16px;justify-content:space-between">
+          <button class="btn ghost sm" type="button" id="tKapat">Testi bırak</button>
+          <button class="btn" type="button" id="tIleri" disabled>Sonraki soru</button>
+        </div>
+        <p class="small muted" style="margin:10px 0 0">Klavye: A–E ya da 1–5 ile cevapla, Enter ile ilerle. Sonuç kutularını değiştirmez.</p>
+      </div>
+      <div class="card" id="tSonuc" hidden>
+        <div class="q-head"><b>Test sonucu</b><span class="badge accent" id="tSkor">—</span></div>
+        <p class="small muted" id="tSkorNot" style="margin:8px 0 14px"></p>
+        <div id="tInceleme"></div>
+        <p class="center" style="margin:16px 0 0"><button class="btn" type="button" id="tBitir">Listeye dön</button></p>
+      </div>
+    </div>
 
     <!-- kart görünümü -->
     <div id="kartAlan" hidden>
@@ -193,6 +229,8 @@
 <script src="data/sayilar.js"></script>
 <script src="assets/js/ilerleme.js"></script>
 <script src="assets/js/veri.js"></script>
+<script src="assets/js/cekim.js"></script>
+<script src="assets/js/gunun-testi.js"></script>
 <script src="assets/js/obekler.js"></script>
 <script src="assets/js/esitleme-ayar.js"></script>
 <script src="assets/js/esitleme.js"></script>

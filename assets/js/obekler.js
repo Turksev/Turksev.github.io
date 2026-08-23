@@ -55,6 +55,12 @@
         return '<span class="kutu"><b>' + o['k' + k] + '</b><i>' + k + '. kutu</i></span>';
       }).join('');
 
+    $('bekleyenNot').hidden = !o.bekleyen;
+    if (o.bekleyen) {
+      $('bekleyenNot').innerHTML = '<b>' + o.bekleyen + '</b> tekrar bugünkü sınıra sığmadı, ' +
+        'sıradaki günlere kaldı. Daha hızlı eritmek istersen üstteki <b>toplam kart</b> sayısını artır.';
+    }
+    testDugmesiGuncelle();
     $('desteBasla').disabled = o.bugun === 0;
     $('desteBasla').textContent = o.bugun === 0
       ? 'Bugünlük bitti 🎉'
@@ -273,6 +279,53 @@
     elDurum.value = '';
     filtrele();
     elSayac.textContent = 'Bugünün öbek destesi bitti. Yarın yeni tekrarlar açılacak.';
+
+    var davet = $('testDavet');
+    var n = Test ? Test.bugunSayisi(leitnerListesi()) : 0;
+    davet.hidden = n < (Test ? Test.EN_AZ : 99);
+    if (!davet.hidden) {
+      $('testDavetMetin').textContent = 'Bugünkü desteni bitirdin 🎉 Şimdi bu öbekleri cümle içinde gör: ' +
+        Math.min(n, Test.EN_COK) + ' soruluk boşluk doldurma testi.';
+      davet.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+
+  /* ---------- günün testi ---------- */
+
+  var Test = window.YDS.GununTesti;
+
+  function testDugmesiGuncelle() {
+    var b = $('testBasla');
+    if (!Test) { b.hidden = true; return; }
+    Test.kaynakSec('obek');
+    var n = Test.bugunSayisi(leitnerListesi());
+    b.hidden = n < Test.EN_AZ;
+    b.textContent = 'Günün testi (' + Math.min(n, Test.EN_COK) + ' soru)';
+  }
+
+  function testiBaslat() {
+    if (!Test) return;
+    var b = $('testBasla');
+    b.disabled = true;
+    Test.baslat(leitnerListesi(), null, function () {
+      $('testDavet').hidden = true;
+      filtrele();
+      desteyiCiz();
+      $('deste').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 'obek').then(function (r) {
+      b.disabled = false;
+      if (r.acildi) {
+        kartModu = false; desteModu = false;
+        elListe.hidden = true; elKartAlan.hidden = true; elBos.hidden = true;
+        $('dahaFazla').hidden = true;
+        $('testDavet').hidden = true;
+      } else {
+        $('desteAciklama').innerHTML = r.calisilan
+          ? 'Bugün çalıştığın ' + r.calisilan + ' öbekten yalnız ' + r.soru +
+            ' tanesinin test cümlesi hazır; test için en az ' + Test.EN_AZ + ' gerekiyor.'
+          : 'Bugün henüz öbek çalışmadın; önce desteyi bitir.';
+      }
+    }).catch(function () { b.disabled = false; });
   }
 
   /* ---------- ortak ---------- */
@@ -337,6 +390,10 @@
     this.textContent = kartModu ? 'Liste moduna dön' : 'Kart moduna geç';
     ciz();
   });
+
+  $('testBasla').addEventListener('click', testiBaslat);
+  $('testDavetBasla').addEventListener('click', testiBaslat);
+  $('testDavetKapat').addEventListener('click', function () { $('testDavet').hidden = true; });
 
   $('desteBasla').addEventListener('click', function () {
     var destelik = Il.destelik(leitnerListesi());

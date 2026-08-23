@@ -109,8 +109,18 @@ def cogul(k):
 
 
 def cek(kelime, bicim=''):
-    k = (kelime or '').lower()
-    if not k or re.search(r'[^a-z]', k):
+    k = (kelime or '').lower().strip()
+    if not k:
+        return None if bicim else k
+    if re.search(r'[-\s]', k):
+        parcalar = re.split(r'[-\s]+', k)
+        if not bicim:
+            return ' '.join(parcalar)
+        if not re.fullmatch(r'[a-z]+', parcalar[0]):
+            return None
+        ilk = cek(parcalar[0], bicim)
+        return ' '.join([ilk] + parcalar[1:]) if ilk else None
+    if re.search(r'[^a-z]', k):
         return None if bicim else k
     if bicim == '':
         return k

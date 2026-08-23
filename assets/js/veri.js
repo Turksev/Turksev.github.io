@@ -86,6 +86,22 @@
     return Promise.all((liste || []).map(testYukle));
   }
 
+  /* Öbeklerin günün testi cümleleri — tek dosya, gerekince indirilir. */
+  var obekTestYukleniyor = null;
+  function obekTestleriniYukle() {
+    if (window.TEST_OBEK) return Promise.resolve(window.TEST_OBEK);
+    if (obekTestYukleniyor) return obekTestYukleniyor;
+    obekTestYukleniyor = new Promise(function (coz) {
+      var s = document.createElement('script');
+      s.src = 'data/test-obek.js';
+      s.async = true;
+      s.onload = function () { coz(window.TEST_OBEK || {}); };
+      s.onerror = function () { window.TEST_OBEK = window.TEST_OBEK || {}; coz(window.TEST_OBEK); };
+      document.head.appendChild(s);
+    });
+    return obekTestYukleniyor;
+  }
+
   function katmanYukluMu(k) { return !!yukluKatmanlar[k]; }
 
   /* ---------- kayıt erişimi ---------- */
@@ -145,6 +161,7 @@
     katmanYukluMu: katmanYukluMu,
     katmanSayilari: katmanSayilari,
     obekleriYukle: obekleriYukle,
-    testleriYukle: testleriYukle
+    testleriYukle: testleriYukle,
+    obekTestleriniYukle: obekTestleriniYukle
   };
 })();
