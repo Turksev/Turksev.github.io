@@ -45,6 +45,10 @@ Sırada 5. katman var; girdi paketleri henüz üretilmedi (aşağıya bak).
 | 2 · Çekirdek | 720 | tamam |
 | 3 · Orta | 708 | tamam |
 | 4 · İleri | 1.073 | tamam |
+| Öbekler (deyimsel fiil + edat kalıbı) | 892 | tamam |
+
+Öbek hattı ayrı dosyalarda: `obek-test-paketle.py`, `obek-test-brief.md`,
+`obek-test-girdi/`, `obek-test-cikti/`, `obek-test-dogrula.py` → `data/test-obek.js`.
 
 ## Dosyalar
 

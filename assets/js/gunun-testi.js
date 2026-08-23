@@ -118,6 +118,29 @@
     return false;
   }
 
+  /* Öbeklerin ilk kelimeleri — çekimli girdileri ayıklamak için. */
+  var obekIlkler = null;
+  function obekCekimli(ilk, f) {
+    if (!f) return false;
+    if (!obekIlkler) {
+      obekIlkler = {};
+      DIZINI().forEach(function (d) { obekIlkler[d.e.split(/[\s-]+/)[0]] = 1; });
+    }
+    function kok(x) { return x.length > 2 && obekIlkler[x]; }
+    if (/ing$/.test(ilk)) {
+      return kok(ilk.slice(0, -3)) || kok(ilk.slice(0, -3) + 'e') || kok(ilk.slice(0, -4));
+    }
+    if (/ed$/.test(ilk)) {
+      return kok(ilk.slice(0, -2)) || kok(ilk.slice(0, -1)) ||
+             (/ied$/.test(ilk) && kok(ilk.slice(0, -3) + 'y')) || kok(ilk.slice(0, -3));
+    }
+    if (/s$/.test(ilk)) {
+      return kok(ilk.slice(0, -1)) || kok(ilk.slice(0, -2)) ||
+             (/ies$/.test(ilk) && kok(ilk.slice(0, -3) + 'y'));
+    }
+    return false;
+  }
+
   /* Aynı kökten mi? (prompt / promptly, economy / economic) */
   function ayniKok(a, b) {
     // Öbeklerde ilk kelime belirleyici: "give up" ile "give in" aynı kökten.
@@ -157,7 +180,11 @@
         // Öbekte ölçüt: aynı tür (deyimsel fiil / edat kalıbı) ve aynı çekime girebilmek
         if (d.y !== hedef.y) return false;
         if (ayniKok(d.e, hedef.e)) return false;
-        if (cumledeGeciyorMu(cumle, d.e.split(/[\s-]+/)[0])) return false;
+        var ilk = d.e.split(/[\s-]+/)[0];
+        // Dizinde "carrying out", "carried out in" gibi ZATEN çekilmiş biçimler var;
+        // onları yeniden çekmek "carryinged out" üretir.
+        if (obekCekimli(ilk, f)) return false;
+        if (cumledeGeciyorMu(cumle, ilk)) return false;
         var ob = Cekim.cek(d.e, f);
         return !!ob && ob !== soru.b;
       }
