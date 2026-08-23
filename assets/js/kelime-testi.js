@@ -51,6 +51,33 @@
     return null;
   }
 
+  /* Dizinde "parts", "used", "growing" gibi çekimli girdiler de var (v4 listesi
+     çekimleri köke bağlamadan taşıyor). Bunları bir daha çekmek "partses",
+     "useded" üretir; kökü dizinde varsa çeldirici olarak kullanma. */
+  var SOZLUK = {};
+  DIZIN.forEach(function (d) { SOZLUK[d.e] = 1; });
+
+  function sozlukte(e) { return e.length > 2 && SOZLUK[e]; }
+
+  function zatenCekimli(e, f) {
+    if (!f) return false;
+    if (f === 'pl' || f === 's') {
+      if (!/s$/.test(e)) return false;
+      return sozlukte(e.slice(0, -1)) || sozlukte(e.slice(0, -2)) ||
+             (/ies$/.test(e) && sozlukte(e.slice(0, -3) + 'y'));
+    }
+    if (f === 'past' || f === 'pp') {
+      if (!/ed$/.test(e)) return false;
+      return sozlukte(e.slice(0, -2)) || sozlukte(e.slice(0, -1)) ||
+             (/ied$/.test(e) && sozlukte(e.slice(0, -3) + 'y'));
+    }
+    if (f === 'ing') {
+      if (!/ing$/.test(e)) return false;
+      return sozlukte(e.slice(0, -3)) || sozlukte(e.slice(0, -3) + 'e');
+    }
+    return false;
+  }
+
   /* Aynı kökten mi? (prompt / promptly, economy / economic) */
   function ayniKok(a, b) {
     var n = Math.min(a.length, b.length, 5);
@@ -90,6 +117,7 @@
       } else if (gerekli === 'isim') {
         if (t[0] !== 'isim') return false;
       } else if (!t.some(function (x) { return hedefTurler.indexOf(x) !== -1; })) return false;
+      if (zatenCekimli(d.e, f)) return false;
       if (ayniKok(d.e, hedef.e)) return false;
       if (esler.indexOf(d.e) !== -1) return false;
       if (cumledeGeciyorMu(cumle, d.e)) return false;

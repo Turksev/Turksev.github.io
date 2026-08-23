@@ -1,7 +1,7 @@
 /* 2. katman — günün testi cümleleri · 720 kelime
    Karttaki örnekten bağımsız, YDS düzeyinde boşluk doldurma cümleleri.
    Alanlar: c=boşluklu cümle, b=boşluğa gelen biçim, f=çekim türü, tr=Türkçesi.
-   Üretim: scratchpad/test (agent yazımı + dogrula.js); elle düzenleme yerine oradan yeniden üret. */
+   Üretim: scratchpad/test (agent yazımı + dogrula.py); elle düzenleme yerine oradan yeniden üret. */
 
 window.TEST_K2 = {
 "abandon":{c:"Rather than ---- the expedition when the supply ship failed to arrive, the explorers rationed their food and pressed on towards the pole.",b:"abandoning",f:"ing",tr:"Kâşifler, ikmal gemisi gelmeyince seferi terk etmek yerine yiyeceklerini karneye bağlayıp kutba doğru ilerlemeye devam etti."},

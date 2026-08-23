@@ -1,7 +1,7 @@
 /* 3. katman — günün testi cümleleri · 708 kelime
    Karttaki örnekten bağımsız, YDS düzeyinde boşluk doldurma cümleleri.
    Alanlar: c=boşluklu cümle, b=boşluğa gelen biçim, f=çekim türü, tr=Türkçesi.
-   Üretim: scratchpad/test (agent yazımı + dogrula.js); elle düzenleme yerine oradan yeniden üret. */
+   Üretim: scratchpad/test (agent yazımı + dogrula.py); elle düzenleme yerine oradan yeniden üret. */
 
 window.TEST_K3 = {
 "accent":{c:"Even after thirty years in London, the novelist retained the distinctive ---- of his native Glasgow, which listeners could identify within a few sentences.",b:"accent",f:"",tr:"Londra'da geçen otuz yıla rağmen romancı, dinleyicilerin birkaç cümle içinde tanıyabildiği memleketi Glasgow'un belirgin aksanını korudu."},
