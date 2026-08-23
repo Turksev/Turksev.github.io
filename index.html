@@ -298,7 +298,10 @@
   }
 
   $('p-sifirla').addEventListener('click', function () {
-    if (!confirm('Kelime kutuların, yanlış defterin, kategori karnen ve deneme geçmişin silinecek. Emin misin?')) return;
+    var n = Object.keys(Il.tumKayitlar()).length;
+    if (!window.YDS.ikiKereSor(
+        'HER ŞEY silinecek: kelime ve öbek kutuların, yanlış defterin, kategori karnen, ' +
+        'deneme geçmişin ve konu takibin.', n)) return;
     Il.hepsiniSifirla();
     location.reload();
   });

@@ -580,7 +580,9 @@
   });
 
   $('sifirla').addEventListener('click', function () {
-    if (!confirm('Tüm kelime tekrar ilerlemen (kutular ve tekrar tarihleri) silinecek. Emin misin?')) return;
+    var n = Object.keys(Il.tumKayitlar()).length;
+    if (!window.YDS.ikiKereSor(
+        'Tüm tekrar ilerlemen silinecek: kutular, tekrar tarihleri ve öğrendiklerin.', n)) return;
     Il.leitnerSifirla();
     desteyiCiz();
     filtrele();

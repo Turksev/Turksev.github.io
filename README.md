@@ -62,7 +62,7 @@ index.html  kelimeler.html  obekler.html  quiz.html  deneme.html
 gramer.html  baglaclar.html  ara.html
 assets/
   css/style.css       tüm sayfaların ortak stili (açık/koyu tema)
-  js/main.js          tema, gezinme, localStorage, service worker kaydı
+  js/main.js          tema, gezinme, localStorage, iki aşamalı onay, service worker kaydı
   js/cekim.js         çekim motoru (test şıkları için)
   js/gunun-testi.js   günün testi (kelime + öbek): soru kurma, şıklar, sonuç
   js/ilerleme.js      Leitner, yanlış defteri, kategori istatistiği, geçmiş

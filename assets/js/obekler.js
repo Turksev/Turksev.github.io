@@ -451,7 +451,10 @@
   });
 
   $('sifirla').addEventListener('click', function () {
-    if (!confirm('Öbek tekrar ilerlemen silinecek. (Kelime ilerlemene dokunulmaz.) Emin misin?')) return;
+    var kayitli = Il.tumKayitlar();
+    var n = adlar().filter(function (a) { return kayitli[a]; }).length;
+    if (!window.YDS.ikiKereSor(
+        'Öbek tekrar ilerlemen silinecek. Kelime ilerlemene dokunulmaz.', n)) return;
     Il.listeyiSifirla(adlar());
     desteyiCiz();
     filtrele();

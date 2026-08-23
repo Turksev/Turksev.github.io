@@ -138,5 +138,25 @@
     baslat();
   }
 
-  window.YDS = { Depo: Depo, sadelestir: sadelestir, karistir: karistir, kacar: kacar };
+  /* ---------- geri alınamaz işlemler için iki aşamalı onay ----------
+     Sıfırlama düğmeleri tek tıkla ilerlemeyi siliyordu. Artık iki ayrı soru
+     sorulur: ilki ne silineceğini sayısıyla söyler, ikincisi son uyarıdır.
+     Eşitleme açıksa silme diğer cihazlara da gider — bunu da yazarız. */
+
+  function ikiKereSor(ne, sayi) {
+    var esitli = !!(window.FIREBASE_AYAR);
+    var ilk = ne + '\n\n' +
+      (sayi ? sayi + ' kayıt silinecek.\n' : '') +
+      'Bu işlem geri alınamaz.' +
+      (esitli ? '\nEşitleme açıksa silme diğer cihazlarına da yansır.' : '') +
+      '\n\nDevam edilsin mi?';
+    if (!window.confirm(ilk)) return false;
+    return window.confirm('SON UYARI\n\n' +
+      (sayi ? sayi + ' kayıt' : 'İlerlemen') + ' kalıcı olarak silinecek. Gerçekten emin misin?');
+  }
+
+  window.YDS = {
+    Depo: Depo, sadelestir: sadelestir, karistir: karistir, kacar: kacar,
+    ikiKereSor: ikiKereSor
+  };
 })();
