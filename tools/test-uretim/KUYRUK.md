@@ -1,0 +1,75 @@
+# Günün testi — cümle üretim kuyruğu
+
+Bu klasör "günün testi" cümlelerinin üretim hattıdır. Kullanıcının talimatıyla çalışır;
+kendiliğinden çalışan bir zamanlayıcı **yoktur** (23.08.2026'da alarmlar kapatıldı).
+
+## Başlatma komutu
+
+Kullanıcı **"kuyruğu başlat"** (ya da "test cümlelerine devam et") dediğinde:
+
+1. `python dogrula.py --rapor` — hangi paketler eksik, gör.
+2. Eksik paketlerin **ilk 2'si** için birer alt-ajan başlat. Ajan görevi:
+   - `brief.md`'yi oku ve harfiyen uy,
+   - `girdi/<paket>.json`'u oku,
+   - her kelime için bir cümle yazıp **yalnız JSON dizisini** `cikti/<paket>.json`'a yaz,
+   - son metin olarak sadece `yazıldı: N kayıt` döndür.
+3. Ajanlar bitince `python dogrula.py` — geçen kayıtlar `data/test-k{n}.js` olarak yazılır.
+4. `sw.js` içindeki `SURUM` değerini bir artır, commit + push.
+5. İki satır özet yaz, dur. Kullanıcı "devam" demeden yeni dalga başlatma.
+
+Aynı anda 6'dan fazla ajan çalıştırma: 11 ajanla oturum limitine, ikinci denemede
+haftalık limite çarpıldı. Paket başına yaklaşık **100 bin token**.
+
+## Sıradaki paketler (23.08.2026)
+
+4. katman (İleri) — 8 paket, 513 kelime:
+
+| Paket | Kelime | İlk kelimeler |
+| --- | --- | --- |
+| k4-p31 | 70 | seat, sensitivity, superior, yellow, acquisition |
+| k4-p32 | 70 | witness, absolutely, admire, assure, attain |
+| k4-p33 | 70 | fungus, hands, hobby, informal, intensity |
+| k4-p34 | 70 | payment, preparation, prison, proposal, secret |
+| k4-p35 | 70 | tiger, twin, approval, arrange, array |
+| k4-p36 | 70 | correction, crude, deadly, dense, door |
+| k4-p37 | 70 | positively, practised, rejection, reservoir, rice |
+| k4-p38 | 23 | pop, remind, sorry, stadium, steal |
+
+Bunlar bitince 4. katman tamamlanır (1.073 kelime).
+
+## Sonraki katmanlar (girdi paketleri henüz üretilmedi)
+
+`python paketle.js <katman>` yerine — node kaldırıldığı için — paketleri Python ile
+üretmek gerekir; `paketle.js` mantığı 70'lik dilimler yazar (bkz. dosya).
+
+| Katman | Kelime | Yaklaşık paket | Yaklaşık maliyet |
+| --- | --- | --- | --- |
+| 5 · Geniş | 1.565 | 23 | ~2,3 M token |
+| 1 · Temel | 657 | 10 | ~1,0 M token |
+| 6 · Geniş+ | 3.135 | 45 | ~4,5 M token |
+
+Önerilen sıra: 4 → 5 → 1 → 6. (1. katman zaten bilinen kelimeler, 6. katman en seyrekler.)
+
+## Tamamlananlar
+
+| Katman | Cümle | Durum |
+| --- | --- | --- |
+| 2 · Çekirdek | 720 | tamam |
+| 3 · Orta | 708 | tamam |
+| 4 · İleri | 560 / 1.073 | 8 paket kaldı |
+
+## Dosyalar
+
+```
+brief.md      ajanlara verilen kalite kuralları (YDS kayıtı, 18–32 kelime, çekim etiketi f)
+girdi/        70'lik kelime paketleri (kelime + tür + anlam + karttaki örnek)
+cikti/        ajanların yazdığı cümleler — YENİDEN ÜRETİMİ PAHALI, silme
+dogrula.py    denetler ve data/test-k{n}.js dosyalarını yazar
+cekim.py      cekim.js'in Python karşılığı (tabloları JS'ten okur)
+parite.html   cekim.py ↔ cekim.js parite testi (headless Chrome; son sonuç: 47.154'te 0 fark)
+harness.html  uçtan uca tarayıcı testi (kelimeler.html'i açar, 20 soruluk testi çözer)
+paketle.js    girdi paketlerini üreten betik (node gerektirir; node şu an kurulu değil)
+```
+
+Node.js 23.08.2026'da makineden kaldırıldı; doğrulama ve testler Python + headless
+Chrome ile yapılır.

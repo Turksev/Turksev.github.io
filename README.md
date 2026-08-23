@@ -145,10 +145,12 @@ Sonuç Leitner kutusunu **değiştirmez**; bilinemeyen kelime `yds-test-yanlis` 
 (listede ve Durumum'da "testte ✗" rozeti), sonraki testte önce sorulur, doğru bilinince düşer.
 Defter cihazlar arasında eşitlenir.
 
-Cümle üretimi: kelimeler 70'lik paketlere bölünüp (scratchpad `test/paketle.js`) brief ile
-yazdırılır, `test/dogrula.js` her kaydı denetler (tek boşluk, 15–36 kelime, çekim-b uyumu,
+Cümle üretimi `tools/test-uretim/` altındadır (kuyruk ve çalıştırma yönergesi:
+`tools/test-uretim/KUYRUK.md`). Kelimeler 70'lik paketlere bölünüp brief ile
+yazdırılır, `dogrula.py` her kaydı denetler (tek boşluk, 15–36 kelime, çekim-b uyumu,
 tür-biçim tutarlılığı, kökün cümlede tekrar etmemesi, kart örneğine benzememe) ve geçenleri
-`data/test-k{n}.js` olarak yazar.
+`data/test-k{n}.js` olarak yazar. Çekim motorunun Python karşılığı (`cekim.py`) ile JS
+sürümünün paritesi `parite.html` üzerinden sınanır; uçtan uca test `harness.html`.
 
 ## Cihazlar arası eşitleme (Firebase)
 

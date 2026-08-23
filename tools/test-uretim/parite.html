@@ -1,0 +1,13 @@
+<!DOCTYPE html><meta charset="utf-8"><title>parite</title>
+<script src="file:///C:/Users/Trk/Desktop/Turksev.github.io/data/kelime-dizin.js"></script>
+<script src="file:///C:/Users/Trk/Desktop/Turksev.github.io/assets/js/cekim.js"></script>
+<pre id="out">bekleniyor</pre>
+<script>
+var C = window.YDS.Cekim, bicimler = ['', 's', 'past', 'pp', 'ing', 'pl'], cikti = {};
+window.KELIME_DIZIN.forEach(function (d) {
+  var satir = [];
+  bicimler.forEach(function (f) { var v = C.cek(d.e, f); satir.push(v === null ? null : v); });
+  cikti[d.e] = satir;
+});
+document.getElementById('out').textContent = JSON.stringify(cikti);
+</script>

@@ -1,0 +1,52 @@
+<!DOCTYPE html><meta charset="utf-8"><title>harness</title>
+<iframe id="f" src="file:///C:/Users/Trk/Desktop/Turksev.github.io/kelimeler.html" style="width:1200px;height:900px"></iframe>
+<pre id="log"></pre>
+<script>
+var log = [];
+function L(m) { log.push(m); document.getElementById('log').textContent = log.join('\n'); }
+var f = document.getElementById('f');
+f.onload = function () {
+  var w = f.contentWindow, d = f.contentDocument;
+  setTimeout(function () {
+    try {
+      var Il = w.YDS.Ilerleme, Veri = w.YDS.Veri, T = w.YDS.KelimeTesti;
+      L('katmanlar: ' + w.YDS.Veri.KATMANLAR.join(','));
+      // 20 kelime çalış (katman 2 varsayılan seçili)
+      var havuz = w.KELIME_DIZIN.filter(function (x) { return x.k === 2; }).slice(0, 22);
+      havuz.forEach(function (x, i) { i % 4 ? Il.dogru(x.e) : Il.yanlis(x.e); });
+      L('bugunSayisi: ' + T.bugunSayisi(havuz));
+      // desteyi yeniden çiz -> düğme görünmeli
+      w.document.getElementById('gunlukHedef').dispatchEvent(new w.Event('change'));
+      var b = d.getElementById('testBasla');
+      L('testBasla hidden=' + b.hidden + ' text=' + b.textContent);
+      b.click();
+      setTimeout(function () {
+        var alan = d.getElementById('testAlan');
+        L('testAlan hidden=' + alan.hidden + ' sayac=' + d.getElementById('tSayac').textContent);
+        L('soru: ' + d.getElementById('tMetin').textContent.slice(0, 90));
+        var opts = d.querySelectorAll('#tSecenekler .opt');
+        L('secenek: ' + Array.prototype.map.call(opts, function (o) { return o.textContent; }).join(' | '));
+        // tüm soruları cevapla: hep A
+        var n = 0;
+        (function adim() {
+          var o = d.querySelectorAll('#tSecenekler .opt')[0];
+          if (!o || d.getElementById('tSoru').hidden) return bitir();
+          o.click(); n++;
+          if (n === 1) L('aciklama: ' + d.getElementById('tAcik').textContent.slice(0, 120));
+          d.getElementById('tIleri').click();
+          setTimeout(adim, 0);
+        })();
+        function bitir() {
+          L('cevaplanan: ' + n + ' sonuc hidden=' + d.getElementById('tSonuc').hidden + ' skor=' + d.getElementById('tSkor').textContent);
+          L('test-yanlis: ' + Object.keys(Il.testYanlisKumesi()).length);
+          L('inceleme satir: ' + d.querySelectorAll('#tInceleme .review-item').length);
+          d.getElementById('tBitir').click();
+          L('kapandi: testAlan hidden=' + alan.hidden + ' liste hidden=' + d.getElementById('liste').hidden);
+          L('rozet: ' + d.querySelectorAll('#liste .badge.err').length);
+          L('DONE');
+        }
+      }, 1500);
+    } catch (e) { L('ERR ' + e.message + '\n' + e.stack); }
+  }, 1500);
+};
+</script>
