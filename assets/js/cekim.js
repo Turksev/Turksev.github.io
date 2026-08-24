@@ -104,8 +104,13 @@
     deer: 'deer', aircraft: 'aircraft', offspring: 'offspring', headquarters: 'headquarters',
     life: 'lives', knife: 'knives', wife: 'wives', leaf: 'leaves', half: 'halves',
     wolf: 'wolves', shelf: 'shelves', self: 'selves', calf: 'calves', loaf: 'loaves',
-    thief: 'thieves', elf: 'elves'
+    thief: 'thieves', elf: 'elves',
+    chassis: 'chassis', corps: 'corps'          // -sis kuralına takılmasın
   };
+
+  /* Yunanca -sis / -xis kalıbı: analysis -> analyses, parenthesis -> parentheses,
+     axis -> axes. Tabloya tek tek yazmak yerine kural. */
+  var SIS_COGUL = /(sis|xis)$/;
 
   /* Sayılamayan ya da çoğulu kullanılmayan isimler: 'pl' üretilmez. */
   var SAYILMAZ = {
@@ -178,6 +183,7 @@
   function cogul(k) {
     if (SAYILMAZ[k]) return null;
     if (DUZENSIZ_ISIM[k]) return DUZENSIZ_ISIM[k];
+    if (SIS_COGUL.test(k)) return k.slice(0, -2) + 'es';
     if (Z_IKILE[k]) return k + 'zes';
     if (/(s|x|z|ch|sh)$/.test(k)) return k + 'es';
     if (/[^aeiou]y$/.test(k)) return k.slice(0, -1) + 'ies';

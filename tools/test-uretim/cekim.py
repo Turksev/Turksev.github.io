@@ -99,11 +99,16 @@ def duzensiz_fiil(k):
     return DUZENSIZ_FIIL.get(k) or ONEKLI_FIIL.get(k) or None
 
 
+SIS_COGUL = re.compile(r'(sis|xis)$')   # analysis -> analyses, parenthesis -> parentheses
+
+
 def cogul(k):
     if k in SAYILMAZ:
         return None
     if k in DUZENSIZ_ISIM:
         return DUZENSIZ_ISIM[k]
+    if SIS_COGUL.search(k):
+        return k[:-2] + 'es'
     if k in Z_IKILE:
         return k + 'zes'
     if re.search(r'(s|x|z|ch|sh)$', k):
