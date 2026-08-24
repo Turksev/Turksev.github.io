@@ -134,6 +134,39 @@
     });
   }
 
+  /* ---------- depo kullanımı ----------
+     GitHub Pages'in yumuşak sınırı 1 GB. Yayımlanan dosyaların toplamı
+     data/depo.js içinde (tools/depo-olcu.py üretir); burada yalnız gösteririz. */
+
+  function boyut(bayt) {
+    if (bayt >= 1048576) return (bayt / 1048576).toFixed(1).replace('.', ',') + ' MB';
+    if (bayt >= 1024) return Math.round(bayt / 1024) + ' KB';
+    return bayt + ' B';
+  }
+
+  function depoCubugu() {
+    var d = window.DEPO;
+    var alt = document.querySelector('.site-footer .wrap');
+    if (!d || !d.bayt || !alt) return;
+
+    var yuzde = d.bayt / d.sinir * 100;
+    var sinif = yuzde >= 90 ? 'dolu' : (yuzde >= 70 ? 'yarim' : '');
+    var yazi = yuzde < 10 ? yuzde.toFixed(1).replace('.', ',') : Math.round(yuzde);
+
+    var ayrinti = (d.klasor || []).map(function (k) {
+      return k.ad + ' ' + boyut(k.bayt);
+    }).join(' · ');
+
+    var el = document.createElement('span');
+    el.className = 'depo' + (sinif ? ' ' + sinif : '');
+    el.title = d.dosya + ' dosya · ' + ayrinti +
+      '\nSon ölçüm: ' + d.zaman + ' · GitHub Pages yumuşak sınırı 1 GB';
+    el.innerHTML =
+      '<span class="depo-yazi">Depo: <b>' + boyut(d.bayt) + '</b> / 1 GB (%' + yazi + ')</span>' +
+      '<span class="depo-bar"><i style="width:' + Math.max(0.6, Math.min(100, yuzde)) + '%"></i></span>';
+    alt.appendChild(el);
+  }
+
   /* ---------- başlat ---------- */
 
   function baslat() {
@@ -142,6 +175,8 @@
     if (btn) btn.addEventListener('click', temaDegistir);
     butonuGuncelle();
     aktifBaglanti();
+
+    depoCubugu();
 
     var yil = document.querySelector('[data-yil]');
     if (yil) yil.textContent = new Date().getFullYear();

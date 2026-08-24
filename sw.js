@@ -11,7 +11,7 @@
    eklediğinde hem SÜRÜM'ü artır hem de listeye ekle.
    ============================================================ */
 
-var SURUM = 'yds-v94';
+var SURUM = 'yds-v95';
 var ONBELLEK = SURUM;
 
 /* Kurulumda indirilenler: sayfalar, kod ve küçük veri dosyaları.
@@ -34,6 +34,7 @@ var TEMEL_DOSYALAR = [
   './ara.html',
   './assets/css/style.css',
   './assets/js/main.js',
+  './data/depo.js',
   './assets/js/esitleme-ayar.js',
   './assets/js/esitleme.js',
   './assets/js/cekim.js',

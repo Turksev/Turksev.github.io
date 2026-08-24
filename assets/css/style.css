@@ -875,6 +875,20 @@ a.ara-satir:hover .ara-bas { color: var(--accent); }
 .ara-bas { font-weight: 650; }
 .ara-alt { color: var(--text); font-size: .93rem; }
 .ara-ek { color: var(--muted); font-size: .87rem; margin-top: 3px; }
+/* Alt bilgideki depo kullanım göstergesi */
+.depo {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--muted); font-size: .82rem; white-space: nowrap;
+}
+.depo-bar {
+  display: inline-block; width: 86px; height: 6px;
+  background: var(--surface-2); border-radius: 999px; overflow: hidden;
+}
+.depo-bar i { display: block; height: 100%; min-width: 4px; background: var(--ok); border-radius: 999px; }
+.depo.yarim .depo-bar i { background: var(--warn, #c8891a); }
+.depo.dolu .depo-bar i { background: var(--err); }
+@media (max-width: 560px) { .depo-yazi b { font-weight: 600; } }
+
 .ara-satir { cursor: default; }
 .ara-satir[data-tip] { cursor: pointer; }
 

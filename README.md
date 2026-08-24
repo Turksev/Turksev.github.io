@@ -63,6 +63,7 @@ gramer.html  baglaclar.html  ara.html
 assets/
   css/style.css       tüm sayfaların ortak stili (açık/koyu tema)
   js/main.js          tema, gezinme, localStorage, iki aşamalı onay, service worker kaydı
+  js/main.js içinde ayrıca alt bilgideki depo kullanım çubuğu (data/depo.js'i okur)
   js/cekim.js         çekim motoru (test şıkları için)
   js/gunun-testi.js   günün testi (kelime + öbek): soru kurma, şıklar, sonuç
   js/ilerleme.js      Leitner, yanlış defteri, kategori istatistiği, geçmiş
@@ -198,6 +199,20 @@ yazdırılır, `dogrula.py` her kaydı denetler (tek boşluk, 15–36 kelime, ç
 tür-biçim tutarlılığı, kökün cümlede tekrar etmemesi, kart örneğine benzememe) ve geçenleri
 `data/test-k{n}.js` olarak yazar. Çekim motorunun Python karşılığı (`cekim.py`) ile JS
 sürümünün paritesi `parite.html` üzerinden sınanır; uçtan uca test `harness.html`.
+
+## Depo kullanımı
+
+Alt bilgideki çubuk, yayımlanan dosyaların toplam boyutunu GitHub Pages'in **1 GB**
+yumuşak sınırına oranlar. Sayılar `data/depo.js` içindedir ve `tools/depo-olcu.py`
+üretir — yayından önce çalıştır:
+
+```
+python tools/depo-olcu.py
+```
+
+Betik `.git`, `__pycache__` gibi klasörleri saymaz; toplam boyut, dosya sayısı ve en
+büyük beş klasörü yazar (çubuğun üzerine gelince ayrıntı görünür). %70'i geçince çubuk
+sarıya, %90'ı geçince kırmızıya döner.
 
 ## Cihazlar arası eşitleme (Firebase)
 
