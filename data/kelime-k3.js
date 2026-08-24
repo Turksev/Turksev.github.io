@@ -1,4 +1,4 @@
-/* 3. katman — Orta · 708 kelime
+/* 3. katman — Orta · 707 kelime
    Tam kayıtlar: anlamlar ve örnek cümleler. Gerektiğinde yüklenir.
    tools/listeyi-aktar.py ile üretilir. */
 
@@ -597,7 +597,6 @@ window.KELIME_K3 = {
 "ethical":{a:[{tr:"s. etik, ahlaki",ex:"Scientists conducting research on human subjects must follow strict ethical guidelines to protect participants.",exTr:"İnsanlar üzerinde araştırma yapan bilim insanları, katılımcıları korumak için sıkı etik kurallara uymalıdır."}]},
 "everywhere":{a:[{tr:"z. her yerde",ex:"Plastic waste can now be found almost everywhere, from mountain streams to deep ocean trenches.",exTr:"Plastik atıklar artık dağ derelerinden derin okyanus çukurlarına kadar hemen hemen her yerde bulunabiliyor."}]},
 "honest":{a:[{tr:"s. dürüst",ex:"Historians rely on honest accounts from eyewitnesses to reconstruct historical events accurately.",exTr:"Tarihçiler, tarihi olayları doğru bir şekilde yeniden kurmak için görgü tanıklarının dürüst anlatımlarına güvenir."},{tr:"s. hakiki, gerçek",ex:"The museum guide admitted that the painting was not an honest replica of the original masterpiece.",exTr:"Müze rehberi, tablonun orijinal başyapıtın hakiki bir kopyası olmadığını itiraf etti."}]},
-"john":{a:[{tr:"i. (argo) fahişe müşterisi",ex:"Sociologists studying urban crime often examine how frequently johns are prosecuted compared to sex workers.",exTr:"Kentsel suçu inceleyen sosyologlar, fahişe müşterilerinin seks işçilerine kıyasla ne sıklıkla yargılandığını sıkça araştırır."},{tr:"i. (ABD, argo) tuvalet",ex:"During the long road trip, the tired travelers stopped at a gas station to use the john.",exTr:"Uzun karayolu yolculuğu sırasında, yorgun yolcular tuvaleti kullanmak için bir benzin istasyonunda durdu."}]},
 "ongoing":{a:[{tr:"s. devam eden, süregelen",ex:"Ongoing research into renewable energy sources has attracted significant investment from governments worldwide.",exTr:"Yenilenebilir enerji kaynakları üzerine devam eden araştırmalar, dünya çapında hükümetlerden önemli yatırım çekti."}]},
 "politics":{a:[{tr:"i. siyaset, politika",ex:"Local politics often influence how communities respond to environmental regulations and public health initiatives.",exTr:"Yerel siyaset, toplulukların çevre düzenlemelerine ve halk sağlığı girişimlerine nasıl tepki verdiğini sıklıkla etkiler."}]},
 "possibly":{a:[{tr:"z. belki, muhtemelen",ex:"Researchers suggested that the sudden climate shift was possibly caused by increased volcanic activity.",exTr:"Araştırmacılar, ani iklim değişikliğinin muhtemelen artan volkanik faaliyetlerden kaynaklandığını öne sürdü."}]},

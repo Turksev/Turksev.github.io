@@ -79,7 +79,7 @@
 
   /* Yalnizca BASLANMIS kelimeler icin: tekrar gunu geldi mi?
      Hic calisilmamis kelime "vadesi gelmis" sayilmaz — o yeni kelimedir ve
-     gunluk kotayla acilir. Ikisini ayirmazsak ilk gun 7.859 kart cikardi. */
+     gunluk kotayla acilir. Ikisini ayirmazsak ilk gun 7.849 kart cikardi. */
   /* En üst kutuya çıkan kelime MEZUN olur: bir daha tekrara gelmez.
      Oraya çıkmak için kelimeyi 26 güne yayılmış dört tekrarda doğru bilmen
      gerekir. Baştan çalışmak istersen "Kelime ilerlememi sıfırla". */

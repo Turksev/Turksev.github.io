@@ -1,5 +1,5 @@
 /* ============================================================
-   Kelime dizini — 7859 kelime
+   Kelime dizini — 7849 kelime
    Her sayfada yüklenir; liste, arama ve tekrar özeti bunu kullanır.
    Alanlar: e=kelime, t=kısa anlam, p=YDS öncelik puanı, k=katman, y=tür
    Örnek cümleler katman dosyalarındadır (data/kelime-k1..k7.js).
@@ -1978,7 +1978,6 @@ window.KELIME_DIZIN = [
 {e:"ethical",t:"etik, ahlaki",p:25.6,k:3,y:"sıfat"},
 {e:"everywhere",t:"her yerde",p:25.6,k:3,y:"zarf"},
 {e:"honest",t:"dürüst; hakiki, gerçek",p:25.6,k:3,y:"sıfat"},
-{e:"john",t:"(argo) fahişe müşterisi; (ABD, argo) tuvalet",p:25.6,k:3,y:"isim"},
 {e:"ongoing",t:"devam eden, süregelen",p:25.6,k:3,y:"sıfat"},
 {e:"politics",t:"siyaset, politika",p:25.6,k:3,y:"isim"},
 {e:"possibly",t:"belki, muhtemelen",p:25.6,k:3,y:"zarf"},
@@ -4516,7 +4515,6 @@ window.KELIME_DIZIN = [
 {e:"communications",t:"iletişim (bilimi/sistemleri)",p:15.4,k:5,y:"isim"},
 {e:"confer",t:"(unvan/hak) vermek, bahşetmek; görüşmek, danışmak",p:15.4,k:5,y:"fiil"},
 {e:"crazy",t:"çılgın, deli, tuhaf; deli (kişi, argo)",p:15.4,k:5,y:"sıfat, isim"},
-{e:"damn",t:"çok, son derece; lanetlemek",p:15.4,k:5,y:"sıfat, isim, zarf, fiil"},
 {e:"dissertation",t:"tez (doktora)",p:15.4,k:5,y:"isim"},
 {e:"dozens",t:"düzinelerce, onlarca",p:15.4,k:5,y:"isim"},
 {e:"e-mail",t:"e-posta göndermek; e-posta",p:15.4,k:5,y:"isim, fiil"},
@@ -5152,7 +5150,6 @@ window.KELIME_DIZIN = [
 {e:"aquatic",t:"sucul, suda yaşayan; i. sucul bitki/hayvan",p:13.7,k:6,y:"sıfat, isim"},
 {e:"bathing",t:"yıkanma; deniz/havuzda yüzme",p:13.7,k:6,y:"isim"},
 {e:"beast",t:"canavar, vahşi hayvan; (mecazi) zalim, gaddar kişi",p:13.7,k:6,y:"isim"},
-{e:"bloody",t:"kanlı, kan içinde; (İngiliz argosu) çok, resmen, adamakıllı",p:13.7,k:6,y:"sıfat, zarf, fiil"},
 {e:"botany",t:"botanik, bitki bilimi",p:13.7,k:6,y:"isim"},
 {e:"bounce",t:"sekme, zıplama; f. sekmek, zıplamak; (çek) karşılıksız…",p:13.7,k:6,y:"isim, fiil"},
 {e:"brand-new",t:"yepyeni, gıcır gıcır",p:13.7,k:6,y:"sıfat"},
@@ -6124,7 +6121,6 @@ window.KELIME_DIZIN = [
 {e:"rip",t:"yırtmak, yırtılmak; yırtık (kumaşta)",p:11.7,k:6,y:"isim, fiil"},
 {e:"run-on",t:"(cümle için) bağlaçsız/noktalamasız uzayıp giden",p:11.7,k:6,y:"sıfat"},
 {e:"run-up",t:"hazırlık dönemi, arife (bir olayın öncesi); çıkış koşusu…",p:11.7,k:6,y:"isim"},
-{e:"shit",t:"(kaba) saçmalık, boktan şey",p:11.7,k:6,y:"isim, fiil"},
 {e:"skeletal",t:"iskeletle ilgili, iskelet-; bir deri bir kemik kalmış, çok…",p:11.7,k:6,y:"sıfat"},
 {e:"small-time",t:"önemsiz, küçük çaplı",p:11.7,k:6,y:"sıfat"},
 {e:"socialise",t:"sosyalleşmek, insanlarla kaynaşmak; (bir çocuğu) topluma…",p:11.7,k:6,y:"fiil"},
@@ -6167,7 +6163,6 @@ window.KELIME_DIZIN = [
 {e:"exclusively",t:"yalnızca, sadece, münhasıran",p:11.6,k:6,y:"zarf"},
 {e:"eyewitness",t:"görgü tanığı",p:11.6,k:6,y:"isim, fiil"},
 {e:"formerly",t:"eskiden, önceden, daha önce",p:11.6,k:6,y:"zarf"},
-{e:"fuck",t:"cinsel ilişki (kaba/argo); f. cinsel ilişkide bulunmak…",p:11.6,k:6,y:"isim, fiil"},
 {e:"good-for-nothing",t:"işe yaramaz; i. hiçbir işe yaramayan kişi",p:11.6,k:6,y:"sıfat, isim"},
 {e:"house-to-house",t:"kapı kapı (dolaşarak yapılan)",p:11.6,k:6,y:"sıfat"},
 {e:"immigrate",t:"göç etmek (bir ülkeye yerleşmek amacıyla)",p:11.6,k:6,y:"fiil"},
@@ -6294,7 +6289,6 @@ window.KELIME_DIZIN = [
 {e:"wright",t:"usta, yapımcı (genellikle bileşik sözcüklerde: playwright,…",p:11.5,k:6,y:"isim"},
 {e:"after-hours",t:"mesai saatleri dışında yapılan, kapanış sonrası",p:11.4,k:6,y:"sıfat"},
 {e:"aurora",t:"kutup ışıkları (aurora, gök ışıması); tan ağarması, şafak…",p:11.4,k:6,y:"isim"},
-{e:"benjamin",t:"benzoin, gum benjamin (tıpta ve parfümeride kullanılan…",p:11.4,k:6,y:"isim"},
 {e:"biscuit",t:"bisküvi, kraker",p:11.4,k:6,y:"isim"},
 {e:"buffalo",t:"bufalo, manda; gözünü korkutmak, sindirmek, gözdağı vermek…",p:11.4,k:6,y:"isim, fiil"},
 {e:"calf",t:"buzağı (sığır yavrusu); baldır (bacağın arka alt kısmı)",p:11.4,k:6,y:"isim"},
@@ -6312,7 +6306,6 @@ window.KELIME_DIZIN = [
 {e:"face-off",t:"karşı karşıya gelme, hesaplaşma, çekişme",p:11.4,k:6,y:"isim"},
 {e:"fifteen",t:"on beş",p:11.4,k:6,y:"sıfat, isim"},
 {e:"fireman",t:"itfaiyeci",p:11.4,k:6,y:"isim"},
-{e:"fucking",t:"çok, resmen (kaba pekiştireç, argo)",p:11.4,k:6,y:"sıfat, isim, zarf"},
 {e:"grassland",t:"çayır, otlak, bozkır",p:11.4,k:6,y:"isim"},
 {e:"helicopter",t:"helikopter",p:11.4,k:6,y:"isim, fiil"},
 {e:"high-power",t:"yüksek güçlü, güçlü (motor/alet)",p:11.4,k:6,y:"sıfat"},
@@ -7376,7 +7369,6 @@ window.KELIME_DIZIN = [
 {e:"categorised",t:"kategorilere ayrılmış, sınıflandırılmış",p:10.3,k:6,y:"sıfat"},
 {e:"cavity",t:"diş çürüğü; boşluk, oyuk (genel)",p:10.3,k:6,y:"isim"},
 {e:"cell-free",t:"hücre içermeyen",p:10.3,k:6,y:"sıfat"},
-{e:"christ",t:"Mesih, kurtarıcı",p:10.3,k:6,y:"isim"},
 {e:"clean-living",t:"temiz yaşayan, ahlaklı",p:10.3,k:6,y:"sıfat"},
 {e:"compost",t:"kompost, gübre; f. komposta dönüştürmek",p:10.3,k:6,y:"isim, fiil"},
 {e:"compulsorily",t:"zorunlu olarak",p:10.3,k:6,y:"zarf"},
@@ -7498,7 +7490,6 @@ window.KELIME_DIZIN = [
 {e:"batter",t:"dövmek, şiddetle vurmak, hırpalamak; sulu hamur (kek,…",p:10.2,k:6,y:"isim, fiil"},
 {e:"belongings",t:"eşyalar, kişisel eşyalar",p:10.2,k:6,y:"isim"},
 {e:"binge",t:"aşırı düşkünlük dönemi; f. aşırı derecede tüketmek",p:10.2,k:6,y:"isim, fiil"},
-{e:"bitch",t:"dişi köpek; yakınmak, şikayet etmek (gündelik dil)",p:10.2,k:6,y:"isim, fiil"},
 {e:"blackout",t:"elektrik kesintisi, karartma; bilinç kaybı, hafıza kaybı…",p:10.2,k:6,y:"isim"},
 {e:"bloc",t:"blok, ittifak (ülkeler grubu)",p:10.2,k:6,y:"isim"},
 {e:"blush",t:"(yüzü) kızarmak; i. kızarma, allık",p:10.2,k:6,y:"isim, fiil"},
@@ -7672,7 +7663,6 @@ window.KELIME_DIZIN = [
 {e:"deposition",t:"çökelme, birikme (tortu vb.); (huk.) yeminli ifade,…",p:10.1,k:6,y:"isim"},
 {e:"desperation",t:"çaresizlik, umutsuzluk",p:10.1,k:6,y:"isim"},
 {e:"devalue",t:"değerini düşürmek, devalüe etmek",p:10.1,k:6,y:"fiil"},
-{e:"dick",t:"(argo, eski) hafiye, dedektif",p:10.1,k:6,y:"isim"},
 {e:"dispense",t:"dağıtmak, vermek",p:10.1,k:6,y:"fiil"},
 {e:"double-cross",t:"ihanet etmek, aldatmak; i. ihanet, aldatmaca",p:10.1,k:6,y:"fiil, isim"},
 {e:"double-double",t:"çift-çift performans (basketbol)",p:10.1,k:6,y:"isim"},

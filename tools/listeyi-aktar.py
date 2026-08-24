@@ -164,6 +164,21 @@ def ek_ornekleri_oku():
     return json.loads(govde)
 
 
+def elenecekleri_oku():
+    """tools/kelime-eleme.js — listeye hic girmeyecek kelimeler.
+
+    Korpus frekansindan sizan kaba/argo sozcukler ve ozel adlar. Dizin ve
+    katman dosyalarina yazilmaz."""
+    yol = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'kelime-eleme.js')
+    if not os.path.exists(yol):
+        return set()
+    metin = open(yol, encoding='utf-8').read()
+    i = metin.find('window.KELIME_ELEME')
+    if i == -1:
+        return set()
+    return {m.group(1) for m in re.finditer(r'"([a-z\-\' ]+)"', metin[i:])}
+
+
 def aile_uyelerini_oku():
     """tools/ek-aile-uyeleri.js — kelime ailelerini tamamlayan turevler.
 
@@ -228,6 +243,13 @@ def birlestir():
             kelimeler[en]['anlamlar'] = anlamlar
             ek_uygulanan += 1
 
+    # Elenecekler: kaba/argo ve ozel adlar hic yazilmaz.
+    elenen = 0
+    for en in list(kelimeler.keys()):
+        if en in elenecekleri_oku():
+            del kelimeler[en]
+            elenen += 1
+
     for en, k in kelimeler.items():
         k['katman'] = k.get('katman_zorla') or katman_bul(k['puan'])
 
@@ -235,7 +257,7 @@ def birlestir():
     bekleyen = [en for en, k in kelimeler.items()
                 if len(k['anlamlar']) == 1 and len(anlamlari_bol(k['anlamlar'][0]['tr'])) > 1]
 
-    return kelimeler, ortak, yalniz_site, ek_uygulanan, bekleyen, aile_eklenen
+    return kelimeler, ortak, yalniz_site, ek_uygulanan, bekleyen, aile_eklenen, elenen
 
 
 def kelimeleri_yaz(kelimeler):
@@ -430,7 +452,7 @@ def sayilari_yaz(sirali, ozet, obekler):
 
 
 def main():
-    kelimeler, ortak, yalniz_site, ek_uygulanan, bekleyen, aile_eklenen = birlestir()
+    kelimeler, ortak, yalniz_site, ek_uygulanan, bekleyen, aile_eklenen, elenen = birlestir()
     sirali, ozet = kelimeleri_yaz(kelimeler)
     obekler, obek_boyut, obek_ek, obek_atilan = obekleri_yaz()
     sayilari_yaz(sirali, ozet, obekler)
@@ -444,6 +466,7 @@ def main():
     print('  ek ornek uygulanan :', ek_uygulanan)
     print('  ornegi eksik kalan :', len(bekleyen), '(cok turlu ama tek ornekli)')
     print('  aile uyesi eklenen :', aile_eklenen, '(%d. katman)' % AILE_KATMANI)
+    print('  elenen (kaba/ozel) :', elenen)
     print()
     print('  katman              kelime      dosya')
     for kno, ad, n, boyut in ozet:

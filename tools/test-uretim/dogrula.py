@@ -41,7 +41,7 @@ def benzer(a, b):
     return len(A & B) / max(1, min(len(A), len(B)))
 
 
-sonuc, hatalar, eksik = {}, [], []
+sonuc, hatalar, eksik, elenen = {}, [], [], []
 toplam = gecen = 0
 
 for ad in sorted(os.listdir(GIRDI)):
@@ -61,6 +61,10 @@ for ad in sorted(os.listdir(GIRDI)):
         e = g['e']
         r = harita.get(e)
         d = dizin.get(e)
+        # Elenen kelime (tools/kelime-eleme.js) artık dizinde yok: test cümlesi de yazılmaz.
+        if not d:
+            elenen.append(e)
+            continue
         if not r:
             hatalar.append('%s %s: kayıt yok' % (ad, e))
             continue
@@ -104,7 +108,9 @@ for ad in sorted(os.listdir(GIRDI)):
         k = d['k'] if d else 0
         sonuc.setdefault(k, {})[e] = {'c': c, 'b': b, 'f': f, 'tr': tr}
 
-print('toplam %d  geçen %d  hatalı %d  eksik paket %d' % (toplam, gecen, len(hatalar), len(eksik)))
+print('toplam %d  geçen %d  hatalı %d  eksik paket %d%s' % (
+    toplam, gecen, len(hatalar), len(eksik),
+    ('  elenen %d' % len(elenen)) if elenen else ''))
 for x in eksik:
     print('  EKSIK', x)
 for h in hatalar:

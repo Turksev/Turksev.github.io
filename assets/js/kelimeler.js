@@ -2,7 +2,7 @@
    Kelime sayfası — katman seçimi, aralıklı tekrar (Leitner),
    arama/filtre, kart modu, ipucu ve sesli okuma
 
-   Dizin (7.859 kelime) her zaman bellektedir; örnek cümleler yalnız
+   Dizin (7.849 kelime) her zaman bellektedir; örnek cümleler yalnız
    seçili katmanlar için indirilir. Bu yüzden liste ve deste hep
    "seçili katmanlar" üzerinde çalışır.
    ============================================================ */
