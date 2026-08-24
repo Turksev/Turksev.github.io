@@ -138,6 +138,12 @@ zirve yapıp 180. günde 3'e iner, 220. günde bütün kelimeler mezun olur. Esk
 kayıtlarını siler. Aralıkları değiştirmek istersen
 `assets/js/ilerleme.js` içindeki `ARALIK` tablosunu düzenle.
 
+Kart örnekleri ipucu için boşluklanır; bu yüzden örnek cümlede hedef kelimenin başka bir
+çekimi ya da aynı aileden bir sözcük bulunmamalıdır (yoksa ipucu cevabı ele verir).
+`tools/test-uretim/ipucu-tara.py` bu kusuru tarar, düzeltilen cümleler
+`tools/ek-ornekler.js` üzerinden kaynağın yerine geçer. Boşluklama düzensiz biçimleri de
+yakalar (woman → women, undertake → undertook).
+
 ### Arama sonucu ayrıntı kartı
 
 `ara.html` içinde bir sonuca çift tıklamak, sayfadan ayrılmadan kaydın tamamını gösterir:
@@ -157,6 +163,10 @@ Karttaki "… sayfasında aç" düğmesi hedef sayfaya sorguyla gider:
 Not: servis çalışanı dosyaları önbellekten sunup arka planda tazeliyordu, bu yüzden yeni
 kod kullanıcıya bir açılış geç ulaşıyordu. Artık `controllerchange` olayında sayfa bir kez
 kendini yeniliyor ve her açılışta `registration.update()` çağrılıyor.
+
+**Kutu süzgeci.** Deste kartındaki kutu sayaçları (yeni · 1–4. kutu · öğrenildi) tıklanabilir:
+bir kutuya basınca liste yalnız o kutudaki kelimeleri/öbekleri gösterir, yeniden basınca süzgeç
+kalkar. Kelime ve öbek sayfasının ikisinde de var.
 
 **İpucu düğmesi.** Kartın ön yüzünde, kelimenin kendi örnek cümlesini hedef sözcük
 `----` ile gizlenmiş olarak gösterir — YDS'nin kelime sorusu formatı. İpucuya baktıktan

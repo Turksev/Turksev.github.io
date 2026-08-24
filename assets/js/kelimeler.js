@@ -21,6 +21,7 @@
   var SAYFA_BOYU = 60;                 // listede bir seferde gösterilen satır
 
   var DIZIN = Veri.dizin;
+  var seciliKutu = null;          // kutu süzgeci: null | 0..5
   var secili = Depo.oku(KATMAN_ANAHTAR, [2]);
   // Aile üyeleri 6'dan 7'ye taşındı (Geniş+ araya girdi); eski seçimi bir kez taşı.
   if (!Depo.oku('yds-katman7', false)) {
@@ -100,11 +101,15 @@
     // Çubuk genel ilerlemeyi gösterir: öğrenilen / seçili havuz
     $('desteBar').style.width = (havuz.length ? o.ogrenilen / havuz.length * 100 : 0) + '%';
 
-    $('kutular').innerHTML =
-      '<span class="kutu"><b>' + o.k0 + '</b><i>yeni</i></span>' +
-      [1, 2, 3, 4, 5].map(function (k) {
-        return '<span class="kutu"><b>' + o['k' + k] + '</b><i>' + k + '. kutu</i></span>';
-      }).join('');
+    // Kutular tıklanabilir: bir kutuya basınca liste yalnız o kutuyu gösterir.
+    $('kutular').innerHTML = [0, 1, 2, 3, 4, 5].map(function (k) {
+      var ad = k === 0 ? 'yeni' : (k === 5 ? 'öğrenildi' : k + '. kutu');
+      return '<button type="button" class="kutu' + (seciliKutu === k ? ' acik' : '') +
+        '" data-k="' + k + '" title="' + (k === 0 ? 'Hiç çalışılmamış kelimeler'
+          : (k === 5 ? 'Öğrenilmiş: artık tekrara gelmiyor' : k + '. kutudaki kelimeler')) +
+        ' — göstermek için tıkla">' +
+        '<b>' + o['k' + k] + '</b><i>' + ad + '</i></button>';
+    }).join('');
 
     $('bekleyenNot').hidden = !o.bekleyen;
     if (o.bekleyen) {
@@ -197,6 +202,7 @@
     suzulmus = havuz.filter(function (d) {
       if (tp && d.y.indexOf(tp) === -1) return false;
       var kutu = Il.kutu(d.e);
+      if (seciliKutu !== null && kutu !== seciliKutu) return false;
       if (dr === 'vadesi' && !Il.vadesiGeldiMi(d.e)) return false;
       if (dr === 'yeni' && kutu !== 0) return false;
       if (dr === 'ogrenilen' && kutu < 5) return false;    // mezun olanlar
@@ -321,10 +327,22 @@
   /* ---------- ipucu: kelimeyi kendi örnek cümlesinde gizle ---------- */
 
   function bosluklaCumle(kelime, cumle) {
+    var kacir = function (x) { return x.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); };
     var kok = String(kelime).toLowerCase().replace(/(e|y)$/, '');
     if (kok.length < 3) kok = String(kelime).toLowerCase();
-    var kacisli = kok.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    var kalip = new RegExp('\\b' + kacisli + '[a-z]*\\b', 'gi');
+
+    /* Kök eşleşmesi düzenli türevleri yakalar (govern → governing). Düzensiz
+       biçimler (woman → women, undertake → undertook) köke benzemediği için
+       ipucu hiç boşluk açamıyordu; onları çekim motorundan alıp ekliyoruz. */
+    var desenler = [kacir(kok) + '[a-z]*'];
+    if (window.YDS.Cekim) {
+      ['s', 'past', 'pp', 'ing', 'pl'].forEach(function (f) {
+        var b = window.YDS.Cekim.cek(kelime, f);
+        if (b && b.indexOf(kok) !== 0) desenler.push(kacir(b));
+      });
+    }
+
+    var kalip = new RegExp('\\b(?:' + desenler.join('|') + ')\\b', 'gi');
     if (!kalip.test(cumle)) return null;
     kalip.lastIndex = 0;
     return cumle.replace(kalip, '----');
@@ -422,6 +440,13 @@
 
   function guncelleSayac() {
     var o = Il.leitnerOzet(havuz.map(function (x) { return { en: x.e }; }));
+    if (seciliKutu !== null) {
+      elSayac.textContent = suzulmus.length + ' kelime · ' +
+        (seciliKutu === 0 ? 'hiç çalışılmamışlar'
+          : (seciliKutu === 5 ? 'öğrenilenler (5. kutu)' : seciliKutu + '. kutu')) +
+        ' · süzgeci kaldırmak için kutuya yeniden tıkla';
+      return;
+    }
     elSayac.textContent = suzulmus.length + ' kelime · seçili katmanlarda ' + havuz.length +
       ' · öğrenilen ' + o.ogrenilen + ' · bugün tekrar ' + o.bugun;
   }
@@ -450,7 +475,12 @@
   });
 
   [elAra, elTip, elDurum].forEach(function (el) {
-    el.addEventListener('input', function () { desteModu = false; filtrele(); });
+    el.addEventListener('input', function () {
+      desteModu = false;
+      seciliKutu = null;
+      desteyiCiz();
+      filtrele();
+    });
   });
 
   $('dahaFazla').addEventListener('click', function () {
@@ -516,6 +546,19 @@
   $('gunlukHedef').addEventListener('change', function () {
     Il.gunlukHedefAyarla(this.value);
     desteyiCiz();
+  });
+
+  /* Kutuya tıkla: yalnız o kutudaki kelimeler. Aynı kutuya yeniden basmak süzgeci kaldırır. */
+  $('kutular').addEventListener('click', function (e) {
+    var b = e.target.closest('.kutu');
+    if (!b) return;
+    var k = Number(b.dataset.k);
+    seciliKutu = (seciliKutu === k) ? null : k;
+    desteModu = false;
+    if (seciliKutu !== null) { elAra.value = ''; elDurum.value = ''; }
+    filtrele();
+    desteyiCiz();
+    elSayac.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   });
 
   $('gunlukTavan').addEventListener('change', function () {

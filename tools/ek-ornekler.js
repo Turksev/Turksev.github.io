@@ -212,10 +212,6 @@ window.EK_ORNEKLER = {
   {"tr":"f. serbest bırakmak, kurtarmak","ex":"Rescuers worked for hours to free the driver trapped inside the wreckage.","exTr":"Kurtarma ekipleri, enkazın içinde sıkışan sürücüyü kurtarmak için saatlerce çalıştı."}
 ],
 
-"real": [
-  {"tr":"s. gerçek, hakiki","ex":"Virtual experiments can never fully replace real laboratory work in science education.","exTr":"Sanal deneyler, fen eğitiminde gerçek laboratuvar çalışmasının yerini asla tam anlamıyla tutamaz."},
-  {"tr":"z. gerçekten (gayriresmî)","ex":"In casual American speech you often hear \"real good\", though \"really good\" is the standard form.","exTr":"Gündelik Amerikan konuşmasında sık sık \"real good\" duyulur; ancak standart biçim \"really good\"tur."}
-],
 
 "wide": [
   {"tr":"s. geniş; yaygın","ex":"The new policy has attracted support from a wide range of political groups.","exTr":"Yeni politika, çok çeşitli siyasi gruplardan destek topladı."},
@@ -533,10 +529,6 @@ window.EK_ORNEKLER = {
   {"tr":"f. yavaşça ilerlemek","ex":"The climbers edged along the narrow ledge with their backs pressed to the rock.","exTr":"Tırmanıcılar, sırtları kayaya yaslı hâlde dar çıkıntı boyunca yavaşça ilerledi."}
 ],
 
-"mediate": [
-  {"tr":"f. arabuluculuk yapmak, aracılık etmek","ex":"The United Nations agreed to mediate peace talks between the two warring nations.","exTr":"Birleşmiş Milletler, savaşan iki ulus arasındaki barış görüşmelerine arabuluculuk yapmayı kabul etti."},
-  {"tr":"s. dolaylı","ex":"Philosophers distinguish immediate knowledge from mediate knowledge obtained through inference.","exTr":"Filozoflar, dolaysız bilgiyi çıkarım yoluyla elde edilen dolaylı bilgiden ayırır."}
-],
 
 "stream": [
   {"tr":"i. dere, akış","ex":"A small mountain stream supplies the entire village with drinking water.","exTr":"Küçük bir dağ deresi, tüm köyün içme suyunu sağlıyor."},
@@ -634,10 +626,6 @@ window.EK_ORNEKLER = {
   {"tr":"i. (günl.) amino asit","ex":"Some athletes take aminos before training, though the evidence for their benefit remains thin.","exTr":"Bazı sporcular antrenman öncesinde amino asit alıyor, ancak yararına dair kanıtlar hâlâ zayıf."}
 ],
 
-"driving": [
-  {"tr":"i. araç kullanma, sürüş","ex":"Driving while fatigued is nearly as dangerous as driving under the influence of alcohol.","exTr":"Yorgunken araç kullanmak, neredeyse alkollü araç kullanmak kadar tehlikelidir."},
-  {"tr":"s. itici, sürükleyici","ex":"Rising fuel costs have become the driving force behind the shift toward electric vehicles.","exTr":"Artan yakıt maliyetleri, elektrikli araçlara geçişin ardındaki itici güç hâline geldi."}
-],
 
 "score": [
   {"tr":"i. skor, puan","ex":"Researchers use a standardized score to compare cognitive performance across different age groups.","exTr":"Araştırmacılar, farklı yaş gruplarının bilişsel performansını karşılaştırmak için standartlaştırılmış bir puan kullanır."},
@@ -772,6 +760,189 @@ window.EK_ORNEKLER = {
   {"tr":"i. hafif vuruş, dokunuş","ex":"A gentle tap on the screen is enough to activate the sensor.","exTr":"Ekrana hafifçe bir dokunuş, sensörü etkinleştirmek için yeterlidir."},
   {"tr":"f. hafifçe vurmak, dokunmak","ex":"She tapped the microphone twice to check whether it was working.","exTr":"Mikrofonun çalışıp çalışmadığını anlamak için ona iki kez hafifçe vurdu."},
   {"tr":"f. (kaynağı) kullanmak, yararlanmak","ex":"Engineers are exploring new ways to tap geothermal energy beneath the region's volcanic plains.","exTr":"Mühendisler, bölgenin volkanik ovalarının altındaki jeotermal enerjiden yararlanmanın yeni yollarını araştırıyor."}
-]
+],
 
+/* --- ipucu sızıntısı düzeltmeleri (tools/test-uretim/ipucu-birlestir.py) --- */
+
+"athletic": [
+  {"tr": "s. atletik, sportif", "ex": "Coaches insist that proper nutrition and consistent sleep contribute as much to athletic performance as demanding physical training does.", "exTr": "Antrenörler, uygun beslenmenin ve düzenli uykunun atletik performansa en az zorlu fiziksel antrenman kadar katkı sağladığında ısrar ediyor."}
+],
+
+"carbonate": [
+  {"tr": "i. karbonat", "ex": "Calcium carbonate is one of the most common minerals found in limestone and marble.", "exTr": "Kalsiyum karbonat, kireçtaşı ve mermerde bulunan en yaygın minerallerden biridir."},
+  {"tr": "f. karbonatlamak (gazlandırmak)", "ex": "Brewers deliberately carbonate their ale a second time in the bottle, which gives the finished beer its lively foam.", "exTr": "Bira üreticileri biralarını şişede bilerek ikinci kez gazlandırır; bu da bitmiş biraya canlı köpüğünü kazandırır."}
+],
+
+"computation": [
+  {"tr": "i. hesaplama, hesap", "ex": "Weather forecasting requires an enormous amount of numerical computation, since each prediction depends on millions of atmospheric measurements.", "exTr": "Hava tahmini, her öngörü milyonlarca atmosferik ölçüme dayandığı için muazzam miktarda sayısal hesaplama gerektirir."}
+],
+
+"direction": [
+  {"tr": "i. yön", "ex": "Migrating birds rely on the Earth's magnetic field to determine the correct direction to fly.", "exTr": "Göçmen kuşlar, uçacakları doğru yönü belirlemek için Dünya'nın manyetik alanına güvenir."},
+  {"tr": "i. yönetim, idare", "ex": "The orchestra flourished under the direction of a conductor who encouraged young musicians to perform unfamiliar works.", "exTr": "Orkestra, genç müzisyenleri alışılmadık eserleri seslendirmeye teşvik eden bir şefin yönetimi altında gelişti."}
+],
+
+"driving": [
+  {"tr": "i. araç kullanma, sürüş", "ex": "In many European countries, driving is prohibited for anyone under eighteen, since younger people lack sufficient experience behind the wheel.", "exTr": "Birçok Avrupa ülkesinde, gençler direksiyon başında yeterli deneyime sahip olmadığından on sekiz yaşın altındakiler için araç kullanma yasaktır."},
+  {"tr": "s. itici, sürükleyici", "ex": "Rising fuel costs have become the driving force behind the shift toward electric vehicles.", "exTr": "Artan yakıt maliyetleri, elektrikli araçlara geçişin ardındaki itici güç hâline geldi."}
+],
+
+"edit": [
+  {"tr": "f. düzenlemek, redakte etmek", "ex": "Journalists must carefully edit their articles to remove factual errors before publication.", "exTr": "Gazeteciler, yayımlanmadan önce olgusal hataları gidermek için yazılarını dikkatle düzenlemelidir."},
+  {"tr": "f. kurgulamak", "ex": "Television crews must edit hours of raw interview material before the evening news program goes on air.", "exTr": "Televizyon ekipleri, akşam haber programı yayına girmeden önce saatlerce süren ham röportaj görüntülerini kurgulamak zorundadır."}
+],
+
+"elect": [
+  {"tr": "f. seçmek", "ex": "Members of the academy gather every spring to elect a president who will represent them for three years.", "exTr": "Akademi üyeleri, kendilerini üç yıl boyunca temsil edecek bir başkan seçmek için her bahar bir araya gelir."},
+  {"tr": "s. seçilmiş (henüz göreve başlamamış)", "ex": "Officials introduced the senator elect at a formal ceremony held before the inauguration.", "exTr": "Yetkililer, göreve başlama töreninden önce düzenlenen resmi bir seremonide seçilmiş senatörü tanıttı."}
+],
+
+"engine": [
+  {"tr": "i. motor; makine", "ex": "The steam engine transformed nineteenth-century industry by allowing factories to operate far from rivers and waterfalls.", "exTr": "Buhar motoru, fabrikaların nehirlerden ve şelalelerden uzakta çalışmasına olanak tanıyarak on dokuzuncu yüzyıl sanayisini dönüştürdü."}
+],
+
+"equal": [
+  {"tr": "s. eşit", "ex": "Ancient Greek geometers proved that the base angles of an isosceles triangle are always equal to each other.", "exTr": "Antik Yunan geometricileri, bir ikizkenar üçgenin taban açılarının her zaman birbirine eşit olduğunu kanıtladı."},
+  {"tr": "f. eşit olmak, denk gelmek", "ex": "No amount of money can truly equal the joy of watching an endangered species return to the wild.", "exTr": "Hiçbir miktardaki para, nesli tükenmekte olan bir türün doğaya geri dönüşünü izlemenin sevincine gerçekten denk gelemez."}
+],
+
+"fantasy": [
+  {"tr": "i. hayal, fantezi; f. hayal kurmak", "ex": "Psychologists argue that occasional fantasy about an ideal future helps adults endure the monotony of demanding office routines.", "exTr": "Psikologlar, ideal bir gelecek üzerine ara sıra kurulan hayalin, yetişkinlerin zorlu ofis rutinlerinin tekdüzeliğine katlanmasına yardımcı olduğunu savunuyor."}
+],
+
+"hack": [
+  {"tr": "f. (bilgisayara) izinsiz girmek, hacklemek", "ex": "Researchers demonstrated that intruders could hack the control system of a modern car remotely and disable its brakes.", "exTr": "Araştırmacılar, saldırganların modern bir otomobilin kontrol sistemine uzaktan izinsiz girip frenlerini devre dışı bırakabileceğini gösterdi."},
+  {"tr": "i. pratik çözüm, kestirme yöntem", "ex": "The blog post shared a simple hack for organizing daily tasks more efficiently.", "exTr": "Blog yazısı, günlük görevleri daha verimli düzenlemek için basit bir pratik çözüm paylaştı."}
+],
+
+"incorrect": [
+  {"tr": "s. yanlış, hatalı", "ex": "Students lose points on the exam whenever an incorrect assumption leads them to a reasonable but invalid conclusion.", "exTr": "Öğrenciler, yanlış bir varsayım onları makul ama geçersiz bir sonuca götürdüğünde sınavda puan kaybeder."}
+],
+
+"infinite": [
+  {"tr": "s. sonsuz", "ex": "Mathematicians have long debated whether the universe contains an infinite number of galaxies beyond observation.", "exTr": "Matematikçiler, evrenin gözlemin ötesinde sonsuz sayıda galaksi içerip içermediğini uzun süredir tartışıyor."},
+  {"tr": "i. sonsuzluk", "ex": "Medieval theologians wrote about the infinite as something without limit or end, a quality they believed belonged to God alone.", "exTr": "Ortaçağ ilahiyatçıları sonsuzluğu, sınırı ya da sonu olmayan bir şey ve yalnızca Tanrı'ya ait olduğuna inandıkları bir nitelik olarak ele aldı."}
+],
+
+"interpretation": [
+  {"tr": "i. yorum, yorumlama", "ex": "Different scholars offered conflicting interpretations of the ancient manuscript discovered in the cave.", "exTr": "Farklı akademisyenler, mağarada bulunan antik el yazmasına ilişkin çelişen yorumlar ortaya koydu."},
+  {"tr": "i. sözlü çeviri", "ex": "Courts must provide consecutive interpretation for defendants who cannot follow the proceedings in the official language of the country.", "exTr": "Mahkemeler, ülkenin resmî dilinde yürütülen yargılamayı takip edemeyen sanıklar için ardıl sözlü çeviri sağlamak zorundadır."}
+],
+
+"invade": [
+  {"tr": "f. istila etmek, işgal etmek", "ex": "Historians still debate why the Roman legions chose to invade Britain rather than consolidate their power in Gaul.", "exTr": "Tarihçiler, Roma lejyonlarının neden Galya'daki güçlerini pekiştirmek yerine Britanya'yı işgal etmeyi seçtiğini hâlâ tartışıyor."}
+],
+
+"knowing": [
+  {"tr": "i. bilme, farkındalık", "ex": "Without our knowing, algorithms quietly shape the news and advertisements we encounter online.", "exTr": "Biz farkında olmadan algoritmalar, internette karşılaştığımız haberleri ve reklamları sessizce şekillendirir."},
+  {"tr": "s. bilgili, bilinçli, anlamlı", "ex": "Experienced diplomats exchanged a knowing glance as the minister repeated promises that everyone in the room considered impossible.", "exTr": "Bakan, odadaki herkesin imkânsız gördüğü sözleri yinelerken deneyimli diplomatlar anlamlı bir bakış alışverişinde bulundu."}
+],
+
+"letter": [
+  {"tr": "i. mektup", "ex": "Archivists discovered a handwritten letter describing the explorer's final days at sea.", "exTr": "Arşivciler, kâşifin denizdeki son günlerini anlatan el yazısıyla yazılmış bir mektup keşfetti."},
+  {"tr": "i. harf", "ex": "In the Greek alphabet, the letter omega comes last, which is why the phrase alpha and omega means from beginning to end.", "exTr": "Yunan alfabesinde omega harfi en sonda gelir; bu yüzden alfa ve omega ifadesi baştan sona anlamına gelir."}
+],
+
+"lighter": [
+  {"tr": "i. çakmak", "ex": "Airport security officers routinely confiscate any lighter found in hand luggage, since the fuel it contains may ignite inside a sealed cargo hold.", "exTr": "Havaalanı güvenlik görevlileri, içindeki yakıt kapalı bir kargo bölmesinde tutuşabileceği için el bagajında bulunan her çakmağa rutin olarak el koyar."}
+],
+
+"mediate": [
+  {"tr": "f. arabuluculuk yapmak, aracılık etmek", "ex": "The United Nations agreed to mediate peace talks between the two warring nations.", "exTr": "Birleşmiş Milletler, savaşan iki ulus arasındaki barış görüşmelerine arabuluculuk yapmayı kabul etti."},
+  {"tr": "s. dolaylı", "ex": "In classical logic, a mediate inference reaches its conclusion through an intervening premise rather than straight from a single observation.", "exTr": "Klasik mantıkta dolaylı bir çıkarım, sonucuna tek bir gözlemden doğrudan değil, araya giren bir öncül aracılığıyla ulaşır."}
+],
+
+"mine": [
+  {"tr": "f. maden çıkarmak", "ex": "Several companies now hope to mine the ocean floor for metals used in electric vehicle batteries.", "exTr": "Birkaç şirket, elektrikli araç bataryalarında kullanılan metalleri okyanus tabanından çıkarmayı umuyor."},
+  {"tr": "i. maden (ocağı)", "ex": "The old coal mine was closed decades ago after several safety violations were discovered.", "exTr": "Eski kömür madeni, birkaç güvenlik ihlali tespit edildikten sonra onlarca yıl önce kapatıldı."}
+],
+
+"nut": [
+  {"tr": "i. kabuklu yemiş (fındık/ceviz vb.)", "ex": "Ecologists note that squirrels bury each nut they gather in autumn, and the forgotten ones eventually grow into new oak trees.", "exTr": "Ekologlar, sincapların sonbaharda topladıkları her kabuklu yemişi gömdüğünü ve unutulanların sonunda yeni meşe ağaçlarına dönüştüğünü belirtiyor."},
+  {"tr": "i. somun (vida için)", "ex": "The mechanic tightened every nut and bolt on the bicycle frame before returning it to the customer.", "exTr": "Tamirci, bisikleti müşteriye geri vermeden önce çerçevedeki her somunu ve cıvatayı sıkılaştırdı."}
+],
+
+"organs": [
+  {"tr": "i. organ(lar)", "ex": "Deep sea creatures possess specialized organs that produce light, allowing them to attract prey in complete darkness.", "exTr": "Derin deniz canlıları, ışık üreten özelleşmiş organlara sahiptir; bu da onların tam karanlıkta av çekmesini sağlar."},
+  {"tr": "(müzik) org", "ex": "The cathedral is famous for its enormous pipe organs, which have been played for centuries.", "exTr": "Katedral, yüzyıllardır çalınan devasa borulu orgları ile ünlüdür."}
+],
+
+"part": [
+  {"tr": "i. parça, bölüm, rol", "ex": "Regular exercise plays an important part in maintaining both physical and mental well-being.", "exTr": "Düzenli egzersiz, hem fiziksel hem de zihinsel iyi oluşu sürdürmede önemli bir rol oynar."},
+  {"tr": "f. ayrılmak", "ex": "After thirty years of collaboration, the two composers agreed to part on friendly terms and pursue separate careers.", "exTr": "Otuz yıllık iş birliğinin ardından iki besteci, dostane biçimde ayrılmaya ve ayrı kariyerler sürdürmeye karar verdi."}
+],
+
+"pavement": [
+  {"tr": "i. kaldırım", "ex": "City workers repaired the cracked pavement outside the old library over the weekend.", "exTr": "Belediye işçileri, hafta sonu eski kütüphanenin dışındaki çatlamış kaldırımı onardı."},
+  {"tr": "i. yol kaplaması, asfalt (AmE)", "ex": "Heavy trucks slowly wear down the pavement of rural highways, forcing local authorities to fund expensive resurfacing every few years.", "exTr": "Ağır kamyonlar kırsal karayollarının yol kaplamasını yavaşça aşındırıyor ve yerel yönetimleri birkaç yılda bir pahalı yenileme çalışmalarına kaynak ayırmaya zorluyor."}
+],
+
+"pest": [
+  {"tr": "i. haşere, zararlı böcek", "ex": "Museum conservators inspect storage rooms constantly, since a single pest such as a clothes moth can ruin centuries-old textiles.", "exTr": "Müze koruma uzmanları depoları sürekli denetler; çünkü elbise güvesi gibi tek bir haşere, yüzyıllık dokumaları mahvedebilir."},
+  {"tr": "(mecazi) baş belası", "ex": "Her little brother could be quite a pest whenever she tried to study for exams.", "exTr": "Küçük kardeşi, sınavlara çalışmaya çalıştığında oldukça baş belası olabiliyordu."}
+],
+
+"photograph": [
+  {"tr": "i. fotoğraf", "ex": "The first photograph of Earth taken from space changed how humanity viewed its home planet.", "exTr": "Uzaydan çekilen ilk Dünya fotoğrafı, insanlığın kendi gezegenine bakışını değiştirdi."},
+  {"tr": "f. fotoğrafını çekmek", "ex": "Astronomers used a specially cooled camera to photograph the distant comet as it passed closest to the sun.", "exTr": "Gökbilimciler, uzaktaki kuyruklu yıldızın Güneş'e en çok yaklaştığı anda fotoğrafını çekmek için özel olarak soğutulmuş bir kamera kullandı."}
+],
+
+"plan": [
+  {"tr": "i. plan, tasarı", "ex": "City officials unveiled a new plan to reduce traffic congestion through expanded public transportation networks.", "exTr": "Belediye yetkilileri, genişletilmiş toplu taşıma ağları yoluyla trafik sıkışıklığını azaltacak yeni bir plan açıkladı."},
+  {"tr": "f. planlamak", "ex": "Expedition leaders must plan every stage of a polar journey carefully, since supplies cannot be delivered once the ice closes.", "exTr": "Sefer liderleri, buzlar kapandıktan sonra ikmal ulaştırılamayacağı için kutup yolculuğunun her aşamasını dikkatle planlamak zorundadır."}
+],
+
+"police": [
+  {"tr": "f. denetlemek, kontrol altında tutmak", "ex": "International agencies find it difficult to police the open ocean, where illegal fishing vessels operate far from any coastline.", "exTr": "Uluslararası kurumlar, yasa dışı balıkçı teknelerinin herhangi bir kıyıdan uzakta faaliyet gösterdiği açık okyanusu denetlemekte zorlanıyor."},
+  {"tr": "i. polis (teşkilatı)", "ex": "The police arrived within minutes after neighbors reported hearing loud noises from the apartment.", "exTr": "Komşuların daireden yüksek sesler duyduklarını bildirmesinin ardından polis dakikalar içinde geldi."}
+],
+
+"pop": [
+  {"tr": "f. patlamak, pat diye ses çıkarmak", "ex": "Balloons began to pop loudly as the children's party grew more chaotic.", "exTr": "Çocukların partisi giderek daha kaotik hale gelirken balonlar yüksek sesle patlamaya başladı."},
+  {"tr": "s. (pop music/culture) popüler", "ex": "Critics argue that pop music dominated the charts throughout the 1980s because synthesizers made catchy melodies cheap to produce.", "exTr": "Eleştirmenler, sentezleyiciler akılda kalıcı melodileri ucuza üretilebilir kıldığı için 1980'ler boyunca pop müziğin listelere hâkim olduğunu savunuyor."}
+],
+
+"prey": [
+  {"tr": "i. av, kurban", "ex": "Owls hunt after dark, swooping silently down on unsuspecting prey that cannot hear their approaching wings.", "exTr": "Baykuşlar karanlık bastıktan sonra avlanır; yaklaşan kanatlarını duyamayan habersiz avın üzerine sessizce süzülür."},
+  {"tr": "f. avlamak, yem etmek", "ex": "Certain wasps prey on caterpillars, paralyzing them with venom before carrying them back to their underground nests.", "exTr": "Bazı yaban arıları tırtılları avlar; onları zehirle felç ettikten sonra yer altındaki yuvalarına taşır."}
+],
+
+"printer": [
+  {"tr": "i. yazıcı", "ex": "Every student in the dormitory shares a single wireless printer, which frequently runs out of ink before the examination period ends.", "exTr": "Yurtta kalan her öğrenci, sınav dönemi bitmeden sık sık mürekkebi tükenen tek bir kablosuz yazıcıyı paylaşıyor."},
+  {"tr": "i. matbaacı", "ex": "The local printer agreed to produce a thousand copies of the historical society's new pamphlet by Friday.", "exTr": "Yerel matbaacı, tarih derneğinin yeni broşüründen Cuma gününe kadar bin kopya basmayı kabul etti."}
+],
+
+"real": [
+  {"tr": "s. gerçek, hakiki", "ex": "Virtual experiments can never fully replace real laboratory work in science education.", "exTr": "Sanal deneyler, fen eğitiminde gerçek laboratuvar çalışmasının yerini asla tam anlamıyla tutamaz."},
+  {"tr": "z. gerçekten (gayriresmî)", "ex": "Older farmers in the American South still describe a harvest as real impressive, using an adjective where standard grammar demands an adverb.", "exTr": "Amerikan Güneyi'ndeki yaşlı çiftçiler, standart dil bilgisinin zarf gerektirdiği yerde sıfat kullanarak bir hasadı hâlâ gerçekten etkileyici diye tanımlar."}
+],
+
+"run": [
+  {"tr": "f. işletmek", "ex": "The cooperative continues to run a small dairy plant that supplies milk to schools in three neighbouring villages.", "exTr": "Kooperatif, üç komşu köydeki okullara süt sağlayan küçük bir süthaneyi işletmeyi sürdürüyor."},
+  {"tr": "f. koşmak", "ex": "Antelopes can run at nearly ninety kilometers per hour, an ability that allows them to escape almost every predator on the savanna.", "exTr": "Antiloplar saatte neredeyse doksan kilometre hızla koşabilir; bu yetenek, savandaki hemen her yırtıcıdan kaçmalarını sağlar."}
+],
+
+"scholar": [
+  {"tr": "i. bilim insanı, akademisyen", "ex": "Many scholars argue that the invention of printing fundamentally changed the spread of knowledge.", "exTr": "Birçok akademisyen, matbaanın icadının bilginin yayılmasını kökten değiştirdiğini savunur."},
+  {"tr": "i. burslu öğrenci", "ex": "Each year the foundation selects one scholar from every participating country and covers all tuition and living costs for three years.", "exTr": "Vakıf her yıl katılımcı her ülkeden bir burslu öğrenci seçiyor ve üç yıl boyunca tüm öğrenim ve yaşam masraflarını karşılıyor."}
+],
+
+"stainless": [
+  {"tr": "s. paslanmaz; lekesiz", "ex": "Surgical instruments are manufactured from stainless steel so that repeated sterilization at high temperatures never causes them to corrode.", "exTr": "Cerrahi aletler, yüksek sıcaklıkta tekrarlanan sterilizasyonun asla paslanmalarına yol açmaması için paslanmaz çelikten üretilir."}
+],
+
+"study": [
+  {"tr": "i. çalışma, inceleme", "ex": "A recent study revealed that air pollution significantly affects children's cognitive development in urban areas.", "exTr": "Yakın tarihli bir çalışma, hava kirliliğinin kentsel alanlardaki çocukların bilişsel gelişimini önemli ölçüde etkilediğini ortaya koydu."},
+  {"tr": "f. incelemek, öğrenim görmek", "ex": "Anyone who wishes to study medicine in Germany must first demonstrate an advanced command of the German language.", "exTr": "Almanya'da tıp öğrenimi görmek isteyen herkesin önce ileri düzeyde Almanca bildiğini kanıtlaması gerekir."}
+],
+
+"tense": [
+  {"tr": "s. gergin", "ex": "Negotiations between the two nations remained tense throughout the lengthy peace conference.", "exTr": "İki ulus arasındaki müzakereler, uzun barış konferansı boyunca gergin kaldı."},
+  {"tr": "i. (gramer) zaman kipi", "ex": "Latin verbs change their endings to show the future tense, whereas English relies on auxiliary words such as will.", "exTr": "Latince fiiller gelecek zaman kipini göstermek için eklerini değiştirirken, İngilizce will gibi yardımcı sözcüklere dayanır."}
+],
+
+"throw": [
+  {"tr": "f. atmak, fırlatmak", "ex": "Archaeologists calculated how far ancient hunters could throw a spear using the recovered tools.", "exTr": "Arkeologlar, bulunan aletleri kullanarak antik avcıların bir mızrağı ne kadar uzağa fırlatabildiğini hesapladı."},
+  {"tr": "i. atış", "ex": "Judges measured each throw twice, because a difference of a few centimeters could determine which competitor received the gold medal.", "exTr": "Hakemler her atışı iki kez ölçtü; çünkü birkaç santimetrelik fark, hangi yarışmacının altın madalya alacağını belirleyebilirdi."}
+]
 };

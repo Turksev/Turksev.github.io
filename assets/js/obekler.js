@@ -32,6 +32,7 @@
 
   var $ = function (id) { return document.getElementById(id); };
   var elAra = $('ara'), elTur = $('tur'), elSinav = $('sinav'), elDurum = $('durum');
+  var seciliKutu = null;          // kutu süzgeci: null | 0..5
   var elListe = $('liste'), elSayac = $('sayac'), elBos = $('bos');
   var elKartAlan = $('kartAlan'), elKart = $('kart');
 
@@ -49,11 +50,15 @@
       o.ogrenilen + ' öğrenildi';
     $('desteBar').style.width = (TUM.length ? o.ogrenilen / TUM.length * 100 : 0) + '%';
 
-    $('kutular').innerHTML =
-      '<span class="kutu"><b>' + o.k0 + '</b><i>yeni</i></span>' +
-      [1, 2, 3, 4, 5].map(function (k) {
-        return '<span class="kutu"><b>' + o['k' + k] + '</b><i>' + k + '. kutu</i></span>';
-      }).join('');
+    // Kutular tıklanabilir: bir kutuya basınca liste yalnız o kutuyu gösterir.
+    $('kutular').innerHTML = [0, 1, 2, 3, 4, 5].map(function (k) {
+      var ad = k === 0 ? 'yeni' : (k === 5 ? 'öğrenildi' : k + '. kutu');
+      return '<button type="button" class="kutu' + (seciliKutu === k ? ' acik' : '') +
+        '" data-k="' + k + '" title="' + (k === 0 ? 'Hiç çalışılmamış kelimeler'
+          : (k === 5 ? 'Öğrenilmiş: artık tekrara gelmiyor' : k + '. kutudaki kelimeler')) +
+        ' — göstermek için tıkla">' +
+        '<b>' + o['k' + k] + '</b><i>' + ad + '</i></button>';
+    }).join('');
 
     $('bekleyenNot').hidden = !o.bekleyen;
     if (o.bekleyen) {
@@ -103,9 +108,10 @@
       if (esik && o.s < esik) return false;
 
       var kutu = Il.kutu(o.f);
+      if (seciliKutu !== null && kutu !== seciliKutu) return false;
       if (dr === 'vadesi' && !Il.vadesiGeldiMi(o.f)) return false;
       if (dr === 'yeni' && kutu !== 0) return false;
-      if (dr === 'ogrenilen' && kutu < 4) return false;
+      if (dr === 'ogrenilen' && kutu < 5) return false;    // mezun olanlar
       if (dr === 'zayif' && !(kutu === 1 || kutu === 2)) return false;
 
       if (q) {
@@ -142,7 +148,7 @@
     }).join('');
 
     return '' +
-      '<article class="word' + (kutu >= 4 ? ' known' : '') + '" data-f="' + kacar(o.f) + '">' +
+      '<article class="word' + (kutu >= 5 ? ' known' : '') + '" data-f="' + kacar(o.f) + '">' +
         '<div>' +
           '<div class="en">' + kacar(o.f) + '</div>' +
           '<div class="meta">' +
@@ -333,6 +339,13 @@
 
   function guncelleSayac() {
     var o = Il.leitnerOzet(leitnerListesi());
+    if (seciliKutu !== null) {
+      elSayac.textContent = suzulmus.length + ' öbek · ' +
+        (seciliKutu === 0 ? 'hiç çalışılmamışlar'
+          : (seciliKutu === 5 ? 'öğrenilenler (5. kutu)' : seciliKutu + '. kutu')) +
+        ' · süzgeci kaldırmak için kutuya yeniden tıkla';
+      return;
+    }
     elSayac.textContent = suzulmus.length + ' öbek gösteriliyor · toplam ' + TUM.length +
       ' · öğrenilen ' + o.ogrenilen + ' · bugün tekrar ' + o.bugun;
   }
@@ -351,7 +364,12 @@
   /* ---------- olaylar ---------- */
 
   [elAra, elTur, elSinav, elDurum].forEach(function (el) {
-    el.addEventListener('input', function () { desteModu = false; filtrele(); });
+    el.addEventListener('input', function () {
+      desteModu = false;
+      seciliKutu = null;
+      desteyiCiz();
+      filtrele();
+    });
   });
 
   $('dahaFazla').addEventListener('click', function () {
@@ -413,6 +431,19 @@
     $('mod').textContent = 'Liste moduna dön';
     ciz();
     elKartAlan.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  /* Kutuya tıkla: yalnız o kutudaki öbekler. Yeniden tıklamak süzgeci kaldırır. */
+  $('kutular').addEventListener('click', function (e) {
+    var b = e.target.closest('.kutu');
+    if (!b) return;
+    var k = Number(b.dataset.k);
+    seciliKutu = (seciliKutu === k) ? null : k;
+    desteModu = false;
+    if (seciliKutu !== null) { elAra.value = ''; elDurum.value = ''; }
+    filtrele();
+    desteyiCiz();
+    elSayac.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   });
 
   $('gunlukTavan').addEventListener('change', function () {

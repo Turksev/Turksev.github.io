@@ -1,0 +1,40 @@
+<!DOCTYPE html><meta charset="utf-8"><title>kutu süzgeci</title>
+<pre id="log"></pre>
+<script>
+var L=[],hata=0;function P(m){L.push(m);document.getElementById('log').textContent=L.join('\n');}
+function esit(a,o,b){var ok=(o===b);if(!ok)hata++;P((ok?'OK   ':'HATA ')+a+' = '+JSON.stringify(o)+(ok?'':' (beklenen '+JSON.stringify(b)+')'));}
+localStorage.clear();
+var f=document.createElement('iframe');
+f.style.cssText='width:1100px;height:800px;border:0';
+f.src='file:///C:/Users/Trk/Desktop/Turksev.github.io/obekler.html';
+f.onload=function(){var w=f.contentWindow,d=f.contentDocument;
+function kutu(i){return d.querySelectorAll('#kutular .kutu')[i];}
+setTimeout(function(){try{
+  var Il=w.YDS.Ilerleme, dizin=(w.OBEKLER||[]).map(function(o){return {e:o.f};});
+  dizin.slice(0,10).forEach(function(x){Il.dogru(x.e);});
+  dizin.slice(10,14).forEach(function(x){Il.dogru(x.e);Il.dogru(x.e);});
+  d.getElementById('gunlukTavan').dispatchEvent(new w.Event('change'));
+  esit('6 kutu düğmesi', d.querySelectorAll('#kutular .kutu').length, 6);
+  P('sayılar: '+[].map.call(d.querySelectorAll('#kutular .kutu b'),function(b){return b.textContent;}).join(','));
+  kutu(1).click();
+  setTimeout(function(){
+    esit('1. kutu seçili', kutu(1).classList.contains('acik'), true);
+    esit('listede 10 kelime', d.querySelectorAll('#liste .word').length, 10);
+    esit('hepsi 1. kutudan', [].every.call(d.querySelectorAll('#liste .word'),function(a){return Il.kutu(a.dataset.en)===1;}), true);
+    P('sayaç: '+d.getElementById('sayac').textContent.slice(0,60));
+    kutu(2).click();
+    setTimeout(function(){
+      esit('2. kutuya geçti', d.querySelectorAll('#liste .word').length, 4);
+      kutu(2).click();
+      setTimeout(function(){
+        esit('süzgeç kalktı', d.querySelectorAll('#kutular .acik').length, 0);
+        esit('liste geri döndü', d.querySelectorAll('#liste .word').length > 50, true);
+        // ipucu düzensiz biçimde çalışıyor mu (woman → women)
+        var Veri=w.YDS.Veri;
+        P('DONE '+(hata?hata+' HATA':'HEPSI GECTI')); localStorage.clear();
+      },300);
+    },300);
+  },400);
+}catch(e){P('ERR '+e.message);}},1600);};
+document.body.appendChild(f);
+</script>

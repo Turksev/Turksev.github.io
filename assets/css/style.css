@@ -419,6 +419,12 @@ input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible
   border-radius: 10px;
   background: var(--surface-2);
 }
+/* Kutular tıklanabilir süzgeç: seçili olan vurgulanır */
+button.kutu { cursor: pointer; font: inherit; color: inherit; }
+button.kutu:hover { border-color: var(--accent); }
+.kutu.acik { border-color: var(--accent); background: var(--accent-soft); }
+.kutu.acik b, .kutu.acik i { color: var(--accent); }
+
 .kutu b { font-size: 1.15rem; line-height: 1.1; }
 .kutu i {
   font-style: normal;
