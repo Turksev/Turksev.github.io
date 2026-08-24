@@ -228,12 +228,27 @@
       // "have-not" + pl -> "have-nots" (bütün olarak çoğullanır). İkisi de kabul.
       var parcalar = k.split(/[-\s]+/);
       var duz = parcalar.join(' ');
-      if (hedef === k || hedef === duz) return true;
+      // Sözlük biçiminin kendisi ancak çekim istenmiyorsa ya da kaynak biçim
+      // zaten çekimliyse ("carried out in") kabul edilir; yoksa etiket hatasıdır.
+      if ((hedef === k || hedef === duz) &&
+          (!bicim || /(ed|ing|s)$/.test(parcalar[0]) || /(ed|ing|s)$/.test(parcalar[parcalar.length - 1]))) {
+        return true;
+      }
       if ((bicim === 's' || bicim === 'pl') &&
           (hedef === k + 's' || hedef === k + 'es' || hedef === duz + 's' || hedef === duz + 'es')) return true;
-      if (!/^[a-z]+$/.test(parcalar[0])) return false;
-      var cekili = cek(parcalar[0], bicim);
-      return !!cekili && hedef === [cekili].concat(parcalar.slice(1)).join(' ');
+      // Öbek fiilde ek İLK parçaya gelir: give-up + past -> "gave up".
+      if (/^[a-z]+$/.test(parcalar[0])) {
+        var ilkCekili = cek(parcalar[0], bicim);
+        if (ilkCekili && hedef === [ilkCekili].concat(parcalar.slice(1)).join(' ')) return true;
+      }
+      // Tireli birleşik fiilde ek SON parçaya gelir ve tire korunur:
+      // face-lift + pp -> "face-lifted", double-check + past -> "double-checked".
+      var son = parcalar[parcalar.length - 1];
+      if (k.indexOf('-') !== -1 && /^[a-z]+$/.test(son)) {
+        var sonCekili = cek(son, bicim);
+        if (sonCekili && hedef === parcalar.slice(0, -1).concat(sonCekili).join('-')) return true;
+      }
+      return false;
     }
     var u = cek(k, bicim);
     if (u === null) return false;

@@ -157,14 +157,24 @@ def uyar_mi(kelime, bicim, hedef):
         # Öbek fiil: "bring-up" + pp -> "brought up"; "have-not" + pl -> "have-nots"
         parcalar = re.split(r'[-\s]+', k)
         duz = ' '.join(parcalar)
-        if hedef in (k, duz):
+        # Sözlük biçimi ancak çekim istenmiyorsa ya da kaynak zaten çekimliyse geçerli
+        if hedef in (k, duz) and (
+                not bicim or re.search(r'(ed|ing|s)$', parcalar[0])
+                or re.search(r'(ed|ing|s)$', parcalar[-1])):
             return True
         if bicim in ('s', 'pl') and hedef in (k + 's', k + 'es', duz + 's', duz + 'es'):
             return True
-        if not re.fullmatch(r'[a-z]+', parcalar[0]):
-            return False
-        cekili = cek(parcalar[0], bicim)
-        return bool(cekili) and hedef == ' '.join([cekili] + parcalar[1:])
+        # Öbek fiilde ek İLK parçaya gelir: give-up + past -> "gave up"
+        if re.fullmatch(r'[a-z]+', parcalar[0]):
+            ilk = cek(parcalar[0], bicim)
+            if ilk and hedef == ' '.join([ilk] + parcalar[1:]):
+                return True
+        # Tireli birleşik fiilde ek SON parçaya gelir: face-lift + pp -> "face-lifted"
+        if '-' in k and re.fullmatch(r'[a-z]+', parcalar[-1]):
+            son = cek(parcalar[-1], bicim)
+            if son and hedef == '-'.join(parcalar[:-1] + [son]):
+                return True
+        return False
     u = cek(k, bicim)
     if u is None:
         return False
