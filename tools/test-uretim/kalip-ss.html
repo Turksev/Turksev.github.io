@@ -1,0 +1,9 @@
+<!DOCTYPE html><meta charset="utf-8">
+<iframe id="f" src="file:///C:/Users/Trk/Desktop/Turksev.github.io/kelimeler.html" style="width:1000px;height:1400px;border:0"></iframe>
+<script>
+document.getElementById('f').onload=function(){var w=this.contentWindow,d=this.contentDocument;
+setTimeout(function(){
+  var a=d.getElementById('ara'); a.value='object'; a.dispatchEvent(new w.Event('input'));
+  setTimeout(function(){ d.querySelector('#liste').scrollIntoView(); },500);
+},1600);};
+</script>

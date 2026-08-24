@@ -164,6 +164,13 @@ Not: servis çalışanı dosyaları önbellekten sunup arka planda tazeliyordu, 
 kod kullanıcıya bir açılış geç ulaşıyordu. Artık `controllerchange` olayında sayfa bir kez
 kendini yeniliyor ve her açılışta `registration.update()` çağrılıyor.
 
+**Kullanım kalıpları.** Kelimenin altında (kart, liste ve arama kartı) o kelimenin tipik
+kalıpları görünür: `comply with the rules — kurallara uymak`. Amaç anlamı değil **kullanımı**
+öğretmek; Türkçe fiilin istediği ek İngilizceye taşınınca çıkan hatayı önlemek
+(*comply to* değil *comply with*). Kalıplar `tools/kaliplar.js` içindedir, katman
+dosyalarına `kl` alanı olarak gömülür. Kalıbı olmayan somut kelimelerde (tiger, table) yoktur.
+Üretim: `tools/test-uretim/kalip-paketle.py` → agent (`kalip-brief.md`) → `kalip-dogrula.py`.
+
 **Kutu süzgeci.** Deste kartındaki kutu sayaçları (yeni · 1–4. kutu · öğrenildi) tıklanabilir:
 bir kutuya basınca liste yalnız o kutudaki kelimeleri/öbekleri gösterir, yeniden basınca süzgeç
 kalkar. Kelime ve öbek sayfasının ikisinde de var.
@@ -277,6 +284,7 @@ Okuduğu kaynaklar (salt okunur, hiçbirine yazılmaz):
 | `tools/obek-turleri.js` | Öbeklerin düzeltilmiş tür etiketleri; kaynağın üzerine yazar, "sıradan" olanları listeden düşürür |
 | `tools/ek-obekler.js` | Kaynak listede olmayan 119 deyimsel fiil / edat kalıbı |
 | `tools/kelime-eleme.js` | Listeye hiç girmeyecek 10 kelime: korpustan sızan kaba/argo sözcükler ve özel adlar |
+| `tools/kaliplar.js` | Kelimelerin kullanım kalıpları (2-4. katman); katman dosyalarına `kl` alanı olarak girer |
 | `tools/ek-kelimeler.js` | Listede olmayan 52 kelime + ortak 129 kelimenin eş anlamlıları |
 
 Betik `ii`, `iii`, `iv` gibi cloze şık numarası artıklarını atar, harf varyantlarını birleştirir ve

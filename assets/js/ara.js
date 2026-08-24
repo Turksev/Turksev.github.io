@@ -298,6 +298,11 @@
       : bolum('Anlamı', '<p style="margin:0">' + kacar(d.t) + '</p>' +
               '<p class="small muted" style="margin:6px 0 0">Örnek cümleler yükleniyor…</p>');
 
+    if (tam && tam.kl && tam.kl.length) {
+      govde += bolum('Kullanım kalıpları', '<div class="kalip">' + tam.kl.map(function (k) {
+        return '<span><b>' + kacar(k.en) + '</b><i>' + kacar(k.tr) + '</i></span>';
+      }).join('') + '</div>');
+    }
     if (tam && tam.es) govde += bolum('Yakın anlamlılar', '<p style="margin:0">' + kacar(tam.es) + '</p>');
     if (olumsuz) {
       govde += bolum('Olumsuzu', '<p style="margin:0">' + olumsuz.map(function (o) {

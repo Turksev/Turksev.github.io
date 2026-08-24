@@ -164,6 +164,27 @@ def ek_ornekleri_oku():
     return json.loads(govde)
 
 
+def kaliplari_oku():
+    """tools/kaliplar.js — kelimelerin kullanim kaliplari {kelime: [{en, tr}]}.
+
+    Kelimenin anlami degil, nasil kullanildigi: hangi edati alir, hangi
+    sozcuklerle gelir. Katman dosyalarina 'kl' alani olarak yazilir."""
+    yol = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'kaliplar.js')
+    if not os.path.exists(yol):
+        return {}
+    metin = open(yol, encoding='utf-8').read()
+    i = metin.find('window.KALIPLAR')
+    if i == -1:
+        return {}
+    sonuc = {}
+    for m in re.finditer(r'"([^"]+)":\s*\[(.*?)\]', metin[i:], re.S):
+        kaliplar = [{'en': a, 'tr': b} for a, b in
+                    re.findall(r'\{en:"(.*?)",tr:"(.*?)"\}', m.group(2))]
+        if kaliplar:
+            sonuc[m.group(1)] = kaliplar
+    return sonuc
+
+
 def elenecekleri_oku():
     """tools/kelime-eleme.js — listeye hic girmeyecek kelimeler.
 
@@ -250,6 +271,14 @@ def birlestir():
             del kelimeler[en]
             elenen += 1
 
+    # Kullanim kaliplari
+    kalip = kaliplari_oku()
+    kalipli = 0
+    for en, k in kelimeler.items():
+        if en in kalip:
+            k['kalip'] = kalip[en]
+            kalipli += 1
+
     for en, k in kelimeler.items():
         k['katman'] = k.get('katman_zorla') or katman_bul(k['puan'])
 
@@ -257,7 +286,7 @@ def birlestir():
     bekleyen = [en for en, k in kelimeler.items()
                 if len(k['anlamlar']) == 1 and len(anlamlari_bol(k['anlamlar'][0]['tr'])) > 1]
 
-    return kelimeler, ortak, yalniz_site, ek_uygulanan, bekleyen, aile_eklenen, elenen
+    return kelimeler, ortak, yalniz_site, ek_uygulanan, bekleyen, aile_eklenen, elenen, kalipli
 
 
 def kelimeleri_yaz(kelimeler):
@@ -302,6 +331,11 @@ def kelimeleri_yaz(kelimeler):
                     json.dumps(a['exTr'], ensure_ascii=False))
                 for a in k['anlamlar'])
             ek = (',es:' + json.dumps(k['es'], ensure_ascii=False)) if k.get('es') else ''
+            if k.get('kalip'):
+                ek += ',kl:[' + ','.join(
+                    '{en:%s,tr:%s}' % (json.dumps(x['en'], ensure_ascii=False),
+                                       json.dumps(x['tr'], ensure_ascii=False))
+                    for x in k['kalip']) + ']'
             govde.append('%s:{a:[%s]%s}' % (json.dumps(en, ensure_ascii=False), anlamlar, ek))
 
         basli = (
@@ -452,7 +486,7 @@ def sayilari_yaz(sirali, ozet, obekler):
 
 
 def main():
-    kelimeler, ortak, yalniz_site, ek_uygulanan, bekleyen, aile_eklenen, elenen = birlestir()
+    kelimeler, ortak, yalniz_site, ek_uygulanan, bekleyen, aile_eklenen, elenen, kalipli = birlestir()
     sirali, ozet = kelimeleri_yaz(kelimeler)
     obekler, obek_boyut, obek_ek, obek_atilan = obekleri_yaz()
     sayilari_yaz(sirali, ozet, obekler)
@@ -467,6 +501,7 @@ def main():
     print('  ornegi eksik kalan :', len(bekleyen), '(cok turlu ama tek ornekli)')
     print('  aile uyesi eklenen :', aile_eklenen, '(%d. katman)' % AILE_KATMANI)
     print('  elenen (kaba/ozel) :', elenen)
+    print('  kalibi olan        :', kalipli)
     print()
     print('  katman              kelime      dosya')
     for kno, ad, n, boyut in ozet:

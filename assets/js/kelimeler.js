@@ -257,6 +257,15 @@
     return '<span class="' + sinif + '">' + k + '. kutu · ' + (gun === 0 ? 'bugün' : gun + ' gün') + '</span>';
   }
 
+  /* Kullanım kalıpları: kelimenin anlamı değil, nasıl kullanıldığı.
+     "comply" için: comply with the rules — kurallara uymak. */
+  function kaliplar(tam) {
+    if (!tam || !tam.kl || !tam.kl.length) return '';
+    return '<div class="kalip">' + tam.kl.map(function (k) {
+      return '<span><b>' + kacar(k.en) + '</b><i>' + kacar(k.tr) + '</i></span>';
+    }).join('') + '</div>';
+  }
+
   function testRozeti(en) {
     var n = Il.testYanlisSayisi(en);
     return n ? '<span class="badge err" title="Günün testinde bilinemedi">testte ✗' + (n > 1 ? ' ×' + n : '') + '</span>' : '';
@@ -297,6 +306,7 @@
           '<button class="star" type="button" data-ne="ses" title="Telaffuzu dinle">🔊</button>' +
         '</div>' +
         anlamlar +
+        kaliplar(tam) +
         olumsuzSatiri(d.e) +
       '</article>';
   }
@@ -364,7 +374,7 @@
       '<div class="muted small" style="font-weight:400;margin-top:4px">' + kacar(d.y) + '</div>';
     $('kartOrnek').innerHTML = tam.a.filter(function (a) { return a.ex; }).map(function (a) {
       return kacar(a.ex) + '<br><span style="opacity:.8">' + kacar(a.exTr) + '</span>';
-    }).join('<br><br>') + olumsuzSatiri(d.e);
+    }).join('<br><br>') + kaliplar(tam) + olumsuzSatiri(d.e);
 
     $('kartArka').hidden = !kartAcik;
     $('kartSayac').textContent = (kartIndex + 1) + ' / ' + suzulmus.length;

@@ -419,6 +419,17 @@ input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible
   border-radius: 10px;
   background: var(--surface-2);
 }
+/* Kullanım kalıpları: kelimenin altında kısa kalıp listesi */
+.kalip {
+  display: flex; flex-wrap: wrap; gap: 6px 14px;
+  margin-top: 10px; padding-top: 10px;
+  border-top: 1px dashed var(--border);
+}
+.kalip span { display: inline-flex; align-items: baseline; gap: 6px; font-size: .9rem; }
+.kalip b { font-weight: 650; color: var(--accent); }
+.kalip i { font-style: normal; color: var(--muted); font-size: .86rem; }
+.kalip b::before { content: "▸ "; color: var(--muted); font-weight: 400; }
+
 /* Kutular tıklanabilir süzgeç: seçili olan vurgulanır */
 button.kutu { cursor: pointer; font: inherit; color: inherit; }
 button.kutu:hover { border-color: var(--accent); }
