@@ -177,7 +177,7 @@ Deste bitince (ya da deste kartındaki **Günün testi** düğmesiyle) bugün ç
 en çok 20 soruluk, 5 şıklı boşluk doldurma testi açılır. Cümleler **karttaki örnekten bağımsız**,
 YDS okuma parçası kayıtında özgün cümlelerdir; `data/test-k{n}.js` içinde durur
 (`{kelime: {c, b, f, tr}}` — c boşluklu cümle, b boşluğa gelen çekimli biçim, f çekim türü
-`'' | s | past | pp | ing | pl`, tr Türkçesi). Katman dosyası yoksa o katmanın kelimeleri teste girmez.
+`'' | s | past | pp | ing | pl`, tr Türkçesi). Katman dosyası yoksa o katmanın kelimeleri teste girmez. Hazır olanlar: 2, 3, 4 ve 5. katman (4.066 cümle) ile 892 öbek.
 
 Şıklar aynı türden, yakın katmandan kelimelerden kurulur ve boşluktaki biçimle **aynı çekime**
 sokulur (`assets/js/cekim.js`: düzenli kurallar + düzensiz fiil/isim tablosu); biçim uyumu

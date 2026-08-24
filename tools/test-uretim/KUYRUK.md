@@ -32,11 +32,10 @@ Sırada 5. katman var; girdi paketleri henüz üretilmedi (aşağıya bak).
 
 | Katman | Kelime | Yaklaşık paket | Yaklaşık maliyet |
 | --- | --- | --- | --- |
-| 5 · Geniş | 1.565 | 23 | ~2,3 M token |
 | 1 · Temel | 657 | 10 | ~1,0 M token |
 | 6 · Geniş+ | 3.135 | 45 | ~4,5 M token |
 
-Önerilen sıra: 4 → 5 → 1 → 6. (1. katman zaten bilinen kelimeler, 6. katman en seyrekler.)
+Önerilen sıra: 4 → 5 → 1 → 6 (4 ve 5 bitti). (1. katman zaten bilinen kelimeler, 6. katman en seyrekler.)
 
 ## Tamamlananlar
 
@@ -45,6 +44,7 @@ Sırada 5. katman var; girdi paketleri henüz üretilmedi (aşağıya bak).
 | 2 · Çekirdek | 720 | tamam |
 | 3 · Orta | 708 | tamam |
 | 4 · İleri | 1.073 | tamam |
+| 5 · Geniş | 1.565 | tamam |
 | Öbekler (deyimsel fiil + edat kalıbı) | 892 | tamam |
 
 Öbek hattı ayrı dosyalarda: `obek-test-paketle.py`, `obek-test-brief.md`,
