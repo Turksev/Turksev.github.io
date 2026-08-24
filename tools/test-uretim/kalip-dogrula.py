@@ -74,7 +74,9 @@ for ad in sorted(os.listdir(GIRDI)):
             bicimler = {e} | {cekim.cek(e, f) for f in ('s', 'past', 'pp', 'ing', 'pl')}
             # Tireli kelimenin çoğulu bütüne gelir: have-not -> have-nots
             if '-' in e:
-                bicimler |= {e + 's', e + 'es', e.replace('-', ' ')}
+                # life-time -> lifetime, give-up -> give up gibi yazım biçimleri
+                duz, bitisik = e.replace('-', ' '), e.replace('-', '')
+                bicimler |= {e + 's', e + 'es', duz, duz + 's', bitisik, bitisik + 's', bitisik + 'es'}
             bicimler = {b for b in bicimler if b}
             if not any(re.search(r'\b' + re.escape(b) + r'\b', en, re.I) for b in bicimler):
                 sorun.append('"%s" kelimeyi içermiyor' % en)
