@@ -1,3 +1,3 @@
 /* Depo kullanımı — tools/depo-olcu.py üretir, elle düzenleme.
    Yayımlanan dosyaların toplam boyutu; site alt bilgide gösterir. */
-window.DEPO = {"bayt": 16654179, "dosya": 431, "klasor": [{"ad": "tools", "bayt": 8668989}, {"ad": "data", "bayt": 7593469}, {"ad": "assets", "bayt": 256901}, {"ad": "(kök)", "bayt": 134697}, {"ad": ".claude", "bayt": 123}], "sinir": 1073741824, "zaman": "2026-08-24"};
+window.DEPO = {"bayt": 16738571, "dosya": 433, "klasor": [{"ad": "tools", "bayt": 8727820}, {"ad": "data", "bayt": 7619030}, {"ad": "assets", "bayt": 256901}, {"ad": "(kök)", "bayt": 134697}, {"ad": ".claude", "bayt": 123}], "sinir": 1073741824, "zaman": "2026-08-24"};
