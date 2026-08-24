@@ -11,7 +11,7 @@
    eklediğinde hem SÜRÜM'ü artır hem de listeye ekle.
    ============================================================ */
 
-var SURUM = 'yds-v69';
+var SURUM = 'yds-v70';
 var ONBELLEK = SURUM;
 
 /* Kurulumda indirilenler: sayfalar, kod ve küçük veri dosyaları.
