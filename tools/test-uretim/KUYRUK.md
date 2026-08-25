@@ -22,29 +22,20 @@ haftalık limite çarpıldı. Paket başına yaklaşık **100 bin token**.
 
 ## Sıradaki paketler
 
-4. katman **tamamlandı** (23.08.2026): 38 paketin hepsi yazıldı, 1.073 cümle.
-Sırada 5. katman var; girdi paketleri henüz üretilmedi (aşağıya bak).
-
-## Sonraki katmanlar (girdi paketleri henüz üretilmedi)
-
-`python paketle.js <katman>` yerine — node kaldırıldığı için — paketleri Python ile
-üretmek gerekir; `paketle.js` mantığı 70'lik dilimler yazar (bkz. dosya).
-
-| Katman | Kelime | Yaklaşık paket | Yaklaşık maliyet |
-| --- | --- | --- | --- |
-| 6 · Geniş+ | 3.135 | 45 | ~4,5 M token |
-
-Önerilen sıra: 4 → 5 → 1 → 6 (4 ve 5 bitti). (1. katman zaten bilinen kelimeler, 6. katman en seyrekler.)
+**Yok — kuyruk boş.** Kelime havuzunun tamamı 25.08.2026'da bitti; bekleyen paket
+kalmadı. Listeye yeni kelime eklenirse `paketle.py` ile yeni paket üretilir.
 
 ## Tamamlananlar
 
 | Katman | Cümle | Durum |
 | --- | --- | --- |
-| 2 · Çekirdek | 720 | tamam |
-| 3 · Orta | 708 | tamam |
-| 4 · İleri | 1.073 | tamam |
-| 5 · Geniş | 1.565 | tamam |
 | 1 · Temel | 657 | tamam |
+| 2 · Çekirdek | 720 | tamam |
+| 3 · Orta | 707 | tamam |
+| 4 · İleri | 1.073 | tamam |
+| 5 · Geniş | 1.564 | tamam |
+| 6 · Geniş+ | 3.127 | tamam (25.08.2026, 45 paket) |
+| **Kelime toplamı** | **7.848** | 10 kelime elendi (kaba/özel ad) |
 | Öbekler (deyimsel fiil + edat kalıbı) | 892 | tamam |
 
 Öbek hattı ayrı dosyalarda: `obek-test-paketle.py`, `obek-test-brief.md`,
@@ -77,7 +68,7 @@ dogrula.py    denetler ve data/test-k{n}.js dosyalarını yazar
 cekim.py      cekim.js'in Python karşılığı (tabloları JS'ten okur)
 parite.html   cekim.py ↔ cekim.js parite testi (headless Chrome; son sonuç: 47.154'te 0 fark)
 harness.html  uçtan uca tarayıcı testi (kelimeler.html'i açar, 20 soruluk testi çözer)
-paketle.js    girdi paketlerini üreten betik (node gerektirir; node şu an kurulu değil)
+paketle.py    girdi paketlerini üreten betik (paketle.js'in Python karşılığı)
 ```
 
 Node.js 23.08.2026'da makineden kaldırıldı; doğrulama ve testler Python + headless
