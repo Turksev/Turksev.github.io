@@ -14,7 +14,16 @@ setTimeout(function(){try{
     P('satır: '+(s? s.querySelector('.en').textContent : 'yok'));
     var k=s && s.querySelector('.kalip');
     P('kalıp bloğu var mı: '+!!k);
-    if(k) P('kalıplar: '+[].map.call(k.querySelectorAll('span'),function(x){return x.textContent;}).join(' | '));
+    if(k){
+      P('kalıplar: '+[].map.call(k.querySelectorAll('span'),function(x){return x.textContent;}).join(' | '));
+      var st=w.getComputedStyle(k);
+      P('ortalı mı: justify-content='+st.justifyContent+' text-align='+st.textAlign);
+      P('çizgi: üst='+st.borderTopStyle+' alt='+st.borderBottomStyle);
+      // kalıp örnek cümlenin ÜSTÜNDE mi
+      var ex=s.querySelector('.ex');
+      P('kalıp örnekten önce mi: '+
+        !!(k.compareDocumentPosition(ex) & Node.DOCUMENT_POSITION_FOLLOWING));
+    }
     P('DONE');
   },900);
 }catch(e){P('ERR '+e.message);}},1600);};

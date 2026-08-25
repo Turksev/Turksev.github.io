@@ -259,10 +259,12 @@
   }
 
   /* Kullanım kalıpları: kelimenin anlamı değil, nasıl kullanıldığı.
-     "comply" için: comply with the rules — kurallara uymak. */
+     "comply" için: comply with the rules — kurallara uymak.
+     Örnek cümlelerin ÜSTÜNDE, ortalanmış bir şerit olarak durur ("üst"
+     sınıfı); arama kartındaki başlıklı bölümde ise sola yaslı kalır. */
   function kaliplar(tam) {
     if (!tam || !tam.kl || !tam.kl.length) return '';
-    return '<div class="kalip">' + tam.kl.map(function (k) {
+    return '<div class="kalip ust">' + tam.kl.map(function (k) {
       return '<span><b>' + kacar(k.en) + '</b><i>' + kacar(k.tr) + '</i></span>';
     }).join('') + '</div>';
   }
@@ -306,8 +308,8 @@
           '<button class="star" type="button" data-ne="bilmedim" title="Bilemedim — bir kutu geri düşer, yarın tekrar gelir">✗</button>' +
           '<button class="star" type="button" data-ne="ses" title="Telaffuzu dinle">🔊</button>' +
         '</div>' +
-        anlamlar +
         kaliplar(tam) +
+        anlamlar +
         olumsuzSatiri(d.e) +
       '</article>';
   }
@@ -375,9 +377,10 @@
       return kacar(a.tr) + yildiz(a);
     }).join('<br>') +
       '<div class="muted small" style="font-weight:400;margin-top:4px">' + kacar(d.y) + '</div>';
-    $('kartOrnek').innerHTML = tam.a.filter(function (a) { return a.ex; }).map(function (a) {
-      return kacar(a.ex) + '<br><span style="opacity:.8">' + kacar(a.exTr) + '</span>';
-    }).join('<br><br>') + kaliplar(tam) + olumsuzSatiri(d.e);
+    $('kartOrnek').innerHTML = kaliplar(tam) +
+      tam.a.filter(function (a) { return a.ex; }).map(function (a) {
+        return kacar(a.ex) + '<br><span style="opacity:.8">' + kacar(a.exTr) + '</span>';
+      }).join('<br><br>') + olumsuzSatiri(d.e);
 
     $('kartArka').hidden = !kartAcik;
     $('kartSayac').textContent = (kartIndex + 1) + ' / ' + suzulmus.length;

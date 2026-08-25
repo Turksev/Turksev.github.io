@@ -173,8 +173,9 @@ Not: servis çalışanı dosyaları önbellekten sunup arka planda tazeliyordu, 
 kod kullanıcıya bir açılış geç ulaşıyordu. Artık `controllerchange` olayında sayfa bir kez
 kendini yeniliyor ve her açılışta `registration.update()` çağrılıyor.
 
-**Kullanım kalıpları.** Kelimenin altında (kart, liste ve arama kartı) o kelimenin tipik
-kalıpları görünür: `comply with the rules — kurallara uymak`. Amaç anlamı değil **kullanımı**
+**Kullanım kalıpları.** Kelimenin tipik kalıpları görünür: `comply with the rules —
+kurallara uymak`. Listede ve kart arkasında **örnek cümlelerin üstünde**, ortalanmış bir
+şerit olarak durur (`.kalip.ust`); arama kartındaki başlıklı bölümde sola yaslı kalır. Amaç anlamı değil **kullanımı**
 öğretmek; Türkçe fiilin istediği ek İngilizceye taşınınca çıkan hatayı önlemek
 (*comply to* değil *comply with*). Kalıplar `tools/kaliplar.js` içindedir, katman
 dosyalarına `kl` alanı olarak gömülür. Kalıbı olmayan somut kelimelerde (tiger, table) yoktur.

@@ -427,11 +427,18 @@ input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible
 }
 .yildiz b { color: #e0a800; font-weight: 400; }
 
-/* Kullanım kalıpları: kelimenin altında kısa kalıp listesi */
+/* Kullanım kalıpları: kelimenin kısa kalıp listesi.
+   Düz hali (arama kartındaki başlıklı bölüm) sola yaslı; ".ust" hali
+   örnek cümlelerin üstünde ortalanmış bir şerittir. */
 .kalip {
   display: flex; flex-wrap: wrap; gap: 6px 14px;
   margin-top: 10px; padding-top: 10px;
   border-top: 1px dashed var(--border);
+}
+.kalip.ust {
+  justify-content: center; text-align: center;
+  margin: 0 0 12px; padding: 0 0 10px;
+  border-top: 0; border-bottom: 1px dashed var(--border);
 }
 .kalip span { display: inline-flex; align-items: baseline; gap: 6px; font-size: .9rem; }
 .kalip b { font-weight: 650; color: var(--accent); }
