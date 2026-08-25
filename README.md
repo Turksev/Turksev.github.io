@@ -171,6 +171,27 @@ kalıpları görünür: `comply with the rules — kurallara uymak`. Amaç anlam
 dosyalarına `kl` alanı olarak gömülür. Kalıbı olmayan somut kelimelerde (tiger, table) yoktur.
 Üretim: `tools/test-uretim/kalip-paketle.py` → agent (`kalip-brief.md`) → `kalip-dogrula.py`.
 
+**Anlam yıldızları.** Çok anlamlı kelimelerde her anlamın yanında YDS önemi durur:
+★★★★ = sınavda asıl sorulan anlam, ★★★ = sık geçer, ★★ = ara sıra, ★ = nadir/ikincil.
+Yıldız kelimenin genel önemini (o zaten puan rozetinde) değil, **o kelimenin anlamları
+arasındaki baskınlığı** gösterir; bu yüzden her kelimenin en yüksek yıldızı en az üçtür.
+
+```
+grind   f. öğütmek                            ★★★★
+        i. angarya                            ★
+fine    s. ince, güzel, iyi                   ★★★
+        f. cezalandırmak, para cezası kesmek  ★
+```
+
+Anlamlar **yıldıza göre sıralanır**, yani baskın anlam başa gelir. Kaynak listedeki sıra
+rastgeleydi: ilk 150 kelimenin 34'ünde önemsiz anlam üstteydi. Sıra düzelince dizindeki
+kısa anlam ve İpucu düğmesinin gösterdiği örnek cümle de baskın anlama geçer.
+
+Yıldızlar `tools/anlam-yildiz.js` içindedir ve **anlam metnine** bağlıdır, sıraya değil;
+kaynak listedeki sıra değişse bile eşleşme bozulmaz. Katman ve öbek dosyalarına `yz` alanı
+olarak gömülür. Üretim: `tools/test-uretim/yildiz-paketle.py` → agent (`yildiz-brief.md`)
+→ `yildiz-dogrula.py`.
+
 **Kutu süzgeci.** Deste kartındaki kutu sayaçları (yeni · 1–4. kutu · öğrenildi) tıklanabilir:
 bir kutuya basınca liste yalnız o kutudaki kelimeleri/öbekleri gösterir, yeniden basınca süzgeç
 kalkar. Kelime ve öbek sayfasının ikisinde de var.
@@ -287,6 +308,7 @@ Okuduğu kaynaklar (salt okunur, hiçbirine yazılmaz):
 | `tools/ek-obekler.js` | Kaynak listede olmayan 119 deyimsel fiil / edat kalıbı |
 | `tools/kelime-eleme.js` | Listeye hiç girmeyecek 10 kelime: korpustan sızan kaba/argo sözcükler ve özel adlar |
 | `tools/kaliplar.js` | Kelimelerin kullanım kalıpları (2-4. katman); katman dosyalarına `kl` alanı olarak girer |
+| `tools/anlam-yildiz.js` | Çok anlamlı kelime ve öbeklerde anlam başına YDS önemi (1-4); `yz` alanı olarak girer ve anlamları sıralar |
 | `tools/ek-kelimeler.js` | Listede olmayan 52 kelime + ortak 129 kelimenin eş anlamlıları |
 
 Betik `ii`, `iii`, `iv` gibi cloze şık numarası artıklarını atar, harf varyantlarını birleştirir ve

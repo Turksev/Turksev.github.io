@@ -20,7 +20,8 @@ setTimeout(function(){try{
   setTimeout(function(){
     esit('1. kutu seçili', kutu(1).classList.contains('acik'), true);
     esit('listede 10 kelime', d.querySelectorAll('#liste .word').length, 10);
-    esit('hepsi 1. kutudan', [].every.call(d.querySelectorAll('#liste .word'),function(a){return Il.kutu(a.dataset.en)===1;}), true);
+    // Öbek satırları kelimeyi data-f içinde taşır (kelime sayfasında data-en).
+    esit('hepsi 1. kutudan', [].every.call(d.querySelectorAll('#liste .word'),function(a){return Il.kutu(a.dataset.f)===1;}), true);
     P('sayaç: '+d.getElementById('sayac').textContent.slice(0,60));
     kutu(2).click();
     setTimeout(function(){

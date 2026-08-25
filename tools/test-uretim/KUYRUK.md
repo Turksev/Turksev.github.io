@@ -58,6 +58,23 @@ obek-test-sayfa.html  kalıpların sayfada görünüşünü sınayan tarayıcı 
 `tools/kaliplar.js` → `listeyi-aktar.py` → `data/kelime-k{n}.js` içine `kl:[{en,tr}]`.
 Sırada 5–6. katman kalıpları var (henüz paketlenmedi, ~4.700 kelime).
 
+## Anlam yıldızları hattı (ayrı iş, 25.08.2026 tamamlandı)
+
+Çok anlamlı kelime ve öbeklerde her anlamın YDS önemi (1-4 yıldız). 22 paketin hepsi
+yazıldı: **2.595 kelime + 122 öbek**. Yıldız anlam metnine bağlıdır; `listeyi-aktar.py`
+anlamları yıldıza göre büyükten küçüğe sıralar, yani baskın anlam başa gelir.
+
+```
+yildiz-paketle.py   çok anlamlı kayıtları 150'lik paketlere böler -> yildiz-girdi/
+yildiz-brief.md     ölçek (4 = sınavda asıl sorulan, 1 = nadir) ve karar ölçütleri
+yildiz-cikti/       ajan çıktıları — [{"e":"grind","yz":[4,1]}]
+yildiz-dogrula.py   denetler ve tools/anlam-yildiz.js yazar
+yildiz-onizleme.html  yıldızların sayfada görünüşünü sınayan tarayıcı testi
+```
+
+Zorunlu kural: her kaydın en yüksek yıldızı en az 3. Doğrulayıcı bunu, 1-4 aralığını ve
+dizi uzunluğunun anlam sayısına eşitliğini denetler.
+
 ## Dosyalar
 
 ```
