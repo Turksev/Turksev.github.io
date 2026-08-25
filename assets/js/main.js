@@ -234,8 +234,25 @@
     return ciz;
   }
 
+  /* Anlam yıldızı: çok anlamlı kelimelerde bu anlamın YDS önemi (1-4).
+     Dolu yıldız kadar önemli; boşlar ölçeği görünür kılar (★★★☆). */
+  var YILDIZ_BASLIK = {
+    4: 'YDS\'de asıl sorulan anlam',
+    3: 'Sık geçer, bilinmeli',
+    2: 'Ara sıra geçer',
+    1: 'Nadir, ikincil anlam'
+  };
+
+  function yildiz(a) {
+    var n = a && a.yz;
+    if (!n) return '';
+    return '<span class="yildiz" title="' + YILDIZ_BASLIK[n] + '">' +
+           '<b>' + Array(n + 1).join('★') + '</b>' +
+           Array(5 - n).join('☆') + '</span>';
+  }
+
   window.YDS = {
     Depo: Depo, sadelestir: sadelestir, karistir: karistir, kacar: kacar,
-    ikiKereSor: ikiKereSor, geriAlKutusu: geriAlKutusu
+    ikiKereSor: ikiKereSor, geriAlKutusu: geriAlKutusu, yildiz: yildiz
   };
 })();

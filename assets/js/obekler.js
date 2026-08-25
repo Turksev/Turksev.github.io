@@ -15,6 +15,7 @@
 
   var sadelestir = window.YDS.sadelestir;
   var kacar = window.YDS.kacar;
+  var yildiz = window.YDS.yildiz;
   var karistir = window.YDS.karistir;
   var Il = window.YDS.Ilerleme;
   var Veri = window.YDS.Veri;
@@ -142,7 +143,7 @@
   function satir(o) {
     var kutu = Il.kutu(o.f);
     var anlamlar = o.a.map(function (a) {
-      return '<div class="ex"><b>' + kacar(a.tr) + '</b>' +
+      return '<div class="ex"><b>' + kacar(a.tr) + '</b>' + yildiz(a) +
              '<i>' + kacar(a.ex) + '</i>' +
              '<i class="tr-ex">' + kacar(a.exTr) + '</i></div>';
     }).join('');
@@ -221,7 +222,9 @@
     $('kartOn').textContent = o.f;
     $('kartKutu').innerHTML = KUTU_ADI[Il.kutu(o.f)] +
       (Il.vadesiGeldiMi(o.f) ? ' · tekrar zamanı' : '');
-    $('kartTr').innerHTML = o.a.map(function (a) { return kacar(a.tr); }).join('<br>') +
+    $('kartTr').innerHTML = o.a.map(function (a) {
+      return kacar(a.tr) + yildiz(a);
+    }).join('<br>') +
       '<div class="muted small" style="font-weight:400;margin-top:4px">' + kacar(o.y) + '</div>';
     $('kartOrnek').innerHTML = o.a.map(function (a) {
       return kacar(a.ex) + '<br><span style="opacity:.8">' + kacar(a.exTr) + '</span>';

@@ -13,6 +13,7 @@
   var Depo = window.YDS.Depo;
   var sadelestir = window.YDS.sadelestir;
   var kacar = window.YDS.kacar;
+  var yildiz = window.YDS.yildiz;
   var karistir = window.YDS.karistir;
   var Il = window.YDS.Ilerleme;
   var Veri = window.YDS.Veri;
@@ -276,7 +277,7 @@
     var kutu = Il.kutu(d.e);
     var anlamlar = tam
       ? tam.a.map(function (a) {
-          return '<div class="ex"><b>' + kacar(a.tr) + '</b>' +
+          return '<div class="ex"><b>' + kacar(a.tr) + '</b>' + yildiz(a) +
                  '<i>' + kacar(a.ex) + '</i>' +
                  '<i class="tr-ex">' + kacar(a.exTr) + '</i></div>';
         }).join('')
@@ -370,7 +371,9 @@
       (Il.mezunMu(d.e) ? ' · öğrenildi, tekrara gelmez'
                        : (Il.vadesiGeldiMi(d.e) ? ' · tekrar zamanı' : ''));
 
-    $('kartTr').innerHTML = tam.a.map(function (a) { return kacar(a.tr); }).join('<br>') +
+    $('kartTr').innerHTML = tam.a.map(function (a) {
+      return kacar(a.tr) + yildiz(a);
+    }).join('<br>') +
       '<div class="muted small" style="font-weight:400;margin-top:4px">' + kacar(d.y) + '</div>';
     $('kartOrnek').innerHTML = tam.a.filter(function (a) { return a.ex; }).map(function (a) {
       return kacar(a.ex) + '<br><span style="opacity:.8">' + kacar(a.exTr) + '</span>';

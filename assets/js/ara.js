@@ -11,6 +11,7 @@
 
   var sadelestir = window.YDS.sadelestir;
   var kacar = window.YDS.kacar;
+  var yildiz = window.YDS.yildiz;
 
   var SINIR = 40;              // tür başına gösterilecek en fazla sonuç
 
@@ -268,7 +269,7 @@
 
   function anlamlar(liste) {
     return liste.map(function (a) {
-      return '<div class="kart-anlam"><b>' + kacar(a.tr) + '</b>' +
+      return '<div class="kart-anlam"><b>' + kacar(a.tr) + '</b>' + yildiz(a) +
         (a.ex ? '<i>' + kacar(a.ex) + '</i>' : '') +
         (a.exTr ? '<span>' + kacar(a.exTr) + '</span>' : '') + '</div>';
     }).join('');

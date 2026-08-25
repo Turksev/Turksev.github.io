@@ -1,7 +1,7 @@
 /* ============================================================
    Kelime öbekleri — 1623 öbek
    Alanlar: f=öbek, y=tür, s=kaç sınavda geçti, kn=kaynak,
-            a=anlamlar [{tr, ex, exTr}]
+            a=anlamlar [{tr, ex, exTr, yz}] — yz: YDS önemi 1-4
    Kaç sınavda geçtiğine göre sıralı. tools/listeyi-aktar.py üretir.
    ============================================================ */
 

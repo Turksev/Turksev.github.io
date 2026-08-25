@@ -164,6 +164,46 @@ def ek_ornekleri_oku():
     return json.loads(govde)
 
 
+def yildizlari_oku():
+    """tools/anlam-yildiz.js — cok anlamli kelimelerde anlam basina YDS onemi.
+
+    {kelime: {anlam_metni: yildiz}}. Yildiz siraya degil anlam METNINE baglidir;
+    boylece anlamlari yeniden siralamak eslesmeyi bozmaz."""
+    yol = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'anlam-yildiz.js')
+    if not os.path.exists(yol):
+        return {}
+    metin = open(yol, encoding='utf-8').read()
+    i = metin.find('window.ANLAM_YILDIZ')
+    if i == -1:
+        return {}
+    sonuc = {}
+    for m in re.finditer(r'"((?:[^"\\]|\\.)*)":\s*\[(.*?)\]', metin[i:], re.S):
+        anahtar = json.loads('"' + m.group(1) + '"')
+        esleme = {}
+        for tr, yz in re.findall(r'\{tr:"((?:[^"\\]|\\.)*)",yz:(\d)\}', m.group(2)):
+            esleme[json.loads('"' + tr + '"')] = int(yz)
+        if esleme:
+            sonuc[anahtar] = esleme
+    return sonuc
+
+
+def yildizla(anlamlar, esleme):
+    """Anlamlara 'yz' alanini ekler ve buyukten kucuge kararli siralar.
+
+    Yildizsiz anlam 0 sayilir ama alan yazilmaz; tek anlamlilar dokunulmaz."""
+    if not esleme or len(anlamlar) < 2:
+        return False
+    bulundu = False
+    for a in anlamlar:
+        yz = esleme.get(a['tr'].strip())
+        if yz:
+            a['yz'] = yz
+            bulundu = True
+    if bulundu:
+        anlamlar.sort(key=lambda a: -a.get('yz', 0))
+    return bulundu
+
+
 def kaliplari_oku():
     """tools/kaliplar.js — kelimelerin kullanim kaliplari {kelime: [{en, tr}]}.
 
@@ -279,6 +319,13 @@ def birlestir():
             k['kalip'] = kalip[en]
             kalipli += 1
 
+    # Anlam yildizlari: onemliyi basa al
+    yildiz = yildizlari_oku()
+    yildizli = 0
+    for en, k in kelimeler.items():
+        if yildizla(k['anlamlar'], yildiz.get(en)):
+            yildizli += 1
+
     for en, k in kelimeler.items():
         k['katman'] = k.get('katman_zorla') or katman_bul(k['puan'])
 
@@ -286,7 +333,8 @@ def birlestir():
     bekleyen = [en for en, k in kelimeler.items()
                 if len(k['anlamlar']) == 1 and len(anlamlari_bol(k['anlamlar'][0]['tr'])) > 1]
 
-    return kelimeler, ortak, yalniz_site, ek_uygulanan, bekleyen, aile_eklenen, elenen, kalipli
+    return (kelimeler, ortak, yalniz_site, ek_uygulanan, bekleyen, aile_eklenen,
+            elenen, kalipli, yildizli)
 
 
 def kelimeleri_yaz(kelimeler):
@@ -324,12 +372,7 @@ def kelimeleri_yaz(kelimeler):
         grup = [(en, k) for en, k in sirali if k['katman'] == kno]
         govde = []
         for en, k in grup:
-            anlamlar = ','.join(
-                '{tr:%s,ex:%s,exTr:%s}' % (
-                    json.dumps(a['tr'], ensure_ascii=False),
-                    json.dumps(a['ex'], ensure_ascii=False),
-                    json.dumps(a['exTr'], ensure_ascii=False))
-                for a in k['anlamlar'])
+            anlamlar = ','.join(anlam_yaz(a) for a in k['anlamlar'])
             ek = (',es:' + json.dumps(k['es'], ensure_ascii=False)) if k.get('es') else ''
             if k.get('kalip'):
                 ek += ',kl:[' + ','.join(
@@ -436,15 +479,14 @@ def obekleri_yaz():
         else:
             obekler[ad]['tip'] = yeni
 
+    yildiz = yildizlari_oku()
+    for ad, o in obekler.items():
+        yildizla(o['anlamlar'], yildiz.get(ad))
+
     sirali = sorted(obekler.items(), key=lambda x: (-x[1]['sinav'], x[0]))
     govde = []
     for ad, o in sirali:
-        anlamlar = ','.join(
-            '{tr:%s,ex:%s,exTr:%s}' % (
-                json.dumps(a['tr'], ensure_ascii=False),
-                json.dumps(a['ex'], ensure_ascii=False),
-                json.dumps(a['exTr'], ensure_ascii=False))
-            for a in o['anlamlar'])
+        anlamlar = ','.join(anlam_yaz(a) for a in o['anlamlar'])
         govde.append('{f:%s,y:%s,s:%d,kn:%s,a:[%s]}' % (
             json.dumps(ad, ensure_ascii=False),
             json.dumps(o['tip'], ensure_ascii=False),
@@ -456,7 +498,7 @@ def obekleri_yaz():
         '/* ============================================================\n'
         '   Kelime öbekleri — %d öbek\n'
         '   Alanlar: f=öbek, y=tür, s=kaç sınavda geçti, kn=kaynak,\n'
-        '            a=anlamlar [{tr, ex, exTr}]\n'
+        '            a=anlamlar [{tr, ex, exTr, yz}] — yz: YDS önemi 1-4\n'
         '   Kaç sınavda geçtiğine göre sıralı. tools/listeyi-aktar.py üretir.\n'
         '   ============================================================ */\n\n'
         'window.OBEKLER = [\n' % len(sirali)
@@ -464,6 +506,17 @@ def obekleri_yaz():
     yol = os.path.join(VERI, 'obekler.js')
     yaz(yol, basli + ',\n'.join(govde) + '\n];\n')
     return sirali, os.path.getsize(yol), ek_eklenen, atilan
+
+
+def anlam_yaz(a):
+    """Bir anlami JS nesnesi olarak yazar; yildizi varsa 'yz' alanini ekler."""
+    govde = '{tr:%s,ex:%s,exTr:%s' % (
+        json.dumps(a['tr'], ensure_ascii=False),
+        json.dumps(a['ex'], ensure_ascii=False),
+        json.dumps(a['exTr'], ensure_ascii=False))
+    if a.get('yz'):
+        govde += ',yz:%d' % a['yz']
+    return govde + '}'
 
 
 def yaz(yol, icerik):
@@ -486,7 +539,8 @@ def sayilari_yaz(sirali, ozet, obekler):
 
 
 def main():
-    kelimeler, ortak, yalniz_site, ek_uygulanan, bekleyen, aile_eklenen, elenen, kalipli = birlestir()
+    (kelimeler, ortak, yalniz_site, ek_uygulanan, bekleyen, aile_eklenen,
+     elenen, kalipli, yildizli) = birlestir()
     sirali, ozet = kelimeleri_yaz(kelimeler)
     obekler, obek_boyut, obek_ek, obek_atilan = obekleri_yaz()
     sayilari_yaz(sirali, ozet, obekler)
@@ -502,6 +556,7 @@ def main():
     print('  aile uyesi eklenen :', aile_eklenen, '(%d. katman)' % AILE_KATMANI)
     print('  elenen (kaba/ozel) :', elenen)
     print('  kalibi olan        :', kalipli)
+    print('  anlami yildizli    :', yildizli)
     print()
     print('  katman              kelime      dosya')
     for kno, ad, n, boyut in ozet:

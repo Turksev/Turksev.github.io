@@ -419,6 +419,14 @@ input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible
   border-radius: 10px;
   background: var(--surface-2);
 }
+/* Anlam yıldızı: bu anlamın YDS önemi. Dolu yıldız vurgulu, boş sönük. */
+.yildiz {
+  margin-left: 6px; font-size: .78rem; letter-spacing: 1px;
+  white-space: nowrap; vertical-align: 1px; cursor: help;
+  color: var(--border);
+}
+.yildiz b { color: #e0a800; font-weight: 400; }
+
 /* Kullanım kalıpları: kelimenin altında kısa kalıp listesi */
 .kalip {
   display: flex; flex-wrap: wrap; gap: 6px 14px;
