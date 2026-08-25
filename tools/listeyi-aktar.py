@@ -170,6 +170,23 @@ def ek_ornekleri_oku():
     return json.loads(govde)
 
 
+def tur_duzeltmelerini_oku():
+    """tools/tur-duzeltme.js — dizindeki yanlis tur etiketleri {kelime: tur}.
+
+    Kaynagin Tur sutunu islev kelimelerinde yanlisti ("do" isim, "except"
+    fiil). Tur, gunun testinde celdirici havuzunu belirledigi icin duzeltilir;
+    ilk tur bas turdur. 25.08.2026 denetimi."""
+    yol = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'tur-duzeltme.js')
+    if not os.path.exists(yol):
+        return {}
+    metin = open(yol, encoding='utf-8').read()
+    i = metin.find('window.TUR_DUZELTME')
+    if i == -1:
+        return {}
+    return {json.loads('"%s"' % a): json.loads('"%s"' % b)
+            for a, b in re.findall(r'"((?:[^"\\]|\\.)*)":\s*"((?:[^"\\]|\\.)*)"', metin[i:])}
+
+
 def yildizlari_oku():
     """tools/anlam-yildiz.js — cok anlamli kelimelerde anlam basina YDS onemi.
 
@@ -298,7 +315,9 @@ def birlestir():
         kelimeler[en] = {
             'tip': v['tip'],
             'puan': v.get('p'),
-            'katman_zorla': AILE_KATMANI,
+            # Puani normal esige (10) yetisen uye gercek katmanina girer;
+            # 7. katman yalniz sinav kaniti zayif (p<10 ya da puansiz) uyeler icin.
+            'katman_zorla': AILE_KATMANI if (v.get('p') or 0) < 10 else None,
             'anlamlar': [{'tr': v['tr'], 'ex': v['ex'], 'exTr': v['exTr']}],
         }
         aile_eklenen += 1
@@ -324,6 +343,12 @@ def birlestir():
         if en in kalip:
             k['kalip'] = kalip[en]
             kalipli += 1
+
+    # Tur duzeltmeleri (dizindeki y alanini duzeltir)
+    tur_d = tur_duzeltmelerini_oku()
+    for en, tur in tur_d.items():
+        if en in kelimeler:
+            kelimeler[en]['tip'] = tur
 
     # Anlam yildizlari: onemliyi basa al
     yildiz = yildizlari_oku()

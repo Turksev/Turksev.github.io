@@ -944,5 +944,66 @@ window.EK_ORNEKLER = {
 "throw": [
   {"tr": "f. atmak, fırlatmak", "ex": "Archaeologists calculated how far ancient hunters could throw a spear using the recovered tools.", "exTr": "Arkeologlar, bulunan aletleri kullanarak antik avcıların bir mızrağı ne kadar uzağa fırlatabildiğini hesapladı."},
   {"tr": "i. atış", "ex": "Judges measured each throw twice, because a difference of a few centimeters could determine which competitor received the gold medal.", "exTr": "Hakemler her atışı iki kez ölçtü; çünkü birkaç santimetrelik fark, hangi yarışmacının altın madalya alacağını belirleyebilirdi."}
+],
+
+/* --- 25.08.2026 site denetimi: anlam/örnek/çeviri düzeltmeleri.
+   meaning: örnek "meaningful" kullanıyordu (hedef kelime cümlede yoktu);
+   snap: fiil anlamına isim örneği; arts: liberal arts "güzel sanatlar" değil;
+   alarm/wild/growth/good/poster: çeviri düzeltmesi; tree: sözlükte olmayan
+   "ağaçlandırmak" fiil anlamı atıldı; worse/ranging: örnek yenilendi;
+   move/fail/bring: anlam metni netleşti. --- */
+"good": [
+  {"tr": "s. iyi", "ex": "Regular sleep has proven to be good for both mental clarity and long-term cardiovascular health.", "exTr": "Düzenli uykunun hem zihinsel netlik hem de uzun vadeli kalp sağlığı için iyi olduğu kanıtlanmıştır."},
+  {"tr": "i. iyilik, fayda", "ex": "Volunteering for environmental cleanups can do a great deal of good for local ecosystems.", "exTr": "Çevre temizliği için gönüllü olmak, yerel ekosistemler için büyük fayda sağlayabilir."}
+],
+"bring": [
+  {"tr": "f. getirmek", "ex": "Technological innovations often bring unexpected social changes that societies struggle to manage.", "exTr": "Teknolojik yenilikler, çoğu zaman toplumların yönetmekte zorlandığı beklenmedik toplumsal değişimler getirir."},
+  {"tr": "f. (bring about) yol açmak, neden olmak", "ex": "The prolonged drought brought about severe food shortages across the entire region.", "exTr": "Uzun süren kuraklık, bütün bölgede ciddi gıda kıtlığına yol açtı."}
+],
+"move": [
+  {"tr": "f. taşımak; (tarihi, planı) ertelemek, kaydırmak", "ex": "The committee's decision to move the funding deadline surprised several research teams.", "exTr": "Komitenin fon başvurusu son tarihini ertelemek yönündeki kararı, birçok araştırma ekibini şaşırttı."},
+  {"tr": "i. hamle, adım", "ex": "Signing the new trade agreement was widely seen as a smart move by the government.", "exTr": "Yeni ticaret anlaşmasını imzalamak, hükümet tarafından atılmış akıllıca bir hamle olarak görüldü."}
+],
+"growth": [
+  {"tr": "i. büyüme, artış", "ex": "Economists attribute the country's rapid economic growth to sustained investment in education and infrastructure.", "exTr": "Ekonomistler, ülkenin hızlı ekonomik büyümesini eğitim ve altyapıya yapılan sürekli yatırıma bağlıyor."},
+  {"tr": "i. yeşillik, bitki örtüsü", "ex": "Thick growth covered the abandoned building's walls after several years of complete neglect.", "exTr": "Birkaç yıllık tam bir ihmalin ardından, terk edilmiş binanın duvarlarını yoğun bir yeşillik kapladı."}
+],
+"fail": [
+  {"tr": "f. başarısız olmak; -ememek; (makine, organ) iflas etmek, arızalanmak", "ex": "Older water pipes frequently fail during periods of extreme temperature fluctuation.", "exTr": "Eski su boruları, aşırı sıcaklık dalgalanmaları dönemlerinde sıklıkla arızalanır."}
+],
+"tree": [
+  {"tr": "i. ağaç", "ex": "Scientists discovered that a single mature tree can absorb around twenty kilograms of carbon dioxide each year.", "exTr": "Bilim insanları, olgun tek bir ağacın her yıl yaklaşık yirmi kilogram karbondioksit emebildiğini keşfetti."}
+],
+"wild": [
+  {"tr": "s. vahşi, yabani", "ex": "A wild boar suddenly appeared on the road, forcing the driver to brake sharply.", "exTr": "Yolda aniden bir yaban domuzu belirdi ve sürücüyü sert fren yapmak zorunda bıraktı."},
+  {"tr": "i. (the wild) doğa, yaban hayatı", "ex": "Animals raised in captivity often struggle to survive when released into the wild.", "exTr": "Esaret altında yetiştirilen hayvanlar, doğaya salındıklarında çoğu zaman hayatta kalmakta zorlanır."}
+],
+"meaning": [
+  {"tr": "i. anlam", "ex": "Philosophers have long debated whether life has an inherent meaning independent of human belief.", "exTr": "Filozoflar, yaşamın insan inancından bağımsız içkin bir anlamı olup olmadığını uzun zamandır tartışır."},
+  {"tr": "s. (a meaning look) anlamlı, imalı", "ex": "She cast the lawyer a meaning glance when the interviewer asked about the company's missing funds.", "exTr": "Görüşmeci şirketin kayıp fonlarını sorduğunda, avukata anlamlı bir bakış fırlattı."}
+],
+"worse": [
+  {"tr": "s./z. daha kötü", "ex": "Air quality in the capital has grown considerably worse since the new factories began operating.", "exTr": "Başkentteki hava kalitesi, yeni fabrikalar faaliyete geçtiğinden beri önemli ölçüde kötüleşti."},
+  {"tr": "i. daha kötü durum, kötüsü", "ex": "Critics argued that the reform was a change for the worse, leaving vulnerable families with even less protection.", "exTr": "Eleştirmenler, reformun daha kötüye gidiş olduğunu, korunmasız aileleri daha da az güvenceyle bıraktığını savundu."}
+],
+"ranging": [
+  {"tr": "s. arasında değişen", "ex": "The survey included participants ranging in age from eighteen to sixty-five years old.", "exTr": "Anket, yaşları on sekiz ile altmış beş arasında değişen katılımcıları kapsıyordu."},
+  {"tr": "s. serbestçe dolaşan, özgürce gezen", "ex": "Ecologists tracked wolves ranging across hundreds of kilometers in search of prey.", "exTr": "Ekologlar, av arayışıyla yüzlerce kilometre boyunca dolaşan kurtları izledi."}
+],
+"arts": [
+  {"tr": "i. güzel sanatlar", "ex": "The gallery's new wing is devoted to the fine arts, with rooms for painting, sculpture, and printmaking.", "exTr": "Galerinin yeni kanadı güzel sanatlara ayrıldı; resim, heykel ve baskı odaları bulunuyor."},
+  {"tr": "i. (the arts) sosyal/beşeri bilimler", "ex": "In many universities, funding for the arts has declined as more students choose degrees in science and technology.", "exTr": "Birçok üniversitede, daha fazla öğrenci fen ve teknoloji alanında diploma seçtikçe beşeri bilimlere ayrılan fonlar azaldı."}
+],
+"alarm": [
+  {"tr": "i. alarm, tehlike işareti", "ex": "Environmentalists raised the alarm after tests revealed dangerously high pollution levels in the river.", "exTr": "Testler nehirde tehlikeli derecede yüksek kirlilik seviyeleri ortaya çıkarınca çevreciler alarm verdi."},
+  {"tr": "f. korkutmak, tedirgin etmek", "ex": "The loud explosion in the factory alarmed nearby residents, who feared a gas leak.", "exTr": "Fabrikadaki yüksek patlama sesi, gaz kaçağından korkan yakın sakinleri tedirgin etti."}
+],
+"poster": [
+  {"tr": "i. poster, afiş", "ex": "A brightly colored poster outside the museum announced a new exhibition on ancient Egyptian artifacts.", "exTr": "Müzenin dışındaki parlak renkli bir afiş, antik Mısır eserlerine dair yeni bir sergiyi duyuruyordu."},
+  {"tr": "f. afiş asmak, ilan etmek", "ex": "Volunteers were asked to poster the neighborhood with flyers announcing the upcoming charity concert.", "exTr": "Gönüllülerden, yaklaşan hayır konserini duyuran afişlerle mahalleyi donatmaları istendi."}
+],
+"snap": [
+  {"tr": "f. çıtırdamak, ansızın kırılmak", "ex": "The branch snapped loudly before falling onto the icy pavement below.", "exTr": "Dal, aşağıdaki buzlu kaldırıma düşmeden önce yüksek bir sesle ansızın kırıldı."},
+  {"tr": "i. ani kırılma", "ex": "A sudden snap in the old rope caused the climbers to lose their balance momentarily.", "exTr": "Eski ipteki ani kırılma, tırmanıcıların bir anlığına dengesini kaybetmesine neden oldu."}
 ]
 };

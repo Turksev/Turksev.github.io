@@ -1,0 +1,55 @@
+<!DOCTYPE html><meta charset="utf-8"><title>sayfa denetimi</title>
+<pre id="log"></pre>
+<script>
+/* Her sayfayı sırayla iframe'de açar; JS hatası, boş içerik, NaN/undefined
+   sızıntısı ve sayfa başına temel değişmezleri denetler. */
+var L=[];function P(m){L.push(m);document.getElementById('log').textContent=L.join('\n');}
+localStorage.clear();
+var KOK='file:///C:/Users/Trk/Desktop/Turksev.github.io/';
+var SAYFALAR=[
+ {s:'index.html',    t:function(d){return d.querySelectorAll('a[href]').length>=6;}},
+ /* Liste 60'lık sayfalarla çizilir (SAYFA_BOYU); tam 60 satır + "daha fazla" beklenir. */
+ {s:'kelimeler.html',t:function(d){return d.querySelectorAll('#liste .word').length===60 && d.querySelectorAll('#kutular .kutu').length===6 && !d.getElementById('dahaFazla').hidden;}},
+ {s:'obekler.html',  t:function(d){return d.querySelectorAll('#liste .word').length===60;}},
+ {s:'konular.html',  t:function(d){return d.body.textContent.length>2000;}},
+ {s:'aileler.html',  t:function(d){return d.body.textContent.length>2000;}},
+ {s:'baglaclar.html',t:function(d){return d.body.textContent.length>2000;}},
+ {s:'gramer.html',   t:function(d){return d.body.textContent.length>2000;}},
+ {s:'durum.html',    t:function(d){return d.body.textContent.length>500;}},
+ {s:'quiz.html',     t:function(d){return d.body.textContent.length>500;}},
+ {s:'deneme.html',   t:function(d){return d.body.textContent.length>500;}},
+ {s:'ara.html',      t:function(d,w){var g=d.querySelector('input'); if(!g)return false;
+    g.value='environment'; g.dispatchEvent(new w.Event('input')); return true;}, gec:900,
+  t2:function(d){return d.body.textContent.indexOf('environment')!==-1;}}
+];
+var i=0;
+function sirada(){
+  if(i>=SAYFALAR.length){P('DONE');return;}
+  var S=SAYFALAR[i++];
+  var f=document.createElement('iframe');
+  f.style.cssText='width:1100px;height:800px;border:0';
+  var hatalar=[];
+  f.src=KOK+S.s;
+  f.onload=function(){
+    var w=f.contentWindow,d=f.contentDocument;
+    w.addEventListener('error',function(e){hatalar.push(e.message);});
+    setTimeout(function(){
+      try{
+        var metin=d.body.textContent;
+        var nan=/\bNaN\b/.test(metin), undef=/\bundefined\b/.test(metin);
+        var ok=S.t(d,w);
+        var bitir=function(ok2){
+          P((ok&&ok2&&!nan&&!undef&&!hatalar.length?'OK   ':'HATA ')+S.s+
+            (ok&&ok2?'':' değişmez-bozuk')+(nan?' NaN-var':'')+(undef?' undefined-var':'')+
+            (hatalar.length?' js:'+hatalar[0]:''));
+          document.body.removeChild(f); sirada();
+        };
+        if(S.t2){ setTimeout(function(){ bitir(S.t2(d)); }, S.gec||600); }
+        else bitir(true);
+      }catch(e){P('HATA '+S.s+' istisna: '+e.message);document.body.removeChild(f);sirada();}
+    },1400);
+  };
+  document.body.appendChild(f);
+}
+sirada();
+</script>
