@@ -23,7 +23,7 @@
     3: 'Orta sıklıkta, sınavda düzenli çıkan kelimeler.',
     4: 'Daha seyrek ama puan getiren ileri kelimeler.',
     5: 'Uzun kuyruk. Çekirdeği bitirdiysen buraya geç.',
-    6: 'Seyrek kelimeler (10–15 puan). Okuma parçalarında rastlarsın; çok geniş bir havuz.',
+    6: 'En seyrekler (10–12 puan). Okuma parçalarında rastlarsın; sınav kanıtı en zayıf olan havuz.',
     7: 'Kelime ailelerini tamamlayan türevler. Sınav kanıtı zayıf ama türetme sorusu için değerli.'
   };
 

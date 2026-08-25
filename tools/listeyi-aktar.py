@@ -34,13 +34,19 @@ VERI = os.path.join(SITE, 'data')
 # 6. katman (Genis+) v4 listesiyle geldi: esik 15'ten 10'a indi (21.08.2026).
 # 7. katman puana gore degil, kaynagina gore olusur: kelime ailelerini
 # tamamlamak icin eklenen, puani 10'un altinda kalmis turevler.
+#
+# Alt uc yeniden bantlandi (25.08.2026): eski 20/15/10 esikleri 4-5-6. katmani
+# 1058/1564/3128 yapiyordu, yani kelimelerin %40'i tek kovada yigiliyordu.
+# 17/12/10 ile ucu de ~1900 oluyor (1822/2040/1888). Ust uc bilerek elle
+# surulmedi: 1-4. katman zaten dengeliydi (657/720/701) ve 40 esigi Temel'i
+# "zaten biliyorsundur, atlanabilir" kalibinda tutuyor.
 KATMANLAR = [
     (1, 'Temel',        40, 1e9),
     (2, 'Çekirdek',     30, 40),
     (3, 'Orta',         25, 30),
-    (4, 'İleri',        20, 25),
-    (5, 'Geniş',        15, 20),
-    (6, 'Geniş+',       10, 15),
+    (4, 'İleri',        17, 25),
+    (5, 'Geniş',        12, 17),
+    (6, 'Geniş+',       10, 12),
     (7, 'Aile üyeleri', -1, 10),
 ]
 AILE_KATMANI = 7

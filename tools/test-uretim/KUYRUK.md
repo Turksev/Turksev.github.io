@@ -27,14 +27,18 @@ kalmadı. Listeye yeni kelime eklenirse `paketle.py` ile yeni paket üretilir.
 
 ## Tamamlananlar
 
+Katman sayıları 25.08.2026'da alt uç yeniden bantlanınca değişti (eşikler 20/15/10 →
+17/12/10); cümlelerin kendisi kelimeye bağlı olduğu için yalnız hangi dosyada
+durdukları değişti, tek bir cümle bile yeniden yazılmadı.
+
 | Katman | Cümle | Durum |
 | --- | --- | --- |
 | 1 · Temel | 657 | tamam |
 | 2 · Çekirdek | 720 | tamam |
 | 3 · Orta | 707 | tamam |
-| 4 · İleri | 1.073 | tamam |
-| 5 · Geniş | 1.564 | tamam |
-| 6 · Geniş+ | 3.127 | tamam (25.08.2026, 45 paket) |
+| 4 · İleri | 1.837 | tamam |
+| 5 · Geniş | 2.039 | tamam |
+| 6 · Geniş+ | 1.888 | tamam (25.08.2026, 45 paket) |
 | **Kelime toplamı** | **7.848** | 10 kelime elendi (kaba/özel ad) |
 | Öbekler (deyimsel fiil + edat kalıbı) | 892 | tamam |
 

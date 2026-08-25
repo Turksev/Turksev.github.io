@@ -36,19 +36,28 @@ F: toplam frekans, P: akademik önsel (NGSL/NAWL/AWL üyeliği + Zipf).
 
 | Katman | Puan | Kelime | Dosya (gzip) |
 | --- | --- | --- | --- |
-| 1 · Temel | ≥ 40 | 657 | 92 K |
-| 2 · Çekirdek | 30–40 | 720 | 95 K |
-| 3 · Orta | 25–30 | 708 | 90 K |
-| 4 · İleri | 20–25 | 1.073 | 151 K |
-| 5 · Geniş | 15–20 | 1.565 | 205 K |
-| 6 · Geniş+ | 10–15 | 3.127 | 353 K |
+| 1 · Temel | ≥ 40 | 657 | 93 K |
+| 2 · Çekirdek | 30–40 | 720 | 123 K |
+| 3 · Orta | 25–30 | 707 | 117 K |
+| 4 · İleri | 17–25 | 1.837 | 291 K |
+| 5 · Geniş | 12–17 | 2.039 | 238 K |
+| 6 · Geniş+ | 10–12 | 1.888 | 218 K |
 | 7 · Aile üyeleri | puansız | (kaynağa göre) | — |
 
 6. katman 21.08.2026'da eşik 15 → 10'a indirilince geldi (`Calisma_Listesi_v4_site_tam.xlsx`);
 5. katmanı genişletmek yerine ayrı katman açıldı ki isteyen açsın, mevcut desteler değişmesin.
 
+**Alt uç 25.08.2026'da yeniden bantlandı.** Eski 20/15/10 eşikleri 4-5-6. katmanı
+1.058 / 1.564 / **3.127** yapıyordu: kelimelerin %40'ı tek kovada yığılıyordu, çünkü
+liste 10 puanda kesildiği için puanlar tabana toplanıyor (yalnız 10–11 aralığında 1.142
+kelime var). 17/12/10 ile üçü de ~1.900 oldu. Üst uca **bilerek dokunulmadı**: 1-4. katman
+zaten dengeliydi (657/720/707) ve 40 eşiği Temel'i "zaten biliyorsundur, atlanabilir"
+kıvamında tutuyor — eşiği indirmek oraya `crucial`, `acquire`, `perspective` gibi
+çalışılması gereken kelimeleri sokardı. Katman değiştiren kelime: 2.004 (%25); tekrar
+ilerlemesi kelime adına bağlı olduğu için (`yds-leitner`) hiçbir kutu etkilenmedi.
+
 Kullanıcı hangi katmanları seçerse yalnız onlar indirilir. Çekirdekten çalışan biri toplam
-**~263 K** veri indirir; hepsini açan ~1,15 MB. Dizin (`data/kelime-dizin.js`, 168 K gzip) her sayfada
+**~240 K** veri indirir; hepsini açan ~1,15 MB. Dizin (`data/kelime-dizin.js`, 168 K gzip) her sayfada
 yüklüdür ve yazılış + kısa anlam + puan + katman bilgisini taşır; örnek cümleler katman
 dosyalarındadır.
 
