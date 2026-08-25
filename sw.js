@@ -1,24 +1,24 @@
-﻿/* ============================================================
-   Service worker â€” Ã§evrimdÄ±ÅŸÄ± Ã§alÄ±ÅŸma
+/* ============================================================
+   Service worker — çevrimdışı çalışma
 
    Strateji:
-     â€¢ Gezinme (HTML): Ã¶nce aÄŸ, olmazsa Ã¶nbellek. BÃ¶ylece site
-       gÃ¼ncellendiÄŸinde kullanÄ±cÄ± eski sÃ¼rÃ¼mde kalmaz.
-     â€¢ DiÄŸer dosyalar (CSS/JS/veri/ikon): Ã¶nce Ã¶nbellek, arka planda
-       tazele. AÃ§Ä±lÄ±ÅŸ hÄ±zlÄ± olur, bir sonraki ziyarette gÃ¼ncel gelir.
+     • Gezinme (HTML): önce ağ, olmazsa önbellek. Böylece site
+       güncellendiğinde kullanıcı eski sürümde kalmaz.
+     • Diğer dosyalar (CSS/JS/veri/ikon): önce önbellek, arka planda
+       tazele. Açılış hızlı olur, bir sonraki ziyarette güncel gelir.
 
-   SÃœRÃœM deÄŸiÅŸtiÄŸinde eski Ã¶nbellekler silinir. Siteye dosya
-   eklediÄŸinde hem SÃœRÃœM'Ã¼ artÄ±r hem de listeye ekle.
+   SÜRÜM değiştiğinde eski önbellekler silinir. Siteye dosya
+   eklediğinde hem SÜRÜM'ü artır hem de listeye ekle.
    ============================================================ */
 
 var SURUM = 'yds-v115';
 var ONBELLEK = SURUM;
 
-/* Kurulumda indirilenler: sayfalar, kod ve kÃ¼Ã§Ã¼k veri dosyalarÄ±.
-   Kelime katmanlarÄ± (data/kelime-k1..k7.js, ~2,7 MB) ve Ã¶bekler
-   (630 KB) BÄ°LEREK burada deÄŸil â€” kullanÄ±cÄ± hangisini aÃ§arsa o,
-   fetch sÄ±rasÄ±nda Ã¶nbelleÄŸe alÄ±nÄ±r. Hepsini peÅŸin indirmek, tek
-   katman Ã§alÄ±ÅŸan birine 2,4 MB yÃ¼klemek olurdu. */
+/* Kurulumda indirilenler: sayfalar, kod ve küçük veri dosyaları.
+   Kelime katmanları (data/kelime-k1..k7.js, ~2,7 MB) ve öbekler
+   (630 KB) BİLEREK burada değil — kullanıcı hangisini açarsa o,
+   fetch sırasında önbelleğe alınır. Hepsini peşin indirmek, tek
+   katman çalışan birine 2,4 MB yüklemek olurdu. */
 var TEMEL_DOSYALAR = [
   './',
   './index.html',
@@ -67,7 +67,7 @@ self.addEventListener('install', function (e) {
   e.waitUntil(
     caches.open(ONBELLEK)
       .then(function (c) {
-        // Tek bir dosya dÃ¼ÅŸerse kurulum tÃ¼mden baÅŸarÄ±sÄ±z olmasÄ±n.
+        // Tek bir dosya düşerse kurulum tümden başarısız olmasın.
         return Promise.all(TEMEL_DOSYALAR.map(function (u) {
           return c.add(u).catch(function () { /* atla */ });
         }));
@@ -91,11 +91,11 @@ self.addEventListener('activate', function (e) {
 self.addEventListener('fetch', function (e) {
   var istek = e.request;
 
-  // YalnÄ±zca kendi kaynaÄŸÄ±mÄ±zdaki GET isteklerini yÃ¶net.
+  // Yalnızca kendi kaynağımızdaki GET isteklerini yönet.
   if (istek.method !== 'GET') return;
   if (new URL(istek.url).origin !== self.location.origin) return;
 
-  // Sayfa gezinmesi: Ã¶nce aÄŸ
+  // Sayfa gezinmesi: önce ağ
   if (istek.mode === 'navigate') {
     e.respondWith(
       fetch(istek)
@@ -113,7 +113,7 @@ self.addEventListener('fetch', function (e) {
     return;
   }
 
-  // VarlÄ±klar: Ã¶nce Ã¶nbellek, arka planda tazele
+  // Varlıklar: önce önbellek, arka planda tazele
   e.respondWith(
     caches.match(istek).then(function (onbellekte) {
       var agdan = fetch(istek).then(function (yanit) {
