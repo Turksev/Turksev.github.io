@@ -48,5 +48,6 @@ window.TUR_DUZELTME = {
 "sister": "isim, sıfat",
 "chocolate": "isim, sıfat",
 "neanderthal": "isim, sıfat",
-"turn-off": "isim"
+"turn-off": "isim",
+"throughout": "zarf, edat"
 };

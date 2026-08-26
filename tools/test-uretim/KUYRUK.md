@@ -62,6 +62,22 @@ obek-test-sayfa.html  kalıpların sayfada görünüşünü sınayan tarayıcı 
 `tools/kaliplar.js` → `listeyi-aktar.py` → `data/kelime-k{n}.js` içine `kl:[{en,tr}]`.
 Sırada 5–6. katman kalıpları var (henüz paketlenmedi, ~4.700 kelime).
 
+## Anlam denetimi hattı (26.08.2026 başladı — SÜRÜYOR)
+
+Havuzun tamamında anlam/örnek/çeviri doğruluğu taraması. 25.08 pilotu
+(320 kelime) %4,4 sorun bulmuştu; kullanıcı tam taramayı onayladı.
+
+```
+anlam-paketle.py   tüm kelimeleri 180'lik paketlere böler -> anlam-girdi/ (46 paket)
+anlam-brief.md     denetim ölçütleri (tr doğru mu, ex uyumlu mu, exTr sadık mı)
+anlam-cikti/       ajan bulguları — YALNIZ sorunlar, [{"e","alan","sorun","oneri","sev"}]
+anlam-dogrula.py   toplar, doğrular, anlam-bulgular.json yazar
+```
+
+Bulgular OTOMATİK UYGULANMAZ: elden geçirilip ek-ornekler.js / tur-duzeltme.js
+üzerinden işlenir. Dalga başına 2 ajan (token disiplini). Tarama bitince sıradaki
+iş: 303 "çok türlü ama tek örnekli" kelimeye tür başına örnek (kullanıcı onayladı).
+
 ## Anlam yıldızları hattı (ayrı iş, 25.08.2026 tamamlandı)
 
 Çok anlamlı kelime ve öbeklerde her anlamın YDS önemi (1-4 yıldız). 22 paketin hepsi
