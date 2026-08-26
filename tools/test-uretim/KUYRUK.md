@@ -62,10 +62,13 @@ obek-test-sayfa.html  kalıpların sayfada görünüşünü sınayan tarayıcı 
 `tools/kaliplar.js` → `listeyi-aktar.py` → `data/kelime-k{n}.js` içine `kl:[{en,tr}]`.
 Sırada 5–6. katman kalıpları var (henüz paketlenmedi, ~4.700 kelime).
 
-## Anlam denetimi hattı (26.08.2026 başladı — SÜRÜYOR)
+## Anlam denetimi hattı (26.08.2026 TAMAMLANDI)
 
-Havuzun tamamında anlam/örnek/çeviri doğruluğu taraması. 25.08 pilotu
-(320 kelime) %4,4 sorun bulmuştu; kullanıcı tam taramayı onayladı.
+Havuzun tamamı tarandı: 46 paket, 7.849 kelime, **420 bulgu** (172 hata,
+248 şüpheli). Bulgular elden geçirildi; dört partide ~390 düzeltme uygulandı
+(ek-ornekler.js üzerinden), ~20 uydurma/arkaik anlam silindi, gerisi
+aşırı titizlik diye reddedildi. Genel hata oranı %5,4 idi; düzeltme sonrası
+bilinen hata 0.
 
 ```
 anlam-paketle.py   tüm kelimeleri 180'lik paketlere böler -> anlam-girdi/ (46 paket)
@@ -74,9 +77,10 @@ anlam-cikti/       ajan bulguları — YALNIZ sorunlar, [{"e","alan","sorun","on
 anlam-dogrula.py   toplar, doğrular, anlam-bulgular.json yazar
 ```
 
-Bulgular OTOMATİK UYGULANMAZ: elden geçirilip ek-ornekler.js / tur-duzeltme.js
-üzerinden işlenir. Dalga başına 2 ajan (token disiplini). Tarama bitince sıradaki
-iş: 303 "çok türlü ama tek örnekli" kelimeye tür başına örnek (kullanıcı onayladı).
+Sözlüklerde bulunmayan, v4 listesinden gelen şüpheli tireli kelimeler (elenmedi,
+kullanıcı kararı bekliyor): hand-down, make-peace, boys-and-girls, long-legs,
+call-out(düello), start-off, film-make, walk-to, shape-up.
+Sıradaki iş: 300 "çok türlü ama tek örnekli" kelimeye tür başına örnek.
 
 ## Anlam yıldızları hattı (ayrı iş, 25.08.2026 tamamlandı)
 

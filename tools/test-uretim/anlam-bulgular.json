@@ -646,5 +646,3137 @@
   "oneri": "i. kök, köken",
   "sev": "süpheli",
   "paket": "k2-p04.json"
+ },
+ {
+  "e": "drop",
+  "alan": "exTr",
+  "mevcut": "ani bir rüzgâr esintisiyle çarpıldıktan sonra",
+  "sorun": "'rüzgâr esintisiyle çarpılmak' Türkçede doğal/dilbilgisel değil; çarpılmak bu bağlamda böyle kullanılmaz.",
+  "oneri": "Kuş, ani bir rüzgârın çarpmasıyla gökten düştü.",
+  "sev": "süpheli",
+  "paket": "k3-p01.json"
+ },
+ {
+  "e": "artist",
+  "alan": "exTr",
+  "mevcut": "Sergi ... tabloları konu alıyor",
+  "sorun": "'features' için 'konu almak' anlam kayması; sergi tabloları konu almaz, tablolara yer verir.",
+  "oneri": "Sergide, bölgenin sahil şeridinden ilham alan yerel bir sanatçının yaptığı tablolar yer alıyor.",
+  "sev": "süpheli",
+  "paket": "k3-p01.json"
+ },
+ {
+  "e": "seeing",
+  "alan": "ex",
+  "mevcut": "as easily as their seeing peers do",
+  "sorun": "'seeing' sıfatı bu anlamda çok nadir; İngilizcede standart karşılık 'sighted', cümle doğal durmuyor.",
+  "oneri": "Örnekte 'seeing peers' yerine bu anlamı doğal gösteren bir kullanım seçilmeli ya da anlam kaydı gözden geçirilmeli.",
+  "sev": "süpheli",
+  "paket": "k3-p01.json"
+ },
+ {
+  "e": "creative",
+  "alan": "exTr",
+  "mevcut": "basit ezberlemek yerine",
+  "sorun": "'basit ezberlemek' dilbilgisel olarak bozuk; sıfat mastarı bu şekilde niteleyemez.",
+  "oneri": "basit ezber yerine (ya da: yalnızca ezberlemek yerine)",
+  "sev": "süpheli",
+  "paket": "k3-p01.json"
+ },
+ {
+  "e": "immune",
+  "alan": "ex",
+  "mevcut": "Statisticians count the immunes separately",
+  "sorun": "'immune' isim kullanımı ('the immunes') çok nadir ve cümle doğal durmuyor.",
+  "oneri": "İsim anlamı çıkarılabilir ya da örnek, kullanımın doğal geçtiği epidemiyoloji bağlamıyla yeniden yazılabilir.",
+  "sev": "süpheli",
+  "paket": "k3-p01.json"
+ },
+ {
+  "e": "rational",
+  "alan": "ex",
+  "mevcut": "Every rational number can be expressed as a fraction...",
+  "sorun": "tr isim (i. rasyonel sayı) diyor ama örnekte 'rational' sıfat olarak 'rational number' öbeğinde geçiyor; tür uyuşmuyor.",
+  "oneri": "Örneği isim kullanımıyla değiştir: 'Every rational can be expressed as a fraction of two integers.' ya da anlamı 's. rasyonel' yap.",
+  "sev": "hata",
+  "paket": "k3-p02.json"
+ },
+ {
+  "e": "file",
+  "alan": "tr",
+  "mevcut": "f. dosyalamak",
+  "sorun": "Örnekteki 'file their expense reports electronically' resmî olarak sunmak/ibraz etmek anlamında; 'dosyalamak' (belgeyi dosyaya kaldırmak) bu kullanımı karşılamıyor.",
+  "oneri": "tr'yi '(resmî olarak) sunmak, vermek; dosyalamak' yap ya da örneği dosyalama anlamına uygun değiştir (örn. 'The clerk filed the documents alphabetically in the cabinet.').",
+  "sev": "hata",
+  "paket": "k3-p02.json"
+ },
+ {
+  "e": "proportion",
+  "alan": "tr",
+  "mevcut": "i. oran, orantı",
+  "sorun": "Örnek 'a large proportion of' ile 'pay, kısım, bölüm' anlamını kullanıyor; exTr de 'büyük bir bölümü' diye çeviriyor, 'oran, orantı' bu kullanımı tam karşılamıyor.",
+  "oneri": "tr'ye 'kısım, pay' ekle ('oran, orantı; pay, kısım') ya da örneği oran anlamına uygun değiştir.",
+  "sev": "süpheli",
+  "paket": "k3-p02.json"
+ },
+ {
+  "e": "plastic",
+  "alan": "ex",
+  "mevcut": "Engineers value plastic materials for their ability to be molded...",
+  "sorun": "'plastic materials' doğal okunuşta 'plastik malzemeler' (isim) diye anlaşılıyor; 'biçimlendirilebilir' sıfat anlamı örnekte belirsiz kalıyor.",
+  "oneri": "Sıfat anlamını netleştiren bir örnek kullan: 'Clay remains plastic and easy to shape as long as it stays moist.'",
+  "sev": "süpheli",
+  "paket": "k3-p02.json"
+ },
+ {
+  "e": "roman",
+  "alan": "ex",
+  "mevcut": "several roman coins",
+  "sorun": "Roma anlamındaki sıfat İngilizcede her zaman büyük harfle yazılır (Roman); küçük harf yalnız matbaa terimi (dik yazı) için geçerlidir.",
+  "oneri": "several Roman coins",
+  "sev": "hata",
+  "paket": "k3-p03.json"
+ },
+ {
+  "e": "station",
+  "alan": "exTr",
+  "mevcut": "sınır boyunca hareketi izlemek",
+  "sorun": "'movement across the frontier' sınırdan karşıya geçişi anlatır; 'boyunca' (along) anlamı kaydırıyor.",
+  "oneri": "sınırdan geçişleri izlemek için",
+  "sev": "süpheli",
+  "paket": "k3-p03.json"
+ },
+ {
+  "e": "accent",
+  "alan": "exTr",
+  "mevcut": "vurgu, ilk hecede değil ikinci hecede düşer",
+  "sorun": "Dilbilgisi bozuk: 'düşmek' yönelme durumu ister (heceye düşer).",
+  "oneri": "vurgu ilk heceye değil ikinci heceye düşer",
+  "sev": "hata",
+  "paket": "k3-p03.json"
+ },
+ {
+  "e": "fruit",
+  "alan": "ex",
+  "mevcut": "Years of hard work finally began to fruit",
+  "sorun": "Fiil 'fruit' bitkilerin meyve vermesi için kullanılır; emek için standart deyim 'bear fruit' olduğundan bu mecazi kullanım doğal değil.",
+  "oneri": "These apple trees usually fruit in late summer.",
+  "sev": "süpheli",
+  "paket": "k3-p03.json"
+ },
+ {
+  "e": "chain",
+  "alan": "ex",
+  "mevcut": "used a thick rope to chain the fallen tree trunk",
+  "sorun": "Çelişkili kullanım: zincirleme (chain) halatla (rope) yapılmaz.",
+  "oneri": "The workers chained the fallen trunk to the tractor before pulling it away.",
+  "sev": "hata",
+  "paket": "k3-p03.json"
+ },
+ {
+  "e": "pointed",
+  "alan": "tr",
+  "mevcut": "s. belirgin, alaycı (mecazi)",
+  "sorun": "'pointed remark' için 'belirgin' yanlış karşılık; anlam 'iğneleyici, sivri, dokundurucu'dur.",
+  "oneri": "s. iğneleyici, sivri (söz, eleştiri)",
+  "sev": "hata",
+  "paket": "k3-p03.json"
+ },
+ {
+  "e": "pointed",
+  "alan": "exTr",
+  "mevcut": "belirgin bir yorum yaptı",
+  "sorun": "'a pointed remark' iğneleyici/dokundurucu bir sözdür; 'belirgin bir yorum' anlam kayması.",
+  "oneri": "araştırma yönteminin kusurlarına yönelik iğneleyici bir söz söyledi",
+  "sev": "hata",
+  "paket": "k3-p03.json"
+ },
+ {
+  "e": "clinical",
+  "alan": "exTr",
+  "mevcut": "ailenin gerçek bir empatiden yoksun olduğunu hissetmesine yol açtı",
+  "sorun": "Yanlış özne: İngilizcede empatiden yoksun olan doktor (he), aile değil.",
+  "oneri": "ailenin, doktorun gerçek bir empatiden yoksun olduğunu hissetmesine yol açtı",
+  "sev": "hata",
+  "paket": "k3-p03.json"
+ },
+ {
+  "e": "pole",
+  "alan": "ex",
+  "mevcut": "near the north pole",
+  "sorun": "Dünyanın coğrafi kutbu özel ad olarak büyük harfle yazılır (the North Pole); örneklerdeki diğer özel adlar büyük harfli.",
+  "oneri": "near the North Pole",
+  "sev": "süpheli",
+  "paket": "k3-p03.json"
+ },
+ {
+  "e": "improving",
+  "alan": "exTr",
+  "mevcut": "yeni tedaviyle iyileşen hastalar arasında",
+  "sorun": "'patients treated with' = 'tedavi uygulanan hastalar'; 'iyileşen' sonucu baştan söyleyerek anlamı kaydırıyor.",
+  "oneri": "yeni tedavi uygulanan hastalar arasında",
+  "sev": "süpheli",
+  "paket": "k3-p03.json"
+ },
+ {
+  "e": "globalization",
+  "alan": "exTr",
+  "mevcut": "uçurumu genişletip genişletmediğini",
+  "sorun": "'widened or narrowed' ikilemindeki 'daralttı' seçeneği çevrilmemiş; anlam kayması.",
+  "oneri": "uçurumu genişlettiğini mi yoksa daralttığını mı",
+  "sev": "hata",
+  "paket": "k3-p03.json"
+ },
+ {
+  "e": "reserve",
+  "alan": "ex",
+  "mevcut": "Passengers are advised to reserve their seats ... before the concert",
+  "sorun": "Tutarsızlık: konser için yer ayırtanlar 'passengers' (yolcular) olmaz.",
+  "oneri": "Concert-goers are advised to reserve their seats online at least a week in advance.",
+  "sev": "hata",
+  "paket": "k3-p03.json"
+ },
+ {
+  "e": "practise",
+  "alan": "exTr",
+  "mevcut": "otuz yıldır ... hekimlik icra etti",
+  "sorun": "'-dır' süregelen eylem ister, di'li geçmişle çelişiyor (has practised = hâlâ sürüyor).",
+  "oneri": "neredeyse otuz yıldır ... hekimlik icra ediyor",
+  "sev": "süpheli",
+  "paket": "k3-p03.json"
+ },
+ {
+  "e": "background",
+  "alan": "tr",
+  "mevcut": "f. arka planda tutmak, arka planda çalıştırmak",
+  "sorun": "'background' fiili genel sözlüklerde bu anlamda yer almaz; bilişim jargonunda da yalnız süreçler için kullanılır.",
+  "oneri": "Fiil anlamını kaldır; isim anlamı yeterli.",
+  "sev": "süpheli",
+  "paket": "k3-p03.json"
+ },
+ {
+  "e": "background",
+  "alan": "ex",
+  "mevcut": "decided to background the older files",
+  "sorun": "Doğal olmayan kullanım: dosyalar 'background' edilmez; jargonda bile yalnız süreçler arka plana alınır.",
+  "oneri": "Fiil anlamıyla birlikte örneği kaldır ya da süreç örneğiyle değiştir.",
+  "sev": "hata",
+  "paket": "k3-p03.json"
+ },
+ {
+  "e": "rid",
+  "alan": "tr",
+  "mevcut": "f. kurtulmak, temizlemek",
+  "sorun": "'rid' geçişlidir: '-i -den kurtarmak, arındırmak'; 'kurtulmak' (get rid of) örnekteki kullanımla uyuşmaz.",
+  "oneri": "f. (-den) kurtarmak, arındırmak",
+  "sev": "hata",
+  "paket": "k3-p03.json"
+ },
+ {
+  "e": "flesh",
+  "alan": "tr",
+  "mevcut": "i. (meyve) öz",
+  "sorun": "Meyvenin yenen kısmı Türkçede 'meyve eti'dir; 'öz' ekstre/konsantre çağrıştırır (exTr'deki 'mangonun özü' de aynı sorunu taşıyor).",
+  "oneri": "i. (meyve) et, etli kısım",
+  "sev": "süpheli",
+  "paket": "k3-p03.json"
+ },
+ {
+  "e": "causing",
+  "alan": "ex",
+  "mevcut": "the main factor causing severe flooding",
+  "sorun": "tr isim (neden olma) diyor ama örnekte causing 'factor'ü niteleyen sıfat-fiil (ortaç) olarak kullanılmış.",
+  "oneri": "İsim-fiil kullanımını gösteren bir örnek yaz (ör. 'Causing panic was never their intention.') ya da kaydı fiil (cause) altında ver.",
+  "sev": "hata",
+  "paket": "k3-p04.json"
+ },
+ {
+  "e": "seeking",
+  "alan": "ex",
+  "mevcut": "Many companies are actively seeking innovative solutions",
+  "sorun": "tr isim (arayış, arama) diyor ama örnekte seeking 'are seeking' biçiminde çekimli fiil.",
+  "oneri": "İsim kullanımını gösteren bir örnek yaz (ör. 'The seeking of short-term profit harms long-term growth.') ya da kaydı fiil (seek) altında ver.",
+  "sev": "hata",
+  "paket": "k3-p04.json"
+ },
+ {
+  "e": "panel",
+  "alan": "tr",
+  "mevcut": "f. panele seçmek/atamak",
+  "sorun": "panel fiilinin sözlük anlamı 'panelle/lambriyle kaplamak'tır; tartışma paneline atamak anlamı sözlüklerde yok (jüri için empanel kullanılır), örnek cümle de bu yüzden doğal değil.",
+  "oneri": "Bu anlamı kaldır ya da 'f. panelle kaplamak' yapıp uygun bir örnek yaz.",
+  "sev": "hata",
+  "paket": "k3-p04.json"
+ },
+ {
+  "e": "alongside",
+  "alan": "tr",
+  "mevcut": "z. yan yana, birlikte",
+  "sorun": "Örnekte alongside edat ('alongside the river' = nehrin yanında); zarf etiketi ve 'birlikte' karşılığı örnekteki kullanımla uyuşmuyor.",
+  "oneri": "'ed. yanında, yanı sıra, boyunca' karşılığını ekle ya da zarf kullanımını gösteren bir örnek yaz.",
+  "sev": "hata",
+  "paket": "k3-p04.json"
+ },
+ {
+  "e": "similarly",
+  "alan": "exTr",
+  "mevcut": "etkilerine benzer şekilde karşı savunmasızdır",
+  "sorun": "'karşı' edatı bağlı olduğu 'etkilerine' sözcüğünden koparılmış; dilbilgisi bozuk.",
+  "oneri": "...yükselen küresel sıcaklıkların etkilerine karşı benzer şekilde savunmasızdır.",
+  "sev": "hata",
+  "paket": "k3-p04.json"
+ },
+ {
+  "e": "take-up",
+  "alan": "tr",
+  "mevcut": "i. emilim",
+  "sorun": "Emilim/soğurma anlamı için yerleşik sözcük uptake'tir; take-up bu anlamda yaygın değil, ayrıca azotu emen toprak değil bitkidir.",
+  "oneri": "Bu anlamı kaldır ya da 'uptake' maddesine taşı.",
+  "sev": "süpheli",
+  "paket": "k3-p04.json"
+ },
+ {
+  "e": "take-up",
+  "alan": "exTr",
+  "mevcut": "Toprağın azotu zayıf emilimi",
+  "sorun": "'emilim' adı 'azotu' nesnesini alamaz; tamlama dilbilgisi açısından bozuk.",
+  "oneri": "Toprağın azotu zayıf emmesi / Topraktaki zayıf azot emilimi.",
+  "sev": "hata",
+  "paket": "k3-p04.json"
+ },
+ {
+  "e": "reducing",
+  "alan": "ex",
+  "mevcut": "approach to reducing excess body weight",
+  "sorun": "Örnekte reducing nesne alan sıradan ulaç (azaltma); 'zayıflama, kilo verme (diyetle)' özel anlamını göstermiyor.",
+  "oneri": "Özel anlamı gösteren bir örnek yaz (ör. 'a reducing diet') ya da bu anlamı kaldır.",
+  "sev": "süpheli",
+  "paket": "k3-p04.json"
+ },
+ {
+  "e": "honest",
+  "alan": "ex",
+  "mevcut": "not an honest replica of the original",
+  "sorun": "Örnekte honest 'aslına sadık' anlamına kayıyor; kopya için 'hakiki, gerçek' okuması çelişkili, exTr'deki 'hakiki bir kopyası' da anlaşılmaz kalıyor.",
+  "oneri": "'hakiki, gerçek' anlamını net gösteren bir örnek yaz (ör. 'a simple meal made with honest ingredients').",
+  "sev": "süpheli",
+  "paket": "k3-p04.json"
+ },
+ {
+  "e": "possibly",
+  "alan": "tr",
+  "mevcut": "z. belki, muhtemelen",
+  "sorun": "'muhtemelen' probably karşılığıdır; possibly daha zayıf olasılık bildirir ve exTr'de de 'muhtemelen' olasılığı güçlendiriyor.",
+  "oneri": "tr: 'z. belki (de), olasılıkla'; exTr'de 'muhtemelen' yerine 'belki de'.",
+  "sev": "süpheli",
+  "paket": "k3-p04.json"
+ },
+ {
+  "e": "injure",
+  "alan": "ex",
+  "mevcut": "The collapsed bridge managed to injure several commuters",
+  "sorun": "Cansız özneyle 'managed to' niyet/çaba ima eder; doğal olmayan kullanım.",
+  "oneri": "The bridge collapse injured several commuters before emergency crews arrived.",
+  "sev": "süpheli",
+  "paket": "k3-p04.json"
+ },
+ {
+  "e": "blue",
+  "alan": "ex",
+  "mevcut": "decided to blue the old fence",
+  "sorun": "blue fiili çamaşır/metal mavileme gibi dar bağlamlarda kullanılır; çit için 'paint the fence blue' denir, örnek doğal değil.",
+  "oneri": "Fiil anlamını kaldır ya da doğal bir kullanım örneğiyle değiştir.",
+  "sev": "süpheli",
+  "paket": "k3-p04.json"
+ },
+ {
+  "e": "suddenly",
+  "alan": "exTr",
+  "mevcut": "Yüzyıllardır sönmüş olan yanardağ",
+  "sorun": "dormant 'uykuda' demektir; 'sönmüş' extinct karşılığıdır ve patlama olayıyla çelişir.",
+  "oneri": "Yüzyıllardır uykuda olan yanardağ aniden patladı...",
+  "sev": "süpheli",
+  "paket": "k3-p04.json"
+ },
+ {
+  "e": "soldier",
+  "alan": "ex",
+  "mevcut": "volunteer to soldier for their country's defense forces",
+  "sorun": "'to soldier' fiili bu kullanımda çok nadir/eskimiş; cümle doğal durmuyor (yaygın fiil kullanımı 'soldier on').",
+  "oneri": "Örneği doğal bir fiil kullanımıyla yeniden kurmak (ör. 'He soldiered in two campaigns before retiring') ya da 'soldier on' kalıbıyla örneklemek.",
+  "sev": "süpheli",
+  "paket": "k4-p01.json"
+ },
+ {
+  "e": "starting",
+  "alan": "ex",
+  "mevcut": "The starting of the marathon was delayed",
+  "sorun": "'The starting of the marathon' doğal İngilizce değil; bu bağlamda 'the start of the marathon' denir.",
+  "oneri": "İsim anlamı için doğal bir örnek kurmak (ör. 'The starting of heavy machinery requires strict safety checks.').",
+  "sev": "süpheli",
+  "paket": "k4-p01.json"
+ },
+ {
+  "e": "primitive",
+  "alan": "ex",
+  "mevcut": "calling early humans a primitive",
+  "sorun": "Çoğul 'early humans' ile tekil 'a primitive' uyumsuz; cümle dilbilgisel olarak bozuk.",
+  "oneri": "'calling early humans primitives' biçiminde çoğul kullanmak ve exTr'yi buna göre düzeltmek.",
+  "sev": "hata",
+  "paket": "k4-p01.json"
+ },
+ {
+  "e": "adolescent",
+  "alan": "ex",
+  "mevcut": "the mental health of adolescent boys and girls",
+  "sorun": "Anlam 'i. ergen, genç' (isim) etiketli ama örnekte adolescent sıfat olarak kullanılıyor.",
+  "oneri": "Örneği isim kullanımıyla kurmak (ör. 'Excessive social media use may harm the mental health of adolescents.').",
+  "sev": "hata",
+  "paket": "k4-p01.json"
+ },
+ {
+  "e": "bodily",
+  "alan": "exTr",
+  "mevcut": "bilinçsiz adamı bütünüyle yanan binadan taşıdı",
+  "sorun": "'Bütünüyle' yanlış yere bağlanıp 'tamamen yanan bina' gibi okunuyor; 'bodily' (olduğu gibi, bedenen) anlamı kayboluyor.",
+  "oneri": "'İtfaiyeciler, çatı çökmeden önce baygın adamı olduğu gibi kucaklayıp yanan binadan çıkardı.'",
+  "sev": "süpheli",
+  "paket": "k4-p01.json"
+ },
+ {
+  "e": "dust",
+  "alan": "exTr",
+  "mevcut": "pastayı ... ince bir pudra şekeri tabakasıyla serpmeye karar verdi",
+  "sorun": "'Serpmek' serpilen maddeyi nesne alır; 'pastayı ... tabakasıyla serpmek' dilbilgisel olarak bozuk.",
+  "oneri": "'Fırıncı, bitmiş pastayı servis etmeden önce üzerine ince bir tabaka pudra şekeri serpmeye karar verdi.'",
+  "sev": "hata",
+  "paket": "k4-p01.json"
+ },
+ {
+  "e": "waters",
+  "alan": "ex",
+  "mevcut": "Overfishing in international waters",
+  "sorun": "tr 'kara suları' diyor ama örnekteki 'international waters' karasularının dışındaki açık denizi anlatır; örnek bu karşılığı göstermiyor.",
+  "oneri": "Örneği bir ülkenin sularıyla kurmak (ör. 'Foreign boats may not fish in Norwegian waters') ya da tr'yi '(bir ülkeye ait) sular; deniz' olarak genişletmek (doğru yazım: 'karasuları').",
+  "sev": "süpheli",
+  "paket": "k4-p01.json"
+ },
+ {
+  "e": "monkey",
+  "alan": "exTr",
+  "mevcut": "onunla kurcalamamaya karşı uyardı",
+  "sorun": "'Kurcalamak' -i nesnesi alır ('onu kurcalamak') ve 'kurcalamamaya karşı uyardı' olumsuzluğu ters çeviriyor.",
+  "oneri": "'...nasıl çalıştığını tam olarak anlamadıkça motoru kurcalamaması konusunda uyardı.'",
+  "sev": "hata",
+  "paket": "k4-p01.json"
+ },
+ {
+  "e": "tested",
+  "alan": "ex",
+  "mevcut": "All new drugs must be rigorously tested",
+  "sorun": "Anlam 's. denenmiş, test edilmiş' (sıfat) etiketli ama örnekteki 'must be tested' fiilin edilgen çekimi, sıfat kullanımı değil.",
+  "oneri": "Sıfat kullanımını gösteren örnek kurmak (ör. 'Doctors prefer tested and reliable treatments over experimental ones.').",
+  "sev": "süpheli",
+  "paket": "k4-p01.json"
+ },
+ {
+  "e": "biologist",
+  "alan": "exTr",
+  "mevcut": "mercan resiflerinin ağarmadan nasıl toparlandığını",
+  "sorun": "'Ağarmadan' burada 'ağarmaksızın' gibi okunuyor; 'recover from bleaching' (ağarma sonrası toparlanma) anlamı kayıyor.",
+  "oneri": "'...mercan resiflerinin ağarmanın ardından nasıl toparlandığını incelemeye on yıl harcadı.'",
+  "sev": "süpheli",
+  "paket": "k4-p01.json"
+ },
+ {
+  "e": "drama",
+  "alan": "ex",
+  "mevcut": "describe the fall of the empire as a political drama",
+  "sorun": "Örnek 'dram, tiyatro oyunu' anlamını değil, kaydın ikinci anlamındaki mecazi 'gergin olay' kullanımını gösteriyor.",
+  "oneri": "Gerçek bir tiyatro eserinden söz eden örnek; örn. 'Shakespeare's dramas are still performed in theatres worldwide.'",
+  "sev": "süpheli",
+  "paket": "k4-p02.json"
+ },
+ {
+  "e": "kept",
+  "alan": "ex",
+  "mevcut": "A well kept promise between nations",
+  "sorun": "'well kept promise' doğal İngilizce değil; söz tutulur ya da tutulmaz, 'well' ile derecelendirilmesi alışılmadık.",
+  "oneri": "'A promise kept between nations can strengthen diplomatic trust...' ya da 'a faithfully kept promise'",
+  "sev": "süpheli",
+  "paket": "k4-p02.json"
+ },
+ {
+  "e": "speaking",
+  "alan": "tr",
+  "mevcut": "s. konuşan, konuşkan",
+  "sorun": "'konuşkan' (talkative) 'speaking' sıfatının sözlük karşılığı değil; örnek de yalnız 'konuşan' anlamını gösteriyor.",
+  "oneri": "s. konuşan",
+  "sev": "süpheli",
+  "paket": "k4-p02.json"
+ },
+ {
+  "e": "am",
+  "alan": "exTr",
+  "mevcut": "saat sekizde başlıyor",
+  "sorun": "Hedef kelimenin anlamı ('öğleden önce') çeviriye yansımamış; 'eight am' yalnız 'saat sekizde' diye çevrilmiş.",
+  "oneri": "sabah saat sekizde başlıyor",
+  "sev": "süpheli",
+  "paket": "k4-p02.json"
+ },
+ {
+  "e": "laugh",
+  "alan": "exTr",
+  "mevcut": "duyulabiliyor ve ... rahatlatıyordu",
+  "sorun": "Zaman uyumsuzluğu: ilk fiil şimdiki zamanda, ikincisi geçmiş zamanda.",
+  "oneri": "duyulabiliyordu ve ... rahatlatıyordu",
+  "sev": "süpheli",
+  "paket": "k4-p02.json"
+ },
+ {
+  "e": "earned",
+  "alan": "ex",
+  "mevcut": "recognized her earned achievements",
+  "sorun": "'earned achievements' doğal bir eşdizim değil; başarı zaten kazanılır, 'earned' burada yadırgatıcı duruyor.",
+  "oneri": "'hard-earned achievements' ya da 'earned income' gibi yerleşik bir kullanımla örnek",
+  "sev": "süpheli",
+  "paket": "k4-p02.json"
+ },
+ {
+  "e": "prime",
+  "alan": "exTr",
+  "mevcut": "en birincil kaygısı",
+  "sorun": "'en birincil' bozuk ifade; 'birincil' zaten en üst sırayı belirtir, 'en' ile derecelendirilemez.",
+  "oneri": "başlıca kaygısı",
+  "sev": "hata",
+  "paket": "k4-p02.json"
+ },
+ {
+  "e": "stopped",
+  "alan": "ex",
+  "mevcut": "his stopped nose",
+  "sorun": "Tıkalı burun için 'stopped nose' doğal değil; yaygın kullanım 'stopped-up', 'blocked' ya da 'stuffy nose'.",
+  "oneri": "his stopped-up nose",
+  "sev": "süpheli",
+  "paket": "k4-p02.json"
+ },
+ {
+  "e": "satisfaction",
+  "alan": "ex",
+  "mevcut": "to pay full satisfaction for the damages",
+  "sorun": "'pay full satisfaction for' yerleşik hukuk İngilizcesi değil; kalıp 'in full satisfaction of' ya da 'make satisfaction' biçimindedir.",
+  "oneri": "ordered the company to pay damages in full satisfaction of the claim",
+  "sev": "süpheli",
+  "paket": "k4-p02.json"
+ },
+ {
+  "e": "dependent",
+  "alan": "exTr",
+  "mevcut": "en fazla üç bakmakla yükümlü kişi",
+  "sorun": "'olunan' düşmüş; 'bakmakla yükümlü kişi' sözcük anlamıyla bakan tarafı belirtir, rol tersine dönüyor.",
+  "oneri": "bakmakla yükümlü olduğu en fazla üç kişiyi",
+  "sev": "süpheli",
+  "paket": "k4-p02.json"
+ },
+ {
+  "e": "nice",
+  "alan": "exTr",
+  "mevcut": "biz uzaktayken sık sık markette bize yardımcı oldu",
+  "sorun": "Anlam kayması: 'helping with groceries when we are away' biz yokken alışverişimizin yapılması demek; 'markette bize yardımcı oldu' hem yanlış hem 'biz uzaktayken' ile çelişiyor.",
+  "oneri": "biz yokken sık sık alışverişimizi yaptı",
+  "sev": "hata",
+  "paket": "k4-p02.json"
+ },
+ {
+  "e": "ended",
+  "alan": "ex",
+  "mevcut": "The fiscal year ended in December, and...",
+  "sorun": "tr 's. sona ermiş, bitmiş' diyor ama örnekte 'ended' sıfat değil cümlenin çekimli yüklemi (fiil).",
+  "oneri": "Sıfat kullanımı olan bir örnek yazılmalı, örn. 'The war, now ended, still shapes the region's politics.' ya da anlam fiil kaydına taşınmalı.",
+  "sev": "hata",
+  "paket": "k4-p03.json"
+ },
+ {
+  "e": "sold",
+  "alan": "ex",
+  "mevcut": "every ticket ... had been sold to eager visitors",
+  "sorun": "tr 's. satılmış' diyor ama örnek edilgen fiil yapısı ('had been sold to...'); sıfat kullanımı tartışmalı.",
+  "oneri": "Sıfat konumunda örnek: 'All the sold items were shipped the next morning.' gibi.",
+  "sev": "süpheli",
+  "paket": "k4-p03.json"
+ },
+ {
+  "e": "turning",
+  "alan": "tr",
+  "mevcut": "i. dönüm noktası",
+  "sorun": "'Dönüm noktası' tek başına 'turning'in değil 'turning point' kalıbının anlamı; etiket eksik.",
+  "oneri": "tr'yi '(turning point) dönüm noktası' biçiminde etiketlemek.",
+  "sev": "süpheli",
+  "paket": "k4-p03.json"
+ },
+ {
+  "e": "turning",
+  "alan": "ex",
+  "mevcut": "attempting a sharp turning on the narrow mountain road",
+  "sorun": "İngilizcede viraj/keskin dönemeç için 'a sharp turning' denmez ('turning' İng. İngilizcesinde sapak/yol ayrımı demektir); kullanım doğal değil.",
+  "oneri": "Örn. 'Take the second turning on the left after the bridge.' yazıp tr'yi 'sapak, dönülecek yol' yapmak (viraj için 'sharp turn/bend').",
+  "sev": "hata",
+  "paket": "k4-p03.json"
+ },
+ {
+  "e": "turned",
+  "alan": "exTr",
+  "mevcut": "Şef, tatlının geri kalanını bozmadan önce ekşimiş kremayı çöpe attı.",
+  "sorun": "'Bozmadan önce'nin öznesi Türkçede şef olarak okunuyor; İngilizcede bozacak olan krema ('before it could spoil') — özne kayması.",
+  "oneri": "'Şef, ekşimiş kremayı tatlının geri kalanını bozmasına fırsat vermeden çöpe attı.'",
+  "sev": "hata",
+  "paket": "k4-p03.json"
+ },
+ {
+  "e": "broken",
+  "alan": "tr",
+  "mevcut": "s. (konuşma için) kesik kesik, düzensiz",
+  "sorun": "Örnekteki 'broken Spanish' bozuk/yarım yamalak konuşulan dil demek; 'kesik kesik, düzensiz' bu kullanımı karşılamıyor (exTr de 'bozuk' diyor).",
+  "oneri": "tr'yi 's. (dil için) bozuk, yarım yamalak' yapmak.",
+  "sev": "süpheli",
+  "paket": "k4-p03.json"
+ },
+ {
+  "e": "preserved",
+  "alan": "exTr",
+  "mevcut": "kuru çöl ikliminin sayesinde",
+  "sorun": "'Sayesinde' isimle yalın kullanılır; 'ikliminin sayesinde' dilbilgisel olarak bozuk.",
+  "oneri": "'kuru çöl iklimi sayesinde'",
+  "sev": "süpheli",
+  "paket": "k4-p03.json"
+ },
+ {
+  "e": "year-old",
+  "alan": "exTr",
+  "mevcut": "iki bin yaşındaki bir çömlek kabı özenle çıkardı",
+  "sorun": "Belirtisiz nesne ile fiil arasına zarf girince yükleme hâli gerekir ('kabı özenle çıkardı' bozuk); ayrıca cansız nesne için 'yaşındaki' yerine 'yıllık' doğaldır.",
+  "oneri": "'iki bin yıllık bir çömlek kabını özenle çıkardı'",
+  "sev": "süpheli",
+  "paket": "k4-p03.json"
+ },
+ {
+  "e": "thin",
+  "alan": "exTr",
+  "mevcut": "Yüksek rakımlarda ince hava",
+  "sorun": "'Thin air' için 'ince hava' Türkçede kullanılmayan bire bir çeviri; kastedilen havanın seyrek/az yoğun olması.",
+  "oneri": "'Yüksek rakımlarda seyrek hava' ya da 'havanın seyrek olması'.",
+  "sev": "süpheli",
+  "paket": "k4-p03.json"
+ },
+ {
+  "e": "dissolve",
+  "alan": "exTr",
+  "mevcut": "meclisi feshetmeye ve yeni seçimler çağırmaya karar verdi",
+  "sorun": "'Seçim çağırmak' Türkçede kullanılmaz ('call elections' bire bir çevrilmiş).",
+  "oneri": "'meclisi feshedip erken seçim kararı almaya karar verdi' / 'yeni seçim ilan etmeye'.",
+  "sev": "süpheli",
+  "paket": "k4-p03.json"
+ },
+ {
+  "e": "instruction",
+  "alan": "ex",
+  "mevcut": "follow the manual's step-by-step instruction carefully",
+  "sorun": "Talimat anlamında sayılabilir kullanım çoğul olur; 'the manual's step-by-step instruction' tekil hâliyle doğal değil.",
+  "oneri": "'follow the manual's step-by-step instructions carefully'",
+  "sev": "süpheli",
+  "paket": "k4-p03.json"
+ },
+ {
+  "e": "officer",
+  "alan": "ex",
+  "mevcut": "After twenty years of service, the young officer was promoted",
+  "sorun": "Yirmi yıllık hizmetten sonra 'genç subay' ifadesi kendi içinde çelişkili (exTr de aynı çelişkiyi taşıyor).",
+  "oneri": "'young' silinmeli ya da 'After years of distinguished service, the officer...' yapılmalı.",
+  "sev": "süpheli",
+  "paket": "k4-p03.json"
+ },
+ {
+  "e": "attraction",
+  "alan": "ex",
+  "mevcut": "the professor had a natural attraction that drew students",
+  "sorun": "Kişinin sahip olduğu çekicilik için 'had a natural attraction' doğal değil (charm/magnetism denir); 'attraction' burada eğreti duruyor.",
+  "oneri": "'the professor exerted a natural attraction that drew students to his lectures' ya da cazibe öznesini değiştirmek.",
+  "sev": "süpheli",
+  "paket": "k4-p03.json"
+ },
+ {
+  "e": "putting",
+  "alan": "ex",
+  "mevcut": "by putting excess fertilizer on their fields",
+  "sorun": "tr 'i. koyma' diyor ama örnekte 'putting' bağımsız isim değil 'by' sonrası fiil ulacı; isim kullanımını göstermiyor.",
+  "oneri": "İsim örneği: 'His putting improved dramatically after months of practice.' (golf anlamı) gibi.",
+  "sev": "süpheli",
+  "paket": "k4-p03.json"
+ },
+ {
+  "e": "watching",
+  "alan": "ex",
+  "mevcut": "took turns watching the entrance",
+  "sorun": "tr 'i. gözetleme' diyor ama örnekte 'watching' fiilimsi ('take turns doing'); isim kullanımını göstermiyor.",
+  "oneri": "Örn. 'Constant watching of the entrance was shared in shifts.' gibi isim kullanımı.",
+  "sev": "süpheli",
+  "paket": "k4-p03.json"
+ },
+ {
+  "e": "academy",
+  "alan": "exTr",
+  "mevcut": "ulusal bir spor akademisi tarafından keşfedilir",
+  "sorun": "'Recruited' kadroya alınmak/bünyeye katılmak demek; 'keşfedilir' anlam kaydırıyor.",
+  "oneri": "'ulusal bir spor akademisine alınır' / 'akademi tarafından bünyesine katılır'.",
+  "sev": "süpheli",
+  "paket": "k4-p03.json"
+ },
+ {
+  "e": "yellow",
+  "alan": "ex",
+  "mevcut": "had turned yellow",
+  "sorun": "Anlam fiil (sararmak) olarak etiketli ama örnekte yellow 'turned yellow' kalıbında sıfat; fiil hâli kullanılmamış.",
+  "oneri": "Old newspapers stored in the archive had yellowed after decades of exposure to light.",
+  "sev": "hata",
+  "paket": "k4-p04.json"
+ },
+ {
+  "e": "lecture",
+  "alan": "exTr",
+  "mevcut": "ona ... tehlikeleri hakkında azarlamaya başladı",
+  "sorun": "'Azarlamak' belirtme hâli ister; 'ona ... azarlamaya başladı' dil bilgisi açısından bozuk.",
+  "oneri": "Babası, gece çok hızlı araç kullanmanın tehlikeleri konusunda onu azarlamaya başladı.",
+  "sev": "hata",
+  "paket": "k4-p04.json"
+ },
+ {
+  "e": "conception",
+  "alan": "exTr",
+  "mevcut": "ikizlerin gebe kalmasının",
+  "sorun": "Özne ters: gebe kalan anne olur; 'ikizlerin gebe kalması' ikizler hamile kalmış anlamı veriyor.",
+  "oneri": "Doktorlar, ikizlere gebeliğin herhangi bir kısırlık tedavisi olmadan doğal yolla gerçekleştiğini açıkladı.",
+  "sev": "hata",
+  "paket": "k4-p04.json"
+ },
+ {
+  "e": "witness",
+  "alan": "ex",
+  "mevcut": "claimed to witness unusual seismic activity",
+  "sorun": "Geçmişte kalan olay için perfect infinitive gerekir; 'claimed to witness' bu bağlamda doğal değil.",
+  "oneri": "Several residents claimed to have witnessed unusual seismic activity in the days before the eruption.",
+  "sev": "süpheli",
+  "paket": "k4-p04.json"
+ },
+ {
+  "e": "complement",
+  "alan": "exTr",
+  "mevcut": "ustaca bir tamamlayıcı",
+  "sorun": "'Subtle' (göze batmayan, incelikli) 'ustaca' diye çevrilmiş; nitelemede anlam kayması var.",
+  "oneri": "İyi bir film müziği, filmin görsel anlatımına incelikli, göze batmayan bir tamamlayıcı olmalıdır.",
+  "sev": "süpheli",
+  "paket": "k4-p04.json"
+ },
+ {
+  "e": "powder",
+  "alan": "ex",
+  "mevcut": "Workers powder the surface of the tablets to prevent them from sticking together",
+  "sorun": "Örnekte 'powder' fiili 'üzerine toz serpmek/pudralamak' anlamında kullanılıyor; tr'deki 'toz haline getirmek' anlamını göstermiyor.",
+  "oneri": "Örneği 'toz haline getirmek' anlamına uygun bir cümleyle değiştirin (örn. 'The mill powders the dried roots before they are packaged as spice.').",
+  "sev": "hata",
+  "paket": "k4-p05.json"
+ },
+ {
+  "e": "powder",
+  "alan": "exTr",
+  "mevcut": "tabletlerin birbirine yapışmasını önlemek için yüzeylerini toz haline getirir",
+  "sorun": "Çeviri anlamsız: yapışmayı önlemek için yüzey toz haline getirilmez, tozla kaplanır; İngilizce cümlenin anlamı da budur.",
+  "oneri": "'... önlemek için yüzeylerine toz serper' (örnek değiştirilirse çeviri ona göre güncellenmeli).",
+  "sev": "hata",
+  "paket": "k4-p05.json"
+ },
+ {
+  "e": "lens",
+  "alan": "ex",
+  "mevcut": "examined the industrial revolution through the lens of its impact",
+  "sorun": "Örnek 'lens'i mecazi 'bakış açısı' anlamında kullanıyor (kaydın 2. anlamıyla aynı); tr'deki gerçek 'mercek' anlamını göstermiyor.",
+  "oneri": "Gerçek mercek içeren bir örnek kullanın (örn. 'The telescope's curved lens focuses light from distant stars onto a single point.').",
+  "sev": "hata",
+  "paket": "k4-p05.json"
+ },
+ {
+  "e": "division",
+  "alan": "tr",
+  "mevcut": "i. bölüm, kısım",
+  "sorun": "Örnekteki 'division of labor' (iş bölümü) 'bölme, bölüşüm' anlamıdır; 'bölüm, kısım' (bir bütünün parçası, birim) anlamı değildir.",
+  "oneri": "tr'yi 'i. bölme, bölüşüm; iş bölümü' yapın ya da örneği bir kurumun bölümünü anlatan cümleyle değiştirin.",
+  "sev": "süpheli",
+  "paket": "k4-p05.json"
+ },
+ {
+  "e": "offering",
+  "alan": "exTr",
+  "mevcut": "Üniversite, ders sunumunu ... genişletti",
+  "sorun": "'Course offering' sunulan ders yelpazesi demektir; 'ders sunumu' Türkçede dersin sunuluş/anlatım biçimi gibi anlaşılır.",
+  "oneri": "'Üniversite, sunduğu ders yelpazesini yapay zekâ ve veri bilimi programlarını da içerecek şekilde genişletti.'",
+  "sev": "süpheli",
+  "paket": "k4-p05.json"
+ },
+ {
+  "e": "ignored",
+  "alan": "ex",
+  "mevcut": "Early warnings ... were ignored until the disaster finally struck",
+  "sorun": "tr sıfat ('göz ardı edilen') diyor ama örnek kelimeyi edilgen fiil olarak kullanıyor; sıfat kullanımı gösterilmiyor.",
+  "oneri": "Sıfat örneği kullanın (örn. 'The ignored warnings about the dam's weakness later proved tragically accurate.') ya da tr'yi fiil olarak etiketleyin.",
+  "sev": "süpheli",
+  "paket": "k4-p05.json"
+ },
+ {
+  "e": "mechanic",
+  "alan": "tr",
+  "mevcut": "s. mekanik, makinelerle ilgili",
+  "sorun": "Sıfat olarak 'mechanic' arkaiktir; modern İngilizcede bu anlam 'mechanical' ile karşılanır ve örnekteki 'the mechanic arts' kalıbı eskimiş bir kullanımdır.",
+  "oneri": "Bu sıfat anlamını kayıttan çıkarın (anlam 'mechanical' maddesine aittir).",
+  "sev": "süpheli",
+  "paket": "k4-p05.json"
+ },
+ {
+  "e": "quantum",
+  "alan": "exTr",
+  "mevcut": "önemli bir miktar değişimi temsil ediyordu",
+  "sorun": "'önemli bir miktar değişimi' ifadesi bozuk; 'bir miktar değişim' (biraz değişim) gibi okunuyor.",
+  "oneri": "'... ele alış biçiminde kayda değer miktarda bir değişimi temsil ediyordu.'",
+  "sev": "süpheli",
+  "paket": "k4-p05.json"
+ },
+ {
+  "e": "articulate",
+  "alan": "tr",
+  "mevcut": "s. ifadesi düzgün, konuşkan, düşüncelerini iyi anlatabilen",
+  "sorun": "'Konuşkan' (çok konuşan) 'articulate'in karşılığı değildir; kelime kendini açık ve akıcı ifade edebilmeyi anlatır.",
+  "oneri": "'konuşkan'ı çıkarın: 's. ifadesi düzgün, düşüncelerini iyi anlatabilen'.",
+  "sev": "süpheli",
+  "paket": "k4-p05.json"
+ },
+ {
+  "e": "representative",
+  "alan": "exTr",
+  "mevcut": "Anket sonuçları, tüm ülke genelindeki kamuoyunu temsili biçimde yansıttığı kabul edildi",
+  "sorun": "Özne yalın kalmış; 'yansıttığı kabul edildi' yapısı için öznenin ilgi durumunda ('sonuçlarının') olması gerekir, cümle dilbilgisel olarak bozuk.",
+  "oneri": "Anket sonuçlarının, tüm ülke genelindeki kamuoyunu temsil ettiği kabul edildi.",
+  "sev": "hata",
+  "paket": "k4-p06.json"
+ },
+ {
+  "e": "cow",
+  "alan": "exTr",
+  "mevcut": "halkı tam bir sessizliğe sindirmek için",
+  "sorun": "'Sessizliğe sindirmek' Türkçede olmayan bir eşdizim; 'sindirmek' bu anlamda yönelme durumlu hedef almaz.",
+  "oneri": "Diktatör, halkı sindirip tamamen susturmak için korku ve şiddeti kullandı.",
+  "sev": "hata",
+  "paket": "k4-p06.json"
+ },
+ {
+  "e": "incline",
+  "alan": "ex",
+  "mevcut": "Many voters incline to support candidates who share their same economic concerns.",
+  "sorun": "'their same' standart dışı İngilizce; ayrıca 'voters incline to support' doğal değil, yaygın kullanım 'are inclined to'.",
+  "oneri": "Many voters are inclined to support candidates who share their economic concerns.",
+  "sev": "süpheli",
+  "paket": "k4-p06.json"
+ },
+ {
+  "e": "flip",
+  "alan": "ex",
+  "mevcut": "The gymnast managed to flip backward twice before landing perfectly on the mat.",
+  "sorun": "tr geçişli 'çevirmek, ters çevirmek' derken örnek geçişsiz 'takla atmak' anlamını kullanıyor (exTr de 'takla atmayı başardı' diyor).",
+  "oneri": "Geçişli bir örnek kullanılmalı (ör. 'She flipped the pancake to cook the other side.') ya da tr'ye 'takla atmak' eklenmeli.",
+  "sev": "süpheli",
+  "paket": "k4-p06.json"
+ },
+ {
+  "e": "dropped",
+  "alan": "ex",
+  "mevcut": "Prosecutors announced dropped charges against the defendant...",
+  "sorun": "'announced dropped charges' doğal İngilizce değil; sıfat kullanımı zorlama, doğal kalıp 'announced that the charges had been dropped' olurdu.",
+  "oneri": "Örn. 'The dropped charges against the defendant made headlines after new evidence proved his innocence.'",
+  "sev": "süpheli",
+  "paket": "k4-p07.json"
+ },
+ {
+  "e": "till",
+  "alan": "exTr",
+  "mevcut": "dükkânı geceye kapatmadan önce",
+  "sorun": "'geceye kapatmak' Türkçede kurulu bir ifade değil; 'closing the shop for the night' karşılığı bozuk.",
+  "oneri": "Kasiyer, dükkânı gece için kapatmadan önce yazar kasayı hızlıca kontrol etti.",
+  "sev": "süpheli",
+  "paket": "k4-p07.json"
+ },
+ {
+  "e": "walking",
+  "alan": "tr",
+  "mevcut": "s. yürüme mesafesinde olan",
+  "sorun": "Gloss 'within walking distance' kalıbının anlamı; 'walking' kelimesinin kendisi 'yürümeyle ilgili, yürüyerek yapılan' demek ve kayıtta kalıp etiketi de yok.",
+  "oneri": "s. yürümeyle ilgili, yürüyerek yapılan (walking distance: yürüme mesafesi) ya da '(within walking distance)' kalıp etiketi eklemek.",
+  "sev": "süpheli",
+  "paket": "k4-p07.json"
+ },
+ {
+  "e": "ahead",
+  "alan": "tr",
+  "mevcut": "z. ileride, önde; s. önde olan",
+  "sorun": "Örnek zaman anlamında kullanıyor ('ahead of the deadline' = son tarihten önce); gloss yalnız mekânsal karşılıkları veriyor.",
+  "oneri": "Gloss'a '(ahead of) -den önce, erken' eklemek ya da mekânsal anlamı gösteren bir örnek kullanmak.",
+  "sev": "süpheli",
+  "paket": "k4-p07.json"
+ },
+ {
+  "e": "technically",
+  "alan": "tr",
+  "mevcut": "z. aslında, gerçekte",
+  "sorun": "Bu kullanımda 'technically' = 'kural olarak, resmen, kâğıt üzerinde'; 'gerçekte' neredeyse ters yönde anlaşılabilir (kâğıt üzerinde açık ama fiilen kapalı).",
+  "oneri": "z. kural olarak, resmen, kâğıt üzerinde",
+  "sev": "süpheli",
+  "paket": "k4-p07.json"
+ },
+ {
+  "e": "chromosome",
+  "alan": "exTr",
+  "mevcut": "kırk altı özdeş kromozom içerir",
+  "sorun": "İngilizcede 'identical' seti niteliyor (hücreden hücreye aynı takım); çeviri kromozomların birbirinin özdeşi olduğunu söylüyor, bu anlam kayması ve bilimsel olarak yanlış.",
+  "oneri": "Her insan hücresi normalde, çiftler hâlinde düzenlenmiş kırk altı kromozomdan oluşan özdeş bir takım içerir.",
+  "sev": "hata",
+  "paket": "k4-p07.json"
+ },
+ {
+  "e": "flooding",
+  "alan": "tr",
+  "mevcut": "i. (psikoloji) duyarsızlaştırma tekniği",
+  "sorun": "Psikolojide flooding'in Türkçe karşılığı 'taşırma (yoğun maruz bırakma)'; 'duyarsızlaştırma' farklı ve aşamalı bir teknik olan sistematik duyarsızlaştırmanın adı.",
+  "oneri": "i. (psikoloji) taşırma, yoğun maruz bırakma tekniği",
+  "sev": "süpheli",
+  "paket": "k4-p07.json"
+ },
+ {
+  "e": "flooding",
+  "alan": "exTr",
+  "mevcut": "duyarsızlaştırma adı verilen bir teknik",
+  "sorun": "'a technique called flooding' çevirisinde tekniğin adı yanlış terimle verilmiş.",
+  "oneri": "...taşırma (flooding) adı verilen bir teknik kullandı.",
+  "sev": "süpheli",
+  "paket": "k4-p07.json"
+ },
+ {
+  "e": "upset",
+  "alan": "ex",
+  "mevcut": "The unexpected defeat caused a major upset among fans...",
+  "sorun": "Sayılabilir 'an upset' sürpriz sonucun kendisidir; 'caused a major upset among fans' karışık/doğal olmayan bir kullanım (rahatsızlık anlamı sayılamayan 'upset' ile kurulur).",
+  "oneri": "Örn. 'The underdog's victory over the champions was a major upset.' ya da 'The defeat caused great upset among fans.'",
+  "sev": "süpheli",
+  "paket": "k4-p07.json"
+ },
+ {
+  "e": "adapted",
+  "alan": "exTr",
+  "mevcut": "su depolayan ... kök sistemi",
+  "sorun": "'stores water for months' ifadesindeki 'for months' çeviride düşmüş.",
+  "oneri": "...aylarca su depolayabilen dikkat çekici derecede uyum sağlamış bir kök sistemi geliştirmiştir.",
+  "sev": "süpheli",
+  "paket": "k4-p07.json"
+ },
+ {
+  "e": "bound",
+  "alan": "exTr",
+  "mevcut": "Rotterdam'a yönelik kargo gemisi",
+  "sorun": "Bir gemi için 'bound for' = 'giden'; 'Rotterdam'a yönelik gemi' Türkçede doğal/kurulu bir ifade değil.",
+  "oneri": "Rotterdam'a giden kargo gemisi, alışılmadık derecede sert denizler yüzünden birkaç gün gecikti.",
+  "sev": "süpheli",
+  "paket": "k4-p07.json"
+ },
+ {
+  "e": "gap",
+  "alan": "ex",
+  "mevcut": "The prolonged strike began to gap the country's supply chain...",
+  "sorun": "'to gap a supply chain' İngilizcede doğal/kurulu bir kullanım değil; fiil örneği zorlama.",
+  "oneri": "Örn. 'The strike opened a gap in the country's supply chain, leaving stores without essential goods for weeks.' (fiil anlamının kayıtta tutulup tutulmayacağı da değerlendirilsin)",
+  "sev": "hata",
+  "paket": "k4-p07.json"
+ },
+ {
+  "e": "martin",
+  "alan": "tr",
+  "mevcut": "i. (kuş) kır kırlangıcı türü",
+  "sorun": "Martin, ev/kum kırlangıcı grubundaki kuşların adıdır; 'kır kırlangıcı' (Hirundo rustica) ise swallow'dur, martin değil.",
+  "oneri": "i. kırlangıçgillerden bir kuş (ev kırlangıcı, kum kırlangıcı vb.)",
+  "sev": "süpheli",
+  "paket": "k4-p08.json"
+ },
+ {
+  "e": "degrade",
+  "alan": "exTr",
+  "mevcut": "Plastik atıklar, ... tamamen ayrışması için yüzyıllar alabilir",
+  "sorun": "'Atıklar ... ayrışması için yüzyıllar alabilir' kuruluşu dilbilgisi olarak bozuk; süreç özne olmalı.",
+  "oneri": "Plastik atıkların deniz ortamlarında tamamen ayrışması yüzyıllar alabilir.",
+  "sev": "süpheli",
+  "paket": "k4-p08.json"
+ },
+ {
+  "e": "degrade",
+  "alan": "exTr",
+  "mevcut": "Müdürün sert kamuoyu yorumları",
+  "sorun": "'public comments' (alenen yapılan yorumlar) 'kamuoyu yorumları' diye çevrilmiş; kamuoyu = public opinion, anlam kayması var.",
+  "oneri": "Müdürün herkesin önünde yaptığı sert yorumlar, çalışanı meslektaşlarının önünde küçük düşürmeyi amaçlıyor gibiydi.",
+  "sev": "hata",
+  "paket": "k4-p08.json"
+ },
+ {
+  "e": "arrangement",
+  "alan": "ex",
+  "mevcut": "reached a special arrangement with several universities",
+  "sorun": "'Reached an arrangement' anlaşma/mutabakat anlamıdır; örnek 'düzenleme, tertip' anlamını değil ikinci anlamı (anlaşma) gösteriyor.",
+  "oneri": "Düzenleme/yerleştirme anlamını gösteren örnek: 'The florist changed the arrangement of the flowers in the window display.'",
+  "sev": "süpheli",
+  "paket": "k4-p08.json"
+ },
+ {
+  "e": "arrangement",
+  "alan": "exTr",
+  "mevcut": "nadir tarihi eserleri karşılıklı sergilemek için",
+  "sorun": "'to exchange rare historical artifacts' değiş tokuş etmek demek; 'karşılıklı sergilemek' diye çevrilerek anlam kaydırılmış.",
+  "oneri": "nadir tarihî eserleri değiş tokuş etmek için",
+  "sev": "hata",
+  "paket": "k4-p08.json"
+ },
+ {
+  "e": "burning",
+  "alan": "tr",
+  "mevcut": "i. yanma",
+  "sorun": "Örnek geçişli 'yakma' anlamını kullanıyor (burning crop residue = ekin artıklarını yakma); tr yalnız 'yanma' diyor.",
+  "oneri": "i. yanma, yakma",
+  "sev": "süpheli",
+  "paket": "k4-p08.json"
+ },
+ {
+  "e": "brazil",
+  "alan": "ex",
+  "mevcut": "a single brazil nut",
+  "sorun": "Hedef kelime yalnız 'brazil nut' bileşiği içinde geçiyor; 'brazil' tek başına Brezilya cevizi anlamıyla gösterilmemiş.",
+  "oneri": "Kelimeyi tek başına kullanan örnek: 'She cracked open a few brazils to add to the fruitcake.'",
+  "sev": "süpheli",
+  "paket": "k4-p08.json"
+ },
+ {
+  "e": "axis",
+  "alan": "ex",
+  "mevcut": "the shifting axis of global trade toward Asia",
+  "sorun": "Örnek mecazi 'eksen/ağırlık merkezi' anlamını kullanıyor; tr'deki '(siyasi) mihver, ittifak' anlamını göstermiyor.",
+  "oneri": "İttifak anlamını gösteren örnek: 'The two countries formed a powerful axis that reshaped regional politics.'",
+  "sev": "süpheli",
+  "paket": "k4-p08.json"
+ },
+ {
+  "e": "discharge",
+  "alan": "exTr",
+  "mevcut": "kimyasal atık boşalttığı için yasa dışı olarak para cezasına çarptırıldı",
+  "sorun": "'illegally' İngilizcede boşaltmayı nitelerken çeviride cezaya bağlanmış; cümle cezanın yasa dışı olduğunu söylüyor.",
+  "oneri": "Fabrika, yakındaki nehre yasa dışı biçimde kimyasal atık boşalttığı için para cezasına çarptırıldı.",
+  "sev": "hata",
+  "paket": "k4-p08.json"
+ },
+ {
+  "e": "comparing",
+  "alan": "ex",
+  "mevcut": "By comparing fossil records from different continents, scientists confirmed...",
+  "sorun": "Anlam isim (i. karşılaştırma) olarak etiketlenmiş, ancak örnekte 'comparing' isim değil nesne alan fiilimsi olarak kullanılıyor ve çeviri de bunu 'karşılaştırarak' diye zarf-fiille veriyor.",
+  "oneri": "İsim kullanımını gösteren bir örnek yazılmalı, örn. 'A careful comparing of the two manuscripts revealed several hidden differences.'",
+  "sev": "süpheli",
+  "paket": "k4-p09.json"
+ },
+ {
+  "e": "bats",
+  "alan": "ex",
+  "mevcut": "describing someone as bats was once a common informal way to suggest mental instability",
+  "sorun": "Örnek, kelimeyi 'çılgın' anlamıyla doğal bir cümlede kullanmıyor; kelimenin kendisinden söz eden üst-dilsel bir cümle ve çeviride de 'bats' çevrilmeden kalıyor.",
+  "oneri": "Doğal kullanım örneği yazılmalı, örn. 'His neighbours thought he had gone completely bats when he started talking to his plants every morning.'",
+  "sev": "süpheli",
+  "paket": "k4-p09.json"
+ },
+ {
+  "e": "supervision",
+  "alan": "exTr",
+  "mevcut": "Genç cerrahlerin ilk ameliyatlarını...",
+  "sorun": "\"cerrahlerin\" ünlü uyumuna aykırı, yazım hatası.",
+  "oneri": "\"Genç cerrahların\" (ya da \"kıdemsiz cerrahların\") yapılmalı.",
+  "sev": "hata",
+  "paket": "k4-p10.json"
+ },
+ {
+  "e": "stressful",
+  "alan": "tr",
+  "mevcut": "s. stresli, gergin yaratan",
+  "sorun": "\"gergin yaratan\" dilbilgisel olarak bozuk bir ifade.",
+  "oneri": "\"s. stresli, gerginlik yaratan\" olmalı.",
+  "sev": "hata",
+  "paket": "k4-p10.json"
+ },
+ {
+  "e": "residual",
+  "alan": "ex",
+  "mevcut": "dispose of any residual left over from the manufacturing process",
+  "sorun": "\"residual\" bu bağlamda isim olarak doğal değil; kalıntı madde için İngilizcede \"residue\" kullanılır.",
+  "oneri": "Örneği \"residue\" gerektirmeyecek şekilde değiştirin (örn. istatistik/telif \"residuals\" kullanımı) ya da isim anlamını kaldırın.",
+  "sev": "süpheli",
+  "paket": "k4-p10.json"
+ },
+ {
+  "e": "yesterday",
+  "alan": "ex",
+  "mevcut": "stable lifelong careers are now a thing of yesterday",
+  "sorun": "Yerleşik deyim \"a thing of the past\"tır; \"a thing of yesterday\" doğal durmuyor.",
+  "oneri": "Örneği \"all our yesterdays\" gibi yerleşik bir isim kullanımıyla yeniden kurun.",
+  "sev": "süpheli",
+  "paket": "k4-p10.json"
+ },
+ {
+  "e": "granted",
+  "alan": "tr",
+  "mevcut": "s. verilmiş, kabul edilmiş",
+  "sorun": "Anlam sıfat (s.) etiketli ama örnekteki \"was granted access\" fiilin edilgen çekimi.",
+  "oneri": "Türü \"f. vermek, tanımak (edilgen)\" yapın ya da örneği gerçek sıfat kullanımıyla değiştirin.",
+  "sev": "süpheli",
+  "paket": "k4-p10.json"
+ },
+ {
+  "e": "noticed",
+  "alan": "ex",
+  "mevcut": "Scientists reported a noticed decline in bee populations",
+  "sorun": "\"a noticed decline\" doğal İngilizce değil; niteleyici konumda \"noticeable/marked\" beklenir.",
+  "oneri": "Örneği \"noticed\" yüklem konumunda kullanacak şekilde kurun (örn. \"The decline was first noticed by beekeepers.\").",
+  "sev": "hata",
+  "paket": "k4-p10.json"
+ },
+ {
+  "e": "bridge",
+  "alan": "exTr",
+  "mevcut": "kültürel farklılıkları sıklıkla köprüler",
+  "sorun": "\"köprüler\" Türkçede fiil olarak kullanılamaz; cümle bozuk.",
+  "oneri": "\"...kültürel farklılıklar arasında sıklıkla köprü kurar.\" yapılmalı.",
+  "sev": "hata",
+  "paket": "k4-p10.json"
+ },
+ {
+  "e": "bug",
+  "alan": "exTr",
+  "mevcut": "Araştırmacı, arazide gözlemlerini kaydederken küçük bir böcek defterinin üzerinde yürüdü.",
+  "sorun": "\"Araştırmacı\"dan sonraki virgül onu ana cümlenin öznesi gibi gösteriyor; oysa yürüyen böcek.",
+  "oneri": "\"Araştırmacı arazide gözlemlerini kaydederken küçük bir böcek, defterinin üzerinde ilerledi.\"",
+  "sev": "süpheli",
+  "paket": "k4-p10.json"
+ },
+ {
+  "e": "distributed",
+  "alan": "exTr",
+  "mevcut": "geniş çaplı dağıtılmış bir toprak örneğini analiz etti",
+  "sorun": "\"geniş çaplı dağıtılmış örnek\" bozuk; \"widely distributed\" burada geniş bir alana yayılmış olmayı anlatıyor.",
+  "oneri": "\"...ülke genelindeki çeşitli çiftliklerden toplanan, geniş bir alana yayılmış toprak örneklerini analiz etti.\"",
+  "sev": "süpheli",
+  "paket": "k4-p10.json"
+ },
+ {
+  "e": "horse",
+  "alan": "ex",
+  "mevcut": "The ranch owner offered to horse the young riders...",
+  "sorun": "\"to horse\" fiili arkaik/çok nadir; örnek modern İngilizcede doğal değil.",
+  "oneri": "Fiil anlamını kaldırın ya da örneği yaygın bir kullanımla değiştirin.",
+  "sev": "süpheli",
+  "paket": "k4-p10.json"
+ },
+ {
+  "e": "protecting",
+  "alan": "ex",
+  "mevcut": "A thick protecting layer of ash",
+  "sorun": "Niteleyici konumda doğal olan \"protective layer\"dır; \"protecting layer\" doğal durmuyor.",
+  "oneri": "Örneği \"protecting\" ortacını doğal kullanan bir cümleyle değiştirin (örn. \"laws protecting endangered species\").",
+  "sev": "süpheli",
+  "paket": "k4-p10.json"
+ },
+ {
+  "e": "upper",
+  "alan": "ex",
+  "mevcut": "sleep in the upper of the bunk bed",
+  "sorun": "\"the upper of the bunk bed\" doğal değil; \"the top/upper bunk\" denir, isim \"an upper\" daha çok tren kuşeti için kullanılır.",
+  "oneri": "Örneği \"the upper bunk\" ya da tren kuşetli bir cümleyle (\"booked an upper on the night train\") değiştirin.",
+  "sev": "süpheli",
+  "paket": "k4-p10.json"
+ },
+ {
+  "e": "upper",
+  "alan": "exTr",
+  "mevcut": "ranzanın üst ranzasında uyumak",
+  "sorun": "\"ranzanın üst ranzası\" tekrarlı ve bozuk bir ifade.",
+  "oneri": "\"...her zaman ranzanın üst katında uyumak zorunda kalıyordu.\"",
+  "sev": "hata",
+  "paket": "k4-p10.json"
+ },
+ {
+  "e": "ghost",
+  "alan": "exTr",
+  "mevcut": "deniz feneri eski bir bekçinin hayaleti tarafından musallat olunmuş durumda",
+  "sorun": "'Fener ... hayaleti tarafından musallat olunmuş' kurgusu dilbilgisel olarak bozuk; 'musallat olmak' -e hâliyle kurulur, fener özne olamaz.",
+  "oneri": "Yerel efsaneye göre, terk edilmiş deniz fenerine eski bir bekçinin hayaleti musallat olmuştur.",
+  "sev": "hata",
+  "paket": "k4-p11.json"
+ },
+ {
+  "e": "sustained",
+  "alan": "exTr",
+  "mevcut": "sürdürülebilir ekonomik büyümenin",
+  "sorun": "'sustained' (sürekli/istikrarlı) 'sürdürülebilir' (sustainable) diye çevrilmiş; öğretilen anlamla çelişen anlam kayması.",
+  "oneri": "Ekonomistler, sürekli ekonomik büyümenin eğitim ve altyapıya istikrarlı yatırım gerektirdiği konusunda hemfikir.",
+  "sev": "hata",
+  "paket": "k4-p11.json"
+ },
+ {
+  "e": "hand-down",
+  "alan": "ex",
+  "mevcut": "hand-down farming techniques passed through generations",
+  "sorun": "'hand-down' standart bir sıfat değil (sözlüklerdeki biçim 'hand-me-down'); ayrıca cümledeki 'passed through generations' ile gereksiz tekrar oluşuyor.",
+  "oneri": "'hand-me-down farming techniques' ya da 'farming techniques handed down through generations'.",
+  "sev": "süpheli",
+  "paket": "k5-p01.json"
+ },
+ {
+  "e": "orange",
+  "alan": "ex",
+  "mevcut": "export fresh orange to markets",
+  "sorun": "'orange' sayılabilir isim; tekil ve artikelsiz 'fresh orange' dilbilgisel olarak bozuk.",
+  "oneri": "'export fresh oranges to markets' (exTr de 'taze portakalları' olmalı).",
+  "sev": "hata",
+  "paket": "k5-p01.json"
+ },
+ {
+  "e": "sink",
+  "alan": "exTr",
+  "mevcut": "karbondioksitin büyük bir bölümünü emerek",
+  "sorun": "'absorbing vast amounts of' (büyük miktarlarda) ifadesi 'büyük bir bölümünü' diye çevrilince nicelik iddiası değişiyor.",
+  "oneri": "'atmosferden büyük miktarlarda karbondioksit emerek'.",
+  "sev": "süpheli",
+  "paket": "k5-p01.json"
+ },
+ {
+  "e": "tempt",
+  "alan": "exTr",
+  "mevcut": "mühendisleri ... uzaklaştırmaya devam ediyor",
+  "sorun": "'tempt ... away' ifadesindeki cezbetme/ayartma anlamı çeviride kaybolmuş; 'uzaklaştırmak' tek başına itmek gibi okunuyor.",
+  "oneri": "'genç mühendisleri yerel araştırma kurumlarından ayartıp koparmaya devam ediyor' gibi cezbetme vurgulu bir kuruluş.",
+  "sev": "süpheli",
+  "paket": "k5-p01.json"
+ },
+ {
+  "e": "bloom",
+  "alan": "ex",
+  "mevcut": "algae bloom rapidly",
+  "sorun": "Örnek, 'çiçek açmak' anlamını değil alglerin hızla çoğalmasını (alg patlaması) gösteriyor; algler çiçek açmaz.",
+  "oneri": "Bitki örneği kullanılmalı (ör. 'Cherry trees bloom in early spring') ya da tr'ye '(alg) patlama yapmak, hızla çoğalmak' eklenmeli.",
+  "sev": "süpheli",
+  "paket": "k5-p01.json"
+ },
+ {
+  "e": "bloom",
+  "alan": "ex",
+  "mevcut": "the composer's bloom came during his final decade",
+  "sorun": "'Someone's bloom came' kuruluşu doğal İngilizce değil; 'bloom' bu anlamda genellikle 'in (full) bloom' kalıbıyla kullanılır.",
+  "oneri": "'The composer's career reached full bloom during his final decade' gibi bir kuruluş.",
+  "sev": "süpheli",
+  "paket": "k5-p01.json"
+ },
+ {
+  "e": "city-state",
+  "alan": "exTr",
+  "mevcut": "şehir devleti olarak işledi",
+  "sorun": "'functioned as' karşılığı 'olarak işledi' Türkçede doğal değil.",
+  "oneri": "'bağımsız bir şehir devleti olarak işlev gördü'.",
+  "sev": "süpheli",
+  "paket": "k5-p01.json"
+ },
+ {
+  "e": "inflammation",
+  "alan": "tr",
+  "mevcut": "i. (mecazi) öfkelenme, kızgınlık",
+  "sorun": "Modern İngilizcede 'inflammation' ismi 'öfkelenme' anlamında kullanılmaz (mecaz fiil 'inflame'dedir); örnekteki 'caused visible inflammation among the committee members' de doğal değil.",
+  "oneri": "Bu anlam kaydı çıkarılmalı ya da 'inflame' fiiline taşınmalı.",
+  "sev": "hata",
+  "paket": "k5-p01.json"
+ },
+ {
+  "e": "provision",
+  "alan": "exTr",
+  "mevcut": "köyü temiz su ve ... malzemeyle tedarik etmeyi",
+  "sorun": "Türkçede 'tedarik etmek' alıcıyı değil sağlanan şeyi nesne alır; 'köyü ... ile tedarik etmek' dilbilgisel olarak bozuk.",
+  "oneri": "'köye temiz su ve temel tıbbi malzeme sağlamayı başardı'.",
+  "sev": "hata",
+  "paket": "k5-p01.json"
+ },
+ {
+  "e": "show-off",
+  "alan": "exTr",
+  "mevcut": "gösterişçi olarak görmezden geldi",
+  "sorun": "'dismissed him as a show-off' (gösterişçi sayıp ciddiye almadı) 'görmezden geldi' diye çevrilince anlam kayıyor.",
+  "oneri": "'onu genelde gösteriş budalası sayıp ciddiye almadı'.",
+  "sev": "süpheli",
+  "paket": "k5-p01.json"
+ },
+ {
+  "e": "uncomfortable",
+  "alan": "tr",
+  "mevcut": "s. rahatsız edici, huzursuz eden",
+  "sorun": "Örnekteki 'feeling uncomfortable' kişinin rahatsızlık hissetmesi anlamında; tr yalnız 'rahatsızlık veren' anlamını veriyor (exTr de doğru olarak 'rahatsız hissettiğini' diyor).",
+  "oneri": "'s. rahatsız, huzursuz (hisseden); rahatsız edici'.",
+  "sev": "hata",
+  "paket": "k5-p01.json"
+ },
+ {
+  "e": "monthly",
+  "alan": "exTr",
+  "mevcut": "Bilim aylık dergisi",
+  "sorun": "'The science monthly' karşılığı olarak 'Bilim aylık dergisi' sözcük dizimi bozuk.",
+  "oneri": "'Aylık bilim dergisi, yenilenebilir pil teknolojisindeki atılımlar hakkında bir kapak yazısına yer verdi.'",
+  "sev": "hata",
+  "paket": "k5-p01.json"
+ },
+ {
+  "e": "pitch",
+  "alan": "ex",
+  "mevcut": "three minutes to pitch her idea",
+  "sorun": "tr isim anlamı veriyor ('i. satış sunumu') ama örnek 'pitch' kelimesini fiil olarak kullanıyor.",
+  "oneri": "İsimli örnek kullanılmalı (ör. 'She had only three minutes to deliver her pitch to investors') ya da tr 'f. (fikir/ürün) sunmak' yapılmalı.",
+  "sev": "hata",
+  "paket": "k5-p01.json"
+ },
+ {
+  "e": "barrel",
+  "alan": "ex",
+  "mevcut": "whenever production per barrel changes",
+  "sorun": "'production per barrel' anlamlı bir ifade değil; fiyat için 'price per barrel' denir, üretim varille ölçülür.",
+  "oneri": "'whenever the price per barrel changes significantly' (exTr: 'varil başına fiyat').",
+  "sev": "hata",
+  "paket": "k5-p01.json"
+ },
+ {
+  "e": "poll",
+  "alan": "tr",
+  "mevcut": "f. oy vermek/toplamak",
+  "sorun": "poll fiilinin yaygın anlamı 'anket yapmak/görüş yoklamak'tır; 'oy vermek' karşılığı sözlüklerde bu biçimde yer almaz ve örnek de oy kaydetme/toplama işini anlatıyor.",
+  "oneri": "f. anket yapmak, görüş yoklamak; (seçimde) oyları kaydetmek/almak",
+  "sev": "süpheli",
+  "paket": "k5-p02.json"
+ },
+ {
+  "e": "vertical",
+  "alan": "ex",
+  "mevcut": "the vertical marks the boundary between the mountain's rocky slope and the forest below",
+  "sorun": "Yamaç ile 'aşağıdaki' orman arasındaki sınır yatay bir çizgidir; bunu dikey bir çizginin göstermesi mantıksız, kullanım doğal değil.",
+  "oneri": "Örneği doğal bir isim kullanımıyla değiştirin, örn. 'The flagpole tilted a few degrees from the vertical.'",
+  "sev": "süpheli",
+  "paket": "k5-p02.json"
+ },
+ {
+  "e": "chip",
+  "alan": "tr",
+  "mevcut": "i. yonga, parça, cip",
+  "sorun": "Elektronik devre anlamındaki kelimenin Türkçe yazımı 'çip'tir; 'cip' jeep demektir (exTr zaten 'çip' kullanıyor).",
+  "oneri": "i. yonga, parça, çip",
+  "sev": "hata",
+  "paket": "k5-p02.json"
+ },
+ {
+  "e": "chip",
+  "alan": "exTr",
+  "mevcut": "ağır dolabı aşağı taşırken yanlışlıkla antika ahşap masayı kırmasına neden oldu",
+  "sorun": "Özne eksikliği yüzünden cümle dilbilgisel olarak bozuk ('dolabı ... kırmasına neden oldu').",
+  "oneri": "Nakliyeciler, ağır dolabı aşağı taşırken yanlışlıkla dolabın antika ahşap masayı çentmesine neden oldu.",
+  "sev": "hata",
+  "paket": "k5-p02.json"
+ },
+ {
+  "e": "credited",
+  "alan": "exTr",
+  "mevcut": "yeni bir yöntem keşfettiği için geniş çapta takdir edildi",
+  "sorun": "'be credited with' takdir edilmek değil, keşfin kendisine atfedilmesi/mal edilmesi demektir; anlam kayması var.",
+  "oneri": "Bilim insanı, antibiyotiğe dirençli enfeksiyonları tedavi eden yeni yöntemi keşfeden kişi olarak geniş çapta kabul edildi.",
+  "sev": "hata",
+  "paket": "k5-p02.json"
+ },
+ {
+  "e": "pound",
+  "alan": "tr",
+  "mevcut": "i. paund (para/ağırlık birimi)",
+  "sorun": "'paund' Türkçe sözlüklerde bulunmaz; para birimi 'sterlin', ağırlık birimi 'libre' olarak karşılanır.",
+  "oneri": "i. sterlin (para birimi); libre (ağırlık birimi)",
+  "sev": "süpheli",
+  "paket": "k5-p02.json"
+ },
+ {
+  "e": "shore",
+  "alan": "exTr",
+  "mevcut": "yaklaşan fırtına çökmesine neden olmadan önce",
+  "sorun": "'çökmesine' ifadesinin öznesi belirsiz; 'fırtına çökmesi' gibi yanlış okunabiliyor ('it' = baraj duvarı).",
+  "oneri": "yaklaşan fırtına duvarın çökmesine yol açmadan önce",
+  "sev": "süpheli",
+  "paket": "k5-p02.json"
+ },
+ {
+  "e": "swing",
+  "alan": "ex",
+  "mevcut": "a noticeable swing in consumer confidence",
+  "sorun": "Örnek 'salıncak/sallanma' değil 'ani değişim/dalgalanma' anlamını kullanıyor; exTr de 'dalgalanma' diyor.",
+  "oneri": "tr'ye 'ani değişim, dalgalanma' ekleyin ya da örneği salıncak/sallanma anlamına uygun değiştirin.",
+  "sev": "hata",
+  "paket": "k5-p02.json"
+ },
+ {
+  "e": "ambiguous",
+  "alan": "exTr",
+  "mevcut": "avukatlar içindeki birkaç belirsiz maddeyi işaretledikten sonra",
+  "sorun": "'within it' sözleşmeyi kastederken çeviri 'avukatlar içindeki maddeler' gibi okunuyor; bağlanma hatası.",
+  "oneri": "avukatlar sözleşmedeki birkaç belirsiz maddeyi işaretledikten sonra",
+  "sev": "hata",
+  "paket": "k5-p02.json"
+ },
+ {
+  "e": "matched",
+  "alan": "ex",
+  "mevcut": "Researchers carefully matched participants by age and health status",
+  "sorun": "tr sıfat (eşleşen, denk) veriyor ama örnekte 'matched' çekimli fiil (eşleştirdi) olarak kullanılıyor.",
+  "oneri": "Sıfat örneği kullanın (örn. 'The study compared carefully matched groups of patients.') ya da tr'yi 'f. eşleştirmek' yapın.",
+  "sev": "hata",
+  "paket": "k5-p02.json"
+ },
+ {
+  "e": "sketch",
+  "alan": "ex",
+  "mevcut": "The architect began to sketch a rough plan",
+  "sorun": "tr isim (taslak, kroki) veriyor ama örnekte 'sketch' fiil olarak kullanılıyor; ikinci anlam zaten fiil.",
+  "oneri": "İsim örneği kullanın, örn. 'The architect drew a rough sketch of the community center on a napkin.'",
+  "sev": "hata",
+  "paket": "k5-p02.json"
+ },
+ {
+  "e": "machinery",
+  "alan": "ex",
+  "mevcut": "The government created a new machinery to coordinate disaster relief efforts",
+  "sorun": "'machinery' sayılamaz bir isimdir; 'a new machinery' İngilizcede doğal değildir.",
+  "oneri": "The government created new machinery to coordinate disaster relief efforts among various agencies.",
+  "sev": "hata",
+  "paket": "k5-p02.json"
+ },
+ {
+  "e": "recession",
+  "alan": "tr",
+  "mevcut": "i. girinti",
+  "sorun": "Duvardaki girinti/niş anlamı 'recess' kelimesine aittir; 'recession' bu anlamda kullanılmaz, örnek cümle de bu yüzden bozuk.",
+  "oneri": "Bu anlamı çıkarın ya da 'i. geri çekilme (buzul, dişeti vb.)' karşılığıyla ve uygun örnekle değiştirin.",
+  "sev": "hata",
+  "paket": "k5-p02.json"
+ },
+ {
+  "e": "volcano",
+  "alan": "exTr",
+  "mevcut": "yüzyıllardır sönmüş durumdaydı",
+  "sorun": "'dormant' sönmüş (extinct) değil 'uykuda/etkin olmayan' demektir; sönmüş yanardağın patlaması çelişki yaratıyor.",
+  "oneri": "Yanardağ, geçen bahar aniden patlamadan önce yüzyıllardır uykudaydı.",
+  "sev": "hata",
+  "paket": "k5-p02.json"
+ },
+ {
+  "e": "addict",
+  "alan": "ex",
+  "mevcut": "the medication could addict patients",
+  "sorun": "'addict' fiilinin etken kullanımı çok nadirdir; cümle doğal durmuyor (genellikle 'become addicted' denir).",
+  "oneri": "Doctors warned that patients could become addicted to the medication if it were taken for too long.",
+  "sev": "süpheli",
+  "paket": "k5-p02.json"
+ },
+ {
+  "e": "binary",
+  "alan": "ex",
+  "mevcut": "understand how the binary works",
+  "sorun": "Sayı sistemi anlamında 'binary' artikelsiz kullanılır; 'the binary' derlenmiş program (executable) çağrışımı yapıyor.",
+  "oneri": "Programmers must understand how binary works before writing efficient low-level code.",
+  "sev": "süpheli",
+  "paket": "k5-p02.json"
+ },
+ {
+  "e": "cord",
+  "alan": "tr",
+  "mevcut": "f. istifleyip bağlamak",
+  "sorun": "'cord' fiili odunu kord ölçüsüyle istiflemek demektir; 'bağlamak' ögesi hem karşılıkta hem exTr'de fazladan.",
+  "oneri": "f. (odunu) istiflemek; exTr'den 'bağlayıp/bağlardı' ögesini çıkarın.",
+  "sev": "süpheli",
+  "paket": "k5-p02.json"
+ },
+ {
+  "e": "opponent",
+  "alan": "ex",
+  "mevcut": "the opponent counsel's arguments",
+  "sorun": "'opponent' sıfat olarak modern İngilizcede kullanılmaz (arkaik); hukuk dilinde doğal ifade 'opposing counsel'dır, örnek bozuk/doğal olmayan kullanım içeriyor.",
+  "oneri": "'s. karşıt, muhalif' anlamını kaldır ya da örneği sıfat kullanımı gerektirmeyen doğal bir cümleyle değiştir.",
+  "sev": "hata",
+  "paket": "k5-p03.json"
+ },
+ {
+  "e": "stand-up",
+  "alan": "tr",
+  "mevcut": "s. (komedi) doğaçlama",
+  "sorun": "stand-up doğaçlama (improvised) demek değildir; seyirci önünde tek kişinin ayakta yaptığı komedi türünü anlatır, gösteri çoğunlukla önceden yazılıdır.",
+  "oneri": "s. tek kişilik sahne komedisiyle ilgili, stand-up (komedi)",
+  "sev": "hata",
+  "paket": "k5-p03.json"
+ },
+ {
+  "e": "realized",
+  "alan": "ex",
+  "mevcut": "benefits of the reform were only fully realized several years after",
+  "sorun": "'realize benefits' kalıbı burada 'fark edilmek'ten çok 'gerçekleşmek/elde edilmek' anlamına gelir; örnek ikinci anlamla (gerçekleştirilmiş) çakışıyor, 'anlaşılmış' anlamını net göstermiyor.",
+  "oneri": "'Anlaşılmak' anlamını netleştiren bir örnek kullan (ör. 'It was only later realized that the data had been mislabeled.').",
+  "sev": "süpheli",
+  "paket": "k5-p03.json"
+ },
+ {
+  "e": "by-product",
+  "alan": "exTr",
+  "mevcut": "Artan kamu güveni, ... yan ürünü olduğu ortaya çıktı",
+  "sorun": "Özne ilgi eki almadığı için cümle dilbilgisi açısından bozuk; 'güveni ... olduğu ortaya çıktı' kurulamaz.",
+  "oneri": "Artan kamu güveninin, şeffaflık reformlarının beklenmedik bir yan ürünü olduğu ortaya çıktı.",
+  "sev": "hata",
+  "paket": "k5-p03.json"
+ },
+ {
+  "e": "skeleton",
+  "alan": "tr",
+  "mevcut": "i. taslak, ana çatı, iskele (plan)",
+  "sorun": "'iskele' yanlış sözcük (rıhtım/yapı iskelesi anlamına gelir); kastedilen 'iskelet' olmalı.",
+  "oneri": "i. taslak, ana çatı, iskelet (plan)",
+  "sev": "hata",
+  "paket": "k5-p03.json"
+ },
+ {
+  "e": "entering",
+  "alan": "ex",
+  "mevcut": "passengers entering the country",
+  "sorun": "tr isim (girme, giriş yapma) diyor ama örnekte 'entering' sıfat-fiil (giriş yapan yolcular) olarak kullanılmış; tür uyuşmuyor.",
+  "oneri": "Adlaşmış kullanım içeren bir örnek koy (ör. 'Entering the country without a valid visa is illegal.').",
+  "sev": "hata",
+  "paket": "k5-p03.json"
+ },
+ {
+  "e": "humanities",
+  "alan": "tr",
+  "mevcut": "i. beşeri bilimler, sosyal bilimler",
+  "sorun": "humanities beşeri bilimlerdir (edebiyat, tarih, felsefe); 'sosyal bilimler' (social sciences) ayrı bir alandır, karşılık yanıltıcı.",
+  "oneri": "i. beşeri bilimler, insani bilimler",
+  "sev": "süpheli",
+  "paket": "k5-p03.json"
+ },
+ {
+  "e": "restrain",
+  "alan": "exTr",
+  "mevcut": "kalabalık stadyum girişine doğru itilirken",
+  "sorun": "'as it pushed' etken (kalabalık ileri yükleniyor) iken çeviri 'itilirken' ile edilgen yapılmış; çatı ters dönmüş.",
+  "oneri": "kalabalık stadyum girişine doğru yüklenirken/ilerlerken onu zapt etmek zorunda kaldı",
+  "sev": "hata",
+  "paket": "k5-p04.json"
+ },
+ {
+  "e": "singular",
+  "alan": "exTr",
+  "mevcut": "başka hiçbir araştırmacının nadiren eriştiği",
+  "sorun": "'hiçbir' ile 'nadiren' bir arada mantık/dilbilgisi bozukluğu yaratıyor; 'rarely matched by any other researcher' karşılanmamış.",
+  "oneri": "alandaki diğer araştırmacıların nadiren erişebildiği eşsiz bir başarıya dikkat çekti",
+  "sev": "hata",
+  "paket": "k5-p04.json"
+ },
+ {
+  "e": "teens",
+  "alan": "ex",
+  "mevcut": "most teens require at least eight hours",
+  "sorun": "Örnek 'teens' kelimesini kişi anlamında (gençler/ergenler) kullanıyor; tr yalnız 'gençlik yılları' ve '13-19 arası sayılar' anlamlarını veriyor.",
+  "oneri": "tr'ye 'gençler, ergenler' anlamı eklensin ya da örnek 'in their teens' kalıbıyla yeniden kurulsun.",
+  "sev": "hata",
+  "paket": "k5-p04.json"
+ },
+ {
+  "e": "singing",
+  "alan": "ex",
+  "mevcut": "praised the young performer's singing voice",
+  "sorun": "'singing voice' = şarkı/şan sesi (isim-fiil kullanımı); 'ahenkli, tatlı (ses)' sıfat anlamını göstermiyor, exTr de 'ahenkli sesini' diyerek kaymış.",
+  "oneri": "'Ahenkli' anlamını gerçekten gösteren örnek kullanılmalı (ör. she read the poem in a soft, singing tone) ya da bu anlam kaldırılmalı.",
+  "sev": "hata",
+  "paket": "k5-p04.json"
+ },
+ {
+  "e": "absorption",
+  "alan": "exTr",
+  "mevcut": "vücudun vitamini emiliminin",
+  "sorun": "Ad tamlaması bozuk: 'vitamini' belirtme ekiyle tamlamanın içinde kalmış, dilbilgisel olarak yanlış.",
+  "oneri": "vücudun vitamin emiliminin (ya da: vitaminin vücuttaki emiliminin) yaşla birlikte ne kadar hızlı değiştiğini ölçtü",
+  "sev": "hata",
+  "paket": "k5-p04.json"
+ },
+ {
+  "e": "dump",
+  "alan": "ex",
+  "mevcut": "allowing waste to dump directly into the river",
+  "sorun": "'dump' geçişli fiil; 'waste' öznesiyle geçişsiz kullanımı doğal olmayan İngilizce (edilgen gerekirdi).",
+  "oneri": "fined the company for dumping waste directly into the river (ya da: allowing waste to be dumped directly into the river)",
+  "sev": "hata",
+  "paket": "k5-p04.json"
+ },
+ {
+  "e": "straight",
+  "alan": "exTr",
+  "mevcut": "tarlanın karşısına düz bir çizgi işaretledi",
+  "sorun": "'across the field' (tarlayı boydan boya) 'tarlanın karşısına' diye çevrilmiş; anlam kayması.",
+  "oneri": "tarla boyunca / tarlayı boydan boya kesen düz bir çizgi işaretledi",
+  "sev": "hata",
+  "paket": "k5-p04.json"
+ },
+ {
+  "e": "premise",
+  "alan": "tr",
+  "mevcut": "f. varsaymak, öne sürmek",
+  "sorun": "Örnekteki kullanım 'premise (an argument) on' = (bir savı) -e dayandırmak; tr'deki karşılıklar bu kullanımı tam karşılamıyor (exTr 'dayandırdı' diyor).",
+  "oneri": "f. (bir savı) -e dayandırmak; öncül olarak öne sürmek, varsaymak",
+  "sev": "süpheli",
+  "paket": "k5-p04.json"
+ },
+ {
+  "e": "promptly",
+  "alan": "tr",
+  "mevcut": "hemen, dakikinde",
+  "sorun": "'dakikinde' yazımı yanlış; doğrusu 'dakikasında'.",
+  "oneri": "z. hemen, dakikasında",
+  "sev": "hata",
+  "paket": "k5-p04.json"
+ },
+ {
+  "e": "daydream",
+  "alan": "exTr",
+  "mevcut": "öğretmenin adını seslendiğini",
+  "sorun": "'seslenmek' nesne almaz; 'adını seslenmek' anlatım bozukluğudur.",
+  "oneri": "'ders sırasında öğretmenin kendisine adıyla seslendiğini neredeyse fark etmedi'",
+  "sev": "süpheli",
+  "paket": "k5-p05.json"
+ },
+ {
+  "e": "herbal",
+  "alan": "tr",
+  "mevcut": "i. bitkisel ilaç/çay",
+  "sorun": "Sözlüklerde isim olarak 'herbal' yalnızca 'bitkileri ve tıbbi kullanımlarını anlatan kitap' demektir; 'bitkisel çay/ilaç' isim anlamı yoktur ve örnekteki 'a soothing herbal' bu yüzden doğal olmayan İngilizcedir.",
+  "oneri": "Bu anlamı kaldırın ya da 'i. bitki kitabı' yapıp örneği ona göre yeniden kurun (mevcut örnekte 'a soothing herbal tea' denmeliydi).",
+  "sev": "hata",
+  "paket": "k5-p05.json"
+ },
+ {
+  "e": "imperial",
+  "alan": "ex",
+  "mevcut": "in imperial units such as pints and ounces",
+  "sorun": "tr isim ('i. imparatorluk ölçü birimi') diyor ama örnekte 'imperial', 'units' kelimesini niteleyen sıfat olarak kullanılıyor.",
+  "oneri": "Anlamı 's. İngiliz ölçü sistemine ait' yapın ya da örneği isim kullanımına çevirin: 'The carpenter still gives all his measurements in imperial, not metric.'",
+  "sev": "hata",
+  "paket": "k5-p05.json"
+ },
+ {
+  "e": "stupid",
+  "alan": "ex",
+  "mevcut": "only a stupid would ignore",
+  "sorun": "'a stupid' tekil isim kullanımı standart İngilizcede doğal değildir; 'stupid' isim olarak hemen yalnız hitapta ('Hey, stupid!') geçer.",
+  "oneri": "Örneği hitap kullanımıyla kurun ('Hey, stupid, can't you read the warning sign?') ya da bu isim anlamını kaldırın.",
+  "sev": "hata",
+  "paket": "k5-p05.json"
+ },
+ {
+  "e": "handed-down",
+  "alan": "tr",
+  "mevcut": "kalıtsal",
+  "sorun": "'kalıtsal' ırsi/genetik geçişi çağrıştırır; handed-down bunun yerine 'kuşaktan kuşağa aktarılan' demektir.",
+  "oneri": "'s. nesilden nesile aktarılan, miras kalan'",
+  "sev": "süpheli",
+  "paket": "k5-p05.json"
+ },
+ {
+  "e": "formulate",
+  "alan": "exTr",
+  "mevcut": "oluşturabilmeden önce",
+  "sorun": "'oluşturabilmeden önce' dilbilgisine aykırı bir yapıdır (-abil eki '-meden önce' ile bu biçimde kullanılamaz).",
+  "oneri": "'Bilim insanları, salgınla ilgili doğru bir hipotez oluşturabilmek için güvenilir verilere ihtiyaç duyar.'",
+  "sev": "hata",
+  "paket": "k5-p05.json"
+ },
+ {
+  "e": "x-ray",
+  "alan": "exTr",
+  "mevcut": "çenesini röntgenle çekmeye",
+  "sorun": "Türkçede 'bir şeyi röntgenle çekmek' denmez; doğru kalıp 'röntgenini çekmek'tir.",
+  "oneri": "'hastanın çenesinin röntgenini çekmeye karar verdi'",
+  "sev": "hata",
+  "paket": "k5-p05.json"
+ },
+ {
+  "e": "sexual",
+  "alan": "exTr",
+  "mevcut": "cinsel üreme",
+  "sorun": "Biyoloji terimi olarak 'sexual reproduction' Türkçede 'eşeyli üreme'dir; 'cinsel üreme' terim çevirisi olarak yanlıştır.",
+  "oneri": "'...hem bitkilerde hem de hayvanlarda eşeyli üremeyi ayrıntılı biçimde ele aldı.'",
+  "sev": "süpheli",
+  "paket": "k5-p05.json"
+ },
+ {
+  "e": "mad",
+  "alan": "exTr",
+  "mevcut": "bu hırslı teoriyi",
+  "sorun": "'ambitious theory' karşılığı olarak 'hırslı' yanlış eşdizim; hırslı kişiler için kullanılır, teori için 'iddialı' denir.",
+  "oneri": "bu iddialı teoriyi",
+  "sev": "süpheli",
+  "paket": "k5-p06.json"
+ },
+ {
+  "e": "short-lived",
+  "alan": "exTr",
+  "mevcut": "başarısı ... kısa ömürlü olduğunu kanıtladı",
+  "sorun": "'proved short-lived' = 'kısa ömürlü çıktı' demektir; 'kanıtladı' kalıp çevirisi, başarı bir şeyi kanıtlamış gibi bozuk bir cümle kuruyor.",
+  "oneri": "Şirketin erken başarısının, rakipler pazara girince kısa ömürlü olduğu ortaya çıktı.",
+  "sev": "süpheli",
+  "paket": "k5-p06.json"
+ },
+ {
+  "e": "syllable",
+  "alan": "exTr",
+  "mevcut": "her heceyi alkışlayarak çalıştı",
+  "sorun": "'clapping out' ritim için el çırpmaktır; 'alkışlamak' beğeni bildirir, anlam kayması var.",
+  "oneri": "her hecede el çırparak çalıştı",
+  "sev": "süpheli",
+  "paket": "k5-p06.json"
+ },
+ {
+  "e": "licence",
+  "alan": "ex",
+  "mevcut": "agreed to licence three new companies",
+  "sorun": "İngiliz İngilizcesinde fiil 'license' diye yazılır; 'licence' isim biçimidir, fiil olarak kullanımı yazım hatası sayılır.",
+  "oneri": "agreed to license three new companies",
+  "sev": "süpheli",
+  "paket": "k5-p06.json"
+ },
+ {
+  "e": "arguably",
+  "alan": "tr",
+  "mevcut": "tartışmasız denilebilir ki",
+  "sorun": "arguably 'savunulabilir ki, belki de' demektir; 'tartışmasız' kesinlik bildirerek anlamı tersine çevirir, ifade kendi içinde çelişkili.",
+  "oneri": "z. denilebilir ki, savunulabilir biçimde; belki de",
+  "sev": "süpheli",
+  "paket": "k5-p06.json"
+ },
+ {
+  "e": "arguably",
+  "alan": "exTr",
+  "mevcut": "tartışmasız en önemli atılımıdır",
+  "sorun": "'arguably the most significant' kesinlik değil savunulabilirlik bildirir; 'tartışmasız' anlamı abartıyor.",
+  "oneri": "belki de en önemli atılımıdır / en önemli atılımı olduğu söylenebilir",
+  "sev": "süpheli",
+  "paket": "k5-p06.json"
+ },
+ {
+  "e": "arrest",
+  "alan": "exTr",
+  "mevcut": "şüphelinin dramatik bir tutuklamasını gerçekleştirdi",
+  "sorun": "İyelik yanlış: tutuklanan şüpheli olduğu için 'tutuklanması' gerekir; mevcut hâliyle dilbilgisi bozuk.",
+  "oneri": "haftalarca süren gözetimin ardından şüpheliyi çarpıcı bir operasyonla tutukladı",
+  "sev": "hata",
+  "paket": "k5-p06.json"
+ },
+ {
+  "e": "traveller",
+  "alan": "exTr",
+  "mevcut": "hafif paketlenmesini önerir",
+  "sorun": "'packing light' (bavulu az eşyayla, hafif toplamak) 'hafif paketlenmesini önerir' diye çevrilmiş; öznesi belirsiz, dilbilgisi ve anlam bozuk.",
+  "oneri": "Her deneyimli gezgin, uzun bir uluslararası uçuştan önce bavulu hafif toplamayı önerir.",
+  "sev": "hata",
+  "paket": "k5-p07.json"
+ },
+ {
+  "e": "turn-up",
+  "alan": "exTr",
+  "mevcut": "yüzlerce destekçi ... için ortaya çıktı",
+  "sorun": "Buradaki 'turned up' bir etkinliğe gelmek/katılmak demek; kişiler için 'ortaya çıktı' Türkçede doğal değil, anlam kayması var.",
+  "oneri": "Şiddetli yağmura rağmen, yüzlerce destekçi yine de hayır maratonuna geldi.",
+  "sev": "hata",
+  "paket": "k5-p07.json"
+ },
+ {
+  "e": "dive",
+  "alan": "exTr",
+  "mevcut": "adi bir barda son buldular",
+  "sorun": "'ended up in' ifadesi 'son buldular' diye çevrilmiş; 'son bulmak' sona ermek demektir, kişilerin bir yere varması anlamını vermez.",
+  "oneri": "Gece yarısına kadar ucuz bira içerek kendilerini liman yakınındaki köhne bir barda buldular.",
+  "sev": "hata",
+  "paket": "k5-p07.json"
+ },
+ {
+  "e": "dare",
+  "alan": "exTr",
+  "mevcut": "nihai bir meydan okuma",
+  "sorun": "'the ultimate dare' burada 'en büyük meydan okuma' demek; 'nihai' (sonuncu) sözcüğü anlam kayması yaratıyor.",
+  "oneri": "...genç maceraperestler arasında en büyük meydan okuma olarak görülüyordu.",
+  "sev": "süpheli",
+  "paket": "k5-p07.json"
+ },
+ {
+  "e": "anticipated",
+  "alan": "ex",
+  "mevcut": "The long-anticipated sequel",
+  "sorun": "Hedef kelime örnekte yalnız 'long-anticipated' bileşiği içinde geçiyor; tek başına 'anticipated' kullanımı yok.",
+  "oneri": "Örnek, kelimenin tek başına geçtiği bir cümleyle değiştirilebilir: 'The anticipated rise in fuel prices worried commuters.'",
+  "sev": "süpheli",
+  "paket": "k5-p07.json"
+ },
+ {
+  "e": "abortion",
+  "alan": "tr",
+  "mevcut": "kürtaj; (bitkin/başarısız) girişim",
+  "sorun": "'Bitkin girişim' diye bir anlam yok; abortion'ın yan anlamı 'başarısız/yarıda kalmış girişim'dir (abortive attempt), 'bitkin' (yorgun) yanlış sözcük.",
+  "oneri": "i. kürtaj; başarısız/yarıda kalmış girişim",
+  "sev": "hata",
+  "paket": "k5-p08.json"
+ },
+ {
+  "e": "congruent",
+  "alan": "tr",
+  "mevcut": "uyumlu, örtüşen, eşdeğer",
+  "sorun": "Örnek geometri kullanımı; congruent'ın geometrideki Türkçe terimi 'eş'tir, 'eşdeğer' (equivalent) farklı bir kavramdır.",
+  "oneri": "s. uyumlu, örtüşen; (geometri) eş",
+  "sev": "süpheli",
+  "paket": "k5-p08.json"
+ },
+ {
+  "e": "congruent",
+  "alan": "exTr",
+  "mevcut": "eşdeğer oldukları kanıtlandı",
+  "sorun": "'Congruent triangles' Türkçede 'eş üçgenler'dir; 'eşdeğer' yanlış matematik terimi.",
+  "oneri": "İki üçgenin karşılık gelen kenarları eşit uzunlukta olduğundan, eş oldukları kanıtlandı.",
+  "sev": "hata",
+  "paket": "k5-p08.json"
+ },
+ {
+  "e": "ivory",
+  "alan": "exTr",
+  "mevcut": "Oymalar, ... fildişinden yapılmıştı",
+  "sorun": "İngilizce özne tekil (the carving), çeviride çoğul (oymalar) olmuş.",
+  "oneri": "Oyma eser, tüccarların uzak bölgelerden getirdiği fildişinden yapılmıştı.",
+  "sev": "hata",
+  "paket": "k5-p08.json"
+ },
+ {
+  "e": "matter-of-fact",
+  "alan": "tr",
+  "mevcut": "sıradan, olduğu gibi anlatan, duygusuz-nesnel (üslup)",
+  "sorun": "'Sıradan' (ordinary) matter-of-fact'in karşılığı değil; sözcük 'duygusuz-nesnel, kuru, olgusal' demektir.",
+  "oneri": "s. duygusuz-nesnel, kuru, olduğu gibi anlatan (üslup)",
+  "sev": "süpheli",
+  "paket": "k5-p08.json"
+ },
+ {
+  "e": "matter-of-fact",
+  "alan": "exTr",
+  "mevcut": "sakin ve sıradan bir üslupla",
+  "sorun": "'Matter-of-fact tone' için 'sıradan üslup' anlam kayması; 'duygusallıktan uzak, olgusal' kastediliyor.",
+  "oneri": "sakin, duygusallıktan uzak ve olgusal bir üslupla",
+  "sev": "süpheli",
+  "paket": "k5-p08.json"
+ },
+ {
+  "e": "pipe",
+  "alan": "exTr",
+  "mevcut": "gürültücü öğrencilerden sesini kesmelerini istedi",
+  "sorun": "Sayı uyumsuzluğu: çoğul özne ve '-melerini' ekiyle 'seslerini' olmalı.",
+  "oneri": "gürültücü öğrencilerden seslerini kesmelerini istedi",
+  "sev": "süpheli",
+  "paket": "k5-p08.json"
+ },
+ {
+  "e": "swift",
+  "alan": "exTr",
+  "mevcut": "böcekleri havada yakalayarak süzüldü",
+  "sorun": "'Darted' ani ve hızlı hareket bildirir; 'süzülmek' (yavaşça kaymak) anlam kayması yaratıyor.",
+  "oneri": "Bir ebabil, böcekleri havada yakalayarak akşam gökyüzünde ok gibi hızla geçti.",
+  "sev": "süpheli",
+  "paket": "k5-p08.json"
+ },
+ {
+  "e": "in-box",
+  "alan": "exTr",
+  "mevcut": "onlarca okunmamış mesaj bulduğunu fark etti",
+  "sorun": "'Found' için 'bulduğunu fark etti' fazladan yüklem ekliyor; anlatım bozuk.",
+  "oneri": "Tatilden sonra gelen kutusunda kendisini bekleyen onlarca okunmamış mesaj buldu.",
+  "sev": "süpheli",
+  "paket": "k5-p08.json"
+ },
+ {
+  "e": "make-peace",
+  "alan": "ex",
+  "mevcut": "the office's quiet make-peace",
+  "sorun": "'make-peace' arkaik/çok nadir bir sözcük; günümüz İngilizcesinde bu bağlamda 'peacemaker' kullanılır, modern ofis örneği doğal durmuyor.",
+  "oneri": "Kaydı insan gözden geçirsin; örnek arkaik kullanıma uygun bir bağlama alınmalı ya da kelime 'peacemaker' ile değerlendirilmeli.",
+  "sev": "süpheli",
+  "paket": "k5-p09.json"
+ },
+ {
+  "e": "riches",
+  "alan": "exTr",
+  "mevcut": "anlatılmamış doğal zenginlikler",
+  "sorun": "'untold' burada 'hesapsız, sayısız' demektir; 'anlatılmamış' yanlış birebir çeviridir.",
+  "oneri": "...adanın hesapsız doğal zenginlikler sunmasını umuyordu.",
+  "sev": "hata",
+  "paket": "k5-p09.json"
+ },
+ {
+  "e": "shook",
+  "alan": "tr",
+  "mevcut": "i. sökülü fıçı tahtaları",
+  "sorun": "Bu isim anlamı sözlükte var ama son derece nadir; YDS bağlamında 'shook' neredeyse her zaman 'shake' fiilinin geçmiş zamanıdır.",
+  "oneri": "Kayıt 'shake fiilinin geçmiş hali (salladı, sarstı)' olarak ele alınmalı; insan baksın.",
+  "sev": "süpheli",
+  "paket": "k5-p09.json"
+ },
+ {
+  "e": "bankrupt",
+  "alan": "exTr",
+  "mevcut": "iflas etmiş ilan edildi",
+  "sorun": "'iflas etmiş ilan edildi' Türkçede bozuk bir kalıp (declared bankrupt'ın birebir çevirisi).",
+  "oneri": "...kurtulamayınca şirketin iflası ilan edildi / iflas ettiği ilan edildi.",
+  "sev": "süpheli",
+  "paket": "k5-p09.json"
+ },
+ {
+  "e": "keeper",
+  "alan": "exTr",
+  "mevcut": "yeni gelen filleri bakmak için",
+  "sorun": "'bakmak' fiili -e hâli ister; 'filleri bakmak' dilbilgisi hatasıdır.",
+  "oneri": "yeni gelen fillere bakmak için",
+  "sev": "hata",
+  "paket": "k5-p09.json"
+ },
+ {
+  "e": "ladder",
+  "alan": "exTr",
+  "mevcut": "taytı kaçmaya başladı",
+  "sorun": "'tights' külotlu çoraptır; 'tayt' (leggings) kaçmaz, çeviride anlam kayması var.",
+  "oneri": "külotlu çorabı kaçmaya başladı",
+  "sev": "süpheli",
+  "paket": "k5-p09.json"
+ },
+ {
+  "e": "misinformation",
+  "alan": "tr",
+  "mevcut": "yanlış bilgi, dezenformasyon",
+  "sorun": "'Dezenformasyon' kasıtlı yanıltma (disinformation) demektir; misinformation kasıt içermeyen yanlış bilgidir.",
+  "oneri": "i. yanlış bilgi, asılsız bilgi",
+  "sev": "süpheli",
+  "paket": "k5-p09.json"
+ },
+ {
+  "e": "rape",
+  "alan": "ex",
+  "mevcut": "a slow rape of the rainforest",
+  "sorun": "tr fiil (yağmalamak) diyor ama örnekte 'rape' isim olarak kullanılmış.",
+  "oneri": "tr 'i. yağmalama, tahrip (mecazi)' yapılmalı ya da örnek fiil kullanımıyla yeniden yazılmalı.",
+  "sev": "hata",
+  "paket": "k5-p09.json"
+ },
+ {
+  "e": "witch",
+  "alan": "tr",
+  "mevcut": "f. büyülemek, büyü yapmak",
+  "sorun": "'witch' fiili modern İngilizcede arkaik/yöresel kaldığından örnekteki 'could witch anyone' doğal değil; standart karşılık 'bewitch'.",
+  "oneri": "Fiil anlamını kaldır ya da örneği 'could bewitch anyone who crossed her path' biçiminde 'bewitch' ile kur.",
+  "sev": "süpheli",
+  "paket": "k5-p10.json"
+ },
+ {
+  "e": "boys-and-girls",
+  "alan": "tr",
+  "mevcut": "i. (halk dilinde) bir yabani çiçek türü",
+  "sorun": "'boys-and-girls' standart sözlüklerde bulunmuyor; yalnız yerel folklor kaynaklarında geçen belirsiz bir bitki adı.",
+  "oneri": "Kaydı listeden çıkar ya da kaynağını insan denetimiyle doğrula.",
+  "sev": "süpheli",
+  "paket": "k5-p10.json"
+ },
+ {
+  "e": "turtle",
+  "alan": "tr",
+  "mevcut": "f. alabora olmak, ters dönmek",
+  "sorun": "'turtle' tek başına fiil olarak çok nadir; standart deyim 'turn turtle' olduğundan 'began to turtle' doğal durmuyor.",
+  "oneri": "Örneği 'The small sailing boat turned turtle after being hit...' yap ya da fiil anlamını kaldır.",
+  "sev": "süpheli",
+  "paket": "k5-p10.json"
+ },
+ {
+  "e": "chemist",
+  "alan": "ex",
+  "mevcut": "stopped at the local chemist ... before the pharmacy closed",
+  "sorun": "Örnekte 'the local chemist' dükkânı (eczane) kastediyor, tr ise kişiyi ('eczacı') veriyor; aynı dükkânın cümle sonunda 'the pharmacy' diye anılması da tutarsız tekrar oluşturuyor.",
+  "oneri": "tr'yi 'i. eczane, eczacı (İngiliz İng.)' yap ve cümleyi '...to pick up a prescription before it closed for the evening' olarak düzelt.",
+  "sev": "süpheli",
+  "paket": "k5-p10.json"
+ },
+ {
+  "e": "descendent",
+  "alan": "exTr",
+  "mevcut": "orijinal kaptanın doğrudan bir torununu görüştü",
+  "sorun": "'Görüşmek' bu anlamda '-i' nesnesi almaz ('torununu görüştü' bozuk); ayrıca 'the wreck' (batık) 'geminin batışı', 'original captain' de 'orijinal kaptan' diye aksayarak çevrilmiş.",
+  "oneri": "'Araştırmacılar, batık hakkında bilgi edinmek için geminin ilk kaptanının doğrudan soyundan gelen biriyle görüştü.'",
+  "sev": "hata",
+  "paket": "k5-p10.json"
+ },
+ {
+  "e": "graphic",
+  "alan": "ex",
+  "mevcut": "a graphic illustration showing how blood circulates",
+  "sorun": "Ders kitabındaki 'graphic illustration' somut çizim/görsel anlamına kayıyor; tr'deki 'çarpıcı, canlı (anlatım)' anlamını net göstermiyor.",
+  "oneri": "Anlatım canlılığını gösteren bir örnek kullan: 'The report gave a graphic account of the disaster.'",
+  "sev": "süpheli",
+  "paket": "k5-p10.json"
+ },
+ {
+  "e": "long-legs",
+  "alan": "tr",
+  "mevcut": "i. uzunbacak (bir bataklık kuşu türü)",
+  "sorun": "İngilizcede 'long-legs' yaygın olarak 'daddy long-legs' (tipula sineği/örümcek) için kullanılır; bataklık kuşu adı olarak standart sözlüklerde yer almıyor.",
+  "oneri": "Kuş anlamı için 'stilt' kullan ya da kaydı insan denetimine bırak.",
+  "sev": "süpheli",
+  "paket": "k5-p10.json"
+ },
+ {
+  "e": "split-up",
+  "alan": "tr",
+  "mevcut": "f. ayrılmak; dağılmak — ex: decided to split-up",
+  "sorun": "Sözlüklerde tireli 'split-up' isimdir (ayrılma, dağılma); fiil tiresiz 'split up' yazılır, örnekteki 'to split-up' standart dışı.",
+  "oneri": "Kaydı 'i. ayrılma, dağılma' yapıp örneği isimle kurmak ya da örnekte tiresiz 'split up' kullanmak.",
+  "sev": "süpheli",
+  "paket": "k5-p11.json"
+ },
+ {
+  "e": "appoint",
+  "alan": "ex",
+  "mevcut": "The architects chose to appoint the lobby with antique furniture",
+  "sorun": "'Donatmak' anlamı neredeyse yalnız edilgen/sıfat halinde kullanılır (well-appointed); etken kullanım doğal değil.",
+  "oneri": "The lobby was elegantly appointed with antique furniture and soft, ambient lighting.",
+  "sev": "süpheli",
+  "paket": "k5-p11.json"
+ },
+ {
+  "e": "assimilation",
+  "alan": "tr",
+  "mevcut": "i. emilim (sindirim sonrası besin emilimi)",
+  "sorun": "Fizyolojide assimilation özümleme/özümsemedir (emilen besinin dokularca kullanılması); emilim = absorption, örnek de emilimi anlatıyor.",
+  "oneri": "'i. özümseme, özümleme (biyoloji)' deyip örneği özümlemeye göre kurmak.",
+  "sev": "süpheli",
+  "paket": "k5-p11.json"
+ },
+ {
+  "e": "contributor",
+  "alan": "tr",
+  "mevcut": "i. katkıda bulunan kişi; bağışçı",
+  "sorun": "Örnekte contributor cansız bir etken (hava kirliliği); tr yalnız kişi anlamını veriyor, tür uyuşmuyor.",
+  "oneri": "tr'yi 'katkıda bulunan kişi/etken; bağışçı' yapmak ya da örneği kişiyle kurmak.",
+  "sev": "hata",
+  "paket": "k5-p11.json"
+ },
+ {
+  "e": "precursor",
+  "alan": "tr",
+  "mevcut": "i. öncü; habercisi",
+  "sorun": "'habercisi' iyelik ekli kalmış; yalın sözlük karşılığı 'haberci' olmalı.",
+  "oneri": "i. öncü; haberci",
+  "sev": "süpheli",
+  "paket": "k5-p11.json"
+ },
+ {
+  "e": "respectable",
+  "alan": "tr",
+  "mevcut": "s. saygın; saygıdeğer — ex: a respectable amount of money",
+  "sorun": "Örnekteki 'respectable amount' = 'hatırı sayılır, kayda değer' anlamı; tr'de bu anlam yok, exTr da 'saygın denebilecek miktar' diye zorlanmış.",
+  "oneri": "tr'ye 'hatırı sayılır, kayda değer (miktar)' eklemek ve exTr'yi 'hatırı sayılır bir miktar para topladı' yapmak.",
+  "sev": "hata",
+  "paket": "k5-p11.json"
+ },
+ {
+  "e": "torpedo",
+  "alan": "exTr",
+  "mevcut": "torpille vurmayı pratik yaptı",
+  "sorun": "'Bir şeyi pratik yapmak' bozuk; 'pratik/talim yapmak' bu şekilde nesne almaz.",
+  "oneri": "...hareket eden bir hedefi torpille isabetli vurma talimi yaptı.",
+  "sev": "süpheli",
+  "paket": "k5-p11.json"
+ },
+ {
+  "e": "barbecue",
+  "alan": "ex",
+  "mevcut": "to barbecue fresh vegetables and grilled chicken",
+  "sorun": "'Barbecue grilled chicken' mantıksız: zaten ızgara edilmiş tavuk mangalda pişirilmez.",
+  "oneri": "...to barbecue fresh vegetables and chicken.",
+  "sev": "süpheli",
+  "paket": "k5-p11.json"
+ },
+ {
+  "e": "lure",
+  "alan": "tr",
+  "mevcut": "i. yapay yem, olta takımı (balıkçılıkta)",
+  "sorun": "'Olta takımı' (tackle) lure'un anlamı değil; lure yalnız yapay yem/kaşıktır.",
+  "oneri": "i. yapay yem (balıkçılıkta)",
+  "sev": "hata",
+  "paket": "k5-p11.json"
+ },
+ {
+  "e": "sway",
+  "alan": "exTr",
+  "mevcut": "On yıllarca boyunca siyasi parti...",
+  "sorun": "'On yıllarca boyunca' dilbilgisi bozuk.",
+  "oneri": "Onlarca yıl boyunca siyasi parti, bölgesel parlamentoda alınan kararlar üzerinde büyük bir etkiye sahipti.",
+  "sev": "hata",
+  "paket": "k5-p11.json"
+ },
+ {
+  "e": "fantasy",
+  "alan": "tr",
+  "mevcut": "i. hayal, fantezi; f. hayal kurmak",
+  "sorun": "'Fantasy' modern İngilizcede fiil değildir (fiil: fantasize); f. etiketi yanlış.",
+  "oneri": "i. hayal, fantezi",
+  "sev": "hata",
+  "paket": "k5-p11.json"
+ },
+ {
+  "e": "receiver",
+  "alan": "ex",
+  "mevcut": "the most suitable receiver on the waiting list",
+  "sorun": "Organ naklinde standart terim 'recipient'; 'receiver' bu bağlamda doğal değil.",
+  "oneri": "Örneği mektup/paket alıcısı ya da radyo alıcısı bağlamıyla kurmak.",
+  "sev": "süpheli",
+  "paket": "k5-p11.json"
+ },
+ {
+  "e": "scarcely",
+  "alan": "exTr",
+  "mevcut": "zorlu kışı halkını geçindirmeye hemen hemen hiç yetecek kadar kaynak yoktu",
+  "sorun": "Dilbilgisi bozuk (çift belirtme: 'kışı halkını') ve anlam ters: 'scarcely enough' zar zor yetecek kadar vardı demek, çeviri 'yoktu' diyor.",
+  "oneri": "Uzak köyde, halkı zorlu kış boyunca geçindirmeye zar zor yetecek kadar kaynak vardı.",
+  "sev": "hata",
+  "paket": "k5-p11.json"
+ },
+ {
+  "e": "face-lift",
+  "alan": "ex",
+  "mevcut": "Cosmetic surgeons often face-lift patients",
+  "sorun": "Cerrahi anlamda 'face-lift' fiil olarak kullanılmaz; 'perform a face-lift on' denir.",
+  "oneri": "Cosmetic surgeons often perform face-lifts on patients who hope to reduce visible signs of aging.",
+  "sev": "süpheli",
+  "paket": "k5-p11.json"
+ },
+ {
+  "e": "alexander",
+  "alan": "ex",
+  "mevcut": "gather wild alexander along the coastline",
+  "sorun": "Kereviz benzeri bitkinin İngilizce adı tekil kullanımda da 'alexanders' biçimindedir; 'wild alexander' doğal olmayan bir kullanımdır.",
+  "oneri": "Örnekte 'alexanders' biçimini kullanmak: 'Foragers sometimes gather wild alexanders along the coastline...'",
+  "sev": "süpheli",
+  "paket": "k5-p12.json"
+ },
+ {
+  "e": "butter",
+  "alan": "tr",
+  "mevcut": "f. (birine) yağ çekmek, pohpohlamak",
+  "sorun": "'Yağ çekmek' anlamı yalın 'butter' fiilinin değil 'butter up' kalıbının anlamıdır; etikette kalıp belirtilmemiş.",
+  "oneri": "f. (butter up) yağ çekmek, pohpohlamak",
+  "sev": "süpheli",
+  "paket": "k5-p12.json"
+ },
+ {
+  "e": "sore",
+  "alan": "tr",
+  "mevcut": "i. yara, sızı (deride)",
+  "sorun": "İsim olarak 'sore' derideki ağrılı yara/lezyon demektir; 'sızı' (ağrı hissi) bu isim için sözlüklerde bulunan bir karşılık değildir.",
+  "oneri": "i. yara, ağrılı yer (deride)",
+  "sev": "süpheli",
+  "paket": "k5-p12.json"
+ },
+ {
+  "e": "advert",
+  "alan": "exTr",
+  "mevcut": "dersin başında gündeme gelen etik sorulara",
+  "sorun": "'Raised earlier in the lecture' dersin daha önceki bölümünü anlatır; 'dersin başında' özgün metinde olmayan bir kesinlik ekliyor.",
+  "oneri": "Profesör, kapanış konuşmasında dersin daha önceki bölümünde gündeme gelen etik sorulara kısaca değindi.",
+  "sev": "süpheli",
+  "paket": "k6-p01.json"
+ },
+ {
+  "e": "canvas",
+  "alan": "ex",
+  "mevcut": "Volunteers canvased the neighborhood",
+  "sorun": "Bu fiilin standart yazımı 'canvass', geçmiş zamanı 'canvassed'tır; 'canvased' ancak nadir bir varyant olarak geçer.",
+  "oneri": "Örnekte 'canvassed' yazımını kullanmak (fiil anlamı için madde başını 'canvass' olarak doğrulamak da düşünülebilir).",
+  "sev": "süpheli",
+  "paket": "k6-p01.json"
+ },
+ {
+  "e": "cooler",
+  "alan": "exTr",
+  "mevcut": "güne plajda geçirmek üzere gitmeden önce",
+  "sorun": "Dilbilgisi bozuk: 'günü ... geçirmek' olmalı; mevcut haliyle cümle kurulmuyor.",
+  "oneri": "Aileler, günü plajda geçirmek üzere yola çıkmadan önce büyük bir soğutucu kutuyu içecek ve atıştırmalıklarla doldurdu.",
+  "sev": "hata",
+  "paket": "k6-p01.json"
+ },
+ {
+  "e": "crave",
+  "alan": "exTr",
+  "mevcut": "alışılmadık yiyecek kombinasyonlarının canını çeker",
+  "sorun": "'Canı çekmek' deyimi 'birinin canı bir şeyi çeker' biçiminde kurulur; mevcut cümle dilbilgisel olarak bozuk.",
+  "oneri": "Hamile kadınların gebeliğin ilk aylarında bazen canı alışılmadık yiyecek kombinasyonları çeker.",
+  "sev": "hata",
+  "paket": "k6-p01.json"
+ },
+ {
+  "e": "virgin",
+  "alan": "exTr",
+  "mevcut": "tanrıça hiç evlenmemiş ebedi bir bakire olarak tapılırdı",
+  "sorun": "'Tapmak' -e hâli ister; edilgen kuruluşta 'tanrıçaya ... tapılırdı' olmalı, mevcut cümle dilbilgisel olarak bozuk.",
+  "oneri": "Antik mitte tanrıçaya, hiç evlenmemiş ebedi bir bakire olarak tapılırdı.",
+  "sev": "hata",
+  "paket": "k6-p01.json"
+ },
+ {
+  "e": "anthropologist",
+  "alan": "exTr",
+  "mevcut": "geleneksel geleneklerini incelemek",
+  "sorun": "'Geleneksel gelenekler' gereksiz yineleme; 'traditional customs' için bozuk bir karşılık.",
+  "oneri": "Antropolog, geleneksel âdetlerini incelemek için iki yılını kabilenin arasında yaşayarak geçirdi.",
+  "sev": "hata",
+  "paket": "k6-p01.json"
+ },
+ {
+  "e": "horse-drawn",
+  "alan": "tr",
+  "mevcut": "atlı, at arabası ile çekilen",
+  "sorun": "'Horse-drawn' atla çekilen demektir; 'at arabası ile çekilen' yanlış, çünkü çeken at arabası değil attır.",
+  "oneri": "s. atla çekilen, at koşulu",
+  "sev": "hata",
+  "paket": "k6-p01.json"
+ },
+ {
+  "e": "call-out",
+  "alan": "tr",
+  "mevcut": "i. meydan okuma, düelloya davet",
+  "sorun": "'Call-out' ismi sözlüklerde bu anlamda yer almaz; düelloya çağırma 'call out' fiiliyle anlatılır, isim kullanımı yapay duruyor.",
+  "oneri": "Bu anlam yerine sözlüklerde bulunan 'i. (tamirci/acil ekip için) servis çağrısı, göreve çağrılma' anlamını uygun bir örnekle kullanmak.",
+  "sev": "süpheli",
+  "paket": "k6-p01.json"
+ },
+ {
+  "e": "metric",
+  "alan": "tr",
+  "mevcut": "i. vezin, ölçü (şiirde)",
+  "sorun": "Tür uyuşmazlığı: örnekte 'metric pattern' sıfat kullanımı; şiirdeki vezin için isim 'meter/metre'dir, 'metric' tek başına bu anlamda isim olarak kullanılmaz.",
+  "oneri": "Anlamı 's. vezinle ilgili (şiir)' yapmak ya da örneği gerçek bir isim kullanımıyla yeniden kurmak.",
+  "sev": "hata",
+  "paket": "k6-p01.json"
+ },
+ {
+  "e": "over-the-top",
+  "alan": "exTr",
+  "mevcut": "abartılı bularak, aksi takdirde etkileyici olan konuyu gölgede bıraktığını söyledi",
+  "sorun": "'Otherwise compelling' = 'aslında/bunun dışında etkileyici'; 'aksi takdirde' koşul anlamı katıp çeviriyi bozuyor, ayrıca 'gölgede bıraktığını' yükleminin öznesi belirsiz kalıyor.",
+  "oneri": "Eleştirmenler, filmin özel efektlerinin abartılı olduğunu ve aslında etkileyici olan hikâyeyi gölgede bıraktığını söyledi.",
+  "sev": "hata",
+  "paket": "k6-p01.json"
+ },
+ {
+  "e": "rip",
+  "alan": "exTr",
+  "mevcut": "Keskin bir çivi, o tahta çiti aşarken",
+  "sorun": "'O' zamiri 'o tahta çit' diye okunup özneyi belirsizleştiriyor; cümle çivinin çiti aştığı gibi anlaşılabiliyor.",
+  "oneri": "O, tahta çitin üzerinden atlarken keskin bir çivi ceketini yırttı.",
+  "sev": "süpheli",
+  "paket": "k6-p01.json"
+ },
+ {
+  "e": "about-face",
+  "alan": "tr",
+  "mevcut": "tam tur dönüş",
+  "sorun": "About-face 180 derecelik geriye dönüştür; 'tam tur dönüş' 360 dereceyi, yani başlangıç yönüne dönmeyi anlatır.",
+  "oneri": "i. geriye dönüş (180 derece), ani fikir değişikliği; f. tam tersine dönmek",
+  "sev": "hata",
+  "paket": "k6-p02.json"
+ },
+ {
+  "e": "detective",
+  "alan": "tr",
+  "mevcut": "dedektif, komiser",
+  "sorun": "'Komiser' bir polis rütbesidir (inspector düzeyi); detective kelimesinin sözlük karşılığı değildir.",
+  "oneri": "i. dedektif, hafiye, sivil polis",
+  "sev": "süpheli",
+  "paket": "k6-p02.json"
+ },
+ {
+  "e": "deterrent",
+  "alan": "exTr",
+  "mevcut": "Ağır cezalar, ... hizmet etmesi amaçlanır.",
+  "sorun": "Özne-yüklem uyumsuzluğu: 'Ağır cezalar ... hizmet etmesi amaçlanır' dilbilgisi açısından bozuk bir cümle.",
+  "oneri": "Ağır cezaların, tekrar suç işleyenlere karşı caydırıcı bir unsur olarak hizmet etmesi amaçlanır.",
+  "sev": "hata",
+  "paket": "k6-p02.json"
+ },
+ {
+  "e": "duck",
+  "alan": "exTr",
+  "mevcut": "Alçak kapı eşiğine kafasını çarpmamak",
+  "sorun": "'Eşik' kapının alt kısmıdır; alçak bir kapıda baş üst kısma çarpılır, çeviride anlam kayması var.",
+  "oneri": "Alçak kapıdan geçerken başını çarpmamak için hızlıca eğilmek zorunda kaldı.",
+  "sev": "süpheli",
+  "paket": "k6-p02.json"
+ },
+ {
+  "e": "start-off",
+  "alan": "ex",
+  "mevcut": "A strong start-off gave the young cyclist...",
+  "sorun": "'Start-off' isim olarak standart sözlüklerde neredeyse hiç yer almaz; doğal İngilizcede 'a strong start' denir.",
+  "oneri": "Örneği 'A strong start gave...' biçiminde doğal bir kullanımla yeniden kurmak ya da kelimeyi kaynakla doğrulamak.",
+  "sev": "süpheli",
+  "paket": "k6-p02.json"
+ },
+ {
+  "e": "distasteful",
+  "alan": "exTr",
+  "mevcut": "çarpıcı reklamı",
+  "sorun": "'Graphic' burada 'rahatsız edici ölçüde açık/ayrıntılı' demektir; 'çarpıcı' olumlu çağrışımla anlamı kaydırıyor.",
+  "oneri": "Birçok izleyici, rahatsız edici ölçüde açık görüntüler içeren reklamı nahoş buldu ve kanaldan onu derhal kaldırmasını talep etti.",
+  "sev": "süpheli",
+  "paket": "k6-p02.json"
+ },
+ {
+  "e": "storyteller",
+  "alan": "exTr",
+  "mevcut": "yalancı davrandığını",
+  "sorun": "'Yalancı davranmak' dilbilgisel olarak bozuk bir kalıptır; sıfat + davranmak 'gibi' ister ya da fiil değişmeli.",
+  "oneri": "Öğretmen, çocuğa kayıp ödevi konusunda masal anlattığını (yalan söylediğini) nazikçe söyledi.",
+  "sev": "süpheli",
+  "paket": "k6-p02.json"
+ },
+ {
+  "e": "no-hit",
+  "alan": "tr",
+  "mevcut": "(beyzbol) isabetsiz",
+  "sorun": "'İsabetsiz' Türkçede hedefi tutturamayan demektir; no-hit ise atıcının rakibe hiç vuruş (hit) yaptırmaması, yani bir başarıdır.",
+  "oneri": "s. (beyzbol) hiç vuruş yaptırmayan, rakibin hiç vuruş yapamadığı (maç)",
+  "sev": "hata",
+  "paket": "k6-p03.json"
+ },
+ {
+  "e": "no-hit",
+  "alan": "exTr",
+  "mevcut": "isabetsiz bir maç çıkararak",
+  "sorun": "'İsabetsiz maç' atıcının kötü atış yaptığı izlenimini verir; oysa cümlede rakibe hiç vuruş yaptırmaması övülüyor.",
+  "oneri": "rakibine hiç vuruş yaptırmadığı ender görülen bir maç çıkararak",
+  "sev": "hata",
+  "paket": "k6-p03.json"
+ },
+ {
+  "e": "high-five",
+  "alan": "tr",
+  "mevcut": "i. çakışma",
+  "sorun": "'Çakışma' Türkçede örtüşme/aynı ana denk gelme demektir; high-five karşılığı 'beşlik çakma'dır.",
+  "oneri": "i. beşlik çakma (el ile kutlama hareketi)",
+  "sev": "hata",
+  "paket": "k6-p03.json"
+ },
+ {
+  "e": "high-five",
+  "alan": "exTr",
+  "mevcut": "coşkulu bir çakışma yaptı",
+  "sorun": "'Çakışma yapmak' Türkçede anlamsız; doğru kalıp 'beşlik çakmak'.",
+  "oneri": "birbirleriyle coşkuyla beşlik çaktı",
+  "sev": "hata",
+  "paket": "k6-p03.json"
+ },
+ {
+  "e": "sure-enough",
+  "alan": "exTr",
+  "mevcut": "Herkesin şaşkınlığına rağmen",
+  "sorun": "'To everyone's surprise' herkesi şaşırtacak şekilde demektir; 'rağmen' ile çevrilince anlam tersine dönüyor.",
+  "oneri": "Herkesi şaşırtacak şekilde, eski efsanenin sonunda gerçek bir hazine haritası olduğu ortaya çıktı.",
+  "sev": "hata",
+  "paket": "k6-p03.json"
+ },
+ {
+  "e": "sure-enough",
+  "alan": "ex",
+  "mevcut": "the old legend turned out to be a ... treasure map",
+  "sorun": "Bir efsane (anlatı) haritaya dönüşemez; cümlenin iç mantığı bozuk.",
+  "oneri": "To everyone's surprise, the faded parchment turned out to be a sure-enough treasure map after all.",
+  "sev": "süpheli",
+  "paket": "k6-p03.json"
+ },
+ {
+  "e": "right-hand",
+  "alan": "ex",
+  "mevcut": "the manager's right-hand employee",
+  "sorun": "Kalıp 'right-hand man/woman' biçiminde kullanılır; 'right-hand employee' doğal değil.",
+  "oneri": "became the manager's right-hand man within just a few months of joining the firm",
+  "sev": "süpheli",
+  "paket": "k6-p03.json"
+ },
+ {
+  "e": "right-side-out",
+  "alan": "exTr",
+  "mevcut": "katlamadan önce ... çevirdi",
+  "sorun": "'and placing it in the drawer' bölümü çeviride atlanmış.",
+  "oneri": "Kazağı düzgünce katlayıp çekmeceye yerleştirmeden önce doğru tarafı dışarıda olacak biçimde çevirdi.",
+  "sev": "süpheli",
+  "paket": "k6-p03.json"
+ },
+ {
+  "e": "buy-out",
+  "alan": "ex",
+  "mevcut": "decided to buy-out the struggling startup",
+  "sorun": "Fiil iki kelime 'buy out' yazılır; tireli 'buy-out' isim biçimidir.",
+  "oneri": "decided to buy out the struggling startup",
+  "sev": "süpheli",
+  "paket": "k6-p03.json"
+ },
+ {
+  "e": "provincial",
+  "alan": "exTr",
+  "mevcut": "ilk romanlarını ... yoksun olduğunu savunarak",
+  "sorun": "Ara cümlenin öznesi eksik kalmış (dilbilgisi bozuk); ayrıca eser için 'dar görüşlü' yerine 'taşra işi' daha uygun.",
+  "oneri": "ilk romanlarını, daha geniş bir uluslararası çekicilikten yoksun oldukları gerekçesiyle, taşra işi olarak nitelendirdi",
+  "sev": "süpheli",
+  "paket": "k6-p03.json"
+ },
+ {
+  "e": "used-car",
+  "alan": "tr",
+  "mevcut": "i. ikinci el araba",
+  "sorun": "Tireli 'used-car' niteleyici (sıfat) kullanımdır ve örnekte de sıfat olarak geçiyor; 'i.' tür etiketi örnekle uyuşmuyor.",
+  "oneri": "s. ikinci el araba (ile ilgili); used-car dealership = ikinci el araba galerisi",
+  "sev": "süpheli",
+  "paket": "k6-p03.json"
+ },
+ {
+  "e": "come-at-able",
+  "alan": "exTr",
+  "mevcut": "derin karın altında gömdükten sonra",
+  "sorun": "'Gömmek' yönelme durumu ister: 'altına gömmek'; 'altında gömmek' dilbilgisine aykırı.",
+  "oneri": "Fırtına dağ patikasını derin karın altına gömdükten sonra",
+  "sev": "süpheli",
+  "paket": "k6-p03.json"
+ },
+ {
+  "e": "lighter",
+  "alan": "ex",
+  "mevcut": "any lighter found in hand luggage ... inside a sealed cargo hold",
+  "sorun": "El bagajı kargo bölmesine gitmez; cümlenin gerekçesi kendi içinde çelişiyor (gerçekte çakmak kısıtı kargoya verilen bagaj içindir).",
+  "oneri": "Airport security officers routinely confiscate any lighter found in checked baggage, since the fuel it contains may ignite inside a sealed cargo hold.",
+  "sev": "süpheli",
+  "paket": "k6-p03.json"
+ },
+ {
+  "e": "turn-off",
+  "alan": "ex",
+  "mevcut": "remember to turn-off all the lights",
+  "sorun": "Fiil kullanımında tireli 'turn-off' yazımı yanlış; fiil iki kelime ayrı yazılır ('turn off'), tireli biçim isimdir.",
+  "oneri": "Please remember to turn off all the lights before leaving the laboratory at the end of the day.",
+  "sev": "hata",
+  "paket": "k6-p04.json"
+ },
+ {
+  "e": "honesty",
+  "alan": "exTr",
+  "mevcut": "dürüstlük ve şeffaf ilişkilerinin on yıllarına dayanıyordu",
+  "sorun": "'Decades of honesty and transparent dealings' çevirisi bozuk; 'ilişkilerinin on yıllarına dayanmak' Türkçede kurulamayan bir yapı.",
+  "oneri": "Şirketin itibarı, müşterileriyle onlarca yıl süren dürüst ve şeffaf ilişkilere dayanıyordu.",
+  "sev": "hata",
+  "paket": "k6-p04.json"
+ },
+ {
+  "e": "automotive",
+  "alan": "exTr",
+  "mevcut": "Şirketler ... otomotiv sektörüne büyük yatırımlar yaptı",
+  "sorun": "Özne ters çevrilmiş: özgün cümlede yatırımı yapan otomotiv sektörünün kendisi, çeviride ise şirketler sektöre yatırım yapıyor.",
+  "oneri": "Otomotiv sektörü, daha güvenli ve daha verimli elektrikli motorlar geliştirmeye büyük yatırımlar yaptı.",
+  "sev": "hata",
+  "paket": "k6-p04.json"
+ },
+ {
+  "e": "captivity",
+  "alan": "exTr",
+  "mevcut": "aylarca esaret altında geçirdikten sonra rehabilite edilmiş kartalı",
+  "sorun": "'geçirdikten' nesnesiz kalmış ve öznesi uzmanlara bağlanıyor; esarette aylar geçiren kartal olmalı.",
+  "oneri": "Doğa koruma uzmanları, rehabilite edilen kartalı esarette geçen ayların ardından tekrar doğaya saldı.",
+  "sev": "hata",
+  "paket": "k6-p04.json"
+ },
+ {
+  "e": "arch",
+  "alan": "exTr",
+  "mevcut": "muzip bir gülümseme verdi",
+  "sorun": "'Gülümseme vermek' Türkçede bulunmayan bir eşdizim; 'gave a smile' kalıbının birebir çevirisi.",
+  "oneri": "...açıklamadan önce muzipçe gülümsedi.",
+  "sev": "süpheli",
+  "paket": "k6-p04.json"
+ },
+ {
+  "e": "someday",
+  "alan": "exTr",
+  "mevcut": "araştırmalarının gün gelir hastalığa bir tedavi bulmasına yol açacağını",
+  "sorun": "Yan cümle içine çekimli 'gün gelir' yerleştirilmiş (doğrusu 'gün gelip' ya da 'bir gün'); 'tedavi bulmasına yol açmak' yapısı da bozuk.",
+  "oneri": "araştırmalarının bir gün hastalığa tedavi bulunmasını sağlayacağını umuyor",
+  "sev": "süpheli",
+  "paket": "k6-p04.json"
+ },
+ {
+  "e": "polyglot",
+  "alan": "exTr",
+  "mevcut": "yürütebildiği için çok dil bilen biri olarak tanınıyor",
+  "sorun": "Cümle yapısı ters çevrilmiş ve özgün cümlede olmayan 'tanınıyor' yargısı eklenmiş; özgün cümle yeteneği bildirir, ünü değil.",
+  "oneri": "Çok dil bilen biri olarak beş farklı dilde akıcı biçimde iş toplantıları yürütebiliyor.",
+  "sev": "süpheli",
+  "paket": "k6-p04.json"
+ },
+ {
+  "e": "film-make",
+  "alan": "ex",
+  "mevcut": "began film-making with a small documentary crew",
+  "sorun": "tr fiil ('film yapmak') diyor ama örnekte fiil çekimli geçmiyor; yalnız 'film-making' isim-fiili var ve 'film-make' yalın fiil olarak İngilizcede doğal değil.",
+  "oneri": "After years working as an editor, she finally began making films with a small documentary crew.",
+  "sev": "süpheli",
+  "paket": "k6-p04.json"
+ },
+ {
+  "e": "gangster",
+  "alan": "exTr",
+  "mevcut": "birkaç ünlü gangster",
+  "sorun": "'Notorious' olumsuz çağrışımlıdır (adı kötüye çıkmış); 'ünlü' bu çağrışımı yitiriyor.",
+  "oneri": "birkaç kötü şöhretli gangster",
+  "sev": "süpheli",
+  "paket": "k6-p04.json"
+ },
+ {
+  "e": "no-account",
+  "alan": "exTr",
+  "mevcut": "değersiz bir serseri olarak görmezden geldi",
+  "sorun": "'Dismissed him as' karşılığı 'olarak görmezden gelmek' Türkçede kurulmayan bir yapı; anlam 'yok sayma'ya kayıyor.",
+  "oneri": "onu değersiz bir serseri sayıp ciddiye almadı",
+  "sev": "süpheli",
+  "paket": "k6-p04.json"
+ },
+ {
+  "e": "toast",
+  "alan": "exTr",
+  "mevcut": "çifte içten bir şerefe sundu",
+  "sorun": "'bir şerefe sunmak' Türkçede kurulmayan bir yapı; 'offered a heartfelt toast' kadeh kaldırıp konuşma yapmak demektir.",
+  "oneri": "çiftin şerefine içten bir kadeh kaldırdı",
+  "sev": "süpheli",
+  "paket": "k6-p05.json"
+ },
+ {
+  "e": "turn-away",
+  "alan": "ex",
+  "mevcut": "staff had to turn-away dozens",
+  "sorun": "Fiil tireli yazılmaz; 'turn away' ayrı yazılır, tireli biçim isim/sıfattır (tr'deki 'f.' etiketiyle örnekteki tireli fiil kullanımı bu yüzden bozuk).",
+  "oneri": "staff had to turn away dozens of eager fans",
+  "sev": "hata",
+  "paket": "k6-p05.json"
+ },
+ {
+  "e": "church-state",
+  "alan": "tr",
+  "mevcut": "i. din devleti, teokratik devlet",
+  "sorun": "church-state yaygın kullanımda 'kilise ile devlet (ilişkilerine ait)' sıfatıdır; 'din devleti' karşılığı sözlüklerde zayıf ve örnekteki 'church-state structures' kilise-devlet ilişkisi düzeni olarak da okunur.",
+  "oneri": "s. kilise-devlet (ilişkileriyle ilgili) — ya da örnek 'din devleti' anlamını netleştirecek biçimde değiştirilmeli",
+  "sev": "süpheli",
+  "paket": "k6-p05.json"
+ },
+ {
+  "e": "ditch",
+  "alan": "exTr",
+  "mevcut": "Şiddetli yağmur, ... dar hendeği su bastı",
+  "sorun": "Çift özneli kuruluş ('yağmur ... su bastı') dilbilgisel olarak bozuk.",
+  "oneri": "Şiddetli yağmur yüzünden kır yolunun kenarındaki dar hendeği gece boyunca su bastı.",
+  "sev": "hata",
+  "paket": "k6-p05.json"
+ },
+ {
+  "e": "nickname",
+  "alan": "exTr",
+  "mevcut": "her zaman ayrıntılı cevaplara hazır olduğu için",
+  "sorun": "'had detailed answers ready' (cevapları hazırdı) 'cevaplara hazır olmak' diye çevrilmiş; anlam kaymış.",
+  "oneri": "derste ayrıntılı cevapları her zaman hazır olduğu için",
+  "sev": "süpheli",
+  "paket": "k6-p05.json"
+ },
+ {
+  "e": "reconcile",
+  "alan": "tr",
+  "mevcut": "f. barıştırmak, uzlaştırmak",
+  "sorun": "Örnek geçişsiz kullanım içeriyor ('the two brothers to reconcile' = barışmak) ama tr yalnız geçişli karşılık veriyor.",
+  "oneri": "f. barışmak, barıştırmak; uzlaşmak, uzlaştırmak",
+  "sev": "süpheli",
+  "paket": "k6-p05.json"
+ },
+ {
+  "e": "walk-to",
+  "alan": "ex",
+  "mevcut": "within walk-to distance of downtown",
+  "sorun": "'within walk-to distance' doğal İngilizce değil; kalıp 'within walking distance'tır, walk-to sıfatı doğrudan isimden önce kullanılır.",
+  "oneri": "They deliberately chose a walk-to apartment near downtown restaurants and public transportation.",
+  "sev": "süpheli",
+  "paket": "k6-p05.json"
+ },
+ {
+  "e": "fall-off",
+  "alan": "ex",
+  "mevcut": "Sales began to fall-off significantly",
+  "sorun": "Tireli 'fall-off' isimdir (düşüş); fiil 'fall off' ayrı yazılır, örnekteki tireli fiil kullanımı yanlış (tr'deki 'f.' etiketi de bu yüzden uyumsuz).",
+  "oneri": "Sales began to fall off significantly — ya da anlam 'i. düşüş, azalma' yapılıp örnek isim kullanımıyla kurulmalı",
+  "sev": "hata",
+  "paket": "k6-p05.json"
+ },
+ {
+  "e": "step-down",
+  "alan": "exTr",
+  "mevcut": "ani ve sert bir kesinti yerine",
+  "sorun": "Faiz bağlamında 'cut' indirim demektir; 'kesinti' Türkçede kesilme/kısıntı anlamına geldiğinden anlam kayması var.",
+  "oneri": "ani ve sert tek bir indirim yerine",
+  "sev": "süpheli",
+  "paket": "k6-p06.json"
+ },
+ {
+  "e": "bouquet",
+  "alan": "exTr",
+  "mevcut": "kiraz ve meşe ipuçları fark ederek",
+  "sorun": "Tat/koku için 'hints' Türkçede 'ipucu' değil 'nota/esinti' ile karşılanır; ayrıca 'ipuçları fark ederek' ifadesinde belirtme eki eksik.",
+  "oneri": "kiraz ve meşe notaları sezerek",
+  "sev": "süpheli",
+  "paket": "k6-p06.json"
+ },
+ {
+  "e": "city-born",
+  "alan": "tr",
+  "mevcut": "s. şehirde doğup büyümüş",
+  "sorun": "city-born yalnızca 'şehirde doğmuş' demektir; 'büyümüş' sözcükte olmayan bir anlam ekliyor (aynı ekleme exTr'de de var).",
+  "oneri": "s. şehir doğumlu, şehirde doğmuş",
+  "sev": "süpheli",
+  "paket": "k6-p06.json"
+ },
+ {
+  "e": "green-white",
+  "alan": "exTr",
+  "mevcut": "bu rakımda nadiren görülen bitkinin ... çiçeklerini",
+  "sorun": "'rarely seen at this altitude' çiçekleri nitelerken çeviride bitkiye bağlanmış (anlam kayması).",
+  "oneri": "bitkinin bu rakımda nadiren görülen sıra dışı yeşilimsi beyaz çiçeklerini not etti",
+  "sev": "süpheli",
+  "paket": "k6-p06.json"
+ },
+ {
+  "e": "half-term",
+  "alan": "tr",
+  "mevcut": "i. yarıyıl tatili (kısa ara tatil)",
+  "sorun": "half-term dönemin ortasındaki kısa tatildir; 'yarıyıl tatili' Türkçede iki dönem arasındaki sömestr tatilini çağrıştırır.",
+  "oneri": "i. dönem ortası ara tatili (İngiltere'de)",
+  "sev": "süpheli",
+  "paket": "k6-p06.json"
+ },
+ {
+  "e": "imagery",
+  "alan": "tr",
+  "mevcut": "i. imgelem, betimleme; görüntüler",
+  "sorun": "'imgelem' Türkçede hayal gücü (imagination) demektir; imagery karşılığı 'imgeler'dir ve exTr'deki 'şairin canlı imgelemi' de bu yüzden hayal gücü gibi okunuyor.",
+  "oneri": "i. imgeler, betimleme(ler); exTr'de 'Şairin canlı imgeleri'",
+  "sev": "süpheli",
+  "paket": "k6-p06.json"
+ },
+ {
+  "e": "investigator",
+  "alan": "exTr",
+  "mevcut": "başsoruşturmacı aylarca kanıt toplamakla geçirdi",
+  "sorun": "'geçirmek' nesnesiz kullanılmış, cümle dilbilgisel olarak bozuk.",
+  "oneri": "başsoruşturmacı aylarını kanıt toplamakla geçirdi (ya da: aylarca kanıt topladı)",
+  "sev": "hata",
+  "paket": "k6-p06.json"
+ },
+ {
+  "e": "newcomer",
+  "alan": "exTr",
+  "mevcut": "girişim ... yeni gelen biri olarak görülüyordu",
+  "sorun": "'biri' kişi bildirir; şirket olan 'girişim' için uygun düşmüyor.",
+  "oneri": "sektöre yeni girmiş bir şirket / sektörün yeni oyuncusu olarak görülüyordu",
+  "sev": "süpheli",
+  "paket": "k6-p06.json"
+ },
+ {
+  "e": "vicious",
+  "alan": "ex",
+  "mevcut": "a vicious cycle of poverty",
+  "sorun": "Örnek 'azılı/gaddar' anlamını değil 'vicious cycle' kalıbını kullanıyor; kalıbın Türkçesi 'kısır döngü' olduğundan exTr'deki 'azılı bir yoksulluk döngüsü' de yanlış.",
+  "oneri": "Örneği 'vicious attack/dog' gibi bir kullanımla değiştirin ya da exTr'yi 'bir yoksulluk kısır döngüsünü' yapın.",
+  "sev": "hata",
+  "paket": "k6-p06.json"
+ },
+ {
+  "e": "air-cool",
+  "alan": "ex",
+  "mevcut": "designed the engine to air-cool itself",
+  "sorun": "Dönüşlü 'air-cool itself' doğal olmayan bir kullanım; fiil normalde 'to air-cool the engine' / 'air-cooled engine' biçiminde geçişli kullanılır.",
+  "oneri": "Engineers designed the engine to be air-cooled efficiently even during long periods of heavy use.",
+  "sev": "süpheli",
+  "paket": "k6-p06.json"
+ },
+ {
+  "e": "amusing",
+  "alan": "exTr",
+  "mevcut": "eğlenceli anekdotlar sık sık paylaşırdı",
+  "sorun": "Belirtisiz nesne ile yüklem arasına 'sık sık' girince cümle bozuluyor.",
+  "oneri": "saha çalışmasından eğlenceli anekdotları sık sık paylaşırdı (ya da: sık sık eğlenceli anekdotlar paylaşırdı)",
+  "sev": "süpheli",
+  "paket": "k6-p07.json"
+ },
+ {
+  "e": "cut-price",
+  "alan": "exTr",
+  "mevcut": "binlerce bütçe bilinçli gezgini",
+  "sorun": "'bütçe bilinçli' Türkçede olmayan bir kalıp; kaynakta da yalnız 'budget travelers' deniyor.",
+  "oneri": "binlerce düşük bütçeli gezgini",
+  "sev": "süpheli",
+  "paket": "k6-p07.json"
+ },
+ {
+  "e": "die-hard",
+  "alan": "exTr",
+  "mevcut": "Binlerce köklü taraftar",
+  "sorun": "'köklü taraftar' yanlış eşdizim; die-hard supporter 'fanatik/sıkı taraftar' demek.",
+  "oneri": "Binlerce fanatik taraftar",
+  "sev": "süpheli",
+  "paket": "k6-p07.json"
+ },
+ {
+  "e": "embarrassment",
+  "alan": "exTr",
+  "mevcut": "Stajyer, ... üzerine bir utanç dalgası çöktü",
+  "sorun": "Özne uyumsuz: 'Stajyer' yalın hâlde askıda kalıyor, yüklemin öznesi 'utanç dalgası'.",
+  "oneri": "Müşteriye yanlış isimle hitap eden stajyerin üzerine bir utanç dalgası çöktü.",
+  "sev": "süpheli",
+  "paket": "k6-p07.json"
+ },
+ {
+  "e": "live-and-die",
+  "alan": "tr",
+  "mevcut": "hassas ot (dikenli bir çalı türü)",
+  "sorun": "'hassas ot' sözlüklerde yerleşik bir bitki adı değil; örnekteki bitki (dokununca yaprak kapatan) küstüm otu.",
+  "oneri": "küstüm otu (Mimosa pudica)",
+  "sev": "süpheli",
+  "paket": "k6-p07.json"
+ },
+ {
+  "e": "nineteenth",
+  "alan": "exTr",
+  "mevcut": "dönem olarak işaretliyor",
+  "sorun": "'mark as' burada 'saymak/nitelemek' demek; 'işaretlemek' anlamı bozan birebir çeviri.",
+  "oneri": "sanayi kentlerinin en hızlı genişlediği dönem olarak kabul eder",
+  "sev": "süpheli",
+  "paket": "k6-p07.json"
+ },
+ {
+  "e": "sold-out",
+  "alan": "exTr",
+  "mevcut": "Tükenmiş bilet konseri",
+  "sorun": "Tamlama bozuk; 'sold-out concert' biletleri tükenen konser demek.",
+  "oneri": "Biletleri tükenen konser binlerce hayranı biletsiz bırakınca organizatörler ikinci bir tarih ekledi.",
+  "sev": "hata",
+  "paket": "k6-p07.json"
+ },
+ {
+  "e": "spend-all",
+  "alan": "exTr",
+  "mevcut": "umutsuz bir savurgan olarak tanımlardı sık sık",
+  "sorun": "'hopeless' burada 'iflah olmaz' demek; ayrıca 'tanımlardı sık sık' devrik, yazı diline aykırı.",
+  "oneri": "iflah olmaz bir savurgan olarak sık sık tanımlardı",
+  "sev": "süpheli",
+  "paket": "k6-p07.json"
+ },
+ {
+  "e": "trump",
+  "alan": "exTr",
+  "mevcut": "diğer üç takımdaki her kartı",
+  "sorun": "İskambilde 'suit' karşılığı 'renk'; 'takım' okuru yanıltıyor.",
+  "oneri": "diğer üç renkteki her kartı",
+  "sev": "süpheli",
+  "paket": "k6-p07.json"
+ },
+ {
+  "e": "no-trump",
+  "alan": "exTr",
+  "mevcut": "koz belirlenmeyen bir sözleşmeyi",
+  "sorun": "Briçte 'contract' karşılığı 'kontrat'; 'sözleşme' hukuk terimi gibi duruyor.",
+  "oneri": "kozsuz (sanzatu) bir kontratı",
+  "sev": "süpheli",
+  "paket": "k6-p07.json"
+ },
+ {
+  "e": "non-issue",
+  "alan": "exTr",
+  "mevcut": "otopark ücretleri, ... önemsiz bir konu olduğu ortaya çıktı",
+  "sorun": "Yan cümlenin öznesi ilgi eki almamış; 'ücretlerinin ... olduğu' gerekir.",
+  "oneri": "otopark ücretlerinin ... tamamen önemsiz bir konu olduğu ortaya çıktı",
+  "sev": "hata",
+  "paket": "k6-p07.json"
+ },
+ {
+  "e": "force-land",
+  "alan": "exTr",
+  "mevcut": "küçük uçağı ... mecburi iniş yaptırmak zorunda kaldı",
+  "sorun": "Ettirgen yapıda hâl eki yanlış: 'uçağı ... iniş yaptırmak' kurulmaz.",
+  "oneri": "küçük uçakla açık bir tarlaya mecburi iniş yapmak zorunda kaldı",
+  "sev": "süpheli",
+  "paket": "k6-p07.json"
+ },
+ {
+  "e": "house-train",
+  "alan": "exTr",
+  "mevcut": "Yeni sahiplerine, ... vermeleri öneriliyor",
+  "sorun": "'sahiplerine'deki iyelik eki yersiz; genel özneli cümlede 'sahiplere' olmalı.",
+  "oneri": "Yeni sahiplere, yavru köpeğe ilk birkaç ayında tutarlı biçimde ev eğitimi vermeleri öneriliyor.",
+  "sev": "süpheli",
+  "paket": "k6-p07.json"
+ },
+ {
+  "e": "litter",
+  "alan": "exTr",
+  "mevcut": "altı yavrudan oluşan bir batın doğurdu",
+  "sorun": "Türkçede 'batın doğurmak' denmez; kalıp 'bir batında ... yavru doğurmak'.",
+  "oneri": "geçen hafta eski ahırın arkasında bir batında altı yavru doğurdu",
+  "sev": "hata",
+  "paket": "k6-p07.json"
+ },
+ {
+  "e": "redundancy",
+  "alan": "exTr",
+  "mevcut": "aşırı tekrarlayan raporundan",
+  "sorun": "Yersiz iyelik eki: 'rapordan' olmalı; 'aşırı tekrarlayan rapor' tamlaması da bozuk.",
+  "oneri": "aşırı tekrarlarla dolu rapordan",
+  "sev": "hata",
+  "paket": "k6-p07.json"
+ },
+ {
+  "e": "unveiled",
+  "alan": "exTr",
+  "mevcut": "Açığa çıkarılan heykel",
+  "sorun": "Heykel için 'açığa çıkarmak' yanlış eşdizim; törende heykelin 'örtüsü kaldırılır'.",
+  "oneri": "Örtüsü kaldırılan heykel",
+  "sev": "süpheli",
+  "paket": "k6-p07.json"
+ },
+ {
+  "e": "thirsty",
+  "alan": "exTr",
+  "mevcut": "gezginler çaresizce susamıştı",
+  "sorun": "Pekiştirici 'desperately' tarz zarfı gibi 'çaresizce' çevrilmiş; 'çaresizce susamak' Türkçede doğal değil.",
+  "oneri": "gezginler fena hâlde susamıştı",
+  "sev": "süpheli",
+  "paket": "k6-p08.json"
+ },
+ {
+  "e": "well-meant",
+  "alan": "exTr",
+  "mevcut": "Hastayı daha da kafası karışık bıraksa da",
+  "sorun": "Yapı bozuk; 'birini kafası karışık bırakmak' + 'daha da' dizilişi dilbilgisel olarak aksıyor.",
+  "oneri": "Hastanın kafasını daha da karıştırsa da",
+  "sev": "süpheli",
+  "paket": "k6-p08.json"
+ },
+ {
+  "e": "trench",
+  "alan": "exTr",
+  "mevcut": "tarlanın karşısına dar bir hendek kazdı",
+  "sorun": "'across the field' tarlayı boydan boya geçen demek; 'tarlanın karşısına' (tarlanın karşı tarafına/önüne) anlam kayması.",
+  "oneri": "tarlayı boydan boya geçen dar bir hendek kazdı",
+  "sev": "hata",
+  "paket": "k6-p08.json"
+ },
+ {
+  "e": "betrayal",
+  "alan": "exTr",
+  "mevcut": "ortağının sırrını keşfettikten sonra",
+  "sorun": "Bağlamda 'partner' büyük olasılıkla eş/sevgili; 'ortak' iş ortağı çağrışımı verip anlamı kaydırıyor.",
+  "oneri": "partnerinin (eşinin) sırrını keşfettikten sonra",
+  "sev": "süpheli",
+  "paket": "k6-p08.json"
+ },
+ {
+  "e": "evenly",
+  "alan": "exTr",
+  "mevcut": "öğrencilerden boya kurumadan önce tuval üzerine eşit biçimde yaymalarını istedi",
+  "sorun": "'yaymak' fiilinin nesnesi ('boyayı') cümlede yok; cümle nesnesiz kalmış.",
+  "oneri": "öğrencilerden boyayı kurumadan önce tuvale eşit biçimde yaymalarını istedi",
+  "sev": "süpheli",
+  "paket": "k6-p08.json"
+ },
+ {
+  "e": "hem",
+  "alan": "exTr",
+  "mevcut": "belirsiz, taraf tutmayan cevaplar",
+  "sorun": "'noncommittal' kaçamak/bağlayıcı olmayan demek; 'taraf tutmayan' (tarafsız) yanlış karşılık.",
+  "oneri": "belirsiz, kaçamak cevaplar",
+  "sev": "hata",
+  "paket": "k6-p08.json"
+ },
+ {
+  "e": "moist",
+  "alan": "exTr",
+  "mevcut": "toprağı nemli fakat asla su birikintili bırakmamayı",
+  "sorun": "'nemli' fiilsiz kalmış (tutmayı eksik) ve 'su birikintili' doğal olmayan bir kullanım; olumsuzluk kapsamı belirsizleşiyor.",
+  "oneri": "toprağı nemli tutmayı ama asla suya doymuş hâlde bırakmamayı",
+  "sev": "süpheli",
+  "paket": "k6-p08.json"
+ },
+ {
+  "e": "red-brown",
+  "alan": "ex",
+  "mevcut": "a thick layer of red-brown that crunched underfoot",
+  "sorun": "tr 's.' (sıfat) diyor ama örnekte 'red-brown' isim gibi kullanılmış ('a layer of red-brown').",
+  "oneri": "Sıfat kullanımlı örnek: 'A thick layer of red-brown leaves covered the trail, crunching underfoot.'",
+  "sev": "süpheli",
+  "paket": "k6-p08.json"
+ },
+ {
+  "e": "top-heavy",
+  "alan": "exTr",
+  "mevcut": "dağ yolundaki keskin virajına yaklaşırken",
+  "sorun": "'yolundaki' tamlamasından sonra 'virajına' iyelik eki fazladan; dilbilgisi bozuk.",
+  "oneri": "dağ yolundaki keskin viraja yaklaşırken",
+  "sev": "hata",
+  "paket": "k6-p08.json"
+ },
+ {
+  "e": "blood-related",
+  "alan": "exTr",
+  "mevcut": "hastayı ziyaret etmesine yalnızca kan bağı olan aile üyelerine izin verildi",
+  "sorun": "Çifte yönelme ('üyelerine ... etmesine izin verildi') bozuk; özne ilgi hâlinde olmalı, kişi de çoğul.",
+  "oneri": "hastayı yalnızca kan bağı olan aile üyelerinin ziyaret etmesine izin verildi",
+  "sev": "hata",
+  "paket": "k6-p08.json"
+ },
+ {
+  "e": "clean-living",
+  "alan": "exTr",
+  "mevcut": "alkolden ve geç saatlere kadar sürenlerden uzak",
+  "sorun": "'late nights' karşılığı 'geç saatlere kadar sürenler' başsız kalmış; neyin sürdüğü belirsiz, cümle bozuk.",
+  "oneri": "alkolden ve gece hayatından (geç saatlere kadar süren eğlencelerden) uzak",
+  "sev": "hata",
+  "paket": "k6-p08.json"
+ },
+ {
+  "e": "dread",
+  "alan": "exTr",
+  "mevcut": "final sınavı dönemi konusunda korkar",
+  "sorun": "'korkmak' -den hâli ister; 'konusunda korkar' doğal değil (tr etiketi de '-den korkmak' diyor).",
+  "oneri": "final sınavı döneminden diğer her dönemden daha çok korkar",
+  "sev": "süpheli",
+  "paket": "k6-p08.json"
+ },
+ {
+  "e": "flare",
+  "alan": "exTr",
+  "mevcut": "Karaya oturmuş denizciler",
+  "sorun": "'Stranded sailors' mahsur kalmış denizciler demektir; 'karaya oturmak' gemiler için kullanılır, kişilere uygulanınca anlam kayması oluşuyor.",
+  "oneri": "Mahsur kalan denizciler",
+  "sev": "süpheli",
+  "paket": "k6-p09.json"
+ },
+ {
+  "e": "mid-off",
+  "alan": "tr",
+  "mevcut": "i. orta-uzak alan (kriket mevkii)",
+  "sorun": "Kriketteki 'off' saha tarafının adıdır, uzaklık bildirmez; mid-off atıcının yakınında off tarafındaki mevkidir, 'orta-uzak' yanıltıcı bir çeviri.",
+  "oneri": "i. (kriket) atıcının yanındaki off tarafı alan mevkii (exTr'deki 'orta-uzak mevkii' de buna göre düzeltilmeli)",
+  "sev": "süpheli",
+  "paket": "k6-p09.json"
+ },
+ {
+  "e": "sex-limited",
+  "alan": "tr",
+  "mevcut": "s. cinsiyete bağlı sınırlı",
+  "sorun": "Genetikte 'cinsiyete bağlı' sex-linked karşılığıdır; sex-limited için yerleşik terim 'cinsiyetle sınırlı'dır, mevcut ifade iki kavramı karıştırıyor.",
+  "oneri": "s. cinsiyetle sınırlı (yalnız bir cinsiyette görülen) — exTr'de de aynı düzeltme",
+  "sev": "süpheli",
+  "paket": "k6-p09.json"
+ },
+ {
+  "e": "unworthy",
+  "alan": "exTr",
+  "mevcut": "öneriyi finansmana değersiz buldu",
+  "sorun": "'Değersiz' yönelme ekiyle kullanılamaz; 'unworthy of funding' çevirisi dilbilgisel olarak bozuk.",
+  "oneri": "öneriyi finansmana layık görmedi / finanse edilmeye değer bulmadı",
+  "sev": "hata",
+  "paket": "k6-p09.json"
+ },
+ {
+  "e": "drop-dead",
+  "alan": "ex",
+  "mevcut": "drop-dead views of the entire city skyline",
+  "sorun": "tr 'z.' (zarf) diyor ama örnekte drop-dead sıfat olarak kullanılmış; zarf kullanımı 'drop-dead gorgeous' gibi bir sıfattan önce olur.",
+  "oneri": "Örneği 'offered drop-dead gorgeous views...' yap ya da tr'yi 's. nefes kesici, çarpıcı' olarak değiştir",
+  "sev": "hata",
+  "paket": "k6-p09.json"
+ },
+ {
+  "e": "wide-body",
+  "alan": "ex",
+  "mevcut": "wide-body aircraft for long-haul routes",
+  "sorun": "tr 'i. geniş gövdeli uçak' (isim) diyor ama örnekte wide-body sıfat gibi aircraft'ı niteliyor.",
+  "oneri": "tr'yi 's./i. geniş gövdeli (uçak)' yap ya da örnekte tek başına isim kullan: 'Airlines increasingly rely on wide-bodies for long-haul routes.'",
+  "sev": "süpheli",
+  "paket": "k6-p09.json"
+ },
+ {
+  "e": "devotional",
+  "alan": "exTr",
+  "mevcut": "kısa bir ibadete ilişkin metin okur",
+  "sorun": "'Bir' yanlış yerde: cümle 'kısa bir ibadet'e ilişkin metin diye okunuyor; oysa kısa olan metin ('short devotional passage').",
+  "oneri": "ibadete ilişkin kısa bir metin okur",
+  "sev": "süpheli",
+  "paket": "k6-p09.json"
+ },
+ {
+  "e": "irritant",
+  "alan": "exTr",
+  "mevcut": "yaygın bir cilt tahriş edici maddesi",
+  "sorun": "'Bir' ile birlikte '-si' iyelik eki dilbilgisel olarak bozuk.",
+  "oneri": "yaygın bir cilt tahriş edici madde",
+  "sev": "süpheli",
+  "paket": "k6-p09.json"
+ },
+ {
+  "e": "rib",
+  "alan": "exTr",
+  "mevcut": "onunla nazikçe takılır",
+  "sorun": "'Takılmak' şaka anlamında -e ekiyle kullanılır; 'onunla takılır' Türkçede 'onunla vakit geçirir' anlamına kayıyor.",
+  "oneri": "ona nazikçe takılır",
+  "sev": "hata",
+  "paket": "k6-p10.json"
+ },
+ {
+  "e": "roll-on",
+  "alan": "exTr",
+  "mevcut": "hızlıca rulosunu sürdü",
+  "sorun": "'Rulo' tek başına Türkçede deodorant anlamına gelmez; okur kağıt/saç rulosu anlar, karşılık Türkçeye 'roll-on' olarak yerleşmiştir.",
+  "oneri": "hızlıca roll-on deodorantını sürdü",
+  "sev": "süpheli",
+  "paket": "k6-p10.json"
+ },
+ {
+  "e": "six-spot",
+  "alan": "exTr",
+  "mevcut": "art arda iki kez altı benekli bir zar atması",
+  "sorun": "'Rolling a six-spot' zarın altı gelmesi demek; çeviri niteleyiciyi zarın kendisine kaydırıp 'altı benekli bir zar fırlatmak' anlamı veriyor.",
+  "oneri": "zarda art arda iki kez altı atması",
+  "sev": "hata",
+  "paket": "k6-p10.json"
+ },
+ {
+  "e": "startle",
+  "alan": "ex",
+  "mevcut": "made everyone in the living room startle",
+  "sorun": "Örnek geçişsiz 'startle' (irkilmek) kullanıyor; tr yalnız geçişli 'ürkütmek, irkiltmek' veriyor ve 'made everyone startle' kalıbı doğal değil.",
+  "oneri": "A sudden loud noise from the kitchen startled everyone in the living room.",
+  "sev": "süpheli",
+  "paket": "k6-p10.json"
+ },
+ {
+  "e": "touch-type",
+  "alan": "tr",
+  "mevcut": "f. dokunarak yazmak (klavyeye bakmadan)",
+  "sorun": "'Dokunarak yazmak' yerleşik karşılık değil; dokunmatik ekranda yazmayı çağrıştırıyor, Türkçedeki karşılık 'on parmak (bakmadan) yazmak'.",
+  "oneri": "f. on parmak yazmak (klavyeye bakmadan)",
+  "sev": "süpheli",
+  "paket": "k6-p10.json"
+ },
+ {
+  "e": "water-target",
+  "alan": "tr",
+  "mevcut": "i. su yosunu (yüzen oval yapraklı, mor çiçekli bir su bitkisi)",
+  "sorun": "Water-target su yosunu (alg) değil, çiçekli bir su bitkisidir (water shield/Brasenia); parantezdeki açıklama da 'su yosunu' ile çelişiyor.",
+  "oneri": "i. su kalkanı (Brasenia; yüzen oval yapraklı, mor çiçekli bir su bitkisi)",
+  "sev": "hata",
+  "paket": "k6-p10.json"
+ },
+ {
+  "e": "cross-section",
+  "alan": "tr",
+  "mevcut": "s. enine kesit gösteren",
+  "sorun": "Cross-section sözlüklerde isimdir (sıfatı cross-sectional); örnekte de isim tamlayan olarak geçiyor, tür etiketi 's.' yanıltıcı.",
+  "oneri": "i. enine kesit",
+  "sev": "süpheli",
+  "paket": "k6-p10.json"
+ },
+ {
+  "e": "demolished",
+  "alan": "ex",
+  "mevcut": "the demolished building ... its sudden collapse",
+  "sorun": "'Demolished' kasıtlı yıkımı ifade eder; kendiliğinden çöken bina için 'sudden collapse' ile çelişiyor.",
+  "oneri": "Engineers inspected the collapsed building to determine what had caused its sudden collapse.",
+  "sev": "süpheli",
+  "paket": "k6-p10.json"
+ },
+ {
+  "e": "inflated",
+  "alan": "exTr",
+  "mevcut": "tatil indirimden hemen önce",
+  "sorun": "Tamlama eki eksik, dilbilgisi bozuk.",
+  "oneri": "tatil indiriminden hemen önce",
+  "sev": "hata",
+  "paket": "k6-p10.json"
+ },
+ {
+  "e": "multiple-choice",
+  "alan": "exTr",
+  "mevcut": "açık uçlu denemelerden ziyade",
+  "sorun": "'Open-ended essays' sınavdaki yazılı/kompozisyon soruları; 'deneme' Türkçede deneme sınavını ya da edebi türü çağrıştırıp anlamı kaydırıyor.",
+  "oneri": "açık uçlu kompozisyon sorularından ziyade",
+  "sev": "süpheli",
+  "paket": "k6-p10.json"
+ },
+ {
+  "e": "shape-up",
+  "alan": "tr",
+  "mevcut": "i. yeniden düzenleme, toparlanma",
+  "sorun": "'shape-up' ismi sözlüklerde 'yeniden düzenleme' anlamında yok (isim olarak günlük liman işçisi seçme usulü); örnekteki 'yönetim yapısında büyük düzenleme' kullanımı 'shake-up' kelimesine ait",
+  "oneri": "kaydı 'shake-up' yapmak ya da anlamı ve örneği 'shape up' (toparlanmak, düzelmek) fiiline göre yeniden kurmak",
+  "sev": "hata",
+  "paket": "k6-p11.json"
+ },
+ {
+  "e": "tectonic",
+  "alan": "exTr",
+  "mevcut": "yer kabuğunun altında yavaşça hareket eden",
+  "sorun": "'beneath the earth's surface' (yeryüzünün altında) 'yer kabuğunun altında' diye çevrilmiş; tektonik levhalar yer kabuğunun altında değildir, kendisidir",
+  "oneri": "yeryüzünün altında yavaşça hareket eden",
+  "sev": "hata",
+  "paket": "k6-p11.json"
+ },
+ {
+  "e": "top-grade",
+  "alan": "ex",
+  "mevcut": "top-grade beef imported directly from certified organic farms nearby",
+  "sorun": "'imported' yurt dışından getirmeyi anlatır; yakındaki çiftliklerden 'ithal' edilmesi çelişkili, doğal olmayan kullanım",
+  "oneri": "'imported' yerine 'sourced': top-grade beef sourced directly from certified organic farms nearby",
+  "sev": "süpheli",
+  "paket": "k6-p11.json"
  }
 ]

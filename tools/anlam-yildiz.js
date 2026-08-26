@@ -1491,7 +1491,7 @@ window.ANLAM_YILDIZ = {
 "metal": [{tr:"i. metal, maden",yz:4}, {tr:"s. metalden yapılmış",yz:2}],
 "meter": [{tr:"i. sayaç",yz:2}, {tr:"i. metre (uzunluk birimi)",yz:4}],
 "metre": [{tr:"i. metre (uzunluk birimi)",yz:4}, {tr:"i. (şiir) vezin, ölçü",yz:1}],
-"metric": [{tr:"s. metrik; i. ölçüt, ölçüm birimi",yz:4}, {tr:"i. vezin, ölçü (şiirde)",yz:1}],
+"metric": [{tr:"s. metrik; i. ölçüt, ölçüm birimi",yz:4}, {tr:"s. vezinle ilgili (şiirde)",yz:1}],
 "might": [{tr:"f. -ebilir (olasılık)",yz:4}, {tr:"i. güç, kudret",yz:1}],
 "military": [{tr:"s. askeri",yz:4}, {tr:"i. ordu, askeri güç",yz:3}],
 "milk": [{tr:"f. sağmak",yz:2}, {tr:"i. süt",yz:4}],
