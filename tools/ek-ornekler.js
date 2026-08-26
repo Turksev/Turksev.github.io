@@ -275,8 +275,7 @@ window.EK_ORNEKLER = {
 ],
 
 "immune": [
-  {"tr":"s. bağışık, muaf","ex":"Vaccinated individuals are largely immune to the virus that caused last winter's outbreak.","exTr":"Aşılanmış bireyler, geçen kışki salgına yol açan virüse karşı büyük ölçüde bağışıktır."},
-  {"tr":"i. bağışıklık kazanmış kimse","ex":"Statisticians count the immunes separately from those who have never been exposed.","exTr":"İstatistikçiler, bağışıklık kazanmış olanları hiç maruz kalmamış olanlardan ayrı sayar."}
+  {"tr": "s. bağışık, muaf", "ex": "Vaccinated individuals are largely immune to the virus that caused last winter's outbreak.", "exTr": "Aşılanmış bireyler, geçen kışki salgına yol açan virüse karşı büyük ölçüde bağışıktır."}
 ],
 
 "extreme": [
@@ -437,8 +436,8 @@ window.EK_ORNEKLER = {
 ],
 
 "dependent": [
-  {"tr":"s. bağımlı, bağlı","ex":"Economic growth in the small nation remains heavily dependent on tourism and agricultural exports.","exTr":"Küçük ulustaki ekonomik büyüme, büyük ölçüde turizme ve tarımsal ihracata bağımlı olmaya devam ediyor."},
-  {"tr":"i. bakmakla yükümlü olunan kişi","ex":"Employees may add a spouse and up to three dependents to the health plan.","exTr":"Çalışanlar sağlık planına bir eş ve en fazla üç bakmakla yükümlü kişi ekleyebilir."}
+  {"tr": "s. bağımlı, bağlı", "ex": "Economic growth in the small nation remains heavily dependent on tourism and agricultural exports.", "exTr": "Küçük ulustaki ekonomik büyüme, büyük ölçüde turizme ve tarımsal ihracata bağımlı olmaya devam ediyor."},
+  {"tr": "i. bakmakla yükümlü olunan kişi", "ex": "Employees may add a spouse and up to three dependents to the health plan.", "exTr": "Çalışanlar, sağlık planına bir eşi ve bakmakla yükümlü oldukları en fazla üç kişiyi ekleyebilir."}
 ],
 
 "fan": [
@@ -536,8 +535,8 @@ window.EK_ORNEKLER = {
 ],
 
 "thin": [
-  {"tr":"s. ince, zayıf; seyrek","ex":"At high altitudes, the thin air makes it significantly harder for the body to absorb oxygen.","exTr":"Yüksek rakımlarda ince hava, vücudun oksijeni emmesini önemli ölçüde zorlaştırır."},
-  {"tr":"f. inceltmek, seyreltmek","ex":"Gardeners thin the seedlings so the strongest plants have room to grow.","exTr":"Bahçıvanlar, en güçlü bitkilere yer kalsın diye fideleri seyreltir."}
+  {"tr": "s. ince, zayıf; seyrek", "ex": "At high altitudes, the thin air makes it significantly harder for the body to absorb oxygen.", "exTr": "Yüksek rakımlarda seyrek hava, vücudun oksijeni emmesini önemli ölçüde zorlaştırır."},
+  {"tr": "f. inceltmek, seyreltmek", "ex": "Gardeners thin the seedlings so the strongest plants have room to grow.", "exTr": "Bahçıvanlar, en güçlü bitkilere yer kalsın diye fideleri seyreltir."}
 ],
 
 "climb": [
@@ -734,8 +733,8 @@ window.EK_ORNEKLER = {
 ],
 
 "yellow": [
-  {"tr":"s. sarı","ex":"The warning signs are printed in black on a bright yellow background.","exTr":"Uyarı işaretleri, parlak sarı zemin üzerine siyahla basılmıştır."},
-  {"tr":"f. sararmak","ex":"Old newspapers stored in the archive had turned yellow after decades of exposure to light.","exTr":"Arşivde saklanan eski gazeteler, onlarca yıl ışığa maruz kaldıktan sonra sararmıştı."}
+  {"tr": "s. sarı", "ex": "The warning signs are printed in black on a bright yellow background.", "exTr": "Uyarı işaretleri, parlak sarı zemin üzerine siyahla basılmıştır."},
+  {"tr": "f. sararmak", "ex": "Old newspapers stored in the archive had yellowed after decades of exposure to light.", "exTr": "Arşivde saklanan eski gazeteler, onlarca yıl ışığa maruz kaldıktan sonra sararmıştı."}
 ],
 
 "ageing": [
@@ -1267,5 +1266,427 @@ window.EK_ORNEKLER = {
 "root": [
   {"tr": "i. kök, köken", "ex": "Linguists traced many modern English words back to roots shared with ancient Greek and Sanskrit.", "exTr": "Dilbilimciler, birçok modern İngilizce kelimenin kökenini eski Yunanca ve Sanskritçeyle paylaşılan köklere dayandırdı."},
   {"tr": "f. kök salmak, dayanmak", "ex": "The tradition rooted itself deeply in the region's culture over many generations.", "exTr": "Bu gelenek, nesiller boyunca bölgenin kültürüne derinden kök saldı."}
+],
+
+/* --- 26.08.2026 tam anlam taramasi, parti 2 (k3+k4): 113 bulgudan
+   suzulen duzeltmeler. Silinen zayif/uydurma anlamlar: background f.,
+   blue f., gap f., horse f., immune i., mechanic s., soldier f.,
+   take-up "emilim". Gerisi ceviri/ornek/etiket duzeltmesi. --- */
+"academy": [
+  {"tr": "i. akademi, özel eğitim kurumu", "ex": "Promising young athletes are often recruited by a national sports academy before the age of fifteen.", "exTr": "Umut vadeden genç sporcular, genellikle on beş yaşından önce ulusal bir spor akademisine alınır."}
+],
+"accent": [
+  {"tr": "i. aksan, şive", "ex": "Linguists study how regional accent can reveal information about a speaker's background.", "exTr": "Dilbilimciler, bölgesel aksanın bir konuşmacının geçmişi hakkında nasıl bilgi verebileceğini inceler."},
+  {"tr": "i. vurgu", "ex": "In this word, the accent falls on the second syllable rather than the first.", "exTr": "Bu kelimede vurgu, ilk heceye değil ikinci heceye düşer."}
+],
+"adapted": [
+  {"tr": "s. uyum sağlamış, uyarlanmış", "ex": "Desert plants have evolved a remarkably adapted root system that stores water for months.", "exTr": "Çöl bitkileri, aylarca su depolayabilen dikkat çekici derecede uyum sağlamış bir kök sistemi geliştirmiştir."}
+],
+"ahead": [
+  {"tr": "z. ileride, önde; (ahead of) -den önce", "ex": "Engineers finished the bridge inspection well ahead of the scheduled deadline this month.", "exTr": "Mühendisler, köprü denetimini bu ayki planlanan son tarihten çok önce tamamladı."}
+],
+"alongside": [
+  {"tr": "e./z. yanında, yanı sıra, boyunca", "ex": "The new bike lane runs alongside the river for nearly ten kilometers.", "exTr": "Yeni bisiklet yolu, nehir boyunca neredeyse on kilometre uzanıyor."}
+],
+"am": [
+  {"tr": "z. öğleden önce (saat için: ÖÖ)", "ex": "The clinical trial's first session begins at eight am, before the hospital's morning rounds start.", "exTr": "Klinik deneyin ilk oturumu, hastanenin sabah vizitleri başlamadan önce sabah saat sekizde başlıyor."}
+],
+"arrangement": [
+  {"tr": "i. düzenleme, tertip", "ex": "The florist changed the arrangement of the flowers in the window display every morning.", "exTr": "Çiçekçi, vitrindeki çiçeklerin düzenini her sabah değiştirirdi."},
+  {"tr": "i. anlaşma", "ex": "The two companies signed a licensing arrangement that allowed them to share patented technology.", "exTr": "İki şirket, patentli teknolojiyi paylaşmalarına imkân tanıyan bir lisans anlaşması imzaladı."}
+],
+"articulate": [
+  {"tr": "f. açıkça ifade etmek", "ex": "Successful leaders can articulate complex ideas in ways that ordinary citizens easily understand.", "exTr": "Başarılı liderler, karmaşık fikirleri sıradan vatandaşların kolayca anlayabileceği biçimde ifade edebilir."},
+  {"tr": "s. ifadesi düzgün, düşüncelerini iyi anlatabilen", "ex": "The young candidate impressed voters with how articulate and confident she appeared during the debate.", "exTr": "Genç aday, tartışma sırasında ne kadar ifadesi düzgün ve özgüvenli göründüğüyle seçmenleri etkiledi."}
+],
+"artist": [
+  {"tr": "i. sanatçı", "ex": "The exhibition features paintings created by a local artist inspired by the region's coastline.", "exTr": "Sergide, bölgenin sahil şeridinden ilham alan yerel bir sanatçının yaptığı tablolar yer alıyor."}
+],
+"attraction": [
+  {"tr": "i. çekim, cazibe", "ex": "For many students, the professor's lectures held a natural attraction that formal textbooks lacked.", "exTr": "Birçok öğrenci için profesörün dersleri, ders kitaplarında bulunmayan doğal bir cazibe taşıyordu."},
+  {"tr": "i. (tourist attraction) turistik cazibe merkezi", "ex": "Every summer, the waterfall remains the region's biggest tourist attraction for visiting families.", "exTr": "Her yaz, şelale bölgeyi ziyaret eden aileler için en büyük turistik cazibe merkezi olmayı sürdürüyor."}
+],
+"axis": [
+  {"tr": "i. eksen", "ex": "The Earth rotates around its own axis once approximately every twenty-four hours.", "exTr": "Dünya, kendi ekseni etrafında yaklaşık her yirmi dört saatte bir tam tur döner."},
+  {"tr": "i. (siyasi) mihver, ittifak", "ex": "The two countries formed a powerful axis that reshaped the region's politics for a generation.", "exTr": "İki ülke, bölge siyasetini bir kuşak boyunca yeniden şekillendiren güçlü bir mihver oluşturdu."}
+],
+"background": [
+  {"tr": "i. arka plan, geçmiş, altyapı", "ex": "Employers often check a candidate's background before offering a position of financial responsibility.", "exTr": "İşverenler, mali sorumluluk gerektiren bir pozisyon teklif etmeden önce genellikle adayın geçmişini kontrol eder."}
+],
+"bats": [
+  {"tr": "s. (argo) çılgın, kaçık, deli (go bats)", "ex": "His neighbours thought he had gone completely bats when he started talking to his plants every morning.", "exTr": "Her sabah bitkileriyle konuşmaya başlayınca komşuları onun iyice kaçırdığını düşündü."}
+],
+"biologist": [
+  {"tr": "i. biyolog", "ex": "A marine biologist spent ten years studying how coral reefs recover from bleaching.", "exTr": "Bir deniz biyoloğu, mercan resiflerinin ağarmanın ardından nasıl toparlandığını incelemeye on yıl harcadı."}
+],
+"blue": [
+  {"tr": "s./i. mavi", "ex": "Marine biologists were amazed by the deep blue color of the newly discovered coral species.", "exTr": "Deniz biyologları, yeni keşfedilen mercan türünün koyu mavi renginden büyülendi."}
+],
+"bodily": [
+  {"tr": "s. bedensel", "ex": "Regular physical activity improves bodily functions such as circulation, digestion, and muscle strength.", "exTr": "Düzenli fiziksel aktivite; dolaşım, sindirim ve kas gücü gibi bedensel işlevleri geliştirir."},
+  {"tr": "z. bedenen, bütünüyle", "ex": "Firefighters carried the unconscious man bodily out of the burning building before the roof collapsed.", "exTr": "İtfaiyeciler, çatı çökmeden önce baygın adamı olduğu gibi kucaklayıp yanan binadan çıkardı."}
+],
+"bound": [
+  {"tr": "s. bağlı, mecbur, yükümlü", "ex": "The research team felt morally bound to publish their findings despite pressure from the sponsor.", "exTr": "Araştırma ekibi, sponsorun baskısına rağmen bulgularını yayımlamakla ahlaki olarak yükümlü hissetti."},
+  {"tr": "s. -e giden, yönelik", "ex": "The cargo ship, bound for Rotterdam, was delayed for several days by unusually rough seas.", "exTr": "Rotterdam'a giden kargo gemisi, alışılmadık derecede sert denizler yüzünden birkaç gün gecikti."}
+],
+"brazil": [
+  {"tr": "i. Brezilya cevizi (ağacı/meyvesi)", "ex": "She cracked open a few brazils to add to the fruitcake before baking it.", "exTr": "Fırınlamadan önce keke eklemek için birkaç Brezilya cevizi kırdı."}
+],
+"bridge": [
+  {"tr": "i. köprü", "ex": "Engineers inspected the old stone bridge to determine whether it could still support heavy traffic.", "exTr": "Mühendisler, eski taş köprünün hâlâ ağır trafiği taşıyıp taşıyamayacağını belirlemek için inceleme yaptı."},
+  {"tr": "f. köprü kurmak, bağlamak", "ex": "International conferences often bridge cultural differences by encouraging open dialogue between scientists.", "exTr": "Uluslararası konferanslar, bilim insanları arasında açık diyaloğu teşvik ederek kültürel farklılıklar arasında sıklıkla köprü kurar."}
+],
+"broken": [
+  {"tr": "s. kırık", "ex": "The moving company refused to compensate for the broken vase found inside the shipping box.", "exTr": "Nakliye şirketi, gönderi kutusunun içinde bulunan kırık vazo için tazminat ödemeyi reddetti."},
+  {"tr": "s. (dil için) bozuk, yarım yamalak", "ex": "The elderly tourist managed to communicate with locals using only broken Spanish and hand gestures.", "exTr": "Yaşlı turist, yerel halkla yalnızca bozuk bir İspanyolca ve el işaretleri kullanarak iletişim kurmayı başardı."}
+],
+"bug": [
+  {"tr": "i. (yazılımda) hata", "ex": "Developers spent the entire weekend trying to fix a critical bug in the flight-booking software.", "exTr": "Geliştiriciler, uçuş rezervasyon yazılımındaki kritik bir hatayı düzeltmeye çalışarak tüm hafta sonunu geçirdi."},
+  {"tr": "i. böcek", "ex": "A tiny bug crawled across the researcher's notebook while she recorded her observations in the field.", "exTr": "Araştırmacı arazide gözlemlerini kaydederken küçük bir böcek, defterinin üzerinde ilerledi."}
+],
+"burning": [
+  {"tr": "i. yanma, yakma", "ex": "Farmers were banned from burning crop residue after studies linked the practice to worsening air pollution.", "exTr": "Çalışmalar bu uygulamayı kötüleşen hava kirliliğiyle ilişkilendirdikten sonra çiftçilerin ekin artıklarını yakması yasaklandı."},
+  {"tr": "s. acil, can alıcı", "ex": "Reducing carbon emissions has become a burning issue among world leaders attending the summit.", "exTr": "Karbon emisyonlarını azaltmak, zirveye katılan dünya liderleri arasında can alıcı bir mesele hâline geldi."}
+],
+"causing": [
+  {"tr": "s. neden olan, yol açan", "ex": "Heavy rainfall was identified as the main factor causing severe flooding in coastal towns.", "exTr": "Şiddetli yağış, kıyı kasabalarındaki ciddi sellere yol açan başlıca etken olarak belirlendi."}
+],
+"chain": [
+  {"tr": "i. zincir", "ex": "A single broken link in the supply chain can delay production for several weeks.", "exTr": "Tedarik zincirindeki tek bir kırık halka, üretimi birkaç hafta geciktirebilir."},
+  {"tr": "f. zincirlemek", "ex": "The workers chained the fallen tree trunk to the tractor before pulling it off the road.", "exTr": "İşçiler, devrilen ağaç gövdesini yoldan çekmeden önce traktöre zincirledi."}
+],
+"chromosome": [
+  {"tr": "i. kromozom", "ex": "Each human cell normally contains an identical set of forty-six chromosomes arranged in pairs.", "exTr": "Her insan hücresi normalde, çiftler hâlinde düzenlenmiş kırk altı kromozomdan oluşan özdeş bir takım içerir."}
+],
+"clinical": [
+  {"tr": "s. klinik", "ex": "The new drug is currently undergoing clinical trials to test its safety and effectiveness.", "exTr": "Yeni ilaç, güvenliğini ve etkinliğini test etmek için şu anda klinik denemelerden geçiyor."},
+  {"tr": "s. tarafsız, duygusuz", "ex": "The doctor's clinical tone made the grieving family feel that he lacked any real empathy.", "exTr": "Doktorun duygusuz tonu, yas tutan ailede onun gerçek bir empatiden yoksun olduğu hissini uyandırdı."}
+],
+"complement": [
+  {"tr": "f. tamamlamak", "ex": "Renewable energy sources complement traditional power plants by reducing dependence on fossil fuels.", "exTr": "Yenilenebilir enerji kaynakları, fosil yakıtlara bağımlılığı azaltarak geleneksel elektrik santrallerini tamamlar."},
+  {"tr": "i. tamamlayıcı", "ex": "A good soundtrack should act as a subtle complement to the film's visual storytelling.", "exTr": "İyi bir film müziği, filmin görsel anlatımına incelikli, göze batmayan bir tamamlayıcı olmalıdır."}
+],
+"conception": [
+  {"tr": "i. anlayış, kavrayış", "ex": "The modern conception of childhood differs greatly from views held in medieval Europe.", "exTr": "Modern çocukluk anlayışı, Orta Çağ Avrupa'sındaki görüşlerden büyük ölçüde farklıdır."},
+  {"tr": "i. gebe kalma, döllenme", "ex": "Doctors explained that the conception of the twins occurred naturally without any fertility treatment.", "exTr": "Doktorlar, ikizlere gebeliğin herhangi bir kısırlık tedavisi olmadan doğal yolla gerçekleştiğini açıkladı."}
+],
+"cow": [
+  {"tr": "i. inek", "ex": "Local farmers keep dozens of dairy cows to supply milk to nearby towns.", "exTr": "Yerel çiftçiler, yakındaki kasabalara süt sağlamak için onlarca süt ineği besliyor."},
+  {"tr": "f. korkutmak, yıldırmak, sindirmek", "ex": "The dictator used fear and violence to cow the population into complete silence.", "exTr": "Diktatör, halkı sindirip tamamen susturmak için korku ve şiddet kullandı."}
+],
+"creative": [
+  {"tr": "s. yaratıcı", "ex": "Teachers encouraged creative problem-solving rather than simple memorization during the science unit.", "exTr": "Öğretmenler, fen ünitesi boyunca yalnızca ezber yerine yaratıcı problem çözmeyi teşvik etti."}
+],
+"degrade": [
+  {"tr": "f. ayrışmak, bozulmak, aşınmak", "ex": "Plastic waste can take centuries to degrade completely in marine environments.", "exTr": "Plastik atıkların deniz ortamlarında tamamen ayrışması yüzyıllar alabilir."},
+  {"tr": "f. küçük düşürmek, itibarını düşürmek", "ex": "The manager's harsh public comments seemed intended to degrade the employee in front of his colleagues.", "exTr": "Müdürün herkesin önünde yaptığı sert yorumlar, çalışanı meslektaşlarının önünde küçük düşürmeyi amaçlıyor gibiydi."}
+],
+"discharge": [
+  {"tr": "f. boşaltmak, salıvermek", "ex": "The factory was fined for illegally discharging chemical waste into the nearby river.", "exTr": "Fabrika, yakındaki nehre yasa dışı biçimde kimyasal atık boşalttığı için para cezasına çarptırıldı."},
+  {"tr": "f. taburcu etmek", "ex": "Hospitals began to discharge recovering patients earlier to free up beds during the crowded flu season.", "exTr": "Hastaneler, yoğun grip mevsiminde yatakları boşaltmak için iyileşmekte olan hastaları daha erken taburcu etmeye başladı."}
+],
+"dissolve": [
+  {"tr": "f. erimek, çözünmek", "ex": "Sugar molecules dissolve more quickly in hot water than in cold water.", "exTr": "Şeker molekülleri, sıcak suda soğuk suya kıyasla çok daha hızlı çözünür."},
+  {"tr": "f. feshetmek, dağıtmak", "ex": "Facing a prolonged political deadlock, the president decided to dissolve parliament and call new elections.", "exTr": "Uzun süreli bir siyasi çıkmazla karşı karşıya kalan cumhurbaşkanı, meclisi feshedip erken seçim ilan etmeye karar verdi."}
+],
+"distributed": [
+  {"tr": "s. dağıtılmış, dağınık", "ex": "The research team analyzed a widely distributed sample of soil collected from various farms across the country.", "exTr": "Araştırma ekibi, ülke genelindeki çeşitli çiftliklerden toplanan, geniş bir alana yayılmış toprak örneklerini analiz etti."}
+],
+"division": [
+  {"tr": "i. bölme, bölüşüm; iş bölümü", "ex": "The division of labor allowed early societies to develop specialized skills and complex economies.", "exTr": "İş bölümü, erken toplumların uzmanlaşmış beceriler ve karmaşık ekonomiler geliştirmesine olanak sağladı."},
+  {"tr": "i. ayrılık, anlaşmazlık", "ex": "The proposed tax reform caused deep division among members of the ruling political party.", "exTr": "Önerilen vergi reformu, iktidardaki siyasi parti üyeleri arasında derin bir ayrılığa yol açtı."}
+],
+"drama": [
+  {"tr": "i. dram, tiyatro oyunu", "ex": "Shakespeare's dramas are still performed in theatres around the world four centuries after they were written.", "exTr": "Shakespeare'in dramları, yazılmalarından dört yüzyıl sonra bile dünyanın dört bir yanındaki tiyatrolarda sahneleniyor."},
+  {"tr": "i. (mecazi) heyecanlı/gergin olay", "ex": "The negotiations between the two companies turned into unexpected drama when the CEO abruptly left the meeting midway through.", "exTr": "İki şirket arasındaki müzakereler, CEO toplantıyı yarıda aniden terk edince beklenmedik, gergin bir olaya dönüştü."}
+],
+"drop": [
+  {"tr": "i. düşüş", "ex": "A sudden drop in temperature overnight damaged much of the region's early spring harvest.", "exTr": "Gece yaşanan ani sıcaklık düşüşü, bölgenin erken ilkbahar hasadının büyük bölümüne zarar verdi."},
+  {"tr": "f. düşmek, bırakmak", "ex": "The bird suddenly dropped from the sky after being struck by a gust of wind.", "exTr": "Kuş, ani bir rüzgârın çarpmasıyla gökten aniden düştü."}
+],
+"dropped": [
+  {"tr": "s. düşürülmüş; bırakılmış, vazgeçilmiş; iptal edilmiş", "ex": "The dropped charges against the defendant made headlines after new evidence proved his innocence.", "exTr": "Yeni kanıtlar masumiyetini kanıtlayınca, sanık hakkındaki düşürülen suçlamalar manşetlere taşındı."}
+],
+"dust": [
+  {"tr": "i. toz", "ex": "Fine dust carried by desert winds can travel thousands of kilometers across continents.", "exTr": "Çöl rüzgârlarının taşıdığı ince toz, kıtalar boyunca binlerce kilometre yol alabilir."},
+  {"tr": "f. serpmek, ince tabaka hâlinde kaplamak", "ex": "The baker decided to dust the finished cake with a thin layer of powdered sugar before serving it.", "exTr": "Fırıncı, bitmiş pastayı servis etmeden önce üzerine ince bir tabaka pudra şekeri serpmeye karar verdi."}
+],
+"earned": [
+  {"tr": "s. kazanılmış, hak edilmiş", "ex": "Her earned income from part-time consulting far exceeded her university salary last year.", "exTr": "Yarı zamanlı danışmanlıktan elde ettiği kazanç, geçen yıl üniversite maaşını fazlasıyla aştı."}
+],
+"ended": [
+  {"tr": "s. (bileşiklerde) -uçlu", "ex": "The survey used open ended questions to gather more detailed opinions from the participants.", "exTr": "Anket, katılımcılardan daha ayrıntılı görüşler toplamak için açık uçlu sorular kullandı."},
+  {"tr": "s. sona ermiş, bitmiş", "ex": "The war, though long ended, still shapes the region's politics today.", "exTr": "Savaş, çoktan sona ermiş olsa da bölgenin siyasetini bugün hâlâ şekillendiriyor."}
+],
+"file": [
+  {"tr": "i. dosya", "ex": "She kept every important document in a labeled file inside the office cabinet.", "exTr": "Ofis dolabındaki etiketli bir dosyada tüm önemli belgeleri sakladı."},
+  {"tr": "f. (resmî olarak) sunmak, vermek; dosyalamak", "ex": "Employees are required to file their expense reports electronically by the end of each month.", "exTr": "Çalışanların, harcama raporlarını her ayın sonuna kadar elektronik olarak dosyalaması gerekmektedir."}
+],
+"flesh": [
+  {"tr": "i. et, doku, beden", "ex": "Surgeons carefully removed damaged flesh to prevent the infection from spreading further.", "exTr": "Cerrahlar, enfeksiyonun daha fazla yayılmasını önlemek için hasarlı dokuyu dikkatle çıkardı."},
+  {"tr": "i. (meyve) etli kısım", "ex": "The flesh of a perfectly ripe mango is soft, juicy, and deep orange in color.", "exTr": "Tam olgunlaşmış bir mangonun etli kısmı yumuşak, sulu ve koyu turuncudur."}
+],
+"flip": [
+  {"tr": "f. çevirmek, ters çevirmek; takla atmak", "ex": "The gymnast managed to flip backward twice before landing perfectly on the mat.", "exTr": "Cimnastikçi, minderin üzerine kusursuzca inmeden önce arkaya doğru iki kez takla atmayı başardı."},
+  {"tr": "f. (flip out) çıldırmak, öfkeden kontrolünü kaybetmek", "ex": "He completely flipped out when he discovered that someone had scratched his brand-new car.", "exTr": "Birinin yepyeni arabasını çizdiğini keşfettiğinde tamamen çıldırdı."}
+],
+"flooding": [
+  {"tr": "i. sel baskını, su basması", "ex": "Heavy monsoon rains caused severe flooding that displaced thousands of families across the region.", "exTr": "Şiddetli muson yağmurları, bölge genelinde binlerce aileyi yerinden eden ciddi bir sel baskınına yol açtı."},
+  {"tr": "i. (psikoloji) taşırma, yoğun maruz bırakma tekniği", "ex": "The therapist used a technique called flooding to help the patient confront his fear of flying directly.", "exTr": "Terapist, hastanın uçma korkusuyla doğrudan yüzleşmesine yardımcı olmak için taşırma (flooding) adı verilen bir teknik kullandı."}
+],
+"fruit": [
+  {"tr": "i. meyve", "ex": "Nutritionists recommend eating a variety of fruit every day for essential vitamins.", "exTr": "Beslenme uzmanları, gerekli vitaminler için her gün çeşitli meyveler yemeyi önerir."},
+  {"tr": "f. meyve vermek", "ex": "In unusually warm years, these apple trees fruit several weeks earlier than expected.", "exTr": "Alışılmadık derecede sıcak yıllarda bu elma ağaçları beklenenden birkaç hafta erken meyve verir."}
+],
+"gap": [
+  {"tr": "i. boşluk, açık, fark", "ex": "Economists warn that the widening income gap could destabilize social cohesion in the coming decade.", "exTr": "Ekonomistler, giderek genişleyen gelir farkının önümüzdeki on yılda toplumsal uyumu sarsabileceği konusunda uyarıyor."}
+],
+"ghost": [
+  {"tr": "i. hayalet", "ex": "Local legend claims that the abandoned lighthouse is haunted by the ghost of a former keeper.", "exTr": "Yerel efsaneye göre, terk edilmiş deniz fenerine eski bir bekçinin hayaleti musallat olmuştur."},
+  {"tr": "f. (argo) iletişimi aniden kesmek", "ex": "After their third date, he suddenly decided to ghost her without any explanation or warning.", "exTr": "Üçüncü buluşmalarının ardından, hiçbir açıklama veya uyarı yapmadan aniden onunla iletişimi kesmeye karar verdi."}
+],
+"globalization": [
+  {"tr": "i. küreselleşme", "ex": "Economists continue to debate whether globalization has widened or narrowed the gap between rich and poor nations.", "exTr": "Ekonomistler, küreselleşmenin zengin ve yoksul uluslar arasındaki uçurumu genişlettiğini mi yoksa daralttığını mı tartışmaya devam ediyor."}
+],
+"honest": [
+  {"tr": "s. dürüst", "ex": "Historians rely on honest accounts from eyewitnesses to reconstruct historical events accurately.", "exTr": "Tarihçiler, tarihi olayları doğru bir şekilde yeniden kurmak için görgü tanıklarının dürüst anlatımlarına güvenir."},
+  {"tr": "s. hakiki, gerçek", "ex": "The inn serves simple meals made with honest ingredients from nearby farms.", "exTr": "Han, yakın çiftliklerden gelen hakiki malzemelerle hazırlanmış sade yemekler sunar."}
+],
+"horse": [
+  {"tr": "i. at", "ex": "Archaeological evidence suggests that ancient nomadic tribes relied heavily on the horse for transportation.", "exTr": "Arkeolojik kanıtlar, eski göçebe kabilelerin ulaşım için büyük ölçüde ata güvendiğini göstermektedir."}
+],
+"ignored": [
+  {"tr": "s. göz ardı edilen, dikkate alınmayan", "ex": "The ignored warnings about the dam's weakness later proved tragically accurate.", "exTr": "Barajın zayıflığına ilişkin göz ardı edilen uyarıların sonradan trajik biçimde doğru olduğu anlaşıldı."}
+],
+"improving": [
+  {"tr": "s. iyileşen, gelişen", "ex": "Hospital records showed an improving recovery rate among patients treated with the new therapy.", "exTr": "Hastane kayıtları, yeni tedavi uygulanan hastalar arasında giderek yükselen bir iyileşme oranı gösterdi."}
+],
+"incline": [
+  {"tr": "f. (incline to/toward) -e eğilimli olmak, meyletmek", "ex": "Older voters incline toward candidates who promise economic stability.", "exTr": "Yaşlı seçmenler, ekonomik istikrar vadeden adaylara yönelme eğilimindedir."},
+  {"tr": "f. (yol vb.) eğim kazanmak, yükselmeye başlamak", "ex": "Cyclists often struggle to maintain speed when the road begins to incline sharply.", "exTr": "Bisikletçiler, yol dik biçimde yükselmeye başladığında genellikle hızlarını korumakta zorlanır."}
+],
+"injure": [
+  {"tr": "f. yaralamak", "ex": "The bridge collapse injured several commuters before emergency crews could reach the scene.", "exTr": "Köprünün çökmesi, acil durum ekipleri olay yerine ulaşamadan birkaç yolcuyu yaraladı."},
+  {"tr": "f. (gururunu/duygularını) incitmek, gücendirmek", "ex": "The manager's harsh remarks during the meeting seemed to injure the young employee's pride deeply.", "exTr": "Yöneticinin toplantı sırasındaki sert sözleri, genç çalışanın gururunu derinden incitmiş gibi görünüyordu."}
+],
+"instruction": [
+  {"tr": "i. öğretim, eğitim", "ex": "The new curriculum places greater emphasis on direct instruction in reading and mathematics for young children.", "exTr": "Yeni müfredat, küçük çocuklar için okuma ve matematikte doğrudan öğretime daha fazla önem veriyor."},
+  {"tr": "i. talimat, yönerge", "ex": "Before operating the machine, technicians must follow the manual's step-by-step instructions carefully.", "exTr": "Teknisyenler, makineyi çalıştırmadan önce kılavuzun adım adım talimatlarını dikkatle izlemelidir."}
+],
+"kept": [
+  {"tr": "s. tutulmuş, yerine getirilmiş", "ex": "A faithfully kept promise between nations can strengthen diplomatic trust for generations.", "exTr": "Uluslar arasında sadakatle tutulan bir söz, diplomatik güveni nesiller boyu güçlendirebilir."},
+  {"tr": "s. korunmuş, muhafaza edilmiş", "ex": "The well kept garden behind the old manor attracted visitors from across the region every spring.", "exTr": "Eski malikanenin arkasındaki iyi korunmuş bahçe, her bahar bölgenin dört bir yanından ziyaretçi çekiyordu."}
+],
+"laugh": [
+  {"tr": "f. gülmek", "ex": "Researchers found that people who laugh regularly tend to experience lower levels of chronic stress.", "exTr": "Araştırmacılar, düzenli olarak gülen insanların daha düşük düzeyde kronik stres yaşama eğiliminde olduğunu buldu."},
+  {"tr": "i. gülüş, kahkaha", "ex": "Her warm laugh could be heard from across the room, instantly putting nervous new employees at ease.", "exTr": "Onun sıcak kahkahası odanın öbür ucundan bile duyulabiliyordu ve gergin öğrencileri anında rahatlatıyordu."}
+],
+"lecture": [
+  {"tr": "i. ders, konferans", "ex": "During the symposium, the visiting professor delivered a fascinating lecture on the origins of the universe.", "exTr": "Sempozyum sırasında, konuk profesör evrenin kökenleri üzerine büyüleyici bir konferans verdi."},
+  {"tr": "f. azarlamak, azar vermek", "ex": "Her father began to lecture her about the dangers of driving too fast at night.", "exTr": "Babası, gece çok hızlı araç kullanmanın tehlikeleri konusunda onu azarlamaya başladı."}
+],
+"lens": [
+  {"tr": "i. mercek, lens", "ex": "The telescope's curved lens focuses light from distant stars onto a single point.", "exTr": "Teleskobun kavisli merceği, uzak yıldızlardan gelen ışığı tek bir noktaya odaklar."},
+  {"tr": "i. (mecaz) bakış açısı, pencere", "ex": "Once she moved abroad, she began to view her own culture through an entirely different lens.", "exTr": "Yurt dışına taşındıktan sonra, kendi kültürüne tamamen farklı bir bakış açısıyla bakmaya başladı."}
+],
+"martin": [
+  {"tr": "i. kırlangıçgillerden bir kuş (ev/kum kırlangıcı)", "ex": "Ornithologists tagged a migrating martin to track its route across two continents.", "exTr": "Kuşbilimciler, iki kıta boyunca rotasını izlemek için göç eden bir kır kırlangıcını etiketledi."}
+],
+"mechanic": [
+  {"tr": "i. tamirci, makinist", "ex": "A skilled mechanic can diagnose engine problems simply by listening to unusual sounds.", "exTr": "Usta bir tamirci, motor sorunlarını yalnızca olağandışı sesleri dinleyerek teşhis edebilir."}
+],
+"monkey": [
+  {"tr": "i. maymun", "ex": "Researchers observed how each monkey used simple tools to crack open hard nuts.", "exTr": "Araştırmacılar, her maymunun sert kabuklu yemişleri kırmak için basit aletleri nasıl kullandığını gözlemledi."},
+  {"tr": "f. kurcalamak", "ex": "The mechanic warned the young apprentice not to monkey with the engine unless he fully understood how it worked.", "exTr": "Tamirci, genç çırağı motorun nasıl çalıştığını tam olarak anlamadan onu kurcalamaması konusunda uyardı."}
+],
+"nice": [
+  {"tr": "s. (ayrım için) ince, hassas", "ex": "The researcher drew a nice distinction between correlation and causation in her published article.", "exTr": "Araştırmacı, yayımlanan makalesinde korelasyon ile nedensellik arasında ince bir ayrım yaptı."},
+  {"tr": "s. hoş, güzel, nazik", "ex": "Our neighbors have always been nice to us, often helping with groceries when we are away.", "exTr": "Komşularımız bize her zaman iyi davrandı; biz yokken sık sık alışverişimizi bile yaptılar."}
+],
+"noticed": [
+  {"tr": "s. fark edilen, dikkat çeken", "ex": "The decline in bee populations was first noticed by local beekeepers in the early 1990s.", "exTr": "Arı popülasyonlarındaki düşüş, ilk olarak 1990'ların başında yerel arıcılar tarafından fark edildi."}
+],
+"offering": [
+  {"tr": "i. sunulan şey, ürün", "ex": "The university expanded its course offering to include artificial intelligence and data science programs.", "exTr": "Üniversite, sunduğu ders yelpazesini yapay zekâ ve veri bilimi programlarını da içerecek şekilde genişletti."},
+  {"tr": "i. adak, kurban", "ex": "Villagers placed a small offering of fruit and flowers at the temple altar each morning.", "exTr": "Köylüler her sabah tapınağın sunağına küçük bir meyve ve çiçek adağı bırakırdı."}
+],
+"officer": [
+  {"tr": "i. memur, görevli", "ex": "A customs officer inspected every container before it was allowed to leave the port.", "exTr": "Bir gümrük memuru, limandan ayrılmasına izin verilmeden önce her konteyneri denetledi."},
+  {"tr": "i. subay", "ex": "After years of distinguished service, the officer was promoted to a senior position within the army.", "exTr": "Yıllarca süren seçkin hizmetin ardından subay, ordu içinde üst düzey bir göreve terfi etti."}
+],
+"panel": [
+  {"tr": "i. panel, kurul", "ex": "A panel of leading scientists was invited to discuss the latest findings on climate change.", "exTr": "Önde gelen bilim insanlarından oluşan bir kurul, iklim değişikliğiyle ilgili en son bulguları tartışmaya davet edildi."},
+  {"tr": "f. (ahşapla) kaplamak, lambri döşemek", "ex": "The carpenters paneled the study in dark oak to match the antique furniture.", "exTr": "Marangozlar, antika mobilyalarla uyum sağlaması için çalışma odasını koyu meşeyle kapladı."}
+],
+"plastic": [
+  {"tr": "i. plastik", "ex": "Marine biologists warn that plastic waste poses a growing threat to ocean ecosystems.", "exTr": "Deniz biyologları, plastik atığın okyanus ekosistemleri için giderek büyüyen bir tehdit oluşturduğu konusunda uyarıyor."},
+  {"tr": "s. biçimlendirilebilir, esnek", "ex": "Clay remains plastic and easy to shape as long as it is kept moist.", "exTr": "Kil, nemli tutulduğu sürece biçimlendirilebilir ve kolayca şekil verilebilir hâlde kalır."}
+],
+"pointed": [
+  {"tr": "s. iğneleyici, sivri (söz için)", "ex": "The professor made a pointed remark about the flaws in the research methodology.", "exTr": "Profesör, araştırma yönteminin kusurlarına yönelik iğneleyici bir söz söyledi."},
+  {"tr": "s. sivri", "ex": "The mountain's pointed peak was visible from nearly every location in the valley below.", "exTr": "Dağın sivri zirvesi, aşağıdaki vadinin neredeyse her yerinden görülebiliyordu."}
+],
+"pole": [
+  {"tr": "i. kutup", "ex": "Climate scientists have recorded a sharp rise in temperatures near the North Pole in recent decades.", "exTr": "İklim bilimciler, son yıllarda Kuzey Kutbu yakınında sıcaklıklarda keskin bir artış kaydetti."},
+  {"tr": "i. direk, sırık", "ex": "Workers used a long wooden pole to knock the ripe fruit down from the tallest branches.", "exTr": "İşçiler, en yüksek dallardan olgun meyveleri düşürmek için uzun bir tahta direk kullandı."}
+],
+"possibly": [
+  {"tr": "z. belki (de), olasılıkla", "ex": "Researchers suggested that the sudden climate shift was possibly caused by increased volcanic activity.", "exTr": "Araştırmacılar, ani iklim değişikliğinin belki de artan volkanik faaliyetlerden kaynaklandığını öne sürdü."}
+],
+"powder": [
+  {"tr": "i. toz, pudra", "ex": "The dried leaves are ground into a fine powder before being used in traditional medicine.", "exTr": "Kurutulmuş yapraklar, geleneksel tıpta kullanılmadan önce ince bir toz haline getirilir."},
+  {"tr": "f. toz haline getirmek", "ex": "The mill powders the dried roots before they are packaged and sold as spice.", "exTr": "Değirmen, kurutulmuş kökleri baharat olarak paketlenip satılmadan önce toz hâline getirir."}
+],
+"practise": [
+  {"tr": "f. uygulamak, alıştırma yapmak", "ex": "Medical students must practise basic procedures repeatedly before working with real patients.", "exTr": "Tıp öğrencileri, gerçek hastalarla çalışmadan önce temel işlemleri defalarca uygulamalıdır."},
+  {"tr": "f. icra etmek", "ex": "She has practised medicine in this small rural town for nearly thirty years without ever moving away.", "exTr": "Bu küçük kırsal kasabada neredeyse otuz yıldır hiç taşınmadan hekimlik icra ediyor."}
+],
+"preserved": [
+  {"tr": "s. korunmuş, muhafaza edilmiş", "ex": "The mummy's skin remained remarkably well preserved thanks to the dry desert climate.", "exTr": "Mumyanın derisi, kuru çöl iklimi sayesinde dikkat çekici derecede iyi korunmuş halde kalmıştı."}
+],
+"prime": [
+  {"tr": "s. baş, birincil, asıl", "ex": "The president's prime concern during the crisis was ensuring the safety of civilians in the affected region.", "exTr": "Başkanın kriz sırasındaki başlıca kaygısı, etkilenen bölgedeki sivillerin güvenliğini sağlamaktı."},
+  {"tr": "s. asal (sayı için)", "ex": "Mathematicians have long searched for patterns that might predict the distribution of prime numbers.", "exTr": "Matematikçiler, asal sayıların dağılımını tahmin edebilecek örüntüleri uzun süredir araştırıyor."}
+],
+"primitive": [
+  {"tr": "s. ilkel", "ex": "Early humans used primitive stone tools to hunt animals and prepare their food.", "exTr": "İlk insanlar, hayvan avlamak ve yiyeceklerini hazırlamak için ilkel taş aletler kullandı."},
+  {"tr": "i. ilkel insan", "ex": "The anthropologist argued that calling early humans primitives underestimates the sophistication of their tools.", "exTr": "Antropolog, ilk insanlara ilkeller demenin aletlerinin gelişmişliğini hafife almak olduğunu savundu."}
+],
+"proportion": [
+  {"tr": "i. oran, orantı; pay, kısım", "ex": "A large proportion of the world's fresh water is stored in polar ice sheets.", "exTr": "Dünyadaki tatlı suyun büyük bir bölümü kutup buz tabakalarında depolanmıştır."},
+  {"tr": "f. orantılamak", "ex": "The engineer proportioned the bridge's support beams carefully to distribute weight evenly across the structure.", "exTr": "Mühendis, ağırlığı yapı boyunca eşit dağıtmak için köprünün taşıyıcı kirişlerini dikkatle orantılamıştı."}
+],
+"protecting": [
+  {"tr": "s. koruyan, koruyucu", "ex": "New laws protecting endangered species came into force across the region last year.", "exTr": "Nesli tükenmekte olan türleri koruyan yeni yasalar, geçen yıl bölge genelinde yürürlüğe girdi."}
+],
+"quantum": [
+  {"tr": "i. kuantum", "ex": "Physicists use quantum theory to explain the strange behavior of particles at subatomic scales.", "exTr": "Fizikçiler, parçacıkların atom altı ölçeklerdeki tuhaf davranışlarını açıklamak için kuantum kuramını kullanır."},
+  {"tr": "i. miktar, nicelik, ölçü", "ex": "The reforms represented a significant quantum of change in how the agency handled public complaints.", "exTr": "Reformlar, kurumun kamu şikâyetlerini ele alış biçiminde kayda değer miktarda bir değişimi temsil ediyordu."}
+],
+"rational": [
+  {"tr": "s. akılcı, mantıklı", "ex": "Economists assume that consumers make rational decisions based on price and quality.", "exTr": "Ekonomistler, tüketicilerin fiyat ve kaliteye dayalı akılcı kararlar verdiğini varsayar."},
+  {"tr": "s./i. rasyonel; rasyonel sayı", "ex": "Every rational number can be expressed as a fraction of two integers.", "exTr": "Her rasyonel sayı, iki tam sayının kesri olarak ifade edilebilir."}
+],
+"reducing": [
+  {"tr": "i. azaltma", "ex": "Reducing plastic waste has become a major priority for environmental organizations worldwide.", "exTr": "Plastik atığın azaltılması, dünya çapındaki çevre örgütleri için önemli bir öncelik haline geldi."},
+  {"tr": "i. zayıflama, kilo verme (diyetle)", "ex": "After the holidays, she followed a strict reducing diet recommended by her physician.", "exTr": "Tatilden sonra, doktorunun önerdiği sıkı bir zayıflama diyeti uyguladı."}
+],
+"representative": [
+  {"tr": "i. temsilci, vekil", "ex": "A company representative explained the new safety procedures to all factory employees yesterday.", "exTr": "Bir şirket temsilcisi, dün tüm fabrika çalışanlarına yeni güvenlik prosedürlerini açıkladı."},
+  {"tr": "s. temsili, tipik (bir grubu yansıtan)", "ex": "The survey results were considered representative of public opinion across the entire country.", "exTr": "Anket sonuçlarının, ülke genelindeki kamuoyunu temsil edici biçimde yansıttığı kabul edildi."}
+],
+"reserve": [
+  {"tr": "i. rezerv, yedek", "ex": "Conservationists established a nature reserve to protect the region's declining bird population.", "exTr": "Doğa koruyucuları, bölgenin azalan kuş popülasyonunu korumak için bir doğa rezervi kurdu."},
+  {"tr": "f. ayırmak, saklamak", "ex": "Concert-goers are advised to reserve their seats online at least a week in advance.", "exTr": "Konsere gideceklere, yerlerini en az bir hafta önceden çevrim içi ayırtmaları öneriliyor."}
+],
+"residual": [
+  {"tr": "s. artakalan, kalıntı halinde", "ex": "After the treatment, residual chemicals in the soil continued to affect plant growth for years.", "exTr": "Tedaviden sonra topraktaki artakalan kimyasallar yıllarca bitki büyümesini etkilemeye devam etti."},
+  {"tr": "i. (istatistik) artık değer; kalıntı", "ex": "Statisticians examine each residual to check how well the model fits the observed data.", "exTr": "İstatistikçiler, modelin gözlenen veriye ne kadar iyi oturduğunu görmek için her artık değeri inceler."}
+],
+"rid": [
+  {"tr": "f. (-den) kurtarmak, arındırmak", "ex": "The hospital introduced new cleaning protocols to rid the ward of persistent bacteria.", "exTr": "Hastane, koğuşu inatçı bakterilerden kurtarmak için yeni temizlik protokolleri getirdi."}
+],
+"roman": [
+  {"tr": "s. Roma'ya ait", "ex": "Archaeologists uncovered several Roman coins buried beneath the ancient city ruins.", "exTr": "Arkeologlar, antik şehir kalıntılarının altında gömülü birkaç Roma'ya ait sikke buldu."},
+  {"tr": "i. dik yazı karakteri (italik olmayan)", "ex": "Most academic journals require manuscripts to be typed in roman rather than italic script.", "exTr": "Çoğu akademik dergi, makalelerin italik yerine dik yazı karakteriyle yazılmasını şart koşar."}
+],
+"satisfaction": [
+  {"tr": "i. memnuniyet, tatmin", "ex": "Employee satisfaction tends to improve significantly when workers are given greater flexibility over their schedules.", "exTr": "Çalışanlara programları üzerinde daha fazla esneklik tanındığında, çalışan memnuniyeti genellikle belirgin biçimde artar."},
+  {"tr": "i. (hukuk) tazmin, giderim", "ex": "The court ordered the company to pay damages in full satisfaction of the claim.", "exTr": "Mahkeme, şirketin talebi tamamen karşılayacak biçimde tazminat ödemesine karar verdi."}
+],
+"seeing": [
+  {"tr": "i. görme", "ex": "Seeing is often considered the most dominant of the five human senses.", "exTr": "Görme, genellikle beş insan duyusunun en baskını olarak kabul edilir."},
+  {"tr": "s. görebilen, gören (kör olmayan)", "ex": "Guide dogs allow blind people to move through busy streets as confidently as seeing pedestrians.", "exTr": "Rehber köpekler, görme engellilerin kalabalık sokaklarda gören yayalar kadar özgüvenle ilerlemesini sağlar."}
+],
+"seeking": [
+  {"tr": "i. arayış, arama", "ex": "The relentless seeking of short-term profit can blind companies to long-term risks.", "exTr": "Amansız kısa vadeli kâr arayışı, şirketleri uzun vadeli risklere karşı körleştirebilir."}
+],
+"similarly": [
+  {"tr": "z. benzer şekilde", "ex": "Coral reefs and rainforests are similarly vulnerable to the effects of rising global temperatures.", "exTr": "Mercan resifleri ve yağmur ormanları, yükselen küresel sıcaklıkların etkilerine karşı benzer şekilde savunmasızdır."}
+],
+"sold": [
+  {"tr": "s. satılmış", "ex": "All the sold items were shipped to customers the following morning.", "exTr": "Satılmış ürünlerin tümü ertesi sabah müşterilere gönderildi."},
+  {"tr": "s. (sold on) ikna olmuş, hayran", "ex": "After the presentation, the entire board was completely sold on the new marketing strategy.", "exTr": "Sunumdan sonra, yönetim kurulunun tamamı yeni pazarlama stratejisine tamamen ikna olmuştu."}
+],
+"soldier": [
+  {"tr": "i. asker", "ex": "During the harsh winter campaign, many soldiers suffered from frostbite and exhaustion.", "exTr": "Zorlu kış seferi sırasında, birçok asker donma ve bitkinlikten muzdarip oldu."}
+],
+"speaking": [
+  {"tr": "i. konuşma", "ex": "Public speaking courses help students build confidence and express their ideas clearly in academic settings.", "exTr": "Topluluk önünde konuşma dersleri, öğrencilerin özgüven kazanmasına ve akademik ortamlarda fikirlerini açıkça ifade etmesine yardımcı olur."},
+  {"tr": "s. konuşan", "ex": "English-speaking employees were asked to help translate documents for the newly arrived refugees.", "exTr": "İngilizce konuşan çalışanlardan, yeni gelen mültecilerin belgelerini çevirmelerine yardımcı olmaları istendi."}
+],
+"starting": [
+  {"tr": "s. başlangıçtaki, ilk", "ex": "Researchers emphasized that the starting point of the experiment determined the reliability of subsequent measurements.", "exTr": "Araştırmacılar, deneyin başlangıç noktasının sonraki ölçümlerin güvenilirliğini belirlediğini vurguladı."},
+  {"tr": "i. başlama, başlangıç", "ex": "The starting of heavy machinery without proper safety checks violates the plant's regulations.", "exTr": "Ağır makinelerin gerekli güvenlik kontrolleri yapılmadan çalıştırılması, tesisin yönetmeliklerini ihlal eder."}
+],
+"station": [
+  {"tr": "i. istasyon", "ex": "Passengers waited patiently at the train station for the delayed express service to arrive.", "exTr": "Yolcular, gecikmeli ekspres seferin gelmesini tren istasyonunda sabırla bekledi."},
+  {"tr": "f. konuşlandırmak, yerleştirmek", "ex": "Soldiers were stationed near the border to monitor movement across the frontier.", "exTr": "Sınırdan geçişleri izlemek için askerler sınıra yakın bir yere konuşlandırıldı."}
+],
+"stopped": [
+  {"tr": "s. durmuş, durdurulmuş", "ex": "Investigators examined the stopped clock in the victim's apartment, hoping it might reveal the exact time of the incident.", "exTr": "Dedektifler, olayın tam saatini ortaya çıkarabileceğini umarak kurbanın dairesindeki durmuş saati inceledi."},
+  {"tr": "s. (burun için) tıkalı", "ex": "Doctors advised the patient to use a saline spray for his stopped-up nose caused by seasonal allergies.", "exTr": "Doktorlar, mevsimsel alerjilerden kaynaklanan tıkalı burnu için hastaya salin sprey kullanmasını önerdi."}
+],
+"stressful": [
+  {"tr": "s. stresli, gerginlik yaratan", "ex": "Working long hours without adequate rest can make daily life increasingly stressful for employees.", "exTr": "Yeterli dinlenme olmadan uzun saatler çalışmak, çalışanlar için günlük hayatı giderek daha stresli hâle getirebilir."}
+],
+"suddenly": [
+  {"tr": "z. aniden, birden", "ex": "The volcano, dormant for centuries, suddenly erupted and forced thousands of residents to evacuate.", "exTr": "Yüzyıllardır uykuda olan yanardağ aniden patladı ve binlerce sakini tahliyeye zorladı."}
+],
+"supervision": [
+  {"tr": "i. denetim, gözetim, nezaret", "ex": "Junior surgeons are required to perform their first operations under close supervision from senior staff.", "exTr": "Genç cerrahların ilk ameliyatlarını kıdemli personelin sıkı gözetimi altında gerçekleştirmesi zorunludur."}
+],
+"sustained": [
+  {"tr": "s. sürekli, sürdürülen, uzun süreli", "ex": "Economists agree that sustained economic growth requires consistent investment in education and infrastructure.", "exTr": "Ekonomistler, sürekli ekonomik büyümenin eğitim ve altyapıya istikrarlı yatırım gerektirdiği konusunda hemfikir."}
+],
+"take-up": [
+  {"tr": "i. talep, katılım oranı", "ex": "Public health officials were disappointed by the low take-up of the free vaccination program.", "exTr": "Halk sağlığı yetkilileri, ücretsiz aşı programına yönelik düşük katılım oranından hayal kırıklığına uğradı."}
+],
+"technically": [
+  {"tr": "z. teknik olarak", "ex": "The chemical is technically classified as safe, although prolonged exposure may still cause mild skin irritation.", "exTr": "Kimyasal madde teknik olarak güvenli sınıfına girse de uzun süre maruz kalmak yine de hafif cilt tahrişine yol açabilir."},
+  {"tr": "z. resmen, kâğıt üzerinde, kural olarak", "ex": "Technically, the museum is open on public holidays, but most departments remain closed for maintenance.", "exTr": "Kâğıt üzerinde müze resmi tatillerde açık olsa da çoğu bölüm bakım nedeniyle kapalı kalıyor."}
+],
+"tested": [
+  {"tr": "s. denenmiş, test edilmiş; güvenilir", "ex": "Doctors prefer tested and reliable treatments over experimental ones for most patients.", "exTr": "Doktorlar çoğu hasta için deneysel tedaviler yerine denenmiş ve güvenilir tedavileri tercih eder."}
+],
+"till": [
+  {"tr": "f. (toprağı) sürmek, işlemek", "ex": "Farmers still till the soil by hand in several remote mountain villages during early spring.", "exTr": "Birçok uzak dağ köyünde çiftçiler, ilkbaharın başlarında toprağı hâlâ elle sürüyor."},
+  {"tr": "i. yazar kasa, kasa çekmecesi", "ex": "The cashier quickly checked the till before closing the shop for the night.", "exTr": "Kasiyer, dükkânı gece için kapatmadan önce yazar kasayı hızlıca kontrol etti."}
+],
+"turned": [
+  {"tr": "s. dönmüş, dönük", "ex": "The old photograph showed a man standing with his back turned toward the camera.", "exTr": "Eski fotoğraf, sırtı kameraya dönük duran bir adamı gösteriyordu."},
+  {"tr": "s. (besin için) bozulmuş, ekşimiş", "ex": "The chef discarded the turned cream before it could spoil the rest of the dessert.", "exTr": "Şef, ekşimiş kremayı tatlının geri kalanını bozmasına fırsat vermeden çöpe attı."}
+],
+"turning": [
+  {"tr": "i. (turning point) dönüm noktası", "ex": "Historians often describe the invention of the printing press as a major turning point in human history.", "exTr": "Tarihçiler, matbaanın icadını genellikle insanlık tarihinde önemli bir dönüm noktası olarak tanımlar."},
+  {"tr": "i. sapak, dönülecek yol", "ex": "Take the second turning on the left after the old stone bridge.", "exTr": "Eski taş köprüden sonra soldan ikinci sapağa girin."}
+],
+"upper": [
+  {"tr": "s. üst, yukarı(daki)", "ex": "Doctors recommended physical therapy to strengthen the muscles in her upper back and shoulders.", "exTr": "Doktorlar, sırtının üst kısmındaki ve omuzlarındaki kasları güçlendirmek için fizik tedavi önerdi."},
+  {"tr": "i. üst kuşet/ranza", "ex": "He booked an upper on the night train to save the cost of a hotel room.", "exTr": "Otel masrafından kurtulmak için gece treninde üst kuşet ayırttı."}
+],
+"upset": [
+  {"tr": "s. üzgün, canı sıkkın", "ex": "She felt deeply upset after learning that her research grant had been unexpectedly cancelled.", "exTr": "Araştırma bursunun beklenmedik biçimde iptal edildiğini öğrenince derinden üzüldü."},
+  {"tr": "i. sürpriz sonuç/yenilgi; rahatsızlık", "ex": "The underdog's victory over the defending champions was one of the biggest upsets in tournament history.", "exTr": "Zayıf görülen takımın son şampiyonu yenmesi, turnuva tarihinin en büyük sürpriz sonuçlarından biriydi."}
+],
+"walking": [
+  {"tr": "s. (within walking distance) yürüme mesafesinde", "ex": "The new hospital is within walking distance of both the train station and the university.", "exTr": "Yeni hastane, hem tren istasyonuna hem üniversiteye yürüme mesafesinde bulunuyor."},
+  {"tr": "i. yürüyüş, yaya gitme", "ex": "Doctors recommend thirty minutes of brisk walking every day to improve cardiovascular health.", "exTr": "Doktorlar, kalp sağlığını iyileştirmek için her gün otuz dakika tempolu yürüyüş yapılmasını öneriyor."}
+],
+"waters": [
+  {"tr": "i. (bir bölgeye ait) sular, deniz; karasuları", "ex": "Overfishing in international waters has pushed several tuna species close to extinction.", "exTr": "Uluslararası sularda aşırı avlanma, birkaç ton balığı türünü yok olmanın eşiğine getirdi."},
+  {"tr": "i. sular", "ex": "The calm waters of the lake reflected the mountains so perfectly that photographers rushed to capture the scene.", "exTr": "Gölün durgun suları, dağları o kadar mükemmel yansıtıyordu ki fotoğrafçılar sahneyi yakalamak için koştu."}
+],
+"witness": [
+  {"tr": "f. tanık olmak, şahit olmak", "ex": "Several residents claimed to have witnessed unusual seismic activity in the days before the eruption.", "exTr": "Birkaç bölge sakini, patlamadan önceki günlerde olağandışı sismik hareketlilik gördüklerini iddia etti."},
+  {"tr": "i. tanık, şahit", "ex": "The prosecutor asked the witness to describe exactly what she had seen on the night of the crime.", "exTr": "Savcı, tanıktan suç gecesi tam olarak ne gördüğünü anlatmasını istedi."}
+],
+"year-old": [
+  {"tr": "s. (bileşik) ...yaşındaki, ...yaşında", "ex": "Archaeologists carefully excavated a two-thousand-year-old pottery vessel from beneath the ancient marketplace.", "exTr": "Arkeologlar, antik pazar yerinin altından iki bin yıllık bir çömlek kabını özenle çıkardı."}
+],
+"yesterday": [
+  {"tr": "z. dün", "ex": "Scientists announced yesterday that a new species of frog had been discovered in the rainforest.", "exTr": "Bilim insanları dün, yağmur ormanında yeni bir kurbağa türünün keşfedildiğini duyurdu."},
+  {"tr": "i. geçmiş, dün (mecazi)", "ex": "Memories of all our yesterdays quietly shape the way we imagine the future.", "exTr": "Bütün dünlerimizin anıları, geleceği hayal etme biçimimizi sessizce şekillendirir."}
 ]
 };
