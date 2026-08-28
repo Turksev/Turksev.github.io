@@ -39,7 +39,7 @@
   }
 
   function butonuGuncelle() {
-    var btn = document.querySelector('.theme-toggle');
+    var btn = document.querySelector('.theme-toggle:not(.esit-dugme)');
     if (!btn) return;
     var karanlik = document.documentElement.getAttribute('data-theme') === 'dark' ||
       (!document.documentElement.getAttribute('data-theme') &&
@@ -65,7 +65,8 @@
       catch (e) { return false; }
     },
     sil: function (anahtar) {
-      try { localStorage.removeItem(anahtar); } catch (e) {}
+      try { localStorage.removeItem(anahtar); return true; }
+      catch (e) { return false; }
     }
   };
 
@@ -95,6 +96,33 @@
       .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
 
+  /* ---------- güvenli yeniden yükleme koordinatörü ----------
+     Servis çalışanı ve ilk bulut birleşimi aynı açılışta yenileme
+     isteyebilir. Bütün teknik yenilemeler bu tek kapıdan geçer; aynı belge
+     yaşamında kaç istek gelirse gelsin yalnız bir kez yeniden yüklenir. */
+
+  var yenidenYuklemePlanlandi = false;
+  var yenidenYuklemeNedenleri = Object.create(null);
+
+  function yenidenYukle(neden) {
+    yenidenYuklemeNedenleri[String(neden || 'bilinmiyor')] = true;
+    if (yenidenYuklemePlanlandi) return false;
+    yenidenYuklemePlanlandi = true;
+
+    // Aynı olay turunda gelen SW + bulut isteklerinin birleşmesine fırsat ver.
+    setTimeout(function () {
+      try {
+        sessionStorage.setItem('yds-son-yeniden-yukleme', JSON.stringify({
+          zaman: Date.now(),
+          yol: location.pathname,
+          nedenler: Object.keys(yenidenYuklemeNedenleri)
+        }));
+      } catch (e) {}
+      location.reload();
+    }, 100);
+    return true;
+  }
+
   /* ---------- gezinme: aktif bağlantı ---------- */
 
   function aktifBaglanti() {
@@ -117,13 +145,10 @@
     /* Yeni sürüm yayımlandığında sayfa ESKİ kodla çalışmaya devam ediyordu:
        servis çalışanı dosyaları arka planda tazeliyor, sayfa ancak BİR SONRAKİ
        açılışta yeni kodu görüyordu. Bu yüzden bir düzeltme (ör. sıfırlamada çift
-       onay) kullanıcıya bir tur geç ulaşıyordu. Yeni sürüm devralır almaz sayfayı
-       bir kez tazeliyoruz; bayrak, tazeleme döngüsünü keser. */
-    var tazelendi = false;
+       onay) kullanıcıya bir tur geç ulaşıyordu. Yeni sürüm devralır almaz ortak
+       koordinatörden yenileme istiyoruz. */
     navigator.serviceWorker.addEventListener('controllerchange', function () {
-      if (tazelendi) return;
-      tazelendi = true;
-      location.reload();
+      yenidenYukle('servis-calisani');
     });
 
     window.addEventListener('load', function () {
@@ -171,7 +196,7 @@
 
   function baslat() {
     servisCalisaniniKaydet();
-    var btn = document.querySelector('.theme-toggle');
+    var btn = document.querySelector('.theme-toggle:not(.esit-dugme)');
     if (btn) btn.addEventListener('click', temaDegistir);
     butonuGuncelle();
     aktifBaglanti();
@@ -205,6 +230,10 @@
       (sayi ? sayi + ' kayıt' : 'İlerlemen') + ' kalıcı olarak silinecek. Gerçekten emin misin?');
   }
 
+  function depolamaUyarisi() {
+    window.alert('İlerleme tarayıcıya kaydedilemedi. Depolama alanını kontrol edip tekrar dene. Mevcut ilerlemen korundu; bu işlem uygulanmadı.');
+  }
+
   /* Sıfırlamadan sonra "Geri al" kutusunu yönetir. Yedek Ilerleme modülünde
      tutulur; burada yalnız gösterim ve tıklama vardır. */
   function geriAlKutusu(sonra) {
@@ -225,7 +254,7 @@
     }
 
     document.getElementById('geriAl').addEventListener('click', function () {
-      if (!Il.yedegiGeriAl()) return;
+      if (!Il.yedegiGeriAl()) { depolamaUyarisi(); return; }
       kutu.hidden = true;
       if (sonra) sonra();
     });
@@ -253,6 +282,7 @@
 
   window.YDS = {
     Depo: Depo, sadelestir: sadelestir, karistir: karistir, kacar: kacar,
-    ikiKereSor: ikiKereSor, geriAlKutusu: geriAlKutusu, yildiz: yildiz
+    ikiKereSor: ikiKereSor, geriAlKutusu: geriAlKutusu, yildiz: yildiz,
+    yenidenYukle: yenidenYukle, depolamaUyarisi: depolamaUyarisi
   };
 })();

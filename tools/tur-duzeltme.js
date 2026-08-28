@@ -50,5 +50,6 @@ window.TUR_DUZELTME = {
 "neanderthal": "isim, sıfat",
 "turn-off": "isim",
 "throughout": "zarf, edat",
-"alongside": "edat, zarf"
+"alongside": "edat, zarf",
+"licence": "isim"
 };

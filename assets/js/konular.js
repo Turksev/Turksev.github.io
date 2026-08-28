@@ -164,9 +164,19 @@
     var m = METINLER[kod];
     if (!m) return;
     var u = null;
-    EKSENLER.forEach(function (e) {
-      e.u.forEach(function (x) { if (x.k === kod) u = x; });
+    var hedefEksen = -1;
+    EKSENLER.forEach(function (e, i) {
+      e.u.forEach(function (x) {
+        if (x.k === kod) { u = x; hedefEksen = i; }
+      });
     });
+    if (!u) return;
+    if (hedefEksen !== eksenIndex) {
+      eksenIndex = hedefEksen;
+      Depo.yaz(EKSEN_ANAHTAR, eksenIndex);
+      eksenleriCiz();
+      ciz();
+    }
 
     $('konuBaslik').innerHTML =
       '<span class="badge accent">' + kacar(kod) + '</span>' +

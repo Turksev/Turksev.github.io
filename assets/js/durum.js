@@ -25,7 +25,7 @@
     5: { ad: '5. kutu', not: 'öğrenildi — artık tekrara gelmiyor', sinif: 'ok' }
   };
 
-  var kayitlar = [];        // {ad, tur, kutu, kalan, tr, y, p}
+  var kayitlar = [];        // {kimlik, ad, tur, kutu, kalan, tr, y, p}
   var suzulmus = [];
   var gosterilen = SAYFA_BOYU;
   var seciliKutu = 0;       // 0 = hepsi
@@ -41,20 +41,24 @@
     var obekHarita = {};
     (window.OBEKLER || []).forEach(function (o) { obekHarita[o.f] = o; });
 
-    kayitlar = Object.keys(ham).map(function (ad) {
-      var d = Veri.dizinKaydi(ad);
+    kayitlar = Object.keys(ham).map(function (kimlik) {
+      var cozum = Il.kimlikCoz(kimlik);
+      var ad = cozum.ad;
+      var belirliTur = cozum.tur;
+      var d = belirliTur === 'obek' ? null : Veri.dizinKaydi(ad);
       if (d) {
-        return { ad: ad, tur: 'kelime', kutu: ham[ad].k, kalan: ham[ad].kalan,
+        return { kimlik: kimlik, ad: ad, tur: 'kelime', kutu: ham[kimlik].k, kalan: ham[kimlik].kalan,
                  tr: d.t, y: d.y, p: d.p, katman: d.k };
       }
-      var o = obekHarita[ad];
+      var o = belirliTur === 'kelime' ? null : obekHarita[ad];
       if (o) {
-        return { ad: ad, tur: 'obek', kutu: ham[ad].k, kalan: ham[ad].kalan,
+        return { kimlik: kimlik, ad: ad, tur: 'obek', kutu: ham[kimlik].k, kalan: ham[kimlik].kalan,
                  tr: o.a.map(function (a) { return a.tr; }).join('; '), y: o.y, sinav: o.s };
       }
       // Veri henüz yüklenmemiş ya da kayıt artık listede yok
-      return { ad: ad, tur: ad.indexOf(' ') === -1 ? 'kelime' : 'obek',
-               kutu: ham[ad].k, kalan: ham[ad].kalan, tr: '', y: '' };
+      return { kimlik: kimlik, ad: ad,
+               tur: belirliTur || (ad.indexOf(' ') === -1 ? 'kelime' : 'obek'),
+               kutu: ham[kimlik].k, kalan: ham[kimlik].kalan, tr: '', y: '' };
     });
   }
 
@@ -62,8 +66,11 @@
      gerek yok. Yalnız öbek çalışılmışsa öbek dosyası gerekir. */
   function obekGerekliMi() {
     var ham = Il.tumKayitlar();
-    return Object.keys(ham).some(function (ad) {
-      return !Veri.dizinKaydi(ad) && ad.indexOf(' ') !== -1;
+    return Object.keys(ham).some(function (kimlik) {
+      var cozum = Il.kimlikCoz(kimlik);
+      if (cozum.tur === 'kelime') return false;
+      return cozum.tur === 'obek' ||
+        (!Veri.dizinKaydi(cozum.ad) && cozum.ad.indexOf(' ') !== -1);
     });
   }
 
@@ -119,17 +126,19 @@
     var b = KUTU_BILGI[k.kutu] || { ad: k.kutu + '. kutu', sinif: '' };
     var vade = k.kutu >= 5 ? 'tekrar yok'
              : (k.kalan === 0 ? 'bugün tekrar' : k.kalan + ' gün sonra');
+    var testYanlisi = Il.testYanlisSayisi
+      ? Il.testYanlisSayisi(k.ad, k.tur) : 0;
 
-    return '<article class="word" data-ad="' + kacar(k.ad) + '">' +
+    return '<article class="word" data-ad="' + kacar(k.ad) + '" data-tur="' + k.tur + '">' +
         '<div>' +
           '<div class="en">' + kacar(k.ad) + '</div>' +
           (k.tr ? '<div class="tr">' + kacar(k.tr) + '</div>' : '') +
           '<div class="meta">' +
             '<span class="badge ' + b.sinif + '">' + b.ad + ' · ' + vade + '</span>' +
             '<span class="badge">' + (k.tur === 'obek' ? 'öbek' : 'kelime') + '</span>' +
-            (Il.testYanlisSayisi && Il.testYanlisSayisi(k.en)
+            (testYanlisi
               ? '<span class="badge err" title="Günün testinde bilinemedi">testte ✗' +
-                (Il.testYanlisSayisi(k.en) > 1 ? ' ×' + Il.testYanlisSayisi(k.en) : '') + '</span>' : '') +
+                (testYanlisi > 1 ? ' ×' + testYanlisi : '') + '</span>' : '') +
             (k.y ? '<span class="badge">' + kacar(k.y) + '</span>' : '') +
             (k.p !== undefined && k.p !== null
               ? '<span class="badge accent" title="YDS öncelik puanı">' + k.p + ' p</span>' : '') +
@@ -181,13 +190,18 @@
   elListe.addEventListener('click', function (e) {
     var btn = e.target.closest('.star');
     if (!btn) return;
-    var ad = btn.closest('.word').getAttribute('data-ad');
+    var kartSatiri = btn.closest('.word');
+    var ad = kartSatiri.getAttribute('data-ad');
+    var tur = kartSatiri.getAttribute('data-tur');
     var ne = btn.getAttribute('data-ne');
 
-    if (ne === 'sil') Il.listeyiSifirla([ad]);
-    else if (ne === 'zaten') Il.zatenBiliyorum(ad);
-    else if (ne === 'bilmedim') Il.yanlis(ad);
-    else Il.dogru(ad);
+    if (ne === 'sil') {
+      if (!Il.listeyiSifirla([ad], tur)) { window.YDS.depolamaUyarisi(); return; }
+    } else {
+      var sonuc = ne === 'zaten' ? Il.zatenBiliyorum(ad, tur)
+        : (ne === 'bilmedim' ? Il.yanlis(ad, tur) : Il.dogru(ad, tur));
+      if (sonuc === false) { window.YDS.depolamaUyarisi(); return; }
+    }
 
     kayitlariKur();
     filtrele();

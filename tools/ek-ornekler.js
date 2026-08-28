@@ -1480,7 +1480,7 @@ window.EK_ORNEKLER = {
 ],
 "laugh": [
   {"tr": "f. gülmek", "ex": "Researchers found that people who laugh regularly tend to experience lower levels of chronic stress.", "exTr": "Araştırmacılar, düzenli olarak gülen insanların daha düşük düzeyde kronik stres yaşama eğiliminde olduğunu buldu."},
-  {"tr": "i. gülüş, kahkaha", "ex": "Her warm laugh could be heard from across the room, instantly putting nervous new employees at ease.", "exTr": "Onun sıcak kahkahası odanın öbür ucundan bile duyulabiliyordu ve gergin öğrencileri anında rahatlatıyordu."}
+  {"tr": "i. gülüş, kahkaha", "ex": "Her warm laugh could be heard from across the room, instantly putting nervous new employees at ease.", "exTr": "Onun sıcak kahkahası odanın öbür ucundan bile duyulabiliyordu ve gergin yeni çalışanları anında rahatlatıyordu."}
 ],
 "lecture": [
   {"tr": "i. ders, konferans", "ex": "During the symposium, the visiting professor delivered a fascinating lecture on the origins of the universe.", "exTr": "Sempozyum sırasında, konuk profesör evrenin kökenleri üzerine büyüleyici bir konferans verdi."},
@@ -2358,5 +2358,8 @@ window.EK_ORNEKLER = {
 ],
 "top-grade": [
   {"tr": "s. en kaliteli, üst düzey", "ex": "The restaurant only serves top-grade beef sourced directly from certified organic farms nearby.", "exTr": "Restoran, yalnızca yakındaki sertifikalı organik çiftliklerden doğrudan tedarik edilen en kaliteli sığır etini servis ediyor."}
+],
+"low-lying": [
+  {"tr": "s. alçak kesimde bulunan", "ex": "Many low-lying fields in the river delta are protected by a network of dikes and pumping stations.", "exTr": "Nehir deltasındaki alçak arazilerin çoğu bir set ve pompa istasyonu ağıyla korunuyor."}
 ]
 };

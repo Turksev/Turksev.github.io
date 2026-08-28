@@ -16,6 +16,28 @@
   'use strict';
 
   var Depo = window.YDS.Depo;
+  var Motor = window.YDS.EsitlemeMotoru;
+
+  function ilerlemeKimligi(en, tur) {
+    return Motor && Motor.ilerlemeKimligi
+      ? Motor.ilerlemeKimligi(en, tur || 'kelime')
+      : String(en || '');
+  }
+
+  function kimlikCoz(id) {
+    return Motor && Motor.ilerlemeKimliginiCoz
+      ? Motor.ilerlemeKimliginiCoz(id)
+      : { ad: String(id || ''), tur: '' };
+  }
+
+  function leitnerKaydiSec(a, b) {
+    if (!a) return b;
+    if (!b) return a;
+    var ca = typeof a.c === 'number' ? a.c : (a.g || 0);
+    var cb = typeof b.c === 'number' ? b.c : (b.g || 0);
+    if (ca !== cb) return ca > cb ? a : b;
+    return (a.k || 0) >= (b.k || 0) ? a : b;
+  }
 
   var K_LEITNER = 'yds-leitner';
   var K_YANLIS = 'yds-yanlis';
@@ -47,46 +69,92 @@
 
   /* ---------- Leitner ---------- */
 
-  var leitner = Depo.oku(K_LEITNER, null);
+  var okunanLeitner = Depo.oku(K_LEITNER, null);
+  var leitner = (okunanLeitner && typeof okunanLeitner === 'object' &&
+    !Array.isArray(okunanLeitner)) ? okunanLeitner : {};
 
-  // Eski "bilinen kelimeler" listesini bir kez Leitner'a taşı.
-  if (!leitner) {
-    leitner = {};
-    var eski = Depo.oku(K_BILINEN, []);
-    if (Array.isArray(eski)) {
-      eski.forEach(function (en) {
-        leitner[en] = { k: 4, g: bugun() + ARALIK[4] };
-      });
+  // Eski "bilinen kelimeler" listesini mevcut Leitner'a kayıpsız ekle.
+  // Kaynak anahtar ancak yeni zarf gerçekten yazıldıktan sonra tüketilir;
+  // kota/gizli mod hatasında sonraki açılış güvenle yeniden dener.
+  var eskiBilinen = Depo.oku(K_BILINEN, null);
+  if (Array.isArray(eskiBilinen)) {
+    var gocAdayi = {};
+    Object.keys(leitner).forEach(function (en) { gocAdayi[en] = leitner[en]; });
+    eskiBilinen.forEach(function (en) {
+      en = ilerlemeKimligi(en, 'kelime');
+      // Eski liste yalnız eksik kartları tamamlar. Kaynak anahtarın silinmesi
+      // ayrı bir nedenle başarısız olup göç yeniden denenirse, sonradan
+      // çalışılmış mevcut kartı tekrar 4. kutuya yükseltmez.
+      if (!gocAdayi[en]) gocAdayi[en] = { k: 4, g: bugun() + ARALIK[4] };
+    });
+    if (Depo.yaz(K_LEITNER, gocAdayi) !== false) {
+      leitner = gocAdayi;
+      Depo.sil(K_BILINEN);
     }
+  } else if (!okunanLeitner) {
+    // Boş başlangıcı da yalnız başarılı yazımdan sonra kalıcı kabul et.
     Depo.yaz(K_LEITNER, leitner);
   }
 
-  function kaydet() { Depo.yaz(K_LEITNER, leitner); }
+  function leitnerKopyasi() {
+    var sonuc = {};
+    Object.keys(leitner).forEach(function (en) { sonuc[en] = leitner[en]; });
+    return sonuc;
+  }
+
+  function kaydet(aday) {
+    var basarili = Depo.yaz(K_LEITNER, aday) !== false;
+    if (basarili) leitner = aday;
+    return basarili;
+  }
 
   function leitneriTazele() {
     var guncel = Depo.oku(K_LEITNER, {});
     leitner = (guncel && typeof guncel === 'object' && !Array.isArray(guncel)) ? guncel : {};
   }
 
-  function kayitYaz(en, kayit) {
-    leitner[en] = kayit;
+  function kayitYaz(en, kayit, tur) {
+    en = ilerlemeKimligi(en, tur);
+    var aday = leitnerKopyasi();
+    aday[en] = kayit;
+    var basarili;
     if (Depo.kayitlariYaz) {
       var degisiklik = {};
       degisiklik[en] = kayit;
-      Depo.kayitlariYaz(K_LEITNER, degisiklik);
-    } else kaydet();
+      basarili = Depo.kayitlariYaz(K_LEITNER, degisiklik) !== false;
+      if (basarili) leitneriTazele();
+    } else basarili = kaydet(aday);
+    return basarili;
   }
 
-  function kayitlariYaz(degisiklikler) {
-    Object.keys(degisiklikler || {}).forEach(function (en) { leitner[en] = degisiklikler[en]; });
-    if (Depo.kayitlariYaz) Depo.kayitlariYaz(K_LEITNER, degisiklikler);
-    else kaydet();
+  function kayitlariYaz(degisiklikler, tur) {
+    var duzeltilmis = {};
+    var aday = leitnerKopyasi();
+    Object.keys(degisiklikler || {}).forEach(function (en) {
+      var yeni = tur === 'depo' ? en : ilerlemeKimligi(en, tur);
+      duzeltilmis[yeni] = leitnerKaydiSec(duzeltilmis[yeni], degisiklikler[en]);
+    });
+    Object.keys(duzeltilmis).forEach(function (en) { aday[en] = duzeltilmis[en]; });
+    var basarili;
+    if (Depo.kayitlariYaz) {
+      basarili = Depo.kayitlariYaz(K_LEITNER, duzeltilmis) !== false;
+      if (basarili) leitneriTazele();
+    } else basarili = kaydet(aday);
+    return basarili;
   }
 
-  function kayitlariSil(adlar) {
-    (adlar || []).forEach(function (en) { delete leitner[en]; });
-    if (Depo.kayitlariSil) Depo.kayitlariSil(K_LEITNER, adlar || []);
-    else kaydet();
+  function kayitlariSil(adlar, tur) {
+    var duzeltilmis = (adlar || []).map(function (en) {
+      return ilerlemeKimligi(en, tur);
+    });
+    var aday = leitnerKopyasi();
+    duzeltilmis.forEach(function (en) { delete aday[en]; });
+    var basarili;
+    if (Depo.kayitlariSil) {
+      basarili = Depo.kayitlariSil(K_LEITNER, duzeltilmis) !== false;
+      if (basarili) leitneriTazele();
+    } else basarili = kaydet(aday);
+    return basarili;
   }
 
   // Başka sekme veya bulut yeni bir zarf uyguladığında bellekteki Leitner
@@ -96,8 +164,21 @@
     if (adlar && adlar.indexOf(K_LEITNER) !== -1) leitneriTazele();
   });
 
-  function kutu(en) {
+  function kutu(en, tur) {
+    en = ilerlemeKimligi(en, tur);
     return leitner[en] ? leitner[en].k : 0;
+  }
+
+  function kayit(en, tur) {
+    en = ilerlemeKimligi(en, tur);
+    var r = leitner[en];
+    if (!r) return null;
+    return {
+      k: r.k,
+      g: r.g,
+      c: r.c,
+      kalan: Math.max(0, r.g - bugun())
+    };
   }
 
   /* Calisilmis her sey: {"abandon": {k: kutu, g: tekrar gunu}, …}
@@ -105,26 +186,32 @@
   function tumKayitlar() {
     var kopya = {};
     Object.keys(leitner).forEach(function (a) {
-      kopya[a] = { k: leitner[a].k, g: leitner[a].g, kalan: Math.max(0, leitner[a].g - bugun()) };
+      kopya[a] = {
+        k: leitner[a].k,
+        g: leitner[a].g,
+        c: leitner[a].c,
+        kalan: Math.max(0, leitner[a].g - bugun())
+      };
     });
     return kopya;
   }
 
   /* Yalnizca BASLANMIS kelimeler icin: tekrar gunu geldi mi?
      Hic calisilmamis kelime "vadesi gelmis" sayilmaz — o yeni kelimedir ve
-     gunluk kotayla acilir. Ikisini ayirmazsak ilk gun 7.849 kart cikardi. */
+     gunluk kotayla acilir. Ikisini ayirmazsak ilk gun 7.848 kart cikardi. */
   /* En üst kutuya çıkan kelime MEZUN olur: bir daha tekrara gelmez.
      Oraya çıkmak için kelimeyi 26 güne yayılmış dört tekrarda doğru bilmen
      gerekir. Baştan çalışmak istersen "Kelime ilerlememi sıfırla". */
-  function mezunMu(en) { return kutu(en) >= EN_UST_KUTU; }
+  function mezunMu(en, tur) { return kutu(en, tur) >= EN_UST_KUTU; }
 
-  function vadesiGeldiMi(en) {
+  function vadesiGeldiMi(en, tur) {
+    en = ilerlemeKimligi(en, tur);
     var kayit = leitner[en];
     if (!kayit || kayit.k >= EN_UST_KUTU) return false;
     return kayit.g <= bugun();
   }
 
-  function yeniMi(en) { return !leitner[en]; }
+  function yeniMi(en, tur) { return !leitner[ilerlemeKimligi(en, tur)]; }
 
   /* ---------- günlük yeni kelime kotası ---------- */
 
@@ -175,54 +262,61 @@
 
   function yeniAcildiSay() {
     var s = bugunkuSayac();
-    Depo.yaz(K_YENI_SAYAC, { g: bugun(), n: s.n + 1, ek: s.ek });
+    return Depo.yaz(K_YENI_SAYAC,
+      { g: bugun(), n: s.n + 1, ek: s.ek }) !== false;
   }
 
   /* Ayıklama: "bunu zaten biliyorum". Kelimeyi en üst kutuya koyar, yani
      doğrudan mezun eder. Hızlıca "Bildim" demekten farkı, kelimenin 1. kutuya
      düşüp ertesi gün tekrara gelmemesidir — 4.760 kelimeyi elden geçirirken
      yarın 4.760 tekrarlık çığ oluşmasın diye. */
-  function zatenBiliyorum(en) {
-    ilkKezIse(en);
-    kayitYaz(en, { k: EN_UST_KUTU, g: bugun() + ARALIK[EN_UST_KUTU], c: bugun() });
+  function zatenBiliyorum(en, tur) {
+    var ilk = yeniMi(en, tur);
+    var onceki = kutu(en, tur);
+    if (!kayitYaz(en,
+      { k: EN_UST_KUTU, g: bugun() + ARALIK[EN_UST_KUTU], c: bugun() }, tur)) return false;
+    if (ilk) yeniAcildiSay();
     return EN_UST_KUTU;
   }
 
-  function kalanGun(en) {
+  function kalanGun(en, tur) {
+    en = ilerlemeKimligi(en, tur);
     var kayit = leitner[en];
     if (!kayit) return 0;
     return Math.max(0, kayit.g - bugun());
   }
 
-  /* Bir kelime ilk kez cevaplandığında günlük yeni sayacı artar. */
-  function ilkKezIse(en) {
-    if (yeniMi(en)) yeniAcildiSay();
-  }
-
   /* Doğru bilindi: bir üst kutuya çık, tekrarı ilerlet. */
-  function dogru(en) {
-    ilkKezIse(en);
-    var k = Math.min(EN_UST_KUTU, kutu(en) + 1);
-    kayitYaz(en, { k: k, g: bugun() + ARALIK[k], c: bugun() });
+  function dogru(en, tur) {
+    var ilk = yeniMi(en, tur);
+    var onceki = kutu(en, tur);
+    var k = Math.min(EN_UST_KUTU, onceki + 1);
+    if (!kayitYaz(en, { k: k, g: bugun() + ARALIK[k], c: bugun() }, tur)) return false;
+    if (ilk) yeniAcildiSay();
     return k;
   }
 
   /* İpucuyla bilindi: terfi ettirme, aynı kutuda bırak ve yeniden zamanla.
      Hiç çalışılmamış bir kelime bu yolla en fazla 1. kutuya girer. */
-  function ipucuyla(en) {
-    ilkKezIse(en);
-    var k = Math.max(1, kutu(en));
-    kayitYaz(en, { k: k, g: bugun() + ARALIK[k], c: bugun() });
+  function ipucuyla(en, tur) {
+    var ilk = yeniMi(en, tur);
+    var onceki = kutu(en, tur);
+    var k = Math.max(1, onceki);
+    if (!kayitYaz(en, { k: k, g: bugun() + ARALIK[k], c: bugun() }, tur)) return false;
+    if (ilk) yeniAcildiSay();
     return k;
   }
 
   /* Yanlış bilindi: BİR kutu geri düş (sıfırlanma yok), yarın tekrar sor.
      Bir aydır bildiğin kelimeyi tek şaşırmada baştan başlatmak, tekrar yükünü
      katlıyordu; bir kutu geri düşmek hem cezayı hem yükü ölçülü tutar. */
-  function yanlis(en) {
-    ilkKezIse(en);
-    var k = Math.max(1, kutu(en) - 1);
-    kayitYaz(en, { k: k, g: bugun() + 1, c: bugun() }); // hangi kutuya düşerse düşsün yarın sorulur
+  function yanlis(en, tur) {
+    var ilk = yeniMi(en, tur);
+    var onceki = kutu(en, tur);
+    var k = Math.max(1, onceki - 1);
+    // Hangi kutuya düşerse düşsün yarın sorulur.
+    if (!kayitYaz(en, { k: k, g: bugun() + 1, c: bugun() }, tur)) return false;
+    if (ilk) yeniAcildiSay();
     return k;
   }
 
@@ -233,11 +327,11 @@
      gecikmiş olan önce gelecek şekilde günlük tavana göre günlere dağıtır.
      Döndürdüğü değer: {tasinan, gun}. */
 
-  function birikmisiYay(adlar, gunlukPay) {
+  function birikmisiYay(adlar, gunlukPay, tur) {
     var pay = Math.max(1, parseInt(gunlukPay, 10) || gunlukTavan());
     var b = bugun();
     var kapsam = Object.create(null);
-    (adlar || []).forEach(function (ad) { kapsam[ad] = true; });
+    (adlar || []).forEach(function (ad) { kapsam[ilerlemeKimligi(ad, tur)] = true; });
     var gecikmis = Object.keys(leitner).filter(function (en) {
       var r = leitner[en];
       return kapsam[en] && r && r.k > 0 && r.k < EN_UST_KUTU && r.g <= b;
@@ -247,10 +341,12 @@
 
     var degisiklikler = {};
     gecikmis.forEach(function (en, i) {
-      leitner[en].g = b + Math.floor(i / pay);
-      degisiklikler[en] = leitner[en];
+      var kayit = {};
+      Object.keys(leitner[en]).forEach(function (alan) { kayit[alan] = leitner[en][alan]; });
+      kayit.g = b + Math.floor(i / pay);
+      degisiklikler[en] = kayit;
     });
-    kayitlariYaz(degisiklikler);
+    if (!kayitlariYaz(degisiklikler, 'depo')) return { tasinan: 0, gun: 0, basarili: false };
     return { tasinan: gecikmis.length - pay, gun: Math.ceil(gecikmis.length / pay) };
   }
 
@@ -258,15 +354,19 @@
      Sıfırlama geri alınamaz bir işlem; yanlışlıkla basıldığında tek çare kalmasın
      diye silinen hal buraya kopyalanır. Yalnız SON sıfırlama saklanır. */
 
+  var YEDEK_ALANLARI = [
+    'yds-leitner', 'yds-yanlis', 'yds-kategori', 'yds-gecmis', 'yds-konular',
+    'yds-test-yanlis', 'yds-rekor', 'yds-yeni-sayac'
+  ];
+
   function yedekAl(kapsam, kayitSayisi) {
     var kopya = { z: Date.now(), kapsam: kapsam, veri: {} };
     if (typeof kayitSayisi === 'number') kopya.kayit = kayitSayisi;
-    ['yds-leitner', 'yds-yanlis', 'yds-kategori', 'yds-gecmis', 'yds-konular',
-     'yds-test-yanlis', 'yds-rekor'].forEach(function (a) {
+    YEDEK_ALANLARI.forEach(function (a) {
       var v = Depo.oku(a, null);
       if (v !== null && v !== undefined) kopya.veri[a] = v;
     });
-    Depo.yaz(K_YEDEK, kopya);
+    return Depo.yaz(K_YEDEK, kopya) !== false;
   }
 
   function yedekBilgisi() {
@@ -282,37 +382,42 @@
   function yedegiGeriAl() {
     var y = Depo.oku(K_YEDEK, null);
     if (!y || !y.veri) return false;
-    var eskiLeitner = y.veri['yds-leitner'];
-    if (eskiLeitner && typeof eskiLeitner === 'object') {
-      var geriGelenler = {};
-      Object.keys(eskiLeitner).forEach(function (en) {
-        if (!leitner[en]) geriGelenler[en] = eskiLeitner[en];
-      });
-      kayitlariYaz(geriGelenler);
-    }
-    ['yds-yanlis', 'yds-kategori', 'yds-gecmis', 'yds-konular',
-     'yds-test-yanlis', 'yds-rekor'].forEach(function (a) {
-      if (y.veri[a] !== undefined && Depo.oku(a, null) === null) Depo.yaz(a, y.veri[a]);
+    if (!Motor || !Depo.paketYaz) return false;
+
+    var mevcut = {};
+    YEDEK_ALANLARI.forEach(function (a) {
+      var v = Depo.oku(a, undefined);
+      if (v !== undefined) mevcut[a] = v;
     });
-    Depo.sil(K_YEDEK);
-    return true;
+    // İki tarafı sürümsüz zarf olarak birleştirmek, veri motorundaki alan
+    // semantiklerini devreye sokar: daha güçlü kategori/konu, en yüksek yanlış
+    // sayısı, daha iyi rekor ve son 50 geçmiş; ayrık kayıtların tümü korunur.
+    var birlesmis = Motor.paket(Motor.birlestir(
+      Motor.zarfaCevir(mevcut), Motor.zarfaCevir(y.veri)));
+    if (Depo.paketYaz(birlesmis, 'geri-al') === false) return false;
+    leitneriTazele();
+    // Yalnız bütün ilerleme alanları kalıcılaştıktan sonra yedeği tüket.
+    return Depo.sil(K_YEDEK) !== false;
   }
 
-  function sifirlaKelime(en) {
-    kayitlariSil([en]);
+  function sifirlaKelime(en, tur) {
+    return kayitlariSil([en], tur);
   }
 
   function leitnerSifirla(yedekle) {
-    if (yedekle !== false) yedekAl('kelime ve öbek kutuları');
+    if (yedekle !== false && !yedekAl('kelime ve öbek kutuları')) return false;
+    // Eski kaynak yerinde kalırsa bir sonraki açılışta sıfırlanan kartları
+    // yeniden göç ettirir. Önce bunu güvenle tüket, sonra Leitner'ı sıfırla.
+    if (Depo.sil(K_BILINEN) === false) return false;
+    if (Depo.sil(K_LEITNER) === false) return false;
     leitner = {};
-    Depo.sil(K_LEITNER);
-    Depo.sil(K_BILINEN);
+    return true;
   }
 
-  /* Yalnizca verilen kayitlari sil. Kelimeler ve obekler ayni tabloyu
-     paylastigi icin, bir sayfanin "sifirla" dugmesi digerini silmesin diye. */
-  function listeyiSifirla(adlar) {
-    kayitlariSil(adlar || []);
+  /* Yalnızca verilen türdeki kayıtları sil. Aynı görünen başlığa sahip
+     kelime ve öbekler iç kimlikte ayrıldığı için biri diğerini silemez. */
+  function listeyiSifirla(adlar, tur) {
+    return kayitlariSil(adlar || [], tur);
   }
 
   /* Kutu dağılımı ve bugünün iş yükü.
@@ -320,7 +425,7 @@
        yeni   → hiç çalışılmamış kelime havuzu
        acilacakYeni → bunlardan bugün kotaya sığan kadarı
        bugun  → destedeki toplam kart = tekrar + acilacakYeni            */
-  function leitnerOzet(tumKelimeler) {
+  function leitnerOzet(tumKelimeler, tur) {
     var o = {
       k0: 0, k1: 0, k2: 0, k3: 0, k4: 0, k5: 0,
       tekrar: 0, yeni: 0, acilacakYeni: 0, bugun: 0,
@@ -329,11 +434,11 @@
       tavan: gunlukTavan(), bekleyen: 0
     };
     (tumKelimeler || []).forEach(function (kel) {
-      var k = kutu(kel.en);
+      var k = kutu(kel.en, tur);
       o['k' + k]++;
       if (k > 0) o.calisilan++; else o.yeni++;
       if (k >= EN_UST_KUTU) o.ogrenilen++;      // mezun: artık tekrara gelmiyor
-      if (vadesiGeldiMi(kel.en)) o.tekrar++;
+      if (vadesiGeldiMi(kel.en, tur)) o.tekrar++;
     });
     o.acilacakYeni = Math.min(o.yeni, o.kotaKalan);
     // Deste tavanla sınırlı: yeni kelimeler yerini alır, kalanı tekrarlar doldurur.
@@ -345,15 +450,18 @@
 
   /* Bugünün destesi: tekrarı gelen her kelime + kotaya sığan yeni kelimeler.
      Liste [{en:…}] biçiminde gelir, aynı biçimde döner. */
-  function destelik(tumKelimeler) {
+  function destelik(tumKelimeler, tur) {
     var liste = tumKelimeler || [];
 
-    var yeniler = liste.filter(function (k) { return yeniMi(k.en); })
+    var yeniler = liste.filter(function (k) { return yeniMi(k.en, tur); })
                        .slice(0, yeniKotasiKalan());
 
     // Tekrarlar: en çok gecikmiş önce (vadesi en eski olan başta)
-    var tekrarlar = liste.filter(function (k) { return vadesiGeldiMi(k.en); })
-                         .sort(function (a, b) { return leitner[a.en].g - leitner[b.en].g; });
+    var tekrarlar = liste.filter(function (k) { return vadesiGeldiMi(k.en, tur); })
+                         .sort(function (a, b) {
+                           return leitner[ilerlemeKimligi(a.en, tur)].g -
+                             leitner[ilerlemeKimligi(b.en, tur)].g;
+                         });
 
     // Yeni kelimeler yerini garanti alır; kalan yeri tekrarlar doldurur.
     var yer = Math.max(0, gunlukTavan() + bugunkuSayac().ek - yeniler.length);
@@ -361,10 +469,10 @@
   }
 
   /* Tavana sığmadığı için bugün gösterilmeyen tekrar sayısı. */
-  function bekleyenTekrar(tumKelimeler) {
+  function bekleyenTekrar(tumKelimeler, tur) {
     var liste = tumKelimeler || [];
-    var yeni = Math.min(liste.filter(function (k) { return yeniMi(k.en); }).length, yeniKotasiKalan());
-    var vadesi = liste.filter(function (k) { return vadesiGeldiMi(k.en); }).length;
+    var yeni = Math.min(liste.filter(function (k) { return yeniMi(k.en, tur); }).length, yeniKotasiKalan());
+    var vadesi = liste.filter(function (k) { return vadesiGeldiMi(k.en, tur); }).length;
     return Math.max(0, vadesi - Math.max(0, gunlukTavan() + bugunkuSayac().ek - yeni));
   }
 
@@ -468,7 +576,8 @@
     return (d && typeof d === 'object' && !Array.isArray(d)) ? d : {};
   }
 
-  function testYanlis(en) {
+  function testYanlis(en, tur) {
+    en = ilerlemeKimligi(en, tur);
     var d = testDefteri();
     var k = d[en] || { n: 0 };
     k.n = (k.n || 0) + 1;
@@ -477,15 +586,29 @@
     Depo.yaz(K_TEST_YANLIS, d);
   }
 
-  function testDogru(en) {
+  function testDogru(en, tur) {
+    en = ilerlemeKimligi(en, tur);
     var d = testDefteri();
     if (!d[en]) return;
     delete d[en];
     if (Object.keys(d).length) Depo.yaz(K_TEST_YANLIS, d); else Depo.sil(K_TEST_YANLIS);
   }
 
-  function testYanlisKumesi() { return testDefteri(); }
-  function testYanlisSayisi(en) { var k = testDefteri()[en]; return k ? (k.n || 1) : 0; }
+  function testYanlisKumesi(tur) {
+    var d = testDefteri();
+    if (!tur) return d;
+    var sonuc = {};
+    Object.keys(d).forEach(function (id) {
+      var cozum = kimlikCoz(id);
+      if (cozum.tur && cozum.tur !== tur) return;
+      sonuc[cozum.ad] = d[id];
+    });
+    return sonuc;
+  }
+  function testYanlisSayisi(en, tur) {
+    var k = testDefteri()[ilerlemeKimligi(en, tur)];
+    return k ? (k.n || 1) : 0;
+  }
   function testTemizle() { Depo.sil(K_TEST_YANLIS); }
 
   /* ---------- konu takibi ---------- */
@@ -527,19 +650,21 @@
   /* ---------- hepsini sıfırla ---------- */
 
   function hepsiniSifirla() {
-    yedekAl('her şey');
-    leitnerSifirla(false);
-    yanlisTemizle();
-    konuSifirla();
-    kategoriSifirla();
-    gecmisSifirla();
-    testTemizle();
-    Depo.sil('yds-rekor');
+    if (!yedekAl('her şey')) return false;
+    if (Depo.sil(K_BILINEN) === false) return false;
+    if (!Depo.anahtarlariSil || Depo.anahtarlariSil(YEDEK_ALANLARI, 'sifirla') === false) {
+      return false;
+    }
+    leitner = {};
+    return true;
   }
 
   window.YDS.Ilerleme = {
     ARALIK: ARALIK,
     bugun: bugun,
+    ilerlemeKimligi: ilerlemeKimligi,
+    kimlikCoz: kimlikCoz,
+    kayit: kayit,
     kutu: kutu,
     tumKayitlar: tumKayitlar,
     vadesiGeldiMi: vadesiGeldiMi,

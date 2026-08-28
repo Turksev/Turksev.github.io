@@ -181,10 +181,42 @@ code {
   place-items: center;
 }
 .theme-toggle:hover { color: var(--text); border-color: var(--accent); }
+.theme-toggle:disabled { cursor: default; }
 
-/* Eşitleme düğmesi (esitleme.js başlığa ekler). Girişliyken kullanıcının
+/* Eşitleme düğmesi (esitleme-v2.js başlığa ekler). Girişliyken kullanıcının
    baş harfini gösterir. */
 .esit-dugme.acik { color: var(--ok); border-color: var(--ok); font-weight: 700; }
+.esit-dugme.hata { color: var(--warn); border-color: var(--warn); opacity: 1; }
+
+.esit-uyari {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: min(420px, calc(100vw - 32px));
+  padding: 9px 10px 9px 13px;
+  border: 1px solid var(--warn);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow);
+  font-size: .86rem;
+}
+
+.esit-uyari button {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font: inherit;
+  font-size: 1.15rem;
+  line-height: 1;
+  padding: 2px 4px;
+}
+.esit-uyari button:hover { color: var(--text); }
 
 /* ---------- kartlar ---------- */
 

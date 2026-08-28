@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="assets/css/style.css">
 <script src="data/depo.js"></script>
 <script src="assets/js/main.js"></script>
+<script src="data/kelime-aliaslari.js"></script>
 <script src="assets/js/esitleme-veri.js"></script>
 <script src="assets/js/esitleme-depo.js"></script>
 </head>
@@ -150,8 +151,8 @@
             <tr><td>both A and B</td><td>hem A hem B</td><td>Both the climate and the soil matter.</td></tr>
             <tr><td>either A or B</td><td>ya A ya B</td><td>Either answer online or fill in a form.</td></tr>
             <tr><td>neither A nor B</td><td>ne A ne B</td><td>It neither cut costs nor improved access.</td></tr>
-            <tr><td>not only A but also B</td><td>yalnızca A değil, B de</td><td>Not only saves energy but also cuts waste.</td></tr>
-            <tr><td>whether A or B</td><td>ister A ister B</td><td>Whether the change is permanent is unclear.</td></tr>
+            <tr><td>not only A but also B</td><td>yalnızca A değil, B de</td><td>The program not only saves energy but also cuts waste.</td></tr>
+            <tr><td>whether A or B</td><td>ister A ister B</td><td>Whether the change is permanent or temporary is unclear.</td></tr>
           </table>
           <div class="tip">
             <b>Paralellik kuralı:</b> A isimse B de isim, A fiilimsiyse B de aynı tür fiilimsi olmalı.
@@ -174,7 +175,7 @@
             <tr><td>even if / even though</td><td>even if <b>varsayım</b> (-se bile); even though <b>bilinen gerçek</b> (-mesine rağmen).</td></tr>
             <tr><td>on the contrary / on the other hand</td><td>İlki önceki iddiayı <b>reddeder</b>; ikincisi sadece <b>başka bir yön</b> sunar.</td></tr>
             <tr><td>hardly / no sooner</td><td>Hardly … <b>when</b>, No sooner … <b>than</b>. Devrik yapı ister.</td></tr>
-            <tr><td>unless</td><td>Zaten olumsuzdur; ikinci bir olumsuzluk almaz: <i>unless you hurry</i> (✓).</td></tr>
+            <tr><td>unless</td><td><i>If ... not</i> anlamındaki olumsuzluğu ikinci kez kurma: <i>unless you hurry</i> (✓). Koşul gerçekten olumsuzsa olumsuz fiil mümkündür.</td></tr>
             <tr><td>since / as</td><td>İkisi de hem neden hem zaman bildirebilir; bağlam belirler.</td></tr>
           </table>
         </section>
@@ -192,7 +193,7 @@
             <select id="iliski" aria-label="Anlam ilişkisi">
               <option value="">Tüm ilişkiler</option>
             </select>
-            <select id="yapi" aria-label="Yapı">
+            <select id="yapiFiltre" aria-label="Yapı">
               <option value="">Tüm yapılar</option>
               <option value="cümle">+ cümle</option>
               <option value="isim">+ isim / V-ing</option>
@@ -227,7 +228,7 @@
 <footer class="site-footer">
   <div class="wrap">
     <span>© <span data-yil>2026</span> YDS Hazırlık</span>
-    <span>Tüm ilerleme yalnızca kendi tarayıcında saklanır.</span>
+    <span>İlerleme tarayıcıda saklanır; eşitleme açılırsa hesabına da kopyalanır.</span>
   </div>
 </footer>
 

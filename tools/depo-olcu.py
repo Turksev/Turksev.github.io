@@ -18,7 +18,7 @@ SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ATLA_DIZINLER = {
     '.git', '.github', '.claude', '__pycache__', 'node_modules', 'tools'
 }
-ATLA_DOSYALAR = {'_config.yml'}
+ATLA_DOSYALAR = {'_config.yml', 'README.md', 'firebase.json', 'firestore.rules'}
 
 toplam = 0
 dosya = 0

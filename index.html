@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="assets/css/style.css">
 <script src="data/depo.js"></script>
 <script src="assets/js/main.js"></script>
+<script src="data/kelime-aliaslari.js"></script>
 <script src="assets/js/esitleme-veri.js"></script>
 <script src="assets/js/esitleme-depo.js"></script>
 </head>
@@ -130,7 +131,7 @@
         <a class="card card-link" href="kelimeler.html">
           <span class="ico">📚</span>
           <h3>Kelime Listesi</h3>
-          <p>49 gerçek YDS sınavındaki geçme sıklığına göre puanlanmış <b id="k-kelime">7.849</b> kelime,
+          <p>49 gerçek YDS/e-YDS sınavındaki geçme sıklığına göre puanlanmış <b id="k-kelime">7.848</b> kelime,
              yedi katman hâlinde. Aralıklı tekrarla çalışılır; her kelimenin örnek cümlesi var.</p>
         </a>
 
@@ -138,7 +139,7 @@
           <span class="ico">🌳</span>
           <h3>Kelime Aileleri</h3>
           <p>Bir kökten türeyen kelimeler bir arada — <i>sufficient · sufficiently · insufficient</i>.
-             <b id="k-aile">627</b> aile; YDS'nin kelime türetme sorusuna hazırlanmanın en hızlı yolu.</p>
+             <b id="k-aile">1.026</b> aile; YDS'nin kelime türetme sorusuna hazırlanmanın en hızlı yolu.</p>
         </a>
 
         <a class="card card-link" href="obekler.html">
@@ -177,6 +178,12 @@
         </a>
 
       </div>
+      <p class="small muted" style="margin-top:18px">
+        Kelime havuzunda ana referans resmî sınav PDF arşividir.
+        <a href="data/kaynak-manifest.json">49 PDF'nin sınav kimliği ve SHA-256 manifesti</a> ile
+        <a href="data/kelime-provenans.json">denetlenen kelime başlıklarının öğe düzeyi kaynak kaydı</a>
+        soru metinlerini kopyalamadan yayımlanır.
+      </p>
     </div>
   </section>
 
@@ -208,7 +215,7 @@
 <footer class="site-footer">
   <div class="wrap">
     <span>© <span data-yil>2026</span> YDS Hazırlık</span>
-    <span>Tüm ilerleme yalnızca kendi tarayıcında saklanır.</span>
+    <span>İlerleme tarayıcıda saklanır; eşitleme açılırsa hesabına da kopyalanır.</span>
   </div>
 </footer>
 
@@ -311,7 +318,7 @@
     if (!window.YDS.ikiKereSor(
         'HER ŞEY silinecek: kelime ve öbek kutuların, yanlış defterin, kategori karnen, ' +
         'deneme geçmişin ve konu takibin.', n)) return;
-    Il.hepsiniSifirla();
+    if (!Il.hepsiniSifirla()) { window.YDS.depolamaUyarisi(); return; }
     location.reload();
   });
 

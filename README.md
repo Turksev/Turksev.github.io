@@ -10,23 +10,26 @@ Yayında: <https://turksev.github.io>
 | Dosya | İçerik |
 | --- | --- |
 | `index.html` | Ana sayfa ve ilerleme paneli: tekrar durumu, yanlış defteri, deneme geçmişi, kategori karnesi |
-| `kelimeler.html` | 7.849 kelime, 7 katman + **aralıklı tekrar (Leitner)**: bugünün destesi, kart modu, ipucu, sesli okuma |
+| `kelimeler.html` | 7.848 kelime, 7 katman + **aralıklı tekrar (Leitner)**: bugünün destesi, kart modu, ipucu, sesli okuma |
 | `obekler.html` | 1.623 kelime öbeği (560 deyimsel fiil, 332 edat kalıbı, sabit/geçiş ifadeleri) — ayrı Leitner destesi |
 | `quiz.html` | Alıştırma soruları: 12 kategori, anında çözüm, yanlış defterinden çalışma |
 | `deneme.html` | **Süreli deneme sınavı**: geri sayım, soru ızgarası, işaretleme, 100 üzerinden YDS puanı, kategori karnesi |
 | `gramer.html` | 10 başlıkta konu anlatımı, kural tabloları ve sınav tuzakları |
+| `konular.html` | Türkçe ve İngilizce eksenli **129/129 YDS ünitesi**: ayrıntılı anlatım, çözüm yolu, tuzaklar ve mini uygulamalar |
 | `baglaclar.html` | Bağlaçlar ve geçiş ifadeleri: çözüm yöntemi, yapı tabloları, filtrelenebilir 155 kayıtlık banka |
 | `ara.html` | Site geneli arama: kelimeler, öbekler, bağlaçlar, sorular, gramer konuları, YDS konu haritası üniteleri ve kelime aileleri — sonuca **çift tıklayınca ayrıntı kartı** açılır |
 
 ## İçerik
 
-- **7.849 kelime** — 49 gerçek YDS sınavındaki geçme sıklığına göre puanlanmış, yedi katmana ayrılmış;
-  her birinde Türkçe anlam + İngilizce örnek cümle + çeviri (1.113'ünde ikinci anlam da var)
+- **7.848 kelime** — 49 gerçek YDS sınavındaki geçme sıklığına göre puanlanmış, yedi katmana ayrılmış;
+  her birinde Türkçe anlam + İngilizce örnek cümle + çeviri (**2.576'sında birden çok anlam** var)
 - **1.623 kelime öbeği** — deyimsel fiil (phrasal verb), edat kalıbı, sabit ve geçiş ifadeleri, kaç sınavda geçtiği bilgisiyle
 - **125 soru** — 12 kategori: Kelime, Dil Bilgisi, Bağlaç, Preposition, Cloze Test, Çeviri,
   Cümle Tamamlama, Restatement, Paragraf Tamamlama, Anlamı Bozan Cümle, Diyalog, Okuma
 - **155 bağlaç** — anlam ilişkisi ve "sonrasında ne gelir" etiketleriyle
 - **10 gramer konusu** — tablolar ve örneklerle
+- **129 YDS konu ünitesi** — Türkçe–İngilizce aktarım sorunları ve İngilizce yapı sistemi
+  için çözüm yolu, sık tuzaklar, mini tanı ve gerekçeli cevaplarla eksiksiz anlatım
 
 ### Kelime katmanları
 
@@ -68,7 +71,7 @@ olasılıkla zaten biliyorsundur, atlanabilir. Gerçek YDS kelimeleri 2. katmand
 
 ```
 index.html  kelimeler.html  obekler.html  quiz.html  deneme.html
-gramer.html  baglaclar.html  ara.html
+gramer.html  konular.html  baglaclar.html  ara.html
 assets/
   css/style.css       tüm sayfaların ortak stili (açık/koyu tema)
   js/main.js          tema, gezinme, localStorage, iki aşamalı onay, service worker kaydı
@@ -77,7 +80,9 @@ assets/
   js/gunun-testi.js   günün testi (kelime + öbek): soru kurma, şıklar, sonuç
   js/ilerleme.js      Leitner, yanlış defteri, kategori istatistiği, geçmiş
   js/esitleme-ayar.js Firebase yapılandırması (null ise eşitleme kapalı)
-  js/esitleme.js      cihazlar arası eşitleme: Google girişi + Firestore
+  js/esitleme-veri.js kayıt sürümü, silme işareti ve deterministik birleştirme motoru
+  js/esitleme-depo.js localStorage köprüsü, sekmeler arası birleşim ve geçiş yedeği
+  js/esitleme-v2.js   Google girişi, işlemli Firestore eşitlemesi ve canlı dinleyici
   js/veri.js          kelime katmanlarını ve öbekleri istendiğinde yükler
   js/kelimeler.js     kelime sayfası
   js/obekler.js       öbek sayfası
@@ -87,20 +92,30 @@ assets/
   js/ara.js           site geneli arama
   img/                PWA ikonları (tools ile üretildi)
 data/
-  kelime-dizin.js     7.849 kelime: yazılış, kısa anlam, puan, katman, tür
-  test-k1..k7.js      günün testi cümleleri (katman başına, üretildikçe)
+  kelime-dizin.js     7.848 kelime: yazılış, kısa anlam, puan, katman, tür
+  test-k1..k6.js      7.848 günün testi cümlesi (7. katman şu anda boş)
   test-obek.js        öbekler için günün testi cümleleri
   kelime-k1..k7.js    katman katman tam kayıtlar (örnek cümleler)
+  kelime-aliaslari.js eski başlıklardaki ilerlemeyi düzeltilmiş başlıklara taşır
+  kelime-provenans.json denetlenen öğelerin sınav kimliği/sayfa/soru kaynakları
   obekler.js          1.623 kelime öbeği
   sayilar.js          içerik sayaçları (üretilir)
   sorular.js          soru bankası + okuma parçaları
   baglaclar.js        bağlaç verisi
+  konular.js          129 ünitenin konu haritası
+  konu-metinleri.js   temel 6 konu anlatımı
+  konu-metinleri-t-ek.js Türkçe ekseninin kalan 55 anlatımı
+  konu-metinleri-e1-ek.js, konu-metinleri-e2-ek.js İngilizce ekseninin 68 anlatımı
+  kaynak-manifest.json 49 sınav PDF'sinin içerik kopyalamayan provenans kaydı
 tools/
   listeyi-aktar.py    XLSX kaynaklardan kelime/öbek veri dosyalarını üretir
+  kelime-duzeltmeleri.json PDF/sözlük denetimli dokuz başlık düzeltmesinin tek kaynağı
   ek-kelimeler.js     dönüştürücü girdisi: elle yazılmış 181 kelime
   docx-aktar.js       Word belgelerini düz metne çevirir
 manifest.webmanifest  telefona kurulum
 sw.js                 çevrimdışı çalışma
+firestore.rules       kullanıcıyı yalnız kendi eşitleme belgesiyle sınırlayan kurallar
+firebase.json         Firestore kural dosyasının sürümlü dağıtım ayarı
 sitemap.xml  robots.txt
 ```
 
@@ -170,8 +185,9 @@ Karttaki "… sayfasında aç" düğmesi hedef sayfaya sorguyla gider:
 **Geri al** 7 gün boyunca kayıtları geri koyar (birleştirir, hiçbir şeyi silmez).
 
 Not: servis çalışanı dosyaları önbellekten sunup arka planda tazeliyordu, bu yüzden yeni
-kod kullanıcıya bir açılış geç ulaşıyordu. Artık `controllerchange` olayında sayfa bir kez
-kendini yeniliyor ve her açılışta `registration.update()` çağrılıyor.
+kod kullanıcıya bir açılış geç ulaşıyordu. Artık `controllerchange` ve ilk bulut birleşimi
+aynı yeniden yükleme koordinatöründen geçiyor; aynı sayfa yaşamında en fazla bir kez
+yenileniyor. Her açılışta `registration.update()` çağrılıyor.
 
 **Kullanım kalıpları.** Kelimenin tipik kalıpları görünür: `comply with the rules —
 kurallara uymak`. Listede ve kart arkasında **örnek cümlelerin üstünde**, ortalanmış bir
@@ -226,9 +242,10 @@ Deste bitince (ya da deste kartındaki **Günün testi** düğmesiyle) bugün ç
 en çok 20 soruluk, 5 şıklı boşluk doldurma testi açılır. Cümleler **karttaki örnekten bağımsız**,
 YDS okuma parçası kayıtında özgün cümlelerdir; `data/test-k{n}.js` içinde durur
 (`{kelime: {c, b, f, tr}}` — c boşluklu cümle, b boşluğa gelen çekimli biçim, f çekim türü
-`'' | s | past | pp | ing | pl`, tr Türkçesi). **Havuzun tamamı hazır** (25.08.2026):
-yedi katmanın hepsinde **7.848 cümle** ile **892 öbek** cümlesi var, yani hangi katmanı
-seçersen seç her kelime teste girebiliyor.
+`'' | s | past | pp | ing | pl`, tr Türkçesi). **Havuzun tamamı hazır** (28.08.2026):
+ilk altı katmandaki bütün **7.848 kelime** için cümle ve ayrıca **892 öbek** cümlesi var.
+7. katman şu anda 0 kayıt olduğu için `test-k7.js` yoktur; yükleyici bu katmanı ağ isteği
+üretmeden boş havuz olarak ele alır.
 
 Şıklar aynı türden, yakın katmandan kelimelerden kurulur ve boşluktaki biçimle **aynı çekime**
 sokulur (`assets/js/cekim.js`: düzenli kurallar + düzensiz fiil/isim tablosu); biçim uyumu
@@ -269,36 +286,89 @@ sarıya, %90'ı geçince kırmızıya döner.
 İlerleme localStorage'da yaşar; eşitleme açıksa bunun bir bulut kopyası da tutulur.
 Başlıktaki **⇅** düğmesiyle Google hesabına bir kez giriş yapılır; sonrası görünmezdir:
 
-- Açılışta bulut ile yerel **birleştirilir** — her kelimede en son çalışılan kayıt
-  kazanır (tekrar gününden geriye hesaplanır), yanlış defteri ve geçmiş birleşir,
-  rekorun yükseği kalır, katman/eksen tercihleri yalnız boşsa buluttan alınır.
-  Yerel veri değiştiyse sayfa bir kez yenilenir (sessionStorage işareti döngüyü keser).
-- Sonraki her değişiklik 2,5 sn gecikmeyle buluta yazılır; sekme kapanırken hemen.
-- Veri, kullanıcı başına tek Firestore belgesidir: `kullanicilar/{uid}` içinde
-  `{ surum, zaman, json }`. Bütün yds-* anahtarları tek JSON metni olarak durur
-  (Firestore alan adları her karakteri kaldırmıyor). Karşılaştırmalar anahtar
-  sıralayan kararlı JSON ile yapılır ki iki cihaz aynı veriyi farklı sırayla
-  yazıp durmasın.
+- Eski `yds-*` anahtarları uygulamanın okuma biçimi olarak korunur. Eşitlenen asıl
+  `yds-esitleme-v2` zarfında her kayıt ayrı mantıksal sürüm taşır; silmeler de mezar taşı
+  olarak saklanır. Böylece çevrimdışı kalan cihaz eski bir kaydı geri diriltemez ve iki
+  cihazın farklı kelimelerde yaptığı çalışmalar birbirini ezmez.
+- Açılıştaki birleşim Firestore işlemi içinde eski kök belgeyi ve güncel alan belgelerini
+  yeniden okuyarak yapılır. İlk birleşimden sonra belgeler canlı dinlenir; başka cihazın
+  değişikliği açık sayfaya gelir.
+  Yerel görünüm değişirse sayfa, servis çalışanıyla ortak tek koordinatörden bir kez yenilenir.
+- Sonraki her değişiklik 2,5 sn gecikmeyle buluta yazılır; sekme kapanırken hemen denenir.
+  Yerel geçiş öncesi görüntü `yds-esitleme-gecis-yedegi`, eski bulut belgesi de
+  `yds-esitleme-bulut-gecis-yedegi` altında bir kez korunur.
+- Veri, Firestore'un 1 MiB belge sınırına takılmaması için alan başına ayrılır:
+  `kullanicilar/{uid}/alanlar/{anahtar}` içinde
+  `{ surum: 2, anahtar, zaman, json }`. Bir kelime çalışıldığında yalnız değişen alan
+  okunup yazılır. Önceki sürümün `kullanicilar/{uid}` kök belgesi silinmez; ilk açılışta
+  yeni alanlara kayıpsız birleştirilir ve eski açık sekmelerden gelebilecek son kayıtlar
+  da dinlenir. Her alan için 900 KiB istemci koruması vardır; sınır yaklaşırsa bulut
+  yazımı durur, yerel ilerleme korunur. Yazmalar işlemli olduğu için eşzamanlı cihaz
+  güncellemeleri güncel alan belgesiyle yeniden birleştirilir.
 - `esitleme-ayar.js` içindeki `FIREBASE_AYAR` null ise her şey kapalıdır; site
-  yalnız yerel depoyla çalışır. Çıkış yapmak yerel veriyi silmez.
+  yalnız yerel depoyla çalışır. Firebase CDN erişilemezse küçük bir "Bulut eşitleme
+  çevrimdışı" uyarısı görünür; yerel çalışma ve mevcut ilerleme etkilenmez. Çıkış yapmak
+  yerel veriyi silmez.
 
 Firebase tarafı (bir kerelik kurulum): konsolda proje aç → Web uygulaması ekle ve
 çıkan yapılandırmayı `esitleme-ayar.js`'e koy → Authentication'da Google
 sağlayıcısını aç → Authorized domains'e `turksev.github.io` ekle → Firestore
-veritabanı oluştur ve şu kuralları yayınla:
+veritabanı oluştur. Güvenlik kuralları `firestore.rules` içinde sürümlenir;
+Firebase CLI ile şu komutla yayınlanır:
 
-```
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-    match /kullanicilar/{uid} {
-      allow read, write: if request.auth != null && request.auth.uid == uid;
-    }
-  }
-}
+```bash
+firebase deploy --only firestore:rules --project yds-hazirlik-d05ce
 ```
 
-`apiKey` gizli değildir (tarayıcıya zaten iner); veriyi koruyan bu kurallardır.
+Kurallar, oturum açmış kullanıcıya yalnız `kullanicilar/{kendi uid'si}` ağacını açar;
+eski kök zarfı ile 12 izinli alan belgesinin kimliğini, şemasını ve boyut üst sınırını
+doğrular. `apiKey` gizli değildir (tarayıcıya zaten iner); veriyi koruyan bu kurallardır.
+Statik regresyon:
+
+```bash
+node tools/test-uretim/firestore-kurallar-test.js
+```
+
+## Sınav kaynağı ve provenans
+
+Kelime yazımı, sınavda geçişi ve bağlam anlamı için ana doğruluk kaynağı
+`C:\Users\Trk\Desktop\YDS Soru Veritabanı\08_unique_exam_pdfs` klasöründeki 49
+YDS/e-YDS PDF'sidir. XLSX dosyaları ve üretilmiş `data/kelime-*.js` kayıtları çalışma
+çıktısıdır; PDF ile çeliştiklerinde son söz PDF denetiminindir.
+
+Kaynak zinciri iki ayrı provenans katmanıyla korunur:
+
+1. `data/kaynak-manifest.json`, kullanılan 49 PDF'nin sınav kimliğini, dosya boyutunu ve
+   SHA-256 özetini taşır. Böylece önce doğru kaynak kümesi ve dosya bütünlüğü doğrulanır.
+2. `data/kelime-provenans.json`, denetlenen kelimenin sınav kimliği, PDF sayfası,
+   soru/şık, yüzey biçimi ve bağlam anlamı gibi öğe düzeyi kaynağını tutar. Telifli soru
+   metnini kopyalamaz.
+
+Yeniden üretimde öncelik sırası **PDF → kaynak manifesti → öğe provenansı ve doğrulanmış
+düzeltme → türetilmiş XLSX/JS çıktısıdır**. Alt basamaktaki veri üst basamaktaki kanıtı
+sessizce ezmemelidir. Manifest yeniden üretimi:
+
+```bash
+python tools/kaynak-manifesti.py
+```
+
+Betik varsayılan olarak `YDS Soru Veritabanı/08_unique_exam_pdfs` klasöründe tam
+49 PDF bekler; sayı, dosya adı şeması, sınav kimliği veya içerik özeti yinelenirse
+manifesti yazmadan hata verir. Sınav belgeleri ve soru metinleri üzerindeki haklar
+ilgili hak sahiplerine aittir; manifestin bulunması yeniden kullanım izni anlamına gelmez.
+
+### Düzeltilen kelime başlıkları ve ilerleme güvenliği
+
+Önceden kullanıcı kararı bekleyen dokuz şüpheli başlık artık PDF bağlamı ve gerektiğinde
+yetkili sözlüklerle incelenip sonuçlandırıldı. Kararlar `tools/kelime-duzeltmeleri.json`
+içinde tek kaynak olarak tutulur; anlam, örnek, kalıp ve mevcutsa sınav kanıtı buradan
+üretime girer. Bekleyen başlık kararı kalmamıştır.
+
+Başlık değişikliği, kullanıcının eski ad altında tuttuğu Leitner kutusunu veya test yanlışını
+silmez. Üretimde oluşan `data/kelime-aliaslari.js`, eski başlıkları yeni kanonik başlıklara
+eşler; yerel ve bulut birleşimi sırasında iki taraftaki ilerleme kayıpsız biçimde birleştirilir.
+`data/kelime-provenans.json` ise bu düzeltmelerin öğe düzeyindeki kaynak izini yayımlanan
+veriden bağımsız olarak denetlenebilir kılar.
 
 ## Kelime ve öbek verisini yeniden üretmek
 
@@ -320,6 +390,8 @@ Okuduğu kaynaklar (salt okunur, hiçbirine yazılmaz):
 | `tools/kaliplar.js` | Kelimelerin kullanım kalıpları (2-4. katman); katman dosyalarına `kl` alanı olarak girer |
 | `tools/anlam-yildiz.js` | Çok anlamlı kelime ve öbeklerde anlam başına YDS önemi (1-4); `yz` alanı olarak girer ve anlamları sıralar |
 | `tools/ek-kelimeler.js` | Listede olmayan 52 kelime + ortak 129 kelimenin eş anlamlıları |
+| `tools/kelime-duzeltmeleri.json` | PDF/sözlük denetimi tamamlanan dokuz başlığın kanonik biçimi, anlamı, kalıbı ve kaynak kararı |
+| `data/kelime-provenans.json` | Düzeltilen öğelerin telifli soru metnini kopyalamayan sınav kimliği/sayfa/soru kanıtı |
 
 Betik `ii`, `iii`, `iv` gibi cloze şık numarası artıklarını atar, harf varyantlarını birleştirir ve
 `data/sayilar.js` içindeki sayaçları günceller. Yeni kelimeyi elle eklemek istersen
@@ -374,36 +446,30 @@ kopyala, yeni bir `id` ver, içindekiler listesine (`nav.toc`) bir satır ekle v
 listesine ve `sitemap.xml`'e ekle; `sw.js` içindeki `SURUM` değerini artır ki eski
 önbellek temizlensin.
 
-## Konu anlatımı ekleme (düzenli iş akışı)
+## Konu anlatımı kapsamı ve düzenli iş akışı
 
-Konu haritasındaki 129 ünitenin şu an **6'sının** anlatımı var. Yenisini eklemek için:
+`data/konular.js` içindeki **129 ünitenin 129'unun da anlatımı hazırdır**. Kapsam bir
+belge bekleme kuyruğuna değil, birlikte yüklenen sürümlü JavaScript veri dosyalarına dayanır:
 
-1. Anlatımı `.docx` olarak hazırla. Dosya adı **ünite koduyla başlasın**:
-   `T07_Niceleyici_ve_Butun_Parca.docx`, `E14_Zaman_ve_Kosul_Yan_Cumleleri.docx`
-2. Dosyayı `C:\Users\Trk\Desktop\English konu - chatgpt` klasörünün **herhangi bir yerine**
-   koy — alt klasörler de taranır, ayrı bir yere koyman gerekmez.
-3. Aktarıcıyı çalıştır:
+| Dosya | Kapsam |
+| --- | --- |
+| `data/konu-metinleri.js` | İlk 6 temel anlatım |
+| `data/konu-metinleri-t-ek.js` | T07–T61: Türkçe eksenindeki kalan 55 anlatım |
+| `data/konu-metinleri-e1-ek.js` | İngilizce ekseninin ilk ek anlatım grubu |
+| `data/konu-metinleri-e2-ek.js` | İngilizce ekseninin kalan anlatım grubu; iki E ek dosyası birlikte E01–E68'i kapsar |
+
+Yeni içerik veya düzeltme, ünitenin bulunduğu dosyada yapılır. Ek dosyalar mevcut
+`window.KONU_METINLERI` nesnesine kayıt ekler; temel kayıtları sıfırlamaz. Her değişiklikten
+sonra kapsam regresyonunu çalıştır:
 
 ```bash
-"C:/Users/Trk/Desktop/english claude/.venv/Scripts/python.exe" tools/konu-aktar.py
+node tools/test-uretim/konu-kapsam-test.js
 ```
 
-Betik hangi ünitelerin dolduğunu ve hangilerinin boş kaldığını yazar; haritada olmayan bir
-kod, okunamayan dosya ya da şüpheli kısalıkta bir metin varsa uyarır.
-
-**Belge yapısı.** Dönüştürücü mevcut altı konunun iskeletini bekler; aynı biçimi korursan
-sayfa kendiliğinden doğru çıkar:
-
-| Belgede | Sitede |
-| --- | --- |
-| İlk iki `Başlık 1` | Konu adı ve alt başlık (sayfa üstünde ayrıca yazılır) |
-| Sonraki `Başlık 1`'ler | Bölüm başlıkları — içindekiler bunlardan üretilir |
-| `Başlık 2` | Alt başlık |
-| Word tablosu | Tablo (tek hücreli olan vurgu kutusu olur) |
-| Madde imli liste | Liste |
-
-Yeni ünite **kodu** eklemek istersen (haritada olmayan bir konu), önce iki `.md`
-haritasından ilgili olanına satır ekle; aktarıcı kodu haritada bulamazsa belgeyi atlar.
+Test; `data/konular.js` ile anlatım kodlarını karşılaştırır, tam **129/129** kapsamı,
+çift/yersiz kodları, temel + `konu-metinleri-*-ek.js` dosyalarının birlikte yüklenmesini,
+zorunlu alanları, başlık eşleşmesini, gerçek metinle `kelime` sayısını ve ek anlatımların
+pedagojik bölüm yapısını denetler. Test geçmeden konu kapsamı tamamlanmış sayılmaz.
 
 ## Word belgesinden içerik aktarma
 

@@ -1,0 +1,56 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function kendiBelgesi(uid) {
+      return request.auth != null && request.auth.uid == uid;
+    }
+
+    function gecerliEsitlemeZarfi() {
+      return request.resource.data.keys().hasAll(['surum', 'zaman', 'json'])
+        && request.resource.data.keys().hasOnly(['surum', 'zaman', 'json'])
+        && (request.resource.data.surum == 1
+          || request.resource.data.surum == 2)
+        && request.resource.data.zaman is int
+        && request.resource.data.json is string;
+    }
+
+    function gecerliAlanAdi(alan) {
+      return alan == 'yds-leitner'
+        || alan == 'yds-yanlis'
+        || alan == 'yds-kategori'
+        || alan == 'yds-gecmis'
+        || alan == 'yds-konular'
+        || alan == 'yds-rekor'
+        || alan == 'yds-yeni-sayac'
+        || alan == 'yds-test-yanlis'
+        || alan == 'yds-gunluk-yeni'
+        || alan == 'yds-gunluk-tavan'
+        || alan == 'yds-katmanlar'
+        || alan == 'yds-eksen';
+    }
+
+    function gecerliAlanBelgesi(alan) {
+      return gecerliAlanAdi(alan)
+        && request.resource.data.keys().hasAll(['surum', 'anahtar', 'zaman', 'json'])
+        && request.resource.data.keys().hasOnly(['surum', 'anahtar', 'zaman', 'json'])
+        && request.resource.data.surum == 2
+        && request.resource.data.anahtar == alan
+        && request.resource.data.zaman is int
+        && request.resource.data.json is string
+        && request.resource.data.json.size() < 921600;
+    }
+
+    match /kullanicilar/{uid} {
+      // Önceki uygulama sürümlerinin tek-belge biçimi geçiş süresince okunup
+      // yazılabilir; yeni sürüm buraya yazmaz, yalnız alan belgelerine taşır.
+      allow read, delete: if kendiBelgesi(uid);
+      allow create, update: if kendiBelgesi(uid) && gecerliEsitlemeZarfi();
+
+      match /alanlar/{alan} {
+        allow read, delete: if kendiBelgesi(uid);
+        allow create, update: if kendiBelgesi(uid) && gecerliAlanBelgesi(alan);
+      }
+    }
+  }
+}

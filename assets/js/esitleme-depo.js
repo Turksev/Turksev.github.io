@@ -16,6 +16,7 @@
   var TIPLER = M.TIPLER;
   var ZARF_ANAHTARI = 'yds-esitleme-v2';
   var GECIS_YEDEGI = 'yds-esitleme-gecis-yedegi';
+  var ALIAS_GECIS_YEDEGI = 'yds-kelime-alias-gecis-yedegi';
   var hamOku = Depo.oku;
   var hamYaz = Depo.yaz;
   var hamSil = Depo.sil;
@@ -69,6 +70,21 @@
     return paket;
   }
 
+  function eskiAliasKayitlari(zarf) {
+    var bulunan = {};
+    ['yds-leitner', 'yds-test-yanlis'].forEach(function (anahtar) {
+      var alan = zarf && zarf.alanlar && zarf.alanlar[anahtar];
+      Object.keys((alan && alan.i) || {}).forEach(function (id) {
+        var yeniId = M.eskiIlerlemeKimligi
+          ? M.eskiIlerlemeKimligi(id) : M.kelimeKimligi(id);
+        if (yeniId === id) return;
+        if (!bulunan[anahtar]) bulunan[anahtar] = {};
+        bulunan[anahtar][id] = kopyala(alan.i[id]);
+      });
+    });
+    return bulunan;
+  }
+
   function kayitHaritasi(anahtar, deger) {
     var paket = {};
     paket[anahtar] = deger;
@@ -79,17 +95,38 @@
   }
 
   var durum = hamOku(ZARF_ANAHTARI, null);
+  var zarfKalici = !!(durum && durum.surum === M.SURUM && durum.alanlar);
   if (!durum || durum.surum !== M.SURUM || !durum.alanlar) {
     var eskiPaket = hamPaket();
     // İlk geçişin ham görüntüsünü yerelde bir kez sakla. Kullanıcıdan işlem
     // istemez; beklenmedik bir sorun olursa eski anahtarlar geri kurulabilir.
+    var gecisYedegiHazir = true;
     if (Object.keys(eskiPaket).length && hamOku(GECIS_YEDEGI, null) === null) {
-      hamYaz(GECIS_YEDEGI, { zaman: Date.now(), veri: eskiPaket });
+      gecisYedegiHazir = hamYaz(GECIS_YEDEGI,
+        { zaman: Date.now(), veri: eskiPaket }) !== false;
     }
     durum = M.zarfaCevir(eskiPaket);
-    hamYaz(ZARF_ANAHTARI, durum);
+    if (gecisYedegiHazir) zarfKalici = hamYaz(ZARF_ANAHTARI, durum) !== false;
   } else {
-    durum = M.birlestir(durum, { surum: M.SURUM, alanlar: {} });
+    var hamDurum = durum;
+    var duzeltilmisDurum = M.birlestir(durum, { surum: M.SURUM, alanlar: {} });
+    if (!esitMi(hamDurum, duzeltilmisDurum)) {
+      var aliasYedegi = eskiAliasKayitlari(hamDurum);
+      var aliasYedegiHazir = true;
+      if (Object.keys(aliasYedegi).length && hamOku(ALIAS_GECIS_YEDEGI, null) === null) {
+        aliasYedegiHazir = hamYaz(ALIAS_GECIS_YEDEGI,
+          { zaman: Date.now(), alanlar: aliasYedegi }) !== false;
+      }
+      // Normalleştirilmiş zarfı hemen kalıcılaştır; kullanıcı hiçbir karta
+      // dokunmadan sekmeyi kapatsa da aynı geçiş bir sonraki açılışa kalmasın.
+      if (aliasYedegiHazir && hamYaz(ZARF_ANAHTARI, duzeltilmisDurum) !== false) {
+        durum = duzeltilmisDurum;
+      } else {
+        // Ham zarf zaten diskte güvenlidir. Yedek veya yeni zarf yazılamadıysa
+        // yalnız bellekte ileri geçmiş gibi davranma; sonraki açılış tekrar dener.
+        durum = hamDurum;
+      }
+    }
   }
   saatiGozle(durum);
 
@@ -102,39 +139,61 @@
 
   function aynala(paket, oncekiPaket) {
     var degisen = [];
+    var basarili = true;
     Object.keys(TIPLER).forEach(function (anahtar) {
       var varMi = Object.prototype.hasOwnProperty.call(paket, anahtar);
       var onceVardi = Object.prototype.hasOwnProperty.call(oncekiPaket || {}, anahtar);
       if (varMi) {
-        if (!esitMi(hamOku(anahtar, undefined), paket[anahtar])) hamYaz(anahtar, paket[anahtar]);
+        if (!esitMi(hamOku(anahtar, undefined), paket[anahtar]) &&
+            hamYaz(anahtar, paket[anahtar]) === false) basarili = false;
       } else if (hamOku(anahtar, undefined) !== undefined) {
-        hamSil(anahtar);
+        if (hamSil(anahtar) === false) basarili = false;
       }
       if (varMi !== onceVardi || (varMi && !esitMi(paket[anahtar], oncekiPaket[anahtar]))) degisen.push(anahtar);
     });
-    return degisen;
+    return { degisen: degisen, basarili: basarili };
   }
 
   function kaydet(zarf, kaynak, dokunulanlar) {
     var oncekiZarf = durum;
     var oncekiPaket = M.paket(oncekiZarf);
-    durum = M.birlestir(zarf, { surum: M.SURUM, alanlar: {} });
+    var aday = M.birlestir(zarf, { surum: M.SURUM, alanlar: {} });
+    var diskteki = hamOku(ZARF_ANAHTARI, null);
+    // Aday hazırlanırken başka bir sekme zarfı güncellemiş olabilir. Kalıcı
+    // yazımdan hemen önce diskteki son zarfı da kat; son-yazan kazanır yarışında
+    // bağımsız yeni kayıtlar yanlışlıkla düşmesin.
+    if (diskteki && diskteki.surum === M.SURUM) aday = M.birlestir(aday, diskteki);
+
+    // Zarf tek kalici islem noktasidir. Kota/gizli mod gibi bir nedenle bu
+    // yazim basarisizsa bellekte ve klasik anahtarlarda olmus gibi davranma.
+    if (!esitMi(diskteki, aday) && hamYaz(ZARF_ANAHTARI, aday) === false) {
+      return { basarili: false, degisti: false, anahtarlar: [] };
+    }
+
+    durum = aday;
+    zarfKalici = true;
     saatiGozle(durum);
-    if (!esitMi(hamOku(ZARF_ANAHTARI, null), durum)) hamYaz(ZARF_ANAHTARI, durum);
-    var degisen = aynala(M.paket(durum), oncekiPaket);
+    var aynaSonucu = aynala(M.paket(durum), oncekiPaket);
     var kume = Object.create(null);
-    degisen.concat(dokunulanlar || []).forEach(function (a) { if (TIPLER[a]) kume[a] = 1; });
+    aynaSonucu.degisen.concat(dokunulanlar || []).forEach(function (a) {
+      if (TIPLER[a]) kume[a] = 1;
+    });
     Object.keys(TIPLER).forEach(function (a) {
       var x = oncekiZarf.alanlar[a], y = durum.alanlar[a];
       if (!esitMi(x, y)) kume[a] = 1;
     });
     var liste = Object.keys(kume);
     bildir(liste, kaynak);
-    return { degisti: degisen.length > 0, anahtarlar: liste };
+    return {
+      basarili: true,
+      aynaBasarili: aynaSonucu.basarili,
+      degisti: liste.length > 0,
+      anahtarlar: liste
+    };
   }
 
   // Zarfı, sayfanın diğer betikleri yds-* anahtarlarını okumadan önce yansıt.
-  aynala(M.paket(durum), {});
+  if (zarfKalici) aynala(M.paket(durum), {});
 
   function guncelZarf() {
     var diskte = hamOku(ZARF_ANAHTARI, null);
@@ -143,11 +202,15 @@
     return durum;
   }
 
-  function veriYaz(anahtar, deger, kaynak, eskiDeger) {
-    if (!TIPLER[anahtar]) return hamYaz(anahtar, deger);
-    var zarf = guncelZarf();
-    var eski = kayitHaritasi(anahtar,
-      arguments.length >= 4 ? eskiDeger : hamOku(anahtar, undefined));
+  function veriOku(anahtar, varsayilan) {
+    if (!TIPLER[anahtar]) return hamOku(anahtar, varsayilan);
+    var paket = M.paket(guncelZarf());
+    return Object.prototype.hasOwnProperty.call(paket, anahtar)
+      ? kopyala(paket[anahtar]) : varsayilan;
+  }
+
+  function degeriUygula(zarf, anahtar, deger, eskiDeger) {
+    var eski = kayitHaritasi(anahtar, eskiDeger);
     var yeni = kayitHaritasi(anahtar, deger);
     var yazilacak = Object.create(null);
     var silinecek = [];
@@ -157,41 +220,79 @@
     Object.keys(eski).forEach(function (id) {
       if (yeni[id] === undefined) silinecek.push(id);
     });
-    if (Object.keys(yazilacak).length) zarf = M.kayitlariYaz(zarf, anahtar, yazilacak, yeniMeta);
+    if (Object.keys(yazilacak).length) {
+      zarf = M.kayitlariYaz(zarf, anahtar, yazilacak, yeniMeta);
+    }
     if (silinecek.length) zarf = M.kayitlariSil(zarf, anahtar, silinecek, yeniMeta);
     if (!zarf.alanlar[anahtar]) zarf.alanlar[anahtar] = { i: {} };
-    kaydet(zarf, kaynak || 'yerel', [anahtar]);
-    return true;
+    return zarf;
+  }
+
+  function veriYaz(anahtar, deger, kaynak) {
+    if (!TIPLER[anahtar]) return hamYaz(anahtar, deger);
+    var zarf = guncelZarf();
+    var eskiPaket = M.paket(zarf);
+    zarf = degeriUygula(zarf, anahtar, deger, eskiPaket[anahtar]);
+    return kaydet(zarf, kaynak || 'yerel', [anahtar]).basarili;
   }
 
   function kayitlariYaz(anahtar, kayitlar, kaynak) {
     if (!TIPLER[anahtar]) return false;
-    kaydet(M.kayitlariYaz(guncelZarf(), anahtar, kayitlar || {}, yeniMeta),
-      kaynak || 'yerel', [anahtar]);
-    return true;
+    return kaydet(M.kayitlariYaz(guncelZarf(), anahtar, kayitlar || {}, yeniMeta),
+      kaynak || 'yerel', [anahtar]).basarili;
   }
 
   function kayitlariSil(anahtar, ids, kaynak) {
     if (!TIPLER[anahtar]) return false;
-    kaydet(M.kayitlariSil(guncelZarf(), anahtar, ids || [], yeniMeta),
-      kaynak || 'yerel', [anahtar]);
-    return true;
+    return kaydet(M.kayitlariSil(guncelZarf(), anahtar, ids || [], yeniMeta),
+      kaynak || 'yerel', [anahtar]).basarili;
   }
 
   function veriSil(anahtar, kaynak) {
-    if (!TIPLER[anahtar]) { hamSil(anahtar); return; }
-    kaydet(M.anahtariSil(guncelZarf(), anahtar, yeniMeta),
-      kaynak || 'yerel', [anahtar]);
+    if (!TIPLER[anahtar]) return hamSil(anahtar);
+    return kaydet(M.anahtariSil(guncelZarf(), anahtar, yeniMeta),
+      kaynak || 'yerel', [anahtar]).basarili;
+  }
+
+  // Birden cok ilerleme alanini tek zarf yazimiyla uygular. Geri alma gibi
+  // islemlerde bir alan yazilip digeri kalmasin diye tum farklar once aday
+  // zarfta toplanir, ardindan tek kalici yazim yapilir.
+  function paketYaz(paket, kaynak) {
+    paket = paket && typeof paket === 'object' ? paket : {};
+    var zarf = guncelZarf();
+    var mevcut = M.paket(zarf);
+    var dokunulanlar = [];
+    Object.keys(TIPLER).forEach(function (anahtar) {
+      if (!Object.prototype.hasOwnProperty.call(paket, anahtar)) return;
+      zarf = degeriUygula(zarf, anahtar, paket[anahtar], mevcut[anahtar]);
+      dokunulanlar.push(anahtar);
+    });
+    return kaydet(zarf, kaynak || 'yerel', dokunulanlar).basarili;
+  }
+
+  function anahtarlariSil(anahtarlar, kaynak) {
+    var zarf = guncelZarf();
+    var dokunulanlar = [];
+    (anahtarlar || []).forEach(function (anahtar) {
+      if (!TIPLER[anahtar] || dokunulanlar.indexOf(anahtar) !== -1) return;
+      zarf = M.anahtariSil(zarf, anahtar, yeniMeta);
+      dokunulanlar.push(anahtar);
+    });
+    if (!dokunulanlar.length) return true;
+    return kaydet(zarf, kaynak || 'yerel', dokunulanlar).basarili;
   }
 
   function uygula(gelen, kaynak) {
     return kaydet(M.birlestir(guncelZarf(), M.zarfaCevir(gelen)), kaynak || 'bulut', []);
   }
 
+  Depo.oku = veriOku;
   Depo.yaz = veriYaz;
   Depo.sil = veriSil;
   Depo.kayitlariYaz = kayitlariYaz;
   Depo.kayitlariSil = kayitlariSil;
+  Depo.paketYaz = paketYaz;
+  Depo.anahtarlariSil = anahtarlariSil;
 
   function depolamaDegisti(e) {
     if (!e || !e.key) return;
@@ -199,12 +300,11 @@
       var gelen;
       try { gelen = JSON.parse(e.newValue); } catch (hata) { return; }
       var birlesmis = M.birlestir(durum, gelen);
-      if (!esitMi(birlesmis, gelen)) hamYaz(ZARF_ANAHTARI, birlesmis);
       kaydet(birlesmis, 'sekme', []);
       return;
     }
     if (!TIPLER[e.key]) return;
-    var beklenen = M.paket(durum);
+    var beklenen = M.paket(guncelZarf());
     var yeni;
     try { yeni = e.newValue === null ? undefined : JSON.parse(e.newValue); } catch (hata2) { return; }
     if (esitMi(beklenen[e.key], yeni)) return;
@@ -213,8 +313,29 @@
     // yaptığı yazımı da kaybetmeden yeni zarfa taşı.
     var eski;
     try { eski = e.oldValue === null ? undefined : JSON.parse(e.oldValue); } catch (hata3) { eski = undefined; }
-    if (yeni === undefined) veriSil(e.key, 'sekme');
-    else veriYaz(e.key, yeni, 'sekme', eski);
+    if (yeni === undefined) {
+      // Klasik anahtarı kaldıran eski sekmenin hangi yeni kayıtları hiç
+      // görmediği bilinemez. Tüm alanı tombstone yapmak daha yeni sekmenin
+      // ilerlemesini silebilir; güvenli zarfı kaynak kabul edip aynayı geri kur.
+      aynala(beklenen, beklenen);
+      return;
+    }
+
+    // Klasik anahtari yazan sekme eski bir tam nesneyle calisiyor olabilir.
+    // oldValue -> newValue arasinda acikca eklenen/degisen kayitlari al; yeni
+    // nesnede bulunmayan kimlikleri silme sayma. Boylece bu sekmede sonradan
+    // eklenen kayitlar, eski sekmenin eksik anlik goruntusu yuzunden kaybolmaz.
+    var eskiKayitlar = kayitHaritasi(e.key, eski);
+    var yeniKayitlar = kayitHaritasi(e.key, yeni);
+    var degisiklikler = Object.create(null);
+    Object.keys(yeniKayitlar).forEach(function (id) {
+      if (eskiKayitlar[id] === undefined || !esitMi(eskiKayitlar[id], yeniKayitlar[id])) {
+        degisiklikler[id] = yeniKayitlar[id];
+      }
+    });
+    if (Object.keys(degisiklikler).length) {
+      if (!kayitlariYaz(e.key, degisiklikler, 'sekme')) aynala(beklenen, beklenen);
+    } else aynala(beklenen, beklenen);
   }
   window.addEventListener('storage', depolamaDegisti);
 
@@ -222,6 +343,8 @@
     ANAHTAR: ZARF_ANAHTARI,
     zarf: function () { return kopyala(guncelZarf()); },
     paket: function () { return M.paket(guncelZarf()); },
-    uygula: uygula
+    uygula: uygula,
+    paketYaz: paketYaz,
+    anahtarlariSil: anahtarlariSil
   };
 })();

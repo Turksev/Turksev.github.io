@@ -8,59 +8,137 @@ var assert = require('assert');
 var kok = path.resolve(__dirname, '..', '..');
 var bellek = new Map();
 var olaylar = {};
-var snapshotDinleyicileri = [];
-var islemSayisi = 0;
-var yenidenYukleme = 0;
 var gercekSetTimeout = setTimeout;
+var yenidenYukleme = 0;
+var yenidenYuklemeNedenleri = [];
+var islemSayisi = 0;
+var islemDenemesi = 0;
+var kokYazma = 0;
+var alanYazma = 0;
+var cakismaKancasi = null;
 
 var yerelEski = {
-  'yds-leitner': { local: { k: 2, g: 20 } },
+  'yds-leitner': {
+    local: { k: 2, g: 20 },
+    'hand-down': { k: 2, g: 40, c: 10 }
+  },
   'yds-kategori': { Kelime: { d: 4, y: 1 } }
 };
 Object.keys(yerelEski).forEach(function (a) { bellek.set(a, JSON.stringify(yerelEski[a])); });
 
-var uzakBelge = {
+var kokBelge = {
   surum: 1,
   zaman: 100,
   json: JSON.stringify({
-    'yds-leitner': { cloud: { k: 3, g: 30 } },
+    'yds-leitner': {
+      cloud: { k: 3, g: 30 },
+      'handed-down': { k: 4, g: 80, c: 20 },
+      'hand down': { k: 3, g: 70, c: 15 }
+    },
     'yds-yanlis': [{ a: 'K|S', kat: 'K', n: 2, t: 9 }]
   })
 };
+var kokBelgeIlk = JSON.stringify(kokBelge);
+var alanBelgeleri = new Map();
+var surumler = new Map();
+var dinleyiciler = new Map();
 
-function foto() {
-  return { exists: !!uzakBelge, data: function () { return uzakBelge; } };
-}
-
-var belgeRef = {
-  onSnapshot: function (basarili) {
-    snapshotDinleyicileri.push(basarili);
-    gercekSetTimeout(function () { basarili(foto()); }, 0);
-    return function () {
-      snapshotDinleyicileri = snapshotDinleyicileri.filter(function (x) { return x !== basarili; });
+function refYap(tip, anahtar) {
+  var ref = {
+    tip: tip,
+    anahtar: anahtar || null,
+    path: tip === 'kok' ? 'kullanicilar/u1' : 'kullanicilar/u1/alanlar/' + anahtar,
+    onSnapshot: function (basarili) {
+      var liste = dinleyiciler.get(ref.path) || [];
+      liste.push(basarili);
+      dinleyiciler.set(ref.path, liste);
+      gercekSetTimeout(function () { basarili(foto(ref)); }, 0);
+      return function () {
+        dinleyiciler.set(ref.path, (dinleyiciler.get(ref.path) || []).filter(function (x) {
+          return x !== basarili;
+        }));
+      };
+    }
+  };
+  if (tip === 'kok') {
+    ref.collection = function (ad) {
+      assert.strictEqual(ad, 'alanlar');
+      return { doc: function (alan) { return refYap('alan', alan); } };
     };
   }
-};
+  return ref;
+}
+
+function veri(ref) {
+  return ref.tip === 'kok' ? kokBelge : alanBelgeleri.get(ref.anahtar);
+}
+
+function foto(ref) {
+  var v = veri(ref);
+  return { exists: !!v, data: function () { return v; } };
+}
+
+function bildir(ref) {
+  (dinleyiciler.get(ref.path) || []).slice().forEach(function (fn) { fn(foto(ref)); });
+}
+
+function surum(ref) { return surumler.get(ref.path) || 0; }
+
+function disaridanYaz(ref, v) {
+  if (ref.tip === 'kok') kokBelge = v;
+  else alanBelgeleri.set(ref.anahtar, v);
+  surumler.set(ref.path, surum(ref) + 1);
+  bildir(ref);
+}
 
 var db = {
-  collection: function () { return { doc: function () { return belgeRef; } }; },
+  collection: function (ad) {
+    assert.strictEqual(ad, 'kullanicilar');
+    return { doc: function (uid) { assert.strictEqual(uid, 'u1'); return refYap('kok'); } };
+  },
   runTransaction: function (calistir) {
     islemSayisi++;
-    var yazilan = null;
-    var islem = {
-      get: function () { return Promise.resolve(foto()); },
-      set: function (ref, veri) { yazilan = veri; }
-    };
-    return Promise.resolve(calistir(islem)).then(function (sonuc) {
-      if (yazilan) uzakBelge = yazilan;
-      snapshotDinleyicileri.slice().forEach(function (fn) { fn(foto()); });
-      return sonuc;
-    });
+    function dene(kalan) {
+      islemDenemesi++;
+      var okunan = new Map();
+      var yazilan = [];
+      var islem = {
+        get: function (ref) {
+          okunan.set(ref.path, { ref: ref, surum: surum(ref) });
+          return Promise.resolve(foto(ref));
+        },
+        set: function (ref, v) { yazilan.push({ ref: ref, veri: v }); }
+      };
+      return Promise.resolve(calistir(islem)).then(function (sonuc) {
+        if (cakismaKancasi) {
+          var kanca = cakismaKancasi;
+          cakismaKancasi = null;
+          kanca();
+        }
+        var cakisti = false;
+        okunan.forEach(function (o) {
+          if (surum(o.ref) !== o.surum) cakisti = true;
+        });
+        if (cakisti) {
+          if (!kalan) throw new Error('transaction-retry-tukendi');
+          return dene(kalan - 1);
+        }
+        yazilan.forEach(function (y) {
+          if (y.ref.tip === 'kok') kokYazma++;
+          else alanYazma++;
+          disaridanYaz(y.ref, y.veri);
+        });
+        return sonuc;
+      });
+    }
+    return dene(4);
   }
 };
 
 var auth = {
-  onAuthStateChanged: function (fn) { gercekSetTimeout(function () { fn({ uid: 'u1', email: 'test@example.com' }); }, 0); },
+  onAuthStateChanged: function (fn) {
+    gercekSetTimeout(function () { fn({ uid: 'u1', email: 'test@example.com' }); }, 0);
+  },
   getRedirectResult: function () { return Promise.resolve(); },
   signInWithPopup: function () { return Promise.resolve(); },
   signInWithRedirect: function () { return Promise.resolve(); },
@@ -78,14 +156,21 @@ var document = {
 };
 var session = new Map();
 var pencere = {
-  YDS: { Depo: {
-    oku: function (a, varsayilan) {
-      if (!bellek.has(a)) return varsayilan;
-      try { return JSON.parse(bellek.get(a)); } catch (e) { return varsayilan; }
+  YDS: {
+    yenidenYukle: function (neden) {
+      yenidenYukleme++;
+      yenidenYuklemeNedenleri.push(neden);
+      return yenidenYukleme === 1;
     },
-    yaz: function (a, v) { bellek.set(a, JSON.stringify(v)); return true; },
-    sil: function (a) { bellek.delete(a); }
-  } },
+    Depo: {
+      oku: function (a, varsayilan) {
+        if (!bellek.has(a)) return varsayilan;
+        try { return JSON.parse(bellek.get(a)); } catch (e) { return varsayilan; }
+      },
+      yaz: function (a, v) { bellek.set(a, JSON.stringify(v)); return true; },
+      sil: function (a) { bellek.delete(a); return true; }
+    }
+  },
   FIREBASE_AYAR: { projectId: 'test' },
   firebase: {
     initializeApp: function () {},
@@ -119,6 +204,7 @@ var baglam = {
   Error: Error, parseInt: parseInt, setTimeout: hizliSetTimeout, clearTimeout: clearTimeout
 };
 vm.createContext(baglam);
+vm.runInContext(fs.readFileSync(path.join(kok, 'data', 'kelime-aliaslari.js'), 'utf8'), baglam);
 ['esitleme-veri.js', 'esitleme-depo.js', 'esitleme-v2.js'].forEach(function (dosya) {
   vm.runInContext(fs.readFileSync(path.join(kok, 'assets', 'js', dosya), 'utf8'), baglam);
 });
@@ -127,47 +213,93 @@ function bekle(ms) { return new Promise(function (coz) { gercekSetTimeout(coz, m
 function temiz(v) { return JSON.parse(JSON.stringify(v)); }
 
 (async function () {
-  await bekle(60);
+  await bekle(80);
   var M = pencere.YDS.EsitlemeMotoru;
   var D = pencere.YDS.EsitlemeDepo;
 
-  // Eski surum:1 bulut belgesi işlem içinde v2'ye çevrilir; iki taraf da korunur.
-  assert.strictEqual(uzakBelge.surum, 2);
-  var bulutPaket = M.paket(JSON.parse(uzakBelge.json));
-  assert.deepStrictEqual(Object.keys(temiz(bulutPaket['yds-leitner'])).sort(), ['cloud', 'local']);
-  assert.strictEqual(bulutPaket['yds-kategori'].Kelime.d, 4);
-  assert.strictEqual(bulutPaket['yds-yanlis'][0].a, 'K|S');
-  assert.deepStrictEqual(Object.keys(temiz(D.paket()['yds-leitner'])).sort(), ['cloud', 'local']);
-  assert.ok(islemSayisi >= 1);
+  function alanZarfi(anahtar) {
+    var doc = alanBelgeleri.get(anahtar);
+    assert.ok(doc, 'eksik alan belgesi: ' + anahtar);
+    assert.strictEqual(doc.surum, 2);
+    assert.strictEqual(doc.anahtar, anahtar);
+    var z = { surum: 2, alanlar: {} };
+    z.alanlar[anahtar] = JSON.parse(doc.json);
+    return z;
+  }
+
+  function alanPaketi(anahtar) { return M.paket(alanZarfi(anahtar)); }
+
+  function uzakAlanYaz(anahtar, zarf, zaman) {
+    var ref = refYap('alan', anahtar);
+    disaridanYaz(ref, {
+      surum: 2,
+      anahtar: anahtar,
+      zaman: zaman,
+      json: M.kararliJson(zarf.alanlar[anahtar])
+    });
+  }
+
+  // Legacy kök belge yerinde kalır; yerel ve uzak kayıtlar ayrı alanlara taşınır.
+  assert.strictEqual(JSON.stringify(kokBelge), kokBelgeIlk);
+  assert.strictEqual(kokYazma, 0);
+  var bulutPaket = alanPaketi('yds-leitner');
+  assert.deepStrictEqual(Object.keys(temiz(bulutPaket['yds-leitner'])).sort(),
+    ['@kelime:hand down', 'cloud', 'hand down', 'local']);
+  assert.strictEqual(bulutPaket['yds-leitner']['@kelime:hand down'].k, 4);
+  assert.strictEqual(bulutPaket['yds-leitner']['hand down'].k, 3);
+  assert.strictEqual(bulutPaket['yds-leitner']['hand-down'], undefined);
+  assert.strictEqual(bulutPaket['yds-leitner']['handed-down'], undefined);
+  assert.strictEqual(alanPaketi('yds-kategori')['yds-kategori'].Kelime.d, 4);
+  assert.strictEqual(alanPaketi('yds-yanlis')['yds-yanlis'][0].a, 'K|S');
+  assert.deepStrictEqual(Object.keys(temiz(D.paket()['yds-leitner'])).sort(),
+    ['@kelime:hand down', 'cloud', 'hand down', 'local']);
+  assert.ok(islemSayisi >= 1 && alanYazma >= 3);
   var bulutYedegi = JSON.parse(bellek.get('yds-esitleme-bulut-gecis-yedegi'));
   assert.strictEqual(bulutYedegi.veri['yds-leitner'].cloud.k, 3);
 
-  // Sonraki yerel değişiklik gecikme sonunda işlemli olarak buluta gider.
+  // Bir yerel Leitner değişikliği yalnız o alan belgesini günceller.
+  var oncekiAlanYazma = alanYazma;
   pencere.YDS.Depo.kayitlariYaz('yds-leitner', { after: { k: 1, g: 40, c: 35 } });
-  await bekle(80);
-  bulutPaket = M.paket(JSON.parse(uzakBelge.json));
+  await bekle(100);
+  bulutPaket = alanPaketi('yds-leitner');
   assert.strictEqual(bulutPaket['yds-leitner'].after.k, 1);
+  assert.strictEqual(alanYazma, oncekiAlanYazma + 1);
 
-  // Başka cihazın canlı değişikliği snapshot ile otomatik yerel depoya alınır.
-  var uzakZarf = M.kayitlariYaz(JSON.parse(uzakBelge.json), 'yds-leitner',
+  // İşlem okunurken başka istemci aynı alana yazarsa mock retry eder ve iki kayıt korunur.
+  var denemeOnce = islemDenemesi;
+  cakismaKancasi = function () {
+    var uzak = M.kayitlariYaz(alanZarfi('yds-leitner'), 'yds-leitner',
+      { beta: { k: 3, g: 70, c: 60 } }, function () { return '9999999999999:B'; });
+    uzakAlanYaz('yds-leitner', uzak, 300);
+  };
+  pencere.YDS.Depo.kayitlariYaz('yds-leitner', { alpha: { k: 2, g: 60, c: 55 } });
+  await bekle(120);
+  bulutPaket = alanPaketi('yds-leitner');
+  assert.strictEqual(bulutPaket['yds-leitner'].alpha.k, 2);
+  assert.strictEqual(bulutPaket['yds-leitner'].beta.k, 3);
+  assert.ok(islemDenemesi >= denemeOnce + 2, 'transaction çatışmada yeniden denenmedi');
+
+  // Başka cihazın canlı değişikliği otomatik yerel depoya alınır.
+  var uzakZarf = M.kayitlariYaz(alanZarfi('yds-leitner'), 'yds-leitner',
     { remoteAfter: { k: 4, g: 60, c: 45 } }, function () { return '9999999999999:R'; });
-  uzakBelge = { surum: 2, zaman: 200, json: M.kararliJson(uzakZarf) };
-  snapshotDinleyicileri.slice().forEach(function (fn) { fn(foto()); });
-  await bekle(30);
+  uzakAlanYaz('yds-leitner', uzakZarf, 400);
+  await bekle(40);
   assert.strictEqual(D.paket()['yds-leitner'].remoteAfter.k, 4);
 
   // Silinen kayıt, eski cihaz görüntüsü yeniden gelse bile dirilmez.
   pencere.YDS.Depo.kayitlariSil('yds-leitner', ['after']);
-  await bekle(80);
-  uzakZarf = M.birlestir(JSON.parse(uzakBelge.json),
+  await bekle(100);
+  uzakZarf = M.birlestir(alanZarfi('yds-leitner'),
     M.zarfaCevir({ 'yds-leitner': { after: { k: 5, g: 99 } } }));
-  uzakBelge = { surum: 2, zaman: 300, json: M.kararliJson(uzakZarf) };
-  snapshotDinleyicileri.slice().forEach(function (fn) { fn(foto()); });
-  await bekle(30);
+  uzakAlanYaz('yds-leitner', uzakZarf, 500);
+  await bekle(40);
   assert.strictEqual(D.paket()['yds-leitner'].after, undefined);
 
-  assert.ok(yenidenYukleme <= 1);
-  console.log('esitleme-bulut: 9 senaryo başarılı');
+  assert.strictEqual(JSON.stringify(kokBelge), kokBelgeIlk, 'legacy kök belge değiştirildi');
+  assert.strictEqual(kokYazma, 0);
+  assert.strictEqual(yenidenYukleme, 1);
+  assert.deepStrictEqual(yenidenYuklemeNedenleri, ['bulut-ilk-birlesim']);
+  console.log('esitleme-bulut: legacy geçiş + alan belgeleri + retry + tombstone başarılı');
 })().catch(function (e) {
   console.error(e);
   process.exitCode = 1;

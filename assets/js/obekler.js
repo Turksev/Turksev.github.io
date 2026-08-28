@@ -5,9 +5,9 @@
    gibi seçmeli değil, çünkü öbek sayısı tek dosyada taşınabilir
    büyüklükte.
 
-   Leitner tablosu kelimelerle ortaktır ama anahtarlar çakışmaz
-   (öbeklerde boşluk var, tek kelimelerde yok). "Sıfırla" düğmesi
-   yalnız öbek kayıtlarını siler.
+   Leitner tablosu kelimelerle ortaktır. Aynı başlığa sahip bir kelime
+   bulunduğunda iç kimlikler ayrılır; "Sıfırla" düğmesi yalnız öbek
+   kayıtlarını siler.
    ============================================================ */
 
 (function () {
@@ -19,6 +19,7 @@
   var karistir = window.YDS.karistir;
   var Il = window.YDS.Ilerleme;
   var Veri = window.YDS.Veri;
+  var ILERLEME_TURU = 'obek';
 
   var SAYFA_BOYU = 60;
 
@@ -45,7 +46,7 @@
   /* ---------- deste özeti ---------- */
 
   function desteyiCiz() {
-    var o = Il.leitnerOzet(leitnerListesi());
+    var o = Il.leitnerOzet(leitnerListesi(), ILERLEME_TURU);
 
     $('desteBilgi').textContent = o.calisilan + '/' + TUM.length + ' öbeğe başlandı · ' +
       o.ogrenilen + ' öğrenildi';
@@ -108,9 +109,9 @@
       if (tur && o.y !== tur) return false;
       if (esik && o.s < esik) return false;
 
-      var kutu = Il.kutu(o.f);
+      var kutu = Il.kutu(o.f, ILERLEME_TURU);
       if (seciliKutu !== null && kutu !== seciliKutu) return false;
-      if (dr === 'vadesi' && !Il.vadesiGeldiMi(o.f)) return false;
+      if (dr === 'vadesi' && !Il.vadesiGeldiMi(o.f, ILERLEME_TURU)) return false;
       if (dr === 'yeni' && kutu !== 0) return false;
       if (dr === 'ogrenilen' && kutu < 5) return false;    // mezun olanlar
       if (dr === 'zayif' && !(kutu === 1 || kutu === 2)) return false;
@@ -133,15 +134,15 @@
   /* ---------- liste ---------- */
 
   function kutuRozeti(f) {
-    var k = Il.kutu(f);
+    var k = Il.kutu(f, ILERLEME_TURU);
     if (k === 0) return '<span class="badge">yeni</span>';
-    var gun = Il.kalanGun(f);
+    var gun = Il.kalanGun(f, ILERLEME_TURU);
     var sinif = k >= 4 ? 'badge ok' : (k <= 2 ? 'badge warn' : 'badge');
     return '<span class="' + sinif + '">' + k + '. kutu · ' + (gun === 0 ? 'bugün' : gun + ' gün') + '</span>';
   }
 
   function satir(o) {
-    var kutu = Il.kutu(o.f);
+    var kutu = Il.kutu(o.f, ILERLEME_TURU);
     var anlamlar = o.a.map(function (a) {
       return '<div class="ex"><b>' + kacar(a.tr) + '</b>' + yildiz(a) +
              '<i>' + kacar(a.ex) + '</i>' +
@@ -220,8 +221,8 @@
     if (!o) return;
 
     $('kartOn').textContent = o.f;
-    $('kartKutu').innerHTML = KUTU_ADI[Il.kutu(o.f)] +
-      (Il.vadesiGeldiMi(o.f) ? ' · tekrar zamanı' : '');
+    $('kartKutu').innerHTML = KUTU_ADI[Il.kutu(o.f, ILERLEME_TURU)] +
+      (Il.vadesiGeldiMi(o.f, ILERLEME_TURU) ? ' · tekrar zamanı' : '');
     $('kartTr').innerHTML = o.a.map(function (a) {
       return kacar(a.tr) + yildiz(a);
     }).join('<br>') +
@@ -261,10 +262,12 @@
     var o = suzulmus[kartIndex];
     if (!o) return;
 
-    if (ne === 'zaten') Il.zatenBiliyorum(o.f);
-    else if (ne === 'yanlis') Il.yanlis(o.f);
-    else if (ipucuAcik) Il.ipucuyla(o.f);
-    else Il.dogru(o.f);
+    var sonuc;
+    if (ne === 'zaten') sonuc = Il.zatenBiliyorum(o.f, ILERLEME_TURU);
+    else if (ne === 'yanlis') sonuc = Il.yanlis(o.f, ILERLEME_TURU);
+    else if (ipucuAcik) sonuc = Il.ipucuyla(o.f, ILERLEME_TURU);
+    else sonuc = Il.dogru(o.f, ILERLEME_TURU);
+    if (sonuc === false) { window.YDS.depolamaUyarisi(); return; }
 
     desteyiCiz();
 
@@ -341,7 +344,7 @@
   /* ---------- ortak ---------- */
 
   function guncelleSayac() {
-    var o = Il.leitnerOzet(leitnerListesi());
+    var o = Il.leitnerOzet(leitnerListesi(), ILERLEME_TURU);
     if (seciliKutu !== null) {
       elSayac.textContent = suzulmus.length + ' öbek · ' +
         (seciliKutu === 0 ? 'hiç çalışılmamışlar'
@@ -388,7 +391,8 @@
     var ne = btn.getAttribute('data-ne');
 
     if (ne === 'ses') { seslendir(f); return; }
-    if (ne === 'bildim') Il.dogru(f); else Il.yanlis(f);
+    var sonuc = ne === 'bildim' ? Il.dogru(f, ILERLEME_TURU) : Il.yanlis(f, ILERLEME_TURU);
+    if (sonuc === false) { window.YDS.depolamaUyarisi(); return; }
     desteyiCiz();
 
     if (elDurum.value) {
@@ -418,7 +422,7 @@
   $('testDavetKapat').addEventListener('click', function () { $('testDavet').hidden = true; });
 
   $('desteBasla').addEventListener('click', function () {
-    var destelik = Il.destelik(leitnerListesi());
+    var destelik = Il.destelik(leitnerListesi(), ILERLEME_TURU);
     var kume = {};
     destelik.forEach(function (x) { kume[x.en] = true; });
 
@@ -486,12 +490,11 @@
   });
 
   $('sifirla').addEventListener('click', function () {
-    var kayitli = Il.tumKayitlar();
-    var n = adlar().filter(function (a) { return kayitli[a]; }).length;
+    var n = adlar().filter(function (a) { return Il.kutu(a, ILERLEME_TURU) > 0; }).length;
     if (!window.YDS.ikiKereSor(
         'Öbek tekrar ilerlemen silinecek. Kelime ilerlemene dokunulmaz.', n)) return;
-    Il.yedekAl('öbek kutuları', n);
-    Il.listeyiSifirla(adlar());
+    if (!Il.yedekAl('öbek kutuları', n)) { window.YDS.depolamaUyarisi(); return; }
+    if (!Il.listeyiSifirla(adlar(), ILERLEME_TURU)) { window.YDS.depolamaUyarisi(); return; }
     desteyiCiz();
     filtrele();
     if (geriAlCiz) geriAlCiz();

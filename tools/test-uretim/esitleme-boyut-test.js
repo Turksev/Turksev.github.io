@@ -12,19 +12,46 @@ vm.createContext(baglam);
 });
 
 var M = baglam.window.YDS.EsitlemeMotoru;
-var kayitlar = {};
+var leitner = {};
+var testYanlislari = {};
 baglam.window.KELIME_DIZIN.forEach(function (k) {
-  kayitlar[k.e] = { k: 5, g: 25000, c: 24970 };
+  leitner[k.e] = { k: 5, g: 25000, c: 24970 };
+  testYanlislari[k.e] = { n: 999999, t: 9999999999999 };
 });
 baglam.window.OBEKLER.forEach(function (o) {
-  kayitlar[o.f] = { k: 5, g: 25000, c: 24970 };
+  leitner[o.f] = { k: 5, g: 25000, c: 24970 };
+  testYanlislari[o.f] = { n: 999999, t: 9999999999999 };
 });
 
-var zarf = M.kayitlariYaz(M.zarfaCevir({}), 'yds-leitner', kayitlar,
+var zarf = M.kayitlariYaz(M.zarfaCevir({}), 'yds-leitner', leitner,
   function () { return '9999999999999:abcdefghijklmno'; });
-var bayt = Buffer.byteLength(M.kararliJson(zarf), 'utf8');
+zarf = M.kayitlariYaz(zarf, 'yds-test-yanlis', testYanlislari,
+  function () { return '9999999999999:abcdefghijklmno'; });
 
-// Firestore belge sınırı 1 MiB'dir; diğer küçük ilerleme alanları ve belge
-// alan başlıkları için en az 100 KiB güvenlik payı bırak.
-assert.ok(bayt < 924 * 1024, 'tam ilerleme zarfı güvenli sınırı aşıyor: ' + bayt + ' bayt');
-console.log('esitleme-boyut: ' + Object.keys(kayitlar).length + ' kayıt, ' + bayt + ' bayt');
+var eskiTekBelgeBayt = Buffer.byteLength(M.kararliJson(zarf), 'utf8');
+assert.ok(eskiTekBelgeBayt > 1024 * 1024,
+  'regresyon senaryosu eski tek-belge sınırını aşmıyor: ' + eskiTekBelgeBayt);
+
+var alanBaytlari = {};
+['yds-leitner', 'yds-test-yanlis'].forEach(function (anahtar) {
+  var doc = {
+    surum: M.SURUM,
+    anahtar: anahtar,
+    zaman: 9999999999999,
+    json: M.kararliJson(zarf.alanlar[anahtar])
+  };
+  var bayt = Buffer.byteLength(JSON.stringify(doc), 'utf8');
+  alanBaytlari[anahtar] = bayt;
+  assert.ok(bayt < 900 * 1024,
+    anahtar + ' alan belgesi 900 KiB güvenli sınırını aşıyor: ' + bayt);
+});
+
+var bulutKodu = fs.readFileSync(path.join(kok, 'assets/js/esitleme-v2.js'), 'utf8');
+assert.ok(bulutKodu.indexOf("collection('alanlar')") >= 0,
+  'üretim kodu alan başına Firestore belgesi kullanmıyor');
+assert.ok(bulutKodu.indexOf('BELGE_GUVENLI_BAYT = 900 * 1024') >= 0,
+  'üretim kodunda istemci tarafı 900 KiB koruması yok');
+
+console.log('esitleme-boyut: eski tek belge ' + eskiTekBelgeBayt +
+  ' bayt; leitner ' + alanBaytlari['yds-leitner'] +
+  ', test-yanlış ' + alanBaytlari['yds-test-yanlis'] + ' bayt');

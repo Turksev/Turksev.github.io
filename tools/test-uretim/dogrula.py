@@ -3,6 +3,7 @@
 
   python dogrula.py            -> rapor + data/test-k{n}.js uretimi
   python dogrula.py --rapor    -> yalniz rapor
+  python dogrula.py --karakter-testi -> Turkce karakter regresyon fixture'i
 """
 import io
 import json
@@ -17,9 +18,76 @@ BURASI = os.path.dirname(os.path.abspath(__file__))
 GIRDI = os.path.join(BURASI, 'girdi')
 CIKTI = os.path.join(BURASI, 'cikti')
 YALNIZ_RAPOR = '--rapor' in sys.argv
+KARAKTER_TESTI = '--karakter-testi' in sys.argv
 BICIMLER = ['', 's', 'past', 'pp', 'ing', 'pl']
 
+# Türkçe çevirinin tamamını yalnızca "özel harf var mı?" diye sınamak doğru
+# değildir: "Meral her sabah erken kalkar." gibi kusursuz bir cümlede ç, ğ, ı,
+# ö, ş veya ü bulunmayabilir. Bunun yerine, 2026-08 düzeltmesinde gerçekten
+# ASCII'ye düşmüş 140 kayıttan türetilen kesin bozulma biçimlerini arıyoruz.
+# Sözcükler tam eşleşir; örneğin doğru Türkçe "aksam" (parçalar) bilerek yoktur.
+ASCII_TURKCE_KAYIP_IMZALARI = frozenset({
+    'acik', 'actigi', 'agac', 'aliskanliklarina', 'aninda', 'arasindaki',
+    'arsivin', 'asagi', 'bagirsak', 'baska', 'basindan', 'bicimde', 'birkac',
+    'cikmasini', 'cogu', 'cunku', 'dayaniyordu', 'degil', 'doga',
+    'elestirmenler', 'erzaginin', 'farkli', 'gecici', 'genisleyen',
+    'gosterir', 'gozlemevi', 'hicbir', 'icinde', 'icin', 'iktisatcilar',
+    'inanilan', 'islek', 'kararlastirdi', 'kokten', 'kurami', 'mutevelliler',
+    'oldugunu', 'ortacag', 'osmanli', 'surucunun', 'savas', 'tereddutsuz',
+    'teskilatini', 'tulumbayi', 'uretilmeden', 'yalnizca',
+    'yetistiriciliginin', 'yogunlugunun', 'yonetimi', 'yonetmelikleri',
+    'yuzden',
+})
+
 sys.stdout.reconfigure(encoding='utf-8')
+
+
+def turkce_karakter_kaybi_imzalari(metin):
+    """Kesin ASCII-kaybı sözcüklerini döndürür; salt diakritik yokluğunu hata saymaz."""
+    kelimeler = set(re.findall(r'[a-z]+', str(metin or '').lower()))
+    return sorted(kelimeler & ASCII_TURKCE_KAYIP_IMZALARI)
+
+
+def turkce_yazim_sorunlari(ingilizce, turkce):
+    """Bağlama göre güvenle ayırt edilebilen Türkçe yazım sorunlarını döndürür."""
+    kaynak = str(ingilizce or '')
+    ceviri = str(turkce or '')
+    sorunlar = []
+    # “hala” akrabalık adıdır; “still” karşılığı ise şapkalı “hâlâ” yazılır.
+    if (re.search(r'(?<!\w)hala(?!\w)', ceviri, re.I)
+            and not re.search(r'\baunt(?:ie|y)?s?\b', kaynak, re.I)):
+        sorunlar.append("'hâlâ' yerine 'hala'")
+    return sorunlar
+
+
+def karakter_regresyon_testi():
+    yol = os.path.join(BURASI, 'turkce-karakter-fixtur.json')
+    veri = json.load(io.open(yol, encoding='utf-8'))
+    hatalar = []
+    for kayit in veri['bozuk']:
+        if (not turkce_karakter_kaybi_imzalari(kayit['tr'])
+                and not turkce_yazim_sorunlari(kayit.get('en', ''), kayit['tr'])):
+            hatalar.append('yakalanmadı: ' + kayit['ad'])
+    for kayit in veri['gecerli']:
+        bulunan = turkce_karakter_kaybi_imzalari(kayit['tr'])
+        yazim = turkce_yazim_sorunlari(kayit.get('en', ''), kayit['tr'])
+        if bulunan or yazim:
+            hatalar.append('yanlış alarm: %s (%s)' % (
+                kayit['ad'], ', '.join(bulunan + yazim)))
+    if hatalar:
+        raise AssertionError('; '.join(hatalar))
+    print('Türkçe karakter regresyon testi: %d bozuk yakalandı, %d geçerli geçti' % (
+        len(veri['bozuk']), len(veri['gecerli'])))
+
+
+if KARAKTER_TESTI:
+    karakter_regresyon_testi()
+    raise SystemExit(0)
+
+ICERIK_REGRESYONLARI = {
+    kayit['e']: kayit for kayit in json.load(io.open(
+        os.path.join(BURASI, 'test-ceviri-regresyon.json'), encoding='utf-8'))
+}
 
 # --- kelime dizini ---
 dizin = {}
@@ -99,6 +167,21 @@ for ad in sorted(os.listdir(GIRDI)):
                 break
         if len(tr) < 20:
             sorunlar.append('çeviri yok/kısa')
+        kayip_imzalari = turkce_karakter_kaybi_imzalari(tr)
+        if kayip_imzalari:
+            sorunlar.append('çeviride Türkçe karakter kaybı: ' + ', '.join(kayip_imzalari))
+        yazim_sorunlari = turkce_yazim_sorunlari(c.replace('----', b), tr)
+        if yazim_sorunlari:
+            sorunlar.append('çeviride Türkçe yazım sorunu: ' + ', '.join(yazim_sorunlari))
+        regresyon = ICERIK_REGRESYONLARI.get(e)
+        if regresyon:
+            tr_kucuk = tr.casefold()
+            for parca in regresyon.get('icerir', []):
+                if parca.casefold() not in tr_kucuk:
+                    sorunlar.append('çeviri regresyonu, eksik ifade: ' + parca)
+            for parca in regresyon.get('icermez', []):
+                if parca.casefold() in tr_kucuk:
+                    sorunlar.append('çeviri regresyonu, yasak ifade: ' + parca)
         if re.search(r'[“”‘’—]', c):
             sorunlar.append('tipografik işaret')
         if sorunlar:

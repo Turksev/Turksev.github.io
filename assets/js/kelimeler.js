@@ -2,7 +2,7 @@
    Kelime sayfası — katman seçimi, aralıklı tekrar (Leitner),
    arama/filtre, kart modu, ipucu ve sesli okuma
 
-   Dizin (7.849 kelime) her zaman bellektedir; örnek cümleler yalnız
+   Dizin (7.848 kelime) her zaman bellektedir; örnek cümleler yalnız
    seçili katmanlar için indirilir. Bu yüzden liste ve deste hep
    "seçili katmanlar" üzerinde çalışır.
    ============================================================ */
@@ -17,6 +17,7 @@
   var karistir = window.YDS.karistir;
   var Il = window.YDS.Ilerleme;
   var Veri = window.YDS.Veri;
+  var ILERLEME_TURU = 'kelime';
 
   var KATMAN_ANAHTAR = 'yds-katmanlar';
   var SAYFA_BOYU = 60;                 // listede bir seferde gösterilen satır
@@ -93,7 +94,7 @@
   /* ---------- bugünün destesi ---------- */
 
   function desteyiCiz() {
-    var o = Il.leitnerOzet(havuz.map(function (d) { return { en: d.e }; }));
+    var o = Il.leitnerOzet(havuz.map(function (d) { return { en: d.e }; }), ILERLEME_TURU);
 
     $('desteBilgi').textContent = havuz.length
       ? o.calisilan + '/' + havuz.length + ' kelimeye başlandı · ' + o.ogrenilen + ' öğrenildi'
@@ -202,9 +203,9 @@
 
     suzulmus = havuz.filter(function (d) {
       if (tp && d.y.indexOf(tp) === -1) return false;
-      var kutu = Il.kutu(d.e);
+      var kutu = Il.kutu(d.e, ILERLEME_TURU);
       if (seciliKutu !== null && kutu !== seciliKutu) return false;
-      if (dr === 'vadesi' && !Il.vadesiGeldiMi(d.e)) return false;
+      if (dr === 'vadesi' && !Il.vadesiGeldiMi(d.e, ILERLEME_TURU)) return false;
       if (dr === 'yeni' && kutu !== 0) return false;
       if (dr === 'ogrenilen' && kutu < 5) return false;    // mezun olanlar
       if (dr === 'zayif' && !(kutu === 1 || kutu === 2)) return false;
@@ -250,10 +251,10 @@
   /* ---------- liste ---------- */
 
   function kutuRozeti(en) {
-    var k = Il.kutu(en);
+    var k = Il.kutu(en, ILERLEME_TURU);
     if (k === 0) return '<span class="badge">yeni</span>';
-    if (Il.mezunMu(en)) return '<span class="badge ok" title="Öğrenildi — artık tekrara gelmiyor">öğrenildi ✓</span>';
-    var gun = Il.kalanGun(en);
+    if (Il.mezunMu(en, ILERLEME_TURU)) return '<span class="badge ok" title="Öğrenildi — artık tekrara gelmiyor">öğrenildi ✓</span>';
+    var gun = Il.kalanGun(en, ILERLEME_TURU);
     var sinif = k >= 4 ? 'badge ok' : (k <= 2 ? 'badge warn' : 'badge');
     return '<span class="' + sinif + '">' + k + '. kutu · ' + (gun === 0 ? 'bugün' : gun + ' gün') + '</span>';
   }
@@ -270,13 +271,13 @@
   }
 
   function testRozeti(en) {
-    var n = Il.testYanlisSayisi(en);
+    var n = Il.testYanlisSayisi(en, ILERLEME_TURU);
     return n ? '<span class="badge err" title="Günün testinde bilinemedi">testte ✗' + (n > 1 ? ' ×' + n : '') + '</span>' : '';
   }
 
   function satir(d) {
     var tam = Veri.kayit(d.e);
-    var kutu = Il.kutu(d.e);
+    var kutu = Il.kutu(d.e, ILERLEME_TURU);
     var anlamlar = tam
       ? tam.a.map(function (a) {
           return '<div class="ex"><b>' + kacar(a.tr) + '</b>' + yildiz(a) +
@@ -369,9 +370,9 @@
     var tam = Veri.kayit(d.e) || { a: [{ tr: d.t, ex: '', exTr: '' }] };
 
     $('kartOn').textContent = d.e;
-    $('kartKutu').innerHTML = KUTU_ADI[Il.kutu(d.e)] +
-      (Il.mezunMu(d.e) ? ' · öğrenildi, tekrara gelmez'
-                       : (Il.vadesiGeldiMi(d.e) ? ' · tekrar zamanı' : ''));
+    $('kartKutu').innerHTML = KUTU_ADI[Il.kutu(d.e, ILERLEME_TURU)] +
+      (Il.mezunMu(d.e, ILERLEME_TURU) ? ' · öğrenildi, tekrara gelmez'
+                       : (Il.vadesiGeldiMi(d.e, ILERLEME_TURU) ? ' · tekrar zamanı' : ''));
 
     $('kartTr').innerHTML = tam.a.map(function (a) {
       return kacar(a.tr) + yildiz(a);
@@ -413,10 +414,12 @@
     var d = suzulmus[kartIndex];
     if (!d) return;
 
-    if (ne === 'zaten') Il.zatenBiliyorum(d.e);
-    else if (ne === 'yanlis') Il.yanlis(d.e);
-    else if (ipucuAcik) Il.ipucuyla(d.e);
-    else Il.dogru(d.e);
+    var sonuc;
+    if (ne === 'zaten') sonuc = Il.zatenBiliyorum(d.e, ILERLEME_TURU);
+    else if (ne === 'yanlis') sonuc = Il.yanlis(d.e, ILERLEME_TURU);
+    else if (ipucuAcik) sonuc = Il.ipucuyla(d.e, ILERLEME_TURU);
+    else sonuc = Il.dogru(d.e, ILERLEME_TURU);
+    if (sonuc === false) { window.YDS.depolamaUyarisi(); return; }
 
     desteyiCiz();
 
@@ -455,7 +458,7 @@
   /* ---------- ortak ---------- */
 
   function guncelleSayac() {
-    var o = Il.leitnerOzet(havuz.map(function (x) { return { en: x.e }; }));
+    var o = Il.leitnerOzet(havuz.map(function (x) { return { en: x.e }; }), ILERLEME_TURU);
     if (seciliKutu !== null) {
       elSayac.textContent = suzulmus.length + ' kelime · ' +
         (seciliKutu === 0 ? 'hiç çalışılmamışlar'
@@ -512,7 +515,8 @@
     var ne = btn.getAttribute('data-ne');
 
     if (ne === 'ses') { seslendir(en); return; }
-    if (ne === 'bildim') Il.dogru(en); else Il.yanlis(en);
+    var sonuc = ne === 'bildim' ? Il.dogru(en, ILERLEME_TURU) : Il.yanlis(en, ILERLEME_TURU);
+    if (sonuc === false) { window.YDS.depolamaUyarisi(); return; }
     desteyiCiz();
 
     if (elDurum.value) {
@@ -540,7 +544,7 @@
   $('desteBasla').addEventListener('click', function () {
     // Deste filtreden değil, doğrudan Ilerleme'den kurulur: tekrarı gelenlerin
     // tamamı + günlük kotaya sığan yeni kelimeler.
-    var destelik = Il.destelik(havuz.map(function (d) { return { en: d.e }; }));
+    var destelik = Il.destelik(havuz.map(function (d) { return { en: d.e }; }), ILERLEME_TURU);
     var kume = {};
     destelik.forEach(function (x) { kume[x.en] = true; });
 
@@ -585,12 +589,13 @@
   /* Birikmiş tekrarları takvime yay (tek seferlik düzeltme). */
   $('deste').addEventListener('click', function (e) {
     if (!e.target.closest('#yigiiniDagit')) return;
-    var o = Il.leitnerOzet(havuz.map(function (d) { return { en: d.e }; }));
+    var o = Il.leitnerOzet(havuz.map(function (d) { return { en: d.e }; }), ILERLEME_TURU);
     var soru = 'Vadesi geçmiş ' + (o.tekrar) + ' tekrar, günde ' + Il.gunlukTavan() +
                ' karta göre önümüzdeki günlere dağıtılsın mı? Hiçbir kayıt silinmez, ' +
                'yalnız tekrar tarihleri ileri alınır.';
     if (!window.confirm(soru)) return;
-    var s = Il.birikmisiYay(havuz.map(function (d) { return d.e; }), Il.gunlukTavan());
+    var s = Il.birikmisiYay(havuz.map(function (d) { return d.e; }), Il.gunlukTavan(), ILERLEME_TURU);
+    if (s.basarili === false) { window.YDS.depolamaUyarisi(); return; }
     desteyiCiz();
     $('bekleyenNot').innerHTML = s.tasinan
       ? '<b>' + s.tasinan + '</b> tekrar ileriki günlere yayıldı; yığın ' + s.gun + ' günde erir.'
@@ -640,12 +645,11 @@
 
   $('sifirla').addEventListener('click', function () {
     var kelimeAdlari = DIZIN.map(function (d) { return d.e; });
-    var kayitli = Il.tumKayitlar();
-    var n = kelimeAdlari.filter(function (ad) { return kayitli[ad]; }).length;
+    var n = kelimeAdlari.filter(function (ad) { return Il.kutu(ad, ILERLEME_TURU) > 0; }).length;
     if (!window.YDS.ikiKereSor(
         'Tüm kelime tekrar ilerlemen silinecek. Öbek ilerlemene dokunulmaz.', n)) return;
-    Il.yedekAl('kelime kutuları', n);
-    Il.listeyiSifirla(kelimeAdlari);
+    if (!Il.yedekAl('kelime kutuları', n)) { window.YDS.depolamaUyarisi(); return; }
+    if (!Il.listeyiSifirla(kelimeAdlari, ILERLEME_TURU)) { window.YDS.depolamaUyarisi(); return; }
     desteyiCiz();
     filtrele();
     if (geriAlCiz) geriAlCiz();

@@ -10,7 +10,7 @@
   var TUM = window.BAGLACLAR || [];
 
   var $ = function (id) { return document.getElementById(id); };
-  var elAra = $('ara'), elIliski = $('iliski'), elYapi = $('yapi'), elDuzey = $('duzey');
+  var elAra = $('ara'), elIliski = $('iliski'), elYapi = $('yapiFiltre'), elDuzey = $('duzey');
   var elListe = $('liste'), elSayac = $('sayac'), elBos = $('bos');
 
   var YAPI_ETIKET = {
@@ -21,15 +21,25 @@
     'ikili': 'ikili çift'
   };
 
+  function iliskiler(b) {
+    return Array.isArray(b.ils) && b.ils.length ? b.ils : [b.il];
+  }
+
+  function yapilar(b) {
+    return Array.isArray(b.yps) && b.yps.length ? b.yps : [b.yp];
+  }
+
   /* ---------- ilişki menüsünü veriden doldur ---------- */
 
   function iliskileriDoldur() {
     var sirali = [];
     TUM.forEach(function (b) {
-      if (sirali.indexOf(b.il) === -1) sirali.push(b.il);
+      iliskiler(b).forEach(function (il) {
+        if (sirali.indexOf(il) === -1) sirali.push(il);
+      });
     });
     sirali.forEach(function (il) {
-      var n = TUM.filter(function (b) { return b.il === il; }).length;
+      var n = TUM.filter(function (b) { return iliskiler(b).indexOf(il) !== -1; }).length;
       var o = document.createElement('option');
       o.value = il;
       o.textContent = il + ' (' + n + ')';
@@ -57,8 +67,12 @@
           '<div class="en"><span class="sira">' + sira + '.</span> ' + kacar(b.f) + '</div>' +
           '<div class="tr">' + kacar(b.tr) + '</div>' +
           '<div class="meta">' +
-            '<span class="badge accent">' + kacar(b.il) + '</span>' +
-            '<span class="badge">' + kacar(YAPI_ETIKET[b.yp] || b.yp) + '</span>' +
+            iliskiler(b).map(function (il) {
+              return '<span class="badge accent">' + kacar(il) + '</span>';
+            }).join('') +
+            yapilar(b).map(function (yp) {
+              return '<span class="badge">' + kacar(YAPI_ETIKET[yp] || yp) + '</span>';
+            }).join('') +
             (b.dz === 'ileri' ? '<span class="badge warn">ileri / resmî</span>' : '') +
             (b.or.length > 1 ? '<span class="badge">' + b.or.length + ' anlam</span>' : '') +
           '</div>' +
@@ -81,8 +95,8 @@
     var il = elIliski.value, yp = elYapi.value, dz = elDuzey.value;
 
     var suzulmus = TUM.filter(function (b) {
-      if (il && b.il !== il) return false;
-      if (yp && b.yp !== yp) return false;
+      if (il && iliskiler(b).indexOf(il) === -1) return false;
+      if (yp && yapilar(b).indexOf(yp) === -1) return false;
       if (dz && b.dz !== dz) return false;
       if (q) {
         var havuz = b.f + ' ' + b.tr + ' ' + b.or.map(function (o) {

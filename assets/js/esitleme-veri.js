@@ -4,7 +4,7 @@
    Her kayıt bir değişiklik sürümüyle tutulur. Silinen kayıtlar da işaret
    olarak kaldığı için çevrimdışı bir cihaz onları yeniden canlandıramaz.
    Bu dosya yalnız dönüştürme/birleştirme yapar; localStorage ve Firestore
-   bağlantıları main.js ile esitleme.js tarafından kurulur.
+   bağlantıları main.js, esitleme-depo.js ve esitleme-v2.js tarafından kurulur.
    ============================================================ */
 
 (function () {
@@ -26,6 +26,71 @@
     'yds-katmanlar': 'tek',
     'yds-eksen': 'tek'
   };
+
+  /* Üretim verisinde düzeltilen eski kelime başlıkları. Görünen kanonik başlık
+     öbekle aynıysa yalnız KELİME kartı ayrı bir iç kimlik kullanır. Eski tireli
+     alias bu kelime kimliğine taşınır; boşluklu eski/öbek kimliği ise yerinde
+     kalır. Böylece kaynağı bilinen kayıtları ayırırken belirsiz ham kaydı başka
+     bir desteye yanlışlıkla çoğaltmayız. */
+  var KELIME_ALIASES = window.YDS_KELIME_ALIASES || {};
+  var KELIME_ILERLEME_KIMLIKLERI = window.YDS_KELIME_ILERLEME_KIMLIKLERI || {};
+  var KENDI = Object.prototype.hasOwnProperty;
+
+  function kelimeKimligi(id) {
+    var sonuc = String(id == null ? '' : id);
+    var gorulen = Object.create(null);
+    while (KELIME_ALIASES[sonuc] && !gorulen[sonuc]) {
+      gorulen[sonuc] = true;
+      sonuc = String(KELIME_ALIASES[sonuc]);
+    }
+    return sonuc;
+  }
+
+  /* Kelime sayfasının kullanacağı açık kimlik dönüşümü. Öbek tarafı bunu
+     çağırmaz ve görünen boşluklu başlığı depolama kimliği olarak korur. */
+  function kelimeIlerlemeKimligi(id) {
+    var kanonik = kelimeKimligi(id);
+    return KENDI.call(KELIME_ILERLEME_KIMLIKLERI, kanonik)
+      ? String(KELIME_ILERLEME_KIMLIKLERI[kanonik]) : kanonik;
+  }
+
+  /* Kaynağı belirtilmemiş eski depolama kaydı için güvenli geçiş:
+     - eski alias, kelime kaydı olduğu bilindiğinden kelime iç kimliğine gider;
+     - zaten kanonik boşluklu ham kimlik, öbek kaydı olabileceği için korunur. */
+  function eskiIlerlemeKimligi(id) {
+    var ham = String(id == null ? '' : id);
+    var kanonik = kelimeKimligi(ham);
+    if (KENDI.call(KELIME_ALIASES, ham) &&
+        KENDI.call(KELIME_ILERLEME_KIMLIKLERI, kanonik)) {
+      return String(KELIME_ILERLEME_KIMLIKLERI[kanonik]);
+    }
+    return kanonik;
+  }
+
+  function ilerlemeKimligi(id, tur) {
+    var ham = String(id == null ? '' : id);
+    return tur === 'obek' ? ham : kelimeIlerlemeKimligi(ham);
+  }
+
+  function ilerlemeKimliginiCoz(id) {
+    var ham = String(id == null ? '' : id);
+    var bulunan = null;
+    Object.keys(KELIME_ILERLEME_KIMLIKLERI).some(function (ad) {
+      if (String(KELIME_ILERLEME_KIMLIKLERI[ad]) !== ham) return false;
+      bulunan = { ad: ad, tur: 'kelime' };
+      return true;
+    });
+    if (bulunan) return bulunan;
+    if (KENDI.call(KELIME_ILERLEME_KIMLIKLERI, ham)) {
+      return { ad: ham, tur: 'obek' };
+    }
+    return { ad: kelimeKimligi(ham), tur: '' };
+  }
+
+  function kayitKimliginiNormallestir(anahtar, id) {
+    return (anahtar === 'yds-leitner' || anahtar === 'yds-test-yanlis')
+      ? eskiIlerlemeKimligi(id) : id;
+  }
 
   function kararliJson(v) {
     if (v === null || typeof v !== 'object') return JSON.stringify(v);
@@ -73,7 +138,13 @@
     var sonuc = Object.create(null);
     if (tip === 'nesne') {
       if (!deger || typeof deger !== 'object' || Array.isArray(deger)) return sonuc;
-      Object.keys(deger).forEach(function (id) { sonuc[id] = kopyala(deger[id]); });
+      Object.keys(deger).forEach(function (id) {
+        var yeniId = kayitKimliginiNormallestir(anahtar, id);
+        var yeni = kopyala(deger[id]);
+        if (sonuc[yeniId] === undefined) sonuc[yeniId] = yeni;
+        else sonuc[yeniId] = eskiEsitSec(anahtar,
+          { m: 0, v: sonuc[yeniId] }, { m: 0, v: yeni }).v;
+      });
     } else if (tip === 'yanlis-dizi' || tip === 'gecmis-dizi') {
       if (!Array.isArray(deger)) return sonuc;
       deger.forEach(function (v) {
@@ -130,28 +201,41 @@
     return kararliJson(a) >= kararliJson(b) ? kopyala(a) : kopyala(b);
   }
 
+  function kaydiSec(anahtar, x, y) {
+    if (!x) return kopyala(y);
+    if (!y) return kopyala(x);
+    var fark = metaKarsilastir(x.m, y.m);
+    if (fark > 0) return kopyala(x);
+    if (fark < 0) return kopyala(y);
+    if (!!x.d !== !!y.d) return kopyala(x.d ? x : y);
+    if (x.d && y.d) return kopyala(x);
+    // Anlamsal seçim yalnız sürümsüz eski kayıtların geçişinde gerekir.
+    // Aynı yeni sürüm iki tarafta da varsa bu aynı işlemin kopyasıdır.
+    if (metaAyir(x.m).z === 0) return eskiEsitSec(anahtar, x, y);
+    return kararliJson(x) >= kararliJson(y) ? kopyala(x) : kopyala(y);
+  }
+
+  function alaniNormallestir(anahtar, alan) {
+    alan = alan || { i: {} };
+    var sonuc = { i: {} };
+    if (alan.r) sonuc.r = alan.r;
+    Object.keys(alan.i || {}).forEach(function (id) {
+      var yeniId = kayitKimliginiNormallestir(anahtar, id);
+      sonuc.i[yeniId] = kaydiSec(anahtar, sonuc.i[yeniId], alan.i[id]);
+    });
+    return sonuc;
+  }
+
   function alanBirlestir(anahtar, a, b) {
-    a = a || { i: {} };
-    b = b || { i: {} };
+    a = alaniNormallestir(anahtar, a);
+    b = alaniNormallestir(anahtar, b);
     var sonuc = { i: {} };
     if (a.r || b.r) sonuc.r = metaKarsilastir(a.r, b.r) >= 0 ? a.r : b.r;
     var ids = Object.create(null);
     Object.keys(a.i || {}).concat(Object.keys(b.i || {})).forEach(function (id) { ids[id] = 1; });
     Object.keys(ids).forEach(function (id) {
-      var x = (a.i || {})[id], y = (b.i || {})[id], secilen;
-      if (!x) secilen = kopyala(y);
-      else if (!y) secilen = kopyala(x);
-      else {
-        var fark = metaKarsilastir(x.m, y.m);
-        if (fark > 0) secilen = kopyala(x);
-        else if (fark < 0) secilen = kopyala(y);
-        else if (!!x.d !== !!y.d) secilen = kopyala(x.d ? x : y);
-        else if (x.d && y.d) secilen = kopyala(x);
-        // Anlamsal seçim yalnız sürümsüz eski kayıtların geçişinde gerekir.
-        // Aynı yeni sürüm iki tarafta da varsa bu aynı işlemin kopyasıdır.
-        else if (metaAyir(x.m).z === 0) secilen = eskiEsitSec(anahtar, x, y);
-        else secilen = kararliJson(x) >= kararliJson(y) ? kopyala(x) : kopyala(y);
-      }
+      var x = (a.i || {})[id], y = (b.i || {})[id];
+      var secilen = kaydiSec(anahtar, x, y);
       if (!secilen || (sonuc.r && metaKarsilastir(secilen.m, sonuc.r) <= 0)) return;
       sonuc.i[id] = secilen;
     });
@@ -185,6 +269,7 @@
 
   function alanDegeri(anahtar, alan) {
     if (!alan) return { var: false };
+    alan = alaniNormallestir(anahtar, alan);
     var tip = TIPLER[anahtar];
     var aktif = Object.create(null);
     Object.keys(alan.i || {}).forEach(function (id) {
@@ -221,7 +306,9 @@
     zarf = birlestir(zarf, bosZarf());
     var alan = zarf.alanlar[anahtar] || { i: {} };
     Object.keys(kayitlar || {}).forEach(function (id) {
-      alan.i[id] = { m: meta(), v: kopyala(kayitlar[id]) };
+      var yeniId = kayitKimliginiNormallestir(anahtar, id);
+      var gelen = { m: meta(), v: kopyala(kayitlar[id]) };
+      alan.i[yeniId] = kaydiSec(anahtar, alan.i[yeniId], gelen);
     });
     zarf.alanlar[anahtar] = alan;
     return zarf;
@@ -230,7 +317,10 @@
   function kayitlariSil(zarf, anahtar, ids, meta) {
     zarf = birlestir(zarf, bosZarf());
     var alan = zarf.alanlar[anahtar] || { i: {} };
-    (ids || []).forEach(function (id) { alan.i[id] = { m: meta(), d: 1 }; });
+    (ids || []).forEach(function (id) {
+      var yeniId = kayitKimliginiNormallestir(anahtar, id);
+      alan.i[yeniId] = kaydiSec(anahtar, alan.i[yeniId], { m: meta(), d: 1 });
+    });
     zarf.alanlar[anahtar] = alan;
     return zarf;
   }
@@ -244,6 +334,11 @@
   window.YDS.EsitlemeMotoru = {
     SURUM: 2,
     TIPLER: TIPLER,
+    kelimeKimligi: kelimeKimligi,
+    kelimeIlerlemeKimligi: kelimeIlerlemeKimligi,
+    eskiIlerlemeKimligi: eskiIlerlemeKimligi,
+    ilerlemeKimligi: ilerlemeKimligi,
+    ilerlemeKimliginiCoz: ilerlemeKimliginiCoz,
     kararliJson: kararliJson,
     metaKarsilastir: metaKarsilastir,
     zarfaCevir: zarfaCevir,

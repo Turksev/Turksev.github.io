@@ -147,6 +147,118 @@ def site_kelimelerini_oku():
     return kayitlar
 
 
+def ek_puanlari_oku():
+    """tools/ek-puanlar.js — siteye elle eklenen kelimelerin gerçek puanları.
+
+    Değerler ana puanlama SQLite'ından aynı STRUCTURAL_PROXY formülüyle
+    alınır. Burada yalnız yeniden üretimde kaybolmamaları için tutulurlar.
+    """
+    yol = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'ek-puanlar.js')
+    if not os.path.exists(yol):
+        return {}
+    metin = open(yol, encoding='utf-8').read()
+    i = metin.find('window.EK_PUANLAR')
+    if i == -1:
+        return {}
+    return {json.loads('"%s"' % ad): float(puan)
+            for ad, puan in re.findall(r'"((?:[^"\\]|\\.)*)"\s*:\s*(\d+(?:\.\d+)?)', metin[i:])}
+
+
+def kelime_duzeltmelerini_oku():
+    """PDF/sözlük denetimiyle kanonikleştirilen başlık ve anlamlar.
+
+    Aynı dosyadaki ``eskiler`` alanı tarayıcıdaki ilerleme göçünün de tek
+    kaynağıdır. Böylece veri yeniden üretildiğinde kart başlığı ile göç
+    tablosu birbirinden kopamaz.
+    """
+    yol = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                       'kelime-duzeltmeleri.json')
+    if not os.path.exists(yol):
+        return {'duzeltmeler': [], 'korunan_kaynak_kayitlari': []}
+    with open(yol, encoding='utf-8') as f:
+        veri = json.load(f)
+    if not isinstance(veri.get('duzeltmeler'), list):
+        raise ValueError('kelime-duzeltmeleri.json: duzeltmeler dizisi eksik')
+    gorulen_ilerleme_kimlikleri = set()
+    for d in veri.get('duzeltmeler', []):
+        kimlik = d.get('ilerleme_kimligi')
+        if not kimlik:
+            continue
+        if not isinstance(kimlik, str) or not kimlik.startswith('@kelime:'):
+            raise ValueError('Geçersiz ilerleme_kimligi: %r' % kimlik)
+        if kimlik != '@kelime:' + d.get('yeni', ''):
+            raise ValueError('İlerleme kimliği başlıktan türemiyor: %s' % kimlik)
+        if kimlik in gorulen_ilerleme_kimlikleri:
+            raise ValueError('Yinelenen ilerleme_kimligi: %s' % kimlik)
+        gorulen_ilerleme_kimlikleri.add(kimlik)
+    return veri
+
+
+def kelime_duzeltmelerini_uygula(kelimeler, veri):
+    """Eski başlıkları birleştirip denetlenmiş kanonik kaydı kurar."""
+    uygulanan = 0
+    for d in veri.get('duzeltmeler', []):
+        yeni = d['yeni']
+        adlar = list(dict.fromkeys(list(d.get('eskiler', [])) + [yeni]))
+        bulunan = []
+        for ad in adlar:
+            if ad in kelimeler:
+                bulunan.append((ad, kelimeler.pop(ad)))
+        if not bulunan:
+            raise ValueError('Kelime düzeltmesinin kaynak kaydı yok: %s' % yeni)
+
+        # Birden çok bozuk başlık aynı kavrama aitse en yüksek sınav puanını
+        # koru. Diğer site metadata'sını da mümkün olduğunca birleştir.
+        taban = max(bulunan,
+                    key=lambda x: x[1].get('puan') if x[1].get('puan') is not None else -1)[1]
+        puanlar = [k.get('puan') for _ad, k in bulunan if k.get('puan') is not None]
+        if puanlar:
+            taban['puan'] = max(puanlar)
+        esler = []
+        for _ad, k in bulunan:
+            esler.extend(x.strip() for x in str(k.get('es') or '').split(',') if x.strip())
+        if esler:
+            taban['es'] = ', '.join(dict.fromkeys(esler))
+
+        taban['tip'] = d['tip']
+        taban['anlamlar'] = d['anlamlar']
+        if d.get('kalip'):
+            taban['kalip'] = d['kalip']
+        kelimeler[yeni] = taban
+        uygulanan += 1
+    return uygulanan
+
+
+def kelime_duzeltme_dosyalarini_yaz(veri):
+    """Tarayıcı alias tablosunu ve telifsiz öğe provenansını üretir."""
+    aliaslar = {}
+    ilerleme_kimlikleri = {}
+    for d in veri.get('duzeltmeler', []):
+        for eski in d.get('eskiler', []):
+            if eski != d['yeni']:
+                aliaslar[eski] = d['yeni']
+        if d.get('ilerleme_kimligi'):
+            ilerleme_kimlikleri[d['yeni']] = d['ilerleme_kimligi']
+    js = (
+        '/* Kelime başlığı aliasları — tools/kelime-duzeltmeleri.json kaynaklıdır. */\n'
+        'window.YDS_KELIME_ALIASES = %s;\n'
+        'window.YDS_KELIME_ILERLEME_KIMLIKLERI = %s;\n' % (
+            json.dumps(aliaslar, ensure_ascii=False, sort_keys=True),
+            json.dumps(ilerleme_kimlikleri, ensure_ascii=False, sort_keys=True))
+    )
+    yaz(os.path.join(VERI, 'kelime-aliaslari.js'), js)
+
+    acik = {
+        'sema_surumu': veri.get('sema_surumu', 1),
+        'aciklama': ('Denetlenen kelime başlıklarının telifli soru metnini '
+                     'kopyalamayan öğe düzeyi kaynak kaydı.'),
+        'duzeltmeler': veri.get('duzeltmeler', []),
+        'korunan_kaynak_kayitlari': veri.get('korunan_kaynak_kayitlari', []),
+    }
+    yaz(os.path.join(VERI, 'kelime-provenans.json'),
+        json.dumps(acik, ensure_ascii=False, indent=2) + '\n')
+
+
 def ek_ornekleri_oku():
     """tools/ek-ornekler.js — cok turlu kelimelerin ikinci/ucuncu ornekleri.
 
@@ -159,15 +271,23 @@ def ek_ornekleri_oku():
     Bir kelime burada gecerse, listeden gelen tek anlamli kaydin YERINE
     bu anlamlar kullanilir. Boylece her turun kendi ornegi olur.
     """
-    yol = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'ek-ornekler.js')
-    if not os.path.exists(yol):
-        return {}
-    metin = open(yol, encoding='utf-8').read()
-    bas = metin.index('{', metin.index('EK_ORNEKLER'))
-    govde = metin[bas:metin.rindex('}') + 1]
-    # Dosyada bolum basliklari icin /* … */ yorumlari var; JSON bunlari kabul etmez.
-    govde = re.sub(r'/\*.*?\*/', '', govde, flags=re.S)
-    return json.loads(govde)
+    arac = os.path.dirname(os.path.abspath(__file__))
+
+    def oku(dosya, degisken):
+        yol = os.path.join(arac, dosya)
+        if not os.path.exists(yol):
+            return {}
+        metin = open(yol, encoding='utf-8').read()
+        bas = metin.index('{', metin.index(degisken))
+        govde = metin[bas:metin.rindex('}') + 1]
+        # Dosyada bolum basliklari icin /* … */ yorumlari olabilir.
+        govde = re.sub(r'/\*.*?\*/', '', govde, flags=re.S)
+        return json.loads(govde)
+
+    sonuc = oku('ek-ornekler.js', 'EK_ORNEKLER')
+    # Denetim düzeltmeleri aynı anahtarı bilinçli olarak geçersiz kılar.
+    sonuc.update(oku('ornek-duzeltmeleri.js', 'ORNEK_DUZELTMELERI'))
+    return sonuc
 
 
 def tur_duzeltmelerini_oku():
@@ -286,8 +406,10 @@ def aile_uyelerini_oku():
 def birlestir():
     kelimeler = kelimeleri_topla()
     site = site_kelimelerini_oku()
+    ek_puan = ek_puanlari_oku()
     ek = ek_ornekleri_oku()
     aile_uye = aile_uyelerini_oku()
+    baslik_d = kelime_duzeltmelerini_oku()
 
     ortak, yalniz_site = 0, 0
     # Sitedeki es anlamli bilgisini tasi
@@ -300,7 +422,7 @@ def birlestir():
             katman = {'temel': 2, 'orta': 3, 'ileri': 4}.get(s['sv'], 3)
             kelimeler[en] = {
                 'tip': s['tip'],
-                'puan': None,
+                'puan': ek_puan.get(en),
                 'katman_zorla': katman,
                 'es': s['es'],
                 'anlamlar': [{'tr': s['tr'], 'ex': s['ex'], 'exTr': s['exTr']}],
@@ -329,6 +451,11 @@ def birlestir():
             kelimeler[en]['anlamlar'] = anlamlar
             ek_uygulanan += 1
 
+    # PDF yüzey biçimleri ve güvenilir sözlük yazımlarıyla başlıkları düzelt.
+    # Bu adım ek örneklerden sonra yapılır; böylece bozuk başlığa bağlı eski
+    # içeriğin yanlışlıkla yeniden görünmesi engellenir.
+    baslik_duzeltilen = kelime_duzeltmelerini_uygula(kelimeler, baslik_d)
+
     # Elenecekler: kaba/argo ve ozel adlar hic yazilmaz.
     elenen = 0
     for en in list(kelimeler.keys()):
@@ -354,7 +481,7 @@ def birlestir():
     yildiz = yildizlari_oku()
     yildizli = 0
     for en, k in kelimeler.items():
-        if yildizla(k['anlamlar'], yildiz.get(en)):
+        if yildizla(k['anlamlar'], yildiz.get(en)) or any(a.get('yz') for a in k['anlamlar']):
             yildizli += 1
 
     for en, k in kelimeler.items():
@@ -365,7 +492,7 @@ def birlestir():
                 if len(k['anlamlar']) == 1 and len(anlamlari_bol(k['anlamlar'][0]['tr'])) > 1]
 
     return (kelimeler, ortak, yalniz_site, ek_uygulanan, bekleyen, aile_eklenen,
-            elenen, kalipli, yildizli)
+            elenen, kalipli, yildizli, baslik_duzeltilen, baslik_d)
 
 
 def kelimeleri_yaz(kelimeler):
@@ -571,10 +698,11 @@ def sayilari_yaz(sirali, ozet, obekler):
 
 def main():
     (kelimeler, ortak, yalniz_site, ek_uygulanan, bekleyen, aile_eklenen,
-     elenen, kalipli, yildizli) = birlestir()
+     elenen, kalipli, yildizli, baslik_duzeltilen, baslik_d) = birlestir()
     sirali, ozet = kelimeleri_yaz(kelimeler)
     obekler, obek_boyut, obek_ek, obek_atilan = obekleri_yaz()
     sayilari_yaz(sirali, ozet, obekler)
+    kelime_duzeltme_dosyalarini_yaz(baslik_d)
 
     print('KELIMELER')
     print('  toplam            :', len(sirali))
@@ -588,6 +716,7 @@ def main():
     print('  elenen (kaba/ozel) :', elenen)
     print('  kalibi olan        :', kalipli)
     print('  anlami yildizli    :', yildizli)
+    print('  basligi duzeltilen :', baslik_duzeltilen)
     print()
     print('  katman              kelime      dosya')
     for kno, ad, n, boyut in ozet:

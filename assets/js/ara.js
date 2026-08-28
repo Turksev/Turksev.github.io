@@ -170,7 +170,8 @@
 
     if (!tur || tur === 'unite') {
       var uniteler = tumUniteler().filter(function (u) {
-        return eslesir(u.ad + ' ' + u.kapsam + ' ' + u.kat + ' ' + (u.soru || ''), q);
+        return eslesir(u.k + ' ' + u.ad + ' ' + u.kapsam + ' ' + u.kat + ' ' +
+          (u.soru || '') + ' ' + (u.eksen || ''), q);
       });
       gruplar.push({
         ad: 'YDS konu haritası', url: 'konular.html', n: uniteler.length,
@@ -213,7 +214,12 @@
 
   function ciz() {
     var ham = elAra.value.trim();
-    var q = sadelestir(ham);
+    var Motor = window.YDS.EsitlemeMotoru;
+    // Düzeltilen eski başlıkları yazan kullanıcıyı da kanonik kayda götür.
+    // Bu yalnız tam alias eşleşmesinde çalışır; normal serbest metin aramasını
+    // ve tireli gerçek sözcükleri değiştirmez.
+    var kanonik = Motor && Motor.kelimeKimligi ? Motor.kelimeKimligi(ham) : ham;
+    var q = sadelestir(kanonik);
 
     if (q.length < 2) {
       elSayac.textContent = 'Aramak için en az iki harf yaz.';

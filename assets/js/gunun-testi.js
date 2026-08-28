@@ -28,6 +28,7 @@
   var KAYNAKLAR = {
     kelime: {
       ad: 'kelime',
+      tur: 'kelime',
       dizin: function () { return window.KELIME_DIZIN || []; },
       cumle: function (en) {
         var k = Veri.katmani(en);
@@ -38,6 +39,7 @@
     },
     obek: {
       ad: 'öbek',
+      tur: 'obek',
       dizin: function () {
         if (!obekDizin && window.OBEKLER) {
           obekDizin = window.OBEKLER.map(function (o) {
@@ -229,19 +231,20 @@
      ve hem {e:…} hem {en:…} biçimini kabul eder. */
   function bugunCalisilanlar(havuz) {
     var bugun = Il.bugun();
-    var kayitlar = Il.tumKayitlar();
-    var kume = {};
-    Object.keys(kayitlar).forEach(function (en) {
-      var r = kayitlar[en];
-      if (r && r.k && r.g - Il.ARALIK[r.k] === bugun) kume[en] = true;
-    });
     var sinir = null;
     if (havuz && havuz.length) {
       sinir = {};
       havuz.forEach(function (x) { sinir[x.e || x.en] = 1; });
     }
     return DIZINI().filter(function (d) {
-      return kume[d.e] && (!sinir || sinir[d.e]);
+      if (sinir && !sinir[d.e]) return false;
+      var r = Il.kayit(d.e, aktif.tur);
+      if (!r || !r.k) return false;
+      // Yeni kayıtlarda son çalışma günü doğrudan tutulur. c alanı olmayan
+      // eski kayıtlarda önceki tekrar-tarihi hesabı geriye uyumluluk sağlar.
+      return typeof r.c === 'number'
+        ? r.c === bugun
+        : r.g - Il.ARALIK[r.k] === bugun;
     });
   }
 
@@ -264,11 +267,11 @@
   /* Bugün çalışılanlardan test kur; ipucu: önce testte bilinemeyenler, sonra alt kutular. */
   function hazirla(havuz) {
     var adaylar = bugunCalisilanlar(havuz);
-    var testteYanlis = Il.testYanlisKumesi();
+    var testteYanlis = Il.testYanlisKumesi(aktif.tur);
     adaylar = karistir(adaylar).sort(function (a, b) {
       var ya = testteYanlis[a.e] ? 0 : 1, yb = testteYanlis[b.e] ? 0 : 1;
       if (ya !== yb) return ya - yb;
-      return Il.kutu(a.e) - Il.kutu(b.e);
+      return Il.kutu(a.e, aktif.tur) - Il.kutu(b.e, aktif.tur);
     });
     var liste = [];
     for (var i = 0; i < adaylar.length && liste.length < EN_COK; i++) {
@@ -307,9 +310,9 @@
     });
 
     var dogruMu = secim === q.dogruIndex;
-    if (dogruMu) { dogru++; Il.testDogru(q.d.e); }
+    if (dogruMu) { dogru++; Il.testDogru(q.d.e, aktif.tur); }
     else {
-      Il.testYanlis(q.d.e);
+      Il.testYanlis(q.d.e, aktif.tur);
       yanlislar.push({ q: q, senin: q.secenekler[secim] });
     }
 

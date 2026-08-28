@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="assets/css/style.css">
 <script src="data/depo.js"></script>
 <script src="assets/js/main.js"></script>
+<script src="data/kelime-aliaslari.js"></script>
 <script src="assets/js/esitleme-veri.js"></script>
 <script src="assets/js/esitleme-depo.js"></script>
 </head>
@@ -79,8 +80,9 @@
         <!-- 1 -->
         <section class="topic" id="zamanlar">
           <h2>1. Zamanlar</h2>
-          <p>YDS'de zaman soruları neredeyse her zaman <b>cümledeki zaman zarfına</b> bakılarak çözülür.
-             Önce zarfı bul, zamanı ondan çıkar.</p>
+          <p>YDS'de zaman zarfları güçlü birer ipucudur; ancak zamanı tek başlarına belirlemezler.
+             Önce cümleler arasındaki zaman ilişkisini, eylemin tamamlanıp tamamlanmadığını ve bağlamı belirle;
+             ardından zaman zarfının bu yorumu destekleyip desteklemediğini kontrol et.</p>
 
           <table class="rule-table">
             <tr><th>Zaman</th><th>Yapı</th><th>Anahtar zarflar</th></tr>
@@ -104,8 +106,11 @@
           </div>
 
           <div class="tip">
-            <b>Tuzak:</b> <code>since</code> + tarih/nokta zaman, <code>for</code> + süre. İkisi de Present Perfect
-            ister; ancak <code>ago</code> gördüğünde <b>Simple Past</b> kullanılır:
+            <b>Tuzak:</b> Süre anlatırken <code>since</code> başlangıç noktasını, <code>for</code> süreyi gösterir ve
+            sürmekte olan durumlarda sıkça Present Perfect ile kullanılır. Fakat bu sözcükler tek başına zaman
+            seçmez: <i>I lived there for two years</i> ve <i>By June, I will have worked here for a year</i> de doğrudur;
+            ayrıca <code>since</code> “-dığı için” anlamında neden bağlacı olabilir. <code>ago</code> ise bitmiş geçmiş
+            noktasıyla genellikle <b>Simple Past</b> ister:
             "I met her <i>two years ago</i>" (✓), "I have met her two years ago" (✗).
           </div>
         </section>
@@ -113,8 +118,10 @@
         <!-- 2 -->
         <section class="topic" id="edilgen">
           <h2>2. Edilgen Yapı (Passive)</h2>
-          <p>Kural sabittir: <b>be + V3</b>. Değişen tek şey "be" fiilinin zamanıdır. Öznenin eylemi
-             kendi başına yapıp yapamayacağını sor — yapamıyorsa edilgen gerekir.</p>
+          <p>Temel yapı <b>be + V3</b>'tür; zaman, görünüş ve kip bilgisi yardımcı fiillerde taşınır.
+             Çatı seçerken öznenin eylemi yapmaya fiziksel olarak yetip yetmediğine değil, cümlede öznenin
+             <b>eylemi yapan mı yoksa eylemden etkilenen mi</b> olduğuna bak. Yapan kişi bilinmiyor, önemsiz
+             ya da bilgi odağının dışındaysa edilgen yapı sıkça tercih edilir.</p>
 
           <table class="rule-table">
             <tr><th>Zaman</th><th>Etken</th><th>Edilgen</th></tr>
@@ -161,7 +168,9 @@
 
           <div class="tip">
             <b>Tuzak:</b> <code>needn't have V3</code> ile <code>didn't need to V1</code> aynı şey değildir.
-            İlki "gereksizdi <i>ama yaptı</i>", ikincisi "gerekmiyordu <i>ve yapmadı</i>" anlamındadır.
+            İlki "gereksizdi <i>ama yaptı</i>" anlamını açıkça verir. İkincisi yalnızca zorunluluk olmadığını
+            söyler; eylemin yapılıp yapılmadığı bağlamdan anlaşılır: <i>I didn't need to take an umbrella,
+            but I took one anyway.</i>
           </div>
         </section>
 
@@ -196,8 +205,9 @@
           </ul>
 
           <div class="tip">
-            <b>Tuzak:</b> <code>Unless</code>'ten sonra ikinci bir olumsuzluk gelmez:
-            "Unless you don't hurry" (✗) → "Unless you hurry" (✓).
+            <b>Tuzak:</b> <code>Unless</code> = <i>if ... not</i>; aynı olumsuzluğu ikinci kez kurma:
+            "Unless you don't hurry" (✗) → "Unless you hurry" (✓). Ancak koşulun kendisi gerçekten
+            olumsuzsa olumsuz fiil kullanılabilir: <i>I'll come unless you don't want me to.</i>
           </div>
         </section>
 
@@ -241,7 +251,8 @@
         <section class="topic" id="isim">
           <h2>6. İsim Cümlecikleri (Noun Clauses)</h2>
           <p>Cümlede özne, nesne veya tümleç görevi gören yan cümleciklerdir.
-             En kritik nokta: <b>iç cümlede soru sırası bozulmaz</b>.</p>
+             En kritik nokta: <b>doğrudan sorudaki devrik sıra gömülü soruya taşınmaz;</b>
+             iç cümlede bildirme cümlesi sırası kullanılır.</p>
 
           <div class="eg">
             <div class="en">I don't know <u>where he lives</u>. <span class="small">(✗ where does he live)</span></div>
@@ -274,13 +285,13 @@
              anlamdan önce bu dilbilgisel testle elenir.</p>
 
           <table class="rule-table">
-            <tr><th>İşlev</th><th>+ Cümle</th><th>+ İsim öbeği</th><th>Noktalı virgül / cümle başı</th></tr>
-            <tr><td>Zıtlık</td><td>although, though, even though, while, whereas</td><td>despite, in spite of</td><td>however, nevertheless, nonetheless</td></tr>
-            <tr><td>Sebep</td><td>because, since, as</td><td>because of, due to, owing to</td><td>—</td></tr>
-            <tr><td>Sonuç</td><td>so ... that, such ... that</td><td>—</td><td>therefore, thus, consequently, hence</td></tr>
-            <tr><td>Amaç</td><td>so that, in order that</td><td>in order to, so as to (+ V1)</td><td>—</td></tr>
-            <tr><td>Ekleme</td><td>—</td><td>in addition to, besides</td><td>moreover, furthermore, in addition</td></tr>
-            <tr><td>Koşul</td><td>if, unless, provided that</td><td>in case of</td><td>otherwise</td></tr>
+            <tr><th>İşlev</th><th>+ Tam cümle</th><th>+ İsim / V-ing</th><th>+ to V1</th><th>Cümle zarfı</th></tr>
+            <tr><td>Zıtlık</td><td>although, though, even though, while, whereas</td><td>despite, in spite of</td><td>—</td><td>however, nevertheless, nonetheless</td></tr>
+            <tr><td>Sebep</td><td>because, since, as</td><td>because of, due to, owing to</td><td>—</td><td>—</td></tr>
+            <tr><td>Sonuç</td><td>so ... that, such ... that</td><td>—</td><td>—</td><td>therefore, thus, consequently, hence</td></tr>
+            <tr><td>Amaç</td><td>so that, in order that</td><td>for, with the aim of</td><td>to, in order to, so as to</td><td>—</td></tr>
+            <tr><td>Ekleme</td><td>—</td><td>in addition to, besides</td><td>—</td><td>moreover, furthermore, in addition</td></tr>
+            <tr><td>Koşul</td><td>if, unless, provided that</td><td>in case of</td><td>—</td><td>otherwise</td></tr>
           </table>
 
           <div class="eg">
@@ -318,7 +329,7 @@
             <tr><td>remember</td><td>yaptığını hatırlamak</td><td>yapmayı unutmamak</td></tr>
             <tr><td>forget</td><td>yaptığını unutmak</td><td>yapmayı unutmak</td></tr>
             <tr><td>stop</td><td>-meyi bırakmak</td><td>-mek için durmak</td></tr>
-            <tr><td>try</td><td>deneme yapmak</td><td>-meye çalışmak</td></tr>
+            <tr><td>try</td><td>bir yöntemi deneyip sonucunu görmek: <i>Try restarting it.</i></td><td>bir işi başarmak için çabalamak: <i>Try to restart it.</i></td></tr>
             <tr><td>regret</td><td>yaptığına pişman olmak</td><td>üzülerek bildirmek</td></tr>
           </table>
 
@@ -332,16 +343,18 @@
         <!-- 9 -->
         <section class="topic" id="devrik">
           <h2>9. Devrik Yapılar (Inversion)</h2>
-          <p>Olumsuz ya da kısıtlayıcı bir ifade cümlenin başına geldiğinde <b>soru sırası</b> kurulur:
-             yardımcı fiil özneden önce gelir.</p>
+          <p>Olumsuz ya da kısıtlayıcı bir ifade cümlenin başına geldiğinde ana cümlede
+             <b>yardımcı fiil öznenin önüne geçer</b>. Var olan yardımcı/modal ve zaman biçimi korunur;
+             yardımcı yoksa uygun zamanda <code>do/does/did</code> kullanılır. Bu nedenle yapı her durumda
+             “yardımcı + özne + V1” diye tek kalıba indirgenemez.</p>
 
           <table class="rule-table">
             <tr><th>Başlangıç</th><th>Eşleştiği yapı</th></tr>
             <tr><td>Hardly / Scarcely / Barely + had + özne + V3</td><td>… <b>when</b> + Simple Past</td></tr>
             <tr><td>No sooner + had + özne + V3</td><td>… <b>than</b> + Simple Past</td></tr>
-            <tr><td>Not only + yardımcı + özne</td><td>… <b>but also</b> …</td></tr>
-            <tr><td>Never / Rarely / Seldom / Little</td><td>+ yardımcı + özne + V1</td></tr>
-            <tr><td>Only after / Only when / Not until</td><td>+ yardımcı + özne + V1</td></tr>
+            <tr><td>Not only + yardımcı/modal + özne + yüklem</td><td>… <b>but also</b> …</td></tr>
+            <tr><td>Never / Rarely / Seldom / Little</td><td>+ uygun yardımcı/modal + özne + yüklem</td></tr>
+            <tr><td>Only after / Only when / Not until</td><td>ana cümlede uygun yardımcı/modal + özne + yüklem</td></tr>
           </table>
 
           <div class="eg">
@@ -396,7 +409,7 @@
 <footer class="site-footer">
   <div class="wrap">
     <span>© <span data-yil>2026</span> YDS Hazırlık</span>
-    <span>Tüm ilerleme yalnızca kendi tarayıcında saklanır.</span>
+    <span>İlerleme tarayıcıda saklanır; eşitleme açılırsa hesabına da kopyalanır.</span>
   </div>
 </footer>
 
