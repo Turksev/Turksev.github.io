@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <title>Eşitleme sayfa testi</title>
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/esitleme-veri.js"></script>
+  <script src="../../assets/js/esitleme-depo.js"></script>
+</head>
+<body>
+  <main>
+    <button id="kartA" type="button">Sekme A kartını çalış</button>
+    <button id="kartB" type="button">Sekme B kartını çalış</button>
+    <button id="goster" type="button">Durumu göster</button>
+    <pre id="sonuc">hazır</pre>
+  </main>
+  <script src="../../assets/js/ilerleme.js"></script>
+  <script>
+    (function () {
+      var Il = window.YDS.Ilerleme;
+      function ciz() {
+        document.getElementById('sonuc').textContent =
+          Object.keys(Il.tumKayitlar()).filter(function (a) {
+            return a.indexOf('__esit_test_') === 0;
+          }).sort().join(',') || 'boş';
+      }
+      document.getElementById('kartA').onclick = function () { Il.dogru('__esit_test_a__'); ciz(); };
+      document.getElementById('kartB').onclick = function () { Il.dogru('__esit_test_b__'); ciz(); };
+      document.getElementById('goster').onclick = ciz;
+      ciz();
+    })();
+  </script>
+</body>
+</html>

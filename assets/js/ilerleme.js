@@ -63,6 +63,39 @@
 
   function kaydet() { Depo.yaz(K_LEITNER, leitner); }
 
+  function leitneriTazele() {
+    var guncel = Depo.oku(K_LEITNER, {});
+    leitner = (guncel && typeof guncel === 'object' && !Array.isArray(guncel)) ? guncel : {};
+  }
+
+  function kayitYaz(en, kayit) {
+    leitner[en] = kayit;
+    if (Depo.kayitlariYaz) {
+      var degisiklik = {};
+      degisiklik[en] = kayit;
+      Depo.kayitlariYaz(K_LEITNER, degisiklik);
+    } else kaydet();
+  }
+
+  function kayitlariYaz(degisiklikler) {
+    Object.keys(degisiklikler || {}).forEach(function (en) { leitner[en] = degisiklikler[en]; });
+    if (Depo.kayitlariYaz) Depo.kayitlariYaz(K_LEITNER, degisiklikler);
+    else kaydet();
+  }
+
+  function kayitlariSil(adlar) {
+    (adlar || []).forEach(function (en) { delete leitner[en]; });
+    if (Depo.kayitlariSil) Depo.kayitlariSil(K_LEITNER, adlar || []);
+    else kaydet();
+  }
+
+  // Başka sekme veya bulut yeni bir zarf uyguladığında bellekteki Leitner
+  // kopyasını da yenile; sonraki kart eski anlık görüntüyü geri yazmasın.
+  window.addEventListener('yds-depo-degisti', function (e) {
+    var adlar = e && e.detail && e.detail.anahtarlar;
+    if (adlar && adlar.indexOf(K_LEITNER) !== -1) leitneriTazele();
+  });
+
   function kutu(en) {
     return leitner[en] ? leitner[en].k : 0;
   }
@@ -151,8 +184,7 @@
      yarın 4.760 tekrarlık çığ oluşmasın diye. */
   function zatenBiliyorum(en) {
     ilkKezIse(en);
-    leitner[en] = { k: EN_UST_KUTU, g: bugun() + ARALIK[EN_UST_KUTU] };
-    kaydet();
+    kayitYaz(en, { k: EN_UST_KUTU, g: bugun() + ARALIK[EN_UST_KUTU], c: bugun() });
     return EN_UST_KUTU;
   }
 
@@ -171,8 +203,7 @@
   function dogru(en) {
     ilkKezIse(en);
     var k = Math.min(EN_UST_KUTU, kutu(en) + 1);
-    leitner[en] = { k: k, g: bugun() + ARALIK[k] };
-    kaydet();
+    kayitYaz(en, { k: k, g: bugun() + ARALIK[k], c: bugun() });
     return k;
   }
 
@@ -181,8 +212,7 @@
   function ipucuyla(en) {
     ilkKezIse(en);
     var k = Math.max(1, kutu(en));
-    leitner[en] = { k: k, g: bugun() + ARALIK[k] };
-    kaydet();
+    kayitYaz(en, { k: k, g: bugun() + ARALIK[k], c: bugun() });
     return k;
   }
 
@@ -192,8 +222,7 @@
   function yanlis(en) {
     ilkKezIse(en);
     var k = Math.max(1, kutu(en) - 1);
-    leitner[en] = { k: k, g: bugun() + 1 };   // hangi kutuya düşerse düşsün yarın sorulur
-    kaydet();
+    kayitYaz(en, { k: k, g: bugun() + 1, c: bugun() }); // hangi kutuya düşerse düşsün yarın sorulur
     return k;
   }
 
@@ -216,10 +245,12 @@
 
     if (gecikmis.length <= pay) return { tasinan: 0, gun: 0 };
 
+    var degisiklikler = {};
     gecikmis.forEach(function (en, i) {
       leitner[en].g = b + Math.floor(i / pay);
+      degisiklikler[en] = leitner[en];
     });
-    kaydet();
+    kayitlariYaz(degisiklikler);
     return { tasinan: gecikmis.length - pay, gun: Math.ceil(gecikmis.length / pay) };
   }
 
@@ -253,10 +284,11 @@
     if (!y || !y.veri) return false;
     var eskiLeitner = y.veri['yds-leitner'];
     if (eskiLeitner && typeof eskiLeitner === 'object') {
+      var geriGelenler = {};
       Object.keys(eskiLeitner).forEach(function (en) {
-        if (!leitner[en]) leitner[en] = eskiLeitner[en];
+        if (!leitner[en]) geriGelenler[en] = eskiLeitner[en];
       });
-      kaydet();
+      kayitlariYaz(geriGelenler);
     }
     ['yds-yanlis', 'yds-kategori', 'yds-gecmis', 'yds-konular',
      'yds-test-yanlis', 'yds-rekor'].forEach(function (a) {
@@ -267,22 +299,20 @@
   }
 
   function sifirlaKelime(en) {
-    delete leitner[en];
-    kaydet();
+    kayitlariSil([en]);
   }
 
-  function leitnerSifirla() {
-    yedekAl('kelime ve öbek kutuları');
+  function leitnerSifirla(yedekle) {
+    if (yedekle !== false) yedekAl('kelime ve öbek kutuları');
     leitner = {};
-    Depo.yaz(K_LEITNER, leitner);
+    Depo.sil(K_LEITNER);
     Depo.sil(K_BILINEN);
   }
 
   /* Yalnizca verilen kayitlari sil. Kelimeler ve obekler ayni tabloyu
      paylastigi icin, bir sayfanin "sifirla" dugmesi digerini silmesin diye. */
   function listeyiSifirla(adlar) {
-    (adlar || []).forEach(function (a) { delete leitner[a]; });
-    kaydet();
+    kayitlariSil(adlar || []);
   }
 
   /* Kutu dağılımı ve bugünün iş yükü.
@@ -498,7 +528,7 @@
 
   function hepsiniSifirla() {
     yedekAl('her şey');
-    leitnerSifirla();
+    leitnerSifirla(false);
     yanlisTemizle();
     konuSifirla();
     kategoriSifirla();
