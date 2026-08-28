@@ -590,7 +590,7 @@
                ' karta göre önümüzdeki günlere dağıtılsın mı? Hiçbir kayıt silinmez, ' +
                'yalnız tekrar tarihleri ileri alınır.';
     if (!window.confirm(soru)) return;
-    var s = Il.birikmisiYay(Il.gunlukTavan());
+    var s = Il.birikmisiYay(havuz.map(function (d) { return d.e; }), Il.gunlukTavan());
     desteyiCiz();
     $('bekleyenNot').innerHTML = s.tasinan
       ? '<b>' + s.tasinan + '</b> tekrar ileriki günlere yayıldı; yığın ' + s.gun + ' günde erir.'
@@ -639,10 +639,13 @@
   });
 
   $('sifirla').addEventListener('click', function () {
-    var n = Object.keys(Il.tumKayitlar()).length;
+    var kelimeAdlari = DIZIN.map(function (d) { return d.e; });
+    var kayitli = Il.tumKayitlar();
+    var n = kelimeAdlari.filter(function (ad) { return kayitli[ad]; }).length;
     if (!window.YDS.ikiKereSor(
-        'Tüm tekrar ilerlemen silinecek: kutular, tekrar tarihleri ve öğrendiklerin.', n)) return;
-    Il.leitnerSifirla();
+        'Tüm kelime tekrar ilerlemen silinecek. Öbek ilerlemene dokunulmaz.', n)) return;
+    Il.yedekAl('kelime kutuları', n);
+    Il.listeyiSifirla(kelimeAdlari);
     desteyiCiz();
     filtrele();
     if (geriAlCiz) geriAlCiz();

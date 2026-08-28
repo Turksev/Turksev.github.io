@@ -490,7 +490,7 @@
     var n = adlar().filter(function (a) { return kayitli[a]; }).length;
     if (!window.YDS.ikiKereSor(
         'Öbek tekrar ilerlemen silinecek. Kelime ilerlemene dokunulmaz.', n)) return;
-    Il.yedekAl('öbek kutuları');
+    Il.yedekAl('öbek kutuları', n);
     Il.listeyiSifirla(adlar());
     desteyiCiz();
     filtrele();

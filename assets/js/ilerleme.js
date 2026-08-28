@@ -200,16 +200,18 @@
   /* ---------- birikmiş tekrarları takvime yayma ----------
      Eski kurgu (her "Bilemedim" 1. kutuya atıyordu, tekrarlara tavan yoktu)
      yüzlerce kelimeyi aynı güne yığmış olabilir. Bu tek seferlik düzeltme
-     kayıtları SİLMEZ: vadesi geçmiş kelimeleri, en çok gecikmiş olan önce
-     gelecek şekilde günlük tavana göre önümüzdeki günlere dağıtır.
+     kayıtları SİLMEZ: verilen havuzdaki vadesi geçmiş kelimeleri, en çok
+     gecikmiş olan önce gelecek şekilde günlük tavana göre günlere dağıtır.
      Döndürdüğü değer: {tasinan, gun}. */
 
-  function birikmisiYay(gunlukPay) {
+  function birikmisiYay(adlar, gunlukPay) {
     var pay = Math.max(1, parseInt(gunlukPay, 10) || gunlukTavan());
     var b = bugun();
+    var kapsam = Object.create(null);
+    (adlar || []).forEach(function (ad) { kapsam[ad] = true; });
     var gecikmis = Object.keys(leitner).filter(function (en) {
       var r = leitner[en];
-      return r && r.k > 0 && r.k < EN_UST_KUTU && r.g <= b;
+      return kapsam[en] && r && r.k > 0 && r.k < EN_UST_KUTU && r.g <= b;
     }).sort(function (x, y) { return leitner[x].g - leitner[y].g; });
 
     if (gecikmis.length <= pay) return { tasinan: 0, gun: 0 };
@@ -225,8 +227,9 @@
      Sıfırlama geri alınamaz bir işlem; yanlışlıkla basıldığında tek çare kalmasın
      diye silinen hal buraya kopyalanır. Yalnız SON sıfırlama saklanır. */
 
-  function yedekAl(kapsam) {
+  function yedekAl(kapsam, kayitSayisi) {
     var kopya = { z: Date.now(), kapsam: kapsam, veri: {} };
+    if (typeof kayitSayisi === 'number') kopya.kayit = kayitSayisi;
     ['yds-leitner', 'yds-yanlis', 'yds-kategori', 'yds-gecmis', 'yds-konular',
      'yds-test-yanlis', 'yds-rekor'].forEach(function (a) {
       var v = Depo.oku(a, null);
@@ -238,7 +241,9 @@
   function yedekBilgisi() {
     var y = Depo.oku(K_YEDEK, null);
     if (!y || !y.veri) return null;
-    var n = (y.veri['yds-leitner'] && Object.keys(y.veri['yds-leitner']).length) || 0;
+    var n = typeof y.kayit === 'number'
+      ? y.kayit
+      : ((y.veri['yds-leitner'] && Object.keys(y.veri['yds-leitner']).length) || 0);
     return { zaman: y.z, kapsam: y.kapsam, kayit: n };
   }
 
