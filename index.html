@@ -156,7 +156,7 @@
         <a class="card card-link" href="deneme.html">
           <span class="ico">⏱️</span>
           <h3>Süreli Deneme</h3>
-          <p>Gerçek sınav düzeni: geri sayım, soru arası gezinme, işaretleme ve sonunda net hesabıyla
+          <p>Gerçek sınav düzeni: geri sayım, soru arası gezinme, işaretleme ve sonunda 100 üzerinden puanla
              kategori dağılımlı karne.</p>
         </a>
 
@@ -279,12 +279,14 @@
   if (denemeler.length) {
     $('p-gecmis').innerHTML = denemeler.map(function (g) {
       var t = new Date(g.t);
-      var renk = g.y >= 75 ? 'var(--ok)' : (g.y >= 50 ? 'var(--warn)' : 'var(--err)');
+      var puan = g.n ? Math.round(g.d / g.n * 10000) / 100 : (Number(g.y) || 0);
+      var puanYazisi = puan.toLocaleString('tr-TR', { maximumFractionDigits: 2 });
+      var renk = puan >= 75 ? 'var(--ok)' : (puan >= 50 ? 'var(--warn)' : 'var(--err)');
       return '<div class="karne-satir">' +
           '<span class="karne-ad small muted">' +
             t.toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' }) + '</span>' +
-          '<span class="karne-cubuk"><i style="width:' + g.y + '%;background:' + renk + '"></i></span>' +
-          '<span class="karne-sayi">%' + g.y + '</span>' +
+          '<span class="karne-cubuk"><i style="width:' + puan + '%;background:' + renk + '"></i></span>' +
+          '<span class="karne-sayi">' + puanYazisi + ' puan</span>' +
         '</div>';
     }).join('');
   }

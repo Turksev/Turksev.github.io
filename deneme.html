@@ -52,6 +52,7 @@
       <p class="muted">
         Gerçek sınav düzeni: geri sayım çalışır, sorular arasında serbestçe gezinebilir,
         emin olmadıklarını işaretleyip sonra dönebilirsin. <b>Cevaplar sınav bitene kadar gösterilmez.</b>
+        YDS'de yanlış cevaplar puanı düşürmez; sonuç doğru sayısından 100 üzerinden hesaplanır.
       </p>
 
       <div class="card" style="margin-top:22px">
@@ -123,8 +124,8 @@
     <section id="sonuc" hidden style="max-width:820px;margin:0 auto">
       <div class="card center">
         <p class="muted small" style="margin-bottom:4px" id="sBaslik">Deneme sonucun</p>
-        <div class="score-ring" id="sNet">0</div>
-        <p class="muted" style="margin-top:6px">net</p>
+        <div class="score-ring" id="sPuan">0</div>
+        <p class="muted" style="margin-top:6px">100 üzerinden puan</p>
         <p id="sOzet" class="muted"></p>
         <div class="hero-actions" style="justify-content:center">
           <button class="btn" type="button" id="tekrar">Yeni deneme</button>

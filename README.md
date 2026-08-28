@@ -13,7 +13,7 @@ Yayında: <https://turksev.github.io>
 | `kelimeler.html` | 7.849 kelime, 7 katman + **aralıklı tekrar (Leitner)**: bugünün destesi, kart modu, ipucu, sesli okuma |
 | `obekler.html` | 1.623 kelime öbeği (560 deyimsel fiil, 332 edat kalıbı, sabit/geçiş ifadeleri) — ayrı Leitner destesi |
 | `quiz.html` | Alıştırma soruları: 12 kategori, anında çözüm, yanlış defterinden çalışma |
-| `deneme.html` | **Süreli deneme sınavı**: geri sayım, soru ızgarası, işaretleme, net hesabı, kategori karnesi |
+| `deneme.html` | **Süreli deneme sınavı**: geri sayım, soru ızgarası, işaretleme, 100 üzerinden YDS puanı, kategori karnesi |
 | `gramer.html` | 10 başlıkta konu anlatımı, kural tabloları ve sınav tuzakları |
 | `baglaclar.html` | Bağlaçlar ve geçiş ifadeleri: çözüm yöntemi, yapı tabloları, filtrelenebilir 155 kayıtlık banka |
 | `ara.html` | Site geneli arama: kelimeler, öbekler, bağlaçlar, sorular, gramer konuları, YDS konu haritası üniteleri ve kelime aileleri — sonuca **çift tıklayınca ayrıntı kartı** açılır |

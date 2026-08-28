@@ -214,6 +214,12 @@
 
   /* ---------- sonuç ---------- */
 
+  function ydsPuani(dogru, toplam) {
+    if (!toplam) return 0;
+    // YDS'de yanlışlar doğruyu götürmez; puan yalnız doğru sayısından hesaplanır.
+    return Math.round(dogru / toplam * 10000) / 100;
+  }
+
   function sonucuGoster(sureDoldu) {
     if (bitti) return;
     bitti = true;
@@ -239,20 +245,20 @@
       }
     });
 
-    var net = Math.max(0, dogru - yanlis / 4);
-    var yuzde = test.length ? Math.round(dogru / test.length * 100) : 0;
+    var puan = ydsPuani(dogru, test.length);
+    var puanYazisi = puan.toLocaleString('tr-TR', { maximumFractionDigits: 2 });
 
     $('sinav').hidden = true;
     $('sonuc').hidden = false;
     $('ustBar').hidden = false;
 
     $('sBaslik').textContent = sureDoldu ? 'Süre doldu — deneme sonucun' : 'Deneme sonucun';
-    $('sNet').textContent = (Math.round(net * 100) / 100).toString().replace('.', ',');
+    $('sPuan').textContent = puanYazisi;
     $('sOzet').textContent = test.length + ' soruda ' + dogru + ' doğru, ' + yanlis +
-      ' yanlış, ' + bos + ' boş · başarı %' + yuzde +
+      ' yanlış, ' + bos + ' boş · puan ' + puanYazisi + '/100' +
       ' · kalan süre ' + Math.floor(kalanSaniye / 60) + ' dk';
 
-    Il.sonucEkle({ dogru: dogru, toplam: test.length, yuzde: yuzde, mod: 'deneme' });
+    Il.sonucEkle({ dogru: dogru, toplam: test.length, yuzde: puan, mod: 'deneme' });
 
     $('sKarne').innerHTML = Object.keys(katOzet).map(function (k) {
       var o = katOzet[k];
@@ -298,11 +304,13 @@
         var t = new Date(g.t);
         var tarih = t.toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' }) + ' ' +
           t.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' });
-        var renk = g.y >= 75 ? 'var(--ok)' : (g.y >= 50 ? 'var(--warn)' : 'var(--err)');
+        var puan = g.n ? ydsPuani(g.d, g.n) : (Number(g.y) || 0);
+        var puanYazisi = puan.toLocaleString('tr-TR', { maximumFractionDigits: 2 });
+        var renk = puan >= 75 ? 'var(--ok)' : (puan >= 50 ? 'var(--warn)' : 'var(--err)');
         return '<div class="karne-satir">' +
             '<span class="karne-ad small muted">' + tarih + '</span>' +
-            '<span class="karne-cubuk"><i style="width:' + g.y + '%;background:' + renk + '"></i></span>' +
-            '<span class="karne-sayi">%' + g.y + ' <span class="muted">(' + g.d + '/' + g.n + ')</span></span>' +
+            '<span class="karne-cubuk"><i style="width:' + puan + '%;background:' + renk + '"></i></span>' +
+            '<span class="karne-sayi">' + puanYazisi + ' puan <span class="muted">(' + g.d + '/' + g.n + ')</span></span>' +
           '</div>';
       }).join('') + '</div>';
   }
