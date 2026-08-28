@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """Yayimlanan sitenin boyutunu olcup data/depo.js dosyasina yazar.
 
-GitHub Pages'in yumusak siniri 1 GB'dir. Bu betik depoyu (.git haric) tarar,
-toplam boyutu ve en buyuk klasorleri kaydeder; site alt bilgide bir cubukla
-gosterir. Yayindan once calistir:
+GitHub Pages'in yumusak siniri 1 GB'dir. Bu betik Jekyll'in yayina aldigi
+dosyalari tarar, toplam boyutu ve en buyuk klasorleri kaydeder; site alt
+bilgide bir cubukla gosterir. Yayindan once calistir:
 
   python tools/depo-olcu.py
 """
@@ -15,15 +15,20 @@ from datetime import date
 
 sys.stdout.reconfigure(encoding='utf-8')
 SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ATLA = {'.git', '.github', '__pycache__', 'node_modules'}
+ATLA_DIZINLER = {
+    '.git', '.github', '.claude', '__pycache__', 'node_modules', 'tools'
+}
+ATLA_DOSYALAR = {'_config.yml'}
 
 toplam = 0
 dosya = 0
 klasor = {}
 
 for kok, dizinler, dosyalar in os.walk(SITE):
-    dizinler[:] = [d for d in dizinler if d not in ATLA]
+    dizinler[:] = [d for d in dizinler if d not in ATLA_DIZINLER]
     for ad in dosyalar:
+        if ad in ATLA_DOSYALAR:
+            continue
         yol = os.path.join(kok, ad)
         try:
             n = os.path.getsize(yol)
