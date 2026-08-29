@@ -55,7 +55,7 @@
         ? '<b style="color:var(--accent)">' + kacar(o.et) + '</b> — ' + kacar(o.kr) + '<br>'
         : '';
       return '<div class="ex" style="margin-top:8px">' + baslik +
-             '<i>' + kacar(o.en) + '</i>' +
+             '<i lang="en">' + kacar(o.en) + '</i>' +
              '<i class="tr-ex">' + kacar(o.tr) + '</i></div>';
     }).join('');
   }
@@ -64,7 +64,7 @@
     return '' +
       '<article class="word">' +
         '<div>' +
-          '<div class="en"><span class="sira">' + sira + '.</span> ' + kacar(b.f) + '</div>' +
+          '<div class="en" lang="en"><span class="sira">' + sira + '.</span> ' + kacar(b.f) + '</div>' +
           '<div class="tr">' + kacar(b.tr) + '</div>' +
           '<div class="meta">' +
             iliskiler(b).map(function (il) {
@@ -83,7 +83,7 @@
           (b.nt ? '<div class="tip" style="margin:10px 0 0">' + b.nt + '</div>' : '') +
           (b.es && b.es.length
             ? '<div class="esanlam">≈ Yakın anlamlılar: ' +
-              b.es.map(function (x) { return '<b>' + kacar(x) + '</b>'; }).join(' · ') +
+              b.es.map(function (x) { return '<b lang="en">' + kacar(x) + '</b>'; }).join(' · ') +
               '</div>'
             : '') +
         '</div>' +

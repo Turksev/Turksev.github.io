@@ -14,6 +14,7 @@ var yenidenYukleme = 0;
 var document = {
   readyState: 'complete',
   documentElement: {
+    classList: { add: function () {} },
     setAttribute: function () {},
     removeAttribute: function () {},
     getAttribute: function () { return null; }
@@ -45,7 +46,9 @@ var baglam = {
     removeItem: function () {}
   },
   sessionStorage: {
-    setItem: function (a, v) { oturum.set(a, String(v)); }
+    getItem: function (a) { return oturum.has(a) ? oturum.get(a) : null; },
+    setItem: function (a, v) { oturum.set(a, String(v)); },
+    removeItem: function (a) { oturum.delete(a); }
   },
   JSON: JSON, Object: Object, String: String, Date: Date, Math: Math,
   setTimeout: setTimeout, clearTimeout: clearTimeout, setInterval: function () {}
@@ -55,6 +58,7 @@ vm.createContext(baglam);
 vm.runInContext(fs.readFileSync(path.join(kok, 'assets', 'js', 'main.js'), 'utf8'), baglam);
 
 assert.strictEqual(typeof swOlaylari.controllerchange, 'function');
+oturum.set('yds-sw-yenile', '1');
 swOlaylari.controllerchange();
 pencere.YDS.yenidenYukle('bulut-ilk-birlesim');
 pencere.YDS.yenidenYukle('baska-istek');

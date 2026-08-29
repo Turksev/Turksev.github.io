@@ -104,7 +104,7 @@ assert.deepStrictEqual(Object.keys(paket['yds-test-yanlis']).sort(),
   ['@kelime:hand down', 'hand down', 'shake-up']);
 assert.deepStrictEqual(paket['yds-test-yanlis']['@kelime:hand down'], { n: 2, t: 20 });
 assert.deepStrictEqual(paket['yds-test-yanlis']['hand down'], { n: 5, t: 10 });
-assert.deepStrictEqual(paket['yds-test-yanlis']['shake-up'], { n: 5, t: 20 });
+assert.deepStrictEqual(paket['yds-test-yanlis']['shake-up'], { n: 5, t: 20, u: 20 });
 
 // Sürüm 2 zarfındaki alias silme taşı yalnız kelime kartını siler; aynı görünen
 // ham öbek kaydını silmez ve eski cihaz kelimeyi yeniden diriltemez.
@@ -224,11 +224,13 @@ assert.strictEqual(I.testYanlisSayisi('hand down', 'kelime'), 2);
 assert.strictEqual(I.testYanlisSayisi('hand down', 'obek'), 1);
 I.testDogru('hand down', 'obek');
 assert.strictEqual(I.testYanlisSayisi('hand down', 'kelime'), 2);
-assert.strictEqual(I.testYanlisSayisi('hand down', 'obek'), 0);
+assert.strictEqual(I.testYanlisSayisi('hand down', 'obek'), 1,
+  'yanlış kaydı ilk doğru günde silinmemeli; iki ayrı doğru gün gerektirir');
 
 assert.strictEqual(I.listeyiSifirla(['hand down'], 'kelime'), true);
 assert.strictEqual(I.kutu('hand down', 'kelime'), 0);
-assert.strictEqual(I.kutu('hand down', 'obek'), 2);
+assert.strictEqual(I.kutu('hand down', 'obek'), 1,
+  'bağlam sorusundaki yanlış yalnız öbek kartını bir kutu düşürmeli');
 I.dogru('hand down', 'kelime');
 assert.strictEqual(I.listeyiSifirla(['hand down'], 'obek'), true);
 assert.strictEqual(I.kutu('hand down', 'kelime'), 1);

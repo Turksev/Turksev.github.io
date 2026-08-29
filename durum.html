@@ -60,23 +60,32 @@
     <div class="kutu-sekme" id="sekmeler"></div>
 
     <div class="toolbar" style="margin-top:18px">
-      <input class="grow" type="search" id="ara" placeholder="Ara: kelime, öbek veya Türkçe anlam…" autocomplete="off">
+      <label class="grow filter-field">
+        <span>Kelime, öbek veya anlam ara</span>
+        <input class="grow" type="search" id="ara" placeholder="Örnek: despite, tutarlı…" autocomplete="off">
+      </label>
 
-      <select id="tur" aria-label="Tür">
+      <label class="filter-field">
+        <span>Tür</span>
+        <select id="tur">
         <option value="">Kelime + öbek</option>
         <option value="kelime">Yalnız kelimeler</option>
         <option value="obek">Yalnız öbekler</option>
-      </select>
+        </select>
+      </label>
 
-      <select id="sirala" aria-label="Sıralama">
+      <label class="filter-field">
+        <span>Sıralama</span>
+        <select id="sirala">
         <option value="vade">Tekrar tarihine göre</option>
         <option value="kutu">Kutuya göre</option>
         <option value="alfabe">Alfabetik</option>
         <option value="puan">YDS puanına göre</option>
-      </select>
+        </select>
+      </label>
     </div>
 
-    <p class="small muted" id="sayac">Yükleniyor…</p>
+    <p class="small muted" id="sayac" role="status" aria-live="polite" aria-atomic="true">Yükleniyor…</p>
     <div id="liste" class="word-list"></div>
     <p class="center" style="margin-top:16px">
       <button class="btn ghost" type="button" id="dahaFazla" hidden>Daha fazla göster</button>

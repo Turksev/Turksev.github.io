@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kelime Aileleri — YDS Hazırlık</title>
-<meta name="description" content="Bir kelimenin bütün türleri bir arada: sufficient, sufficiently, insufficient… YDS'nin kelime türetme sorusuna hazırlanmak için 627 kelime ailesi.">
+<meta name="description" content="Bir kelimenin bütün türleri bir arada: sufficient, sufficiently, insufficient… YDS'nin kelime türetme sorusuna hazırlanmak için 1.026 kelime ailesi.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%233b5bdb'/><text y='68' x='50' text-anchor='middle' font-size='46' font-family='sans-serif' font-weight='bold' fill='white'>Y</text></svg>">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#3b5bdb">
@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="YDS Hazırlık">
 <meta property="og:locale" content="tr_TR">
 <meta property="og:title" content="Kelime Aileleri — YDS Hazırlık">
-<meta property="og:description" content="Bir kelimenin bütün türleri bir arada — YDS'nin kelime türetme sorusuna hazırlanmak için 627 kelime ailesi.">
+<meta property="og:description" content="Bir kelimenin bütün türleri bir arada — YDS'nin kelime türetme sorusuna hazırlanmak için 1.026 kelime ailesi.">
 <meta property="og:url" content="https://turksev.github.io/aileler.html">
 <meta property="og:image" content="https://turksev.github.io/assets/img/icon-512.png">
 <meta name="twitter:card" content="summary">
@@ -51,14 +51,14 @@
 
     <h1>Kelime Aileleri</h1>
     <p class="muted" style="max-width:70ch">
-      Bir kökten türeyen kelimeler bir arada. <b id="toplamAile">627</b> aile,
-      <b id="toplamUye">1.521</b> kelime. Tek tek ezberlemek yerine aileyi birlikte
+      Bir kökten türeyen kelimeler bir arada. <b id="toplamAile">1.026</b> aile,
+      <b id="toplamUye">2.569</b> kelime. Tek tek ezberlemek yerine aileyi birlikte
       öğrenmek hem daha hızlıdır hem de <b>YDS'nin kelime türetme sorusunu</b> doğrudan hedefler:
     </p>
 
     <div class="eg" style="max-width:70ch">
-      <div class="en">The evidence was not ---- to prove his guilt.</div>
-      <div class="tr small">
+      <div class="en" lang="en">The evidence was not ---- to prove his guilt.</div>
+      <div class="tr small" lang="en">
         A) sufficient &nbsp; B) sufficiency &nbsp; C) sufficiently &nbsp; D) sufficing &nbsp; E) sufficed
       </div>
       <div class="small muted" style="margin-top:6px">
@@ -68,26 +68,35 @@
     </div>
 
     <div class="toolbar" style="margin-top:22px">
-      <input class="grow" type="search" id="ara" placeholder="Ara: kelime veya Türkçe anlam…" autocomplete="off">
+      <label class="grow filter-field">
+        <span>Kelime veya anlam ara</span>
+        <input class="grow" type="search" id="ara" placeholder="Örnek: sufficient, yeterli…" autocomplete="off">
+      </label>
 
-      <select id="boyut" aria-label="Aile büyüklüğü">
+      <label class="filter-field">
+        <span>Aile büyüklüğü</span>
+        <select id="boyut">
         <option value="">Tüm aileler</option>
         <option value="4">4+ üyeli</option>
         <option value="3">3+ üyeli</option>
         <option value="2">2 üyeli</option>
-      </select>
+        </select>
+      </label>
 
-      <select id="durum" aria-label="Öğrenme durumu">
+      <label class="filter-field">
+        <span>Öğrenme durumu</span>
+        <select id="durum">
         <option value="">Hepsi</option>
         <option value="eksik">Eksiğim olan aileler</option>
         <option value="tam">Tamamını öğrendiklerim</option>
         <option value="yeni">Hiç başlamadıklarım</option>
-      </select>
+        </select>
+      </label>
 
       <button class="btn ghost sm" type="button" id="hepsiniAc">Hepsini aç</button>
     </div>
 
-    <p class="small muted" id="sayac">Yükleniyor…</p>
+    <p class="small muted" id="sayac" role="status" aria-live="polite" aria-atomic="true">Yükleniyor…</p>
 
     <div id="liste" class="aile-listesi"></div>
     <p class="center" style="margin-top:16px">

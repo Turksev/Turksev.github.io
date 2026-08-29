@@ -6,6 +6,10 @@ service cloud.firestore {
       return request.auth != null && request.auth.uid == uid;
     }
 
+    function bulutSilinmis(uid) {
+      return exists(/databases/$(database)/documents/kullanicilar/$(uid)/yonetim/durum);
+    }
+
     function gecerliEsitlemeZarfi() {
       return request.resource.data.keys().hasAll(['surum', 'zaman', 'json'])
         && request.resource.data.keys().hasOnly(['surum', 'zaman', 'json'])
@@ -41,15 +45,33 @@ service cloud.firestore {
         && request.resource.data.json.size() < 921600;
     }
 
+    function gecerliSilmeIsaretcisi() {
+      return request.resource.data.keys().hasAll(['silindi', 'zaman'])
+        && request.resource.data.keys().hasOnly(['silindi', 'zaman'])
+        && request.resource.data.silindi == true
+        && request.resource.data.zaman is int;
+    }
+
     match /kullanicilar/{uid} {
       // Önceki uygulama sürümlerinin tek-belge biçimi geçiş süresince okunup
       // yazılabilir; yeni sürüm buraya yazmaz, yalnız alan belgelerine taşır.
       allow read, delete: if kendiBelgesi(uid);
-      allow create, update: if kendiBelgesi(uid) && gecerliEsitlemeZarfi();
+      allow create, update: if kendiBelgesi(uid)
+        && !bulutSilinmis(uid)
+        && gecerliEsitlemeZarfi();
 
       match /alanlar/{alan} {
         allow read, delete: if kendiBelgesi(uid);
-        allow create, update: if kendiBelgesi(uid) && gecerliAlanBelgesi(alan);
+        allow create, update: if kendiBelgesi(uid)
+          && !bulutSilinmis(uid)
+          && gecerliAlanBelgesi(alan);
+      }
+
+      match /yonetim/{belge} {
+        allow read, delete: if kendiBelgesi(uid) && belge == 'durum';
+        allow create, update: if kendiBelgesi(uid)
+          && belge == 'durum'
+          && gecerliSilmeIsaretcisi();
       }
     }
   }

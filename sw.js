@@ -11,7 +11,7 @@
    eklediğinde hem SÜRÜM'ü artır hem de listeye ekle.
    ============================================================ */
 
-var SURUM = 'yds-v139';
+var SURUM = 'yds-v142';
 var ONBELLEK = SURUM;
 
 /* Kurulumda indirilenler: sayfalar, kod ve küçük veri dosyaları.
@@ -32,6 +32,8 @@ var TEMEL_DOSYALAR = [
   './gramer.html',
   './baglaclar.html',
   './ara.html',
+  './yontem.html',
+  './ayarlar.html',
   './assets/css/style.css',
   './assets/js/main.js',
   './data/depo.js',
@@ -52,9 +54,12 @@ var TEMEL_DOSYALAR = [
   './assets/js/aileler.js',
   './assets/js/obekler.js',
   './assets/js/quiz.js',
+  './assets/js/deneme-oturum.js',
   './assets/js/deneme.js',
+  './assets/js/soru-konu.js',
   './assets/js/baglaclar.js',
   './assets/js/ara.js',
+  './assets/js/ayarlar.js',
   './data/kelime-dizin.js',
   './data/aileler.js',
   './data/konular.js',
@@ -65,6 +70,8 @@ var TEMEL_DOSYALAR = [
   './data/olumsuzlar.js',
   './data/sayilar.js',
   './data/sorular.js',
+  './data/sorular-ek.js',
+  './data/deneme-formlari.js',
   './data/baglaclar.js',
   './manifest.webmanifest',
   './assets/img/icon-192.png',
@@ -80,8 +87,13 @@ self.addEventListener('install', function (e) {
           return c.add(u).catch(function () { /* atla */ });
         }));
       })
-      .then(function () { return self.skipWaiting(); })
   );
+});
+
+/* Yeni sürüm, kullanıcı çalışma/deneme ortasındayken sayfayı yenilemez.
+   Görünür güncelleme düğmesi bu mesajı gönderince devralır. */
+self.addEventListener('message', function (e) {
+  if (e.data && e.data.type === 'YENI_SURUMU_ETKINLESTIR') self.skipWaiting();
 });
 
 self.addEventListener('activate', function (e) {
@@ -103,17 +115,25 @@ self.addEventListener('fetch', function (e) {
   if (istek.method !== 'GET') return;
   if (new URL(istek.url).origin !== self.location.origin) return;
 
+  // Arama/filtre sorguları aynı statik dosyanın yüzlerce kopyasını üretmesin.
+  var url = new URL(istek.url);
+  url.search = '';
+  url.hash = '';
+  var onbellekAnahtari = url.toString();
+
   // Sayfa gezinmesi: önce ağ
   if (istek.mode === 'navigate') {
     e.respondWith(
       fetch(istek)
         .then(function (yanit) {
-          var kopya = yanit.clone();
-          caches.open(ONBELLEK).then(function (c) { c.put(istek, kopya); });
+          if (yanit && yanit.ok && yanit.type === 'basic') {
+            var kopya = yanit.clone();
+            caches.open(ONBELLEK).then(function (c) { c.put(onbellekAnahtari, kopya); });
+          }
           return yanit;
         })
         .catch(function () {
-          return caches.match(istek).then(function (v) {
+          return caches.match(onbellekAnahtari).then(function (v) {
             return v || caches.match('./index.html');
           });
         })
@@ -123,11 +143,11 @@ self.addEventListener('fetch', function (e) {
 
   // Varlıklar: önce önbellek, arka planda tazele
   e.respondWith(
-    caches.match(istek).then(function (onbellekte) {
+    caches.match(onbellekAnahtari).then(function (onbellekte) {
       var agdan = fetch(istek).then(function (yanit) {
-        if (yanit && yanit.status === 200) {
+        if (yanit && yanit.ok && yanit.type === 'basic') {
           var kopya = yanit.clone();
-          caches.open(ONBELLEK).then(function (c) { c.put(istek, kopya); });
+          caches.open(ONBELLEK).then(function (c) { c.put(onbellekAnahtari, kopya); });
         }
         return yanit;
       }).catch(function () { return onbellekte; });

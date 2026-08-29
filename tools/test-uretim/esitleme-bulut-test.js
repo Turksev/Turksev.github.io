@@ -16,6 +16,7 @@ var islemDenemesi = 0;
 var kokYazma = 0;
 var alanYazma = 0;
 var cakismaKancasi = null;
+var durumOlaylari = [];
 
 var yerelEski = {
   'yds-leitner': {
@@ -25,6 +26,7 @@ var yerelEski = {
   'yds-kategori': { Kelime: { d: 4, y: 1 } }
 };
 Object.keys(yerelEski).forEach(function (a) { bellek.set(a, JSON.stringify(yerelEski[a])); });
+bellek.set('yds-bulut-etkin', 'true');
 
 var kokBelge = {
   surum: 1,
@@ -40,6 +42,7 @@ var kokBelge = {
 };
 var kokBelgeIlk = JSON.stringify(kokBelge);
 var alanBelgeleri = new Map();
+var yonetimBelgesi = null;
 var surumler = new Map();
 var dinleyiciler = new Map();
 
@@ -47,7 +50,8 @@ function refYap(tip, anahtar) {
   var ref = {
     tip: tip,
     anahtar: anahtar || null,
-    path: tip === 'kok' ? 'kullanicilar/u1' : 'kullanicilar/u1/alanlar/' + anahtar,
+    path: tip === 'kok' ? 'kullanicilar/u1' :
+      (tip === 'yonetim' ? 'kullanicilar/u1/yonetim/durum' : 'kullanicilar/u1/alanlar/' + anahtar),
     onSnapshot: function (basarili) {
       var liste = dinleyiciler.get(ref.path) || [];
       liste.push(basarili);
@@ -62,15 +66,26 @@ function refYap(tip, anahtar) {
   };
   if (tip === 'kok') {
     ref.collection = function (ad) {
-      assert.strictEqual(ad, 'alanlar');
-      return { doc: function (alan) { return refYap('alan', alan); } };
+      assert.ok(ad === 'alanlar' || ad === 'yonetim');
+      return { doc: function (alan) {
+        if (ad === 'yonetim') {
+          assert.strictEqual(alan, 'durum');
+          return refYap('yonetim', alan);
+        }
+        return refYap('alan', alan);
+      } };
     };
+  }
+  if (tip === 'yonetim') {
+    ref.delete = function () { yonetimBelgesi = null; return Promise.resolve(); };
   }
   return ref;
 }
 
 function veri(ref) {
-  return ref.tip === 'kok' ? kokBelge : alanBelgeleri.get(ref.anahtar);
+  if (ref.tip === 'kok') return kokBelge;
+  if (ref.tip === 'yonetim') return yonetimBelgesi;
+  return alanBelgeleri.get(ref.anahtar);
 }
 
 function foto(ref) {
@@ -86,6 +101,7 @@ function surum(ref) { return surumler.get(ref.path) || 0; }
 
 function disaridanYaz(ref, v) {
   if (ref.tip === 'kok') kokBelge = v;
+  else if (ref.tip === 'yonetim') yonetimBelgesi = v;
   else alanBelgeleri.set(ref.anahtar, v);
   surumler.set(ref.path, surum(ref) + 1);
   bildir(ref);
@@ -183,7 +199,10 @@ var pencere = {
     olaylar[tur] = olaylar[tur] || [];
     olaylar[tur].push(fn);
   },
-  dispatchEvent: function (e) { (olaylar[e.type] || []).slice().forEach(function (fn) { fn(e); }); },
+  dispatchEvent: function (e) {
+    if (e.type === 'yds-esitleme-durumu') durumOlaylari.push(e.detail);
+    (olaylar[e.type] || []).slice().forEach(function (fn) { fn(e); });
+  },
   confirm: function () { return false; }
 };
 pencere.firebase.auth.GoogleAuthProvider = function () {};
@@ -295,11 +314,43 @@ function temiz(v) { return JSON.parse(JSON.stringify(v)); }
   await bekle(40);
   assert.strictEqual(D.paket()['yds-leitner'].after, undefined);
 
+  // Atomik silme işaretçisi başka cihazdan gelirse yazım anında durur; yerel
+  // paket değişmez ve açık onay olmadan silme API'si hiçbir işlem yapmaz.
+  var yerelOnce = M.kararliJson(D.paket());
+  disaridanYaz(refYap('yonetim', 'durum'), { silindi: true, zaman: 600 });
+  await bekle(30);
+  assert.strictEqual(pencere.YDS.Esitleme.oturumDurumu().silindi, true);
+  assert.strictEqual(M.kararliJson(D.paket()), yerelOnce, 'işaretçi yerel ilerlemeyi değiştirdi');
+  var reddedildi = false;
+  await pencere.YDS.Esitleme.bulutVerisiniSil().catch(function (e) {
+    reddedildi = e && e.code === 'yds/acik-silme-onayi-gerekli';
+  });
+  assert.strictEqual(reddedildi, true, 'bulut silme API açık onay olmadan çalıştı');
+  assert.strictEqual(M.kararliJson(D.paket()), yerelOnce, 'reddedilen silme yerel ilerlemeyi değiştirdi');
+
+  pencere.YDS.Depo.kayitlariYaz('yds-leitner', { blockedLocal: { k: 1, g: 90, c: 80 } });
+  await bekle(60);
+  assert.strictEqual(alanPaketi('yds-leitner')['yds-leitner'].blockedLocal, undefined,
+    'silme işaretçisi varken buluta yazıldı');
+
+  var yenidenReddedildi = false;
+  await pencere.YDS.Esitleme.yenidenEtkinlestir().catch(function (e) {
+    yenidenReddedildi = e && e.code === 'yds/atomik-yeniden-etkinlestirme-gerekli';
+  });
+  await bekle(30);
+  assert.strictEqual(yenidenReddedildi, true,
+    'atomik nesil protokolü olmadan eşitleme kilidi kaldırıldı');
+  assert.strictEqual(pencere.YDS.Esitleme.oturumDurumu().silindi, true);
+  assert.strictEqual(alanPaketi('yds-leitner')['yds-leitner'].blockedLocal, undefined,
+    'reddedilen yeniden etkinleştirme yerel kaydı buluta taşıdı');
+  assert.ok(durumOlaylari.some(function (d) { return d.durum === 'silindi'; }),
+    'ayarlar UI için silindi durum olayı yayınlanmadı');
+
   assert.strictEqual(JSON.stringify(kokBelge), kokBelgeIlk, 'legacy kök belge değiştirildi');
   assert.strictEqual(kokYazma, 0);
   assert.strictEqual(yenidenYukleme, 1);
   assert.deepStrictEqual(yenidenYuklemeNedenleri, ['bulut-ilk-birlesim']);
-  console.log('esitleme-bulut: legacy geçiş + alan belgeleri + retry + tombstone başarılı');
+  console.log('esitleme-bulut: legacy geçiş + marker engeli + güvenli kapalı yönetim yolları başarılı');
 })().catch(function (e) {
   console.error(e);
   process.exitCode = 1;

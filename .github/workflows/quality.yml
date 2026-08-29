@@ -1,0 +1,72 @@
+name: Quality
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: JavaScript syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+          find assets/js data tools -type f -name '*.js' -print0 | xargs -0 -n1 node --check
+          node --check sw.js
+
+      - name: Python syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m compileall -q tools
+
+      - name: Deterministic generated files
+        shell: bash
+        run: |
+          set -euo pipefail
+          node tools/deneme-bankasi-uret.js
+          node tools/seo-uret.js
+          git diff --exit-code -- data/sorular-ek.js data/deneme-formlari.js konu sitemap.xml
+
+      - name: Content, learning and sync tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          tests=(
+            tools/test-uretim/icerik-butunluk-test.js
+            tools/test-uretim/konu-kapsam-test.js
+            tools/test-uretim/kaynak-manifest-test.js
+            tools/test-uretim/kelime-provenans-test.js
+            tools/test-uretim/kelime-alias-gecis-test.js
+            tools/test-uretim/deneme-formlari-test.js
+            tools/test-uretim/deneme-oturum-test.js
+            tools/test-uretim/ilerleme-srs-test.js
+            tools/test-uretim/ayarlar-ice-aktarma-test.js
+            tools/test-uretim/esitleme-veri-test.js
+            tools/test-uretim/esitleme-depo-test.js
+            tools/test-uretim/esitleme-boyut-test.js
+            tools/test-uretim/esitleme-yerel-guvenlik-test.js
+            tools/test-uretim/esitleme-bulut-test.js
+            tools/test-uretim/esitleme-cdn-test.js
+            tools/test-uretim/esitleme-entegrasyon-test.js
+            tools/test-uretim/firestore-kurallar-test.js
+            tools/test-uretim/statik-yayin-test.js
+            tools/test-uretim/yeniden-yukleme-test.js
+          )
+          for test_file in "${tests[@]}"; do node "$test_file"; done

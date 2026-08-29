@@ -22,7 +22,7 @@
     2: { ad: '2. kutu', not: 'henüz oturmadı — 3 günde bir', sinif: 'warn' },
     3: { ad: '3. kutu', not: 'oturuyor — haftada bir', sinif: '' },
     4: { ad: '4. kutu', not: 'neredeyse tamam — 15 günde bir', sinif: 'ok' },
-    5: { ad: '5. kutu', not: 'öğrenildi — artık tekrara gelmiyor', sinif: 'ok' }
+    5: { ad: '5. kutu', not: 'öğrenildi — 30, 90 ve 180 günlük bakım tekrarları sürer', sinif: 'ok' }
   };
 
   var kayitlar = [];        // {kimlik, ad, tur, kutu, kalan, tr, y, p}
@@ -80,16 +80,21 @@
     var say = { 0: kayitlar.length, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
     kayitlar.forEach(function (k) { say[k.kutu] = (say[k.kutu] || 0) + 1; });
 
-    // Mezunlar (5. kutu) tekrara gelmez; sayaca girmesin.
-    var vadesi = kayitlar.filter(function (k) { return k.kalan === 0 && k.kutu < 5; }).length;
+    // 5. kutudaki öğrenilmiş kayıtların da bakım tekrarı vadesi gelebilir.
+    var vadesi = kayitlar.filter(function (k) {
+      return Il.vadesiGeldiMi(k.ad, k.tur);
+    }).length;
 
     var html = '<button type="button" class="ks' + (seciliKutu === 0 ? ' acik' : '') +
-      '" data-k="0"><b>' + say[0] + '</b><i>hepsi</i></button>';
+      '" data-k="0" aria-pressed="' + (seciliKutu === 0 ? 'true' : 'false') +
+      '" aria-label="Tüm kutular, ' + say[0] + ' kayıt"><b>' + say[0] + '</b><i>hepsi</i></button>';
 
     [1, 2, 3, 4, 5].forEach(function (k) {
       var b = KUTU_BILGI[k];
       html += '<button type="button" class="ks ' + b.sinif +
-        (seciliKutu === k ? ' acik' : '') + '" data-k="' + k + '" title="' + b.not + '">' +
+        (seciliKutu === k ? ' acik' : '') + '" data-k="' + k + '" title="' + b.not +
+        '" aria-pressed="' + (seciliKutu === k ? 'true' : 'false') + '" aria-label="' +
+        b.ad + ', ' + (say[k] || 0) + ' kayıt: ' + b.not + '">' +
         '<b>' + (say[k] || 0) + '</b><i>' + b.ad + '</i></button>';
     });
 
@@ -124,14 +129,13 @@
 
   function satir(k) {
     var b = KUTU_BILGI[k.kutu] || { ad: k.kutu + '. kutu', sinif: '' };
-    var vade = k.kutu >= 5 ? 'tekrar yok'
-             : (k.kalan === 0 ? 'bugün tekrar' : k.kalan + ' gün sonra');
+    var vade = k.kalan === 0 ? 'bugün tekrar' : k.kalan + ' gün sonra';
     var testYanlisi = Il.testYanlisSayisi
       ? Il.testYanlisSayisi(k.ad, k.tur) : 0;
 
     return '<article class="word" data-ad="' + kacar(k.ad) + '" data-tur="' + k.tur + '">' +
         '<div>' +
-          '<div class="en">' + kacar(k.ad) + '</div>' +
+          '<div class="en" lang="en">' + kacar(k.ad) + '</div>' +
           (k.tr ? '<div class="tr">' + kacar(k.tr) + '</div>' : '') +
           '<div class="meta">' +
             '<span class="badge ' + b.sinif + '">' + b.ad + ' · ' + vade + '</span>' +
@@ -145,10 +149,14 @@
           '</div>' +
         '</div>' +
         '<div class="act">' +
-          '<button class="star" type="button" data-ne="bilmedim" title="Bilemedim — bir kutu geri düşer, yarın tekrar gelir">✗</button>' +
-          '<button class="star" type="button" data-ne="bildim" title="Bildim — bir üst kutuya çıkar">✓</button>' +
-          '<button class="star" type="button" data-ne="zaten" title="Zaten biliyorum — en üst kutuya at">✓✓</button>' +
-          '<button class="star" type="button" data-ne="sil" title="Listeden çıkar (hiç çalışılmamış say)">⌫</button>' +
+          '<button class="star" type="button" data-ne="bilmedim" title="Bilemedim — bir kutu geri düşer, yarın tekrar gelir" aria-label="' +
+            kacar(k.ad) + ' ' + (k.tur === 'obek' ? 'öbeğini' : 'kelimesini') + ' bilemedim">✗</button>' +
+          '<button class="star" type="button" data-ne="bildim" title="Bildim — bir üst kutuya çıkar" aria-label="' +
+            kacar(k.ad) + ' ' + (k.tur === 'obek' ? 'öbeğini' : 'kelimesini') + ' bildim">✓</button>' +
+          '<button class="star" type="button" data-ne="zaten" title="Zaten biliyorum — en üst kutuya at" aria-label="' +
+            kacar(k.ad) + ' ' + (k.tur === 'obek' ? 'öbeğini' : 'kelimesini') + ' zaten biliyorum">✓✓</button>' +
+          '<button class="star" type="button" data-ne="sil" title="Listeden çıkar (hiç çalışılmamış say)" aria-label="' +
+            kacar(k.ad) + ' ' + (k.tur === 'obek' ? 'öbeğini' : 'kelimesini') + ' çalışılanlar listesinden çıkar">⌫</button>' +
         '</div>' +
       '</article>';
   }

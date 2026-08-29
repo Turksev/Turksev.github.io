@@ -39,7 +39,7 @@
   function kelimeKimligi(id) {
     var sonuc = String(id == null ? '' : id);
     var gorulen = Object.create(null);
-    while (KELIME_ALIASES[sonuc] && !gorulen[sonuc]) {
+    while (KENDI.call(KELIME_ALIASES, sonuc) && KELIME_ALIASES[sonuc] && !gorulen[sonuc]) {
       gorulen[sonuc] = true;
       sonuc = String(KELIME_ALIASES[sonuc]);
     }
@@ -166,9 +166,10 @@
       if (cx !== cy) return kopyala(cx > cy ? a : b);
       if (((x && x.k) || 0) !== ((y && y.k) || 0)) return kopyala(x.k > y.k ? a : b);
     } else if (anahtar === 'yds-yanlis') {
-      var yanlis = kopyala(((x && x.t) || 0) >= ((y && y.t) || 0) ? x : y) || {};
+      var yanlis = kopyala(((x && (x.u || x.t)) || 0) >= ((y && (y.u || y.t)) || 0) ? x : y) || {};
       yanlis.n = Math.max((x && x.n) || 1, (y && y.n) || 1);
       yanlis.t = Math.max((x && x.t) || 0, (y && y.t) || 0);
+      yanlis.u = Math.max((x && (x.u || x.t)) || 0, (y && (y.u || y.t)) || 0);
       return { m: a.m || b.m || 0, v: yanlis };
     } else if (anahtar === 'yds-kategori') {
       var tx = ((x && x.d) || 0) + ((x && x.y) || 0);
@@ -177,14 +178,18 @@
     } else if (anahtar === 'yds-konular') {
       var puan = function (r) {
         return ((r && r.d) || 0) * 10 + (r && r.t != null ? 1 : 0) +
-          (r && r.g != null ? 1 : 0) + (r && r.n ? 1 : 0);
+          (r && r.g != null ? 1 : 0) + (r && r.n ? 1 : 0) +
+          (r && r.ta ? 1 : 0) + (r && r.ga ? 1 : 0);
       };
+      var ux = (x && x.u) || 0, uy = (y && y.u) || 0;
+      if (ux !== uy) return kopyala(ux > uy ? a : b);
       if (puan(x) !== puan(y)) return kopyala(puan(x) > puan(y) ? a : b);
     } else if (anahtar === 'yds-test-yanlis') {
-      return { m: a.m || b.m || 0, v: {
-        n: Math.max((x && x.n) || 1, (y && y.n) || 1),
-        t: Math.max((x && x.t) || 0, (y && y.t) || 0)
-      } };
+      var testKaydi = kopyala(((x && (x.u || x.t)) || 0) >= ((y && (y.u || y.t)) || 0) ? x : y) || {};
+      testKaydi.n = Math.max((x && x.n) || 1, (y && y.n) || 1);
+      testKaydi.t = Math.max((x && x.t) || 0, (y && y.t) || 0);
+      testKaydi.u = Math.max((x && (x.u || x.t)) || 0, (y && (y.u || y.t)) || 0);
+      return { m: a.m || b.m || 0, v: testKaydi };
     } else if (anahtar === 'yds-rekor') {
       if (((x && x.yuzde) || 0) !== ((y && y.yuzde) || 0))
         return kopyala(x.yuzde > y.yuzde ? a : b);

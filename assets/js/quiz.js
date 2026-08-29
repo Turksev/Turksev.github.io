@@ -73,7 +73,7 @@
     var kat = $('kategori').value;
     var n = havuzSecSayisi(kat);
     $('havuzBilgi').textContent = kat === '__yanlis'
-      ? n + ' soruyu daha önce yanlış yaptın. Doğru cevaplarsan defterden düşer.'
+      ? n + ' soruyu daha önce yanlış yaptın. İki farklı günde doğru çözünce defterden düşer.'
       : 'Bu seçimde ' + n + ' soru var. Sorular ve şıklar her turda karıştırılır.';
   }
 
@@ -115,7 +115,10 @@
       var esli = s.se.map(function (metin, i) { return { metin: metin, dogruMu: i === s.d }; });
       esli = karistir(esli);
       return {
+        id: s.id,
         kat: s.kat,
+        konu: s.konu,
+        kaynak: s.kaynak,
         metin: soruMetni(s),
         soru: s.s,
         ac: s.ac,
@@ -140,21 +143,27 @@
     $('qKat').textContent = s.kat;
     $('qSayac').textContent = (sira + 1) + ' / ' + test.length;
     $('qBar').style.width = (sira / test.length * 100) + '%';
+    var ilerleme = $('qBar').parentNode;
+    ilerleme.setAttribute('aria-valuenow', String(sira));
+    ilerleme.setAttribute('aria-valuemax', String(test.length));
+    ilerleme.setAttribute('aria-valuetext', sira + ' / ' + test.length + ' soru tamamlandı');
 
     var elMetin = $('qMetin');
     if (s.metin) {
       elMetin.innerHTML = bosluklu(s.metin);
+      elMetin.setAttribute('lang', 'en');
       elMetin.hidden = false;
     } else {
       elMetin.hidden = true;
     }
 
     $('qText').innerHTML = bosluklu(s.soru);
+    $('qText').setAttribute('lang', 'en');
 
     $('qSecenekler').innerHTML = s.secenekler.map(function (se, i) {
       return '<button class="opt" type="button" data-i="' + i + '">' +
                '<span class="key">' + HARF[i] + '</span>' +
-               '<span>' + kacar(se) + '</span>' +
+               '<span lang="en">' + kacar(se) + '</span>' +
              '</button>';
     }).join('');
 
@@ -177,11 +186,11 @@
     });
 
     var dogruMu = secim === s.dogruIndex;
-    Il.kategoriKaydet(s.kat, dogruMu);
+    Il.kategoriKaydet(s.kat, dogruMu, s.id);
 
     if (dogruMu) {
       dogru++;
-      Il.yanlisCoz({ kat: s.kat, soru: s.soru });   // defterden düş
+      Il.yanlisCoz({ kat: s.kat, soru: s.soru });
     } else {
       Il.yanlisEkle({ kat: s.kat, soru: s.soru });
       yanlislar.push({
@@ -190,6 +199,8 @@
         senin: s.secenekler[secim],
         dogru: s.secenekler[s.dogruIndex],
         ac: s.ac
+        , konu: s.konu
+        , kaynak: s.kaynak
       });
     }
 
@@ -206,7 +217,8 @@
     if (sira < test.length - 1) {
       sira++;
       soruyuGoster();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      $('qText').focus({ preventScroll: true });
+      window.scrollTo({ top: 0, behavior: window.YDS.hareket() });
     } else {
       sonucuGoster();
     }
@@ -238,6 +250,9 @@
           '<p style="margin:0 0 4px"><span class="badge err">senin cevabın</span> ' + kacar(y.senin) + '</p>' +
           '<p style="margin:0 0 8px"><span class="badge ok">doğru</span> ' + kacar(y.dogru) + '</p>' +
           '<p class="muted" style="margin:0">' + y.ac + '</p>' +
+          (y.konu ? '<p style="margin:10px 0 0"><a class="btn ghost sm" href="konular.html#' +
+            encodeURIComponent(y.konu) + '">' + kacar(y.konu) + ' konusunu çalış</a> ' +
+            '<span class="badge">' + kacar(window.YDS.SoruKonu.kaynakEtiketi(y)) + '</span></p>' : '') +
         '</div>';
       }).join('');
     }
@@ -247,7 +262,7 @@
       Depo.yaz(REKOR_ANAHTAR, { yuzde: yuzde, dogru: dogru, toplam: cozulen });
     }
     rekoruGoster();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: window.YDS.hareket() });
   }
 
   /* Tüm zamanların kategori başarısı — sonuç ekranında gösterilir. */
@@ -258,13 +273,13 @@
     if (!ozet.length) { kutu.innerHTML = ''; return; }
 
     kutu.innerHTML = '<h2 style="margin-top:34px">Kategori karnen</h2>' +
-      '<p class="small muted" style="margin-top:-6px">Bugüne kadar çözdüğün tüm sorular. En zayıf kategori üstte.</p>' +
+      '<p class="small muted" style="margin-top:-6px">Son çözdüğün farklı sorulara göre; en zayıf kategori üstte.</p>' +
       '<div class="card">' + ozet.map(function (k) {
         var renk = k.yuzde >= 75 ? 'var(--ok)' : (k.yuzde >= 50 ? 'var(--warn)' : 'var(--err)');
         return '<div class="karne-satir">' +
             '<span class="karne-ad">' + kacar(k.kat) + '</span>' +
             '<span class="karne-cubuk"><i style="width:' + k.yuzde + '%;background:' + renk + '"></i></span>' +
-            '<span class="karne-sayi">%' + k.yuzde + ' <span class="muted">(' + k.dogru + '/' + k.toplam + ')</span></span>' +
+            '<span class="karne-sayi">%' + k.yuzde + ' <span class="muted">(' + k.dogru + '/' + k.toplam + ' · ' + k.kapsam + ')</span></span>' +
           '</div>';
       }).join('') + '</div>';
   }
@@ -276,7 +291,7 @@
     rekoruGoster();
     yanlisSecenegiGuncelle();
     havuzBilgisiniGuncelle();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: window.YDS.hareket() });
   }
 
   /* ---------- olaylar ---------- */
@@ -290,6 +305,7 @@
     $('sonuc').hidden = true;
     $('test').hidden = false;
     soruyuGoster();
+    $('qText').focus();
   });
 
   $('qSecenekler').addEventListener('click', function (e) {
@@ -302,7 +318,7 @@
 
   $('bitir').addEventListener('click', function () {
     if (!dogru && !yanlislar.length) { basaDon(); return; }
-    if (confirm('Testi burada bitirip sonucu görmek istiyor musun?')) sonucuGoster();
+    if (confirm('Alıştırmayı burada bitirip sonucu görmek istiyor musun?')) sonucuGoster();
   });
 
   $('tekrar').addEventListener('click', basaDon);

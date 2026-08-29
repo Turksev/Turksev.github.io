@@ -13,19 +13,20 @@ Yayında: <https://turksev.github.io>
 | `kelimeler.html` | 7.848 kelime, 7 katman + **aralıklı tekrar (Leitner)**: bugünün destesi, kart modu, ipucu, sesli okuma |
 | `obekler.html` | 1.623 kelime öbeği (560 deyimsel fiil, 332 edat kalıbı, sabit/geçiş ifadeleri) — ayrı Leitner destesi |
 | `quiz.html` | Alıştırma soruları: 12 kategori, anında çözüm, yanlış defterinden çalışma |
-| `deneme.html` | **Süreli deneme sınavı**: geri sayım, soru ızgarası, işaretleme, 100 üzerinden YDS puanı, kategori karnesi |
+| `deneme.html` | **Süreli deneme sınavı**: üç sabit 80 soruluk form, geri sayım, soru ızgarası, işaretleme, yenileme sonrası oturum kurtarma, 100 üzerinden YDS puanı, kategori karnesi |
 | `gramer.html` | 10 başlıkta konu anlatımı, kural tabloları ve sınav tuzakları |
 | `konular.html` | Türkçe ve İngilizce eksenli **129/129 YDS ünitesi**: ayrıntılı anlatım, çözüm yolu, tuzaklar ve mini uygulamalar |
 | `baglaclar.html` | Bağlaçlar ve geçiş ifadeleri: çözüm yöntemi, yapı tabloları, filtrelenebilir 155 kayıtlık banka |
-| `ara.html` | Site geneli arama: kelimeler, öbekler, bağlaçlar, sorular, gramer konuları, YDS konu haritası üniteleri ve kelime aileleri — sonuca **çift tıklayınca ayrıntı kartı** açılır |
+| `ara.html` | Site geneli arama: kelimeler, öbekler, bağlaçlar, sorular, gramer konuları, YDS konu haritası üniteleri ve kelime aileleri — sonuç **tek tıklamayla** açılır |
 
 ## İçerik
 
 - **7.848 kelime** — 49 gerçek YDS sınavındaki geçme sıklığına göre puanlanmış, yedi katmana ayrılmış;
   her birinde Türkçe anlam + İngilizce örnek cümle + çeviri (**2.576'sında birden çok anlam** var)
 - **1.623 kelime öbeği** — deyimsel fiil (phrasal verb), edat kalıbı, sabit ve geçiş ifadeleri, kaç sınavda geçtiği bilgisiyle
-- **125 soru** — 12 kategori: Kelime, Dil Bilgisi, Bağlaç, Preposition, Cloze Test, Çeviri,
+- **286 soru** — 12 kategori: Kelime, Dil Bilgisi, Bağlaç, Preposition, Cloze Test, Çeviri,
   Cümle Tamamlama, Restatement, Paragraf Tamamlama, Anlamı Bozan Cümle, Diyalog, Okuma
+  (80 soruluk A/B/C formlarında 240 farklı soru; doğru şıklar her formda A–E arasında 16'şar kez dağılır)
 - **155 bağlaç** — anlam ilişkisi ve "sonrasında ne gelir" etiketleriyle
 - **10 gramer konusu** — tablolar ve örneklerle
 - **129 YDS konu ünitesi** — Türkçe–İngilizce aktarım sorunları ve İngilizce yapı sistemi
@@ -33,7 +34,7 @@ Yayında: <https://turksev.github.io>
 
 ### Kelime katmanları
 
-Kelimeler, `YDS Öncelik Puanı`na göre beşe ayrıldı. Puan
+Kelimeler, `YDS Öncelik Puanı`na göre yedi katmanda sunulur. Puanlı ilk altı katmanın puanı
 `100 × (0.50·S + 0.20·F + 0.30·P)` formülünden gelir — S: kaç farklı sınavda geçtiği (ana kriter),
 F: toplam frekans, P: akademik önsel (NGSL/NAWL/AWL üyeliği + Zipf).
 
@@ -87,6 +88,7 @@ assets/
   js/kelimeler.js     kelime sayfası
   js/obekler.js       öbek sayfası
   js/quiz.js          alıştırma soruları
+  js/deneme-oturum.js denemenin sessionStorage içindeki doğrulanan geçici kurtarma kaydı
   js/deneme.js        süreli sınav
   js/baglaclar.js     bağlaç bankası
   js/ara.js           site geneli arama
@@ -100,14 +102,16 @@ data/
   kelime-provenans.json denetlenen öğelerin sınav kimliği/sayfa/soru kaynakları
   obekler.js          1.623 kelime öbeği
   sayilar.js          içerik sayaçları (üretilir)
-  sorular.js          soru bankası + okuma parçaları
+  sorular.js          temel soru bankası + okuma parçaları
+  sorular-ek.js       özgün ek soru bankası ve pasajlar (üretilir)
+  deneme-formlari.js  üç sabit 80 soruluk form ve dengeli şık yerleşimi (üretilir)
   baglaclar.js        bağlaç verisi
   konular.js          129 ünitenin konu haritası
   konu-metinleri.js   temel 6 konu anlatımı
   konu-metinleri-t-ek.js Türkçe ekseninin kalan 55 anlatımı
   konu-metinleri-e1-ek.js, konu-metinleri-e2-ek.js İngilizce ekseninin 68 anlatımı
   kaynak-manifest.json 49 sınav PDF'sinin içerik kopyalamayan provenans kaydı
-tools/
+tools/                geliştirme/üretim araçları; _config.yml ile canlı yayının dışında
   listeyi-aktar.py    XLSX kaynaklardan kelime/öbek veri dosyalarını üretir
   kelime-duzeltmeleri.json PDF/sözlük denetimli dokuz başlık düzeltmesinin tek kaynağı
   ek-kelimeler.js     dönüştürücü girdisi: elle yazılmış 181 kelime
@@ -126,7 +130,7 @@ Veriler `fetch` yerine düz `<script>` ile yüklenir; böylece dosyaları çift 
 ## Aralıklı tekrar nasıl çalışıyor?
 
 Her kelime 1–5 arası bir kutuda durur. Kart modunda **✓ Bildim** dersen bir üst kutuya
-çıkar ve daha seyrek sorulur; **✗ Bilemedim** dersen 1. kutuya döner.
+çıkar ve daha seyrek sorulur; **✗ Bilemedim** dersen bir kutu geri düşer.
 
 | Kutu | Sonraki tekrar |
 | --- | --- |
@@ -134,19 +138,19 @@ Her kelime 1–5 arası bir kutuda durur. Kart modunda **✓ Bildim** dersen bir
 | 2 | 3 gün sonra |
 | 3 | 7 gün sonra |
 | 4 | 15 gün sonra |
-| 5 | **tekrar yok — öğrenildi** |
+| 5 | **30 gün sonra — öğrenildi/bakım** |
 
 **Yanlış cevap bir kutu geri düşürür** (sıfırlamaz) ve kelimeyi ertesi güne alır: bir aydır
 bildiğin kelimeyi tek şaşırmada baştan başlatmak tekrar yükünü katlıyordu.
 
-**5. kutu mezuniyettir**: oraya çıkan kelime bir daha tekrara gelmez, "öğrenildi" sayılır.
-Oraya çıkmak için kelimeyi 26 güne yayılmış dört tekrarda doğru bilmek gerekir. Böylece
-deste zamanla erir; hepsini yeniden çalışmak istersen "Kelime ilerlememi sıfırla".
+**5. kutu öğrenildi durumudur**, fakat unutmayı yakalamak için bakım tekrarları sürer:
+ilk bakım 30, sonraki 90, daha sonrakiler 180 gün arayladır. Bakımda doğru bilinen kart
+5. kutuda kalır; yanlış bilinen kart bir kutu geri düşer ve ertesi gün yeniden gelir.
 
 **Günlük toplam kart tavanı.** Kelime sayfasındaki "Bugün toplam kart" seçicisi destenin
-boyunu sınırlar (`yds-gunluk-tavan`, varsayılan 30). Sıra şu: önce "bunun yenisi" kadar yeni
-kelime yer ayırtır — tekrar borcu ne olursa olsun yeni kelime öğrenmen durmaz — kalan yeri
-**en çok gecikmiş** tekrarlar doldurur, sığmayan sıradaki güne kalır. Sığmayan varsa deste
+boyunu sınırlar (`yds-gunluk-tavan`, varsayılan 30). Sıra şu: önce vadesi gelmiş tekrarlar
+**en çok gecikmiş olandan başlayarak** kapasiteyi doldurur; yalnız kalan yere günlük hedef
+kadar yeni kart eklenir. Böylece tekrar borcu varken yeni kartlar otomatik azalır. Sığmayan varsa deste
 kutusunda "N tekrar bugünkü sınıra sığmadı" notu çıkar.
 
 **Birikmiş yığını dağıtma.** Eski kurgudan (her "Bilemedim" 1. kutuya atıyordu, tekrara tavan
@@ -155,12 +159,16 @@ yoktu) yüzlerce gecikmiş tekrar kalmış olabilir. Bekleyen 40'ı geçince ç�
 silinmez, vadesi geçmiş kelimeler en çok gecikmiş olan önce gelecek şekilde günlük tavana
 bölünüp önümüzdeki günlere yayılır.
 
-Simülasyon (2.501 kelime, günde 20 yeni, %82 doğruluk): günlük deste 76. günde 150 kartla
-zirve yapıp 180. günde 3'e iner, 220. günde bütün kelimeler mezun olur. Eski kurguda
-(yanlış → 1. kutu, 5. kutu 30 günde bir sonsuza dek) yük 365. günde hâlâ 162 karttı. Kelimeler ve öbekler aynı kutu tablosunu paylaşır
-(anahtarlar çakışmaz: öbeklerde boşluk var), ama her sayfanın "sıfırla" düğmesi yalnız kendi
-kayıtlarını siler. Aralıkları değiştirmek istersen
+Kelimeler ve öbekler aynı kutu tablosunda tutulur; görünür başlığı çakışabilen kayıtlar türü
+belirten kanonik kimliklerle ayrılır (örneğin kelime `@kelime:hand down`, öbek `hand down`).
+Her sayfanın "sıfırla" düğmesi yalnız kendi türündeki kayıtları siler. Aralıkları değiştirmek istersen
 `assets/js/ilerleme.js` içindeki `ARALIK` tablosunu düzenle.
+
+Tam ve karma denemelerin yarım kalan oturumu yalnız aynı sekmenin `sessionStorage` alanına
+yazılır; eşitlenebilir ilerleme verisine katılmaz. Kayıtta soru/şık metni ve cevap anahtarı yoktur.
+Yenilemede soru bankasından doğrulanarak kurulur, mutlak bitiş zamanı korunur; banka değişmişse
+eski kayıt reddedilir. Kullanıcı iki aşamalı **Kaydetmeden bırak** düğmesiyle oturumu geçmişe
+sonuç yazmadan silebilir.
 
 Kart örnekleri ipucu için boşluklanır; bu yüzden örnek cümlede hedef kelimenin başka bir
 çekimi ya da aynı aileden bir sözcük bulunmamalıdır (yoksa ipucu cevabı ele verir).
@@ -170,7 +178,7 @@ yakalar (woman → women, undertake → undertook).
 
 ### Arama sonucu ayrıntı kartı
 
-`ara.html` içinde bir sonuca çift tıklamak, sayfadan ayrılmadan kaydın tamamını gösterir:
+`ara.html` içinde bir sonuca tek tıklamak, sayfadan ayrılmadan kaydın tamamını gösterir:
 kelimede bütün anlamlar + örnek cümleler + yakın anlamlılar + olumsuzu + kelime ailesi +
 tekrar kutusu + varsa günün testi cümlesi; öbek/bağlaç/soruda tam kayıt; ünitede kapsam,
 soru türleri ve TR-hata riski; ailede bütün üyeler ve anlamları. Kelimenin örnek cümleleri
@@ -251,8 +259,10 @@ ilk altı katmandaki bütün **7.848 kelime** için cümle ve ayrıca **892 öbe
 sokulur (`assets/js/cekim.js`: düzenli kurallar + düzensiz fiil/isim tablosu); biçim uyumu
 cevabı ele vermez. Aynı kök, eş anlamlı ve cümlede geçen kelimeler çeldirici olmaz.
 
-Sonuç Leitner kutusunu **değiştirmez**; bilinemeyen kelime `yds-test-yanlis` defterine girer
-(listede ve Durumum'da "testte ✗" rozeti), sonraki testte önce sorulur, doğru bilinince düşer.
+Doğru sonuç Leitner kutusunu yükseltmez; bilinemeyen kelime ise bir kutu geri düşüp ertesi
+güne alınır ve `yds-test-yanlis` defterine girer
+(listede ve Durumum'da "testte ✗" rozeti), sonraki testte önce sorulur; defterden çıkması
+için iki ayrı günde doğru bilinmesi gerekir.
 Defter cihazlar arasında eşitlenir.
 
 **Öbekler için de test var.** `obekler.html` aynı test modülünü `kaynak='obek'` ile çağırır;

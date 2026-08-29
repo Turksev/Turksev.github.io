@@ -40,6 +40,12 @@ sayfalar.forEach(function (dosya) {
       e2Ek === e1Ek + 1 && konuIlerleme === e2Ek + 1,
     'konular.html: 129 anlatım dosyası ilerleme betiğinden önce doğru sırada değil');
   }
+  if (dosya === 'deneme.html') {
+    var oturum = betikler.indexOf('assets/js/deneme-oturum.js');
+    var deneme = betikler.indexOf('assets/js/deneme.js');
+    assert.ok(oturum > ilerleme && deneme === oturum + 1,
+      'deneme.html: güvenli oturum modülü deneme betiğinden hemen önce değil');
+  }
   betikler.forEach(function (src) {
     if (/^(https?:)?\/\//.test(src)) return;
     assert.ok(fs.existsSync(path.join(kok, src)), dosya + ': eksik betik ' + src);
@@ -49,12 +55,14 @@ sayfalar.forEach(function (dosya) {
 var sw = fs.readFileSync(path.join(kok, 'sw.js'), 'utf8');
 var main = fs.readFileSync(path.join(kok, 'assets', 'js', 'main.js'), 'utf8');
 var bulut = fs.readFileSync(path.join(kok, 'assets', 'js', 'esitleme-v2.js'), 'utf8');
-assert.ok(/var SURUM = 'yds-v139'/.test(sw), 'servis çalışanı sürümü artırılmadı');
+assert.ok(/var SURUM = 'yds-v142'/.test(sw), 'servis çalışanı sürümü artırılmadı');
 assert.ok(sw.indexOf("'./data/kelime-aliaslari.js'") >= 0,
   'kelime aliasları çevrimdışı önbellekte değil');
 ['esitleme-veri.js', 'esitleme-depo.js', 'esitleme-v2.js'].forEach(function (dosya) {
   assert.ok(sw.indexOf("'./assets/js/" + dosya + "'") >= 0, 'önbellekte eksik: ' + dosya);
 });
+assert.ok(sw.indexOf("'./assets/js/deneme-oturum.js'") >= 0,
+  'deneme oturum modülü çevrimdışı önbellekte değil');
 ['konu-metinleri.js', 'konu-metinleri-t-ek.js', 'konu-metinleri-e1-ek.js',
   'konu-metinleri-e2-ek.js'].forEach(function (dosya) {
   assert.ok(sw.indexOf("'./data/" + dosya + "'") >= 0, 'önbellekte eksik: ' + dosya);

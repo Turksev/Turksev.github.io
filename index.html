@@ -18,6 +18,21 @@
 <meta property="og:url" content="https://turksev.github.io/">
 <meta property="og:image" content="https://turksev.github.io/assets/img/icon-512.png">
 <meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "YDS Hazırlık",
+  "url": "https://turksev.github.io/",
+  "inLanguage": "tr",
+  "description": "YDS için kelime, konu anlatımı, alıştırma ve süreli deneme çalışma sitesi.",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://turksev.github.io/ara.html?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
 <link rel="stylesheet" href="assets/css/style.css">
 <script src="data/depo.js"></script>
 <script src="assets/js/main.js"></script>
@@ -57,7 +72,7 @@
         tek yerde. İlerlemen tarayıcında saklanır; istediğin yerden devam edersin.
       </p>
       <div class="hero-actions">
-        <a class="btn" href="kelimeler.html" id="btnDeste">Bugünün destesini çalış</a>
+        <a class="btn" href="kelimeler.html?calis=1" id="btnDeste">Bugünün destesini doğrudan aç</a>
         <a class="btn ghost" href="deneme.html">Süreli deneme çöz</a>
       </div>
 
@@ -66,7 +81,7 @@
         <div class="stat"><div class="n" id="st-obek">—</div><div class="l">Öbek</div></div>
         <div class="stat"><div class="n" id="st-soru">—</div><div class="l">Soru</div></div>
         <div class="stat"><div class="n" id="st-baglac">—</div><div class="l">Bağlaç</div></div>
-        <div class="stat"><div class="n" id="st-konu">10</div><div class="l">Gramer konusu</div></div>
+        <div class="stat"><div class="n" id="st-konu">129</div><div class="l">Konu ünitesi</div></div>
       </div>
     </div>
   </section>
@@ -165,9 +180,9 @@
 
         <a class="card card-link" href="gramer.html">
           <span class="ico">📖</span>
-          <h3>Gramer Notları</h3>
-          <p>Zamanlar, edilgen yapı, koşul cümleleri, isim ve sıfat cümlecikleri… Tablolarla özet,
-             örneklerle pekiştirme.</p>
+          <h3>Hızlı Gramer Özeti</h3>
+          <p>Zamanlar, edilgen yapı, koşul cümleleri, isim ve sıfat cümlecikleri için hızlı başvuru özeti.
+             Ayrıntılı öğrenme ve ölçüm Konu Haritası'nda.</p>
         </a>
 
         <a class="card card-link" href="baglaclar.html">
@@ -192,9 +207,9 @@
       <h2>Nasıl çalışmalı?</h2>
       <div class="grid">
         <div class="card">
-          <h3>1. Önce gramer</h3>
-          <p class="muted small">Bir konuyu okuyup örnekleri sesli tekrar et. Konu bitince quizde o kategoriyi
-             seçip sadece o tür sorulara odaklan.</p>
+          <h3>1. Konuyu öğren ve ölç</h3>
+          <p class="muted small">Konu Haritası'ndan bir ünite aç, anlatımı çalış ve mini uygulamayı cevabı görmeden tamamla.
+             Sistem tanı puanını yanıtlarından hesaplar; en az yedi gün sonra gecikmeli ölçümü yaparsın.</p>
         </div>
         <div class="card">
           <h3>2. Her gün desteyi bitir</h3>
@@ -202,9 +217,9 @@
              çıkıp seyrekleşir, bilemediğin yarın yine karşına gelir. Günde 10 dakika yeter.</p>
         </div>
         <div class="card">
-          <h3>3. Haftada bir süreli deneme</h3>
-          <p class="muted small">Deneme sayfasında 40 soruluk bir sınav çöz. Karnede en düşük kategoriyi gör,
-             o hafta onu çalış. Yanlışların deftere düşer; quizde "Yanlış defterim" ile tekrar çöz.</p>
+          <h3>3. Haftada bir tam deneme</h3>
+          <p class="muted small">Deneme sayfasında 80 soruluk sabit formlardan birini 180 dakikada çöz. Karnede en düşük
+             kategoriyi gör ve o hafta onu çalış. 20/40 soruluk seçenekleri yalnız kısa karma çalışma olarak kullan.</p>
         </div>
       </div>
     </div>
@@ -222,7 +237,6 @@
 <script src="data/kelime-dizin.js"></script>
 <script src="data/sayilar.js"></script>
 <script src="data/aileler.js"></script>
-<script src="data/sorular.js"></script>
 <script src="data/baglaclar.js"></script>
 <script src="assets/js/ilerleme.js"></script>
 <script src="assets/js/veri.js"></script>
@@ -244,7 +258,7 @@
 
   yaz('st-kelime', tr(sayilar.kelime));
   yaz('st-obek', tr(sayilar.obek));
-  yaz('st-soru', (window.SORULAR || []).length);
+  yaz('st-soru', tr(sayilar.soru || 286));
   yaz('st-baglac', (window.BAGLACLAR || []).length);
   yaz('k-kelime', tr(sayilar.kelime));
   yaz('k-obek', tr(sayilar.obek));
@@ -279,7 +293,7 @@
   if (defter.length) {
     var enCok = defter.slice().sort(function (a, b) { return (b.n || 1) - (a.n || 1); })[0];
     yaz('p-yanlisOzet', 'En çok zorlandığın kategori: ' + enCok.kat +
-      ' · doğru cevaplayınca defterden düşer.');
+      ' · iki farklı günde doğru çözünce defterden düşer.');
     $('p-yanlisBtn').hidden = false;
   }
 

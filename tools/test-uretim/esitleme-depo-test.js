@@ -55,7 +55,12 @@ function temiz(v) { return JSON.parse(JSON.stringify(v)); }
 // Eski localStorage verisi otomatik zarf olur; görünür veri değişmez.
 assert.deepStrictEqual(temiz(Depo.oku('yds-leitner', {})), { base: { k: 1, g: 10 } });
 assert.strictEqual(JSON.parse(bellek.get(D.ANAHTAR)).surum, 2);
-assert.strictEqual(M.kararliJson(D.paket()), M.kararliJson(eskiPaket));
+var normallesmisPaket = temiz(eskiPaket);
+// Eski yanlış kayıtlarına, iki-gün kuralının sonraki birleşimlerde doğru
+// çalışması için görünmeyen son-güncelleme alanı eklenir.
+normallesmisPaket['yds-yanlis'][0].u = normallesmisPaket['yds-yanlis'][0].t;
+normallesmisPaket['yds-test-yanlis'].ability.u = normallesmisPaket['yds-test-yanlis'].ability.t;
+assert.strictEqual(M.kararliJson(D.paket()), M.kararliJson(normallesmisPaket));
 
 // Geçişten önce alınan otomatik yedek bütün eski anahtarlarla birebir aynıdır.
 var gecisYedegi = JSON.parse(bellek.get('yds-esitleme-gecis-yedegi'));

@@ -21,7 +21,7 @@
   var Veri = window.YDS.Veri;
   var ILERLEME_TURU = 'obek';
 
-  var SAYFA_BOYU = 60;
+  var SAYFA_BOYU = 20;
 
   var TUM = [];
   var suzulmus = [];
@@ -51,14 +51,19 @@
     $('desteBilgi').textContent = o.calisilan + '/' + TUM.length + ' öbeğe başlandı · ' +
       o.ogrenilen + ' öğrenildi';
     $('desteBar').style.width = (TUM.length ? o.ogrenilen / TUM.length * 100 : 0) + '%';
+    var ilerleme = $('desteIlerleme');
+    ilerleme.setAttribute('aria-valuemax', String(Math.max(1, TUM.length)));
+    ilerleme.setAttribute('aria-valuenow', String(o.ogrenilen));
+    ilerleme.setAttribute('aria-valuetext', o.ogrenilen + ' / ' + TUM.length + ' öbek öğrenildi');
 
     // Kutular tıklanabilir: bir kutuya basınca liste yalnız o kutuyu gösterir.
     $('kutular').innerHTML = [0, 1, 2, 3, 4, 5].map(function (k) {
       var ad = k === 0 ? 'yeni' : (k === 5 ? 'öğrenildi' : k + '. kutu');
       return '<button type="button" class="kutu' + (seciliKutu === k ? ' acik' : '') +
-        '" data-k="' + k + '" title="' + (k === 0 ? 'Hiç çalışılmamış kelimeler'
-          : (k === 5 ? 'Öğrenilmiş: artık tekrara gelmiyor' : k + '. kutudaki kelimeler')) +
-        ' — göstermek için tıkla">' +
+        '" data-k="' + k + '" title="' + (k === 0 ? 'Hiç çalışılmamış öbekler'
+          : (k === 5 ? 'Öğrenilmiş: seyrek bakım tekrarları sürer' : k + '. kutudaki öbekler')) +
+        ' — göstermek için tıkla" aria-pressed="' + (seciliKutu === k ? 'true' : 'false') +
+        '" aria-label="' + ad + ', ' + o['k' + k] + ' öbek">' +
         '<b>' + o['k' + k] + '</b><i>' + ad + '</i></button>';
     }).join('');
 
@@ -145,14 +150,14 @@
     var kutu = Il.kutu(o.f, ILERLEME_TURU);
     var anlamlar = o.a.map(function (a) {
       return '<div class="ex"><b>' + kacar(a.tr) + '</b>' + yildiz(a) +
-             '<i>' + kacar(a.ex) + '</i>' +
+             '<i lang="en">' + kacar(a.ex) + '</i>' +
              '<i class="tr-ex">' + kacar(a.exTr) + '</i></div>';
     }).join('');
 
     return '' +
       '<article class="word' + (kutu >= 5 ? ' known' : '') + '" data-f="' + kacar(o.f) + '">' +
         '<div>' +
-          '<div class="en">' + kacar(o.f) + '</div>' +
+          '<div class="en" lang="en">' + kacar(o.f) + '</div>' +
           '<div class="meta">' +
             '<span class="badge">' + kacar(o.y) + '</span>' +
             (o.s ? '<span class="badge accent" title="Kaç farklı sınavda geçti">' +
@@ -161,9 +166,10 @@
           '</div>' +
         '</div>' +
         '<div class="act">' +
-          '<button class="star" type="button" data-ne="bildim" title="Bildim">✓</button>' +
-          '<button class="star" type="button" data-ne="bilmedim" title="Bilemedim">✗</button>' +
-          '<button class="star" type="button" data-ne="ses" title="Telaffuzu dinle">🔊</button>' +
+          '<button class="btn ghost sm" type="button" data-ne="calis" aria-label="' + kacar(o.f) +
+            ' öbeğini kartta çalış">Kartta çalış</button>' +
+          '<button class="star" type="button" data-ne="ses" title="Telaffuzu dinle" aria-label="' +
+            kacar(o.f) + ' öbeğinin telaffuzunu dinle">🔊</button>' +
         '</div>' +
         anlamlar +
       '</article>';
@@ -228,7 +234,8 @@
     }).join('<br>') +
       '<div class="muted small" style="font-weight:400;margin-top:4px">' + kacar(o.y) + '</div>';
     $('kartOrnek').innerHTML = o.a.map(function (a) {
-      return kacar(a.ex) + '<br><span style="opacity:.8">' + kacar(a.exTr) + '</span>';
+      return '<span lang="en">' + kacar(a.ex) + '</span><br><span style="opacity:.8">' +
+        kacar(a.exTr) + '</span>';
     }).join('<br><br>');
 
     $('kartArka').hidden = !kartAcik;
@@ -247,6 +254,12 @@
       ? (ipucuAcik ? 'İpucu kullandın — "Bildim" dersen öbek aynı kutuda kalır.'
                    : 'Bildin mi? Aşağıdan işaretle.')
       : 'Çevirmek için karta tıkla · boşluk tuşu';
+
+    $('bildim').disabled = !kartAcik;
+    $('bilmedim').disabled = !kartAcik;
+    $('zatenBiliyorum').disabled = kartAcik || ipucuAcik;
+    elKart.setAttribute('aria-expanded', kartAcik ? 'true' : 'false');
+    elKart.setAttribute('aria-label', o.f + ' öbeğinin cevabını ' + (kartAcik ? 'gizle' : 'göster'));
   }
 
   function kartGit(adim) {
@@ -261,6 +274,9 @@
   function kartCevap(ne) {
     var o = suzulmus[kartIndex];
     if (!o) return;
+
+    if (ne === 'zaten' && (kartAcik || ipucuAcik)) return;
+    if (ne !== 'zaten' && !kartAcik) return;
 
     var sonuc;
     if (ne === 'zaten') sonuc = Il.zatenBiliyorum(o.f, ILERLEME_TURU);
@@ -298,7 +314,7 @@
     if (!davet.hidden) {
       $('testDavetMetin').textContent = 'Bugünkü desteni bitirdin 🎉 Şimdi bu öbekleri cümle içinde gör: ' +
         Math.min(n, Test.EN_COK) + ' soruluk boşluk doldurma testi.';
-      davet.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      davet.scrollIntoView({ behavior: window.YDS.hareket(), block: 'center' });
     }
   }
 
@@ -324,7 +340,7 @@
       $('testDavet').hidden = true;
       filtrele();
       desteyiCiz();
-      $('deste').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      $('deste').scrollIntoView({ behavior: window.YDS.hareket(), block: 'start' });
     }, 'obek').then(function (r) {
       b.disabled = false;
       if (r.acildi) {
@@ -353,7 +369,8 @@
       return;
     }
     elSayac.textContent = suzulmus.length + ' öbek gösteriliyor · toplam ' + TUM.length +
-      ' · öğrenilen ' + o.ogrenilen + ' · bugün tekrar ' + o.bugun;
+      ' · öğrenilen ' + o.ogrenilen + ' · bugün ' + o.gosterilecekTekrar +
+      ' tekrar + ' + o.acilacakYeni + ' yeni';
   }
 
   function ciz() {
@@ -391,21 +408,16 @@
     var ne = btn.getAttribute('data-ne');
 
     if (ne === 'ses') { seslendir(f); return; }
-    var sonuc = ne === 'bildim' ? Il.dogru(f, ILERLEME_TURU) : Il.yanlis(f, ILERLEME_TURU);
-    if (sonuc === false) { window.YDS.depolamaUyarisi(); return; }
-    desteyiCiz();
-
-    if (elDurum.value) {
-      filtrele();
-    } else {
-      var o = TUM.filter(function (x) { return x.f === f; })[0];
-      if (o) {
-        var yeni = document.createElement('div');
-        yeni.innerHTML = satir(o);
-        kutu.replaceWith(yeni.firstChild);
-      }
-      guncelleSayac();
-    }
+    if (ne !== 'calis') return;
+    kartIndex = suzulmus.findIndex(function (o) { return o.f === f; });
+    if (kartIndex < 0) return;
+    kartModu = true;
+    desteModu = false;
+    kartAcik = false;
+    ipucuAcik = false;
+    $('mod').textContent = 'Liste moduna dön';
+    ciz();
+    elKartAlan.scrollIntoView({ behavior: window.YDS.hareket(), block: 'center' });
   });
 
   $('mod').addEventListener('click', function () {
@@ -437,7 +449,7 @@
     gosterilen = SAYFA_BOYU;
     $('mod').textContent = 'Liste moduna dön';
     ciz();
-    elKartAlan.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    elKartAlan.scrollIntoView({ behavior: window.YDS.hareket(), block: 'center' });
   });
 
   /* Kutuya tıkla: yalnız o kutudaki öbekler. Yeniden tıklamak süzgeci kaldırır. */
@@ -450,7 +462,7 @@
     if (seciliKutu !== null) { elAra.value = ''; elDurum.value = ''; }
     filtrele();
     desteyiCiz();
-    elSayac.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    elSayac.scrollIntoView({ behavior: window.YDS.hareket(), block: 'nearest' });
   });
 
   $('gunlukTavan').addEventListener('change', function () {
@@ -470,6 +482,9 @@
   });
 
   elKart.addEventListener('click', function () { kartAcik = !kartAcik; kartCiz(); });
+  elKart.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); kartAcik = !kartAcik; kartCiz(); }
+  });
   $('ipucuBtn').addEventListener('click', function (e) { e.stopPropagation(); ipucuAcik = true; kartCiz(); });
   $('ipucuAlan').addEventListener('click', function (e) { e.stopPropagation(); });
   $('onceki').addEventListener('click', function () { kartGit(-1); });
@@ -512,9 +527,9 @@
       e.preventDefault();
       if (!$('ipucuBtn').hidden) { ipucuAcik = true; kartCiz(); }
     }
-    else if (e.key === '1') { e.preventDefault(); kartCevap('yanlis'); }
-    else if (e.key === '2') { e.preventDefault(); kartCevap('dogru'); }
-    else if (e.key === '3') { e.preventDefault(); kartCevap('zaten'); }
+    else if (e.key === '1' && kartAcik) { e.preventDefault(); kartCevap('yanlis'); }
+    else if (e.key === '2' && kartAcik) { e.preventDefault(); kartCevap('dogru'); }
+    else if (e.key === '3' && !kartAcik && !ipucuAcik) { e.preventDefault(); kartCevap('zaten'); }
     else if (e.key.toLowerCase() === 's') {
       e.preventDefault();
       var o = suzulmus[kartIndex];

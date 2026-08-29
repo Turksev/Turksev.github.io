@@ -52,10 +52,10 @@
     <h1>Kelime Öbekleri</h1>
     <p class="muted" style="max-width:68ch">
       <b id="toplamObek">1.623</b> öbek: <b>560 deyimsel fiil</b> (phrasal verb),
-      <b>332 edat kalıbı</b> (<i>lead to, capable of</i> gibi edatı ezber isteyenler),
+      <b>332 edat kalıbı</b> (<i lang="en">lead to, capable of</i> gibi edatı ezber isteyenler),
       sabit ifadeler ve geçiş ifadeleri — üstteki tür menüsünden yalnız birini seçebilirsin. Hepsi
       gerçek YDS sınavlarından çıkarıldı. YDS bu yapıları çok sorar ve tek tek kelime bilmek
-      yetmez: <i>cope with</i>, <i>stem from</i>, <i>put up with</i> gibi öbeklerin anlamı
+      yetmez: <i lang="en">cope with</i>, <i lang="en">stem from</i>, <i lang="en">put up with</i> gibi öbeklerin anlamı
       parçalarından çıkmaz. Kelimelerden <b>ayrı bir deste</b> olarak çalışılır.
     </p>
 
@@ -65,14 +65,21 @@
         <b>Bugünün öbek destesi</b>
         <span class="small muted" id="desteBilgi">—</span>
       </div>
-      <div class="progress"><i id="desteBar"></i></div>
+      <div class="progress" id="desteIlerleme" role="progressbar" aria-label="Öbek destesi ilerlemesi"
+           aria-valuemin="0" aria-valuemax="1" aria-valuenow="0" aria-valuetext="Henüz veri yüklenmedi">
+        <i id="desteBar"></i>
+      </div>
       <div class="kutular" id="kutular"></div>
 
       <div class="toolbar" style="margin:14px 0 0">
         <button class="btn" type="button" id="desteBasla">Bugünü çalış</button>
         <button class="btn ghost" type="button" id="devamEt" hidden>Devam et</button>
         <button class="btn ghost" type="button" id="testBasla" hidden title="Bugün çalıştığın öbekleri özgün cümlelerde boşluk doldurarak sına">Günün testi</button>
-        <label class="small muted" style="display:flex;align-items:center;gap:7px">
+      </div>
+      <details class="deste-ayar">
+        <summary>Deste ayarları</summary>
+        <div class="toolbar" style="margin:10px 0 0">
+        <label class="small muted filter-field">
           Bugün toplam kart:
           <select id="gunlukTavan" aria-label="Günlük toplam kart sınırı"
                   title="Destede en çok kaç kart olsun — yeni öbekler + tekrarlar">
@@ -85,7 +92,7 @@
             <option value="9999">sınırsız</option>
           </select>
         </label>
-        <label class="small muted" style="display:flex;align-items:center;gap:7px">
+        <label class="small muted filter-field">
           Bunun yenisi:
           <select id="gunlukHedef" aria-label="Günlük yeni öbek hedefi">
             <option value="5">5</option>
@@ -95,37 +102,50 @@
             <option value="50">50</option>
           </select>
         </label>
-      </div>
+        </div>
+      </details>
       <p class="small muted" style="margin:10px 0 0" id="desteAciklama"></p>
       <p class="small muted" style="margin:8px 0 0" id="bekleyenNot" hidden></p>
     </div>
 
     <div class="toolbar">
-      <input class="grow" type="search" id="ara" placeholder="Ara: öbek veya Türkçe anlam…" autocomplete="off">
+      <label class="grow filter-field">
+        <span>Öbek veya anlam ara</span>
+        <input class="grow" type="search" id="ara" placeholder="Örnek: cope with, başa çıkmak…" autocomplete="off">
+      </label>
 
-      <select id="tur" aria-label="Öbek türü">
+      <label class="filter-field">
+        <span>Öbek türü</span>
+        <select id="tur">
         <option value="">Tüm türler</option>
-      </select>
+        </select>
+      </label>
 
-      <select id="sinav" aria-label="Sınav yaygınlığı">
+      <label class="filter-field">
+        <span>Sınav yaygınlığı</span>
+        <select id="sinav">
         <option value="">Tüm öbekler</option>
         <option value="10">10+ sınavda geçmiş</option>
         <option value="5">5+ sınavda geçmiş</option>
         <option value="2">2+ sınavda geçmiş</option>
-      </select>
+        </select>
+      </label>
 
-      <select id="durum" aria-label="Öğrenme durumu">
+      <label class="filter-field">
+        <span>Öğrenme durumu</span>
+        <select id="durum">
         <option value="">Hepsi</option>
         <option value="vadesi">Bugün tekrarı gelenler</option>
         <option value="yeni">Hiç çalışılmamışlar</option>
         <option value="ogrenilen">Öğrendiklerim (4-5. kutu)</option>
         <option value="zayif">Zayıflarım (1-2. kutu)</option>
-      </select>
+        </select>
+      </label>
 
       <button class="btn ghost sm" type="button" id="mod">Kart moduna geç</button>
     </div>
 
-    <p class="small muted" id="sayac">Yükleniyor…</p>
+    <p class="small muted" id="sayac" role="status" aria-live="polite" aria-atomic="true">Yükleniyor…</p>
 
     <div id="liste" class="word-list"></div>
     <p class="center" style="margin-top:16px">
@@ -146,17 +166,18 @@
       <div class="card" id="tSoru">
         <div class="q-head">
           <span class="badge accent">Günün testi</span>
-          <span class="small muted" id="tSayac">—</span>
+          <span class="small muted" id="tSayac" aria-live="polite">—</span>
         </div>
-        <div class="progress" style="margin:10px 0 16px"><i id="tBar"></i></div>
-        <p class="q-text" id="tMetin"></p>
+        <div class="progress" id="tIlerleme" role="progressbar" aria-label="Günün testi ilerlemesi"
+             aria-valuemin="0" aria-valuemax="1" aria-valuenow="0" style="margin:10px 0 16px"><i id="tBar"></i></div>
+        <p class="q-text" id="tMetin" lang="en"></p>
         <div class="options" id="tSecenekler"></div>
-        <div class="tip" id="tAcik" hidden style="margin-top:14px"></div>
+        <div class="tip" id="tAcik" role="status" aria-live="polite" aria-atomic="true" hidden style="margin-top:14px"></div>
         <div class="toolbar" style="margin-top:16px;justify-content:space-between">
           <button class="btn ghost sm" type="button" id="tKapat">Testi bırak</button>
           <button class="btn" type="button" id="tIleri" disabled>Sonraki soru</button>
         </div>
-        <p class="small muted" style="margin:10px 0 0">Klavye: A–E ya da 1–5 ile cevapla, Enter ile ilerle. Sonuç kutularını değiştirmez.</p>
+        <p class="small muted" style="margin:10px 0 0">Klavye: A–E ya da 1–5 ile cevapla, Enter ile ilerle. Bağlamda bilinemeyen öbek bir kutu geri alınır.</p>
       </div>
       <div class="card" id="tSonuc" hidden>
         <div class="q-head"><b>Test sonucu</b><span class="badge accent" id="tSkor">—</span></div>
@@ -168,22 +189,22 @@
 
     <!-- kart görünümü -->
     <div id="kartAlan" hidden>
-      <div class="card flash" id="kart">
+      <div class="card flash" id="kart" role="button" tabindex="0" aria-expanded="false" aria-label="Kartın cevabını göster veya gizle">
         <div>
-          <div class="big" id="kartOn">—</div>
+          <div class="big" id="kartOn" lang="en">—</div>
           <span class="badge" id="kartKutu" style="margin-top:10px">—</span>
 
-          <div class="ipucu-cumle" id="ipucuAlan" hidden></div>
-          <button class="btn ghost sm" type="button" id="ipucuBtn" style="margin-top:14px">
-            💡 İpucu: cümlede gör
-          </button>
-
+          <div class="ipucu-cumle" id="ipucuAlan" lang="en" hidden></div>
           <div class="back" id="kartArka" hidden>
             <div style="font-size:1.05rem;font-weight:600" id="kartTr"></div>
             <div class="muted small" style="margin-top:10px" id="kartOrnek"></div>
           </div>
           <div class="hint" id="kartIpucu">Çevirmek için karta tıkla · boşluk tuşu</div>
         </div>
+      </div>
+
+      <div class="flash-actions">
+        <button class="btn ghost sm" type="button" id="ipucuBtn">💡 İpucu: cümlede gör</button>
       </div>
 
       <div class="flash-nav">
@@ -197,7 +218,7 @@
         <button class="btn ghost sm" type="button" id="bilmedim" style="border-color:var(--err);color:var(--err)">✗ Bilemedim</button>
         <button class="btn sm" type="button" id="bildim">✓ Bildim</button>
         <button class="btn ghost sm" type="button" id="zatenBiliyorum"
-                title="Bu öbeği zaten biliyorum — en üst kutuya at, 30 gün sorma">
+                title="Bu öbeği zaten biliyorum — öğrenildi say ve bakım tekrarlarına al">
           ✓✓ Zaten biliyorum
         </button>
       </div>

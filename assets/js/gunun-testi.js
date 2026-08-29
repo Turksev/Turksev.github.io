@@ -288,10 +288,16 @@
     cevaplandi = false;
     $('tSayac').textContent = (sira + 1) + ' / ' + sorular.length;
     $('tBar').style.width = (sira / sorular.length * 100) + '%';
+    var ilerleme = $('tIlerleme');
+    if (ilerleme) {
+      ilerleme.setAttribute('aria-valuemax', String(sorular.length));
+      ilerleme.setAttribute('aria-valuenow', String(sira + 1));
+      ilerleme.setAttribute('aria-valuetext', (sira + 1) + ' / ' + sorular.length + ' soru');
+    }
     $('tMetin').innerHTML = bosluklu(q.s.c);
     $('tSecenekler').innerHTML = q.secenekler.map(function (o, i) {
       return '<button class="opt" type="button" data-i="' + i + '">' +
-               '<span class="key">' + HARF[i] + '</span><span>' + kacar(o.metin) + '</span></button>';
+               '<span class="key">' + HARF[i] + '</span><span lang="en">' + kacar(o.metin) + '</span></button>';
     }).join('');
     $('tAcik').hidden = true;
     $('tIleri').disabled = true;
@@ -317,12 +323,14 @@
     }
 
     var secilenD = q.secenekler[secim].d;
-    var aciklama = '<p style="margin:0 0 8px">' + bosluklu(q.s.c, '<b>' + kacar(q.s.b) + '</b>') + '</p>' +
+    var aciklama = '<p lang="en" style="margin:0 0 8px">' +
+      bosluklu(q.s.c, '<b>' + kacar(q.s.b) + '</b>') + '</p>' +
       '<p class="muted" style="margin:0 0 10px">' + kacar(q.s.tr) + '</p>' +
-      '<p style="margin:0"><b>' + kacar(q.d.e) + '</b> <span class="muted">(' + kacar(q.d.y) + ')</span> — ' + kacar(q.d.t) + '</p>';
+      '<p style="margin:0"><b lang="en">' + kacar(q.d.e) + '</b> <span class="muted">(' +
+      kacar(q.d.y) + ')</span> — ' + kacar(q.d.t) + '</p>';
     if (!dogruMu) {
       aciklama += '<p style="margin:6px 0 0"><span class="badge err">senin seçimin</span> <b>' +
-        kacar(secilenD.e) + '</b> — ' + kacar(secilenD.t) + '</p>';
+        '<span lang="en">' + kacar(secilenD.e) + '</span></b> — ' + kacar(secilenD.t) + '</p>';
     }
     var kutu = $('tAcik');
     kutu.innerHTML = (dogruMu ? '<b>Doğru.</b> ' : '<b>Yanlış.</b> ') + aciklama;
@@ -338,15 +346,17 @@
     var yuzde = Math.round(dogru / sorular.length * 100);
     $('tSkor').textContent = dogru + ' / ' + sorular.length + ' doğru (%' + yuzde + ')';
     $('tSkorNot').textContent = yanlislar.length
-      ? 'Bilemediklerin "testte bilemediklerim" listesine yazıldı; kutuları değişmedi. Bir sonraki testte yine sorulur.'
-      : 'Hepsini bildin. Kutuların değişmedi; kelimeler bağlam içinde de oturmuş.';
+      ? 'Bilemediklerin "testte bilemediklerim" listesine yazıldı ve bir kutu geri alındı. Bir sonraki testte yine sorulur.'
+      : 'Hepsini bildin. Kelimeler bağlam içinde de oturmuş.';
     $('tInceleme').innerHTML = yanlislar.map(function (y) {
       return '<div class="review-item">' +
-        '<p class="q" style="margin:0 0 6px">' + bosluklu(y.q.s.c, '<b>' + kacar(y.q.s.b) + '</b>') + '</p>' +
+        '<p class="q" lang="en" style="margin:0 0 6px">' +
+          bosluklu(y.q.s.c, '<b>' + kacar(y.q.s.b) + '</b>') + '</p>' +
         '<p class="muted" style="margin:0 0 6px">' + kacar(y.q.s.tr) + '</p>' +
-        '<p style="margin:0 0 4px"><span class="badge err">senin cevabın</span> ' + kacar(y.senin.metin) +
+        '<p style="margin:0 0 4px"><span class="badge err">senin cevabın</span> <span lang="en">' +
+          kacar(y.senin.metin) + '</span>' +
           ' <span class="muted">— ' + kacar(y.senin.d.t) + '</span></p>' +
-        '<p style="margin:0"><span class="badge ok">doğru</span> ' + kacar(y.q.s.b) +
+        '<p style="margin:0"><span class="badge ok">doğru</span> <span lang="en">' + kacar(y.q.s.b) + '</span>' +
           ' <span class="muted">— ' + kacar(y.q.d.t) + '</span></p>' +
       '</div>';
     }).join('');
@@ -378,7 +388,7 @@
       $('tSoru').hidden = false;
       $('tSonuc').hidden = true;
       soruCiz();
-      $('testAlan').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      $('testAlan').scrollIntoView({ behavior: window.YDS.hareket(), block: 'start' });
       return { acildi: true, soru: sorular.length, calisilan: h.calisilan };
     });
   }

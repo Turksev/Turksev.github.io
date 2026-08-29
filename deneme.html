@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Süreli Deneme Sınavı — YDS Hazırlık</title>
-<meta name="description" content="Gerçek sınav düzeninde süreli YDS denemesi: geri sayım, soru arası gezinme, işaretleme ve kategori dağılımlı karne.">
+<meta name="description" content="Resmî YDS bölüm dağılımında üç sabit 80 soruluk özgün deneme ve 20/40 soruluk karma süreli çalışmalar.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%233b5bdb'/><text y='68' x='50' text-anchor='middle' font-size='46' font-family='sans-serif' font-weight='bold' fill='white'>Y</text></svg>">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#3b5bdb">
@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="YDS Hazırlık">
 <meta property="og:locale" content="tr_TR">
 <meta property="og:title" content="Süreli Deneme Sınavı — YDS Hazırlık">
-<meta property="og:description" content="Gerçek sınav düzeninde süreli YDS denemesi: geri sayım, soru arası gezinme, işaretleme ve kategori dağılımlı karne.">
+<meta property="og:description" content="Resmî YDS bölüm dağılımında üç sabit 80 soruluk özgün deneme ve karma süreli çalışmalar.">
 <meta property="og:url" content="https://turksev.github.io/deneme.html">
 <meta property="og:image" content="https://turksev.github.io/assets/img/icon-512.png">
 <meta name="twitter:card" content="summary">
@@ -53,20 +53,33 @@
     <section id="kurulum" style="max-width:760px;margin:0 auto">
       <h1>Süreli Deneme Sınavı</h1>
       <p class="muted">
-        Gerçek sınav düzeni: geri sayım çalışır, sorular arasında serbestçe gezinebilir,
+        Tam denemelerde resmî YDS bölüm sırası ve 80 soru / 180 dakika düzeni kullanılır. Geri sayım çalışır, sorular arasında serbestçe gezinebilir,
         emin olmadıklarını işaretleyip sonra dönebilirsin. <b>Cevaplar sınav bitene kadar gösterilmez.</b>
         YDS'de yanlış cevaplar puanı düşürmez; sonuç doğru sayısından 100 üzerinden hesaplanır.
       </p>
 
-      <div class="card" style="margin-top:22px">
+      <div class="card" id="oturumKarti" style="margin-top:22px" hidden aria-labelledby="oturumBaslik">
+        <h2 id="oturumBaslik" style="margin-top:0">Yarım kalan çalışman var</h2>
+        <p class="muted" id="oturumOzeti"></p>
+        <div class="hero-actions">
+          <button class="btn" type="button" id="oturumDevam">Kaldığım yerden devam et</button>
+          <button class="btn ghost" type="button" id="oturumVazgec">Bu oturumu bırak</button>
+        </div>
+      </div>
+
+      <div class="card" id="kurulumSecenekleri" style="margin-top:22px">
         <div class="toolbar" style="margin-bottom:0">
           <label class="grow">
             <span class="small muted">Soru sayısı</span><br>
             <select id="adet" style="width:100%;margin-top:5px">
-              <option value="20">20 soru · 45 dakika</option>
-              <option value="40" selected>40 soru · 90 dakika</option>
-              <option value="80">80 soru · 180 dakika (tam deneme)</option>
+              <option value="20">20 soru · 45 dakika (karma çalışma)</option>
+              <option value="40">40 soru · 90 dakika (karma çalışma)</option>
+              <option value="80" selected>80 soru · 180 dakika (sabit tam deneme)</option>
             </select>
+          </label>
+          <label class="grow" id="formSatir">
+            <span class="small muted">Sabit deneme formu</span><br>
+            <select id="form" style="width:100%;margin-top:5px"></select>
           </label>
         </div>
         <p class="small muted" style="margin:14px 0 0" id="dagilimBilgi"></p>
@@ -83,13 +96,13 @@
         <div>
           <div class="q-head">
             <span class="badge accent" id="qKat">—</span>
-            <span class="small muted" id="qSayac">1 / 40</span>
+            <span class="small muted" id="qSayac" aria-live="polite">1 / 40</span>
           </div>
-          <div class="progress"><i id="qBar"></i></div>
+          <div class="progress" aria-label="Soru ilerlemesi"><i id="qBar"></i></div>
 
           <div class="card">
             <p class="okuma-metin" id="qMetin" hidden></p>
-            <div class="q-text" id="qText"></div>
+            <div class="q-text" id="qText" tabindex="-1"></div>
             <div class="options" id="qSecenekler"></div>
           </div>
 
@@ -107,8 +120,9 @@
         <aside class="sinav-yan">
           <div class="card" style="padding:14px">
             <div class="sayac-kutu">
-              <div class="sayac" id="sure">--:--</div>
+              <div class="sayac" id="sure" role="timer" aria-label="Kalan süre">--:--</div>
               <div class="small muted">kalan süre</div>
+              <div class="visually-hidden" id="sureUyari" role="status" aria-live="polite"></div>
             </div>
             <div class="izgara" id="izgara"></div>
             <div class="small muted izgara-anahtar">
@@ -117,6 +131,7 @@
               <span><i class="ik bos"></i> boş</span>
             </div>
             <button class="btn ghost sm" type="button" id="bitir" style="width:100%;margin-top:14px">Sınavı bitir</button>
+            <button class="btn ghost sm" type="button" id="birak" style="width:100%;margin-top:8px">Kaydetmeden bırak</button>
           </div>
         </aside>
 
@@ -154,7 +169,11 @@
 </footer>
 
 <script src="data/sorular.js"></script>
+<script src="data/sorular-ek.js"></script>
+<script src="assets/js/soru-konu.js"></script>
+<script src="data/deneme-formlari.js"></script>
 <script src="assets/js/ilerleme.js"></script>
+<script src="assets/js/deneme-oturum.js"></script>
 <script src="assets/js/deneme.js"></script>
 <script src="assets/js/esitleme-ayar.js"></script>
 <script src="assets/js/esitleme-v2.js"></script>

@@ -74,7 +74,7 @@
             </select>
           </label>
         </div>
-        <p class="small muted" id="havuzBilgi" style="margin:14px 0 0"></p>
+        <p class="small muted" id="havuzBilgi" role="status" aria-live="polite" style="margin:14px 0 0"></p>
         <button class="btn" type="button" id="basla" style="margin-top:16px">Başla</button>
       </div>
 
@@ -85,19 +85,19 @@
     <section id="test" hidden>
       <div class="q-head">
         <span class="badge accent" id="qKat">—</span>
-        <span class="small muted" id="qSayac">1 / 20</span>
+        <span class="small muted" id="qSayac" aria-live="polite">1 / 20</span>
       </div>
-      <div class="progress"><i id="qBar"></i></div>
+      <div class="progress" aria-label="Soru ilerlemesi"><i id="qBar"></i></div>
 
       <div class="card">
         <p class="okuma-metin" id="qMetin" hidden></p>
-        <div class="q-text" id="qText"></div>
+        <div class="q-text" id="qText" tabindex="-1"></div>
         <div class="options" id="qSecenekler"></div>
-        <div class="explain" id="qAcik" hidden></div>
+        <div class="explain" id="qAcik" role="status" aria-live="polite" aria-atomic="true" hidden></div>
       </div>
 
       <div class="q-foot">
-        <button class="btn ghost" type="button" id="bitir">Testi bitir</button>
+        <button class="btn ghost" type="button" id="bitir">Alıştırmayı bitir</button>
         <button class="btn" type="button" id="ileri" disabled>Sonraki soru</button>
       </div>
       <p class="center small muted" style="margin-top:14px">
@@ -113,7 +113,7 @@
         <div class="score-ring" id="sYuzde">0%</div>
         <p id="sOzet" class="muted" style="margin-top:10px"></p>
         <div class="hero-actions" style="justify-content:center">
-          <button class="btn" type="button" id="tekrar">Yeni test</button>
+          <button class="btn" type="button" id="tekrar">Yeni alıştırma</button>
           <a class="btn ghost" href="kelimeler.html">Kelimelere git</a>
         </div>
       </div>
@@ -135,6 +135,8 @@
 </footer>
 
 <script src="data/sorular.js"></script>
+<script src="data/sorular-ek.js"></script>
+<script src="assets/js/soru-konu.js"></script>
 <script src="assets/js/ilerleme.js"></script>
 <script src="assets/js/quiz.js"></script>
 <script src="assets/js/esitleme-ayar.js"></script>

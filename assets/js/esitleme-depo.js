@@ -17,6 +17,7 @@
   var ZARF_ANAHTARI = 'yds-esitleme-v2';
   var GECIS_YEDEGI = 'yds-esitleme-gecis-yedegi';
   var ALIAS_GECIS_YEDEGI = 'yds-kelime-alias-gecis-yedegi';
+  var SON_AYNA_ANAHTARI = 'yds-esitleme-son-ayna-v1';
   var hamOku = Depo.oku;
   var hamYaz = Depo.yaz;
   var hamSil = Depo.sil;
@@ -94,6 +95,79 @@
     return sonuc;
   }
 
+  function gecerliAynaYedegi(deger) {
+    return deger && deger.surum === 1 && deger.veri &&
+      typeof deger.veri === 'object' && !Array.isArray(deger.veri)
+      ? deger.veri : null;
+  }
+
+  /* Eski sürümden açık kalmış bir sekme yalnız klasik yds-* anahtarlarını
+     yazabilir. Son aynanın ham paketi, bir sonraki açılışta oldValue görevi
+     görür: sadece gerçekten eklenen/değişen kayıtları yeni zarfa taşırız;
+     eski sekmenin eksik tam nesnesini silme komutu saymayız. */
+  function baslangictaUzlastir(zarf, klasikPaket, aynaPaket) {
+    var mevcutPaket = M.paket(zarf);
+    var aday = zarf;
+    var kanitliFark = !!aynaPaket && !esitMi(aynaPaket, klasikPaket);
+    var duzAyarlar = {
+      'yds-gunluk-yeni': 1,
+      'yds-gunluk-tavan': 1,
+      'yds-katmanlar': 1,
+      'yds-eksen': 1
+    };
+
+    // Son ayna yoksa (bu sürümün ilk açılışı) yalnız anlamsal olarak daha
+    // ileri olan kayıtları birleştiririz. Böylece tombstone/reset kayıtları
+    // belirsiz eski bir klasik kopya yüzünden dirilmez.
+    var semantikPaket = aynaPaket ? null : M.paket(M.birlestir(
+      M.zarfaCevir(mevcutPaket), M.zarfaCevir(klasikPaket)));
+
+    Object.keys(TIPLER).forEach(function (anahtar) {
+      if (!Object.prototype.hasOwnProperty.call(klasikPaket, anahtar)) return;
+
+      if (duzAyarlar[anahtar]) {
+        if (!kanitliFark || esitMi((aynaPaket || {})[anahtar], klasikPaket[anahtar]) ||
+            esitMi(mevcutPaket[anahtar], klasikPaket[anahtar])) return;
+        var tek = { $: klasikPaket[anahtar] };
+        aday = M.kayitlariYaz(aday, anahtar, tek, yeniMeta);
+        mevcutPaket[anahtar] = kopyala(klasikPaket[anahtar]);
+        return;
+      }
+
+      var tabanKayitlari = kayitHaritasi(anahtar,
+        aynaPaket && aynaPaket[anahtar]);
+      var klasikKayitlar = kayitHaritasi(anahtar, klasikPaket[anahtar]);
+      var mevcutKayitlar = kayitHaritasi(anahtar, mevcutPaket[anahtar]);
+      var hedefKayitlar = aynaPaket ? klasikKayitlar
+        : kayitHaritasi(anahtar, semantikPaket[anahtar]);
+      var yazilacak = Object.create(null);
+
+      Object.keys(hedefKayitlar).forEach(function (id) {
+        if (aynaPaket) {
+          // Ayna tabanına göre değişmeyen kayıt eski sekmenin stale tam
+          // nesnesidir; yeni zarfın daha güncel sürümünü koru.
+          if (tabanKayitlari[id] !== undefined &&
+              esitMi(tabanKayitlari[id], klasikKayitlar[id])) return;
+        } else {
+          var alan = zarf.alanlar && zarf.alanlar[anahtar];
+          var hamKayit = alan && alan.i && alan.i[id];
+          if ((hamKayit && hamKayit.d) || (alan && alan.r && !hamKayit)) return;
+        }
+        if (mevcutKayitlar[id] === undefined ||
+            !esitMi(mevcutKayitlar[id], hedefKayitlar[id])) {
+          yazilacak[id] = hedefKayitlar[id];
+        }
+      });
+
+      if (Object.keys(yazilacak).length) {
+        aday = M.kayitlariYaz(aday, anahtar, yazilacak, yeniMeta);
+      }
+    });
+    return aday;
+  }
+
+  var baslangicKlasikPaket = hamPaket();
+  var sonAynaPaket = gecerliAynaYedegi(hamOku(SON_AYNA_ANAHTARI, null));
   var durum = hamOku(ZARF_ANAHTARI, null);
   var zarfKalici = !!(durum && durum.surum === M.SURUM && durum.alanlar);
   if (!durum || durum.surum !== M.SURUM || !durum.alanlar) {
@@ -110,6 +184,8 @@
   } else {
     var hamDurum = durum;
     var duzeltilmisDurum = M.birlestir(durum, { surum: M.SURUM, alanlar: {} });
+    duzeltilmisDurum = baslangictaUzlastir(
+      duzeltilmisDurum, baslangicKlasikPaket, sonAynaPaket);
     if (!esitMi(hamDurum, duzeltilmisDurum)) {
       var aliasYedegi = eskiAliasKayitlari(hamDurum);
       var aliasYedegiHazir = true;
@@ -123,8 +199,10 @@
         durum = duzeltilmisDurum;
       } else {
         // Ham zarf zaten diskte güvenlidir. Yedek veya yeni zarf yazılamadıysa
-        // yalnız bellekte ileri geçmiş gibi davranma; sonraki açılış tekrar dener.
+        // yalnız bellekte ileri geçmiş gibi davranma ve klasik aynayı ezme;
+        // sonraki açılış aynı uzlaştırmayı tekrar dener.
         durum = hamDurum;
+        zarfKalici = false;
       }
     }
   }
@@ -151,6 +229,11 @@
       }
       if (varMi !== onceVardi || (varMi && !esitMi(paket[anahtar], oncekiPaket[anahtar]))) degisen.push(anahtar);
     });
+    // Bunu yalnız bütün klasik alanlar başarıyla aynalandığında güncelle.
+    // Sonraki açılışta eski bir sekmenin yaptığı kayıt düzeyi farkı buradan
+    // çıkarılır; bu anahtar eşitlenmez ve kullanıcı ilerlemesinin parçası değildir.
+    if (basarili) hamYaz(SON_AYNA_ANAHTARI,
+      { surum: 1, zaman: Date.now(), veri: kopyala(paket) });
     return { degisen: degisen, basarili: basarili };
   }
 

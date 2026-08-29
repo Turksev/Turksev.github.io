@@ -258,7 +258,35 @@ function leitnerAnligiDegismedi(ortam, bellek, onceki, mesaj) {
     'eski sekme birleşimi reload sonrasında da kalıcı olmalı');
 })();
 
-/* 3) yds-bilinen yalnız Leitner zarfı güvenle yazıldıktan sonra tüketilir. */
+/* 3) Eski sekme yeni uygulama kapalıyken yazdıysa reload farkı da korunur. */
+(function eskiSekmeKapaliykenYazdi() {
+  var ilk = { base: { k: 4, g: 400, c: 300 } };
+  var bellek = new HamBellek({ 'yds-leitner': ilk });
+  var yeniSekme = ortamKur(bellek);
+
+  yeniSekme.Depo.kayitlariYaz('yds-leitner', {
+    beta: { k: 2, g: 410, c: 350 }
+  });
+
+  // Güncelleme öncesinden açık kalan sekme, beta'yı hiç görmeden base'i
+  // yeniden çalıştı ve klasik tam nesneyi yazdı. Yeni uygulama o sırada kapalı.
+  bellek.ata('yds-leitner', {
+    base: { k: 3, g: 500, c: 499 },
+    gamma: { k: 1, g: 500, c: 499 }
+  });
+
+  var yeniden = ortamKur(bellek);
+  ayni(yeniden.Depo.oku('yds-leitner', null), {
+    base: { k: 3, g: 500, c: 499 },
+    beta: { k: 2, g: 410, c: 350 },
+    gamma: { k: 1, g: 500, c: 499 }
+  }, 'reload eski sekmenin açık değişikliklerini alıp yeni beta kaydını korumalı');
+  ayni(yeniden.D.paket()['yds-leitner'],
+    yeniden.Depo.oku('yds-leitner', null),
+    'reload uzlaştırması eşitleme zarfına kalıcı yazılmalı');
+})();
+
+/* 4) yds-bilinen yalnız Leitner zarfı güvenle yazıldıktan sonra tüketilir. */
 (function bilinenGocu() {
   var bilinen = ['hand-down', 'boys-and-girls'];
   var bosZarf = { surum: 2, alanlar: {} };
@@ -379,8 +407,8 @@ function leitnerAnligiDegismedi(ortam, bellek, onceki, mesaj) {
     '51 kayıtlık birleşimde en eski geçmiş kaydı elenmeli');
   assert.ok(birlesmis['yds-gecmis'].some(function (r) { return r.m === 'yeni-deneme'; }),
     'sıfırlama sonrası yeni geçmiş kaydı korunmalı');
-  ayni(birlesmis['yds-konular'].G01, eskiPaket['yds-konular'].G01,
-    'konu çakışmasında daha güçlü tamamlanmış kayıt korunmalı');
+  ayni(birlesmis['yds-konular'].G01, yeniPaket['yds-konular'].G01,
+    'konu çakışmasında zaman damgalı son çalışma korunmalı');
   assert.strictEqual(birlesmis['yds-yanlis'].filter(function (r) {
     return r.a === 'Kelime|ortak';
   })[0].n, 5, 'yanlış birleşiminde en yüksek tekrar sayısı korunmalı');
@@ -472,4 +500,4 @@ function leitnerAnligiDegismedi(ortam, bellek, onceki, mesaj) {
     'başarısız yayma reload sonrasında da hiçbir g değişikliği bırakmamalı');
 })();
 
-console.log('esitleme-yerel-guvenlik: 5 ana senaryo başarılı');
+console.log('esitleme-yerel-guvenlik: 6 ana senaryo başarılı');

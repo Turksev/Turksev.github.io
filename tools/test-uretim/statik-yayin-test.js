@@ -7,8 +7,11 @@ var assert = require('assert');
 var kok = path.resolve(__dirname, '..', '..');
 var sayfalar = [
   'index.html', 'durum.html', 'konular.html', 'kelimeler.html', 'aileler.html',
-  'obekler.html', 'quiz.html', 'deneme.html', 'gramer.html', 'baglaclar.html', 'ara.html'
+  'obekler.html', 'quiz.html', 'deneme.html', 'gramer.html', 'baglaclar.html', 'ara.html',
+  'yontem.html', 'ayarlar.html'
 ];
+for (var t = 1; t <= 61; t++) sayfalar.push('konu/T' + String(t).padStart(2, '0') + '.html');
+for (var e = 1; e <= 68; e++) sayfalar.push('konu/E' + String(e).padStart(2, '0') + '.html');
 var denetlenen = 0;
 
 function yerelMi(ref) {
@@ -62,6 +65,15 @@ onbellek.forEach(function (ref) {
 
 var config = fs.readFileSync(path.join(kok, '_config.yml'), 'utf8');
 assert.ok(/^\s*- tools\s*$/m.test(config), 'tools/ yayın dışı değil');
+
+var konuSayfalari = sayfalar.filter(function (s) { return /^konu\//.test(s); });
+var canonicals = konuSayfalari.map(function (s) {
+  var html = fs.readFileSync(path.join(kok, s), 'utf8');
+  var m = html.match(/<link rel="canonical" href="([^"]+)">/);
+  assert.ok(m, s + ': canonical yok');
+  return m[1];
+});
+assert.strictEqual(new Set(canonicals).size, 129, 'konu canonical adresleri benzersiz değil');
 
 console.log('statik-yayın: ' + sayfalar.length + ' sayfa, ' + denetlenen +
   ' yerel bağlantı ve ' + onbellek.length + ' önbellek girdisi başarılı');

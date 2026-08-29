@@ -52,6 +52,10 @@
 
   /* Kutu numarasına göre tekrar aralığı (gün). */
   var ARALIK = { 1: 1, 2: 3, 3: 7, 4: 15, 5: 30 };
+  /* 5. kutu öğrenilmiş sayılır; fakat kalıcılığı ölçmek için 30, 90 ve
+     ardından 180 günlük bakım tekrarları sürer. Eski 5. kutu kayıtları
+     zaten bir sonraki günlerini `g` alanında taşıdığı için veri göçü gerekmez. */
+  var BAKIM_ARALIK = [30, 90, 180];
   var EN_UST_KUTU = 5;
   var GECMIS_SINIRI = 50;
 
@@ -177,6 +181,7 @@
       k: r.k,
       g: r.g,
       c: r.c,
+      m: r.m || 0,
       kalan: Math.max(0, r.g - bugun())
     };
   }
@@ -190,6 +195,7 @@
         k: leitner[a].k,
         g: leitner[a].g,
         c: leitner[a].c,
+        m: leitner[a].m || 0,
         kalan: Math.max(0, leitner[a].g - bugun())
       };
     });
@@ -199,15 +205,15 @@
   /* Yalnizca BASLANMIS kelimeler icin: tekrar gunu geldi mi?
      Hic calisilmamis kelime "vadesi gelmis" sayilmaz — o yeni kelimedir ve
      gunluk kotayla acilir. Ikisini ayirmazsak ilk gun 7.848 kart cikardi. */
-  /* En üst kutuya çıkan kelime MEZUN olur: bir daha tekrara gelmez.
-     Oraya çıkmak için kelimeyi 26 güne yayılmış dört tekrarda doğru bilmen
-     gerekir. Baştan çalışmak istersen "Kelime ilerlememi sıfırla". */
+  /* En üst kutuya çıkan kelime öğrenilmiş sayılır; düşük sıklıklı bakım
+     tekrarları yine de gelir. Bu, uzun süre kullanılmayan kelimelerin sessizce
+     unutulmasını önler. */
   function mezunMu(en, tur) { return kutu(en, tur) >= EN_UST_KUTU; }
 
   function vadesiGeldiMi(en, tur) {
     en = ilerlemeKimligi(en, tur);
     var kayit = leitner[en];
-    if (!kayit || kayit.k >= EN_UST_KUTU) return false;
+    if (!kayit) return false;
     return kayit.g <= bugun();
   }
 
@@ -227,8 +233,8 @@
   /* ---------- günlük toplam kart tavanı ----------
      Tekrarlar eskiden sınırsızdı: aylarca biriken vadeler tek destede karşına
      çıkıyordu. Tavan, destenin boyunu senin belirlediğin sayıda tutar.
-     Yeni kelimeler tavandan ÖNCE yer ayırtır; tekrar borcu ne olursa olsun
-     günlük yeni kelime hedefin kesilmez. Sığmayan tekrarlar sıradaki güne kalır. */
+     Vadesi gelmiş tekrarlar kapasiteyi önce kullanır; kalan yer yeni kartlara
+     ayrılır. Böylece tekrar borcu büyürken yeni kart yükü otomatik azalır. */
 
   var TAVAN_VARSAYILAN = 30;
 
@@ -274,7 +280,7 @@
     var ilk = yeniMi(en, tur);
     var onceki = kutu(en, tur);
     if (!kayitYaz(en,
-      { k: EN_UST_KUTU, g: bugun() + ARALIK[EN_UST_KUTU], c: bugun() }, tur)) return false;
+      { k: EN_UST_KUTU, g: bugun() + BAKIM_ARALIK[0], c: bugun(), m: 0 }, tur)) return false;
     if (ilk) yeniAcildiSay();
     return EN_UST_KUTU;
   }
@@ -291,7 +297,12 @@
     var ilk = yeniMi(en, tur);
     var onceki = kutu(en, tur);
     var k = Math.min(EN_UST_KUTU, onceki + 1);
-    if (!kayitYaz(en, { k: k, g: bugun() + ARALIK[k], c: bugun() }, tur)) return false;
+    var eski = leitner[ilerlemeKimligi(en, tur)] || {};
+    var m = k >= EN_UST_KUTU ? (onceki >= EN_UST_KUTU ? (eski.m || 0) + 1 : 0) : 0;
+    var aralik = k >= EN_UST_KUTU
+      ? BAKIM_ARALIK[Math.min(m, BAKIM_ARALIK.length - 1)]
+      : ARALIK[k];
+    if (!kayitYaz(en, { k: k, g: bugun() + aralik, c: bugun(), m: m }, tur)) return false;
     if (ilk) yeniAcildiSay();
     return k;
   }
@@ -302,7 +313,11 @@
     var ilk = yeniMi(en, tur);
     var onceki = kutu(en, tur);
     var k = Math.max(1, onceki);
-    if (!kayitYaz(en, { k: k, g: bugun() + ARALIK[k], c: bugun() }, tur)) return false;
+    var eski = leitner[ilerlemeKimligi(en, tur)] || {};
+    var aralik = k >= EN_UST_KUTU
+      ? BAKIM_ARALIK[Math.min(eski.m || 0, BAKIM_ARALIK.length - 1)]
+      : ARALIK[k];
+    if (!kayitYaz(en, { k: k, g: bugun() + aralik, c: bugun(), m: eski.m || 0 }, tur)) return false;
     if (ilk) yeniAcildiSay();
     return k;
   }
@@ -315,7 +330,7 @@
     var onceki = kutu(en, tur);
     var k = Math.max(1, onceki - 1);
     // Hangi kutuya düşerse düşsün yarın sorulur.
-    if (!kayitYaz(en, { k: k, g: bugun() + 1, c: bugun() }, tur)) return false;
+    if (!kayitYaz(en, { k: k, g: bugun() + 1, c: bugun(), m: 0 }, tur)) return false;
     if (ilk) yeniAcildiSay();
     return k;
   }
@@ -334,7 +349,7 @@
     (adlar || []).forEach(function (ad) { kapsam[ilerlemeKimligi(ad, tur)] = true; });
     var gecikmis = Object.keys(leitner).filter(function (en) {
       var r = leitner[en];
-      return kapsam[en] && r && r.k > 0 && r.k < EN_UST_KUTU && r.g <= b;
+      return kapsam[en] && r && r.k > 0 && r.g <= b;
     }).sort(function (x, y) { return leitner[x].g - leitner[y].g; });
 
     if (gecikmis.length <= pay) return { tasinan: 0, gun: 0 };
@@ -437,12 +452,14 @@
       var k = kutu(kel.en, tur);
       o['k' + k]++;
       if (k > 0) o.calisilan++; else o.yeni++;
-      if (k >= EN_UST_KUTU) o.ogrenilen++;      // mezun: artık tekrara gelmiyor
+      if (k >= EN_UST_KUTU) o.ogrenilen++;
       if (vadesiGeldiMi(kel.en, tur)) o.tekrar++;
     });
-    o.acilacakYeni = Math.min(o.yeni, o.kotaKalan);
-    // Deste tavanla sınırlı: yeni kelimeler yerini alır, kalanı tekrarlar doldurur.
-    o.gosterilecekTekrar = Math.min(o.tekrar, Math.max(0, gunlukTavan() + bugunkuSayac().ek - o.acilacakYeni));
+    var kapasite = gunlukTavan() + bugunkuSayac().ek;
+    // Vadesi gelmiş tekrarlar önce gelir; tekrar borcu kapasiteyi doldurursa
+    // yeni kartlar o gün otomatik olarak azalır. Böylece birikme büyümez.
+    o.gosterilecekTekrar = Math.min(o.tekrar, kapasite);
+    o.acilacakYeni = Math.min(o.yeni, o.kotaKalan, Math.max(0, kapasite - o.gosterilecekTekrar));
     o.bekleyen = o.tekrar - o.gosterilecekTekrar;
     o.bugun = o.gosterilecekTekrar + o.acilacakYeni;
     return o;
@@ -453,9 +470,6 @@
   function destelik(tumKelimeler, tur) {
     var liste = tumKelimeler || [];
 
-    var yeniler = liste.filter(function (k) { return yeniMi(k.en, tur); })
-                       .slice(0, yeniKotasiKalan());
-
     // Tekrarlar: en çok gecikmiş önce (vadesi en eski olan başta)
     var tekrarlar = liste.filter(function (k) { return vadesiGeldiMi(k.en, tur); })
                          .sort(function (a, b) {
@@ -463,17 +477,19 @@
                              leitner[ilerlemeKimligi(b.en, tur)].g;
                          });
 
-    // Yeni kelimeler yerini garanti alır; kalan yeri tekrarlar doldurur.
-    var yer = Math.max(0, gunlukTavan() + bugunkuSayac().ek - yeniler.length);
-    return tekrarlar.slice(0, yer).concat(yeniler);
+    var kapasite = gunlukTavan() + bugunkuSayac().ek;
+    var seciliTekrar = tekrarlar.slice(0, kapasite);
+    var yeniYeri = Math.max(0, kapasite - seciliTekrar.length);
+    var yeniler = liste.filter(function (k) { return yeniMi(k.en, tur); })
+                       .slice(0, Math.min(yeniKotasiKalan(), yeniYeri));
+    return seciliTekrar.concat(yeniler);
   }
 
   /* Tavana sığmadığı için bugün gösterilmeyen tekrar sayısı. */
   function bekleyenTekrar(tumKelimeler, tur) {
     var liste = tumKelimeler || [];
-    var yeni = Math.min(liste.filter(function (k) { return yeniMi(k.en, tur); }).length, yeniKotasiKalan());
     var vadesi = liste.filter(function (k) { return vadesiGeldiMi(k.en, tur); }).length;
-    return Math.max(0, vadesi - Math.max(0, gunlukTavan() + bugunkuSayac().ek - yeni));
+    return Math.max(0, vadesi - (gunlukTavan() + bugunkuSayac().ek));
   }
 
   /* ---------- yanlış defteri ---------- */
@@ -490,19 +506,28 @@
     if (mevcut) {
       mevcut.n = (mevcut.n || 1) + 1;      // kaç kez yanlış yapıldı
       mevcut.t = Date.now();
+      mevcut.u = Date.now();
+      mevcut.c = 0;
+      delete mevcut.sd;
     } else {
-      defter.push({ a: anahtar, kat: kayit.kat, n: 1, t: Date.now() });
+      defter.push({ a: anahtar, kat: kayit.kat, n: 1, t: Date.now(), u: Date.now(), c: 0 });
     }
     Depo.yaz(K_YANLIS, defter);
   }
 
-  /* Doğru cevaplanınca defterden düş. */
+  /* Yanlış defteri tek tesadüfi doğruyla temizlenmez. Aynı sorunun iki ayrı
+     günde doğru çözülmesi gerekir; aynı günkü tekrarlar bir kez sayılır. */
   function yanlisCoz(kayit) {
     var defter = Depo.oku(K_YANLIS, []);
     if (!Array.isArray(defter)) return;
     var anahtar = yanlisAnahtar(kayit);
-    var kalan = defter.filter(function (y) { return y.a !== anahtar; });
-    if (kalan.length !== defter.length) Depo.yaz(K_YANLIS, kalan);
+    var mevcut = defter.filter(function (y) { return y.a === anahtar; })[0];
+    if (!mevcut || mevcut.sd === bugun()) return;
+    mevcut.c = (mevcut.c || 0) + 1;
+    mevcut.sd = bugun();
+    mevcut.u = Date.now();
+    if (mevcut.c >= 2) defter = defter.filter(function (y) { return y.a !== anahtar; });
+    if (defter.length) Depo.yaz(K_YANLIS, defter); else Depo.sil(K_YANLIS);
   }
 
   function yanlisDefter() {
@@ -520,11 +545,14 @@
 
   /* ---------- kategori istatistiği ---------- */
 
-  function kategoriKaydet(kat, dogruMu) {
+  function kategoriKaydet(kat, dogruMu, soruId) {
     var s = Depo.oku(K_KATEGORI, {});
     if (!s || typeof s !== 'object') s = {};
     if (!s[kat]) s[kat] = { d: 0, y: 0 };
     if (dogruMu) s[kat].d++; else s[kat].y++;
+    if (!Array.isArray(s[kat].r)) s[kat].r = [];
+    s[kat].r.push({ id: String(soruId || ('eski-' + Date.now() + '-' + s[kat].r.length)), d: dogruMu ? 1 : 0, t: Date.now() });
+    if (s[kat].r.length > 80) s[kat].r = s[kat].r.slice(-80);
     Depo.yaz(K_KATEGORI, s);
   }
 
@@ -532,13 +560,23 @@
     var s = Depo.oku(K_KATEGORI, {});
     if (!s || typeof s !== 'object') return [];
     return Object.keys(s).map(function (kat) {
-      var toplam = s[kat].d + s[kat].y;
+      var son = Array.isArray(s[kat].r) ? s[kat].r.slice().reverse() : [];
+      var gorulen = Object.create(null);
+      son = son.filter(function (x) {
+        var id = String(x.id || '');
+        if (!id || gorulen[id]) return false;
+        gorulen[id] = true;
+        return true;
+      }).slice(0, 40);
+      var toplam = son.length || (s[kat].d + s[kat].y);
+      var dogru = son.length ? son.reduce(function (n, x) { return n + (x.d ? 1 : 0); }, 0) : s[kat].d;
       return {
         kat: kat,
-        dogru: s[kat].d,
-        yanlis: s[kat].y,
+        dogru: dogru,
+        yanlis: toplam - dogru,
         toplam: toplam,
-        yuzde: toplam ? Math.round(s[kat].d / toplam * 100) : 0
+        yuzde: toplam ? Math.round(dogru / toplam * 100) : 0,
+        kapsam: son.length ? 'son ' + toplam + ' farklı soru' : 'tüm geçmiş'
       };
     }).sort(function (a, b) { return a.yuzde - b.yuzde; });   // en zayıf önce
   }
@@ -555,7 +593,9 @@
       d: kayit.dogru,
       n: kayit.toplam,
       y: kayit.yuzde,
-      m: kayit.mod || 'alistirma'
+      m: kayit.mod || 'alistirma',
+      f: kayit.form || '',
+      a: kayit.tur || ''
     });
     if (g.length > GECMIS_SINIRI) g = g.slice(-GECMIS_SINIRI);
     Depo.yaz(K_GECMIS, g);
@@ -569,7 +609,8 @@
   function gecmisSifirla() { Depo.sil(K_GECMIS); }
 
   /* ---------- günün testi: bilinemeyenler ----------
-     Test Leitner kutusunu değiştirmez; yalnız bu defteri tutar. Doğru bilinince düşer. */
+     Bağlamda bilinemeyen kelime tekrar programında bir kutu geri açılır.
+     Defterden çıkması için iki ayrı günde doğru cevap gerekir. */
 
   function testDefteri() {
     var d = Depo.oku(K_TEST_YANLIS, {});
@@ -577,20 +618,29 @@
   }
 
   function testYanlis(en, tur) {
-    en = ilerlemeKimligi(en, tur);
+    var ad = en;
+    en = ilerlemeKimligi(ad, tur);
     var d = testDefteri();
     var k = d[en] || { n: 0 };
     k.n = (k.n || 0) + 1;
     k.t = Date.now();
+    k.u = Date.now();
+    k.c = 0;
+    delete k.sd;
     d[en] = k;
     Depo.yaz(K_TEST_YANLIS, d);
+    yanlis(ad, tur);
   }
 
   function testDogru(en, tur) {
     en = ilerlemeKimligi(en, tur);
     var d = testDefteri();
     if (!d[en]) return;
-    delete d[en];
+    if (d[en].sd === bugun()) return;
+    d[en].c = (d[en].c || 0) + 1;
+    d[en].sd = bugun();
+    d[en].u = Date.now();
+    if (d[en].c >= 2) delete d[en];
     if (Object.keys(d).length) Depo.yaz(K_TEST_YANLIS, d); else Depo.sil(K_TEST_YANLIS);
   }
 
@@ -634,6 +684,7 @@
     var hepsi = konuKayitlari();
     var mevcut = hepsi[kod] || { d: 0, t: null, g: null, n: '' };
     Object.keys(alanlar).forEach(function (a) { mevcut[a] = alanlar[a]; });
+    mevcut.u = Date.now();
 
     // Tamamen boş kayıt tutmaya gerek yok
     if (!mevcut.d && mevcut.t == null && mevcut.g == null && !mevcut.n) {

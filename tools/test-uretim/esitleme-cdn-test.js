@@ -7,6 +7,8 @@ var assert = require('assert');
 
 var kok = path.resolve(__dirname, '..', '..');
 var eklenenler = [];
+var betikSayisi = 0;
+var durumlar = [];
 
 function sinifListesi() {
   var degerler = new Set();
@@ -21,7 +23,8 @@ function dugme() {
   return {
     classList: sinifListesi(),
     setAttribute: function () {},
-    addEventListener: function () {}
+    olaylar: {},
+    addEventListener: function (tur, fn) { this.olaylar[tur] = fn; }
   };
 }
 
@@ -41,7 +44,10 @@ var document = {
   body: govde,
   visibilityState: 'visible',
   head: {
-    appendChild: function (s) { setTimeout(function () { s.onerror(); }, 0); }
+    appendChild: function (s) {
+      betikSayisi++;
+      setTimeout(function () { s.onerror(); }, 0);
+    }
   },
   querySelector: function (secici) {
     return secici === '.theme-toggle:not(.esit-dugme)' ? tema : null;
@@ -66,28 +72,50 @@ var document = {
 var pencere = {
   FIREBASE_AYAR: { projectId: 'test' },
   YDS: {
-    Depo: {}, EsitlemeMotoru: { TIPLER: {} }, EsitlemeDepo: {},
+    Depo: {
+      oku: function (_, varsayilan) { return varsayilan; },
+      yaz: function () { return true; },
+      sil: function () { return true; }
+    },
+    EsitlemeMotoru: { TIPLER: {} }, EsitlemeDepo: {},
     yenidenYukle: function () {}
   },
-  addEventListener: function () {}
+  CustomEvent: function (tur, ayar) { this.type = tur; this.detail = ayar && ayar.detail; },
+  addEventListener: function () {},
+  dispatchEvent: function (e) { if (e.type === 'yds-esitleme-durumu') durumlar.push(e.detail); }
 };
 var baglam = {
   window: pencere,
   document: document,
   location: { protocol: 'https:', hostname: 'test' },
+  localStorage: { length: 0, key: function () { return null; } },
+  sessionStorage: {
+    getItem: function () { return null; }, setItem: function () {}, removeItem: function () {}
+  },
+  CustomEvent: pencere.CustomEvent,
   Promise: Promise, Error: Error, Object: Object, String: String,
   setTimeout: setTimeout, clearTimeout: clearTimeout
 };
 vm.createContext(baglam);
 vm.runInContext(fs.readFileSync(path.join(kok, 'assets', 'js', 'esitleme-v2.js'), 'utf8'), baglam);
 
+assert.strictEqual(betikSayisi, 0, 'önceden etkin olmayan kullanıcıda SDK açılışta yüklendi');
+assert.strictEqual(olusanDugme.disabled, false, 'eşitleme düğmesi lazy-load öncesi kullanılamıyor');
+assert.ok(pencere.YDS.Esitleme && typeof pencere.YDS.Esitleme.sdkYukle === 'function');
+assert.strictEqual(pencere.YDS.Esitleme.oturumDurumu().silmeHazir, false,
+  'uygulanmamış kalıcı silme Ayarlar arayüzüne hazır bildirildi');
+olusanDugme.olaylar.click();
+
 setTimeout(function () {
   try {
+    assert.strictEqual(betikSayisi, 1, 'açık kullanıcı tıklaması SDK yüklemesini başlatmadı');
     assert.strictEqual(eklenenler.length, 1, 'çevrimdışı uyarısı görünür değil');
     assert.ok(uyariMetni.textContent.indexOf('İlerlemen bu cihazda korunuyor') >= 0);
-    assert.strictEqual(olusanDugme.disabled, true);
+    assert.strictEqual(olusanDugme.disabled, false, 'CDN hatasından sonra yeniden deneme kapandı');
     assert.ok(olusanDugme.classList.contains('hata'));
-    console.log('esitleme-cdn: yerel kullanım + görünür çevrimdışı uyarısı başarılı');
+    assert.ok(durumlar.some(function (d) { return d.durum === 'hata'; }));
+    assert.ok(durumlar.every(function (d) { return d.silmeHazir === false; }));
+    console.log('esitleme-cdn: lazy-load + yerel kullanım + görünür çevrimdışı uyarısı başarılı');
   } catch (e) {
     console.error(e);
     process.exitCode = 1;

@@ -20,17 +20,17 @@
   var ILERLEME_TURU = 'kelime';
 
   var KATMAN_ANAHTAR = 'yds-katmanlar';
-  var SAYFA_BOYU = 60;                 // listede bir seferde gösterilen satır
+  var SAYFA_BOYU = 20;                 // telefonda aşırı uzun sayfa oluşturmadan parça parça göster
 
   var DIZIN = Veri.dizin;
   var seciliKutu = null;          // kutu süzgeci: null | 0..5
   var secili = Depo.oku(KATMAN_ANAHTAR, [2]);
+  if (!Array.isArray(secili) || !secili.length) secili = [2];
   // Aile üyeleri 6'dan 7'ye taşındı (Geniş+ araya girdi); eski seçimi bir kez taşı.
   if (!Depo.oku('yds-katman7', false)) {
     if (secili.indexOf(6) !== -1) { secili = secili.filter(function (k) { return k !== 6; }).concat([7]); Depo.yaz(KATMAN_ANAHTAR, secili); }
     Depo.yaz('yds-katman7', true);
   }
-  if (!Array.isArray(secili) || !secili.length) secili = [2];
 
   var havuz = [];          // seçili katmanlardaki kelimeler (dizin kaydı)
   var suzulmus = [];
@@ -53,7 +53,7 @@
     var liste = (window.OLUMSUZLAR || {})[en];
     if (!liste || !liste.length) return '';
     return '<div class="olumsuz">⊘ Olumsuzu: ' + liste.map(function (o) {
-      return '<b>' + kacar(o.f) + '</b> — ' + kacar(o.tr);
+      return '<b lang="en">' + kacar(o.f) + '</b> — ' + kacar(o.tr);
     }).join(' · ') + '</div>';
   }
 
@@ -61,10 +61,14 @@
 
   function katmanlariCiz() {
     var sayilar = Veri.katmanSayilari();
-    $('katmanlar').innerHTML = Veri.KATMANLAR.map(function (k) {
+    // Henüz içeriği olmayan katmanı seçim arayüzünde göstermeyelim. Kayıtlı
+    // seçime dokunulmaz; katman ileride dolduğunda yeniden görünür olur.
+    $('katmanlar').innerHTML = Veri.KATMANLAR.filter(function (k) {
+      return sayilar[k] > 0;
+    }).map(function (k) {
       var acik = secili.indexOf(k) !== -1;
       return '<button type="button" class="katman' + (acik ? ' acik' : '') + '" data-k="' + k + '"' +
-        ' title="' + kacar(Veri.KATMAN_ACIKLAMA[k]) + '">' +
+        ' title="' + kacar(Veri.KATMAN_ACIKLAMA[k]) + '" aria-pressed="' + (acik ? 'true' : 'false') + '">' +
           '<b>' + Veri.KATMAN_ADI[k] + '</b>' +
           '<i>' + sayilar[k] + ' kelime</i>' +
           '<span class="onay">' + (acik ? '✓' : '+') + '</span>' +
@@ -102,14 +106,21 @@
 
     // Çubuk genel ilerlemeyi gösterir: öğrenilen / seçili havuz
     $('desteBar').style.width = (havuz.length ? o.ogrenilen / havuz.length * 100 : 0) + '%';
+    var ilerleme = $('desteIlerleme');
+    ilerleme.setAttribute('aria-valuemax', String(Math.max(1, havuz.length)));
+    ilerleme.setAttribute('aria-valuenow', String(o.ogrenilen));
+    ilerleme.setAttribute('aria-valuetext', havuz.length
+      ? o.ogrenilen + ' / ' + havuz.length + ' kelime öğrenildi'
+      : 'Henüz bir katman seçilmedi');
 
     // Kutular tıklanabilir: bir kutuya basınca liste yalnız o kutuyu gösterir.
     $('kutular').innerHTML = [0, 1, 2, 3, 4, 5].map(function (k) {
       var ad = k === 0 ? 'yeni' : (k === 5 ? 'öğrenildi' : k + '. kutu');
       return '<button type="button" class="kutu' + (seciliKutu === k ? ' acik' : '') +
         '" data-k="' + k + '" title="' + (k === 0 ? 'Hiç çalışılmamış kelimeler'
-          : (k === 5 ? 'Öğrenilmiş: artık tekrara gelmiyor' : k + '. kutudaki kelimeler')) +
-        ' — göstermek için tıkla">' +
+          : (k === 5 ? 'Öğrenilmiş: seyrek bakım tekrarları sürer' : k + '. kutudaki kelimeler')) +
+        ' — göstermek için tıkla" aria-pressed="' + (seciliKutu === k ? 'true' : 'false') +
+        '" aria-label="' + ad + ', ' + o['k' + k] + ' kelime">' +
         '<b>' + o['k' + k] + '</b><i>' + ad + '</i></button>';
     }).join('');
 
@@ -188,7 +199,7 @@
     $('testDavet').hidden = true;
     filtrele();
     desteyiCiz();
-    $('deste').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    $('deste').scrollIntoView({ behavior: window.YDS.hareket(), block: 'start' });
   }
 
   /* ---------- filtreleme ---------- */
@@ -253,7 +264,7 @@
   function kutuRozeti(en) {
     var k = Il.kutu(en, ILERLEME_TURU);
     if (k === 0) return '<span class="badge">yeni</span>';
-    if (Il.mezunMu(en, ILERLEME_TURU)) return '<span class="badge ok" title="Öğrenildi — artık tekrara gelmiyor">öğrenildi ✓</span>';
+    if (Il.mezunMu(en, ILERLEME_TURU)) return '<span class="badge ok" title="Öğrenildi — bakım tekrarları sürer">öğrenildi ✓</span>';
     var gun = Il.kalanGun(en, ILERLEME_TURU);
     var sinif = k >= 4 ? 'badge ok' : (k <= 2 ? 'badge warn' : 'badge');
     return '<span class="' + sinif + '">' + k + '. kutu · ' + (gun === 0 ? 'bugün' : gun + ' gün') + '</span>';
@@ -266,7 +277,7 @@
   function kaliplar(tam) {
     if (!tam || !tam.kl || !tam.kl.length) return '';
     return '<div class="kalip ust">' + tam.kl.map(function (k) {
-      return '<span><b>' + kacar(k.en) + '</b><i>' + kacar(k.tr) + '</i></span>';
+      return '<span><b lang="en">' + kacar(k.en) + '</b><i>' + kacar(k.tr) + '</i></span>';
     }).join('') + '</div>';
   }
 
@@ -281,7 +292,7 @@
     var anlamlar = tam
       ? tam.a.map(function (a) {
           return '<div class="ex"><b>' + kacar(a.tr) + '</b>' + yildiz(a) +
-                 '<i>' + kacar(a.ex) + '</i>' +
+                 '<i lang="en">' + kacar(a.ex) + '</i>' +
                  '<i class="tr-ex">' + kacar(a.exTr) + '</i></div>';
         }).join('')
       : '<div class="ex"><i>' + kacar(d.t) + '</i></div>';
@@ -293,7 +304,7 @@
     return '' +
       '<article class="word' + (kutu >= 5 ? ' known' : '') + '" data-en="' + kacar(d.e) + '">' +
         '<div>' +
-          '<div class="en">' + kacar(d.e) + '</div>' +
+          '<div class="en" lang="en">' + kacar(d.e) + '</div>' +
           kisaAnlam +
           '<div class="meta">' +
             '<span class="badge">' + kacar(d.y) + '</span>' +
@@ -301,13 +312,14 @@
             (d.p !== undefined ? '<span class="badge" title="YDS öncelik puanı">' + d.p + ' p</span>' : '') +
             kutuRozeti(d.e) +
             testRozeti(d.e) +
-            (tam && tam.es ? '<span class="badge">≈ ' + kacar(tam.es) + '</span>' : '') +
+            (tam && tam.es ? '<span class="badge" lang="en">≈ ' + kacar(tam.es) + '</span>' : '') +
           '</div>' +
         '</div>' +
         '<div class="act">' +
-          '<button class="star" type="button" data-ne="bildim" title="Bildim — bir üst kutuya çıkar">✓</button>' +
-          '<button class="star" type="button" data-ne="bilmedim" title="Bilemedim — bir kutu geri düşer, yarın tekrar gelir">✗</button>' +
-          '<button class="star" type="button" data-ne="ses" title="Telaffuzu dinle">🔊</button>' +
+          '<button class="btn ghost sm" type="button" data-ne="calis" aria-label="' + kacar(d.e) +
+            ' kelimesini kartta çalış">Kartta çalış</button>' +
+          '<button class="star" type="button" data-ne="ses" title="Telaffuzu dinle" aria-label="' +
+            kacar(d.e) + ' kelimesinin telaffuzunu dinle">🔊</button>' +
         '</div>' +
         kaliplar(tam) +
         anlamlar +
@@ -371,7 +383,7 @@
 
     $('kartOn').textContent = d.e;
     $('kartKutu').innerHTML = KUTU_ADI[Il.kutu(d.e, ILERLEME_TURU)] +
-      (Il.mezunMu(d.e, ILERLEME_TURU) ? ' · öğrenildi, tekrara gelmez'
+      (Il.mezunMu(d.e, ILERLEME_TURU) ? ' · öğrenildi, bakım tekrarı sürer'
                        : (Il.vadesiGeldiMi(d.e, ILERLEME_TURU) ? ' · tekrar zamanı' : ''));
 
     $('kartTr').innerHTML = tam.a.map(function (a) {
@@ -380,7 +392,8 @@
       '<div class="muted small" style="font-weight:400;margin-top:4px">' + kacar(d.y) + '</div>';
     $('kartOrnek').innerHTML = kaliplar(tam) +
       tam.a.filter(function (a) { return a.ex; }).map(function (a) {
-        return kacar(a.ex) + '<br><span style="opacity:.8">' + kacar(a.exTr) + '</span>';
+        return '<span lang="en">' + kacar(a.ex) + '</span><br><span style="opacity:.8">' +
+          kacar(a.exTr) + '</span>';
       }).join('<br><br>') + olumsuzSatiri(d.e);
 
     $('kartArka').hidden = !kartAcik;
@@ -399,6 +412,14 @@
       ? (ipucuAcik ? 'İpucu kullandın — "Bildim" dersen kelime aynı kutuda kalır.'
                    : 'Bildin mi? Aşağıdan işaretle.')
       : 'Çevirmek için karta tıkla · boşluk tuşu';
+
+    // Aktif hatırlama: önce zihninden cevapla, sonra kartı çevirip kendini
+    // değerlendir. "Zaten biliyorum" yalnız cevap görünmeden kullanılabilir.
+    $('bildim').disabled = !kartAcik;
+    $('bilmedim').disabled = !kartAcik;
+    $('zatenBiliyorum').disabled = kartAcik || ipucuAcik;
+    elKart.setAttribute('aria-expanded', kartAcik ? 'true' : 'false');
+    elKart.setAttribute('aria-label', d.e + ' kelimesinin cevabını ' + (kartAcik ? 'gizle' : 'göster'));
   }
 
   function kartGit(adim) {
@@ -413,6 +434,9 @@
   function kartCevap(ne) {
     var d = suzulmus[kartIndex];
     if (!d) return;
+
+    if (ne === 'zaten' && (kartAcik || ipucuAcik)) return;
+    if (ne !== 'zaten' && !kartAcik) return;
 
     var sonuc;
     if (ne === 'zaten') sonuc = Il.zatenBiliyorum(d.e, ILERLEME_TURU);
@@ -451,7 +475,7 @@
     if (!davet.hidden) {
       $('testDavetMetin').textContent = 'Bugünkü desteni bitirdin 🎉 Şimdi bu kelimeleri cümle içinde gör: ' +
         Math.min(n, Test.EN_COK) + ' soruluk boşluk doldurma testi.';
-      davet.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      davet.scrollIntoView({ behavior: window.YDS.hareket(), block: 'center' });
     }
   }
 
@@ -467,7 +491,8 @@
       return;
     }
     elSayac.textContent = suzulmus.length + ' kelime · seçili katmanlarda ' + havuz.length +
-      ' · öğrenilen ' + o.ogrenilen + ' · bugün tekrar ' + o.bugun;
+      ' · öğrenilen ' + o.ogrenilen + ' · bugün ' + o.gosterilecekTekrar +
+      ' tekrar + ' + o.acilacakYeni + ' yeni';
   }
 
   function ciz() {
@@ -515,21 +540,16 @@
     var ne = btn.getAttribute('data-ne');
 
     if (ne === 'ses') { seslendir(en); return; }
-    var sonuc = ne === 'bildim' ? Il.dogru(en, ILERLEME_TURU) : Il.yanlis(en, ILERLEME_TURU);
-    if (sonuc === false) { window.YDS.depolamaUyarisi(); return; }
-    desteyiCiz();
-
-    if (elDurum.value) {
-      filtrele();
-    } else {
-      var d = Veri.dizinKaydi(en);
-      if (d) {
-        var yeni = document.createElement('div');
-        yeni.innerHTML = satir(d);
-        kutu.replaceWith(yeni.firstChild);
-      }
-      guncelleSayac();
-    }
+    if (ne !== 'calis') return;
+    kartIndex = suzulmus.findIndex(function (d) { return d.e === en; });
+    if (kartIndex < 0) return;
+    kartModu = true;
+    desteModu = false;
+    kartAcik = false;
+    ipucuAcik = false;
+    $('mod').textContent = 'Liste moduna dön';
+    ciz();
+    elKartAlan.scrollIntoView({ behavior: window.YDS.hareket(), block: 'center' });
   });
 
   $('mod').addEventListener('click', function () {
@@ -560,7 +580,7 @@
     $('mod').textContent = 'Liste moduna dön';
     $('disKatman').hidden = true;
     ciz();
-    elKartAlan.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    elKartAlan.scrollIntoView({ behavior: window.YDS.hareket(), block: 'center' });
   });
 
   $('gunlukHedef').addEventListener('change', function () {
@@ -578,7 +598,7 @@
     if (seciliKutu !== null) { elAra.value = ''; elDurum.value = ''; }
     filtrele();
     desteyiCiz();
-    elSayac.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    elSayac.scrollIntoView({ behavior: window.YDS.hareket(), block: 'nearest' });
   });
 
   $('gunlukTavan').addEventListener('change', function () {
@@ -617,6 +637,9 @@
   elKart.addEventListener('click', function () {
     kartAcik = !kartAcik;
     kartCiz();
+  });
+  elKart.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); kartAcik = !kartAcik; kartCiz(); }
   });
 
   $('ipucuBtn').addEventListener('click', function (e) {
@@ -667,9 +690,9 @@
       e.preventDefault();
       if (!$('ipucuBtn').hidden) { ipucuAcik = true; kartCiz(); }
     }
-    else if (e.key === '1') { e.preventDefault(); kartCevap('yanlis'); }
-    else if (e.key === '2') { e.preventDefault(); kartCevap('dogru'); }
-    else if (e.key === '3') { e.preventDefault(); kartCevap('zaten'); }
+    else if (e.key === '1' && kartAcik) { e.preventDefault(); kartCevap('yanlis'); }
+    else if (e.key === '2' && kartAcik) { e.preventDefault(); kartCevap('dogru'); }
+    else if (e.key === '3' && !kartAcik && !ipucuAcik) { e.preventDefault(); kartCevap('zaten'); }
     else if (e.key.toLowerCase() === 's') {
       e.preventDefault();
       var d = suzulmus[kartIndex];
@@ -684,9 +707,12 @@
   // Arama sayfasından "Kelime sayfasında aç" ile gelen ?q=... sorgusu
   var gelenQ = new URLSearchParams(location.search).get('q');
   if (gelenQ) elAra.value = gelenQ;
+  var dogrudanDeste = new URLSearchParams(location.search).get('calis') === '1';
 
   var geriAlCiz = window.YDS.geriAlKutusu(function () { desteyiCiz(); filtrele(); });
 
   katmanlariCiz();
-  katmanlariUygula();
+  katmanlariUygula().then(function () {
+    if (dogrudanDeste && !$('desteBasla').disabled) $('desteBasla').click();
+  });
 })();

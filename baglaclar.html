@@ -189,26 +189,38 @@
           </p>
 
           <div class="toolbar">
-            <input class="grow" type="search" id="ara" placeholder="Ara: bağlaç, Türkçe karşılık veya örnek…" autocomplete="off">
-            <select id="iliski" aria-label="Anlam ilişkisi">
+            <label class="grow filter-field">
+              <span>Bağlaç, karşılık veya örnek ara</span>
+              <input class="grow" type="search" id="ara" placeholder="Örnek: despite, karşıtlık…" autocomplete="off">
+            </label>
+            <label class="filter-field">
+              <span>Anlam ilişkisi</span>
+              <select id="iliski">
               <option value="">Tüm ilişkiler</option>
-            </select>
-            <select id="yapiFiltre" aria-label="Yapı">
+              </select>
+            </label>
+            <label class="filter-field">
+              <span>Yapı</span>
+              <select id="yapiFiltre">
               <option value="">Tüm yapılar</option>
               <option value="cümle">+ cümle</option>
               <option value="isim">+ isim / V-ing</option>
               <option value="zarf">cümle zarfı</option>
               <option value="eş">eş bağlaç</option>
               <option value="ikili">ikili çift</option>
-            </select>
-            <select id="duzey" aria-label="Düzey">
+              </select>
+            </label>
+            <label class="filter-field">
+              <span>Düzey</span>
+              <select id="duzey">
               <option value="">Tüm düzeyler</option>
               <option value="çekirdek">Çekirdek</option>
               <option value="ileri">İleri / resmî</option>
-            </select>
+              </select>
+            </label>
           </div>
 
-          <p class="small muted" id="sayac">Yükleniyor…</p>
+          <p class="small muted" id="sayac" role="status" aria-live="polite" aria-atomic="true">Yükleniyor…</p>
           <div id="liste" class="word-list"></div>
           <div class="empty" id="bos" hidden>
             Bu filtrelerle eşleşen bağlaç yok.

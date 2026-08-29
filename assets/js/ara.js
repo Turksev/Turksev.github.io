@@ -250,17 +250,14 @@
             (r.alt ? '<div class="ara-alt">' + r.alt + '</div>' : '') +
             (r.ek ? '<div class="ara-ek">' + r.ek + '</div>' : '');
           var nitelik = r.tip
-            ? ' data-tip="' + r.tip + '" data-anahtar="' + kacar(r.anahtar) + '"' +
-              ' title="Ayrıntı kartı için çift tıkla"'
-            : '';
-          return r.link
-            ? '<a class="ara-satir" href="' + r.link + '"' + nitelik + '>' + ic + '</a>'
-            : '<div class="ara-satir"' + nitelik + '>' + ic + '</div>';
+            ? ' data-tip="' + r.tip + '" data-anahtar="' + kacar(r.anahtar) + '"' : '';
+          if (r.link) return '<a class="ara-satir" href="' + kacar(r.link) + '">' + ic + '</a>';
+          return '<button class="ara-satir" type="button"' + nitelik + '>' + ic + '</button>';
         }).join('') + fazla + '</div>';
     }).join('');
   }
 
-  /* ---------- ayrıntı kartı (çift tıklama) ---------- */
+  /* ---------- ayrıntı kartı ---------- */
 
   var Il = window.YDS.Ilerleme;
   var KUTU_ADI = ['hiç çalışılmadı', '1. kutu', '2. kutu', '3. kutu', '4. kutu', '5. kutu (öğrenildi)'];
@@ -276,7 +273,7 @@
   function anlamlar(liste) {
     return liste.map(function (a) {
       return '<div class="kart-anlam"><b>' + kacar(a.tr) + '</b>' + yildiz(a) +
-        (a.ex ? '<i>' + kacar(a.ex) + '</i>' : '') +
+        (a.ex ? '<i lang="en">' + kacar(a.ex) + '</i>' : '') +
         (a.exTr ? '<span>' + kacar(a.exTr) + '</span>' : '') + '</div>';
     }).join('');
   }
@@ -294,7 +291,7 @@
     var aile = (window.AILELER || []).filter(function (a) { return a.u.indexOf(en) !== -1; })[0];
     var olumsuz = (window.OLUMSUZLAR || {})[en];
 
-    var bas = '<h3>' + kacar(d.e) + '</h3>' +
+    var bas = '<h3 lang="en">' + kacar(d.e) + '</h3>' +
       '<div class="kart-rozetler">' + rozet(d.y) + rozet(Veri.KATMAN_ADI[d.k], 'accent') +
       (d.p !== undefined ? rozet(d.p + ' puan') : '') +
       rozet(Il && Il.mezunMu(en) ? 'öğrenildi ✓' : KUTU_ADI[kutu], kutu >= 4 ? 'ok' : (kutu ? 'warn' : '')) +
@@ -333,7 +330,7 @@
   function obekKarti(f) {
     var o = (window.OBEKLER || []).filter(function (x) { return x.f === f; })[0];
     if (!o) return null;
-    return '<h3>' + kacar(o.f) + '</h3>' +
+    return '<h3 lang="en">' + kacar(o.f) + '</h3>' +
       '<div class="kart-rozetler">' + rozet(o.y) + rozet(o.s + ' sınavda', 'accent') + rozet(o.kn) + '</div>' +
       bolum('Anlamlar ve örnekler', anlamlar(o.a)) +
       git('obekler.html', 'Öbekler sayfasında aç');
@@ -342,11 +339,11 @@
   function baglacKarti(f) {
     var b = (window.BAGLACLAR || []).filter(function (x) { return x.f === f; })[0];
     if (!b) return null;
-    return '<h3>' + kacar(b.f) + '</h3>' +
+    return '<h3 lang="en">' + kacar(b.f) + '</h3>' +
       '<div class="kart-rozetler">' + rozet(b.il, 'accent') + rozet(b.yp) + rozet(b.dz) + '</div>' +
       bolum('Türkçesi', '<p style="margin:0">' + kacar(b.tr) + '</p>') +
       bolum('Örnekler', b.or.map(function (o) {
-        return '<div class="kart-anlam"><i>' + kacar(o.en) + '</i><span>' + kacar(o.tr) + '</span></div>';
+        return '<div class="kart-anlam"><i lang="en">' + kacar(o.en) + '</i><span>' + kacar(o.tr) + '</span></div>';
       }).join('')) +
       (b.es && b.es.length ? bolum('Yakın kullanım', '<p style="margin:0">' + kacar(b.es.join(', ')) + '</p>') : '') +
       git('baglaclar.html#banka', 'Bağlaçlar sayfasında aç');
@@ -356,13 +353,14 @@
     var s = (window.SORULAR || [])[Number(i)];
     if (!s) return null;
     var harf = ['A', 'B', 'C', 'D', 'E'];
-    return '<h3 style="font-size:1.15rem">' + kacar(s.s) + '</h3>' +
-      '<div class="kart-rozetler">' + rozet(s.kat, 'accent') + '</div>' +
+    return '<h3 lang="en" style="font-size:1.15rem">' + kacar(s.s) + '</h3>' +
+      '<div class="kart-rozetler">' + rozet(s.kat, 'accent') + rozet(window.YDS.SoruKonu.kaynakEtiketi(s)) + '</div>' +
       bolum('Şıklar', '<p style="margin:0">' + s.se.map(function (x, j) {
         return (j === s.d ? '<b>' + harf[j] + ') ' + kacar(x) + ' ✓</b>' : harf[j] + ') ' + kacar(x));
       }).join('<br>') + '</p>') +
       bolum('Açıklama', '<p style="margin:0">' + s.ac + '</p>') +
-      git('quiz.html', 'Quiz sayfasında çöz');
+      (s.konu ? git('konular.html#' + encodeURIComponent(s.konu), s.konu + ' konusunu çalış') : '') +
+      git('quiz.html', 'Alıştırma sayfasında çöz');
   }
 
   function uniteKarti(kod) {
@@ -392,9 +390,12 @@
       git('aileler.html', 'Aileler sayfasında aç');
   }
 
+  var sonOdak = null;
+
   function kartiKapat() {
-    $('kartPerde').hidden = true;
+    if ($('kartPerde').open) $('kartPerde').close();
     document.body.style.overflow = '';
+    if (sonOdak && document.contains(sonOdak)) sonOdak.focus();
   }
 
   function kartiAc(tip, anahtar) {
@@ -407,8 +408,9 @@
     else if (tip === 'aile') ic = aileKarti(anahtar);
     if (!ic) return;
 
+    sonOdak = document.activeElement;
     $('kartIcerik').innerHTML = ic;
-    $('kartPerde').hidden = false;
+    $('kartPerde').showModal();
     document.body.style.overflow = 'hidden';
     $('kartKapat').focus();
 
@@ -418,7 +420,7 @@
       var k = Veri.katmani(anahtar);
       if (k && !Veri.katmanYukluMu(k)) {
         Veri.katmanYukle(k).then(function () {
-          if ($('kartPerde').hidden) return;
+          if (!$('kartPerde').open) return;
           var yeni = kelimeKarti(anahtar);
           if (yeni) $('kartIcerik').innerHTML = yeni;
         }).catch(function () {});
@@ -426,7 +428,7 @@
     }
   }
 
-  elSonuc.addEventListener('dblclick', function (e) {
+  elSonuc.addEventListener('click', function (e) {
     var satir = e.target.closest('.ara-satir[data-tip]');
     if (!satir) return;
     e.preventDefault();
@@ -437,8 +439,9 @@
   $('kartPerde').addEventListener('click', function (e) {
     if (e.target === $('kartPerde')) kartiKapat();
   });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && !$('kartPerde').hidden) kartiKapat();
+  $('kartPerde').addEventListener('cancel', function (e) {
+    e.preventDefault();
+    kartiKapat();
   });
 
   /* ---------- öbekler: ilk aramada arka planda yükle ---------- */

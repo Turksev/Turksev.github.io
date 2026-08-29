@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yöntem ve Kaynaklar — YDS Hazırlık</title>
+<meta name="description" content="YDS Hazırlık sitesindeki kelime puanı, aralıklı tekrar, soru kaynakları ve deneme puanlamasının nasıl çalıştığını öğrenin.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%233b5bdb'/><text y='68' x='50' text-anchor='middle' font-size='46' font-family='sans-serif' font-weight='bold' fill='white'>Y</text></svg>">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#3b5bdb">
+<link rel="apple-touch-icon" href="assets/img/icon-192.png">
+<link rel="canonical" href="https://turksev.github.io/yontem.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="YDS Hazırlık">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="Yöntem ve Kaynaklar — YDS Hazırlık">
+<meta property="og:description" content="Kelime puanı, aralıklı tekrar, soru kaynakları ve deneme puanlamasının açık açıklaması.">
+<meta property="og:url" content="https://turksev.github.io/yontem.html">
+<meta property="og:image" content="https://turksev.github.io/assets/img/icon-512.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="data/depo.js"></script>
+<script src="assets/js/main.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="dot">YDS</span> Hazırlık</a>
+    <nav class="site-nav">
+      <a href="durum.html">Durumum</a><a href="konular.html">Konular</a>
+      <a href="kelimeler.html">Kelimeler</a><a href="aileler.html">Aileler</a>
+      <a href="obekler.html">Öbekler</a><a href="quiz.html">Quiz</a>
+      <a href="deneme.html">Deneme</a><a href="gramer.html">Gramer</a>
+      <a href="baglaclar.html">Bağlaçlar</a><a href="ara.html">Ara</a>
+    </nav>
+    <button class="theme-toggle" type="button" title="Temayı değiştir">☾</button>
+  </div>
+</header>
+
+<main class="section">
+  <div class="wrap prose-wrap">
+    <p class="badge accent">Son yöntem denetimi: 29 Ağustos 2026</p>
+    <h1>Yöntem ve kaynaklar</h1>
+    <p class="lead">Sitedeki sayıların ne anlama geldiğini, çalışma sisteminin hangi kararı neden verdiğini ve yayımlanan içeriğin kaynağını burada açıkça görebilirsin.</p>
+
+    <section class="card method-card" aria-labelledby="kelime-kaynagi">
+      <h2 id="kelime-kaynagi">Kelime havuzunun kaynağı</h2>
+      <p>Ana referans, 49 gerçek YDS/e-YDS sınav PDF’sinden oluşan yerel arşivdir. Kelime başlıkları sınavlarda görüldükleri yazım biçimiyle korunur; Türkçe karşılıklar sözcüğün sınavdaki bağlamı gözetilerek denetlenir. Üretim sırasında başlık veya anlamı keyfî biçimde sadeleştiren bir dönüşüm uygulanmaz.</p>
+      <p>Arşivin sınav kimlikleri ve dosya özetleri <a href="data/kaynak-manifest.json">kaynak manifestinde</a>, denetlenen kelime başlıklarının öğe düzeyi kayıtları ise <a href="data/kelime-provenans.json">kelime provenansında</a> yayımlanır.</p>
+      <div class="tip"><b>Telif sınırı:</b> Resmî sınav metinleri topluca yeniden yayımlanmaz. PDF’ler kelime seçimi, yazım ve bağlam denetimi için referanstır.</div>
+    </section>
+
+    <section class="card method-card" aria-labelledby="kelime-puani">
+      <h2 id="kelime-puani">Kelime puanı YDS puanı değildir</h2>
+      <p>Kelime listesindeki puan, bir kelimenin kaynak sınavlarda görülme sıklığı ve çalışma önceliğini sıralayan <b>site içi önem puanıdır</b>. Bir doğruyu, yanlışı veya sınav netini hesaplamaz. Bu yüzden kelime kartında “bildim/bilemedim” seçimi gerçek YDS puanını artırıp azaltmaz; yalnız tekrar tarihini belirler.</p>
+    </section>
+
+    <section class="card method-card" aria-labelledby="tekrar-yontemi">
+      <h2 id="tekrar-yontemi">Aralıklı tekrar nasıl çalışır?</h2>
+      <ol>
+        <li>Yeni kart doğru bilindiğinde tekrar aralığı sırasıyla 1, 3, 7, 15 ve 30 güne uzar.</li>
+        <li>Bilemediğin kart yeniden açılır ve ertesi gün tekrar gelir; bağlam testindeki yanlış da kartı bir kutu geriye alır.</li>
+        <li>Beşinci kutu “öğrenildi” sayılır fakat kart kaybolmaz: 30, 90 ve 180 günlük bakım tekrarları sürer.</li>
+        <li>Günün kapasitesini önce vadesi gelmiş tekrarlar doldurur. Yer kalırsa yeni kart açılır; böylece tekrar borcu büyürken sistem yeni kelime yüklemez.</li>
+      </ol>
+      <p class="small muted">“Zaten biliyorum” yalnız kart açılmadan ve ipucu kullanılmadan seçilebilir. Normal değerlendirmede önce İngilizce yüzü görür, cevabı zihninden üretir, sonra anlamı açarsın.</p>
+    </section>
+
+    <section class="card method-card" aria-labelledby="soru-kaynagi">
+      <h2 id="soru-kaynagi">Sorular ve kaynak etiketleri</h2>
+      <p>Alıştırma ve deneme bankasında iki ayrı kaynak türü görünür:</p>
+      <ul>
+        <li><b>Uzman özgün:</b> YDS beceri ve biçimine uygun olarak bu çalışma sistemi için yazılmış, resmî sınavdan kopyalanmamış içerik.</li>
+        <li><b>Çalışma bankası:</b> Sitenin daha önceki alıştırma havuzundan gelen içerik.</li>
+      </ul>
+      <p>80 soruluk A, B ve C formları birbirinden bağımsızdır ve YDS’nin bölüm sırasını izler. 20 ve 40 soruluk seçenekler daha kısa karma çalışmadır; resmî sınav düzeyi için karşılaştırma ölçüsü olarak sunulmaz.</p>
+    </section>
+
+    <section class="card method-card" aria-labelledby="puanlama">
+      <h2 id="puanlama">Deneme puanı nasıl hesaplanır?</h2>
+      <p>2026 YDS kılavuzuna göre sınav 80 soru ve 180 dakikadır. Değerlendirmede yalnız doğru cevaplar dikkate alınır; yanlışlar doğruları götürmez. İptal edilen soru yoksa sitedeki 80 soruluk formda her doğru <b>1,25 puan</b> eder:</p>
+      <p class="formula" aria-label="Puan eşittir doğru sayısı çarpı yüz bölü seksen">Puan = doğru sayısı × (100 ÷ 80)</p>
+      <p class="small muted">ÖSYM, iptal edilen soru bulunursa geçerli soruların puan değerini yeniden belirleyebilir. Güncel ve bağlayıcı bilgi her zaman resmî kılavuzdur.</p>
+      <p><a href="https://dokuman.osym.gov.tr/pdfdokuman/2026/YDS-1/kilavuz_yd1d18022026.pdf">2026-YDS/1 resmî kılavuzunu aç</a></p>
+    </section>
+
+    <section class="card method-card" aria-labelledby="konu-olcumu">
+      <h2 id="konu-olcumu">Konu öğrenmesi nasıl ölçülür?</h2>
+      <p>Bir üniteyi okuduktan sonra mini uygulamadaki her maddeyi “Buldum”, “Kısmen” veya “Bilemedim” olarak değerlendirirsin. Sistem tanı puanını bu yanıtlardan hesaplar; elle yüzde girilmez. En az yedi gün sonra aynı bölüm gecikmeli ölçüm olarak yeniden açılır. Gecikmeli puan %90’a ulaştığında ünite tamamlandı sayılır.</p>
+    </section>
+
+    <section class="card method-card" aria-labelledby="bagimsizlik">
+      <h2 id="bagimsizlik">Bağımsızlık ve hata bildirimi</h2>
+      <p>Bu ücretsiz çalışma sitesi ÖSYM tarafından hazırlanmış veya onaylanmış değildir; ÖSYM ile kurumsal bağlantısı yoktur. “YDS” adı sınav türünü tanımlamak için kullanılır.</p>
+      <p>Bir kelimenin yazımı, anlamı, soru anahtarı veya açıklamasında hata görürsen <a href="https://github.com/turksev/turksev.github.io/issues/new">hata kaydı açabilirsin</a>. Kaynak PDF’deki bağlamı belirtmen denetimi hızlandırır.</p>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer"><div class="wrap"><span>© <span data-yil>2026</span> YDS Hazırlık</span><span>Yöntem, kaynak ve puanlama açıkça belgelenir.</span></div></footer>
+
+<script src="assets/js/esitleme-ayar.js"></script>
+<script src="assets/js/esitleme-v2.js"></script>
+</body>
+</html>

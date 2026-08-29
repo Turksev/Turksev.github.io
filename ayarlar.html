@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gizlilik ve Veriler — YDS Hazırlık</title>
+<meta name="description" content="YDS Hazırlık ilerlemenizi dışa aktarın, güvenli biçimde içe aktarın ve isteğe bağlı bulut eşitlemesini yönetin.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%233b5bdb'/><text y='68' x='50' text-anchor='middle' font-size='46' font-family='sans-serif' font-weight='bold' fill='white'>Y</text></svg>">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#3b5bdb">
+<link rel="apple-touch-icon" href="assets/img/icon-192.png">
+<link rel="canonical" href="https://turksev.github.io/ayarlar.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="YDS Hazırlık">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="Gizlilik ve Veriler — YDS Hazırlık">
+<meta property="og:description" content="Yerel ilerleme, yedekleme ve isteğe bağlı bulut eşitleme ayarları.">
+<meta property="og:url" content="https://turksev.github.io/ayarlar.html">
+<meta property="og:image" content="https://turksev.github.io/assets/img/icon-512.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="data/depo.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="data/kelime-aliaslari.js"></script>
+<script src="assets/js/esitleme-veri.js"></script>
+<script src="assets/js/esitleme-depo.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="dot">YDS</span> Hazırlık</a>
+    <nav class="site-nav">
+      <a href="durum.html">Durumum</a><a href="konular.html">Konular</a>
+      <a href="kelimeler.html">Kelimeler</a><a href="aileler.html">Aileler</a>
+      <a href="obekler.html">Öbekler</a><a href="quiz.html">Quiz</a>
+      <a href="deneme.html">Deneme</a><a href="gramer.html">Gramer</a>
+      <a href="baglaclar.html">Bağlaçlar</a><a href="ara.html">Ara</a>
+    </nav>
+    <button class="theme-toggle" type="button" title="Temayı değiştir">☾</button>
+  </div>
+</header>
+
+<main class="section">
+  <div class="wrap prose-wrap">
+    <h1>Gizlilik ve veriler</h1>
+    <p class="lead">Site yerel-önceliklidir. Çalışma ilerlemen önce bu tarayıcıda tutulur; bulut eşitleme ancak sen Google ile bağlandığında etkinleşir.</p>
+
+    <div id="ayarDurum" class="status-kutu" role="status" aria-live="polite">Veriler okunuyor…</div>
+
+    <div class="ayar-grid">
+      <section class="card" aria-labelledby="yerel-baslik">
+        <h2 id="yerel-baslik">Yerel ilerlemen</h2>
+        <p id="yerelOzet" class="muted">Hesaplanıyor…</p>
+        <p class="small">Tarayıcıda saklanan 12 eşitlenebilir alan:</p>
+        <ul class="data-list" id="veriAlanlari"></ul>
+      </section>
+
+      <section class="card" aria-labelledby="yedek-baslik">
+        <h2 id="yedek-baslik">Yedekle ve geri getir</h2>
+        <p class="small muted">Yedek yalnız çalışma ilerlemeni ve çalışma tercihlerini içerir; Google hesabı veya kimlik bilgisi içermez.</p>
+        <div class="data-actions">
+          <button class="btn" type="button" id="disaAktar">İlerlemeyi dışa aktar</button>
+          <label class="btn ghost file-button">Yedeği içe aktar
+            <input class="visually-hidden" type="file" id="iceAktarDosya" accept="application/json,.json">
+          </label>
+        </div>
+        <p class="small muted">Dosya önce 12 veri alanının şemasına göre doğrulanır. Birleştirme özeti gösterilir; sen açıkça onaylamadan hiçbir veri yazılmaz. Onaydan hemen önce mevcut durum yalnız bu tarayıcıda, bulut eşitlemesine girmeyen bir kurtarma kopyasına yazılıp doğrulanır. Mevcut ilerleme ve çalışma tercihleri azaltılmaz.</p>
+        <div id="iceAktarOnizleme" class="status-kutu" hidden aria-labelledby="ice-aktar-onizleme-baslik">
+          <h3 id="ice-aktar-onizleme-baslik">İçe aktarma önizlemesi</h3>
+          <p id="iceAktarOzet" class="small"></p>
+          <p class="small muted">Çakışmalarda bu cihazdaki tercih korunur; ilerleme kayıtları yalnız eklenir veya daha ileri değerle tamamlanır.</p>
+          <ul class="data-list" id="iceAktarAlanlar"></ul>
+          <div class="data-actions">
+            <button class="btn" type="button" id="iceAktarOnay">Birleştir ve içe aktar</button>
+            <button class="btn ghost" type="button" id="iceAktarIptal">İptal</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="card method-card" aria-labelledby="bulut-baslik">
+      <h2 id="bulut-baslik">İsteğe bağlı bulut eşitleme</h2>
+      <p id="bulutDurum" role="status" aria-live="polite">Bulut bağlantısı denetleniyor…</p>
+      <div class="data-actions">
+        <button class="btn" type="button" id="bulutBaglan">Google ile bağlan</button>
+        <button class="btn ghost" type="button" id="bulutCik" disabled>Bağlantıyı kes</button>
+        <button class="btn ghost" type="button" id="bulutYeniden" disabled hidden>Eşitlemeyi yeniden etkinleştir</button>
+      </div>
+      <p class="small muted" id="bulutYenidenNot" hidden>Silme kilidini eski cihazların veriyi geri getirmesine izin vermeden kaldıracak atomik koruma henüz etkin değil.</p>
+      <p class="small muted">Giriş için Google/Firebase Authentication, eşitlenen ilerleme için Cloud Firestore kullanılır. Çıkış yapmak buluttaki veriyi silmez. Firebase kodu, daha önce eşitlemeyi açmadıysan sayfa açılışında indirilmez.</p>
+      <p class="small"><a href="https://policies.google.com/privacy">Google Gizlilik Politikası</a> · <a href="https://firebase.google.com/support/privacy">Firebase gizlilik ve güvenlik bilgileri</a></p>
+    </section>
+
+    <section class="card danger-zone" aria-labelledby="silme-baslik">
+      <h2 id="silme-baslik">Verileri silme</h2>
+      <div class="ayar-grid">
+        <div>
+          <h3>Bu tarayıcıdaki ilerleme</h3>
+          <p class="small muted">Sekiz alanı sıfırlar: kelime/öbek kutuları, iki yanlış defteri, kategori karnesi, deneme geçmişi, konu takibi, en iyi quiz sonucu ve bugünkü yeni kart sayacı. Günlük hedef, toplam kart sınırı, seçili kelime katmanları ve konu ekseni korunur. Onay penceresi her alanın güncel kayıt sayısını gösterir. Önce yedi gün geri alınabilen yerel bir yedek oluşturulur; eşitleme bağlıysa sıfırlama diğer cihazlara da yansıyabilir.</p>
+          <button class="btn ghost" type="button" id="yerelSil">Yerel ilerlemeyi sıfırla</button>
+        </div>
+        <div>
+          <h3>Buluttaki kopya</h3>
+          <p class="small muted">Bu işlem etkinleştirildiğinde yalnız giriş yaptığın hesaptaki bulut kopyasını silip eşitlemeyi kilitleyecek; bu tarayıcıdaki ilerlemeyi koruyacak.</p>
+          <button class="btn ghost danger-button" type="button" id="bulutSil" disabled>Bulut verimi sil</button>
+          <p class="small muted" id="bulutSilNot" hidden>Kalıcı bulut silme özelliğinin etkinleştirilmesi için ayrıca açık onay gerekiyor.</p>
+        </div>
+      </div>
+      <span id="geriAlKutu" hidden>
+        <b id="geriAlMetin"></b>
+        <button class="btn sm" type="button" id="geriAl">Geri al</button>
+      </span>
+    </section>
+
+    <section class="card method-card" aria-labelledby="saklanan-baslik">
+      <h2 id="saklanan-baslik">Neler saklanmaz?</h2>
+      <p>Sınav tarihi, hedef puanı, günlük zaman planı, ödeme bilgisi veya reklam profili tutulmaz. Site Google şifreni görmez; oturum işlemini Google yürütür. Dışa aktardığın JSON dosyasının korunması senin sorumluluğundadır.</p>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer"><div class="wrap"><span>© <span data-yil>2026</span> YDS Hazırlık</span><span>İlerleme yerel-önceliklidir; bulut kullanımı isteğe bağlıdır.</span></div></footer>
+
+<script src="assets/js/ilerleme.js"></script>
+<script src="assets/js/esitleme-ayar.js"></script>
+<script src="assets/js/esitleme-v2.js"></script>
+<script src="assets/js/ayarlar.js"></script>
+</body>
+</html>

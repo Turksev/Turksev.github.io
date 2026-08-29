@@ -54,14 +54,15 @@
       Bir kelime, bağlaç ya da konu ara — sitenin her yerinde nerede geçtiğini birden gör.
       İngilizce veya Türkçe yazabilirsin. Kelimelerde yazılış ve anlam taranır;
       bağlaç, öbek ve sorularda örnek cümleler de aranır.
-      Bir sonuca <b>çift tıklarsan</b> ayrıntı kartı açılır: bütün anlamlar, örnek cümleler,
+      Bir sonuca <b>dokunur veya tıklarsan</b> ayrıntı kartı açılır: bütün anlamlar, örnek cümleler,
       kelime ailesi ve tekrar kutusu tek ekranda.
     </p>
 
     <div class="toolbar">
+      <label class="grow filter-field"><span>Arama</span>
       <input class="grow" type="search" id="ara" placeholder="Örnek: despite, tutarlı, passive, cloze…"
-             autocomplete="off" autofocus>
-      <select id="tur" aria-label="Sonuç türü">
+             autocomplete="off" autofocus></label>
+      <label class="filter-field"><span>Sonuç türü</span><select id="tur">
         <option value="">Her yerde</option>
         <option value="kelime">Kelimeler</option>
         <option value="obek">Öbekler</option>
@@ -70,19 +71,19 @@
         <option value="konu">Gramer konuları</option>
         <option value="unite">YDS konu haritası</option>
         <option value="aile">Kelime aileleri</option>
-      </select>
+      </select></label>
     </div>
 
-    <p class="small muted" id="sayac">Aramak için yazmaya başla.</p>
+    <p class="small muted" id="sayac" role="status" aria-live="polite" aria-atomic="true">Aramak için yazmaya başla.</p>
     <div id="sonuclar"></div>
 
-    <!-- çift tıklamada açılan ayrıntı kartı -->
-    <div class="kart-perde" id="kartPerde" hidden>
-      <div class="kart-kutu" role="dialog" aria-modal="true" aria-labelledby="kartBaslik">
-        <button class="kart-kapat" type="button" id="kartKapat" title="Kapat (Esc)">✕</button>
+    <!-- tek tıklamada açılan ayrıntı kartı -->
+    <dialog class="kart-perde" id="kartPerde" aria-label="Arama sonucu ayrıntısı">
+      <div class="kart-kutu">
+        <button class="kart-kapat" type="button" id="kartKapat" title="Kapat (Esc)" aria-label="Ayrıntıyı kapat">✕</button>
         <div id="kartIcerik"></div>
       </div>
-    </div>
+    </dialog>
 
   </div>
 </main>
@@ -97,6 +98,8 @@
 <script src="data/kelime-dizin.js"></script>
 <script src="data/baglaclar.js"></script>
 <script src="data/sorular.js"></script>
+<script src="data/sorular-ek.js"></script>
+<script src="assets/js/soru-konu.js"></script>
 <script src="data/konular.js"></script>
 <script src="data/aileler.js"></script>
 <script src="data/olumsuzlar.js"></script>

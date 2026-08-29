@@ -6,6 +6,8 @@
 (function () {
   'use strict';
 
+  document.documentElement.classList.add('js');
+
   /* ---------- tema ---------- */
 
   var THEME_KEY = 'yds-tema';
@@ -96,6 +98,11 @@
       .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
 
+  function hareket() {
+    return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ? 'auto' : 'smooth';
+  }
+
   /* ---------- güvenli yeniden yükleme koordinatörü ----------
      Servis çalışanı ve ilk bulut birleşimi aynı açılışta yenileme
      isteyebilir. Bütün teknik yenilemeler bu tek kapıdan geçer; aynı belge
@@ -135,6 +142,84 @@
     });
   }
 
+  /* ---------- ortak erişilebilir gezinme ---------- */
+
+  function sayfaIskeleti() {
+    var ana = document.querySelector('main');
+    if (ana) {
+      if (!ana.id) ana.id = 'anaIcerik';
+      if (!ana.hasAttribute('tabindex')) ana.setAttribute('tabindex', '-1');
+      if (!document.querySelector('.skip-link')) {
+        var atla = document.createElement('a');
+        atla.className = 'skip-link';
+        atla.href = '#' + ana.id;
+        atla.textContent = 'Ana içeriğe geç';
+        document.body.insertBefore(atla, document.body.firstChild);
+      }
+    }
+
+    var nav = document.querySelector('.site-nav');
+    if (nav) {
+      nav.id = nav.id || 'anaMenu';
+      nav.setAttribute('aria-label', 'Ana menü');
+      nav.querySelectorAll('a').forEach(function (a) {
+        if (/quiz\.html$/.test(a.getAttribute('href') || '')) a.textContent = 'Alıştırma';
+        if (/gramer\.html$/.test(a.getAttribute('href') || '')) a.textContent = 'Hızlı Gramer';
+      });
+
+      var dugme = document.createElement('button');
+      dugme.type = 'button';
+      dugme.className = 'menu-toggle';
+      dugme.setAttribute('aria-controls', nav.id);
+      dugme.setAttribute('aria-expanded', 'false');
+      dugme.setAttribute('aria-label', 'Ana menüyü aç');
+      dugme.innerHTML = '<span aria-hidden="true">☰</span><span>Menü</span>';
+      nav.parentNode.insertBefore(dugme, nav);
+
+      function menuDurumu(acik) {
+        nav.classList.toggle('acik', acik);
+        dugme.setAttribute('aria-expanded', acik ? 'true' : 'false');
+        dugme.setAttribute('aria-label', acik ? 'Ana menüyü kapat' : 'Ana menüyü aç');
+      }
+      dugme.addEventListener('click', function () {
+        menuDurumu(dugme.getAttribute('aria-expanded') !== 'true');
+      });
+      nav.addEventListener('click', function (e) {
+        if (e.target.closest('a')) menuDurumu(false);
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && dugme.getAttribute('aria-expanded') === 'true') {
+          menuDurumu(false);
+          dugme.focus();
+        }
+      });
+      document.addEventListener('click', function (e) {
+        if (dugme.getAttribute('aria-expanded') === 'true' &&
+            !nav.contains(e.target) && !dugme.contains(e.target)) menuDurumu(false);
+      });
+    }
+
+    document.querySelectorAll('button[title]:not([aria-label])').forEach(function (b) {
+      b.setAttribute('aria-label', b.getAttribute('title'));
+    });
+    document.querySelectorAll('.progress').forEach(function (p) {
+      if (!p.hasAttribute('role')) p.setAttribute('role', 'progressbar');
+      if (!p.hasAttribute('aria-valuemin')) p.setAttribute('aria-valuemin', '0');
+      if (!p.hasAttribute('aria-valuemax')) p.setAttribute('aria-valuemax', '100');
+      if (!p.hasAttribute('aria-valuenow')) p.setAttribute('aria-valuenow', '0');
+    });
+
+    var alt = document.querySelector('.site-footer .wrap');
+    if (alt && !alt.querySelector('.footer-links')) {
+      var baglar = document.createElement('span');
+      baglar.className = 'footer-links';
+      baglar.innerHTML = '<a href="yontem.html">Yöntem ve kaynaklar</a> · ' +
+        '<a href="ayarlar.html">Gizlilik ve veriler</a> · ' +
+        '<a href="https://github.com/turksev/turksev.github.io/issues/new">Hata bildir</a>';
+      alt.appendChild(baglar);
+    }
+  }
+
   /* ---------- çevrimdışı çalışma ---------- */
 
   function servisCalisaniniKaydet() {
@@ -142,18 +227,46 @@
     if (!('serviceWorker' in navigator)) return;
     if (location.protocol !== 'https:' && location.hostname !== 'localhost') return;
 
-    /* Yeni sürüm yayımlandığında sayfa ESKİ kodla çalışmaya devam ediyordu:
-       servis çalışanı dosyaları arka planda tazeliyor, sayfa ancak BİR SONRAKİ
-       açılışta yeni kodu görüyordu. Bu yüzden bir düzeltme (ör. sıfırlamada çift
-       onay) kullanıcıya bir tur geç ulaşıyordu. Yeni sürüm devralır almaz ortak
-       koordinatörden yenileme istiyoruz. */
+    function guncellemeBildir(kayit) {
+      if (!kayit.waiting || document.getElementById('surumBildirimi')) return;
+      var kutu = document.createElement('div');
+      kutu.id = 'surumBildirimi';
+      kutu.className = 'surum-bildirimi';
+      kutu.setAttribute('role', 'status');
+      kutu.innerHTML = '<span>Yeni sürüm hazır.</span>' +
+        '<button class="btn sm" type="button">Şimdi güncelle</button>' +
+        '<button class="btn ghost sm" type="button">Sonra</button>';
+      var dugmeler = kutu.querySelectorAll('button');
+      dugmeler[0].addEventListener('click', function () {
+        try { sessionStorage.setItem('yds-sw-yenile', '1'); } catch (e) {}
+        kayit.waiting.postMessage({ type: 'YENI_SURUMU_ETKINLESTIR' });
+      });
+      dugmeler[1].addEventListener('click', function () { kutu.remove(); });
+      document.body.appendChild(kutu);
+    }
+
     navigator.serviceWorker.addEventListener('controllerchange', function () {
-      yenidenYukle('servis-calisani');
+      var onayli = false;
+      try {
+        onayli = sessionStorage.getItem('yds-sw-yenile') === '1';
+        sessionStorage.removeItem('yds-sw-yenile');
+      } catch (e) {}
+      if (onayli) yenidenYukle('servis-calisani');
     });
 
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').then(function (kayit) {
-        kayit.update();                                  // her açılışta yeni sürümü sor
+        guncellemeBildir(kayit);
+        kayit.addEventListener('updatefound', function () {
+          var yeni = kayit.installing;
+          if (!yeni) return;
+          yeni.addEventListener('statechange', function () {
+            if (yeni.state === 'installed' && navigator.serviceWorker.controller) {
+              guncellemeBildir(kayit);
+            }
+          });
+        });
+        kayit.update();
         setInterval(function () { kayit.update(); }, 30 * 60 * 1000);
       }).catch(function () { /* önemli değil */ });
     });
@@ -195,13 +308,14 @@
   /* ---------- başlat ---------- */
 
   function baslat() {
+    sayfaIskeleti();
     servisCalisaniniKaydet();
     var btn = document.querySelector('.theme-toggle:not(.esit-dugme)');
     if (btn) btn.addEventListener('click', temaDegistir);
     butonuGuncelle();
     aktifBaglanti();
 
-    depoCubugu();
+    if (location.hostname === 'localhost' || /(?:^|[?&])debug=depo(?:&|$)/.test(location.search)) depoCubugu();
 
     var yil = document.querySelector('[data-yil]');
     if (yil) yil.textContent = new Date().getFullYear();
@@ -283,6 +397,7 @@
   window.YDS = {
     Depo: Depo, sadelestir: sadelestir, karistir: karistir, kacar: kacar,
     ikiKereSor: ikiKereSor, geriAlKutusu: geriAlKutusu, yildiz: yildiz,
-    yenidenYukle: yenidenYukle, depolamaUyarisi: depolamaUyarisi
+    yenidenYukle: yenidenYukle, depolamaUyarisi: depolamaUyarisi,
+    hareket: hareket
   };
 })();

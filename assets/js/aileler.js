@@ -37,7 +37,7 @@
     var liste = (window.OLUMSUZLAR || {})[en];
     if (!liste || !liste.length) return '';
     return '<div class="olumsuz">⊘ Olumsuzu: ' + liste.map(function (o) {
-      return '<b>' + kacar(o.f) + '</b> — ' + kacar(o.tr);
+      return '<b lang="en">' + kacar(o.f) + '</b> — ' + kacar(o.tr);
     }).join(' · ') + '</div>';
   }
 
@@ -103,7 +103,7 @@
       ornekler = tamKayit.a.map(function (x) {
         return '<div class="uye-ornek">' +
                  '<b>' + kacar(x.tr) + '</b>' +
-                 '<i>' + kacar(x.ex) + '</i>' +
+                 '<i lang="en">' + kacar(x.ex) + '</i>' +
                  '<i class="tr-ex">' + kacar(x.exTr) + '</i>' +
                '</div>';
       }).join('');
@@ -111,15 +111,18 @@
 
     return '<div class="uye' + (kokMu ? ' kok' : '') + '" data-w="' + kacar(w) + '">' +
         '<div class="uye-bas">' +
-          '<span class="uye-en">' + kacar(w) + '</span>' +
+          '<span class="uye-en" lang="en">' + kacar(w) + '</span>' +
           '<span class="badge">' + kacar(d.y) + '</span>' +
           (d.p !== undefined ? '<span class="badge accent" title="YDS öncelik puanı">' +
                                d.p + ' p</span>' : '') +
           kutuRozeti(w) +
           '<span class="uye-act">' +
-            '<button class="star" type="button" data-ne="bilmedim" title="Bilemedim — bir kutu geri düşer, yarın tekrar gelir">✗</button>' +
-            '<button class="star" type="button" data-ne="bildim" title="Bildim — bir üst kutuya çıkar">✓</button>' +
-            '<button class="star" type="button" data-ne="zaten" title="Zaten biliyorum — en üst kutuya at">✓✓</button>' +
+            '<button class="star" type="button" data-ne="bilmedim" title="Bilemedim — bir kutu geri düşer, yarın tekrar gelir" aria-label="' +
+              kacar(w) + ' kelimesini bilemedim">✗</button>' +
+            '<button class="star" type="button" data-ne="bildim" title="Bildim — bir üst kutuya çıkar" aria-label="' +
+              kacar(w) + ' kelimesini bildim">✓</button>' +
+            '<button class="star" type="button" data-ne="zaten" title="Zaten biliyorum — en üst kutuya at" aria-label="' +
+              kacar(w) + ' kelimesini zaten biliyorum">✓✓</button>' +
           '</span>' +
         '</div>' +
         // Tam kayıt açıldıysa anlamlar örneklerin başında kalın yazılıyor;
@@ -135,18 +138,19 @@
     var acikMi = !!acik[a.k];
     var yuzde = Math.round(d.ogrenilen / d.toplam * 100);
     var renk = yuzde === 100 ? 'var(--ok)' : (yuzde > 0 ? 'var(--warn)' : 'var(--border)');
+    var govdeId = 'aile-govde-' + AILELER.indexOf(a);
 
     var govde;
     if (acikMi) {
-      govde = '<div class="aile-uyeler">' + a.u.map(function (w) {
+      govde = '<div class="aile-uyeler" id="' + govdeId + '">' + a.u.map(function (w) {
         return uyeSatiri(w, w === a.k, Veri.kayit(w));
       }).join('') + '</div>';
     } else {
-      govde = '<div class="aile-ozet">' + a.u.map(function (w) {
+      govde = '<div class="aile-ozet" id="' + govdeId + '">' + a.u.map(function (w) {
         var kk = Il.kutu(w);
         return '<span class="cip' + (w === a.k ? ' kok' : '') +
                (kk >= 4 ? ' ogrenildi' : (kk > 0 ? ' baslandi' : '')) + '">' +
-               kacar(w) + '</span>';
+               '<span lang="en">' + kacar(w) + '</span></span>';
       }).join('') + '</div>';
     }
 
@@ -162,10 +166,15 @@
       : '';
 
     return '<article class="aile' + (acikMi ? ' acik' : '') + '" data-kok="' + kacar(a.k) + '">' +
-        '<button class="aile-baslik" type="button">' +
-          '<span class="aile-kok">' + kacar(a.k) + '</span>' +
+        '<button class="aile-baslik" type="button" aria-expanded="' + (acikMi ? 'true' : 'false') +
+          '" aria-controls="' + govdeId + '" aria-label="' + kacar(a.k) + ' ailesini ' +
+          (acikMi ? 'kapat' : 'aç') + '">' +
+          '<span class="aile-kok" lang="en">' + kacar(a.k) + '</span>' +
           '<span class="aile-sayi">' + d.ogrenilen + '/' + d.toplam + ' tür</span>' +
-          '<span class="aile-ilerleme" title="' + d.ogrenilen + '/' + d.toplam + ' öğrenildi">' +
+          '<span class="aile-ilerleme" role="progressbar" aria-label="' + kacar(a.k) +
+            ' ailesinin öğrenme ilerlemesi" aria-valuemin="0" aria-valuemax="' + d.toplam +
+            '" aria-valuenow="' + d.ogrenilen + '" aria-valuetext="' + d.ogrenilen +
+            ' / ' + d.toplam + ' öğrenildi" title="' + d.ogrenilen + '/' + d.toplam + ' öğrenildi">' +
             '<i style="width:' + yuzde + '%;background:' + renk + '"></i>' +
           '</span>' +
           '<span class="aile-ok">' + (acikMi ? '▲' : '▼') + '</span>' +
@@ -187,6 +196,10 @@
     if (bosMu) { elListe.innerHTML = ''; $('dahaFazla').hidden = true; return; }
 
     elListe.innerHTML = suzulmus.slice(0, gosterilen).map(aileKarti).join('');
+
+    var gorunen = suzulmus.slice(0, gosterilen);
+    $('hepsiniAc').setAttribute('aria-expanded', gorunen.length &&
+      gorunen.every(function (a) { return acik[a.k]; }) ? 'true' : 'false');
 
     var kalan = suzulmus.length - gosterilen;
     $('dahaFazla').hidden = kalan <= 0;
