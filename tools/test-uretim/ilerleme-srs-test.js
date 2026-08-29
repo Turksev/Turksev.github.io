@@ -48,23 +48,29 @@ gunIlerle(3); Il.dogru('alpha', 'kelime');
 gunIlerle(7); Il.dogru('alpha', 'kelime');
 gunIlerle(15); Il.dogru('alpha', 'kelime');
 assert.strictEqual(Il.kayit('alpha', 'kelime').k, 5);
-assert.strictEqual(Il.kayit('alpha', 'kelime').kalan, 30);
+assert.strictEqual(Il.kayit('alpha', 'kelime').kalan, 0);
 assert.strictEqual(Il.kayit('alpha', 'kelime').m, 0);
 
 gunIlerle(30);
-assert.strictEqual(Il.vadesiGeldiMi('alpha', 'kelime'), true, '5. kutu bakım vadesi görünmeli');
-Il.dogru('alpha', 'kelime');
-assert.strictEqual(Il.kayit('alpha', 'kelime').kalan, 90);
-assert.strictEqual(Il.kayit('alpha', 'kelime').m, 1);
-gunIlerle(90); Il.dogru('alpha', 'kelime');
-assert.strictEqual(Il.kayit('alpha', 'kelime').kalan, 180);
-assert.strictEqual(Il.kayit('alpha', 'kelime').m, 2);
+assert.strictEqual(Il.vadesiGeldiMi('alpha', 'kelime'), false, '5. kutu yeniden vadesi gelmemeli');
 assert.strictEqual(Il.yanlis('alpha', 'kelime'), 4, 'yanlış yalnız bir kutu geri almalı');
 assert.strictEqual(Il.kayit('alpha', 'kelime').kalan, 1);
 
 Il.zatenBiliyorum('beta', 'kelime');
 assert.strictEqual(Il.kayit('beta', 'kelime').k, 5);
-assert.strictEqual(Il.kayit('beta', 'kelime').kalan, 30, 'zaten bilinen kart bakım programına girmeli');
+assert.strictEqual(Il.kayit('beta', 'kelime').kalan, 0, 'zaten bilinen kart tamamlanmış sayılmalı');
+assert.strictEqual(Il.vadesiGeldiMi('beta', 'kelime'), false, 'zaten bilinen kart yeniden sorulmamalı');
+var sonKutuDestesi = Il.destelik([{ en: 'beta' }], 'kelime');
+assert.strictEqual(sonKutuDestesi.length, 0, '5. kutu günlük desteye yeniden girmemeli');
+
+var kelimeKodu = fs.readFileSync(path.join(kok, 'assets/js/kelimeler.js'), 'utf8');
+assert.ok(/\$\('zatenBiliyorum'\)\.disabled = false/.test(kelimeKodu),
+  'zaten biliyorum kart açıldıktan sonra da etkin kalmalı');
+assert.ok(!/ne === 'zaten' && \(kartAcik \|\| ipucuAcik\)/.test(kelimeKodu),
+  'açılmış kart zaten biliyorum değerlendirmesini engellememeli');
+
+var gununTestiKodu = fs.readFileSync(path.join(kok, 'assets/js/gunun-testi.js'), 'utf8');
+assert.ok(/r\.k >= 5/.test(gununTestiKodu), '5. kutu günün kelime testine yeniden girmemeli');
 
 ['r1', 'r2', 'r3'].forEach(function (ad) { Il.dogru(ad, 'kelime'); });
 gunIlerle(1);
@@ -92,4 +98,4 @@ var okuma = Il.kategoriOzet().filter(function (x) { return x.kat === 'Okuma'; })
 assert.strictEqual(okuma.toplam, 1, 'aynı soru kategori kapsamını şişirmemeli');
 assert.strictEqual(okuma.dogru, 0, 'aynı sorunun son cevabı esas alınmalı');
 
-console.log('ilerleme-SRS: bakım, tekrar önceliği, yanlış defteri ve farklı-soru özeti başarılı');
+console.log('ilerleme-SRS: son kutu, tekrar önceliği, yanlış defteri ve farklı-soru özeti başarılı');

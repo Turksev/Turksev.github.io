@@ -22,7 +22,7 @@
     2: { ad: '2. kutu', not: 'henüz oturmadı — 3 günde bir', sinif: 'warn' },
     3: { ad: '3. kutu', not: 'oturuyor — haftada bir', sinif: '' },
     4: { ad: '4. kutu', not: 'neredeyse tamam — 15 günde bir', sinif: 'ok' },
-    5: { ad: '5. kutu', not: 'öğrenildi — 30, 90 ve 180 günlük bakım tekrarları sürer', sinif: 'ok' }
+    5: { ad: '5. kutu', not: 'öğrenildi — ilerleme sıfırlanana kadar yeniden sorulmaz', sinif: 'ok' }
   };
 
   var kayitlar = [];        // {kimlik, ad, tur, kutu, kalan, tr, y, p}
@@ -80,7 +80,7 @@
     var say = { 0: kayitlar.length, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
     kayitlar.forEach(function (k) { say[k.kutu] = (say[k.kutu] || 0) + 1; });
 
-    // 5. kutudaki öğrenilmiş kayıtların da bakım tekrarı vadesi gelebilir.
+    // 5. kutu tamamlanmıştır; yalnız 1–4. kutuların tekrar vadesi gelebilir.
     var vadesi = kayitlar.filter(function (k) {
       return Il.vadesiGeldiMi(k.ad, k.tur);
     }).length;

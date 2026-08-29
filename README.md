@@ -138,14 +138,13 @@ Her kelime 1–5 arası bir kutuda durur. Kart modunda **✓ Bildim** dersen bir
 | 2 | 3 gün sonra |
 | 3 | 7 gün sonra |
 | 4 | 15 gün sonra |
-| 5 | **30 gün sonra — öğrenildi/bakım** |
+| 5 | **Öğrenildi — yeniden sorulmaz** |
 
 **Yanlış cevap bir kutu geri düşürür** (sıfırlamaz) ve kelimeyi ertesi güne alır: bir aydır
 bildiğin kelimeyi tek şaşırmada baştan başlatmak tekrar yükünü katlıyordu.
 
-**5. kutu öğrenildi durumudur**, fakat unutmayı yakalamak için bakım tekrarları sürer:
-ilk bakım 30, sonraki 90, daha sonrakiler 180 gün arayladır. Bakımda doğru bilinen kart
-5. kutuda kalır; yanlış bilinen kart bir kutu geri düşer ve ertesi gün yeniden gelir.
+**5. kutu öğrenildi durumudur.** Kart, kullanıcı ilerlemeyi sıfırlayana kadar çalışma
+destesine ve günün kelime testine yeniden girmez.
 
 **Günlük toplam kart tavanı.** Kelime sayfasındaki "Bugün toplam kart" seçicisi destenin
 boyunu sınırlar (`yds-gunluk-tavan`, varsayılan 30). Sıra şu: önce vadesi gelmiş tekrarlar

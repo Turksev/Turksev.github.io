@@ -50,12 +50,10 @@
   var K_YENI_SAYAC = 'yds-yeni-sayac';  // {g: gün, n: bugün açılan yeni kelime}
   var K_TAVAN = 'yds-gunluk-tavan';     // günlük TOPLAM kart sınırı (yeni + tekrar)
 
-  /* Kutu numarasına göre tekrar aralığı (gün). */
-  var ARALIK = { 1: 1, 2: 3, 3: 7, 4: 15, 5: 30 };
-  /* 5. kutu öğrenilmiş sayılır; fakat kalıcılığı ölçmek için 30, 90 ve
-     ardından 180 günlük bakım tekrarları sürer. Eski 5. kutu kayıtları
-     zaten bir sonraki günlerini `g` alanında taşıdığı için veri göçü gerekmez. */
-  var BAKIM_ARALIK = [30, 90, 180];
+  /* Kutu numarasına göre tekrar aralığı (gün). 5. kutu son duraktır:
+     kullanıcı ilerlemeyi sıfırlayana kadar öğrenilmiş olarak kalır ve
+     çalışma destesine yeniden girmez. */
+  var ARALIK = { 1: 1, 2: 3, 3: 7, 4: 15 };
   var EN_UST_KUTU = 5;
   var GECMIS_SINIRI = 50;
 
@@ -205,15 +203,13 @@
   /* Yalnizca BASLANMIS kelimeler icin: tekrar gunu geldi mi?
      Hic calisilmamis kelime "vadesi gelmis" sayilmaz — o yeni kelimedir ve
      gunluk kotayla acilir. Ikisini ayirmazsak ilk gun 7.848 kart cikardi. */
-  /* En üst kutuya çıkan kelime öğrenilmiş sayılır; düşük sıklıklı bakım
-     tekrarları yine de gelir. Bu, uzun süre kullanılmayan kelimelerin sessizce
-     unutulmasını önler. */
+  /* En üst kutuya çıkan kelime öğrenilmiş sayılır ve yeniden vadesi gelmez. */
   function mezunMu(en, tur) { return kutu(en, tur) >= EN_UST_KUTU; }
 
   function vadesiGeldiMi(en, tur) {
     en = ilerlemeKimligi(en, tur);
     var kayit = leitner[en];
-    if (!kayit) return false;
+    if (!kayit || kayit.k >= EN_UST_KUTU) return false;
     return kayit.g <= bugun();
   }
 
@@ -280,7 +276,7 @@
     var ilk = yeniMi(en, tur);
     var onceki = kutu(en, tur);
     if (!kayitYaz(en,
-      { k: EN_UST_KUTU, g: bugun() + BAKIM_ARALIK[0], c: bugun(), m: 0 }, tur)) return false;
+      { k: EN_UST_KUTU, g: bugun(), c: bugun(), m: 0 }, tur)) return false;
     if (ilk) yeniAcildiSay();
     return EN_UST_KUTU;
   }
@@ -297,12 +293,8 @@
     var ilk = yeniMi(en, tur);
     var onceki = kutu(en, tur);
     var k = Math.min(EN_UST_KUTU, onceki + 1);
-    var eski = leitner[ilerlemeKimligi(en, tur)] || {};
-    var m = k >= EN_UST_KUTU ? (onceki >= EN_UST_KUTU ? (eski.m || 0) + 1 : 0) : 0;
-    var aralik = k >= EN_UST_KUTU
-      ? BAKIM_ARALIK[Math.min(m, BAKIM_ARALIK.length - 1)]
-      : ARALIK[k];
-    if (!kayitYaz(en, { k: k, g: bugun() + aralik, c: bugun(), m: m }, tur)) return false;
+    var aralik = k >= EN_UST_KUTU ? 0 : ARALIK[k];
+    if (!kayitYaz(en, { k: k, g: bugun() + aralik, c: bugun(), m: 0 }, tur)) return false;
     if (ilk) yeniAcildiSay();
     return k;
   }
@@ -313,11 +305,8 @@
     var ilk = yeniMi(en, tur);
     var onceki = kutu(en, tur);
     var k = Math.max(1, onceki);
-    var eski = leitner[ilerlemeKimligi(en, tur)] || {};
-    var aralik = k >= EN_UST_KUTU
-      ? BAKIM_ARALIK[Math.min(eski.m || 0, BAKIM_ARALIK.length - 1)]
-      : ARALIK[k];
-    if (!kayitYaz(en, { k: k, g: bugun() + aralik, c: bugun(), m: eski.m || 0 }, tur)) return false;
+    var aralik = k >= EN_UST_KUTU ? 0 : ARALIK[k];
+    if (!kayitYaz(en, { k: k, g: bugun() + aralik, c: bugun(), m: 0 }, tur)) return false;
     if (ilk) yeniAcildiSay();
     return k;
   }

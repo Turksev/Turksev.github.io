@@ -54,7 +54,7 @@
       <b id="toplamKelime">7.848</b> kelime, gerçek YDS sınavlarındaki geçme sıklığına göre yedi katmana
       ayrıldı. Kelimeler <b>aralıklı tekrar</b> ile çalışılır: doğru bildiğin bir üst kutuya çıkıp
       seyrekleşir, bilemediğin bir kutu geri düşüp yarın yeniden gelir.
-      5. kutuya çıkan kelime öğrenilmiş sayılır; 30, 90 ve 180 günlük bakım tekrarlarıyla kalıcılığı korunur.
+      5. kutuya çıkan kelime öğrenilmiş sayılır ve ilerleme sıfırlanana kadar yeniden sorulmaz.
     </p>
 
     <!-- katman seçici -->
@@ -229,7 +229,7 @@
         <button class="btn ghost sm" type="button" id="bilmedim" style="border-color:var(--err);color:var(--err)">✗ Bilemedim</button>
         <button class="btn sm" type="button" id="bildim">✓ Bildim</button>
         <button class="btn ghost sm" type="button" id="zatenBiliyorum"
-                title="Bu kelimeyi zaten biliyorum — öğrenildi say ve bakım tekrarlarına al">
+                title="Yan anlamları kontrol ettim; bu kelimeyi öğrenildi say ve bir daha sorma">
           ✓✓ Zaten biliyorum
         </button>
       </div>

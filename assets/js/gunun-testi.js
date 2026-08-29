@@ -239,7 +239,9 @@
     return DIZINI().filter(function (d) {
       if (sinir && !sinir[d.e]) return false;
       var r = Il.kayit(d.e, aktif.tur);
-      if (!r || !r.k) return false;
+      // 5. kutu tamamlanmıştır; kullanıcı ilerlemeyi sıfırlayana kadar
+      // günlük deste gibi bağlam testine de yeniden girmez.
+      if (!r || !r.k || r.k >= 5) return false;
       // Yeni kayıtlarda son çalışma günü doğrudan tutulur. c alanı olmayan
       // eski kayıtlarda önceki tekrar-tarihi hesabı geriye uyumluluk sağlar.
       return typeof r.c === 'number'

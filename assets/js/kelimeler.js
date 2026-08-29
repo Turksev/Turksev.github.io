@@ -118,7 +118,7 @@
       var ad = k === 0 ? 'yeni' : (k === 5 ? 'öğrenildi' : k + '. kutu');
       return '<button type="button" class="kutu' + (seciliKutu === k ? ' acik' : '') +
         '" data-k="' + k + '" title="' + (k === 0 ? 'Hiç çalışılmamış kelimeler'
-          : (k === 5 ? 'Öğrenilmiş: seyrek bakım tekrarları sürer' : k + '. kutudaki kelimeler')) +
+          : (k === 5 ? 'Öğrenilmiş: çalışma destesine yeniden gelmez' : k + '. kutudaki kelimeler')) +
         ' — göstermek için tıkla" aria-pressed="' + (seciliKutu === k ? 'true' : 'false') +
         '" aria-label="' + ad + ', ' + o['k' + k] + ' kelime">' +
         '<b>' + o['k' + k] + '</b><i>' + ad + '</i></button>';
@@ -264,7 +264,7 @@
   function kutuRozeti(en) {
     var k = Il.kutu(en, ILERLEME_TURU);
     if (k === 0) return '<span class="badge">yeni</span>';
-    if (Il.mezunMu(en, ILERLEME_TURU)) return '<span class="badge ok" title="Öğrenildi — bakım tekrarları sürer">öğrenildi ✓</span>';
+    if (Il.mezunMu(en, ILERLEME_TURU)) return '<span class="badge ok" title="Öğrenildi — çalışma destesine yeniden gelmez">öğrenildi ✓</span>';
     var gun = Il.kalanGun(en, ILERLEME_TURU);
     var sinif = k >= 4 ? 'badge ok' : (k <= 2 ? 'badge warn' : 'badge');
     return '<span class="' + sinif + '">' + k + '. kutu · ' + (gun === 0 ? 'bugün' : gun + ' gün') + '</span>';
@@ -383,7 +383,7 @@
 
     $('kartOn').textContent = d.e;
     $('kartKutu').innerHTML = KUTU_ADI[Il.kutu(d.e, ILERLEME_TURU)] +
-      (Il.mezunMu(d.e, ILERLEME_TURU) ? ' · öğrenildi, bakım tekrarı sürer'
+      (Il.mezunMu(d.e, ILERLEME_TURU) ? ' · öğrenildi, yeniden sorulmaz'
                        : (Il.vadesiGeldiMi(d.e, ILERLEME_TURU) ? ' · tekrar zamanı' : ''));
 
     $('kartTr').innerHTML = tam.a.map(function (a) {
@@ -414,10 +414,11 @@
       : 'Çevirmek için karta tıkla · boşluk tuşu';
 
     // Aktif hatırlama: önce zihninden cevapla, sonra kartı çevirip kendini
-    // değerlendir. "Zaten biliyorum" yalnız cevap görünmeden kullanılabilir.
+    // değerlendir. "Zaten biliyorum" yan anlamları kontrol ettikten sonra da
+    // kullanılabilir ve kartı doğrudan son kutuya taşır.
     $('bildim').disabled = !kartAcik;
     $('bilmedim').disabled = !kartAcik;
-    $('zatenBiliyorum').disabled = kartAcik || ipucuAcik;
+    $('zatenBiliyorum').disabled = false;
     elKart.setAttribute('aria-expanded', kartAcik ? 'true' : 'false');
     elKart.setAttribute('aria-label', d.e + ' kelimesinin cevabını ' + (kartAcik ? 'gizle' : 'göster'));
   }
@@ -435,7 +436,6 @@
     var d = suzulmus[kartIndex];
     if (!d) return;
 
-    if (ne === 'zaten' && (kartAcik || ipucuAcik)) return;
     if (ne !== 'zaten' && !kartAcik) return;
 
     var sonuc;
@@ -692,7 +692,7 @@
     }
     else if (e.key === '1' && kartAcik) { e.preventDefault(); kartCevap('yanlis'); }
     else if (e.key === '2' && kartAcik) { e.preventDefault(); kartCevap('dogru'); }
-    else if (e.key === '3' && !kartAcik && !ipucuAcik) { e.preventDefault(); kartCevap('zaten'); }
+    else if (e.key === '3') { e.preventDefault(); kartCevap('zaten'); }
     else if (e.key.toLowerCase() === 's') {
       e.preventDefault();
       var d = suzulmus[kartIndex];

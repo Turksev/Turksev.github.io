@@ -11,7 +11,7 @@
   var MAKS_DOSYA = 5 * 1024 * 1024;
   var YEDEK_TURU = 'yds-ilerleme-yedegi';
   var KURTARMA_ANAHTARI = 'yds-ice-aktarma-kurtarma-v1';
-  var UYGULAMA_SURUMU = 'yds-v142';
+  var UYGULAMA_SURUMU = 'yds-v143';
   var ALANLAR = Object.keys(M.TIPLER);
   var SIFIRLANAN_ALANLAR = [
     'yds-leitner', 'yds-yanlis', 'yds-kategori', 'yds-gecmis', 'yds-konular',

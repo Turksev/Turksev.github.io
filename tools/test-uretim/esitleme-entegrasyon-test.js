@@ -55,7 +55,7 @@ sayfalar.forEach(function (dosya) {
 var sw = fs.readFileSync(path.join(kok, 'sw.js'), 'utf8');
 var main = fs.readFileSync(path.join(kok, 'assets', 'js', 'main.js'), 'utf8');
 var bulut = fs.readFileSync(path.join(kok, 'assets', 'js', 'esitleme-v2.js'), 'utf8');
-assert.ok(/var SURUM = 'yds-v142'/.test(sw), 'servis çalışanı sürümü artırılmadı');
+assert.ok(/var SURUM = 'yds-v143'/.test(sw), 'servis çalışanı sürümü artırılmadı');
 assert.ok(sw.indexOf("'./data/kelime-aliaslari.js'") >= 0,
   'kelime aliasları çevrimdışı önbellekte değil');
 ['esitleme-veri.js', 'esitleme-depo.js', 'esitleme-v2.js'].forEach(function (dosya) {
