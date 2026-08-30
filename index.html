@@ -204,6 +204,25 @@
 
   <section class="section">
     <div class="wrap">
+      <h2>YDS'de ne çıkıyor?</h2>
+      <p class="muted" style="max-width:70ch">
+        Sınav 80 sorudur ve bölümler her yıl aynı sırayla gelir. Deneme sayfasındaki
+        formlar da bu dağılıma göre kurulur.
+      </p>
+      <div class="tablo-kaydir">
+        <table class="dagilim" id="ydsDagilim">
+          <caption class="visually-hidden">YDS bölüm dağılımı: soru aralığı, bölüm, soru sayısı ve ne sorulduğu</caption>
+          <thead>
+            <tr><th scope="col">Soru</th><th scope="col">Bölüm</th><th scope="col">Adet</th><th scope="col">Ne sorulur</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
       <h2>Nasıl çalışmalı?</h2>
       <div class="grid">
         <div class="card">
@@ -236,6 +255,7 @@
 
 <script src="data/kelime-dizin.js"></script>
 <script src="data/sayilar.js"></script>
+<script src="data/yds-dagilim.js"></script>
 <script src="data/aileler.js"></script>
 <script src="data/baglaclar.js"></script>
 <script src="assets/js/ilerleme.js"></script>
@@ -246,6 +266,29 @@
   var Il = window.YDS.Ilerleme;
   var Veri = window.YDS.Veri;
   var kacar = window.YDS.kacar;
+
+  /* YDS bölüm dağılımı. İlerleme panelinden ÖNCE çizilir: aşağıdaki
+     "if (!basladi) return" hiç çalışmamış ziyaretçide erken çıkıyor,
+     oysa dağılım tablosu herkese görünmeli. Soru numaraları sırayla
+     toplanır; bir bölümün sayısı değişirse aralıklar kendiliğinden kayar. */
+  (function dagilimiCiz() {
+    var tablo = document.getElementById('ydsDagilim');
+    var bolumler = window.YDS_DAGILIM;
+    if (!tablo || !bolumler || !bolumler.length) return;
+    var sira = 0;
+    var satirlar = bolumler.map(function (b) {
+      var bas = sira + 1;
+      sira += b.n;
+      var aralik = b.n === 1 ? String(bas) : bas + '–' + sira;
+      return '<tr><td class="dagilim-no">' + aralik + '</td>' +
+        '<th scope="row">' + kacar(b.ad) + '</th>' +
+        '<td class="dagilim-n">' + b.n + '</td>' +
+        '<td class="muted small">' + kacar(b.not) + '</td></tr>';
+    });
+    satirlar.push('<tr class="dagilim-toplam"><td></td><th scope="row">Toplam</th>' +
+      '<td class="dagilim-n">' + sira + '</td><td class="muted small">180 dakika</td></tr>');
+    tablo.tBodies[0].innerHTML = satirlar.join('');
+  })();
 
   // Leitner özeti {en:…} bekliyor; dizin kayıtlarının alanı e.
   var KELIMELER = Veri.dizin.map(function (d) { return { en: d.e }; });

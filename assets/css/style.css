@@ -1258,6 +1258,34 @@ mark {
 .ks.warn b { color: var(--warn); }
 .ks.ok b { color: var(--ok); }
 .ks.acik.err, .ks.acik.warn, .ks.acik.ok { border-color: currentColor; }
+/* YDS bölüm dağılımı tablosu (ana sayfa). Dar ekranda kendi içinde kayar. */
+.tablo-kaydir { overflow-x: auto; }
+.dagilim {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  font-size: .94rem;
+}
+.dagilim th, .dagilim td { padding: 9px 14px; text-align: left; }
+.dagilim thead th {
+  background: var(--surface-2);
+  font-size: .8rem;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.dagilim tbody tr { border-top: 1px solid var(--border); }
+.dagilim tbody th { font-weight: 650; white-space: nowrap; }
+.dagilim-no, .dagilim-n { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.dagilim-no { color: var(--muted); }
+.dagilim-n { font-weight: 650; }
+.dagilim-toplam { background: var(--surface-2); }
+.dagilim-toplam th, .dagilim-toplam .dagilim-n { color: var(--accent); }
+
 /* Sekmelerin üstündeki sistem toplamı satırı. */
 .sistem-toplam {
   margin: 0 0 10px;

@@ -11,7 +11,7 @@
    eklediğinde hem SÜRÜM'ü artır hem de listeye ekle.
    ============================================================ */
 
-var SURUM = 'yds-v155';
+var SURUM = 'yds-v156';
 var ONBELLEK = SURUM;
 
 /* Kurulumda indirilenler: sayfalar, kod ve küçük veri dosyaları.
@@ -69,6 +69,7 @@ var TEMEL_DOSYALAR = [
   './data/konu-metinleri-e2-ek.js',
   './data/olumsuzlar.js',
   './data/sayilar.js',
+  './data/yds-dagilim.js',
   './data/sorular.js',
   './data/sorular-ek.js',
   './data/deneme-formlari.js',
