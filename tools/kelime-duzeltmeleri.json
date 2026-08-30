@@ -3,7 +3,10 @@
   "aciklama": "PDF kaynak denetimi ve yetkili sözlük doğrulamasıyla düzeltilen kelime başlıkları. Eskiler alanı ilerleme göçünün, ilerleme_kimligi alanı ise öbeklerle çakışan kelime kartlarının iç kimliğinin tek kaynağıdır.",
   "duzeltmeler": [
     {
-      "eskiler": ["hand-down", "handed-down"],
+      "eskiler": [
+        "hand-down",
+        "handed-down"
+      ],
       "yeni": "hand down",
       "ilerleme_kimligi": "@kelime:hand down",
       "tip": "fiil",
@@ -16,16 +19,36 @@
         }
       ],
       "kalip": [
-        {"en": "hand sth down to sb", "tr": "bir şeyi birine miras bırakmak / aktarmak"},
-        {"en": "be handed down from generation to generation", "tr": "nesilden nesile aktarılmak"}
+        {
+          "en": "hand sth down to sb",
+          "tr": "bir şeyi birine miras bırakmak / aktarmak"
+        },
+        {
+          "en": "be handed down from generation to generation",
+          "tr": "nesilden nesile aktarılmak"
+        }
       ],
       "kaynaklar": [
-        {"sinav_id": "yds-2013-01-2013-04-07", "pdf_sayfa": 3, "soru": 5, "yuzey": "handed down", "baglam_anlami": "nesilden nesile aktarılmak"},
-        {"sinav_id": "yds-2017-01-2017-04-02", "pdf_sayfa": 3, "soru": 6, "yuzey": "handed down", "rol": "çeldirici"}
+        {
+          "sinav_id": "yds-2013-01-2013-04-07",
+          "pdf_sayfa": 3,
+          "soru": 5,
+          "yuzey": "handed down",
+          "baglam_anlami": "nesilden nesile aktarılmak"
+        },
+        {
+          "sinav_id": "yds-2017-01-2017-04-02",
+          "pdf_sayfa": 3,
+          "soru": 6,
+          "yuzey": "handed down",
+          "rol": "çeldirici"
+        }
       ]
     },
     {
-      "eskiler": ["make-peace"],
+      "eskiler": [
+        "make-peace"
+      ],
       "yeni": "make peace",
       "ilerleme_kimligi": "@kelime:make peace",
       "tip": "fiil",
@@ -38,15 +61,30 @@
         }
       ],
       "kalip": [
-        {"en": "make peace with sb", "tr": "biriyle barışmak"},
-        {"en": "make peace with sth", "tr": "bir durumu kabullenmek"}
+        {
+          "en": "make peace with sb",
+          "tr": "biriyle barışmak"
+        },
+        {
+          "en": "make peace with sth",
+          "tr": "bir durumu kabullenmek"
+        }
       ],
       "kaynaklar": [
-        {"sinav_id": "eyds-2015-02-2015-02-21", "pdf_sayfa": 4, "soru": 36, "secenek": "C", "yuzey": "made peace with", "baglam_anlami": "kendisiyle barışmak / kendini kabullenmek"}
+        {
+          "sinav_id": "eyds-2015-02-2015-02-21",
+          "pdf_sayfa": 4,
+          "soru": 36,
+          "secenek": "C",
+          "yuzey": "made peace with",
+          "baglam_anlami": "kendisiyle barışmak / kendini kabullenmek"
+        }
       ]
     },
     {
-      "eskiler": ["boys-and-girls"],
+      "eskiler": [
+        "boys-and-girls"
+      ],
       "yeni": "boys and girls",
       "tip": "isim",
       "anlamlar": [
@@ -58,12 +96,21 @@
         }
       ],
       "kaynaklar": [
-        {"sinav_id": "yds-2020-01-2020-09-27", "pdf_sayfa": 10, "soru": 36, "secenek": "E", "yuzey": "boys and girls", "baglam_anlami": "erkek ve kız çocukları"}
+        {
+          "sinav_id": "yds-2020-01-2020-09-27",
+          "pdf_sayfa": 10,
+          "soru": 36,
+          "secenek": "E",
+          "yuzey": "boys and girls",
+          "baglam_anlami": "erkek ve kız çocukları"
+        }
       ],
       "not": "Boys-and-girls ayrıca nadir bir bitki adı olabilir; sınavdaki gerçek kullanım çocuklar anlamında olduğu için çalışma kaydı bu anlama bağlandı."
     },
     {
-      "eskiler": ["long-legs"],
+      "eskiler": [
+        "long-legs"
+      ],
       "yeni": "longlegs",
       "tip": "isim",
       "anlamlar": [
@@ -79,7 +126,9 @@
       "not": "49 PDF'de hedef veya varyantı bulunmadı; yalnız standart sözlük yazımı düzeltildi."
     },
     {
-      "eskiler": ["call-out"],
+      "eskiler": [
+        "call-out"
+      ],
       "yeni": "call-out",
       "tip": "isim",
       "anlamlar": [
@@ -101,7 +150,9 @@
       "not": "49 PDF'de bulunmadı; sözlükte doğrulanmayan düello isim anlamı kaldırıldı."
     },
     {
-      "eskiler": ["start-off"],
+      "eskiler": [
+        "start-off"
+      ],
       "yeni": "start off",
       "tip": "fiil",
       "anlamlar": [
@@ -119,15 +170,23 @@
         }
       ],
       "kalip": [
-        {"en": "start off with/by doing sth", "tr": "bir şeyle / bir şey yaparak başlamak"},
-        {"en": "start off as sth", "tr": "bir göreve/kimliğe ... olarak başlamak"}
+        {
+          "en": "start off with/by doing sth",
+          "tr": "bir şeyle / bir şey yaparak başlamak"
+        },
+        {
+          "en": "start off as sth",
+          "tr": "bir göreve/kimliğe ... olarak başlamak"
+        }
       ],
       "kaynaklar": [],
       "sozluk": "https://dictionary.cambridge.org/dictionary/english/start-off",
       "not": "49 PDF'de bulunmadı; standart biçim phrasal verb olarak boşlukla yazılır."
     },
     {
-      "eskiler": ["film-make"],
+      "eskiler": [
+        "film-make"
+      ],
       "yeni": "filmmaking",
       "tip": "isim",
       "anlamlar": [
@@ -139,12 +198,20 @@
         }
       ],
       "kaynaklar": [
-        {"sinav_id": "eyds-2015-01-2015-01-24", "pdf_sayfa": 4, "soru": 7, "yuzey": "filmmaking", "baglam_anlami": "film yapımı / film çekme sanatı"}
+        {
+          "sinav_id": "eyds-2015-01-2015-01-24",
+          "pdf_sayfa": 4,
+          "soru": 7,
+          "yuzey": "filmmaking",
+          "baglam_anlami": "film yapımı / film çekme sanatı"
+        }
       ],
       "sozluk": "https://dictionary.cambridge.org/dictionary/english/filmmaking"
     },
     {
-      "eskiler": ["walk-to"],
+      "eskiler": [
+        "walk-to"
+      ],
       "yeni": "walking distance",
       "tip": "isim",
       "anlamlar": [
@@ -156,14 +223,19 @@
         }
       ],
       "kalip": [
-        {"en": "within walking distance of sth", "tr": "bir yere yürüme mesafesinde"}
+        {
+          "en": "within walking distance of sth",
+          "tr": "bir yere yürüme mesafesinde"
+        }
       ],
       "kaynaklar": [],
       "sozluk": "https://dictionary.cambridge.org/dictionary/english/walking-distance",
       "not": "49 PDF'de bulunmadı; mevcut örnekteki yerleşik ifade walking distance olarak düzeltildi."
     },
     {
-      "eskiler": ["shape-up"],
+      "eskiler": [
+        "shape-up"
+      ],
       "yeni": "shake-up",
       "tip": "isim",
       "anlamlar": [
@@ -175,11 +247,55 @@
         }
       ],
       "kalip": [
-        {"en": "a shake-up of/in sth", "tr": "bir şeyde köklü değişiklik / yeniden yapılanma"}
+        {
+          "en": "a shake-up of/in sth",
+          "tr": "bir şeyde köklü değişiklik / yeniden yapılanma"
+        }
       ],
       "kaynaklar": [],
       "sozluk": "https://dictionary.cambridge.org/dictionary/english/shake-up",
       "not": "49 PDF'de bulunmadı; mevcut yönetim değişikliği anlamı shake-up sözcüğüne aittir. Shape-up farklı anlamlara gelir."
+    },
+    {
+      "eskiler": [
+        "row /raʊ/"
+      ],
+      "yeni": "row",
+      "tip": "isim, fiil",
+      "anlamlar": [
+        {
+          "tr": "i. sıra, dizi; satır (tablo/veritabanı)",
+          "ex": "The results are shown in the final row of the table.",
+          "exTr": "Sonuçlar tablonun son satırında gösterilmiştir.",
+          "yz": 4
+        },
+        {
+          "tr": "f. kürek çekmek",
+          "ex": "The crew had to row harder against the strong current.",
+          "exTr": "Mürettebat güçlü akıntıya karşı daha kuvvetli kürek çekmek zorunda kaldı.",
+          "yz": 3
+        },
+        {
+          "tr": "i. kavga, çekişme, ağız dalaşı",
+          "ex": "The two shareholders had a bitter row over the company's future.",
+          "exTr": "İki hissedar şirketin geleceği konusunda sert bir ağız dalaşı yaşadı.",
+          "yz": 2
+        },
+        {
+          "tr": "f. kavga etmek, tartışmak",
+          "ex": "The ministers rowed publicly over the proposed spending cuts.",
+          "exTr": "Bakanlar önerilen harcama kesintileri konusunda kamuoyu önünde tartıştı.",
+          "yz": 1
+        }
+      ],
+      "kaynaklar": [
+        {
+          "sinav_id": "yds-2013-01-2013-04-07",
+          "pdf_sayfa": 8,
+          "yuzey": "rowing",
+          "baglam_anlami": "kürek çekme"
+        }
+      ]
     }
   ],
   "korunan_kaynak_kayitlari": [
@@ -187,14 +303,25 @@
       "baslik": "low-lying",
       "karar": "Başlık ve alçak kesimde bulunan anlamı korunur.",
       "kaynaklar": [
-        {"sinav_id": "yds-2018-02-2018-09-09", "pdf_sayfa": 5, "soru": 9, "yuzey": "low-lying", "baglam_anlami": "alçak rakımlı / alçak kesimde bulunan"}
+        {
+          "sinav_id": "yds-2018-02-2018-09-09",
+          "pdf_sayfa": 5,
+          "soru": 9,
+          "yuzey": "low-lying",
+          "baglam_anlami": "alçak rakımlı / alçak kesimde bulunan"
+        }
       ]
     },
     {
       "baslik": "adolescent",
       "karar": "İsim olarak ergen anlamı korunur; sıfat anlamı ayrı örnekle gösterilir.",
       "kaynaklar": [
-        {"sinav_id": "yds-2013-02-2013-09-01", "pdf_sayfa": 7, "yuzey": "adolescents", "baglam_anlami": "ergenler"}
+        {
+          "sinav_id": "yds-2013-02-2013-09-01",
+          "pdf_sayfa": 7,
+          "yuzey": "adolescents",
+          "baglam_anlami": "ergenler"
+        }
       ]
     }
   ]

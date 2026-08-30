@@ -1,5 +1,5 @@
 /* ============================================================
-   Kelime dizini — 7912 kelime
+   Kelime dizini — 7911 kelime
    Her sayfada yüklenir; liste, arama ve tekrar özeti bunu kullanır.
    Alanlar: e=kelime, t=kısa anlam, p=YDS öncelik puanı, k=katman, y=tür
    Örnek cümleler katman dosyalarındadır (data/kelime-k1..k7.js).
@@ -3970,8 +3970,7 @@ window.KELIME_DIZIN = [
 {e:"privacy",t:"mahremiyet, gizlilik, özel hayat",p:16.9,k:5,y:"isim"},
 {e:"railroad",t:"demiryolu; (mecazi) zorla kabul ettirmek, sıkıştırarak…",p:16.9,k:5,y:"isim, fiil"},
 {e:"resolution",t:"çözüm, sonuca bağlanma; anlaşmaya varma; karar (resmi,…",p:16.9,k:5,y:"isim"},
-{e:"row",t:"sıra, dizi; satır (tablo/veritabanı); kürek çekmek",p:16.9,k:5,y:"isim, fiil"},
-{e:"row /raʊ/",t:"kavga, çekişme, ağız dalaşı; kavga etmek, tartışmak",p:16.9,k:5,y:"isim, fiil"},
+{e:"row",t:"sıra, dizi; satır (tablo/veritabanı); kürek çekmek; kavga,…",p:16.9,k:5,y:"isim, fiil"},
 {e:"salad",t:"salata",p:16.9,k:5,y:"isim"},
 {e:"sin",t:"günah; günah işlemek",p:16.9,k:5,y:"isim, fiil"},
 {e:"sink",t:"batmak, çökmek; (çevre bilimi) yutak (carbon sink)",p:16.9,k:5,y:"isim, fiil"},
