@@ -486,6 +486,30 @@ window.EK_OBEKLER = [
  ex:"With respect to durability, the composite outperformed steel in every test, but its production required three times as much energy per kilogram.",
  exTr:"Dayanıklılık bakımından kompozit her testte çeliği geride bıraktı, ancak üretimi kilogram başına üç kat daha fazla enerji gerektirdi."},
 
+{f:"interest rate", t:"sabit ifade", tr:"faiz oranı",
+ ex:"If the central bank raises the interest rate too quickly, households may struggle to repay variable-rate loans.",
+ exTr:"Merkez bankası faiz oranını çok hızlı yükseltirse haneler değişken faizli kredileri geri ödemekte zorlanabilir."},
+
+{f:"in someone's interest", t:"edat kalıbı", tr:"birinin yararına, çıkarına",
+ ex:"It is in every country's interest to maintain reliable trade routes during periods of political uncertainty.",
+ exTr:"Siyasi belirsizlik dönemlerinde güvenilir ticaret yollarını korumak her ülkenin yararınadır."},
+
+{f:"take/show an interest in", t:"sabit ifade", tr:"-e ilgi duymak, ilgi göstermek",
+ ex:"Students who take an interest in local history often begin by examining family records and municipal archives.",
+ exTr:"Yerel tarihe ilgi duyan öğrenciler çoğu zaman aile kayıtlarını ve belediye arşivlerini inceleyerek işe başlar."},
+
+{f:"not just ... but also", t:"geçiş ifadesi", tr:"yalnızca ... değil, aynı zamanda",
+ ex:"The policy affected not just large manufacturers but also thousands of small suppliers across the region.",
+ exTr:"Politika yalnızca büyük üreticileri değil, aynı zamanda bölgedeki binlerce küçük tedarikçiyi de etkiledi."},
+
+{f:"just because", t:"geçiş ifadesi", tr:"sırf ... diye, yalnızca ... olduğu için",
+ ex:"A correlation should not be treated as causal just because it appears consistently in several surveys.",
+ exTr:"Bir bağıntı, sırf birkaç ankette tutarlı biçimde görülüyor diye nedensel kabul edilmemelidir."},
+
+{f:"just like", t:"geçiş ifadesi", tr:"tıpkı ... gibi",
+ ex:"Just like natural ecosystems, urban transport networks can become unstable when a single component fails.",
+ exTr:"Tıpkı doğal ekosistemler gibi, kentsel ulaşım ağları da tek bir bileşen arızalandığında kararsız hâle gelebilir."},
+
 {f:"look + adjective", t:"sabit ifade", tr:"... görünmek, ... izlenimi vermek",
  ex:"After several weeks of treatment, the patient looked much healthier and more energetic.",
  exTr:"Hasta birkaç haftalık tedavinin ardından çok daha sağlıklı ve enerjik görünüyordu."},

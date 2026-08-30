@@ -1,9 +1,8 @@
 /* ============================================================
    Aile üyeleri — dönüştürücü girdisi (site bu dosyayı YÜKLEMEZ)
 
-   Kelime ailelerini tamamlayan türevler. Bunlar Calisma_Listesi'nde yok,
-   çünkü YDS öncelik puanları 15'in altında kalmış — çoğu 49 sınavın
-   hiçbirinde geçmemiş. Ama aileyi eksik bırakıyorlar:
+   Kelime ailelerini tamamlayan türevler ve ayrı izlenmesi gereken eş yazımlı
+   telaffuz kartları. Bunlar Calisma_Listesi'nde ayrı kayıt olarak bulunmaz.
 
      sufficient ✓  sufficiently ✓  insufficient ✓
      suffice ✗     sufficiency ✗
@@ -16,6 +15,7 @@
    isteğe bağlı, aile sayfasında her zaman görünür.
 
    Alanlar: tip, p (YDS öncelik puanı), tr, ex, exTr
+   Çok anlamlı ayrı kartlarda tr/ex/exTr yerine anlamlar dizisi kullanılabilir.
    Eklemeden sonra: tools/listeyi-aktar.py ve tools/aile-cikar.py çalıştır.
    ============================================================ */
 
@@ -139,6 +139,10 @@ window.EK_AILE_UYELERI = {
 
 "financially": {"tip":"zarf","p":13.0,"tr":"z. mali açıdan","ex":"The scheme is financially viable only if enough households take part.","exTr":"Program, ancak yeterli sayıda hane katılırsa mali açıdan sürdürülebilir."},
 
-"succession": {"tip":"isim","p":12.9,"tr":"i. ardıllık, art arda gelme; veraset","ex":"A succession of mild winters allowed the insect population to expand rapidly.","exTr":"Art arda gelen ılıman kışlar, böcek nüfusunun hızla artmasına olanak tanıdı."}
+"succession": {"tip":"isim","p":12.9,"tr":"i. ardıllık, art arda gelme; veraset","ex":"A succession of mild winters allowed the insect population to expand rapidly.","exTr":"Art arda gelen ılıman kışlar, böcek nüfusunun hızla artmasına olanak tanıdı."},
+
+"row /raʊ/": {"tip":"isim, fiil","p":16.9,"anlamlar":[{"tr":"i. kavga, çekişme, ağız dalaşı","ex":"The two shareholders had a bitter row over the company's future.","exTr":"İki hissedar şirketin geleceği konusunda sert bir ağız dalaşı yaşadı.","yz":4},{"tr":"f. kavga etmek, tartışmak","ex":"The ministers rowed publicly over the proposed spending cuts.","exTr":"Bakanlar önerilen harcama kesintileri konusunda kamuoyu önünde tartıştı.","yz":3}]},
+
+"rowing": {"tip":"isim","p":9.8,"tr":"i. kürek çekme; kürek sporu","ex":"The Greeks brought the art of rowing to a level of perfection that has never been surpassed.","exTr":"Yunanlar kürek çekme sanatını daha önce hiç aşılmamış bir mükemmellik düzeyine taşıdı."}
 
 };

@@ -1,5 +1,5 @@
 /* ============================================================
-   Kelime dizini — 7910 kelime
+   Kelime dizini — 7912 kelime
    Her sayfada yüklenir; liste, arama ve tekrar özeti bunu kullanır.
    Alanlar: e=kelime, t=kısa anlam, p=YDS öncelik puanı, k=katman, y=tür
    Örnek cümleler katman dosyalarındadır (data/kelime-k1..k7.js).
@@ -61,7 +61,7 @@ window.KELIME_DIZIN = [
 {e:"first",t:"ilk, birinci; önce, ilk olarak",p:65.4,k:1,y:"sıfat, isim, zarf"},
 {e:"would",t:"koşula bağlı sonucu bildirmek: -erdi/-ardı; kibar istek,…",p:65.3,k:1,y:"modal fiil"},
 {e:"increase",t:"artmak, artırmak; artış",p:65.0,k:1,y:"isim, fiil"},
-{e:"just",t:"az önce, henüz; adil",p:65.0,k:1,y:"sıfat, zarf"},
+{e:"just",t:"sadece, yalnızca; az önce, daha yeni; tam, tam da; hemen;…",p:65.0,k:1,y:"sıfat, zarf"},
 {e:"though",t:"-e rağmen, gerçi; ancak (cümle sonu)",p:65.0,k:1,y:"zarf"},
 {e:"off",t:"kapalı; -den uzakta",p:64.9,k:1,y:"edat, zarf, sıfat"},
 {e:"could",t:"geçmişte genel yetenek bildirmek: -ebiliyordu; olasılık…",p:64.7,k:1,y:"modal fiil"},
@@ -94,7 +94,7 @@ window.KELIME_DIZIN = [
 {e:"experience",t:"yaşamak, deneyimlemek; deneyim",p:61.4,k:1,y:"isim, fiil"},
 {e:"might",t:"-ebilir; zayıf veya ihtiyatlı olasılık bildirmek; güç,…",p:61.4,k:1,y:"modal fiil, isim"},
 {e:"come",t:"gelmek",p:61.2,k:1,y:"isim, fiil"},
-{e:"interest",t:"ilgi; ilgilendirmek",p:61.2,k:1,y:"isim, fiil"},
+{e:"interest",t:"ilgi, merak; çıkar, menfaat; faiz; ilgilendirmek, ilgisini…",p:61.2,k:1,y:"isim, fiil"},
 {e:"period",t:"dönem, süre, devir",p:61.0,k:1,y:"isim"},
 {e:"need",t:"modal f. gerek olmak; özellikle soru ve olumsuzda…",p:60.9,k:1,y:"modal fiil, fiil, isim"},
 {e:"since",t:"-dığından beri; madem ki, -dığı için",p:60.9,k:1,y:"edat, bağlaç"},
@@ -3970,7 +3970,8 @@ window.KELIME_DIZIN = [
 {e:"privacy",t:"mahremiyet, gizlilik, özel hayat",p:16.9,k:5,y:"isim"},
 {e:"railroad",t:"demiryolu; (mecazi) zorla kabul ettirmek, sıkıştırarak…",p:16.9,k:5,y:"isim, fiil"},
 {e:"resolution",t:"çözüm, sonuca bağlanma; anlaşmaya varma; karar (resmi,…",p:16.9,k:5,y:"isim"},
-{e:"row",t:"sıra, dizi; kavga, çekişme, ağız dalaşı",p:16.9,k:5,y:"isim, fiil"},
+{e:"row",t:"/roʊ/ sıra, dizi; satır (tablo/veritabanı); /roʊ/ kürek…",p:16.9,k:5,y:"isim, fiil"},
+{e:"row /raʊ/",t:"kavga, çekişme, ağız dalaşı; kavga etmek, tartışmak",p:16.9,k:5,y:"isim, fiil"},
 {e:"salad",t:"salata",p:16.9,k:5,y:"isim"},
 {e:"sin",t:"günah; günah işlemek",p:16.9,k:5,y:"isim, fiil"},
 {e:"sink",t:"batmak, çökmek; (çevre bilimi) yutak (carbon sink)",p:16.9,k:5,y:"isim, fiil"},
@@ -7887,6 +7888,7 @@ window.KELIME_DIZIN = [
 {e:"teach-in",t:"bilgilendirme/tartışma toplantısı",p:10.0,k:6,y:"isim"},
 {e:"unforgettable",t:"unutulmaz",p:10.0,k:6,y:"sıfat"},
 {e:"well-fixed",t:"hali vakti yerinde, zengin",p:10.0,k:6,y:"sıfat"},
+{e:"rowing",t:"kürek çekme; kürek sporu",p:9.8,k:7,y:"isim"},
 {e:"would prefer to",t:"yapmayı tercih etmek; daha açık veya resmî tercih bildirmek",p:9.8,k:6,y:"modal yapı"},
 {e:"discrepancy",t:"tutarsızlık, uyuşmazlık, fark",p:9.6,k:4,y:"isim"},
 {e:"needn't have + V3",t:"yapıldı ama yapılmasına gerek yoktu",p:9.6,k:6,y:"modal yapı"},

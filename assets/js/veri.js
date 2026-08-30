@@ -83,11 +83,6 @@
     return modalTestYukleniyor;
   }
   function testYukle(k) {
-    // 7. katman şu anda boştur; olmayan test-k7.js için gereksiz 404 üretme.
-    if (k === 7) {
-      window.TEST_K7 = window.TEST_K7 || {};
-      return Promise.resolve(k);
-    }
     if (window['TEST_K' + k]) return Promise.resolve(k);
     if (testYukleniyor[k]) return testYukleniyor[k];
     testYukleniyor[k] = new Promise(function (coz) {

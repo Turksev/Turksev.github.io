@@ -101,6 +101,11 @@ def kok_deseni(e):
     return re.compile(r'\b' + re.escape(kok) + r'\w*', re.I)
 
 
+def test_sozluk_bicimi(e):
+    """Telaffuzla ayrılmış kart başlığını boşluğa gelecek sözlük biçimine indir."""
+    return re.sub(r'\s+/[^/]+/$', '', e).strip()
+
+
 def benzer(a, b):
     A = set(re.findall(r"[a-z']+", a.lower()))
     B = set(re.findall(r"[a-z']+", b.lower()))
@@ -154,12 +159,12 @@ for ad in sorted(os.listdir(GIRDI)):
             sorunlar.append('b boş')
         elif b.lower() != b:
             sorunlar.append('b büyük harf')
-        elif not cekim.uyar_mi(e, f, b):
+        elif not cekim.uyar_mi(test_sozluk_bicimi(e), f, b):
             sorunlar.append('çekim uyumsuz: %s+%s ≠ %s' % (e, f, b))
         if f and d:
             if ('isim' not in d['y']) if f == 'pl' else ('fiil' not in d['y']):
                 sorunlar.append('tür-biçim çelişkisi: %s / %s' % (d['y'], f))
-        if kok_deseni(e).search(c.replace('----', ' ')):
+        if kok_deseni(test_sozluk_bicimi(e)).search(c.replace('----', ' ')):
             sorunlar.append('kök cümlede tekrar')
         for o in g.get('ornek') or []:
             if benzer(c.replace('----', b), o) > 0.6:

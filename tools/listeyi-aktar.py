@@ -615,7 +615,8 @@ def birlestir():
             # Puani normal esige (10) yetisen uye gercek katmanina girer;
             # 7. katman yalniz sinav kaniti zayif (p<10 ya da puansiz) uyeler icin.
             'katman_zorla': AILE_KATMANI if (v.get('p') or 0) < 10 else None,
-            'anlamlar': [{'tr': v['tr'], 'ex': v['ex'], 'exTr': v['exTr']}],
+            'anlamlar': v.get('anlamlar') or
+                        [{'tr': v['tr'], 'ex': v['ex'], 'exTr': v['exTr']}],
         }
         aile_eklenen += 1
 
