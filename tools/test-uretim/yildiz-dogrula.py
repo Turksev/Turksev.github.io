@@ -24,7 +24,14 @@ sonuc, hatalar, eksik = {}, [], []
 toplam = gecen = 0
 dagilim = Counter()
 
-for ad in sorted(os.listdir(GIRDI)):
+# "ek-" paketleri sonradan gelen duzeltmelerdir; en sonda islenir ki ayni
+# kelimenin eski (anlam metni degismis, artik eslesmeyen) kaydini ezsinler.
+# Alfabetik sirada "ek-" < "k1-" oldugu icin bu ayarlama sart.
+def sira(ad):
+    return (1 if ad.startswith('ek-') else 0, ad)
+
+
+for ad in sorted(os.listdir(GIRDI), key=sira):
     girdi = json.load(io.open(os.path.join(GIRDI, ad), encoding='utf-8'))
     yol = os.path.join(CIKTI, ad)
     if not os.path.exists(yol):
