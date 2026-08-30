@@ -1,0 +1,3521 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-08-30",
+  "scope": {
+    "words": 7848,
+    "layers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "official_pdfs": 49,
+    "official_pdf_pages": 919,
+    "exact_context_words": 5886,
+    "exact_occurrences": 76331,
+    "policy": "Only high-confidence lexical meaning/type corrections are generated. Proper-name homographs and text-extraction artefacts remain report-only."
+  },
+  "corrections": [
+    {
+      "e": "accelerated",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. hızlandı, ivme kazandı",
+          "ex": "Economic growth accelerated after the new trade agreement took effect.",
+          "exTr": "Yeni ticaret anlaşması yürürlüğe girdikten sonra ekonomik büyü hızlandı.",
+          "yz": 4
+        },
+        {
+          "tr": "f. hızlandırdı",
+          "ex": "Better irrigation accelerated crop growth during the dry season.",
+          "exTr": "Daha iyi sulama, kurak mevsimde ürünlerin büyümesini hızlandırdı.",
+          "yz": 3
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "YDS'de baskın kullanım edilgen sıfat değil, çoğunlukla 'hızlandı/hızlanmış' anlamındaki fiildir.",
+      "evidence": [
+        {
+          "pdf": "YDS_2016_02_2016-09-04_EN_FULL_COMBINED_OFFICIAL_43299d72.pdf",
+          "page": 17,
+          "surface": "accelerated",
+          "context": " in the north-east began to retreat in 2012 and its flow towards the sea has also accelerated . \"Now it's unstable and it's going to retreat even more,\" says Jeremie Mouginot "
+        }
+      ]
+    },
+    {
+      "e": "advance",
+      "operation": "prepend",
+      "type": "fiil, isim, sıfat",
+      "meanings": [
+        {
+          "tr": "f. ilerlemek; ilerletmek, geliştirmek",
+          "ex": "New evidence could advance our understanding of the disease.",
+          "exTr": "Yeni kanıtlar hastalığa ilişkin anlayışımızı geliştirebilir.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 3
+    },
+    {
+      "e": "am",
+      "operation": "prepend",
+      "type": "fiil, zarf",
+      "meanings": [
+        {
+          "tr": "f. (I am) ben ...-im; be fiilinin birinci tekil kişi biçimi",
+          "ex": "I am ready to begin the next practice test.",
+          "exTr": "Bir sonraki deneme sınavına başlamaya hazırım.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Saat kısaltması anlamı korunarak resmî sınavlarda baskın olan fiil biçimi öne eklenmeli."
+    },
+    {
+      "e": "asking",
+      "operation": "prepend",
+      "type": "fiil, isim",
+      "meanings": [
+        {
+          "tr": "f. sormak, soru sormak",
+          "ex": "The student is asking a clear question.",
+          "exTr": "Öğrenci açık bir soru soruyor.",
+          "yz": 4
+        },
+        {
+          "tr": "f. istemek, talep etmek",
+          "ex": "She is asking for help with the report.",
+          "exTr": "Rapor konusunda yardım istiyor.",
+          "yz": 3
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Mevcut isim ve asking price anlamları korunarak ask fiilinin -ing kullanımları eklenmeli."
+    },
+    {
+      "e": "attended",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. katıldı; devam etti (attend fiilinin geçmiş/ortaç biçimi)",
+          "ex": "She attended the seminar last week.",
+          "exTr": "Geçen hafta seminere katıldı.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Gözetim/refakat sıfatı korunarak temel geçmiş zaman fiil anlamı öne eklenmeli."
+    },
+    {
+      "e": "august",
+      "operation": "prepend",
+      "type": "isim, sıfat",
+      "meanings": [
+        {
+          "tr": "i. August: Ağustos (ay adı)",
+          "ex": "The regional blackout occurred in August.",
+          "exTr": "Bölgesel elektrik kesintisi Ağustos ayında meydana geldi.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Resmî eşleşme ay adıdır; küçük harfli saygıdeğer/heybetli sıfatı korunur.",
+      "evidence": [
+        {
+          "pdf": "eYDS_2016_08_2016-08-20_EN_P10_COMBINED_OFFICIAL_6310f9ca.pdf",
+          "page": 6,
+          "surface": "August"
+        }
+      ]
+    },
+    {
+      "e": "bars",
+      "operation": "prepend",
+      "type": "isim",
+      "meanings": [
+        {
+          "tr": "i. barlar, içkili mekânlar",
+          "ex": "Smoking is prohibited inside bars in many countries.",
+          "exTr": "Birçok ülkede barların içinde sigara içmek yasaktır.",
+          "yz": 4
+        },
+        {
+          "tr": "i. yiyecek/enerji çubukları",
+          "ex": "Hikers carried energy bars for the long mountain walk.",
+          "exTr": "Yürüyüşçüler uzun dağ yürüyüşü için enerji çubukları taşıdı.",
+          "yz": 3
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Üç resmî kullanım üç ayrı anlamdadır; mevcut kayıt pub/bar ve enerji çubuğu anlamlarını atlıyor.",
+      "evidence": [
+        {
+          "pdf": "YDS_2019_03_2019-12-01_EN_FULL_COMBINED_OFFICIAL_dd4e8b23.pdf",
+          "page": 21,
+          "surface": "bars",
+          "context": "rt explaining the origins of darts. The traditional setting of darts are pubs and bars and this has created several misconceptions about it, concealing its origins in m"
+        },
+        {
+          "pdf": "YDS_2021_02_2021-10-10_EN_FULL_COMBINED_OFFICIAL_cf565fb2.pdf",
+          "page": 19,
+          "surface": "bars",
+          "context": " and, after all, you’re outdoors! I don’t think I’m alone on this one, but energy bars, fruit and trail mix will keep you going. Think about it: No cooking, no clean up"
+        }
+      ]
+    },
+    {
+      "e": "base",
+      "operation": "prepend",
+      "type": "isim, fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "i. temel, taban, alt kısım",
+          "ex": "Researchers found mineral deposits at the base of the cliff.",
+          "exTr": "Araştırmacılar uçurumun tabanında mineral yatakları buldu.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2
+    },
+    {
+      "e": "based",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. dayandırdı, temellendirdi (base fiilinin geçmiş/V3 biçimi)",
+          "ex": "The researchers based their conclusions on long-term observations.",
+          "exTr": "Araştırmacılar sonuçlarını uzun süreli gözlemlere dayandırdı.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 3
+    },
+    {
+      "e": "bats",
+      "operation": "prepend",
+      "type": "isim, sıfat",
+      "meanings": [
+        {
+          "tr": "i. yarasalar (bat sözcüğünün çoğulu)",
+          "ex": "At dusk, bats leave the cave to feed.",
+          "exTr": "Alacakaranlıkta yarasalar beslenmek için mağaradan çıkar.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Geçerli argo sıfat anlamı korunarak resmî kaynaklardaki çoğul hayvan adı öne eklenmeli."
+    },
+    {
+      "e": "becoming",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. olmak, hâline gelmek (become fiilinin -ing biçimi)",
+          "ex": "Winters are becoming shorter as average temperatures rise.",
+          "exTr": "Ortalama sıcaklıklar yükseldikçe kışlar kısalıyor.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 1
+    },
+    {
+      "e": "being",
+      "operation": "prepend",
+      "type": "fiil, isim",
+      "meanings": [
+        {
+          "tr": "f. olmak; edilmek/olunmak (be fiilinin -ing biçimi)",
+          "ex": "Being able to compare several sources helps researchers avoid hasty conclusions.",
+          "exTr": "Birden fazla kaynağı karşılaştırabilmek, araştırmacıların aceleci sonuçlardan kaçınmasına yardımcı olur.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2
+    },
+    {
+      "e": "berlin",
+      "operation": "prepend",
+      "type": "isim",
+      "meanings": [
+        {
+          "tr": "i. Berlin: Almanya'nın başkenti",
+          "ex": "Berlin became a major centre of European politics in the twentieth century.",
+          "exTr": "Berlin yirminci yüzyılda Avrupa siyasetinin önemli merkezlerinden biri hâline geldi.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Resmî kullanım şehir adıdır; tarihî fayton anlamı ikincil olarak korunur.",
+      "evidence": [
+        {
+          "pdf": "YDS_2016_01_2016-03-27_EN_FULL_COMBINED_OFFICIAL_ce1c404a.pdf",
+          "page": 14,
+          "surface": "Berlin"
+        }
+      ]
+    },
+    {
+      "e": "brazil",
+      "operation": "prepend",
+      "type": "isim",
+      "meanings": [
+        {
+          "tr": "i. Brazil: Brezilya (ülke adı)",
+          "ex": "Brazil was the last country in the Americas to abolish slavery.",
+          "exTr": "Brezilya, Amerika kıtasında köleliği kaldıran son ülkeydi.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Resmî kullanım ülke adıdır; küçük harfli Brezilya cevizi anlamı ikincil olarak korunur.",
+      "evidence": [
+        {
+          "pdf": "YDS_2020_01_2020-09-27_EN_FULL_COMBINED_OFFICIAL_d6d52361.pdf",
+          "page": 16,
+          "surface": "Brazil"
+        }
+      ]
+    },
+    {
+      "e": "broke",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. kırıldı, bozuldu (break fiilinin geçmiş biçimi)",
+          "ex": "The heater broke during the coldest night.",
+          "exTr": "Isıtıcı en soğuk gecede bozuldu.",
+          "yz": 4
+        },
+        {
+          "tr": "f. (broke out) patlak verdi, başladı",
+          "ex": "A fire broke out near the station.",
+          "exTr": "İstasyonun yakınında yangın çıktı.",
+          "yz": 3
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Geçerli parasız sıfatı korunarak break fiilinin baskın geçmiş ve öbek-fiil kullanımları eklenmeli."
+    },
+    {
+      "e": "built",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. inşa etti; yapılmış/inşa edilmiş (build fiilinin geçmiş/V3 biçimi)",
+          "ex": "Engineers built a small model to demonstrate how the system works.",
+          "exTr": "Mühendisler sistemin nasıl çalıştığını göstermek için küçük bir model inşa etti.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2
+    },
+    {
+      "e": "cane",
+      "operation": "prepend",
+      "type": "isim, fiil",
+      "meanings": [
+        {
+          "tr": "i. kamış; sugar cane = şeker kamışı",
+          "ex": "Sugar cane grows best in warm, wet climates.",
+          "exTr": "Şeker kamışı sıcak ve yağışlı iklimlerde en iyi şekilde yetişir.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "YDS bağlamındaki sugar cane bitki olan şeker kamışıdır; mevcut kayıt yalnız baston/değnek ve dövme anlamlarını verir.",
+      "evidence": [
+        {
+          "pdf": "YDS_2016_02_2016-09-04_EN_FULL_COMBINED_OFFICIAL_43299d72.pdf",
+          "page": 25,
+          "surface": "cane",
+          "context": "…opher Columbus started his second voyage to the Americas, he took sugar cane with him. (II) He planted the continent's first sugar cane in Hispaniol…"
+        }
+      ]
+    },
+    {
+      "e": "causing",
+      "operation": "type",
+      "type": "fiil, sıfat",
+      "meanings": [],
+      "reason": "Mevcut 'neden olan, yol açan' anlamı doğru; yalnız isim türü etiketi fiil/sıfat olarak düzeltilmeli."
+    },
+    {
+      "e": "changing",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. değiştirmek; değişerek (change fiilinin -ing biçimi)",
+          "ex": "By changing the design, engineers reduced energy consumption.",
+          "exTr": "Mühendisler tasarımı değiştirerek enerji tüketimini azalttı.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 3
+    },
+    {
+      "e": "chile",
+      "operation": "prepend",
+      "type": "isim",
+      "meanings": [
+        {
+          "tr": "i. Chile: Şili (ülke adı)",
+          "ex": "Astronomers in Chile use some of the world's largest telescopes.",
+          "exTr": "Şili'deki gök bilimciler dünyanın en büyük teleskoplarından bazılarını kullanır.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Resmî eşleşmeler ülke adıdır; acı biber yazım varyantı ikincil olarak korunur.",
+      "evidence": [
+        {
+          "pdf": "YDS_2015_02_2015-09-13_EN_FULL_COMBINED_OFFICIAL_da3c0ce1.pdf",
+          "page": 8,
+          "surface": "Chile"
+        }
+      ]
+    },
+    {
+      "e": "china",
+      "operation": "prepend",
+      "type": "isim",
+      "meanings": [
+        {
+          "tr": "i. China: Çin (ülke adı)",
+          "ex": "China played an important role in the early development of paper and printing.",
+          "exTr": "Çin, kâğıdın ve matbaanın erken gelişiminde önemli bir rol oynadı.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "49 PDF'deki 38 eşleşmenin tümü ülke adı China'dır; küçük harfli porselen anlamı doğru bir ikincil sözlük maddesi olarak korunur.",
+      "evidence": [
+        {
+          "pdf": "eYDS_2015_03_2015-03-28_EN_P10_COMBINED_OFFICIAL_6169a5c1.pdf",
+          "page": 5,
+          "surface": "China"
+        }
+      ]
+    },
+    {
+      "e": "chosen",
+      "operation": "prepend",
+      "type": "fiil, sıfat, isim",
+      "meanings": [
+        {
+          "tr": "f./s. (choose fiilinin üçüncü hâli) seçmiş; seçilen, seçilmiş",
+          "ex": "The committee has chosen a safer method for the experiment.",
+          "exTr": "Komite deney için daha güvenli bir yöntem seçti.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Dört resmî kullanımın tamamı choose fiilinin ortaç/çekim biçimidir; 'seçilmiş olanlar' isim anlamı baskın değildir.",
+      "evidence": [
+        {
+          "pdf": "eYDS_2015_10_2015-10-17_EN_P10_COMBINED_OFFICIAL_cd15182f.pdf",
+          "page": 5,
+          "surface": "chosen",
+          "context": "p could be useful for me to get better prepared. A) I don't understand why you've chosen photography while you could have chosen something else. B) I think you'll just wa"
+        }
+      ]
+    },
+    {
+      "e": "cleaner",
+      "operation": "prepend",
+      "type": "sıfat, isim",
+      "meanings": [
+        {
+          "tr": "s. daha temiz, daha az kirletici (clean'in karşılaştırma biçimi)",
+          "ex": "Electric buses can make urban air cleaner.",
+          "exTr": "Elektrikli otobüsler kent havasını daha temiz hâle getirebilir.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "YDS bağlamlarında cleaner karşılaştırma sıfatıdır; mevcut kayıt yalnız kişi ve ürün isimlerini verir.",
+      "evidence": [
+        {
+          "pdf": "YDS_2013_02_2013-09-01_EN_FULL_COMBINED_OFFICIAL_e057cb35.pdf",
+          "page": 21,
+          "surface": "cleaner",
+          "context": "…here are some modest technological improvements that have made aircraft cleaner, but this is not enough to compensate for the growth in flying that con…"
+        }
+      ]
+    },
+    {
+      "e": "coke",
+      "operation": "prepend",
+      "type": "isim, fiil",
+      "meanings": [
+        {
+          "tr": "i. Coke/coke: kola, gazlı içecek",
+          "ex": "Early plastic bottles could not safely store coke under pressure.",
+          "exTr": "İlk plastik şişeler basınç altındaki kolayı güvenli biçimde saklayamıyordu.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Resmî kullanım gazlı içecek anlamındadır; kok kömürü ve argo kokain anlamları korunur.",
+      "evidence": [
+        {
+          "pdf": "YDS_2018_03_2018-12-02_EN_FULL_COMBINED_OFFICIAL_fc1001ae.pdf",
+          "page": 7,
+          "surface": "coke"
+        }
+      ]
+    },
+    {
+      "e": "considered",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. dikkate alındı/alınan; sayıldı, kabul edildi (consider fiilinin geçmiş/V3 biçimi)",
+          "ex": "Safety must be considered before the new method is introduced.",
+          "exTr": "Yeni yöntem kullanılmaya başlanmadan önce güvenlik dikkate alınmalıdır.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 1
+    },
+    {
+      "e": "consumed",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. tüketti; consume fiilinin geçmiş/ortaç biçimi",
+          "ex": "The hikers consumed all the water they carried.",
+          "exTr": "Yürüyüşçüler yanlarında taşıdıkları bütün suyu tüketti.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Mevcut pasif ve mecaz sıfat anlamları korunarak aktif tüketme anlamı öne eklenmeli."
+    },
+    {
+      "e": "consuming",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. tüketmek; tüketen/tüketerek (consume fiilinin -ing biçimi)",
+          "ex": "The old machine is consuming too much energy.",
+          "exTr": "Eski makine çok fazla enerji tüketiyor.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Geçerli baskın/yakıcı sıfatı korunarak YDS kaynaklarındaki tüketme fiili ilk anlam yapılmalı."
+    },
+    {
+      "e": "controlling",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. kontrol etmek; kontrol eden/denetleyen (control fiilinin -ing biçimi)",
+          "ex": "The software is controlling the room temperature.",
+          "exTr": "Yazılım oda sıcaklığını kontrol ediyor.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Geçerli denetleyici/baskıcı sıfatları korunarak fiil kullanımı öne eklenmeli."
+    },
+    {
+      "e": "cooler",
+      "operation": "prepend",
+      "type": "sıfat, isim",
+      "meanings": [
+        {
+          "tr": "s. daha serin, daha soğuk (cool'un karşılaştırma biçimi)",
+          "ex": "Mountain villages are cooler than coastal towns in summer.",
+          "exTr": "Dağ köyleri yazın kıyı kasabalarından daha serindir.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "YDS'deki 'cooler regions' karşılaştırma sıfatıdır; kayıt yalnız bağımsız isim anlamlarını verir.",
+      "evidence": [
+        {
+          "pdf": "YDS_2017_02_2017-09-17_EN_FULL_COMBINED_OFFICIAL_db3e6beb.pdf",
+          "page": 4,
+          "surface": "cooler",
+          "context": "…ing protection ---- wild animals, heat that enabled them to spread ---- cooler regions, and the ability to cook food. against / into from / by to / ov…"
+        }
+      ]
+    },
+    {
+      "e": "danish",
+      "operation": "prepend",
+      "type": "sıfat, isim",
+      "meanings": [
+        {
+          "tr": "s. Danish: Danimarkalı, Danimarka'ya ait; i. Danca",
+          "ex": "A Danish firm developed a paving system that stores rainwater.",
+          "exTr": "Danimarkalı bir şirket yağmur suyunu depolayan bir kaldırım sistemi geliştirdi.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Resmî kullanım milliyet sıfatıdır; Danimarka çöreği anlamı ikincil olarak korunur.",
+      "evidence": [
+        {
+          "pdf": "YDS_2019_03_2019-12-01_EN_FULL_COMBINED_OFFICIAL_dd4e8b23.pdf",
+          "page": 25,
+          "surface": "Danish"
+        }
+      ]
+    },
+    {
+      "e": "date",
+      "operation": "prepend",
+      "type": "fiil, isim",
+      "meanings": [
+        {
+          "tr": "f. (date back to) geçmişi ...-e dayanmak",
+          "ex": "These ruins date back to the early Roman period.",
+          "exTr": "Bu kalıntıların geçmişi erken Roma dönemine dayanır.",
+          "yz": 4
+        },
+        {
+          "tr": "i. tarih",
+          "ex": "The exact date of the eruption remains uncertain.",
+          "exTr": "Patlamanın kesin tarihi belirsizliğini koruyor.",
+          "yz": 3
+        }
+      ],
+      "existing_default_yz": 2
+    },
+    {
+      "e": "decline",
+      "operation": "prepend",
+      "type": "fiil, isim",
+      "meanings": [
+        {
+          "tr": "f. azalmak, düşmek, gerilemek",
+          "ex": "Bee populations decline when suitable habitats disappear.",
+          "exTr": "Uygun yaşam alanları yok olduğunda arı nüfusları azalır.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 3
+    },
+    {
+      "e": "defy",
+      "operation": "type",
+      "type": "fiil",
+      "meanings": [],
+      "reason": "Kayıttaki tek anlam ve YDS örnekleri fiildir; 'isim' tür etiketi desteklenmez.",
+      "evidence": [
+        {
+          "pdf": "YDS_2019_03_2019-12-01_EN_FULL_COMBINED_OFFICIAL_dd4e8b23.pdf",
+          "page": 17,
+          "surface": "defy",
+          "context": "2019-YDS/3/ENGLISH Dreams defy the laws of physics, the principles of logic, and personal morality, an…"
+        }
+      ]
+    },
+    {
+      "e": "demolished",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. demolish fiilinin geçmiş/V3 biçimi: yıktı, ortadan kaldırdı",
+          "ex": "The storm demolished several coastal houses.",
+          "exTr": "Fırtına kıyıdaki birkaç evi yıktı.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "YDS'de integration öznesi walls nesnesini yıkar; mevcut yalnız 'yıkılmış' sıfatı etkin fiil kullanımını karşılamaz.",
+      "evidence": [
+        {
+          "pdf": "YDS_2016_02_2016-09-04_EN_FULL_COMBINED_OFFICIAL_43299d72.pdf",
+          "page": 15,
+          "surface": "demolished",
+          "context": "…globalization. Increasing global integration has at least partially demolished the walls around national economies and made it more difficult for governm…"
+        }
+      ]
+    },
+    {
+      "e": "determining",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. belirlemek, saptamak; belirlemede",
+          "ex": "Determining the source of the infection took several weeks.",
+          "exTr": "Enfeksiyonun kaynağını belirlemek birkaç hafta sürdü.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Dört resmî kullanımın tamamı determine fiilinin gerund/participle biçimidir; yalnız sıfat etiketi eksiktir.",
+      "evidence": [
+        {
+          "pdf": "YDS_2015_02_2015-09-13_EN_FULL_COMBINED_OFFICIAL_da3c0ce1.pdf",
+          "page": 7,
+          "surface": "determining",
+          "context": "d communication (23)---- the fact that our languages follow systems of rules. But determining what these rules are has proved very difficult (24)---- researchers. One approach"
+        }
+      ]
+    },
+    {
+      "e": "developed",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. gelişti; geliştirdi, geliştirilmiş (develop fiilinin geçmiş/V3 biçimi)",
+          "ex": "Researchers developed a faster way to detect the infection.",
+          "exTr": "Araştırmacılar enfeksiyonu saptamak için daha hızlı bir yöntem geliştirdi.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 3
+    },
+    {
+      "e": "developing",
+      "operation": "prepend",
+      "type": "fiil, sıfat, isim",
+      "meanings": [
+        {
+          "tr": "f. geliştirmek/gelişmek; gelişen (develop fiilinin -ing biçimi)",
+          "ex": "The team is developing a low-cost diagnostic test.",
+          "exTr": "Ekip düşük maliyetli bir tanı testi geliştiriyor.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2
+    },
+    {
+      "e": "discovered",
+      "operation": "replace",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. keşfetti; keşfedildi/keşfedilmiş (discover fiilinin geçmiş/V3 biçimi)",
+          "ex": "Researchers discovered several previously unknown structures beneath the site.",
+          "exTr": "Araştırmacılar alanın altında daha önce bilinmeyen birkaç yapı keşfetti.",
+          "yz": 4
+        }
+      ]
+    },
+    {
+      "e": "dismissed",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. dismiss fiilinin geçmiş/V3 biçimi: reddetti, göz ardı etti; işten çıkardı",
+          "ex": "The committee dismissed the claim as unsupported.",
+          "exTr": "Komite iddiayı dayanaksız bularak reddetti.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "YDS'deki 'dismissed as a conduit' işten çıkarma değil, bir şeyi önemsiz görüp reddetme/göz ardı etme anlamındadır.",
+      "evidence": [
+        {
+          "pdf": "YDS_2018_02_2018-09-09_EN_FULL_COMBINED_OFFICIAL_60684786.pdf",
+          "page": 25,
+          "surface": "dismissed",
+          "context": "…reek philosophy and science. Yet, medieval Islamic science is sometimes dismissed as a conduit passively transmitting ancient Greek science to the Europe…"
+        }
+      ]
+    },
+    {
+      "e": "divers",
+      "operation": "prepend",
+      "type": "isim, sıfat",
+      "meanings": [
+        {
+          "tr": "i. dalgıçlar",
+          "ex": "Experienced divers inspected the reef without disturbing the wildlife.",
+          "exTr": "Deneyimli dalgıçlar yaban hayatını rahatsız etmeden resifi inceledi.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Altı resmî eşleşmenin tamamı 'diver' sözcüğünün çoğulu, yani dalgıçlardır; mevcut kayıt yalnız arkaik sıfatı veriyor.",
+      "evidence": [
+        {
+          "pdf": "YDS_2017_02_2017-09-17_EN_FULL_COMBINED_OFFICIAL_db3e6beb.pdf",
+          "page": 21,
+          "surface": "divers",
+          "context": "he seas, and not as scary as you might think. Tiger sharks are unlikely to attack divers who keep them in sight. Novice divers may come face-to-face with the sharks and s"
+        }
+      ]
+    },
+    {
+      "e": "dominated",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. egemen oldu, hükmetti; baskın çıktı",
+          "ex": "Large firms dominated the market for nearly a decade.",
+          "exTr": "Büyük şirketler yaklaşık on yıl boyunca piyasaya egemen oldu.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Beş resmî kullanımın üçünde etkin fiildir; mevcut anlam yalnız edilgen yönü veriyor.",
+      "evidence": [
+        {
+          "pdf": "YDS_2016_01_2016-03-27_EN_FULL_COMBINED_OFFICIAL_ce1c404a.pdf",
+          "page": 22,
+          "surface": "dominated",
+          "context": "the coastal town of Kamakura, near modern Tokyo. (III) Known as the Samurai, they dominated Japanese society for nearly 700 years. (IV) However, as power shifted from civil "
+        }
+      ]
+    },
+    {
+      "e": "done",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. yapılmış/yapılan (do fiilinin V3 biçimi)",
+          "ex": "More research must be done before the treatment is approved.",
+          "exTr": "Tedavi onaylanmadan önce daha fazla araştırma yapılmalıdır.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2
+    },
+    {
+      "e": "drawn",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. çizilmiş, çekilmiş; draw fiilinin ortaç biçimi",
+          "ex": "The map was drawn by hand.",
+          "exTr": "Harita elle çizildi.",
+          "yz": 4
+        },
+        {
+          "tr": "f. (drawn attention) dikkat çekmiş",
+          "ex": "The discovery has drawn attention from researchers.",
+          "exTr": "Keşif araştırmacıların dikkatini çekti.",
+          "yz": 3
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Mevcut bitkin yüz ve çekilmiş perde sıfatları korunarak genel ortaç ve yaygın kalıp anlamı eklenmeli."
+    },
+    {
+      "e": "drove",
+      "operation": "prepend",
+      "type": "fiil, isim",
+      "meanings": [
+        {
+          "tr": "f. drive fiilinin geçmiş biçimi: sürdü, yönlendirdi; yol açtı, tetikledi",
+          "ex": "Economic pressures drove rapid migration from rural areas.",
+          "exTr": "Ekonomik baskılar kırsal alanlardan hızlı göçe yol açtı.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "YDS'deki 'factors that drove...' geçmiş zaman fiilidir ve 'yol açmak/tetiklemek' anlamındadır; kayıt yalnız sürü ismini verir.",
+      "evidence": [
+        {
+          "pdf": "YDS_2018_02_2018-09-09_EN_FULL_COMBINED_OFFICIAL_60684786.pdf",
+          "page": 10,
+          "surface": "drove",
+          "context": "…eadily accessible in the late 19th century Despite several factors that drove the European scramble for Africa in the 18th century ----, the Romans b…"
+        }
+      ]
+    },
+    {
+      "e": "elder",
+      "operation": "prepend",
+      "type": "sıfat, isim",
+      "meanings": [
+        {
+          "tr": "s. yaşlı, daha yaşlı (kişi veya topluluk üyesi)",
+          "ex": "The program provides free transport for elder members of the community.",
+          "exTr": "Program toplumun yaşlı üyelerine ücretsiz ulaşım sağlar.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "YDS'deki 'elder members of society' kardeş değil, toplumun daha yaşlı üyeleridir; mevcut sıfat anlamı gereksiz biçimde kardeşle sınırlandırılmıştır.",
+      "evidence": [
+        {
+          "pdf": "YDS_2018_01_2018-04-01_EN_FULL_COMBINED_OFFICIAL_be30ee96.pdf",
+          "page": 13,
+          "surface": "elder",
+          "context": "…immediate side effects on healthy people. There can be a lower risk for elder members of society who take more than one drug a day. Most drugs in the…"
+        }
+      ]
+    },
+    {
+      "e": "enlarged",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. enlarge fiilinin geçmiş/V3 biçimi: büyüttü, genişletti",
+          "ex": "Farmers enlarged their fields after buying new land.",
+          "exTr": "Çiftçiler yeni arazi aldıktan sonra tarlalarını genişletti.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "YDS'de farmers öznesi plots nesnesini büyütür; mevcut yalnız geçişsiz 'büyümüş' karşılığı özne-nesne anlamını ters çevirir.",
+      "evidence": [
+        {
+          "pdf": "YDS_2016_01_2016-03-27_EN_FULL_COMBINED_OFFICIAL_ce1c404a.pdf",
+          "page": 7,
+          "surface": "enlarged",
+          "context": "…as farmers acquired scientific knowledge and mechanical expertise, they enlarged their plots using standardized approaches (23)---- ploughing the soil a…"
+        }
+      ]
+    },
+    {
+      "e": "established",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. kurdu/kuruldu; oluşturdu/yerleştirdi (establish fiilinin geçmiş/V3 biçimi)",
+          "ex": "The research centre was established in 1985.",
+          "exTr": "Araştırma merkezi 1985 yılında kuruldu.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 3
+    },
+    {
+      "e": "expected",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. bekledi; beklendi/umuldu (expect fiilinin geçmiş/V3 biçimi)",
+          "ex": "Sea levels are expected to rise throughout this century.",
+          "exTr": "Deniz seviyelerinin bu yüzyıl boyunca yükselmesi bekleniyor.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 3
+    },
+    {
+      "e": "experienced",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. yaşadı, deneyimledi; yaşanan (experience fiilinin geçmiş/V3 biçimi)",
+          "ex": "The region experienced rapid economic growth during the decade.",
+          "exTr": "Bölge on yıl boyunca hızlı ekonomik büyüme yaşadı.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 3
+    },
+    {
+      "e": "facing",
+      "operation": "prepend",
+      "type": "fiil, isim",
+      "meanings": [
+        {
+          "tr": "f. karşı karşıya kalmak; yüzleşmek (face fiilinin -ing biçimi)",
+          "ex": "The town is facing a serious water shortage.",
+          "exTr": "Kasaba ciddi bir su kıtlığıyla karşı karşıya.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Geçerli cephe kaplaması anlamı korunarak resmî sınavlarda baskın fiil kullanımı öne eklenmeli."
+    },
+    {
+      "e": "failed",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. başaramadı, başarısız oldu (fail fiilinin geçmiş/ortaç biçimi)",
+          "ex": "She failed to reach the required score.",
+          "exTr": "Gerekli puana ulaşmayı başaramadı.",
+          "yz": 4
+        },
+        {
+          "tr": "f. çalışmadı, bozuldu",
+          "ex": "The engine failed without warning.",
+          "exTr": "Motor hiçbir uyarı vermeden bozuldu.",
+          "yz": 3
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Geçerli başarısız sıfatı korunarak aktif fiil ve cihaz/sistem arızası anlamları eklenmeli."
+    },
+    {
+      "e": "fall",
+      "operation": "prepend",
+      "type": "fiil, isim",
+      "meanings": [
+        {
+          "tr": "f. düşmek, azalmak, gerilemek",
+          "ex": "Water levels usually fall after the dry season begins.",
+          "exTr": "Kurak mevsim başladıktan sonra su seviyeleri genellikle düşer.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2
+    },
+    {
+      "e": "fallen",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. fall fiilinin V3 biçimi: düşmüş; azalmış",
+          "ex": "Child mortality has fallen sharply in the last decade.",
+          "exTr": "Çocuk ölümleri son on yılda keskin biçimde azalmıştır.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "YDS'deki 'have fallen more than 25 percent' azalmak fiilidir; mevcut anlam yalnız fiziksel düşme/şehit olmayı kapsar.",
+      "evidence": [
+        {
+          "pdf": "YDS_2015_01_2015-04-05_EN_FULL_COMBINED_OFFICIAL_30201168.pdf",
+          "page": 8,
+          "surface": "fallen",
+          "context": "…ng a severe attack of malaria without drugs as deaths from malaria have fallen more than 25 percent over the last decade but a mosquito can transfer h…"
+        }
+      ]
+    },
+    {
+      "e": "fastest",
+      "operation": "prepend",
+      "type": "sıfat, zarf",
+      "meanings": [
+        {
+          "tr": "s. en hızlı",
+          "ex": "The direct train is the fastest way to travel between the two cities.",
+          "exTr": "Doğrudan tren, iki şehir arasında yolculuk etmenin en hızlı yoludur.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Resmî bağlamlarda 'the fastest way' gibi açık sıfat kullanımı vardır; kayıt yalnız zarf olarak etiketlenmiş.",
+      "evidence": [
+        {
+          "pdf": "YDS_2015_02_2015-09-13_EN_FULL_COMBINED_OFFICIAL_da3c0ce1.pdf",
+          "page": 20,
+          "surface": "fastest",
+          "context": "portation. Transporting people and goods by sea is mostly preferred, as it is the fastest and cheapest way of transportation. 71. A) B) C) D) E) Diğer sayfaya geçiniz.18 Ö"
+        }
+      ]
+    },
+    {
+      "e": "feeling",
+      "operation": "prepend",
+      "type": "fiil, isim",
+      "meanings": [
+        {
+          "tr": "f. hissetmek; hissederek (feel fiilinin -ing biçimi)",
+          "ex": "Participants reported feeling less anxious after the exercise.",
+          "exTr": "Katılımcılar egzersizden sonra kendilerini daha az kaygılı hissettiklerini bildirdi.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 3
+    },
+    {
+      "e": "felt",
+      "operation": "prepend",
+      "type": "fiil, isim",
+      "meanings": [
+        {
+          "tr": "f. hissetti; feel fiilinin geçmiş/ortaç biçimi",
+          "ex": "He felt calmer after the short break.",
+          "exTr": "Kısa aradan sonra kendini daha sakin hissetti.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Geçerli keçe anlamları korunarak resmî kaynaklardaki feel geçmiş biçimi öne eklenmeli."
+    },
+    {
+      "e": "finding",
+      "operation": "prepend",
+      "type": "fiil, isim",
+      "meanings": [
+        {
+          "tr": "f. bulmak, bulma (find fiilinin -ing biçimi)",
+          "ex": "Finding reliable evidence can take several years.",
+          "exTr": "Güvenilir kanıt bulmak birkaç yıl sürebilir.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 3
+    },
+    {
+      "e": "following",
+      "operation": "prepend",
+      "type": "edat, fiil, sıfat, isim",
+      "meanings": [
+        {
+          "tr": "e. ardından, sonrasında",
+          "ex": "Following the storm, several coastal villages were evacuated.",
+          "exTr": "Fırtınanın ardından birkaç kıyı köyü tahliye edildi.",
+          "yz": 4
+        },
+        {
+          "tr": "f. takip etmek; takip ederek (follow fiilinin -ing biçimi)",
+          "ex": "The team mapped the birds by following their seasonal migration route.",
+          "exTr": "Ekip kuşları mevsimsel göç rotalarını takip ederek haritaladı.",
+          "yz": 3
+        }
+      ],
+      "existing_default_yz": 2
+    },
+    {
+      "e": "fortune",
+      "operation": "replace",
+      "type": "isim",
+      "meanings": [
+        {
+          "tr": "i. talih, şans, kader",
+          "ex": "Good fortune helped the team recover quickly.",
+          "exTr": "İyi talih ekibin hızla toparlanmasına yardımcı oldu.",
+          "yz": 4
+        },
+        {
+          "tr": "i. servet",
+          "ex": "She built a fortune through careful investments.",
+          "exTr": "Dikkatli yatırımlarla bir servet yaptı.",
+          "yz": 3
+        }
+      ],
+      "reason": "İki geçerli anlam korunmalı, ancak resmî bağlamdaki talih/şans anlamı ilk sıraya alınmalı."
+    },
+    {
+      "e": "geneva",
+      "operation": "prepend",
+      "type": "isim",
+      "meanings": [
+        {
+          "tr": "i. Geneva: Cenevre (İsviçre'de şehir)",
+          "ex": "The organisation is headquartered in Geneva.",
+          "exTr": "Kuruluşun merkezi Cenevre'dedir.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Resmî kullanım şehir adıdır; tarihî içki anlamı ikincil olarak korunur.",
+      "evidence": [
+        {
+          "pdf": "YDS_2018_01_2018-04-01_EN_FULL_COMBINED_OFFICIAL_be30ee96.pdf",
+          "page": 25,
+          "surface": "Geneva"
+        }
+      ]
+    },
+    {
+      "e": "going",
+      "operation": "prepend",
+      "type": "fiil, sıfat, isim",
+      "meanings": [
+        {
+          "tr": "f. gitmek; giden (go fiilinin -ing biçimi)",
+          "ex": "More young people are going to cities to find work.",
+          "exTr": "Daha fazla genç iş bulmak için şehirlere gidiyor.",
+          "yz": 4
+        },
+        {
+          "tr": "(be going to) -ecek/-acak; niyetinde olmak",
+          "ex": "The new regulation is going to affect every research institution.",
+          "exTr": "Yeni düzenleme her araştırma kurumunu etkileyecek.",
+          "yz": 4
+        },
+        {
+          "tr": "(go on) sürmek, devam etmek; olup bitmek",
+          "ex": "Scientists are still trying to understand what is going on inside the cell.",
+          "exTr": "Bilim insanları hücrenin içinde neler olup bittiğini hâlâ anlamaya çalışıyor.",
+          "yz": 3
+        }
+      ],
+      "existing_default_yz": 2
+    },
+    {
+      "e": "grown",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. büyümüş, artmış, gelişmiş; hâline gelmiş (grow fiilinin ortaç biçimi)",
+          "ex": "Public interest has grown rapidly this year.",
+          "exTr": "Halkın ilgisi bu yıl hızla arttı.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Geçerli yetişkin/yetiştirilmiş sıfatları korunarak perfect ve ortaç fiil kullanımı eklenmeli."
+    },
+    {
+      "e": "happening",
+      "operation": "prepend",
+      "type": "fiil, isim",
+      "meanings": [
+        {
+          "tr": "f. meydana gelen, gerçekleşen; olmakta olan",
+          "ex": "Scientists are monitoring what is happening beneath the glacier.",
+          "exTr": "Bilim insanları buzulun altında neler olduğunu izliyor.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Üç resmî eşleşmenin tamamı happen fiilinin devam/gerund biçimidir; nadir sanat terimi tek anlam yapılmış.",
+      "evidence": [
+        {
+          "pdf": "eYDS_2015_09_2015-09-19_EN_P10_COMBINED_OFFICIAL_88ead286.pdf",
+          "page": 6,
+          "surface": "happening",
+          "context": "asier for people to exchange information and people became more aware of what was happening around. A) I B) II C) III D) IV E) V DOĞRU CEVAP: D"
+        }
+      ]
+    },
+    {
+      "e": "headed",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. başkanlık etti, yönetti",
+          "ex": "A senior judge headed the independent inquiry.",
+          "exTr": "Bağımsız soruşturmaya kıdemli bir yargıç başkanlık etti.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Resmî kullanımların ikisi etkin fiildir ('headed a bureaucracy/the study'); mevcut kayıt bu anlamı vermiyor.",
+      "evidence": [
+        {
+          "pdf": "YDS_2015_02_2015-09-13_EN_FULL_COMBINED_OFFICIAL_da3c0ce1.pdf",
+          "page": 16,
+          "surface": "headed",
+          "context": "and his people. The pharaoh not only oversaw elaborate religious rituals but also headed a vast, highly organized political and administrative bureaucracy. Pharaohs were "
+        }
+      ]
+    },
+    {
+      "e": "heard",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. duydu, işitti; haberini aldı (hear fiilinin geçmiş/ortaç biçimi)",
+          "ex": "We heard the news early this morning.",
+          "exTr": "Haberi bu sabah erken saatlerde duyduk.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Geçerli duyulan/işitilen sıfatı korunarak aktif geçmiş ve perfect fiil anlamı öne eklenmeli."
+    },
+    {
+      "e": "held",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. tuttu, sahipti; düzenlendi/tutuldu (hold fiilinin geçmiş/V3 biçimi)",
+          "ex": "The conference was held in Ankara over three days.",
+          "exTr": "Konferans Ankara'da üç gün boyunca düzenlendi.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2
+    },
+    {
+      "e": "helicopter",
+      "operation": "prepend",
+      "type": "sıfat, isim, fiil",
+      "meanings": [
+        {
+          "tr": "s. (helicopter parenting) aşırı korumacı ve sürekli denetleyici",
+          "ex": "Experts warn that helicopter parenting can weaken independence.",
+          "exTr": "Uzmanlar, aşırı korumacı ebeveynliğin bağımsızlığı zayıflatabileceği konusunda uyarıyor.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "YDS pasajının ana kullanımı helicopter parenting terimidir; yalnız taşıt anlamı bu pedagojik bağlamı açıklamaz.",
+      "evidence": [
+        {
+          "pdf": "YDS_2025_01_2025-03-09_EN_P10_COMBINED_OFFICIAL_d4fac58a.pdf",
+          "page": 27,
+          "surface": "helicopter",
+          "context": "…from those of previous generations. Much of this difference is due to ‘helicopter parenting’, in which parents closely monitor their children’s lives to…"
+        }
+      ]
+    },
+    {
+      "e": "helping",
+      "operation": "prepend",
+      "type": "fiil, isim",
+      "meanings": [
+        {
+          "tr": "f. yardım etmek; yardım eden/yardım ederek (help fiilinin -ing biçimi)",
+          "ex": "He is helping his neighbour carry the boxes.",
+          "exTr": "Komşusunun kutuları taşımasına yardım ediyor.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Geçerli porsiyon/pay anlamı korunarak resmî kaynaklarda baskın yardım etme fiili öne eklenmeli."
+    },
+    {
+      "e": "hunted",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. (hunt for) aradı, peşine düştü",
+          "ex": "Researchers hunted for evidence of water beneath the surface.",
+          "exTr": "Araştırmacılar yüzeyin altında su bulunduğuna dair kanıt aradı.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Resmî kaynakta 'scientists have hunted for' = yıllarca aradılar; mevcut anlam yalnız avlanan/tedirgin yönünü veriyor.",
+      "evidence": [
+        {
+          "pdf": "YDS_2015_01_2015-04-05_EN_FULL_COMBINED_OFFICIAL_30201168.pdf",
+          "page": 20,
+          "surface": "hunted",
+          "context": "e new trend. 70. A) B) C) D) E) 71. A) B) C) D) E) Over the years scientists have hunted for some signal that would allow forecasters to pinpoint exactly where and when a"
+        }
+      ]
+    },
+    {
+      "e": "industrialized",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. sanayileşti",
+          "ex": "The region industrialized rapidly after the railway opened.",
+          "exTr": "Bölge, demir yolu açıldıktan sonra hızla sanayileşti.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Resmî kullanımda 'countries industrialized' etkin/geçişsiz fiildir; yalnız sıfat anlamı eksik yönlendiriyor.",
+      "evidence": [
+        {
+          "pdf": "eYDS_2016_01_2016-01-23_EN_P10_COMBINED_OFFICIAL_69892428.pdf",
+          "page": 4,
+          "surface": "industrialized",
+          "context": "were relatively small at first, ----. A) they grew dramatically as more countries industrialized B) it was in no country’s interest to reduce them until recently C) carbon dioxid"
+        }
+      ]
+    },
+    {
+      "e": "inflated",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. inflate fiilinin geçmiş/V3 biçimi: şişirdi; abarttı",
+          "ex": "The device inflated the airbag within milliseconds.",
+          "exTr": "Cihaz hava yastığını milisaniyeler içinde şişirdi.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "YDS'de mechanism öznesi airbags nesnesini şişirir; mevcut edilgen sıfat anlamı kaynak kullanımını karşılamaz.",
+      "evidence": [
+        {
+          "pdf": "YDS_2017_01_2017-04-02_EN_FULL_COMBINED_OFFICIAL_bc4b1e4e.pdf",
+          "page": 14,
+          "surface": "inflated",
+          "context": "…e 1950s, car manufacturers ----. developed a compressed mechanism which inflated airbags swiftly benefitted from optional airbags to raise the safety aw…"
+        }
+      ]
+    },
+    {
+      "e": "investigating",
+      "operation": "replace",
+      "type": "fiil",
+      "meanings": [
+        {
+          "tr": "f. araştırmak, incelemek, soruşturmak; araştıran/inceleyen",
+          "ex": "Scientists are investigating why the lake is shrinking.",
+          "exTr": "Bilim insanları gölün neden küçüldüğünü araştırıyor.",
+          "yz": 4
+        }
+      ],
+      "reason": "Dört resmî eşleşmenin tamamı investigate fiilinin gerund/continuous biçimidir; salt isim etiketi yanlıştır.",
+      "evidence": [
+        {
+          "pdf": "YDS_2015_02_2015-09-13_EN_FULL_COMBINED_OFFICIAL_da3c0ce1.pdf",
+          "page": 9,
+          "surface": "investigating",
+          "context": "ce insomnia and they do not know its causes so neuroscientists and biologists are investigating ways to improve the quality of sleep whereas people who travel long distances gen"
+        }
+      ]
+    },
+    {
+      "e": "japan",
+      "operation": "prepend",
+      "type": "isim, fiil",
+      "meanings": [
+        {
+          "tr": "i. Japan: Japonya (ülke adı)",
+          "ex": "Japan has invested heavily in earthquake-resistant construction.",
+          "exTr": "Japonya depreme dayanıklı yapılara büyük yatırım yaptı.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Resmî kullanım ülke adıdır; küçük harfli cila anlamı nadir ikincil anlam olarak korunur.",
+      "evidence": [
+        {
+          "pdf": "YDS_2015_02_2015-09-13_EN_FULL_COMBINED_OFFICIAL_da3c0ce1.pdf",
+          "page": 14,
+          "surface": "Japan"
+        }
+      ]
+    },
+    {
+      "e": "lay",
+      "operation": "prepend",
+      "type": "fiil, sıfat, isim",
+      "meanings": [
+        {
+          "tr": "f. yatıyordu, bulunuyordu (lie fiilinin geçmiş biçimi)",
+          "ex": "The village lay beyond the northern hills.",
+          "exTr": "Köy kuzey tepelerinin ötesinde bulunuyordu.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Mevcut lay fiili anlamları korunarak ayrı düzensiz fiil olan lie'ın geçmiş biçimi eklenmeli."
+    },
+    {
+      "e": "lead",
+      "operation": "prepend",
+      "type": "fiil, isim",
+      "meanings": [
+        {
+          "tr": "f. (lead to) yol açmak, neden olmak; yönetmek, öncülük etmek",
+          "ex": "Untreated infections can lead to serious complications.",
+          "exTr": "Tedavi edilmeyen enfeksiyonlar ciddi komplikasyonlara yol açabilir.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2
+    },
+    {
+      "e": "left",
+      "operation": "prepend",
+      "type": "fiil, sıfat, isim",
+      "meanings": [
+        {
+          "tr": "f. bıraktı; ayrıldı, terk etti (leave fiilinin geçmiş/V3 biçimi)",
+          "ex": "Many residents left the region after repeated crop failures.",
+          "exTr": "Birçok bölge sakini art arda yaşanan ürün kayıplarından sonra bölgeden ayrıldı.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2
+    },
+    {
+      "e": "letting",
+      "operation": "prepend",
+      "type": "fiil, isim",
+      "meanings": [
+        {
+          "tr": "f. izin vermek; olanak sağlamak",
+          "ex": "The policy reduced costs by letting patients consult doctors online.",
+          "exTr": "Politika, hastaların doktorlara çevrim içi danışmasına olanak sağlayarak maliyetleri düşürdü.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Üç resmî eşleşmenin tamamı let fiilinin -ing biçimidir; mevcut kayıt yalnız kiralama anlamını veriyor.",
+      "evidence": [
+        {
+          "pdf": "YDS_2014_02_2014-09-07_EN_FULL_COMBINED_OFFICIAL_5c0fd089.pdf",
+          "page": 16,
+          "surface": "letting",
+          "context": " unreliable but counterproductive: alienating and misclassifying the innocent and letting the guilty get away without receiving the punishment he or she deserves. It is po"
+        }
+      ]
+    },
+    {
+      "e": "lighter",
+      "operation": "prepend",
+      "type": "sıfat, isim, fiil",
+      "meanings": [
+        {
+          "tr": "s. daha hafif (light'ın karşılaştırma biçimi)",
+          "ex": "The new material is lighter but equally strong.",
+          "exTr": "Yeni malzeme daha hafif fakat aynı ölçüde sağlamdır.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "YDS'deki 'lighter and stronger materials' karşılaştırma sıfatıdır; yalnız 'çakmak' anlamı kaynakla uyuşmaz.",
+      "evidence": [
+        {
+          "pdf": "YDS_2016_01_2016-03-27_EN_FULL_COMBINED_OFFICIAL_ce1c404a.pdf",
+          "page": 9,
+          "surface": "lighter",
+          "context": "…fast as possible in the 1980s ----. we now focus on noise reduction, lighter and stronger materials, and lower fuel consumption the race to develop new…"
+        }
+      ]
+    },
+    {
+      "e": "lit",
+      "operation": "prepend",
+      "type": "fiil, sıfat, isim",
+      "meanings": [
+        {
+          "tr": "f. light fiilinin geçmiş/V3 biçimi: yaktı, ateşledi; aydınlattı",
+          "ex": "The rescue team lit a signal fire before dark.",
+          "exTr": "Kurtarma ekibi hava kararmadan önce bir işaret ateşi yaktı.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "YDS'deki 'fuses were lit' edilgen fiildir ve 'fitiller ateşlendi' demektir; kayıt yalnız durum sıfatını verir.",
+      "evidence": [
+        {
+          "pdf": "YDS_2017_01_2017-04-02_EN_FULL_COMBINED_OFFICIAL_bc4b1e4e.pdf",
+          "page": 18,
+          "surface": "lit",
+          "context": "…uishing liquid and a chamber of gunpowder. When the attached fuses were lit, the gunpowder exploded and scattered the liquid. They were not widely…"
+        }
+      ]
+    },
+    {
+      "e": "living",
+      "operation": "prepend",
+      "type": "fiil, sıfat, isim",
+      "meanings": [
+        {
+          "tr": "f. yaşamak; yaşayarak, yaşayan (live fiilinin -ing biçimi)",
+          "ex": "People living near busy roads may be exposed to higher noise levels.",
+          "exTr": "İşlek yolların yakınında yaşayan insanlar daha yüksek gürültü düzeylerine maruz kalabilir.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 3
+    },
+    {
+      "e": "longest",
+      "operation": "type",
+      "type": "sıfat, zarf",
+      "meanings": [],
+      "reason": "İki resmî eşleşmenin ikisi de 'the longest railway/rail line' yapısında sıfattır; kayıt yalnız zarf diyor.",
+      "evidence": [
+        {
+          "pdf": "YDS_2015_02_2015-09-13_EN_FULL_COMBINED_OFFICIAL_da3c0ce1.pdf",
+          "page": 17,
+          "surface": "longest",
+          "context": "ntains, lakes, forests and plenty of fresh air. The Trans-Siberian Railway is the longest railway in the world, and we can take it all the way from Moscow in the west, to "
+        }
+      ]
+    },
+    {
+      "e": "looking",
+      "operation": "replace",
+      "type": "fiil",
+      "meanings": [
+        {
+          "tr": "f. look fiilinin -ing biçimi; bakıyor, bakmakta",
+          "ex": "The child is looking through the window at the falling snow.",
+          "exTr": "Çocuk pencereden yağan kara bakıyor.",
+          "yz": 4
+        }
+      ]
+    },
+    {
+      "e": "lost",
+      "operation": "prepend",
+      "type": "fiil, sıfat, isim",
+      "meanings": [
+        {
+          "tr": "f. kaybetti, yitirdi; kayboldu (lose fiilinin geçmiş/V3 biçimi)",
+          "ex": "The body lost a significant amount of water during the experiment.",
+          "exTr": "Vücut deney sırasında önemli miktarda su kaybetti.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2
+    },
+    {
+      "e": "louvre",
+      "operation": "prepend",
+      "type": "isim",
+      "meanings": [
+        {
+          "tr": "i. the Louvre: Louvre Müzesi",
+          "ex": "The Louvre organised an exhibition devoted to the artist's final works.",
+          "exTr": "Louvre, sanatçının son eserlerine ayrılmış bir sergi düzenledi.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Resmî kullanım müze adıdır; panjur/hava deliği anlamı ikincil olarak korunur.",
+      "evidence": [
+        {
+          "pdf": "YDS_2014_02_2014-09-07_EN_FULL_COMBINED_OFFICIAL_5c0fd089.pdf",
+          "page": 4,
+          "surface": "Louvre"
+        }
+      ]
+    },
+    {
+      "e": "made",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. yaptı; neden oldu, hâle getirdi (make fiilinin geçmiş/V3 biçimi)",
+          "ex": "Heavy rainfall made the coastal road unsafe for traffic.",
+          "exTr": "Şiddetli yağış kıyı yolunu trafik için güvensiz hâle getirdi.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 3
+    },
+    {
+      "e": "making",
+      "operation": "prepend",
+      "type": "fiil, isim",
+      "meanings": [
+        {
+          "tr": "f. yapmak; hâle getirmek; yaparak (make fiilinin -ing biçimi)",
+          "ex": "The policy reduced costs, making treatment accessible to more patients.",
+          "exTr": "Politika maliyetleri düşürerek tedaviyi daha fazla hasta için erişilebilir hâle getirdi.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2
+    },
+    {
+      "e": "march",
+      "operation": "prepend",
+      "type": "isim, fiil",
+      "meanings": [
+        {
+          "tr": "i. March: Mart (ay adı)",
+          "ex": "The field survey will begin in March.",
+          "exTr": "Saha araştırması Mart ayında başlayacak.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Kaynakta ay adı March kullanılır; yürümek/yürüyüş anlamları korunur.",
+      "evidence": [
+        {
+          "pdf": "YDS_2015_02_2015-09-13_EN_FULL_COMBINED_OFFICIAL_da3c0ce1.pdf",
+          "page": 14,
+          "surface": "March"
+        }
+      ]
+    },
+    {
+      "e": "means",
+      "operation": "prepend",
+      "type": "fiil, isim",
+      "meanings": [
+        {
+          "tr": "f. anlamına gelir, demektir (mean fiilinin üçüncü tekil biçimi)",
+          "ex": "A rapid fall in pressure means that a storm may be approaching.",
+          "exTr": "Basınçtaki hızlı bir düşüş, bir fırtınanın yaklaşıyor olabileceği anlamına gelir.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 3
+    },
+    {
+      "e": "milky",
+      "operation": "prepend",
+      "type": "sıfat",
+      "meanings": [
+        {
+          "tr": "s. (the Milky Way) Samanyolu",
+          "ex": "The Milky Way contains hundreds of billions of stars.",
+          "exTr": "Samanyolu yüz milyarlarca yıldız içerir.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Resmî eşleşme Milky Way özel adının parçasıdır; sütlü/sütü andıran sıfatı korunur.",
+      "evidence": [
+        {
+          "pdf": "YDS_2019_02_2019-09-08_EN_FULL_COMBINED_OFFICIAL_899e6b64.pdf",
+          "page": 25,
+          "surface": "Milky"
+        }
+      ]
+    },
+    {
+      "e": "move",
+      "operation": "prepend",
+      "type": "fiil, isim",
+      "meanings": [
+        {
+          "tr": "f. hareket etmek; taşınmak, gitmek; ilerlemek",
+          "ex": "Many families move to cities in search of stable employment.",
+          "exTr": "Birçok aile düzenli iş aramak için şehirlere taşınır.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2
+    },
+    {
+      "e": "nail",
+      "operation": "prepend",
+      "type": "isim, fiil",
+      "meanings": [
+        {
+          "tr": "i. el veya ayak tırnağı",
+          "ex": "Each nail grows from living tissue beneath the skin.",
+          "exTr": "Her tırnak derinin altındaki canlı dokudan uzar.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "On resmî eşleşmenin tamamı tırnak veya nail-biting/nail polish bileşiklerindedir; mevcut kayıtta baskın 'tırnak' anlamı yoktur.",
+      "evidence": [
+        {
+          "pdf": "YDS_2014_01_2014-04-06_EN_FULL_COMBINED_OFFICIAL_8f6e2e92.pdf",
+          "page": 16,
+          "surface": "nail",
+          "context": "ngers. For years, scientists have wondered why this only happens when some of the nail is left behind. But now the answer has been discovered. Studying mice, the biolog"
+        }
+      ]
+    },
+    {
+      "e": "nearest",
+      "operation": "type",
+      "type": "sıfat, zarf",
+      "meanings": [],
+      "reason": "İki resmî eşleşmenin ikisi de 'the nearest exit/neighbour' yapısında sıfattır; kayıt yalnız zarf diyor.",
+      "evidence": [
+        {
+          "pdf": "YDS_2019_03_2019-12-01_EN_FULL_COMBINED_OFFICIAL_dd4e8b23.pdf",
+          "page": 8,
+          "surface": "nearest",
+          "context": "es would spread so rapidly that the tunnel would transform into a fiery hell. The nearest exit might still be many kilometres away. The solution is that, (23)----a fire, t"
+        }
+      ]
+    },
+    {
+      "e": "needs",
+      "operation": "replace",
+      "type": "fiil, isim",
+      "meanings": [
+        {
+          "tr": "f. ihtiyaç duyar; gerekir (need fiilinin üçüncü tekil biçimi)",
+          "ex": "The treatment needs to be tested on a larger group of patients.",
+          "exTr": "Tedavinin daha geniş bir hasta grubunda test edilmesi gerekir.",
+          "yz": 4
+        },
+        {
+          "tr": "i. ihtiyaçlar, gereksinimler",
+          "ex": "The programme was redesigned to meet the needs of rural communities.",
+          "exTr": "Program, kırsal toplulukların ihtiyaçlarını karşılayacak biçimde yeniden tasarlandı.",
+          "yz": 3
+        }
+      ]
+    },
+    {
+      "e": "nope",
+      "operation": "type",
+      "type": "zarf",
+      "meanings": [],
+      "reason": "Site tür taksonomisinde 'ünlem' kullanılmıyor; mevcut anlamın kendi 'z.' etiketi ve Cambridge'in adverb sınıflamasıyla uyumlu olarak tür zarf yapılmalıdır.",
+      "evidence": [
+        {
+          "pdf": "YDS_2020_01_2020-09-27_EN_FULL_COMBINED_OFFICIAL_d6d52361.pdf",
+          "page": 22,
+          "surface": "Nope",
+          "context": "…plot and develop it into a shorter film, but I still got really bored. Nope, but I think the problem is actually with the cinema itself rather than…"
+        }
+      ]
+    },
+    {
+      "e": "oxford",
+      "operation": "prepend",
+      "type": "isim",
+      "meanings": [
+        {
+          "tr": "i. Oxford; Oxford University: Oxford Üniversitesi",
+          "ex": "Oxford University conducted a study on sleep habits.",
+          "exTr": "Oxford Üniversitesi uyku alışkanlıkları üzerine bir çalışma yürüttü.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Resmî kullanım üniversite/yer adıdır; ayakkabı anlamı korunur.",
+      "evidence": [
+        {
+          "pdf": "YDS_2020_01_2020-09-27_EN_FULL_COMBINED_OFFICIAL_d6d52361.pdf",
+          "page": 28,
+          "surface": "Oxford"
+        }
+      ]
+    },
+    {
+      "e": "pacific",
+      "operation": "prepend",
+      "type": "isim, sıfat",
+      "meanings": [
+        {
+          "tr": "i./s. Pacific: Pasifik Okyanusu; Pasifik'e ait",
+          "ex": "The islands lie in the eastern Pacific Ocean.",
+          "exTr": "Adalar Pasifik Okyanusu'nun doğusunda yer alır.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Resmî kullanım Pasifik Okyanusu özel adıdır; barışçıl/uzlaştırıcı sıfatı korunur.",
+      "evidence": [
+        {
+          "pdf": "YDS_2018_03_2018-12-02_EN_FULL_COMBINED_OFFICIAL_fc1001ae.pdf",
+          "page": 17,
+          "surface": "Pacific"
+        }
+      ]
+    },
+    {
+      "e": "paid",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. ödedi; pay fiilinin geçmiş/ortaç biçimi",
+          "ex": "They paid the bill before leaving.",
+          "exTr": "Ayrılmadan önce hesabı ödediler.",
+          "yz": 4
+        },
+        {
+          "tr": "f. (paid attention) dikkat etti",
+          "ex": "She paid attention to every detail.",
+          "exTr": "Her ayrıntıya dikkat etti.",
+          "yz": 3
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Geçerli ücretli/ödenmiş sıfatı korunarak aktif ödeme fiili ve yaygın paid attention kalıbı eklenmeli."
+    },
+    {
+      "e": "paved",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. (pave the way/path) yolunu açtı, zemin hazırladı",
+          "ex": "The discovery paved the way for safer treatments.",
+          "exTr": "Keşif daha güvenli tedavilerin yolunu açtı.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Resmî kullanımlardan biri 'paved the path to' mecazıyla 'yolunu açtı' demektir; mevcut kayıt yalnız fiziksel kaplama anlamını veriyor.",
+      "evidence": [
+        {
+          "pdf": "YDS_2015_01_2015-04-05_EN_FULL_COMBINED_OFFICIAL_30201168.pdf",
+          "page": 14,
+          "surface": "paved",
+          "context": " the passage that ----. the US Federal Drug Administration’s approval of da Vinci paved the path to robotic surgery conventional keyhole surgery is different from roboti"
+        }
+      ]
+    },
+    {
+      "e": "pointed",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. (pointed out) belirtti, vurguladı",
+          "ex": "She pointed out a weakness in the argument.",
+          "exTr": "Savdaki bir zayıflığa dikkat çekti.",
+          "yz": 4
+        },
+        {
+          "tr": "f. (pointed to) işaret etti, gösterdi",
+          "ex": "The evidence pointed to a different cause.",
+          "exTr": "Kanıtlar farklı bir nedene işaret etti.",
+          "yz": 3
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Geçerli sivri/iğneleyici sıfatları korunarak resmî sınavlardaki öbek-fiil anlamları eklenmeli."
+    },
+    {
+      "e": "proclaimed",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. proclaim fiilinin geçmiş/V3 biçimi: ilan etti, açıkladı",
+          "ex": "The report proclaimed the policy a success.",
+          "exTr": "Rapor politikanın başarılı olduğunu ilan etti.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "YDS'de report öznesi bir sonucu ilan/açıklar; mevcut yalnız edilgen sıfat anlamı etkin geçmiş fiili karşılamaz.",
+      "evidence": [
+        {
+          "pdf": "YDS_2016_01_2016-03-27_EN_FULL_COMBINED_OFFICIAL_ce1c404a.pdf",
+          "page": 19,
+          "surface": "proclaimed",
+          "context": "…ort from the UN’s Intergovernmental Panel on Climate Change confidently proclaimed that humankind is partially to blame for the warming of the planet over…"
+        }
+      ]
+    },
+    {
+      "e": "psychic",
+      "operation": "prepend",
+      "type": "sıfat, isim",
+      "meanings": [
+        {
+          "tr": "s. ruhsal, zihinsel, psikolojik",
+          "ex": "Constant conflict drained her psychic energy.",
+          "exTr": "Sürekli çatışma onun ruhsal enerjisini tüketti.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "YDS'deki 'psychic energy' zihinsel/ruhsal enerji anlamındadır; yalnız paranormal/medyum anlamı verilmesi bağlamı daraltır.",
+      "evidence": [
+        {
+          "pdf": "YDS_2020_01_2020-09-27_EN_FULL_COMBINED_OFFICIAL_d6d52361.pdf",
+          "page": 26,
+          "surface": "psychic",
+          "context": "…and tolerance. It also traps us in a bubble and we waste vast amount of psychic energy recovering from insults that were never targeted at us i n the f…"
+        }
+      ]
+    },
+    {
+      "e": "quicker",
+      "operation": "prepend",
+      "type": "sıfat, zarf",
+      "meanings": [
+        {
+          "tr": "s. daha hızlı, daha çabuk",
+          "ex": "Cycling is quicker than walking for short urban journeys.",
+          "exTr": "Kısa şehir içi yolculuklarda bisiklete binmek yürümekten daha hızlıdır.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Resmî kullanımlardan 'far cleaner ... and quicker than walking' yüklem sıfatıdır; kayıt yalnız zarf diyor.",
+      "evidence": [
+        {
+          "pdf": "YDS_2013_02_2013-09-01_EN_FULL_COMBINED_OFFICIAL_e057cb35.pdf",
+          "page": 21,
+          "surface": "quicker",
+          "context": " devices ever invented, the bicycle is everywhere.(II) Far cleaner than a car and quicker than walking, bicycles have become popular. (III) Bicycles in various forms were "
+        }
+      ]
+    },
+    {
+      "e": "reducing",
+      "operation": "prepend",
+      "type": "fiil, isim",
+      "meanings": [
+        {
+          "tr": "f. azaltmak, düşürmek; azaltan/azaltarak (reduce fiilinin -ing biçimi)",
+          "ex": "The new filter is reducing harmful emissions.",
+          "exTr": "Yeni filtre zararlı salımları azaltıyor.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Mevcut zayıflama ve azaltma isimleri korunarak fiil kullanımı öne eklenmeli."
+    },
+    {
+      "e": "refined",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. refine fiilinin geçmiş/V3 biçimi: geliştirdi, inceltti; arıttı",
+          "ex": "Later studies refined the original theory.",
+          "exTr": "Daha sonraki çalışmalar özgün kuramı geliştirdi.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "YDS'de Aristotle bir açıklamayı geliştirmiştir; mevcut yalnız 'arıtılmış/zarif' sıfat anlamı bu fiil anlamını atlar.",
+      "evidence": [
+        {
+          "pdf": "eYDS_2015_01_2015-01-24_EN_P10_COMBINED_OFFICIAL_7b527f7d.pdf",
+          "page": 6,
+          "surface": "refined",
+          "context": "…iled to figure out why. D) It was the great philosopher, Aristotle, who refined the explanation of the movements in the heavens. E) NASA has completely…"
+        }
+      ]
+    },
+    {
+      "e": "remains",
+      "operation": "prepend",
+      "type": "fiil, isim",
+      "meanings": [
+        {
+          "tr": "f. kalır, sürer (remain fiilinin üçüncü tekil biçimi)",
+          "ex": "The precise cause of the decline remains unclear.",
+          "exTr": "Gerilemenin kesin nedeni belirsizliğini koruyor.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 3
+    },
+    {
+      "e": "required",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. gerektirdi, zorunlu kıldı; gerekli görüldü (require fiilinin geçmiş/V3 biçimi)",
+          "ex": "The new law required factories to reduce their emissions.",
+          "exTr": "Yeni yasa fabrikaların emisyonlarını azaltmasını zorunlu kıldı.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 3
+    },
+    {
+      "e": "resolution",
+      "operation": "prepend",
+      "type": "isim",
+      "meanings": [
+        {
+          "tr": "i. çözüm, sonuca bağlanma; anlaşmaya varma",
+          "ex": "The dispute finally reached a peaceful resolution.",
+          "exTr": "Anlaşmazlık sonunda barışçıl bir çözüme ulaştı.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Tek resmî eşleşme anlatının 'çözüme/sonuca bağlanması' anlamındadır; mevcut iki anlam bunu karşılamıyor.",
+      "evidence": [
+        {
+          "pdf": "YDS_2018_02_2018-09-09_EN_FULL_COMBINED_OFFICIAL_60684786.pdf",
+          "page": 27,
+          "surface": "resolution",
+          "context": "start with a disordered narrative and move through a series of ups and downs to a resolution, but television presents itself as a set of repeated segments which do not always"
+        }
+      ]
+    },
+    {
+      "e": "rose",
+      "operation": "prepend",
+      "type": "fiil, isim, sıfat",
+      "meanings": [
+        {
+          "tr": "f. yükseldi, arttı; rise fiilinin geçmiş biçimi",
+          "ex": "Prices rose sharply after the shortage.",
+          "exTr": "Kıtlıktan sonra fiyatlar hızla yükseldi.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Geçerli gül ve renk anlamları korunarak resmî kaynaklardaki rise geçmiş biçimi öne eklenmeli."
+    },
+    {
+      "e": "said",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. dedi, söyledi; söylendiği/söylenir (say fiilinin geçmiş/V3 biçimi)",
+          "ex": "The compound is said to improve the material's resistance to heat.",
+          "exTr": "Bileşiğin malzemenin ısıya dayanıklılığını artırdığı söylenir.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 1
+    },
+    {
+      "e": "saw",
+      "operation": "prepend",
+      "type": "fiil, isim",
+      "meanings": [
+        {
+          "tr": "f. gördü; tanık oldu (see fiilinin geçmiş biçimi)",
+          "ex": "The decade saw a sharp increase in urban migration.",
+          "exTr": "Bu on yıl kentsel göçte keskin bir artışa tanık oldu.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 1
+    },
+    {
+      "e": "shook",
+      "operation": "type",
+      "type": "fiil",
+      "meanings": [],
+      "reason": "Dört resmî eşleşmenin tamamı çekimli fiildir; kayıt bunu açıklasa da sözcük türünü yanlışlıkla isim olarak vermiş.",
+      "evidence": [
+        {
+          "pdf": "YDS_2018_01_2018-04-01_EN_FULL_COMBINED_OFFICIAL_be30ee96.pdf",
+          "page": 12,
+          "surface": "shook",
+          "context": "ding the idea of an absolute time and space. A young German named Albert Einstein shook classical physics at the beginning of the 20th century and put forward his theory"
+        }
+      ]
+    },
+    {
+      "e": "showing",
+      "operation": "prepend",
+      "type": "fiil, isim",
+      "meanings": [
+        {
+          "tr": "f. göstermek; gösteren/ortaya koyan (show fiilinin -ing biçimi)",
+          "ex": "The chart is showing a steady decline.",
+          "exTr": "Grafik düzenli bir düşüş gösteriyor.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Geçerli gösterim/gösteri isimleri korunarak veri ve kanıt bağlamındaki fiil kullanımı öne eklenmeli."
+    },
+    {
+      "e": "sitting",
+      "operation": "prepend",
+      "type": "fiil, sıfat, isim",
+      "meanings": [
+        {
+          "tr": "f. oturmak; oturan/oturarak (sit fiilinin -ing biçimi)",
+          "ex": "He is sitting quietly near the window.",
+          "exTr": "Pencerenin yanında sessizce oturuyor.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Geçerli görevdeki ve oturum anlamları korunarak fiziksel oturma fiili öne eklenmeli."
+    },
+    {
+      "e": "slower",
+      "operation": "replace",
+      "type": "sıfat, zarf",
+      "meanings": [
+        {
+          "tr": "s./z. daha yavaş (slow'un karşılaştırma biçimi)",
+          "ex": "Recovery was slower than doctors expected.",
+          "exTr": "İyileşme doktorların beklediğinden daha yavaştı.",
+          "yz": 4
+        }
+      ],
+      "reason": "Her iki YDS eşleşmesinde slower bir ismi/ölçümü niteleyen karşılaştırma sıfatıdır; kayıt yalnız zarf olarak etiketlenmiştir.",
+      "evidence": [
+        {
+          "pdf": "YDS_2019_01_2019-03-24_EN_FULL_COMBINED_OFFICIAL_9e4af695.pdf",
+          "page": 22,
+          "surface": "slower",
+          "context": "…and. Cycling 26.93 kilometres in 1 hour, Marchand was only 50.6 percent slower than Bradley Wiggins’s 54.53 km record. The study has also shown that a…"
+        }
+      ]
+    },
+    {
+      "e": "sought",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. (seek fiilinin geçmişi) aradı; (sought to) amaçladı, çalıştı",
+          "ex": "The researchers sought to explain the unexpected decline.",
+          "exTr": "Araştırmacılar beklenmedik düşüşü açıklamaya çalıştı.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Resmî kullanımlardan biri etkin 'Authors sought to...' yapısıdır; mevcut kayıt yalnız edilgen 'aranan' anlamını veriyor.",
+      "evidence": [
+        {
+          "pdf": "eYDS_2016_01_2016-01-23_EN_P10_COMBINED_OFFICIAL_69892428.pdf",
+          "page": 6,
+          "surface": "sought",
+          "context": "ond World War, and literature was meant to contribute toward this end. C) Authors sought to use literature to gain perspective as well as to politically educate and encou"
+        }
+      ]
+    },
+    {
+      "e": "soy",
+      "operation": "prepend",
+      "type": "isim",
+      "meanings": [
+        {
+          "tr": "i. soya, soya fasulyesi; soy milk = soya sütü",
+          "ex": "Many consumers choose soy milk instead of dairy milk.",
+          "exTr": "Birçok tüketici hayvansal süt yerine soya sütünü tercih eder.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "YDS'deki soy milk 'soya sütü'dür; baskın soya/soya fasulyesi anlamı öne eklenmeli, mevcut daha dar fakat geçerli 'soya sosu' anlamı korunmalıdır.",
+      "evidence": [
+        {
+          "pdf": "YDS_2019_02_2019-09-08_EN_FULL_COMBINED_OFFICIAL_899e6b64.pdf",
+          "page": 27,
+          "surface": "soy",
+          "context": "…in town; there are many, actually. The old alternatives to cow’s milk - soy, rice, and coconut milk - are now joined on grocery shelves by alternat…"
+        }
+      ]
+    },
+    {
+      "e": "spell",
+      "operation": "prepend",
+      "type": "fiil, isim",
+      "meanings": [
+        {
+          "tr": "f. (spell disaster/the end) yol açmak, sonucunu doğurmak",
+          "ex": "A prolonged drought could spell disaster for local farms.",
+          "exTr": "Uzun süren bir kuraklık yerel çiftlikler için felakete yol açabilir.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Tek resmî eşleşme 'could spell the end' = sonunu getirebilir/yol açabilir anlamındadır; mevcut kayıt bunu atlıyor.",
+      "evidence": [
+        {
+          "pdf": "YDS_2019_03_2019-12-01_EN_FULL_COMBINED_OFFICIAL_dd4e8b23.pdf",
+          "page": 26,
+          "surface": "spell",
+          "context": "science populariser, warned that artificial intelligence, fully developed, “could spell the end of the human race.” (III) Elon Musk, a private investor in space travel, "
+        }
+      ]
+    },
+    {
+      "e": "spent",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. harcadı; zaman geçirdi (spend fiilinin geçmiş/ortaç biçimi)",
+          "ex": "She spent two hours reviewing her notes.",
+          "exTr": "Notlarını gözden geçirmek için iki saat harcadı.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Geçerli tükenmiş/harcanmış sıfatları korunarak aktif zaman veya para harcama fiili öne eklenmeli."
+    },
+    {
+      "e": "spreading",
+      "operation": "prepend",
+      "type": "fiil, isim",
+      "meanings": [
+        {
+          "tr": "f. yaymak, sermek, serpmek",
+          "ex": "Farmers improved the soil by spreading compost over the fields.",
+          "exTr": "Çiftçiler tarlalara kompost serperek toprağı iyileştirdi.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Resmî kullanımlardan 'spreading animal manure' geçişli fiildir; mevcut kayıt yalnız kendiliğinden yayılma ismini veriyor.",
+      "evidence": [
+        {
+          "pdf": "YDS_2016_01_2016-03-27_EN_FULL_COMBINED_OFFICIAL_ce1c404a.pdf",
+          "page": 7,
+          "surface": "spreading",
+          "context": "nlarged their plots using standardized approaches (23)---- ploughing the soil and spreading animal manure as fertilizer to increase crop production. (24)---- the years, they"
+        }
+      ]
+    },
+    {
+      "e": "stops",
+      "operation": "prepend",
+      "type": "fiil, isim",
+      "meanings": [
+        {
+          "tr": "f. durur, durdurur; engeller",
+          "ex": "A fine filter stops dust from entering the machine.",
+          "exTr": "İnce bir filtre, tozun makineye girmesini engeller.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Üç resmî eşleşmenin tamamı stop fiilinin üçüncü tekil çekimidir; mevcut kayıt yalnız isim anlamlarını veriyor.",
+      "evidence": [
+        {
+          "pdf": "YDS_2019_01_2019-03-24_EN_FULL_COMBINED_OFFICIAL_9e4af695.pdf",
+          "page": 24,
+          "surface": "stops",
+          "context": "ng. If you do so, I’m sure you'll manage your professional life more easily. What stops you from negotiating a better deal with your current employer? Until now you seem"
+        }
+      ]
+    },
+    {
+      "e": "stressed",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. vurguladı, önemle belirtti",
+          "ex": "The report stressed the need for better flood protection.",
+          "exTr": "Rapor, sele karşı daha iyi koruma gereğini vurguladı.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Resmî kaynakta 'interpreters have stressed' = vurguladılar; mevcut kayıt yalnız sıfat anlamlarını veriyor.",
+      "evidence": [
+        {
+          "pdf": "eYDS_2015_04_2015-04-18_EN_P10_COMBINED_OFFICIAL_fceaaf7c.pdf",
+          "page": 5,
+          "surface": "stressed",
+          "context": "yakın cümleyi bulunuz. 71) It is modern rather than ancient interpreters who have stressed Plato’s evident desire to establish philosophy as a distinct way of thinking. A) "
+        }
+      ]
+    },
+    {
+      "e": "sunk",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. sink fiilinin V3 biçimi: batmış; batırılmış",
+          "ex": "The damaged vessel was sunk in shallow water.",
+          "exTr": "Hasarlı gemi sığ suda batırıldı.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "YDS'deki 'cannot be sunk' geçişli edilgen fiildir ('batırılamaz'); mevcut yalnız durum sıfatı bu ayrımı karşılamaz.",
+      "evidence": [
+        {
+          "pdf": "eYDS_2015_02_2015-02-21_EN_P10_COMBINED_OFFICIAL_867b3a01.pdf",
+          "page": 6,
+          "surface": "sunk",
+          "context": "…tünlüğünü bozan cümleyi bulunuz. 78) (I) Building a boat that cannot be sunk may sound like a worthwhile goal, but put enough holes in a ship and it…"
+        }
+      ]
+    },
+    {
+      "e": "swept",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. kasıp kavurdu; hızla yayıldı veya geçti",
+          "ex": "Wildfires swept across the valley during the dry summer.",
+          "exTr": "Orman yangınları kurak yaz boyunca vadiyi kasıp kavurdu.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Resmî kaynakta 'Fires swept much of the country' = yangınlar ülkeyi kasıp kavurdu; mevcut kayıt yalnız süpürülmüş anlamını veriyor.",
+      "evidence": [
+        {
+          "pdf": "YDS_2016_02_2016-09-04_EN_FULL_COMBINED_OFFICIAL_43299d72.pdf",
+          "page": 16,
+          "surface": "swept",
+          "context": ". The Murray River failed to reach the sea for the first time ever in 2002. Fires swept much of the country, and dust storms covered major cities for days. Australia's s"
+        }
+      ]
+    },
+    {
+      "e": "taken",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. alındı/alınan; götürüldü; yapıldı (take fiilinin V3 biçimi)",
+          "ex": "Immediate action must be taken to protect the remaining habitat.",
+          "exTr": "Kalan yaşam alanını korumak için derhal önlem alınmalıdır.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2
+    },
+    {
+      "e": "taking",
+      "operation": "prepend",
+      "type": "fiil, isim, sıfat",
+      "meanings": [
+        {
+          "tr": "f. almak; alarak; devralmak (take fiilinin -ing biçimi)",
+          "ex": "Taking all available evidence into account changed the final decision.",
+          "exTr": "Mevcut tüm kanıtları dikkate almak nihai kararı değiştirdi.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2
+    },
+    {
+      "e": "terrific",
+      "operation": "prepend",
+      "type": "sıfat",
+      "meanings": [
+        {
+          "tr": "s. çok büyük, muazzam; dehşet verici, korkunç",
+          "ex": "The leak caused a terrific loss of clean water.",
+          "exTr": "Sızıntı çok büyük miktarda temiz su kaybına yol açtı.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "YDS'deki 'a terrific waste' övgü değil, çok büyük/korkunç bir israf demektir; yalnız olumlu anlam verilmiştir.",
+      "evidence": [
+        {
+          "pdf": "YDS_2018_03_2018-12-02_EN_FULL_COMBINED_OFFICIAL_fc1001ae.pdf",
+          "page": 26,
+          "surface": "terrific",
+          "context": "…on was horrific in scale and magnitude. Ironically, as senseless as the terrific waste of prey such as bison and pigeon certainly was, the bloodshed too…"
+        }
+      ]
+    },
+    {
+      "e": "testify",
+      "operation": "prepend",
+      "type": "fiil",
+      "meanings": [
+        {
+          "tr": "f. (testify to) göstermek, kanıtı olmak",
+          "ex": "These records testify to the city's long history.",
+          "exTr": "Bu kayıtlar şehrin köklü geçmişinin kanıtıdır.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "YDS'de pyramids bir olguya 'testify to' ederek onun kanıtı olur; kullanım mahkemede tanıklık etmek değildir.",
+      "evidence": [
+        {
+          "pdf": "YDS_2019_03_2019-12-01_EN_FULL_COMBINED_OFFICIAL_dd4e8b23.pdf",
+          "page": 9,
+          "surface": "testify",
+          "context": "…us throughout the course of its long history the pyramids were built to testify to the pronounced hierarchical character of the Egyptian society Ramses…"
+        }
+      ]
+    },
+    {
+      "e": "thinner",
+      "operation": "prepend",
+      "type": "sıfat, isim",
+      "meanings": [
+        {
+          "tr": "s. daha ince, daha zayıf",
+          "ex": "Oceanic plates are thinner than most continental plates.",
+          "exTr": "Okyanus levhaları çoğu kıta levhasından daha incedir.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "İki resmî eşleşmenin ikisi de thin sıfatının karşılaştırma biçimidir; mevcut kayıt yalnız kimyasal tineri veriyor.",
+      "evidence": [
+        {
+          "pdf": "eYDS_2015_10_2015-10-17_EN_P10_COMBINED_OFFICIAL_cd15182f.pdf",
+          "page": 4,
+          "surface": "Thinner",
+          "context": "ivity has contributed to the creation of large portions of the Earth's surface C) Thinner plates, such as those under oceans, lead to more volcanic activity D) Volcanoes o"
+        }
+      ]
+    },
+    {
+      "e": "thought",
+      "operation": "prepend",
+      "type": "fiil, isim",
+      "meanings": [
+        {
+          "tr": "f. düşündü, sandı; düşünülen/sanılan (think fiilinin geçmiş/V3 biçimi)",
+          "ex": "Scientists once thought that the species had disappeared completely.",
+          "exTr": "Bilim insanları bir zamanlar türün tamamen yok olduğunu sanıyordu.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 3
+    },
+    {
+      "e": "tilt",
+      "operation": "prepend",
+      "type": "isim, fiil",
+      "meanings": [
+        {
+          "tr": "i. eğilim, yönelim, taraflılık",
+          "ex": "The debate showed a clear tilt toward stricter rules.",
+          "exTr": "Tartışma daha katı kurallara yönelik belirgin bir eğilim gösterdi.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "YDS'deki 'tilt towards egocentricity' fiziksel eğim değil, benmerkezciliğe eğilim/yönelim anlamındadır.",
+      "evidence": [
+        {
+          "pdf": "YDS_2020_01_2020-09-27_EN_FULL_COMBINED_OFFICIAL_d6d52361.pdf",
+          "page": 26,
+          "surface": "tilt",
+          "context": "…the only one, or necessarily the best one. Social psychologists say our tilt to egocentricity is deeply ingrained as it helps us maintain a coherent…"
+        }
+      ]
+    },
+    {
+      "e": "titan",
+      "operation": "prepend",
+      "type": "isim",
+      "meanings": [
+        {
+          "tr": "i. Titan: Satürn'ün en büyük uydusu",
+          "ex": "Titan has lakes and seas of liquid hydrocarbons.",
+          "exTr": "Titan'da sıvı hidrokarbonlardan oluşan göller ve denizler vardır.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Resmî kullanım Satürn'ün uydusudur; dev/önde gelen kişi anlamı korunur.",
+      "evidence": [
+        {
+          "pdf": "YDS_2019_02_2019-09-08_EN_FULL_COMBINED_OFFICIAL_899e6b64.pdf",
+          "page": 19,
+          "surface": "Titan"
+        }
+      ]
+    },
+    {
+      "e": "titanic",
+      "operation": "prepend",
+      "type": "isim, sıfat",
+      "meanings": [
+        {
+          "tr": "i. the Titanic: Titanik gemisi",
+          "ex": "The Titanic disaster led to stricter maritime safety rules.",
+          "exTr": "Titanik faciası daha sıkı deniz güvenliği kurallarına yol açtı.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Resmî kullanım gemi adıdır; dev gibi/muazzam sıfatı korunur.",
+      "evidence": [
+        {
+          "pdf": "eYDS_2015_02_2015-02-21_EN_P10_COMBINED_OFFICIAL_867b3a01.pdf",
+          "page": 6,
+          "surface": "Titanic"
+        }
+      ]
+    },
+    {
+      "e": "travelling",
+      "operation": "prepend",
+      "type": "fiil, sıfat, isim",
+      "meanings": [
+        {
+          "tr": "f./s. hareket eden, ilerleyen, yol alan",
+          "ex": "Signals travelling through water lose energy over distance.",
+          "exTr": "Suda ilerleyen sinyaller mesafe arttıkça enerji kaybeder.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Dört resmî eşleşmeden üçü 'waves/particles travelling' = ilerleyen/hareket eden anlamındadır; mevcut kayıt yalnız yolculuk ismini veriyor.",
+      "evidence": [
+        {
+          "pdf": "eYDS_2015_04_2015-04-18_EN_P10_COMBINED_OFFICIAL_fceaaf7c.pdf",
+          "page": 4,
+          "surface": "travelling",
+          "context": "system, which detects movement in water E) they are also sensitive to sound waves travelling through water DOĞRU CEVAP: B 37.‐42. sorularda, verilen İngilizce cümleye anlamca"
+        }
+      ]
+    },
+    {
+      "e": "trying",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. denemek, çabalamak (try fiilinin -ing biçimi)",
+          "ex": "Researchers are trying to identify the source of the contamination.",
+          "exTr": "Araştırmacılar kirliliğin kaynağını belirlemeye çalışıyor.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 1
+    },
+    {
+      "e": "turkey",
+      "operation": "prepend",
+      "type": "isim",
+      "meanings": [
+        {
+          "tr": "i. Turkey: Türkiye (ülke adı; güncel İngilizce resmî ad Türkiye)",
+          "ex": "Turkey has a wide range of climatic regions.",
+          "exTr": "Türkiye çok çeşitli iklim bölgelerine sahiptir.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Resmî PDF'lerde ülke adı Turkey kullanılır; hindi anlamı ikincil olarak korunur.",
+      "evidence": [
+        {
+          "pdf": "eYDS_2015_07_2015-07-25_EN_P10_COMBINED_OFFICIAL_2e74ab6a.pdf",
+          "page": 5,
+          "surface": "Turkey"
+        }
+      ]
+    },
+    {
+      "e": "unconscious",
+      "operation": "type",
+      "type": "sıfat, isim",
+      "meanings": [],
+      "reason": "Kayıt anlamları ve YDS kullanımları sıfat/isimdir; 'unconscious' zarf değildir (zarf biçimi unconsciously'dir).",
+      "evidence": [
+        {
+          "pdf": "YDS_2014_01_2014-04-06_EN_FULL_COMBINED_OFFICIAL_8f6e2e92.pdf",
+          "page": 21,
+          "surface": "unconscious",
+          "context": "…Many psychologists reject Freud’s view that dreams typically represent unconscious wishes and particular objects, and events in a dream are symbolic. Inst…"
+        }
+      ]
+    },
+    {
+      "e": "understood",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. anladı; anlaşıldı/anlaşılmış (understand fiilinin geçmiş/V3 biçimi)",
+          "ex": "The mechanism is not yet fully understood.",
+          "exTr": "Mekanizma henüz tam olarak anlaşılmış değildir.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2
+    },
+    {
+      "e": "unveiled",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. unveil fiilinin geçmiş/V3 biçimi: ortaya çıkardı, gözler önüne serdi; tanıttı",
+          "ex": "The telescope unveiled previously unseen structures.",
+          "exTr": "Teleskop daha önce görülmemiş yapıları ortaya çıkardı.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "YDS'de voyages öznesi new worlds nesnesini gözler önüne serer; mevcut yalnız edilgen sıfat anlamı kaynak fiili kaçırır.",
+      "evidence": [
+        {
+          "pdf": "YDS_2019_01_2019-03-24_EN_FULL_COMBINED_OFFICIAL_9e4af695.pdf",
+          "page": 31,
+          "surface": "unveiled",
+          "context": "…II III IV V (I) The voyages of discovery of the 15th and 16th centuries unveiled whole new worlds to the European eye, worlds full of new animals, plant…"
+        }
+      ]
+    },
+    {
+      "e": "used",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. kullandı; kullanılan (use fiilinin geçmiş/V3 biçimi)",
+          "ex": "The team used satellite images to map changes in the coastline.",
+          "exTr": "Ekip kıyıdaki değişimleri haritalamak için uydu görüntülerini kullandı.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2
+    },
+    {
+      "e": "using",
+      "operation": "replace",
+      "type": "fiil",
+      "meanings": [
+        {
+          "tr": "f. kullanmak; kullanarak, kullanan (use fiilinin -ing biçimi)",
+          "ex": "Researchers confirmed the result using two independent methods.",
+          "exTr": "Araştırmacılar sonucu iki bağımsız yöntem kullanarak doğruladı.",
+          "yz": 4
+        }
+      ]
+    },
+    {
+      "e": "valentine",
+      "operation": "prepend",
+      "type": "isim",
+      "meanings": [
+        {
+          "tr": "i. St. Valentine; Valentine's Day: Aziz Valentine; Sevgililer Günü",
+          "ex": "Valentine's Day is celebrated on 14 February.",
+          "exTr": "Sevgililer Günü 14 Şubat'ta kutlanır.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Resmî kaynak St. Valentine ve St. Valentine's Day özel adlarını kullanır; mevcut sevgili anlamı korunur.",
+      "evidence": [
+        {
+          "pdf": "YDS_2017_02_2017-09-17_EN_FULL_COMBINED_OFFICIAL_db3e6beb.pdf",
+          "page": 21,
+          "surface": "Valentine"
+        }
+      ]
+    },
+    {
+      "e": "wanted",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. istedi (want fiilinin geçmiş biçimi)",
+          "ex": "The researchers wanted to test the theory under controlled conditions.",
+          "exTr": "Araştırmacılar kuramı kontrollü koşullarda sınamak istedi.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2
+    },
+    {
+      "e": "warmer",
+      "operation": "prepend",
+      "type": "sıfat, isim",
+      "meanings": [
+        {
+          "tr": "s. daha sıcak",
+          "ex": "Warmer air can hold more moisture than colder air.",
+          "exTr": "Daha sıcak hava, daha soğuk havadan daha fazla nem tutabilir.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Üç resmî eşleşmenin tamamı warm sıfatının karşılaştırma biçimidir; mevcut kayıt yalnız ısıtıcı ismini veriyor.",
+      "evidence": [
+        {
+          "pdf": "YDS_2017_02_2017-09-17_EN_FULL_COMBINED_OFFICIAL_db3e6beb.pdf",
+          "page": 23,
+          "surface": "warmer",
+          "context": "B) C) D) E) 77. A) B) C) D) E) (I) In the North American autumn, Arctic air meets warmer air from the south, creating the perfect conditions for storms. (II) Wind rages a"
+        }
+      ]
+    },
+    {
+      "e": "welsh",
+      "operation": "prepend",
+      "type": "sıfat, isim, fiil",
+      "meanings": [
+        {
+          "tr": "s. Welsh: Galli, Galler'e ait; i. Galliler, Galce",
+          "ex": "Welsh and English speakers may differ noticeably in accent.",
+          "exTr": "Galli ve İngiliz konuşurların aksanları belirgin biçimde farklı olabilir.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Resmî kullanım milliyet/dil adıdır; borçtan kaçmak fiili ikincil olarak korunur.",
+      "evidence": [
+        {
+          "pdf": "YDS_2016_01_2016-03-27_EN_FULL_COMBINED_OFFICIAL_ce1c404a.pdf",
+          "page": 21,
+          "surface": "Welsh"
+        }
+      ]
+    },
+    {
+      "e": "won",
+      "operation": "prepend",
+      "type": "fiil, sıfat, isim",
+      "meanings": [
+        {
+          "tr": "f. (win fiilinin geçmişi) kazandı, elde etti",
+          "ex": "The scientist won an award for her climate research.",
+          "exTr": "Bilim insanı iklim araştırmasıyla bir ödül kazandı.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "Gerçek sözcük eşleşmelerinde baskın kullanım win fiilinin geçmişidir; mevcut 'kazanılmış' sıfatı etkin cümleleri yanlış karşılıyor. Bazı ek eşleşmeler won't içindeki yüzeylerdir.",
+      "evidence": [
+        {
+          "pdf": "YDS_2016_02_2016-09-04_EN_FULL_COMBINED_OFFICIAL_43299d72.pdf",
+          "page": 12,
+          "surface": "won",
+          "context": "small particles of energy, or photons, rather than as one continuous wave, and he won the Nobel Prize in physics in 1921. Albert Einstein put forward the idea that lig"
+        }
+      ]
+    },
+    {
+      "e": "working",
+      "operation": "prepend",
+      "type": "fiil, sıfat, isim",
+      "meanings": [
+        {
+          "tr": "f. çalışmak; çalışan, çalışarak (work fiilinin -ing biçimi)",
+          "ex": "Scientists working together solved the problem more quickly.",
+          "exTr": "Birlikte çalışan bilim insanları sorunu daha hızlı çözdü.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2
+    },
+    {
+      "e": "works",
+      "operation": "prepend",
+      "type": "fiil, isim",
+      "meanings": [
+        {
+          "tr": "f. çalışır, işler, işe yarar (work fiilinin üçüncü tekil biçimi)",
+          "ex": "The method works well even when only limited data are available.",
+          "exTr": "Yöntem, yalnızca sınırlı veri bulunduğunda bile iyi çalışır.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 3
+    },
+    {
+      "e": "worn",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. wear fiilinin V3 biçimi: giyilmiş, takılmış",
+          "ex": "Protective masks were worn throughout the experiment.",
+          "exTr": "Deney boyunca koruyucu maskeler takıldı.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 2,
+      "reason": "YDS bağlamında nesne erkekler ve kadınlar tarafından giyilmiştir; mevcut 'eskimiş/yıpranmış' anlamı bu kullanımı kaçırır.",
+      "evidence": [
+        {
+          "pdf": "YDS_2018_03_2018-12-02_EN_FULL_COMBINED_OFFICIAL_fc1001ae.pdf",
+          "page": 28,
+          "surface": "worn",
+          "context": "…sy-to-tie cravat was a great improvement in fashion industry and it was worn by both men and women. I II III IV V 78. A) B) C) D) E) 79. A) B) C) D)…"
+        }
+      ]
+    },
+    {
+      "e": "worthy",
+      "operation": "replace",
+      "type": "sıfat, isim",
+      "meanings": [
+        {
+          "tr": "s. değerli, layık; worthy of = -e layık, değer",
+          "ex": "The proposal is worthy of serious consideration.",
+          "exTr": "Öneri ciddi biçimde değerlendirilmeye layıktır.",
+          "yz": 4
+        },
+        {
+          "tr": "i. önemli, saygın kişi (eskimiş veya mizahi kullanım)",
+          "ex": "A local worthy funded the village library.",
+          "exTr": "Yerel bir saygın kişi köy kütüphanesini finanse etti.",
+          "yz": 1
+        }
+      ],
+      "reason": "Mevcut 's. değer, layık' karşılığı bozuk ve eksiktir; replace işlemi baskın sıfat anlamını düzeltirken nadir fakat geçerli isim anlamını da açıkça korur.",
+      "evidence": [
+        {
+          "pdf": "eYDS_2016_03_2016-03-12_EN_P10_COMBINED_OFFICIAL_043d5194.pdf",
+          "page": 6,
+          "surface": "worthy",
+          "context": "…groups grows from a view that all living species are equal and equally worthy of dignity and freedom. (II) Animal rights is a political movement, sta…"
+        }
+      ]
+    },
+    {
+      "e": "written",
+      "operation": "prepend",
+      "type": "fiil, sıfat",
+      "meanings": [
+        {
+          "tr": "f. yazılmış/yazılan (write fiilinin V3 biçimi)",
+          "ex": "The report was written in clear language for a general audience.",
+          "exTr": "Rapor genel okur kitlesi için açık bir dille yazıldı.",
+          "yz": 4
+        }
+      ],
+      "existing_default_yz": 3
+    }
+  ],
+  "report_only": {
+    "proper_name_contamination": [
+      {
+        "e": "daisy",
+        "source_surface": "Daisy",
+        "source_role": "kişi adı",
+        "current_entry_is_valid": true,
+        "recommendation": "Otomatik kart anlamı değişikliği yapma; konuşmacı adını kelime anlamı sayma.",
+        "evidence": {
+          "pdf": "YDS_2019_01_2019-03-24_EN_FULL_COMBINED_OFFICIAL_9e4af695.pdf",
+          "page": 25,
+          "context": "Daisy: Last week, I was in a situation where things went from bad to worse."
+        }
+      },
+      {
+        "e": "henry",
+        "source_surface": "Henry",
+        "source_role": "kişi adı",
+        "current_entry_is_valid": true,
+        "recommendation": "Otomatik kart anlamı değişikliği yapma; kişi adını küçük harfli ölçü birimiyle karıştırma.",
+        "evidence": {
+          "pdf": "YDS_2013_01_2013-04-07_EN_FULL_COMBINED_OFFICIAL_784d7c37.pdf",
+          "page": 15,
+          "context": "Henry Morgenthau Jr formulated a plan for Germany."
+        }
+      },
+      {
+        "e": "martin",
+        "source_surface": "Martin",
+        "source_role": "kişi adı",
+        "current_entry_is_valid": true,
+        "recommendation": "Otomatik kart anlamı değişikliği yapma; kişi adını küçük harfli kuş adından ayır.",
+        "evidence": {
+          "pdf": "YDS_2014_02_2014-09-07_EN_FULL_COMBINED_OFFICIAL_5c0fd089.pdf",
+          "page": 17,
+          "context": "Martin: I read Tom Jenkinson has built his entire career..."
+        }
+      },
+      {
+        "e": "mount",
+        "source_surface": "Mount",
+        "source_role": "yer adının parçası: Mount Whitney",
+        "current_entry_is_valid": true,
+        "recommendation": "Otomatik kart anlamı değişikliği yapma; özel ad bileşenini küçük harfli fiil/isim kartından ayır.",
+        "evidence": {
+          "pdf": "YDS_2022_01_2022-04-10_EN_P10_COMBINED_OFFICIAL_215e3d18.pdf",
+          "page": 27,
+          "context": "...the highest point, Mount Whitney..."
+        }
+      },
+      {
+        "e": "pest",
+        "source_surface": "Pest",
+        "source_role": "yer adı: Budapeşte'nin tarihî bölümü",
+        "current_entry_is_valid": true,
+        "recommendation": "Otomatik kart anlamı değişikliği yapma; yer adını küçük harfli haşere anlamından ayır.",
+        "evidence": {
+          "pdf": "YDS_2021_02_2021-10-10_EN_FULL_COMBINED_OFFICIAL_cf565fb2.pdf",
+          "page": 20,
+          "context": "One town was Buda and the other Pest."
+        }
+      },
+      {
+        "e": "ray",
+        "source_surface": "Ray",
+        "source_role": "kişi adı",
+        "current_entry_is_valid": true,
+        "recommendation": "Otomatik kart anlamı değişikliği yapma; kişi adını küçük harfli ışın anlamından ayır.",
+        "evidence": {
+          "pdf": "YDS_2021_01_2021-04-18_EN_FULL_COMBINED_OFFICIAL_50fc021b.pdf",
+          "page": 7,
+          "context": "The actor Ray Liotta gives a complex portrayal."
+        }
+      },
+      {
+        "e": "roman",
+        "source_surface": "Roman",
+        "source_role": "özel ad kökenli sıfat: Roma/Roma İmparatorluğu'na ait",
+        "current_entry_is_valid": true,
+        "recommendation": "Otomatik kart anlamı değişikliği yapma; kaynakta büyük harfli özel sıfat kullanılmış ve mevcut kartta bu anlam zaten bulunuyor.",
+        "evidence": {
+          "pdf": "eYDS_2015_09_2015-09-19_EN_P10_COMBINED_OFFICIAL_88ead286.pdf",
+          "page": 6,
+          "context": "The Roman Empire embraced parts of two continents."
+        }
+      },
+      {
+        "e": "alexander",
+        "current_y": "isim",
+        "current_meanings": [
+          "i. bir tür kereviz benzeri bitki"
+        ],
+        "observed_proper_name": "Alexander Todorov (kişi adı)",
+        "reason": "Küçük harfli bitki anlamı sözlüksel olarak geçerlidir; resmî eşleşme kişi adıdır, bu yüzden otomatik anlam değişikliği yapılmamalıdır.",
+        "evidence": [
+          {
+            "pdf": "YDS_2019_01_2019-03-24_EN_FULL_COMBINED_OFFICIAL_9e4af695.pdf",
+            "page": 14,
+            "surface": "Alexander",
+            "context": "urt us is important survival information. But there is a problem. As psychologist Alexander Todorov of Princeton University points out, more often than not, our first impres"
+          }
+        ]
+      },
+      {
+        "e": "bacon",
+        "current_y": "isim",
+        "current_meanings": [
+          "i. beykın, domuz pastırması"
+        ],
+        "observed_proper_name": "Francis Bacon (kişi soyadı)",
+        "reason": "Küçük harfli yiyecek anlamı geçerlidir; resmî eşleşmeler soyaddır.",
+        "evidence": [
+          {
+            "pdf": "YDS_2018_03_2018-12-02_EN_FULL_COMBINED_OFFICIAL_fc1001ae.pdf",
+            "page": 21,
+            "surface": "Bacon",
+            "context": " for the exam next week, but I can’t remember what was so important about Francis Bacon. Maybe your notes are clearer than mine. John:  Bacon? Well, I wrote that he was"
+          }
+        ]
+      },
+      {
+        "e": "basil",
+        "current_y": "isim",
+        "current_meanings": [
+          "i. fesleğen"
+        ],
+        "observed_proper_name": "Basil Bernstein (kişi adı)",
+        "reason": "Küçük harfli bitki anlamı geçerlidir; resmî eşleşmeler kişi adıdır.",
+        "evidence": [
+          {
+            "pdf": "YDS_2013_02_2013-09-01_EN_FULL_COMBINED_OFFICIAL_e057cb35.pdf",
+            "page": 10,
+            "surface": "Basil",
+            "context": "l sınıf farklılıklarını doğrudan inceleyen en verimli araştırma, İngiliz sosyolog Basil Bernstein’inkidir. A) B) C) D) E) The most fruitful research dealing directly wit"
+          }
+        ]
+      },
+      {
+        "e": "berry",
+        "current_y": "isim, fiil",
+        "current_meanings": [
+          "i. yaban meyvesi, böğürtlen türü meyve"
+        ],
+        "observed_proper_name": "Duc de Berry (yer/dukluk adı)",
+        "reason": "Küçük harfli meyve anlamı geçerlidir; resmî eşleşme yer adıdır.",
+        "evidence": [
+          {
+            "pdf": "YDS_2017_02_2017-09-17_EN_FULL_COMBINED_OFFICIAL_db3e6beb.pdf",
+            "page": 8,
+            "surface": "Berry",
+            "context": "manuscripts written on parchment is the stunning Très Riches Heures of the Duc de Berry 29. A) B) C) D) E) 30. A) B) C) D) E) Go on to the next page. 6 ÖSYM"
+          }
+        ]
+      },
+      {
+        "e": "cape",
+        "current_y": "isim",
+        "current_meanings": [
+          "i. burun (denize uzanan kara parçası)",
+          "i. pelerin"
+        ],
+        "observed_proper_name": "Cape bee (Cape bölgesine ait)",
+        "reason": "Küçük harfli coğrafi burun ve pelerin anlamları geçerlidir; resmî eşleşmeler coğrafi özel addan türeyen tamlamadadır.",
+        "evidence": [
+          {
+            "pdf": "YDS_2022_02_2022-10-23_EN_P10_COMBINED_OFFICIAL_ef980f46.pdf",
+            "page": 23,
+            "surface": "Cape",
+            "context": "2022-YDS/2/ENGLISH 71. The Cape bee is a subspecies of the honeybee that is native only to the southern tip of So"
+          }
+        ]
+      },
+      {
+        "e": "charlotte",
+        "current_y": "isim",
+        "current_meanings": [
+          "i. şarlot (meyveli bir tatlı türü)"
+        ],
+        "observed_proper_name": "Charlotte (kişi adı)",
+        "reason": "Küçük harfli tatlı adı geçerlidir; resmî eşleşmeler kişi adıdır.",
+        "evidence": [
+          {
+            "pdf": "eYDS_2015_11_2015-11-21_EN_P10_COMBINED_OFFICIAL_e825b576.pdf",
+            "page": 5,
+            "surface": "Charlotte",
+            "context": "karşılıklı konuşmanın boş bırakılan kısmını tamamlayabilecek ifadeyi bulunuz. 64) Charlotte: - Look! There is a ladybug on my skirt! Emily: - Cool! People say ladybugs bring"
+          }
+        ]
+      },
+      {
+        "e": "costa",
+        "current_y": "isim",
+        "current_meanings": [
+          "i. orta damar, kaburgamsı yapı (biyoloji terimi)"
+        ],
+        "observed_proper_name": "Costa Rica (Kosta Rika, ülke adı)",
+        "reason": "Küçük harfli biyoloji terimi geçerlidir; resmî eşleşme ülke adının parçasıdır.",
+        "evidence": [
+          {
+            "pdf": "YDS_2015_02_2015-09-13_EN_FULL_COMBINED_OFFICIAL_da3c0ce1.pdf",
+            "page": 4,
+            "surface": "Costa",
+            "context": "2015-YDS Sonbahar/İNGİLİZCE Costa Rica ---- the first country in Central America to grow coffee, and for the last 1"
+          }
+        ]
+      },
+      {
+        "e": "dean",
+        "current_y": "isim",
+        "current_meanings": [
+          "i. dekan"
+        ],
+        "observed_proper_name": "Dean (kişi adı)",
+        "reason": "Küçük harfli akademik unvan anlamı geçerlidir; resmî eşleşmeler kişi adıdır.",
+        "evidence": [
+          {
+            "pdf": "YDS_2014_02_2014-09-07_EN_FULL_COMBINED_OFFICIAL_5c0fd089.pdf",
+            "page": 15,
+            "surface": "Dean",
+            "context": "2014-YDS Sonbahar/İNGİLİZCE Nicole Mantie and her husband Dean bought a house, with a bathroom in a terrible state. The bathroom needed an urgen"
+          }
+        ]
+      },
+      {
+        "e": "dolly",
+        "current_y": "isim",
+        "current_meanings": [
+          "i. taşıyıcı platform, el arabası",
+          "i. oyuncak bebek"
+        ],
+        "observed_proper_name": "Dolly (klonlanan koyunun adı)",
+        "reason": "Küçük harfli taşıma platformu ve oyuncak bebek anlamları geçerlidir; resmî eşleşmeler özel addır.",
+        "evidence": [
+          {
+            "pdf": "YDS_2015_01_2015-04-05_EN_FULL_COMBINED_OFFICIAL_30201168.pdf",
+            "page": 16,
+            "surface": "Dolly",
+            "context": "apers around the world reported the birth in Edinburgh, Scotland, of a lamb named Dolly. Such an event would not normally be considered newsworthy. Even the fact that Do"
+          }
+        ]
+      },
+      {
+        "e": "frank",
+        "current_y": "sıfat, isim, fiil",
+        "current_meanings": [
+          "s. içten, açık sözlü, dürüst"
+        ],
+        "observed_proper_name": "Frank Jarvis (kişi adı)",
+        "reason": "Küçük harfli 'açık sözlü' sıfatı geçerlidir; resmî eşleşme kişi adıdır.",
+        "evidence": [
+          {
+            "pdf": "YDS_2014_02_2014-09-07_EN_FULL_COMBINED_OFFICIAL_5c0fd089.pdf",
+            "page": 22,
+            "surface": "Frank",
+            "context": "2014-YDS Sonbahar/İNGİLİZCE (I) When US athlete Frank Jarvis clocked 11 seconds to win the 100m at the Olympic final in Paris in 1900, "
+          }
+        ]
+      },
+      {
+        "e": "graham",
+        "current_y": "isim",
+        "current_meanings": [
+          "i. graham unu (kepekli tam buğday unu)"
+        ],
+        "observed_proper_name": "Graham (kişi adı)",
+        "reason": "Küçük harfli graham unu kullanımı geçerlidir; resmî eşleşmeler kişi adıdır.",
+        "evidence": [
+          {
+            "pdf": "YDS_2021_02_2021-10-10_EN_FULL_COMBINED_OFFICIAL_cf565fb2.pdf",
+            "page": 19,
+            "surface": "Graham",
+            "context": "his in order to eat that and you need all the other items to prepare it properly. Graham:  That’s silly. What the body needs is simple. It needs water more than anything"
+          }
+        ]
+      },
+      {
+        "e": "jack",
+        "current_y": "isim, fiil",
+        "current_meanings": [
+          "f. (jack up) kaldırmak, yükseltmek, artırmak",
+          "i. kriko"
+        ],
+        "observed_proper_name": "Jack (kişi adı)",
+        "reason": "Küçük harfli isim ve fiil anlamları geçerlidir; resmî eşleşmeler kişi adıdır.",
+        "evidence": [
+          {
+            "pdf": "YDS_2014_02_2014-09-07_EN_FULL_COMBINED_OFFICIAL_5c0fd089.pdf",
+            "page": 17,
+            "surface": "Jack",
+            "context": ":  I read Tom Jenkinson has built his entire career out of doing the unexpected. Jack:  ---- Martin:  No, not necessarily. I think he doesn’t want to repeat himself "
+          }
+        ]
+      },
+      {
+        "e": "marshall",
+        "current_y": "isim",
+        "current_meanings": [
+          "i. mareşal; (tören/yarış) düzen görevlisi"
+        ],
+        "observed_proper_name": "Marshall Plan (plan adı/soyadı)",
+        "reason": "Resmî eşleşmeler özel addır; ayrıca mevcut küçük harfli anlamlar standart 'marshal' yazımına aittir. Başlık yeniden adlandırma gerektirdiğinden otomatik anlam uygulamasına alınmamıştır.",
+        "evidence": [
+          {
+            "pdf": "YDS_2013_01_2013-04-07_EN_FULL_COMBINED_OFFICIAL_784d7c37.pdf",
+            "page": 15,
+            "surface": "Marshall",
+            "context": "S İlkbahar/İNGİLİZCE 51. - 54. soruları aşağıdaki parçaya göre cevaplayınız. “The Marshall Plan was not a simple program for transferring massive sums of money to strugglin"
+          }
+        ]
+      },
+      {
+        "e": "molly",
+        "current_y": "isim",
+        "current_meanings": [
+          "i. molli (bir akvaryum balığı türü)"
+        ],
+        "observed_proper_name": "Molly (kişi adı)",
+        "reason": "Küçük harfli balık adı geçerlidir; resmî eşleşmeler kişi adıdır.",
+        "evidence": [
+          {
+            "pdf": "YDS_2020_01_2020-09-27_EN_FULL_COMBINED_OFFICIAL_d6d52361.pdf",
+            "page": 22,
+            "surface": "Molly",
+            "context": "se questions, choose the best option to complete the dialogue. 63. A) B) C) D) E) Molly:  So, I really lik ed the film. Actually, it reall y went way beyond my expectat"
+          }
+        ]
+      },
+      {
+        "e": "pierce",
+        "current_y": "fiil",
+        "current_meanings": [
+          "f. delmek, delip geçmek"
+        ],
+        "observed_proper_name": "Pierce's disease (soyaddan gelen hastalık adı)",
+        "reason": "Küçük harfli 'delmek' fiili geçerlidir; resmî eşleşmelerin çoğu özel addır.",
+        "evidence": [
+          {
+            "pdf": "YDS_2019_01_2019-03-24_EN_FULL_COMBINED_OFFICIAL_9e4af695.pdf",
+            "page": 20,
+            "surface": "Pierce",
+            "context": " that originated in the Americas. A bacterium known as Xyllella fastidiosa causes Pierce’s disease, in which the plants’ transport vessels become blocked, cutting the sup"
+          }
+        ]
+      },
+      {
+        "e": "plaza",
+        "current_y": "isim",
+        "current_meanings": [
+          "i. meydan; alışveriş merkezi"
+        ],
+        "observed_proper_name": "Rana Plaza (yapı kompleksinin adı)",
+        "reason": "Küçük harfli meydan/plaza anlamı geçerlidir; resmî eşleşmeler yapı adıdır.",
+        "evidence": [
+          {
+            "pdf": "YDS_2014_02_2014-09-07_EN_FULL_COMBINED_OFFICIAL_5c0fd089.pdf",
+            "page": 12,
+            "surface": "Plaza",
+            "context": "2014-YDS Sonbahar/İNGİLİZCE A garment factory complex in Savar, Bangladesh, Rana Plaza, collapsed on 24 April 2013. The collapse of Rana Plaza, a structurally deficient"
+          }
+        ]
+      },
+      {
+        "e": "robin",
+        "current_y": "isim",
+        "current_meanings": [
+          "i. kızılgerdan (küçük ötücü kuş)"
+        ],
+        "observed_proper_name": "Robin (kişi adı)",
+        "reason": "Küçük harfli kuş adı geçerlidir; resmî eşleşmeler kişi adıdır.",
+        "evidence": [
+          {
+            "pdf": "eYDS_2016_05_2016-05-14_EN_P10_COMBINED_OFFICIAL_2d974c97.pdf",
+            "page": 5,
+            "surface": "Robin",
+            "context": "karşılıklı konuşmanın boş bırakılan kısmını tamamlayabilecek ifadeyi bulunuz. 63) Robin: - Do you know that when Belgian astronomer Georges Lemaitre suggested that the U"
+          }
+        ]
+      },
+      {
+        "e": "sandy",
+        "current_y": "sıfat",
+        "current_meanings": [
+          "s. kumlu"
+        ],
+        "observed_proper_name": "Sandy (kişi adı)",
+        "reason": "Küçük harfli 'kumlu' sıfatı geçerlidir; resmî eşleşmeler kişi adıdır.",
+        "evidence": [
+          {
+            "pdf": "YDS_2018_03_2018-12-02_EN_FULL_COMBINED_OFFICIAL_fc1001ae.pdf",
+            "page": 23,
+            "surface": "Sandy",
+            "context": "rsities. You know, it’s quite a challenging task. Have you decided what to study? Sandy:  Yes, actually I’m really nervous about it, but I’m sure that I want to study p"
+          }
+        ]
+      },
+      {
+        "e": "sue",
+        "current_y": "fiil",
+        "current_meanings": [
+          "f. dava etmek"
+        ],
+        "observed_proper_name": "Sue (kişi adı)",
+        "reason": "Küçük harfli 'dava etmek' fiili geçerlidir; resmî eşleşmeler kişi adıdır.",
+        "evidence": [
+          {
+            "pdf": "YDS_2018_03_2018-12-02_EN_FULL_COMBINED_OFFICIAL_fc1001ae.pdf",
+            "page": 22,
+            "surface": "Sue",
+            "context": "C) D) E) Career coach:  So, can you try to describe how you feel about your job? Sue:  Currently I’m editing and rewriting other people’s words, and managing all of "
+          }
+        ]
+      },
+      {
+        "e": "superman",
+        "current_y": "isim",
+        "current_meanings": [
+          "i. üstün insan, olağanüstü kişi"
+        ],
+        "observed_proper_name": "Superman (çizgi roman karakteri)",
+        "reason": "Küçük harfli 'üstün/olağanüstü insan' adı geçerlidir; resmî eşleşmeler karakter adıdır.",
+        "evidence": [
+          {
+            "pdf": "YDS_2015_01_2015-04-05_EN_FULL_COMBINED_OFFICIAL_30201168.pdf",
+            "page": 21,
+            "surface": "Superman",
+            "context": "ld War II. I II III IV V (I) Since his first appearance in Action Comics in 1938, Superman has adapted to the changing times. (II) After the Second World War, he changed hi"
+          }
+        ]
+      },
+      {
+        "e": "sally",
+        "kind": "capitalized_name_or_term",
+        "current_y": "isim",
+        "current_meanings": [
+          "i. ani çıkış saldırısı (askeri)",
+          "i. nükteli söz, espri"
+        ],
+        "reason": "YDS diyaloğunda Sally bir kişi adıdır; mevcut iki nadir isim anlamı kaynak kullanımını karşılamaz.",
+        "evidence": [
+          {
+            "pdf": "YDS_2019_01_2019-03-24_EN_FULL_COMBINED_OFFICIAL_9e4af695.pdf",
+            "page": 25,
+            "surface": "Sally",
+            "context": "…my car was hit by an unknown car. All these happened in the same week! Sally:  Terrible! How do you keep calm in such situations? Daisy:  ---- Sal…"
+          }
+        ],
+        "decision": "do_not_change_lowercase_card_automatically",
+        "recommended_handling": "Kaynak eşleştirmesini büyük-küçük harf ve özel-ad/bileşik bağlamına duyarlı yap; gerekiyorsa ayrı özel-ad provenansı tut."
+      },
+      {
+        "e": "beth",
+        "kind": "capitalized_name_or_term",
+        "current_y": "isim",
+        "current_meanings": [
+          "i. bet (İbrani alfabesinin ikinci harfi)"
+        ],
+        "reason": "YDS diyaloğunda Beth kişi adıdır; yalnız İbrani harfi anlamının verilmesi kaynak kullanımını yanlış yönlendirir.",
+        "evidence": [
+          {
+            "pdf": "YDS_2021_01_2021-04-18_EN_FULL_COMBINED_OFFICIAL_50fc021b.pdf",
+            "page": 19,
+            "surface": "Beth",
+            "context": "…g about co mmon Americ an hobbi es. One such hobb y is coin collecting. Beth:  That sou nds strang e and uncommon. Why would someone have a hobby s…"
+          }
+        ],
+        "decision": "do_not_change_lowercase_card_automatically",
+        "recommended_handling": "Kaynak eşleştirmesini büyük-küçük harf ve özel-ad/bileşik bağlamına duyarlı yap; gerekiyorsa ayrı özel-ad provenansı tut."
+      },
+      {
+        "e": "turner",
+        "kind": "capitalized_name_or_term",
+        "current_y": "isim",
+        "current_meanings": [
+          "i. tornacı"
+        ],
+        "reason": "Resmî YDS bağlamındaki Dr. Turner bir soyaddır; yalnız 'tornacı' anlamı kaynakla uyuşmaz.",
+        "evidence": [
+          {
+            "pdf": "YDS_2025_01_2025-03-09_EN_P10_COMBINED_OFFICIAL_d4fac58a.pdf",
+            "page": 22,
+            "surface": "Turner",
+            "context": "…st option to complete the dialogue. 63. Podcaster:  Today, we have Dr. Turner, who’s going to answer your questions about the permafrost. Let’s start…"
+          }
+        ],
+        "decision": "do_not_change_lowercase_card_automatically",
+        "recommended_handling": "Kaynak eşleştirmesini büyük-küçük harf ve özel-ad/bileşik bağlamına duyarlı yap; gerekiyorsa ayrı özel-ad provenansı tut."
+      },
+      {
+        "e": "wright",
+        "kind": "capitalized_name_or_term",
+        "current_y": "isim",
+        "current_meanings": [
+          "i. usta, yapımcı (genellikle bileşik sözcüklerde: playwright, shipwright)"
+        ],
+        "reason": "YDS bağlamlarında Wright, Wright kardeşlerin soyadıdır; mevcut nadir ortak isim anlamı kaynak kullanımını karşılamaz.",
+        "evidence": [
+          {
+            "pdf": "YDS_2015_01_2015-04-05_EN_FULL_COMBINED_OFFICIAL_30201168.pdf",
+            "page": 13,
+            "surface": "Wright",
+            "context": "…tricity. An experiment with a kite in the shape of a biplane helped the Wright brothers achieve their dream of making the world’s first controlled hum…"
+          }
+        ],
+        "decision": "do_not_change_lowercase_card_automatically",
+        "recommended_handling": "Kaynak eşleştirmesini büyük-küçük harf ve özel-ad/bileşik bağlamına duyarlı yap; gerekiyorsa ayrı özel-ad provenansı tut."
+      },
+      {
+        "e": "gilbert",
+        "kind": "capitalized_name_or_term",
+        "current_y": "isim",
+        "current_meanings": [
+          "i. gilbert (manyetomotor kuvvet birimi, CGS sistemi)"
+        ],
+        "reason": "YDS bağlamındaki William Gilbert bir kişi adıdır; yalnız teknik birim anlamı kaynak kullanımını karşılamaz.",
+        "evidence": [
+          {
+            "pdf": "YDS_2015_02_2015-09-13_EN_FULL_COMBINED_OFFICIAL_da3c0ce1.pdf",
+            "page": 22,
+            "surface": "Gilbert",
+            "context": "…or limitation: distribution. The name electricity was coined by William Gilbert, who had spent years studying magnetism. While the major source of elec…"
+          }
+        ],
+        "decision": "do_not_change_lowercase_card_automatically",
+        "recommended_handling": "Kaynak eşleştirmesini büyük-küçük harf ve özel-ad/bileşik bağlamına duyarlı yap; gerekiyorsa ayrı özel-ad provenansı tut."
+      },
+      {
+        "e": "norman",
+        "kind": "capitalized_name_or_term",
+        "current_y": "isim",
+        "current_meanings": [
+          "i. Norman (Normandiyalı; 1066'da İngiltere'yi fetheden halk)"
+        ],
+        "reason": "YDS bağlamında Norman, Norman Mailer'ın adıdır; mevcut halk adı anlamı tek başına kaynakla uyuşmaz.",
+        "evidence": [
+          {
+            "pdf": "eYDS_2016_01_2016-01-23_EN_P10_COMBINED_OFFICIAL_69892428.pdf",
+            "page": 6,
+            "surface": "Norman",
+            "context": "…th the experienced horror. ---- For example, in The Naked and The Dead, Norman Mailer depicted the conquest of a Japanese island from the perspective…"
+          }
+        ],
+        "decision": "do_not_change_lowercase_card_automatically",
+        "recommended_handling": "Kaynak eşleştirmesini büyük-küçük harf ve özel-ad/bileşik bağlamına duyarlı yap; gerekiyorsa ayrı özel-ad provenansı tut."
+      },
+      {
+        "e": "sherry",
+        "kind": "capitalized_name_or_term",
+        "current_y": "isim",
+        "current_meanings": [
+          "i. şeri (bir tür İspanyol şarabı)"
+        ],
+        "reason": "YDS diyaloğunda Sherry kişi adıdır; yalnız içki anlamının verilmesi kaynak kullanımını karşılamaz.",
+        "evidence": [
+          {
+            "pdf": "YDS_2019_03_2019-12-01_EN_FULL_COMBINED_OFFICIAL_dd4e8b23.pdf",
+            "page": 21,
+            "surface": "Sherry",
+            "context": "…ur footprints that have survived for over 100 million years in England! Sherry:  ---- Rob:  Well, the animal has to step in a sediment that is pliab…"
+          }
+        ],
+        "decision": "do_not_change_lowercase_card_automatically",
+        "recommended_handling": "Kaynak eşleştirmesini büyük-küçük harf ve özel-ad/bileşik bağlamına duyarlı yap; gerekiyorsa ayrı özel-ad provenansı tut."
+      },
+      {
+        "e": "musk",
+        "kind": "capitalized_name_or_term",
+        "current_y": "isim",
+        "current_meanings": [
+          "i. misk"
+        ],
+        "reason": "YDS bağlamında Musk, Elon Musk'ın soyadıdır; yalnız 'misk' anlamı kaynak kullanımını karşılamaz.",
+        "evidence": [
+          {
+            "pdf": "YDS_2019_03_2019-12-01_EN_FULL_COMBINED_OFFICIAL_dd4e8b23.pdf",
+            "page": 26,
+            "surface": "Musk",
+            "context": "…e, fully developed, “could spell the end of the human race.” (III) Elon Musk, a private investor in space travel, has issued similar warnings lately…"
+          }
+        ],
+        "decision": "do_not_change_lowercase_card_automatically",
+        "recommended_handling": "Kaynak eşleştirmesini büyük-küçük harf ve özel-ad/bileşik bağlamına duyarlı yap; gerekiyorsa ayrı özel-ad provenansı tut."
+      }
+    ],
+    "source_extraction_contamination": [
+      {
+        "e": "physic",
+        "extracted_surface": "physic al",
+        "actual_surface": "physical",
+        "current_entry_is_valid": true,
+        "recommendation": "Otomatik anlam değişikliği yapma; physic exact hitlerini source-derived kanıt sayma ve physical kaydının varlığını ana uygulamada kontrol et.",
+        "evidence": {
+          "pdf": "YDS_2020_01_2020-09-27_EN_FULL_COMBINED_OFFICIAL_d6d52361.pdf",
+          "page": 9,
+          "context": "...moderate to vigorous physic al activity..."
+        }
+      },
+      {
+        "e": "semi",
+        "extracted_surface": "semi nal",
+        "actual_surface": "seminal",
+        "current_entry_is_valid": true,
+        "recommendation": "Otomatik anlam değişikliği yapma; semi exact hitini source-derived kanıt sayma ve seminal kaydının varlığını ana uygulamada kontrol et.",
+        "evidence": {
+          "pdf": "YDS_2021_01_2021-04-18_EN_FULL_COMBINED_OFFICIAL_50fc021b.pdf",
+          "page": 4,
+          "context": "A semi nal study..."
+        }
+      },
+      {
+        "e": "bile",
+        "kind": "turkish_section_homograph",
+        "current_y": "isim",
+        "current_meanings": [
+          "i. safra"
+        ],
+        "hit_count": 17,
+        "reason": "Eşleşmelerin tamamı İngilizce 'safra' değil, Türkçe bağlaç/zarf olan 'bile'dir.",
+        "evidence": [
+          {
+            "pdf": "eYDS_2015_07_2015-07-25_EN_P10_COMBINED_OFFICIAL_2e74ab6a.pdf",
+            "page": 4,
+            "surface": "bile",
+            "context": "…meydana gelen ısınma, fırtınaların sıklığını ve şiddetini artırmasa bile, muhtemelen yağmur ve kar yağışının zamanlamasını, süresini ve dağılım…"
+          }
+        ],
+        "decision": "no_card_change; exclude these hits from English evidence"
+      },
+      {
+        "e": "hem",
+        "kind": "turkish_section_homograph",
+        "current_y": "isim, fiil",
+        "current_meanings": [
+          "i. (giysi) kıvrım payı, etek ucu",
+          "f. kararsızlıkla 'hıı' diye ses çıkarmak, öhömlemek"
+        ],
+        "hit_count": 18,
+        "reason": "Eşleşmelerin tamamı İngilizce giysi terimi/fiili değil, Türkçe 'hem ... hem ...' bağlacıdır.",
+        "evidence": [
+          {
+            "pdf": "eYDS_2015_10_2015-10-17_EN_P10_COMBINED_OFFICIAL_cd15182f.pdf",
+            "page": 4,
+            "surface": "hem",
+            "context": "…ücreleri yaşam boyunca kendini yenilediğinden düzenli egzersiz yapmak hem Alzheimer riskini azaltma hem de başlangıcını geciktirme konusunda fa…"
+          }
+        ],
+        "decision": "no_card_change; exclude these hits from English evidence"
+      },
+      {
+        "e": "kilo",
+        "kind": "turkish_section_homograph",
+        "current_y": "isim",
+        "current_meanings": [
+          "i. kilo, kilogram"
+        ],
+        "hit_count": 7,
+        "reason": "Eşleşmelerin tamamı İngilizce soru metninden değil, Türkçe çeviri seçeneklerindeki 'kilo/kilolu' biçimlerindendir.",
+        "evidence": [
+          {
+            "pdf": "YDS_2019_02_2019-09-08_EN_FULL_COMBINED_OFFICIAL_899e6b64.pdf",
+            "page": 12,
+            "surface": "kilo",
+            "context": "…) C) D) E) Anoreksiya nervoza; perhiz ve ince olma takıntısının aşırı kilo kaybına yol açtığı bir beslenme bozukluğudur, ancak birey kilo kaybın…"
+          }
+        ],
+        "decision": "no_card_change; exclude these hits from English evidence"
+      }
+    ]
+  }
+}

@@ -64,10 +64,21 @@ var sonKutuDestesi = Il.destelik([{ en: 'beta' }], 'kelime');
 assert.strictEqual(sonKutuDestesi.length, 0, '5. kutu günlük desteye yeniden girmemeli');
 
 var kelimeKodu = fs.readFileSync(path.join(kok, 'assets/js/kelimeler.js'), 'utf8');
-assert.ok(/\$\('zatenBiliyorum'\)\.disabled = false/.test(kelimeKodu),
-  'zaten biliyorum kart açıldıktan sonra da etkin kalmalı');
-assert.ok(!/ne === 'zaten' && \(kartAcik \|\| ipucuAcik\)/.test(kelimeKodu),
-  'açılmış kart zaten biliyorum değerlendirmesini engellememeli');
+var obekKodu = fs.readFileSync(path.join(kok, 'assets/js/obekler.js'), 'utf8');
+[['kelime', kelimeKodu], ['öbek', obekKodu]].forEach(function (girdi) {
+  var ad = girdi[0];
+  var kod = girdi[1];
+  ['bildim', 'bilmedim', 'zatenBiliyorum'].forEach(function (dugme) {
+    assert.ok(new RegExp("\\$\\('" + dugme + "'\\)\\.disabled = false").test(kod),
+      ad + ' kartında ' + dugme + ' her durumda etkin kalmalı');
+  });
+  assert.ok(!/ne !== 'zaten' && !kartAcik/.test(kod),
+    ad + ' kartı kapalıyken bildim/bilemedim engellenmemeli');
+  assert.ok(!/ne === 'zaten' && \(kartAcik \|\| ipucuAcik\)/.test(kod),
+    ad + ' kartı açıkken zaten biliyorum engellenmemeli');
+  assert.ok(!/e\.key === '[12]' &&/.test(kod),
+    ad + ' kartının 1/2 kısayolları kart yüzüne bağlı olmamalı');
+});
 
 var gununTestiKodu = fs.readFileSync(path.join(kok, 'assets/js/gunun-testi.js'), 'utf8');
 assert.ok(/r\.k >= 5/.test(gununTestiKodu), '5. kutu günün kelime testine yeniden girmemeli');

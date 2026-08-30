@@ -6,7 +6,7 @@
    istediği ek İngilizceye taşınınca hata çıkar ("comply to" değil "comply with").
 
    Kalıbı olmayan somut kelimeler (tiger, table) burada yoktur.
-   Üretim: tools/test-uretim (agent + kalip-dogrula.py) · 2353 kelime, 5432 kalıp
+   Üretim: tools/test-uretim (agent + kalip-dogrula.py) · 2352 kelime, 5430 kalıp
    ============================================================ */
 
 window.KALIPLAR = {
@@ -1280,7 +1280,6 @@ window.KALIPLAR = {
 "long-term": [{en:"long-term effects",tr:"uzun vadeli etkiler, kalıcı sonuçlar"}, {en:"a long-term goal",tr:"uzun vadeli bir amaç"}],
 "long-time": [{en:"a long-time friend",tr:"uzun süredir dost olan kişi"}, {en:"a long-time resident",tr:"uzun süredir orada yaşayan kişi"}],
 "longer": [{en:"no longer",tr:"artık değil"}, {en:"any longer",tr:"artık, daha fazla"}],
-"looking": [{en:"looking forward to sth",tr:"bir şeyi dört gözle beklemek"}, {en:"be good-looking",tr:"yakışıklı, güzel görünümlü olmak"}],
 "lost": [{en:"get lost",tr:"kaybolmak"}, {en:"lost in thought",tr:"düşüncelere dalmış"}, {en:"a lost opportunity",tr:"kaçırılmış bir fırsat"}],
 "lots": [{en:"lots of people",tr:"bir sürü insan"}, {en:"lots of things to do",tr:"yapılacak bir sürü şey"}],
 "loud": [{en:"out loud",tr:"yüksek sesle"}, {en:"a loud noise",tr:"yüksek bir ses"}, {en:"loud and clear",tr:"açık ve net"}],

@@ -253,11 +253,11 @@
     $('kartIpucu').textContent = kartAcik
       ? (ipucuAcik ? 'İpucu kullandın — "Bildim" dersen öbek aynı kutuda kalır.'
                    : 'Bildin mi? Aşağıdan işaretle.')
-      : 'Çevirmek için karta tıkla · boşluk tuşu';
+      : 'Çevirmek için karta tıkla · istersen cevabı görmeden işaretle';
 
-    $('bildim').disabled = !kartAcik;
-    $('bilmedim').disabled = !kartAcik;
-    $('zatenBiliyorum').disabled = kartAcik || ipucuAcik;
+    $('bildim').disabled = false;
+    $('bilmedim').disabled = false;
+    $('zatenBiliyorum').disabled = false;
     elKart.setAttribute('aria-expanded', kartAcik ? 'true' : 'false');
     elKart.setAttribute('aria-label', o.f + ' öbeğinin cevabını ' + (kartAcik ? 'gizle' : 'göster'));
   }
@@ -274,9 +274,6 @@
   function kartCevap(ne) {
     var o = suzulmus[kartIndex];
     if (!o) return;
-
-    if (ne === 'zaten' && (kartAcik || ipucuAcik)) return;
-    if (ne !== 'zaten' && !kartAcik) return;
 
     var sonuc;
     if (ne === 'zaten') sonuc = Il.zatenBiliyorum(o.f, ILERLEME_TURU);
@@ -527,9 +524,9 @@
       e.preventDefault();
       if (!$('ipucuBtn').hidden) { ipucuAcik = true; kartCiz(); }
     }
-    else if (e.key === '1' && kartAcik) { e.preventDefault(); kartCevap('yanlis'); }
-    else if (e.key === '2' && kartAcik) { e.preventDefault(); kartCevap('dogru'); }
-    else if (e.key === '3' && !kartAcik && !ipucuAcik) { e.preventDefault(); kartCevap('zaten'); }
+    else if (e.key === '1') { e.preventDefault(); kartCevap('yanlis'); }
+    else if (e.key === '2') { e.preventDefault(); kartCevap('dogru'); }
+    else if (e.key === '3') { e.preventDefault(); kartCevap('zaten'); }
     else if (e.key.toLowerCase() === 's') {
       e.preventDefault();
       var o = suzulmus[kartIndex];

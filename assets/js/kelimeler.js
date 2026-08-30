@@ -411,13 +411,12 @@
     $('kartIpucu').textContent = kartAcik
       ? (ipucuAcik ? 'İpucu kullandın — "Bildim" dersen kelime aynı kutuda kalır.'
                    : 'Bildin mi? Aşağıdan işaretle.')
-      : 'Çevirmek için karta tıkla · boşluk tuşu';
+      : 'Çevirmek için karta tıkla · istersen cevabı görmeden işaretle';
 
-    // Aktif hatırlama: önce zihninden cevapla, sonra kartı çevirip kendini
-    // değerlendir. "Zaten biliyorum" yan anlamları kontrol ettikten sonra da
-    // kullanılabilir ve kartı doğrudan son kutuya taşır.
-    $('bildim').disabled = !kartAcik;
-    $('bilmedim').disabled = !kartAcik;
+    // Kullanıcı cevabı zihninden verdiyse kartı çevirmek zorunda değildir.
+    // Üç değerlendirme de kartın önü/arkası ve ipucu durumundan bağımsızdır.
+    $('bildim').disabled = false;
+    $('bilmedim').disabled = false;
     $('zatenBiliyorum').disabled = false;
     elKart.setAttribute('aria-expanded', kartAcik ? 'true' : 'false');
     elKart.setAttribute('aria-label', d.e + ' kelimesinin cevabını ' + (kartAcik ? 'gizle' : 'göster'));
@@ -435,8 +434,6 @@
   function kartCevap(ne) {
     var d = suzulmus[kartIndex];
     if (!d) return;
-
-    if (ne !== 'zaten' && !kartAcik) return;
 
     var sonuc;
     if (ne === 'zaten') sonuc = Il.zatenBiliyorum(d.e, ILERLEME_TURU);
@@ -690,8 +687,8 @@
       e.preventDefault();
       if (!$('ipucuBtn').hidden) { ipucuAcik = true; kartCiz(); }
     }
-    else if (e.key === '1' && kartAcik) { e.preventDefault(); kartCevap('yanlis'); }
-    else if (e.key === '2' && kartAcik) { e.preventDefault(); kartCevap('dogru'); }
+    else if (e.key === '1') { e.preventDefault(); kartCevap('yanlis'); }
+    else if (e.key === '2') { e.preventDefault(); kartCevap('dogru'); }
     else if (e.key === '3') { e.preventDefault(); kartCevap('zaten'); }
     else if (e.key.toLowerCase() === 's') {
       e.preventDefault();

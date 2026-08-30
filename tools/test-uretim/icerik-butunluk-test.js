@@ -57,7 +57,7 @@ for (katman = 1; katman <= 7; katman++) {
   });
   if (katman <= 6) testAdlari = testAdlari.concat(Object.keys(pencere['TEST_K' + katman] || {}));
 }
-assert.strictEqual(cokAnlamli, 2576);
+assert.strictEqual(cokAnlamli, 2662);
 assert.deepStrictEqual(kartAdlari.slice().sort(), dizinAdlari.slice().sort(),
   'kart katmanları ile dizin farklı');
 assert.deepStrictEqual(testAdlari.slice().sort(), dizinAdlari.slice().sort(),
@@ -107,5 +107,5 @@ pencere.SORULAR.forEach(function (soru, i) {
   if (soru.pid) assert.ok(pencere.PARCALAR[soru.pid], 'soru ' + i + ': okuma parçası yok');
 });
 
-console.log('içerik-bütünlük: 7.848 kelime/test, 2.576 çok anlam, 253 olumsuz form, ' +
+console.log('içerik-bütünlük: 7.848 kelime/test, 2.662 çok anlam, 253 olumsuz form, ' +
   '155 bağlaç ve 125 soru başarılı');

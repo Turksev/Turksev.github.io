@@ -290,6 +290,91 @@ def ek_ornekleri_oku():
     return sonuc
 
 
+def pdf_anlam_duzeltmelerini_oku():
+    """Resmî sınav bağlamıyla doğrulanan anlam/tür düzeltmelerini oku.
+
+    Bu katman mevcut doğru ikincil anlamları koruyup YDS'de görülen baskın
+    anlamı öne ekleyebilir (``prepend``), kaydı bütünüyle değiştirebilir
+    (``replace``) veya yalnız tür etiketini düzeltebilir (``type``).
+    """
+    yol = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                       'pdf-anlam-duzeltmeleri.json')
+    if not os.path.exists(yol):
+        return {'corrections': []}
+    with open(yol, encoding='utf-8') as f:
+        veri = json.load(f)
+    if not isinstance(veri.get('corrections'), list):
+        raise ValueError('pdf-anlam-duzeltmeleri.json: corrections dizisi eksik')
+    return veri
+
+
+def pdf_anlam_duzeltmelerini_uygula(kelimeler, veri):
+    """Denetlenmiş anlamları veri kaydına uygula ve uygulanan adedi döndür."""
+    gorulen = set()
+    uygulanan = 0
+    for sira, d in enumerate(veri.get('corrections', [])):
+        en = d.get('e')
+        if not isinstance(en, str) or not en.strip():
+            raise ValueError('Anlam düzeltmesi %d: e alanı eksik' % sira)
+        if en in gorulen:
+            raise ValueError('Yinelenen anlam düzeltmesi: %s' % en)
+        gorulen.add(en)
+        if en not in kelimeler:
+            raise ValueError('Anlam düzeltmesinin kaynak kaydı yok: %s' % en)
+
+        islem = d.get('operation')
+        if islem not in ('prepend', 'replace', 'type'):
+            raise ValueError('%s: geçersiz anlam düzeltme işlemi %r' % (en, islem))
+        tip = d.get('type')
+        if not isinstance(tip, str) or not tip.strip():
+            raise ValueError('%s: type alanı eksik' % en)
+
+        yeni_anlamlar = d.get('meanings', [])
+        if not isinstance(yeni_anlamlar, list):
+            raise ValueError('%s: meanings bir dizi olmalı' % en)
+        if islem != 'type' and not yeni_anlamlar:
+            raise ValueError('%s: %s işlemi anlam gerektiriyor' % (en, islem))
+        if islem == 'type' and yeni_anlamlar:
+            raise ValueError('%s: type işlemi meanings taşımamalı' % en)
+
+        temiz = []
+        for anlam_sira, anlam in enumerate(yeni_anlamlar):
+            if not isinstance(anlam, dict):
+                raise ValueError('%s meanings[%d]: nesne olmalı' % (en, anlam_sira))
+            for alan in ('tr', 'ex', 'exTr'):
+                if not isinstance(anlam.get(alan), str) or not anlam[alan].strip():
+                    raise ValueError('%s meanings[%d].%s eksik' % (en, anlam_sira, alan))
+            yz = anlam.get('yz')
+            if not isinstance(yz, int) or not 1 <= yz <= 4:
+                raise ValueError('%s meanings[%d].yz 1-4 olmalı' % (en, anlam_sira))
+            temiz.append({
+                'tr': anlam['tr'].strip(),
+                'ex': anlam['ex'].strip(),
+                'exTr': anlam['exTr'].strip(),
+                'yz': yz,
+            })
+
+        kayit = kelimeler[en]
+        kayit['tip'] = tip.strip()
+        if islem == 'replace':
+            kayit['anlamlar'] = temiz
+        elif islem == 'prepend':
+            varsayilan = d.get('existing_default_yz', 2)
+            if not isinstance(varsayilan, int) or not 1 <= varsayilan <= 4:
+                raise ValueError('%s: existing_default_yz 1-4 olmalı' % en)
+            yeni_metinler = {a['tr'] for a in temiz}
+            eskiler = []
+            for anlam in kayit['anlamlar']:
+                if anlam.get('tr') in yeni_metinler:
+                    continue
+                kopya = dict(anlam)
+                kopya.setdefault('yz', varsayilan)
+                eskiler.append(kopya)
+            kayit['anlamlar'] = temiz + eskiler
+        uygulanan += 1
+    return uygulanan
+
+
 def tur_duzeltmelerini_oku():
     """tools/tur-duzeltme.js — dizindeki yanlis tur etiketleri {kelime: tur}.
 
@@ -340,7 +425,9 @@ def yildizla(anlamlar, esleme):
     for a in anlamlar:
         yz = esleme.get(a['tr'].strip())
         if yz:
-            a['yz'] = yz
+            # Denetlenmiş düzeltme kaydı açıkça bir yıldız taşıyorsa eski
+            # genel eşleme onu ezmemeli; yalnız eksik yıldızı tamamla.
+            a.setdefault('yz', yz)
             bulundu = True
     if bulundu:
         anlamlar.sort(key=lambda a: -a.get('yz', 0))
@@ -410,6 +497,7 @@ def birlestir():
     ek = ek_ornekleri_oku()
     aile_uye = aile_uyelerini_oku()
     baslik_d = kelime_duzeltmelerini_oku()
+    pdf_anlam_d = pdf_anlam_duzeltmelerini_oku()
 
     ortak, yalniz_site = 0, 0
     # Sitedeki es anlamli bilgisini tasi
@@ -477,6 +565,10 @@ def birlestir():
         if en in kelimeler:
             kelimeler[en]['tip'] = tur
 
+    # Bu denetim katmanı genel tür düzeltmelerinden sonra uygulanır; böylece
+    # PDF bağlamıyla doğrulanan tür ve anlam son sözü söyler.
+    pdf_anlam_uygulanan = pdf_anlam_duzeltmelerini_uygula(kelimeler, pdf_anlam_d)
+
     # Anlam yildizlari: onemliyi basa al
     yildiz = yildizlari_oku()
     yildizli = 0
@@ -492,7 +584,8 @@ def birlestir():
                 if len(k['anlamlar']) == 1 and len(anlamlari_bol(k['anlamlar'][0]['tr'])) > 1]
 
     return (kelimeler, ortak, yalniz_site, ek_uygulanan, bekleyen, aile_eklenen,
-            elenen, kalipli, yildizli, baslik_duzeltilen, baslik_d)
+            elenen, kalipli, yildizli, baslik_duzeltilen, baslik_d,
+            pdf_anlam_uygulanan)
 
 
 def kelimeleri_yaz(kelimeler):
@@ -684,13 +777,27 @@ def yaz(yol, icerik):
 
 # ---------------------------------------------------------------- main
 
+def soru_sayisini_oku():
+    """Soru bankasindaki kayitlari, JS bicimini calistirmadan guvenle sayar."""
+    desen = re.compile(r'(?m)^\s*(?:\{kat:|"kat":)')
+    toplam = 0
+    for dosya in ('sorular.js', 'sorular-ek.js'):
+        yol = os.path.join(VERI, dosya)
+        with open(yol, encoding='utf-8') as f:
+            toplam += len(desen.findall(f.read()))
+    if toplam <= 0:
+        raise ValueError('Soru bankasinda sayilacak kayit bulunamadi.')
+    return toplam
+
+
 def sayilari_yaz(sirali, ozet, obekler):
     """Sayfalarin basliklarda kullandigi sayilar; elle guncellenmesin diye uretilir."""
     katman = {str(k): n for k, _ad, n, _b in ozet}
     icerik = (
         '/* Icerik sayaclari — tools/listeyi-aktar.py uretir, elle duzenleme. */\n'
         'window.SAYILAR = %s;\n' % json.dumps(
-            {'kelime': len(sirali), 'obek': len(obekler), 'katman': katman},
+            {'kelime': len(sirali), 'obek': len(obekler),
+             'soru': soru_sayisini_oku(), 'katman': katman},
             ensure_ascii=False, sort_keys=True)
     )
     yaz(os.path.join(VERI, 'sayilar.js'), icerik)
@@ -698,7 +805,8 @@ def sayilari_yaz(sirali, ozet, obekler):
 
 def main():
     (kelimeler, ortak, yalniz_site, ek_uygulanan, bekleyen, aile_eklenen,
-     elenen, kalipli, yildizli, baslik_duzeltilen, baslik_d) = birlestir()
+     elenen, kalipli, yildizli, baslik_duzeltilen, baslik_d,
+     pdf_anlam_uygulanan) = birlestir()
     sirali, ozet = kelimeleri_yaz(kelimeler)
     obekler, obek_boyut, obek_ek, obek_atilan = obekleri_yaz()
     sayilari_yaz(sirali, ozet, obekler)
@@ -717,6 +825,7 @@ def main():
     print('  kalibi olan        :', kalipli)
     print('  anlami yildizli    :', yildizli)
     print('  basligi duzeltilen :', baslik_duzeltilen)
+    print('  PDF anlam duzeltme :', pdf_anlam_uygulanan)
     print()
     print('  katman              kelime      dosya')
     for kno, ad, n, boyut in ozet:

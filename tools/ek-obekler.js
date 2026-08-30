@@ -1,6 +1,6 @@
 /* Ek öbekler — dönüştürücü girdisi (site bu dosyayı YÜKLEMEZ)
    Kaynak listede olmayan, YDS'de geçen deyimsel fiiller ve edat kalıpları.
-   Alanlar: f=öbek, t=tür (deyimsel fiil | edat kalıbı), tr=Türkçe anlam,
+   Alanlar: f=öbek, t=tür (deyimsel fiil | edat kalıbı | sabit ifade), tr=Türkçe anlam,
             ex=örnek cümle, exTr=çevirisi
    Eklemeden sonra: tools/listeyi-aktar.py çalıştır. */
 
@@ -484,6 +484,14 @@ window.EK_OBEKLER = [
 
 {f:"with respect to", t:"edat kalıbı", tr:"-e göre, bakımından",
  ex:"With respect to durability, the composite outperformed steel in every test, but its production required three times as much energy per kilogram.",
- exTr:"Dayanıklılık bakımından kompozit her testte çeliği geride bıraktı, ancak üretimi kilogram başına üç kat daha fazla enerji gerektirdi."}
+ exTr:"Dayanıklılık bakımından kompozit her testte çeliği geride bıraktı, ancak üretimi kilogram başına üç kat daha fazla enerji gerektirdi."},
+
+{f:"look + adjective", t:"sabit ifade", tr:"... görünmek, ... izlenimi vermek",
+ ex:"After several weeks of treatment, the patient looked much healthier and more energetic.",
+ exTr:"Hasta birkaç haftalık tedavinin ardından çok daha sağlıklı ve enerjik görünüyordu."},
+
+{f:"-looking", t:"sabit ifade", tr:"... görünümlü, ... görünüşlü",
+ ex:"The museum displayed an ordinary-looking stone that contained a remarkably rare mineral.",
+ exTr:"Müze, son derece nadir bir mineral içeren sıradan görünümlü bir taşı sergiledi."}
 
 ];
