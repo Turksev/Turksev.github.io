@@ -14,7 +14,8 @@ const DOSYALAR = {
   dizin: path.join(KOK, "data", "kelime-dizin.js"),
 };
 
-const BEKLENEN_ALIAS_SAYISI = 9;
+// row /raʊ/ -> row birleşmesiyle 10'a çıktı (30.08.2026).
+const BEKLENEN_ALIAS_SAYISI = 10;
 const KORUNAN_BASLIKLAR = ["low-lying", "adolescent"];
 const sorunlar = [];
 

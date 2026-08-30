@@ -113,5 +113,6 @@ pencere.SORULAR.forEach(function (soru, i) {
   if (soru.pid) assert.ok(pencere.PARCALAR[soru.pid], 'soru ' + i + ': okuma parçası yok');
 });
 
-console.log('içerik-bütünlük: 7.912 kelime-yapı/test, 2.668 çok anlam, 253 olumsuz form, ' +
-  '155 bağlaç ve 125 soru başarılı');
+console.log('içerik-bütünlük: ' + dizin.length + ' kelime-yapı/test, ' + cokAnlamli +
+  ' çok anlam, ' + olumsuzForm + ' olumsuz form, ' + pencere.BAGLACLAR.length +
+  ' bağlaç ve ' + pencere.SORULAR.length + ' soru başarılı');
