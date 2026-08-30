@@ -229,7 +229,7 @@ def kelime_duzeltmelerini_uygula(kelimeler, veri):
     return uygulanan
 
 
-def kelime_duzeltme_dosyalarini_yaz(veri):
+def kelime_duzeltme_dosyalarini_yaz(veri, modal_kartlar=None):
     """Tarayıcı alias tablosunu ve telifsiz öğe provenansını üretir."""
     aliaslar = {}
     ilerleme_kimlikleri = {}
@@ -239,8 +239,15 @@ def kelime_duzeltme_dosyalarini_yaz(veri):
                 aliaslar[eski] = d['yeni']
         if d.get('ilerleme_kimligi'):
             ilerleme_kimlikleri[d['yeni']] = d['ilerleme_kimligi']
+    for kart in modal_kartlar or []:
+        kimlik = kart.get('progress_id')
+        if not kimlik:
+            continue
+        if kart['e'] in ilerleme_kimlikleri:
+            raise ValueError('Yinelenen ilerleme kimliği başlığı: %s' % kart['e'])
+        ilerleme_kimlikleri[kart['e']] = kimlik
     js = (
-        '/* Kelime başlığı aliasları — tools/kelime-duzeltmeleri.json kaynaklıdır. */\n'
+        '/* Kelime başlığı aliasları — kelime-duzeltmeleri.json ve modal-kartlar.json kaynaklıdır. */\n'
         'window.YDS_KELIME_ALIASES = %s;\n'
         'window.YDS_KELIME_ILERLEME_KIMLIKLERI = %s;\n' % (
             json.dumps(aliaslar, ensure_ascii=False, sort_keys=True),
@@ -375,6 +382,85 @@ def pdf_anlam_duzeltmelerini_uygula(kelimeler, veri):
     return uygulanan
 
 
+def modal_kartlarini_oku():
+    """Puanlanmış modal sözcük ve yapı kartlarını oku.
+
+    Ana kaynak listede bulunmayan çok sözcüklü dil bilgisi yapılarını da
+    kelime çalışma/Leitner sistemine sokar. ``k`` açıkça saklanır; böylece
+    puanı 10'un altındaki pedagojik kartlar kullanıcı isteği doğrultusunda
+    6. (son puanlı) katmanda kalır.
+    """
+    yol = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                       'modal-kartlar.json')
+    if not os.path.exists(yol):
+        return []
+    with open(yol, encoding='utf-8') as f:
+        veri = json.load(f)
+    kartlar = veri.get('cards')
+    if not isinstance(kartlar, list):
+        raise ValueError('modal-kartlar.json: cards dizisi eksik')
+    return kartlar
+
+
+def modal_kartlarini_uygula(kelimeler, kartlar):
+    """Modal kartları ekle; mevcut başlıkları silmeden anlamlarını yenile."""
+    gorulen = set()
+    eklenen = 0
+    guncellenen = 0
+    for sira, kart in enumerate(kartlar):
+        en = kart.get('e')
+        if not isinstance(en, str) or not en.strip():
+            raise ValueError('Modal kart %d: e alanı eksik' % sira)
+        if en in gorulen:
+            raise ValueError('Yinelenen modal kart: %s' % en)
+        gorulen.add(en)
+        puan = kart.get('p')
+        katman = kart.get('k')
+        tip = kart.get('y')
+        anlamlar = kart.get('a')
+        if not isinstance(puan, (int, float)) or not 0 <= puan <= 100:
+            raise ValueError('%s: geçersiz modal puanı' % en)
+        if not isinstance(katman, int) or not 1 <= katman <= 6:
+            raise ValueError('%s: geçersiz modal katmanı' % en)
+        if not isinstance(tip, str) or not tip.strip():
+            raise ValueError('%s: modal türü eksik' % en)
+        if not isinstance(anlamlar, list) or not anlamlar:
+            raise ValueError('%s: modal anlamları eksik' % en)
+        ilerleme_kimligi = kart.get('progress_id')
+        if ilerleme_kimligi is not None and ilerleme_kimligi != '@kelime:' + en:
+            raise ValueError('%s: geçersiz modal ilerleme kimliği' % en)
+
+        temiz = []
+        for anlam_sira, anlam in enumerate(anlamlar):
+            for alan in ('tr', 'ex', 'exTr'):
+                if not isinstance(anlam.get(alan), str) or not anlam[alan].strip():
+                    raise ValueError('%s meanings[%d].%s eksik' %
+                                     (en, anlam_sira, alan))
+            yz = anlam.get('yz')
+            if len(anlamlar) > 1 and (not isinstance(yz, int) or not 1 <= yz <= 4):
+                raise ValueError('%s: çok anlamlı modal kartta yz eksik' % en)
+            kayit = {alan: anlam[alan].strip() for alan in ('tr', 'ex', 'exTr')}
+            if yz is not None:
+                kayit['yz'] = yz
+            temiz.append(kayit)
+
+        if en in kelimeler:
+            # Kaynakta zaten bulunan can/must/will gibi sözcüklerin resmî
+            # puanını ve katmanını koru; yalnız denetlenmiş anlam/türü yenile.
+            kelimeler[en]['tip'] = tip.strip()
+            kelimeler[en]['anlamlar'] = temiz
+            guncellenen += 1
+        else:
+            kelimeler[en] = {
+                'tip': tip.strip(),
+                'puan': round(float(puan), 1),
+                'katman_zorla': katman,
+                'anlamlar': temiz,
+            }
+            eklenen += 1
+    return eklenen, guncellenen
+
+
 def tur_duzeltmelerini_oku():
     """tools/tur-duzeltme.js — dizindeki yanlis tur etiketleri {kelime: tur}.
 
@@ -498,6 +584,7 @@ def birlestir():
     aile_uye = aile_uyelerini_oku()
     baslik_d = kelime_duzeltmelerini_oku()
     pdf_anlam_d = pdf_anlam_duzeltmelerini_oku()
+    modal_kartlar = modal_kartlarini_oku()
 
     ortak, yalniz_site = 0, 0
     # Sitedeki es anlamli bilgisini tasi
@@ -569,6 +656,11 @@ def birlestir():
     # PDF bağlamıyla doğrulanan tür ve anlam son sözü söyler.
     pdf_anlam_uygulanan = pdf_anlam_duzeltmelerini_uygula(kelimeler, pdf_anlam_d)
 
+    # Modal denetimi en son uygulanır. Böylece hem ana listedeki can/must/will
+    # gibi sözcüklerin eksik işlevleri tamamlanır hem de puanlanmış yapılar
+    # ilerleme anahtarı olarak kendi başlıklarıyla eklenir.
+    modal_eklenen, modal_guncellenen = modal_kartlarini_uygula(kelimeler, modal_kartlar)
+
     # Anlam yildizlari: onemliyi basa al
     yildiz = yildizlari_oku()
     yildizli = 0
@@ -585,7 +677,7 @@ def birlestir():
 
     return (kelimeler, ortak, yalniz_site, ek_uygulanan, bekleyen, aile_eklenen,
             elenen, kalipli, yildizli, baslik_duzeltilen, baslik_d,
-            pdf_anlam_uygulanan)
+            pdf_anlam_uygulanan, modal_eklenen, modal_guncellenen)
 
 
 def kelimeleri_yaz(kelimeler):
@@ -803,14 +895,41 @@ def sayilari_yaz(sirali, ozet, obekler):
     yaz(os.path.join(VERI, 'sayilar.js'), icerik)
 
 
+def modal_testlerini_yaz(kartlar):
+    """Yeni modal kartların bağımsız Günün Testi cümlelerini yaz."""
+    govde = []
+    for kart in kartlar:
+        test = kart.get('test')
+        if not test:
+            continue
+        en = kart['e']
+        for alan in ('c', 'b', 'tr'):
+            if not isinstance(test.get(alan), str) or not test[alan].strip():
+                raise ValueError('%s: modal test %s alanı eksik' % (en, alan))
+        if '----' not in test['c']:
+            raise ValueError('%s: modal test cümlesinde ---- eksik' % en)
+        govde.append('%s:{c:%s,b:%s,f:"",tr:%s}' % (
+            json.dumps(en, ensure_ascii=False),
+            json.dumps(test['c'].strip(), ensure_ascii=False),
+            json.dumps(test['b'].strip(), ensure_ascii=False),
+            json.dumps(test['tr'].strip(), ensure_ascii=False)))
+    basli = (
+        '/* Modal sözcük ve yapı kartları — Günün Testi cümleleri · %d kayıt\n'
+        '   tools/modal-kartlar.json kaynağından tools/listeyi-aktar.py üretir. */\n\n'
+        'window.TEST_MODAL = {\n' % len(govde)
+    )
+    yaz(os.path.join(VERI, 'test-modal.js'), basli + ',\n'.join(govde) + '\n};\n')
+
+
 def main():
     (kelimeler, ortak, yalniz_site, ek_uygulanan, bekleyen, aile_eklenen,
      elenen, kalipli, yildizli, baslik_duzeltilen, baslik_d,
-     pdf_anlam_uygulanan) = birlestir()
+     pdf_anlam_uygulanan, modal_eklenen, modal_guncellenen) = birlestir()
     sirali, ozet = kelimeleri_yaz(kelimeler)
     obekler, obek_boyut, obek_ek, obek_atilan = obekleri_yaz()
     sayilari_yaz(sirali, ozet, obekler)
-    kelime_duzeltme_dosyalarini_yaz(baslik_d)
+    modal_testlerini_yaz(modal_kartlarini_oku())
+    kelime_duzeltme_dosyalarini_yaz(baslik_d, modal_kartlarini_oku())
 
     print('KELIMELER')
     print('  toplam            :', len(sirali))
@@ -826,6 +945,8 @@ def main():
     print('  anlami yildizli    :', yildizli)
     print('  basligi duzeltilen :', baslik_duzeltilen)
     print('  PDF anlam duzeltme :', pdf_anlam_uygulanan)
+    print('  modal kart eklendi :', modal_eklenen)
+    print('  modal kart yenilendi:', modal_guncellenen)
     print()
     print('  katman              kelime      dosya')
     for kno, ad, n, boyut in ozet:

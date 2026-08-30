@@ -10,7 +10,7 @@ Yayında: <https://turksev.github.io>
 | Dosya | İçerik |
 | --- | --- |
 | `index.html` | Ana sayfa ve ilerleme paneli: tekrar durumu, yanlış defteri, deneme geçmişi, kategori karnesi |
-| `kelimeler.html` | 7.848 kelime, 7 katman + **aralıklı tekrar (Leitner)**: bugünün destesi, kart modu, ipucu, sesli okuma |
+| `kelimeler.html` | 7.910 kelime ve yapı, 7 katman + **aralıklı tekrar (Leitner)**: bugünün destesi, kart modu, ipucu, sesli okuma |
 | `obekler.html` | 1.623 kelime öbeği (560 deyimsel fiil, 332 edat kalıbı, sabit/geçiş ifadeleri) — ayrı Leitner destesi |
 | `quiz.html` | Alıştırma soruları: 12 kategori, anında çözüm, yanlış defterinden çalışma |
 | `deneme.html` | **Süreli deneme sınavı**: üç sabit 80 soruluk form, geri sayım, soru ızgarası, işaretleme, yenileme sonrası oturum kurtarma, 100 üzerinden YDS puanı, kategori karnesi |
@@ -21,7 +21,7 @@ Yayında: <https://turksev.github.io>
 
 ## İçerik
 
-- **7.848 kelime** — 49 gerçek YDS sınavındaki geçme sıklığına göre puanlanmış, yedi katmana ayrılmış;
+- **7.910 kelime ve yapı** — 49 gerçek YDS sınavı temel alınarak puanlanmış, yedi katmana ayrılmış;
   her birinde Türkçe anlam + İngilizce örnek cümle + çeviri (**2.576'sında birden çok anlam** var)
 - **1.623 kelime öbeği** — deyimsel fiil (phrasal verb), edat kalıbı, sabit ve geçiş ifadeleri, kaç sınavda geçtiği bilgisiyle
 - **286 soru** — 12 kategori: Kelime, Dil Bilgisi, Bağlaç, Preposition, Cloze Test, Çeviri,
@@ -94,8 +94,9 @@ assets/
   js/ara.js           site geneli arama
   img/                PWA ikonları (tools ile üretildi)
 data/
-  kelime-dizin.js     7.848 kelime: yazılış, kısa anlam, puan, katman, tür
-  test-k1..k6.js      7.848 günün testi cümlesi (7. katman şu anda boş)
+  kelime-dizin.js     7.910 kelime/yapı: yazılış, kısa anlam, puan, katman, tür
+  test-k1..k6.js      7.848 sözcük için günün testi cümlesi
+  test-modal.js       62 yeni modal yapı için günün testi cümlesi
   test-obek.js        öbekler için günün testi cümleleri
   kelime-k1..k7.js    katman katman tam kayıtlar (örnek cümleler)
   kelime-aliaslari.js eski başlıklardaki ilerlemeyi düzeltilmiş başlıklara taşır
@@ -250,7 +251,7 @@ en çok 20 soruluk, 5 şıklı boşluk doldurma testi açılır. Cümleler **kar
 YDS okuma parçası kayıtında özgün cümlelerdir; `data/test-k{n}.js` içinde durur
 (`{kelime: {c, b, f, tr}}` — c boşluklu cümle, b boşluğa gelen çekimli biçim, f çekim türü
 `'' | s | past | pp | ing | pl`, tr Türkçesi). **Havuzun tamamı hazır** (28.08.2026):
-ilk altı katmandaki bütün **7.848 kelime** için cümle ve ayrıca **892 öbek** cümlesi var.
+ilk altı katmandaki bütün **7.910 kelime ve yapı** için cümle; ayrıca **1.625 öbek kartının 892'si** için bağımsız test cümlesi var.
 7. katman şu anda 0 kayıt olduğu için `test-k7.js` yoktur; yükleyici bu katmanı ağ isteği
 üretmeden boş havuz olarak ele alır.
 

@@ -18,14 +18,15 @@ function yukle(dosya) {
  'data/olumsuzlar.js', 'data/baglaclar.js', 'data/sorular.js'].forEach(yukle);
 for (var katman = 1; katman <= 7; katman++) yukle('data/kelime-k' + katman + '.js');
 for (katman = 1; katman <= 6; katman++) yukle('data/test-k' + katman + '.js');
+yukle('data/test-modal.js');
 
 var dizin = pencere.KELIME_DIZIN;
 var dizinAdlari = Array.from(dizin, function (x) { return x.e; });
 var dizinKumesi = new Set(dizinAdlari);
-assert.strictEqual(dizin.length, 7848);
-assert.strictEqual(dizinKumesi.size, 7848, 'dizinde yinelenen başlık');
-assert.strictEqual(pencere.SAYILAR.kelime, 7848);
-assert.strictEqual(pencere.SAYILAR.katman['5'], 2039);
+assert.strictEqual(dizin.length, 7910);
+assert.strictEqual(dizinKumesi.size, 7910, 'dizinde yinelenen başlık');
+assert.strictEqual(pencere.SAYILAR.kelime, 7910);
+assert.strictEqual(pencere.SAYILAR.katman['5'], 2050);
 dizin.forEach(function (x) {
   assert.ok(typeof x.p === 'number' && Number.isFinite(x.p), x.e + ': öncelik puanı eksik');
   assert.ok(x.k >= 1 && x.k <= 6, x.e + ': geçersiz katman');
@@ -57,7 +58,8 @@ for (katman = 1; katman <= 7; katman++) {
   });
   if (katman <= 6) testAdlari = testAdlari.concat(Object.keys(pencere['TEST_K' + katman] || {}));
 }
-assert.strictEqual(cokAnlamli, 2662);
+testAdlari = testAdlari.concat(Object.keys(pencere.TEST_MODAL || {}));
+assert.strictEqual(cokAnlamli, 2667);
 assert.deepStrictEqual(kartAdlari.slice().sort(), dizinAdlari.slice().sort(),
   'kart katmanları ile dizin farklı');
 assert.deepStrictEqual(testAdlari.slice().sort(), dizinAdlari.slice().sort(),
@@ -107,5 +109,5 @@ pencere.SORULAR.forEach(function (soru, i) {
   if (soru.pid) assert.ok(pencere.PARCALAR[soru.pid], 'soru ' + i + ': okuma parçası yok');
 });
 
-console.log('içerik-bütünlük: 7.848 kelime/test, 2.662 çok anlam, 253 olumsuz form, ' +
+console.log('içerik-bütünlük: 7.910 kelime-yapı/test, 2.667 çok anlam, 253 olumsuz form, ' +
   '155 bağlaç ve 125 soru başarılı');

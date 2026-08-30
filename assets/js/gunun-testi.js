@@ -33,7 +33,7 @@
       cumle: function (en) {
         var k = Veri.katmani(en);
         var t = k && window['TEST_K' + k];
-        return (t && t[en]) || null;
+        return (t && t[en]) || (window.TEST_MODAL && window.TEST_MODAL[en]) || null;
       },
       yukle: function (secili) { return Veri.testleriYukle(secili); }
     },
@@ -189,6 +189,14 @@
         if (cumledeGeciyorMu(cumle, ilk)) return false;
         var ob = Cekim.cek(d.e, f);
         return !!ob && ob !== soru.b;
+      }
+      // Modal yapı kartlarının başlıkları doğal olarak boşluk, kesme işareti,
+      // eğik çizgi ve "+ V3" göstergesi içerebilir. Bunları sıradan tek sözcük
+      // filtresine sokmak bütün çeldiricileri eliyordu. Aynı öğretim türündeki
+      // modal yapılar kendi aralarında, puan katmanına yakın seçilir.
+      if (hedef.y === 'modal yapı') {
+        return d.y === 'modal yapı' &&
+          Math.abs(d.k - hedef.k) <= mesafe && d.e !== soru.b;
       }
       if (/[^a-z]/.test(d.e)) return false;
       if (Math.abs(d.k - hedef.k) > mesafe) return false;

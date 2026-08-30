@@ -23,7 +23,7 @@
     3: 'Orta sıklıkta, sınavda düzenli çıkan kelimeler.',
     4: 'Daha seyrek ama puan getiren ileri kelimeler.',
     5: 'Uzun kuyruk. Çekirdeği bitirdiysen buraya geç.',
-    6: 'En seyrekler (10–12 puan). Okuma parçalarında rastlarsın; sınav kanıtı en zayıf olan havuz.',
+    6: 'En seyrekler ve tamamlayıcı modal yapılar. 10 puanın altındaki modal kartlar da eksik kalmamaları için bu son puanlı gruptadır.',
     7: 'Kelime ailelerini tamamlayan türevler. Sınav kanıtı zayıf ama türetme sorusu için değerli.'
   };
 
@@ -68,6 +68,20 @@
   /* ---------- günün testi cümleleri (data/test-k{n}.js) ---------- */
 
   var testYukleniyor = {};
+  var modalTestYukleniyor = null;
+  function modalTestleriniYukle() {
+    if (window.TEST_MODAL) return Promise.resolve(window.TEST_MODAL);
+    if (modalTestYukleniyor) return modalTestYukleniyor;
+    modalTestYukleniyor = new Promise(function (coz) {
+      var s = document.createElement('script');
+      s.src = 'data/test-modal.js';
+      s.async = true;
+      s.onload = function () { coz(window.TEST_MODAL || {}); };
+      s.onerror = function () { window.TEST_MODAL = window.TEST_MODAL || {}; coz(window.TEST_MODAL); };
+      document.head.appendChild(s);
+    });
+    return modalTestYukleniyor;
+  }
   function testYukle(k) {
     // 7. katman şu anda boştur; olmayan test-k7.js için gereksiz 404 üretme.
     if (k === 7) {
@@ -88,7 +102,7 @@
     return testYukleniyor[k];
   }
   function testleriYukle(liste) {
-    return Promise.all((liste || []).map(testYukle));
+    return Promise.all((liste || []).map(testYukle).concat([modalTestleriniYukle()]));
   }
 
   /* Öbeklerin günün testi cümleleri — tek dosya, gerekince indirilir. */

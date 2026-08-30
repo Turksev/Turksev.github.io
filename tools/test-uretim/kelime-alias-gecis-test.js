@@ -37,8 +37,12 @@ Object.keys(aliaslar).forEach(function (eski) {
   assert.strictEqual(M.kelimeKimligi(aliaslar[eski]), aliaslar[eski], 'hedef kararsız');
 });
 assert.deepStrictEqual(sade(ilerlemeKimlikleri), {
+  'be bound to': '@kelime:be bound to',
+  'be liable to': '@kelime:be liable to',
+  'be prone to': '@kelime:be prone to',
   'hand down': '@kelime:hand down',
-  'make peace': '@kelime:make peace'
+  'make peace': '@kelime:make peace',
+  'used to': '@kelime:used to'
 });
 assert.strictEqual(M.kelimeIlerlemeKimligi('hand down'), '@kelime:hand down');
 assert.strictEqual(M.kelimeIlerlemeKimligi('hand-down'), '@kelime:hand down');
@@ -73,8 +77,13 @@ var kaynaktakiKimlikler = {};
 duzeltmeBelgesi.duzeltmeler.forEach(function (d) {
   if (d.ilerleme_kimligi) kaynaktakiKimlikler[d.yeni] = d.ilerleme_kimligi;
 });
+var modalBelgesi = JSON.parse(fs.readFileSync(
+  path.join(kok, 'tools', 'modal-kartlar.json'), 'utf8'));
+modalBelgesi.cards.forEach(function (d) {
+  if (d.progress_id) kaynaktakiKimlikler[d.e] = d.progress_id;
+});
 assert.deepStrictEqual(kaynaktakiKimlikler, sade(ilerlemeKimlikleri),
-  'üretilen ilerleme kimlikleri kaynak düzeltme belgesinden koptu');
+  'üretilen ilerleme kimlikleri kaynak belgelerden koptu');
 
 // Sürüm 1 yerel/bulut verisinde eski tireli kelime aliasları kendi kelime
 // kimliğinde birleşir; aynı görünen boşluklu öbek kaydı bağımsız kalır.
@@ -239,4 +248,4 @@ assert.strictEqual(I.kutu('hand down', 'obek'), 0);
 I.dogru('walk-to');
 assert.ok(JSON.parse(bellek['yds-leitner'])['walking distance']);
 
-console.log('kelime-alias-geçiş: 9 alias, 2 ayrık kelime kimliği ve kayıpsız göç başarılı');
+console.log('kelime-alias-geçiş: 9 alias, 6 ayrık kelime kimliği ve kayıpsız göç başarılı');

@@ -202,7 +202,7 @@
 
   /* Yalnizca BASLANMIS kelimeler icin: tekrar gunu geldi mi?
      Hic calisilmamis kelime "vadesi gelmis" sayilmaz — o yeni kelimedir ve
-     gunluk kotayla acilir. Ikisini ayirmazsak ilk gun 7.848 kart cikardi. */
+     gunluk kotayla acilir. Ikisini ayirmazsak ilk gun 7.910 kart cikardi. */
   /* En üst kutuya çıkan kelime öğrenilmiş sayılır ve yeniden vadesi gelmez. */
   function mezunMu(en, tur) { return kutu(en, tur) >= EN_UST_KUTU; }
 
