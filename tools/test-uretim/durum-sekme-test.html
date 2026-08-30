@@ -1,52 +1,77 @@
 <!DOCTYPE html><meta charset="utf-8"><title>Durumum kutu sekmeleri</title>
 <pre id="log"></pre>
 <script>
-/* Durumum sayfasındaki kutu sekmelerini sınar: toplam sayı, kutu yüzdeleri
-   (toplamları %100 etmeli) ve havuz oranı notu. */
+/* Durumum: üstteki sistem toplamı ve sekmelerdeki yüzdeler.
+   Payda SİSTEM TOPLAMIDIR (bütün kelimeler + bütün öbekler), açılan sayısı
+   değil; "hepsi" dahil her sekme ona oranlanır ve hepsi = kutuların toplamı. */
 var L=[],hata=0;
 function P(m){L.push(m);document.getElementById('log').textContent=L.join('\n');}
 function esit(a,o,b){var ok=(o===b);if(!ok)hata++;
   P((ok?'OK   ':'HATA ')+a+' = '+JSON.stringify(o)+(ok?'':' (beklenen '+JSON.stringify(b)+')'));}
 
 localStorage.clear();
-// Bilinen bir ilerleme kur: 1.kutuda 5, 2'de 3, 5'te 2 = 10 kayıt
-var leitner={};
-var kelimeler=['abandon','ability','able','about','above','abroad','absence','absolute','absorb','abstract'];
-var kutular=[1,1,1,1,1,2,2,2,5,5];
-kelimeler.forEach(function(k,i){leitner[k]={k:kutular[i],g:99999};});
+/* 1.000 kayıt: 1. kutuda 400, 2'de 300, 3'te 200, 5'te 100.
+   Sistem toplamı ~9.500 olduğu için yüzdeler okunur büyüklükte çıkar ve
+   "hepsi = kutuların toplamı" denetimi anlamlı olur. */
+var DAGILIM={1:400,2:300,3:200,5:100};
+var leitner={},sira=0;
+Object.keys(DAGILIM).forEach(function(k){
+  for(var i=0;i<DAGILIM[k];i++) leitner['sinama'+(++sira)]={k:parseInt(k,10),g:99999};
+});
 localStorage.setItem('yds-leitner',JSON.stringify(leitner));
-// Havuz dört haneli olsun ki binlik ayracı da sınanabilsin.
-localStorage.setItem('yds-katmanlar',JSON.stringify([1,2,3,4,5,6,7]));
 
 var f=document.createElement('iframe');
 f.style.cssText='width:1100px;height:900px;border:0';
 f.src='file:///C:/Users/Trk/Desktop/Turksev.github.io/durum.html';
-f.onload=function(){var d=f.contentDocument;
+f.onload=function(){var w=f.contentWindow,d=f.contentDocument;
 setTimeout(function(){try{
+  var S=w.SAYILAR||{};
+  var payda=(S.kelime||0)+(S.obek||0);
+  P('  sistem toplamı: '+payda+' ('+S.kelime+' kelime + '+S.obek+' öbek)');
+  esit('SAYILAR yüklü', payda>1000, true);
+
+  var ust=d.getElementById('sistemToplam');
+  esit('üst satır var', !!ust && ust.textContent.length>20, true);
+  P('  üst satır: '+(ust?ust.textContent:'YOK'));
+  esit('üst satırda toplam yazıyor',
+       ust.textContent.indexOf(String(payda).replace(/\B(?=(\d{3})+(?!\d))/g,'.'))!==-1, true);
+
   var sek=d.querySelectorAll('#sekmeler .ks');
   esit('sekme sayısı', sek.length, 6);
-  var oranlar=[];
+  var kutuToplam=0, hepsiOran=null;
   for(var i=0;i<sek.length;i++){
     var b=sek[i].querySelector('b').textContent;
     var et=sek[i].querySelector('i').textContent;
     var o=sek[i].querySelector('.ks-oran');
-    P('  '+et+': '+b+'  oran='+(o?o.textContent:'YOK'));
-    if(!o){hata++;P('HATA '+et+' oran satırı yok');}
-    else if(i>0) oranlar.push(parseFloat(o.textContent.replace('%','').replace(',','.')));
+    if(!o){hata++;P('HATA '+et+' oran satırı yok');continue;}
+    P('  '+et+': '+b+'  '+o.textContent);
+    var deger=parseFloat(o.textContent.replace('<','').replace('%','').replace(',','.'))||0;
+    if(i===0) hepsiOran=deger; else kutuToplam+=deger;
   }
-  esit('hepsi sayısı', sek[0].querySelector('b').textContent, '10');
-  esit('1. kutu sayısı', sek[1].querySelector('b').textContent, '5');
-  esit('1. kutu oranı', sek[1].querySelector('.ks-oran').textContent, '%50');
-  esit('2. kutu oranı', sek[2].querySelector('.ks-oran').textContent, '%30');
-  esit('3. kutu oranı', sek[3].querySelector('.ks-oran').textContent, '%0');
-  esit('5. kutu oranı', sek[5].querySelector('.ks-oran').textContent, '%20');
-  var top=oranlar.reduce(function(a,b){return a+b;},0);
-  esit('kutu yüzdeleri %100 ediyor', Math.round(top), 100);
-  var not=d.querySelector('#sekmeler .ks-not').textContent;
-  P('  not: '+not);
-  esit('havuz oranı notu var', /Havuzun .* açıldı \(10 \/ \d/.test(not), true);
-  esit('binlik ayraç çalışıyor', /\/ \d\.\d{3}\)/.test(not), true);
+  esit('hepsi sayısı', sek[0].querySelector('b').textContent, '1.000');
+  esit('1. kutu sayısı', sek[1].querySelector('b').textContent, '400');
+
+  // Beklenen yüzdeler: payda sistem toplamı
+  function bekle(n){var o=n/payda*100;
+    if(!o) return '%0';
+    if(o<0.1) return '<%0,1';
+    return '%'+(o<10?o.toFixed(1).replace('.',','):Math.round(o));}
+  esit('hepsi oranı', sek[0].querySelector('.ks-oran').textContent, bekle(1000));
+  esit('1. kutu oranı', sek[1].querySelector('.ks-oran').textContent, bekle(400));
+  esit('2. kutu oranı', sek[2].querySelector('.ks-oran').textContent, bekle(300));
+  esit('3. kutu oranı', sek[3].querySelector('.ks-oran').textContent, bekle(200));
+  esit('4. kutu boş', sek[4].querySelector('.ks-oran').textContent, '%0');
+  esit('5. kutu oranı', sek[5].querySelector('.ks-oran').textContent, bekle(100));
+  /* Kutuların yüzdeleri toplamı gerçek "hepsi" oranını vermeli. Gösterimdeki
+     hepsi tam sayıya yuvarlandığı için karşılaştırma ham değere yapılır;
+     pay yalnız beş kutunun kendi ondalık yuvarlamasından gelir. */
+  var gercekHepsi=1000/payda*100;
+  P('  kutuların toplamı: %'+kutuToplam.toFixed(2)+
+    '  ·  gerçek hepsi: %'+gercekHepsi.toFixed(2)+'  (gösterim: '+hepsiOran+')');
+  esit('kutuların toplamı = hepsi', Math.abs(gercekHepsi-kutuToplam)<0.3, true);
+
+  P('  not: '+d.querySelector('#sekmeler .ks-not').textContent);
   P('DONE '+(hata?hata+' HATA':'HEPSI GECTI'));
-}catch(e){P('ERR '+e.message);}},1600);};
+}catch(e){hata++;P('ERR '+e.message);P('DONE 1 HATA');}},1600);};
 document.body.appendChild(f);
 </script>

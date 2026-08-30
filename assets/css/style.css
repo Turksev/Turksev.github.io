@@ -1258,7 +1258,15 @@ mark {
 .ks.warn b { color: var(--warn); }
 .ks.ok b { color: var(--ok); }
 .ks.acik.err, .ks.acik.warn, .ks.acik.ok { border-color: currentColor; }
-/* Sekmenin üçüncü satırı: kutunun açılanlara oranı. */
+/* Sekmelerin üstündeki sistem toplamı satırı. */
+.sistem-toplam {
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: .9rem;
+}
+.sistem-toplam b { color: var(--text); }
+
+/* Sekmenin üçüncü satırı: kutunun sistem toplamına oranı. */
 .ks-oran {
   font-size: .69rem;
   line-height: 1.2;

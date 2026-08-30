@@ -79,65 +79,70 @@
 
   function bin(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
 
-  /* Küçük paylarda tam sayıya yuvarlamak "%0" gösterir; bir basamak bırak. */
+  /* Payda sistem toplamı olduğu için paylar çok küçük olabilir: tam sayıya
+     yuvarlamak "%0", bir basamak "%0,0" gösterir — ikisi de sıfırla karışır.
+     Onda birin altında kalan gerçek değerler "<%0,1" olarak yazılır. */
   function oran(pay, payda) {
     if (!payda) return '';
     var o = pay / payda * 100;
     if (!o) return '%0';
+    if (o < 0.1) return '<%0,1';
     return '%' + (o < 10 ? o.toFixed(1).replace('.', ',') : Math.round(o));
   }
 
-  /* Havuz = seçili kelime katmanları + (öbek çalışılmışsa) bütün öbekler.
-     "Hepsi" sekmesinin havuza oranı, ne kadarını açtığını gösterir. */
-  function havuzBoyu() {
-    var secili = Depo.oku('yds-katmanlar', [2]);
-    if (!Array.isArray(secili) || !secili.length) secili = [2];
-    var sayilar = Veri.katmanSayilari();
-    var n = 0;
-    secili.forEach(function (k) { n += sayilar[k] || 0; });
-    if (kayitlar.some(function (k) { return k.tur === 'obek'; })) {
-      n += (window.OBEKLER || []).length;
-    }
-    return n;
+  /* Sistemdeki toplam kayıt: bütün kelimeler + bütün öbekler. Sekmelerdeki
+     yüzdelerin paydası budur; "hepsi" dahil hepsi aynı toplama oranlanır,
+     böylece hepsi'nin yüzdesi beş kutunun toplamına eşit çıkar.
+     data/sayilar.js küçük ve her sayfada yüklü; hangi katmanın indirildiğinden
+     bağımsız, kararlı bir toplam verir. */
+  function sistemToplami() {
+    var s = window.SAYILAR || {};
+    var kelime = s.kelime || (Veri.dizin || []).length;
+    var obek = s.obek || (window.OBEKLER || []).length;
+    return { kelime: kelime, obek: obek, toplam: kelime + obek };
   }
 
   function sekmeleriCiz() {
     var say = { 0: kayitlar.length, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
     kayitlar.forEach(function (k) { say[k.kutu] = (say[k.kutu] || 0) + 1; });
-    var toplam = say[0];
+    var acilan = say[0];
+    var sis = sistemToplami();
+    var payda = sis.toplam;
 
     // 5. kutu tamamlanmıştır; yalnız 1–4. kutuların tekrar vadesi gelebilir.
     var vadesi = kayitlar.filter(function (k) {
       return Il.vadesiGeldiMi(k.ad, k.tur);
     }).length;
 
+    var ust = $('sistemToplam');
+    if (ust) {
+      ust.innerHTML = 'Sistemde toplam <b>' + bin(payda) + '</b> kayıt — ' +
+        bin(sis.kelime) + ' kelime + ' + bin(sis.obek) + ' öbek. ' +
+        'Sekmelerdeki yüzdeler bu toplama göredir.';
+    }
+
     var html = '<button type="button" class="ks' + (seciliKutu === 0 ? ' acik' : '') +
       '" data-k="0" aria-pressed="' + (seciliKutu === 0 ? 'true' : 'false') +
-      '" aria-label="Tüm kutular, açılmış ' + toplam + ' kayıt">' +
-      '<b>' + bin(toplam) + '</b><i>hepsi</i>' +
-      '<span class="ks-oran">açılmış</span></button>';
+      '" aria-label="Tüm kutular, açılmış ' + acilan +
+      ' kayıt, toplamın ' + oran(acilan, payda) + '\'i">' +
+      '<b>' + bin(acilan) + '</b><i>hepsi</i>' +
+      '<span class="ks-oran">' + oran(acilan, payda) + '</span></button>';
 
-    // Kutu yüzdeleri açılmış toplama göredir; beşi %100 eder.
     [1, 2, 3, 4, 5].forEach(function (k) {
       var b = KUTU_BILGI[k];
       var n = say[k] || 0;
-      var y = oran(n, toplam);
+      var y = oran(n, payda);
       html += '<button type="button" class="ks ' + b.sinif +
         (seciliKutu === k ? ' acik' : '') + '" data-k="' + k + '" title="' + b.not +
         '" aria-pressed="' + (seciliKutu === k ? 'true' : 'false') + '" aria-label="' +
-        b.ad + ', ' + n + ' kayıt, açılanların ' + y + '\'i: ' + b.not + '">' +
+        b.ad + ', ' + n + ' kayıt, toplamın ' + y + '\'i: ' + b.not + '">' +
         '<b>' + bin(n) + '</b><i>' + b.ad + '</i>' +
         '<span class="ks-oran">' + y + '</span></button>';
     });
 
-    var havuz = havuzBoyu();
-    var not = havuz
-      ? 'Havuzun <b>' + oran(toplam, havuz) + '</b>\'i açıldı (' + bin(toplam) +
-        ' / ' + bin(havuz) + ') · Kutu yüzdeleri açılanlara göre'
-      : 'Kutu yüzdeleri açılanlara göre';
-
     $('sekmeler').innerHTML = html +
-      '<span class="ks-not">' + not + ' · Bugün tekrarı gelen: <b>' + vadesi + '</b></span>';
+      '<span class="ks-not">Açılan: <b>' + bin(acilan) + '</b> · ' +
+      'Bugün tekrarı gelen: <b>' + vadesi + '</b></span>';
   }
 
   /* ---------- filtre ve çizim ---------- */
