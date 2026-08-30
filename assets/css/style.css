@@ -1258,6 +1258,15 @@ mark {
 .ks.warn b { color: var(--warn); }
 .ks.ok b { color: var(--ok); }
 .ks.acik.err, .ks.acik.warn, .ks.acik.ok { border-color: currentColor; }
+/* Sekmenin üçüncü satırı: kutunun açılanlara oranı. */
+.ks-oran {
+  font-size: .69rem;
+  line-height: 1.2;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.ks.acik .ks-oran { color: var(--accent); }
 
 .ks-not { font-size: .84rem; color: var(--muted); margin-left: 4px; }
 .ks-not b { color: var(--text); }

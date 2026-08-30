@@ -12,6 +12,7 @@
 
   var sadelestir = window.YDS.sadelestir;
   var kacar = window.YDS.kacar;
+  var Depo = window.YDS.Depo;
   var Il = window.YDS.Ilerleme;
   var Veri = window.YDS.Veri;
 
@@ -76,9 +77,34 @@
 
   /* ---------- sekmeler ---------- */
 
+  function bin(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+
+  /* Küçük paylarda tam sayıya yuvarlamak "%0" gösterir; bir basamak bırak. */
+  function oran(pay, payda) {
+    if (!payda) return '';
+    var o = pay / payda * 100;
+    if (!o) return '%0';
+    return '%' + (o < 10 ? o.toFixed(1).replace('.', ',') : Math.round(o));
+  }
+
+  /* Havuz = seçili kelime katmanları + (öbek çalışılmışsa) bütün öbekler.
+     "Hepsi" sekmesinin havuza oranı, ne kadarını açtığını gösterir. */
+  function havuzBoyu() {
+    var secili = Depo.oku('yds-katmanlar', [2]);
+    if (!Array.isArray(secili) || !secili.length) secili = [2];
+    var sayilar = Veri.katmanSayilari();
+    var n = 0;
+    secili.forEach(function (k) { n += sayilar[k] || 0; });
+    if (kayitlar.some(function (k) { return k.tur === 'obek'; })) {
+      n += (window.OBEKLER || []).length;
+    }
+    return n;
+  }
+
   function sekmeleriCiz() {
     var say = { 0: kayitlar.length, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
     kayitlar.forEach(function (k) { say[k.kutu] = (say[k.kutu] || 0) + 1; });
+    var toplam = say[0];
 
     // 5. kutu tamamlanmıştır; yalnız 1–4. kutuların tekrar vadesi gelebilir.
     var vadesi = kayitlar.filter(function (k) {
@@ -87,19 +113,31 @@
 
     var html = '<button type="button" class="ks' + (seciliKutu === 0 ? ' acik' : '') +
       '" data-k="0" aria-pressed="' + (seciliKutu === 0 ? 'true' : 'false') +
-      '" aria-label="Tüm kutular, ' + say[0] + ' kayıt"><b>' + say[0] + '</b><i>hepsi</i></button>';
+      '" aria-label="Tüm kutular, açılmış ' + toplam + ' kayıt">' +
+      '<b>' + bin(toplam) + '</b><i>hepsi</i>' +
+      '<span class="ks-oran">açılmış</span></button>';
 
+    // Kutu yüzdeleri açılmış toplama göredir; beşi %100 eder.
     [1, 2, 3, 4, 5].forEach(function (k) {
       var b = KUTU_BILGI[k];
+      var n = say[k] || 0;
+      var y = oran(n, toplam);
       html += '<button type="button" class="ks ' + b.sinif +
         (seciliKutu === k ? ' acik' : '') + '" data-k="' + k + '" title="' + b.not +
         '" aria-pressed="' + (seciliKutu === k ? 'true' : 'false') + '" aria-label="' +
-        b.ad + ', ' + (say[k] || 0) + ' kayıt: ' + b.not + '">' +
-        '<b>' + (say[k] || 0) + '</b><i>' + b.ad + '</i></button>';
+        b.ad + ', ' + n + ' kayıt, açılanların ' + y + '\'i: ' + b.not + '">' +
+        '<b>' + bin(n) + '</b><i>' + b.ad + '</i>' +
+        '<span class="ks-oran">' + y + '</span></button>';
     });
 
+    var havuz = havuzBoyu();
+    var not = havuz
+      ? 'Havuzun <b>' + oran(toplam, havuz) + '</b>\'i açıldı (' + bin(toplam) +
+        ' / ' + bin(havuz) + ') · Kutu yüzdeleri açılanlara göre'
+      : 'Kutu yüzdeleri açılanlara göre';
+
     $('sekmeler').innerHTML = html +
-      '<span class="ks-not">Bugün tekrarı gelen: <b>' + vadesi + '</b></span>';
+      '<span class="ks-not">' + not + ' · Bugün tekrarı gelen: <b>' + vadesi + '</b></span>';
   }
 
   /* ---------- filtre ve çizim ---------- */

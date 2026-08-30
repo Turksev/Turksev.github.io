@@ -10,6 +10,7 @@ Yayında: <https://turksev.github.io>
 | Dosya | İçerik |
 | --- | --- |
 | `index.html` | Ana sayfa ve ilerleme paneli: tekrar durumu, yanlış defteri, deneme geçmişi, kategori karnesi |
+| `durum.html` | Çalışılmış her şey tek listede (kelime, öbek, aile üyesi): kutu sekmeleri **açılan sayısı + kutuların yüzdesel dağılımı** ve havuzun ne kadarının açıldığı, arama/süzme/sıralama |
 | `kelimeler.html` | 7.912 kelime ve yapı, 7 katman + **aralıklı tekrar (Leitner)**: bugünün destesi, kart modu, ipucu, sesli okuma |
 | `obekler.html` | 1.631 kelime öbeği (560 deyimsel fiil, 333 edat kalıbı, sabit/geçiş ifadeleri) — ayrı Leitner destesi |
 | `quiz.html` | Alıştırma soruları: 12 kategori, anında çözüm, yanlış defterinden çalışma |
