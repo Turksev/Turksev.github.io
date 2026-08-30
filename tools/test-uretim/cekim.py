@@ -128,7 +128,10 @@ def cek(kelime, bicim=''):
         parcalar = re.split(r'[-\s]+', k)
         if not bicim:
             return ' '.join(parcalar)
-        if not re.fullmatch(r'[a-z]+', parcalar[0]):
+        # Yalniz ilk parcaya bakmak yetmiyordu: "would have + V3" gibi dilbilgisi
+        # kaliplarinda ilk parca cekilip "woulded have + v3" cikiyordu. Kalip
+        # cekilemez; parcalardan biri bile harf disi tasiyorsa aday elenir.
+        if not all(re.fullmatch(r'[a-z]+', p) for p in parcalar):
             return None
         ilk = cek(parcalar[0], bicim)
         return ' '.join([ilk] + parcalar[1:]) if ilk else None

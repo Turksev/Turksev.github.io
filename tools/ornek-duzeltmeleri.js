@@ -47,5 +47,22 @@ window.ORNEK_DUZELTMELERI = {
   "license": [
     {"tr":"i. lisans, ruhsat, ehliyet (Amerikan İngilizcesi)","ex":"Applicants must renew their driving license every ten years under the new regulation.","exTr":"Yeni düzenlemeye göre başvuru sahipleri sürücü belgelerini her on yılda bir yenilemek zorundadır."},
     {"tr":"f. yetki vermek, ruhsatlandırmak (Britanya ve Amerikan İngilizcesi)","ex":"The regulator licensed three new companies to operate in the telecommunications sector.","exTr":"Düzenleyici kurum, telekomünikasyon sektöründe faaliyet göstermeleri için üç yeni şirkete ruhsat verdi."}
+  ],
+
+  /* 30.08.2026 baslik denetimi: ornekte kelimenin kendisi gecmiyordu
+     (faster / happier / tallest / backyard), ipucu dusuyordu. */
+  "fast": [
+    {"tr": "z. hızlı, çabuk", "ex": "Rumours about the merger spread fast among employees long before any official statement appeared.", "exTr": "Birleşmeyle ilgili söylentiler, resmî bir açıklama çıkmadan çok önce çalışanlar arasında hızla yayıldı."},
+    {"tr": "f. oruç tutmak", "ex": "Many participants chose to fast for twenty-four hours as part of the medical research study.", "exTr": "Birçok katılımcı, tıbbi araştırma çalışmasının bir parçası olarak yirmi dört saat oruç tutmayı tercih etti."}
+  ],
+  "happy": [
+    {"tr": "s. mutlu", "ex": "Employees who feel happy at work tend to stay with the same company for far longer.", "exTr": "İşinde mutlu hisseden çalışanlar, aynı şirkette çok daha uzun süre kalma eğilimindedir."}
+  ],
+  "tall": [
+    {"tr": "s. uzun boylu, yüksek", "ex": "The observatory stands on a tall ridge that rises well above the surrounding pine forest.", "exTr": "Gözlemevi, çevresindeki çam ormanının epeyce üzerine yükselen yüksek bir sırtın üstünde durur."}
+  ],
+  "yard": [
+    {"tr": "i. avlu, bahçe", "ex": "Archaeologists uncovered a paved yard behind the farmhouse where livestock had once been kept.", "exTr": "Arkeologlar, çiftlik evinin arkasında bir zamanlar hayvanların tutulduğu taş döşeli bir avlu ortaya çıkardı."},
+    {"tr": "i. yarda (uzunluk birimi)", "ex": "Workers measured nearly two hundred yards of fencing needed to enclose the entire property.", "exTr": "İşçiler, mülkün tamamını çevirmek için gereken çitin neredeyse iki yüz yarda uzunluğunda olduğunu ölçtü."}
   ]
 };

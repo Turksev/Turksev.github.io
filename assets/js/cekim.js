@@ -199,7 +199,10 @@
     if (/[-\s]/.test(k)) {
       var parcalar = k.split(/[-\s]+/);
       if (!bicim) return parcalar.join(' ');
-      if (!/^[a-z]+$/.test(parcalar[0])) return null;
+      // Yalnız ilk parçaya bakmak yetmiyordu: "would have + V3" gibi dilbilgisi
+      // kalıplarında ilk parça çekilip "woulded have + v3" çıkıyordu. Kalıp
+      // çekilemez; parçalardan biri bile harf dışı taşıyorsa aday elenir.
+      if (!parcalar.every(function (p) { return /^[a-z]+$/.test(p); })) return null;
       var ilk = cek(parcalar[0], bicim);
       return ilk ? [ilk].concat(parcalar.slice(1)).join(' ') : null;
     }

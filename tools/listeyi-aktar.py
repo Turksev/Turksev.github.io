@@ -69,7 +69,12 @@ def katman_bul(puan):
 
 # Anlam sutunundaki tur oneki: "i." "s." "s./z." "z./i./s." gibi bir veya daha
 # cok kisaltmanin egik cizgiyle baglanmis hali.
-TUR_ONEKI = re.compile(r'^\s*[ifsze]\.(?:/[ifsze]\.)*\s*')
+# Cok harfli kisaltmalar da var: "i./adl. biri" ve "bag. ayrica". Yalniz tek
+# harfe bakan eski desen bunlari soyamiyor, tur etiketi kisa anlamda kaliyordu
+# ("/adl. biri, birisi"). Bilinen kisaltmalar acikca sayilir ki gercek icerik
+# yanlislikla kirpilmasin.
+TUR_KIS = r'(?:i|s|f|z|e|adl|bağ|ünl)'
+TUR_ONEKI = re.compile(r'^\s*%s\.(?:/%s\.)*\s*' % (TUR_KIS, TUR_KIS))
 
 # Bir anlam satirinda birden cok tur olabiliyor: "i. fotoğraf; f. fotoğrafını çekmek".
 # Bunlari ayri anlamlara boleriz ki her turun kendi ornek cumlesi olabilsin.
