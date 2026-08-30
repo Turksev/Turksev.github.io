@@ -23,10 +23,11 @@ yukle('data/test-modal.js');
 var dizin = pencere.KELIME_DIZIN;
 var dizinAdlari = Array.from(dizin, function (x) { return x.e; });
 var dizinKumesi = new Set(dizinAdlari);
-assert.strictEqual(dizin.length, 7912);
-assert.strictEqual(dizinKumesi.size, 7912, 'dizinde yinelenen başlık');
-assert.strictEqual(pencere.SAYILAR.kelime, 7912);
-assert.strictEqual(pencere.SAYILAR.katman['5'], 2051);
+// 30.08.2026: "row /raʊ/" kartı "row" ile birleşti (7912 -> 7911, K5 2051 -> 2050).
+assert.strictEqual(dizin.length, 7911);
+assert.strictEqual(dizinKumesi.size, 7911, 'dizinde yinelenen başlık');
+assert.strictEqual(pencere.SAYILAR.kelime, 7911);
+assert.strictEqual(pencere.SAYILAR.katman['5'], 2050);
 assert.strictEqual(pencere.SAYILAR.katman['7'], 1);
 dizin.forEach(function (x) {
   assert.ok(typeof x.p === 'number' && Number.isFinite(x.p), x.e + ': öncelik puanı eksik');
@@ -60,7 +61,9 @@ for (katman = 1; katman <= 7; katman++) {
   testAdlari = testAdlari.concat(Object.keys(pencere['TEST_K' + katman] || {}));
 }
 testAdlari = testAdlari.concat(Object.keys(pencere.TEST_MODAL || {}));
-assert.strictEqual(cokAnlamli, 2668);
+// Çok türlü ama tek örnekli 297 kayıt anlamlarına ayrıldı; her tür kendi
+// örneğini aldığı için çok anlamlı kart sayısı 2668'den 2964'e çıktı.
+assert.strictEqual(cokAnlamli, 2964);
 assert.deepStrictEqual(kartAdlari.slice().sort(), dizinAdlari.slice().sort(),
   'kart katmanları ile dizin farklı');
 assert.deepStrictEqual(testAdlari.slice().sort(), dizinAdlari.slice().sort(),

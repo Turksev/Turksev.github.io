@@ -2179,7 +2179,7 @@ window.KELIME_DIZIN = [
 {e:"specialist",t:"uzman; uzman hekim",p:24.6,k:4,y:"isim"},
 {e:"surrounding",t:"çevredeki, etraftaki",p:24.6,k:4,y:"sıfat"},
 {e:"accident",t:"kaza; rastlantı, tesadüf",p:24.5,k:4,y:"isim"},
-{e:"adolescent",t:"ergenlikle ilgili, ergenlik çağına ait; ergen, genç kişi",p:24.5,k:4,y:"sıfat, isim"},
+{e:"adolescent",t:"ergen, genç kişi; ergenlikle ilgili, ergenlik çağına ait",p:24.5,k:4,y:"sıfat, isim"},
 {e:"agent",t:"etken, madde; temsilci, aracı",p:24.5,k:4,y:"isim"},
 {e:"bath",t:"banyo, yıkanma; (public bath) hamam",p:24.5,k:4,y:"isim"},
 {e:"bodily",t:"bedensel; bedenen, bütünüyle",p:24.5,k:4,y:"sıfat, zarf"},

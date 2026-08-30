@@ -31,7 +31,8 @@ var aliaslar = pencere.YDS_KELIME_ALIASES;
 var ilerlemeKimlikleri = pencere.YDS_KELIME_ILERLEME_KIMLIKLERI;
 var sade = function (v) { return JSON.parse(JSON.stringify(v)); };
 
-assert.strictEqual(Object.keys(aliaslar).length, 9, 'beklenen alias sayısı');
+// row /raʊ/ -> row birleşmesiyle 10'a çıktı.
+assert.strictEqual(Object.keys(aliaslar).length, 10, 'beklenen alias sayısı');
 Object.keys(aliaslar).forEach(function (eski) {
   assert.strictEqual(M.kelimeKimligi(eski), aliaslar[eski], eski + ' eşlenemedi');
   assert.strictEqual(M.kelimeKimligi(aliaslar[eski]), aliaslar[eski], 'hedef kararsız');

@@ -55,7 +55,12 @@ sayfalar.forEach(function (dosya) {
 var sw = fs.readFileSync(path.join(kok, 'sw.js'), 'utf8');
 var main = fs.readFileSync(path.join(kok, 'assets', 'js', 'main.js'), 'utf8');
 var bulut = fs.readFileSync(path.join(kok, 'assets', 'js', 'esitleme-v2.js'), 'utf8');
-assert.ok(/var SURUM = 'yds-v146'/.test(sw), 'servis çalışanı sürümü artırılmadı');
+// Sürümü sabit bir sayıya çivilemek her yayında bu testi düşürüyordu
+// (v146 -> v147'de kırıldı). Tek anlık görüntüden "artırıldı mı" anlaşılamaz;
+// biçim ve geriye gitmeme denetimi asıl korunmak isteneni yakalıyor.
+var swSurum = sw.match(/var SURUM = 'yds-v(\d+)'/);
+assert.ok(swSurum, 'servis çalışanı sürümü okunamadı');
+assert.ok(Number(swSurum[1]) >= 146, 'servis çalışanı sürümü geriye gitmiş');
 assert.ok(sw.indexOf("'./data/kelime-aliaslari.js'") >= 0,
   'kelime aliasları çevrimdışı önbellekte değil');
 ['esitleme-veri.js', 'esitleme-depo.js', 'esitleme-v2.js'].forEach(function (dosya) {
