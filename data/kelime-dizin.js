@@ -3970,7 +3970,7 @@ window.KELIME_DIZIN = [
 {e:"privacy",t:"mahremiyet, gizlilik, özel hayat",p:16.9,k:5,y:"isim"},
 {e:"railroad",t:"demiryolu; (mecazi) zorla kabul ettirmek, sıkıştırarak…",p:16.9,k:5,y:"isim, fiil"},
 {e:"resolution",t:"çözüm, sonuca bağlanma; anlaşmaya varma; karar (resmi,…",p:16.9,k:5,y:"isim"},
-{e:"row",t:"/roʊ/ sıra, dizi; satır (tablo/veritabanı); /roʊ/ kürek…",p:16.9,k:5,y:"isim, fiil"},
+{e:"row",t:"sıra, dizi; satır (tablo/veritabanı); kürek çekmek",p:16.9,k:5,y:"isim, fiil"},
 {e:"row /raʊ/",t:"kavga, çekişme, ağız dalaşı; kavga etmek, tartışmak",p:16.9,k:5,y:"isim, fiil"},
 {e:"salad",t:"salata",p:16.9,k:5,y:"isim"},
 {e:"sin",t:"günah; günah işlemek",p:16.9,k:5,y:"isim, fiil"},
