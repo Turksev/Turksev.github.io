@@ -1287,6 +1287,19 @@ mark {
 .dagilim-toplam { background: var(--surface-2); }
 .dagilim-toplam th, .dagilim-toplam .dagilim-n { color: var(--accent); }
 
+/* Fare hangi satırın üzerindeyse o satır belirginleşsin: vurgu rengine boyanır
+   ve soluna 3 piksellik bir şerit iner. Yalnız zemin rengi denendi, beyazın
+   üstünde fark edilmiyordu; şerit satırı tereddütsüz gösteriyor.
+   Şerit ilk hücreye veriliyor — border-collapse'lı tabloda tr'ye verilen
+   box-shadow bazı tarayıcılarda çizilmiyor.
+   Yalnız (hover: hover): dokunmatikte vurgu son dokunulan satırda takılı
+   kalıp yanlış satırı seçili gösterirdi. */
+@media (hover: hover) {
+  .veri-tablo tbody tr { transition: background-color .12s ease; }
+  .veri-tablo tbody tr:hover { background: var(--accent-soft); }
+  .veri-tablo tbody tr:hover > *:first-child { box-shadow: inset 3px 0 0 var(--accent); }
+}
+
 /* Dağılım tablosunun üstündeki tek satırlık açıklama. Genişlik sınırı yok:
    masaüstünde tek satıra sığar, telefonda kendiliğinden sarar. */
 .dagilim-not { margin-bottom: 14px; }
@@ -1296,14 +1309,6 @@ mark {
 .adim-tablo tbody th { min-width: 11rem; }
 .adim-sik { color: var(--muted); white-space: nowrap; }
 
-/* Fare hangi adımın üzerindeyse o satır hafifçe dolsun; üç sütun arasında
-   göz kaymasını önler. Yalnız gerçek fareli aygıtlarda: dokunmatikte hover
-   dokunulan satırda takılı kalır. Sadece adım tablosunda var, dağılım
-   tablosunda yok — orada satırlar zaten kısa. */
-@media (hover: hover) {
-  .adim-tablo tbody tr { transition: background-color .12s ease; }
-  .adim-tablo tbody tr:hover { background: var(--surface-2); }
-}
 
 /* Telefonda "nowrap" başlıklar tabloyu yatay kaydırmaya zorluyordu;
    dar ekranda sarmalarına izin ver. */
