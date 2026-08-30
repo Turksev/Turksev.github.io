@@ -1296,6 +1296,15 @@ mark {
 .adim-tablo tbody th { min-width: 11rem; }
 .adim-sik { color: var(--muted); white-space: nowrap; }
 
+/* Fare hangi adımın üzerindeyse o satır hafifçe dolsun; üç sütun arasında
+   göz kaymasını önler. Yalnız gerçek fareli aygıtlarda: dokunmatikte hover
+   dokunulan satırda takılı kalır. Sadece adım tablosunda var, dağılım
+   tablosunda yok — orada satırlar zaten kısa. */
+@media (hover: hover) {
+  .adim-tablo tbody tr { transition: background-color .12s ease; }
+  .adim-tablo tbody tr:hover { background: var(--surface-2); }
+}
+
 /* Telefonda "nowrap" başlıklar tabloyu yatay kaydırmaya zorluyordu;
    dar ekranda sarmalarına izin ver. */
 @media (max-width: 640px) {
