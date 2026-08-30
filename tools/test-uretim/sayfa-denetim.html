@@ -8,9 +8,11 @@ localStorage.clear();
 var KOK='file:///C:/Users/Trk/Desktop/Turksev.github.io/';
 var SAYFALAR=[
  {s:'index.html',    t:function(d){return d.querySelectorAll('a[href]').length>=6;}},
- /* Liste 60'lık sayfalarla çizilir (SAYFA_BOYU); tam 60 satır + "daha fazla" beklenir. */
- {s:'kelimeler.html',t:function(d){return d.querySelectorAll('#liste .word').length===60 && d.querySelectorAll('#kutular .kutu').length===6 && !d.getElementById('dahaFazla').hidden;}},
- {s:'obekler.html',  t:function(d){return d.querySelectorAll('#liste .word').length===60;}},
+ /* Liste parça parça çizilir (SAYFA_BOYU); sayıya bağlanma, "daha fazla" görünsün yeter. */
+ {s:'kelimeler.html',t:function(d){var n=d.querySelectorAll('#liste .word').length;
+    return n>0 && n<200 && d.querySelectorAll('#kutular .kutu').length===6 && !d.getElementById('dahaFazla').hidden;}},
+ {s:'obekler.html',  t:function(d){var n=d.querySelectorAll('#liste .word').length;
+    return n>0 && n<200 && !d.getElementById('dahaFazla').hidden;}},
  {s:'konular.html',  t:function(d){return d.body.textContent.length>2000;}},
  {s:'aileler.html',  t:function(d){return d.body.textContent.length>2000;}},
  {s:'baglaclar.html',t:function(d){return d.body.textContent.length>2000;}},

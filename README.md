@@ -287,9 +287,14 @@ yumuşak sınırına oranlar. Sayılar `data/depo.js` içindedir ve `tools/depo-
 python tools/depo-olcu.py
 ```
 
-Betik `.git`, `__pycache__` gibi klasörleri saymaz; toplam boyut, dosya sayısı ve en
-büyük beş klasörü yazar (çubuğun üzerine gelince ayrıntı görünür). %70'i geçince çubuk
-sarıya, %90'ı geçince kırmızıya döner.
+Betik `.git`, `__pycache__`, `tools` gibi yayımlanmayan klasörleri saymaz; toplam boyut,
+dosya sayısı ve en büyük beş klasörü yazar (çubuğun üzerine gelince ayrıntı görünür).
+%70'i geçince çubuk sarıya, %90'ı geçince kırmızıya döner.
+
+30.08.2026'da çubuk alt bilgide **her sayfada** görünür oldu (önce yalnız `localhost` ya da
+`?debug=depo` ile açılıyordu) ve oradaki *Yöntem ve kaynaklar · Gizlilik ve veriler ·
+Hata bildir* bağlantı üçlüsünün yerini aldı. `yontem.html` ve `ayarlar.html` sayfaları
+duruyor ama artık hiçbir yerden bağlantı verilmiyor; yalnız doğrudan adresle açılırlar.
 
 ## Cihazlar arası eşitleme (Firebase)
 
