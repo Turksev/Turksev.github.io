@@ -644,14 +644,6 @@ def birlestir():
             del kelimeler[en]
             elenen += 1
 
-    # Kullanim kaliplari
-    kalip = kaliplari_oku()
-    kalipli = 0
-    for en, k in kelimeler.items():
-        if en in kalip:
-            k['kalip'] = kalip[en]
-            kalipli += 1
-
     # Tur duzeltmeleri (dizindeki y alanini duzeltir)
     tur_d = tur_duzeltmelerini_oku()
     for en, tur in tur_d.items():
@@ -666,6 +658,17 @@ def birlestir():
     # gibi sözcüklerin eksik işlevleri tamamlanır hem de puanlanmış yapılar
     # ilerleme anahtarı olarak kendi başlıklarıyla eklenir.
     modal_eklenen, modal_guncellenen = modal_kartlarini_uygula(kelimeler, modal_kartlar)
+
+    # Kullanim kaliplari. Modal kartlardan SONRA: "be supposed to", "ought to"
+    # gibi yapilar kelime havuzuna modal adiminda ekleniyor, kaliplar daha once
+    # islenirse bu 16 kart kalipsiz kaliyordu. Duzeltme baslıklari da o adimda
+    # kesinlestigi icin son yazim burada dogru anahtari yakalar.
+    kalip = kaliplari_oku()
+    kalipli = 0
+    for en, k in kelimeler.items():
+        if en in kalip:
+            k['kalip'] = kalip[en]
+            kalipli += 1
 
     # Anlam yildizlari: onemliyi basa al
     yildiz = yildizlari_oku()
