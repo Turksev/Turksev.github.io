@@ -1258,9 +1258,10 @@ mark {
 .ks.warn b { color: var(--warn); }
 .ks.ok b { color: var(--ok); }
 .ks.acik.err, .ks.acik.warn, .ks.acik.ok { border-color: currentColor; }
-/* YDS bölüm dağılımı tablosu (ana sayfa). Dar ekranda kendi içinde kayar. */
+/* Ana sayfadaki bilgi tabloları (bölüm dağılımı, çalışma adımları).
+   Dar ekranda kendi içinde kayar; kart ızgarası gibi sütunlara sıkışmaz. */
 .tablo-kaydir { overflow-x: auto; }
-.dagilim {
+.veri-tablo {
   width: 100%;
   border-collapse: collapse;
   background: var(--surface);
@@ -1269,8 +1270,8 @@ mark {
   overflow: hidden;
   font-size: .94rem;
 }
-.dagilim th, .dagilim td { padding: 9px 14px; text-align: left; }
-.dagilim thead th {
+.veri-tablo th, .veri-tablo td { padding: 9px 14px; text-align: left; }
+.veri-tablo thead th {
   background: var(--surface-2);
   font-size: .8rem;
   letter-spacing: .02em;
@@ -1278,13 +1279,40 @@ mark {
   color: var(--muted);
   white-space: nowrap;
 }
-.dagilim tbody tr { border-top: 1px solid var(--border); }
-.dagilim tbody th { font-weight: 650; white-space: nowrap; }
+.veri-tablo tbody tr { border-top: 1px solid var(--border); }
+.veri-tablo tbody th { font-weight: 650; white-space: nowrap; }
 .dagilim-no, .dagilim-n { font-variant-numeric: tabular-nums; white-space: nowrap; }
 .dagilim-no { color: var(--muted); }
 .dagilim-n { font-weight: 650; }
 .dagilim-toplam { background: var(--surface-2); }
 .dagilim-toplam th, .dagilim-toplam .dagilim-n { color: var(--accent); }
+
+/* Dağılım tablosunun üstündeki tek satırlık açıklama. Genişlik sınırı yok:
+   masaüstünde tek satıra sığar, telefonda kendiliğinden sarar. */
+.dagilim-not { margin-bottom: 14px; }
+
+/* Çalışma adımları tablosu: açıklama sütunu geniş, satırlar nefes alsın. */
+.adim-tablo th, .adim-tablo td { padding: 12px 14px; vertical-align: top; }
+.adim-tablo tbody th { min-width: 11rem; }
+.adim-sik { color: var(--muted); white-space: nowrap; }
+
+/* Telefonda "nowrap" başlıklar tabloyu yatay kaydırmaya zorluyordu;
+   dar ekranda sarmalarına izin ver. */
+@media (max-width: 640px) {
+  .adim-tablo tbody th, .adim-sik { white-space: normal; }
+  .adim-tablo tbody th { min-width: 0; }
+}
+
+/* 560 pikselin altında üç sütun ~90 piksele iniyor, açıklama ince bir şeride
+   dönüyordu. Satırları blok olarak yığ: her adım tam genişlik alır.
+   Başlık satırı gizlenir, sütun adları zaten hücre metninden anlaşılıyor. */
+@media (max-width: 560px) {
+  .adim-tablo, .adim-tablo tbody, .adim-tablo tr, .adim-tablo th, .adim-tablo td { display: block; }
+  .adim-tablo thead { display: none; }
+  .adim-tablo tbody tr { padding: 12px 0; }
+  .adim-tablo th, .adim-tablo td { padding: 0 14px; }
+  .adim-sik { padding-bottom: 6px; font-size: .88rem; }
+}
 
 /* Sekmelerin üstündeki sistem toplamı satırı. */
 .sistem-toplam {

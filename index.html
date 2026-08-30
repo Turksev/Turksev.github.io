@@ -204,13 +204,12 @@
 
   <section class="section">
     <div class="wrap">
-      <h2>YDS'de ne çıkıyor?</h2>
-      <p class="muted" style="max-width:70ch">
-        Sınav 80 sorudur ve bölümler her yıl aynı sırayla gelir. Deneme sayfasındaki
-        formlar da bu dağılıma göre kurulur.
-      </p>
+      <h2>YDS Soru Dağılımı</h2>
+      <!-- Genişlik sınırı yok: masaüstünde tek satıra sığsın. Telefonda
+           doğal olarak sarar; nowrap yatay taşma yaratırdı. -->
+      <p class="muted dagilim-not">Sınav 80 sorudur, bölümler her yıl aynı sırayla gelir; deneme formları da bu dağılıma göre kurulur.</p>
       <div class="tablo-kaydir">
-        <table class="dagilim" id="ydsDagilim">
+        <table class="veri-tablo" id="ydsDagilim">
           <caption class="visually-hidden">YDS bölüm dağılımı: soru aralığı, bölüm, soru sayısı ve ne sorulduğu</caption>
           <thead>
             <tr><th scope="col">Soru</th><th scope="col">Bölüm</th><th scope="col">Adet</th><th scope="col">Ne sorulur</th></tr>
@@ -224,22 +223,35 @@
   <section class="section">
     <div class="wrap">
       <h2>Nasıl çalışmalı?</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>1. Konuyu öğren ve ölç</h3>
-          <p class="muted small">Konu Haritası'ndan bir ünite aç, anlatımı çalış ve mini uygulamayı cevabı görmeden tamamla.
-             Sistem tanı puanını yanıtlarından hesaplar; en az yedi gün sonra gecikmeli ölçümü yaparsın.</p>
-        </div>
-        <div class="card">
-          <h3>2. Her gün desteyi bitir</h3>
-          <p class="muted small">Kelime sayfasında "Bugünü çalış"a bas. Doğru bildiğin kelime bir üst kutuya
-             çıkıp seyrekleşir, bilemediğin yarın yine karşına gelir. Günde 10 dakika yeter.</p>
-        </div>
-        <div class="card">
-          <h3>3. Haftada bir tam deneme</h3>
-          <p class="muted small">Deneme sayfasında 80 soruluk sabit formlardan birini 180 dakikada çöz. Karnede en düşük
-             kategoriyi gör ve o hafta onu çalış. 20/40 soruluk seçenekleri yalnız kısa karma çalışma olarak kullan.</p>
-        </div>
+      <!-- Üç adım kart ızgarasındaydı; dar pencerede sütunlar 240 piksele
+           sıkışıp metin iç içe görünüyordu. Tabloda her adım tam genişlik alır. -->
+      <div class="tablo-kaydir">
+        <table class="veri-tablo adim-tablo">
+          <caption class="visually-hidden">Çalışma düzeni: adım, ne zaman ve ne yapılacağı</caption>
+          <thead>
+            <tr><th scope="col">Adım</th><th scope="col">Sıklık</th><th scope="col">Ne yapılır</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1. Konuyu öğren ve ölç</th>
+              <td class="adim-sik">Ünite başına</td>
+              <td>Konu Haritası'ndan bir ünite aç, anlatımı çalış ve mini uygulamayı cevabı görmeden tamamla.
+                  Sistem tanı puanını yanıtlarından hesaplar; en az yedi gün sonra gecikmeli ölçümü yaparsın.</td>
+            </tr>
+            <tr>
+              <th scope="row">2. Desteyi bitir</th>
+              <td class="adim-sik">Her gün · 10 dk</td>
+              <td>Kelime sayfasında "Bugünü çalış"a bas. Doğru bildiğin kelime bir üst kutuya çıkıp
+                  seyrekleşir, bilemediğin yarın yine karşına gelir.</td>
+            </tr>
+            <tr>
+              <th scope="row">3. Tam deneme çöz</th>
+              <td class="adim-sik">Haftada bir · 180 dk</td>
+              <td>Deneme sayfasında 80 soruluk sabit formlardan birini çöz. Karnede en düşük kategoriyi gör ve
+                  o hafta onu çalış. 20/40 soruluk seçenekleri yalnız kısa karma çalışma olarak kullan.</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
