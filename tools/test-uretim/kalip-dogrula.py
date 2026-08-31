@@ -20,7 +20,23 @@ CIKTI = os.path.join(BURASI, 'kalip-cikti')
 YALNIZ_RAPOR = '--rapor' in sys.argv
 TR_HARF = set('çğıöşüÇĞİÖŞÜ')
 
+def duzeltmenin_kaliplari():
+    """kelime-duzeltmeleri.json kendi kalibini tasiyan kayitlar barindirir
+    (hand down, make peace, start off, walking distance, shake-up). Iceri
+    aktarici kaliplari duzeltmelerden SONRA isliyor; ayni kelime buraya da
+    yazilirsa duzeltmedeki ozenli kalibi sessizce ezer. O yuzden bu kelimeler
+    kaliplar.js'e hic alinmaz."""
+    yol = os.path.join(SITE, 'tools', 'kelime-duzeltmeleri.json')
+    if not os.path.exists(yol):
+        return set()
+    veri = json.load(io.open(yol, encoding='utf-8'))
+    return {d['yeni'] for d in veri.get('duzeltmeler', []) if d.get('kalip')}
+
+
+DUZELTME_KALIPLI = duzeltmenin_kaliplari()
+
 sonuc, hatalar, eksik = {}, [], []
+korunan = []
 toplam = kalipli = kalip_sayisi = 0
 
 for ad in sorted(os.listdir(GIRDI)):
@@ -49,6 +65,9 @@ for ad in sorted(os.listdir(GIRDI)):
         r = harita.get(e)
         if r is None:
             hatalar.append('%s %s: kayıt yok' % (ad, e))
+            continue
+        if e in DUZELTME_KALIPLI:
+            korunan.append(e)
             continue
         kaliplar = r.get('k') or []
         if not isinstance(kaliplar, list):
@@ -94,6 +113,8 @@ for ad in sorted(os.listdir(GIRDI)):
 
 print('kelime %d · kalıplı %d · kalıp %d · hatalı %d · eksik paket %d' %
       (toplam, kalipli, kalip_sayisi, len(hatalar), len(eksik)))
+if korunan:
+    print('  düzeltme kalıbı korundu (%d): %s' % (len(korunan), ', '.join(sorted(korunan))))
 for x in eksik[:6]:
     print('  EKSIK', x)
 for h in hatalar[:25]:
