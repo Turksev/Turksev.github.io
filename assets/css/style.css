@@ -82,6 +82,16 @@ body {
 
 a { color: var(--accent); }
 
+/* Seçilen metin fosforlu sarı: kartta örnek cümleyi ya da kelimeyi işaretlemek
+   fosforlu kalemle çizmeye benzesin. Yazı rengi de veriliyor — karanlık temada
+   açık gri yazı sarı zeminde okunmaz olurdu. Tema değişkeni kullanılmıyor,
+   vurgu iki temada da aynı sarı.
+   Firefox'un eski sürümleri ::selection bilmez; ::-moz-selection ayrı kural
+   olmalı, virgülle birleştirilirse Chrome tanımadığı seçici yüzünden kuralın
+   tamamını atar. */
+::selection { background: #ffff00; color: #000; }
+::-moz-selection { background: #ffff00; color: #000; }
+
 h1, h2, h3, h4 { line-height: 1.25; margin: 0 0 .5em; font-weight: 700; letter-spacing: -.01em; }
 h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); }
 h2 { font-size: clamp(1.35rem, 2.6vw, 1.8rem); }

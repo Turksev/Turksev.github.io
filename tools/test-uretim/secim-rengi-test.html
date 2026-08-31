@@ -1,0 +1,59 @@
+<!DOCTYPE html><meta charset="utf-8"><title>secim rengi testi</title>
+<!-- Secilen metin fosforlu sari olmali (kart, liste, tablo — her yerde).
+     Kural genel: ::selection tek basina, ::-moz-selection ayri kural olarak
+     yazilmali; virgulle birlestirilirse Chrome kuralin tamamini atar.
+     Kosum: headless Chrome ile ac, <pre> icerigini oku. -->
+<pre id="log"></pre>
+<script>
+var L=[],KOTU=0;
+function P(m){L.push(m);document.getElementById('log').textContent=L.join('\n');}
+function T(ad,kos,not){if(!kos)KOTU++;P((kos?'OK  ':'HATA')+'  '+ad+(not!==undefined?' = '+not:''));}
+
+var f=document.createElement('iframe');
+f.style.cssText='width:1100px;height:1200px;border:0';
+f.src='file:///C:/Users/Trk/Desktop/Turksev.github.io/kelimeler.html';
+f.onload=function(){var w=f.contentWindow,d=f.contentDocument;
+setTimeout(function(){try{
+  // Stil sayfalarindaki ::selection kurallarini topla
+  var kurallar=[];
+  function gez(liste){
+    for(var i=0;i<liste.length;i++){var k=liste[i];
+      if(k.cssRules) gez(k.cssRules);
+      if(k.selectorText && /selection/i.test(k.selectorText))
+        kurallar.push({s:k.selectorText,c:k.style.cssText});}
+  }
+  for(var i=0;i<d.styleSheets.length;i++){try{gez(d.styleSheets[i].cssRules);}catch(e){}}
+
+  T('::selection kuralı var',kurallar.length>=1,kurallar.length+' kural');
+  kurallar.forEach(function(k){P('    '+k.s+'  {'+k.c+'}');});
+
+  var std=kurallar.filter(function(k){return k.s.trim()==='::selection';});
+  T('standart ::selection tek başına',std.length===1,std.length);
+  if(std.length){
+    T('  zemin fosforlu sarı',/#ffff00|rgb\(255,\s*255,\s*0\)/i.test(std[0].c),std[0].c);
+    T('  yazı rengi siyah verilmiş',/color:\s*(#000|black|rgb\(0,\s*0,\s*0\))/i.test(std[0].c),std[0].c);
+  }
+  // Chrome ::-moz-selection'i tanimaz: ayri kural olarak yazildiysa
+  // cssRules'a hic girmez. Birlesik yazilsaydi standart kural da kaybolurdu.
+  T('birleşik yazılmamış (Chrome kuralı atmamış)',std.length===1);
+
+  // Kural genel mi: bir secici onune baglanmamis olmali
+  var dar=kurallar.filter(function(k){return /\S\s*::selection/.test(k.s);});
+  T('kural tüm sayfaya geçerli (öğeye bağlanmamış)',dar.length===0,
+    dar.length?dar.map(function(x){return x.s;}).join(' | '):'genel');
+
+  // Iki temada da ayni olmali: tema degiskeni kullanilmadigini dogrula
+  T('tema değişkeni kullanılmamış',!/var\(--/.test(std.length?std[0].c:''),
+    std.length?std[0].c:'-');
+
+  // Tarayici gercekten uyguluyor mu: ::selection hesaplanmis stili
+  try{
+    var el=d.getElementById('kartOn')||d.body;
+    var hs=w.getComputedStyle(el,'::selection');
+    P('    hesaplanmış ::selection zemini: '+(hs&&hs.backgroundColor));
+  }catch(e){P('    hesaplanmış stil okunamadı: '+e.message);}
+
+  P(KOTU?'DONE '+KOTU+' HATA':'DONE HEPSI GECTI');
+}catch(e){P('ERR '+e.message);}},1500);};
+document.body.appendChild(f);
+</script>
