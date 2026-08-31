@@ -632,6 +632,7 @@
   });
 
   elKart.addEventListener('click', function () {
+    if (window.YDS.metinSecildi(elKart)) return;
     kartAcik = !kartAcik;
     kartCiz();
   });

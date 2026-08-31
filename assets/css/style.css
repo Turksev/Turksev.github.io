@@ -569,13 +569,15 @@ button.kutu:hover { border-color: var(--accent); }
 
 /* ---------- kart (flashcard) modu ---------- */
 
+/* Metin seçimi açık: kelimeyi, örnek cümleyi ya da çeviriyi kopyalayabilmek
+   gerekiyor. Karta tıklayınca çevrilir, ama seçim varsa çevrilmez —
+   YDS.metinSecildi() bakıyor, yoksa sürükleyerek seçim anında kaybolurdu. */
 .flash {
   min-height: 260px;
   display: grid;
   place-items: center;
   text-align: center;
   cursor: pointer;
-  user-select: none;
   padding: 34px 24px;
 }
 .flash .big { font-size: clamp(1.6rem, 5vw, 2.4rem); font-weight: 800; }

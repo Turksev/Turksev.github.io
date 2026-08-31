@@ -387,10 +387,25 @@
            Array(5 - n).join('☆') + '</span>';
   }
 
+  /* Kartın içinde metin seçili mi? Kartın her yeri tıklanınca çevrilir; ama
+     kullanıcı örnek cümleyi kopyalamak için sürüklediyse ya da bir kelimeye
+     çift tıkladıysa kart çevrilmemeli — yoksa seçim anında kaybolur.
+     Seçim ucu kartın dışındaysa (sayfanın başka yerinden sürüklenmişse)
+     tıklama normal davranır. */
+  function metinSecildi(el) {
+    var s = window.getSelection ? window.getSelection() : null;
+    if (!s || s.isCollapsed || !s.rangeCount) return false;
+    // Metin Selection'dan değil Range'den okunuyor: Selection.toString()
+    // odaklanmamış belgede (başsız tarayıcı, test koşumu) boş dönebiliyor,
+    // Range.toString() her durumda seçili metni veriyor.
+    if (!String(s.getRangeAt(0)).trim()) return false;
+    return el.contains(s.anchorNode) || el.contains(s.focusNode);
+  }
+
   window.YDS = {
     Depo: Depo, sadelestir: sadelestir, karistir: karistir, kacar: kacar,
     ikiKereSor: ikiKereSor, geriAlKutusu: geriAlKutusu, yildiz: yildiz,
     yenidenYukle: yenidenYukle, depolamaUyarisi: depolamaUyarisi,
-    hareket: hareket
+    hareket: hareket, metinSecildi: metinSecildi
   };
 })();

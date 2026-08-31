@@ -478,7 +478,11 @@
     $('desteBasla').click();
   });
 
-  elKart.addEventListener('click', function () { kartAcik = !kartAcik; kartCiz(); });
+  elKart.addEventListener('click', function () {
+    if (window.YDS.metinSecildi(elKart)) return;
+    kartAcik = !kartAcik;
+    kartCiz();
+  });
   elKart.addEventListener('keydown', function (e) {
     if (e.key === 'Enter') { e.preventDefault(); kartAcik = !kartAcik; kartCiz(); }
   });
