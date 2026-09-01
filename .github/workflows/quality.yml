@@ -69,4 +69,28 @@ jobs:
             tools/test-uretim/statik-yayin-test.js
             tools/test-uretim/yeniden-yukleme-test.js
           )
-          for test_file in "${tests[@]}"; do node "$test_file"; done
+          # Tek satırlık "for ... node" hangi testin patladığını göstermiyordu:
+          # iş akışı günlüğü yalnız yetkili kullanıcıya açık, dışarıdan API ile
+          # okunamıyor. Artık her başarısız test adıyla ve çıktısıyla iş özetine
+          # yazılıyor; özet check-runs API'sinden okunabiliyor. -e kaldırıldı ki
+          # ilk hatada durmayıp bütün başarısızlıklar tek koşumda görünsün.
+          set -uo pipefail
+          hata=0
+          for test_file in "${tests[@]}"; do
+            if cikti="$(node "$test_file" 2>&1)"; then
+              echo "OK  $test_file"
+              echo "$cikti"
+            else
+              hata=1
+              echo "BASARISIZ  $test_file"
+              echo "$cikti"
+              {
+                echo "### Başarısız test: \`$test_file\`"
+                echo
+                echo '```'
+                echo "$cikti" | tail -40
+                echo '```'
+              } >> "${GITHUB_STEP_SUMMARY:-/dev/null}"
+            fi
+          done
+          exit "$hata"
