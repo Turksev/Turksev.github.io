@@ -51,5 +51,7 @@ window.TUR_DUZELTME = {
 "turn-off": "isim",
 "throughout": "zarf, edat",
 "alongside": "edat, zarf",
-"licence": "isim"
+"licence": "isim",
+"identity": "isim",
+"injury": "isim"
 };

@@ -11,7 +11,7 @@ Yayında: <https://turksev.github.io>
 | --- | --- |
 | `index.html` | Ana sayfa: **YDS bölüm dağılımı tablosu** (80 sorunun hangi aralıkta hangi bölüm olduğu) ve ilerleme paneli — tekrar durumu, yanlış defteri, deneme geçmişi, kategori karnesi |
 | `durum.html` | Çalışılmış her şey tek listede (kelime, öbek, aile üyesi): üstte **sistemdeki toplam kayıt**, kutu sekmelerinde sayı ve bu toplama oranı ("hepsi" dahil), arama/süzme/sıralama |
-| `kelimeler.html` | 7.912 kelime ve yapı, 7 katman + **aralıklı tekrar (Leitner)**: bugünün destesi, kart modu, ipucu, sesli okuma |
+| `kelimeler.html` | 8.437 kelime ve yapı, 7 katman + **aralıklı tekrar (Leitner)**: bugünün destesi, kart modu, ipucu, sesli okuma |
 | `obekler.html` | 1.631 kelime öbeği (560 deyimsel fiil, 333 edat kalıbı, sabit/geçiş ifadeleri) — ayrı Leitner destesi |
 | `quiz.html` | Alıştırma soruları: 12 kategori, anında çözüm, yanlış defterinden çalışma |
 | `deneme.html` | **Süreli deneme sınavı**: üç sabit 80 soruluk form, geri sayım, soru ızgarası, işaretleme, yenileme sonrası oturum kurtarma, 100 üzerinden YDS puanı, kategori karnesi |
@@ -22,8 +22,8 @@ Yayında: <https://turksev.github.io>
 
 ## İçerik
 
-- **7.912 kelime ve yapı** — 49 gerçek YDS sınavı temel alınarak puanlanmış, yedi katmana ayrılmış;
-  her birinde Türkçe anlam + İngilizce örnek cümle + çeviri (**2.576'sında birden çok anlam** var)
+- **8.437 kelime ve yapı** — 49 gerçek YDS sınavı temel alınarak puanlanmış, yedi katmana ayrılmış;
+  her birinde Türkçe anlam + İngilizce örnek cümle + çeviri (**3.143'ünde birden çok anlam** var)
 - **1.631 kelime öbeği** — deyimsel fiil (phrasal verb), edat kalıbı, sabit ve geçiş ifadeleri, kaç sınavda geçtiği bilgisiyle
 - **286 soru** — 12 kategori: Kelime, Dil Bilgisi, Bağlaç, Preposition, Cloze Test, Çeviri,
   Cümle Tamamlama, Restatement, Paragraf Tamamlama, Anlamı Bozan Cümle, Diyalog, Okuma
@@ -41,13 +41,13 @@ F: toplam frekans, P: akademik önsel (NGSL/NAWL/AWL üyeliği + Zipf).
 
 | Katman | Puan | Kelime | Dosya (gzip) |
 | --- | --- | --- | --- |
-| 1 · Temel | ≥ 40 | 657 | 93 K |
-| 2 · Çekirdek | 30–40 | 720 | 123 K |
-| 3 · Orta | 25–30 | 707 | 117 K |
-| 4 · İleri | 17–25 | 1.837 | 291 K |
-| 5 · Geniş | 12–17 | 2.039 | 238 K |
-| 6 · Geniş+ | 10–12 | 1.888 | 218 K |
-| 7 · Aile üyeleri | puansız | (kaynağa göre) | — |
+| 1 · Temel | ≥ 40 | 667 | 97 K |
+| 2 · Çekirdek | 30–40 | 726 | 125 K |
+| 3 · Orta | 25–30 | 710 | 117 K |
+| 4 · İleri | 17–25 | 1.856 | 313 K |
+| 5 · Geniş | 12–17 | 2.069 | 288 K |
+| 6 · Geniş+ | 10–12 | 1.914 | 241 K |
+| 7 · Aile üyeleri | < 10 veya denetimli kök | 495 | 66 K |
 
 6. katman 21.08.2026'da eşik 15 → 10'a indirilince geldi (`Calisma_Listesi_v4_site_tam.xlsx`);
 5. katmanı genişletmek yerine ayrı katman açıldı ki isteyen açsın, mevcut desteler değişmesin.
@@ -56,13 +56,13 @@ F: toplam frekans, P: akademik önsel (NGSL/NAWL/AWL üyeliği + Zipf).
 1.058 / 1.564 / **3.127** yapıyordu: kelimelerin %40'ı tek kovada yığılıyordu, çünkü
 liste 10 puanda kesildiği için puanlar tabana toplanıyor (yalnız 10–11 aralığında 1.142
 kelime var). 17/12/10 ile üçü de ~1.900 oldu. Üst uca **bilerek dokunulmadı**: 1-4. katman
-zaten dengeliydi (657/720/707) ve 40 eşiği Temel'i "zaten biliyorsundur, atlanabilir"
+zaten dengeliydi (667/726/710) ve 40 eşiği Temel'i "zaten biliyorsundur, atlanabilir"
 kıvamında tutuyor — eşiği indirmek oraya `crucial`, `acquire`, `perspective` gibi
 çalışılması gereken kelimeleri sokardı. Katman değiştiren kelime: 2.004 (%25); tekrar
 ilerlemesi kelime adına bağlı olduğu için (`yds-leitner`) hiçbir kutu etkilenmedi.
 
 Kullanıcı hangi katmanları seçerse yalnız onlar indirilir. Çekirdekten çalışan biri toplam
-**~240 K** veri indirir; hepsini açan ~1,15 MB. Dizin (`data/kelime-dizin.js`, 168 K gzip) her sayfada
+**~305 K** veri indirir; hepsini açan dizinle birlikte ~1,37 MB. Dizin (`data/kelime-dizin.js`, yaklaşık 184 KiB gzip) her sayfada
 yüklüdür ve yazılış + kısa anlam + puan + katman bilgisini taşır; örnek cümleler katman
 dosyalarındadır.
 
@@ -95,11 +95,12 @@ assets/
   js/ara.js           site geneli arama
   img/                PWA ikonları (tools ile üretildi)
 data/
-  kelime-dizin.js     7.912 kelime/yapı: yazılış, kısa anlam, puan, katman, tür
-  test-k1..k7.js      7.850 sözcük için günün testi cümlesi
+  kelime-dizin.js     8.437 kelime/yapı: yazılış, kısa anlam, puan, katman, tür
+  test-k1..k7.js      8.375 sözcük için günün testi cümlesi
   test-modal.js       62 yeni modal yapı için günün testi cümlesi
   test-obek.js        öbekler için günün testi cümleleri
   kelime-k1..k7.js    katman katman tam kayıtlar (örnek cümleler)
+  aileler.js          kalıcı karar manifestinden üretilen kelime aileleri
   kelime-aliaslari.js eski başlıklardaki ilerlemeyi düzeltilmiş başlıklara taşır
   kelime-provenans.json denetlenen öğelerin sınav kimliği/sayfa/soru kaynakları
   obekler.js          1.631 kelime öbeği
@@ -115,6 +116,9 @@ data/
   kaynak-manifest.json 49 sınav PDF'sinin içerik kopyalamayan provenans kaydı
 tools/                geliştirme/üretim araçları; _config.yml ile canlı yayının dışında
   listeyi-aktar.py    XLSX kaynaklardan kelime/öbek veri dosyalarını üretir
+  aile-manifest.json  kelime ailelerinin tek doğruluk kaynağı; taşınmış taban ve denetimli kararlar
+  aile-kart-bekleyenler.json düşük-Zipf orta adayların kart üretmeyen denetim defteri
+  aile-cikar.py       manifestten data/aileler.js üretir; ek kuralları yalnız aday gösterir
   kelime-duzeltmeleri.json PDF/sözlük denetimli dokuz başlık düzeltmesinin tek kaynağı
   ek-kelimeler.js     dönüştürücü girdisi: elle yazılmış 181 kelime
   docx-aktar.js       Word belgelerini düz metne çevirir
@@ -252,8 +256,8 @@ en çok 20 soruluk, 5 şıklı boşluk doldurma testi açılır. Cümleler **kar
 YDS okuma parçası kayıtında özgün cümlelerdir; `data/test-k{n}.js` içinde durur
 (`{kelime: {c, b, f, tr}}` — c boşluklu cümle, b boşluğa gelen çekimli biçim, f çekim türü
 `'' | s | past | pp | ing | pl`, tr Türkçesi). **Havuzun tamamı hazır** (28.08.2026):
-yedi katmandaki bütün **7.912 kelime ve yapı** için cümle; ayrıca **1.631 öbek kartının 892'si** için bağımsız test cümlesi var.
-7. katmanın tek kaydı için `test-k7.js` bulunur; yükleyici bu katmanı da diğer
+7 katman ve modal yapı testleriyle bütün **8.437 kelime ve yapı** için cümle; ayrıca **1.631 öbek kartının 892'si** için bağımsız test cümlesi var.
+7. katmanın 495 kaydı için `test-k7.js` bulunur; yükleyici bu katmanı da diğer
 katmanlarla aynı biçimde test havuzuna katar.
 
 Şıklar aynı türden, yakın katmandan kelimelerden kurulur ve boşluktaki biçimle **aynı çekime**
@@ -315,7 +319,9 @@ Başlıktaki **⇅** düğmesiyle Google hesabına bir kez giriş yapılır; son
   `yds-esitleme-bulut-gecis-yedegi` altında bir kez korunur.
 - Veri, Firestore'un 1 MiB belge sınırına takılmaması için alan başına ayrılır:
   `kullanicilar/{uid}/alanlar/{anahtar}` içinde
-  `{ surum: 2, anahtar, zaman, json }`. Bir kelime çalışıldığında yalnız değişen alan
+  büyük `yds-leitner` ve `yds-test-yanlis` alanları dış `surum: 3` ve iç `k: 2` kısa
+  JSON taşır; diğer on alan dış `surum: 2` ve nesne JSON biçiminde kalır. Yerel
+  `yds-esitleme-v2` zarfının sürümü 2'dir. Bir kelime çalışıldığında yalnız değişen alan
   okunup yazılır. Önceki sürümün `kullanicilar/{uid}` kök belgesi silinmez; ilk açılışta
   yeni alanlara kayıpsız birleştirilir ve eski açık sekmelerden gelebilecek son kayıtlar
   da dinlenir. Her alan için 900 KiB istemci koruması vardır; sınır yaklaşırsa bulut
@@ -331,6 +337,11 @@ Firebase tarafı (bir kerelik kurulum): konsolda proje aç → Web uygulaması e
 sağlayıcısını aç → Authorized domains'e `turksev.github.io` ekle → Firestore
 veritabanı oluştur. Güvenlik kuralları `firestore.rules` içinde sürümlenir;
 Firebase CLI ile şu komutla yayınlanır:
+
+**Yayın sırası zorunludur:** Önce aşağıdaki Firestore kuralları dağıtılmalı ve başarıyla
+etkinleştiği doğrulanmalıdır; Pages/site sürümü ancak bundan sonra yayınlanmalıdır.
+Ters sıra, yeni istemcinin dış sürüm 3 belgelerini eski kurallarla yazmaya çalışmasına
+yol açar.
 
 ```bash
 firebase deploy --only firestore:rules --project yds-hazirlik-d05ce
@@ -408,6 +419,10 @@ Okuduğu kaynaklar (salt okunur, hiçbirine yazılmaz):
 | `tools/ek-kelimeler.js` | Listede olmayan 52 kelime + ortak 129 kelimenin eş anlamlıları |
 | `tools/kelime-duzeltmeleri.json` | PDF/sözlük denetimi tamamlanan dokuz başlığın kanonik biçimi, anlamı, kalıbı ve kaynak kararı |
 | `data/kelime-provenans.json` | Düzeltilen öğelerin telifli soru metnini kopyalamayan sınav kimliği/sayfa/soru kanıtı |
+| `tools/aile-kart-partileri/*.json` | İnsan denetimli aile tamamlama kartları; tam kaynak puanı, ayrı anlam/örnekler, bağımsız test ve telifsiz sınav referansları |
+| `tools/aile-kart-bekleyenler.json` | Doğrudan sınav kanıtı olmayan, Zipf < 3,5 orta güvenli adayların kart/test üretmeyen denetim defteri |
+| `data/aile-kart-provenans.json` | Aile kartı partilerinin soru metni içermeyen yüzey/rol provenansı ve tam puanla verilen katmanı |
+| `tools/aile-manifest.json` | Kelime ailelerinin tek kaynağı: önceki yayından taşınmış temel aileler ile insan denetimli zorunlu ve yasak bağlar |
 
 Betik `ii`, `iii`, `iv` gibi cloze şık numarası artıklarını atar, harf varyantlarını birleştirir ve
 `data/sayilar.js` içindeki sayaçları günceller. Yeni kelimeyi elle eklemek istersen
@@ -420,6 +435,39 @@ Betik `ii`, `iii`, `iv` gibi cloze şık numarası artıklarını atar, harf var
 ```
 
 `sv` alanı (`temel`/`orta`/`ileri`) bu kelimenin hangi katmana gireceğini belirler: sırasıyla 2, 3, 4.
+
+Aile tamamlama denetimlerinden gelen yeni kartlar tek bir büyük elle düzenlenen dosyada
+biriktirilmez. `tools/aile-kart-partileri/` altındaki sürümlü JSON partileri dosya adına göre
+kararlı sırada okunur; eski `tools/ek-aile-uyeleri.js` kaynağı geriye dönük olarak çalışmayı
+sürdürür. Kartta görünen puan bir ondalıktır, ancak K7 ve diğer katman sınırları her zaman
+yuvarlanmamış `source_score` üzerinden hesaplanır. Aynı parti, Günün Testi için kalıcı
+`tools/test-uretim/girdi|cikti/<batchId>.json` dosyalarını ve telifsiz provenans çıktısını üretir.
+Zipf değeri 3,5'in altında kalan orta güvenli adaylar otomatik kart olmaz; 478 adayın
+477'si beklemede, daha önce kök-kart kuralıyla eklenmiş `designate` ise belgeli tarihsel
+istisna olarak `tools/aile-kart-bekleyenler.json` içinde tutulur.
+
+### Kelime ailelerini üretmek
+
+`data/aileler.js` elle düzenlenmez. Yalnız `tools/aile-manifest.json` içindeki kalıcı
+kararlar yayımlanır; yazıma dayalı ek soyma kuralları kendiliğinden aile kuramaz.
+`approvedFamilies`, önceki otomatik yayından taşınmış ve henüz bütünüyle insan
+denetiminden geçmiş sayılmayan başlangıç tabanıdır. `requiredFamilies` ve
+`forbiddenPairs` ise açıkça insan denetimli kararlardır. Bu kararların sözcük türü
+kanıtı, karar türü ve gerekçesi `reviewedDecisions` altında makinece okunur biçimde
+saklanır. Yeni bir kart manifestteki
+`requiredFamilies` grubunda önceden tanımlıysa,
+üretici çalıştığında mevcut üyelerle aynı aileye katılır ve kendi kart kimliğini korur.
+
+```bash
+python tools/aile-cikar.py
+python tools/aile-cikar.py --check
+python tools/aile-cikar.py --adaylari-goster
+node tools/test-uretim/aile-manifest-test.js
+```
+
+`--check` manifest ile yayımlanan dosyanın bire bir aynı olduğunu dosyaya dokunmadan
+denetler. `--adaylari-goster` yalnız insan incelemesi için olası bağları listeler; bu
+adaylar manifestte açıkça onaylanmadan yayına girmez.
 
 ## İçerik eklemek
 

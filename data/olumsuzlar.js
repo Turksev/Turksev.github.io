@@ -1,5 +1,5 @@
 /* ============================================================
-   Olumsuz karşılıklar — 248 kelime, 253 form
+   Olumsuz karşılıklar — 251 kelime, 256 form
    Alanlar: anahtar = kelime, f = olumsuz biçim, tr = Türkçe karşılık,
             s:1 = bu biçim sitede ayrı bir kelime olarak da var
    tools/olumsuz-cikar.py ile üretilir; elle düzenleme.
@@ -53,11 +53,13 @@ window.OLUMSUZLAR = {
 "complete":[{f:"incomplete",tr:"tamamlanmamış, eksik",s:1}],
 "complicated":[{f:"uncomplicated",tr:"karmaşık olmayan, basit"}],
 "concerned":[{f:"unconcerned",tr:"kaygısız, umursamaz"}],
+"conclusive":[{f:"inconclusive",tr:"sonuçsuz, kesin olmayan, belirsiz",s:1}],
 "conditional":[{f:"unconditional",tr:"koşulsuz, kayıtsız şartsız"}],
 "confirmed":[{f:"unconfirmed",tr:"doğrulanmamış, teyit edilmemiş"}],
 "connect":[{f:"disconnect",tr:"bağlantıyı kesmek; kopukluk"}],
 "connected":[{f:"unconnected",tr:"bağlantısız, ilgisiz"},{f:"disconnected",tr:"kopuk, bağlantısız"}],
 "conscious":[{f:"unconscious",tr:"bilinçsiz, baygın; bilinçaltı (the unconscious)",s:1}],
+"consciously":[{f:"unconsciously",tr:"farkında olmadan, bilinçsizce",s:1}],
 "consciousness":[{f:"unconsciousness",tr:"bilinçsizlik, baygınlık"}],
 "consistent":[{f:"inconsistent",tr:"tutarsız",s:1}],
 "continuity":[{f:"discontinuity",tr:"süreksizlik, kopukluk"}],
@@ -76,7 +78,7 @@ window.OLUMSUZLAR = {
 "definite":[{f:"indefinite",tr:"belirsiz, süresiz"}],
 "democratic":[{f:"undemocratic",tr:"demokratik olmayan"}],
 "dependent":[{f:"independent",tr:"bağımsız; bağımsız (kişi), bağımsız aday",s:1}],
-"desirable":[{f:"undesirable",tr:"istenmeyen, hoş olmayan; i. istenmeyen kişi",s:1}],
+"desirable":[{f:"undesirable",tr:"istenmeyen, hoş olmayan; istenmeyen kişi",s:1}],
 "desired":[{f:"undesired",tr:"istenmeyen"}],
 "detected":[{f:"undetected",tr:"fark edilmemiş, saptanmamış"}],
 "determined":[{f:"undetermined",tr:"belirlenmemiş, kararlaştırılmamış"}],
@@ -132,6 +134,7 @@ window.OLUMSUZLAR = {
 "injured":[{f:"uninjured",tr:"yaralanmamış, zarar görmemiş"}],
 "integrate":[{f:"disintegrate",tr:"parçalanmak, dağılmak"}],
 "intended":[{f:"unintended",tr:"istenmeyen, kasıtsız"}],
+"intentional":[{f:"unintentional",tr:"istemsiz, kasıtsız",s:1}],
 "intentionally":[{f:"unintentionally",tr:"istemeden, kasıtsız olarak",s:1}],
 "interest":[{f:"disinterest",tr:"ilgisizlik; tarafsızlık"}],
 "interested":[{f:"uninterested",tr:"ilgisiz, ilgi duymayan"}],
@@ -199,7 +202,7 @@ window.OLUMSUZLAR = {
 "realistic":[{f:"unrealistic",tr:"gerçekçi olmayan",s:1}],
 "realized":[{f:"unrealized",tr:"gerçekleşmemiş; fark edilmemiş"}],
 "recognized":[{f:"unrecognized",tr:"tanınmayan, fark edilmeyen"}],
-"regard":[{f:"disregard",tr:"göz ardı etmek, önemsememek; i. kayıtsızlık, umursamazlık",s:1}],
+"regard":[{f:"disregard",tr:"göz ardı etmek, önemsememek; kayıtsızlık, umursamazlık",s:1}],
 "regular":[{f:"irregular",tr:"düzensiz, kural dışı"}],
 "regularly":[{f:"irregularly",tr:"düzensiz biçimde"}],
 "regulated":[{f:"unregulated",tr:"düzenlenmemiş, denetimsiz"}],
@@ -251,7 +254,7 @@ window.OLUMSUZLAR = {
 "wanted":[{f:"unwanted",tr:"istenmeyen"}],
 "welcome":[{f:"unwelcome",tr:"istenmeyen, hoş karşılanmayan"}],
 "willing":[{f:"unwilling",tr:"isteksiz, gönülsüz",s:1}],
-"willingness":[{f:"unwillingness",tr:"isteksizlik, gönülsüzlük"}],
+"willingness":[{f:"unwillingness",tr:"isteksizlik, gönülsüzlük",s:1}],
 "wise":[{f:"unwise",tr:"akılsızca, tedbirsiz"}],
 "worthy":[{f:"unworthy",tr:"layık olmayan, değersiz",s:1}]
 };

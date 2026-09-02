@@ -530,7 +530,9 @@
   });
 
   elListe.addEventListener('click', function (e) {
-    var btn = e.target.closest('.star');
+    // Listedeki hem "Kartta çalış" hem de ses düğmesi data-ne taşır.
+    // Yalnız .star seçilirse kart çalışma düğmesi hiçbir zaman yakalanmaz.
+    var btn = e.target.closest('[data-ne]');
     if (!btn) return;
     var kutu = btn.closest('.word');
     var en = kutu.getAttribute('data-en');

@@ -31,8 +31,24 @@ var aliaslar = pencere.YDS_KELIME_ALIASES;
 var ilerlemeKimlikleri = pencere.YDS_KELIME_ILERLEME_KIMLIKLERI;
 var sade = function (v) { return JSON.parse(JSON.stringify(v)); };
 
-// row /raʊ/ -> row birleşmesiyle 10'a çıktı.
-assert.strictEqual(Object.keys(aliaslar).length, 10, 'beklenen alias sayısı');
+var beklenenAliaslar = {};
+var duzeltmeKaynagi = JSON.parse(fs.readFileSync(
+  path.join(kok, 'tools', 'kelime-duzeltmeleri.json'), 'utf8'));
+duzeltmeKaynagi.duzeltmeler.forEach(function (kayit) {
+  kayit.eskiler.forEach(function (eski) {
+    if (eski !== kayit.yeni) beklenenAliaslar[eski] = kayit.yeni;
+  });
+});
+var aileAliasKaynagi = JSON.parse(fs.readFileSync(
+  path.join(kok, 'tools', 'aile-kart-aliaslari.json'), 'utf8'));
+aileAliasKaynagi.aliases.forEach(function (kayit) {
+  beklenenAliaslar[kayit.candidate] = kayit.canonical;
+  kayit.surfaceAliases.forEach(function (yuzey) {
+    beklenenAliaslar[yuzey.alias] = yuzey.canonical;
+  });
+});
+assert.deepStrictEqual(sade(aliaslar), sade(beklenenAliaslar),
+  'üretilen aliaslar iki kalıcı kaynakla bire bir eşleşmeli');
 Object.keys(aliaslar).forEach(function (eski) {
   assert.strictEqual(M.kelimeKimligi(eski), aliaslar[eski], eski + ' eşlenemedi');
   assert.strictEqual(M.kelimeKimligi(aliaslar[eski]), aliaslar[eski], 'hedef kararsız');
@@ -249,4 +265,5 @@ assert.strictEqual(I.kutu('hand down', 'obek'), 0);
 I.dogru('walk-to');
 assert.ok(JSON.parse(bellek['yds-leitner'])['walking distance']);
 
-console.log('kelime-alias-geçiş: 9 alias, 6 ayrık kelime kimliği ve kayıpsız göç başarılı');
+console.log('kelime-alias-geçiş: ' + Object.keys(aliaslar).length +
+  ' alias, 6 ayrık kelime kimliği ve kayıpsız göç başarılı');

@@ -35,11 +35,13 @@ jobs:
         run: |
           set -euo pipefail
           python -m compileall -q tools
+          python tools/test-uretim/aile-katman-esik-test.py
 
       - name: Deterministic generated files
         shell: bash
         run: |
           set -euo pipefail
+          python tools/aile-cikar.py --check
           node tools/deneme-bankasi-uret.js
           node tools/seo-uret.js
           git diff --exit-code -- data/sorular-ek.js data/deneme-formlari.js konu sitemap.xml
@@ -50,6 +52,12 @@ jobs:
           set -euo pipefail
           tests=(
             tools/test-uretim/icerik-butunluk-test.js
+            tools/test-uretim/kartta-calis-test.js
+            tools/test-uretim/row-kartlari-test.js
+            tools/test-uretim/aile-manifest-test.js
+            tools/test-uretim/aile-kart-partileri-test.js
+            tools/test-uretim/aile-kart-kararlari-test.js
+            tools/test-uretim/aile-kart-bekleyenler-test.js
             tools/test-uretim/konu-kapsam-test.js
             tools/test-uretim/kaynak-manifest-test.js
             tools/test-uretim/kelime-provenans-test.js

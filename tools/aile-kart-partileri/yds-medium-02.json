@@ -1,0 +1,1922 @@
+{
+  "schemaVersion": 1,
+  "batchId": "yds-medium-02",
+  "policy": {
+    "purpose": "İnsan denetimli YDS kelime ailesi tamamlama partisi",
+    "displayScoreDecimals": 1,
+    "lowScoreLayerRule": "source_score < 10 => K7",
+    "preserveExistingLexicalizedCards": true,
+    "meaningStars": {
+      "primary": 4,
+      "secondary": 2
+    },
+    "testWordRange": [
+      15,
+      36
+    ],
+    "provenance": "Sınav kimliği, sayfa/soru, yüzey biçimi ve rol; soru metni içermez"
+  },
+  "cards": [
+    {
+      "candidate": "decisive",
+      "tip": "sıfat",
+      "p": 8.1,
+      "source_score": 8.1429,
+      "family_members": [
+        "decisive",
+        "decide"
+      ],
+      "meanings": [
+        {
+          "tr": "s. belirleyici, kesin sonuca götüren",
+          "ex": "Rapid access to clean water was decisive in reducing mortality after the earthquake.",
+          "exTr": "Temiz suya hızlı erişim, depremden sonra ölüm oranını azaltmada belirleyici oldu."
+        }
+      ],
+      "card_example": "Rapid access to clean water was decisive in reducing mortality after the earthquake.",
+      "card_example_tr": "Temiz suya hızlı erişim, depremden sonra ölüm oranını azaltmada belirleyici oldu.",
+      "test_sentence": "The discovery of reliable genetic evidence proved decisive in identifying the source of the previously unexplained outbreak.",
+      "test_sentence_tr": "Güvenilir genetik kanıtın keşfi, daha önce açıklanamayan salgının kaynağını belirlemede belirleyici oldu.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; decide ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.80; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "eternity",
+      "tip": "isim",
+      "p": 8.1,
+      "source_score": 8.1429,
+      "family_members": [
+        "eternity",
+        "eternal"
+      ],
+      "meanings": [
+        {
+          "tr": "i. sonsuzluk; sonu gelmeyecek kadar uzun süre",
+          "ex": "For the isolated crew, the final week of delayed rescue felt like an eternity.",
+          "exTr": "Yalıtılmış ekip için geciken kurtarmanın son haftası sonsuzluk gibi geldi."
+        }
+      ],
+      "card_example": "For the isolated crew, the final week of delayed rescue felt like an eternity.",
+      "card_example_tr": "Yalıtılmış ekip için geciken kurtarmanın son haftası sonsuzluk gibi geldi.",
+      "test_sentence": "For communities facing permanent displacement, the decade of delayed negotiations seemed to last an eternity without resolution.",
+      "test_sentence_tr": "Kalıcı yerinden edilme yaşayan topluluklara, on yıl geciken görüşmeler çözümsüz bir sonsuzluk gibi göründü.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; eternal ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.80; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "ironic",
+      "tip": "sıfat",
+      "p": 8.1,
+      "source_score": 8.1429,
+      "family_members": [
+        "ironic",
+        "irony"
+      ],
+      "meanings": [
+        {
+          "tr": "s. ironik, beklenenin tersini içerdiği için çarpıcı",
+          "ex": "It is ironic that a device designed to save time created additional administrative work.",
+          "exTr": "Zaman kazandırmak için tasarlanan bir cihazın ek idari iş yaratması ironiktir."
+        }
+      ],
+      "card_example": "It is ironic that a device designed to save time created additional administrative work.",
+      "card_example_tr": "Zaman kazandırmak için tasarlanan bir cihazın ek idari iş yaratması ironiktir.",
+      "test_sentence": "It seemed ironic that the museum closed its climate exhibition after a heatwave damaged the building's outdated cooling system.",
+      "test_sentence_tr": "Bir sıcak hava dalgası binanın eski soğutma sistemine zarar verdikten sonra müzenin iklim sergisini kapatması ironik görünüyordu.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; irony ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.80; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "reproductive",
+      "tip": "sıfat",
+      "p": 8.1,
+      "source_score": 8.1429,
+      "family_members": [
+        "reproductive",
+        "reproduce"
+      ],
+      "meanings": [
+        {
+          "tr": "s. üremeyle ilgili, üreme yetisine ilişkin",
+          "ex": "The pesticide damaged the reproductive health of several aquatic species living downstream.",
+          "exTr": "Pestisit, akıntı yönünde yaşayan bazı sucul türlerin üreme sağlığına zarar verdi."
+        }
+      ],
+      "card_example": "The pesticide damaged the reproductive health of several aquatic species living downstream.",
+      "card_example_tr": "Pestisit, akıntı yönünde yaşayan bazı sucul türlerin üreme sağlığına zarar verdi.",
+      "test_sentence": "Exposure to certain pollutants can damage reproductive health and reduce fertility in both wildlife and human populations.",
+      "test_sentence_tr": "Belirli kirleticilere maruz kalmak hem yaban hayatında hem de insan topluluklarında üreme sağlığına zarar verebilir ve doğurganlığı azaltabilir.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; reproduce ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.80; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "tutorial",
+      "tip": "isim, sıfat",
+      "p": 8.1,
+      "source_score": 8.1429,
+      "family_members": [
+        "tutorial",
+        "tutor"
+      ],
+      "meanings": [
+        {
+          "tr": "i. öğretici ders veya uygulamalı eğitim",
+          "ex": "The online tutorial explains how to calibrate the instrument before collecting any measurements.",
+          "exTr": "Çevrim içi öğretici, herhangi bir ölçüm toplamadan önce aletin nasıl ayarlanacağını açıklar."
+        },
+        {
+          "tr": "s. öğretici, eğitim niteliğindeki",
+          "ex": "Tutorial videos show new users how to complete each stage safely.",
+          "exTr": "Öğretici videolar yeni kullanıcılara her aşamayı güvenle nasıl tamamlayacaklarını gösterir."
+        }
+      ],
+      "card_example": "The online tutorial explains how to calibrate the instrument before collecting any measurements.",
+      "card_example_tr": "Çevrim içi öğretici, herhangi bir ölçüm toplamadan önce aletin nasıl ayarlanacağını açıklar.",
+      "test_sentence": "Before operating the instrument independently, every trainee must complete a tutorial covering calibration, maintenance, and emergency procedures.",
+      "test_sentence_tr": "Aleti bağımsız kullanmadan önce her kursiyer ayarlama, bakım ve acil durum işlemlerini kapsayan bir öğreticiyi tamamlamalıdır.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation, pertainym ilişkisi ve güncel baskın anlamı incelendi; tutor ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.80; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "distraction",
+      "tip": "isim",
+      "p": 8.1,
+      "source_score": 8.1,
+      "family_members": [
+        "distraction",
+        "distract"
+      ],
+      "meanings": [
+        {
+          "tr": "i. dikkat dağıtıcı unsur; dikkatin dağılması",
+          "ex": "Constant notifications became a major distraction during tasks that required sustained concentration.",
+          "exTr": "Sürekli bildirimler, uzun süreli yoğunlaşma gerektiren görevlerde önemli bir dikkat dağıtıcı hâline geldi."
+        }
+      ],
+      "card_example": "Constant notifications became a major distraction during tasks that required sustained concentration.",
+      "card_example_tr": "Sürekli bildirimler, uzun süreli yoğunlaşma gerektiren görevlerde önemli bir dikkat dağıtıcı hâline geldi.",
+      "test_sentence": "Constant phone notifications create a serious distraction that prevents students from concentrating on complex reading tasks for extended periods.",
+      "test_sentence_tr": "Sürekli telefon bildirimleri, öğrencilerin karmaşık okuma görevlerine uzun süre odaklanmasını engelleyen ciddi bir dikkat dağıtıcı oluşturur.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; distract ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.78; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "precedent",
+      "tip": "isim",
+      "p": 8.1,
+      "source_score": 8.1,
+      "family_members": [
+        "precedent",
+        "precede"
+      ],
+      "meanings": [
+        {
+          "tr": "i. emsal, sonraki kararlar için örnek oluşturan önceki olay",
+          "ex": "The ruling created a legal precedent for later cases involving digital privacy.",
+          "exTr": "Karar, dijital gizlilikle ilgili sonraki davalar için yasal bir emsal oluşturdu."
+        }
+      ],
+      "card_example": "The ruling created a legal precedent for later cases involving digital privacy.",
+      "card_example_tr": "Karar, dijital gizlilikle ilgili sonraki davalar için yasal bir emsal oluşturdu.",
+      "test_sentence": "The court's decision established a precedent that later judges used when evaluating similar claims about digital privacy.",
+      "test_sentence_tr": "Mahkemenin kararı, sonraki hâkimlerin dijital gizlilikle ilgili benzer iddiaları değerlendirirken kullandığı bir emsal oluşturdu.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; precede ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.78; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "visibility",
+      "tip": "isim",
+      "p": 8.1,
+      "source_score": 8.1,
+      "family_members": [
+        "visibility",
+        "visible"
+      ],
+      "meanings": [
+        {
+          "tr": "i. görünürlük, görülebilme derecesi",
+          "ex": "Dense smoke reduced visibility and forced drivers to slow down along the motorway.",
+          "exTr": "Yoğun duman görünürlüğü azalttı ve sürücüleri otoyolda yavaşlamaya zorladı."
+        }
+      ],
+      "card_example": "Dense smoke reduced visibility and forced drivers to slow down along the motorway.",
+      "card_example_tr": "Yoğun duman görünürlüğü azalttı ve sürücüleri otoyolda yavaşlamaya zorladı.",
+      "test_sentence": "Heavy fog reduced visibility so severely that airport authorities suspended all flights until weather conditions improved.",
+      "test_sentence_tr": "Yoğun sis görünürlüğü öylesine azalttı ki havalimanı yetkilileri hava koşulları düzelene kadar bütün uçuşları durdurdu.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; visible ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.78; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "digit",
+      "tip": "isim",
+      "p": 8.1,
+      "source_score": 8.0786,
+      "family_members": [
+        "digit",
+        "digital"
+      ],
+      "meanings": [
+        {
+          "tr": "i. rakam; el veya ayak parmağı",
+          "ex": "One incorrect digit in the account number caused the payment system to reject the transfer.",
+          "exTr": "Hesap numarasındaki yanlış bir rakam ödeme sisteminin aktarımı reddetmesine yol açtı."
+        },
+        {
+          "tr": "i. el veya ayak parmağı",
+          "ex": "The injured digit remained swollen for several days after the climbing accident.",
+          "exTr": "Yaralanan parmak tırmanış kazasından sonra birkaç gün şiş kaldı."
+        }
+      ],
+      "card_example": "One incorrect digit in the account number caused the payment system to reject the transfer.",
+      "card_example_tr": "Hesap numarasındaki yanlış bir rakam ödeme sisteminin aktarımı reddetmesine yol açtı.",
+      "test_sentence": "Security staff could not open the archived file because a single digit was missing from the decryption code.",
+      "test_sentence_tr": "Şifre çözme kodunda tek bir rakam eksik olduğu için güvenlik görevlileri arşivlenmiş dosyayı açamadı.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation, pertainym ilişkisi ve güncel baskın anlamı incelendi; digital ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.77; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "floral",
+      "tip": "sıfat",
+      "p": 8.1,
+      "source_score": 8.0786,
+      "family_members": [
+        "floral",
+        "flower"
+      ],
+      "meanings": [
+        {
+          "tr": "s. çiçeklerle veya bitki örtüsüyle ilgili, çiçekli",
+          "ex": "The survey documented floral diversity in grasslands exposed to different grazing pressures.",
+          "exTr": "Araştırma, farklı otlatma baskılarına maruz kalan çayırlardaki bitki çeşitliliğini belgeledi."
+        }
+      ],
+      "card_example": "The survey documented floral diversity in grasslands exposed to different grazing pressures.",
+      "card_example_tr": "Araştırma, farklı otlatma baskılarına maruz kalan çayırlardaki bitki çeşitliliğini belgeledi.",
+      "test_sentence": "Architects restored the palace ceiling by copying floral patterns found on fragments preserved in a nearby archaeological museum.",
+      "test_sentence_tr": "Mimarlar, yakındaki bir arkeoloji müzesinde korunan parçalar üzerindeki çiçek motiflerini kopyalayarak sarayın tavanını restore etti.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki pertainym ilişkisi ve güncel baskın anlamı incelendi; flower ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.77; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "literal",
+      "tip": "sıfat",
+      "p": 8.1,
+      "source_score": 8.0786,
+      "family_members": [
+        "literal",
+        "literally"
+      ],
+      "meanings": [
+        {
+          "tr": "s. kelimesi kelimesine, gerçek anlamdaki",
+          "ex": "A literal reading of the passage ignores the political criticism carried by its central metaphor.",
+          "exTr": "Metnin gerçek anlamına dayalı okunması, temel metaforunun taşıdığı siyasi eleştiriyi gözden kaçırır."
+        }
+      ],
+      "card_example": "A literal reading of the passage ignores the political criticism carried by its central metaphor.",
+      "card_example_tr": "Metnin gerçek anlamına dayalı okunması, temel metaforunun taşıdığı siyasi eleştiriyi gözden kaçırır.",
+      "test_sentence": "Readers who rely only on the literal meaning may miss the political criticism expressed through the author's metaphor.",
+      "test_sentence_tr": "Yalnızca gerçek anlama dayanan okurlar, yazarın metaforuyla ifade edilen siyasi eleştiriyi gözden kaçırabilir.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki pertainym ilişkisi ve güncel baskın anlamı incelendi; literally ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.77; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "prohibition",
+      "tip": "isim",
+      "p": 8.1,
+      "source_score": 8.0786,
+      "family_members": [
+        "prohibition",
+        "prohibit"
+      ],
+      "meanings": [
+        {
+          "tr": "i. yasak, yasaklama",
+          "ex": "A seasonal prohibition on hunting helped the declining bird population recover gradually.",
+          "exTr": "Mevsimlik av yasağı, azalan kuş nüfusunun yavaş yavaş toparlanmasına yardım etti."
+        }
+      ],
+      "card_example": "A seasonal prohibition on hunting helped the declining bird population recover gradually.",
+      "card_example_tr": "Mevsimlik av yasağı, azalan kuş nüfusunun yavaş yavaş toparlanmasına yardım etti.",
+      "test_sentence": "The government introduced a complete prohibition on hunting during the breeding season to protect the declining population.",
+      "test_sentence_tr": "Hükûmet, azalan nüfusu korumak için üreme mevsiminde avlanmaya tam bir yasak getirdi.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; prohibit ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.77; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "theological",
+      "tip": "sıfat",
+      "p": 8.1,
+      "source_score": 8.0786,
+      "family_members": [
+        "theological",
+        "theology"
+      ],
+      "meanings": [
+        {
+          "tr": "s. teolojik, din bilimi veya dinî öğretiyle ilgili",
+          "ex": "The dispute began as a theological disagreement but soon influenced political alliances.",
+          "exTr": "Anlaşmazlık teolojik bir görüş ayrılığı olarak başladı ancak kısa sürede siyasi ittifakları etkiledi."
+        }
+      ],
+      "card_example": "The dispute began as a theological disagreement but soon influenced political alliances.",
+      "card_example_tr": "Anlaşmazlık teolojik bir görüş ayrılığı olarak başladı ancak kısa sürede siyasi ittifakları etkiledi.",
+      "test_sentence": "Medieval scholars often framed disputes over royal authority in theological terms that ordinary citizens struggled to understand.",
+      "test_sentence_tr": "Orta Çağ bilginleri, kraliyet otoritesi hakkındaki anlaşmazlıkları sıradan yurttaşların anlamakta zorlandığı teolojik terimlerle sık sık ifade ediyordu.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation, pertainym ilişkisi ve güncel baskın anlamı incelendi; theology ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.77; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "professionally",
+      "tip": "zarf",
+      "p": 8.1,
+      "source_score": 8.0571,
+      "family_members": [
+        "professionally",
+        "professional"
+      ],
+      "meanings": [
+        {
+          "tr": "z. profesyonelce, meslek kurallarına uygun biçimde",
+          "ex": "Staff handled the complaint professionally despite the customer's anger and repeated accusations.",
+          "exTr": "Personel, müşterinin öfkesine ve tekrarlanan suçlamalarına rağmen şikâyeti profesyonelce ele aldı."
+        }
+      ],
+      "card_example": "Staff handled the complaint professionally despite the customer's anger and repeated accusations.",
+      "card_example_tr": "Personel, müşterinin öfkesine ve tekrarlanan suçlamalarına rağmen şikâyeti profesyonelce ele aldı.",
+      "test_sentence": "All complaints must be handled professionally, even when customers express anger or make accusations that staff consider unfair.",
+      "test_sentence_tr": "Müşteriler öfke gösterse veya personelin haksız bulduğu suçlamalarda bulunsa bile bütün şikâyetler profesyonelce ele alınmalıdır.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki pertainym ilişkisi ve güncel baskın anlamı incelendi; professional ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.76; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "disciplinary",
+      "tip": "sıfat",
+      "p": 8.0,
+      "source_score": 8.0357,
+      "family_members": [
+        "disciplinary",
+        "discipline"
+      ],
+      "meanings": [
+        {
+          "tr": "s. disiplinle veya disiplin cezasıyla ilgili",
+          "ex": "The university began disciplinary proceedings after researchers were accused of altering experimental data.",
+          "exTr": "Üniversite, araştırmacılar deney verilerini değiştirmekle suçlandıktan sonra disiplin süreci başlattı."
+        }
+      ],
+      "card_example": "The university began disciplinary proceedings after researchers were accused of altering experimental data.",
+      "card_example_tr": "Üniversite, araştırmacılar deney verilerini değiştirmekle suçlandıktan sonra disiplin süreci başlattı.",
+      "test_sentence": "The university opened a disciplinary investigation after evidence suggested that several researchers had deliberately altered experimental data.",
+      "test_sentence_tr": "Kanıtlar bazı araştırmacıların deney verilerini kasıtlı olarak değiştirdiğini gösterince üniversite bir disiplin soruşturması başlattı.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation, pertainym ilişkisi ve güncel baskın anlamı incelendi; discipline ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.75; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "endorsement",
+      "tip": "isim",
+      "p": 8.0,
+      "source_score": 8.0357,
+      "family_members": [
+        "endorsement",
+        "endorse"
+      ],
+      "meanings": [
+        {
+          "tr": "i. destek, onay, resmî tavsiye",
+          "ex": "The programme gained credibility after receiving endorsement from several respected medical organisations.",
+          "exTr": "Program, bazı saygın tıp kuruluşlarının desteğini aldıktan sonra güvenilirlik kazandı."
+        }
+      ],
+      "card_example": "The programme gained credibility after receiving endorsement from several respected medical organisations.",
+      "card_example_tr": "Program, bazı saygın tıp kuruluşlarının desteğini aldıktan sonra güvenilirlik kazandı.",
+      "test_sentence": "Public endorsement from respected medical organisations increased confidence in the vaccination programme among previously hesitant parents.",
+      "test_sentence_tr": "Saygın tıp kuruluşlarının açık desteği, daha önce tereddüt eden ebeveynlerin aşılama programına güvenini artırdı.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; endorse ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.75; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "inspirational",
+      "tip": "sıfat",
+      "p": 8.0,
+      "source_score": 8.0357,
+      "family_members": [
+        "inspirational",
+        "inspiration"
+      ],
+      "meanings": [
+        {
+          "tr": "s. ilham verici, cesaretlendirici",
+          "ex": "The documentary presents an inspirational account of researchers who continued despite repeated failure.",
+          "exTr": "Belgesel, tekrarlanan başarısızlığa rağmen devam eden araştırmacıların ilham verici öyküsünü sunuyor."
+        }
+      ],
+      "card_example": "The documentary presents an inspirational account of researchers who continued despite repeated failure.",
+      "card_example_tr": "Belgesel, tekrarlanan başarısızlığa rağmen devam eden araştırmacıların ilham verici öyküsünü sunuyor.",
+      "test_sentence": "The coach delivered an inspirational speech that persuaded the exhausted athletes to complete the final stage together.",
+      "test_sentence_tr": "Antrenör, bitkin sporcuları son etabı birlikte tamamlamaya ikna eden ilham verici bir konuşma yaptı.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; inspiration ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.75; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "internally",
+      "tip": "zarf",
+      "p": 8.0,
+      "source_score": 8.0357,
+      "family_members": [
+        "internally",
+        "internal"
+      ],
+      "meanings": [
+        {
+          "tr": "z. kurum veya yapı içinde; içsel olarak",
+          "ex": "The organisation resolved the disagreement internally before external partners became involved.",
+          "exTr": "Kuruluş, dış ortaklar sürece katılmadan önce anlaşmazlığı kendi içinde çözdü."
+        }
+      ],
+      "card_example": "The organisation resolved the disagreement internally before external partners became involved.",
+      "card_example_tr": "Kuruluş, dış ortaklar sürece katılmadan önce anlaşmazlığı kendi içinde çözdü.",
+      "test_sentence": "Before announcing the merger, both companies circulated the proposal internally so employees could raise concerns through confidential channels.",
+      "test_sentence_tr": "Birleşmeyi açıklamadan önce her iki şirket de çalışanların gizli kanallardan kaygılarını iletebilmesi için öneriyi kurum içinde dolaşıma soktu.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki pertainym ilişkisi ve güncel baskın anlamı incelendi; internal ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.75; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "prestige",
+      "tip": "isim",
+      "p": 8.0,
+      "source_score": 8.0357,
+      "family_members": [
+        "prestige",
+        "prestigious"
+      ],
+      "meanings": [
+        {
+          "tr": "i. saygınlık, itibar, yüksek statü",
+          "ex": "The award increased the institute's prestige but did not solve its long-term funding problems.",
+          "exTr": "Ödül enstitünün saygınlığını artırdı ancak uzun vadeli finansman sorunlarını çözmedi."
+        }
+      ],
+      "card_example": "The award increased the institute's prestige but did not solve its long-term funding problems.",
+      "card_example_tr": "Ödül enstitünün saygınlığını artırdı ancak uzun vadeli finansman sorunlarını çözmedi.",
+      "test_sentence": "Universities may pursue international prestige by investing in highly visible projects rather than improving routine undergraduate teaching.",
+      "test_sentence_tr": "Üniversiteler, gündelik lisans eğitimini geliştirmek yerine çok görünür projelere yatırım yaparak uluslararası saygınlık peşinde koşabilir.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; prestigious ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.75; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "relevance",
+      "tip": "isim",
+      "p": 8.0,
+      "source_score": 8.0357,
+      "family_members": [
+        "relevance",
+        "relevant"
+      ],
+      "meanings": [
+        {
+          "tr": "i. ilgililik, konuya uygunluk veya önem",
+          "ex": "Reviewers questioned the relevance of evidence collected under very different technological conditions.",
+          "exTr": "Değerlendiriciler, çok farklı teknolojik koşullarda toplanan kanıtların ilgililiğini sorguladı."
+        }
+      ],
+      "card_example": "Reviewers questioned the relevance of evidence collected under very different technological conditions.",
+      "card_example_tr": "Değerlendiriciler, çok farklı teknolojik koşullarda toplanan kanıtların ilgililiğini sorguladı.",
+      "test_sentence": "Teachers improved the relevance of the curriculum by linking abstract economic concepts to decisions students make in daily life.",
+      "test_sentence_tr": "Öğretmenler, soyut ekonomik kavramları öğrencilerin günlük yaşamda verdiği kararlarla ilişkilendirerek müfredatın ilgililiğini artırdı.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; relevant ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.75; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "exceptionally",
+      "tip": "zarf",
+      "p": 8.0,
+      "source_score": 8.0143,
+      "family_members": [
+        "exceptionally",
+        "exceptional"
+      ],
+      "meanings": [
+        {
+          "tr": "z. olağanüstü derecede, alışılmadık ölçüde",
+          "ex": "The material remained exceptionally stable despite repeated changes in temperature and pressure.",
+          "exTr": "Malzeme, tekrarlanan sıcaklık ve basınç değişikliklerine rağmen olağanüstü derecede kararlı kaldı."
+        }
+      ],
+      "card_example": "The material remained exceptionally stable despite repeated changes in temperature and pressure.",
+      "card_example_tr": "Malzeme, tekrarlanan sıcaklık ve basınç değişikliklerine rağmen olağanüstü derecede kararlı kaldı.",
+      "test_sentence": "The treatment performed exceptionally well in early trials, but researchers warned that the participant group was unusually small.",
+      "test_sentence_tr": "Tedavi ilk denemelerde olağanüstü derecede iyi sonuç verdi ancak araştırmacılar katılımcı grubunun alışılmadık ölçüde küçük olduğu konusunda uyardı.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki pertainym ilişkisi ve güncel baskın anlamı incelendi; exceptional ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.74; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "rainy",
+      "tip": "sıfat",
+      "p": 8.0,
+      "source_score": 8.0143,
+      "family_members": [
+        "rainy",
+        "rain"
+      ],
+      "meanings": [
+        {
+          "tr": "s. yağmurlu, sık veya yoğun yağış alan",
+          "ex": "Roads through the mountains often become impassable during the rainy season.",
+          "exTr": "Dağlardan geçen yollar yağmurlu mevsimde sık sık geçilemez hâle gelir."
+        }
+      ],
+      "card_example": "Roads through the mountains often become impassable during the rainy season.",
+      "card_example_tr": "Dağlardan geçen yollar yağmurlu mevsimde sık sık geçilemez hâle gelir.",
+      "test_sentence": "During the rainy season, damaged roads can isolate mountain villages and delay the delivery of medical supplies.",
+      "test_sentence_tr": "Yağmurlu mevsimde hasarlı yollar dağ köylerini yalıtabilir ve tıbbi malzemelerin ulaştırılmasını geciktirebilir.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; rain ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.74; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "vanity",
+      "tip": "isim",
+      "p": 8.0,
+      "source_score": 8.0143,
+      "family_members": [
+        "vanity",
+        "vain"
+      ],
+      "meanings": [
+        {
+          "tr": "i. kendini beğenmişlik, gösteriş merakı",
+          "ex": "Critics described the unnecessary monument as a costly expression of political vanity.",
+          "exTr": "Eleştirmenler gereksiz anıtı siyasi gösteriş merakının maliyetli bir ifadesi olarak tanımladı."
+        }
+      ],
+      "card_example": "Critics described the unnecessary monument as a costly expression of political vanity.",
+      "card_example_tr": "Eleştirmenler gereksiz anıtı siyasi gösteriş merakının maliyetli bir ifadesi olarak tanımladı.",
+      "test_sentence": "The monument was criticised as an act of political vanity because it served no clear public purpose.",
+      "test_sentence_tr": "Anıt, açık bir kamusal amaca hizmet etmediği için siyasi gösteriş merakının bir ürünü olarak eleştirildi.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; vain ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.74; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "flex",
+      "tip": "fiil",
+      "p": 8.0,
+      "source_score": 7.9929,
+      "family_members": [
+        "flex",
+        "flexible"
+      ],
+      "meanings": [
+        {
+          "tr": "f. bükülmek, bükmek veya germek",
+          "ex": "The joint can flex under pressure without cracking or losing its original alignment.",
+          "exTr": "Eklem, çatlamadan veya ilk hizasını kaybetmeden basınç altında bükülebilir."
+        }
+      ],
+      "card_example": "The joint can flex under pressure without cracking or losing its original alignment.",
+      "card_example_tr": "Eklem, çatlamadan veya ilk hizasını kaybetmeden basınç altında bükülebilir.",
+      "test_sentence": "A young tree must flex during strong winds or its trunk may snap before the roots become firmly established.",
+      "test_sentence_tr": "Genç bir ağaç güçlü rüzgârlarda esnemelidir; aksi hâlde kökleri sağlamca yerleşmeden gövdesi kırılabilir.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; flexible ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.73; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "classy",
+      "tip": "sıfat",
+      "p": 8.0,
+      "source_score": 7.9714,
+      "family_members": [
+        "classy",
+        "class"
+      ],
+      "meanings": [
+        {
+          "tr": "s. şık, zarif, kaliteli görünen",
+          "ex": "The renovation created a classy interior without removing the building's original stone details.",
+          "exTr": "Yenileme, binanın özgün taş ayrıntılarını kaldırmadan şık bir iç mekân yarattı."
+        }
+      ],
+      "card_example": "The renovation created a classy interior without removing the building's original stone details.",
+      "card_example_tr": "Yenileme, binanın özgün taş ayrıntılarını kaldırmadan şık bir iç mekân yarattı.",
+      "test_sentence": "Designers created a classy interior by combining simple furniture with carefully restored historical details and natural light.",
+      "test_sentence_tr": "Tasarımcılar sade mobilyaları dikkatle onarılan tarihî ayrıntılar ve doğal ışıkla birleştirerek şık bir iç mekân yarattı.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; class ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.72; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "confrontation",
+      "tip": "isim",
+      "p": 8.0,
+      "source_score": 7.9714,
+      "family_members": [
+        "confrontation",
+        "confront"
+      ],
+      "meanings": [
+        {
+          "tr": "i. çatışma, sert yüzleşme",
+          "ex": "Diplomats worked to prevent a direct confrontation that could threaten regional security.",
+          "exTr": "Diplomatlar bölgesel güvenliği tehdit edebilecek doğrudan bir çatışmayı önlemeye çalıştı."
+        }
+      ],
+      "card_example": "Diplomats worked to prevent a direct confrontation that could threaten regional security.",
+      "card_example_tr": "Diplomatlar bölgesel güvenliği tehdit edebilecek doğrudan bir çatışmayı önlemeye çalıştı.",
+      "test_sentence": "Both sides avoided direct confrontation because escalating the dispute could have threatened trade and regional security.",
+      "test_sentence_tr": "Her iki taraf da anlaşmazlığın tırmanması ticareti ve bölgesel güvenliği tehdit edebileceği için doğrudan çatışmadan kaçındı.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; confront ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.72; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "dismissal",
+      "tip": "isim",
+      "p": 8.0,
+      "source_score": 7.9714,
+      "family_members": [
+        "dismissal",
+        "dismiss"
+      ],
+      "meanings": [
+        {
+          "tr": "i. işten çıkarma; reddetme",
+          "ex": "The worker appealed her dismissal after new evidence contradicted the original investigation.",
+          "exTr": "Çalışan, yeni kanıtlar ilk soruşturmayla çeliştikten sonra işten çıkarılmasına itiraz etti."
+        },
+        {
+          "tr": "i. reddetme, ciddiye almadan geri çevirme",
+          "ex": "The committee's rapid dismissal of the evidence prevented a balanced evaluation.",
+          "exTr": "Komitenin kanıtı hızla reddetmesi dengeli bir değerlendirmeyi engelledi."
+        }
+      ],
+      "card_example": "The worker appealed her dismissal after new evidence contradicted the original investigation.",
+      "card_example_tr": "Çalışan, yeni kanıtlar ilk soruşturmayla çeliştikten sonra işten çıkarılmasına itiraz etti.",
+      "test_sentence": "The employee challenged her dismissal, arguing that the investigation had ignored evidence supporting her account of events.",
+      "test_sentence_tr": "Çalışan, soruşturmanın kendi olay anlatımını destekleyen kanıtları göz ardı ettiğini savunarak işten çıkarılmasına itiraz etti.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; dismiss ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.72; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "reconciliation",
+      "tip": "isim",
+      "p": 8.0,
+      "source_score": 7.9714,
+      "family_members": [
+        "reconciliation",
+        "reconcile"
+      ],
+      "meanings": [
+        {
+          "tr": "i. uzlaşma, barışma",
+          "ex": "Community leaders promoted reconciliation after years of conflict had divided neighbouring villages.",
+          "exTr": "Toplum önderleri, yıllarca süren çatışmanın komşu köyleri ayırmasının ardından uzlaşmayı destekledi."
+        }
+      ],
+      "card_example": "Community leaders promoted reconciliation after years of conflict had divided neighbouring villages.",
+      "card_example_tr": "Toplum önderleri, yıllarca süren çatışmanın komşu köyleri ayırmasının ardından uzlaşmayı destekledi.",
+      "test_sentence": "Lasting reconciliation requires both communities to acknowledge past harms and create institutions that protect equal rights.",
+      "test_sentence_tr": "Kalıcı uzlaşma, her iki topluluğun da geçmişteki zararları kabul etmesini ve eşit hakları koruyan kurumlar oluşturmasını gerektirir.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; reconcile ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.72; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "energetic",
+      "tip": "sıfat",
+      "p": 8.0,
+      "source_score": 7.95,
+      "family_members": [
+        "energetic",
+        "energy"
+      ],
+      "meanings": [
+        {
+          "tr": "s. enerjik, hareketli",
+          "ex": "The energetic volunteers delivered food and medicine throughout the flooded district.",
+          "exTr": "Enerjik gönüllüler, sel basan bölgenin tamamında yiyecek ve ilaç dağıttı."
+        }
+      ],
+      "card_example": "The energetic volunteers delivered food and medicine throughout the flooded district.",
+      "card_example_tr": "Enerjik gönüllüler, sel basan bölgenin tamamında yiyecek ve ilaç dağıttı.",
+      "test_sentence": "The recovery programme encourages older adults to remain energetic through regular walking, social activity, and strength exercises.",
+      "test_sentence_tr": "İyileşme programı, yaşlı yetişkinleri düzenli yürüyüş, sosyal etkinlik ve kuvvet egzersizleriyle enerjik kalmaya teşvik eder.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; energy ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.71; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "hourly",
+      "tip": "sıfat, zarf",
+      "p": 8.0,
+      "source_score": 7.95,
+      "family_members": [
+        "hourly",
+        "hour"
+      ],
+      "meanings": [
+        {
+          "tr": "s./z. saatlik, saatte bir",
+          "ex": "The laboratory records hourly temperature changes to detect equipment failure early.",
+          "exTr": "Laboratuvar, donanım arızasını erken saptamak için saatlik sıcaklık değişimlerini kaydeder."
+        }
+      ],
+      "card_example": "The laboratory records hourly temperature changes to detect equipment failure early.",
+      "card_example_tr": "Laboratuvar, donanım arızasını erken saptamak için saatlik sıcaklık değişimlerini kaydeder.",
+      "test_sentence": "During the storm, emergency teams issued hourly updates so residents could respond quickly to changing flood risks.",
+      "test_sentence_tr": "Fırtına sırasında acil durum ekipleri, bölge sakinlerinin değişen sel risklerine hızla karşılık verebilmesi için saatlik güncellemeler yayımladı.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; hour ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.71; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "proudly",
+      "tip": "zarf",
+      "p": 8.0,
+      "source_score": 7.95,
+      "family_members": [
+        "proudly",
+        "proud"
+      ],
+      "meanings": [
+        {
+          "tr": "z. gururla",
+          "ex": "Graduates proudly presented the community projects they had completed during their training.",
+          "exTr": "Mezunlar, eğitimleri sırasında tamamladıkları toplum projelerini gururla sundu."
+        }
+      ],
+      "card_example": "Graduates proudly presented the community projects they had completed during their training.",
+      "card_example_tr": "Mezunlar, eğitimleri sırasında tamamladıkları toplum projelerini gururla sundu.",
+      "test_sentence": "The community displayed the restored manuscript proudly, emphasising its importance to local history and cultural identity.",
+      "test_sentence_tr": "Topluluk, yerel tarih ve kültürel kimlik açısından önemini vurgulayarak restore edilen el yazmasını gururla sergiledi.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki pertainym ilişkisi ve güncel baskın anlamı incelendi; proud ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.71; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "shady",
+      "tip": "sıfat",
+      "p": 8.0,
+      "source_score": 7.95,
+      "family_members": [
+        "shady",
+        "shade"
+      ],
+      "meanings": [
+        {
+          "tr": "s. şüpheli, dürüst olmayan; gölgeli",
+          "ex": "Auditors reported several shady transactions between the company and an unknown supplier.",
+          "exTr": "Denetçiler, şirket ile bilinmeyen bir tedarikçi arasında bazı şüpheli işlemler bildirdi."
+        },
+        {
+          "tr": "s. gölgeli, gölge sağlayan",
+          "ex": "Workers rested in a shady area beside the field during the hottest part of the day.",
+          "exTr": "İşçiler günün en sıcak bölümünde tarlanın yanındaki gölgeli bir alanda dinlendi."
+        }
+      ],
+      "card_example": "Auditors reported several shady transactions between the company and an unknown supplier.",
+      "card_example_tr": "Denetçiler, şirket ile bilinmeyen bir tedarikçi arasında bazı şüpheli işlemler bildirdi.",
+      "test_sentence": "Investigators examined several shady financial transactions that appeared designed to hide the true owners of the company.",
+      "test_sentence_tr": "Soruşturmacılar, şirketin gerçek sahiplerini gizlemek üzere tasarlanmış görünen bazı şüpheli mali işlemleri inceledi.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; shade ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.71; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "apprentice",
+      "tip": "isim",
+      "p": 7.9,
+      "source_score": 7.9286,
+      "family_members": [
+        "apprentice",
+        "apprenticeship"
+      ],
+      "meanings": [
+        {
+          "tr": "i. çırak",
+          "ex": "The apprentice learned pottery by observing a skilled craftsperson and practising each technique.",
+          "exTr": "Çırak, becerikli bir zanaatkârı gözlemleyip her tekniği uygulayarak çömlekçiliği öğrendi."
+        }
+      ],
+      "card_example": "The apprentice learned pottery by observing a skilled craftsperson and practising each technique.",
+      "card_example_tr": "Çırak, becerikli bir zanaatkârı gözlemleyip her tekniği uygulayarak çömlekçiliği öğrendi.",
+      "test_sentence": "The young apprentice learned traditional metalworking by observing an experienced craftsperson and gradually completing more difficult tasks.",
+      "test_sentence_tr": "Genç çırak, deneyimli bir zanaatkârı gözlemleyip giderek daha zor görevleri tamamlayarak geleneksel metal işçiliğini öğrendi.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; apprenticeship ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.70; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "functionality",
+      "tip": "isim",
+      "p": 7.9,
+      "source_score": 7.9286,
+      "family_members": [
+        "functionality",
+        "functional"
+      ],
+      "meanings": [
+        {
+          "tr": "i. işlevsellik",
+          "ex": "Engineers tested the device's functionality under extreme temperatures before approving it for field use.",
+          "exTr": "Mühendisler, saha kullanımını onaylamadan önce cihazın işlevselliğini aşırı sıcaklıklarda sınadı."
+        }
+      ],
+      "card_example": "Engineers tested the device's functionality under extreme temperatures before approving it for field use.",
+      "card_example_tr": "Mühendisler, saha kullanımını onaylamadan önce cihazın işlevselliğini aşırı sıcaklıklarda sınadı.",
+      "test_sentence": "The update improved the application's functionality by adding offline access, clearer navigation, and stronger data protection.",
+      "test_sentence_tr": "Güncelleme; çevrim dışı erişim, daha açık gezinme ve daha güçlü veri koruması ekleyerek uygulamanın işlevselliğini geliştirdi.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; functional ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.70; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "manually",
+      "tip": "zarf",
+      "p": 7.9,
+      "source_score": 7.9286,
+      "family_members": [
+        "manually",
+        "manual"
+      ],
+      "meanings": [
+        {
+          "tr": "z. elle, otomatik olmayan biçimde",
+          "ex": "Staff manually checked the records after the scanning system produced inconsistent results.",
+          "exTr": "Personel, tarama sistemi tutarsız sonuçlar ürettikten sonra kayıtları elle kontrol etti."
+        }
+      ],
+      "card_example": "Staff manually checked the records after the scanning system produced inconsistent results.",
+      "card_example_tr": "Personel, tarama sistemi tutarsız sonuçlar ürettikten sonra kayıtları elle kontrol etti.",
+      "test_sentence": "Technicians had to enter every measurement manually because the automatic transfer system failed during the experiment.",
+      "test_sentence_tr": "Teknisyenler, otomatik aktarım sistemi deney sırasında arızalandığı için her ölçümü elle girmek zorunda kaldı.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki pertainym ilişkisi ve güncel baskın anlamı incelendi; manual ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.70; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "moody",
+      "tip": "sıfat",
+      "p": 7.9,
+      "source_score": 7.9286,
+      "family_members": [
+        "moody",
+        "mood"
+      ],
+      "meanings": [
+        {
+          "tr": "s. değişken ruh hâlli, huysuz",
+          "ex": "The character appears moody because uncertainty repeatedly changes his behaviour toward friends.",
+          "exTr": "Karakter, belirsizlik arkadaşlarına yönelik davranışını sürekli değiştirdiği için değişken ruh hâlli görünür."
+        }
+      ],
+      "card_example": "The character appears moody because uncertainty repeatedly changes his behaviour toward friends.",
+      "card_example_tr": "Karakter, belirsizlik arkadaşlarına yönelik davranışını sürekli değiştirdiği için değişken ruh hâlli görünür.",
+      "test_sentence": "Adolescents may appear unusually moody when sleep deprivation and academic pressure affect emotional regulation over long periods.",
+      "test_sentence_tr": "Uyku yoksunluğu ve akademik baskı uzun süre boyunca duygusal düzenlemeyi etkilediğinde ergenler alışılmadık derecede değişken ruh hâlli görünebilir.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; mood ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.70; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "tidal",
+      "tip": "sıfat",
+      "p": 7.9,
+      "source_score": 7.9286,
+      "family_members": [
+        "tidal",
+        "tide"
+      ],
+      "meanings": [
+        {
+          "tr": "s. gelgitlerle ilgili",
+          "ex": "Tidal movements carry nutrients between the estuary and nearby coastal waters.",
+          "exTr": "Gelgit hareketleri besin maddelerini haliç ile yakındaki kıyı suları arasında taşır."
+        }
+      ],
+      "card_example": "Tidal movements carry nutrients between the estuary and nearby coastal waters.",
+      "card_example_tr": "Gelgit hareketleri besin maddelerini haliç ile yakındaki kıyı suları arasında taşır.",
+      "test_sentence": "Engineers must account for tidal changes when designing coastal structures intended to remain stable throughout the year.",
+      "test_sentence_tr": "Mühendisler, yıl boyunca sağlam kalması amaçlanan kıyı yapılarını tasarlarken gelgit değişimlerini hesaba katmalıdır.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation, pertainym ilişkisi ve güncel baskın anlamı incelendi; tide ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.70; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "verification",
+      "tip": "isim",
+      "p": 7.9,
+      "source_score": 7.9286,
+      "family_members": [
+        "verification",
+        "verify"
+      ],
+      "meanings": [
+        {
+          "tr": "i. doğrulama",
+          "ex": "Independent verification showed that the reported energy savings could be reproduced consistently.",
+          "exTr": "Bağımsız doğrulama, bildirilen enerji tasarrufunun tutarlı biçimde yeniden elde edilebildiğini gösterdi."
+        }
+      ],
+      "card_example": "Independent verification showed that the reported energy savings could be reproduced consistently.",
+      "card_example_tr": "Bağımsız doğrulama, bildirilen enerji tasarrufunun tutarlı biçimde yeniden elde edilebildiğini gösterdi.",
+      "test_sentence": "Independent verification of the results is necessary before the new diagnostic method can be adopted nationally.",
+      "test_sentence_tr": "Yeni tanı yöntemi ülke çapında benimsenmeden önce sonuçların bağımsız olarak doğrulanması gerekir.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; verify ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.70; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "inconvenience",
+      "tip": "isim, fiil",
+      "p": 7.9,
+      "source_score": 7.9071,
+      "family_members": [
+        "inconvenience",
+        "inconvenient"
+      ],
+      "meanings": [
+        {
+          "tr": "i. rahatsızlık, zorluk",
+          "ex": "The organisers apologised for the inconvenience caused by the unexpected change of venue.",
+          "exTr": "Organizatörler, beklenmeyen yer değişikliğinin yol açtığı rahatsızlık için özür diledi."
+        },
+        {
+          "tr": "f. zahmet vermek, güçlük çıkarmak",
+          "ex": "The temporary closure may inconvenience participants travelling from abroad.",
+          "exTr": "Geçici kapanma yurt dışından gelen katılımcılara güçlük çıkarabilir."
+        }
+      ],
+      "card_example": "The organisers apologised for the inconvenience caused by the unexpected change of venue.",
+      "card_example_tr": "Organizatörler, beklenmeyen yer değişikliğinin yol açtığı rahatsızlık için özür diledi.",
+      "test_sentence": "The temporary closure caused considerable inconvenience for commuters, but engineers completed the safety repairs ahead of schedule.",
+      "test_sentence_tr": "Geçici kapanma işe gidip gelenler için önemli bir zorluğa yol açtı ancak mühendisler güvenlik onarımlarını planlanandan önce tamamladı.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; inconvenient ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.69; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "durable",
+      "tip": "sıfat",
+      "p": 7.9,
+      "source_score": 7.8857,
+      "family_members": [
+        "durable",
+        "durability"
+      ],
+      "meanings": [
+        {
+          "tr": "s. dayanıklı, uzun ömürlü",
+          "ex": "The bridge requires durable materials that can resist salt, wind, and repeated temperature changes.",
+          "exTr": "Köprü, tuza, rüzgâra ve tekrarlanan sıcaklık değişimlerine direnebilen dayanıklı malzemeler gerektirir."
+        }
+      ],
+      "card_example": "The bridge requires durable materials that can resist salt, wind, and repeated temperature changes.",
+      "card_example_tr": "Köprü, tuza, rüzgâra ve tekrarlanan sıcaklık değişimlerine direnebilen dayanıklı malzemeler gerektirir.",
+      "test_sentence": "The researchers selected a durable material that could withstand repeated heating, heavy pressure, and exposure to saltwater.",
+      "test_sentence_tr": "Araştırmacılar, tekrarlanan ısıtmaya, yüksek basınca ve tuzlu suya maruz kalmaya dayanabilecek uzun ömürlü bir malzeme seçti.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; durability ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.68; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "exclusion",
+      "tip": "isim",
+      "p": 7.9,
+      "source_score": 7.8857,
+      "family_members": [
+        "exclusion",
+        "exclude"
+      ],
+      "meanings": [
+        {
+          "tr": "i. dışlama, hariç tutma",
+          "ex": "The exclusion of older adults made the survey less representative of the national population.",
+          "exTr": "Yaşlı yetişkinlerin hariç tutulması anketi ülke nüfusunu daha az temsil eder hâle getirdi."
+        }
+      ],
+      "card_example": "The exclusion of older adults made the survey less representative of the national population.",
+      "card_example_tr": "Yaşlı yetişkinlerin hariç tutulması anketi ülke nüfusunu daha az temsil eder hâle getirdi.",
+      "test_sentence": "The exclusion of rural participants weakened the study because access to healthcare differs substantially outside major cities.",
+      "test_sentence_tr": "Kırsal kesimdeki katılımcıların hariç tutulması araştırmayı zayıflattı çünkü sağlık hizmetlerine erişim büyük kentlerin dışında önemli ölçüde farklıdır.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; exclude ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.68; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "sleepy",
+      "tip": "sıfat",
+      "p": 7.9,
+      "source_score": 7.8857,
+      "family_members": [
+        "sleepy",
+        "sleep"
+      ],
+      "meanings": [
+        {
+          "tr": "s. uykulu",
+          "ex": "The medicine may make patients sleepy for several hours after each dose.",
+          "exTr": "İlaç, hastaları her dozdan sonra birkaç saat uykulu hâle getirebilir."
+        }
+      ],
+      "card_example": "The medicine may make patients sleepy for several hours after each dose.",
+      "card_example_tr": "İlaç, hastaları her dozdan sonra birkaç saat uykulu hâle getirebilir.",
+      "test_sentence": "Drivers who feel sleepy after taking the medication should avoid operating vehicles or dangerous machinery at work.",
+      "test_sentence_tr": "İlacı aldıktan sonra uykulu hisseden sürücüler araç veya iş yerindeki tehlikeli makineleri kullanmaktan kaçınmalıdır.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; sleep ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.68; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "smoothly",
+      "tip": "zarf",
+      "p": 7.9,
+      "source_score": 7.8857,
+      "family_members": [
+        "smoothly",
+        "smooth"
+      ],
+      "meanings": [
+        {
+          "tr": "z. sorunsuzca, pürüzsüz biçimde",
+          "ex": "The vaccination campaign proceeded smoothly because local clinics had received detailed instructions beforehand.",
+          "exTr": "Aşılama kampanyası, yerel klinikler önceden ayrıntılı talimatlar aldığı için sorunsuzca ilerledi."
+        }
+      ],
+      "card_example": "The vaccination campaign proceeded smoothly because local clinics had received detailed instructions beforehand.",
+      "card_example_tr": "Aşılama kampanyası, yerel klinikler önceden ayrıntılı talimatlar aldığı için sorunsuzca ilerledi.",
+      "test_sentence": "The transition proceeded smoothly because both teams shared detailed records and agreed on responsibilities beforehand in writing.",
+      "test_sentence_tr": "Geçiş, iki ekip de ayrıntılı kayıtları paylaştığı ve sorumlulukları önceden yazılı olarak kararlaştırdığı için sorunsuzca ilerledi.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki pertainym ilişkisi ve güncel baskın anlamı incelendi; smooth ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.68; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "suppression",
+      "tip": "isim",
+      "p": 7.9,
+      "source_score": 7.8857,
+      "family_members": [
+        "suppression",
+        "suppress"
+      ],
+      "meanings": [
+        {
+          "tr": "i. bastırma, engelleme",
+          "ex": "Suppression of immune activity can make patients more vulnerable to common infections.",
+          "exTr": "Bağışıklık etkinliğinin bastırılması hastaları yaygın enfeksiyonlara karşı daha savunmasız bırakabilir."
+        }
+      ],
+      "card_example": "Suppression of immune activity can make patients more vulnerable to common infections.",
+      "card_example_tr": "Bağışıklık etkinliğinin bastırılması hastaları yaygın enfeksiyonlara karşı daha savunmasız bırakabilir.",
+      "test_sentence": "Long-term suppression of immune activity can increase susceptibility to infections that healthy individuals normally resist without treatment.",
+      "test_sentence_tr": "Bağışıklık etkinliğinin uzun süre bastırılması, sağlıklı bireylerin normalde tedavisiz direnebildiği enfeksiyonlara yatkınlığı artırabilir.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; suppress ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.68; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "theatrical",
+      "tip": "sıfat",
+      "p": 7.9,
+      "source_score": 7.8857,
+      "family_members": [
+        "theatrical",
+        "theater"
+      ],
+      "meanings": [
+        {
+          "tr": "s. tiyatroyla ilgili, tiyatral; abartılı",
+          "ex": "The director combined theatrical lighting with a restrained performance style.",
+          "exTr": "Yönetmen, tiyatral ışıklandırmayı ölçülü bir oyunculuk tarzıyla birleştirdi."
+        },
+        {
+          "tr": "s. abartılı, gösterişli",
+          "ex": "His theatrical reaction drew attention away from the relatively minor procedural error.",
+          "exTr": "Onun abartılı tepkisi dikkati görece küçük usul hatasından uzaklaştırdı."
+        }
+      ],
+      "card_example": "The director combined theatrical lighting with a restrained performance style.",
+      "card_example_tr": "Yönetmen, tiyatral ışıklandırmayı ölçülü bir oyunculuk tarzıyla birleştirdi.",
+      "test_sentence": "Critics praised the production's theatrical design but argued that visual spectacle sometimes distracted from the central argument.",
+      "test_sentence_tr": "Eleştirmenler yapımın tiyatral tasarımını övdü ancak görsel gösterinin bazen temel savdan uzaklaştırdığını ileri sürdü.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation, pertainym ilişkisi ve güncel baskın anlamı incelendi; theater ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.68; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "chaotic",
+      "tip": "sıfat",
+      "p": 7.9,
+      "source_score": 7.8643,
+      "family_members": [
+        "chaotic",
+        "chaos"
+      ],
+      "meanings": [
+        {
+          "tr": "s. kaotik, düzensiz",
+          "ex": "The evacuation became chaotic when separate agencies issued conflicting instructions to residents.",
+          "exTr": "Farklı kurumlar bölge sakinlerine çelişkili talimatlar verince tahliye kaotik hâle geldi."
+        }
+      ],
+      "card_example": "The evacuation became chaotic when separate agencies issued conflicting instructions to residents.",
+      "card_example_tr": "Farklı kurumlar bölge sakinlerine çelişkili talimatlar verince tahliye kaotik hâle geldi.",
+      "test_sentence": "Emergency care became chaotic when communication systems failed and several hospitals received patients simultaneously without coordination.",
+      "test_sentence_tr": "İletişim sistemleri arızalanıp bazı hastaneler eşgüdüm olmadan aynı anda hasta kabul edince acil bakım kaotik hâle geldi.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation, pertainym ilişkisi ve güncel baskın anlamı incelendi; chaos ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.67; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "dusty",
+      "tip": "sıfat",
+      "p": 7.9,
+      "source_score": 7.8643,
+      "family_members": [
+        "dusty",
+        "dust"
+      ],
+      "meanings": [
+        {
+          "tr": "s. tozlu",
+          "ex": "Researchers found the forgotten maps inside a dusty cabinet at the back of the archive.",
+          "exTr": "Araştırmacılar unutulmuş haritaları arşivin arkasındaki tozlu bir dolapta buldu."
+        }
+      ],
+      "card_example": "Researchers found the forgotten maps inside a dusty cabinet at the back of the archive.",
+      "card_example_tr": "Araştırmacılar unutulmuş haritaları arşivin arkasındaki tozlu bir dolapta buldu.",
+      "test_sentence": "The archives remained dusty because damaged ventilation allowed particles from the construction work to enter the storage rooms.",
+      "test_sentence_tr": "Hasarlı havalandırma inşaat işlerinden gelen parçacıkların depolara girmesine izin verdiği için arşivler tozlu kaldı.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; dust ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.67; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "focal",
+      "tip": "sıfat",
+      "p": 7.9,
+      "source_score": 7.8643,
+      "family_members": [
+        "focal",
+        "focus"
+      ],
+      "meanings": [
+        {
+          "tr": "s. odakla ilgili, merkezî",
+          "ex": "Access to water became the focal issue in negotiations between the two regions.",
+          "exTr": "Suya erişim iki bölge arasındaki görüşmelerde merkezî konu hâline geldi."
+        }
+      ],
+      "card_example": "Access to water became the focal issue in negotiations between the two regions.",
+      "card_example_tr": "Suya erişim iki bölge arasındaki görüşmelerde merkezî konu hâline geldi.",
+      "test_sentence": "The river became the focal point of the dispute because both regions depended on it for irrigation.",
+      "test_sentence_tr": "Her iki bölge de sulama için ona bağımlı olduğu için nehir anlaşmazlığın odak noktası hâline geldi.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation, pertainym ilişkisi ve güncel baskın anlamı incelendi; focus ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.67; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "gladly",
+      "tip": "zarf",
+      "p": 7.9,
+      "source_score": 7.8643,
+      "family_members": [
+        "gladly",
+        "glad"
+      ],
+      "meanings": [
+        {
+          "tr": "z. memnuniyetle",
+          "ex": "Local businesses gladly supported a festival that attracted visitors outside the usual tourist season.",
+          "exTr": "Yerel işletmeler, olağan turizm sezonunun dışında ziyaretçi çeken bir festivali memnuniyetle destekledi."
+        }
+      ],
+      "card_example": "Local businesses gladly supported a festival that attracted visitors outside the usual tourist season.",
+      "card_example_tr": "Yerel işletmeler, olağan turizm sezonunun dışında ziyaretçi çeken bir festivali memnuniyetle destekledi.",
+      "test_sentence": "Most residents would gladly support the conservation plan if it protected jobs as well as wildlife.",
+      "test_sentence_tr": "Koruma planı yaban hayatının yanı sıra işleri de korusaydı bölge sakinlerinin çoğu onu memnuniyetle desteklerdi.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki pertainym ilişkisi ve güncel baskın anlamı incelendi; glad ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.67; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "intern",
+      "tip": "isim, fiil",
+      "p": 7.9,
+      "source_score": 7.8643,
+      "family_members": [
+        "intern",
+        "internship"
+      ],
+      "meanings": [
+        {
+          "tr": "i. stajyer",
+          "ex": "Each intern works under supervision while learning how the hospital manages emergency cases.",
+          "exTr": "Her stajyer, hastanenin acil vakaları nasıl yönettiğini öğrenirken gözetim altında çalışır."
+        },
+        {
+          "tr": "f. gözaltında tutmak, zorunlu olarak bir yerde alıkoymak",
+          "ex": "During the conflict, authorities chose to intern civilians considered a security risk.",
+          "exTr": "Çatışma sırasında yetkililer güvenlik riski sayılan sivilleri gözaltında tutmayı seçti."
+        }
+      ],
+      "card_example": "Each intern works under supervision while learning how the hospital manages emergency cases.",
+      "card_example_tr": "Her stajyer, hastanenin acil vakaları nasıl yönettiğini öğrenirken gözetim altında çalışır.",
+      "test_sentence": "Each medical intern rotates through several departments before choosing a speciality for advanced training at the hospital.",
+      "test_sentence_tr": "Her tıp stajyeri, hastanede ileri eğitim için bir uzmanlık seçmeden önce birkaç bölümde dönüşümlü çalışır.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; internship ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.67; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "replica",
+      "tip": "isim",
+      "p": 7.9,
+      "source_score": 7.8643,
+      "family_members": [
+        "replica",
+        "replicate"
+      ],
+      "meanings": [
+        {
+          "tr": "i. kopya, birebir örnek",
+          "ex": "The museum uses a replica so visitors can examine the object without damaging the original.",
+          "exTr": "Müze, ziyaretçilerin özgün esere zarar vermeden nesneyi inceleyebilmesi için bir kopya kullanır."
+        }
+      ],
+      "card_example": "The museum uses a replica so visitors can examine the object without damaging the original.",
+      "card_example_tr": "Müze, ziyaretçilerin özgün esere zarar vermeden nesneyi inceleyebilmesi için bir kopya kullanır.",
+      "test_sentence": "The museum displayed a replica while the fragile original remained in climate-controlled storage for conservation and research.",
+      "test_sentence_tr": "Müze bir kopyayı sergilerken hassas özgün eser koruma ve araştırma amacıyla iklim kontrollü depoda kaldı.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; replicate ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.67; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "scenic",
+      "tip": "sıfat",
+      "p": 7.9,
+      "source_score": 7.8643,
+      "family_members": [
+        "scenic",
+        "scene"
+      ],
+      "meanings": [
+        {
+          "tr": "s. manzaralı, doğal güzelliği olan",
+          "ex": "The scenic road attracts visitors with wide views of forests, lakes, and mountains.",
+          "exTr": "Manzaralı yol ormanların, göllerin ve dağların geniş görüntüleriyle ziyaretçileri çeker."
+        }
+      ],
+      "card_example": "The scenic road attracts visitors with wide views of forests, lakes, and mountains.",
+      "card_example_tr": "Manzaralı yol ormanların, göllerin ve dağların geniş görüntüleriyle ziyaretçileri çeker.",
+      "test_sentence": "The proposed railway follows a scenic route through valleys, forests, and villages rarely visited by tourists.",
+      "test_sentence_tr": "Önerilen demiryolu, vadilerden, ormanlardan ve turistlerin nadiren ziyaret ettiği köylerden geçen manzaralı bir güzergâhı izler.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; scene ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.67; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "translator",
+      "tip": "isim",
+      "p": 7.9,
+      "source_score": 7.8643,
+      "family_members": [
+        "translator",
+        "translate"
+      ],
+      "meanings": [
+        {
+          "tr": "i. çevirmen",
+          "ex": "The translator consulted medical specialists to ensure that every instruction remained accurate.",
+          "exTr": "Çevirmen, her talimatın doğru kalmasını sağlamak için tıp uzmanlarına danıştı."
+        }
+      ],
+      "card_example": "The translator consulted medical specialists to ensure that every instruction remained accurate.",
+      "card_example_tr": "Çevirmen, her talimatın doğru kalmasını sağlamak için tıp uzmanlarına danıştı.",
+      "test_sentence": "A skilled translator must preserve technical accuracy while adapting expressions that have no direct equivalent in the target language.",
+      "test_sentence_tr": "Becerikli bir çevirmen, hedef dilde doğrudan karşılığı olmayan ifadeleri uyarlarken teknik doğruluğu korumalıdır.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; translate ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.67; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "distributor",
+      "tip": "isim",
+      "p": 7.8,
+      "source_score": 7.8429,
+      "family_members": [
+        "distributor",
+        "distribute"
+      ],
+      "meanings": [
+        {
+          "tr": "i. dağıtıcı, distribütör",
+          "ex": "The distributor stores vaccines at controlled temperatures before delivering them to regional clinics.",
+          "exTr": "Distribütör, aşıları bölgesel kliniklere ulaştırmadan önce kontrollü sıcaklıklarda depolar."
+        }
+      ],
+      "card_example": "The distributor stores vaccines at controlled temperatures before delivering them to regional clinics.",
+      "card_example_tr": "Distribütör, aşıları bölgesel kliniklere ulaştırmadan önce kontrollü sıcaklıklarda depolar.",
+      "test_sentence": "The manufacturer appointed a regional distributor to store the medicine safely and deliver it to remote clinics.",
+      "test_sentence_tr": "Üretici, ilacı güvenle depolayıp uzak kliniklere ulaştırması için bölgesel bir distribütör atadı.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; distribute ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.66; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "dominion",
+      "tip": "isim",
+      "p": 7.8,
+      "source_score": 7.8429,
+      "family_members": [
+        "dominion",
+        "dominate"
+      ],
+      "meanings": [
+        {
+          "tr": "i. egemenlik, hâkimiyet",
+          "ex": "The kingdom maintained dominion over the islands by controlling their principal ports.",
+          "exTr": "Krallık, başlıca limanlarını denetleyerek adalar üzerindeki egemenliğini sürdürdü."
+        }
+      ],
+      "card_example": "The kingdom maintained dominion over the islands by controlling their principal ports.",
+      "card_example_tr": "Krallık, başlıca limanlarını denetleyerek adalar üzerindeki egemenliğini sürdürdü.",
+      "test_sentence": "The empire gradually established dominion over coastal territories by controlling trade routes and appointing local governors.",
+      "test_sentence_tr": "İmparatorluk, ticaret yollarını denetleyip yerel valiler atayarak kıyı bölgeleri üzerinde zamanla egemenlik kurdu.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; dominate ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.66; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "manly",
+      "tip": "sıfat",
+      "p": 7.8,
+      "source_score": 7.8429,
+      "family_members": [
+        "manly",
+        "man"
+      ],
+      "meanings": [
+        {
+          "tr": "s. geleneksel olarak erkeksi sayılan",
+          "ex": "The novel questions whether silence and physical strength should be considered manly qualities.",
+          "exTr": "Roman, sessizlik ve fiziksel gücün erkeksi nitelikler sayılıp sayılmaması gerektiğini sorgular."
+        }
+      ],
+      "card_example": "The novel questions whether silence and physical strength should be considered manly qualities.",
+      "card_example_tr": "Roman, sessizlik ve fiziksel gücün erkeksi nitelikler sayılıp sayılmaması gerektiğini sorgular.",
+      "test_sentence": "The advertisement promoted a narrow idea of manly behaviour that discouraged boys from expressing fear or sadness.",
+      "test_sentence_tr": "Reklam, erkek çocuklarını korku veya üzüntü ifade etmekten caydıran dar bir erkeksi davranış anlayışını destekledi.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; man ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.66; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "maternity",
+      "tip": "isim",
+      "p": 7.8,
+      "source_score": 7.8429,
+      "family_members": [
+        "maternity",
+        "maternal"
+      ],
+      "meanings": [
+        {
+          "tr": "i. annelik; doğumla ilgili dönem",
+          "ex": "The hospital expanded its maternity services to improve care before and after childbirth.",
+          "exTr": "Hastane, doğum öncesi ve sonrası bakımı geliştirmek için doğum hizmetlerini genişletti."
+        }
+      ],
+      "card_example": "The hospital expanded its maternity services to improve care before and after childbirth.",
+      "card_example_tr": "Hastane, doğum öncesi ve sonrası bakımı geliştirmek için doğum hizmetlerini genişletti.",
+      "test_sentence": "Paid maternity leave allows new mothers to recover from childbirth without immediately losing income or employment.",
+      "test_sentence_tr": "Ücretli doğum izni, yeni annelerin gelirlerini veya işlerini hemen kaybetmeden doğumdan sonra iyileşmelerine olanak tanır.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; maternal ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.66; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "optimism",
+      "tip": "isim",
+      "p": 7.8,
+      "source_score": 7.8429,
+      "family_members": [
+        "optimism",
+        "optimistic"
+      ],
+      "meanings": [
+        {
+          "tr": "i. iyimserlik",
+          "ex": "Cautious optimism grew as infection rates declined for a third consecutive month.",
+          "exTr": "Enfeksiyon oranları art arda üçüncü ay düşünce temkinli iyimserlik arttı."
+        }
+      ],
+      "card_example": "Cautious optimism grew as infection rates declined for a third consecutive month.",
+      "card_example_tr": "Enfeksiyon oranları art arda üçüncü ay düşünce temkinli iyimserlik arttı.",
+      "test_sentence": "Careful optimism can motivate communities to act, provided that it does not obscure serious risks or costs.",
+      "test_sentence_tr": "Dikkatli iyimserlik, ciddi riskleri veya maliyetleri gizlememesi koşuluyla toplulukları harekete geçmeye teşvik edebilir.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; optimistic ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.66; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "repay",
+      "tip": "fiil",
+      "p": 7.8,
+      "source_score": 7.8429,
+      "family_members": [
+        "repay",
+        "repayment"
+      ],
+      "meanings": [
+        {
+          "tr": "f. geri ödemek; karşılığını vermek",
+          "ex": "Farmers can repay the loan after receiving income from the autumn harvest.",
+          "exTr": "Çiftçiler krediyi sonbahar hasadından gelir elde ettikten sonra geri ödeyebilir."
+        },
+        {
+          "tr": "f. iyiliğin karşılığını vermek",
+          "ex": "The researchers hoped to repay the community's trust by sharing the results openly.",
+          "exTr": "Araştırmacılar sonuçları açıkça paylaşarak toplumun güveninin karşılığını vermeyi umdu."
+        }
+      ],
+      "card_example": "Farmers can repay the loan after receiving income from the autumn harvest.",
+      "card_example_tr": "Çiftçiler krediyi sonbahar hasadından gelir elde ettikten sonra geri ödeyebilir.",
+      "test_sentence": "Borrowers must repay the loan gradually after their businesses begin generating stable monthly income from regular sales.",
+      "test_sentence_tr": "Borçlular, işletmeleri düzenli satışlardan istikrarlı aylık gelir üretmeye başladıktan sonra krediyi aşamalı olarak geri ödemelidir.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; repayment ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.66; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "deception",
+      "tip": "isim",
+      "p": 7.8,
+      "source_score": 7.8214,
+      "family_members": [
+        "deception",
+        "deceive"
+      ],
+      "meanings": [
+        {
+          "tr": "i. aldatma, hile",
+          "ex": "The company used deception to conceal safety failures from inspectors and investors.",
+          "exTr": "Şirket, güvenlik kusurlarını denetçilerden ve yatırımcılardan gizlemek için hileye başvurdu."
+        }
+      ],
+      "card_example": "The company used deception to conceal safety failures from inspectors and investors.",
+      "card_example_tr": "Şirket, güvenlik kusurlarını denetçilerden ve yatırımcılardan gizlemek için hileye başvurdu.",
+      "test_sentence": "The investigation uncovered deliberate deception intended to conceal the harmful environmental effects of the project from regulators.",
+      "test_sentence_tr": "Soruşturma, projenin zararlı çevresel etkilerini düzenleyicilerden gizlemeyi amaçlayan kasıtlı bir aldatmacayı ortaya çıkardı.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; deceive ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.65; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "exemption",
+      "tip": "isim",
+      "p": 7.8,
+      "source_score": 7.8214,
+      "family_members": [
+        "exemption",
+        "exempt"
+      ],
+      "meanings": [
+        {
+          "tr": "i. muafiyet",
+          "ex": "The charity received a temporary tax exemption because all its income supported public health projects.",
+          "exTr": "Hayır kurumu, gelirinin tamamı halk sağlığı projelerini desteklediği için geçici vergi muafiyeti aldı."
+        }
+      ],
+      "card_example": "The charity received a temporary tax exemption because all its income supported public health projects.",
+      "card_example_tr": "Hayır kurumu, gelirinin tamamı halk sağlığı projelerini desteklediği için geçici vergi muafiyeti aldı.",
+      "test_sentence": "Small organisations may request an exemption if compliance would create costs far beyond their available resources.",
+      "test_sentence_tr": "Küçük kuruluşlar, kurallara uyum mevcut kaynaklarının çok ötesinde maliyet yaratacaksa muafiyet talep edebilir.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; exempt ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.65; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "loneliness",
+      "tip": "isim",
+      "p": 7.8,
+      "source_score": 7.8214,
+      "family_members": [
+        "loneliness",
+        "lonely"
+      ],
+      "meanings": [
+        {
+          "tr": "i. yalnızlık",
+          "ex": "Regular community visits reduced loneliness among older adults living far from their relatives.",
+          "exTr": "Düzenli toplum ziyaretleri, akrabalarından uzakta yaşayan yaşlı yetişkinlerde yalnızlığı azalttı."
+        }
+      ],
+      "card_example": "Regular community visits reduced loneliness among older adults living far from their relatives.",
+      "card_example_tr": "Düzenli toplum ziyaretleri, akrabalarından uzakta yaşayan yaşlı yetişkinlerde yalnızlığı azalttı.",
+      "test_sentence": "Persistent loneliness can affect physical health by disrupting sleep, increasing stress, and reducing motivation for social activity.",
+      "test_sentence_tr": "Sürekli yalnızlık; uykuyu bozarak, stresi artırarak ve sosyal etkinlik isteğini azaltarak fiziksel sağlığı etkileyebilir.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; lonely ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.65; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "speedy",
+      "tip": "sıfat",
+      "p": 7.8,
+      "source_score": 7.8214,
+      "family_members": [
+        "speedy",
+        "speed"
+      ],
+      "meanings": [
+        {
+          "tr": "s. hızlı, çabuk",
+          "ex": "A speedy response prevented the fire from reaching nearby homes and dry woodland.",
+          "exTr": "Hızlı bir müdahale yangının yakındaki evlere ve kuru ormanlık alana ulaşmasını önledi."
+        }
+      ],
+      "card_example": "A speedy response prevented the fire from reaching nearby homes and dry woodland.",
+      "card_example_tr": "Hızlı bir müdahale yangının yakındaki evlere ve kuru ormanlık alana ulaşmasını önledi.",
+      "test_sentence": "Early diagnosis and speedy treatment greatly improve recovery when an infection progresses rapidly through the body.",
+      "test_sentence_tr": "Bir enfeksiyon vücutta hızla ilerlediğinde erken tanı ve hızlı tedavi iyileşmeyi büyük ölçüde geliştirir.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; speed ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.65; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "amazingly",
+      "tip": "zarf",
+      "p": 7.8,
+      "source_score": 7.8,
+      "family_members": [
+        "amazingly",
+        "amazing"
+      ],
+      "meanings": [
+        {
+          "tr": "z. şaşırtıcı derecede",
+          "ex": "The low-cost filter performed amazingly well during repeated tests with contaminated water.",
+          "exTr": "Düşük maliyetli filtre kirli suyla yapılan tekrarlı testlerde şaşırtıcı derecede iyi çalıştı."
+        }
+      ],
+      "card_example": "The low-cost filter performed amazingly well during repeated tests with contaminated water.",
+      "card_example_tr": "Düşük maliyetli filtre kirli suyla yapılan tekrarlı testlerde şaşırtıcı derecede iyi çalıştı.",
+      "test_sentence": "The small telescope performed amazingly well despite being assembled from inexpensive materials by students during the workshop.",
+      "test_sentence_tr": "Küçük teleskop, atölye sırasında öğrencilerce ucuz malzemelerden yapılmasına rağmen şaşırtıcı derecede iyi çalıştı.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki pertainym ilişkisi ve güncel baskın anlamı incelendi; amazing ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.64; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "lender",
+      "tip": "isim",
+      "p": 7.8,
+      "source_score": 7.8,
+      "family_members": [
+        "lender",
+        "lend"
+      ],
+      "meanings": [
+        {
+          "tr": "i. borç veren, kredi kuruluşu",
+          "ex": "The lender reviewed the applicant's income and debts before approving the mortgage.",
+          "exTr": "Kredi kuruluşu ipoteği onaylamadan önce başvuranın gelirini ve borçlarını inceledi."
+        }
+      ],
+      "card_example": "The lender reviewed the applicant's income and debts before approving the mortgage.",
+      "card_example_tr": "Kredi kuruluşu ipoteği onaylamadan önce başvuranın gelirini ve borçlarını inceledi.",
+      "test_sentence": "A cautious lender may request additional collateral when a small business has unstable revenue and limited credit history.",
+      "test_sentence_tr": "Temkinli bir kredi kuruluşu, küçük bir işletmenin geliri istikrarsız ve kredi geçmişi sınırlı olduğunda ek teminat isteyebilir.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; lend ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.64; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "mutant",
+      "tip": "sıfat, isim",
+      "p": 7.8,
+      "source_score": 7.8,
+      "family_members": [
+        "mutant",
+        "mutation"
+      ],
+      "meanings": [
+        {
+          "tr": "s. mutasyona uğramış",
+          "ex": "The mutant strain reproduced more rapidly than the original strain under laboratory conditions.",
+          "exTr": "Mutant suş laboratuvar koşullarında özgün suştan daha hızlı çoğaldı."
+        },
+        {
+          "tr": "i. mutant, mutasyona uğramış canlı veya hücre",
+          "ex": "The laboratory compared each mutant with an unchanged control organism.",
+          "exTr": "Laboratuvar her mutantı değişmemiş bir kontrol organizmasıyla karşılaştırdı."
+        }
+      ],
+      "card_example": "The mutant strain reproduced more rapidly than the original strain under laboratory conditions.",
+      "card_example_tr": "Mutant suş laboratuvar koşullarında özgün suştan daha hızlı çoğaldı.",
+      "test_sentence": "The mutant strain spread faster than the original virus but caused less severe disease in laboratory animals.",
+      "test_sentence_tr": "Mutant suş özgün virüsten daha hızlı yayıldı ancak laboratuvar hayvanlarında daha hafif hastalığa yol açtı.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki pertainym ilişkisi ve güncel baskın anlamı incelendi; mutation ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.64; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "restraint",
+      "tip": "isim",
+      "p": 7.8,
+      "source_score": 7.8,
+      "family_members": [
+        "restraint",
+        "restrain"
+      ],
+      "meanings": [
+        {
+          "tr": "i. kendini tutma, ölçülülük; kısıtlama",
+          "ex": "The negotiators showed restraint despite repeated attempts to provoke an angry response.",
+          "exTr": "Müzakereciler, öfkeli bir tepkiyi kışkırtmaya yönelik tekrarlı girişimlere rağmen kendilerini tuttu."
+        },
+        {
+          "tr": "i. kısıtlama; hareketi sınırlayan araç",
+          "ex": "The safety restraint prevented the passenger from being thrown forward during the collision.",
+          "exTr": "Güvenlik kısıtlayıcısı çarpışma sırasında yolcunun öne savrulmasını engelledi."
+        }
+      ],
+      "card_example": "The negotiators showed restraint despite repeated attempts to provoke an angry response.",
+      "card_example_tr": "Müzakereciler, öfkeli bir tepkiyi kışkırtmaya yönelik tekrarlı girişimlere rağmen kendilerini tuttu.",
+      "test_sentence": "Effective leadership requires restraint when immediate punishment could worsen conflict and prevent honest communication within the team.",
+      "test_sentence_tr": "Hemen cezalandırma çatışmayı kötüleştirip ekip içindeki dürüst iletişimi engelleyebileceğinde etkili liderlik ölçülülük gerektirir.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; restrain ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.64; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "enhancement",
+      "tip": "isim",
+      "p": 7.8,
+      "source_score": 7.7786,
+      "family_members": [
+        "enhancement",
+        "enhance"
+      ],
+      "meanings": [
+        {
+          "tr": "i. geliştirme, iyileştirme",
+          "ex": "The new lens produced a clear enhancement in image quality under low-light conditions.",
+          "exTr": "Yeni mercek düşük ışık koşullarında görüntü kalitesinde belirgin bir iyileşme sağladı."
+        }
+      ],
+      "card_example": "The new lens produced a clear enhancement in image quality under low-light conditions.",
+      "card_example_tr": "Yeni mercek düşük ışık koşullarında görüntü kalitesinde belirgin bir iyileşme sağladı.",
+      "test_sentence": "The software update introduced a major enhancement in image quality without increasing processing time or energy use.",
+      "test_sentence_tr": "Yazılım güncellemesi, işlem süresini veya enerji kullanımını artırmadan görüntü kalitesinde önemli bir iyileştirme getirdi.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; enhance ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.63; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "faulty",
+      "tip": "sıfat",
+      "p": 7.8,
+      "source_score": 7.7571,
+      "family_members": [
+        "faulty",
+        "fault"
+      ],
+      "meanings": [
+        {
+          "tr": "s. hatalı, kusurlu",
+          "ex": "A faulty valve allowed contaminated water to enter the building's main supply system.",
+          "exTr": "Kusurlu bir vana kirli suyun binanın ana besleme sistemine girmesine izin verdi."
+        }
+      ],
+      "card_example": "A faulty valve allowed contaminated water to enter the building's main supply system.",
+      "card_example_tr": "Kusurlu bir vana kirli suyun binanın ana besleme sistemine girmesine izin verdi.",
+      "test_sentence": "Investigators traced the accident to a faulty sensor that repeatedly reported safe pressure readings during the test.",
+      "test_sentence_tr": "Soruşturmacılar kazanın nedenini, test sırasında sürekli güvenli basınç değerleri bildiren kusurlu bir sensöre kadar izledi.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; fault ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.62; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "generosity",
+      "tip": "isim",
+      "p": 7.8,
+      "source_score": 7.7571,
+      "family_members": [
+        "generosity",
+        "generous"
+      ],
+      "meanings": [
+        {
+          "tr": "i. cömertlik",
+          "ex": "Donors' generosity allowed the rural clinic to replace essential diagnostic equipment.",
+          "exTr": "Bağışçıların cömertliği kırsal kliniğin temel tanı donanımını yenilemesine olanak tanıdı."
+        }
+      ],
+      "card_example": "Donors' generosity allowed the rural clinic to replace essential diagnostic equipment.",
+      "card_example_tr": "Bağışçıların cömertliği kırsal kliniğin temel tanı donanımını yenilemesine olanak tanıdı.",
+      "test_sentence": "The community's generosity enabled the clinic to replace damaged equipment and continue treating patients without charge.",
+      "test_sentence_tr": "Topluluğun cömertliği, kliniğin hasarlı donanımı yenilemesini ve hastaları ücretsiz tedavi etmeyi sürdürmesini sağladı.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; generous ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.62; doğrudan YDS sınav gözlemi yoktur."
+    },
+    {
+      "candidate": "regulator",
+      "tip": "isim",
+      "p": 7.8,
+      "source_score": 7.7571,
+      "family_members": [
+        "regulator",
+        "regulate"
+      ],
+      "meanings": [
+        {
+          "tr": "i. düzenleyici kurum veya görevli",
+          "ex": "The regulator ordered the company to disclose previously hidden environmental risks.",
+          "exTr": "Düzenleyici kurum, şirkete daha önce gizlenen çevresel riskleri açıklamasını emretti."
+        },
+        {
+          "tr": "i. akış, basınç veya gerilimi düzenleyen aygıt",
+          "ex": "A faulty pressure regulator caused the gas supply to fluctuate throughout the experiment.",
+          "exTr": "Arızalı bir basınç düzenleyicisi deney boyunca gaz akışının dalgalanmasına yol açtı."
+        }
+      ],
+      "card_example": "The regulator ordered the company to disclose previously hidden environmental risks.",
+      "card_example_tr": "Düzenleyici kurum, şirkete daha önce gizlenen çevresel riskleri açıklamasını emretti.",
+      "test_sentence": "The financial regulator imposed stricter reporting requirements after several banks concealed significant risks from investors and depositors.",
+      "test_sentence_tr": "Mali düzenleyici kurum, bazı bankalar yatırımcılardan ve mevduat sahiplerinden önemli riskleri gizledikten sonra daha sıkı raporlama koşulları getirdi.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "OEWN'deki derivation ilişkisi ve güncel baskın anlamı incelendi; regulate ailesine bağlı, ayrı bir modern lemma ve bağımsız çalışma kartı olarak yararlıdır. Zipf 3.62; doğrudan YDS sınav gözlemi yoktur."
+    }
+  ]
+}

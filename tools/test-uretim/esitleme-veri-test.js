@@ -12,6 +12,8 @@ vm.runInContext(fs.readFileSync(path.join(kok, 'assets', 'js', 'esitleme-veri.js
 
 var M = baglam.window.YDS.EsitlemeMotoru;
 var j = M.kararliJson;
+assert.strictEqual(M.SURUM, 2, 'yerel zarf sürümü değişmemeli');
+assert.strictEqual(M.BULUT_KODLAMA_SURUMU, 2, 'kısa bulut iç kodlama sürümü');
 function meta(z, aktor) { return function () { return String(z++) + ':' + aktor; }; }
 
 // Eski biçim kayıpsız taşınır ve iki cihazın farklı kelimeleri birleşir.
@@ -68,4 +70,74 @@ assert.strictEqual(gp.length, 50);
 assert.strictEqual(gp[0].t, 21);
 assert.strictEqual(gp[49].t, 70);
 
-console.log('esitleme-veri: 10 senaryo başarılı');
+// Büyük test-yanlış alanı bulutta kısa taşınır; aktif kayıt, silme işareti ve
+// sıfırlama metası kayıpsız açılır. Eski nesne biçimi de okunmaya devam eder.
+var testAlani = M.kayitlariYaz(M.zarfaCevir({}), 'yds-test-yanlis', {
+  ability: { n: 3, t: 90, u: 90 }, abandon: { n: 1, t: 80, u: 80 }
+}, meta(500, 'A'));
+testAlani = M.kayitlariSil(testAlani, 'yds-test-yanlis', ['abandon'], meta(600, 'A'));
+var hamTestAlani = testAlani.alanlar['yds-test-yanlis'];
+hamTestAlani.r = '450:A';
+hamTestAlani.i['custom-null'] = {
+  m: '650:B',
+  v: { n: null, t: 'bilinmiyor', u: false }
+};
+var kodluTestAlani = M.bulutAlaniniKodla('yds-test-yanlis', hamTestAlani);
+assert.strictEqual(kodluTestAlani.k, 2);
+assert.ok(Array.isArray(kodluTestAlani.i));
+assert.strictEqual(j(M.bulutAlaniniCoz('yds-test-yanlis', kodluTestAlani)), j(hamTestAlani));
+assert.strictEqual(kodluTestAlani.i.filter(function (satir) {
+  return satir[0] === 'custom-null';
+})[0][2], null, 'sayısal olmayan n/t kaydı standart biçime sıkıştırıldı');
+assert.strictEqual(j(M.bulutAlaniniCoz('yds-test-yanlis', hamTestAlani)), j(hamTestAlani));
+
+// İlk kısa dizi biçimi de geriye uyumlu okunur ve başka cihaz kaydıyla birleşir.
+var eskiKisaDizi = { k: 1, r: '699:A', i: [
+  ['legacy-active', '700:A', 0, { n: 2, t: 70 }],
+  ['legacy-deleted', '701:A', 1]
+] };
+var eskiKisaZarf = { surum: 2, alanlar: {
+  'yds-test-yanlis': M.bulutAlaniniCoz('yds-test-yanlis', eskiKisaDizi)
+} };
+assert.strictEqual(eskiKisaZarf.alanlar['yds-test-yanlis'].r, '699:A',
+  'k=1 sıfırlama metası kayboldu');
+var baskaCihaz = M.kayitlariYaz(M.zarfaCevir({}), 'yds-test-yanlis', {
+  remote: { n: 4, t: 72, u: 72 }
+}, meta(702, 'B'));
+var birlesmisTestler = M.birlestir(eskiKisaZarf, baskaCihaz);
+assert.strictEqual(M.paket(birlesmisTestler)['yds-test-yanlis']['legacy-active'].n, 2);
+assert.strictEqual(M.paket(birlesmisTestler)['yds-test-yanlis'].remote.n, 4);
+assert.strictEqual(M.paket(birlesmisTestler)['yds-test-yanlis']['legacy-deleted'], undefined);
+
+// Özel nesne anahtarları prototipe dönüşmeden gerçek kayıt olarak kalır.
+var ozelAlan = { i: Object.create(null) };
+ozelAlan.i.__proto__ = { m: '800:A', v: { n: 1, t: 80 } };
+var ozelCozulmus = M.bulutAlaniniCoz('yds-test-yanlis',
+  M.bulutAlaniniKodla('yds-test-yanlis', ozelAlan));
+assert.strictEqual(Object.getPrototypeOf(ozelCozulmus.i), null);
+assert.ok(Object.prototype.hasOwnProperty.call(ozelCozulmus.i, '__proto__'));
+assert.strictEqual(ozelCozulmus.i.__proto__.v.n, 1);
+
+// Legacy JSON'daki prototip adları, zarfa ve tekrar görünür pakete geçerken
+// own-property kimliğini korur; düz nesne ataması __proto__ kaydını yutmamalıdır.
+var legacyOzelPaket = JSON.parse('{"yds-test-yanlis":{' +
+  '"__proto__":{"n":2,"t":81,"u":81},' +
+  '"constructor":{"n":3,"t":82,"u":82},' +
+  '"normal":{"n":4,"t":83,"u":83}}}');
+var legacyOzelSonuc = M.paket(M.zarfaCevir(legacyOzelPaket))['yds-test-yanlis'];
+assert.strictEqual(Object.getPrototypeOf(legacyOzelSonuc), null);
+['__proto__', 'constructor', 'normal'].forEach(function (id) {
+  assert.ok(Object.prototype.hasOwnProperty.call(legacyOzelSonuc, id),
+    'legacy kimlik own-property olarak korunmadı: ' + id);
+});
+assert.strictEqual(legacyOzelSonuc.__proto__.n, 2);
+assert.strictEqual(legacyOzelSonuc.constructor.n, 3);
+assert.strictEqual(legacyOzelSonuc.normal.n, 4);
+
+// Leitner alanı da yalnız bulut taşımasında kısalır ve yerel kayıt birebir kalır.
+var leitnerKisa = M.bulutAlaniniKodla('yds-leitner', sekmeA.alanlar['yds-leitner']);
+assert.strictEqual(leitnerKisa.k, 2);
+assert.strictEqual(j(M.bulutAlaniniCoz('yds-leitner', leitnerKisa)),
+  j(sekmeA.alanlar['yds-leitner']));
+
+console.log('esitleme-veri: 15 senaryo başarılı');

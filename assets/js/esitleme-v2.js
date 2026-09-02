@@ -3,8 +3,10 @@
 
    Yerel ilerleme kayıt düzeyinde sürümlenir. Bulutta her eşitleme alanı ayrı
    belgede tutulur; böylece tüm kelime ve test ilerlemesi Firestore'un tek
-   belge başına 1 MiB sınırına dayanmaz:
-     kullanicilar/{uid}/alanlar/{anahtar} = { surum: 2, zaman, json }
+   belge başına 1 MiB sınırına dayanmaz. Yerel zarf sürümü 2 olarak kalır;
+   `yds-leitner` ve `yds-test-yanlis` dış belgeleri surum:3/k:2 kısa JSON,
+   diğer on alan dış surum:2/nesne JSON taşır:
+     kullanicilar/{uid}/alanlar/{anahtar} = { surum: 2|3, zaman, json }
 
    Her gönderim Firestore işlemi içinde önce güncel bulutu okur, yerelle
    birleştirir ve birleşimi yazar. Böylece aynı anda çalışan iki cihaz son
@@ -31,6 +33,10 @@
   var ETKIN_ANAHTARI = 'yds-bulut-etkin';
   var SILME_HAZIR = false;
   var BELGE_GUVENLI_BAYT = 900 * 1024;
+  // Yerel eşitleme zarfı M.SURUM=2 olarak kalır. Dış alan belgesinde sürüm 3,
+  // yalnız k=2 kısa JSON taşıyan büyük alanları eski v2 istemcilerden ayırır.
+  var BULUT_ALAN_LEGACY_SURUMU = 2;
+  var BULUT_ALAN_KISA_SURUMU = 3;
   var ALAN_ANAHTARLARI = Object.keys(M.TIPLER);
 
   var auth = null, db = null;
@@ -148,22 +154,56 @@
     return M.birlestir(zarf, bosZarf());
   }
 
+  function kisaBulutAlaniMi(anahtar) {
+    return anahtar === 'yds-leitner' || anahtar === 'yds-test-yanlis';
+  }
+
+  function bulutAlanBelgeSurumu(anahtar) {
+    return kisaBulutAlaniMi(anahtar)
+      ? BULUT_ALAN_KISA_SURUMU : BULUT_ALAN_LEGACY_SURUMU;
+  }
+
+  function bulutAlanSemaHatasi() {
+    var e = new Error('bulut-alan-semasi-gecersiz');
+    e.code = 'yds/bulut-json-gecersiz';
+    return e;
+  }
+
   function bulutAlanZarfi(foto, anahtar) {
     if (!foto || !foto.exists) return bosZarf();
     var veri = foto.data() || {};
-    if (veri.surum !== M.SURUM || typeof veri.json !== 'string' ||
+    if ((veri.surum !== BULUT_ALAN_LEGACY_SURUMU &&
+         veri.surum !== BULUT_ALAN_KISA_SURUMU) || typeof veri.json !== 'string' ||
         (veri.anahtar !== undefined && veri.anahtar !== anahtar)) {
-      var semaHatasi = new Error('bulut-alan-semasi-gecersiz');
-      semaHatasi.code = 'yds/bulut-json-gecersiz';
-      throw semaHatasi;
+      throw bulutAlanSemaHatasi();
     }
     try {
       var cozulmus = JSON.parse(veri.json);
       // Erken geliştirme kopyalarındaki tam zarf biçimini de kayıpsız kabul et.
-      if (cozulmus && cozulmus.surum === M.SURUM && cozulmus.alanlar) {
-        return tekAlanZarfi(anahtar, cozulmus.alanlar[anahtar]);
+      var tamZarf = cozulmus && cozulmus.surum === M.SURUM && cozulmus.alanlar;
+      if (veri.surum === BULUT_ALAN_KISA_SURUMU && tamZarf) {
+        throw bulutAlanSemaHatasi();
       }
-      return tekAlanZarfi(anahtar, cozulmus);
+      var alan = tamZarf ? cozulmus.alanlar[anahtar] : cozulmus;
+      if (!alan || typeof alan !== 'object' || Array.isArray(alan)) {
+        throw bulutAlanSemaHatasi();
+      }
+      if (veri.surum === BULUT_ALAN_KISA_SURUMU) {
+        if (!kisaBulutAlaniMi(anahtar) ||
+            alan.k !== M.BULUT_KODLAMA_SURUMU ||
+            !Array.isArray(alan.a) || !Array.isArray(alan.i)) {
+          throw bulutAlanSemaHatasi();
+        }
+      } else if (alan.k !== undefined) {
+        // Dış v2 belgede yalnız ilk kısa k=1 biçimi veya eski tam alan nesnesi
+        // geçerlidir. k=2 mutlaka dış sürüm 3 ile taşınır.
+        if (!kisaBulutAlaniMi(anahtar) || alan.k !== 1 || !Array.isArray(alan.i)) {
+          throw bulutAlanSemaHatasi();
+        }
+      } else if (!alan.i || typeof alan.i !== 'object' || Array.isArray(alan.i)) {
+        throw bulutAlanSemaHatasi();
+      }
+      return tekAlanZarfi(anahtar, M.bulutAlaniniCoz(anahtar, alan));
     } catch (e) {
       if (e && e.code === 'yds/bulut-json-gecersiz') throw e;
       var jsonHatasi = new Error('bulut-alan-json-gecersiz');
@@ -194,7 +234,12 @@
   }
 
   function alanBelgeVerisi(anahtar, json, zaman) {
-    var veri = { surum: M.SURUM, anahtar: anahtar, zaman: zaman, json: json };
+    var veri = {
+      surum: bulutAlanBelgeSurumu(anahtar),
+      anahtar: anahtar,
+      zaman: zaman,
+      json: json
+    };
     var bayt = utf8Bayt(JSON.stringify(veri));
     if (bayt >= BELGE_GUVENLI_BAYT) {
       var hata = new Error('alan-cok-buyuk');
@@ -266,10 +311,11 @@
         hedefAlanlar.forEach(function (anahtar, i) {
           var alan = birlesmis.alanlar && birlesmis.alanlar[anahtar];
           if (!alan) return;
-          var json = M.kararliJson(alan);
+          var json = M.bulutAlanJson(anahtar, alan);
           var foto = fotolar[i + alanBaslangici];
           var onceki = foto && foto.exists ? (foto.data() || {}) : {};
-          if (onceki.surum === M.SURUM && onceki.anahtar === anahtar &&
+          if (onceki.surum === bulutAlanBelgeSurumu(anahtar) &&
+              onceki.anahtar === anahtar &&
               onceki.json === json) return;
           islem.set(alanRefleri[i], alanBelgeVerisi(anahtar, json, simdi));
         });

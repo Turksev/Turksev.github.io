@@ -66,6 +66,52 @@ assert.strictEqual(M.kararliJson(D.paket()), M.kararliJson(normallesmisPaket));
 var gecisYedegi = JSON.parse(bellek.get('yds-esitleme-gecis-yedegi'));
 assert.strictEqual(M.kararliJson(gecisYedegi.veri), M.kararliJson(eskiPaket));
 
+// Doğrudan kayıt yazımı da boş alan fallback'inde prototip adlarını yutmamalı;
+// ardından K2 çözümü, görünür paket ve gerçek Depo.uygula yolu kayıpsız kalır.
+var dogrudanOzelKayitlar = JSON.parse('{' +
+  '"__proto__":{"n":2,"t":90,"u":90},' +
+  '"constructor":{"n":3,"t":91,"u":91},' +
+  '"normal":{"n":4,"t":92,"u":92}}');
+var dogrudanMeta = 9999999999900;
+var dogrudanOzelZarf = M.kayitlariYaz(M.zarfaCevir({}), 'yds-test-yanlis',
+  dogrudanOzelKayitlar, function () { return String(dogrudanMeta++) + ':P'; });
+var dogrudanPaket = M.paket(dogrudanOzelZarf)['yds-test-yanlis'];
+['__proto__', 'constructor', 'normal'].forEach(function (id) {
+  assert.ok(Object.prototype.hasOwnProperty.call(dogrudanPaket, id),
+    'kayitlariYaz -> paket kimliği kayboldu: ' + id);
+});
+var k2OzelZarf = { surum: M.SURUM, alanlar: {} };
+k2OzelZarf.alanlar['yds-test-yanlis'] = M.bulutAlaniniCoz('yds-test-yanlis',
+  M.bulutAlaniniKodla('yds-test-yanlis', dogrudanOzelZarf.alanlar['yds-test-yanlis']));
+D.uygula(k2OzelZarf, 'bulut');
+var k2Uygulanan = Depo.oku('yds-test-yanlis', {});
+['__proto__', 'constructor', 'normal'].forEach(function (id) {
+  assert.ok(Object.prototype.hasOwnProperty.call(k2Uygulanan, id),
+    'k2 decode -> paket -> uygula kimliği kayboldu: ' + id);
+});
+assert.strictEqual(k2Uygulanan.__proto__.n, 2);
+assert.strictEqual(k2Uygulanan.constructor.n, 3);
+assert.strictEqual(k2Uygulanan.normal.n, 4);
+
+// Boş alan fallback'inden oluşturulan __proto__ tombstone'u da K2 turunda
+// own-property kalır ve uygulandığında yalnız hedef kaydı siler.
+var ozelSilme = M.kayitlariSil(M.zarfaCevir({}), 'yds-test-yanlis', ['__proto__'],
+  function () { return '9999999999990:P'; });
+assert.ok(Object.prototype.hasOwnProperty.call(ozelSilme.alanlar['yds-test-yanlis'].i,
+  '__proto__'), 'kayitlariSil tombstone kimliği kayboldu');
+var ozelSilmeAlani = M.bulutAlaniniCoz('yds-test-yanlis',
+  M.bulutAlaniniKodla('yds-test-yanlis', ozelSilme.alanlar['yds-test-yanlis']));
+assert.ok(Object.prototype.hasOwnProperty.call(ozelSilmeAlani.i, '__proto__'),
+  'tombstone K2 round-trip kimliği kayboldu');
+assert.strictEqual(ozelSilmeAlani.i.__proto__.d, 1);
+var ozelSilmeZarfi = { surum: M.SURUM, alanlar: {} };
+ozelSilmeZarfi.alanlar['yds-test-yanlis'] = ozelSilmeAlani;
+D.uygula(ozelSilmeZarfi, 'bulut');
+var silmeUygulanan = Depo.oku('yds-test-yanlis', {});
+assert.strictEqual(Object.prototype.hasOwnProperty.call(silmeUygulanan, '__proto__'), false);
+assert.ok(Object.prototype.hasOwnProperty.call(silmeUygulanan, 'constructor'));
+assert.ok(Object.prototype.hasOwnProperty.call(silmeUygulanan, 'normal'));
+
 // Hassas kayıt yazımı mevcut kartı ezmeden yenisini ekler.
 Depo.kayitlariYaz('yds-leitner', { alpha: { k: 2, g: 20, c: 15 } });
 assert.deepStrictEqual(Object.keys(Depo.oku('yds-leitner', {})).sort(), ['alpha', 'base']);
@@ -94,4 +140,4 @@ D.uygula(M.zarfaCevir({ 'yds-yanlis': [{ a: 'K|S', kat: 'K', n: 1, t: 10 }] }), 
 assert.deepStrictEqual(temiz(Depo.oku('yds-yanlis', [])), []);
 
 assert.ok(bildirilen.some(function (e) { return e.type === 'yds-depo-degisti'; }));
-console.log('esitleme-depo: 8 senaryo başarılı');
+console.log('esitleme-depo: 9 senaryo başarılı');

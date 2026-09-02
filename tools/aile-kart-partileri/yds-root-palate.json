@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "batchId": "yds-root-palate",
+  "policy": {
+    "purpose": "İnsan denetimli YDS kelime ailesi tamamlama partisi",
+    "displayScoreDecimals": 1,
+    "lowScoreLayerRule": "source_score < 10 => K7",
+    "preserveExistingLexicalizedCards": true,
+    "meaningStars": {
+      "primary": 4,
+      "secondary": 2
+    },
+    "testWordRange": [
+      15,
+      36
+    ],
+    "provenance": "Sınav kimliği, sayfa/soru, yüzey biçimi ve rol; soru metni içermez"
+  },
+  "cards": [
+    {
+      "candidate": "palate",
+      "tip": "isim",
+      "p": 7.2,
+      "source_score": 7.1786,
+      "family_members": [
+        "palate",
+        "palatine"
+      ],
+      "meanings": [
+        {
+          "tr": "i. damak, ağız tavanı",
+          "ex": "The hard palate separates the oral cavity from the nasal passages.",
+          "exTr": "Sert damak, ağız boşluğunu burun kanallarından ayırır."
+        },
+        {
+          "tr": "i. tat alma yetisi; damak zevki",
+          "ex": "Repeated exposure to unfamiliar spices gradually broadened her palate.",
+          "exTr": "Alışılmadık baharatlarla tekrar tekrar karşılaşmak onun damak zevkini zamanla geliştirdi."
+        }
+      ],
+      "card_example": "The hard palate separates the oral cavity from the nasal passages.",
+      "card_example_tr": "Sert damak, ağız boşluğunu burun kanallarından ayırır.",
+      "test_sentence": "A trained palate can distinguish subtle differences in aroma, acidity and texture that inexperienced tasters may easily overlook.",
+      "test_sentence_tr": "Eğitimli bir damak, deneyimsiz tadımcıların kolayca gözden kaçırabileceği aroma, asitlik ve dokudaki ince farklılıkları ayırt edebilir.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "oewn_refs": [
+        {
+          "sense_id": "oewn-palatine__3.01.02..",
+          "relation": "pertainym",
+          "target": "palate"
+        }
+      ],
+      "decision": "add",
+      "reason": "Palatine kartının OEWN pertainym bağı palate kökünü gösterir; kullanıcı kuralı gereği kök ayrı kart eklenir ve YDS'de sözlükselleşmiş palatine kartı korunur."
+    }
+  ]
+}

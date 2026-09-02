@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "policy": {
+    "canonicalCardOnly": true,
+    "preserveProgress": true,
+    "surfaceAliasesAreSearchAndProgressAliases": true,
+    "provenance": "Soru metni olmadan sınav/yüzey/rol kaydı"
+  },
+  "aliases": [
+    {
+      "candidate": "categorize",
+      "canonical": "categorise",
+      "decision": "alias",
+      "tip": "fiil",
+      "p": 8.8,
+      "source_score": 8.792,
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "eYDS_2015_08",
+          "page": 4,
+          "question": 29,
+          "surface": "categorized",
+          "role": "celdirici"
+        }
+      ],
+      "reason": "Amerikan yazım varyantıdır; mevcut Britanya yazımı 'categorise' kanonik kart olarak korunur ve ayrı ilerleme kartı oluşturulmaz.",
+      "surfaceAliases": [
+        {
+          "alias": "categorized",
+          "canonical": "categorised",
+          "tip": "fiil, sıfat yüzey biçimi",
+          "source_refs": [
+            {
+              "exam_id": "eYDS_2015_08",
+              "page": 4,
+              "question": 29,
+              "surface": "categorized",
+              "role": "celdirici"
+            }
+          ],
+          "reason": "Sınavda görülen Amerikan geçmiş/ortaç yüzeyi, mevcut Britanya yazımlı categorised kartına arama ve ilerleme aliası olarak bağlanır."
+        }
+      ]
+    },
+    {
+      "candidate": "colonize",
+      "canonical": "colonise",
+      "decision": "alias",
+      "p": 8.5,
+      "source_score": 8.492,
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2018_03",
+          "page": 17,
+          "question": null,
+          "surface": "colonized",
+          "role": "metin"
+        }
+      ],
+      "canonical_source_score": 9.3055,
+      "reason": "Amerikan yazım varyantıdır; mevcut colonise kartı daha yüksek kaynak puanına ve iki doğrudan YDS kullanımına sahiptir. Ayrı ilerleme kartı açılmadan colonise kartına alias olarak bağlanmalıdır.",
+      "tip": "fiil",
+      "surfaceAliases": [
+        {
+          "alias": "colonized",
+          "canonical": "colonise",
+          "tip": "fiil, sıfat yüzey biçimi",
+          "source_refs": [
+            {
+              "exam_id": "YDS_2018_03",
+              "page": 17,
+              "question": null,
+              "surface": "colonized",
+              "role": "metin"
+            }
+          ],
+          "reason": "Sınavda görülen Amerikan geçmiş/ortaç yüzeyi, ayrı çekim kartı açılmadan Britanya yazımlı colonise kök kartına bağlanır."
+        }
+      ]
+    },
+    {
+      "candidate": "favourably",
+      "canonical": "favorably",
+      "decision": "alias",
+      "tip": "zarf",
+      "p": 8.8,
+      "source_score": 8.792,
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2015_02",
+          "page": 3,
+          "question": 3,
+          "surface": "favourably",
+          "role": "celdirici"
+        }
+      ],
+      "reason": "Britanya yazım varyantıdır; gerçek YDS metninde kanıtlı ve daha yüksek puanlı favorably kanonik kartına bağlanır, ayrı ilerleme kartı oluşturulmaz.",
+      "surfaceAliases": []
+    },
+    {
+      "candidate": "advisor",
+      "canonical": "adviser",
+      "decision": "alias",
+      "tip": "isim",
+      "p": 8.6,
+      "source_score": 8.5929,
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "reason": "Advisor, mevcut adviser kartının aynı anlamlı Amerikan yazım varyantıdır; ayrı ilerleme kartı yerine adviser kanoniğine yönlendirilmelidir.",
+      "surfaceAliases": []
+    },
+    {
+      "candidate": "offence",
+      "canonical": "offense",
+      "decision": "alias",
+      "tip": "isim",
+      "p": 8.5,
+      "source_score": 8.4857,
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "reason": "Offence, mevcut offense kartının aynı anlamlı Britanya yazım varyantıdır; ayrı ilerleme kartı yerine offense kanoniğine yönlendirilmelidir.",
+      "surfaceAliases": []
+    },
+    {
+      "candidate": "honorable",
+      "canonical": "honourable",
+      "decision": "alias",
+      "tip": "sıfat",
+      "p": 8.2,
+      "source_score": 8.1643,
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "reason": "Honorable, mevcut honourable kartının aynı anlamlı Amerikan yazım varyantıdır; ayrı ilerleme kartı yerine honourable kanoniğine yönlendirilmelidir.",
+      "surfaceAliases": []
+    },
+    {
+      "candidate": "optimization",
+      "canonical": "optimisation",
+      "decision": "alias",
+      "tip": "isim",
+      "p": 7.8,
+      "source_score": 7.8429,
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "reason": "Amerikan yazımıdır; kanonik Britanya yazımı optimisation, ilk yüksek-güven paketinde source_score 9.8993 olan yeni kart olarak korunacaktır. Aynı lemma için ikinci kart açılmaz.",
+      "surfaceAliases": [],
+      "canonical_source_score": 9.8993
+    }
+  ]
+}

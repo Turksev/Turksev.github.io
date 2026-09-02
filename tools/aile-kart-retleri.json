@@ -1,0 +1,274 @@
+{
+  "schemaVersion": 1,
+  "policy": {
+    "noCardOrTest": true,
+    "requireReason": true,
+    "provenance": "Soru metni olmadan sınav/yüzey/rol kaydı"
+  },
+  "rejections": [
+    {
+      "candidate": "heavy-duty",
+      "decision": "reject",
+      "tip": "sıfat",
+      "p": 9.7,
+      "source_score": 9.6857,
+      "exams": 0,
+      "freq": 0,
+      "familyRoot": "heavy",
+      "reviewedAgainst": [
+        "heavy",
+        "heavily"
+      ],
+      "source_refs": [],
+      "reason": "Üretken bir bileşik sıfattır; heavily ile otomatik pertainym eşleşmesi sözlüksel aile bağı kurmaz ve doğrudan YDS kanıtı yoktur."
+    },
+    {
+      "candidate": "knee-length",
+      "decision": "reject",
+      "tip": "sıfat",
+      "p": 9.0,
+      "source_score": 9.0,
+      "exams": 0,
+      "freq": 0,
+      "familyRoot": "knee",
+      "reviewedAgainst": [
+        "knee"
+      ],
+      "source_refs": [],
+      "reason": "Knee + length ile kurulan üretken bileşiktir; knee ile otomatik ilişki ayrı bir sözlüksel aile kartı gerektirmez ve doğrudan YDS kanıtı yoktur."
+    },
+    {
+      "candidate": "convertibly",
+      "decision": "reject",
+      "tip": "zarf",
+      "p": 3.4,
+      "source_score": 3.4208,
+      "exams": 1,
+      "freq": 2,
+      "familyRoot": "convertible",
+      "reviewedAgainst": [
+        "convertible"
+      ],
+      "source_refs": [
+        {
+          "exam_id": "YDS_2019_01",
+          "page": 3,
+          "question": 4,
+          "surface": "convertibly",
+          "role": "celdirici"
+        }
+      ],
+      "reason": "Yalnız çeldirici olarak görülür; doğru seçenek/metin kanıtı, Zipf kullanımı ve OEWN ya da başka modern sözlüksel kanıtı bulunmadığından kart açılmaz."
+    },
+    {
+      "candidate": "interest-bearing",
+      "decision": "reject",
+      "tip": "sıfat",
+      "p": 8.9,
+      "source_score": 8.9357,
+      "exams": 0,
+      "freq": 0,
+      "familyRoot": "interest",
+      "reviewedAgainst": [
+        "interest"
+      ],
+      "source_refs": [],
+      "reason": "Faiz getiren anlamındaki şeffaf ve üretken bir finans bileşiğidir; bağımsız aile kartı açmak bileşik üretimini gereksiz yere çoğaltır."
+    },
+    {
+      "candidate": "spring-loaded",
+      "decision": "reject",
+      "tip": "sıfat",
+      "p": 8.9,
+      "source_score": 8.9357,
+      "exams": 0,
+      "freq": 0,
+      "familyRoot": "spring",
+      "reviewedAgainst": [
+        "spring"
+      ],
+      "source_refs": [],
+      "reason": "Yay mekanizmalı anlamındaki şeffaf, teknik ve üretken bir bileşiktir; ayrı genel YDS lemma kartı olarak düşük pedagojik değer taşır."
+    },
+    {
+      "candidate": "place-kicking",
+      "decision": "reject",
+      "tip": "isim",
+      "p": 8.9,
+      "source_score": 8.8929,
+      "exams": 0,
+      "freq": 0,
+      "familyRoot": "place-kick",
+      "reviewedAgainst": [
+        "place-kick"
+      ],
+      "source_refs": [],
+      "reason": "Duran topa vurma anlamındaki dar bir spor terimi ve place-kick eylem adıdır; genel YDS söz varlığı için fazla özeldir."
+    },
+    {
+      "candidate": "ill-usage",
+      "decision": "reject",
+      "tip": "isim",
+      "p": 8.8,
+      "source_score": 8.8071,
+      "exams": 0,
+      "freq": 0,
+      "familyRoot": "ill-use",
+      "reviewedAgainst": [
+        "ill-use"
+      ],
+      "source_refs": [],
+      "reason": "Kötü muamele anlamındaki arkaik ve tireli bir biçimdir; çağdaş kullanımda mistreatment veya ill-treatment çok daha işlevseldir."
+    },
+    {
+      "candidate": "warner",
+      "decision": "reject",
+      "tip": "isim",
+      "p": 8.8,
+      "source_score": 8.8071,
+      "exams": 0,
+      "freq": 0,
+      "familyRoot": "warn",
+      "reviewedAgainst": [
+        "warn"
+      ],
+      "source_refs": [],
+      "reason": "Uyarıda bulunan kişi anlamındaki seyrek ve faydasız bir agent noun'dur; Zipf değeri büyük ölçüde Warner özel adından şişebilir."
+    },
+    {
+      "candidate": "lung-like",
+      "decision": "reject",
+      "tip": "sıfat",
+      "p": 8.8,
+      "source_score": 8.7857,
+      "exams": 0,
+      "freq": 0,
+      "familyRoot": "lung",
+      "reviewedAgainst": [
+        "lung"
+      ],
+      "source_refs": [],
+      "reason": "Akciğere benzer anlamını doğrudan veren üretken -like bileşiğidir; teknik bağlam dışında bağımsız lemma olarak çalışılması verimsizdir."
+    },
+    {
+      "candidate": "simple-minded",
+      "decision": "reject",
+      "tip": "sıfat",
+      "p": 8.8,
+      "source_score": 8.7857,
+      "exams": 0,
+      "freq": 0,
+      "familyRoot": "simplicity",
+      "reviewedAgainst": [
+        "simplicity"
+      ],
+      "source_refs": [],
+      "reason": "-minded ile kurulmuş üretken bir bileşiktir; baskın saf/dar görüşlü anlamını doğrudan simplicity ailesine bağlamak aşırı genelleme yaratır."
+    },
+    {
+      "candidate": "protestant",
+      "decision": "reject",
+      "tip": "sıfat, isim",
+      "p": 8.2,
+      "source_score": 8.1643,
+      "exams": 0,
+      "freq": 0,
+      "familyRoot": "protest",
+      "reviewedAgainst": [
+        "protest"
+      ],
+      "source_refs": [],
+      "reason": "Baskın çağdaş anlamı Protestan mezhebine bağlı kişi veya sıfattır; protest ile olan nadir protesting sense'i üzerinden aile kurmak semantik olarak yanıltıcıdır."
+    },
+    {
+      "candidate": "horny",
+      "decision": "reject",
+      "tip": "sıfat",
+      "p": 8.1,
+      "source_score": 8.1214,
+      "exams": 0,
+      "freq": 0,
+      "familyRoot": "horn",
+      "reviewedAgainst": [
+        "horn"
+      ],
+      "source_refs": [],
+      "reason": "Baskın çağdaş anlamı 'cinsel olarak uyarılmış'tır; horn ile kurulan yüzeysel aile bağı pedagojik olarak yanıltıcıdır."
+    },
+    {
+      "candidate": "cone-shaped",
+      "decision": "reject",
+      "tip": "sıfat",
+      "p": 8.0,
+      "source_score": 7.9714,
+      "exams": 0,
+      "freq": 0,
+      "familyRoot": "cone",
+      "reviewedAgainst": [
+        "cone"
+      ],
+      "source_refs": [],
+      "reason": "Cone + shaped ile düzenli biçimde üretilebilen bir bileşiktir; ayrı aile kartı yerine bağlam içinde çözümlenebilir."
+    },
+    {
+      "candidate": "single-stranded",
+      "decision": "reject",
+      "tip": "sıfat",
+      "p": 7.9,
+      "source_score": 7.9071,
+      "exams": 0,
+      "freq": 0,
+      "familyRoot": "strand",
+      "reviewedAgainst": [
+        "strand"
+      ],
+      "source_refs": [],
+      "reason": "Strand ile düzenli üretilen, moleküler biyolojiye özgü teknik bir bileşiktir; ayrı genel YDS aile kartı verimsizdir."
+    },
+    {
+      "candidate": "humane",
+      "decision": "reject",
+      "tip": "sıfat",
+      "p": 7.8,
+      "source_score": 7.7571,
+      "exams": 0,
+      "freq": 0,
+      "familyRoot": "humanities",
+      "reviewedAgainst": [
+        "humanities"
+      ],
+      "source_refs": [],
+      "reason": "Compassionate anlamındaki humane ile humanities arasındaki önerilen bağ baskın anlam bakımından yanıltıcıdır."
+    },
+    {
+      "candidate": "buff",
+      "decision": "reject",
+      "tip": "sıfat, isim, fiil",
+      "p": 7.7,
+      "source_score": 7.6929,
+      "exams": 0,
+      "freq": 0,
+      "familyRoot": "buffer",
+      "reviewedAgainst": [
+        "buffer"
+      ],
+      "source_refs": [],
+      "reason": "Buff kartının baskın anlamları meraklı kişi, sarımsı kahverengi renk ve parlatmaktır; mevcut buffer kartının tampon/koruma anlamıyla yalnız dar bir parlatma aracı sense'inde kesişir. Aile bağı yanıltıcı olur."
+    },
+    {
+      "candidate": "installment",
+      "decision": "reject",
+      "tip": "isim",
+      "p": 7.7,
+      "source_score": 7.6714,
+      "exams": 0,
+      "freq": 0,
+      "familyRoot": "install",
+      "reviewedAgainst": [
+        "install"
+      ],
+      "source_refs": [],
+      "reason": "Baskın ödeme taksiti ve dizi bölümü anlamları install fiiliyle çağdaş ve şeffaf bir anlam ailesi oluşturmaz; yalnız seyrek 'kurma işlemi' sense'i OEWN bağını üretir. Bu bağ pedagojik olarak yanıltıcıdır."
+    }
+  ]
+}

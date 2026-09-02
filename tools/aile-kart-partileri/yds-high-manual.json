@@ -1,0 +1,844 @@
+{
+  "schemaVersion": 1,
+  "batchId": "yds-high-manual",
+  "policy": {
+    "purpose": "İnsan denetimli YDS kelime ailesi tamamlama partisi",
+    "displayScoreDecimals": 1,
+    "lowScoreLayerRule": "source_score < 10 => K7",
+    "preserveExistingLexicalizedCards": true,
+    "meaningStars": {
+      "primary": 4,
+      "secondary": 2
+    },
+    "testWordRange": [
+      15,
+      36
+    ],
+    "provenance": "Sınav kimliği, sayfa/soru, yüzey biçimi ve rol; soru metni içermez"
+  },
+  "cards": [
+    {
+      "candidate": "bloody",
+      "tip": "sıfat, zarf, fiil",
+      "p": 13.7,
+      "source_score": 13.6714,
+      "family_members": [
+        "bloody",
+        "blood"
+      ],
+      "meanings": [
+        {
+          "tr": "s. kanlı, kana bulanmış",
+          "ex": "The investigators found a bloody cloth beside the remains.",
+          "exTr": "Araştırmacılar kalıntıların yanında kana bulanmış bir bez buldu."
+        },
+        {
+          "tr": "f. kanatmak, kana bulamak",
+          "ex": "Sharp branches can bloody the skin of animals moving through dense scrub.",
+          "exTr": "Keskin dallar sık çalılıktan geçen hayvanların derisini kanatabilir."
+        },
+        {
+          "tr": "z. (Britanya İngilizcesi, gayriresmî) çok, aşırı derecede",
+          "ex": "The emergency repair proved bloody expensive for the small museum.",
+          "exTr": "Acil onarım küçük müze için aşırı pahalıya mal oldu."
+        }
+      ],
+      "card_example": "The investigators found a bloody cloth beside the remains.",
+      "card_example_tr": "Araştırmacılar kalıntıların yanında kana bulanmış bir bez buldu.",
+      "test_sentence": "The prolonged conflict left the border region bloody, unstable and increasingly difficult for humanitarian organisations to reach safely.",
+      "test_sentence_tr": "Uzun süren çatışma sınır bölgesini kanlı, istikrarsız ve insani yardım kuruluşlarının güvenle ulaşmasının giderek zorlaştığı bir hâlde bıraktı.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "oewn_refs": [
+        {
+          "sense_id": "oewn-bloody__3.00.00..",
+          "relation": "derivation",
+          "target": "blood"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN'de blood ile doğrudan türetim bağı bulunan, Zipf 4,28 düzeyinde modern ve bağımsız bir sözcüktür; YDS örneği olmaması eklenmesini engellemez."
+    },
+    {
+      "candidate": "captivate",
+      "tip": "fiil",
+      "p": 9.8,
+      "source_score": 9.8412,
+      "family_members": [
+        "captivate",
+        "captive"
+      ],
+      "meanings": [
+        {
+          "tr": "f. büyülemek, cezbetmek; bütün ilgisini çekmek",
+          "ex": "The exhibition captivated visitors with its reconstruction of daily life in ancient cities.",
+          "exTr": "Sergi, antik kentlerdeki günlük yaşamı yeniden canlandırmasıyla ziyaretçileri büyüledi."
+        }
+      ],
+      "card_example": "The exhibition captivated visitors with its reconstruction of daily life in ancient cities.",
+      "card_example_tr": "Sergi, antik kentlerdeki günlük yaşamı yeniden canlandırmasıyla ziyaretçileri büyüledi.",
+      "test_sentence": "The lecturer used vivid archaeological evidence to captivate an audience that had previously shown little interest in ancient history.",
+      "test_sentence_tr": "Konuşmacı, daha önce antik tarihe pek ilgi göstermemiş bir dinleyici kitlesini büyülemek için canlı arkeolojik kanıtlar kullandı.",
+      "exams": 2,
+      "freq": 2,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2018_03",
+          "page": 28,
+          "question": null,
+          "surface": "captivated",
+          "role": "metin"
+        },
+        {
+          "exam_id": "YDS_2019_02",
+          "page": 14,
+          "question": null,
+          "surface": "captivated",
+          "role": "metin"
+        }
+      ],
+      "oewn_refs": [
+        {
+          "sense_id": "oewn-captivate__2.37.00..",
+          "relation": "derivation",
+          "target": "captive"
+        }
+      ],
+      "decision": "add",
+      "reason": "İki YDS sınavında captivated biçimiyle kullanılmıştır; OEWN modern 'cezbetmek' anlamını captive'in duygu tarafından tutulmuş kişi sense'iyle doğrudan bağlar."
+    },
+    {
+      "candidate": "despair",
+      "tip": "isim, fiil",
+      "p": 8.2,
+      "source_score": 8.1857,
+      "family_members": [
+        "despair",
+        "desperate",
+        "desperation"
+      ],
+      "meanings": [
+        {
+          "tr": "i. umutsuzluk, çaresizlik",
+          "ex": "A sense of despair spread through the community after the final source of income disappeared.",
+          "exTr": "Son gelir kaynağı da ortadan kalkınca topluluğa bir umutsuzluk duygusu yayıldı."
+        },
+        {
+          "tr": "f. umutsuzluğa kapılmak, ümidini kesmek",
+          "ex": "Researchers did not despair when the first series of experiments failed.",
+          "exTr": "Araştırmacılar ilk deney dizisi başarısız olduğunda ümitlerini kesmedi."
+        }
+      ],
+      "card_example": "A sense of despair spread through the community after the final source of income disappeared.",
+      "card_example_tr": "Son gelir kaynağı da ortadan kalkınca topluluğa bir umutsuzluk duygusu yayıldı.",
+      "test_sentence": "Families may despair when repeated droughts destroy their crops, kill their livestock and eliminate every reliable source of income.",
+      "test_sentence_tr": "Tekrarlanan kuraklıklar ekinlerini yok edip hayvanlarını öldürdüğünde ve her güvenilir gelir kaynağını ortadan kaldırdığında aileler umutsuzluğa kapılabilir.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "oewn_refs": [
+        {
+          "sense_id": "oewn-despair__2.37.00..",
+          "relation": "derivation",
+          "target": "desperation"
+        },
+        {
+          "sense_id": "oewn-despair__2.37.00..",
+          "relation": "derivation",
+          "target": "desperate"
+        }
+      ],
+      "decision": "add",
+      "reason": "Zipf 3,82 ile yaygın, modern bir isim/fiildir; OEWN, fiil sense'ini mevcut desperation ve desperate üyelerine doğrudan bağlar."
+    },
+    {
+      "candidate": "earthy",
+      "tip": "sıfat",
+      "p": 9.9,
+      "source_score": 9.8922,
+      "family_members": [
+        "earthy",
+        "earth"
+      ],
+      "meanings": [
+        {
+          "tr": "s. toprağımsı; toprak kokulu veya tatlı",
+          "ex": "The tea has an earthy aroma that becomes stronger as it cools.",
+          "exTr": "Çayın, soğudukça güçlenen toprağımsı bir aroması vardır."
+        },
+        {
+          "tr": "s. doğal, sade ve gösterişsiz",
+          "ex": "The architect chose earthy colours that blended with the surrounding landscape.",
+          "exTr": "Mimar, çevredeki manzarayla uyum sağlayan doğal ve sade renkler seçti."
+        }
+      ],
+      "card_example": "The tea has an earthy aroma that becomes stronger as it cools.",
+      "card_example_tr": "Çayın, soğudukça güçlenen toprağımsı bir aroması vardır.",
+      "test_sentence": "Roasted roots give the traditional drink a distinctly earthy flavour that many consumers associate with fresh soil and mushrooms.",
+      "test_sentence_tr": "Kavrulmuş kökler geleneksel içeceğe birçok tüketicinin taze toprak ve mantarla ilişkilendirdiği belirgin biçimde toprağımsı bir tat verir.",
+      "exams": 1,
+      "freq": 2,
+      "source_refs": [
+        {
+          "exam_id": "eYDS_2016_08",
+          "page": 6,
+          "question": 80,
+          "surface": "earthy",
+          "role": "soru_koku"
+        }
+      ],
+      "oewn_refs": [
+        {
+          "sense_id": "oewn-earthy__3.01.00..",
+          "relation": "derivation+pertainym",
+          "target": "earth"
+        }
+      ],
+      "decision": "add",
+      "reason": "e-YDS metninde çikolatanın tat niteliği olarak iki kez geçmiştir; gözlenen sense OEWN'de earth ile derivation ve pertainym bağı taşır."
+    },
+    {
+      "candidate": "engagement",
+      "tip": "isim",
+      "p": 9.2,
+      "source_score": 9.2357,
+      "family_members": [
+        "engagement",
+        "engage"
+      ],
+      "meanings": [
+        {
+          "tr": "i. katılım, ilgilenme; etkileşim",
+          "ex": "Regular feedback increased student engagement in the online course.",
+          "exTr": "Düzenli geri bildirim çevrim içi derste öğrenci katılımını artırdı."
+        },
+        {
+          "tr": "i. nişan, evlenme vaadi",
+          "ex": "The couple announced their engagement after returning from the expedition.",
+          "exTr": "Çift keşif gezisinden döndükten sonra nişanlarını duyurdu."
+        },
+        {
+          "tr": "i. önceden kararlaştırılmış görev veya randevu",
+          "ex": "The minister cancelled a public engagement because of the emergency meeting.",
+          "exTr": "Bakan acil toplantı nedeniyle önceden planlanmış bir kamu görevini iptal etti."
+        }
+      ],
+      "card_example": "Regular feedback increased student engagement in the online course.",
+      "card_example_tr": "Düzenli geri bildirim çevrim içi derste öğrenci katılımını artırdı.",
+      "test_sentence": "Sustained community engagement is essential when a conservation project changes how local residents may use shared land and water.",
+      "test_sentence_tr": "Bir koruma projesi yerel halkın ortak araziyi ve suyu nasıl kullanabileceğini değiştirdiğinde toplumun sürekli katılımı hayati önem taşır.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "oewn_refs": [
+        {
+          "sense_id": "oewn-engagement__1.04.00..",
+          "relation": "derivation",
+          "target": "engage"
+        }
+      ],
+      "decision": "add",
+      "reason": "Zipf 4,31 ile çok yaygın akademik bir isimdir; OEWN katılım, istihdam, nişan ve mekanik temas senselerinde engage ile doğrudan türetim bağları gösterir."
+    },
+    {
+      "candidate": "favorably",
+      "tip": "zarf",
+      "p": 9.4,
+      "source_score": 9.392,
+      "family_members": [
+        "favorably",
+        "favorable",
+        "favourable"
+      ],
+      "meanings": [
+        {
+          "tr": "z. olumlu biçimde, takdirle; lehte",
+          "ex": "Reviewers responded favorably to the revised research proposal.",
+          "exTr": "Hakemler gözden geçirilmiş araştırma önerisine olumlu karşılık verdi."
+        },
+        {
+          "tr": "z. avantajlı veya iyi görünecek biçimde",
+          "ex": "The new treatment compares favorably with existing alternatives.",
+          "exTr": "Yeni tedavi mevcut alternatiflerle karşılaştırıldığında avantajlı görünmektedir."
+        }
+      ],
+      "card_example": "Reviewers responded favorably to the revised research proposal.",
+      "card_example_tr": "Hakemler gözden geçirilmiş araştırma önerisine olumlu karşılık verdi.",
+      "test_sentence": "Independent reviewers reacted favorably after the company published transparent emissions data and accepted responsibility for its earlier reporting errors.",
+      "test_sentence_tr": "Şirket şeffaf emisyon verileri yayımlayıp önceki raporlama hatalarının sorumluluğunu üstlendikten sonra bağımsız değerlendiriciler olumlu tepki verdi.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2017_02",
+          "page": 23,
+          "question": null,
+          "surface": "favorably",
+          "role": "metin"
+        }
+      ],
+      "oewn_refs": [
+        {
+          "sense_id": "oewn-favorably__4.02.00..",
+          "relation": "pertainym",
+          "target": "favorable"
+        }
+      ],
+      "decision": "add",
+      "reason": "Amerikan yazımı gerçek YDS metninde kullanılmış, daha yüksek kaynak puanına sahip ve OEWN'de favorable ile doğrudan pertainym bağı taşımaktadır; favourably bu karta alias olmalıdır."
+    },
+    {
+      "candidate": "hearty",
+      "tip": "sıfat",
+      "p": 9.8,
+      "source_score": 9.7777,
+      "family_members": [
+        "hearty",
+        "heart",
+        "heartily"
+      ],
+      "meanings": [
+        {
+          "tr": "s. içten, candan, coşkulu",
+          "ex": "The discovery was greeted with hearty applause from the audience.",
+          "exTr": "Keşif, dinleyicilerin içten ve coşkulu alkışlarıyla karşılandı."
+        },
+        {
+          "tr": "s. bol, doyurucu",
+          "ex": "A hearty breakfast helped the climbers maintain their energy throughout the morning.",
+          "exTr": "Doyurucu bir kahvaltı dağcıların sabah boyunca enerjilerini korumasına yardımcı oldu."
+        }
+      ],
+      "card_example": "The discovery was greeted with hearty applause from the audience.",
+      "card_example_tr": "Keşif, dinleyicilerin içten ve coşkulu alkışlarıyla karşılandı.",
+      "test_sentence": "The comedian's final remark produced hearty laughter throughout the crowded hall and briefly interrupted the live television broadcast.",
+      "test_sentence_tr": "Komedyenin son sözü kalabalık salonun tamamında içten bir kahkahaya yol açtı ve canlı televizyon yayınını kısa süreliğine kesti.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2019_03",
+          "page": 22,
+          "question": null,
+          "surface": "hearty",
+          "role": "metin"
+        }
+      ],
+      "oewn_refs": [
+        {
+          "sense_id": "oewn-hearty__5.00.00.warm.02",
+          "relation": "derivation",
+          "target": "heart"
+        },
+        {
+          "sense_id": "oewn-heartily__4.02.01..",
+          "relation": "pertainym",
+          "target": "hearty"
+        }
+      ],
+      "decision": "add",
+      "reason": "YDS'de hearty laughter kalıbıyla geçmiştir; modern POS sıfattır ve OEWN heart/heartily ile doğru sense bağlarını doğrular. Kaynak verideki seyrek isim etiketi alınmamıştır."
+    },
+    {
+      "candidate": "humanist",
+      "tip": "isim, sıfat",
+      "p": 9.1,
+      "source_score": 9.1134,
+      "family_members": [
+        "humanist",
+        "humanities"
+      ],
+      "meanings": [
+        {
+          "tr": "i. hümanist; insan aklını, onurunu veya refahını öne çıkaran kişi",
+          "ex": "Renaissance humanists translated classical works and circulated them among European scholars.",
+          "exTr": "Rönesans hümanistleri klasik eserleri çevirdi ve Avrupalı bilim insanları arasında dolaşıma soktu."
+        },
+        {
+          "tr": "s. hümanizme veya beşeri bilimlere ilişkin",
+          "ex": "The curriculum reflects a humanist emphasis on history, literature and ethical reasoning.",
+          "exTr": "Müfredat tarih, edebiyat ve etik akıl yürütmeye yönelik hümanist bir vurgu taşır."
+        }
+      ],
+      "card_example": "Renaissance humanists translated classical works and circulated them among European scholars.",
+      "card_example_tr": "Rönesans hümanistleri klasik eserleri çevirdi ve Avrupalı bilim insanları arasında dolaşıma soktu.",
+      "test_sentence": "The philosopher defended a humanist view that placed human dignity, rational inquiry and individual responsibility at the centre of ethics.",
+      "test_sentence_tr": "Filozof, insan onurunu, akılcı sorgulamayı ve bireysel sorumluluğu etiğin merkezine yerleştiren hümanist bir görüşü savundu.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2019_02",
+          "page": 9,
+          "question": null,
+          "surface": "humanists",
+          "role": "metin"
+        }
+      ],
+      "oewn_refs": [
+        {
+          "sense_id": "oewn-humanist__3.01.00..",
+          "relation": "pertainym",
+          "target": "humanities"
+        }
+      ],
+      "decision": "add",
+      "reason": "YDS'de Renaissance humanists biçiminde kullanılmıştır; OEWN gözlenen Rönesans/beşeri bilimler sense'ini humanities ile pertainym üzerinden bağlar."
+    },
+    {
+      "candidate": "neutrally",
+      "tip": "zarf",
+      "p": 7.2,
+      "source_score": 7.2063,
+      "family_members": [
+        "neutrally",
+        "neutral"
+      ],
+      "meanings": [
+        {
+          "tr": "z. tarafsız, yansız biçimde",
+          "ex": "The mediator described both proposals neutrally before inviting discussion.",
+          "exTr": "Arabulucu tartışmayı başlatmadan önce iki öneriyi de tarafsız biçimde açıkladı."
+        },
+        {
+          "tr": "z. nötr biçimde; olumlu veya olumsuz değer yüklemeden",
+          "ex": "The term is used neutrally in the report rather than as criticism.",
+          "exTr": "Terim raporda eleştiri olarak değil, nötr biçimde kullanılmaktadır."
+        }
+      ],
+      "card_example": "The mediator described both proposals neutrally before inviting discussion.",
+      "card_example_tr": "Arabulucu tartışmayı başlatmadan önce iki öneriyi de tarafsız biçimde açıkladı.",
+      "test_sentence": "Survey questions should be phrased neutrally so that participants are not pushed toward a positive or negative response.",
+      "test_sentence_tr": "Anket soruları, katılımcıları olumlu ya da olumsuz bir yanıta yöneltmeyecek şekilde tarafsız biçimde ifade edilmelidir.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2017_01",
+          "page": 26,
+          "question": null,
+          "surface": "neutrally",
+          "role": "metin"
+        }
+      ],
+      "oewn_refs": [],
+      "decision": "add",
+      "reason": "YDS metninde doğrudan kullanılmış üretken neutral+-ly zarfıdır. OEWN 2025'te ayrı lemma/sense kaydı bulunmadığından ilişki GCIDE POS kanıtı ve düzenli türetimle doğrulanmıştır."
+    },
+    {
+      "candidate": "nutty",
+      "tip": "sıfat",
+      "p": 9.4,
+      "source_score": 9.3706,
+      "family_members": [
+        "nutty",
+        "nut"
+      ],
+      "meanings": [
+        {
+          "tr": "s. kuruyemiş tadında veya kokusunda",
+          "ex": "The roasted seeds give the sauce a rich, nutty flavour.",
+          "exTr": "Kavrulmuş tohumlar sosa yoğun, kuruyemişimsi bir tat verir."
+        },
+        {
+          "tr": "s. (gayriresmî) kaçık, çılgınca",
+          "ex": "The proposal sounded nutty at first, but the pilot study produced promising results.",
+          "exTr": "Öneri ilk başta çılgınca geldi ancak pilot çalışma umut verici sonuçlar üretti."
+        }
+      ],
+      "card_example": "The roasted seeds give the sauce a rich, nutty flavour.",
+      "card_example_tr": "Kavrulmuş tohumlar sosa yoğun, kuruyemişimsi bir tat verir.",
+      "test_sentence": "Some varieties of cocoa develop a distinctly nutty aroma after roasting, with notes resembling almonds, hazelnuts and toasted seeds.",
+      "test_sentence_tr": "Bazı kakao türleri kavrulduktan sonra badem, fındık ve kavrulmuş tohumları andıran notalarla belirgin biçimde kuruyemişimsi bir aroma geliştirir.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "eYDS_2016_08",
+          "page": 6,
+          "question": 80,
+          "surface": "nutty",
+          "role": "soru_koku"
+        }
+      ],
+      "oewn_refs": [
+        {
+          "sense_id": "oewn-nutty__5.00.00.tasty.00",
+          "relation": "derivation",
+          "target": "nut"
+        }
+      ],
+      "decision": "add",
+      "reason": "e-YDS'de çikolata tadı betimleyicisi olarak geçmiştir; bu sense OEWN'de nut ile doğrudan derivation bağı taşır."
+    },
+    {
+      "candidate": "operative",
+      "tip": "sıfat, isim",
+      "p": 8.3,
+      "source_score": 8.2714,
+      "family_members": [
+        "operative",
+        "operate",
+        "operation"
+      ],
+      "meanings": [
+        {
+          "tr": "s. işler durumda; yürürlükte veya etkili",
+          "ex": "The emergency communication system remained operative throughout the storm.",
+          "exTr": "Acil iletişim sistemi fırtına boyunca işler durumda kaldı."
+        },
+        {
+          "tr": "s. ameliyata veya cerrahi tedaviye ilişkin",
+          "ex": "The surgeon discussed both operative and non-operative treatment options.",
+          "exTr": "Cerrah hem cerrahi hem cerrahi olmayan tedavi seçeneklerini görüştü."
+        },
+        {
+          "tr": "i. görevli, özellikle gizli ajan",
+          "ex": "The operative transmitted the information without revealing her identity.",
+          "exTr": "Gizli görevli kimliğini açığa çıkarmadan bilgiyi iletti."
+        }
+      ],
+      "card_example": "The emergency communication system remained operative throughout the storm.",
+      "card_example_tr": "Acil iletişim sistemi fırtına boyunca işler durumda kaldı.",
+      "test_sentence": "The new safety rule becomes operative only after publication in the official register and formal notification of all regulated institutions.",
+      "test_sentence_tr": "Yeni güvenlik kuralı ancak resmî sicilde yayımlanıp düzenlemeye tabi bütün kurumlara resmen bildirildikten sonra yürürlüğe girer.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "oewn_refs": [
+        {
+          "sense_id": "oewn-operative__5.00.00.functioning.00",
+          "relation": "derivation",
+          "target": "operate"
+        },
+        {
+          "sense_id": "oewn-operative__3.00.04..",
+          "relation": "derivation",
+          "target": "operation"
+        }
+      ],
+      "decision": "add",
+      "reason": "Zipf 3,86 düzeyinde modern ve akademik bir sözcüktür; OEWN işleyiş ve cerrahi senselerini mevcut operate/operation kartlarına doğrudan bağlar."
+    },
+    {
+      "candidate": "palatine",
+      "tip": "sıfat, isim",
+      "p": 8.5,
+      "source_score": 8.5134,
+      "family_members": [
+        "palatine",
+        "palate"
+      ],
+      "meanings": [
+        {
+          "tr": "s. damağa veya damak bölgesine ait",
+          "ex": "The palatine tonsils help detect pathogens entering through the mouth and nose.",
+          "exTr": "Damak bademcikleri ağız ve burundan giren patojenlerin algılanmasına yardımcı olur."
+        },
+        {
+          "tr": "i. damak kemiği",
+          "ex": "The scan showed a small fracture in the left palatine.",
+          "exTr": "Tarama sol damak kemiğinde küçük bir kırık gösterdi."
+        }
+      ],
+      "card_example": "The palatine tonsils help detect pathogens entering through the mouth and nose.",
+      "card_example_tr": "Damak bademcikleri ağız ve burundan giren patojenlerin algılanmasına yardımcı olur.",
+      "test_sentence": "Inflammation of the palatine tonsils can make swallowing painful and may cause recurrent fever, snoring and persistent throat discomfort.",
+      "test_sentence_tr": "Damak bademciklerinin iltihaplanması yutkunmayı ağrılı hâle getirebilir; tekrarlayan ateşe, horlamaya ve kalıcı boğaz rahatsızlığına yol açabilir.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2020_01",
+          "page": 24,
+          "question": null,
+          "surface": "palatine",
+          "role": "metin"
+        }
+      ],
+      "oewn_refs": [
+        {
+          "sense_id": "oewn-palatine__3.01.02..",
+          "relation": "pertainym",
+          "target": "palate"
+        }
+      ],
+      "decision": "add",
+      "reason": "YDS'deki palatine tonsils kullanımı palate/damak sense'indedir; palate kökü ayrı kart olarak eklenmiş ve palace ile yalnız tarihsel başka bir sense'e dayanan yanlış aile bağlantısı reddedilmiştir."
+    },
+    {
+      "candidate": "prayer",
+      "tip": "isim",
+      "p": 9.5,
+      "source_score": 9.4714,
+      "family_members": [
+        "prayer",
+        "pray"
+      ],
+      "meanings": [
+        {
+          "tr": "i. dua; dua etme eylemi veya metni",
+          "ex": "The community gathered for prayer after the earthquake.",
+          "exTr": "Topluluk depremden sonra dua etmek için bir araya geldi."
+        },
+        {
+          "tr": "i. yakarış, içten dilek veya rica",
+          "ex": "Their prayer for safe passage was finally answered when the road reopened.",
+          "exTr": "Güvenli geçişe ilişkin dilekleri yol yeniden açıldığında sonunda karşılık buldu."
+        }
+      ],
+      "card_example": "The community gathered for prayer after the earthquake.",
+      "card_example_tr": "Topluluk depremden sonra dua etmek için bir araya geldi.",
+      "test_sentence": "The public ceremony ended with a brief prayer for the families who had lost relatives during the devastating earthquake.",
+      "test_sentence_tr": "Halka açık tören, yıkıcı deprem sırasında yakınlarını kaybeden aileler için edilen kısa bir duayla sona erdi.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "oewn_refs": [
+        {
+          "sense_id": "oewn-prayer__1.04.00..",
+          "relation": "derivation",
+          "target": "pray"
+        }
+      ],
+      "decision": "add",
+      "reason": "Zipf 4,42 ile çok yaygın, modern bir isimdir; OEWN temel dua sense'lerini mevcut pray fiiline doğrudan bağlar."
+    },
+    {
+      "candidate": "predation",
+      "tip": "isim",
+      "p": 8.7,
+      "source_score": 8.7492,
+      "family_members": [
+        "predation",
+        "predate",
+        "predator",
+        "predatory"
+      ],
+      "meanings": [
+        {
+          "tr": "i. yırtıcılık; bir canlının başka bir canlıyı avlaması",
+          "ex": "Ground-nesting birds face intense predation from introduced mammals.",
+          "exTr": "Yerde yuva yapan kuşlar, bölgeye sonradan getirilen memelilerin yoğun av baskısıyla karşı karşıyadır."
+        },
+        {
+          "tr": "i. yağma, talan",
+          "ex": "The weakened settlements became vulnerable to predation by armed groups.",
+          "exTr": "Zayıflayan yerleşimler silahlı grupların yağmasına karşı savunmasız hâle geldi."
+        }
+      ],
+      "card_example": "Ground-nesting birds face intense predation from introduced mammals.",
+      "card_example_tr": "Yerde yuva yapan kuşlar, bölgeye sonradan getirilen memelilerin yoğun av baskısıyla karşı karşıyadır.",
+      "test_sentence": "Protective colouring can reduce the risk of predation for small animals living in open habitats with little natural cover.",
+      "test_sentence_tr": "Koruyucu renklenme, doğal örtünün az olduğu açık habitatlarda yaşayan küçük hayvanların avlanma riskini azaltabilir.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2018_03",
+          "page": 26,
+          "question": null,
+          "surface": "predation",
+          "role": "metin"
+        }
+      ],
+      "oewn_refs": [
+        {
+          "sense_id": "oewn-predation__1.04.00..",
+          "relation": "derivation",
+          "target": "predate"
+        }
+      ],
+      "decision": "add",
+      "reason": "YDS metninde ekolojik avlanma anlamıyla geçmiştir; OEWN bu sense'i predate'in 'prey on or hunt for' sense'ine doğrudan bağlar ve mevcut predator/predatory ailesini tamamlar."
+    },
+    {
+      "candidate": "radial",
+      "tip": "sıfat, isim",
+      "p": 7.4,
+      "source_score": 7.3929,
+      "family_members": [
+        "radial",
+        "radius",
+        "ray"
+      ],
+      "meanings": [
+        {
+          "tr": "s. merkezden dışarı doğru uzanan, ışınsal veya yarıçapsal",
+          "ex": "The city developed a radial transport network centred on the old station.",
+          "exTr": "Şehir eski istasyonu merkez alan ışınsal bir ulaşım ağı geliştirdi."
+        },
+        {
+          "tr": "s. ön kolun radius kemiğine ait",
+          "ex": "The patient reported pain along the radial side of the wrist.",
+          "exTr": "Hasta bileğin radius kemiği tarafında ağrı bildirdi."
+        },
+        {
+          "tr": "i. radyal lastik",
+          "ex": "Radials generally generate less heat during long-distance driving.",
+          "exTr": "Radyal lastikler uzun mesafeli sürüşte genellikle daha az ısı üretir."
+        }
+      ],
+      "card_example": "The city developed a radial transport network centred on the old station.",
+      "card_example_tr": "Şehir eski istasyonu merkez alan ışınsal bir ulaşım ağı geliştirdi.",
+      "test_sentence": "The petals form a radial pattern around the centre of the flower, allowing visiting insects to approach from every direction.",
+      "test_sentence_tr": "Taç yapraklar çiçeğin merkezi çevresinde ışınsal bir desen oluşturarak ziyaretçi böceklerin her yönden yaklaşmasına olanak tanır.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "oewn_refs": [
+        {
+          "sense_id": "oewn-radial__3.01.00..",
+          "relation": "derivation+pertainym",
+          "target": "radius"
+        },
+        {
+          "sense_id": "oewn-radial__3.01.02..",
+          "relation": "pertainym",
+          "target": "ray"
+        }
+      ],
+      "decision": "add",
+      "reason": "Zipf 3,45 ile bilimsel ve teknik metinlerde kullanılan modern bir sözcüktür; OEWN radius ile iki doğrudan bağ ve ışık sense'inde ray ile pertainym verir."
+    },
+    {
+      "candidate": "shapely",
+      "tip": "sıfat",
+      "p": 8.0,
+      "source_score": 8.0206,
+      "family_members": [
+        "shapely",
+        "shape"
+      ],
+      "meanings": [
+        {
+          "tr": "s. biçimli, düzgün ve hoş orantılı; özellikle düzgün vücutlu",
+          "ex": "The sculpture has a shapely form that appears balanced from every angle.",
+          "exTr": "Heykel, her açıdan dengeli görünen biçimli bir forma sahiptir."
+        }
+      ],
+      "card_example": "The sculpture has a shapely form that appears balanced from every angle.",
+      "card_example_tr": "Heykel, her açıdan dengeli görünen biçimli bir forma sahiptir.",
+      "test_sentence": "The study examined why a shapely body is associated with health and fertility in some cultures but not in others.",
+      "test_sentence_tr": "Çalışma, biçimli bir bedenin bazı kültürlerde neden sağlık ve doğurganlıkla ilişkilendirilirken diğerlerinde ilişkilendirilmediğini inceledi.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2016_02",
+          "page": 23,
+          "question": null,
+          "surface": "shapely",
+          "role": "metin"
+        }
+      ],
+      "oewn_refs": [
+        {
+          "sense_id": "oewn-shapely__3.00.00..",
+          "relation": "derivation",
+          "target": "shape"
+        }
+      ],
+      "decision": "add",
+      "reason": "YDS'de body figure nitelemesi olarak geçmiştir; OEWN bu modern sense'i shape'in görsel biçim sense'ine doğrudan bağlar."
+    },
+    {
+      "candidate": "spongy",
+      "tip": "sıfat",
+      "p": 8.1,
+      "source_score": 8.1492,
+      "family_members": [
+        "spongy",
+        "sponge"
+      ],
+      "meanings": [
+        {
+          "tr": "s. süngerimsi, yumuşak ve gözenekli",
+          "ex": "The spongy tissue stores water during long dry periods.",
+          "exTr": "Süngerimsi doku uzun kurak dönemlerde su depolar."
+        },
+        {
+          "tr": "s. emici, sıkılınca sıvıyı geri verebilen",
+          "ex": "A spongy material was placed beneath the sample to absorb excess liquid.",
+          "exTr": "Fazla sıvıyı emmesi için örneğin altına emici, süngerimsi bir malzeme yerleştirildi."
+        }
+      ],
+      "card_example": "The spongy tissue stores water during long dry periods.",
+      "card_example_tr": "Süngerimsi doku uzun kurak dönemlerde su depolar.",
+      "test_sentence": "The desert plant survives prolonged drought by retaining moisture in its spongy leaves and tightly packed network of branches.",
+      "test_sentence_tr": "Çöl bitkisi, süngerimsi yapraklarında ve sıkıca örülmüş dal ağında nem tutarak uzun süren kuraklığa dayanır.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2017_01",
+          "page": 6,
+          "question": null,
+          "surface": "spongy",
+          "role": "metin"
+        }
+      ],
+      "oewn_refs": [
+        {
+          "sense_id": "oewn-spongy__5.00.00.soft.01",
+          "relation": "derivation",
+          "target": "sponge"
+        }
+      ],
+      "decision": "add",
+      "reason": "YDS'de bir bitkiyi betimleyen bilimsel kullanımda geçmiştir; OEWN hem yumuşak-gözenekli hem emici senseleri sponge'a doğrudan bağlar."
+    },
+    {
+      "candidate": "watery",
+      "tip": "sıfat",
+      "p": 9.4,
+      "source_score": 9.3706,
+      "family_members": [
+        "watery",
+        "water"
+      ],
+      "meanings": [
+        {
+          "tr": "s. sulu, suyla dolu veya su gibi",
+          "ex": "The fruit has a watery flesh that helps the plant disperse its seeds.",
+          "exTr": "Meyvenin, bitkinin tohumlarını yaymasına yardımcı olan sulu bir eti vardır."
+        },
+        {
+          "tr": "s. sulanmış; gözyaşı veya salgıyla ıslak",
+          "ex": "Watery eyes are a common symptom of seasonal allergies.",
+          "exTr": "Sulanmış gözler mevsimsel alerjilerin yaygın bir belirtisidir."
+        },
+        {
+          "tr": "s. fazla sulandırılmış, zayıf ve tatsız",
+          "ex": "The soup became watery after too much stock was added.",
+          "exTr": "Çok fazla et suyu eklenince çorba sulandı ve tatsızlaştı."
+        }
+      ],
+      "card_example": "The fruit has a watery flesh that helps the plant disperse its seeds.",
+      "card_example_tr": "Meyvenin, bitkinin tohumlarını yaymasına yardımcı olan sulu bir eti vardır.",
+      "test_sentence": "The viral infection may cause redness, itching and watery discharge from the eyes, especially during the first few days.",
+      "test_sentence_tr": "Viral enfeksiyon, özellikle ilk birkaç gün boyunca gözlerde kızarıklığa, kaşıntıya ve sulu akıntıya neden olabilir.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2021_01",
+          "page": 20,
+          "question": null,
+          "surface": "watery",
+          "role": "metin"
+        }
+      ],
+      "oewn_refs": [
+        {
+          "sense_id": "oewn-watery__5.00.02.wet.01",
+          "relation": "derivation",
+          "target": "water"
+        }
+      ],
+      "decision": "add",
+      "reason": "YDS'de watery eyes kalıbıyla geçmiştir; OEWN sulanmış ve su benzeri senseleri water ile doğrudan derivation bağına sahiptir."
+    }
+  ]
+}

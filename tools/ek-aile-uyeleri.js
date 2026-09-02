@@ -142,6 +142,68 @@ window.EK_AILE_UYELERI = {
 "succession": {"tip":"isim","p":12.9,"tr":"i. ardıllık, art arda gelme; veraset","ex":"A succession of mild winters allowed the insect population to expand rapidly.","exTr":"Art arda gelen ılıman kışlar, böcek nüfusunun hızla artmasına olanak tanıdı."},
 
 
+"motivation": {"tip":"isim","p":23.9,"tr":"i. motivasyon, güdülenme; harekete geçiren neden","ex":"A clear sense of progress can sustain students' motivation during a demanding language course.","exTr":"Açık bir ilerleme duygusu, zorlu bir dil kursu boyunca öğrencilerin motivasyonunu sürdürebilir."},
+
+"mislead": {"tip":"fiil","p":14.9,"tr":"f. yanıltmak, yanlış yönlendirmek","ex":"A graph can mislead readers if its scale exaggerates a relatively small change.","exTr":"Bir grafik, ölçeği görece küçük bir değişimi abartırsa okuyucuları yanıltabilir."},
+
+"inherit": {"tip":"fiil","p":14.5,"tr":"f. miras almak; kalıtsal olarak edinmek, devralmak","ex":"Children may inherit a genetic mutation without ever developing the disease associated with it.","exTr":"Çocuklar, ilişkili hastalığa hiç yakalanmadan genetik bir mutasyonu kalıtsal olarak edinebilir."},
+
+"misunderstand": {"tip":"fiil","p":14.3,"tr":"f. yanlış anlamak, yanlış yorumlamak","ex":"Readers may misunderstand the conclusion if the distinction between correlation and causation is not made clear.","exTr":"Korelasyon ile nedensellik arasındaki ayrım açıklanmazsa okuyucular sonucu yanlış anlayabilir."},
+
+"terrify": {"tip":"fiil","p":14.3,"tr":"f. dehşete düşürmek, çok korkutmak","ex":"Reports of rare side effects can terrify patients even when the actual risk is extremely low.","exTr":"Nadir yan etkilere ilişkin haberler, gerçek risk son derece düşük olsa bile hastaları dehşete düşürebilir."},
+
+"obsess": {"tip":"fiil","p":14.2,"tr":"f. zihnini sürekli meşgul etmek, aklına takılmak","ex":"The possibility of finding life beneath the ice continued to obsess planetary scientists.","exTr":"Buzun altında yaşam bulma olasılığı, gezegen bilimcilerin zihnini sürekli meşgul etmeyi sürdürdü."},
+
+"bathe": {"tip":"fiil, isim","p":14.0,"anlamlar":[
+  {"tr":"f. yıkanmak, yüzmek; yıkamak","ex":"Villagers were advised not to bathe in the river until the source of the contamination was identified.","exTr":"Kirliliğin kaynağı belirlenene kadar köylülere nehirde yüzmemeleri tavsiye edildi."},
+  {"tr":"i. yüzme, yıkanma","ex":"A brief bathe in cold water may feel refreshing, but it does not replace proper heat precautions.","exTr":"Soğuk suda kısa bir yüzme ferahlatıcı gelebilir, ancak sıcağa karşı uygun önlemlerin yerini tutmaz."}
+]},
+
+"contaminate": {"tip":"fiil","p":13.7,"tr":"f. kirletmek; zararlı madde veya mikropla bulaştırmak","ex":"Untreated industrial waste can contaminate groundwater used by communities many kilometres downstream.","exTr":"Arıtılmamış sanayi atıkları, kilometrelerce aşağıdaki toplulukların kullandığı yer altı suyunu kirletebilir."},
+
+"disable": {"tip":"fiil","p":13.6,"tr":"f. devre dışı bırakmak; işlevsiz hâle getirmek","ex":"A single software error can disable the monitoring system without damaging any physical equipment.","exTr":"Tek bir yazılım hatası, hiçbir fiziksel donanıma zarar vermeden izleme sistemini devre dışı bırakabilir."},
+
+"intrigue": {"tip":"fiil, isim","p":13.3,"anlamlar":[
+  {"tr":"f. merakını uyandırmak, ilgisini çekmek","ex":"The ability of certain birds to navigate at night continues to intrigue researchers.","exTr":"Bazı kuşların gece yön bulma yeteneği araştırmacıların ilgisini çekmeye devam ediyor."},
+  {"tr":"i. entrika, gizli plan","ex":"The historian found evidence of political intrigue behind the sudden removal of the minister.","exTr":"Tarihçi, bakanın aniden görevden alınmasının ardında siyasi entrikaya ilişkin kanıt buldu."}
+]},
+
+"populate": {"tip":"fiil","p":12.7,"tr":"f. yerleşmek, nüfuslandırmak; doldurmak","ex":"Archaeological evidence suggests that humans began to populate the island much earlier than previously believed.","exTr":"Arkeolojik kanıtlar, insanların adaya daha önce sanılandan çok daha erken yerleşmeye başladığını gösteriyor."},
+
+"irritate": {"tip":"fiil","p":12.7,"tr":"f. tahriş etmek; rahatsız etmek, sinirlendirmek","ex":"Fine particles in polluted air can irritate the lungs and worsen existing respiratory conditions.","exTr":"Kirli havadaki ince parçacıklar akciğerleri tahriş edebilir ve mevcut solunum rahatsızlıklarını kötüleştirebilir."},
+
+"tactic": {"tip":"isim","p":12.4,"tr":"i. taktik, belirli bir amaca yönelik yöntem","ex":"Presenting a temporary discount as a final offer is a common marketing tactic.","exTr":"Geçici bir indirimi son teklifmiş gibi sunmak yaygın bir pazarlama taktiğidir."},
+
+"situate": {"tip":"fiil","p":12.2,"tr":"f. yerleştirmek, konumlandırmak","ex":"Urban planners often situate public facilities near transport hubs to make them easier to reach.","exTr":"Şehir plancıları, ulaşımı kolaylaştırmak için kamu tesislerini çoğu zaman ulaşım merkezlerinin yakınına konumlandırır."},
+
+"nominate": {"tip":"fiil","p":12.2,"tr":"f. aday göstermek; bir göreve atamak","ex":"Each university may nominate two candidates for the international research fellowship.","exTr":"Her üniversite uluslararası araştırma bursu için iki aday gösterebilir."},
+
+"endow": {"tip":"fiil","p":12.2,"tr":"f. bağışta bulunmak; donatmak, bahşetmek","ex":"The donation will endow the institute with a permanent fund for climate research.","exTr":"Bağış, enstitüye iklim araştırmaları için kalıcı bir fon sağlayacak."},
+
+"centralize": {"tip":"fiil","p":12.2,"tr":"f. merkezileştirmek, tek merkezde toplamak","ex":"The reform sought to centralize medical records while allowing local clinics to retain clinical autonomy.","exTr":"Reform, yerel kliniklerin tıbbi özerkliğini korurken sağlık kayıtlarını tek merkezde toplamayı amaçladı."},
+
+"dine": {"tip":"fiil","p":11.9,"tr":"f. yemek yemek, akşam yemeği yemek","ex":"People who regularly dine late at night may experience poorer sleep and impaired glucose control.","exTr":"Gece geç saatlerde düzenli olarak yemek yiyen kişiler daha kötü uyku ve bozulmuş glikoz kontrolü yaşayabilir."},
+
+"carve": {"tip":"fiil","p":11.8,"tr":"f. oymak, yontmak; keserek biçim vermek","ex":"Over thousands of years, moving glaciers can carve deep valleys through solid rock.","exTr":"Hareket eden buzullar binlerce yıl içinde sert kayaları oyarak derin vadiler oluşturabilir."},
+
+"deprive": {"tip":"fiil","p":11.3,"tr":"f. yoksun bırakmak, mahrum etmek","ex":"Prolonged sleep loss can deprive the brain of the time required to consolidate new memories.","exTr":"Uzun süreli uyku kaybı, beyni yeni anıları pekiştirmek için gereken zamandan yoksun bırakabilir."},
+
+"saturate": {"tip":"fiil","p":11.1,"tr":"f. doyurmak; tamamen doldurmak, sırılsıklam etmek","ex":"Several days of heavy rainfall can saturate the soil and increase the likelihood of landslides.","exTr":"Günlerce süren şiddetli yağış toprağı suya doyurabilir ve heyelan olasılığını artırabilir."},
+
+"categorise": {"tip":"fiil","p":11.0,"tr":"f. sınıflandırmak, kategorilere ayırmak","ex":"Researchers categorise the responses according to age, education and previous experience.","exTr":"Araştırmacılar yanıtları yaş, eğitim ve önceki deneyime göre sınıflandırır."},
+
+"impoverish": {"tip":"fiil","p":10.7,"tr":"f. yoksullaştırmak; verimsizleştirmek, zayıflatmak","ex":"Repeated droughts can impoverish rural communities and exhaust soils already damaged by intensive farming.","exTr":"Tekrarlanan kuraklıklar kırsal toplulukları yoksullaştırabilir ve yoğun tarımın zaten zarar verdiği toprakları tüketebilir."},
+
+"ensue": {"tip":"fiil","p":10.7,"tr":"f. ardından gelmek, sonuç olarak ortaya çıkmak","ex":"If vaccination rates fall sharply, new outbreaks may ensue even in regions where the disease was controlled.","exTr":"Aşılama oranları keskin biçimde düşerse hastalığın kontrol altına alındığı bölgelerde bile yeni salgınlar ortaya çıkabilir."},
+
+"decorate": {"tip":"fiil","p":10.6,"tr":"f. süslemek, bezemek","ex":"Ancient communities used mineral pigments to decorate cave walls with images of animals and hunting scenes.","exTr":"Eski topluluklar mağara duvarlarını hayvan ve av sahneleriyle süslemek için mineral boyalar kullandı."},
+
+"pollute": {"tip":"fiil","p":10.6,"tr":"f. kirletmek, çevreye zararlı madde yaymak","ex":"Agricultural runoff can pollute rivers with fertilisers that encourage excessive algae growth.","exTr":"Tarımsal yüzey akışı, aşırı yosun büyümesini teşvik eden gübrelerle nehirleri kirletebilir."},
+
+"inflate": {"tip":"fiil","p":10.5,"tr":"f. şişirmek, şişmek; yapay biçimde artırmak","ex":"Selective reporting can inflate estimates of a treatment's effectiveness by excluding unsuccessful trials.","exTr":"Seçici raporlama, başarısız deneyleri dışarıda bırakarak bir tedavinin etkililiğine ilişkin tahminleri yapay biçimde artırabilir."},
+
+"interconnect": {"tip":"fiil","p":10.2,"tr":"f. birbirine bağlamak, bağlantılı hâle getirmek","ex":"High-speed rail lines interconnect regional centres that once depended entirely on air travel.","exTr":"Yüksek hızlı demiryolu hatları, bir zamanlar bütünüyle hava ulaşımına bağımlı olan bölgesel merkezleri birbirine bağlar."},
+
 "rowing": {"tip":"isim","p":9.8,"tr":"i. kürek çekme; kürek sporu","ex":"The Greeks brought the art of rowing to a level of perfection that has never been surpassed.","exTr":"Yunanlar kürek çekme sanatını daha önce hiç aşılmamış bir mükemmellik düzeyine taşıdı."}
 
 };

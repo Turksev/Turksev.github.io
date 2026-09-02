@@ -38,11 +38,18 @@ service cloud.firestore {
       return gecerliAlanAdi(alan)
         && request.resource.data.keys().hasAll(['surum', 'anahtar', 'zaman', 'json'])
         && request.resource.data.keys().hasOnly(['surum', 'anahtar', 'zaman', 'json'])
-        && request.resource.data.surum == 2
+        && (request.resource.data.surum == 2
+          || (request.resource.data.surum == 3
+            && (alan == 'yds-leitner' || alan == 'yds-test-yanlis')))
         && request.resource.data.anahtar == alan
         && request.resource.data.zaman is int
         && request.resource.data.json is string
+        && request.resource.data.json.size() > 0
         && request.resource.data.json.size() < 921600;
+    }
+
+    function alanSurumuDusmuyor() {
+      return request.resource.data.surum >= resource.data.surum;
     }
 
     function gecerliSilmeIsaretcisi() {
@@ -62,9 +69,13 @@ service cloud.firestore {
 
       match /alanlar/{alan} {
         allow read, delete: if kendiBelgesi(uid);
-        allow create, update: if kendiBelgesi(uid)
+        allow create: if kendiBelgesi(uid)
           && !bulutSilinmis(uid)
           && gecerliAlanBelgesi(alan);
+        allow update: if kendiBelgesi(uid)
+          && !bulutSilinmis(uid)
+          && gecerliAlanBelgesi(alan)
+          && alanSurumuDusmuyor();
       }
 
       match /yonetim/{belge} {

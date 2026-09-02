@@ -1,0 +1,2366 @@
+{
+  "schemaVersion": 1,
+  "batchId": "yds-high-01",
+  "policy": {
+    "purpose": "İnsan denetimli YDS kelime ailesi tamamlama partisi",
+    "displayScoreDecimals": 1,
+    "lowScoreLayerRule": "source_score < 10 => K7",
+    "preserveExistingLexicalizedCards": true,
+    "meaningStars": {
+      "primary": 4,
+      "secondary": 2
+    },
+    "testWordRange": [
+      15,
+      36
+    ],
+    "provenance": "Sınav kimliği, sayfa/soru, yüzey biçimi ve rol; soru metni içermez"
+  },
+  "cards": [
+    {
+      "candidate": "overly",
+      "tip": "zarf",
+      "p": 10.7,
+      "source_score": 10.742,
+      "family_members": [
+        "overly",
+        "over"
+      ],
+      "meanings": [
+        {
+          "tr": "z. aşırı derecede, gereğinden fazla",
+          "ex": "The model was overly sensitive to small changes in temperature.",
+          "exTr": "Model, sıcaklıktaki küçük değişimlere karşı aşırı duyarlıydı."
+        }
+      ],
+      "card_example": "The model was overly sensitive to small changes in temperature.",
+      "card_example_tr": "Model, sıcaklıktaki küçük değişimlere karşı aşırı duyarlıydı.",
+      "test_sentence": "Policies that are overly restrictive can discourage innovation, especially in industries that depend on rapid experimentation and frequent technological change.",
+      "test_sentence_tr": "Aşırı kısıtlayıcı politikalar, özellikle hızlı denemelere ve sık teknolojik değişime bağımlı sektörlerde yeniliği engelleyebilir.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2017_02",
+          "page": 15,
+          "question": null,
+          "surface": "overly",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Modern ve YDS kanıtlı bir zarftır; arkaik değildir. Mevcut over kartı korunarak ayrı kart eklenir."
+    },
+    {
+      "candidate": "plainly",
+      "tip": "zarf",
+      "p": 9.8,
+      "source_score": 9.7777,
+      "family_members": [
+        "plainly",
+        "plain"
+      ],
+      "meanings": [
+        {
+          "tr": "z. açıkça, apaçık",
+          "ex": "The data plainly indicate that the policy failed.",
+          "exTr": "Veriler politikanın başarısız olduğunu açıkça gösteriyor."
+        },
+        {
+          "tr": "z. sade ve gösterişsiz biçimde",
+          "ex": "The room was furnished plainly, without decorative objects.",
+          "exTr": "Oda süs eşyaları olmadan sade biçimde döşenmişti."
+        }
+      ],
+      "card_example": "The data plainly indicate that the policy failed.",
+      "card_example_tr": "Veriler politikanın başarısız olduğunu açıkça gösteriyor.",
+      "test_sentence": "The instructions were plainly written so that all participants, including those without technical training, could follow each stage of the procedure.",
+      "test_sentence_tr": "Talimatlar, teknik eğitim almamış olanlar dâhil tüm katılımcıların işlemin her aşamasını izleyebilmesi için açıkça yazılmıştı.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2017_01",
+          "page": 9,
+          "question": null,
+          "surface": "plainly",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Plain sıfatından türeyen bağımsız ve YDS kanıtlı zarftır; plain kartı korunur."
+    },
+    {
+      "candidate": "wed",
+      "tip": "fiil, sıfat",
+      "p": 14.9,
+      "source_score": 14.8777,
+      "family_members": [
+        "wed",
+        "wedding"
+      ],
+      "meanings": [
+        {
+          "tr": "f. evlenmek; evlendirmek",
+          "ex": "The couple plan to wed after completing their studies.",
+          "exTr": "Çift, eğitimlerini tamamladıktan sonra evlenmeyi planlıyor."
+        },
+        {
+          "tr": "s. evli",
+          "ex": "The two scientists are now wed but continue to work at different universities.",
+          "exTr": "İki bilim insanı artık evli olsa da farklı üniversitelerde çalışmayı sürdürüyor."
+        }
+      ],
+      "card_example": "The couple plan to wed after completing their studies.",
+      "card_example_tr": "Çift, eğitimlerini tamamladıktan sonra evlenmeyi planlıyor.",
+      "test_sentence": "Although legally wed, the partners continued to use different surnames and maintained separate professional identities throughout their academic careers.",
+      "test_sentence_tr": "Yasal olarak evli olmalarına rağmen eşler farklı soyadları kullanmayı sürdürdü ve akademik kariyerleri boyunca ayrı mesleki kimliklerini korudu.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2013_02",
+          "page": 13,
+          "question": null,
+          "surface": "weddings",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Yalın kök ayrı kart olmalıdır; mevcut ve YDS'de kullanılan wedding kartı silinmeden korunur. Wed=Wednesday kaynaklı isim etiketi alınmaz."
+    },
+    {
+      "candidate": "follower",
+      "tip": "isim",
+      "p": 12.7,
+      "source_score": 12.6983,
+      "family_members": [
+        "follower",
+        "follow"
+      ],
+      "meanings": [
+        {
+          "tr": "i. takipçi, izleyici",
+          "ex": "Each follower receives updates when the scientist publishes new findings.",
+          "exTr": "Her takipçi, bilim insanı yeni bulgular yayımladığında güncelleme alır."
+        },
+        {
+          "tr": "i. yandaş, destekçi",
+          "ex": "A devoted follower may defend a political leader despite contrary evidence.",
+          "exTr": "Sadık bir yandaş, karşıt kanıtlara rağmen siyasi bir lideri savunabilir."
+        }
+      ],
+      "card_example": "Each follower receives updates when the scientist publishes new findings.",
+      "card_example_tr": "Her takipçi, bilim insanı yeni bulgular yayımladığında güncelleme alır.",
+      "test_sentence": "A loyal follower may accept a leader's claims without sufficient evidence, particularly when opposing views are excluded from public debate.",
+      "test_sentence_tr": "Sadık bir yandaş, özellikle karşıt görüşler kamuoyu tartışmasının dışında bırakıldığında, bir liderin iddialarını yeterli kanıt olmadan kabul edebilir.",
+      "exams": 2,
+      "freq": 3,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2017_02",
+          "page": 14,
+          "question": null,
+          "surface": "followers",
+          "role": "metin"
+        },
+        {
+          "exam_id": "YDS_2021_02",
+          "page": 5,
+          "question": 15,
+          "surface": "follower",
+          "role": "soru_koku"
+        }
+      ],
+      "decision": "add",
+      "reason": "Follow fiilinden türeyen bağımsız isimdir ve iki sınavda görülmüştür; follow kartı korunur."
+    },
+    {
+      "candidate": "competitively",
+      "tip": "zarf",
+      "p": 10.0,
+      "source_score": 9.9994,
+      "family_members": [
+        "competitively",
+        "competitive",
+        "compete",
+        "competition",
+        "competitiveness"
+      ],
+      "meanings": [
+        {
+          "tr": "z. rekabetçi biçimde; rekabet ederek",
+          "ex": "Domestic firms must price their products competitively in global markets.",
+          "exTr": "Yerli şirketler ürünlerini küresel pazarlarda rekabetçi biçimde fiyatlandırmalıdır."
+        }
+      ],
+      "card_example": "Domestic firms must price their products competitively in global markets.",
+      "card_example_tr": "Yerli şirketler ürünlerini küresel pazarlarda rekabetçi biçimde fiyatlandırmalıdır.",
+      "test_sentence": "To survive abroad, small manufacturers need to operate competitively while maintaining product quality and responding quickly to changing consumer expectations.",
+      "test_sentence_tr": "Küçük üreticilerin yurt dışında ayakta kalabilmek için ürün kalitesini korurken rekabetçi biçimde çalışması ve değişen tüketici beklentilerine hızla yanıt vermesi gerekir.",
+      "exams": 1,
+      "freq": 2,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2013_02",
+          "page": 6,
+          "question": null,
+          "surface": "competitively",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Competitive sıfatının bağımsız zarf biçimidir ve YDS kanıtı vardır; mevcut aile üyeleri korunur."
+    },
+    {
+      "candidate": "conventionally",
+      "tip": "zarf",
+      "p": 10.0,
+      "source_score": 9.9994,
+      "family_members": [
+        "conventionally",
+        "conventional",
+        "convention"
+      ],
+      "meanings": [
+        {
+          "tr": "z. geleneksel veya alışılmış biçimde",
+          "ex": "The disease was conventionally treated with antibiotics.",
+          "exTr": "Hastalık geleneksel olarak antibiyotiklerle tedavi ediliyordu."
+        }
+      ],
+      "card_example": "The disease was conventionally treated with antibiotics.",
+      "card_example_tr": "Hastalık geleneksel olarak antibiyotiklerle tedavi ediliyordu.",
+      "test_sentence": "The artefacts were conventionally classified according to their age and material, although recent studies have proposed a more flexible system.",
+      "test_sentence_tr": "Eserler geleneksel olarak yaşlarına ve malzemelerine göre sınıflandırılıyordu; ancak yakın tarihli çalışmalar daha esnek bir sistem önerdi.",
+      "exams": 1,
+      "freq": 2,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2017_01",
+          "page": 3,
+          "question": null,
+          "surface": "conventionally",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Conventional sıfatından türeyen YDS kanıtlı zarftır; convention ve conventional kartları korunur."
+    },
+    {
+      "candidate": "fascination",
+      "tip": "isim",
+      "p": 10.0,
+      "source_score": 9.992,
+      "family_members": [
+        "fascination",
+        "fascinate"
+      ],
+      "meanings": [
+        {
+          "tr": "i. hayranlık, büyülenme",
+          "ex": "Her fascination with ancient languages led her to study archaeology.",
+          "exTr": "Eski dillere duyduğu hayranlık onu arkeoloji okumaya yöneltti."
+        },
+        {
+          "tr": "i. büyüleyicilik, güçlü ilgi uyandırma",
+          "ex": "Much of the cave's fascination lies in its prehistoric paintings.",
+          "exTr": "Mağaranın büyüleyiciliğinin büyük bölümü tarih öncesi resimlerinden kaynaklanır."
+        }
+      ],
+      "card_example": "Her fascination with ancient languages led her to study archaeology.",
+      "card_example_tr": "Eski dillere duyduğu hayranlık onu arkeoloji okumaya yöneltti.",
+      "test_sentence": "The public's fascination with space travel has encouraged further investment in technologies that may eventually support long-term human settlement beyond Earth.",
+      "test_sentence_tr": "Kamuoyunun uzay yolculuğuna duyduğu hayranlık, sonunda Dünya dışında uzun süreli insan yerleşimini destekleyebilecek teknolojilere daha fazla yatırım yapılmasını teşvik etti.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "eYDS_2016_01",
+          "page": 6,
+          "question": 80,
+          "surface": "fascination",
+          "role": "soru_koku"
+        }
+      ],
+      "decision": "add",
+      "reason": "Fascinate fiilinin bağımsız isim üyesidir ve e-YDS kanıtı vardır; fascinate kartı korunur."
+    },
+    {
+      "candidate": "progressively",
+      "tip": "zarf",
+      "p": 10.0,
+      "source_score": 9.992,
+      "family_members": [
+        "progressively",
+        "progressive",
+        "progress",
+        "progression"
+      ],
+      "meanings": [
+        {
+          "tr": "z. giderek, gitgide",
+          "ex": "The symptoms became progressively more severe over several weeks.",
+          "exTr": "Belirtiler birkaç hafta içinde giderek daha şiddetli hâle geldi."
+        },
+        {
+          "tr": "z. aşamalı olarak",
+          "ex": "The reforms were introduced progressively over a five-year period.",
+          "exTr": "Reformlar beş yıllık bir dönemde aşamalı olarak uygulamaya kondu."
+        }
+      ],
+      "card_example": "The symptoms became progressively more severe over several weeks.",
+      "card_example_tr": "Belirtiler birkaç hafta içinde giderek daha şiddetli hâle geldi.",
+      "test_sentence": "As the climate warmed, the lake grew progressively shallower, threatening fish populations and reducing the amount of water available for farming.",
+      "test_sentence_tr": "İklim ısındıkça göl giderek sığlaştı; bu durum balık popülasyonlarını tehdit etti ve tarım için kullanılabilir su miktarını azalttı.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2013_01",
+          "page": 21,
+          "question": null,
+          "surface": "progressively",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Progressive sıfatının YDS kanıtlı zarfıdır; progress ailesindeki mevcut kartlar korunur."
+    },
+    {
+      "candidate": "dangerously",
+      "tip": "zarf",
+      "p": 10.0,
+      "source_score": 9.9706,
+      "family_members": [
+        "dangerously",
+        "dangerous",
+        "danger"
+      ],
+      "meanings": [
+        {
+          "tr": "z. tehlikeli biçimde",
+          "ex": "The driver turned dangerously across the path of an approaching bus.",
+          "exTr": "Sürücü, yaklaşan otobüsün önüne tehlikeli biçimde döndü."
+        },
+        {
+          "tr": "z. tehlikeli ölçüde",
+          "ex": "Air pollution in the city has reached dangerously high levels.",
+          "exTr": "Şehirdeki hava kirliliği tehlikeli ölçüde yüksek seviyelere ulaştı."
+        }
+      ],
+      "card_example": "The driver turned dangerously across the path of an approaching bus.",
+      "card_example_tr": "Sürücü, yaklaşan otobüsün önüne tehlikeli biçimde döndü.",
+      "test_sentence": "Without effective treatment, blood pressure may rise dangerously and increase the patient's risk of heart disease, stroke, and kidney damage.",
+      "test_sentence_tr": "Etkili bir tedavi olmadan kan basıncı tehlikeli ölçüde yükselebilir ve hastanın kalp hastalığı, felç ve böbrek hasarı riskini artırabilir.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2015_02",
+          "page": 3,
+          "question": 3,
+          "surface": "dangerously",
+          "role": "celdirici"
+        }
+      ],
+      "decision": "add",
+      "reason": "Dangerous sıfatından türeyen ayrı zarftır ve YDS seçeneğinde görülmüştür; danger ailesi korunur."
+    },
+    {
+      "candidate": "painfully",
+      "tip": "zarf",
+      "p": 10.0,
+      "source_score": 9.9706,
+      "family_members": [
+        "painfully",
+        "painful",
+        "pain"
+      ],
+      "meanings": [
+        {
+          "tr": "z. acı verici biçimde",
+          "ex": "The injured athlete walked painfully towards the medical room.",
+          "exTr": "Yaralı sporcu sağlık odasına doğru acı çekerek yürüdü."
+        },
+        {
+          "tr": "z. üzücü veya rahatsız edici derecede",
+          "ex": "The limitations of the method became painfully clear during the trial.",
+          "exTr": "Yöntemin sınırlılıkları deneme sırasında rahatsız edici derecede belirginleşti."
+        }
+      ],
+      "card_example": "The injured athlete walked painfully towards the medical room.",
+      "card_example_tr": "Yaralı sporcu sağlık odasına doğru acı çekerek yürüdü.",
+      "test_sentence": "The species recovered painfully slowly after the habitat was damaged, despite years of conservation work and strict limits on hunting.",
+      "test_sentence_tr": "Tür, yıllarca süren koruma çalışmalarına ve avlanmaya getirilen sıkı sınırlamalara rağmen yaşam alanı zarar gördükten sonra üzücü derecede yavaş toparlandı.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2016_02",
+          "page": 6,
+          "question": null,
+          "surface": "painfully",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Painful sıfatının modern ve YDS kanıtlı zarfıdır; pain ve painful kartları korunur."
+    },
+    {
+      "candidate": "healthily",
+      "tip": "zarf",
+      "p": 10.0,
+      "source_score": 9.9698,
+      "family_members": [
+        "healthily",
+        "healthy",
+        "health",
+        "unhealthy"
+      ],
+      "meanings": [
+        {
+          "tr": "z. sağlıklı biçimde",
+          "ex": "Children need enough space to grow healthily.",
+          "exTr": "Çocukların sağlıklı biçimde büyümek için yeterli alana ihtiyacı vardır."
+        }
+      ],
+      "card_example": "Children need enough space to grow healthily.",
+      "card_example_tr": "Çocukların sağlıklı biçimde büyümek için yeterli alana ihtiyacı vardır.",
+      "test_sentence": "A balanced diet helps the body develop healthily by supplying the nutrients required for tissue growth, immune function, and energy production.",
+      "test_sentence_tr": "Dengeli bir beslenme, doku büyümesi, bağışıklık işlevi ve enerji üretimi için gereken besinleri sağlayarak vücudun sağlıklı biçimde gelişmesine yardımcı olur.",
+      "exams": 2,
+      "freq": 2,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2018_01",
+          "page": 7,
+          "question": null,
+          "surface": "healthily",
+          "role": "metin"
+        },
+        {
+          "exam_id": "YDS_2021_01",
+          "page": 24,
+          "question": null,
+          "surface": "healthily",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Healthy sıfatının bağımsız zarfıdır ve iki sınavda görülmüştür; mevcut health ailesi korunur."
+    },
+    {
+      "candidate": "irrigate",
+      "tip": "fiil",
+      "p": 10.0,
+      "source_score": 9.9698,
+      "family_members": [
+        "irrigate",
+        "irrigation"
+      ],
+      "meanings": [
+        {
+          "tr": "f. sulamak; su kanallarıyla su sağlamak",
+          "ex": "Farmers use stored rainwater to irrigate their fields.",
+          "exTr": "Çiftçiler tarlalarını sulamak için biriktirilmiş yağmur suyunu kullanır."
+        }
+      ],
+      "card_example": "Farmers use stored rainwater to irrigate their fields.",
+      "card_example_tr": "Çiftçiler tarlalarını sulamak için biriktirilmiş yağmur suyunu kullanır.",
+      "test_sentence": "The new canal will irrigate thousands of hectares of dry land, enabling farmers to grow crops throughout the increasingly long summer.",
+      "test_sentence_tr": "Yeni kanal binlerce hektarlık kurak araziyi sulayacak ve çiftçilerin giderek uzayan yaz boyunca ürün yetiştirmesini sağlayacak.",
+      "exams": 2,
+      "freq": 2,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2016_02",
+          "page": 15,
+          "question": null,
+          "surface": "irrigated",
+          "role": "metin"
+        },
+        {
+          "exam_id": "YDS_2018_01",
+          "page": 13,
+          "question": null,
+          "surface": "irrigated",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Eksik yalın fiildir ve iki sınavda kanıtlanmıştır; mevcut irrigation isim kartı silinmeden korunur."
+    },
+    {
+      "candidate": "persistently",
+      "tip": "zarf",
+      "p": 10.0,
+      "source_score": 9.9565,
+      "family_members": [
+        "persistently",
+        "persistent",
+        "persist",
+        "persistence"
+      ],
+      "meanings": [
+        {
+          "tr": "z. ısrarla, vazgeçmeden",
+          "ex": "The journalist persistently requested access to the public records.",
+          "exTr": "Gazeteci kamu kayıtlarına erişim talebini ısrarla yineledi."
+        },
+        {
+          "tr": "z. sürekli olarak, uzun süre boyunca",
+          "ex": "Unemployment remained persistently high despite economic growth.",
+          "exTr": "İşsizlik ekonomik büyümeye rağmen uzun süre yüksek kaldı."
+        }
+      ],
+      "card_example": "The journalist persistently requested access to the public records.",
+      "card_example_tr": "Gazeteci kamu kayıtlarına erişim talebini ısrarla yineledi.",
+      "test_sentence": "Researchers persistently questioned the accuracy of the original estimate because several important variables had been omitted from the statistical model.",
+      "test_sentence_tr": "Araştırmacılar, birkaç önemli değişken istatistiksel modelden çıkarıldığı için ilk tahminin doğruluğunu ısrarla sorguladı.",
+      "exams": 1,
+      "freq": 2,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2019_03",
+          "page": 4,
+          "question": null,
+          "surface": "persistently",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Persistent sıfatının YDS kanıtlı zarfıdır; persist ailesindeki mevcut kartlar korunur."
+    },
+    {
+      "candidate": "deduction",
+      "tip": "isim",
+      "p": 9.9,
+      "source_score": 9.9492,
+      "family_members": [
+        "deduction",
+        "deduce"
+      ],
+      "meanings": [
+        {
+          "tr": "i. çıkarım, sonuç çıkarma",
+          "ex": "The conclusion was based on logical deduction rather than direct observation.",
+          "exTr": "Sonuç, doğrudan gözlemden çok mantıksal çıkarıma dayanıyordu."
+        },
+        {
+          "tr": "i. kesinti, indirim",
+          "ex": "The employer made a deduction from each payment for insurance.",
+          "exTr": "İşveren sigorta için her ödemeden kesinti yaptı."
+        }
+      ],
+      "card_example": "The conclusion was based on logical deduction rather than direct observation.",
+      "card_example_tr": "Sonuç, doğrudan gözlemden çok mantıksal çıkarıma dayanıyordu.",
+      "test_sentence": "Employees can claim a tax deduction for certain professional expenses, provided that they keep receipts and demonstrate a direct connection to their work.",
+      "test_sentence_tr": "Çalışanlar, makbuzlarını saklamaları ve giderlerin işleriyle doğrudan bağlantısını göstermeleri koşuluyla belirli mesleki harcamalar için vergi indirimi talep edebilir.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2018_03",
+          "page": 21,
+          "question": null,
+          "surface": "deduction",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Deduce fiilinin bağımsız isim üyesidir; YDS için gerekli çıkarım ve kesinti anlamlarıyla eklenir, deduce korunur."
+    },
+    {
+      "candidate": "disruptive",
+      "tip": "sıfat",
+      "p": 9.9,
+      "source_score": 9.9492,
+      "family_members": [
+        "disruptive",
+        "disrupt",
+        "disruption"
+      ],
+      "meanings": [
+        {
+          "tr": "s. bozucu, aksatıcı",
+          "ex": "Frequent power cuts have a disruptive effect on local businesses.",
+          "exTr": "Sık elektrik kesintileri yerel işletmeler üzerinde aksatıcı bir etki yaratır."
+        },
+        {
+          "tr": "s. düzeni bozan",
+          "ex": "The school provided support for children displaying disruptive behaviour.",
+          "exTr": "Okul, düzen bozucu davranış gösteren çocuklara destek sağladı."
+        }
+      ],
+      "card_example": "Frequent power cuts have a disruptive effect on local businesses.",
+      "card_example_tr": "Sık elektrik kesintileri yerel işletmeler üzerinde aksatıcı bir etki yaratır.",
+      "test_sentence": "Rapid changes in ocean temperature can be disruptive to breeding cycles, causing some marine species to abandon traditional nesting areas.",
+      "test_sentence_tr": "Okyanus sıcaklığındaki hızlı değişimler üreme döngülerini bozabilir ve bazı deniz türlerinin geleneksel yuvalama alanlarını terk etmesine yol açabilir.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2019_03",
+          "page": 4,
+          "question": 3,
+          "surface": "disruptive",
+          "role": "celdirici"
+        }
+      ],
+      "decision": "add",
+      "reason": "Disrupt fiilinden türeyen bağımsız sıfattır ve YDS kanıtı vardır; disrupt ile disruption korunur."
+    },
+    {
+      "candidate": "stalk",
+      "tip": "isim, fiil",
+      "p": 9.9,
+      "source_score": 9.9492,
+      "family_members": [
+        "stalk",
+        "stalking"
+      ],
+      "meanings": [
+        {
+          "tr": "f. sinsice takip etmek, izini sürmek",
+          "ex": "Some predators stalk their prey for hours before attacking.",
+          "exTr": "Bazı yırtıcılar saldırmadan önce avlarını saatlerce sinsice takip eder."
+        },
+        {
+          "tr": "i. bitki sapı, gövde",
+          "ex": "A thick stalk supports each sunflower.",
+          "exTr": "Kalın bir sap her ayçiçeğini taşır."
+        }
+      ],
+      "card_example": "Some predators stalk their prey for hours before attacking.",
+      "card_example_tr": "Bazı yırtıcılar saldırmadan önce avlarını saatlerce sinsice takip eder.",
+      "test_sentence": "A tall stalk supports the flower above the surrounding grass, allowing pollinating insects to locate it more easily from a distance.",
+      "test_sentence_tr": "Uzun bir sap çiçeği çevresindeki otların üzerinde tutarak tozlaştırıcı böceklerin onu uzaktan daha kolay bulmasını sağlar.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "eYDS_2015_05",
+          "page": 6,
+          "question": 75,
+          "surface": "Stalking",
+          "role": "celdirici"
+        }
+      ],
+      "decision": "add",
+      "reason": "Yalın isim/fiil ayrı kart olmalıdır; YDS'de kullanılan ve mevcut olan stalking isim kartı korunur."
+    },
+    {
+      "candidate": "vertically",
+      "tip": "zarf",
+      "p": 9.9,
+      "source_score": 9.9492,
+      "family_members": [
+        "vertically",
+        "vertical"
+      ],
+      "meanings": [
+        {
+          "tr": "z. dikey olarak, düşey yönde",
+          "ex": "The panels were arranged vertically to save space.",
+          "exTr": "Paneller yerden tasarruf etmek için dikey olarak yerleştirildi."
+        }
+      ],
+      "card_example": "The panels were arranged vertically to save space.",
+      "card_example_tr": "Paneller yerden tasarruf etmek için dikey olarak yerleştirildi.",
+      "test_sentence": "The roots grow vertically downward through the loose soil until they reach deeper layers where moisture remains available during prolonged droughts.",
+      "test_sentence_tr": "Kökler, uzun süren kuraklıklarda nemin bulunmaya devam ettiği daha derin katmanlara ulaşana kadar gevşek toprakta dikey olarak aşağı doğru büyür.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "eYDS_2015_12",
+          "page": 6,
+          "question": 74,
+          "surface": "vertically",
+          "role": "dogru_secenek"
+        }
+      ],
+      "decision": "add",
+      "reason": "Vertical sıfatının bağımsız ve e-YDS kanıtlı zarfıdır; vertical kartı korunur."
+    },
+    {
+      "candidate": "digitally",
+      "tip": "zarf",
+      "p": 9.9,
+      "source_score": 9.9277,
+      "family_members": [
+        "digitally",
+        "digital"
+      ],
+      "meanings": [
+        {
+          "tr": "z. dijital veya sayısal olarak",
+          "ex": "Historical documents are now stored digitally for easier access.",
+          "exTr": "Tarihî belgeler daha kolay erişim için artık dijital olarak saklanıyor."
+        }
+      ],
+      "card_example": "Historical documents are now stored digitally for easier access.",
+      "card_example_tr": "Tarihî belgeler daha kolay erişim için artık dijital olarak saklanıyor.",
+      "test_sentence": "The signal is processed digitally before it is transmitted, which reduces background noise and allows the receiver to reproduce speech more clearly.",
+      "test_sentence_tr": "Sinyal iletilmeden önce dijital olarak işlenir; bu işlem arka plan gürültüsünü azaltır ve alıcının konuşmayı daha net üretmesini sağlar.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2017_01",
+          "page": 8,
+          "question": null,
+          "surface": "digitally",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Digital sıfatının modern ve YDS kanıtlı zarfıdır; digital kartı korunur."
+    },
+    {
+      "candidate": "reluctantly",
+      "tip": "zarf",
+      "p": 9.9,
+      "source_score": 9.9277,
+      "family_members": [
+        "reluctantly",
+        "reluctant",
+        "reluctance"
+      ],
+      "meanings": [
+        {
+          "tr": "z. isteksizce, gönülsüzce",
+          "ex": "The committee reluctantly accepted the revised proposal.",
+          "exTr": "Komite gözden geçirilmiş öneriyi isteksizce kabul etti."
+        }
+      ],
+      "card_example": "The committee reluctantly accepted the revised proposal.",
+      "card_example_tr": "Komite gözden geçirilmiş öneriyi isteksizce kabul etti.",
+      "test_sentence": "After reviewing the evidence, the company reluctantly withdrew its claim and agreed to compensate customers who had received misleading information.",
+      "test_sentence_tr": "Şirket kanıtları inceledikten sonra iddiasını isteksizce geri çekti ve yanıltıcı bilgi alan müşterilere tazminat ödemeyi kabul etti.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2023_01",
+          "page": 3,
+          "question": 4,
+          "surface": "reluctantly",
+          "role": "celdirici"
+        }
+      ],
+      "decision": "add",
+      "reason": "Reluctant sıfatının YDS kanıtlı zarfıdır; reluctant ve reluctance kartları korunur."
+    },
+    {
+      "candidate": "fulfillment",
+      "tip": "isim",
+      "p": 9.9,
+      "source_score": 9.9063,
+      "family_members": [
+        "fulfillment",
+        "fulfill"
+      ],
+      "meanings": [
+        {
+          "tr": "i. yerine getirme, gerçekleştirme",
+          "ex": "The fulfillment of treaty obligations requires regular monitoring.",
+          "exTr": "Antlaşma yükümlülüklerinin yerine getirilmesi düzenli izleme gerektirir."
+        },
+        {
+          "tr": "i. tatmin, kişisel doyum",
+          "ex": "Voluntary work can provide a strong sense of personal fulfillment.",
+          "exTr": "Gönüllü çalışma güçlü bir kişisel doyum sağlayabilir."
+        }
+      ],
+      "card_example": "The fulfillment of treaty obligations requires regular monitoring.",
+      "card_example_tr": "Antlaşma yükümlülüklerinin yerine getirilmesi düzenli izleme gerektirir.",
+      "test_sentence": "The timely delivery of supplies was essential to the fulfillment of the contract and the continuation of medical services in remote communities.",
+      "test_sentence_tr": "Malzemelerin zamanında teslim edilmesi, sözleşmenin yerine getirilmesi ve uzak topluluklarda sağlık hizmetlerinin sürdürülmesi için gerekliydi.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2016_02",
+          "page": 3,
+          "question": 1,
+          "surface": "fulfillment",
+          "role": "celdirici"
+        }
+      ],
+      "decision": "add",
+      "reason": "Fulfill fiilinin bağımsız isim üyesidir ve YDS kanıtı vardır; fulfill kartı korunur."
+    },
+    {
+      "candidate": "insistence",
+      "tip": "isim",
+      "p": 9.9,
+      "source_score": 9.9063,
+      "family_members": [
+        "insistence",
+        "insist"
+      ],
+      "meanings": [
+        {
+          "tr": "i. ısrar",
+          "ex": "The experiment was repeated at the editor's insistence.",
+          "exTr": "Deney editörün ısrarı üzerine tekrarlandı."
+        },
+        {
+          "tr": "i. kesin talep veya diretme",
+          "ex": "The union's insistence on safer conditions delayed the agreement.",
+          "exTr": "Sendikanın daha güvenli koşullar konusundaki kesin talebi anlaşmayı geciktirdi."
+        }
+      ],
+      "card_example": "The experiment was repeated at the editor's insistence.",
+      "card_example_tr": "Deney editörün ısrarı üzerine tekrarlandı.",
+      "test_sentence": "Her insistence on independent verification improved the study by revealing measurement errors that the original research team had failed to detect.",
+      "test_sentence_tr": "Bağımsız doğrulama konusundaki ısrarı, ilk araştırma ekibinin saptayamadığı ölçüm hatalarını ortaya çıkararak çalışmayı geliştirdi.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2014_01",
+          "page": 15,
+          "question": null,
+          "surface": "insistence",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Insist fiilinin bağımsız isim üyesidir ve YDS kanıtı vardır; insist kartı korunur."
+    },
+    {
+      "candidate": "relocate",
+      "tip": "fiil",
+      "p": 9.9,
+      "source_score": 9.9063,
+      "family_members": [
+        "relocate",
+        "relocation"
+      ],
+      "meanings": [
+        {
+          "tr": "f. taşımak, yerini değiştirmek",
+          "ex": "The museum will relocate its archives to a safer building.",
+          "exTr": "Müze arşivlerini daha güvenli bir binaya taşıyacak."
+        },
+        {
+          "tr": "f. taşınmak, başka yere yerleşmek",
+          "ex": "Rising sea levels may force coastal communities to relocate.",
+          "exTr": "Yükselen deniz seviyeleri kıyı topluluklarını taşınmaya zorlayabilir."
+        }
+      ],
+      "card_example": "The museum will relocate its archives to a safer building.",
+      "card_example_tr": "Müze arşivlerini daha güvenli bir binaya taşıyacak.",
+      "test_sentence": "The company plans to relocate its laboratory closer to the university so that researchers can share equipment and collaborate more efficiently.",
+      "test_sentence_tr": "Şirket, araştırmacıların ekipmanları paylaşabilmesi ve daha verimli iş birliği yapabilmesi için laboratuvarını üniversiteye daha yakın bir yere taşımayı planlıyor.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2017_01",
+          "page": 16,
+          "question": null,
+          "surface": "relocated",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Eksik yalın fiildir ve YDS kanıtı vardır; mevcut relocation isim kartı silinmeden korunur."
+    },
+    {
+      "candidate": "nutritionally",
+      "tip": "zarf",
+      "p": 9.9,
+      "source_score": 9.9055,
+      "family_members": [
+        "nutritionally",
+        "nutritional",
+        "nutrition"
+      ],
+      "meanings": [
+        {
+          "tr": "z. beslenme açısından, besinsel olarak",
+          "ex": "Lentils are nutritionally valuable because they provide protein and fibre.",
+          "exTr": "Mercimek, protein ve lif sağladığı için beslenme açısından değerlidir."
+        }
+      ],
+      "card_example": "Lentils are nutritionally valuable because they provide protein and fibre.",
+      "card_example_tr": "Mercimek, protein ve lif sağladığı için beslenme açısından değerlidir.",
+      "test_sentence": "A diet may be inexpensive yet nutritionally inadequate if it relies heavily on processed foods that contain few essential vitamins and minerals.",
+      "test_sentence_tr": "Bir beslenme düzeni ucuz olabilir; ancak az miktarda temel vitamin ve mineral içeren işlenmiş gıdalara fazlasıyla dayanıyorsa beslenme açısından yetersiz kalabilir.",
+      "exams": 2,
+      "freq": 2,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2013_02",
+          "page": 8,
+          "question": null,
+          "surface": "nutritionally",
+          "role": "metin"
+        },
+        {
+          "exam_id": "YDS_2025_01",
+          "page": 4,
+          "question": 11,
+          "surface": "nutritionally",
+          "role": "soru_koku"
+        }
+      ],
+      "decision": "add",
+      "reason": "Nutritional sıfatının bağımsız zarfıdır ve iki sınavda görülmüştür; nutrition ailesi korunur."
+    },
+    {
+      "candidate": "optimisation",
+      "tip": "isim",
+      "p": 9.9,
+      "source_score": 9.8993,
+      "family_members": [
+        "optimisation",
+        "optimise"
+      ],
+      "meanings": [
+        {
+          "tr": "i. optimizasyon, en iyi hâle getirme, eniyileme",
+          "ex": "Route optimisation reduced fuel use and delivery times.",
+          "exTr": "Rota optimizasyonu yakıt kullanımını ve teslimat sürelerini azalttı."
+        }
+      ],
+      "card_example": "Route optimisation reduced fuel use and delivery times.",
+      "card_example_tr": "Rota optimizasyonu yakıt kullanımını ve teslimat sürelerini azalttı.",
+      "test_sentence": "The optimisation of water use is crucial in drought-prone regions where population growth and climate change place increasing pressure on limited supplies.",
+      "test_sentence_tr": "Nüfus artışının ve iklim değişikliğinin sınırlı kaynaklar üzerinde giderek artan baskı oluşturduğu kuraklığa eğilimli bölgelerde su kullanımının eniyilenmesi çok önemlidir.",
+      "exams": 1,
+      "freq": 3,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2021_02",
+          "page": 25,
+          "question": null,
+          "surface": "optimisation",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Optimise fiilinin YDS'de kullanılan bağımsız isim üyesidir; İngiliz yazımı korunur ve optimise kartı kalır."
+    },
+    {
+      "candidate": "mildly",
+      "tip": "zarf",
+      "p": 9.9,
+      "source_score": 9.8849,
+      "family_members": [
+        "mildly",
+        "mild"
+      ],
+      "meanings": [
+        {
+          "tr": "z. hafifçe, az miktarda",
+          "ex": "Most participants were only mildly affected by the treatment.",
+          "exTr": "Katılımcıların çoğu tedaviden yalnızca hafifçe etkilendi."
+        },
+        {
+          "tr": "z. yumuşak veya ılımlı biçimde",
+          "ex": "The chair responded mildly despite the harsh criticism.",
+          "exTr": "Başkan sert eleştiriye rağmen yumuşak bir tavırla karşılık verdi."
+        }
+      ],
+      "card_example": "Most participants were only mildly affected by the treatment.",
+      "card_example_tr": "Katılımcıların çoğu tedaviden yalnızca hafifçe etkilendi.",
+      "test_sentence": "The solution was mildly acidic but safe to handle when researchers used protective gloves and followed the laboratory's standard safety procedures.",
+      "test_sentence_tr": "Çözelti hafif derecede asidikti; ancak araştırmacılar koruyucu eldiven kullanıp laboratuvarın standart güvenlik işlemlerine uyduğunda güvenle tutulabiliyordu.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2016_01",
+          "page": 17,
+          "question": null,
+          "surface": "mildly",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Mild sıfatının bağımsız ve YDS kanıtlı zarfıdır; mild kartı korunur."
+    },
+    {
+      "candidate": "chiefly",
+      "tip": "zarf",
+      "p": 9.9,
+      "source_score": 9.8634,
+      "family_members": [
+        "chiefly",
+        "chief"
+      ],
+      "meanings": [
+        {
+          "tr": "z. başlıca, esas olarak, çoğunlukla",
+          "ex": "The decline was chiefly caused by a shortage of skilled workers.",
+          "exTr": "Düşüşe başlıca nitelikli işçi eksikliği neden oldu."
+        }
+      ],
+      "card_example": "The decline was chiefly caused by a shortage of skilled workers.",
+      "card_example_tr": "Düşüşe başlıca nitelikli işçi eksikliği neden oldu.",
+      "test_sentence": "The island's economy depends chiefly on tourism and fishing, both of which are increasingly threatened by coastal erosion and rising sea temperatures.",
+      "test_sentence_tr": "Adanın ekonomisi başlıca turizme ve balıkçılığa dayanır; her ikisi de kıyı erozyonu ve yükselen deniz sıcaklıkları nedeniyle giderek daha fazla tehdit altındadır.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2019_01",
+          "page": 29,
+          "question": null,
+          "surface": "chiefly",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Chief sözcüğünden türeyen bağımsız ve YDS kanıtlı zarftır; chief kartı korunur."
+    },
+    {
+      "candidate": "densely",
+      "tip": "zarf",
+      "p": 9.9,
+      "source_score": 9.8634,
+      "family_members": [
+        "densely",
+        "dense",
+        "density"
+      ],
+      "meanings": [
+        {
+          "tr": "z. yoğun veya sık biçimde",
+          "ex": "The coastal plain is densely populated.",
+          "exTr": "Kıyı ovası yoğun nüfusludur."
+        }
+      ],
+      "card_example": "The coastal plain is densely populated.",
+      "card_example_tr": "Kıyı ovası yoğun nüfusludur.",
+      "test_sentence": "Plants grow densely where water remains available throughout the year, creating habitats that support a wide variety of insects and birds.",
+      "test_sentence_tr": "Bitkiler suyun yıl boyunca bulunduğu yerlerde sık biçimde büyüyerek çok çeşitli böcekleri ve kuşları destekleyen yaşam alanları oluşturur.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2021_02",
+          "page": 3,
+          "question": 3,
+          "surface": "densely",
+          "role": "soru_koku"
+        }
+      ],
+      "decision": "add",
+      "reason": "Dense sıfatının bağımsız zarfıdır ve YDS soru kökünde görülmüştür; dense ile density korunur."
+    },
+    {
+      "candidate": "extraordinarily",
+      "tip": "zarf",
+      "p": 9.9,
+      "source_score": 9.8634,
+      "family_members": [
+        "extraordinarily",
+        "extraordinary"
+      ],
+      "meanings": [
+        {
+          "tr": "z. olağanüstü derecede, son derece",
+          "ex": "The material is extraordinarily resistant to heat.",
+          "exTr": "Malzeme ısıya olağanüstü derecede dayanıklıdır."
+        }
+      ],
+      "card_example": "The material is extraordinarily resistant to heat.",
+      "card_example_tr": "Malzeme ısıya olağanüstü derecede dayanıklıdır.",
+      "test_sentence": "The human brain is extraordinarily adaptable during childhood, when repeated experience can strengthen neural pathways involved in language, memory, and social learning.",
+      "test_sentence_tr": "İnsan beyni, tekrarlanan deneyimlerin dil, bellek ve sosyal öğrenmeyle ilgili sinir yollarını güçlendirebildiği çocukluk döneminde olağanüstü derecede uyumludur.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2013_01",
+          "page": 8,
+          "question": null,
+          "surface": "extraordinarily",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Extraordinary sıfatının bağımsız ve YDS kanıtlı zarfıdır; extraordinary kartı korunur."
+    },
+    {
+      "candidate": "hesitant",
+      "tip": "sıfat",
+      "p": 9.8,
+      "source_score": 9.842,
+      "family_members": [
+        "hesitant",
+        "hesitate"
+      ],
+      "meanings": [
+        {
+          "tr": "s. tereddütlü, kararsız, çekingen",
+          "ex": "Investors remained hesitant because the long-term risks were unclear.",
+          "exTr": "Uzun vadeli riskler belirsiz olduğu için yatırımcılar kararsız kaldı."
+        }
+      ],
+      "card_example": "Investors remained hesitant because the long-term risks were unclear.",
+      "card_example_tr": "Uzun vadeli riskler belirsiz olduğu için yatırımcılar kararsız kaldı.",
+      "test_sentence": "Consumers may be hesitant to trust a technology they do not understand, especially when companies provide little information about privacy safeguards.",
+      "test_sentence_tr": "Tüketiciler anlamadıkları bir teknolojiye, özellikle şirketler gizlilik önlemleri hakkında az bilgi verdiğinde, güvenmekte tereddütlü olabilir.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2014_01",
+          "page": 13,
+          "question": null,
+          "surface": "hesitant",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Hesitate fiilinden türeyen bağımsız sıfattır ve YDS kanıtı vardır; hesitate kartı korunur."
+    },
+    {
+      "candidate": "prominently",
+      "tip": "zarf",
+      "p": 9.8,
+      "source_score": 9.842,
+      "family_members": [
+        "prominently",
+        "prominent",
+        "prominence"
+      ],
+      "meanings": [
+        {
+          "tr": "z. belirgin biçimde, göze çarpacak şekilde",
+          "ex": "The warning was displayed prominently on every package.",
+          "exTr": "Uyarı her pakette göze çarpacak biçimde gösterildi."
+        },
+        {
+          "tr": "z. önemli bir konumda",
+          "ex": "Climate change featured prominently in the international conference.",
+          "exTr": "İklim değişikliği uluslararası konferansta önemli bir yer tuttu."
+        }
+      ],
+      "card_example": "The warning was displayed prominently on every package.",
+      "card_example_tr": "Uyarı her pakette göze çarpacak biçimde gösterildi.",
+      "test_sentence": "Women scientists featured prominently in the exhibition, which traced major medical discoveries from the nineteenth century to the present.",
+      "test_sentence_tr": "Kadın bilim insanları, on dokuzuncu yüzyıldan günümüze kadar önemli tıbbi keşiflerin izini süren sergide belirgin bir yer tuttu.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2021_02",
+          "page": 23,
+          "question": null,
+          "surface": "prominently",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Prominent sıfatının YDS kanıtlı zarfıdır; prominent ile prominence korunur."
+    },
+    {
+      "candidate": "verbally",
+      "tip": "zarf",
+      "p": 9.8,
+      "source_score": 9.842,
+      "family_members": [
+        "verbally",
+        "verbal",
+        "verb"
+      ],
+      "meanings": [
+        {
+          "tr": "z. sözlü olarak, sözcüklerle",
+          "ex": "The agreement was made verbally and was never recorded in writing.",
+          "exTr": "Anlaşma sözlü olarak yapıldı ve hiçbir zaman yazılı kayda geçirilmedi."
+        },
+        {
+          "tr": "z. fiil bakımından veya fiil yoluyla",
+          "ex": "In this sentence, the word functions verbally rather than nominally.",
+          "exTr": "Bu cümlede sözcük, isim olarak değil fiil işleviyle kullanılır."
+        }
+      ],
+      "card_example": "The agreement was made verbally and was never recorded in writing.",
+      "card_example_tr": "Anlaşma sözlü olarak yapıldı ve hiçbir zaman yazılı kayda geçirilmedi.",
+      "test_sentence": "Young children often express their needs verbally before they can write, using simple phrases that become more complex as their vocabulary expands.",
+      "test_sentence_tr": "Küçük çocuklar çoğu zaman yazabilmeden önce ihtiyaçlarını sözlü olarak ifade eder ve sözcük dağarcıkları genişledikçe karmaşıklaşan basit ifadeler kullanır.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2018_01",
+          "page": 16,
+          "question": null,
+          "surface": "verbally",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Verbal sıfatının modern ve YDS kanıtlı zarfıdır; verbal ile verb kartları korunur."
+    },
+    {
+      "candidate": "bureaucratic",
+      "tip": "sıfat",
+      "p": 9.8,
+      "source_score": 9.8206,
+      "family_members": [
+        "bureaucratic",
+        "bureaucracy"
+      ],
+      "meanings": [
+        {
+          "tr": "s. bürokrasiyle ilgili, bürokratik",
+          "ex": "The reform changed the bureaucratic structure of the ministry.",
+          "exTr": "Reform, bakanlığın bürokratik yapısını değiştirdi."
+        },
+        {
+          "tr": "s. aşırı kuralcı ve işlemci",
+          "ex": "An overly bureaucratic approval process delayed the research.",
+          "exTr": "Aşırı kuralcı onay süreci araştırmayı geciktirdi."
+        }
+      ],
+      "card_example": "The reform changed the bureaucratic structure of the ministry.",
+      "card_example_tr": "Reform, bakanlığın bürokratik yapısını değiştirdi.",
+      "test_sentence": "The reform aims to remove bureaucratic obstacles to scientific collaboration by simplifying applications and allowing institutions to share data more easily.",
+      "test_sentence_tr": "Reform, başvuruları basitleştirerek ve kurumların verileri daha kolay paylaşmasını sağlayarak bilimsel iş birliğinin önündeki bürokratik engelleri kaldırmayı amaçlıyor.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2016_01",
+          "page": 21,
+          "question": null,
+          "surface": "bureaucratic",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Bureaucracy isminin bağımsız sıfat üyesidir ve YDS kanıtı vardır; bureaucracy kartı korunur."
+    },
+    {
+      "candidate": "irreversibly",
+      "tip": "zarf",
+      "p": 9.8,
+      "source_score": 9.8198,
+      "family_members": [
+        "irreversibly",
+        "irreversible"
+      ],
+      "meanings": [
+        {
+          "tr": "z. geri döndürülemez, kalıcı biçimde",
+          "ex": "Some ecosystems can be irreversibly damaged by prolonged drought.",
+          "exTr": "Bazı ekosistemler uzun süren kuraklık nedeniyle geri döndürülemez biçimde zarar görebilir."
+        }
+      ],
+      "card_example": "Some ecosystems can be irreversibly damaged by prolonged drought.",
+      "card_example_tr": "Bazı ekosistemler uzun süren kuraklık nedeniyle geri döndürülemez biçimde zarar görebilir.",
+      "test_sentence": "Once the tissue is destroyed, its function may be irreversibly lost unless treatment begins before the damage reaches a critical stage.",
+      "test_sentence_tr": "Doku yok olduktan sonra, hasar kritik bir aşamaya ulaşmadan tedavi başlamazsa işlevi geri döndürülemez biçimde kaybedilebilir.",
+      "exams": 2,
+      "freq": 2,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2014_01",
+          "page": 13,
+          "question": null,
+          "surface": "irreversibly",
+          "role": "metin"
+        },
+        {
+          "exam_id": "YDS_2024_02",
+          "page": 3,
+          "question": 4,
+          "surface": "irreversibly",
+          "role": "celdirici"
+        }
+      ],
+      "decision": "add",
+      "reason": "Irreversible sıfatının bağımsız zarfıdır ve iki sınavda görülmüştür; irreversible kartı korunur."
+    },
+    {
+      "candidate": "vigorously",
+      "tip": "zarf",
+      "p": 9.8,
+      "source_score": 9.7992,
+      "family_members": [
+        "vigorously",
+        "vigorous"
+      ],
+      "meanings": [
+        {
+          "tr": "z. güçlü, enerjik veya kararlı biçimde",
+          "ex": "The rescue team worked vigorously throughout the night.",
+          "exTr": "Kurtarma ekibi gece boyunca büyük bir enerjiyle çalıştı."
+        },
+        {
+          "tr": "z. hararetle",
+          "ex": "The proposal was vigorously debated in parliament.",
+          "exTr": "Öneri parlamentoda hararetle tartışıldı."
+        }
+      ],
+      "card_example": "The rescue team worked vigorously throughout the night.",
+      "card_example_tr": "Kurtarma ekibi gece boyunca büyük bir enerjiyle çalıştı.",
+      "test_sentence": "Health officials vigorously defended the vaccination programme after independent studies confirmed that it had prevented thousands of serious infections.",
+      "test_sentence_tr": "Bağımsız çalışmalar aşılama programının binlerce ciddi enfeksiyonu önlediğini doğruladıktan sonra sağlık yetkilileri programı güçlü biçimde savundu.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2017_02",
+          "page": 19,
+          "question": null,
+          "surface": "vigorously",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Vigorous sıfatının bağımsız ve YDS kanıtlı zarfıdır; vigorous kartı korunur."
+    },
+    {
+      "candidate": "innately",
+      "tip": "zarf",
+      "p": 9.8,
+      "source_score": 9.7769,
+      "family_members": [
+        "innately",
+        "innate"
+      ],
+      "meanings": [
+        {
+          "tr": "z. doğuştan, yaradılıştan, içsel olarak",
+          "ex": "Humans may be innately sensitive to facial expressions.",
+          "exTr": "İnsanlar yüz ifadelerine doğuştan duyarlı olabilir."
+        }
+      ],
+      "card_example": "Humans may be innately sensitive to facial expressions.",
+      "card_example_tr": "İnsanlar yüz ifadelerine doğuştan duyarlı olabilir.",
+      "test_sentence": "The ability is not innately fixed but develops through experience, education, and repeated interaction with people from different social backgrounds.",
+      "test_sentence_tr": "Bu yetenek doğuştan sabit değildir; deneyim, eğitim ve farklı sosyal çevrelerden insanlarla tekrarlanan etkileşim yoluyla gelişir.",
+      "exams": 2,
+      "freq": 2,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2017_02",
+          "page": 19,
+          "question": null,
+          "surface": "innately",
+          "role": "metin"
+        },
+        {
+          "exam_id": "YDS_2019_01",
+          "page": 14,
+          "question": null,
+          "surface": "innately",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Innate sıfatının bağımsız zarfıdır ve iki sınavda görülmüştür; innate kartı korunur."
+    },
+    {
+      "candidate": "decidedly",
+      "tip": "zarf",
+      "p": 9.8,
+      "source_score": 9.7563,
+      "family_members": [
+        "decidedly",
+        "decided"
+      ],
+      "meanings": [
+        {
+          "tr": "z. kesinlikle, kuşkusuz",
+          "ex": "The evidence is decidedly in favour of the second explanation.",
+          "exTr": "Kanıtlar kuşkusuz ikinci açıklamayı destekliyor."
+        },
+        {
+          "tr": "z. belirgin biçimde",
+          "ex": "The second method proved decidedly more reliable than the first.",
+          "exTr": "İkinci yöntemin ilkinden belirgin biçimde daha güvenilir olduğu görüldü."
+        }
+      ],
+      "card_example": "The evidence is decidedly in favour of the second explanation.",
+      "card_example_tr": "Kanıtlar kuşkusuz ikinci açıklamayı destekliyor.",
+      "test_sentence": "Public attitudes became decidedly more favourable after the campaign presented clear evidence of the policy's economic and environmental benefits.",
+      "test_sentence_tr": "Kampanya politikanın ekonomik ve çevresel yararlarına ilişkin açık kanıtlar sunduktan sonra kamuoyunun tutumu belirgin biçimde daha olumlu hâle geldi.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "eYDS_2015_06",
+          "page": 6,
+          "question": 79,
+          "surface": "decidedly",
+          "role": "soru_koku"
+        }
+      ],
+      "decision": "add",
+      "reason": "Decided sıfatından türemiş, anlamı sözlükselleşmiş ve e-YDS kanıtlı zarftır; decided kartı korunur."
+    },
+    {
+      "candidate": "identifiable",
+      "tip": "sıfat",
+      "p": 9.8,
+      "source_score": 9.7563,
+      "family_members": [
+        "identifiable",
+        "identify",
+        "identification"
+      ],
+      "meanings": [
+        {
+          "tr": "s. tanımlanabilir, belirlenebilir, teşhis edilebilir",
+          "ex": "The disease has no single identifiable cause.",
+          "exTr": "Hastalığın belirlenebilir tek bir nedeni yoktur."
+        }
+      ],
+      "card_example": "The disease has no single identifiable cause.",
+      "card_example_tr": "Hastalığın belirlenebilir tek bir nedeni yoktur.",
+      "test_sentence": "Each sample was marked with an identifiable code so that laboratory staff could trace its origin without viewing confidential patient information.",
+      "test_sentence_tr": "Her numune, laboratuvar personelinin gizli hasta bilgilerini görmeden kökenini izleyebilmesi için tanımlanabilir bir kodla işaretlendi.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "eYDS_2014_04",
+          "page": 3,
+          "question": 12,
+          "surface": "identifiable",
+          "role": "soru_koku"
+        }
+      ],
+      "decision": "add",
+      "reason": "Identify fiilinin bağımsız sıfat üyesidir ve e-YDS kanıtı vardır; identify ile identification korunur."
+    },
+    {
+      "candidate": "racially",
+      "tip": "zarf",
+      "p": 9.8,
+      "source_score": 9.7563,
+      "family_members": [
+        "racially",
+        "racial",
+        "race"
+      ],
+      "meanings": [
+        {
+          "tr": "z. ırk bakımından, ırksal olarak",
+          "ex": "The policy produced a racially divided school system.",
+          "exTr": "Politika ırksal olarak bölünmüş bir okul sistemi oluşturdu."
+        }
+      ],
+      "card_example": "The policy produced a racially divided school system.",
+      "card_example_tr": "Politika ırksal olarak bölünmüş bir okul sistemi oluşturdu.",
+      "test_sentence": "The researchers examined whether access to care was racially unequal by comparing waiting times, treatment outcomes, and insurance coverage across communities.",
+      "test_sentence_tr": "Araştırmacılar, topluluklar arasında bekleme sürelerini, tedavi sonuçlarını ve sigorta kapsamını karşılaştırarak sağlık hizmetine erişimin ırksal açıdan eşitsiz olup olmadığını inceledi.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2021_02",
+          "page": 6,
+          "question": null,
+          "surface": "racially",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Racial sıfatının YDS kanıtlı zarfıdır; race ile racial kartları korunur."
+    },
+    {
+      "candidate": "coincidental",
+      "tip": "sıfat",
+      "p": 9.7,
+      "source_score": 9.7422,
+      "family_members": [
+        "coincidental",
+        "coincidentally"
+      ],
+      "meanings": [
+        {
+          "tr": "s. tesadüfi, rastlantısal",
+          "ex": "The similarity between the two results may be purely coincidental.",
+          "exTr": "İki sonuç arasındaki benzerlik tamamen tesadüfi olabilir."
+        }
+      ],
+      "card_example": "The similarity between the two results may be purely coincidental.",
+      "card_example_tr": "İki sonuç arasındaki benzerlik tamamen tesadüfi olabilir.",
+      "test_sentence": "Investigators concluded that the timing was coincidental rather than planned because no communication between the two organisations could be documented.",
+      "test_sentence_tr": "Araştırmacılar, iki kuruluş arasında hiçbir iletişim belgelenemediği için zamanlamanın planlı değil tesadüfi olduğu sonucuna vardı.",
+      "exams": 1,
+      "freq": 2,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2017_01",
+          "page": 7,
+          "question": null,
+          "surface": "coincidental",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Mevcut coincidentally zarfının eksik sıfat üyesidir ve YDS kanıtı vardır; zarf kartı korunur."
+    },
+    {
+      "candidate": "exert",
+      "tip": "fiil",
+      "p": 9.7,
+      "source_score": 9.7349,
+      "family_members": [
+        "exert",
+        "exertion"
+      ],
+      "meanings": [
+        {
+          "tr": "f. güç, etki veya baskı uygulamak",
+          "ex": "Large companies can exert considerable influence on public policy.",
+          "exTr": "Büyük şirketler kamu politikası üzerinde önemli ölçüde etki uygulayabilir."
+        },
+        {
+          "tr": "f. çaba göstermek, kendini zorlamak",
+          "ex": "During the final stage, the runners had to exert themselves fully.",
+          "exTr": "Son aşamada koşucular bütün güçleriyle çaba göstermek zorunda kaldı."
+        }
+      ],
+      "card_example": "Large companies can exert considerable influence on public policy.",
+      "card_example_tr": "Büyük şirketler kamu politikası üzerinde önemli ölçüde etki uygulayabilir.",
+      "test_sentence": "Even a weak magnetic field can exert force on charged particles when they move through it at sufficiently high speeds.",
+      "test_sentence_tr": "Yüklü parçacıklar yeterince yüksek hızlarla içinden geçtiğinde zayıf bir manyetik alan bile üzerlerinde kuvvet uygulayabilir.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2018_02",
+          "page": 9,
+          "question": null,
+          "surface": "exert",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Eksik yalın fiildir ve YDS kanıtı vardır; mevcut exertion isim kartı silinmeden korunur."
+    },
+    {
+      "candidate": "magically",
+      "tip": "zarf",
+      "p": 9.7,
+      "source_score": 9.7349,
+      "family_members": [
+        "magically",
+        "magical",
+        "magic"
+      ],
+      "meanings": [
+        {
+          "tr": "z. sihirli veya büyülü biçimde",
+          "ex": "The stage seemed to transform magically under the changing lights.",
+          "exTr": "Sahne değişen ışıkların altında büyülü biçimde dönüşüyor gibiydi."
+        },
+        {
+          "tr": "z. sanki sihirle olmuş gibi, açıklamasız biçimde",
+          "ex": "The problem will not disappear magically without structural reform.",
+          "exTr": "Sorun yapısal reform olmadan sanki sihirle ortadan kalkmayacak."
+        }
+      ],
+      "card_example": "The stage seemed to transform magically under the changing lights.",
+      "card_example_tr": "Sahne değişen ışıkların altında büyülü biçimde dönüşüyor gibiydi.",
+      "test_sentence": "New technology cannot magically eliminate social inequality unless governments also address unequal access to education, healthcare, housing, and employment.",
+      "test_sentence_tr": "Hükümetler eğitime, sağlık hizmetlerine, konuta ve istihdama eşitsiz erişimi de ele almadıkça yeni teknoloji toplumsal eşitsizliği sihirli biçimde ortadan kaldıramaz.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2018_03",
+          "page": 17,
+          "question": null,
+          "surface": "magically",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Magical sıfatının bağımsız ve YDS kanıtlı zarfıdır; magic ailesi korunur."
+    },
+    {
+      "candidate": "sparse",
+      "tip": "sıfat",
+      "p": 9.7,
+      "source_score": 9.7349,
+      "family_members": [
+        "sparse",
+        "sparsely"
+      ],
+      "meanings": [
+        {
+          "tr": "s. seyrek, az ve dağınık",
+          "ex": "Vegetation is sparse in regions with little rainfall.",
+          "exTr": "Yağışın az olduğu bölgelerde bitki örtüsü seyrektir."
+        },
+        {
+          "tr": "s. yetersiz, kıt",
+          "ex": "Historical evidence for the claim remains sparse.",
+          "exTr": "İddiaya ilişkin tarihsel kanıtlar yetersiz kalmaktadır."
+        }
+      ],
+      "card_example": "Vegetation is sparse in regions with little rainfall.",
+      "card_example_tr": "Yağışın az olduğu bölgelerde bitki örtüsü seyrektir.",
+      "test_sentence": "Because the evidence was sparse, the researchers avoided firm conclusions and recommended collecting data from a larger and more diverse population.",
+      "test_sentence_tr": "Kanıtlar yetersiz olduğu için araştırmacılar kesin sonuçlardan kaçındı ve daha büyük, daha çeşitli bir nüfustan veri toplanmasını önerdi.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2013_01",
+          "page": 16,
+          "question": null,
+          "surface": "sparse",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Mevcut sparsely zarfının eksik sıfat köküdür ve YDS kanıtı vardır; sparsely kartı korunur."
+    },
+    {
+      "candidate": "unification",
+      "tip": "isim",
+      "p": 9.7,
+      "source_score": 9.7349,
+      "family_members": [
+        "unification",
+        "unify"
+      ],
+      "meanings": [
+        {
+          "tr": "i. birleşme, birleştirme, tek yapı hâline getirme",
+          "ex": "Political unification created a larger internal market.",
+          "exTr": "Siyasal birleşme daha büyük bir iç pazar oluşturdu."
+        }
+      ],
+      "card_example": "Political unification created a larger internal market.",
+      "card_example_tr": "Siyasal birleşme daha büyük bir iç pazar oluşturdu.",
+      "test_sentence": "The unification of separate databases improved access to information and allowed public agencies to identify duplicate records more efficiently.",
+      "test_sentence_tr": "Ayrı veri tabanlarının birleştirilmesi bilgiye erişimi geliştirdi ve kamu kurumlarının yinelenen kayıtları daha verimli biçimde belirlemesini sağladı.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2020_01",
+          "page": 6,
+          "question": null,
+          "surface": "unification",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Unify fiilinin bağımsız isim üyesidir ve YDS kanıtı vardır; unify kartı korunur."
+    },
+    {
+      "candidate": "recur",
+      "tip": "fiil",
+      "p": 9.7,
+      "source_score": 9.7279,
+      "family_members": [
+        "recur",
+        "recurrent"
+      ],
+      "meanings": [
+        {
+          "tr": "f. tekrarlamak, yeniden meydana gelmek",
+          "ex": "Similar economic crises tend to recur when regulation is weak.",
+          "exTr": "Düzenlemeler zayıf olduğunda benzer ekonomik krizler yeniden meydana gelme eğilimindedir."
+        },
+        {
+          "tr": "f. nüksetmek",
+          "ex": "The infection may recur if treatment is stopped too early.",
+          "exTr": "Tedavi çok erken kesilirse enfeksiyon nüksedebilir."
+        }
+      ],
+      "card_example": "Similar economic crises tend to recur when regulation is weak.",
+      "card_example_tr": "Düzenlemeler zayıf olduğunda benzer ekonomik krizler yeniden meydana gelme eğilimindedir.",
+      "test_sentence": "Seasonal floods often recur in the lower valley after unusually heavy rainfall saturates soils across the surrounding mountain region.",
+      "test_sentence_tr": "Mevsimsel seller, olağan dışı şiddetli yağışların çevredeki dağlık bölgenin topraklarını suya doyurmasının ardından aşağı vadide sık sık yeniden meydana gelir.",
+      "exams": 1,
+      "freq": 3,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2021_02",
+          "page": 13,
+          "question": null,
+          "surface": "recurring",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Eksik yalın fiildir; kaynak sözlükteki recourse anlamı alınmaz. Mevcut ve YDS'de kullanılan recurrent sıfat kartı korunur."
+    },
+    {
+      "candidate": "empathetic",
+      "tip": "sıfat",
+      "p": 9.7,
+      "source_score": 9.7208,
+      "family_members": [
+        "empathetic",
+        "empathy"
+      ],
+      "meanings": [
+        {
+          "tr": "s. empati kurabilen, duygudaş, anlayışlı",
+          "ex": "An empathetic doctor is more likely to understand a patient's concerns.",
+          "exTr": "Empati kurabilen bir doktorun hastanın kaygılarını anlaması daha olasıdır."
+        }
+      ],
+      "card_example": "An empathetic doctor is more likely to understand a patient's concerns.",
+      "card_example_tr": "Empati kurabilen bir doktorun hastanın kaygılarını anlaması daha olasıdır.",
+      "test_sentence": "Effective counsellors remain empathetic while maintaining professional boundaries, which helps clients feel understood without creating unhealthy emotional dependence.",
+      "test_sentence_tr": "Etkili danışmanlar mesleki sınırlarını korurken empati kurmayı sürdürür; bu da sağlıksız duygusal bağımlılık yaratmadan danışanların anlaşıldığını hissetmesine yardımcı olur.",
+      "exams": 1,
+      "freq": 2,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2017_01",
+          "page": 3,
+          "question": null,
+          "surface": "empathetic",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Empathy isminin bağımsız sıfat üyesidir ve YDS kanıtı vardır; empathy kartı korunur."
+    },
+    {
+      "candidate": "rehearse",
+      "tip": "fiil",
+      "p": 9.7,
+      "source_score": 9.7208,
+      "family_members": [
+        "rehearse",
+        "rehearsal"
+      ],
+      "meanings": [
+        {
+          "tr": "f. prova etmek, prova yapmak",
+          "ex": "Speakers should rehearse their presentation before the conference.",
+          "exTr": "Konuşmacılar konferanstan önce sunumlarının provasını yapmalıdır."
+        },
+        {
+          "tr": "f. önceden tekrarlamak veya hazırlamak",
+          "ex": "Critics often rehearse the same objections whenever the policy is discussed.",
+          "exTr": "Eleştirmenler politika her tartışıldığında aynı itirazları tekrarlar."
+        }
+      ],
+      "card_example": "Speakers should rehearse their presentation before the conference.",
+      "card_example_tr": "Konuşmacılar konferanstan önce sunumlarının provasını yapmalıdır.",
+      "test_sentence": "Emergency crews regularly rehearse evacuation procedures so that each member can respond quickly when alarms sound inside the tunnel.",
+      "test_sentence_tr": "Acil durum ekipleri, tünelde alarmlar çaldığında her üyenin hızla karşılık verebilmesi için tahliye işlemlerinin düzenli olarak provasını yapar.",
+      "exams": 1,
+      "freq": 2,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2015_02",
+          "page": 5,
+          "question": null,
+          "surface": "rehearse",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Eksik yalın fiildir ve YDS kanıtı vardır; mevcut rehearsal isim kartı silinmeden korunur."
+    },
+    {
+      "candidate": "awaken",
+      "tip": "fiil",
+      "p": 9.7,
+      "source_score": 9.7134,
+      "family_members": [
+        "awaken",
+        "awakening"
+      ],
+      "meanings": [
+        {
+          "tr": "f. uyandırmak, uyanmak",
+          "ex": "Loud noises can awaken patients during the night.",
+          "exTr": "Yüksek sesler hastaları gece uyandırabilir."
+        },
+        {
+          "tr": "f. farkındalık veya duygu uyandırmak",
+          "ex": "The documentary helped awaken public interest in marine conservation.",
+          "exTr": "Belgesel denizlerin korunmasına yönelik kamu ilgisini uyandırmaya yardımcı oldu."
+        }
+      ],
+      "card_example": "Loud noises can awaken patients during the night.",
+      "card_example_tr": "Yüksek sesler hastaları gece uyandırabilir.",
+      "test_sentence": "A major crisis can awaken society to risks it previously ignored and create public support for reforms that once seemed unnecessary.",
+      "test_sentence_tr": "Büyük bir kriz toplumu daha önce görmezden geldiği risklere karşı uyandırabilir ve bir zamanlar gereksiz görünen reformlara kamuoyu desteği oluşturabilir.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2019_03",
+          "page": 17,
+          "question": null,
+          "surface": "awakening",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Eksik yalın fiildir ve YDS kanıtı vardır; mevcut ve sözlükselleşmiş awakening isim kartı korunur."
+    },
+    {
+      "candidate": "fiercely",
+      "tip": "zarf",
+      "p": 9.7,
+      "source_score": 9.7134,
+      "family_members": [
+        "fiercely",
+        "fierce"
+      ],
+      "meanings": [
+        {
+          "tr": "z. şiddetle, sert biçimde",
+          "ex": "The storm struck the coast fiercely throughout the night.",
+          "exTr": "Fırtına gece boyunca kıyıyı şiddetle vurdu."
+        },
+        {
+          "tr": "z. kıyasıya, hararetle",
+          "ex": "Several species compete fiercely for limited food resources.",
+          "exTr": "Birçok tür sınırlı besin kaynakları için kıyasıya rekabet eder."
+        }
+      ],
+      "card_example": "The storm struck the coast fiercely throughout the night.",
+      "card_example_tr": "Fırtına gece boyunca kıyıyı şiddetle vurdu.",
+      "test_sentence": "The two companies competed fiercely for the international contract, offering lower prices and promising to complete the project ahead of schedule.",
+      "test_sentence_tr": "İki şirket uluslararası sözleşme için kıyasıya rekabet ederek daha düşük fiyatlar sundu ve projeyi planlanandan önce tamamlamayı vadetti.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2017_02",
+          "page": 14,
+          "question": null,
+          "surface": "fiercely",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Fierce sıfatının bağımsız ve YDS kanıtlı zarfıdır; fierce kartı korunur."
+    },
+    {
+      "candidate": "mechanically",
+      "tip": "zarf",
+      "p": 9.7,
+      "source_score": 9.7134,
+      "family_members": [
+        "mechanically",
+        "mechanical",
+        "mechanic"
+      ],
+      "meanings": [
+        {
+          "tr": "z. mekanik olarak, makine veya mekanizma yoluyla",
+          "ex": "The device operates mechanically rather than electronically.",
+          "exTr": "Cihaz elektronik olarak değil mekanik olarak çalışır."
+        },
+        {
+          "tr": "z. düşünmeden, otomatik biçimde",
+          "ex": "Repeating a rule mechanically does not guarantee genuine understanding.",
+          "exTr": "Bir kuralı düşünmeden tekrarlamak gerçek anlamayı garanti etmez."
+        }
+      ],
+      "card_example": "The device operates mechanically rather than electronically.",
+      "card_example_tr": "Cihaz elektronik olarak değil mekanik olarak çalışır.",
+      "test_sentence": "The valve opens mechanically when pressure exceeds the safe limit, even if the electronic control system has stopped functioning.",
+      "test_sentence_tr": "Basınç güvenli sınırı aştığında, elektronik kontrol sistemi çalışmayı bırakmış olsa bile vana mekanik olarak açılır.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2015_01",
+          "page": 13,
+          "question": null,
+          "surface": "mechanically",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Mechanical sıfatının bağımsız ve YDS kanıtlı zarfıdır; mechanical ile mechanic kartları korunur."
+    },
+    {
+      "candidate": "deceptive",
+      "tip": "sıfat",
+      "p": 9.7,
+      "source_score": 9.692,
+      "family_members": [
+        "deceptive",
+        "deceive"
+      ],
+      "meanings": [
+        {
+          "tr": "s. aldatıcı, yanıltıcı",
+          "ex": "The apparent simplicity of the problem is deceptive.",
+          "exTr": "Sorunun görünürdeki basitliği yanıltıcıdır."
+        }
+      ],
+      "card_example": "The apparent simplicity of the problem is deceptive.",
+      "card_example_tr": "Sorunun görünürdeki basitliği yanıltıcıdır.",
+      "test_sentence": "A small sample can produce a deceptive impression of certainty, particularly when unusual observations strongly influence the calculated average.",
+      "test_sentence_tr": "Küçük bir örneklem, özellikle olağan dışı gözlemler hesaplanan ortalamayı güçlü biçimde etkilediğinde, aldatıcı bir kesinlik izlenimi yaratabilir.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2020_01",
+          "page": 20,
+          "question": null,
+          "surface": "deceptive",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Deceive fiilinin bağımsız sıfat üyesidir ve YDS kanıtı vardır; deceive kartı korunur."
+    },
+    {
+      "candidate": "textual",
+      "tip": "sıfat",
+      "p": 9.7,
+      "source_score": 9.692,
+      "family_members": [
+        "textual",
+        "text"
+      ],
+      "meanings": [
+        {
+          "tr": "s. metne ait, metinsel",
+          "ex": "Scholars compared textual variations across the surviving manuscripts.",
+          "exTr": "Araştırmacılar günümüze ulaşan el yazmalarındaki metinsel farklılıkları karşılaştırdı."
+        },
+        {
+          "tr": "s. metne dayalı",
+          "ex": "The interpretation must be supported by textual evidence.",
+          "exTr": "Yorum metne dayalı kanıtlarla desteklenmelidir."
+        }
+      ],
+      "card_example": "Scholars compared textual variations across the surviving manuscripts.",
+      "card_example_tr": "Araştırmacılar günümüze ulaşan el yazmalarındaki metinsel farklılıkları karşılaştırdı.",
+      "test_sentence": "A textual analysis of campaign speeches revealed gradual changes in how political leaders described immigration and national identity.",
+      "test_sentence_tr": "Seçim kampanyası konuşmalarının metinsel analizi, siyasi liderlerin göçü ve ulusal kimliği betimleme biçiminde aşamalı değişiklikler olduğunu ortaya koydu.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "eYDS_2016_06",
+          "page": 6,
+          "question": 73,
+          "surface": "textual",
+          "role": "celdirici"
+        }
+      ],
+      "decision": "add",
+      "reason": "Text isminin bağımsız sıfat üyesidir ve e-YDS kanıtı vardır; text kartı korunur."
+    },
+    {
+      "candidate": "undeniable",
+      "tip": "sıfat",
+      "p": 9.7,
+      "source_score": 9.692,
+      "family_members": [
+        "undeniable",
+        "undeniably"
+      ],
+      "meanings": [
+        {
+          "tr": "s. inkâr edilemez, yadsınamaz, tartışmasız",
+          "ex": "The policy brought undeniable improvements in public health.",
+          "exTr": "Politika halk sağlığında inkâr edilemez gelişmeler sağladı."
+        }
+      ],
+      "card_example": "The policy brought undeniable improvements in public health.",
+      "card_example_tr": "Politika halk sağlığında inkâr edilemez gelişmeler sağladı.",
+      "test_sentence": "There is undeniable evidence that the climate is changing, although governments still disagree about how quickly emissions should be reduced.",
+      "test_sentence_tr": "İklimin değiştiğine ilişkin inkâr edilemez kanıtlar vardır; ancak hükümetler emisyonların ne kadar hızlı azaltılması gerektiği konusunda hâlâ anlaşamamaktadır.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2017_01",
+          "page": 9,
+          "question": null,
+          "surface": "undeniable",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Mevcut undeniably zarfının eksik sıfat köküdür ve YDS kanıtı vardır; zarf kartı korunur."
+    },
+    {
+      "candidate": "deficient",
+      "tip": "sıfat",
+      "p": 9.7,
+      "source_score": 9.6706,
+      "family_members": [
+        "deficient",
+        "deficiency"
+      ],
+      "meanings": [
+        {
+          "tr": "s. eksik, yetersiz",
+          "ex": "The initial report was deficient in reliable statistical evidence.",
+          "exTr": "İlk rapor güvenilir istatistiksel kanıtlar bakımından yetersizdi."
+        },
+        {
+          "tr": "s. bir maddeden veya özellikten yoksun",
+          "ex": "A diet deficient in iron may cause fatigue.",
+          "exTr": "Demirden yoksun bir beslenme düzeni yorgunluğa neden olabilir."
+        }
+      ],
+      "card_example": "The initial report was deficient in reliable statistical evidence.",
+      "card_example_tr": "İlk rapor güvenilir istatistiksel kanıtlar bakımından yetersizdi.",
+      "test_sentence": "Children whose diets are deficient in vitamin D may develop weak bones unless the shortage is identified and treated early.",
+      "test_sentence_tr": "Beslenme düzenleri D vitamini bakımından yetersiz olan çocuklarda, eksiklik erken belirlenip tedavi edilmezse kemik zayıflığı gelişebilir.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2014_02",
+          "page": 11,
+          "question": null,
+          "surface": "deficient",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Deficiency isminin bağımsız sıfat üyesidir ve YDS kanıtı vardır; deficiency kartı korunur."
+    },
+    {
+      "candidate": "hormonal",
+      "tip": "sıfat",
+      "p": 9.7,
+      "source_score": 9.6706,
+      "family_members": [
+        "hormonal",
+        "hormone"
+      ],
+      "meanings": [
+        {
+          "tr": "s. hormonla ilgili, hormonların neden olduğu",
+          "ex": "Hormonal changes can influence sleep patterns.",
+          "exTr": "Hormonal değişiklikler uyku düzenini etkileyebilir."
+        }
+      ],
+      "card_example": "Hormonal changes can influence sleep patterns.",
+      "card_example_tr": "Hormonal değişiklikler uyku düzenini etkileyebilir.",
+      "test_sentence": "The researchers examined whether the symptoms had a hormonal cause before considering environmental factors and inherited genetic conditions.",
+      "test_sentence_tr": "Araştırmacılar çevresel etkenleri ve kalıtsal genetik durumları değerlendirmeden önce belirtilerin hormonal bir nedeni olup olmadığını inceledi.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2013_01",
+          "page": 19,
+          "question": 66,
+          "surface": "hormonal",
+          "role": "soru_koku"
+        }
+      ],
+      "decision": "add",
+      "reason": "Hormone isminin bağımsız sıfat üyesidir ve YDS soru kökünde görülmüştür; hormone kartı korunur."
+    },
+    {
+      "candidate": "escalation",
+      "tip": "isim",
+      "p": 9.6,
+      "source_score": 9.6492,
+      "family_members": [
+        "escalation",
+        "escalate"
+      ],
+      "meanings": [
+        {
+          "tr": "i. tırmanma, şiddetlenme",
+          "ex": "Diplomatic talks were intended to prevent further escalation of the conflict.",
+          "exTr": "Diplomatik görüşmeler çatışmanın daha fazla tırmanmasını önlemeyi amaçlıyordu."
+        },
+        {
+          "tr": "i. hızlı artış",
+          "ex": "A rapid escalation in prices reduced household purchasing power.",
+          "exTr": "Fiyatlardaki hızlı artış hanelerin satın alma gücünü azalttı."
+        }
+      ],
+      "card_example": "Diplomatic talks were intended to prevent further escalation of the conflict.",
+      "card_example_tr": "Diplomatik görüşmeler çatışmanın daha fazla tırmanmasını önlemeyi amaçlıyordu.",
+      "test_sentence": "Mediators returned to the region in an effort to prevent an escalation of violence between neighbouring communities.",
+      "test_sentence_tr": "Arabulucular komşu topluluklar arasındaki şiddetin tırmanmasını önlemek amacıyla bölgeye geri döndü.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2016_01",
+          "page": 13,
+          "question": null,
+          "surface": "escalation",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Escalate fiilinin bağımsız isim üyesidir ve YDS kanıtı vardır; escalate kartı korunur."
+    },
+    {
+      "candidate": "horrify",
+      "tip": "fiil",
+      "p": 9.6,
+      "source_score": 9.634,
+      "family_members": [
+        "horrify",
+        "horror"
+      ],
+      "meanings": [
+        {
+          "tr": "f. dehşete düşürmek, korkutmak",
+          "ex": "Images of the destruction continue to horrify viewers.",
+          "exTr": "Yıkım görüntüleri izleyenleri dehşete düşürmeye devam ediyor."
+        },
+        {
+          "tr": "f. son derece şaşırtmak veya tiksindirmek",
+          "ex": "The cruelty described in the report will horrify even experienced investigators.",
+          "exTr": "Raporda anlatılan zulüm deneyimli araştırmacıları bile son derece sarsacaktır."
+        }
+      ],
+      "card_example": "Images of the destruction continue to horrify viewers.",
+      "card_example_tr": "Yıkım görüntüleri izleyenleri dehşete düşürmeye devam ediyor.",
+      "test_sentence": "The scale of the environmental damage would horrify most observers, especially those who had visited the region before industrial development began.",
+      "test_sentence_tr": "Çevresel hasarın boyutu, özellikle bölgeyi sanayi gelişimi başlamadan önce ziyaret etmiş olanlar olmak üzere çoğu gözlemciyi dehşete düşürürdü.",
+      "exams": 2,
+      "freq": 3,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2013_01",
+          "page": 23,
+          "question": null,
+          "surface": "horrifying",
+          "role": "metin"
+        },
+        {
+          "exam_id": "YDS_2018_03",
+          "page": 20,
+          "question": null,
+          "surface": "horrifying",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Eksik yalın fiildir ve iki sınavda görülmüştür; mevcut horror isim kartı silinmeden korunur."
+    },
+    {
+      "candidate": "colonise",
+      "tip": "fiil",
+      "p": 9.3,
+      "source_score": 9.3055,
+      "family_members": [
+        "colonise",
+        "colony"
+      ],
+      "meanings": [
+        {
+          "tr": "f. sömürgeleştirmek, koloni kurmak",
+          "ex": "European powers sought to colonise territories for economic gain.",
+          "exTr": "Avrupalı güçler ekonomik kazanç için bölgeleri sömürgeleştirmeye çalıştı."
+        },
+        {
+          "tr": "f. bir bölgeye yerleşip çoğalmak",
+          "ex": "Some plants can quickly colonise disturbed land.",
+          "exTr": "Bazı bitkiler bozulmuş arazilere hızla yerleşip çoğalabilir."
+        }
+      ],
+      "card_example": "European powers sought to colonise territories for economic gain.",
+      "card_example_tr": "Avrupalı güçler ekonomik kazanç için bölgeleri sömürgeleştirmeye çalıştı.",
+      "test_sentence": "Certain bacteria can colonise the human gut soon after birth and influence immune development throughout early childhood.",
+      "test_sentence_tr": "Belirli bakteriler doğumdan kısa süre sonra insan bağırsağına yerleşebilir ve erken çocukluk boyunca bağışıklık gelişimini etkileyebilir.",
+      "exams": 2,
+      "freq": 2,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2018_02",
+          "page": 10,
+          "question": null,
+          "surface": "colonise",
+          "role": "metin"
+        },
+        {
+          "exam_id": "YDS_2020_01",
+          "page": 18,
+          "question": null,
+          "surface": "colonise",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Eksik yalın fiildir, İngiliz yazımıyla iki sınavda görülmüştür; mevcut colony isim kartı silinmeden korunur."
+    },
+    {
+      "candidate": "mummify",
+      "tip": "fiil",
+      "p": 8.2,
+      "source_score": 8.1983,
+      "family_members": [
+        "mummify",
+        "mummy"
+      ],
+      "meanings": [
+        {
+          "tr": "f. mumyalamak",
+          "ex": "Ancient embalmers used salts to mummify the body.",
+          "exTr": "Antik dönemin mumyalayıcıları bedeni mumyalamak için tuz kullandı."
+        },
+        {
+          "tr": "f. mumyalaşmak, kuruyarak korunmak",
+          "ex": "Extremely dry conditions can naturally mummify human remains.",
+          "exTr": "Aşırı kuru koşullar insan kalıntılarının doğal olarak mumyalaşmasını sağlayabilir."
+        }
+      ],
+      "card_example": "Ancient embalmers used salts to mummify the body.",
+      "card_example_tr": "Antik dönemin mumyalayıcıları bedeni mumyalamak için tuz kullandı.",
+      "test_sentence": "Museum conservators must control humidity carefully because extremely dry air can mummify small animal specimens over time.",
+      "test_sentence_tr": "Müze koruma uzmanları nemi dikkatle denetlemelidir; çünkü aşırı kuru hava küçük hayvan örneklerini zamanla mumyalaştırabilir.",
+      "exams": 2,
+      "freq": 3,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2016_01",
+          "page": 8,
+          "question": null,
+          "surface": "mummified",
+          "role": "metin"
+        },
+        {
+          "exam_id": "YDS_2021_01",
+          "page": 4,
+          "question": 9,
+          "surface": "mummified",
+          "role": "soru_koku"
+        }
+      ],
+      "decision": "add",
+      "reason": "Eksik yalın fiildir ve iki sınavda görülmüştür; mevcut mummy isim kartı silinmeden korunur."
+    },
+    {
+      "candidate": "conceptualise",
+      "tip": "fiil",
+      "p": 8.2,
+      "source_score": 8.1912,
+      "family_members": [
+        "conceptualise",
+        "concept"
+      ],
+      "meanings": [
+        {
+          "tr": "f. kavramsallaştırmak",
+          "ex": "Researchers conceptualise intelligence in several different ways.",
+          "exTr": "Araştırmacılar zekâyı birkaç farklı biçimde kavramsallaştırır."
+        },
+        {
+          "tr": "f. zihinde tasarlamak veya bir kavram olarak düşünmek",
+          "ex": "Architects use digital models to conceptualise a building before construction.",
+          "exTr": "Mimarlar bir binayı inşaattan önce zihinlerinde tasarlamak için dijital modeller kullanır."
+        }
+      ],
+      "card_example": "Researchers conceptualise intelligence in several different ways.",
+      "card_example_tr": "Araştırmacılar zekâyı birkaç farklı biçimde kavramsallaştırır.",
+      "test_sentence": "It is difficult to conceptualise time without using spatial metaphors because everyday language describes events as moving forward or falling behind.",
+      "test_sentence_tr": "Gündelik dil olayları ilerliyor veya geride kalıyor diye anlattığı için uzamsal eğretilemeler kullanmadan zamanı kavramsallaştırmak zordur.",
+      "exams": 2,
+      "freq": 2,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2018_01",
+          "page": 9,
+          "question": null,
+          "surface": "conceptualise",
+          "role": "metin"
+        },
+        {
+          "exam_id": "YDS_2025_INGILIZCE",
+          "page": 24,
+          "question": null,
+          "surface": "conceptualised",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "Eksik yalın fiildir, İngiliz yazımıyla iki sınavda görülmüştür; mevcut concept isim kartı silinmeden korunur."
+    },
+    {
+      "candidate": "hazardously",
+      "tip": "zarf",
+      "p": 7.3,
+      "source_score": 7.3412,
+      "family_members": [
+        "hazardously",
+        "hazardous"
+      ],
+      "meanings": [
+        {
+          "tr": "z. tehlikeli, riskli biçimde",
+          "ex": "Chemicals were stored hazardously near an open flame.",
+          "exTr": "Kimyasallar açık alevin yakınında tehlikeli biçimde depolanmıştı."
+        }
+      ],
+      "card_example": "Chemicals were stored hazardously near an open flame.",
+      "card_example_tr": "Kimyasallar açık alevin yakınında tehlikeli biçimde depolanmıştı.",
+      "test_sentence": "Workers were forced to operate hazardously close to the unstable wall because managers had ignored repeated warnings from safety inspectors.",
+      "test_sentence_tr": "Yöneticiler güvenlik denetçilerinin tekrarlanan uyarılarını görmezden geldiği için işçiler dengesiz duvara tehlikeli biçimde yakın çalışmak zorunda bırakıldı.",
+      "exams": 2,
+      "freq": 3,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2013_01",
+          "page": 3,
+          "question": 3,
+          "surface": "hazardously",
+          "role": "celdirici"
+        },
+        {
+          "exam_id": "eYDS_2015_11",
+          "page": 3,
+          "question": 3,
+          "surface": "hazardously",
+          "role": "celdirici"
+        }
+      ],
+      "decision": "add",
+      "reason": "Hazardous sıfatının bağımsız zarfıdır ve iki sınavda görülmüştür; hazardous kartı korunur."
+    },
+    {
+      "candidate": "designate",
+      "tip": "fiil, sıfat",
+      "p": 7.2,
+      "source_score": 7.2214,
+      "family_members": [
+        "designate",
+        "designation"
+      ],
+      "meanings": [
+        {
+          "tr": "f. belirtmek, tayin etmek, adlandırmak",
+          "ex": "The agency will designate the wetland as a protected area.",
+          "exTr": "Kurum sulak alanı koruma bölgesi olarak belirleyecek."
+        },
+        {
+          "tr": "s. atanmış fakat henüz göreve başlamamış",
+          "ex": "The minister-designate met senior officials before formally taking office.",
+          "exTr": "Atanmış ancak henüz göreve başlamamış bakan, resmen göreve gelmeden önce üst düzey yetkililerle görüştü."
+        }
+      ],
+      "card_example": "The agency will designate the wetland as a protected area.",
+      "card_example_tr": "Kurum sulak alanı koruma bölgesi olarak belirleyecek.",
+      "test_sentence": "Local authorities may designate historic buildings as protected sites when redevelopment threatens features of exceptional cultural importance.",
+      "test_sentence_tr": "Yerel makamlar, yeniden geliştirme olağanüstü kültürel öneme sahip özellikleri tehdit ettiğinde tarihî binaları koruma alanı olarak belirleyebilir.",
+      "exams": 0,
+      "freq": 0,
+      "source_refs": [],
+      "decision": "add",
+      "reason": "Designation kartının eksik yalın köküdür. Puanı düşük ve doğrudan sınav kanıtı olmasa da kullanıcı kuralı gereği K7'ye ayrı kart eklenir; mevcut designation kartı korunur."
+    }
+  ]
+}

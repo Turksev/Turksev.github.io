@@ -35,6 +35,9 @@
   var KELIME_ALIASES = window.YDS_KELIME_ALIASES || {};
   var KELIME_ILERLEME_KIMLIKLERI = window.YDS_KELIME_ILERLEME_KIMLIKLERI || {};
   var KENDI = Object.prototype.hasOwnProperty;
+  // Bu, yalnız Firestore alan JSON'unun iç kodlama sürümüdür. Yerel zarfın
+  // SURUM=2 sözleşmesinden ve dış Firestore belge sürümünden bağımsızdır.
+  var BULUT_KODLAMA_SURUMU = 2;
 
   function kelimeKimligi(id) {
     var sonuc = String(id == null ? '' : id);
@@ -222,7 +225,7 @@
 
   function alaniNormallestir(anahtar, alan) {
     alan = alan || { i: {} };
-    var sonuc = { i: {} };
+    var sonuc = { i: Object.create(null) };
     if (alan.r) sonuc.r = alan.r;
     Object.keys(alan.i || {}).forEach(function (id) {
       var yeniId = kayitKimliginiNormallestir(anahtar, id);
@@ -231,10 +234,159 @@
     return sonuc;
   }
 
+  /* Leitner ve test-yanlış alanları, bütün kelime ve öbekler için kayıt
+     tutulabildiği için buluttaki en büyük alanlardır. Yerelde kullanılan kayıt
+     şemasını ve birleştirme davranışını değiştirmeden yalnız Firestore JSON'unu
+     daha kısa bir dizi biçiminde taşırız. Eski nesne biçimi hâlâ okunur;
+     böylece mevcut kullanıcı ilerlemesi ilk eşitlemede kayıpsız geçer. */
+  function bulutMetasiniAyir(meta) {
+    if (typeof meta !== 'string') return null;
+    var yer = meta.indexOf(':');
+    if (yer < 1) return null;
+    var zamanMetni = meta.slice(0, yer);
+    var zaman = Number(zamanMetni);
+    if (!Number.isSafeInteger(zaman) || String(zaman) !== zamanMetni) return null;
+    return { z: zaman, o: meta.slice(yer + 1) };
+  }
+
+  function bulutMetaKodla(meta, aktorler) {
+    var ayrik = bulutMetasiniAyir(meta);
+    if (ayrik) {
+      var sira = aktorler.indexOf(ayrik.o);
+      if (sira === 0) return ayrik.z;
+      return [ayrik.z, sira];
+    }
+    if (typeof meta === 'number') return ['n', meta];
+    return ['g', kopyala(meta)];
+  }
+
+  function bulutMetaCoz(kodlu, aktorler) {
+    if (typeof kodlu === 'number') {
+      if (!aktorler.length) throw new Error('bulut-alan-aktor-listesi-gecersiz');
+      return String(kodlu) + ':' + aktorler[0];
+    }
+    if (!Array.isArray(kodlu) || kodlu.length !== 2) {
+      throw new Error('bulut-alan-meta-kodlamasi-gecersiz');
+    }
+    if (typeof kodlu[0] === 'number') {
+      if (!Number.isInteger(kodlu[1]) || kodlu[1] < 0 || kodlu[1] >= aktorler.length) {
+        throw new Error('bulut-alan-aktor-kodu-gecersiz');
+      }
+      return String(kodlu[0]) + ':' + aktorler[kodlu[1]];
+    }
+    if (kodlu[0] === 'n') return kodlu[1];
+    if (kodlu[0] === 'g') return kopyala(kodlu[1]);
+    throw new Error('bulut-alan-meta-kodlamasi-gecersiz');
+  }
+
+  function kisaBulutAlaniMi(anahtar) {
+    return anahtar === 'yds-leitner' || anahtar === 'yds-test-yanlis';
+  }
+
+  function standartAlanKaydi(anahtar, deger) {
+    if (!deger || typeof deger !== 'object' || Array.isArray(deger)) return 0;
+    var alanlar = Object.keys(deger).sort().join(',');
+    if (anahtar === 'yds-test-yanlis') {
+      var testTemeli = typeof deger.n === 'number' && Number.isFinite(deger.n) &&
+        typeof deger.t === 'number' && Number.isFinite(deger.t);
+      if (alanlar === 'n,t' && testTemeli) return 2;
+      if (alanlar === 'n,t,u' && testTemeli &&
+          typeof deger.u === 'number' && Number.isFinite(deger.u)) return 3;
+    } else if (anahtar === 'yds-leitner') {
+      var leitnerTemeli = typeof deger.k === 'number' && Number.isFinite(deger.k) &&
+        typeof deger.g === 'number' && Number.isFinite(deger.g);
+      if (alanlar === 'g,k' && leitnerTemeli) return 2;
+      if (alanlar === 'c,g,k' && leitnerTemeli &&
+          typeof deger.c === 'number' && Number.isFinite(deger.c)) return 3;
+    }
+    return 0;
+  }
+
+  function bulutAlaniniKodla(anahtar, alan) {
+    alan = alaniNormallestir(anahtar, alan);
+    if (!kisaBulutAlaniMi(anahtar)) return alan;
+
+    var aktorSayilari = Object.create(null);
+    Object.keys(alan.i || {}).forEach(function (id) {
+      var ayrik = bulutMetasiniAyir(alan.i[id] && alan.i[id].m);
+      if (ayrik) aktorSayilari[ayrik.o] = (aktorSayilari[ayrik.o] || 0) + 1;
+    });
+    var aktorler = Object.keys(aktorSayilari).sort(function (a, b) {
+      return aktorSayilari[b] - aktorSayilari[a] || (a < b ? -1 : a > b ? 1 : 0);
+    });
+    var sonuc = { k: BULUT_KODLAMA_SURUMU, a: aktorler, i: [] };
+    if (alan.r) sonuc.r = alan.r;
+    Object.keys(alan.i || {}).sort().forEach(function (id) {
+      var kayit = alan.i[id] || {};
+      var meta = bulutMetaKodla(kayit.m === undefined ? 0 : kayit.m, aktorler);
+      if (kayit.d) {
+        sonuc.i.push([id, meta]);
+        return;
+      }
+      var standart = standartAlanKaydi(anahtar, kayit.v);
+      if (anahtar === 'yds-test-yanlis' && standart === 2) {
+        sonuc.i.push([id, meta, kayit.v.n, kayit.v.t]);
+      } else if (anahtar === 'yds-test-yanlis' && standart === 3) {
+        sonuc.i.push([id, meta, kayit.v.n, kayit.v.t, kayit.v.u]);
+      } else if (anahtar === 'yds-leitner' && standart === 2) {
+        sonuc.i.push([id, meta, kayit.v.k, kayit.v.g]);
+      } else if (anahtar === 'yds-leitner' && standart === 3) {
+        sonuc.i.push([id, meta, kayit.v.k, kayit.v.g, kayit.v.c]);
+      } else sonuc.i.push([id, meta, null, kopyala(kayit.v)]);
+    });
+    return sonuc;
+  }
+
+  function bulutAlaniniCoz(anahtar, kodlu) {
+    if (!kisaBulutAlaniMi(anahtar) || !kodlu ||
+        (kodlu.k !== 1 && kodlu.k !== BULUT_KODLAMA_SURUMU) || !Array.isArray(kodlu.i)) {
+      return alaniNormallestir(anahtar, kodlu);
+    }
+    var alan = { i: Object.create(null) };
+    if (kodlu.r) alan.r = kodlu.r;
+    kodlu.i.forEach(function (satir) {
+      if (!Array.isArray(satir)) throw new Error('bulut-alan-kodlamasi-gecersiz');
+      var id = kayitKimliginiNormallestir(anahtar, String(satir[0]));
+      var kayit;
+      if (kodlu.k === 1) {
+        if (satir.length < 3 || (satir[2] !== 0 && satir[2] !== 1) ||
+            (satir[2] === 0 && satir.length < 4)) {
+          throw new Error('bulut-alan-kodlamasi-gecersiz');
+        }
+        kayit = { m: satir[1] };
+        if (satir[2] === 1) kayit.d = 1;
+        else kayit.v = kopyala(satir[3]);
+      } else {
+        if (!Array.isArray(kodlu.a) || satir.length < 2) {
+          throw new Error('bulut-alan-kodlamasi-gecersiz');
+        }
+        kayit = { m: bulutMetaCoz(satir[1], kodlu.a) };
+        if (satir.length === 2) kayit.d = 1;
+        else if (satir.length === 4 && satir[2] === null) kayit.v = kopyala(satir[3]);
+        else if (anahtar === 'yds-test-yanlis' && satir.length === 4) {
+          kayit.v = { n: satir[2], t: satir[3] };
+        } else if (anahtar === 'yds-test-yanlis' && satir.length === 5) {
+          kayit.v = { n: satir[2], t: satir[3], u: satir[4] };
+        } else if (anahtar === 'yds-leitner' && satir.length === 4) {
+          kayit.v = { k: satir[2], g: satir[3] };
+        } else if (anahtar === 'yds-leitner' && satir.length === 5) {
+          kayit.v = { k: satir[2], g: satir[3], c: satir[4] };
+        }
+        else throw new Error('bulut-alan-kodlamasi-gecersiz');
+      }
+      alan.i[id] = kaydiSec(anahtar, alan.i[id], kayit);
+    });
+    return alan;
+  }
+
+  function bulutAlanJson(anahtar, alan) {
+    return kararliJson(bulutAlaniniKodla(anahtar, alan));
+  }
+
   function alanBirlestir(anahtar, a, b) {
     a = alaniNormallestir(anahtar, a);
     b = alaniNormallestir(anahtar, b);
-    var sonuc = { i: {} };
+    var sonuc = { i: Object.create(null) };
     if (a.r || b.r) sonuc.r = metaKarsilastir(a.r, b.r) >= 0 ? a.r : b.r;
     var ids = Object.create(null);
     Object.keys(a.i || {}).concat(Object.keys(b.i || {})).forEach(function (id) { ids[id] = 1; });
@@ -264,7 +416,7 @@
     paket = paket && typeof paket === 'object' ? paket : {};
     Object.keys(TIPLER).forEach(function (anahtar) {
       if (paket[anahtar] === undefined) return;
-      var alan = { i: {} };
+      var alan = { i: Object.create(null) };
       var kayitlar = degeriKayitlara(anahtar, paket[anahtar]);
       Object.keys(kayitlar).forEach(function (id) { alan.i[id] = { m: 0, v: kayitlar[id] }; });
       zarf.alanlar[anahtar] = alan;
@@ -293,7 +445,7 @@
       return { var: true, deger: ids.map(function (id) { return aktif[id]; })
         .sort(function (x, y) { return ((x && x.t) || 0) - ((y && y.t) || 0); }).slice(-50) };
     }
-    var nesne = {};
+    var nesne = Object.create(null);
     ids.forEach(function (id) { nesne[id] = aktif[id]; });
     return { var: true, deger: nesne };
   }
@@ -309,7 +461,7 @@
 
   function kayitlariYaz(zarf, anahtar, kayitlar, meta) {
     zarf = birlestir(zarf, bosZarf());
-    var alan = zarf.alanlar[anahtar] || { i: {} };
+    var alan = zarf.alanlar[anahtar] || { i: Object.create(null) };
     Object.keys(kayitlar || {}).forEach(function (id) {
       var yeniId = kayitKimliginiNormallestir(anahtar, id);
       var gelen = { m: meta(), v: kopyala(kayitlar[id]) };
@@ -321,7 +473,7 @@
 
   function kayitlariSil(zarf, anahtar, ids, meta) {
     zarf = birlestir(zarf, bosZarf());
-    var alan = zarf.alanlar[anahtar] || { i: {} };
+    var alan = zarf.alanlar[anahtar] || { i: Object.create(null) };
     (ids || []).forEach(function (id) {
       var yeniId = kayitKimliginiNormallestir(anahtar, id);
       alan.i[yeniId] = kaydiSec(anahtar, alan.i[yeniId], { m: meta(), d: 1 });
@@ -338,6 +490,7 @@
 
   window.YDS.EsitlemeMotoru = {
     SURUM: 2,
+    BULUT_KODLAMA_SURUMU: BULUT_KODLAMA_SURUMU,
     TIPLER: TIPLER,
     kelimeKimligi: kelimeKimligi,
     kelimeIlerlemeKimligi: kelimeIlerlemeKimligi,
@@ -346,6 +499,9 @@
     ilerlemeKimliginiCoz: ilerlemeKimliginiCoz,
     kararliJson: kararliJson,
     metaKarsilastir: metaKarsilastir,
+    bulutAlaniniKodla: bulutAlaniniKodla,
+    bulutAlaniniCoz: bulutAlaniniCoz,
+    bulutAlanJson: bulutAlanJson,
     zarfaCevir: zarfaCevir,
     birlestir: birlestir,
     paket: paket,

@@ -36,10 +36,11 @@ durdukları değişti, tek bir cümle bile yeniden yazılmadı.
 | 1 · Temel | 657 | tamam |
 | 2 · Çekirdek | 720 | tamam |
 | 3 · Orta | 707 | tamam |
-| 4 · İleri | 1.837 | tamam |
-| 5 · Geniş | 2.039 | tamam |
-| 6 · Geniş+ | 1.888 | tamam (25.08.2026, 45 paket) |
-| **Kelime toplamı** | **7.848** | `test-k1.js`–`test-k6.js` üretimi eksiksiz |
+| 4 · İleri | 1.838 | tamam |
+| 5 · Geniş | 2.058 | tamam |
+| 6 · Geniş+ | 1.900 | tamam (25.08.2026, 45 paket + aile partileri) |
+| 7 · Aile üyeleri | 495 | tamam |
+| **Kelime toplamı** | **8.375** | `test-k1.js`–`test-k7.js` üretimi eksiksiz |
 | Öbekler (deyimsel fiil + edat kalıbı) | 892 | tamam |
 
 Öbek hattı ayrı dosyalarda: `obek-test-paketle.py`, `obek-test-brief.md`,

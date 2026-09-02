@@ -8,14 +8,13 @@ const vm = require("vm");
 const KOK = path.resolve(__dirname, "..", "..");
 const DOSYALAR = {
   duzeltmeler: path.join(KOK, "tools", "kelime-duzeltmeleri.json"),
+  aileAliaslari: path.join(KOK, "tools", "aile-kart-aliaslari.json"),
   aliaslar: path.join(KOK, "data", "kelime-aliaslari.js"),
   provenans: path.join(KOK, "data", "kelime-provenans.json"),
   manifest: path.join(KOK, "data", "kaynak-manifest.json"),
   dizin: path.join(KOK, "data", "kelime-dizin.js"),
 };
 
-// row /raʊ/ -> row birleşmesiyle 10'a çıktı (30.08.2026).
-const BEKLENEN_ALIAS_SAYISI = 10;
 const KORUNAN_BASLIKLAR = ["low-lying", "adolescent"];
 const sorunlar = [];
 
@@ -226,6 +225,7 @@ function aliasDonguleriniDogrula(aliaslar) {
 
 function ana() {
   const duzeltmeBelgesi = jsonOku(DOSYALAR.duzeltmeler);
+  const aileAliasBelgesi = jsonOku(DOSYALAR.aileAliaslari);
   const provenansBelgesi = jsonOku(DOSYALAR.provenans);
   const manifestBelgesi = jsonOku(DOSYALAR.manifest);
   const aliaslar = jsDegeriOku(DOSYALAR.aliaslar, "YDS_KELIME_ALIASES");
@@ -245,6 +245,12 @@ function ana() {
   const publicKorunanlar = diziAl(
     provenansBelgesi,
     "korunan_kaynak_kayitlari",
+    DOSYALAR.provenans
+  );
+  const aileAliaslari = diziAl(aileAliasBelgesi, "aliases", DOSYALAR.aileAliaslari);
+  const publicAileAliaslari = diziAl(
+    provenansBelgesi,
+    "aile_kart_aliaslari",
     DOSYALAR.provenans
   );
   const sinavlar = diziAl(manifestBelgesi, "sinavlar", DOSYALAR.manifest);
@@ -291,13 +297,6 @@ function ana() {
 
   const guvenliAliaslar = nesneMi(aliaslar) ? aliaslar : Object.create(null);
   const aliasAnahtarlari = Object.keys(guvenliAliaslar);
-  if (aliasAnahtarlari.length !== BEKLENEN_ALIAS_SAYISI) {
-    sorun(
-      "ALIAS",
-      `Alias sayısı ${aliasAnahtarlari.length}; beklenen ${BEKLENEN_ALIAS_SAYISI}.`
-    );
-  }
-
   const beklenenAliaslar = new Map();
   duzeltmeler.forEach((kayit, sira) => {
     if (!nesneMi(kayit) || !Array.isArray(kayit.eskiler) || typeof kayit.yeni !== "string") {
@@ -331,11 +330,29 @@ function ana() {
     kaynakKaydiniDogrula(kayit, `duzeltmeler[${sira}] (${kayit.yeni})`, manifestKimlikleri);
   });
 
-  if (beklenenAliaslar.size !== BEKLENEN_ALIAS_SAYISI) {
+  aileAliaslari.forEach((kayit, sira) => {
+    if (!nesneMi(kayit) || kayit.decision !== "alias" ||
+        typeof kayit.candidate !== "string" || typeof kayit.canonical !== "string" ||
+        !Array.isArray(kayit.surfaceAliases)) {
+      sorun("ŞEMA", `aile kart aliasları[${sira}] geçersiz.`);
+      return;
+    }
+    const parcalar = [[kayit.candidate, kayit.canonical]].concat(
+      kayit.surfaceAliases.map((yuzey) => [yuzey.alias, yuzey.canonical])
+    );
+    for (const [eski, hedef] of parcalar) {
+      if (beklenenAliaslar.has(eski) && beklenenAliaslar.get(eski) !== hedef) {
+        sorun("ALIAS", `'${eski}' kalıcı kaynaklarda iki farklı hedefe bağlı.`);
+      }
+      beklenenAliaslar.set(eski, hedef);
+    }
+  });
+
+  if (aliasAnahtarlari.length !== beklenenAliaslar.size) {
     sorun(
       "ALIAS",
-      `Düzeltme kaynağından ${beklenenAliaslar.size} gerçek yeniden adlandırma çıktı; ` +
-        `beklenen ${BEKLENEN_ALIAS_SAYISI}.`
+      `Üretilen alias sayısı ${aliasAnahtarlari.length}; kalıcı kaynaklarda ` +
+        `${beklenenAliaslar.size} alias var.`
     );
   }
 
@@ -362,7 +379,7 @@ function ana() {
       sorun("ALIAS", `Alias zinciri bulundu: '${eski}' -> '${hedef}' -> başka hedef.`);
     }
     if (!beklenenAliaslar.has(eski)) {
-      sorun("ALIAS", `'${eski}' aliasının tools/kelime-duzeltmeleri.json karşılığı yok.`);
+      sorun("ALIAS", `'${eski}' aliasının kalıcı kaynak karşılığı yok.`);
     } else if (beklenenAliaslar.get(eski) !== hedef) {
       sorun(
         "ALIAS",
@@ -376,6 +393,10 @@ function ana() {
     }
   }
   aliasDonguleriniDogrula(guvenliAliaslar);
+
+  if (kararlıMetin(aileAliaslari) !== kararlıMetin(publicAileAliaslari)) {
+    sorun("PROVENANS", "Aile kart aliaslarının public provenans kopyası kaynakla farklı.");
+  }
 
   const kaynakHaritasi = kayitHaritasi(duzeltmeler, "tools düzeltmeleri");
   const publicHarita = kayitHaritasi(publicDuzeltmeler, "public provenans düzeltmeleri");

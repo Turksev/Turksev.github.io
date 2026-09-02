@@ -8,7 +8,7 @@
 
    Yıldız anlam METNİNE bağlıdır; kaynak listedeki sıra değişse bile
    eşleşme bozulmaz. Metin değişirse o anlam yıldızsız kalır.
-   Üretim: tools/test-uretim (agent + yildiz-dogrula.py) · 2996 kelime
+   Üretim: tools/test-uretim (agent + yildiz-dogrula.py) · 2998 kelime
    ============================================================ */
 
 window.ANLAM_YILDIZ = {
@@ -213,6 +213,7 @@ window.ANLAM_YILDIZ = {
 "basin": [{tr:"i. (coğrafya) havza",yz:4}, {tr:"i. leğen, çanak (kap)",yz:1}],
 "bat": [{tr:"i. yarasa",yz:3}, {tr:"i. sopa",yz:1}],
 "bath": [{tr:"i. banyo, yıkanma",yz:3}, {tr:"i. (public bath) hamam",yz:1}],
+"bathe": [{tr:"f. yıkanmak, yüzmek; yıkamak",yz:4}, {tr:"i. yüzme, yıkanma",yz:1}],
 "batter": [{tr:"f. dövmek, şiddetle vurmak, hırpalamak",yz:4}, {tr:"i. sulu hamur (kek, kızartma için)",yz:2}],
 "battery": [{tr:"i. pil, batarya",yz:4}, {tr:"i. dizi, seri, takım",yz:2}],
 "battle": [{tr:"i. savaş, muharebe",yz:4}, {tr:"f. mücadele etmek",yz:3}],
@@ -1408,6 +1409,7 @@ window.ANLAM_YILDIZ = {
 "intimate": [{tr:"s. samimi, yakın, mahrem",yz:4}, {tr:"f. ima etmek, belirtmek, dolaylı söylemek",yz:1}],
 "introduce": [{tr:"f. başlatmak, yürürlüğe koymak",yz:4}, {tr:"f. tanıtmak, sunmak",yz:3}],
 "introduction": [{tr:"i. (bir şeyi) yürürlüğe koyma, uygulamaya sokma",yz:4}, {tr:"i. giriş (kitap/konuşma başlangıcı)",yz:3}],
+"intrigue": [{tr:"f. merakını uyandırmak, ilgisini çekmek",yz:4}, {tr:"i. entrika, gizli plan",yz:2}],
 "intrusion": [{tr:"i. izinsiz girme, müdahale",yz:4}, {tr:"i. (jeoloji) sokulum, magmatik sokulum kayacı",yz:1}],
 "invasive": [{tr:"s. istilacı (tür için)",yz:4}, {tr:"s. girişimsel, vücuda müdahale gerektiren (tıpta)",yz:3}],
 "invent": [{tr:"f. icat etmek, bulmak",yz:4}, {tr:"f. uydurmak",yz:2}],

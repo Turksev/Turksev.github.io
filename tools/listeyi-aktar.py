@@ -29,6 +29,12 @@ import openpyxl
 KAYNAK_DIZIN = r'C:\Users\Trk\Desktop\english claude\04_cikti'
 SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 VERI = os.path.join(SITE, 'data')
+ARACLAR = os.path.join(SITE, 'tools')
+AILE_KART_PARTILERI = os.path.join(ARACLAR, 'aile-kart-partileri')
+AILE_KART_ALIASLARI = os.path.join(ARACLAR, 'aile-kart-aliaslari.json')
+AILE_KART_RETLERI = os.path.join(ARACLAR, 'aile-kart-retleri.json')
+TEST_GIRDI = os.path.join(ARACLAR, 'test-uretim', 'girdi')
+TEST_CIKTI = os.path.join(ARACLAR, 'test-uretim', 'cikti')
 
 # Katman sinirlari: (anahtar, ad, alt puan, ust puan)
 # 6. katman (Genis+) v4 listesiyle geldi: esik 15'ten 10'a indi (21.08.2026).
@@ -65,6 +71,11 @@ def katman_bul(puan):
         if alt <= puan < ust:
             return k
     return 6
+
+
+def aile_kart_katmani(source_score):
+    """Aile partilerinde katmanı yuvarlanmamış kaynak puanla belirle."""
+    return AILE_KATMANI if source_score < 10 else katman_bul(source_score)
 
 
 # Anlam sutunundaki tur oneki: "i." "s." "s./z." "z./i./s." gibi bir veya daha
@@ -234,7 +245,8 @@ def kelime_duzeltmelerini_uygula(kelimeler, veri):
     return uygulanan
 
 
-def kelime_duzeltme_dosyalarini_yaz(veri, modal_kartlar=None):
+def kelime_duzeltme_dosyalarini_yaz(veri, modal_kartlar=None,
+                                    aile_aliaslari=None, kart_adlari=None):
     """Tarayıcı alias tablosunu ve telifsiz öğe provenansını üretir."""
     aliaslar = {}
     ilerleme_kimlikleri = {}
@@ -251,8 +263,33 @@ def kelime_duzeltme_dosyalarini_yaz(veri, modal_kartlar=None):
         if kart['e'] in ilerleme_kimlikleri:
             raise ValueError('Yinelenen ilerleme kimliği başlığı: %s' % kart['e'])
         ilerleme_kimlikleri[kart['e']] = kimlik
+    for kayit in (aile_aliaslari or {}).get('aliases', []):
+        yeni_aliaslar = [(kayit['candidate'], kayit['canonical'])]
+        yeni_aliaslar.extend((yuzey['alias'], yuzey['canonical'])
+                              for yuzey in kayit.get('surfaceAliases', []))
+        for eski, yeni in yeni_aliaslar:
+            if eski in aliaslar and aliaslar[eski] != yeni:
+                raise ValueError('%s: iki farklı alias hedefi' % eski)
+            aliaslar[eski] = yeni
+
+    kart_adlari = set(kart_adlari or [])
+    for eski, yeni in aliaslar.items():
+        if eski == yeni:
+            raise ValueError('%s: alias kendisine bağlanamaz' % eski)
+        if eski in kart_adlari:
+            raise ValueError('%s: alias kaynağı ayrı kart olamaz' % eski)
+        if yeni not in kart_adlari:
+            raise ValueError('%s: alias hedef kartı yok (%s)' % (eski, yeni))
+    for baslangic in aliaslar:
+        etkin, yol = baslangic, set()
+        while etkin in aliaslar:
+            if etkin in yol:
+                raise ValueError('%s: alias döngüsü' % baslangic)
+            yol.add(etkin)
+            etkin = aliaslar[etkin]
     js = (
-        '/* Kelime başlığı aliasları — kelime-duzeltmeleri.json ve modal-kartlar.json kaynaklıdır. */\n'
+        '/* Kelime başlığı aliasları — kelime-duzeltmeleri.json, '
+        'aile-kart-aliaslari.json ve modal-kartlar.json kaynaklıdır. */\n'
         'window.YDS_KELIME_ALIASES = %s;\n'
         'window.YDS_KELIME_ILERLEME_KIMLIKLERI = %s;\n' % (
             json.dumps(aliaslar, ensure_ascii=False, sort_keys=True),
@@ -266,6 +303,7 @@ def kelime_duzeltme_dosyalarini_yaz(veri, modal_kartlar=None):
                      'kopyalamayan öğe düzeyi kaynak kaydı.'),
         'duzeltmeler': veri.get('duzeltmeler', []),
         'korunan_kaynak_kayitlari': veri.get('korunan_kaynak_kayitlari', []),
+        'aile_kart_aliaslari': (aile_aliaslari or {}).get('aliases', []),
     }
     yaz(os.path.join(VERI, 'kelime-provenans.json'),
         json.dumps(acik, ensure_ascii=False, indent=2) + '\n')
@@ -581,12 +619,337 @@ def aile_uyelerini_oku():
     return json.loads(govde)
 
 
+def aile_kart_partilerini_oku():
+    """Sürümlü aile kartı partilerini dosya adına göre kararlı sırada oku.
+
+    ``ek-aile-uyeleri.js`` geriye dönük uyumluluk için aynen kalır. Yeni ve
+    büyüyebilir kaynak ise ``tools/aile-kart-partileri/*.json`` dizinidir.
+    Tam puan ``source_score`` alanında korunur; görünen ``p`` yalnız bir
+    ondalık basamağa yuvarlanır ve katman kararı yuvarlanmamış puanla verilir.
+    """
+    if not os.path.isdir(AILE_KART_PARTILERI):
+        return []
+
+    partiler = []
+    gorulen_partiler = set()
+    gorulen_kartlar = set()
+    roller = {'metin', 'soru_koku', 'dogru_secenek', 'celdirici'}
+    zorunlu = {
+        'candidate', 'tip', 'p', 'source_score', 'family_members', 'meanings',
+        'test_sentence', 'test_sentence_tr', 'exams', 'freq', 'source_refs',
+        'decision', 'reason',
+    }
+
+    for dosya in sorted(x for x in os.listdir(AILE_KART_PARTILERI)
+                        if x.lower().endswith('.json')):
+        yol = os.path.join(AILE_KART_PARTILERI, dosya)
+        with open(yol, encoding='utf-8') as f:
+            parti = json.load(f)
+        if parti.get('schemaVersion') != 1:
+            raise ValueError('%s: schemaVersion=1 olmalı' % dosya)
+        parti_id = parti.get('batchId')
+        if (not isinstance(parti_id, str) or not parti_id.strip() or
+                parti_id in gorulen_partiler):
+            raise ValueError('%s: batchId eksik veya yineleniyor' % dosya)
+        gorulen_partiler.add(parti_id)
+
+        politika = parti.get('policy')
+        if not isinstance(politika, dict):
+            raise ValueError('%s: policy nesnesi eksik' % dosya)
+        if politika.get('displayScoreDecimals') != 1:
+            raise ValueError('%s: görünen puan bir ondalık olmalı' % dosya)
+        if politika.get('lowScoreLayerRule') != 'source_score < 10 => K7':
+            raise ValueError('%s: K7 kararı tam source_score ile verilmelidir' % dosya)
+        if politika.get('preserveExistingLexicalizedCards') is not True:
+            raise ValueError('%s: mevcut sözlükselleşmiş kartlar korunmalıdır' % dosya)
+        yildiz = politika.get('meaningStars')
+        if (not isinstance(yildiz, dict) or
+                not all(isinstance(yildiz.get(k), int) and 1 <= yildiz[k] <= 4
+                        for k in ('primary', 'secondary'))):
+            raise ValueError('%s: meaningStars primary/secondary 1-4 olmalı' % dosya)
+        test_araligi = politika.get('testWordRange')
+        if (not isinstance(test_araligi, list) or len(test_araligi) != 2 or
+                not all(isinstance(x, int) and x > 0 for x in test_araligi) or
+                test_araligi[0] > test_araligi[1]):
+            raise ValueError('%s: testWordRange geçersiz' % dosya)
+
+        kartlar = parti.get('cards')
+        if not isinstance(kartlar, list) or not kartlar:
+            raise ValueError('%s: cards dizisi eksik' % dosya)
+        for sira, kart in enumerate(kartlar):
+            if not isinstance(kart, dict) or zorunlu - set(kart):
+                raise ValueError('%s cards[%d]: zorunlu alan eksik' % (dosya, sira))
+            en = kart.get('candidate')
+            if (not isinstance(en, str) or
+                    not re.fullmatch(r"[a-z][a-z' -]*", en) or
+                    en in gorulen_kartlar):
+                raise ValueError('%s cards[%d]: başlık geçersiz/yineleniyor' % (dosya, sira))
+            gorulen_kartlar.add(en)
+            if kart.get('decision') != 'add':
+                raise ValueError('%s: karar add olmalı' % en)
+            kaynak_puan = kart.get('source_score')
+            if not isinstance(kaynak_puan, (int, float)):
+                raise ValueError('%s: source_score sayısal olmalı' % en)
+            if kart.get('p') != round(float(kaynak_puan), 1):
+                raise ValueError('%s: p, source_score değerinin bir ondalık gösterimi olmalı' % en)
+            if not isinstance(kart.get('tip'), str) or not kart['tip'].strip():
+                raise ValueError('%s: tip eksik' % en)
+
+            aile = kart.get('family_members')
+            if (not isinstance(aile, list) or len(aile) < 2 or aile[0] != en or
+                    len(aile) != len(set(aile))):
+                raise ValueError('%s: family_members adayı izleyen benzersiz üyeler olmalı' % en)
+            anlamlar = kart.get('meanings')
+            if not isinstance(anlamlar, list) or not anlamlar:
+                raise ValueError('%s: meanings eksik' % en)
+            for anlam_sira, anlam in enumerate(anlamlar):
+                if not isinstance(anlam, dict) or not {'tr', 'ex', 'exTr'} <= set(anlam):
+                    raise ValueError('%s meanings[%d]: tr/ex/exTr eksik' % (en, anlam_sira))
+                for alan in ('tr', 'ex', 'exTr'):
+                    if not isinstance(anlam[alan], str) or not anlam[alan].strip():
+                        raise ValueError('%s meanings[%d].%s boş' % (en, anlam_sira, alan))
+
+            desen = re.compile(r'(?<![A-Za-z])%s(?![A-Za-z])' % re.escape(en), re.I)
+            test = kart.get('test_sentence')
+            if not isinstance(test, str) or len(desen.findall(test)) != 1:
+                raise ValueError('%s: test_sentence adayı tam bir kez içermeli' % en)
+            kelime_sayisi = len(re.findall(r'\S+', test))
+            if not test_araligi[0] <= kelime_sayisi <= test_araligi[1]:
+                raise ValueError('%s: test_sentence %d sözcük; beklenen %s' %
+                                 (en, kelime_sayisi, test_araligi))
+            if (not isinstance(kart.get('test_sentence_tr'), str) or
+                    not kart['test_sentence_tr'].strip()):
+                raise ValueError('%s: test_sentence_tr eksik' % en)
+
+            sinav = kart.get('exams')
+            siklik = kart.get('freq')
+            if (not isinstance(sinav, int) or sinav < 0 or
+                    not isinstance(siklik, int) or siklik < 0):
+                raise ValueError('%s: exams/freq negatif olmayan tam sayı olmalı' % en)
+            kaynaklar = kart.get('source_refs')
+            if not isinstance(kaynaklar, list) or len(kaynaklar) != sinav:
+                raise ValueError('%s: source_refs sayısı exams ile eşleşmeli' % en)
+            sinav_kimlikleri = set()
+            for ref in kaynaklar:
+                if (not isinstance(ref, dict) or
+                        set(ref) != {'exam_id', 'page', 'question', 'surface', 'role'} or
+                        ref.get('role') not in roller or
+                        not isinstance(ref.get('exam_id'), str) or
+                        not isinstance(ref.get('surface'), str)):
+                    raise ValueError('%s: geçersiz telifsiz source_ref' % en)
+                sinav_kimlikleri.add(ref['exam_id'])
+            if len(sinav_kimlikleri) != sinav:
+                raise ValueError('%s: her sınav için bir benzersiz source_ref gerekir' % en)
+            if not isinstance(kart.get('reason'), str) or not kart['reason'].strip():
+                raise ValueError('%s: reason eksik' % en)
+            oewn = kart.get('oewn_refs', [])
+            if not isinstance(oewn, list):
+                raise ValueError('%s: oewn_refs dizi olmalı' % en)
+            for ref in oewn:
+                if (not isinstance(ref, dict) or
+                        set(ref) != {'sense_id', 'relation', 'target'} or
+                        not all(isinstance(ref.get(k), str) and ref[k].strip()
+                                for k in ('sense_id', 'relation', 'target'))):
+                    raise ValueError('%s: geçersiz oewn_ref' % en)
+
+        parti['_sourceFile'] = dosya
+        partiler.append(parti)
+    return partiler
+
+
+def _telifsiz_ref_dogrula(ref, etiket, roller):
+    if (not isinstance(ref, dict) or
+            set(ref) != {'exam_id', 'page', 'question', 'surface', 'role'} or
+            ref.get('role') not in roller or
+            not isinstance(ref.get('exam_id'), str) or not ref['exam_id'].strip() or
+            not isinstance(ref.get('surface'), str) or not ref['surface'].strip()):
+        raise ValueError('%s: geçersiz telifsiz source_ref' % etiket)
+
+
+def aile_kart_aliaslarini_oku():
+    if not os.path.exists(AILE_KART_ALIASLARI):
+        return {'schemaVersion': 1, 'aliases': []}
+    with open(AILE_KART_ALIASLARI, encoding='utf-8') as f:
+        veri = json.load(f)
+    if veri.get('schemaVersion') != 1 or not isinstance(veri.get('aliases'), list):
+        raise ValueError('aile-kart-aliaslari.json: geçersiz şema')
+    roller = {'metin', 'soru_koku', 'dogru_secenek', 'celdirici'}
+    gorulen = set()
+    for kayit in veri['aliases']:
+        zorunlu = {'candidate', 'canonical', 'decision', 'tip', 'p', 'source_score',
+                   'exams', 'freq', 'source_refs', 'reason', 'surfaceAliases'}
+        if not isinstance(kayit, dict) or zorunlu - set(kayit):
+            raise ValueError('aile-kart-aliaslari.json: alias alanı eksik')
+        if kayit['decision'] != 'alias' or kayit['candidate'] == kayit['canonical']:
+            raise ValueError('%s: geçersiz alias kararı' % kayit.get('candidate'))
+        if kayit['p'] != round(float(kayit['source_score']), 1):
+            raise ValueError('%s: alias p/source_score uyuşmuyor' % kayit['candidate'])
+        if (not isinstance(kayit['exams'], int) or kayit['exams'] < 0 or
+                not isinstance(kayit['freq'], int) or kayit['freq'] < 0 or
+                len(kayit['source_refs']) != kayit['exams']):
+            raise ValueError('%s: alias exams/freq/source_refs uyuşmuyor' % kayit['candidate'])
+        adlar = [(kayit['candidate'], kayit['canonical'], kayit['source_refs'])]
+        for yuzey in kayit['surfaceAliases']:
+            if (not isinstance(yuzey, dict) or
+                    {'alias', 'canonical', 'tip', 'source_refs', 'reason'} - set(yuzey)):
+                raise ValueError('%s: geçersiz surfaceAlias' % kayit['candidate'])
+            adlar.append((yuzey['alias'], yuzey['canonical'], yuzey['source_refs']))
+        for eski, yeni, kaynaklar in adlar:
+            if (not isinstance(eski, str) or not eski.strip() or
+                    not isinstance(yeni, str) or not yeni.strip() or eski in gorulen):
+                raise ValueError('%s: yinelenen/geçersiz alias kaynağı' % eski)
+            gorulen.add(eski)
+            for ref in kaynaklar:
+                _telifsiz_ref_dogrula(ref, eski, roller)
+    return veri
+
+
+def aile_kart_retlerini_oku():
+    if not os.path.exists(AILE_KART_RETLERI):
+        return {'schemaVersion': 1, 'rejections': []}
+    with open(AILE_KART_RETLERI, encoding='utf-8') as f:
+        veri = json.load(f)
+    if veri.get('schemaVersion') != 1 or not isinstance(veri.get('rejections'), list):
+        raise ValueError('aile-kart-retleri.json: geçersiz şema')
+    roller = {'metin', 'soru_koku', 'dogru_secenek', 'celdirici'}
+    gorulen = set()
+    for kayit in veri['rejections']:
+        zorunlu = {'candidate', 'decision', 'tip', 'p', 'source_score', 'exams',
+                   'freq', 'familyRoot', 'reviewedAgainst', 'source_refs', 'reason'}
+        if not isinstance(kayit, dict) or zorunlu - set(kayit):
+            raise ValueError('aile-kart-retleri.json: ret alanı eksik')
+        aday = kayit['candidate']
+        if aday in gorulen or kayit['decision'] != 'reject':
+            raise ValueError('%s: yinelenen/geçersiz ret' % aday)
+        gorulen.add(aday)
+        if kayit['p'] != round(float(kayit['source_score']), 1):
+            raise ValueError('%s: ret p/source_score uyuşmuyor' % aday)
+        if len(kayit['source_refs']) != kayit['exams']:
+            raise ValueError('%s: ret exams/source_refs uyuşmuyor' % aday)
+        for ref in kayit['source_refs']:
+            _telifsiz_ref_dogrula(ref, aday, roller)
+        if not isinstance(kayit['reason'], str) or not kayit['reason'].strip():
+            raise ValueError('%s: ret gerekçesi yok' % aday)
+    return veri
+
+
+def aile_kart_partilerini_uygula(kelimeler, partiler):
+    """İnsan denetimli parti kartlarını mevcut hiçbir kaydı ezmeden ekle."""
+    eklenen = 0
+    genel_elemeler = elenecekleri_oku()
+    for parti in partiler:
+        yildiz = parti['policy']['meaningStars']
+        for kart in parti['cards']:
+            en = kart['candidate']
+            if en in kelimeler:
+                # Genel kaba/özel-ad süzgeci, insan denetimli partiden önce
+                # uygulanmadığı için bloody gibi sonradan açıkça onaylanan bir
+                # kayıt ham kaynakta hâlâ bulunabilir. Yalnız bu önceden elenecek
+                # kayıt insan denetimli kartla değiştirilir; yayımlanmış ya da
+                # normal kaynak kaydı hiçbir zaman ezilmez.
+                if en not in genel_elemeler:
+                    raise ValueError('%s: aile kartı mevcut bir kaydı ezemez' % en)
+                del kelimeler[en]
+            anlamlar = []
+            for sira, anlam in enumerate(kart['meanings']):
+                yeni = {alan: anlam[alan].strip() for alan in ('tr', 'ex', 'exTr')}
+                if len(kart['meanings']) > 1:
+                    yeni['yz'] = anlam.get(
+                        'yz', yildiz['primary'] if sira == 0 else yildiz['secondary'])
+                anlamlar.append(yeni)
+            kaynak_puan = float(kart['source_score'])
+            kelimeler[en] = {
+                'tip': kart['tip'].strip(),
+                'puan': round(kaynak_puan, 1),
+                # 9.9994 ekranda 10.0 görünse bile K7'de kalmalıdır.
+                'katman_zorla': aile_kart_katmani(kaynak_puan),
+                'anlamlar': anlamlar,
+            }
+            eklenen += 1
+    return eklenen
+
+
+def aile_kart_test_kaynaklarini_yaz(partiler):
+    """Parti testlerinden kalıcı girdi/çıktı JSON dosyalarını üret."""
+    os.makedirs(TEST_GIRDI, exist_ok=True)
+    os.makedirs(TEST_CIKTI, exist_ok=True)
+    yazilan = 0
+    for parti in partiler:
+        girdi, cikti = [], []
+        for kart in parti['cards']:
+            en = kart['candidate']
+            anlamlar = kart['meanings']
+            girdi.append({
+                'e': en,
+                'y': kart['tip'],
+                't': kisa_anlam(anlamlar),
+                'ornek': [a['ex'] for a in anlamlar],
+                'anlamlar': [a['tr'] for a in anlamlar],
+            })
+            desen = re.compile(r'(?<![A-Za-z])%s(?![A-Za-z])' % re.escape(en), re.I)
+            bosluklu, adet = desen.subn('----', kart['test_sentence'], count=1)
+            if adet != 1 or len(re.findall(r'----', bosluklu)) != 1:
+                raise ValueError('%s: Günün Testi boşluğu tam bir kez üretilemedi' % en)
+            cikti.append({
+                'e': en,
+                'c': bosluklu,
+                'b': en,
+                'f': '',
+                'tr': kart['test_sentence_tr'],
+            })
+            yazilan += 1
+        ad = parti['batchId'] + '.json'
+        yaz(os.path.join(TEST_GIRDI, ad),
+            json.dumps(girdi, ensure_ascii=False, indent=1) + '\n')
+        yaz(os.path.join(TEST_CIKTI, ad),
+            json.dumps(cikti, ensure_ascii=False, indent=1) + '\n')
+    return yazilan
+
+
+def aile_kart_provenansini_yaz(partiler, aliaslar=None, retler=None):
+    """Soru metni içermeyen, öğe düzeyindeki parti provenansını yayımla."""
+    cikti = {
+        'schemaVersion': 1,
+        'description': ('İnsan denetimli aile kartlarının telifli soru metnini '
+                        'kopyalamayan öğe düzeyi kaynak kaydı.'),
+        'batches': [],
+    }
+    for parti in partiler:
+        kayit = {
+            'batchId': parti['batchId'],
+            'source': 'tools/aile-kart-partileri/' + parti['_sourceFile'],
+            'policy': parti['policy'],
+            'cards': [],
+        }
+        for kart in parti['cards']:
+            kaynak_puan = float(kart['source_score'])
+            kayit['cards'].append({
+                'candidate': kart['candidate'],
+                'type': kart['tip'],
+                'display_score': round(kaynak_puan, 1),
+                'source_score': kaynak_puan,
+                'layer': aile_kart_katmani(kaynak_puan),
+                'exams': kart['exams'],
+                'freq': kart['freq'],
+                'family_members': kart['family_members'],
+                'source_refs': kart['source_refs'],
+                'lexical_refs': kart.get('oewn_refs', []),
+                'reason': kart['reason'],
+            })
+        cikti['batches'].append(kayit)
+    cikti['aliases'] = (aliaslar or {}).get('aliases', [])
+    cikti['rejections'] = (retler or {}).get('rejections', [])
+    yaz(os.path.join(VERI, 'aile-kart-provenans.json'),
+        json.dumps(cikti, ensure_ascii=False, indent=2) + '\n')
+
+
 def birlestir():
     kelimeler = kelimeleri_topla()
     site = site_kelimelerini_oku()
     ek_puan = ek_puanlari_oku()
     ek = ek_ornekleri_oku()
     aile_uye = aile_uyelerini_oku()
+    aile_partileri = aile_kart_partilerini_oku()
     baslik_d = kelime_duzeltmelerini_oku()
     pdf_anlam_d = pdf_anlam_duzeltmelerini_oku()
     modal_kartlar = modal_kartlarini_oku()
@@ -625,6 +988,10 @@ def birlestir():
         }
         aile_eklenen += 1
 
+    # Yeni aile kartları: sürümlü JSON partilerinden eklenir. Legacy JS kaynağı
+    # yukarıdaki davranışıyla aynen çalışmaya devam eder.
+    parti_eklenen = aile_kart_partilerini_uygula(kelimeler, aile_partileri)
+
     # Cok turlu anlamlari ayri ornekleriyle degistir
     ek_uygulanan = 0
     for en, anlamlar in ek.items():
@@ -639,8 +1006,9 @@ def birlestir():
 
     # Elenecekler: kaba/argo ve ozel adlar hic yazilmaz.
     elenen = 0
+    parti_adlari = {kart['candidate'] for parti in aile_partileri for kart in parti['cards']}
     for en in list(kelimeler.keys()):
-        if en in elenecekleri_oku():
+        if en in elenecekleri_oku() and en not in parti_adlari:
             del kelimeler[en]
             elenen += 1
 
@@ -686,7 +1054,8 @@ def birlestir():
 
     return (kelimeler, ortak, yalniz_site, ek_uygulanan, bekleyen, aile_eklenen,
             elenen, kalipli, yildizli, baslik_duzeltilen, baslik_d,
-            pdf_anlam_uygulanan, modal_eklenen, modal_guncellenen)
+            pdf_anlam_uygulanan, modal_eklenen, modal_guncellenen,
+            aile_partileri, parti_eklenen)
 
 
 def kelimeleri_yaz(kelimeler):
@@ -933,12 +1302,23 @@ def modal_testlerini_yaz(kartlar):
 def main():
     (kelimeler, ortak, yalniz_site, ek_uygulanan, bekleyen, aile_eklenen,
      elenen, kalipli, yildizli, baslik_duzeltilen, baslik_d,
-     pdf_anlam_uygulanan, modal_eklenen, modal_guncellenen) = birlestir()
+     pdf_anlam_uygulanan, modal_eklenen, modal_guncellenen,
+     aile_partileri, parti_eklenen) = birlestir()
     sirali, ozet = kelimeleri_yaz(kelimeler)
     obekler, obek_boyut, obek_ek, obek_atilan = obekleri_yaz()
     sayilari_yaz(sirali, ozet, obekler)
     modal_testlerini_yaz(modal_kartlarini_oku())
-    kelime_duzeltme_dosyalarini_yaz(baslik_d, modal_kartlarini_oku())
+    aile_aliaslari = aile_kart_aliaslarini_oku()
+    aile_retleri = aile_kart_retlerini_oku()
+    kart_adlari = {en for en, _kart in sirali}
+    ret_kartlari = sorted(kart_adlari.intersection(
+        kayit['candidate'] for kayit in aile_retleri.get('rejections', [])))
+    if ret_kartlari:
+        raise ValueError('Reddedilen adaylar kart olarak üretilemez: %s' % ret_kartlari)
+    kelime_duzeltme_dosyalarini_yaz(
+        baslik_d, modal_kartlarini_oku(), aile_aliaslari, kart_adlari)
+    parti_testleri = aile_kart_test_kaynaklarini_yaz(aile_partileri)
+    aile_kart_provenansini_yaz(aile_partileri, aile_aliaslari, aile_retleri)
 
     print('KELIMELER')
     print('  toplam            :', len(sirali))
@@ -949,6 +1329,8 @@ def main():
     print('  ek ornek uygulanan :', ek_uygulanan)
     print('  ornegi eksik kalan :', len(bekleyen), '(cok turlu ama tek ornekli)')
     print('  aile uyesi eklenen :', aile_eklenen, '(%d. katman)' % AILE_KATMANI)
+    print('  parti kartı eklenen:', parti_eklenen)
+    print('  parti testi yazılan:', parti_testleri)
     print('  elenen (kaba/ozel) :', elenen)
     print('  kalibi olan        :', kalipli)
     print('  anlami yildizli    :', yildizli)

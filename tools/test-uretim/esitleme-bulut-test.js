@@ -23,7 +23,8 @@ var yerelEski = {
     local: { k: 2, g: 20 },
     'hand-down': { k: 2, g: 40, c: 10 }
   },
-  'yds-kategori': { Kelime: { d: 4, y: 1 } }
+  'yds-kategori': { Kelime: { d: 4, y: 1 } },
+  'yds-test-yanlis': { ability: { n: 2, t: 18 } }
 };
 Object.keys(yerelEski).forEach(function (a) { bellek.set(a, JSON.stringify(yerelEski[a])); });
 bellek.set('yds-bulut-etkin', 'true');
@@ -41,7 +42,29 @@ var kokBelge = {
   })
 };
 var kokBelgeIlk = JSON.stringify(kokBelge);
-var alanBelgeleri = new Map();
+// Canlıdaki dış sürüm 2 alan belgelerinin iki eski iç biçimi: tam nesne ve
+// ilk kısa k=1 dizi. Yeni istemci bunları okuyup yalnız büyük alanları dış
+// sürüm 3 / iç k=2 biçimine yükseltmelidir.
+var alanBelgeleri = new Map([
+  ['yds-leitner', {
+    surum: 2,
+    anahtar: 'yds-leitner',
+    zaman: 90,
+    json: JSON.stringify({ i: {
+      legacyObject: { m: '90:L', v: { k: 4, g: 90, c: 60 } }
+    } })
+  }],
+  ['yds-test-yanlis', {
+    surum: 2,
+    anahtar: 'yds-test-yanlis',
+    zaman: 91,
+    json: JSON.stringify({ k: 1, r: '80:L', i: [
+      ['legacy-k1', '90:L', 0, { n: 3, t: 90, u: 90 }],
+      ['legacy-deleted', '91:L', 1],
+      ['legacy-custom', '97:L', 0, { n: null, t: 'bilinmiyor', u: false }]
+    ] })
+  }]
+]);
 var yonetimBelgesi = null;
 var surumler = new Map();
 var dinleyiciler = new Map();
@@ -107,6 +130,19 @@ function disaridanYaz(ref, v) {
   bildir(ref);
 }
 
+function alanKuraliDogrula(ref, yeni) {
+  if (ref.tip !== 'alan') return;
+  var gecerliSurum = yeni && (yeni.surum === 2 ||
+    (yeni.surum === 3 &&
+      (ref.anahtar === 'yds-leitner' || ref.anahtar === 'yds-test-yanlis')));
+  var mevcut = alanBelgeleri.get(ref.anahtar);
+  if (!gecerliSurum || (mevcut && yeni.surum < mevcut.surum)) {
+    var hata = new Error('permission-denied');
+    hata.code = 'permission-denied';
+    throw hata;
+  }
+}
+
 var db = {
   collection: function (ad) {
     assert.strictEqual(ad, 'kullanicilar');
@@ -139,6 +175,9 @@ var db = {
           if (!kalan) throw new Error('transaction-retry-tukendi');
           return dene(kalan - 1);
         }
+        // Firestore işlemi atomiktir: önce bütün yazıları kurallardan geçir,
+        // sonra tek birini bile kısmen uygulamadan hepsini yaz.
+        yazilan.forEach(function (y) { alanKuraliDogrula(y.ref, y.veri); });
         yazilan.forEach(function (y) {
           if (y.ref.tip === 'kok') kokYazma++;
           else alanYazma++;
@@ -239,10 +278,11 @@ function temiz(v) { return JSON.parse(JSON.stringify(v)); }
   function alanZarfi(anahtar) {
     var doc = alanBelgeleri.get(anahtar);
     assert.ok(doc, 'eksik alan belgesi: ' + anahtar);
-    assert.strictEqual(doc.surum, 2);
+    assert.strictEqual(doc.surum,
+      anahtar === 'yds-leitner' || anahtar === 'yds-test-yanlis' ? 3 : 2);
     assert.strictEqual(doc.anahtar, anahtar);
     var z = { surum: 2, alanlar: {} };
-    z.alanlar[anahtar] = JSON.parse(doc.json);
+    z.alanlar[anahtar] = M.bulutAlaniniCoz(anahtar, JSON.parse(doc.json));
     return z;
   }
 
@@ -251,10 +291,10 @@ function temiz(v) { return JSON.parse(JSON.stringify(v)); }
   function uzakAlanYaz(anahtar, zarf, zaman) {
     var ref = refYap('alan', anahtar);
     disaridanYaz(ref, {
-      surum: 2,
+      surum: anahtar === 'yds-leitner' || anahtar === 'yds-test-yanlis' ? 3 : 2,
       anahtar: anahtar,
       zaman: zaman,
-      json: M.kararliJson(zarf.alanlar[anahtar])
+      json: M.bulutAlanJson(anahtar, zarf.alanlar[anahtar])
     });
   }
 
@@ -262,19 +302,66 @@ function temiz(v) { return JSON.parse(JSON.stringify(v)); }
   assert.strictEqual(JSON.stringify(kokBelge), kokBelgeIlk);
   assert.strictEqual(kokYazma, 0);
   var bulutPaket = alanPaketi('yds-leitner');
+  assert.strictEqual(JSON.parse(alanBelgeleri.get('yds-leitner').json).k, 2,
+    'Leitner ilerlemesi bulutta kısa biçime geçirilmedi');
   assert.deepStrictEqual(Object.keys(temiz(bulutPaket['yds-leitner'])).sort(),
-    ['@kelime:hand down', 'cloud', 'hand down', 'local']);
+    ['@kelime:hand down', 'cloud', 'hand down', 'legacyObject', 'local']);
   assert.strictEqual(bulutPaket['yds-leitner']['@kelime:hand down'].k, 4);
   assert.strictEqual(bulutPaket['yds-leitner']['hand down'].k, 3);
   assert.strictEqual(bulutPaket['yds-leitner']['hand-down'], undefined);
   assert.strictEqual(bulutPaket['yds-leitner']['handed-down'], undefined);
   assert.strictEqual(alanPaketi('yds-kategori')['yds-kategori'].Kelime.d, 4);
   assert.strictEqual(alanPaketi('yds-yanlis')['yds-yanlis'][0].a, 'K|S');
+  assert.strictEqual(alanPaketi('yds-test-yanlis')['yds-test-yanlis'].ability, undefined,
+    'legacy k=1 reset metası daha eski yerel kaydı bastırmadı');
+  assert.strictEqual(alanPaketi('yds-test-yanlis')['yds-test-yanlis']['legacy-k1'].n, 3);
+  assert.strictEqual(alanPaketi('yds-test-yanlis')['yds-test-yanlis']['legacy-custom'].n, null);
+  var testAlanHam = alanZarfi('yds-test-yanlis').alanlar['yds-test-yanlis'];
+  assert.strictEqual(testAlanHam.r, '80:L', 'legacy k=1 sıfırlama metası kayboldu');
+  assert.strictEqual(testAlanHam.i['legacy-deleted'].d, 1,
+    'legacy k=1 tombstone kayboldu');
+  assert.strictEqual(JSON.parse(alanBelgeleri.get('yds-test-yanlis').json).k, 2,
+    'test yanlışları bulutta kısa biçime geçirilmedi');
   assert.deepStrictEqual(Object.keys(temiz(D.paket()['yds-leitner'])).sort(),
-    ['@kelime:hand down', 'cloud', 'hand down', 'local']);
+    ['@kelime:hand down', 'cloud', 'hand down', 'legacyObject', 'local']);
   assert.ok(islemSayisi >= 1 && alanYazma >= 3);
   var bulutYedegi = JSON.parse(bellek.get('yds-esitleme-bulut-gecis-yedegi'));
   assert.strictEqual(bulutYedegi.veri['yds-leitner'].cloud.k, 3);
+
+  // Gerçek karışık-sürüm güvenliği: canlıdaki eski okuyucu yalnız dış sürüm 2
+  // bilir ve v3 belgeyi boş veri saymak yerine reddeder. Savunmanın ikinci
+  // katmanı olan Firestore update kuralı da v3'ü v2 ile ezmeyi engeller.
+  var v3Ref = refYap('alan', 'yds-leitner');
+  var v3Once = JSON.stringify(alanBelgeleri.get('yds-leitner'));
+  function eskiV2Okuyucu(doc) {
+    if (!doc || doc.surum !== M.SURUM) {
+      var hata = new Error('bulut-alan-semasi-gecersiz');
+      hata.code = 'yds/bulut-json-gecersiz';
+      throw hata;
+    }
+    return JSON.parse(doc.json);
+  }
+  assert.throws(function () { eskiV2Okuyucu(alanBelgeleri.get('yds-leitner')); },
+    function (e) { return e && e.code === 'yds/bulut-json-gecersiz'; },
+    'eski v2 okuyucu dış sürüm 3 alanı reddetmedi');
+  var eskiYazimReddedildi = false;
+  var alanYazmaOnce = alanYazma;
+  await db.runTransaction(function (islem) {
+    return islem.get(v3Ref).then(function () {
+      islem.set(v3Ref, {
+        surum: 2,
+        anahtar: 'yds-leitner',
+        zaman: 200,
+        json: JSON.stringify({ i: { stale: { m: '1:O', v: { k: 1, g: 1 } } } })
+      });
+    });
+  }).catch(function (e) { eskiYazimReddedildi = e && e.code === 'permission-denied'; });
+  assert.strictEqual(eskiYazimReddedildi, true,
+    'Firestore kuralı mevcut v3 alanın v2 ile ezilmesini reddetmedi');
+  assert.strictEqual(JSON.stringify(alanBelgeleri.get('yds-leitner')), v3Once,
+    'reddedilen eski istemci yazımı v3 bulut ilerlemesini değiştirdi');
+  assert.strictEqual(alanYazma, alanYazmaOnce,
+    'reddedilen sürüm düşürme kısmi yazım sayıldı');
 
   // Bir yerel Leitner değişikliği yalnız o alan belgesini günceller.
   var oncekiAlanYazma = alanYazma;
@@ -350,7 +437,7 @@ function temiz(v) { return JSON.parse(JSON.stringify(v)); }
   assert.strictEqual(kokYazma, 0);
   assert.strictEqual(yenidenYukleme, 1);
   assert.deepStrictEqual(yenidenYuklemeNedenleri, ['bulut-ilk-birlesim']);
-  console.log('esitleme-bulut: legacy geçiş + marker engeli + güvenli kapalı yönetim yolları başarılı');
+  console.log('esitleme-bulut: v2 object/k1 -> v3 k2 + downgrade kilidi + marker güvenliği başarılı');
 })().catch(function (e) {
   console.error(e);
   process.exitCode = 1;

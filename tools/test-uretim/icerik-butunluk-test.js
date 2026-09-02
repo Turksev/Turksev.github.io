@@ -23,12 +23,12 @@ yukle('data/test-modal.js');
 var dizin = pencere.KELIME_DIZIN;
 var dizinAdlari = Array.from(dizin, function (x) { return x.e; });
 var dizinKumesi = new Set(dizinAdlari);
-// 30.08.2026: "row /raʊ/" kartı "row" ile birleşti (7912 -> 7911, K5 2051 -> 2050).
-assert.strictEqual(dizin.length, 7911);
-assert.strictEqual(dizinKumesi.size, 7911, 'dizinde yinelenen başlık');
-assert.strictEqual(pencere.SAYILAR.kelime, 7911);
-assert.strictEqual(pencere.SAYILAR.katman['5'], 2050);
-assert.strictEqual(pencere.SAYILAR.katman['7'], 1);
+// 02.09.2026: ilk insan denetimli aile kartı partisi 61 ayrı lemma ekledi.
+assert.strictEqual(dizin.length, 8437);
+assert.strictEqual(dizinKumesi.size, 8437, 'dizinde yinelenen başlık');
+assert.strictEqual(pencere.SAYILAR.kelime, 8437);
+assert.strictEqual(pencere.SAYILAR.katman['5'], 2069);
+assert.strictEqual(pencere.SAYILAR.katman['7'], 495);
 dizin.forEach(function (x) {
   assert.ok(typeof x.p === 'number' && Number.isFinite(x.p), x.e + ': öncelik puanı eksik');
   assert.ok(x.k >= 1 && x.k <= 7, x.e + ': geçersiz katman');
@@ -61,9 +61,8 @@ for (katman = 1; katman <= 7; katman++) {
   testAdlari = testAdlari.concat(Object.keys(pencere['TEST_K' + katman] || {}));
 }
 testAdlari = testAdlari.concat(Object.keys(pencere.TEST_MODAL || {}));
-// Çok türlü ama tek örnekli 297 kayıt anlamlarına ayrıldı; her tür kendi
-// örneğini aldığı için çok anlamlı kart sayısı 2668'den 2964'e çıktı.
-assert.strictEqual(cokAnlamli, 2964);
+// Parti kartlarındaki her farklı anlam kendi örneğini taşır.
+assert.strictEqual(cokAnlamli, 3143);
 assert.deepStrictEqual(kartAdlari.slice().sort(), dizinAdlari.slice().sort(),
   'kart katmanları ile dizin farklı');
 assert.deepStrictEqual(testAdlari.slice().sort(), dizinAdlari.slice().sort(),
@@ -87,8 +86,8 @@ olumsuzAna.forEach(function (ana) {
     assert.strictEqual(!!x.s, dizinKumesi.has(x.f), ana + ' → ' + x.f + ': s:1 sözleşmesi yanlış');
   });
 });
-assert.strictEqual(olumsuzAna.length, 248);
-assert.strictEqual(olumsuzForm, 253);
+assert.strictEqual(olumsuzAna.length, 251);
+assert.strictEqual(olumsuzForm, 256);
 
 var cokIslev = {
   since: ['Neden', 'Zaman'],

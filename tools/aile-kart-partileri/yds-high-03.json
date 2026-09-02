@@ -1,0 +1,1738 @@
+{
+  "schemaVersion": 1,
+  "batchId": "yds-high-03",
+  "policy": {
+    "purpose": "İnsan denetimli YDS kelime ailesi tamamlama partisi",
+    "displayScoreDecimals": 1,
+    "lowScoreLayerRule": "source_score < 10 => K7",
+    "preserveExistingLexicalizedCards": true,
+    "meaningStars": {
+      "primary": 4,
+      "secondary": 2
+    },
+    "testWordRange": [
+      15,
+      36
+    ],
+    "provenance": "Sınav kimliği, sayfa/soru, yüzey biçimi ve rol; soru metni içermez"
+  },
+  "cards": [
+    {
+      "candidate": "orally",
+      "tip": "zarf",
+      "p": 9.2,
+      "source_score": 9.2206,
+      "family_members": [
+        "orally",
+        "oral"
+      ],
+      "meanings": [
+        {
+          "tr": "z. sözlü olarak, konuşma yoluyla",
+          "ex": "The findings were presented orally before the complete report was distributed to committee members.",
+          "exTr": "Bulgular, raporun tamamı komite üyelerine dağıtılmadan önce sözlü olarak sunuldu."
+        }
+      ],
+      "card_example": "The findings were presented orally before the complete report was distributed to committee members.",
+      "card_example_tr": "Bulgular, raporun tamamı komite üyelerine dağıtılmadan önce sözlü olarak sunuldu.",
+      "test_sentence": "Researchers asked participants to explain the procedure orally so that reading ability would not influence the assessment results.",
+      "test_sentence_tr": "Araştırmacılar, okuma becerisinin değerlendirme sonuçlarını etkilememesi için katılımcılardan işlemi sözlü olarak açıklamalarını istedi.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2016_01",
+          "page": 20,
+          "question": null,
+          "surface": "orally",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN pertainym bağıyla ve üretken -ly yapısıyla doğrulanan eksik zarf biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "abundantly",
+      "tip": "zarf",
+      "p": 9.2,
+      "source_score": 9.1992,
+      "family_members": [
+        "abundantly",
+        "abundant"
+      ],
+      "meanings": [
+        {
+          "tr": "z. bolca, çok miktarda",
+          "ex": "Wild berries grow abundantly in the cool, wet forests along the northern coast.",
+          "exTr": "Yabani meyveler kuzey kıyısındaki serin ve nemli ormanlarda bolca yetişir."
+        }
+      ],
+      "card_example": "Wild berries grow abundantly in the cool, wet forests along the northern coast.",
+      "card_example_tr": "Yabani meyveler kuzey kıyısındaki serin ve nemli ormanlarda bolca yetişir.",
+      "test_sentence": "Although fresh water is scarce elsewhere, it flows abundantly through this valley during the spring months each year.",
+      "test_sentence_tr": "Başka yerlerde tatlı su kıt olsa da her yıl ilkbahar aylarında bu vadiden bolca akar.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2015_01",
+          "page": 12,
+          "question": null,
+          "surface": "abundantly",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN pertainym bağıyla ve üretken -ly yapısıyla doğrulanan eksik zarf biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "observable",
+      "tip": "sıfat",
+      "p": 9.2,
+      "source_score": 9.1992,
+      "family_members": [
+        "observable",
+        "observe"
+      ],
+      "meanings": [
+        {
+          "tr": "s. gözlemlenebilir, fark edilebilir",
+          "ex": "The behavioural change was observable within two weeks of introducing the new classroom routine.",
+          "exTr": "Davranış değişikliği, yeni sınıf düzeni uygulandıktan sonraki iki hafta içinde gözlemlenebilir hâle geldi."
+        }
+      ],
+      "card_example": "The behavioural change was observable within two weeks of introducing the new classroom routine.",
+      "card_example_tr": "Davranış değişikliği, yeni sınıf düzeni uygulandıktan sonraki iki hafta içinde gözlemlenebilir hâle geldi.",
+      "test_sentence": "The treatment produced no observable improvement during the first month, despite encouraging changes in laboratory measurements.",
+      "test_sentence_tr": "Tedavi, laboratuvar ölçümlerindeki umut verici değişikliklere rağmen ilk ay boyunca gözlemlenebilir bir iyileşme sağlamadı.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2016_01",
+          "page": 21,
+          "question": null,
+          "surface": "observable",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN derivation bağıyla doğrulanan eksik sıfat biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "secretion",
+      "tip": "isim",
+      "p": 9.2,
+      "source_score": 9.1992,
+      "family_members": [
+        "secretion",
+        "secrete"
+      ],
+      "meanings": [
+        {
+          "tr": "i. salgılama, bir maddenin vücutta üretilip salınması",
+          "ex": "Bright light can suppress the secretion of melatonin and delay the onset of sleep.",
+          "exTr": "Parlak ışık melatonin salgılanmasını baskılayabilir ve uykunun başlamasını geciktirebilir."
+        },
+        {
+          "tr": "i. salgı, bir bez veya hücre tarafından salınan madde",
+          "ex": "The sticky secretion protects the plant from insects that attempt to feed on its leaves.",
+          "exTr": "Yapışkan salgı, bitkiyi yapraklarıyla beslenmeye çalışan böceklerden korur."
+        }
+      ],
+      "card_example": "Bright light can suppress the secretion of melatonin and delay the onset of sleep.",
+      "card_example_tr": "Parlak ışık melatonin salgılanmasını baskılayabilir ve uykunun başlamasını geciktirebilir.",
+      "test_sentence": "The medicine reduces the secretion of stomach acid without interfering with the digestion of essential nutrients.",
+      "test_sentence_tr": "İlaç, temel besinlerin sindirimine müdahale etmeden mide asidi salgılanmasını azaltır.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2021_02",
+          "page": 25,
+          "question": null,
+          "surface": "secretion",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN derivation bağıyla doğrulanan eksik isim biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "unwillingness",
+      "tip": "isim",
+      "p": 9.2,
+      "source_score": 9.1992,
+      "family_members": [
+        "unwillingness",
+        "unwilling"
+      ],
+      "meanings": [
+        {
+          "tr": "i. isteksizlik, gönülsüzlük",
+          "ex": "The company's unwillingness to disclose its emissions data weakened public confidence in its environmental claims.",
+          "exTr": "Şirketin emisyon verilerini açıklama konusundaki isteksizliği, çevreyle ilgili iddialarına duyulan kamu güvenini zayıflattı."
+        }
+      ],
+      "card_example": "The company's unwillingness to disclose its emissions data weakened public confidence in its environmental claims.",
+      "card_example_tr": "Şirketin emisyon verilerini açıklama konusundaki isteksizliği, çevreyle ilgili iddialarına duyulan kamu güvenini zayıflattı.",
+      "test_sentence": "The committee's unwillingness to publish its raw data increased public suspicion about the reliability of its conclusions.",
+      "test_sentence_tr": "Komitenin ham verilerini yayımlama konusundaki isteksizliği, vardığı sonuçların güvenilirliğine ilişkin kamu kuşkusunu artırdı.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2020_01",
+          "page": 20,
+          "question": null,
+          "surface": "unwillingness",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN derivation bağıyla doğrulanan eksik isim biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "attainable",
+      "tip": "sıfat",
+      "p": 9.2,
+      "source_score": 9.1777,
+      "family_members": [
+        "attainable",
+        "attain"
+      ],
+      "meanings": [
+        {
+          "tr": "s. ulaşılabilir, gerçekleştirilebilir",
+          "ex": "The target became attainable after the project received additional staff and reliable technical support.",
+          "exTr": "Proje ek personel ve güvenilir teknik destek aldıktan sonra hedef ulaşılabilir hâle geldi."
+        }
+      ],
+      "card_example": "The target became attainable after the project received additional staff and reliable technical support.",
+      "card_example_tr": "Proje ek personel ve güvenilir teknik destek aldıktan sonra hedef ulaşılabilir hâle geldi.",
+      "test_sentence": "By dividing the project into smaller stages, the team made its ambitious final objective genuinely attainable.",
+      "test_sentence_tr": "Ekip, projeyi daha küçük aşamalara bölerek iddialı nihai hedefini gerçekten ulaşılabilir hâle getirdi.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2019_02",
+          "page": 20,
+          "question": null,
+          "surface": "attainable",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN derivation bağıyla doğrulanan eksik sıfat biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "normative",
+      "tip": "sıfat",
+      "p": 9.2,
+      "source_score": 9.1777,
+      "family_members": [
+        "normative",
+        "norm"
+      ],
+      "meanings": [
+        {
+          "tr": "s. normatif, normlara ilişkin veya nasıl olması gerektiğini belirten",
+          "ex": "The article separates empirical observations from normative judgments about how wealth should be distributed.",
+          "exTr": "Makale, deneysel gözlemleri servetin nasıl dağıtılması gerektiğine ilişkin normatif yargılardan ayırıyor."
+        }
+      ],
+      "card_example": "The article separates empirical observations from normative judgments about how wealth should be distributed.",
+      "card_example_tr": "Makale, deneysel gözlemleri servetin nasıl dağıtılması gerektiğine ilişkin normatif yargılardan ayırıyor.",
+      "test_sentence": "The report distinguishes descriptive evidence from normative claims about how public institutions ought to distribute limited resources.",
+      "test_sentence_tr": "Rapor, betimleyici kanıtları kamu kurumlarının sınırlı kaynakları nasıl dağıtması gerektiğine ilişkin normatif iddialardan ayırıyor.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2016_01",
+          "page": 20,
+          "question": null,
+          "surface": "normative",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN pertainym bağıyla doğrulanan eksik sıfat biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "susceptibility",
+      "tip": "isim",
+      "p": 9.2,
+      "source_score": 9.1777,
+      "family_members": [
+        "susceptibility",
+        "susceptible"
+      ],
+      "meanings": [
+        {
+          "tr": "i. yatkınlık, duyarlılık; kolayca etkilenme durumu",
+          "ex": "Age, nutrition and prior illness can influence a person's susceptibility to respiratory infections.",
+          "exTr": "Yaş, beslenme ve önceki hastalıklar kişinin solunum yolu enfeksiyonlarına yatkınlığını etkileyebilir."
+        }
+      ],
+      "card_example": "Age, nutrition and prior illness can influence a person's susceptibility to respiratory infections.",
+      "card_example_tr": "Yaş, beslenme ve önceki hastalıklar kişinin solunum yolu enfeksiyonlarına yatkınlığını etkileyebilir.",
+      "test_sentence": "Genetic variation may increase a person's susceptibility to infection without making the disease itself inevitable in adulthood.",
+      "test_sentence_tr": "Genetik çeşitlilik, yetişkinlikte hastalığı kaçınılmaz kılmadan kişinin enfeksiyona yatkınlığını artırabilir.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2018_01",
+          "page": 9,
+          "question": null,
+          "surface": "susceptibility",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN derivation bağıyla doğrulanan eksik isim biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "gravely",
+      "tip": "zarf",
+      "p": 9.2,
+      "source_score": 9.1563,
+      "family_members": [
+        "gravely",
+        "grave"
+      ],
+      "meanings": [
+        {
+          "tr": "z. ciddi biçimde, ağır derecede",
+          "ex": "Repeated crop failures have gravely threatened food security in several drought-prone districts.",
+          "exTr": "Tekrarlanan ürün kayıpları, kuraklığa yatkın bazı bölgelerde gıda güvenliğini ciddi biçimde tehdit etti."
+        },
+        {
+          "tr": "z. ağırbaşlı ve ciddi bir tavırla",
+          "ex": "The physician spoke gravely about the risks of delaying treatment any further.",
+          "exTr": "Doktor, tedaviyi daha fazla geciktirmenin riskleri hakkında ağırbaşlı bir tavırla konuştu."
+        }
+      ],
+      "card_example": "Repeated crop failures have gravely threatened food security in several drought-prone districts.",
+      "card_example_tr": "Tekrarlanan ürün kayıpları, kuraklığa yatkın bazı bölgelerde gıda güvenliğini ciddi biçimde tehdit etti.",
+      "test_sentence": "Unless governments respond quickly, prolonged drought could gravely threaten food security across several already vulnerable regions.",
+      "test_sentence_tr": "Hükûmetler hızla karşılık vermezse uzun süren kuraklık, zaten savunmasız olan bazı bölgelerde gıda güvenliğini ciddi biçimde tehdit edebilir.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2021_01",
+          "page": 19,
+          "question": null,
+          "surface": "gravely",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN pertainym bağıyla ve üretken -ly yapısıyla doğrulanan eksik zarf biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "erroneously",
+      "tip": "zarf",
+      "p": 9.1,
+      "source_score": 9.1349,
+      "family_members": [
+        "erroneously",
+        "erroneous"
+      ],
+      "meanings": [
+        {
+          "tr": "z. yanlışlıkla, hatalı biçimde",
+          "ex": "The fossils were erroneously assigned to a younger period because the surrounding soil had been disturbed.",
+          "exTr": "Çevredeki toprak bozulmuş olduğu için fosiller yanlışlıkla daha yakın bir döneme tarihlendirildi."
+        }
+      ],
+      "card_example": "The fossils were erroneously assigned to a younger period because the surrounding soil had been disturbed.",
+      "card_example_tr": "Çevredeki toprak bozulmuş olduğu için fosiller yanlışlıkla daha yakın bir döneme tarihlendirildi.",
+      "test_sentence": "Early researchers erroneously assumed that the two species were identical because their external features appeared remarkably similar.",
+      "test_sentence_tr": "İlk araştırmacılar, dış özellikleri son derece benzer göründüğü için iki türün aynı olduğunu hatalı biçimde varsaydılar.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2025_01",
+          "page": 24,
+          "question": null,
+          "surface": "erroneously",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN pertainym bağıyla ve üretken -ly yapısıyla doğrulanan eksik zarf biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "humiliate",
+      "tip": "fiil",
+      "p": 9.1,
+      "source_score": 9.1349,
+      "family_members": [
+        "humiliate",
+        "humiliation"
+      ],
+      "meanings": [
+        {
+          "tr": "f. küçük düşürmek, aşağılamak, utandırmak",
+          "ex": "Publicly ranking weak performers can humiliate employees without helping them develop the skills they lack.",
+          "exTr": "Düşük performans gösterenleri herkesin önünde sıralamak, eksik becerilerini geliştirmelerine yardım etmeden çalışanları küçük düşürebilir."
+        }
+      ],
+      "card_example": "Publicly ranking weak performers can humiliate employees without helping them develop the skills they lack.",
+      "card_example_tr": "Düşük performans gösterenleri herkesin önünde sıralamak, eksik becerilerini geliştirmelerine yardım etmeden çalışanları küçük düşürebilir.",
+      "test_sentence": "Teachers should correct serious mistakes privately because public criticism may humiliate students and discourage future participation.",
+      "test_sentence_tr": "Öğretmenler ciddi hataları özel olarak düzeltmelidir; çünkü kamu önünde eleştiri öğrencileri küçük düşürebilir ve gelecekteki katılımlarını azaltabilir.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2021_02",
+          "page": 10,
+          "question": null,
+          "surface": "humiliated",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN derivation bağıyla doğrulanan eksik fiil biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "rationally",
+      "tip": "zarf",
+      "p": 9.1,
+      "source_score": 9.1349,
+      "family_members": [
+        "rationally",
+        "rational"
+      ],
+      "meanings": [
+        {
+          "tr": "z. akılcı, mantıklı biçimde",
+          "ex": "Consumers cannot choose rationally when essential information about price and risk is deliberately withheld.",
+          "exTr": "Fiyat ve risk hakkındaki temel bilgiler kasıtlı olarak gizlendiğinde tüketiciler akılcı biçimde seçim yapamaz."
+        }
+      ],
+      "card_example": "Consumers cannot choose rationally when essential information about price and risk is deliberately withheld.",
+      "card_example_tr": "Fiyat ve risk hakkındaki temel bilgiler kasıtlı olarak gizlendiğinde tüketiciler akılcı biçimde seçim yapamaz.",
+      "test_sentence": "People cannot evaluate medical risks rationally when fear prevents them from considering reliable statistical evidence carefully.",
+      "test_sentence_tr": "Korku, güvenilir istatistiksel kanıtları dikkatle değerlendirmelerini engellediğinde insanlar tıbbi riskleri akılcı biçimde ölçemez.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "eYDS_2015_01",
+          "page": 5,
+          "question": null,
+          "surface": "rationally",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN pertainym bağıyla ve üretken -ly yapısıyla doğrulanan eksik zarf biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "venomous",
+      "tip": "sıfat",
+      "p": 9.1,
+      "source_score": 9.1349,
+      "family_members": [
+        "venomous",
+        "venom"
+      ],
+      "meanings": [
+        {
+          "tr": "s. zehirli, zehir enjekte eden",
+          "ex": "Several venomous snake species use heat-sensitive organs to locate prey in complete darkness.",
+          "exTr": "Bazı zehirli yılan türleri tamamen karanlıkta avlarını bulmak için ısıya duyarlı organlar kullanır."
+        },
+        {
+          "tr": "s. kin dolu, zehir zemberek, kötü niyetli",
+          "ex": "The debate deteriorated after one speaker made a venomous personal attack on her opponent.",
+          "exTr": "Konuşmacılardan biri rakibine kin dolu kişisel bir saldırıda bulununca tartışma kötüleşti."
+        }
+      ],
+      "card_example": "Several venomous snake species use heat-sensitive organs to locate prey in complete darkness.",
+      "card_example_tr": "Bazı zehirli yılan türleri tamamen karanlıkta avlarını bulmak için ısıya duyarlı organlar kullanır.",
+      "test_sentence": "Hikers were warned that several venomous snake species remain active near rocky paths throughout the warmer months.",
+      "test_sentence_tr": "Yürüyüşçüler, bazı zehirli yılan türlerinin sıcak aylar boyunca kayalık patikaların yakınında etkin kaldığı konusunda uyarıldı.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2019_01",
+          "page": 7,
+          "question": null,
+          "surface": "venomous",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN derivation bağıyla doğrulanan eksik sıfat biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "obtainable",
+      "tip": "sıfat",
+      "p": 9.1,
+      "source_score": 9.1134,
+      "family_members": [
+        "obtainable",
+        "obtain"
+      ],
+      "meanings": [
+        {
+          "tr": "s. elde edilebilir, temin edilebilir",
+          "ex": "The medicine is obtainable without a prescription, but patients should still seek professional advice.",
+          "exTr": "İlaç reçetesiz temin edilebilir; ancak hastalar yine de profesyonel görüş almalıdır."
+        }
+      ],
+      "card_example": "The medicine is obtainable without a prescription, but patients should still seek professional advice.",
+      "card_example_tr": "İlaç reçetesiz temin edilebilir; ancak hastalar yine de profesyonel görüş almalıdır.",
+      "test_sentence": "The vaccine became widely obtainable only after manufacturers developed a cheaper method for maintaining the required temperature.",
+      "test_sentence_tr": "Aşı, ancak üreticiler gerekli sıcaklığı korumak için daha ucuz bir yöntem geliştirdikten sonra yaygın biçimde temin edilebilir hâle geldi.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2015_01",
+          "page": 12,
+          "question": null,
+          "surface": "obtainable",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN derivation bağıyla doğrulanan eksik sıfat biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "curricular",
+      "tip": "sıfat",
+      "p": 9.1,
+      "source_score": 9.092,
+      "family_members": [
+        "curricular",
+        "curriculum"
+      ],
+      "meanings": [
+        {
+          "tr": "s. müfredata, öğretim programına ilişkin",
+          "ex": "The reform introduced curricular changes that gave students more opportunities to conduct practical experiments.",
+          "exTr": "Reform, öğrencilere uygulamalı deney yapmaları için daha fazla fırsat veren müfredat değişiklikleri getirdi."
+        }
+      ],
+      "card_example": "The reform introduced curricular changes that gave students more opportunities to conduct practical experiments.",
+      "card_example_tr": "Reform, öğrencilere uygulamalı deney yapmaları için daha fazla fırsat veren müfredat değişiklikleri getirdi.",
+      "test_sentence": "Schools need sustained teacher training before major curricular reforms can improve classroom practice across an entire region.",
+      "test_sentence_tr": "Büyük müfredat reformlarının bütün bir bölgedeki sınıf uygulamalarını geliştirebilmesi için okulların sürekli öğretmen eğitimine ihtiyacı vardır.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2019_03",
+          "page": 9,
+          "question": null,
+          "surface": "curricular",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN derivation,pertainym bağıyla doğrulanan eksik sıfat biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "marketable",
+      "tip": "sıfat",
+      "p": 9.1,
+      "source_score": 9.092,
+      "family_members": [
+        "marketable",
+        "market"
+      ],
+      "meanings": [
+        {
+          "tr": "s. pazarlanabilir, satılabilir",
+          "ex": "The cooperative turns imperfect fruit into a marketable product instead of discarding the entire harvest.",
+          "exTr": "Kooperatif, kusurlu meyveleri bütün hasadı atmak yerine pazarlanabilir bir ürüne dönüştürüyor."
+        },
+        {
+          "tr": "s. iş piyasasında talep gören",
+          "ex": "Training in data analysis gave the graduates a marketable skill that employers increasingly required.",
+          "exTr": "Veri analizi eğitimi, mezunlara işverenlerin giderek daha fazla aradığı, iş piyasasında talep gören bir beceri kazandırdı."
+        }
+      ],
+      "card_example": "The cooperative turns imperfect fruit into a marketable product instead of discarding the entire harvest.",
+      "card_example_tr": "Kooperatif, kusurlu meyveleri bütün hasadı atmak yerine pazarlanabilir bir ürüne dönüştürüyor.",
+      "test_sentence": "Graduates often combine technical knowledge with communication skills to become more marketable in a competitive labour market.",
+      "test_sentence_tr": "Mezunlar, rekabetçi bir iş piyasasında daha fazla talep görmek için teknik bilgiyi iletişim becerileriyle sık sık birleştirir.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2017_01",
+          "page": 8,
+          "question": null,
+          "surface": "marketable",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN derivation bağıyla doğrulanan eksik sıfat biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "mythological",
+      "tip": "sıfat",
+      "p": 9.1,
+      "source_score": 9.092,
+      "family_members": [
+        "mythological",
+        "mythology"
+      ],
+      "meanings": [
+        {
+          "tr": "s. mitolojik, mitolojiye veya geleneksel söylencelere ait",
+          "ex": "The temple walls depict mythological creatures that appear in several ancient Mediterranean traditions.",
+          "exTr": "Tapınak duvarları, çeşitli eski Akdeniz geleneklerinde görülen mitolojik yaratıkları betimliyor."
+        },
+        {
+          "tr": "s. efsanevi, gerçek temeli olmayan",
+          "ex": "The popular image of a perfectly accurate lie detector is largely mythological rather than scientific.",
+          "exTr": "Kusursuz doğrulukta bir yalan makinesine ilişkin yaygın imge bilimsel olmaktan çok efsanevidir."
+        }
+      ],
+      "card_example": "The temple walls depict mythological creatures that appear in several ancient Mediterranean traditions.",
+      "card_example_tr": "Tapınak duvarları, çeşitli eski Akdeniz geleneklerinde görülen mitolojik yaratıkları betimliyor.",
+      "test_sentence": "Archaeologists found no physical evidence that the mythological city described in ancient poetry ever existed at that location.",
+      "test_sentence_tr": "Arkeologlar, eski şiirde anlatılan mitolojik kentin o yerde gerçekten var olduğuna ilişkin hiçbir fiziksel kanıt bulamadı.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2020_01",
+          "page": 20,
+          "question": null,
+          "surface": "mythological",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN derivation bağıyla doğrulanan eksik sıfat biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "purify",
+      "tip": "fiil",
+      "p": 9.1,
+      "source_score": 9.092,
+      "family_members": [
+        "purify",
+        "purity"
+      ],
+      "meanings": [
+        {
+          "tr": "f. arıtmak, yabancı veya zararlı maddelerden temizlemek",
+          "ex": "The village installed a low-cost system to purify drinking water after severe flooding contaminated local wells.",
+          "exTr": "Köy, şiddetli sel yerel kuyuları kirlettikten sonra içme suyunu arıtmak için düşük maliyetli bir sistem kurdu."
+        },
+        {
+          "tr": "f. manevi bakımdan arındırmak, günah veya suçluluktan temizlemek",
+          "ex": "In the ceremony, participants washed their hands to purify themselves before entering the sacred area.",
+          "exTr": "Törende katılımcılar kutsal alana girmeden önce arınmak için ellerini yıkadı."
+        }
+      ],
+      "card_example": "The village installed a low-cost system to purify drinking water after severe flooding contaminated local wells.",
+      "card_example_tr": "Köy, şiddetli sel yerel kuyuları kirlettikten sonra içme suyunu arıtmak için düşük maliyetli bir sistem kurdu.",
+      "test_sentence": "The new filtration system can purify contaminated groundwater before nearby communities use it for drinking and cooking.",
+      "test_sentence_tr": "Yeni filtreleme sistemi, yakın topluluklar yer altı suyunu içme ve yemek pişirme amacıyla kullanmadan önce onu arıtabilir.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2020_01",
+          "page": 7,
+          "question": null,
+          "surface": "purify",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN derivation bağıyla doğrulanan eksik fiil biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "stimulant",
+      "tip": "sıfat, isim",
+      "p": 9.1,
+      "source_score": 9.092,
+      "family_members": [
+        "stimulant",
+        "stimulate"
+      ],
+      "meanings": [
+        {
+          "tr": "i. uyarıcı madde, bedensel veya zihinsel etkinliği geçici olarak artıran madde",
+          "ex": "Caffeine is a stimulant that can increase alertness but may also interfere with sleep.",
+          "exTr": "Kafein, uyanıklığı artırabilen ancak uykuyu da bozabilen bir uyarıcıdır."
+        },
+        {
+          "tr": "s. uyarıcı, etkinliği artıran",
+          "ex": "Doctors monitor blood pressure before prescribing stimulant medication for attention-related disorders.",
+          "exTr": "Doktorlar, dikkatle ilgili bozukluklar için uyarıcı ilaç yazmadan önce kan basıncını izler."
+        }
+      ],
+      "card_example": "Caffeine is a stimulant that can increase alertness but may also interfere with sleep.",
+      "card_example_tr": "Kafein, uyanıklığı artırabilen ancak uykuyu da bozabilen bir uyarıcıdır.",
+      "test_sentence": "Because caffeine is a stimulant, consuming large amounts late in the evening may seriously disrupt normal sleep.",
+      "test_sentence_tr": "Kafein bir uyarıcı olduğu için akşam geç saatlerde büyük miktarda tüketilmesi normal uykuyu ciddi biçimde bozabilir.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2021_02",
+          "page": 10,
+          "question": null,
+          "surface": "stimulants",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN derivation bağıyla doğrulanan eksik sıfat, isim biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "surgically",
+      "tip": "zarf",
+      "p": 9.1,
+      "source_score": 9.092,
+      "family_members": [
+        "surgically",
+        "surgical"
+      ],
+      "meanings": [
+        {
+          "tr": "z. cerrahi yolla, ameliyatla",
+          "ex": "The damaged valve was surgically repaired after less invasive treatments failed to relieve the symptoms.",
+          "exTr": "Daha az girişimsel tedaviler belirtileri hafifletmeyince hasarlı kapak cerrahi yolla onarıldı."
+        }
+      ],
+      "card_example": "The damaged valve was surgically repaired after less invasive treatments failed to relieve the symptoms.",
+      "card_example_tr": "Daha az girişimsel tedaviler belirtileri hafifletmeyince hasarlı kapak cerrahi yolla onarıldı.",
+      "test_sentence": "The damaged tissue could not be repaired surgically without creating an unacceptable risk of permanent nerve injury.",
+      "test_sentence_tr": "Hasarlı doku, kalıcı sinir hasarı bakımından kabul edilemez bir risk yaratılmadan cerrahi yolla onarılamadı.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "eYDS_2016_08",
+          "page": 3,
+          "question": 9,
+          "surface": "surgically",
+          "role": "soru_koku"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN pertainym bağıyla ve üretken -ly yapısıyla doğrulanan eksik zarf biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "vibrate",
+      "tip": "fiil",
+      "p": 9.1,
+      "source_score": 9.092,
+      "family_members": [
+        "vibrate",
+        "vibration"
+      ],
+      "meanings": [
+        {
+          "tr": "f. titreşmek, hızlı ve düzenli biçimde ileri geri hareket etmek",
+          "ex": "Sound causes the vocal cords to vibrate as air passes upward from the lungs.",
+          "exTr": "Ses, hava akciğerlerden yukarı geçerken ses tellerinin titreşmesine neden olur."
+        }
+      ],
+      "card_example": "Sound causes the vocal cords to vibrate as air passes upward from the lungs.",
+      "card_example_tr": "Ses, hava akciğerlerden yukarı geçerken ses tellerinin titreşmesine neden olur.",
+      "test_sentence": "When sound waves enter the ear, they cause a thin membrane to vibrate at different frequencies.",
+      "test_sentence_tr": "Ses dalgaları kulağa girdiğinde ince bir zarın farklı frekanslarda titreşmesine neden olur.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2018_01",
+          "page": 25,
+          "question": null,
+          "surface": "vibrate",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN derivation bağıyla doğrulanan eksik fiil biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "delicately",
+      "tip": "zarf",
+      "p": 9.1,
+      "source_score": 9.0706,
+      "family_members": [
+        "delicately",
+        "delicate"
+      ],
+      "meanings": [
+        {
+          "tr": "z. nazikçe, özenle, ince bir işçilikle",
+          "ex": "The ivory figure was delicately carved with tools made from stone and animal bone.",
+          "exTr": "Fildişi figür, taş ve hayvan kemiğinden yapılmış aletlerle ince bir işçilikle oyuldu."
+        }
+      ],
+      "card_example": "The ivory figure was delicately carved with tools made from stone and animal bone.",
+      "card_example_tr": "Fildişi figür, taş ve hayvan kemiğinden yapılmış aletlerle ince bir işçilikle oyuldu.",
+      "test_sentence": "Conservators handled the ancient fabric delicately because even slight pressure could destroy its weakened fibres completely.",
+      "test_sentence_tr": "Konservatörler eski kumaşı özenle tuttu; çünkü hafif bir basınç bile zayıflamış liflerini bütünüyle yok edebilirdi.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2018_01",
+          "page": 21,
+          "question": null,
+          "surface": "Delicately",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN pertainym bağıyla ve üretken -ly yapısıyla doğrulanan eksik zarf biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "dismissive",
+      "tip": "sıfat",
+      "p": 9.1,
+      "source_score": 9.0706,
+      "family_members": [
+        "dismissive",
+        "dismiss"
+      ],
+      "meanings": [
+        {
+          "tr": "s. küçümseyen, önemsemeyen, kayıtsız",
+          "ex": "Officials initially appeared dismissive of residents who reported unusual changes in the river's colour.",
+          "exTr": "Yetkililer başlangıçta nehrin rengindeki olağandışı değişiklikleri bildiren bölge sakinlerini önemsemiyor görünüyordu."
+        }
+      ],
+      "card_example": "Officials initially appeared dismissive of residents who reported unusual changes in the river's colour.",
+      "card_example_tr": "Yetkililer başlangıçta nehrin rengindeki olağandışı değişiklikleri bildiren bölge sakinlerini önemsemiyor görünüyordu.",
+      "test_sentence": "Managers who remain dismissive of employee concerns may overlook early warnings about serious safety problems at work.",
+      "test_sentence_tr": "Çalışanların kaygılarını önemsemeyen yöneticiler, iş yerindeki ciddi güvenlik sorunlarına ilişkin erken uyarıları gözden kaçırabilir.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2023_02",
+          "page": 22,
+          "question": null,
+          "surface": "dismissive",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN derivation bağıyla doğrulanan eksik sıfat biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "inactivity",
+      "tip": "isim",
+      "p": 9.1,
+      "source_score": 9.0706,
+      "family_members": [
+        "inactivity",
+        "inactive"
+      ],
+      "meanings": [
+        {
+          "tr": "i. hareketsizlik, faaliyetsizlik",
+          "ex": "Long periods of physical inactivity increase the risk of diabetes and cardiovascular disease.",
+          "exTr": "Uzun süreli fiziksel hareketsizlik diyabet ve kalp-damar hastalığı riskini artırır."
+        }
+      ],
+      "card_example": "Long periods of physical inactivity increase the risk of diabetes and cardiovascular disease.",
+      "card_example_tr": "Uzun süreli fiziksel hareketsizlik diyabet ve kalp-damar hastalığı riskini artırır.",
+      "test_sentence": "Extended physical inactivity can reduce muscle strength and increase the risk of several chronic health conditions.",
+      "test_sentence_tr": "Uzun süreli fiziksel hareketsizlik kas gücünü azaltabilir ve çeşitli kronik sağlık sorunlarının riskini artırabilir.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2016_01",
+          "page": 22,
+          "question": null,
+          "surface": "inactivity",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN derivation bağıyla doğrulanan eksik isim biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "leisurely",
+      "tip": "sıfat, zarf",
+      "p": 9.1,
+      "source_score": 9.0706,
+      "family_members": [
+        "leisurely",
+        "leisure"
+      ],
+      "meanings": [
+        {
+          "tr": "s. telaşsız, ağır ve rahat ilerleyen",
+          "ex": "The researchers followed a leisurely route so they could record every plant species along the river.",
+          "exTr": "Araştırmacılar nehir boyunca her bitki türünü kaydedebilmek için telaşsız bir rota izledi."
+        },
+        {
+          "tr": "z. telaş etmeden, ağır ağır",
+          "ex": "Visitors walked leisurely through the exhibition and spent several minutes examining each manuscript.",
+          "exTr": "Ziyaretçiler sergide ağır ağır yürüdü ve her el yazmasını incelemek için birkaç dakika harcadı."
+        }
+      ],
+      "card_example": "The researchers followed a leisurely route so they could record every plant species along the river.",
+      "card_example_tr": "Araştırmacılar nehir boyunca her bitki türünü kaydedebilmek için telaşsız bir rota izledi.",
+      "test_sentence": "Rather than rushing through the historic district, visitors took a leisurely walk and examined each building carefully.",
+      "test_sentence_tr": "Ziyaretçiler tarihî bölgede acele etmek yerine telaşsız bir yürüyüş yaptı ve her binayı dikkatle inceledi.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2018_01",
+          "page": 15,
+          "question": null,
+          "surface": "leisurely",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN derivation bağıyla doğrulanan eksik sıfat, zarf biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "coexist",
+      "tip": "fiil",
+      "p": 9.0,
+      "source_score": 9.0492,
+      "family_members": [
+        "coexist",
+        "coexistence"
+      ],
+      "meanings": [
+        {
+          "tr": "f. bir arada var olmak, birlikte bulunmak",
+          "ex": "Native wildlife can coexist with carefully managed tourism when sensitive habitats remain protected.",
+          "exTr": "Hassas yaşam alanları korunduğunda yerli yaban hayatı dikkatle yönetilen turizmle bir arada var olabilir."
+        }
+      ],
+      "card_example": "Native wildlife can coexist with carefully managed tourism when sensitive habitats remain protected.",
+      "card_example_tr": "Hassas yaşam alanları korunduğunda yerli yaban hayatı dikkatle yönetilen turizmle bir arada var olabilir.",
+      "test_sentence": "Traditional farming methods can coexist with modern technology when local knowledge guides how new tools are adopted.",
+      "test_sentence_tr": "Yerel bilgi yeni araçların nasıl benimseneceğine yön verdiğinde geleneksel tarım yöntemleri modern teknolojiyle bir arada var olabilir.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2017_02",
+          "page": 19,
+          "question": null,
+          "surface": "coexist",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN derivation bağıyla doğrulanan eksik fiil biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "unconsciously",
+      "tip": "zarf",
+      "p": 9.0,
+      "source_score": 9.0492,
+      "family_members": [
+        "unconsciously",
+        "unconscious"
+      ],
+      "meanings": [
+        {
+          "tr": "z. farkında olmadan, bilinçsizce",
+          "ex": "People may unconsciously imitate the speech patterns of colleagues with whom they work closely.",
+          "exTr": "İnsanlar yakın çalıştıkları meslektaşlarının konuşma örüntülerini farkında olmadan taklit edebilir."
+        }
+      ],
+      "card_example": "People may unconsciously imitate the speech patterns of colleagues with whom they work closely.",
+      "card_example_tr": "İnsanlar yakın çalıştıkları meslektaşlarının konuşma örüntülerini farkında olmadan taklit edebilir.",
+      "test_sentence": "Interviewers may unconsciously favour applicants who share their accent unless recruitment procedures actively reduce this bias.",
+      "test_sentence_tr": "İşe alım yöntemleri bu yanlılığı etkin biçimde azaltmadıkça görüşmeciler kendi aksanlarını paylaşan adayları farkında olmadan kayırabilir.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2013_02",
+          "page": 21,
+          "question": null,
+          "surface": "unconsciously",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN pertainym bağıyla ve üretken -ly yapısıyla doğrulanan eksik zarf biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "fluency",
+      "tip": "isim",
+      "p": 9.0,
+      "source_score": 9.0063,
+      "family_members": [
+        "fluency",
+        "fluent"
+      ],
+      "meanings": [
+        {
+          "tr": "i. akıcılık, bir dili rahat ve kesintisiz kullanma becerisi",
+          "ex": "Reading aloud can improve fluency by helping learners recognise familiar word patterns more rapidly.",
+          "exTr": "Sesli okuma, öğrencilerin tanıdık sözcük örüntülerini daha hızlı fark etmesine yardım ederek akıcılığı geliştirebilir."
+        }
+      ],
+      "card_example": "Reading aloud can improve fluency by helping learners recognise familiar word patterns more rapidly.",
+      "card_example_tr": "Sesli okuma, öğrencilerin tanıdık sözcük örüntülerini daha hızlı fark etmesine yardım ederek akıcılığı geliştirebilir.",
+      "test_sentence": "Regular conversation practice improves fluency by helping learners retrieve familiar words more quickly under pressure in class.",
+      "test_sentence_tr": "Düzenli konuşma alıştırması, öğrencilerin sınıfta baskı altındayken tanıdık sözcükleri daha hızlı hatırlamasına yardım ederek akıcılığı geliştirir.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2017_01",
+          "page": 30,
+          "question": null,
+          "surface": "fluency",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN derivation bağıyla doğrulanan eksik isim biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "grower",
+      "tip": "isim",
+      "p": 9.0,
+      "source_score": 9.0063,
+      "family_members": [
+        "grower",
+        "grow"
+      ],
+      "meanings": [
+        {
+          "tr": "i. yetiştirici, tarımsal üretici",
+          "ex": "Each tea grower received training in soil conservation and more efficient water use.",
+          "exTr": "Her çay yetiştiricisi toprak koruma ve suyun daha verimli kullanımı konusunda eğitim aldı."
+        }
+      ],
+      "card_example": "Each tea grower received training in soil conservation and more efficient water use.",
+      "card_example_tr": "Her çay yetiştiricisi toprak koruma ve suyun daha verimli kullanımı konusunda eğitim aldı.",
+      "test_sentence": "A small coffee grower may struggle when international prices fall below the cost of sustainable production.",
+      "test_sentence_tr": "Küçük bir kahve yetiştiricisi, uluslararası fiyatlar sürdürülebilir üretim maliyetinin altına düştüğünde zorlanabilir.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2015_01",
+          "page": 11,
+          "question": null,
+          "surface": "growers",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN derivation bağıyla doğrulanan eksik isim biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "illustrative",
+      "tip": "sıfat",
+      "p": 9.0,
+      "source_score": 9.0063,
+      "family_members": [
+        "illustrative",
+        "illustrate"
+      ],
+      "meanings": [
+        {
+          "tr": "s. açıklayıcı, örnekleyici, örnek oluşturan",
+          "ex": "The decline of this coastal town is illustrative of wider economic changes across the region.",
+          "exTr": "Bu kıyı kasabasının gerilemesi, bölgedeki daha geniş ekonomik değişimleri açıklayıcı niteliktedir."
+        }
+      ],
+      "card_example": "The decline of this coastal town is illustrative of wider economic changes across the region.",
+      "card_example_tr": "Bu kıyı kasabasının gerilemesi, bölgedeki daha geniş ekonomik değişimleri açıklayıcı niteliktedir.",
+      "test_sentence": "This case is particularly illustrative because it shows how minor policy changes can produce unexpected social effects.",
+      "test_sentence_tr": "Bu vaka özellikle açıklayıcıdır; çünkü küçük politika değişikliklerinin nasıl beklenmedik toplumsal etkiler doğurabildiğini gösterir.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2016_01",
+          "page": 13,
+          "question": null,
+          "surface": "illustrative",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN derivation bağıyla doğrulanan eksik sıfat biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "inappropriately",
+      "tip": "zarf",
+      "p": 9.0,
+      "source_score": 9.0063,
+      "family_members": [
+        "inappropriately",
+        "inappropriate"
+      ],
+      "meanings": [
+        {
+          "tr": "z. uygunsuz, yerinde olmayan biçimde",
+          "ex": "The software inappropriately rejected valid applications because its rules had not been tested on diverse cases.",
+          "exTr": "Yazılım, kuralları çeşitli vakalar üzerinde sınanmadığı için geçerli başvuruları uygunsuz biçimde reddetti."
+        }
+      ],
+      "card_example": "The software inappropriately rejected valid applications because its rules had not been tested on diverse cases.",
+      "card_example_tr": "Yazılım, kuralları çeşitli vakalar üzerinde sınanmadığı için geçerli başvuruları uygunsuz biçimde reddetti.",
+      "test_sentence": "The algorithm behaved inappropriately because its training data did not represent older patients or rural communities adequately.",
+      "test_sentence_tr": "Eğitim verileri yaşlı hastaları veya kırsal toplulukları yeterince temsil etmediği için algoritma uygunsuz biçimde davrandı.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "eYDS_2016_05",
+          "page": 3,
+          "question": 3,
+          "surface": "inappropriately",
+          "role": "celdirici"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN pertainym bağıyla ve üretken -ly yapısıyla doğrulanan eksik zarf biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "methodical",
+      "tip": "sıfat",
+      "p": 9.0,
+      "source_score": 9.0063,
+      "family_members": [
+        "methodical",
+        "method"
+      ],
+      "meanings": [
+        {
+          "tr": "s. sistemli, düzenli, metodik",
+          "ex": "A methodical review of the records revealed inconsistencies that earlier investigators had overlooked.",
+          "exTr": "Kayıtların sistemli biçimde incelenmesi, önceki araştırmacıların gözden kaçırdığı tutarsızlıkları ortaya çıkardı."
+        }
+      ],
+      "card_example": "A methodical review of the records revealed inconsistencies that earlier investigators had overlooked.",
+      "card_example_tr": "Kayıtların sistemli biçimde incelenmesi, önceki araştırmacıların gözden kaçırdığı tutarsızlıkları ortaya çıkardı.",
+      "test_sentence": "A methodical investigation records each observation carefully and tests alternative explanations before reaching any conclusion about the cause.",
+      "test_sentence_tr": "Sistemli bir araştırma, nedene ilişkin herhangi bir sonuca varmadan önce her gözlemi dikkatle kaydeder ve alternatif açıklamaları sınar.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2024_02",
+          "page": 20,
+          "question": null,
+          "surface": "methodical",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN derivation bağıyla doğrulanan eksik sıfat biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "passively",
+      "tip": "zarf",
+      "p": 9.0,
+      "source_score": 8.9849,
+      "family_members": [
+        "passively",
+        "passive"
+      ],
+      "meanings": [
+        {
+          "tr": "z. pasif biçimde, etkin tepki göstermeden",
+          "ex": "Rather than passively receiving information, students compared competing explanations and challenged unsupported claims.",
+          "exTr": "Öğrenciler bilgiyi pasif biçimde almak yerine rakip açıklamaları karşılaştırdı ve desteksiz iddiaları sorguladı."
+        }
+      ],
+      "card_example": "Rather than passively receiving information, students compared competing explanations and challenged unsupported claims.",
+      "card_example_tr": "Öğrenciler bilgiyi pasif biçimde almak yerine rakip açıklamaları karşılaştırdı ve desteksiz iddiaları sorguladı.",
+      "test_sentence": "Students who listen passively without questioning the evidence may remember facts but fail to understand underlying principles.",
+      "test_sentence_tr": "Kanıtları sorgulamadan pasif biçimde dinleyen öğrenciler olguları hatırlayabilir ancak temel ilkeleri anlayamayabilir.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2018_02",
+          "page": 25,
+          "question": null,
+          "surface": "passively",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN pertainym bağıyla ve üretken -ly yapısıyla doğrulanan eksik zarf biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "awkwardness",
+      "tip": "isim",
+      "p": 9.0,
+      "source_score": 8.9634,
+      "family_members": [
+        "awkwardness",
+        "awkward"
+      ],
+      "meanings": [
+        {
+          "tr": "i. hantal veya kullanışsız olma durumu, kullanım güçlüğü",
+          "ex": "The awkwardness of the protective suit made precise movements difficult during the underwater repair.",
+          "exTr": "Koruyucu giysinin hantallığı, su altındaki onarım sırasında hassas hareketleri zorlaştırdı."
+        },
+        {
+          "tr": "i. mahcubiyet, sosyal rahatsızlık",
+          "ex": "A brief silence increased the awkwardness between participants who had strongly disagreed during the meeting.",
+          "exTr": "Kısa bir sessizlik, toplantıda sert biçimde anlaşmazlığa düşen katılımcılar arasındaki mahcubiyeti artırdı."
+        }
+      ],
+      "card_example": "The awkwardness of the protective suit made precise movements difficult during the underwater repair.",
+      "card_example_tr": "Koruyucu giysinin hantallığı, su altındaki onarım sırasında hassas hareketleri zorlaştırdı.",
+      "test_sentence": "The unusual shape of the container created considerable awkwardness when workers tried to lift it safely.",
+      "test_sentence_tr": "Kabın alışılmadık biçimi, işçiler onu güvenli şekilde kaldırmaya çalışırken ciddi bir kullanım güçlüğü yarattı.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2025_INGILIZCE",
+          "page": 25,
+          "question": null,
+          "surface": "awkwardness",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN derivation bağıyla doğrulanan eksik isim biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "navigational",
+      "tip": "sıfat",
+      "p": 8.9,
+      "source_score": 8.942,
+      "family_members": [
+        "navigational",
+        "navigation"
+      ],
+      "meanings": [
+        {
+          "tr": "s. seyrüsefere, yön bulmaya veya rota belirlemeye ilişkin",
+          "ex": "The birds appear to combine magnetic cues with visual landmarks during navigational decisions.",
+          "exTr": "Kuşlar yön bulma kararları sırasında manyetik ipuçlarını görsel işaretlerle birleştiriyor gibi görünmektedir."
+        }
+      ],
+      "card_example": "The birds appear to combine magnetic cues with visual landmarks during navigational decisions.",
+      "card_example_tr": "Kuşlar yön bulma kararları sırasında manyetik ipuçlarını görsel işaretlerle birleştiriyor gibi görünmektedir.",
+      "test_sentence": "Because dense fog concealed the coastline, the crew relied on navigational instruments to approach the remote harbour without striking submerged rocks.",
+      "test_sentence_tr": "Yoğun sis kıyıyı gizlediği için mürettebat, su altındaki kayalara çarpmadan uzak limana yaklaşmak üzere seyir araçlarına güvendi.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2018_03",
+          "page": 11,
+          "question": null,
+          "surface": "navigational",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN derivation,pertainym bağıyla doğrulanan eksik sıfat biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "softness",
+      "tip": "isim",
+      "p": 8.9,
+      "source_score": 8.942,
+      "family_members": [
+        "softness",
+        "soft"
+      ],
+      "meanings": [
+        {
+          "tr": "i. yumuşaklık, sert olmama durumu",
+          "ex": "The softness of the clay allows artists to shape it before firing makes the form permanent.",
+          "exTr": "Kilin yumuşaklığı, pişirme biçimi kalıcı hâle getirmeden önce sanatçıların ona şekil vermesine olanak tanır."
+        }
+      ],
+      "card_example": "The softness of the clay allows artists to shape it before firing makes the form permanent.",
+      "card_example_tr": "Kilin yumuşaklığı, pişirme biçimi kalıcı hâle getirmeden önce sanatçıların ona şekil vermesine olanak tanır.",
+      "test_sentence": "The material's unusual softness allowed craftspeople to carve detailed patterns without breaking their simple stone tools.",
+      "test_sentence_tr": "Malzemenin alışılmadık yumuşaklığı, zanaatkârların basit taş aletlerini kırmadan ayrıntılı desenler oymasına olanak sağladı.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2025_02",
+          "page": 4,
+          "question": 8,
+          "surface": "softness",
+          "role": "soru_koku"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN derivation bağıyla doğrulanan eksik isim biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "sustenance",
+      "tip": "isim",
+      "p": 8.9,
+      "source_score": 8.942,
+      "family_members": [
+        "sustenance",
+        "sustain"
+      ],
+      "meanings": [
+        {
+          "tr": "i. besin, yaşamı sürdürmeye yarayan yiyecek",
+          "ex": "During winter, the animals obtain most of their sustenance from seeds stored beneath the ground.",
+          "exTr": "Hayvanlar kış boyunca besinlerinin çoğunu toprağın altında depolanmış tohumlardan elde eder."
+        },
+        {
+          "tr": "i. geçim kaynağı, yaşamı sürdürme olanağı",
+          "ex": "Fishing provides basic sustenance for many families living in remote coastal villages.",
+          "exTr": "Balıkçılık, uzak kıyı köylerinde yaşayan birçok aileye temel geçim kaynağı sağlar."
+        }
+      ],
+      "card_example": "During winter, the animals obtain most of their sustenance from seeds stored beneath the ground.",
+      "card_example_tr": "Hayvanlar kış boyunca besinlerinin çoğunu toprağın altında depolanmış tohumlardan elde eder.",
+      "test_sentence": "During the prolonged drought, families depended on wild plants for sustenance when cultivated crops repeatedly failed.",
+      "test_sentence_tr": "Uzun süren kuraklık sırasında ekili ürünler tekrar tekrar başarısız olunca aileler besin için yabani bitkilere bağımlı kaldı.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2018_03",
+          "page": 27,
+          "question": null,
+          "surface": "sustenance",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN derivation bağıyla doğrulanan eksik isim biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "instructive",
+      "tip": "sıfat",
+      "p": 8.9,
+      "source_score": 8.9206,
+      "family_members": [
+        "instructive",
+        "instruct"
+      ],
+      "meanings": [
+        {
+          "tr": "s. öğretici, bilgilendirici, ders çıkarılmasını sağlayan",
+          "ex": "Comparing the two failed policies is instructive because their weaknesses arose from different assumptions.",
+          "exTr": "İki başarısız politikayı karşılaştırmak öğreticidir; çünkü zayıflıkları farklı varsayımlardan kaynaklanmıştır."
+        }
+      ],
+      "card_example": "Comparing the two failed policies is instructive because their weaknesses arose from different assumptions.",
+      "card_example_tr": "İki başarısız politikayı karşılaştırmak öğreticidir; çünkü zayıflıkları farklı varsayımlardan kaynaklanmıştır.",
+      "test_sentence": "The failed experiment was highly instructive because it revealed a weakness that earlier successful trials had concealed.",
+      "test_sentence_tr": "Başarısız deney son derece öğreticiydi; çünkü önceki başarılı denemelerin gizlediği bir zayıflığı ortaya çıkardı.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "eYDS_2015_10",
+          "page": 3,
+          "question": 2,
+          "surface": "instructive",
+          "role": "celdirici"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN derivation bağıyla doğrulanan eksik sıfat biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "invader",
+      "tip": "isim",
+      "p": 8.9,
+      "source_score": 8.9206,
+      "family_members": [
+        "invader",
+        "invade"
+      ],
+      "meanings": [
+        {
+          "tr": "i. istilacı, zorla giren veya bir bölgeyi ele geçiren kişi ya da tür",
+          "ex": "Without natural predators, the aquatic invader spread rapidly through rivers and displaced native species.",
+          "exTr": "Doğal avcıları olmadığı için sucul istilacı nehirlerde hızla yayıldı ve yerli türlerin yerini aldı."
+        }
+      ],
+      "card_example": "Without natural predators, the aquatic invader spread rapidly through rivers and displaced native species.",
+      "card_example_tr": "Doğal avcıları olmadığı için sucul istilacı nehirlerde hızla yayıldı ve yerli türlerin yerini aldı.",
+      "test_sentence": "The native species has no effective defence against an invader that reproduces rapidly in the new ecosystem.",
+      "test_sentence_tr": "Yerli türün, yeni ekosistemde hızla çoğalan bir istilacıya karşı etkili bir savunması yoktur.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "eYDS_2015_09",
+          "page": 6,
+          "question": 73,
+          "surface": "invaders",
+          "role": "celdirici"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN derivation bağıyla doğrulanan eksik isim biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "avoidable",
+      "tip": "sıfat",
+      "p": 8.9,
+      "source_score": 8.8992,
+      "family_members": [
+        "avoidable",
+        "avoid"
+      ],
+      "meanings": [
+        {
+          "tr": "s. önlenebilir, kaçınılabilir",
+          "ex": "Most delays were avoidable and resulted from poor coordination rather than a shortage of resources.",
+          "exTr": "Gecikmelerin çoğu önlenebilirdi ve kaynak kıtlığından çok zayıf eş güdümden kaynaklandı."
+        }
+      ],
+      "card_example": "Most delays were avoidable and resulted from poor coordination rather than a shortage of resources.",
+      "card_example_tr": "Gecikmelerin çoğu önlenebilirdi ve kaynak kıtlığından çok zayıf eş güdümden kaynaklandı.",
+      "test_sentence": "Many workplace injuries are entirely avoidable when employers provide suitable equipment and enforce clear safety procedures.",
+      "test_sentence_tr": "İşverenler uygun ekipman sağladığında ve açık güvenlik yöntemlerini uyguladığında birçok iş yeri yaralanması bütünüyle önlenebilir.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2016_02",
+          "page": 21,
+          "question": null,
+          "surface": "avoidable",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN derivation bağıyla doğrulanan eksik sıfat biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "impressively",
+      "tip": "zarf",
+      "p": 8.9,
+      "source_score": 8.8992,
+      "family_members": [
+        "impressively",
+        "impressive"
+      ],
+      "meanings": [
+        {
+          "tr": "z. etkileyici biçimde",
+          "ex": "The new battery performed impressively even after repeated exposure to extremely low temperatures.",
+          "exTr": "Yeni batarya, aşırı düşük sıcaklıklara tekrar tekrar maruz kaldıktan sonra bile etkileyici biçimde çalıştı."
+        }
+      ],
+      "card_example": "The new battery performed impressively even after repeated exposure to extremely low temperatures.",
+      "card_example_tr": "Yeni batarya, aşırı düşük sıcaklıklara tekrar tekrar maruz kaldıktan sonra bile etkileyici biçimde çalıştı.",
+      "test_sentence": "The research team worked impressively under severe time constraints while maintaining unusually high standards of accuracy.",
+      "test_sentence_tr": "Araştırma ekibi, alışılmadık derecede yüksek doğruluk standartlarını korurken ciddi zaman kısıtları altında etkileyici biçimde çalıştı.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2015_01",
+          "page": 3,
+          "question": 3,
+          "surface": "impressively",
+          "role": "dogru_secenek"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN pertainym bağıyla ve üretken -ly yapısıyla doğrulanan eksik zarf biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "cruelly",
+      "tip": "zarf",
+      "p": 8.9,
+      "source_score": 8.8563,
+      "family_members": [
+        "cruelly",
+        "cruel"
+      ],
+      "meanings": [
+        {
+          "tr": "z. acımasızca; ağır ve insafsız bir biçimde",
+          "ex": "The workers were cruelly punished for reporting unsafe conditions to an independent inspector.",
+          "exTr": "İşçiler güvensiz koşulları bağımsız bir denetçiye bildirdikleri için acımasızca cezalandırıldı."
+        }
+      ],
+      "card_example": "The workers were cruelly punished for reporting unsafe conditions to an independent inspector.",
+      "card_example_tr": "İşçiler güvensiz koşulları bağımsız bir denetçiye bildirdikleri için acımasızca cezalandırıldı.",
+      "test_sentence": "The prisoners were treated cruelly for years, despite repeated warnings from independent human rights observers abroad.",
+      "test_sentence_tr": "Mahkûmlar, yurt dışındaki bağımsız insan hakları gözlemcilerinin tekrarlanan uyarılarına rağmen yıllarca acımasızca muamele gördü.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2013_01",
+          "page": 21,
+          "question": null,
+          "surface": "cruelly",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN pertainym bağıyla ve üretken -ly yapısıyla doğrulanan eksik zarf biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "assemblage",
+      "tip": "isim",
+      "p": 8.8,
+      "source_score": 8.8349,
+      "family_members": [
+        "assemblage",
+        "assemble"
+      ],
+      "meanings": [
+        {
+          "tr": "i. bir araya getirilmiş parçalar bütünü, topluluk veya düzenek",
+          "ex": "A coral reef is an intricate assemblage of organisms linked through feeding and shelter relationships.",
+          "exTr": "Mercan resifi, beslenme ve barınma ilişkileriyle birbirine bağlanan karmaşık bir canlılar topluluğudur."
+        }
+      ],
+      "card_example": "A coral reef is an intricate assemblage of organisms linked through feeding and shelter relationships.",
+      "card_example_tr": "Mercan resifi, beslenme ve barınma ilişkileriyle birbirine bağlanan karmaşık bir canlılar topluluğudur.",
+      "test_sentence": "The reef is a complex assemblage of organisms that depend on one another for shelter and food.",
+      "test_sentence_tr": "Resif, barınma ve besin için birbirine bağımlı canlılardan oluşan karmaşık bir topluluktur.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "eYDS_2016_08",
+          "page": 6,
+          "question": 72,
+          "surface": "assemblages",
+          "role": "celdirici"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN derivation bağıyla doğrulanan eksik isim biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "earner",
+      "tip": "isim",
+      "p": 8.8,
+      "source_score": 8.8349,
+      "family_members": [
+        "earner",
+        "earn"
+      ],
+      "meanings": [
+        {
+          "tr": "i. kazanç sağlayan kişi, ücretli çalışan",
+          "ex": "A seasonal earner may face serious financial pressure when agricultural work becomes unavailable.",
+          "exTr": "Mevsimlik çalışan, tarımsal iş bulunamadığında ciddi mali baskıyla karşılaşabilir."
+        }
+      ],
+      "card_example": "A seasonal earner may face serious financial pressure when agricultural work becomes unavailable.",
+      "card_example_tr": "Mevsimlik çalışan, tarımsal iş bulunamadığında ciddi mali baskıyla karşılaşabilir.",
+      "test_sentence": "A low-income earner may spend a larger proportion of monthly wages on housing and essential food than a wealthy household.",
+      "test_sentence_tr": "Düşük gelirli bir çalışan, varlıklı bir haneye göre aylık ücretinin daha büyük bir bölümünü konut ve temel gıdaya harcayabilir.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2019_02",
+          "page": 20,
+          "question": null,
+          "surface": "earners",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN derivation bağıyla doğrulanan eksik isim biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "vitally",
+      "tip": "zarf",
+      "p": 8.8,
+      "source_score": 8.8349,
+      "family_members": [
+        "vitally",
+        "vital"
+      ],
+      "meanings": [
+        {
+          "tr": "z. hayati ölçüde, son derece önemli biçimde",
+          "ex": "Reliable communication is vitally important when emergency teams are operating in isolated areas.",
+          "exTr": "Acil durum ekipleri yalıtılmış bölgelerde çalışırken güvenilir iletişim hayati ölçüde önemlidir."
+        }
+      ],
+      "card_example": "Reliable communication is vitally important when emergency teams are operating in isolated areas.",
+      "card_example_tr": "Acil durum ekipleri yalıtılmış bölgelerde çalışırken güvenilir iletişim hayati ölçüde önemlidir.",
+      "test_sentence": "Reliable rainfall data are vitally important for farmers deciding which crops to plant under changing climatic conditions.",
+      "test_sentence_tr": "Güvenilir yağış verileri, değişen iklim koşullarında hangi ürünlerin ekileceğine karar veren çiftçiler için hayati ölçüde önemlidir.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "eYDS_2016_01",
+          "page": 3,
+          "question": 3,
+          "surface": "vitally",
+          "role": "celdirici"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN pertainym bağıyla ve üretken -ly yapısıyla doğrulanan eksik zarf biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "magnification",
+      "tip": "isim",
+      "p": 8.8,
+      "source_score": 8.8134,
+      "family_members": [
+        "magnification",
+        "magnify"
+      ],
+      "meanings": [
+        {
+          "tr": "i. büyütme, bir görüntünün görünür boyutunu artırma derecesi",
+          "ex": "At maximum magnification, the microscope revealed structures that were invisible in the original image.",
+          "exTr": "Mikroskop en yüksek büyütmede, ilk görüntüde görünmeyen yapıları ortaya çıkardı."
+        }
+      ],
+      "card_example": "At maximum magnification, the microscope revealed structures that were invisible in the original image.",
+      "card_example_tr": "Mikroskop en yüksek büyütmede, ilk görüntüde görünmeyen yapıları ortaya çıkardı.",
+      "test_sentence": "Biologists adjusted the magnification gradually until the cell membrane became clear enough for students at the back to identify.",
+      "test_sentence_tr": "Biyologlar, hücre zarı arkadaki öğrencilerin ayırt edebileceği kadar netleşene dek büyütme derecesini yavaş yavaş ayarladı.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2016_02",
+          "page": 17,
+          "question": null,
+          "surface": "magnification",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN derivation bağıyla doğrulanan eksik isim biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "rudeness",
+      "tip": "isim",
+      "p": 8.8,
+      "source_score": 8.7706,
+      "family_members": [
+        "rudeness",
+        "rude"
+      ],
+      "meanings": [
+        {
+          "tr": "i. kabalık, nezaketsizlik",
+          "ex": "Repeated rudeness from senior staff created an atmosphere in which younger employees feared asking questions.",
+          "exTr": "Kıdemli personelin tekrarlanan kabalığı, genç çalışanların soru sormaktan korktuğu bir ortam yarattı."
+        }
+      ],
+      "card_example": "Repeated rudeness from senior staff created an atmosphere in which younger employees feared asking questions.",
+      "card_example_tr": "Kıdemli personelin tekrarlanan kabalığı, genç çalışanların soru sormaktan korktuğu bir ortam yarattı.",
+      "test_sentence": "Persistent rudeness from a supervisor can damage trust and discourage employees from reporting preventable mistakes at work.",
+      "test_sentence_tr": "Bir yöneticinin sürekli kabalığı güveni zedeleyebilir ve çalışanları iş yerindeki önlenebilir hataları bildirmekten caydırabilir.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2021_02",
+          "page": 24,
+          "question": null,
+          "surface": "rudeness",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN derivation bağıyla doğrulanan eksik isim biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "expend",
+      "tip": "fiil",
+      "p": 8.7,
+      "source_score": 8.7492,
+      "family_members": [
+        "expend",
+        "expenditure",
+        "expensive"
+      ],
+      "meanings": [
+        {
+          "tr": "f. harcamak, sarf etmek; para, zaman veya enerji kullanmak",
+          "ex": "Migrating birds expend enormous amounts of energy while crossing oceans without stopping to feed.",
+          "exTr": "Göçmen kuşlar beslenmek için durmadan okyanusları aşarken çok büyük miktarda enerji harcar."
+        }
+      ],
+      "card_example": "Migrating birds expend enormous amounts of energy while crossing oceans without stopping to feed.",
+      "card_example_tr": "Göçmen kuşlar beslenmek için durmadan okyanusları aşarken çok büyük miktarda enerji harcar.",
+      "test_sentence": "Animals must expend considerable energy to maintain body temperature during long winters with limited food available nearby.",
+      "test_sentence_tr": "Hayvanlar, yakınlarda sınırlı besin bulunan uzun kışlar boyunca vücut sıcaklığını korumak için önemli ölçüde enerji harcamalıdır.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2021_01",
+          "page": 16,
+          "question": null,
+          "surface": "expended",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN derivation bağıyla doğrulanan eksik fiil biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    },
+    {
+      "candidate": "abnormality",
+      "tip": "isim",
+      "p": 8.7,
+      "source_score": 8.7277,
+      "family_members": [
+        "abnormality",
+        "abnormal"
+      ],
+      "meanings": [
+        {
+          "tr": "i. anormallik, olağandışı yapı veya işlev bozukluğu",
+          "ex": "The examination detected a minor abnormality that required monitoring but no immediate treatment.",
+          "exTr": "Muayene, izlenmesi gereken ancak hemen tedavi gerektirmeyen küçük bir anormallik saptadı."
+        }
+      ],
+      "card_example": "The examination detected a minor abnormality that required monitoring but no immediate treatment.",
+      "card_example_tr": "Muayene, izlenmesi gereken ancak hemen tedavi gerektirmeyen küçük bir anormallik saptadı.",
+      "test_sentence": "The scan revealed an abnormality in the heart that required further testing before treatment could begin.",
+      "test_sentence_tr": "Tarama, tedavi başlamadan önce daha fazla inceleme gerektiren bir kalp anormalliği ortaya çıkardı.",
+      "exams": 1,
+      "freq": 1,
+      "source_refs": [
+        {
+          "exam_id": "YDS_2017_02",
+          "page": 10,
+          "question": null,
+          "surface": "abnormality",
+          "role": "metin"
+        }
+      ],
+      "decision": "add",
+      "reason": "OEWN derivation bağıyla doğrulanan eksik isim biçimidir; puan veritabanında 1 sınavda 1 kullanım kanıtı vardır."
+    }
+  ]
+}
