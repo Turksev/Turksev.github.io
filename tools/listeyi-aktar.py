@@ -426,12 +426,12 @@ def pdf_anlam_duzeltmelerini_uygula(kelimeler, veri):
 
 
 def modal_kartlarini_oku():
-    """Puanlanmış modal sözcük ve yapı kartlarını oku.
+    """Puanlanmış modal kartları ve denetimli puansız kalıpları oku.
 
-    Ana kaynak listede bulunmayan çok sözcüklü dil bilgisi yapılarını da
-    kelime çalışma/Leitner sistemine sokar. ``k`` açıkça saklanır; böylece
-    puanı 10'un altındaki pedagojik kartlar kullanıcı isteği doğrultusunda
-    6. (son puanlı) katmanda kalır.
+    Ana kaynak listede bulunmayan çok sözcüklü dil bilgisi yapılarını ve
+    gerekçesi kaydedilmiş özel kalıpları kelime çalışma/Leitner sistemine
+    sokar. ``k`` açıkça saklanır; böylece düşük puanlı veya puansız pedagojik
+    kartlar kullanıcı isteği doğrultusunda 6. (son puanlı) katmanda kalır.
     """
     yol = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                        'modal-kartlar.json')
@@ -461,7 +461,11 @@ def modal_kartlarini_uygula(kelimeler, kartlar):
         katman = kart.get('k')
         tip = kart.get('y')
         anlamlar = kart.get('a')
-        if not isinstance(puan, (int, float)) or not 0 <= puan <= 100:
+        gerekce = kart.get('reason')
+        if puan is None:
+            if katman != 6 or not isinstance(gerekce, str) or not gerekce.strip():
+                raise ValueError('%s: puansız kart için K6 ve gerekçe zorunlu' % en)
+        elif not isinstance(puan, (int, float)) or not 0 <= puan <= 100:
             raise ValueError('%s: geçersiz modal puanı' % en)
         if not isinstance(katman, int) or not 1 <= katman <= 6:
             raise ValueError('%s: geçersiz modal katmanı' % en)
@@ -496,7 +500,7 @@ def modal_kartlarini_uygula(kelimeler, kartlar):
         else:
             kelimeler[en] = {
                 'tip': tip.strip(),
-                'puan': round(float(puan), 1),
+                'puan': None if puan is None else round(float(puan), 1),
                 'katman_zorla': katman,
                 'anlamlar': temiz,
             }
@@ -1292,7 +1296,7 @@ def modal_testlerini_yaz(kartlar):
             json.dumps(test['b'].strip(), ensure_ascii=False),
             json.dumps(test['tr'].strip(), ensure_ascii=False)))
     basli = (
-        '/* Modal sözcük ve yapı kartları — Günün Testi cümleleri · %d kayıt\n'
+        '/* Modal ve denetimli özel yapı kartları — Günün Testi cümleleri · %d kayıt\n'
         '   tools/modal-kartlar.json kaynağından tools/listeyi-aktar.py üretir. */\n\n'
         'window.TEST_MODAL = {\n' % len(govde)
     )

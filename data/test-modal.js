@@ -1,4 +1,4 @@
-/* Modal sözcük ve yapı kartları — Günün Testi cümleleri · 62 kayıt
+/* Modal ve denetimli özel yapı kartları — Günün Testi cümleleri · 65 kayıt
    tools/modal-kartlar.json kaynağından tools/listeyi-aktar.py üretir. */
 
 window.TEST_MODAL = {
@@ -63,5 +63,8 @@ window.TEST_MODAL = {
 "be obliged to":{c:"The structure ---- expresses a formal, legal or moral duty to act.",b:"be obliged to",f:"",tr:"“Be obliged to” yapısı resmî, hukuki veya ahlaki bir eylem yükümlülüğü bildirir."},
 "be compelled to":{c:"The structure ---- emphasises that strong pressure, evidence or circumstances make an action unavoidable.",b:"be compelled to",f:"",tr:"“Be compelled to” yapısı güçlü baskı, kanıt veya koşulların eylemi kaçınılmaz kıldığını vurgular."},
 "be apt to":{c:"The structure ---- indicates a characteristic tendency, though it is less common and more formal than be likely to.",b:"be apt to",f:"",tr:"“Be apt to” yapısı tipik bir eğilim bildirir; “be likely to”dan daha az yaygın ve daha resmîdir."},
-"it is advisable to":{c:"The impersonal structure ---- gives formal advice without directly addressing a particular person.",b:"it is advisable to",f:"",tr:"Kişisiz “it is advisable to” yapısı belirli bir kişiye doğrudan seslenmeden resmî tavsiye verir."}
+"it is advisable to":{c:"The impersonal structure ---- gives formal advice without directly addressing a particular person.",b:"it is advisable to",f:"",tr:"Kişisiz “it is advisable to” yapısı belirli bir kişiye doğrudan seslenmeden resmî tavsiye verir."},
+"for years to come":{c:"The expression ---- emphasises that a situation or its effects will continue for many future years.",b:"for years to come",f:"",tr:"“For years to come” ifadesi bir durumun veya etkilerinin gelecekte daha uzun yıllar süreceğini vurgular."},
+"years to come":{c:"The phrase ---- refers to the future period, especially in the pattern in the years to come.",b:"years to come",f:"",tr:"“Years to come” ifadesi, özellikle “in the years to come” kalıbında, gelecek veya önümüzdeki yılları anlatır."},
+"in its wake":{c:"The expression ---- means that consequences, often damage or major change, are left behind after an event.",b:"in its wake",f:"",tr:"“In its wake” ifadesi bir olayın ardından, çoğu zaman zarar veya büyük değişim gibi sonuçların kaldığını anlatır."}
 };

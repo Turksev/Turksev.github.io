@@ -11,7 +11,7 @@ Yayında: <https://turksev.github.io>
 | --- | --- |
 | `index.html` | Ana sayfa: **YDS bölüm dağılımı tablosu** (80 sorunun hangi aralıkta hangi bölüm olduğu) ve ilerleme paneli — tekrar durumu, yanlış defteri, deneme geçmişi, kategori karnesi |
 | `durum.html` | Çalışılmış her şey tek listede (kelime, öbek, aile üyesi): üstte **sistemdeki toplam kayıt**, kutu sekmelerinde sayı ve bu toplama oranı ("hepsi" dahil), arama/süzme/sıralama |
-| `kelimeler.html` | 8.437 kelime ve yapı, 7 katman + **aralıklı tekrar (Leitner)**: bugünün destesi, kart modu, ipucu, sesli okuma |
+| `kelimeler.html` | 8.440 kelime ve yapı, 7 katman + **aralıklı tekrar (Leitner)**: bugünün destesi, kart modu, ipucu, sesli okuma |
 | `obekler.html` | 1.631 kelime öbeği (560 deyimsel fiil, 333 edat kalıbı, sabit/geçiş ifadeleri) — ayrı Leitner destesi |
 | `quiz.html` | Alıştırma soruları: 12 kategori, anında çözüm, yanlış defterinden çalışma |
 | `deneme.html` | **Süreli deneme sınavı**: üç sabit 80 soruluk form, geri sayım, soru ızgarası, işaretleme, yenileme sonrası oturum kurtarma, 100 üzerinden YDS puanı, kategori karnesi |
@@ -22,7 +22,7 @@ Yayında: <https://turksev.github.io>
 
 ## İçerik
 
-- **8.437 kelime ve yapı** — 49 gerçek YDS sınavı temel alınarak puanlanmış, yedi katmana ayrılmış;
+- **8.440 kelime ve yapı** — 49 gerçek YDS sınavı temel alınarak puanlanan listeye ek olarak gerekçesi kayıtlı üç puansız kalıp içerir; yedi katmana ayrılmıştır;
   her birinde Türkçe anlam + İngilizce örnek cümle + çeviri (**3.143'ünde birden çok anlam** var)
 - **1.631 kelime öbeği** — deyimsel fiil (phrasal verb), edat kalıbı, sabit ve geçiş ifadeleri, kaç sınavda geçtiği bilgisiyle
 - **286 soru** — 12 kategori: Kelime, Dil Bilgisi, Bağlaç, Preposition, Cloze Test, Çeviri,
@@ -46,7 +46,7 @@ F: toplam frekans, P: akademik önsel (NGSL/NAWL/AWL üyeliği + Zipf).
 | 3 · Orta | 25–30 | 710 | 117 K |
 | 4 · İleri | 17–25 | 1.856 | 313 K |
 | 5 · Geniş | 12–17 | 2.069 | 288 K |
-| 6 · Geniş+ | 10–12 | 1.914 | 241 K |
+| 6 · Geniş+ | 10–12 + denetimli ekler | 1.917 | 241 K |
 | 7 · Aile üyeleri | < 10 veya denetimli kök | 495 | 66 K |
 
 6. katman 21.08.2026'da eşik 15 → 10'a indirilince geldi (`Calisma_Listesi_v4_site_tam.xlsx`);
@@ -95,9 +95,9 @@ assets/
   js/ara.js           site geneli arama
   img/                PWA ikonları (tools ile üretildi)
 data/
-  kelime-dizin.js     8.437 kelime/yapı: yazılış, kısa anlam, puan, katman, tür
+  kelime-dizin.js     8.440 kelime/yapı: yazılış, kısa anlam, puan, katman, tür
   test-k1..k7.js      8.375 sözcük için günün testi cümlesi
-  test-modal.js       62 yeni modal yapı için günün testi cümlesi
+  test-modal.js       65 yeni modal/özel yapı için günün testi cümlesi
   test-obek.js        öbekler için günün testi cümleleri
   kelime-k1..k7.js    katman katman tam kayıtlar (örnek cümleler)
   aileler.js          kalıcı karar manifestinden üretilen kelime aileleri
@@ -256,7 +256,7 @@ en çok 20 soruluk, 5 şıklı boşluk doldurma testi açılır. Cümleler **kar
 YDS okuma parçası kayıtında özgün cümlelerdir; `data/test-k{n}.js` içinde durur
 (`{kelime: {c, b, f, tr}}` — c boşluklu cümle, b boşluğa gelen çekimli biçim, f çekim türü
 `'' | s | past | pp | ing | pl`, tr Türkçesi). **Havuzun tamamı hazır** (28.08.2026):
-7 katman ve modal yapı testleriyle bütün **8.437 kelime ve yapı** için cümle; ayrıca **1.631 öbek kartının 892'si** için bağımsız test cümlesi var.
+7 katman ve modal/özel yapı testleriyle bütün **8.440 kelime ve yapı** için cümle; ayrıca **1.631 öbek kartının 892'si** için bağımsız test cümlesi var.
 7. katmanın 495 kaydı için `test-k7.js` bulunur; yükleyici bu katmanı da diğer
 katmanlarla aynı biçimde test havuzuna katar.
 
@@ -417,6 +417,7 @@ Okuduğu kaynaklar (salt okunur, hiçbirine yazılmaz):
 | `tools/kaliplar.js` | Kelimelerin kullanım kalıpları (2-4. katman); katman dosyalarına `kl` alanı olarak girer |
 | `tools/anlam-yildiz.js` | Çok anlamlı kelime ve öbeklerde anlam başına YDS önemi (1-4); `yz` alanı olarak girer ve anlamları sıralar |
 | `tools/ek-kelimeler.js` | Listede olmayan 52 kelime + ortak 129 kelimenin eş anlamlıları |
+| `tools/modal-kartlar.json` | Modal yapılar ve denetimli özel kalıplar; `p:null` olan kart yalnız Geniş+ katmanında ve zorunlu `reason` gerekçesiyle kabul edilir |
 | `tools/kelime-duzeltmeleri.json` | PDF/sözlük denetimi tamamlanan dokuz başlığın kanonik biçimi, anlamı, kalıbı ve kaynak kararı |
 | `data/kelime-provenans.json` | Düzeltilen öğelerin telifli soru metnini kopyalamayan sınav kimliği/sayfa/soru kanıtı |
 | `tools/aile-kart-partileri/*.json` | İnsan denetimli aile tamamlama kartları; tam kaynak puanı, ayrı anlam/örnekler, bağımsız test ve telifsiz sınav referansları |
@@ -505,6 +506,13 @@ geldiğidir: `cümle`, `isim`, `zarf`, `eş`, `ikili`. `dz` ise `çekirdek` ya d
 **Yeni gramer konusu** — `gramer.html` içinde son `<section class="topic">` bloğunu
 kopyala, yeni bir `id` ver, içindekiler listesine (`nav.toc`) bir satır ekle ve
 `assets/js/ara.js` içindeki `KONULAR` dizinine kaydını gir.
+
+**Üst menü** iki açılır grup içerir: *Gramer* (Konular, Hızlı Gramer, Bağlaçlar) ve
+*Sorular* (Alıştırma, Deneme). Her ikisi de `<details class="nav-grup">` ile kurulur, bu
+yüzden JS kapalıyken de tıklanınca açılır; `assets/js/main.js` yalnızca “aynı anda tek
+panel açık kalsın” ve “dışarı tıklayınca / Esc ile kapan” davranışını ekler. Açık sayfa
+bir grubun içindeyse grup başlığı `.nav-grup.etkin` ile vurgulanır. Menü blokları her
+sayfada birebir aynıdır; birini değiştirirken hepsini değiştir.
 
 **Yeni sayfa** eklersen: menüye tüm sayfalarda, `sw.js` içindeki `TEMEL_DOSYALAR`
 listesine ve `sitemap.xml`'e ekle; `sw.js` içindeki `SURUM` değerini artır ki eski

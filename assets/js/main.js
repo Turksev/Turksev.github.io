@@ -138,6 +138,10 @@
       var hedef = a.getAttribute('href');
       if (hedef === yol || (yol === 'index.html' && hedef === './')) {
         a.setAttribute('aria-current', 'page');
+        /* Bağlantı açılır bir grubun içindeyse grup başlığı da vurgulanır.
+           Grup bilerek açılmıyor: yoksa o sayfa her açıldığında panel açık gelirdi. */
+        var grup = a.closest ? a.closest('.nav-grup') : null;
+        if (grup) grup.classList.add('etkin');
       }
     });
   }
@@ -162,10 +166,6 @@
     if (nav) {
       nav.id = nav.id || 'anaMenu';
       nav.setAttribute('aria-label', 'Ana menü');
-      nav.querySelectorAll('a').forEach(function (a) {
-        if (/quiz\.html$/.test(a.getAttribute('href') || '')) a.textContent = 'Alıştırma';
-        if (/gramer\.html$/.test(a.getAttribute('href') || '')) a.textContent = 'Hızlı Gramer';
-      });
 
       var dugme = document.createElement('button');
       dugme.type = 'button';
@@ -197,6 +197,31 @@
         if (dugme.getAttribute('aria-expanded') === 'true' &&
             !nav.contains(e.target) && !dugme.contains(e.target)) menuDurumu(false);
       });
+
+      /* Açılır gruplar (Gramer, Sorular). Açıp kapama işini <details> kendi
+         yapıyor; burada yalnızca aynı anda tek panelin açık kalmasını, dışarıya
+         tıklayınca ve Esc ile kapanmasını sağlıyoruz. */
+      var gruplar = [].slice.call(nav.querySelectorAll('.nav-grup'));
+      gruplar.forEach(function (g) {
+        g.addEventListener('toggle', function () {
+          if (!g.open) return;
+          gruplar.forEach(function (o) { if (o !== g) o.open = false; });
+        });
+      });
+      if (gruplar.length) {
+        document.addEventListener('click', function (e) {
+          gruplar.forEach(function (g) { if (g.open && !g.contains(e.target)) g.open = false; });
+        });
+        document.addEventListener('keydown', function (e) {
+          if (e.key !== 'Escape') return;
+          gruplar.forEach(function (g) {
+            if (!g.open) return;
+            g.open = false;
+            var baslik = g.querySelector('summary');
+            if (baslik) baslik.focus();
+          });
+        });
+      }
     }
 
     document.querySelectorAll('button[title]:not([aria-label])').forEach(function (b) {

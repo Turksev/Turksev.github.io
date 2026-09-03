@@ -23,16 +23,27 @@ yukle('data/test-modal.js');
 var dizin = pencere.KELIME_DIZIN;
 var dizinAdlari = Array.from(dizin, function (x) { return x.e; });
 var dizinKumesi = new Set(dizinAdlari);
+var ozelKartlar = JSON.parse(fs.readFileSync(
+  path.join(kok, 'tools', 'modal-kartlar.json'), 'utf8')).cards;
+var belgeliPuansiz = new Set(ozelKartlar.filter(function (x) {
+  return x.p === null && x.k === 6 && typeof x.reason === 'string' && x.reason.trim();
+}).map(function (x) { return x.e; }));
 // 02.09.2026: ilk insan denetimli aile kartı partisi 61 ayrı lemma ekledi.
-assert.strictEqual(dizin.length, 8437);
-assert.strictEqual(dizinKumesi.size, 8437, 'dizinde yinelenen başlık');
-assert.strictEqual(pencere.SAYILAR.kelime, 8437);
+assert.strictEqual(dizin.length, 8440);
+assert.strictEqual(dizinKumesi.size, 8440, 'dizinde yinelenen başlık');
+assert.strictEqual(pencere.SAYILAR.kelime, 8440);
 assert.strictEqual(pencere.SAYILAR.katman['5'], 2069);
+assert.strictEqual(pencere.SAYILAR.katman['6'], 1917);
 assert.strictEqual(pencere.SAYILAR.katman['7'], 495);
 dizin.forEach(function (x) {
-  assert.ok(typeof x.p === 'number' && Number.isFinite(x.p), x.e + ': öncelik puanı eksik');
+  var puanli = typeof x.p === 'number' && Number.isFinite(x.p);
+  assert.ok(puanli || belgeliPuansiz.has(x.e), x.e + ': öncelik puanı veya kabul gerekçesi eksik');
+  if (!puanli) assert.strictEqual(x.k, 6, x.e + ': belgeli puansız kart Geniş+ katmanında değil');
   assert.ok(x.k >= 1 && x.k <= 7, x.e + ': geçersiz katman');
 });
+assert.deepStrictEqual(Array.from(dizin).filter(function (x) { return x.p === undefined; })
+  .map(function (x) { return x.e; }).sort(), Array.from(belgeliPuansiz).sort(),
+  'dizindeki puansız kartlarla gerekçe kaydı farklı');
 
 var kartAdlari = [];
 var testAdlari = [];

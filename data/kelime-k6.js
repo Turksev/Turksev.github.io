@@ -1,4 +1,4 @@
-/* 6. katman — Geniş+ · 1914 kelime
+/* 6. katman — Geniş+ · 1917 kelime
    Tam kayıtlar: anlamlar ve örnek cümleler. Gerektiğinde yüklenir.
    tools/listeyi-aktar.py ile üretilir. */
 
@@ -1916,5 +1916,8 @@ window.KELIME_K6 = {
 "be obliged to":{a:[{tr:"yapmakla yükümlü/zorunda olmak; resmî veya ahlaki yükümlülük",ex:"Public bodies are obliged to give reasons when they refuse access to official records.",exTr:"Kamu kurumları resmî kayıtlara erişimi reddettiklerinde gerekçe göstermekle yükümlüdür."}]},
 "be compelled to":{a:[{tr:"güçlü baskı veya zorlayıcı neden yüzünden yapmak zorunda kalmak",ex:"The court was compelled to dismiss the case because the evidence had been obtained unlawfully.",exTr:"Kanıt hukuka aykırı biçimde elde edildiği için mahkeme davayı düşürmek zorunda kaldı."}]},
 "be apt to":{a:[{tr:"-meye eğilimli olmak; tipik davranış veya olasılık bildirmek",ex:"Early estimates are apt to change once more complete data become available.",exTr:"İlk tahminler daha eksiksiz veriler elde edildiğinde değişme eğilimindedir."}]},
-"it is advisable to":{a:[{tr:"yapılması tavsiye edilir/uygundur; kişisiz ve resmî tavsiye",ex:"It is advisable to preserve a copy of the raw measurements before applying any statistical correction.",exTr:"Herhangi bir istatistiksel düzeltme uygulamadan önce ham ölçümlerin bir kopyasını saklamak tavsiye edilir."}]}
+"it is advisable to":{a:[{tr:"yapılması tavsiye edilir/uygundur; kişisiz ve resmî tavsiye",ex:"It is advisable to preserve a copy of the raw measurements before applying any statistical correction.",exTr:"Herhangi bir istatistiksel düzeltme uygulamadan önce ham ölçümlerin bir kopyasını saklamak tavsiye edilir."}]},
+"for years to come":{a:[{tr:"gelecek yıllar boyunca; daha uzun yıllar",ex:"The consequences of rapid biodiversity loss may be felt for years to come.",exTr:"Biyoçeşitliliğin hızla azalmasının sonuçları gelecek yıllar boyunca hissedilebilir."}]},
+"in its wake":{a:[{tr:"ardında; arkasında … bırakarak; onun sonucunda",ex:"The rapid expansion of mining brought short-term employment but left extensive environmental damage in its wake.",exTr:"Madenciliğin hızla genişlemesi kısa vadeli istihdam sağladı ancak ardında geniş çaplı çevresel zarar bıraktı."}]},
+"years to come":{a:[{tr:"gelecek yıllar; önümüzdeki yıllar",ex:"In the years to come, advances in medical imaging may allow earlier diagnosis of several diseases.",exTr:"Önümüzdeki yıllarda tıbbi görüntülemedeki gelişmeler bazı hastalıkların daha erken teşhis edilmesini sağlayabilir."}]}
 };

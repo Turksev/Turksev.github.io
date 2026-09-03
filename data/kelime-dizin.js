@@ -1,5 +1,5 @@
 /* ============================================================
-   Kelime dizini — 8437 kelime
+   Kelime dizini — 8440 kelime
    Her sayfada yüklenir; liste, arama ve tekrar özeti bunu kullanır.
    Alanlar: e=kelime, t=kısa anlam, p=YDS öncelik puanı, k=katman, y=tür
    Örnek cümleler katman dosyalarındadır (data/kelime-k1..k7.js).
@@ -8443,5 +8443,8 @@ window.KELIME_DIZIN = [
 {e:"bilingually",t:"iki dilli olarak, iki dili kullanarak",p:5.7,k:7,y:"zarf"},
 {e:"deplete",t:"tüketmek, azaltmak",p:5.7,k:4,y:"fiil"},
 {e:"parasitically",t:"parazit biçimde, başka bir canlıdan beslenerek",p:5.6,k:7,y:"zarf"},
-{e:"vulnerably",t:"savunmasız biçimde, zarar görmeye açık durumda",p:5.5,k:7,y:"zarf"}
+{e:"vulnerably",t:"savunmasız biçimde, zarar görmeye açık durumda",p:5.5,k:7,y:"zarf"},
+{e:"for years to come",t:"gelecek yıllar boyunca; daha uzun yıllar",k:6,y:"sabit ifade"},
+{e:"in its wake",t:"ardında; arkasında … bırakarak; onun sonucunda",k:6,y:"sabit ifade"},
+{e:"years to come",t:"gelecek yıllar; önümüzdeki yıllar",k:6,y:"sabit ifade"}
 ];
