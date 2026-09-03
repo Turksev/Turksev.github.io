@@ -17,7 +17,7 @@ cikarildi: disinterested "ilgisiz" degil "tarafsiz" demektir, olumsuz diye
 gostermek yanlis ogretirdi.
 
 Kullanim:
-  "C:/Users/Trk/Desktop/english claude/.venv/Scripts/python.exe" tools/olumsuz-cikar.py
+  "C:/Users/Trk/Desktop/YDS/03_calisma_listesi/.venv/Scripts/python.exe" tools/olumsuz-cikar.py
 """
 import csv
 import io
@@ -34,7 +34,7 @@ sys.stdout.reconfigure(encoding='utf-8')
 SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 VERI = os.path.join(SITE, 'data')
 ARAC = os.path.dirname(os.path.abspath(__file__))
-MASTER = r'C:\Users\Trk\Desktop\english claude\04_cikti\YDS_Kelime_Listesi_master.csv'
+MASTER = r'C:\Users\Trk\Desktop\YDS\03_calisma_listesi\04_cikti\YDS_Kelime_Listesi_master.csv'
 
 ZIPF_ESIK = 2.5
 ONEK = ['un', 'in', 'im', 'ir', 'il', 'dis', 'non']

@@ -359,7 +359,7 @@ node tools/test-uretim/firestore-kurallar-test.js
 ## Sınav kaynağı ve provenans
 
 Kelime yazımı, sınavda geçişi ve bağlam anlamı için ana doğruluk kaynağı
-`C:\Users\Trk\Desktop\YDS Soru Veritabanı\08_unique_exam_pdfs` klasöründeki 49
+`C:\Users\Trk\Desktop\YDS\01_sinav_arsivi\08_unique_exam_pdfs` klasöründeki 49
 YDS/e-YDS PDF'sidir. XLSX dosyaları ve üretilmiş `data/kelime-*.js` kayıtları çalışma
 çıktısıdır; PDF ile çeliştiklerinde son söz PDF denetiminindir.
 
@@ -402,7 +402,7 @@ veriden bağımsız olarak denetlenebilir kılar.
 `data/kelime-*.js` ve `data/obekler.js` **elle düzenlenmez** — kaynak XLSX dosyalarından üretilir:
 
 ```bash
-"C:/Users/Trk/Desktop/english claude/.venv/Scripts/python.exe" tools/listeyi-aktar.py
+"C:/Users/Trk/Desktop/YDS/03_calisma_listesi/.venv/Scripts/python.exe" tools/listeyi-aktar.py
 ```
 
 Okuduğu kaynaklar (salt okunur, hiçbirine yazılmaz):

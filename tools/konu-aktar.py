@@ -2,7 +2,7 @@
 """
 Konu haritalari ve konu anlatimlari  ->  data/konular.js + data/konu-metinleri.js
 
-Kaynak: C:\\Users\\Trk\\Desktop\\English konu - chatgpt
+Kaynak: C:\\Users\\Trk\\Desktop\\YDS\\05_konu_haritalari\\English konu - chatgpt
   A_Turkce_Eksenli_...md      61 unitelik Turkce eksenli harita
   B_Ingilizce_Eksenli_...md   68 unitelik Ingilizce eksenli omurga
   Türkçe Eksenli\\*.docx       yazilmis konu anlatimlari (su an 6 tane)
@@ -15,7 +15,7 @@ Konu anlatimlari docx'ten cikarilip HTML'e cevrilir; hepsi ayni 9 bolumlu
 iskelette oldugu icin tek bir donusturucu yetiyor.
 
 Kullanim:
-  "C:/Users/Trk/Desktop/english claude/.venv/Scripts/python.exe" tools/konu-aktar.py
+  "C:/Users/Trk/Desktop/YDS/03_calisma_listesi/.venv/Scripts/python.exe" tools/konu-aktar.py
 Kaynak klasore YAZILMAZ.
 """
 import html
@@ -27,7 +27,7 @@ import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
 
-KAYNAK = r'C:\Users\Trk\Desktop\English konu - chatgpt'
+KAYNAK = r'C:\Users\Trk\Desktop\YDS\05_konu_haritalari\English konu - chatgpt'
 SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 VERI = os.path.join(SITE, 'data')
 

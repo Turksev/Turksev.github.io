@@ -10,7 +10,7 @@ Uretilen dosyalar:
   data/obekler.js         kelime obekleri, ayri deste
 
 Kullanim (kaynak projenin sanal ortamiyla):
-  "C:\\Users\\Trk\\Desktop\\english claude\\.venv\\Scripts\\python.exe" tools/listeyi-aktar.py
+  "C:\\Users\\Trk\\Desktop\\YDS\\03_calisma_listesi\\.venv\\Scripts\\python.exe" tools/listeyi-aktar.py
 
 Kaynak dosyalara YAZILMAZ, yalniz okunur.
 """
@@ -26,7 +26,7 @@ sys.stdout.reconfigure(encoding='utf-8')
 
 import openpyxl
 
-KAYNAK_DIZIN = r'C:\Users\Trk\Desktop\english claude\04_cikti'
+KAYNAK_DIZIN = r'C:\Users\Trk\Desktop\YDS\03_calisma_listesi\04_cikti'
 SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 VERI = os.path.join(SITE, 'data')
 ARACLAR = os.path.join(SITE, 'tools')

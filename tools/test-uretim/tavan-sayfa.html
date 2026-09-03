@@ -4,7 +4,7 @@
 var L=[]; function P(m){L.push(m);document.getElementById('log').textContent=L.join('\n');}
 // Sayfa yüklenmeden önce durumu kur (ilerleme.js veriyi açılışta belleğe alıyor)
 var bugun=Math.floor(new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate()).getTime()/86400000);
-fetch('file:///C:/Users/Trk/Desktop/Turksev.github.io/data/kelime-dizin.js').then(function(r){return r.text();}).then(function(src){
+fetch('file:///C:/Users/Trk/Desktop/YDS/04_uygulama/data/kelime-dizin.js').then(function(r){return r.text();}).then(function(src){
   var kelimeler=[],re=/\{e:"(.*?)",t:.*?,k:2,/g,m;
   while((m=re.exec(src))&&kelimeler.length<205) kelimeler.push(m[1]);
   var tablo={};
@@ -17,7 +17,7 @@ fetch('file:///C:/Users/Trk/Desktop/Turksev.github.io/data/kelime-dizin.js').the
   P('kurulum: '+Object.keys(tablo).length+' gecikmiş tekrar');
   var f=document.createElement('iframe');
   f.style.cssText='width:1200px;height:900px;border:0';
-  f.src='file:///C:/Users/Trk/Desktop/Turksev.github.io/kelimeler.html';
+  f.src='file:///C:/Users/Trk/Desktop/YDS/04_uygulama/kelimeler.html';
   f.onload=function(){ setTimeout(function(){ dene(f); }, 1500); };
   document.body.appendChild(f);
 });

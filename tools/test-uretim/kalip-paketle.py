@@ -21,7 +21,7 @@ import re
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-SITE = r'C:\Users\Trk\Desktop\Turksev.github.io'
+SITE = r'C:\Users\Trk\Desktop\YDS\04_uygulama'
 BURASI = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(BURASI, 'kalip-girdi')
 os.makedirs(OUT, exist_ok=True)

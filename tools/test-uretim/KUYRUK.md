@@ -86,7 +86,7 @@ altındaki Leitner ve test ilerlemesi yeni başlığa kayıpsız birleştirilir.
 PDF sayfası, soru/şık ve yüzey biçimiyle doğrulandığı `data/kelime-provenans.json` içindedir.
 
 Bu denetimlerde ana doğruluk kaynağı
-`C:\Users\Trk\Desktop\YDS Soru Veritabanı\08_unique_exam_pdfs` klasöründeki 49 PDF'dir.
+`C:\Users\Trk\Desktop\YDS\01_sinav_arsivi\08_unique_exam_pdfs` klasöründeki 49 PDF'dir.
 Öncelik **PDF → `data/kaynak-manifest.json` → `data/kelime-provenans.json` ve doğrulanmış
 düzeltme → türetilmiş XLSX/JS** sırasındadır; üretilmiş veri kaynak kanıtını ezmez.
 Sıradaki iş: 300 "çok türlü ama tek örnekli" kelimeye tür başına örnek.

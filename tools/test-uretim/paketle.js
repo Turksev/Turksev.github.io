@@ -1,6 +1,6 @@
 // Katman 2-4 kelimelerini 70'lik paketlere böl: agent girdileri
 const fs = require('fs'), path = require('path'), vm = require('vm');
-const SITE = 'C:/Users/Trk/Desktop/Turksev.github.io';
+const SITE = 'C:/Users/Trk/Desktop/YDS/04_uygulama';
 const OUT = __dirname + '/girdi';
 fs.mkdirSync(OUT, { recursive: true });
 const ctx = { window: {} }; ctx.window = ctx;

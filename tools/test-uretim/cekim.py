@@ -8,7 +8,7 @@ import io
 import re
 import os
 
-SITE = r'C:\Users\Trk\Desktop\Turksev.github.io'
+SITE = r'C:\Users\Trk\Desktop\YDS\04_uygulama'
 JS = os.path.join(SITE, 'assets', 'js', 'cekim.js')
 
 

@@ -18,7 +18,7 @@ from pathlib import Path
 
 SITE = Path(__file__).resolve().parent.parent
 sys.stdout.reconfigure(encoding="utf-8")
-VARSAYILAN_KAYNAK = Path(r"C:\Users\Trk\Desktop\YDS Soru Veritabanı\08_unique_exam_pdfs")
+VARSAYILAN_KAYNAK = Path(r"C:\Users\Trk\Desktop\YDS\01_sinav_arsivi\08_unique_exam_pdfs")
 VARSAYILAN_CIKTI = SITE / "data" / "kaynak-manifest.json"
 DOSYA_DESENI = re.compile(
     r"^(?P<tur>e?YDS)_(?P<yil>\d{4})_(?P<donem>[^_]+)_"
