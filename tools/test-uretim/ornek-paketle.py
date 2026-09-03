@@ -14,7 +14,7 @@ import re
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-S = r'C:\Users\Trk\Desktop\YDS\04_uygulama'
+S = r'C:\Users\Trk\Desktop\YDS\04_Github'
 BURASI = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(BURASI, 'ornek-girdi')
 os.makedirs(OUT, exist_ok=True)

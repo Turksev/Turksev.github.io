@@ -14,7 +14,7 @@ import sys
 from collections import Counter
 
 sys.stdout.reconfigure(encoding='utf-8')
-SITE = r'C:\Users\Trk\Desktop\YDS\04_uygulama'
+SITE = r'C:\Users\Trk\Desktop\YDS\04_Github'
 BURASI = os.path.dirname(os.path.abspath(__file__))
 GIRDI = os.path.join(BURASI, 'yildiz-girdi')
 CIKTI = os.path.join(BURASI, 'yildiz-cikti')

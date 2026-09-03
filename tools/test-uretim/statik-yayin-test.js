@@ -53,7 +53,7 @@ sayfalar.forEach(function (sayfa) {
 });
 
 var sw = fs.readFileSync(path.join(kok, 'sw.js'), 'utf8');
-assert.ok(/var SURUM = 'yds-v172';/.test(sw), 'SW önbellek sürümü yds-v172 değil');
+assert.ok(/var SURUM = 'yds-v173';/.test(sw), 'SW önbellek sürümü yds-v173 değil');
 var liste = sw.match(/var TEMEL_DOSYALAR = \[([\s\S]*?)\];/);
 assert.ok(liste, 'sw.js TEMEL_DOSYALAR listesi okunamadı');
 var onbellek = [];
