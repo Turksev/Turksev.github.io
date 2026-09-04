@@ -3,27 +3,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Durumum — YDS Hazırlık</title>
-<meta name="description" content="Çalıştığın bütün kelime ve öbekler tek listede: hangisi hangi tekrar kutusunda, bilemediklerin neler, ne zaman tekrar gelecek.">
+<title>Cümleler — YDS Hazırlık</title>
+<meta name="description" content="2013-2026 arası YDS ve e-YDS kitapçıklarında geçen cümleler ve Türkçe çevirileri. Sınava ve bölüme göre filtrele, tıklayınca çeviriyi gör.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%233b5bdb'/><text y='68' x='50' text-anchor='middle' font-size='46' font-family='sans-serif' font-weight='bold' fill='white'>Y</text></svg>">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#3b5bdb">
 <link rel="apple-touch-icon" href="assets/img/icon-192.png">
-<link rel="canonical" href="https://turksev.github.io/durum.html">
+<link rel="canonical" href="https://turksev.github.io/cumleler.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="YDS Hazırlık">
 <meta property="og:locale" content="tr_TR">
-<meta property="og:title" content="Durumum — YDS Hazırlık">
-<meta property="og:description" content="Çalıştığın bütün kelime ve öbekler tek listede: hangisi hangi tekrar kutusunda, bilemediklerin neler.">
-<meta property="og:url" content="https://turksev.github.io/durum.html">
+<meta property="og:title" content="Cümleler — YDS Hazırlık">
+<meta property="og:description" content="YDS kitapçıklarında geçen cümleler ve Türkçe çevirileri.">
+<meta property="og:url" content="https://turksev.github.io/cumleler.html">
 <meta property="og:image" content="https://turksev.github.io/assets/img/icon-512.png">
 <meta name="twitter:card" content="summary">
 <link rel="stylesheet" href="assets/css/style.css">
 <script src="data/depo.js"></script>
 <script src="assets/js/main.js"></script>
-<script src="data/kelime-aliaslari.js"></script>
-<script src="assets/js/esitleme-veri.js"></script>
-<script src="assets/js/esitleme-depo.js"></script>
 </head>
 <body>
 
@@ -60,52 +57,47 @@
 <main class="section">
   <div class="wrap">
 
-    <h1>Durumum</h1>
-    <p class="muted" style="max-width:70ch">
-      Çalıştığın her şey burada — kelime, öbek, aile üyesi hepsi bir arada.
-      Kelime sayfasındaki katman seçimi burayı <b>kısıtlamaz</b>: hangi katmandan olursa olsun,
-      bir kez çalıştıysan bu listede görürsün.
+    <h1>Cümleler</h1>
+    <p class="muted" style="max-width:68ch">
+      2013–2026 arası YDS ve e-YDS kitapçıklarında geçen cümleler. Bir cümleye
+      tıklayınca Türkçe çevirisi, hangi sınavda geçtiği ve sınavın hangi bölümünde
+      sorulduğu açılır. Burada tekrar ya da puanlama yok — okuyarak çalışma bölümü.
     </p>
 
-    <!-- sistem toplamı ve kutu özeti / sekmeler -->
-    <p class="sistem-toplam" id="sistemToplam"></p>
-    <div class="kutu-sekme" id="sekmeler"></div>
-
-    <div class="toolbar" style="margin-top:18px">
+    <div class="toolbar">
       <label class="grow filter-field">
-        <span>Kelime, öbek veya anlam ara</span>
-        <input class="grow" type="search" id="ara" placeholder="Örnek: despite, tutarlı…" autocomplete="off">
+        <span>Cümle içinde ara</span>
+        <input class="grow" type="search" id="ara" placeholder="Örnek: evidence, iklim…" autocomplete="off">
       </label>
 
       <label class="filter-field">
-        <span>Tür</span>
-        <select id="tur">
-        <option value="">Kelime + öbek</option>
-        <option value="kelime">Yalnız kelimeler</option>
-        <option value="obek">Yalnız öbekler</option>
-        </select>
+        <span>Sınav bölümü</span>
+        <select id="bolum"><option value="">Tüm bölümler</option></select>
       </label>
 
       <label class="filter-field">
-        <span>Sıralama</span>
-        <select id="sirala">
-        <option value="vade">Tekrar tarihine göre</option>
-        <option value="kutu">Kutuya göre</option>
-        <option value="alfabe">Alfabetik</option>
-        <option value="puan">YDS puanına göre</option>
-        </select>
+        <span>Yıl</span>
+        <select id="yil"><option value="">Tüm yıllar</option></select>
+      </label>
+
+      <label class="filter-field" style="align-self:end">
+        <span class="small muted">
+          <input type="checkbox" id="cevirili"> Yalnız çevirisi hazır olanlar
+        </span>
       </label>
     </div>
 
     <p class="small muted" id="sayac" role="status" aria-live="polite" aria-atomic="true">Yükleniyor…</p>
-    <div id="liste" class="word-list"></div>
+
+    <div id="liste" class="cum-list"></div>
+
     <p class="center" style="margin-top:16px">
       <button class="btn ghost" type="button" id="dahaFazla" hidden>Daha fazla göster</button>
     </p>
 
     <div class="empty" id="bos" hidden>
-      <p id="bosMetin">Bu filtrelerle eşleşen kayıt yok.</p>
-      <button class="btn ghost sm" type="button" id="temizle">Filtreleri temizle</button>
+      Bu filtrelerle eşleşen cümle yok.
+      <br><button class="btn ghost sm" type="button" id="temizle" style="margin-top:12px">Filtreleri temizle</button>
     </div>
 
   </div>
@@ -114,17 +106,11 @@
 <footer class="site-footer">
   <div class="wrap">
     <span>© <span data-yil>2026</span> YDS Hazırlık</span>
-    <span>İlerleme tarayıcıda saklanır; eşitleme açılırsa hesabına da kopyalanır.</span>
+    <span>Cümleler ÖSYM sınav kitapçıklarından derlenmiştir; kişisel çalışma içindir.</span>
   </div>
 </footer>
 
-<script src="data/kelime-dizin.js"></script>
-<script src="data/sayilar.js"></script>
-<script src="data/olumsuzlar.js"></script>
-<script src="assets/js/ilerleme.js"></script>
-<script src="assets/js/veri.js"></script>
-<script src="assets/js/durum.js"></script>
-<script src="assets/js/esitleme-ayar.js"></script>
-<script src="assets/js/esitleme-v2.js"></script>
+<script src="data/cumleler.js"></script>
+<script src="assets/js/cumleler.js"></script>
 </body>
 </html>
