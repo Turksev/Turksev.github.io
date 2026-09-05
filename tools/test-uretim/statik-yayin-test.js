@@ -53,7 +53,11 @@ sayfalar.forEach(function (sayfa) {
 });
 
 var sw = fs.readFileSync(path.join(kok, 'sw.js'), 'utf8');
-assert.ok(/var SURUM = 'yds-v173';/.test(sw), 'SW önbellek sürümü yds-v173 değil');
+// Sürüm sabitlenmez: her yayında tools/sw-surum.py artırır, güncelliği
+// sw-surum-test.js içerik özetiyle doğrular. (Eskiden 'yds-v173' diye sabitti;
+// sürümü artıran herkes bu testi kırdığı için altı yayın boyunca artırılmadı.)
+var swSurum = /var SURUM = 'yds-v(\d+)';/.exec(sw);
+assert.ok(swSurum && parseInt(swSurum[1], 10) >= 174, 'SW önbellek sürümü yds-vN biçiminde değil ya da 174\'ün altında');
 var liste = sw.match(/var TEMEL_DOSYALAR = \[([\s\S]*?)\];/);
 assert.ok(liste, 'sw.js TEMEL_DOSYALAR listesi okunamadı');
 var onbellek = [];

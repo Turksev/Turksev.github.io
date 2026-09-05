@@ -60,6 +60,14 @@ var fs = {
   readFileSync: function(p){ return oku(mutlakla(p)); },
   existsSync: function(p){ try { fs.readFileSync(p); return true; } catch(e){ return false; } },
   statSync: function(p){
+    // Chrome file:// dizin listesi addRow(...) cagrilari tasir; dosya yolu + "/"
+    // ise hata ya da bos yanit verir. isDirectory hep false donuyordu; alt
+    // klasorleri gezen testler (sw-surum) kabukta 24 dosya eksik sayiyordu.
+    var dizin = false;
+    try { dizin = /addRow\(/.test(oku(mutlakla(p).replace(/\/$/, '') + '/')); } catch (e) { dizin = false; }
+    if (dizin) {
+      return { size: 0, isFile: function(){ return false; }, isDirectory: function(){ return true; } };
+    }
     var icerik = fs.readFileSync(p);
     return { size: new TextEncoder().encode(icerik).length,
              isFile: function(){ return true; }, isDirectory: function(){ return false; } };
@@ -158,7 +166,7 @@ var TESTLER = ['icerik-butunluk','konu-kapsam','kaynak-manifest','kelime-provena
   'kelime-alias-gecis','deneme-formlari','deneme-oturum','ilerleme-srs',
   'ayarlar-ice-aktarma','esitleme-veri','esitleme-depo','esitleme-boyut',
   'esitleme-yerel-guvenlik','esitleme-bulut','esitleme-cdn','esitleme-entegrasyon',
-  'firestore-kurallar','statik-yayin','yeniden-yukleme'];
+  'firestore-kurallar','statik-yayin','sw-surum','yeniden-yukleme'];
 
 var ciktilar = [], patlayan = 0;
 TESTLER.forEach(function(ad){

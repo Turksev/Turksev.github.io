@@ -1,0 +1,13 @@
+# Depo LF saklar; Windows'ta core.autocrlf=true her komutta "LF will be replaced
+# by CRLF" uyarısı üretiyordu. Öznitelik ayarı autocrlf'yi ezer, uyarılar biter
+# ve her platformda çalışma kopyası da LF olur (betikler newline='\n' yazıyor).
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.ico binary
+*.pdf binary
+*.xlsx binary
+*.woff binary
+*.woff2 binary
+*.pyc binary

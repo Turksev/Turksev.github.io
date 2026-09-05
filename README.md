@@ -11,8 +11,9 @@ Yayında: <https://turksev.github.io>
 | --- | --- |
 | `index.html` | Ana sayfa: **YDS bölüm dağılımı tablosu** (80 sorunun hangi aralıkta hangi bölüm olduğu) ve ilerleme paneli — tekrar durumu, yanlış defteri, deneme geçmişi, kategori karnesi |
 | `durum.html` | Çalışılmış her şey tek listede (kelime, öbek, aile üyesi): üstte **sistemdeki toplam kayıt**, kutu sekmelerinde sayı ve bu toplama oranı ("hepsi" dahil), arama/süzme/sıralama |
-| `kelimeler.html` | 8.440 kelime ve yapı, 7 katman + **aralıklı tekrar (Leitner)**: bugünün destesi, kart modu, ipucu, sesli okuma |
-| `obekler.html` | 1.631 kelime öbeği (560 deyimsel fiil, 333 edat kalıbı, sabit/geçiş ifadeleri) — ayrı Leitner destesi |
+| `kelimeler.html` | 9.379 kelime ve yapı, 7 katman + **aralıklı tekrar (Leitner)**: bugünün destesi, kart modu, ipucu, sesli okuma |
+| `obekler.html` | 1.879 kelime öbeği (607 deyimsel fiil, 346 edat kalıbı, 865 sabit, 61 geçiş ifadesi) — ayrı Leitner destesi |
+| `cumleler.html` | 7.705 sınav cümlesi ve Türkçe çevirisi (2013–2026, sınav + bölüm + soru no); liste ve kart modu, kutu (Leitner) ilerlemesi, yıl/bölüm filtresi |
 | `quiz.html` | Alıştırma soruları: 12 kategori, anında çözüm, yanlış defterinden çalışma |
 | `deneme.html` | **Süreli deneme sınavı**: üç sabit 80 soruluk form, geri sayım, soru ızgarası, işaretleme, yenileme sonrası oturum kurtarma, 100 üzerinden YDS puanı, kategori karnesi |
 | `gramer.html` | 10 başlıkta konu anlatımı, kural tabloları ve sınav tuzakları |
@@ -22,9 +23,9 @@ Yayında: <https://turksev.github.io>
 
 ## İçerik
 
-- **8.440 kelime ve yapı** — 49 gerçek YDS sınavı temel alınarak puanlanan listeye ek olarak gerekçesi kayıtlı üç puansız kalıp içerir; yedi katmana ayrılmıştır;
-  her birinde Türkçe anlam + İngilizce örnek cümle + çeviri (**3.143'ünde birden çok anlam** var)
-- **1.631 kelime öbeği** — deyimsel fiil (phrasal verb), edat kalıbı, sabit ve geçiş ifadeleri, kaç sınavda geçtiği bilgisiyle
+- **9.379 kelime ve yapı** — 49 gerçek YDS sınavı temel alınarak puanlanan listeye ek olarak gerekçesi kayıtlı üç puansız kalıp içerir; yedi katmana ayrılmıştır;
+  her birinde Türkçe anlam + İngilizce örnek cümle + çeviri (**3.386'sında birden çok anlam** var)
+- **1.879 kelime öbeği** — deyimsel fiil (phrasal verb), edat kalıbı, sabit ve geçiş ifadeleri, kaç sınavda geçtiği bilgisiyle
 - **286 soru** — 12 kategori: Kelime, Dil Bilgisi, Bağlaç, Preposition, Cloze Test, Çeviri,
   Cümle Tamamlama, Restatement, Paragraf Tamamlama, Anlamı Bozan Cümle, Diyalog, Okuma
   (80 soruluk A/B/C formlarında 240 farklı soru; doğru şıklar her formda A–E arasında 16'şar kez dağılır)
@@ -42,12 +43,12 @@ F: toplam frekans, P: akademik önsel (NGSL/NAWL/AWL üyeliği + Zipf).
 | Katman | Puan | Kelime | Dosya (gzip) |
 | --- | --- | --- | --- |
 | 1 · Temel | ≥ 40 | 667 | 97 K |
-| 2 · Çekirdek | 30–40 | 726 | 125 K |
+| 2 · Çekirdek | 30–40 | 726 | 124 K |
 | 3 · Orta | 25–30 | 710 | 117 K |
 | 4 · İleri | 17–25 | 1.856 | 313 K |
-| 5 · Geniş | 12–17 | 2.069 | 288 K |
-| 6 · Geniş+ | 10–12 + denetimli ekler | 1.917 | 241 K |
-| 7 · Aile üyeleri | < 10 veya denetimli kök | 495 | 66 K |
+| 5 · Geniş | 12–17 | 2.139 | 304 K |
+| 6 · Geniş+ | 10–12 + denetimli ekler (sınav kanıtlı, puan < 10 olabilir) | 2.718 | 424 K |
+| 7 · Aile üyeleri | < 10 veya denetimli kök | 563 | 80 K |
 
 6. katman 21.08.2026'da eşik 15 → 10'a indirilince geldi (`Calisma_Listesi_v4_site_tam.xlsx`);
 5. katmanı genişletmek yerine ayrı katman açıldı ki isteyen açsın, mevcut desteler değişmesin.
@@ -95,15 +96,17 @@ assets/
   js/ara.js           site geneli arama
   img/                PWA ikonları (tools ile üretildi)
 data/
-  kelime-dizin.js     8.440 kelime/yapı: yazılış, kısa anlam, puan, katman, tür
-  test-k1..k7.js      8.375 sözcük için günün testi cümlesi
+  kelime-dizin.js     9.379 kelime/yapı: yazılış, kısa anlam, puan, katman, tür
+  test-k1..k7.js      9.314 sözcük için günün testi cümlesi (modal ile birlikte dizinin tamamı)
   test-modal.js       65 yeni modal/özel yapı için günün testi cümlesi
   test-obek.js        öbekler için günün testi cümleleri
   kelime-k1..k7.js    katman katman tam kayıtlar (örnek cümleler)
   aileler.js          kalıcı karar manifestinden üretilen kelime aileleri
   kelime-aliaslari.js eski başlıklardaki ilerlemeyi düzeltilmiş başlıklara taşır
   kelime-provenans.json denetlenen öğelerin sınav kimliği/sayfa/soru kaynakları
-  obekler.js          1.631 kelime öbeği
+  obekler.js          1.879 kelime öbeği
+  cumleler.js         7.705 sınav cümlesi + çevirisi (e, t, s=sınav, b=bölüm, n=soru no, y=yıl)
+  kelime-bilgi.js     7.820 kelimenin sınav kullanım notu (ℹ; tembel yüklenir, 3,8 MB)
   sayilar.js          içerik sayaçları (üretilir)
   sorular.js          temel soru bankası + okuma parçaları
   sorular-ek.js       özgün ek soru bankası ve pasajlar (üretilir)
@@ -256,8 +259,8 @@ en çok 20 soruluk, 5 şıklı boşluk doldurma testi açılır. Cümleler **kar
 YDS okuma parçası kayıtında özgün cümlelerdir; `data/test-k{n}.js` içinde durur
 (`{kelime: {c, b, f, tr}}` — c boşluklu cümle, b boşluğa gelen çekimli biçim, f çekim türü
 `'' | s | past | pp | ing | pl`, tr Türkçesi). **Havuzun tamamı hazır** (28.08.2026):
-7 katman ve modal/özel yapı testleriyle bütün **8.440 kelime ve yapı** için cümle; ayrıca **1.631 öbek kartının 892'si** için bağımsız test cümlesi var.
-7. katmanın 495 kaydı için `test-k7.js` bulunur; yükleyici bu katmanı da diğer
+7 katman ve modal/özel yapı testleriyle bütün **9.379 kelime ve yapı** için cümle; ayrıca **1.879 öbek kartının 893'ü** için bağımsız test cümlesi var.
+7. katmanın 563 kaydı için `test-k7.js` bulunur; yükleyici bu katmanı da diğer
 katmanlarla aynı biçimde test havuzuna katar.
 
 Şıklar aynı türden, yakın katmandan kelimelerden kurulur ve boşluktaki biçimle **aynı çekime**
@@ -398,6 +401,14 @@ eşler; yerel ve bulut birleşimi sırasında iki taraftaki ilerleme kayıpsız 
 veriden bağımsız olarak denetlenebilir kılar.
 
 ## Kelime ve öbek verisini yeniden üretmek
+
+> **DUR — 5 Eylül 2026 denetimi (A2).** Bu betik dizin ve katman dosyalarını sıfırdan yazar.
+> 4–5 Eylül'de eklenen ~1.170 kelime (6 tam kitapçık: 874; 2023: 243; aile: 52) yalnız
+> `data/kelime-*.js` içindedir — XLSX (22 Ağustos), `ek-kelimeler.js` ve aile partilerinde
+> **yoktur**. Betik çalıştırılırsa bu kelimeler kartlarıyla birlikte silinir. Önce onları
+> sürümlü kaynak partilerine (`tools/aile-kart-partileri` modeli) taşı ya da betiğe "dizinde
+> olup üretilmeyecek kelime varsa dur" koruması ekle. Kart verisi
+> `03_calisma_listesi/06_sandbox_2026-09/kartlar*/cikti` altında duruyor.
 
 `data/kelime-*.js` ve `data/obekler.js` **elle düzenlenmez** — kaynak XLSX dosyalarından üretilir:
 
@@ -566,5 +577,13 @@ python -m http.server 8000    # sonra http://localhost:8000
 ## Yayınlama
 
 `main` dalına gönderilen her değişiklik GitHub Pages tarafından birkaç dakika içinde
-yayımlanır. `sw.js` önbelleğe aldığı için, kullanıcıların güncellemeyi hemen görmesi
-gerekiyorsa `SURUM` değerini artırmayı unutma.
+yayımlanır. `sw.js` JS/veri dosyalarını önbellek-öncelikli sunar; `SURUM` artmazsa
+kullanıcı ilk ziyarette yeni HTML + eski JS/veri görür. Bu yüzden **her yayından önce**:
+
+```bash
+python tools/sw-surum.py     # yayımlanan dosyaların özetini hesaplar, değiştiyse SURUM'u artırır
+```
+
+CI'daki `tools/test-uretim/sw-surum-test.js` aynı özeti hesaplayıp `sw.js` ile karşılaştırır:
+dosya değişip betik çalıştırılmamışsa test kırmızıya döner. Node kurulu olmayan makinede
+testler `tools/test-uretim/node-testleri-tarayicida.html` ile başsız Edge'de koşulur.

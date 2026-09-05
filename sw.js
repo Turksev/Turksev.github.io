@@ -8,10 +8,18 @@
        tazele. Açılış hızlı olur, bir sonraki ziyarette güncel gelir.
 
    SÜRÜM değiştiğinde eski önbellekler silinir. Siteye dosya
-   eklediğinde hem SÜRÜM'ü artır hem de listeye ekle.
+   eklediğinde listeye ekle; sürümü elle artırma, her yayından önce
+   "python tools/sw-surum.py" çalıştır (özet değiştiyse SURUM'u artırır).
    ============================================================ */
 
-var SURUM = 'yds-v173';
+var SURUM = 'yds-v174';
+/* İçerik özeti — tools/sw-surum.py üretir, elle değiştirme. Yayımlanan
+   HTML/JS/CSS/veri dosyaları değişince özet değişir ve betik SURUM'u
+   artırır. tools/test-uretim/sw-surum-test.js aynı özeti hesaplayıp
+   karşılaştırır: dosya değişip sürüm artmamışsa CI kırmızıya döner.
+   (5 Eylül 2026: altı yayın boyunca sürüm v173'te kaldı; kullanıcı yeni
+   HTML + eski JS gördü.) */
+var ICERIK_OZETI = '56091bb8';
 var ONBELLEK = SURUM;
 
 /* Kurulumda indirilenler: sayfalar, kod ve küçük veri dosyaları.
@@ -34,6 +42,7 @@ var TEMEL_DOSYALAR = [
   './ara.html',
   './yontem.html',
   './ayarlar.html',
+  './cumleler.html',
   './assets/css/style.css',
   './assets/js/main.js',
   './data/depo.js',
@@ -60,6 +69,8 @@ var TEMEL_DOSYALAR = [
   './assets/js/baglaclar.js',
   './assets/js/ara.js',
   './assets/js/ayarlar.js',
+  './assets/js/cumleler.js',
+  './assets/js/kelime-bilgi.js',
   './data/kelime-dizin.js',
   './data/aileler.js',
   './data/konular.js',
