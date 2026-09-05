@@ -70,13 +70,20 @@
     return kanonik;
   }
 
+  /* Cümle ilerleme kimlikleri "c:" önekiyle üretilir (cumleler.js). Önek,
+     kimliği hem kelime hem öbek adlarından ayırır; böylece üç tür aynı
+     yds-leitner deposunda çakışmadan durur. */
+  function cumleKimligiMi(ham) { return ham.slice(0, 2) === 'c:'; }
+
   function ilerlemeKimligi(id, tur) {
     var ham = String(id == null ? '' : id);
-    return tur === 'obek' ? ham : kelimeIlerlemeKimligi(ham);
+    // Öbek ve cümle ham kimlikle saklanır; kelime iç kimliğe çevrilir.
+    return (tur === 'obek' || tur === 'cumle') ? ham : kelimeIlerlemeKimligi(ham);
   }
 
   function ilerlemeKimliginiCoz(id) {
     var ham = String(id == null ? '' : id);
+    if (cumleKimligiMi(ham)) return { ad: ham, tur: 'cumle' };
     var bulunan = null;
     Object.keys(KELIME_ILERLEME_KIMLIKLERI).some(function (ad) {
       if (String(KELIME_ILERLEME_KIMLIKLERI[ad]) !== ham) return false;

@@ -6,7 +6,8 @@ var assert = require('assert');
 var kok = path.resolve(__dirname, '..', '..');
 var sayfalar = [
   'index.html', 'durum.html', 'konular.html', 'kelimeler.html', 'aileler.html',
-  'obekler.html', 'quiz.html', 'deneme.html', 'gramer.html', 'baglaclar.html', 'ara.html'
+  'obekler.html', 'quiz.html', 'deneme.html', 'gramer.html', 'baglaclar.html', 'ara.html',
+  'cumleler.html'
 ];
 
 sayfalar.forEach(function (dosya) {
@@ -86,4 +87,4 @@ var config = fs.readFileSync(path.join(kok, '_config.yml'), 'utf8');
   assert.ok(config.indexOf('- ' + hedef) >= 0, 'yayın dışı listesinde eksik: ' + hedef);
 });
 
-console.log('esitleme-entegrasyon: 11 sayfa başarılı');
+console.log('esitleme-entegrasyon: ' + sayfalar.length + ' sayfa başarılı');

@@ -21,6 +21,9 @@
 <link rel="stylesheet" href="assets/css/style.css">
 <script src="data/depo.js"></script>
 <script src="assets/js/main.js"></script>
+<script src="data/kelime-aliaslari.js"></script>
+<script src="assets/js/esitleme-veri.js"></script>
+<script src="assets/js/esitleme-depo.js"></script>
 </head>
 <body>
 
@@ -105,6 +108,7 @@
         <div>
           <div class="cum-kart-en" id="kartOn" lang="en">—</div>
           <span class="badge" id="kartKaynak" style="margin-top:12px">—</span>
+          <span class="badge" id="kartKutu" style="margin-top:12px">—</span>
           <div class="back" id="kartArka" hidden>
             <div class="cum-kart-tr" id="kartTr"></div>
           </div>
@@ -113,9 +117,18 @@
       </div>
 
       <div class="flash-nav" style="margin-top:14px">
-        <button class="btn ghost sm" type="button" id="onceki">← Önceki</button>
+        <button class="btn ghost sm" type="button" id="seslendir" title="Cümleyi dinle">🔊 Dinle</button>
+        <button class="btn ghost sm" type="button" id="onceki">‹ Önceki</button>
         <span class="small muted" id="kartSayac">0 / 0</span>
-        <button class="btn sm" type="button" id="sonraki">Sonraki →</button>
+        <button class="btn ghost sm" type="button" id="sonraki">Sonraki ›</button>
+      </div>
+
+      <div class="flash-nav" style="margin-top:10px">
+        <button class="btn ghost sm" type="button" id="bilmedim"
+                style="border-color:var(--err);color:var(--err)">✗ Bilemedim</button>
+        <button class="btn sm" type="button" id="bildim">✓ Bildim</button>
+        <button class="btn ghost sm" type="button" id="zatenBiliyorum"
+                title="Bu cümleyi anladım; öğrenildi say ve bir daha sorma">✓✓ Zaten biliyorum</button>
       </div>
 
       <div class="flash-actions">
@@ -123,7 +136,9 @@
       </div>
 
       <p class="center small muted" style="margin-top:14px">
-        Klavye: <code>←</code> <code>→</code> geçiş · <code>boşluk</code> çeviriyi göster
+        Klavye: <code>←</code> <code>→</code> geçiş · <code>boşluk</code> çeviri ·
+        <code>1</code> bilemedim · <code>2</code> bildim · <code>3</code> zaten biliyorum ·
+        <code>S</code> dinle
       </p>
     </div>
 
@@ -143,6 +158,9 @@
 </footer>
 
 <script src="data/cumleler.js"></script>
+<script src="assets/js/ilerleme.js"></script>
 <script src="assets/js/cumleler.js"></script>
+<script src="assets/js/esitleme-ayar.js"></script>
+<script src="assets/js/esitleme-v2.js"></script>
 </body>
 </html>

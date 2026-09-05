@@ -42,7 +42,11 @@
     var obekHarita = {};
     (window.OBEKLER || []).forEach(function (o) { obekHarita[o.f] = o; });
 
-    kayitlar = Object.keys(ham).map(function (kimlik) {
+    kayitlar = Object.keys(ham).filter(function (kimlik) {
+      // Cümle kayıtları Cümleler sayfasına ait; burada adları çözülemeyeceği
+      // için kelime/öbek listesine karıştırılmaz.
+      return Il.kimlikCoz(kimlik).tur !== 'cumle';
+    }).map(function (kimlik) {
       var cozum = Il.kimlikCoz(kimlik);
       var ad = cozum.ad;
       var belirliTur = cozum.tur;
@@ -69,7 +73,7 @@
     var ham = Il.tumKayitlar();
     return Object.keys(ham).some(function (kimlik) {
       var cozum = Il.kimlikCoz(kimlik);
-      if (cozum.tur === 'kelime') return false;
+      if (cozum.tur === 'kelime' || cozum.tur === 'cumle') return false;
       return cozum.tur === 'obek' ||
         (!Veri.dizinKaydi(cozum.ad) && cozum.ad.indexOf(' ') !== -1);
     });
