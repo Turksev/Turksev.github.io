@@ -164,20 +164,18 @@
     }
     $('bos').hidden = true;
     if (kartModu) kartCiz(); else listeCiz();
-    var cevirili = suzulmus.filter(function (c) { return c.t; }).length;
-    $('sayac').textContent = say(suzulmus.length) + ' cümle · ' +
-      say(cevirili) + ' tanesinin çevirisi hazır';
+    var eksik = suzulmus.length - suzulmus.filter(function (c) { return c.t; }).length;
+    $('sayac').textContent = say(suzulmus.length) + ' cümle' +
+      (eksik ? ' · ' + say(eksik) + ' tanesinin çevirisi henüz yok' : '');
   }
 
   function suz() {
     var q = ($('ara').value || '').trim().toLowerCase();
     var b = $('bolum').value;
     var y = $('yil').value;
-    var sadeceCevirili = $('cevirili').checked;
     suzulmus = HEPSI.filter(function (c) {
       if (b && c.b !== b) return false;
       if (y && String(c.y) !== y) return false;
-      if (sadeceCevirili && !c.t) return false;
       if (!q) return true;
       return c.e.toLowerCase().indexOf(q) >= 0 ||
              (c.t && c.t.toLowerCase().indexOf(q) >= 0);
@@ -202,10 +200,9 @@
     });
     $('bolum').addEventListener('change', suz);
     $('yil').addEventListener('change', suz);
-    $('cevirili').addEventListener('change', suz);
     $('temizle').addEventListener('click', function () {
       $('ara').value = ''; $('bolum').value = ''; $('yil').value = '';
-      $('cevirili').checked = false; suz();
+      suz();
     });
     $('dahaFazla').addEventListener('click', function () {
       gosterilen += GOSTER; ciz();

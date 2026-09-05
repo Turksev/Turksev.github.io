@@ -8,6 +8,10 @@ window.EK_OBEKLER = [
 
 /* ---------------------------------------------------------- deyimsel fiil */
 
+{f:"come down with", t:"deyimsel fiil", tr:"(hastalığa) yakalanmak, hastalanmak",
+ ex:"Researchers monitoring the outbreak noted that children who had been vaccinated rarely came down with the more severe form of the illness.",
+ exTr:"Salgını izleyen araştırmacılar, aşılanmış çocukların hastalığın daha ağır biçimine nadiren yakalandığını kaydetti."},
+
 {f:"give rise to", t:"deyimsel fiil", tr:"yol açmak, neden olmak",
  ex:"The rapid expansion of coastal cities has given rise to serious concerns about flooding, water scarcity and the loss of wetlands.",
  exTr:"Kıyı şehirlerinin hızla genişlemesi; sel, su kıtlığı ve sulak alanların kaybı konusunda ciddi endişelere yol açtı."},
@@ -329,6 +333,10 @@ window.EK_OBEKLER = [
  exTr:"Görüşülen göçmenlerin çoğu, çok azı kalıcı olarak dönmeyi düşünse de terk ettikleri köylere hâlâ hasret duyuyordu."},
 
 /* ----------------------------------------------------------- edat kalıbı */
+
+{f:"on the basis of", t:"edat kalıbı", tr:"-e dayanarak, ... temelinde",
+ ex:"Applicants were ranked on the basis of their academic record rather than the interview, which the committee considered far too subjective.",
+ exTr:"Adaylar, komitenin fazlasıyla öznel bulduğu mülakat yerine akademik geçmişleri temel alınarak sıralandı."},
 
 {f:"apart from", t:"edat kalıbı", tr:"-in dışında, -den başka",
  ex:"Apart from a brief recovery in the late 1990s, industrial employment in the region has declined continuously since the mines were closed.",
