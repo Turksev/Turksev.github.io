@@ -12,14 +12,14 @@
    "python tools/sw-surum.py" çalıştır (özet değiştiyse SURUM'u artırır).
    ============================================================ */
 
-var SURUM = 'yds-v175';
+var SURUM = 'yds-v176';
 /* İçerik özeti — tools/sw-surum.py üretir, elle değiştirme. Yayımlanan
    HTML/JS/CSS/veri dosyaları değişince özet değişir ve betik SURUM'u
    artırır. tools/test-uretim/sw-surum-test.js aynı özeti hesaplayıp
    karşılaştırır: dosya değişip sürüm artmamışsa CI kırmızıya döner.
    (5 Eylül 2026: altı yayın boyunca sürüm v173'te kaldı; kullanıcı yeni
    HTML + eski JS gördü.) */
-var ICERIK_OZETI = '9dbdb895';
+var ICERIK_OZETI = 'af6d9b19';
 var ONBELLEK = SURUM;
 
 /* Kurulumda indirilenler: sayfalar, kod ve küçük veri dosyaları.

@@ -13,7 +13,7 @@ Yayında: <https://turksev.github.io>
 | `durum.html` | Çalışılmış her şey tek listede (kelime, öbek, aile üyesi): üstte **sistemdeki toplam kayıt**, kutu sekmelerinde sayı ve bu toplama oranı ("hepsi" dahil), arama/süzme/sıralama |
 | `kelimeler.html` | 9.379 kelime ve yapı, 7 katman + **aralıklı tekrar (Leitner)**: bugünün destesi, kart modu, ipucu, sesli okuma |
 | `obekler.html` | 1.879 kelime öbeği (607 deyimsel fiil, 346 edat kalıbı, 865 sabit, 61 geçiş ifadesi) — ayrı Leitner destesi |
-| `cumleler.html` | 7.705 sınav cümlesi ve Türkçe çevirisi (2013–2026, sınav + bölüm + soru no); liste ve kart modu, kutu (Leitner) ilerlemesi, yıl/bölüm filtresi |
+| `cumleler.html` | 7.658 sınav cümlesi ve Türkçe çevirisi (2013–2026, sınav + bölüm + soru no); liste ve kart modu, kutu (Leitner) ilerlemesi, yıl/bölüm filtresi |
 | `quiz.html` | Alıştırma soruları: 12 kategori, anında çözüm, yanlış defterinden çalışma |
 | `deneme.html` | **Süreli deneme sınavı**: üç sabit 80 soruluk form, geri sayım, soru ızgarası, işaretleme, yenileme sonrası oturum kurtarma, 100 üzerinden YDS puanı, kategori karnesi |
 | `gramer.html` | 10 başlıkta konu anlatımı, kural tabloları ve sınav tuzakları |
@@ -105,7 +105,7 @@ data/
   kelime-aliaslari.js eski başlıklardaki ilerlemeyi düzeltilmiş başlıklara taşır
   kelime-provenans.json denetlenen öğelerin sınav kimliği/sayfa/soru kaynakları
   obekler.js          1.879 kelime öbeği
-  cumleler.js         7.705 sınav cümlesi + çevirisi (e, t, s=sınav, b=bölüm, n=soru no, y=yıl)
+  cumleler.js         7.658 sınav cümlesi + çevirisi (e, t, s=sınav, b=bölüm, n=soru no, y=yıl)
   kelime-bilgi.js     7.820 kelimenin sınav kullanım notu (ℹ; tembel yüklenir, 3,8 MB)
   sayilar.js          içerik sayaçları (üretilir)
   sorular.js          temel soru bankası + okuma parçaları
