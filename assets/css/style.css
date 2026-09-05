@@ -1591,3 +1591,63 @@ mark {
   .topic-neighbours { grid-template-columns: 1fr; }
   .topic-neighbours a:last-child { text-align: left; }
 }
+
+/* ── Kelime bilgi notu ─────────────────────────────────────────────
+   Kart üzerindeki ℹ ile açılan panel: kelimenin sınavdaki kullanımı.
+   Kartın normal içeriğinden ayrılsın diye üstten çizgili ve hafif zeminli. */
+.kb-panel {
+  grid-column: 1 / -1;
+  margin-top: 12px;
+  padding: 14px 16px;
+  border-top: 1px solid var(--line);
+  background: var(--bg-soft, rgba(0, 0, 0, .02));
+  border-radius: 10px;
+  font-size: .93rem;
+}
+.kb-baslik { font-weight: 700; margin-bottom: 10px; }
+.kb-rozetler { display: flex; flex-wrap: wrap; gap: 6px; }
+.kb-ozet { margin: 10px 0 0; }
+.kb-blok { margin-top: 14px; }
+.kb-blok h4 {
+  margin: 0 0 6px; font-size: .82rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .04em; color: var(--muted);
+}
+.kb-yillar { color: var(--muted); }
+.kb-gecis {
+  margin-bottom: 10px; padding-left: 10px;
+  border-left: 3px solid var(--line);
+}
+.kb-yer { font-size: .85rem; color: var(--muted); margin-bottom: 3px; }
+.kb-dogru {
+  display: inline-block; padding: 1px 7px; border-radius: 7px; font-weight: 600;
+  background: var(--ok-soft); color: var(--ok);
+}
+.kb-celdirici {
+  display: inline-block; padding: 1px 7px; border-radius: 7px;
+  background: var(--bg-soft, rgba(0, 0, 0, .05)); color: var(--muted);
+}
+.kb-sik { font-weight: 600; }
+.kb-kok { margin-top: 2px; color: var(--muted); }
+.kb-bos, .kb-yukleniyor { color: var(--muted); font-style: italic; }
+
+/* ── Cümleler sayfası ──────────────────────────────────────────────
+   Cümle tıklanınca çevirisi açılır. Liste uzun olduğu için satırlar
+   sade tutuldu; açık olan satır sol kenarından işaretlenir. */
+.cum-list { display: flex; flex-direction: column; gap: 10px; margin-top: 6px; }
+.cum {
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--card, transparent);
+  cursor: pointer;
+  transition: border-color .15s, background .15s;
+}
+.cum:hover { border-color: var(--accent); }
+.cum.acik { border-color: var(--accent); box-shadow: inset 3px 0 0 var(--accent); }
+.cum-en { line-height: 1.55; }
+.cum-alt { margin-top: 6px; font-size: .82rem; color: var(--muted); }
+.cum-tr {
+  margin-top: 10px; padding-top: 10px;
+  border-top: 1px dashed var(--line);
+  line-height: 1.55;
+}

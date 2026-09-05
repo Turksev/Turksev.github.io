@@ -316,6 +316,8 @@
           '</div>' +
         '</div>' +
         '<div class="act">' +
+          '<button class="star" type="button" data-ne="bilgi" title="Sınavdaki kullanımı" aria-label="' +
+            kacar(d.e) + ' kelimesinin sınavdaki kullanımını göster">ℹ</button>' +
           '<button class="btn ghost sm" type="button" data-ne="calis" aria-label="' + kacar(d.e) +
             ' kelimesini kartta çalış">Kartta çalış</button>' +
           '<button class="star" type="button" data-ne="ses" title="Telaffuzu dinle" aria-label="' +
@@ -539,6 +541,10 @@
     var ne = btn.getAttribute('data-ne');
 
     if (ne === 'ses') { seslendir(en); return; }
+    if (ne === 'bilgi') {
+      if (window.KelimeBilgi) window.KelimeBilgi.ac(en, kutu);
+      return;
+    }
     if (ne !== 'calis') return;
     kartIndex = suzulmus.findIndex(function (d) { return d.e === en; });
     if (kartIndex < 0) return;
