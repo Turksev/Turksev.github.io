@@ -85,15 +85,47 @@
           <input type="checkbox" id="cevirili"> Yalnız çevirisi hazır olanlar
         </span>
       </label>
+
+      <button class="btn ghost sm" type="button" id="mod">Kart moduna geç</button>
     </div>
 
     <p class="small muted" id="sayac" role="status" aria-live="polite" aria-atomic="true">Yükleniyor…</p>
 
+    <!-- liste görünümü -->
     <div id="liste" class="cum-list"></div>
 
     <p class="center" style="margin-top:16px">
       <button class="btn ghost" type="button" id="dahaFazla" hidden>Daha fazla göster</button>
     </p>
+
+    <!-- kart görünümü -->
+    <div id="kartAlan" hidden>
+      <div class="card flash cum-kart" id="kart" role="button" tabindex="0" aria-expanded="false"
+           aria-label="Cümlenin çevirisini göster veya gizle">
+        <div>
+          <div class="cum-kart-en" id="kartOn" lang="en">—</div>
+          <span class="badge" id="kartKaynak" style="margin-top:12px">—</span>
+          <div class="back" id="kartArka" hidden>
+            <div class="cum-kart-tr" id="kartTr"></div>
+          </div>
+          <div class="hint" id="kartIpucu">Çeviriyi görmek için karta tıkla · boşluk tuşu</div>
+        </div>
+      </div>
+
+      <div class="flash-nav" style="margin-top:14px">
+        <button class="btn ghost sm" type="button" id="onceki">← Önceki</button>
+        <span class="small muted" id="kartSayac">0 / 0</span>
+        <button class="btn sm" type="button" id="sonraki">Sonraki →</button>
+      </div>
+
+      <div class="flash-actions">
+        <button class="btn ghost sm" type="button" id="karistir">🔀 Karıştır</button>
+      </div>
+
+      <p class="center small muted" style="margin-top:14px">
+        Klavye: <code>←</code> <code>→</code> geçiş · <code>boşluk</code> çeviriyi göster
+      </p>
+    </div>
 
     <div class="empty" id="bos" hidden>
       Bu filtrelerle eşleşen cümle yok.
