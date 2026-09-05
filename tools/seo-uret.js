@@ -229,6 +229,7 @@ const STATIC_URLS = [
   ["/kelimeler.html", "0.9"],
   ["/aileler.html", "0.9"],
   ["/obekler.html", "0.9"],
+  ["/cumleler.html", "0.9"],
   ["/quiz.html", "0.9"],
   ["/deneme.html", "0.9"],
   ["/durum.html", "0.6"],
