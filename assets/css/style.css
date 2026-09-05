@@ -1651,3 +1651,21 @@ mark {
   border-top: 1px dashed var(--line);
   line-height: 1.55;
 }
+
+/* Cümle kartı: kelime kartından farklı olarak ön yüz tek kelime değil tam
+   cümle, o yüzden punto daha küçük ve satır aralığı geniş. */
+.cum-kart .cum-kart-en {
+  font-size: clamp(1.05rem, 2.6vw, 1.35rem);
+  font-weight: 600;
+  line-height: 1.6;
+  max-width: 60ch;
+  margin: 0 auto;
+}
+.cum-kart .cum-kart-tr {
+  font-size: clamp(1rem, 2.4vw, 1.2rem);
+  line-height: 1.6;
+  max-width: 60ch;
+  margin: 0 auto;
+  padding-top: 12px;
+  border-top: 1px dashed var(--line);
+}

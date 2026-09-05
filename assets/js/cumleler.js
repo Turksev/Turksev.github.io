@@ -52,7 +52,36 @@
       '</article>';
   }
 
-  function ciz() {
+  /* ---- kart modu ---- */
+  var kartModu = false;
+  var kartIndex = 0;
+  var kartAcik = false;
+
+  function kaynakEtiketi(c) {
+    var p = [];
+    if (c.s) p.push(c.s);
+    if (c.b) p.push(c.b + (c.n ? ' · ' + c.n + '. soru' : ''));
+    return p.join(' · ') || '—';
+  }
+
+  function kartCiz() {
+    if (!suzulmus.length) return;
+    if (kartIndex >= suzulmus.length) kartIndex = 0;
+    if (kartIndex < 0) kartIndex = suzulmus.length - 1;
+    var c = suzulmus[kartIndex];
+    $('kartOn').textContent = c.e;
+    $('kartKaynak').textContent = kaynakEtiketi(c);
+    $('kartTr').textContent = c.t || 'Bu cümlenin çevirisi henüz hazırlanmadı.';
+    $('kartArka').hidden = !kartAcik;
+    $('kart').setAttribute('aria-expanded', kartAcik ? 'true' : 'false');
+    $('kartIpucu').hidden = kartAcik;
+    $('kartSayac').textContent = say(kartIndex + 1) + ' / ' + say(suzulmus.length);
+  }
+
+  function kartCevir() { kartAcik = !kartAcik; kartCiz(); }
+  function kartGit(adim) { kartIndex += adim; kartAcik = false; kartCiz(); }
+
+  function listeCiz() {
     var el = $('liste');
     if (!suzulmus.length) {
       el.innerHTML = '';
@@ -67,6 +96,21 @@
     var kalan = suzulmus.length - dilim.length;
     $('dahaFazla').hidden = kalan <= 0;
     if (kalan > 0) $('dahaFazla').textContent = 'Daha fazla göster (' + say(kalan) + ' cümle daha)';
+  }
+
+  function ciz() {
+    var bos = !suzulmus.length;
+    $('kartAlan').hidden = !kartModu || bos;
+    $('liste').hidden = kartModu;
+    $('dahaFazla').hidden = kartModu || bos;
+    if (bos) {
+      $('bos').hidden = false;
+      $('liste').innerHTML = '';
+      $('sayac').textContent = 'Eşleşen cümle yok.';
+      return;
+    }
+    $('bos').hidden = true;
+    if (kartModu) kartCiz(); else listeCiz();
     var cevirili = suzulmus.filter(function (c) { return c.t; }).length;
     $('sayac').textContent = say(suzulmus.length) + ' cümle · ' +
       say(cevirili) + ' tanesinin çevirisi hazır';
@@ -86,6 +130,8 @@
              (c.t && c.t.toLowerCase().indexOf(q) >= 0);
     });
     gosterilen = GOSTER;
+    kartIndex = 0;
+    kartAcik = false;
     ciz();
   }
 
@@ -119,6 +165,39 @@
       var tr = k.querySelector('.cum-tr');
       tr.hidden = !tr.hidden;
       k.classList.toggle('acik', !tr.hidden);
+    });
+
+    /* ---- kart modu olayları ---- */
+    $('mod').addEventListener('click', function () {
+      kartModu = !kartModu;
+      kartAcik = false;
+      $('mod').textContent = kartModu ? 'Liste moduna dön' : 'Kart moduna geç';
+      ciz();
+      if (kartModu) $('kart').focus();
+    });
+
+    $('kart').addEventListener('click', kartCevir);
+    $('kart').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') { e.preventDefault(); kartCevir(); }
+    });
+    $('onceki').addEventListener('click', function () { kartGit(-1); });
+    $('sonraki').addEventListener('click', function () { kartGit(1); });
+    $('karistir').addEventListener('click', function () {
+      // Fisher-Yates: filtrelenmiş listeyi yerinde karıştır
+      for (var i = suzulmus.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var t = suzulmus[i]; suzulmus[i] = suzulmus[j]; suzulmus[j] = t;
+      }
+      kartIndex = 0; kartAcik = false; ciz();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (!kartModu) return;
+      var h = document.activeElement;
+      if (h && /^(INPUT|SELECT|TEXTAREA)$/.test(h.tagName)) return;
+      if (e.key === 'ArrowRight') { e.preventDefault(); kartGit(1); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); kartGit(-1); }
+      else if (e.key === ' ') { e.preventDefault(); kartCevir(); }
     });
 
     suz();
