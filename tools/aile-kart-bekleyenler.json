@@ -10,15 +10,17 @@
     },
     "reasonCatalog": {
       "medium-below-zipf-threshold": "Doğrudan YDS kanıtı olmayan ve Zipf değeri 3,5'in altında kalan orta güvenli aday; kart yapılmadan önce ayrıca insan denetimi gerekir.",
-      "pre-existing-human-reviewed-root-card": "Bu aday düşük-Zipf orta havuz oluşturulmadan önce, kullanıcının kökü ayrı kart olarak koruma kuralıyla insan denetimli bir partide yayımlanmıştır; bu entegrasyon yeni kart üretmez ve mevcut kimliği değiştirmez."
+      "pre-existing-human-reviewed-root-card": "Bu aday düşük-Zipf orta havuz oluşturulmadan önce, kullanıcının kökü ayrı kart olarak koruma kuralıyla insan denetimli bir partide yayımlanmıştır; bu entegrasyon yeni kart üretmez ve mevcut kimliği değiştirmez.",
+      "attested-in-newly-opened-full-booklets": "Bu aday, ledger kurulduğunda YDS kanıtı bulunmadığı için beklemeye alınmıştı. 2024-2026 tam kitapçıkları ve 2023 görsel transkriptleri korpusa eklendikten sonra kelimenin gerçek sınav kanıtı ortaya çıktı; bekleme gerekçesi (kanıt yokluğu) ortadan kalktığı için kart üretildi. exams alanı güncel korpustan yeniden ölçüldü."
     },
     "source": "word-family-audit/word-family-candidates.csv",
     "sourceSha256": "A96BC08FEE9649E6E104ADD7BC2CF48DB128901AC32E241DF176D961E94C583A"
   },
   "summary": {
     "eligible": 478,
-    "pending": 477,
-    "preExistingReviewed": 1
+    "pending": 425,
+    "preExistingReviewed": 1,
+    "examEvidenceAdd": 52
   },
   "candidates": [
     {
@@ -141,12 +143,14 @@
       ],
       "zipf": 3.21,
       "source_score": 6.8786,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 768,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2025",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "acknowledgment",
@@ -267,12 +271,14 @@
       ],
       "zipf": 3.38,
       "source_score": 7.2429,
-      "exams": 0,
-      "freq": 0,
+      "exams": 4,
+      "freq": 4,
       "confidence": "medium",
       "source_row": 605,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2023,2025",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "aesthetically",
@@ -321,12 +327,14 @@
       ],
       "zipf": 3.0,
       "source_score": 6.4286,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 976,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2023",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "affirmation",
@@ -796,12 +804,14 @@
       ],
       "zipf": 3.43,
       "source_score": 7.35,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 4,
       "confidence": "medium",
       "source_row": 566,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2024",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "autobiographical",
@@ -925,12 +935,14 @@
       ],
       "zipf": 3.38,
       "source_score": 7.2429,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 606,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2023",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "biologically",
@@ -1469,12 +1481,14 @@
       ],
       "zipf": 3.09,
       "source_score": 6.6214,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 892,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2026",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "collaborator",
@@ -1487,12 +1501,14 @@
       ],
       "zipf": 3.16,
       "source_score": 6.7714,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 829,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2024",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "collegiate",
@@ -1739,12 +1755,14 @@
       ],
       "zipf": 3.45,
       "source_score": 7.3929,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 550,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2025",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "configure",
@@ -2047,12 +2065,14 @@
       ],
       "zipf": 3.29,
       "source_score": 7.05,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 2,
       "confidence": "medium",
       "source_row": 688,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2025",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "cortical",
@@ -2066,12 +2086,14 @@
       ],
       "zipf": 3.06,
       "source_score": 6.5571,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 913,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2023",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "crafty",
@@ -2445,12 +2467,14 @@
       ],
       "zipf": 3.14,
       "source_score": 6.7286,
-      "exams": 0,
-      "freq": 0,
+      "exams": 3,
+      "freq": 3,
       "confidence": "medium",
       "source_row": 844,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2023,2025",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "derivation",
@@ -2463,12 +2487,14 @@
       ],
       "zipf": 3.04,
       "source_score": 6.5143,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 933,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2024",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "designate",
@@ -2499,12 +2525,14 @@
       ],
       "zipf": 3.26,
       "source_score": 6.9857,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 717,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2025",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "diffuse",
@@ -2716,12 +2744,14 @@
       ],
       "zipf": 3.49,
       "source_score": 7.4786,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 519,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2025",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "eater",
@@ -2734,12 +2764,14 @@
       ],
       "zipf": 3.42,
       "source_score": 7.3286,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 574,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2025",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "edgy",
@@ -3098,12 +3130,14 @@
       ],
       "zipf": 3.38,
       "source_score": 7.2429,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 608,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2025",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "expansive",
@@ -3152,12 +3186,14 @@
       ],
       "zipf": 3.48,
       "source_score": 7.4571,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 530,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2025",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "explanatory",
@@ -3206,12 +3242,14 @@
       ],
       "zipf": 3.03,
       "source_score": 6.4929,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 948,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2026",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "feasibility",
@@ -3333,12 +3371,14 @@
       ],
       "zipf": 3.14,
       "source_score": 6.7286,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 846,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2025",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "foolishness",
@@ -3588,12 +3628,14 @@
       ],
       "zipf": 3.35,
       "source_score": 7.1786,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 637,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2023",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "glacial",
@@ -3808,12 +3850,14 @@
       ],
       "zipf": 3.32,
       "source_score": 7.1143,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 2,
       "confidence": "medium",
       "source_row": 666,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2025",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "hilly",
@@ -3988,12 +4032,14 @@
       ],
       "zipf": 3.4,
       "source_score": 7.2857,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 587,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2024",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "informally",
@@ -4350,12 +4396,14 @@
       ],
       "zipf": 3.08,
       "source_score": 6.6,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 900,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2025",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "laughable",
@@ -4494,12 +4542,14 @@
       ],
       "zipf": 3.36,
       "source_score": 7.2,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 628,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2025",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "lexicon",
@@ -4914,12 +4964,14 @@
       ],
       "zipf": 3.21,
       "source_score": 6.8786,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 775,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2025",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "militarily",
@@ -5005,12 +5057,14 @@
       ],
       "zipf": 3.46,
       "source_score": 7.4143,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 543,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2023",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "mobilization",
@@ -5132,12 +5186,14 @@
       ],
       "zipf": 3.15,
       "source_score": 6.75,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 837,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2024",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "multiculturalism",
@@ -5313,12 +5369,14 @@
       ],
       "zipf": 3.49,
       "source_score": 7.4786,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 522,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2024",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "needlessly",
@@ -5440,12 +5498,14 @@
       ],
       "zipf": 3.23,
       "source_score": 6.9214,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 3,
       "confidence": "medium",
       "source_row": 757,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2025",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "nightly",
@@ -5494,12 +5554,14 @@
       ],
       "zipf": 3.36,
       "source_score": 7.2,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 630,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2025",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "numeric",
@@ -5710,12 +5772,14 @@
       ],
       "zipf": 3.26,
       "source_score": 6.9857,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 724,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2023",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "organically",
@@ -5800,12 +5864,14 @@
       ],
       "zipf": 3.14,
       "source_score": 6.7286,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 849,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2025",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "persuasion",
@@ -5855,12 +5921,14 @@
       ],
       "zipf": 3.15,
       "source_score": 6.75,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 2,
       "confidence": "medium",
       "source_row": 838,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2025",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "phonetic",
@@ -5874,12 +5942,14 @@
       ],
       "zipf": 3.02,
       "source_score": 6.4714,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 6,
       "confidence": "medium",
       "source_row": 961,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2024",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "pictorial",
@@ -6306,12 +6376,14 @@
       ],
       "zipf": 3.19,
       "source_score": 6.8357,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 804,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2025",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "provocative",
@@ -6540,12 +6612,14 @@
       ],
       "zipf": 3.2,
       "source_score": 6.8571,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 792,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2024",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "refinery",
@@ -6576,12 +6650,14 @@
       ],
       "zipf": 3.0,
       "source_score": 6.4286,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 985,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2023",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "regimental",
@@ -6613,12 +6689,14 @@
       ],
       "zipf": 3.0,
       "source_score": 6.4286,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 2,
       "confidence": "medium",
       "source_row": 987,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2025",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "reinforcement",
@@ -6631,12 +6709,14 @@
       ],
       "zipf": 3.43,
       "source_score": 7.35,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 572,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2025",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "relentlessly",
@@ -6721,12 +6801,14 @@
       ],
       "zipf": 3.08,
       "source_score": 6.6,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 2,
       "confidence": "medium",
       "source_row": 902,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2024",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "resent",
@@ -6829,12 +6911,14 @@
       ],
       "zipf": 3.04,
       "source_score": 6.5143,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 939,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2024",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "retrieval",
@@ -6847,12 +6931,14 @@
       ],
       "zipf": 3.33,
       "source_score": 7.1357,
-      "exams": 0,
-      "freq": 0,
+      "exams": 2,
+      "freq": 2,
       "confidence": "medium",
       "source_row": 660,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2023,2025",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "rhetorical",
@@ -6902,12 +6988,14 @@
       ],
       "zipf": 3.27,
       "source_score": 7.0071,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 714,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2024",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "rigor",
@@ -7084,12 +7172,14 @@
       ],
       "zipf": 3.26,
       "source_score": 6.9857,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 725,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2023",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "sectional",
@@ -7284,12 +7374,14 @@
       ],
       "zipf": 3.45,
       "source_score": 7.3929,
-      "exams": 0,
-      "freq": 0,
+      "exams": 2,
+      "freq": 2,
       "confidence": "medium",
       "source_row": 552,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2025,2026",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "shadowy",
@@ -7572,12 +7664,14 @@
       ],
       "zipf": 3.02,
       "source_score": 6.4714,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 963,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2025",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "spectral",
@@ -7718,12 +7812,14 @@
       ],
       "zipf": 3.02,
       "source_score": 6.4714,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 964,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2026",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "suffice",
@@ -8155,12 +8251,14 @@
       ],
       "zipf": 3.41,
       "source_score": 7.3071,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 584,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2023",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "triangular",
@@ -8317,12 +8415,14 @@
       ],
       "zipf": 3.36,
       "source_score": 7.2,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 634,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2023",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "unhappiness",
@@ -8500,12 +8600,14 @@
       ],
       "zipf": 3.41,
       "source_score": 7.3071,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 585,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2023",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "vividly",
@@ -8608,12 +8710,14 @@
       ],
       "zipf": 3.29,
       "source_score": 7.05,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 2,
       "confidence": "medium",
       "source_row": 694,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2025",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "weirdly",
@@ -8662,12 +8766,14 @@
       ],
       "zipf": 3.05,
       "source_score": 6.5357,
-      "exams": 0,
-      "freq": 0,
+      "exams": 1,
+      "freq": 1,
       "confidence": "medium",
       "source_row": 930,
-      "decision": "pending",
-      "reason": "medium-below-zipf-threshold"
+      "decision": "exam-evidence-add",
+      "reason": "attested-in-newly-opened-full-booklets",
+      "examYears": "2025",
+      "reviewedOn": "2026-09-05"
     },
     {
       "candidate": "workable",

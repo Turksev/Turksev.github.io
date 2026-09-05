@@ -32,8 +32,11 @@ assert.deepStrictEqual(belge.policy.filter,
   { confidence: 'medium', exams: 0, zipf: '< 3.5' }, 'bekleyen kaynak filtresi');
 assert.ok(/^[0-9A-F]{64}$/.test(belge.policy.sourceSha256), 'kaynak CSV SHA-256');
 assert.strictEqual(belge.summary.eligible, 478, 'düşük-Zipf orta aday toplamı');
-assert.strictEqual(belge.summary.pending, 477, 'gerçek bekleyen toplamı');
+assert.strictEqual(belge.summary.pending, 425, 'gerçek bekleyen toplamı');
 assert.strictEqual(belge.summary.preExistingReviewed, 1, 'önceden incelenmiş istisna toplamı');
+// 05.09.2026: tam kitapçıklar açılınca 52 adayın gerçek sınav kanıtı ortaya çıktı;
+// bekleme gerekçesi (YDS kanıtı yok) ortadan kalktığı için karta dönüştürüldüler.
+assert.strictEqual(belge.summary.examEvidenceAdd, 52, 'sınav kanıtıyla eklenen toplamı');
 assert.strictEqual(belge.candidates.length, 478, 'ledger aday sayısı');
 
 var site = new Set(Array.from(pencere.KELIME_DIZIN, function (x) { return x.e; }));
@@ -56,17 +59,27 @@ belge.candidates.forEach(function (kayit) {
   assert.ok(onceki < kayit.candidate, kayit.candidate + ': adaylar alfabetik değil');
   onceki = kayit.candidate;
   assert.strictEqual(kayit.confidence, 'medium', kayit.candidate + ': güven düzeyi');
-  assert.strictEqual(kayit.exams, 0, kayit.candidate + ': sınav kanıtı');
   assert.ok(Number.isFinite(kayit.zipf) && kayit.zipf < 3.5,
     kayit.candidate + ': Zipf eşiği');
   assert.ok(!aliasAdaylari.has(kayit.candidate), kayit.candidate + ': alias kararıyla çakışıyor');
   assert.ok(!retAdaylari.has(kayit.candidate), kayit.candidate + ': ret kararıyla çakışıyor');
   if (kayit.decision === 'pending') {
+    // Bekleme gerekçesi kanıt yokluğu; kanıt çıkarsa aday bu daldan çıkar.
+    assert.strictEqual(kayit.exams, 0, kayit.candidate + ': bekleyen adayda sınav kanıtı');
     assert.strictEqual(kayit.reason, 'medium-below-zipf-threshold',
       kayit.candidate + ': bekleme gerekçesi');
     assert.ok(!site.has(kayit.candidate), kayit.candidate + ': bekleyen aday kart olmuş');
     assert.ok(!testler.has(kayit.candidate), kayit.candidate + ': bekleyen aday test olmuş');
     assert.ok(!eklenen.has(kayit.candidate), kayit.candidate + ': bekleyen aday add kararı almış');
+  } else if (kayit.decision === 'exam-evidence-add') {
+    // Ledger kurulduğunda kanıt yoktu; tam kitapçıklar açılınca ortaya çıktı.
+    assert.strictEqual(kayit.reason, 'attested-in-newly-opened-full-booklets',
+      kayit.candidate + ': sınav kanıtı gerekçesi');
+    assert.ok(kayit.exams > 0, kayit.candidate + ': sınav kanıtı sayısı sıfır');
+    assert.ok(typeof kayit.examYears === 'string' && kayit.examYears,
+      kayit.candidate + ': sınav yılları eksik');
+    assert.ok(site.has(kayit.candidate), kayit.candidate + ': kanıtlı aday sitede yok');
+    istisnalar.push(kayit.candidate);
   } else {
     assert.strictEqual(kayit.decision, 'already-reviewed-add',
       kayit.candidate + ': bilinmeyen ledger kararı');
@@ -78,6 +91,10 @@ belge.candidates.forEach(function (kayit) {
   }
 });
 
-assert.deepStrictEqual(istisnalar, ['designate'],
-  'düşük-Zipf havuzundaki tek tarihsel kök-kart istisnası');
-console.log('aile-kart-bekleyenler: 478 uygun aday; 477 bekleyen, designate tarihsel istisna');
+// designate: tarihsel kök-kart istisnası. Kalan 52: tam kitapçıklar açılınca
+// sınav kanıtı ortaya çıkanlar.
+assert.ok(istisnalar.indexOf('designate') !== -1,
+  'tarihsel kök-kart istisnası designate ledgerda yok');
+assert.strictEqual(istisnalar.length, 53, 'ledger istisna toplamı');
+console.log('aile-kart-bekleyenler: 478 uygun aday; 425 bekleyen, ' +
+  '52 sınav kanıtıyla eklendi, designate tarihsel istisna');

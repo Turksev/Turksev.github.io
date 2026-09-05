@@ -1,5 +1,5 @@
 /* ============================================================
-   Kelime dizini — 9385 kelime
+   Kelime dizini — 9379 kelime
    Her sayfada yüklenir; liste, arama ve tekrar özeti bunu kullanır.
    Alanlar: e=kelime, t=kısa anlam, p=YDS öncelik puanı, k=katman, y=tür
    Örnek cümleler katman dosyalarındadır (data/kelime-k1..k7.js).
@@ -9227,7 +9227,6 @@ window.KELIME_DIZIN = [
 {e:"nonconforming",t:"kurallara uymayan, normlara aykırı, uyumsuz",p:7.5,k:6,y:"sıfat"},
 {e:"syllabic",t:"heceyle ilgili, hecesel, heceli",p:7.5,k:6,y:"sıfat"},
 {e:"unsocial",t:"sosyal olmayan, toplu hâlde yaşamayan; insanlardan kaçan",p:7.5,k:6,y:"sıfat"},
-{e:"disposition",t:"mizaç, huy, yaradılış, tabiat; eğilim, yatkınlık",p:7.5,k:7,y:"isim"},
 {e:"pivot",t:"mil, dönme ekseni, dayanak noktası; eksen etrafında…",p:7.5,k:7,y:"isim, fiil"},
 {e:"foodstuff",t:"yiyecek, gıda maddesi, besin maddesi",p:7.5,k:6,y:"isim"},
 {e:"malarial",t:"sıtmayla ilgili, sıtmalı, sıtma taşıyan",p:7.5,k:6,y:"sıfat"},
@@ -9284,10 +9283,8 @@ window.KELIME_DIZIN = [
 {e:"presbyopia",t:"presbiyopi, yaşa bağlı yakını görememe",p:7.1,k:6,y:"isim"},
 {e:"adversary",t:"rakip, hasım, düşman",p:7.1,k:7,y:"isim"},
 {e:"commemoration",t:"anma, anma töreni, anısını yaşatma",p:7.1,k:7,y:"isim"},
-{e:"harmonic",t:"harmonik, armonik; uyumlu titreşimle ilgili",p:7.1,k:7,y:"sıfat"},
 {e:"ornament",t:"süs, süs eşyası, bezeme",p:7.1,k:7,y:"isim"},
 {e:"raider",t:"akıncı, baskıncı, yağmacı",p:7.1,k:7,y:"isim"},
-{e:"spiritually",t:"manevi olarak, ruhen, tinsel açıdan",p:7.1,k:7,y:"zarf"},
 {e:"stagnant",t:"durgun, akmayan (su); durgun, hareketsiz, gelişme…",p:7.1,k:7,y:"sıfat"},
 {e:"dysphasia",t:"disfazi, kısmi konuşma ve dil yitimi",p:7.1,k:6,y:"isim"},
 {e:"it is advisable to",t:"yapılması tavsiye edilir/uygundur; kişisiz ve resmî tavsiye",p:7.0,k:6,y:"modal yapı"},
@@ -9310,7 +9307,6 @@ window.KELIME_DIZIN = [
 {e:"enlighten",t:"aydınlatmak, bilgilendirmek, anlamasını sağlamak",p:6.9,k:7,y:"fiil"},
 {e:"envious",t:"kıskanç, imrenen, gıpta eden",p:6.9,k:7,y:"sıfat"},
 {e:"fluorescence",t:"floresans, ışıldama, flüorışıma",p:6.9,k:7,y:"isim"},
-{e:"fondly",t:"sevgiyle, şefkatle, muhabbetle",p:6.9,k:7,y:"zarf"},
 {e:"individuality",t:"bireysellik, kendine özgülük, kişilik",p:6.9,k:7,y:"isim"},
 {e:"liberate",t:"özgürleştirmek, kurtarmak, serbest bırakmak",p:6.9,k:7,y:"fiil"},
 {e:"vigil",t:"nöbet, uyanık bekleyiş, anma nöbeti",p:6.9,k:7,y:"isim"},
@@ -9348,8 +9344,6 @@ window.KELIME_DIZIN = [
 {e:"determinable",t:"belirlenebilir, saptanabilir, tespit edilebilir",p:6.5,k:6,y:"sıfat"},
 {e:"eccentrically",t:"tuhaf bir biçimde, acayip bir şekilde",p:6.5,k:6,y:"zarf"},
 {e:"interrelation",t:"karşılıklı ilişki, birbiriyle bağlantı",p:6.5,k:6,y:"isim"},
-{e:"connective",t:"bağlayıcı, bağlantı kuran, bağ (doku)",p:6.5,k:7,y:"sıfat"},
-{e:"dispenser",t:"dağıtıcı aygıt, otomat; dağıtan kişi",p:6.5,k:7,y:"isim"},
 {e:"disseminate",t:"yaymak, dağıtmak, ulaştırmak (bilgi, haber, fikir)",p:6.5,k:7,y:"fiil"},
 {e:"emulation",t:"öykünme, örnek alma, taklit etme",p:6.5,k:7,y:"isim"},
 {e:"modernize",t:"modernleştirmek, çağdaşlaştırmak, yenilemek",p:6.5,k:7,y:"fiil"},
