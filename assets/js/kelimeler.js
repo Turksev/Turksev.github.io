@@ -316,7 +316,7 @@
           '</div>' +
         '</div>' +
         '<div class="act">' +
-          '<button class="star" type="button" data-ne="bilgi" title="Sınavdaki kullanımı" aria-label="' +
+          '<button class="star bilgi" type="button" data-ne="bilgi" title="Sınavdaki kullanımı" aria-label="' +
             kacar(d.e) + ' kelimesinin sınavdaki kullanımını göster">ℹ</button>' +
           '<button class="btn ghost sm" type="button" data-ne="calis" aria-label="' + kacar(d.e) +
             ' kelimesini kartta çalış">Kartta çalış</button>' +
@@ -422,6 +422,9 @@
     $('zatenBiliyorum').disabled = false;
     elKart.setAttribute('aria-expanded', kartAcik ? 'true' : 'false');
     elKart.setAttribute('aria-label', d.e + ' kelimesinin cevabını ' + (kartAcik ? 'gizle' : 'göster'));
+
+    // Kart değişince önceki kelimenin bilgi notu ekranda kalmasın.
+    $('kartBilgi').innerHTML = '';
   }
 
   function kartGit(adim) {
@@ -652,6 +655,15 @@
     e.stopPropagation();
     ipucuAcik = true;
     kartCiz();
+  });
+
+  // Kart modunda "Sınavdaki kullanımı": notu kartın altındaki kutuya açar.
+  // Liste modundaki ℹ ile aynı veriyi kullanır; veri ilk açılışta indirilir.
+  $('bilgiBtn').addEventListener('click', function (e) {
+    e.stopPropagation();
+    var d = suzulmus[kartIndex];
+    if (!d || !window.KelimeBilgi) return;
+    window.KelimeBilgi.ac(d.e, $('kartBilgi'));
   });
   $('ipucuAlan').addEventListener('click', function (e) { e.stopPropagation(); });
 

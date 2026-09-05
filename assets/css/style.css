@@ -1669,3 +1669,23 @@ mark {
   padding-top: 12px;
   border-top: 1px dashed var(--line);
 }
+
+/* Bilgi notu düğmesi: ses düğmesiyle aynı boyutta ama vurgu renginde —
+   listede gözden kaçmasın diye. */
+.star.bilgi {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  font-weight: 700;
+}
+.star.bilgi:hover { filter: brightness(.96); }
+
+/* Kart modunda bilgi notu kartın altında durur; listedeki grid kuralı
+   burada geçerli değil. */
+#kartBilgi .kb-panel {
+  grid-column: auto;
+  margin-top: 14px;
+  text-align: left;
+  border-top: none;
+  border: 1px solid var(--line);
+}
