@@ -106,12 +106,26 @@
     p.className = 'kb-panel';
     p.innerHTML = '<div class="kb-yukleniyor">Bilgi notu yükleniyor…</div>';
     kutu.appendChild(p);
+
+    /* Veri 3,7 MB; yükleme sürerken sayfa kendini yeniden çizip paneli
+       kutudan söküyor olabilir. Yazmadan önce hâlâ bağlı mı diye bakıp
+       gerekirse geri takıyoruz — yoksa kullanıcı hiçbir şey görmüyor. */
+    function yaz(html) {
+      p.innerHTML = html;
+      if (p.parentNode !== kutu) {
+        var eski = kutu.querySelector('.kb-panel');
+        if (eski) eski.remove();
+        kutu.appendChild(p);
+      }
+    }
+
     yukle().then(function (d) {
-      p.innerHTML = '<div class="kb-baslik">' + kacar(kelime) +
-                    ' <span class="muted small">— sınavdaki kullanımı</span></div>' +
-                    icerik(kelime, d[String(kelime).toLowerCase()]);
-    }).catch(function () {
-      p.innerHTML = '<div class="kb-bos">Bilgi notu yüklenemedi.</div>';
+      yaz('<div class="kb-baslik">' + kacar(kelime) +
+          ' <span class="muted small">— sınavdaki kullanımı</span></div>' +
+          icerik(kelime, d[String(kelime).toLowerCase()]));
+    }).catch(function (e) {
+      yaz('<div class="kb-bos">Bilgi notu yüklenemedi' +
+          (e && e.message ? ' (' + kacar(e.message) + ')' : '') + '.</div>');
     });
   }
 

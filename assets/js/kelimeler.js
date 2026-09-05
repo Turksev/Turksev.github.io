@@ -423,8 +423,15 @@
     elKart.setAttribute('aria-expanded', kartAcik ? 'true' : 'false');
     elKart.setAttribute('aria-label', d.e + ' kelimesinin cevabını ' + (kartAcik ? 'gizle' : 'göster'));
 
-    // Kart değişince önceki kelimenin bilgi notu ekranda kalmasın.
-    $('kartBilgi').innerHTML = '';
+    // Kart BAŞKA bir kelimeye geçtiyse önceki notu temizle. Aynı kelime için
+    // kartCiz yeniden çalışabilir (çevirme, ipucu, eşitleme kaynaklı yeniden
+    // çizim); o durumda notu silmemeliyiz — veri 3,7 MB, yükleme sürüyor ve
+    // silinirse kullanıcı hiçbir şey görmüyor.
+    var kb = $('kartBilgi');
+    if (kb.getAttribute('data-en') !== d.e) {
+      kb.innerHTML = '';
+      kb.removeAttribute('data-en');
+    }
   }
 
   function kartGit(adim) {
@@ -662,8 +669,16 @@
   $('bilgiBtn').addEventListener('click', function (e) {
     e.stopPropagation();
     var d = suzulmus[kartIndex];
-    if (!d || !window.KelimeBilgi) return;
-    window.KelimeBilgi.ac(d.e, $('kartBilgi'));
+    if (!d) return;
+    var kb = $('kartBilgi');
+    if (!window.KelimeBilgi) {
+      kb.innerHTML = '<div class="kb-panel"><div class="kb-bos">Bilgi notu modülü yüklenemedi.</div></div>';
+      return;
+    }
+    // Hangi kelimenin notu açık: kartCiz gereksiz yere silmesin diye işaretle.
+    kb.setAttribute('data-en', d.e);
+    window.KelimeBilgi.ac(d.e, kb);
+    kb.scrollIntoView({ behavior: window.YDS.hareket(), block: 'nearest' });
   });
   $('ipucuAlan').addEventListener('click', function (e) { e.stopPropagation(); });
 
