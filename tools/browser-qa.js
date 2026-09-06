@@ -45,7 +45,11 @@ async function main() {
           return r.violations.map(v=>({id:v.id,impact:v.impact,nodes:v.nodes.map(n=>n.target)}));
         });
         assert.deepEqual(result,[],`${width}px ${route}: accessibility`);
-        assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),route+': horizontal page overflow');
+        const layout=await page.evaluate(()=>({viewport:innerWidth,scroll:document.documentElement.scrollWidth,
+          elements:Array.from(document.querySelectorAll('body *')).filter(el=>{
+            const r=el.getBoundingClientRect();return r.width>0&&r.right>innerWidth+1;
+          }).slice(0,8).map(el=>({tag:el.tagName,id:el.id,class:el.className,right:el.getBoundingClientRect().right,text:el.textContent.slice(0,100)}))}));
+        assert.ok(layout.scroll<=layout.viewport+1,`${theme} ${width}px ${route}: horizontal page overflow ${JSON.stringify(layout)}`);
       }
     }
     await page.goto(base+'/cumleler.html');
