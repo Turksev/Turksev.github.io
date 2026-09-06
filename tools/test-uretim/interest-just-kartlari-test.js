@@ -71,7 +71,9 @@ var obekler = new Map(pencere.OBEKLER.map(function (x) { return [x.f, x]; }));
     beklenen[0] + ': beklenen anlam yok');
 });
 
-assert.strictEqual(pencere.OBEKLER.length, 1631, 'öbek kart sayısı yanlış');
+// Öbek sayısı sabitlenmez (test 1.631'de sabitlenip CI listesinden düşmüştü; içerik büyüyor).
+// Sayaç sözleşmesi icerik-butunluk-test.js'te; burada yalnız aşağı yönlü kayıp aranır.
+assert.ok(pencere.OBEKLER.length >= 1631, 'öbek kart sayısı 1.631\'in altına düştü: ' + pencere.OBEKLER.length);
 assert.strictEqual(pencere.SAYILAR.obek, pencere.OBEKLER.length,
   'görünen öbek sayısı veriyle eşleşmiyor');
 

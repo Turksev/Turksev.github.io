@@ -42,6 +42,7 @@
 </head>
 <body>
 
+<a class="atla" href="#icerik">İçeriğe geç</a>
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="index.html"><span class="dot">YDS</span> Hazırlık</a>
@@ -72,7 +73,7 @@
   </div>
 </header>
 
-<main>
+<main id="icerik" tabindex="-1">
 
   <section class="hero">
     <div class="wrap">
@@ -276,7 +277,6 @@
   </div>
 </footer>
 
-<script src="data/kelime-dizin.js"></script>
 <script src="data/sayilar.js"></script>
 <script src="data/yds-dagilim.js"></script>
 <script src="data/aileler.js"></script>
@@ -313,13 +313,13 @@
     tablo.tBodies[0].innerHTML = satirlar.join('');
   })();
 
-  // Leitner özeti {en:…} bekliyor; dizin kayıtlarının alanı e.
-  var KELIMELER = Veri.dizin.map(function (d) { return { en: d.e }; });
-
+  /* Ana sayfa kelime dizinini (698 KB) yüklemez; özet için toplam sayı
+     (sayilar.js) ve ilerleme kayıtları yeter (denetim B8, 5 Eylül 2026). */
   function $(id) { return document.getElementById(id); }
   function yaz(id, d) { var el = $(id); if (el) el.textContent = d; }
 
-  var sayilar = window.SAYILAR || { kelime: Veri.dizin.length, obek: 0 };
+  var sayilar = window.SAYILAR || { kelime: 0, obek: 0 };
+  var TOPLAM_KELIME = sayilar.kelime || 0;
   var tr = function (n) { return n.toLocaleString('tr-TR'); };
 
   yaz('st-kelime', tr(sayilar.kelime));
@@ -330,7 +330,7 @@
   yaz('k-obek', tr(sayilar.obek));
   yaz('k-aile', tr((window.AILELER || []).length));
 
-  var o = Il.leitnerOzet(KELIMELER);
+  var o = Il.leitnerOzetSayidan(TOPLAM_KELIME);
   var defter = Il.yanlisDefter();
   var karne = Il.kategoriOzet().filter(function (k) { return k.toplam > 0; });
   var gecmis = Il.gecmis();
@@ -348,11 +348,11 @@
   /* kelime kutusu */
   yaz('p-bugun', o.bugun);
   yaz('p-ogrenilen', o.ogrenilen);
-  $('p-bar').style.width = (KELIMELER.length ? o.ogrenilen / KELIMELER.length * 100 : 0) + '%';
+  $('p-bar').style.width = (TOPLAM_KELIME ? o.ogrenilen / TOPLAM_KELIME * 100 : 0) + '%';
   yaz('p-kelimeOzet',
     (o.tekrar ? o.tekrar + ' tekrar' : 'tekrar yok') +
     ' + ' + o.acilacakYeni + ' yeni (günlük hedef ' + o.hedef + ') · ' +
-    o.calisilan + '/' + KELIMELER.length + ' kelimeye başlandı · zayıf: ' + (o.k1 + o.k2));
+    o.calisilan + '/' + TOPLAM_KELIME + ' kelimeye başlandı · zayıf: ' + (o.k1 + o.k2));
 
   /* yanlış defteri */
   yaz('p-yanlis', defter.length);

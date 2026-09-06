@@ -454,6 +454,41 @@
     return o;
   }
 
+  /* Dizin yüklenmeden özet: yalnızca toplam kelime sayısı bilinir (sayilar.js),
+     kutular ilerleme kayıtlarından sayılır. Ana sayfa bu özet için 698 KB'lık
+     kelime dizinini yüklüyordu (denetim B8, 5 Eylül 2026). Öbek ve cümle
+     kayıtları türlerine göre dışlanır; dizinden düşmüş eski bir kayıt varsa
+     yalnız "çalışılan" sayısına girer, yeni sayısı buna göre azalır. */
+  function leitnerOzetSayidan(toplam, tur) {
+    tur = tur || 'kelime';
+    var o = {
+      k0: 0, k1: 0, k2: 0, k3: 0, k4: 0, k5: 0,
+      tekrar: 0, yeni: 0, acilacakYeni: 0, bugun: 0,
+      ogrenilen: 0, calisilan: 0,
+      hedef: gunlukHedef(), kotaKalan: yeniKotasiKalan(),
+      tavan: gunlukTavan(), bekleyen: 0
+    };
+    var gun = bugun();
+    Object.keys(leitner).forEach(function (id) {
+      var t = kimlikCoz(id).tur || 'kelime';
+      if (t !== tur) return;
+      var r = leitner[id];
+      var k = Math.max(0, Math.min(EN_UST_KUTU, r.k | 0));
+      o['k' + k]++;
+      if (k > 0) o.calisilan++;
+      if (k >= EN_UST_KUTU) o.ogrenilen++;
+      if (k > 0 && k < EN_UST_KUTU && r.g <= gun) o.tekrar++;
+    });
+    o.yeni = Math.max(0, (toplam | 0) - o.calisilan);
+    o.k0 = o.yeni;
+    var kapasite = gunlukTavan() + bugunkuSayac().ek;
+    o.gosterilecekTekrar = Math.min(o.tekrar, kapasite);
+    o.acilacakYeni = Math.min(o.yeni, o.kotaKalan, Math.max(0, kapasite - o.gosterilecekTekrar));
+    o.bekleyen = o.tekrar - o.gosterilecekTekrar;
+    o.bugun = o.gosterilecekTekrar + o.acilacakYeni;
+    return o;
+  }
+
   /* Bugünün destesi: tekrarı gelen her kelime + kotaya sığan yeni kelimeler.
      Liste [{en:…}] biçiminde gelir, aynı biçimde döner. */
   function destelik(tumKelimeler, tur) {
@@ -732,6 +767,7 @@
     leitnerSifirla: leitnerSifirla,
     listeyiSifirla: listeyiSifirla,
     leitnerOzet: leitnerOzet,
+    leitnerOzetSayidan: leitnerOzetSayidan,
     yanlisAnahtar: yanlisAnahtar,
     yanlisEkle: yanlisEkle,
     yanlisCoz: yanlisCoz,

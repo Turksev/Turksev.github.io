@@ -12,6 +12,17 @@ Uretilen dosyalar:
 Kullanim (kaynak projenin sanal ortamiyla):
   "C:\\Users\\Trk\\Desktop\\YDS\\03_calisma_listesi\\.venv\\Scripts\\python.exe" tools/listeyi-aktar.py
 
+Secenekler:
+  --silmeye-izin-ver   Silme korumasini kaldirir (asagiya bak).
+
+Silme korumasi (05.09.2026, denetim A2): betik dosyalari yazmadan once
+uretilecek kelime/obek kumesini yayimlanmis data/kelime-dizin.js ve
+data/obekler.js ile karsilastirir. Mevcut olup bu uretimde yazilmayacak kayit
+varsa listeyi basar ve cikis kodu 1 ile DURUR; yalniz --silmeye-izin-ver ile
+devam eder. xlsx'te olmayan denetimli kelimeler tools/ek-kelime-partileri/
+altindaki surumlu JSON partilerinden gelir (tools/ek-kelime-partileri-cikar.py
+mevcut veriden boyle bir parti cikarir).
+
 Kaynak dosyalara YAZILMAZ, yalniz okunur.
 """
 import io
@@ -33,6 +44,8 @@ ARACLAR = os.path.join(SITE, 'tools')
 AILE_KART_PARTILERI = os.path.join(ARACLAR, 'aile-kart-partileri')
 AILE_KART_ALIASLARI = os.path.join(ARACLAR, 'aile-kart-aliaslari.json')
 AILE_KART_RETLERI = os.path.join(ARACLAR, 'aile-kart-retleri.json')
+EK_KELIME_PARTILERI = os.path.join(ARACLAR, 'ek-kelime-partileri')
+EK_PARTI_SEMA = 1
 TEST_GIRDI = os.path.join(ARACLAR, 'test-uretim', 'girdi')
 TEST_CIKTI = os.path.join(ARACLAR, 'test-uretim', 'cikti')
 
@@ -947,7 +960,279 @@ def aile_kart_provenansini_yaz(partiler, aliaslar=None, retler=None):
         json.dumps(cikti, ensure_ascii=False, indent=2) + '\n')
 
 
-def birlestir():
+# ---------------------------------------------------------------- ek kelime partileri
+
+def _parti_anlamlarini_dogrula(etiket, anlamlar):
+    if not isinstance(anlamlar, list) or not anlamlar:
+        raise ValueError('%s: a (anlamlar) dizisi boş' % etiket)
+    temiz = []
+    for sira, anlam in enumerate(anlamlar):
+        if not isinstance(anlam, dict):
+            raise ValueError('%s a[%d]: nesne olmalı' % (etiket, sira))
+        bilinmeyen = set(anlam) - {'tr', 'ex', 'exTr', 'yz'}
+        if bilinmeyen:
+            raise ValueError('%s a[%d]: bilinmeyen alan %s' % (etiket, sira, sorted(bilinmeyen)))
+        for alan in ('tr', 'ex', 'exTr'):
+            if not isinstance(anlam.get(alan), str) or not anlam[alan].strip():
+                raise ValueError('%s a[%d].%s eksik' % (etiket, sira, alan))
+        yz = anlam.get('yz')
+        if yz is not None and (isinstance(yz, bool) or not isinstance(yz, int) or
+                               not 1 <= yz <= 4):
+            raise ValueError('%s a[%d].yz 1-4 olmalı' % (etiket, sira))
+        if len(anlamlar) > 1 and yz is None:
+            raise ValueError('%s: çok anlamlı kayıtta her anlamın yz yıldızı olmalı' % etiket)
+        kayit = {alan: anlam[alan].strip() for alan in ('tr', 'ex', 'exTr')}
+        if yz is not None:
+            kayit['yz'] = yz
+        temiz.append(kayit)
+    return temiz
+
+
+def _parti_kaliplarini_dogrula(etiket, kaliplar):
+    if kaliplar is None:
+        return None
+    if not isinstance(kaliplar, list) or not kaliplar:
+        raise ValueError('%s: kl varsa boş olmayan dizi olmalı' % etiket)
+    temiz = []
+    for sira, kalip in enumerate(kaliplar):
+        if (not isinstance(kalip, dict) or set(kalip) != {'en', 'tr'} or
+                not all(isinstance(kalip[a], str) and kalip[a].strip() for a in ('en', 'tr'))):
+            raise ValueError('%s kl[%d]: {en, tr} dolu olmalı' % (etiket, sira))
+        temiz.append({'en': kalip['en'].strip(), 'tr': kalip['tr'].strip()})
+    return temiz
+
+
+def _parti_metni(parti, alan, etiket):
+    deger = parti.get(alan)
+    if not isinstance(deger, str) or not deger.strip():
+        raise ValueError('%s: %s eksik' % (etiket, alan))
+    return deger.strip()
+
+
+def ek_kelime_partilerini_oku(dizin=None):
+    """tools/ek-kelime-partileri/*.json — xlsx'te OLMAYAN denetimli ek kelime/öbekler.
+
+    Aile partileri gibi dosya adına göre kararlı sırada okunur. Her parti kendini
+    açıklar: sema_surumu, parti_id (dosya adı), aciklama, kaynak, gerekce,
+    kurallar, gruplar ve tam kart verisi taşıyan kayitlar (e, y, t, p, k, g, a,
+    kl, es) ile isteğe bağlı obekler (f, y, s, kn, g, a). Kayıtlar ana
+    kaynaklarda (xlsx, ek-kelimeler, aile partileri, modal) bulunmayan kelimeleri
+    ekler; mevcut bir kaydı hiçbir zaman ezmez (çakışma = hata). Katman (k)
+    partiden aynen alınır; puan bandına göre yeniden hesaplanmaz, çünkü bu
+    kayıtların çoğu puanı 10'un altında kalan denetimli eklerdir.
+    """
+    dizin = EK_KELIME_PARTILERI if dizin is None else dizin
+    if not os.path.isdir(dizin):
+        return []
+    partiler = []
+    gorulen_kelime = {}
+    gorulen_obek = {}
+    kayit_alanlari = {'e', 'y', 't', 'p', 'k', 'g', 'a', 'kl', 'es', 'gerekce', 'kanit'}
+    obek_alanlari = {'f', 'y', 's', 'kn', 'g', 'a', 'kanit'}
+    for dosya in sorted(x for x in os.listdir(dizin) if x.lower().endswith('.json')):
+        with open(os.path.join(dizin, dosya), encoding='utf-8') as f:
+            parti = json.load(f)
+        if not isinstance(parti, dict) or parti.get('sema_surumu') != EK_PARTI_SEMA:
+            raise ValueError('%s: sema_surumu=%d olmalı' % (dosya, EK_PARTI_SEMA))
+        parti_id = parti.get('parti_id')
+        if parti_id != dosya[:-5]:
+            raise ValueError('%s: parti_id dosya adıyla aynı olmalı (%r)' % (dosya, parti_id))
+        _parti_metni(parti, 'aciklama', dosya)
+        _parti_metni(parti, 'gerekce', dosya)
+        if not isinstance(parti.get('kaynak'), dict) or not parti['kaynak']:
+            raise ValueError('%s: kaynak nesnesi eksik' % dosya)
+        kurallar = parti.get('kurallar')
+        if (not isinstance(kurallar, dict) or kurallar.get('xlsx_catisma') != 'hata' or
+                kurallar.get('katman_korunur') is not True or
+                kurallar.get('mevcut_kaydi_ezme') is not False):
+            raise ValueError('%s: kurallar {xlsx_catisma:"hata", katman_korunur:true, '
+                             'mevcut_kaydi_ezme:false} olmalı' % dosya)
+        gruplar = parti.get('gruplar', {})
+        if not isinstance(gruplar, dict):
+            raise ValueError('%s: gruplar nesne olmalı' % dosya)
+        for grup_id, grup in gruplar.items():
+            if not isinstance(grup, dict):
+                raise ValueError('%s gruplar[%s]: nesne olmalı' % (dosya, grup_id))
+            _parti_metni(grup, 'aciklama', '%s gruplar[%s]' % (dosya, grup_id))
+
+        kayitlar = parti.get('kayitlar', [])
+        obekler = parti.get('obekler', [])
+        if (not isinstance(kayitlar, list) or not isinstance(obekler, list) or
+                not (kayitlar or obekler)):
+            raise ValueError('%s: kayitlar ya da obekler dizisi gerekli' % dosya)
+
+        temiz_kayitlar = []
+        for sira, kayit in enumerate(kayitlar):
+            etiket = '%s kayitlar[%d]' % (dosya, sira)
+            if not isinstance(kayit, dict):
+                raise ValueError('%s: nesne olmalı' % etiket)
+            bilinmeyen = set(kayit) - kayit_alanlari
+            if bilinmeyen:
+                raise ValueError('%s: bilinmeyen alan %s' % (etiket, sorted(bilinmeyen)))
+            en = kayit.get('e')
+            if not isinstance(en, str) or not en.strip() or en != en.strip():
+                raise ValueError('%s: e eksik ya da kenar boşluklu' % etiket)
+            if en in gorulen_kelime:
+                raise ValueError('%s: %s zaten %s partisinde' % (etiket, en, gorulen_kelime[en]))
+            gorulen_kelime[en] = parti_id
+            etiket = '%s %s' % (dosya, en)
+            tip = _parti_metni(kayit, 'y', etiket)
+            kisa = _parti_metni(kayit, 't', etiket)
+            puan = kayit.get('p')
+            if puan is None:
+                _parti_metni(kayit, 'gerekce', etiket + ' (puansız kayıt)')
+            elif (isinstance(puan, bool) or not isinstance(puan, (int, float)) or
+                  not 0 <= puan <= 100):
+                raise ValueError('%s: p 0-100 arası sayı ya da null olmalı' % etiket)
+            elif round(float(puan), 1) != float(puan):
+                raise ValueError('%s: p bir ondalık basamakla yazılmalı' % etiket)
+            katman = kayit.get('k')
+            if isinstance(katman, bool) or not isinstance(katman, int) or not 1 <= katman <= 7:
+                raise ValueError('%s: k 1-7 arası tam sayı olmalı' % etiket)
+            grup = kayit.get('g')
+            if grup is not None and grup not in gruplar:
+                raise ValueError('%s: g=%r gruplar içinde tanımlı değil' % (etiket, grup))
+            es = kayit.get('es')
+            if es is not None and (not isinstance(es, str) or not es.strip()):
+                raise ValueError('%s: es varsa dolu metin olmalı' % etiket)
+            if 'kanit' in kayit and not isinstance(kayit['kanit'], dict):
+                raise ValueError('%s: kanit nesne olmalı' % etiket)
+            temiz_kayitlar.append({
+                'e': en,
+                'tip': tip,
+                'kisa': kisa,
+                'puan': None if puan is None else round(float(puan), 1),
+                'katman': katman,
+                'grup': grup,
+                'anlamlar': _parti_anlamlarini_dogrula(etiket, kayit.get('a')),
+                'kalip': _parti_kaliplarini_dogrula(etiket, kayit.get('kl')),
+                'es': es.strip() if es else None,
+            })
+
+        temiz_obekler = []
+        for sira, obek in enumerate(obekler):
+            etiket = '%s obekler[%d]' % (dosya, sira)
+            if not isinstance(obek, dict):
+                raise ValueError('%s: nesne olmalı' % etiket)
+            bilinmeyen = set(obek) - obek_alanlari
+            if bilinmeyen:
+                raise ValueError('%s: bilinmeyen alan %s' % (etiket, sorted(bilinmeyen)))
+            ad = obek.get('f')
+            if not isinstance(ad, str) or not ad.strip() or ad != ad.strip():
+                raise ValueError('%s: f eksik ya da kenar boşluklu' % etiket)
+            if ad in gorulen_obek:
+                raise ValueError('%s: %s zaten %s partisinde' % (etiket, ad, gorulen_obek[ad]))
+            gorulen_obek[ad] = parti_id
+            etiket = '%s %s' % (dosya, ad)
+            sinav = obek.get('s')
+            if isinstance(sinav, bool) or not isinstance(sinav, int) or sinav < 0:
+                raise ValueError('%s: s negatif olmayan tam sayı olmalı' % etiket)
+            grup = obek.get('g')
+            if grup is not None and grup not in gruplar:
+                raise ValueError('%s: g=%r gruplar içinde tanımlı değil' % (etiket, grup))
+            temiz_obekler.append({
+                'f': ad,
+                'tip': _parti_metni(obek, 'y', etiket),
+                'sinav': sinav,
+                'kaynak': _parti_metni(obek, 'kn', etiket) if 'kn' in obek else 'sınav',
+                'grup': grup,
+                'anlamlar': _parti_anlamlarini_dogrula(etiket, obek.get('a')),
+            })
+
+        parti['_sourceFile'] = dosya
+        parti['_kayitlar'] = temiz_kayitlar
+        parti['_obekler'] = temiz_obekler
+        partiler.append(parti)
+    return partiler
+
+
+def ek_kelime_partilerini_uygula(kelimeler, partiler):
+    """Parti kayıtlarını ekle; mevcut hiçbir kaydı ezme, katmanı aynen koru."""
+    elenecekler = elenecekleri_oku()
+    eklenen = 0
+    for parti in partiler:
+        for kayit in parti['_kayitlar']:
+            en = kayit['e']
+            if en in kelimeler:
+                raise ValueError('%s: %s zaten ana kaynaklarda (xlsx/ek-kelimeler/aile/modal) '
+                                 'var; ek parti mevcut kaydı ezemez' % (parti['_sourceFile'], en))
+            if en in elenecekler:
+                raise ValueError('%s: %s kelime-eleme.js ile elenmiş; ek parti geri getiremez' %
+                                 (parti['_sourceFile'], en))
+            yeni = {
+                'tip': kayit['tip'],
+                'puan': kayit['puan'],
+                'kisa': kayit['kisa'],
+                # Katman partiden AYNEN alınır: puan bandına göre yeniden hesap yok.
+                'katman_zorla': kayit['katman'],
+                'anlamlar': [dict(a) for a in kayit['anlamlar']],
+            }
+            if kayit['kalip']:
+                yeni['kalip'] = [dict(x) for x in kayit['kalip']]
+            if kayit['es']:
+                yeni['es'] = kayit['es']
+            kelimeler[en] = yeni
+            eklenen += 1
+    return eklenen
+
+
+def ek_obek_partilerini_uygula(obekler, kaynak_obekleri, partiler):
+    """Parti öbeklerini ekle; xlsx/ek-obekler kaynağındaki bir öbeği ezme."""
+    eklenen = 0
+    for parti in partiler:
+        for obek in parti['_obekler']:
+            ad = obek['f']
+            if ad in kaynak_obekleri or ad in obekler:
+                raise ValueError('%s: %s öbeği zaten xlsx/ek-obekler kaynağında var; '
+                                 'ek parti mevcut kaydı ezemez' % (parti['_sourceFile'], ad))
+            obekler[ad] = {
+                'tip': obek['tip'], 'puan': None, 'sinav': obek['sinav'],
+                'kaynak': obek['kaynak'],
+                'anlamlar': [dict(a) for a in obek['anlamlar']],
+            }
+            eklenen += 1
+    return eklenen
+
+
+def yayimlanmis_adlari_oku(dosya, desen):
+    """Yayımlanmış veri dosyasındaki başlıkları JS'i çalıştırmadan çıkarır."""
+    yol = os.path.join(VERI, dosya)
+    if not os.path.exists(yol):
+        return set()
+    with open(yol, encoding='utf-8') as f:
+        return {json.loads('"%s"' % m.group(1)) for m in re.finditer(desen, f.read())}
+
+
+def silme_korumasi(kelimeler, obekler, izin=False):
+    """Üretilecek küme yayımlanmış veriden kayıt düşürüyorsa DUR (çıkış kodu 1).
+
+    05.09.2026 denetimi (A2): 4-5 Eylül'de eklenen sınav kelimeleri yalnız
+    data/kelime-k*.js içindeydi; betik onları sessizce silecekti. Artık mevcut
+    olup üretilmeyecek her kelime/öbek listelenir ve yalnız --silmeye-izin-ver
+    ile devam edilir. Döndürdüğü sayı, izinle silinecek kayıt adedidir.
+    """
+    eksik_kelime = sorted(
+        yayimlanmis_adlari_oku('kelime-dizin.js', r'(?m)^\{e:"((?:[^"\\]|\\.)*)"') -
+        set(kelimeler))
+    eksik_obek = sorted(
+        yayimlanmis_adlari_oku('obekler.js', r'(?m)^\{f:"((?:[^"\\]|\\.)*)"') -
+        set(obekler))
+    if not eksik_kelime and not eksik_obek:
+        return 0
+    print('KORUMA: yayımlanmış veride olup bu üretimde YAZILMAYACAK kayıtlar var.')
+    for ad, liste in (('kelime', eksik_kelime), ('öbek', eksik_obek)):
+        if liste:
+            print('  %s (%d): %s' % (ad, len(liste), ', '.join(liste)))
+    if izin:
+        print('  --silmeye-izin-ver verildi; bu kayıtlar silinerek devam ediliyor.')
+        return len(eksik_kelime) + len(eksik_obek)
+    print('  Devam etmek için önce bu kayıtları tools/ek-kelime-partileri/ altındaki bir\n'
+          '  partiye al (tools/ek-kelime-partileri-cikar.py) ya da bilinçli silme için\n'
+          '  --silmeye-izin-ver bayrağını kullan.')
+    sys.exit(1)
+
+
+def birlestir(ek_partileri=None):
     kelimeler = kelimeleri_topla()
     site = site_kelimelerini_oku()
     ek_puan = ek_puanlari_oku()
@@ -1042,6 +1327,13 @@ def birlestir():
             k['kalip'] = kalip[en]
             kalipli += 1
 
+    # Ek kelime partileri en sonda: ana kaynaklarin hicbiriyle catismamali
+    # (catisma = hata) ve kendi kalip/anlam/katman verisini aynen tasir.
+    # Kaliplar adimindan SONRA gelir ki kaliplar.js parti kaydini ezmesin.
+    if ek_partileri is None:
+        ek_partileri = ek_kelime_partilerini_oku()
+    ek_parti_eklenen = ek_kelime_partilerini_uygula(kelimeler, ek_partileri)
+
     # Anlam yildizlari: onemliyi basa al
     yildiz = yildizlari_oku()
     yildizli = 0
@@ -1059,7 +1351,7 @@ def birlestir():
     return (kelimeler, ortak, yalniz_site, ek_uygulanan, bekleyen, aile_eklenen,
             elenen, kalipli, yildizli, baslik_duzeltilen, baslik_d,
             pdf_anlam_uygulanan, modal_eklenen, modal_guncellenen,
-            aile_partileri, parti_eklenen)
+            aile_partileri, parti_eklenen, ek_partileri, ek_parti_eklenen)
 
 
 def kelimeleri_yaz(kelimeler):
@@ -1071,7 +1363,8 @@ def kelimeleri_yaz(kelimeler):
     for en, k in sirali:
         alanlar = [
             'e:' + json.dumps(en, ensure_ascii=False),
-            't:' + json.dumps(kisa_anlam(k['anlamlar']), ensure_ascii=False),
+            # Ek parti kayitlari kisa anlami ('kisa') kaynaktan aynen tasir.
+            't:' + json.dumps(k.get('kisa') or kisa_anlam(k['anlamlar']), ensure_ascii=False),
             'k:%d' % k['katman'],
             'y:' + json.dumps(k['tip'], ensure_ascii=False),
         ]
@@ -1146,7 +1439,10 @@ def ek_obekleri_oku():
              'ex': m.group(4), 'exTr': m.group(5)} for m in desen.finditer(metin)]
 
 
-def obekleri_yaz():
+def obekleri_topla(ek_partileri=None):
+    """Kaynaklardan obek sozlugunu kurar; dosya yazmaz.
+
+    Donus: (obekler, elle_eklenen, siradan_diye_atilan, parti_eklenen)."""
     obekler = {}
 
     _b, sozluk = xlsx_oku('Kelime_Obekleri_v3.xlsx', 'Sozluk_Obekleri')
@@ -1192,6 +1488,7 @@ def obekleri_yaz():
         ek_eklenen += 1
 
     # Elle duzeltilmis tur etiketleri kaynagin uzerine yazar; "siradan" atilir.
+    kaynak_obekleri = set(obekler)
     turler = obek_turlerini_oku()
     atilan = 0
     for ad in list(obekler.keys()):
@@ -1204,10 +1501,21 @@ def obekleri_yaz():
         else:
             obekler[ad]['tip'] = yeni
 
+    # Ek kelime partilerinin obekleri: xlsx/ek-obekler'de olmayan sinav
+    # obekleri (kn:"sınav"). "Siradan" diye atilmis bir kaynak obegini de
+    # geri getiremez; catisma hatadir.
+    if ek_partileri is None:
+        ek_partileri = ek_kelime_partilerini_oku()
+    parti_eklenen = ek_obek_partilerini_uygula(obekler, kaynak_obekleri, ek_partileri)
+
     yildiz = yildizlari_oku()
     for ad, o in obekler.items():
         yildizla(o['anlamlar'], yildiz.get(ad))
 
+    return obekler, ek_eklenen, atilan, parti_eklenen
+
+
+def obekleri_yaz(obekler):
     sirali = sorted(obekler.items(), key=lambda x: (-x[1]['sinav'], x[0]))
     govde = []
     for ad, o in sirali:
@@ -1230,7 +1538,7 @@ def obekleri_yaz():
     )
     yol = os.path.join(VERI, 'obekler.js')
     yaz(yol, basli + ',\n'.join(govde) + '\n];\n')
-    return sirali, os.path.getsize(yol), ek_eklenen, atilan
+    return sirali, os.path.getsize(yol)
 
 
 def anlam_yaz(a):
@@ -1268,7 +1576,7 @@ def sayilari_yaz(sirali, ozet, obekler):
     """Sayfalarin basliklarda kullandigi sayilar; elle guncellenmesin diye uretilir."""
     katman = {str(k): n for k, _ad, n, _b in ozet}
     icerik = (
-        '/* Icerik sayaclari — tools/listeyi-aktar.py uretir, elle duzenleme. */\n'
+        '/* Site sayıları — tools/listeyi-aktar.py üretir, elle düzenleme. */\n'
         'window.SAYILAR = %s;\n' % json.dumps(
             {'kelime': len(sirali), 'obek': len(obekler),
              'soru': soru_sayisini_oku(), 'katman': katman},
@@ -1303,13 +1611,24 @@ def modal_testlerini_yaz(kartlar):
     yaz(os.path.join(VERI, 'test-modal.js'), basli + ',\n'.join(govde) + '\n};\n')
 
 
-def main():
+def main(argv=None):
+    argv = sys.argv[1:] if argv is None else list(argv)
+    silmeye_izin = '--silmeye-izin-ver' in argv
+    bilinmeyen = [a for a in argv if a != '--silmeye-izin-ver']
+    if bilinmeyen:
+        raise SystemExit('Bilinmeyen seçenek: %s (yalnız --silmeye-izin-ver tanınır)' % bilinmeyen)
+
     (kelimeler, ortak, yalniz_site, ek_uygulanan, bekleyen, aile_eklenen,
      elenen, kalipli, yildizli, baslik_duzeltilen, baslik_d,
      pdf_anlam_uygulanan, modal_eklenen, modal_guncellenen,
-     aile_partileri, parti_eklenen) = birlestir()
+     aile_partileri, parti_eklenen, ek_partileri, ek_parti_eklenen) = birlestir()
+    obek_sozlugu, obek_ek, obek_atilan, obek_parti = obekleri_topla(ek_partileri)
+
+    # Hicbir dosya yazilmadan once: yayimlanmis veriden kayit dusuyor mu?
+    silinen = silme_korumasi(kelimeler, obek_sozlugu, silmeye_izin)
+
     sirali, ozet = kelimeleri_yaz(kelimeler)
-    obekler, obek_boyut, obek_ek, obek_atilan = obekleri_yaz()
+    obekler, obek_boyut = obekleri_yaz(obek_sozlugu)
     sayilari_yaz(sirali, ozet, obekler)
     modal_testlerini_yaz(modal_kartlarini_oku())
     aile_aliaslari = aile_kart_aliaslarini_oku()
@@ -1335,6 +1654,9 @@ def main():
     print('  aile uyesi eklenen :', aile_eklenen, '(%d. katman)' % AILE_KATMANI)
     print('  parti kartı eklenen:', parti_eklenen)
     print('  parti testi yazılan:', parti_testleri)
+    print('  ek parti kelimesi  :', ek_parti_eklenen,
+          '(%d parti; katman partiden aynen)' % len(ek_partileri))
+    print('  korumayla silinen  :', silinen)
     print('  elenen (kaba/ozel) :', elenen)
     print('  kalibi olan        :', kalipli)
     print('  anlami yildizli    :', yildizli)
@@ -1353,6 +1675,7 @@ def main():
     print('  toplam            :', len(obekler))
     print('  cok anlamli       :', sum(1 for _f, o in obekler if len(o['anlamlar']) > 1))
     print('  elle eklenen      :', obek_ek)
+    print('  ek parti obegi    :', obek_parti)
     print('  siradan diye atilan:', obek_atilan)
     import collections as _c
     for tur, n in _c.Counter(o['tip'] for _f, o in obekler).most_common():

@@ -6,8 +6,8 @@ import os, sys, io, json, sqlite3, collections
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 
 SP = "C:/Users/Trk/Desktop/YDS/03_calisma_listesi/06_sandbox_2026-09"
-PUA = os.path.join(SP, 'sandbox', 'duz3', '03_puanlama', 'puanlama.sqlite')
-KOR = os.path.join(SP, 'sandbox', 'duz3', '02_korpus', 'korpus.jsonl')
+PUA = os.path.join(SP, 'sandbox', 'duz4', '03_puanlama', 'puanlama.sqlite')
+KOR = os.path.join(SP, 'sandbox', 'duz4', '02_korpus', 'korpus.jsonl')
 
 c = sqlite3.connect('file:%s?mode=ro' % PUA.replace(os.sep, '/'), uri=True)
 print("=== entry_kanit alanlari ===")

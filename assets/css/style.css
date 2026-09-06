@@ -1689,3 +1689,10 @@ mark {
   border-top: none;
   border: 1px solid var(--line);
 }
+
+/* Atlama bağlantısı: klavye kullanıcısı ilk Tab'da görür, menüyü geçip içeriğe iner.
+   Denetim B8 (5 Eylül 2026). */
+.atla { position: absolute; left: -999px; top: 8px; z-index: 1000; padding: 8px 14px;
+  background: var(--accent, #3b5bdb); color: #fff; border-radius: 10px; font-weight: 600; }
+.atla:focus { left: 8px; outline: 3px solid var(--warn, #e8a400); }
+main:focus { outline: none; }

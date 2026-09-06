@@ -131,6 +131,14 @@ assert.throws = function(f, _e, m){
 };
 assert.doesNotThrow = function(f, m){ try { f(); } catch(e){ throw AssertionError((m || 'hata atmamaliydi') + ': ' + e.message); } };
 assert.fail = function(m){ throw AssertionError(m || 'fail'); };
+assert.match = function(s, re, m){
+  if (!re.test(String(s))) throw AssertionError((m ? m + ' | ' : '') + ozet(s) + ' desenle eslesmiyor ' + re);
+};
+assert.doesNotMatch = function(s, re, m){
+  if (re.test(String(s))) throw AssertionError((m ? m + ' | ' : '') + ozet(s) + ' desenle eslesmemeliydi ' + re);
+};
+assert.notDeepStrictEqual = function(a, b, m){ if (esitMi(a, b)) throw AssertionError(m || 'derin esit olmamaliydi'); };
+assert.rejects = function(){ throw AssertionError('assert.rejects kabukta desteklenmiyor'); };
 
 function baglamdaKos(kod, baglam){
   var adlar = Object.keys(baglam);
@@ -162,11 +170,11 @@ function gerekli(ad){
   throw new Error('kabukta yok: require("' + ad + '")');
 }
 
-var TESTLER = ['icerik-butunluk','konu-kapsam','kaynak-manifest','kelime-provenans',
-  'kelime-alias-gecis','deneme-formlari','deneme-oturum','ilerleme-srs',
-  'ayarlar-ice-aktarma','esitleme-veri','esitleme-depo','esitleme-boyut',
-  'esitleme-yerel-guvenlik','esitleme-bulut','esitleme-cdn','esitleme-entegrasyon',
-  'firestore-kurallar','statik-yayin','sw-surum','yeniden-yukleme'];
+// Test listesi dizinden okunur (CI ile ayni kural): tools/test-uretim/*-test.js
+var TESTLER = fs.readdirSync('tools/test-uretim')
+  .filter(function (f) { return f.slice(-8) === '-test.js'; })
+  .map(function (f) { return f.slice(0, -8); })
+  .sort();
 
 var ciktilar = [], patlayan = 0;
 TESTLER.forEach(function(ad){

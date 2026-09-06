@@ -43,7 +43,8 @@ var obekler = new Map(pencere.OBEKLER.map(function (x) { return [x.f, x]; }));
     beklenen[0] + ': beklenen anlam yok');
 });
 
-assert.strictEqual(pencere.OBEKLER.length, 1631, 'öbek kart sayısı güncel veriyle eşleşmeli');
+// Öbek sayısı sabitlenmez (bkz. interest-just-kartlari-test.js); yalnız aşağı yönlü kayıp aranır.
+assert.ok(pencere.OBEKLER.length >= 1631, 'öbek kart sayısı 1.631\'in altına düştü: ' + pencere.OBEKLER.length);
 assert.strictEqual(pencere.SAYILAR.obek, pencere.OBEKLER.length,
   'görünen öbek sayısı veriyle eşleşmiyor');
 

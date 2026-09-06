@@ -1,6 +1,13 @@
 /* Cümleler — YDS kitapçıklarında geçmiş cümleler ve Türkçe çevirileri.
    Cümleye tıklanınca çeviri, hangi sınavda geçtiği ve sınavın hangi bölümünde
-   sorulduğu açılır. Burada puanlama/tekrar yok; okuyarak çalışma bölümü. */
+   sorulduğu açılır. Kart modunda kelime kartındaki kutu (Leitner) mantığı vardır.
+
+   Veri yıl dosyalarına bölünmüştür (data/cumleler/<yıl>.js, ~100-300 KB) ve
+   yeniden eskiye doğru sırayla, sayfa açıkken yüklenir: ilk yıl gelir gelmez
+   liste görünür, diğerleri geldikçe eklenir. Tek dosya (2,7 MB) ilk açılışı
+   mobilde saniyelerce bekletiyordu (denetim B8, 5 Eylül 2026). Filtre
+   seçenekleri ve sayılar data/cumleler-dizin.js'ten gelir; böylece hiçbir yıl
+   yüklenmeden de tam liste görülür. */
 (function () {
   'use strict';
 
@@ -8,10 +15,13 @@
   var ILERLEME_TURU = 'cumle';
   var KUTU_ADI = ['hiç çalışılmadı', '1. kutu', '2. kutu', '3. kutu', '4. kutu', '5. kutu'];
 
-  var HEPSI = window.CUMLELER || [];
+  var DIZIN = window.CUMLELER_DIZIN || { yillar: [], bolumler: [], toplam: 0 };
+  var HEPSI = [];                  // yüklenen yıllar sırayla eklenir (yeniden eskiye)
   var GOSTER = 60;                 // ilk yüklemede ve her "daha fazla"da
   var gosterilen = GOSTER;
   var suzulmus = HEPSI;
+  var yuklu = {};                  // yıl -> true
+  var yukleniyor = {};             // yıl -> Promise
 
   function $(id) { return document.getElementById(id); }
   function kacar(s) {
@@ -21,22 +31,55 @@
   }
   function say(n) { return n.toLocaleString('tr-TR'); }
 
-  /* ---- filtre seçeneklerini veriden üret ---- */
-  function secenekleriKur() {
-    var bolum = {}, yil = {};
-    HEPSI.forEach(function (c) {
-      if (c.b) bolum[c.b] = (bolum[c.b] || 0) + 1;
-      if (c.y) { var yk = String(c.y); yil[yk] = (yil[yk] || 0) + 1; }
+  /* ---- yıl dosyalarını yükle ---- */
+  function yilYukle(y) {
+    y = String(y);
+    if (yuklu[y]) return Promise.resolve();
+    if (yukleniyor[y]) return yukleniyor[y];
+    yukleniyor[y] = new Promise(function (coz) {
+      var s = document.createElement('script');
+      s.src = 'data/cumleler/' + y + '.js';
+      s.onload = function () {
+        var kayitlar = (window.CUMLELER_YIL && window.CUMLELER_YIL[y]) || [];
+        kayitlar.forEach(function (c) { HEPSI.push(c); });
+        yuklu[y] = true; delete yukleniyor[y];
+        coz();
+      };
+      s.onerror = function () { yuklu[y] = true; delete yukleniyor[y]; coz(); };
+      document.head.appendChild(s);
     });
-    var bs = Object.keys(bolum).sort(function (a, b) { return bolum[b] - bolum[a]; });
+    return yukleniyor[y];
+  }
+
+  function yillar() {
+    return DIZIN.yillar.map(function (x) { return String(x.y); })
+      .sort(function (a, b) { return b < a ? -1 : b > a ? 1 : 0; });   // yeniden eskiye
+  }
+
+  function hepsiniYukle() {
+    var sira = yillar();
+    (function sonraki() {
+      var y = sira.shift();
+      if (!y) { durumuYaz(); return; }
+      yilYukle(y).then(function () { suz(true); sonraki(); });
+    })();
+  }
+
+  function yuklenenSayi() {
+    return Object.keys(yuklu).length;
+  }
+
+  /* ---- filtre seçeneklerini dizinden üret ---- */
+  function secenekleriKur() {
+    var bs = DIZIN.bolumler.slice().sort(function (a, b) { return b.n - a.n; });
     $('bolum').innerHTML = '<option value="">Tüm bölümler</option>' +
       bs.map(function (b) {
-        return '<option value="' + kacar(b) + '">' + kacar(b) + ' (' + say(bolum[b]) + ')</option>';
+        return '<option value="' + kacar(b.b) + '">' + kacar(b.b) + ' (' + say(b.n) + ')</option>';
       }).join('');
-    var ys = Object.keys(yil).sort();
+    var ys = DIZIN.yillar.slice().sort(function (a, b) { return String(a.y) < String(b.y) ? -1 : 1; });
     $('yil').innerHTML = '<option value="">Tüm yıllar</option>' +
       ys.map(function (y) {
-        return '<option value="' + kacar(y) + '">' + kacar(y) + ' (' + say(yil[y]) + ')</option>';
+        return '<option value="' + kacar(String(y.y)) + '">' + kacar(String(y.y)) + ' (' + say(y.n) + ')</option>';
       }).join('');
   }
 
@@ -140,7 +183,6 @@
       el.innerHTML = '';
       $('bos').hidden = false;
       $('dahaFazla').hidden = true;
-      $('sayac').textContent = 'Eşleşen cümle yok.';
       return;
     }
     $('bos').hidden = true;
@@ -151,25 +193,38 @@
     if (kalan > 0) $('dahaFazla').textContent = 'Daha fazla göster (' + say(kalan) + ' cümle daha)';
   }
 
+  function durumuYaz() {
+    var toplamYil = DIZIN.yillar.length;
+    var yuklenen = yuklenenSayi();
+    var eksik = suzulmus.length - suzulmus.filter(function (c) { return c.t; }).length;
+    var metin = say(suzulmus.length) + ' cümle' +
+      (eksik ? ' · ' + say(eksik) + ' tanesinin çevirisi henüz yok' : '');
+    if (yuklenen < toplamYil) {
+      metin += ' · yükleniyor (' + yuklenen + '/' + toplamYil + ' yıl)';
+    }
+    $('sayac').textContent = metin;
+  }
+
   function ciz() {
     var bos = !suzulmus.length;
+    var bekliyor = yuklenenSayi() < DIZIN.yillar.length;
     $('kartAlan').hidden = !kartModu || bos;
     $('liste').hidden = kartModu;
     $('dahaFazla').hidden = kartModu || bos;
     if (bos) {
-      $('bos').hidden = false;
+      $('bos').hidden = bekliyor;     // yıl henüz gelmediyse "eşleşen yok" deme
       $('liste').innerHTML = '';
-      $('sayac').textContent = 'Eşleşen cümle yok.';
+      $('sayac').textContent = bekliyor ? 'Cümleler yükleniyor…' : 'Eşleşen cümle yok.';
       return;
     }
     $('bos').hidden = true;
     if (kartModu) kartCiz(); else listeCiz();
-    var eksik = suzulmus.length - suzulmus.filter(function (c) { return c.t; }).length;
-    $('sayac').textContent = say(suzulmus.length) + ' cümle' +
-      (eksik ? ' · ' + say(eksik) + ' tanesinin çevirisi henüz yok' : '');
+    durumuYaz();
   }
 
-  function suz() {
+  /* koru=true: bir yıl daha yüklendiğinde çağrılır; kart konumu ve "daha
+     fazla" sayısı korunur, yalnız liste tazelenir. */
+  function suz(koru) {
     var q = ($('ara').value || '').trim().toLowerCase();
     var b = $('bolum').value;
     var y = $('yil').value;
@@ -180,15 +235,17 @@
       return c.e.toLowerCase().indexOf(q) >= 0 ||
              (c.t && c.t.toLowerCase().indexOf(q) >= 0);
     });
-    gosterilen = GOSTER;
-    kartIndex = 0;
-    kartAcik = false;
+    if (!koru) {
+      gosterilen = GOSTER;
+      kartIndex = 0;
+      kartAcik = false;
+    }
     ciz();
   }
 
   /* ---- olaylar ---- */
   document.addEventListener('DOMContentLoaded', function () {
-    if (!HEPSI.length) {
+    if (!DIZIN.yillar.length) {
       $('sayac').textContent = 'Cümle verisi yüklenemedi.';
       return;
     }
@@ -196,10 +253,15 @@
 
     var zaman;
     $('ara').addEventListener('input', function () {
-      clearTimeout(zaman); zaman = setTimeout(suz, 180);
+      clearTimeout(zaman); zaman = setTimeout(function () { suz(); }, 180);
     });
-    $('bolum').addEventListener('change', suz);
-    $('yil').addEventListener('change', suz);
+    $('bolum').addEventListener('change', function () { suz(); });
+    $('yil').addEventListener('change', function () {
+      var y = $('yil').value;
+      // Seçilen yıl henüz gelmediyse önce onu getir; kullanıcı beklemesin.
+      if (y && !yuklu[y]) yilYukle(y).then(function () { suz(); });
+      else suz();
+    });
     $('temizle').addEventListener('click', function () {
       $('ara').value = ''; $('bolum').value = ''; $('yil').value = '';
       suz();
@@ -269,5 +331,6 @@
     });
 
     suz();
+    hepsiniYukle();
   });
 })();

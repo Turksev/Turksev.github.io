@@ -13,7 +13,8 @@ oradadır ve olduğu gibi çalışır; bkz. oradaki `KAYNAK_NOTU.md`).
 | `cumle_bankasi2.py`, `bolum_parcala.py`, `bolum_duzelt.py` | `sandbox/duz4/02_korpus/korpus.jsonl` | cümle bankası + bölüm etiketleri |
 | `cumle_js_uret.py` | `cumleler/cikti/C_*.json` (çeviriler), `bolum_nihai.json` | `data/cumleler.js` |
 | `ceviri_durum.py` | `cumleler/` | çeviri ilerleme raporu |
-| `bilgi_veri.py` → `bilgi_kart_veri.py` → `bilgi_js_uret.py` | korpus + puanlama.sqlite | `data/kelime-bilgi.js` |
+| `bilgi_veri.py` → `bilgi_kart_veri.py` → `bilgi_js_uret.py` | korpus + puanlama.sqlite (`sandbox/duz4`) | `data/kelime-bilgi.js` |
+| `bilgi_temizle.py` (modül) | korpus, `data/kelime-dizin.js` | bağlam (k, sk) artık temizliği: yönerge dışlama/onarım, başlık-soru no kırpma, tire birleştirme, parça onarımı (B2, 5 Eylül) |
 | `test_parcala.py` → (ajan) → `gt_pakete_don.py` | `data/kelime-dizin.js`, `data/test-*.js` | `tools/test-uretim/girdi|cikti/gt-*.json` → `dogrula.py` |
 | `cumle_temizle.py` | `data/cumleler.js` | artık temizliği (5 Eylül kuralları) |
 
@@ -21,4 +22,8 @@ Cümle listesi yeniden üretilirken uygulanacak kurallar ve açık artıklar:
 `06_sandbox_2026-09/KAYNAK_NOTU.md` ve `DENETIM_RAPORU_2026-09-05.md` (A4–A5).
 
 Node kurulu olmadığı için bu betikler Python'dur; makinedeki `python` (3.12) yeterlidir,
-ek paket gerekmez (`pypdfium2`/`reportlab` yalnız 2023 tarama betiklerinde).
+ek paket gerekmez (`pypdfium2`/`reportlab` yalnız 2023 tarama betiklerinde;
+`bilgi_kart_veri.py` için `lemminflect` — `03_calisma_listesi\.venv`).
+
+`bilgi_js_uret.py` arşivdeki `bilgi_kart_veri.json`'dan (duz3 puanlaması, 7.820 kelime)
+üretir; `bilgi_kart_veri.py` duz4 ile yeniden koşulursa 8.043 kelime çıkar.
