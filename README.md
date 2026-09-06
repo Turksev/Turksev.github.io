@@ -474,6 +474,9 @@ hepsi elle düzenlenir, üretim çıktısı değildir:
 | `tools/obek-lemma.json` | Çekimli öbek anahtarı → lemma. Hedef varsa anlamlar birleşir, yoksa ad değişir; eski biçim `b` alanında, tablo `obekler.js` sonunda `OBEK_TAKMA`. `esitleme-veri.js` ilerleme kimliğini lemmaya çözer, `ilerleme.js` eski kayıtları taşır (`obek-lemma-test.js`). |
 | `tools/kaliplar.js` | `tools/test-uretim/kalip-dogrula.py` (bayraksız) girdi/çıktı paketlerinden üretir; eksik paket için `kalip-paketle.py --eksik` (bayraksız koşulursa ilk tur girdilerini yeniden yazar!). |
 
+Puan ya da katman değişen her üretimden sonra `python tools/aile-cikar.py` de koşulmalı: `data/aileler.js`
+kök katmanlarını taşır ve CI'daki `aile-cikar.py --check` uyuşmazlıkta kırmızı olur (6 Eylül 2026).
+
 ### Kelime ailelerini üretmek
 
 `data/aileler.js` elle düzenlenmez. Yalnız `tools/aile-manifest.json` içindeki kalıcı
