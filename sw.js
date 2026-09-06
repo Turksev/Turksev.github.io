@@ -13,14 +13,14 @@
    dosya listesini ve içerik özetine bağlı worker sürümünü birlikte üretir.
    ============================================================ */
 
-var SURUM = 'yds-v184';
+var SURUM = 'yds-v185';
 /* İçerik özeti — tools/sw-surum.py üretir, elle değiştirme. Yayımlanan
    HTML/JS/CSS/veri dosyaları değişince özet değişir ve betik SURUM'u
    artırır. tools/test-uretim/sw-surum-test.js aynı özeti hesaplayıp
    karşılaştırır: dosya değişip sürüm artmamışsa CI kırmızıya döner.
    (5 Eylül 2026: altı yayın boyunca sürüm v173'te kaldı; kullanıcı yeni
    HTML + eski JS gördü.) */
-var ICERIK_OZETI = '226d8a4f';
+var ICERIK_OZETI = '6cdf3ff3';
 var ONBELLEK = SURUM;
 
 /* Kurulumda indirilenler: sayfalar, kod ve küçük veri dosyaları.
@@ -44,50 +44,50 @@ var TEMEL_DOSYALAR = [
   './yontem.html',
   './ayarlar.html',
   './cumleler.html',
-  './releases/0069fe0bafac/assets/css/style.css',
-  './releases/0069fe0bafac/assets/js/main.js',
-  './releases/0069fe0bafac/data/kelime-aliaslari.js',
-  './releases/0069fe0bafac/data/kaynak-manifest.json',
-  './releases/0069fe0bafac/data/kelime-provenans.json',
-  './releases/0069fe0bafac/assets/js/esitleme-ayar.js',
-  './releases/0069fe0bafac/assets/js/esitleme-veri.js',
-  './releases/0069fe0bafac/assets/js/esitleme-depo.js',
-  './releases/0069fe0bafac/assets/js/esitleme-v2.js',
-  './releases/0069fe0bafac/assets/js/cekim.js',
-  './releases/0069fe0bafac/assets/js/gunun-testi.js',
-  './releases/0069fe0bafac/assets/js/ilerleme.js',
-  './releases/0069fe0bafac/assets/js/veri.js',
-  './releases/0069fe0bafac/assets/js/durum.js',
-  './releases/0069fe0bafac/assets/js/konular.js',
-  './releases/0069fe0bafac/assets/js/kelimeler.js',
-  './releases/0069fe0bafac/assets/js/aileler.js',
-  './releases/0069fe0bafac/assets/js/obekler.js',
-  './releases/0069fe0bafac/assets/js/quiz.js',
-  './releases/0069fe0bafac/assets/js/deneme-oturum.js',
-  './releases/0069fe0bafac/assets/js/deneme.js',
-  './releases/0069fe0bafac/assets/js/soru-konu.js',
-  './releases/0069fe0bafac/assets/js/baglaclar.js',
-  './releases/0069fe0bafac/assets/js/ara.js',
-  './releases/0069fe0bafac/assets/js/ayarlar.js',
-  './releases/0069fe0bafac/assets/js/cumleler.js',
-  './releases/0069fe0bafac/assets/js/kelime-bilgi.js',
-  './releases/0069fe0bafac/data/kelime-dizin.js',
-  './releases/0069fe0bafac/data/aileler.js',
-  './releases/0069fe0bafac/data/konular.js',
-  './releases/0069fe0bafac/data/konu-metinleri.js',
-  './releases/0069fe0bafac/data/konu-metinleri-t-ek.js',
-  './releases/0069fe0bafac/data/konu-metinleri-e1-ek.js',
-  './releases/0069fe0bafac/data/konu-metinleri-e2-ek.js',
-  './releases/0069fe0bafac/data/olumsuzlar.js',
-  './releases/0069fe0bafac/data/sayilar.js',
-  './releases/0069fe0bafac/data/yds-dagilim.js',
-  './releases/0069fe0bafac/data/sorular.js',
-  './releases/0069fe0bafac/data/sorular-ek.js',
-  './releases/0069fe0bafac/data/deneme-formlari.js',
-  './releases/0069fe0bafac/data/baglaclar.js',
+  './releases/9fc780b468a4/assets/css/style.css',
+  './releases/9fc780b468a4/assets/js/main.js',
+  './releases/9fc780b468a4/data/kelime-aliaslari.js',
+  './releases/9fc780b468a4/data/kaynak-manifest.json',
+  './releases/9fc780b468a4/data/kelime-provenans.json',
+  './releases/9fc780b468a4/assets/js/esitleme-ayar.js',
+  './releases/9fc780b468a4/assets/js/esitleme-veri.js',
+  './releases/9fc780b468a4/assets/js/esitleme-depo.js',
+  './releases/9fc780b468a4/assets/js/esitleme-v2.js',
+  './releases/9fc780b468a4/assets/js/cekim.js',
+  './releases/9fc780b468a4/assets/js/gunun-testi.js',
+  './releases/9fc780b468a4/assets/js/ilerleme.js',
+  './releases/9fc780b468a4/assets/js/veri.js',
+  './releases/9fc780b468a4/assets/js/durum.js',
+  './releases/9fc780b468a4/assets/js/konular.js',
+  './releases/9fc780b468a4/assets/js/kelimeler.js',
+  './releases/9fc780b468a4/assets/js/aileler.js',
+  './releases/9fc780b468a4/assets/js/obekler.js',
+  './releases/9fc780b468a4/assets/js/quiz.js',
+  './releases/9fc780b468a4/assets/js/deneme-oturum.js',
+  './releases/9fc780b468a4/assets/js/deneme.js',
+  './releases/9fc780b468a4/assets/js/soru-konu.js',
+  './releases/9fc780b468a4/assets/js/baglaclar.js',
+  './releases/9fc780b468a4/assets/js/ara.js',
+  './releases/9fc780b468a4/assets/js/ayarlar.js',
+  './releases/9fc780b468a4/assets/js/cumleler.js',
+  './releases/9fc780b468a4/assets/js/kelime-bilgi.js',
+  './releases/9fc780b468a4/data/kelime-dizin.js',
+  './releases/9fc780b468a4/data/aileler.js',
+  './releases/9fc780b468a4/data/konular.js',
+  './releases/9fc780b468a4/data/konu-metinleri.js',
+  './releases/9fc780b468a4/data/konu-metinleri-t-ek.js',
+  './releases/9fc780b468a4/data/konu-metinleri-e1-ek.js',
+  './releases/9fc780b468a4/data/konu-metinleri-e2-ek.js',
+  './releases/9fc780b468a4/data/olumsuzlar.js',
+  './releases/9fc780b468a4/data/sayilar.js',
+  './releases/9fc780b468a4/data/yds-dagilim.js',
+  './releases/9fc780b468a4/data/sorular.js',
+  './releases/9fc780b468a4/data/sorular-ek.js',
+  './releases/9fc780b468a4/data/deneme-formlari.js',
+  './releases/9fc780b468a4/data/baglaclar.js',
   './manifest.webmanifest',
-  './releases/0069fe0bafac/assets/img/icon-192.png',
-  './releases/0069fe0bafac/assets/img/icon-512.png'
+  './releases/9fc780b468a4/assets/img/icon-192.png',
+  './releases/9fc780b468a4/assets/img/icon-512.png'
 ];
 
 self.addEventListener('install', function (e) {
