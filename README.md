@@ -12,7 +12,7 @@ Yayında: <https://turksev.github.io>
 | `index.html` | Ana sayfa: **YDS bölüm dağılımı tablosu** (80 sorunun hangi aralıkta hangi bölüm olduğu) ve ilerleme paneli — tekrar durumu, yanlış defteri, deneme geçmişi, kategori karnesi |
 | `durum.html` | Çalışılmış her şey tek listede (kelime, öbek, aile üyesi): üstte **sistemdeki toplam kayıt**, kutu sekmelerinde sayı ve bu toplama oranı ("hepsi" dahil), arama/süzme/sıralama |
 | `kelimeler.html` | 9.379 kelime ve yapı, 7 katman + **aralıklı tekrar (Leitner)**: bugünün destesi, kart modu, ipucu, sesli okuma |
-| `obekler.html` | 1.879 kelime öbeği (607 deyimsel fiil, 346 edat kalıbı, 865 sabit, 61 geçiş ifadesi) — ayrı Leitner destesi |
+| `obekler.html` | 1.854 kelime öbeği (590 deyimsel fiil, 339 edat kalıbı, 864 sabit, 61 geçiş ifadesi) — ayrı Leitner destesi |
 | `cumleler.html` | 8.071 sınav cümlesi ve Türkçe çevirisi (2013–2026, sınav + bölüm + soru no); liste ve kart modu, kutu (Leitner) ilerlemesi, yıl/bölüm filtresi |
 | `quiz.html` | Alıştırma soruları: 12 kategori, anında çözüm, yanlış defterinden çalışma |
 | `deneme.html` | **Süreli deneme sınavı**: üç sabit 80 soruluk form, geri sayım, soru ızgarası, işaretleme, yenileme sonrası oturum kurtarma, 100 üzerinden YDS puanı, kategori karnesi |
@@ -25,7 +25,7 @@ Yayında: <https://turksev.github.io>
 
 - **9.379 kelime ve yapı** — 49 gerçek YDS sınavı temel alınarak puanlanan listeye ek olarak gerekçesi kayıtlı üç puansız kalıp içerir; yedi katmana ayrılmıştır;
   her birinde Türkçe anlam + İngilizce örnek cümle + çeviri (**3.386'sında birden çok anlam** var)
-- **1.879 kelime öbeği** — deyimsel fiil (phrasal verb), edat kalıbı, sabit ve geçiş ifadeleri, kaç sınavda geçtiği bilgisiyle
+- **1.854 kelime öbeği** — deyimsel fiil (phrasal verb), edat kalıbı, sabit ve geçiş ifadeleri, kaç sınavda geçtiği bilgisiyle (anahtar = lemma; çekimli eski biçimler `b` alanında)
 - **286 soru** — 12 kategori: Kelime, Dil Bilgisi, Bağlaç, Preposition, Cloze Test, Çeviri,
   Cümle Tamamlama, Restatement, Paragraf Tamamlama, Anlamı Bozan Cümle, Diyalog, Okuma
   (80 soruluk A/B/C formlarında 240 farklı soru; doğru şıklar her formda A–E arasında 16'şar kez dağılır)
@@ -42,13 +42,18 @@ F: toplam frekans, P: akademik önsel (NGSL/NAWL/AWL üyeliği + Zipf).
 
 | Katman | Puan | Kelime | Dosya (gzip) |
 | --- | --- | --- | --- |
-| 1 · Temel | ≥ 40 | 667 | 97 K |
-| 2 · Çekirdek | 30–40 | 726 | 124 K |
-| 3 · Orta | 25–30 | 710 | 117 K |
-| 4 · İleri | 17–25 | 1.856 | 313 K |
-| 5 · Geniş | 12–17 | 2.139 | 304 K |
-| 6 · Geniş+ | 10–12 + denetimli ekler (sınav kanıtlı, puan < 10 olabilir) | 2.718 | 424 K |
-| 7 · Aile üyeleri | < 10 veya denetimli kök | 563 | 80 K |
+| 1 · Temel | ≥ 40 | 921 | 169 K |
+| 2 · Çekirdek | 30–40 | 832 | 144 K |
+| 3 · Orta | 25–30 | 739 | 128 K |
+| 4 · İleri | 17–25 | 1.885 | 306 K |
+| 5 · Geniş | 12–17 | 2.032 | 293 K |
+| 6 · Geniş+ | 10–12 + denetimli ekler (sınav kanıtlı, puan < 10 olabilir) | 2.358 | 406 K |
+| 7 · Aile üyeleri | < 10 veya denetimli kök | 612 | 88 K |
+
+Sayılar 6 Eylül 2026 puan güncellemesine göredir: puanlar güncel korpustan (49 sınav; 6 tam
+kitapçık + 2023 transkriptleri, kitapçık şablon metinleri dışlanmış) yeniden hesaplandı
+(`tools/puan-guncellemesi.json`); katmanı sabit olmayan ~1.850 kelime katman değiştirdi,
+çoğu bir üst katmana. Geçiş listesi: `tools/puan-guncellemesi-rapor.md`.
 
 6. katman 21.08.2026'da eşik 15 → 10'a indirilince geldi (`Calisma_Listesi_v4_site_tam.xlsx`);
 5. katmanı genişletmek yerine ayrı katman açıldı ki isteyen açsın, mevcut desteler değişmesin.
@@ -63,7 +68,7 @@ kıvamında tutuyor — eşiği indirmek oraya `crucial`, `acquire`, `perspectiv
 ilerlemesi kelime adına bağlı olduğu için (`yds-leitner`) hiçbir kutu etkilenmedi.
 
 Kullanıcı hangi katmanları seçerse yalnız onlar indirilir. Çekirdekten çalışan biri toplam
-**~305 K** veri indirir; hepsini açan dizinle birlikte ~1,37 MB. Dizin (`data/kelime-dizin.js`, yaklaşık 184 KiB gzip) her sayfada
+**~305 K** veri indirir; hepsini açan dizinle birlikte ~1,37 MB. Dizin (`data/kelime-dizin.js`, yaklaşık 211 KiB gzip) her sayfada
 yüklüdür ve yazılış + kısa anlam + puan + katman bilgisini taşır; örnek cümleler katman
 dosyalarındadır.
 
