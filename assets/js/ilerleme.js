@@ -98,6 +98,28 @@
     Depo.yaz(K_LEITNER, leitner);
   }
 
+  /* Öbek anahtar standardı (06.09.2026): çekimli eski anahtarlarla ("looking at")
+     kaydedilmiş ilerleme lemmaya ("look at") taşınır; iki kayıt varsa daha ileri
+     olan kalır. Tablo (window.OBEK_TAKMA) obekler.js ile gelir; veri.js öbekleri
+     sonradan yüklediğinde de çağrılır. Eşitlemeden eski kimlik geri gelirse bir
+     sonraki yüklemede yeniden taşınır. */
+  function obekTakmaGocu() {
+    var takma = window.OBEK_TAKMA;
+    if (!takma) return 0;
+    var aday = null, tasinan = 0;
+    Object.keys(takma).forEach(function (eski) {
+      if (!leitner[eski]) return;
+      if (!aday) aday = leitnerKopyasi();
+      var yeni = String(takma[eski]);
+      aday[yeni] = leitnerKaydiSec(aday[yeni], aday[eski]);
+      delete aday[eski];
+      tasinan++;
+    });
+    if (aday && Depo.yaz(K_LEITNER, aday) !== false) leitner = aday;
+    return tasinan;
+  }
+  obekTakmaGocu();
+
   function leitnerKopyasi() {
     var sonuc = {};
     Object.keys(leitner).forEach(function (en) { sonuc[en] = leitner[en]; });
@@ -739,6 +761,7 @@
     bugun: bugun,
     ilerlemeKimligi: ilerlemeKimligi,
     kimlikCoz: kimlikCoz,
+    obekTakmaGocu: obekTakmaGocu,
     kayit: kayit,
     kutu: kutu,
     tumKayitlar: tumKayitlar,

@@ -147,7 +147,12 @@
       var s = document.createElement('script');
       s.src = 'data/obekler.js';
       s.async = true;
-      s.onload = function () { coz(window.OBEKLER || []); };
+      s.onload = function () {
+        // OBEK_TAKMA öbeklerle gelir: eski çekimli anahtarlardaki ilerlemeyi lemmaya taşı.
+        var I = window.YDS && window.YDS.Ilerleme;
+        if (I && I.obekTakmaGocu) I.obekTakmaGocu();
+        coz(window.OBEKLER || []);
+      };
       s.onerror = function () { obekYukleniyor = null; reddet(new Error('Öbekler yüklenemedi')); };
       document.head.appendChild(s);
     });

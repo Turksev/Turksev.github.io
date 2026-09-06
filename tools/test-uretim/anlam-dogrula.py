@@ -52,6 +52,18 @@ for ad in sorted(os.listdir(GIRDI)):
         sev[r['sev']] += 1
         alan[r.get('alan', '?')] += 1
 
+# Canlılık: bulgu paketleri tarihseldir; MEVCUT metni yayımlanan veride (data/kelime-k*.js)
+# hâlâ geçiyorsa bulgu "canlı", geçmiyorsa kaynakta kapanmıştır. 6 Eylül 2026'da 420
+# bulgunun 36'sı canlıydı; tools/kart-duzeltmeleri/ ile kapatıldı.
+_veri = ''.join(io.open(os.path.join(BURASI, '..', '..', 'data', 'kelime-k%d.js' % k), encoding='utf-8').read()
+                for k in range(1, 8))
+def _kart(e):
+    i = _veri.find('"%s":{' % e)
+    return _veri[i:_veri.find(chr(10), i)] if i >= 0 else ''
+canli = [r for r in bulgular if (r.get('mevcut') or '').strip('. ') and (r.get('mevcut') or '').strip('. ') in _kart(r['e'])]
+print('canlı bulgu (MEVCUT hâlâ kendi kartında; etiketi düzeltilip örneği korunanlar dahil): %d / %d' % (len(canli), len(bulgular)))
+for r in canli[:20]:
+    print('  CANLI %s [%s] %s' % (r['e'], r.get('alan'), (r.get('mevcut') or '')[:80]))
 print('taranan %d kelime · bulgu %d (hata %d, süpheli %d) · biçim hatası %d · eksik paket %d'
       % (taranan, len(bulgular), sev['hata'], sev['süpheli'] + sev['supheli'],
          len(hatalar), len(eksik)))

@@ -15,12 +15,14 @@ function yukle(dosya) {
 }
 
 yukle('data/kelime-dizin.js');
-yukle('data/kelime-k2.js');
 yukle('data/obekler.js');
 yukle('data/sayilar.js');
 
 var dizin = pencere.KELIME_DIZIN.filter(function (x) { return x.e === 'looking'; })[0];
-var looking = pencere.KELIME_K2.looking;
+assert.ok(dizin, 'looking dizinde yok');
+// Katman puana bağlı (06.09.2026 duz5 güncellemesi kartı K2'den taşıdı); dosyayı dizinden seç.
+yukle('data/kelime-k' + dizin.k + '.js');
+var looking = pencere['KELIME_K' + dizin.k].looking;
 assert.ok(dizin && looking, 'looking kelime kartı bulunamadı');
 assert.strictEqual(dizin.y, 'fiil', 'looking kartı yalnız çekimli fiil olarak kalmalı');
 assert.strictEqual(looking.a.length, 1, 'looking kartında kalıp anlamları birikmemeli');

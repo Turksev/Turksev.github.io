@@ -1203,7 +1203,146 @@ def yayimlanmis_adlari_oku(dosya, desen):
         return {json.loads('"%s"' % m.group(1)) for m in re.finditer(desen, f.read())}
 
 
-def silme_korumasi(kelimeler, obekler, izin=False):
+PUAN_GUNCELLEMESI = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'puan-guncellemesi.json')
+
+
+def puan_guncellemesini_uygula(kelimeler, disla=()):
+    """Guncel korpus puanlarini (tools/puan-guncellemesi.json) kelimelere uygular.
+
+    xlsx puanlari 22 Agustos korpusundan (45 sinav) geliyordu; duz5 (49 sinav,
+    6 tam kitapcik + 2023 transkriptleri, sablon metinleri dislanmis) ile
+    yeniden hesaplanan puanlar burada ezilir. Katmani sabitlenmemis kelimelerde
+    katman daha sonra yeni puandan bantlanir; katman_zorla tasiyanlar (aile,
+    denetimli ek, ek-kelimeler, modal) kaynak puanini korur. Dosya yoksa
+    sessizce atlanir (eski davranis).
+    """
+    if not os.path.exists(PUAN_GUNCELLEMESI):
+        return 0
+    with io.open(PUAN_GUNCELLEMESI, encoding='utf-8') as f:
+        veri = json.load(f)
+    if veri.get('sema') != 1:
+        raise SystemExit('puan-guncellemesi.json: bilinmeyen sema %r' % veri.get('sema'))
+    kayit = veri['kayitlar']
+    guncel = 0
+    for en, k in kelimeler.items():
+        v = kayit.get(en)
+        # Katmani kaynaginca sabitlenmis kartlar (aile partisi, ek-kelime partisi,
+        # modal kart, denetimli ek) kaynak puanini korur; testler parti dosyasiyla
+        # birebir esitlik bekler.
+        if v is None or k.get('puan') is None or k.get('katman_zorla') or en in disla:
+            continue
+        if abs(float(v['p']) - float(k['puan'])) >= 0.05:
+            guncel += 1
+        k['puan'] = float(v['p'])
+    return guncel
+
+
+KART_DUZELTME_DIZINI = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'kart-duzeltmeleri')
+OBEK_LEMMA = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'obek-lemma.json')
+
+
+def kart_duzeltmelerini_oku():
+    """tools/kart-duzeltmeleri/*.json — anlam duzeltme kayitlari (denetim B4)."""
+    kayitlar = []
+    if not os.path.isdir(KART_DUZELTME_DIZINI):
+        return kayitlar
+    for ad in sorted(os.listdir(KART_DUZELTME_DIZINI)):
+        if not ad.endswith('.json'):
+            continue
+        with io.open(os.path.join(KART_DUZELTME_DIZINI, ad), encoding='utf-8') as f:
+            veri = json.load(f)
+        if veri.get('sema') != 1:
+            raise SystemExit('%s: bilinmeyen sema %r' % (ad, veri.get('sema')))
+        for k in veri['kayitlar']:
+            k['_dosya'] = ad
+            kayitlar.append(k)
+    return kayitlar
+
+
+def kart_duzeltmelerini_uygula(kelimeler, kayitlar):
+    """Anlam duzeltmelerini uygular.
+
+    Kayit: {e, bul:{alan: altdize}, yaz:{alan: tam metin} | degistir:{alan:[eski, yeni]} | sil:true}
+    bul: kelimenin anlamlari icinde verilen alt dizeleri TASIYAN ilk anlam secilir.
+    Eslesmeyen kayit uyari olarak listelenir (kaynak veri degismis demektir; kayit guncellenmeli).
+    Donus: (uygulanan, eslesmeyen listesi)
+    """
+    uygulanan, eslesmeyen = 0, []
+    for k in kayitlar:
+        kart = kelimeler.get(k['e'])
+        if kart is None:
+            eslesmeyen.append('%s: %s kelimesi yok' % (k['_dosya'], k['e']))
+            continue
+        bul = k.get('bul') or {}
+        secilen = None
+        for a in kart['anlamlar']:
+            if all(str(alt) in str(a.get(alan) or '') for alan, alt in bul.items()):
+                secilen = a
+                break
+        if secilen is None:
+            eslesmeyen.append('%s: %s icin anlam bulunamadi (%s)' % (k['_dosya'], k['e'], bul))
+            continue
+        if k.get('sil'):
+            if len(kart['anlamlar']) <= 1:
+                eslesmeyen.append('%s: %s tek anlamli, silinemez' % (k['_dosya'], k['e']))
+                continue
+            kart['anlamlar'].remove(secilen)
+            uygulanan += 1
+            continue
+        for alan, metin in (k.get('yaz') or {}).items():
+            secilen[alan] = metin
+        for alan, (eski, yeni) in (k.get('degistir') or {}).items():
+            mevcut = str(secilen.get(alan) or '')
+            if eski not in mevcut:
+                eslesmeyen.append('%s: %s.%s icinde "%s" yok' % (k['_dosya'], k['e'], alan, eski))
+                continue
+            secilen[alan] = mevcut.replace(eski, yeni, 1)
+        uygulanan += 1
+    return uygulanan, eslesmeyen
+
+
+def obek_lemma_oku():
+    """tools/obek-lemma.json — cekimli obek anahtarlarini lemmaya baglayan tablo (denetim B6)."""
+    if not os.path.exists(OBEK_LEMMA):
+        return {}
+    with io.open(OBEK_LEMMA, encoding='utf-8') as f:
+        veri = json.load(f)
+    if veri.get('sema') != 1:
+        raise SystemExit('obek-lemma.json: bilinmeyen sema %r' % veri.get('sema'))
+    return dict(veri['takma'])
+
+
+def obek_lemma_uygula(obekler, takma):
+    """Cekimli anahtari lemmaya tasir: hedef varsa anlamlar birlesir, yoksa ad degisir.
+
+    Eski bicim kartin 'b' (bicimler) alaninda kalir; data/obekler.js sonunda
+    window.OBEK_TAKMA olarak yayimlanir ki eski ilerleme kimlikleri lemmaya cozulsun.
+    Donus: (birlesen, yeniden_adlanan, eksik listesi)
+    """
+    birlesen, adlanan, eksik = 0, 0, []
+    for eski, yeni in takma.items():
+        if eski not in obekler:
+            eksik.append(eski)
+            continue
+        kaynak = obekler.pop(eski)
+        if yeni in obekler:
+            hedef = obekler[yeni]
+            mevcut_tr = {a['tr'] for a in hedef['anlamlar']}
+            for a in kaynak['anlamlar']:
+                if a['tr'] not in mevcut_tr:
+                    hedef['anlamlar'].append(a)
+                    mevcut_tr.add(a['tr'])
+            hedef['sinav'] = max(hedef.get('sinav') or 0, kaynak.get('sinav') or 0)
+            hedef.setdefault('b', []).append(eski)
+            birlesen += 1
+        else:
+            kaynak.setdefault('b', []).append(eski)
+            obekler[yeni] = kaynak
+            adlanan += 1
+    return birlesen, adlanan, eksik
+
+
+def silme_korumasi(kelimeler, obekler, izin=False, obek_takma=None):
     """Üretilecek küme yayımlanmış veriden kayıt düşürüyorsa DUR (çıkış kodu 1).
 
     05.09.2026 denetimi (A2): 4-5 Eylül'de eklenen sınav kelimeleri yalnız
@@ -1216,7 +1355,7 @@ def silme_korumasi(kelimeler, obekler, izin=False):
         set(kelimeler))
     eksik_obek = sorted(
         yayimlanmis_adlari_oku('obekler.js', r'(?m)^\{f:"((?:[^"\\]|\\.)*)"') -
-        set(obekler))
+        set(obekler) - set(obek_takma or {}))
     if not eksik_kelime and not eksik_obek:
         return 0
     print('KORUMA: yayımlanmış veride olup bu üretimde YAZILMAYACAK kayıtlar var.')
@@ -1334,12 +1473,25 @@ def birlestir(ek_partileri=None):
         ek_partileri = ek_kelime_partilerini_oku()
     ek_parti_eklenen = ek_kelime_partilerini_uygula(kelimeler, ek_partileri)
 
+    # Guncel korpus puanlari (duz5): birlesimden sonra, katman bantlamadan once.
+    # Modal kartlar kendi puan/katmanini tasir (modal-kartlar testi kaynakla birebir bekler).
+    puan_guncel = puan_guncellemesini_uygula(kelimeler, disla={k['e'] for k in modal_kartlar})
+    print('  puan guncellemesi   :', puan_guncel, 'kelimenin puani degisti (tools/puan-guncellemesi.json)')
+
     # Anlam yildizlari: onemliyi basa al
     yildiz = yildizlari_oku()
     yildizli = 0
     for en, k in kelimeler.items():
         if yildizla(k['anlamlar'], yildiz.get(en)) or any(a.get('yz') for a in k['anlamlar']):
             yildizli += 1
+
+    # Anlam duzeltmeleri (denetim B4): tum kaynaklar birlestikten ve yildizlar
+    # atandiktan SONRA — yildiz tablosu anlami tr metniyle bulur; tr burada
+    # degisirse yildiz (yz) dict uzerinde zaten durur, yeniden aranmaz.
+    duzeltme_uygulanan, duzeltme_eslesmeyen = kart_duzeltmelerini_uygula(kelimeler, kart_duzeltmelerini_oku())
+    print('  anlam duzeltmesi    :', duzeltme_uygulanan, 'uygulandi,', len(duzeltme_eslesmeyen), 'eslesmedi')
+    for satir in duzeltme_eslesmeyen:
+        print('    ESLESMEDI', satir)
 
     for en, k in kelimeler.items():
         k['katman'] = k.get('katman_zorla') or katman_bul(k['puan'])
@@ -1515,29 +1667,36 @@ def obekleri_topla(ek_partileri=None):
     return obekler, ek_eklenen, atilan, parti_eklenen
 
 
-def obekleri_yaz(obekler):
+def obekleri_yaz(obekler, takma=None):
     sirali = sorted(obekler.items(), key=lambda x: (-x[1]['sinav'], x[0]))
     govde = []
     for ad, o in sirali:
         anlamlar = ','.join(anlam_yaz(a) for a in o['anlamlar'])
-        govde.append('{f:%s,y:%s,s:%d,kn:%s,a:[%s]}' % (
+        bicimler = ',b:%s' % json.dumps(o['b'], ensure_ascii=False) if o.get('b') else ''
+        govde.append('{f:%s,y:%s,s:%d,kn:%s%s,a:[%s]}' % (
             json.dumps(ad, ensure_ascii=False),
             json.dumps(o['tip'], ensure_ascii=False),
             o['sinav'],
             json.dumps(o['kaynak'], ensure_ascii=False),
+            bicimler,
             anlamlar))
 
     basli = (
         '/* ============================================================\n'
         '   Kelime öbekleri — %d öbek\n'
-        '   Alanlar: f=öbek, y=tür, s=kaç sınavda geçti, kn=kaynak,\n'
+        '   Alanlar: f=öbek, y=tür, s=kaç sınavda geçti, kn=kaynak, b=eski çekimli biçimler,\n'
         '            a=anlamlar [{tr, ex, exTr, yz}] — yz: YDS önemi 1-4\n'
         '   Kaç sınavda geçtiğine göre sıralı. tools/listeyi-aktar.py üretir.\n'
         '   ============================================================ */\n\n'
         'window.OBEKLER = [\n' % len(sirali)
     )
+    # Eski (cekimli) anahtar -> lemma: ilerleme kimlikleri bu tabloyla cozulur.
+    takma_js = ('\n/* Cekimli eski anahtarlar (b alani) -> lemma. esitleme-veri.js ilerleme\n'
+                '   kimligini bununla cozer; ilerleme.js eski kayitlari yuklemede tasir. */\n'
+                'window.OBEK_TAKMA = %s;\n' % json.dumps(dict(sorted((takma or {}).items())),
+                                                          ensure_ascii=False))
     yol = os.path.join(VERI, 'obekler.js')
-    yaz(yol, basli + ',\n'.join(govde) + '\n];\n')
+    yaz(yol, basli + ',\n'.join(govde) + '\n];\n' + takma_js)
     return sirali, os.path.getsize(yol)
 
 
@@ -1624,11 +1783,18 @@ def main(argv=None):
      aile_partileri, parti_eklenen, ek_partileri, ek_parti_eklenen) = birlestir()
     obek_sozlugu, obek_ek, obek_atilan, obek_parti = obekleri_topla(ek_partileri)
 
+    # Obek anahtar standardi: cekimli anahtarlar lemmaya birlesir (tools/obek-lemma.json).
+    obek_takma = obek_lemma_oku()
+    obek_birlesen, obek_adlanan, obek_takma_eksik = obek_lemma_uygula(obek_sozlugu, obek_takma)
+    print('  obek lemma          :', obek_birlesen, 'birlesti,', obek_adlanan, 'yeniden adlandi')
+    if obek_takma_eksik:
+        print('  UYARI obek-lemma: kaynakta olmayan anahtar:', ', '.join(obek_takma_eksik))
+
     # Hicbir dosya yazilmadan once: yayimlanmis veriden kayit dusuyor mu?
-    silinen = silme_korumasi(kelimeler, obek_sozlugu, silmeye_izin)
+    silinen = silme_korumasi(kelimeler, obek_sozlugu, silmeye_izin, obek_takma)
 
     sirali, ozet = kelimeleri_yaz(kelimeler)
-    obekler, obek_boyut = obekleri_yaz(obek_sozlugu)
+    obekler, obek_boyut = obekleri_yaz(obek_sozlugu, obek_takma)
     sayilari_yaz(sirali, ozet, obekler)
     modal_testlerini_yaz(modal_kartlarini_oku())
     aile_aliaslari = aile_kart_aliaslarini_oku()

@@ -75,10 +75,19 @@
      yds-leitner deposunda çakışmadan durur. */
   function cumleKimligiMi(ham) { return ham.slice(0, 2) === 'c:'; }
 
+  /* Öbek anahtar standardı (06.09.2026): çekimli eski anahtarlar ("looking at")
+     lemmaya ("look at") bağlanır. Tablo data/obekler.js sonunda yayımlanır;
+     yüklü değilse ham kimlik olduğu gibi kalır. */
+  function obekTakmaCoz(ham) {
+    var takma = window.OBEK_TAKMA;
+    return (takma && KENDI.call(takma, ham)) ? String(takma[ham]) : ham;
+  }
+
   function ilerlemeKimligi(id, tur) {
     var ham = String(id == null ? '' : id);
     // Öbek ve cümle ham kimlikle saklanır; kelime iç kimliğe çevrilir.
-    return (tur === 'obek' || tur === 'cumle') ? ham : kelimeIlerlemeKimligi(ham);
+    if (tur === 'obek') return obekTakmaCoz(ham);
+    return tur === 'cumle' ? ham : kelimeIlerlemeKimligi(ham);
   }
 
   function ilerlemeKimliginiCoz(id) {
@@ -91,6 +100,9 @@
       return true;
     });
     if (bulunan) return bulunan;
+    if (window.OBEK_TAKMA && KENDI.call(window.OBEK_TAKMA, ham)) {
+      return { ad: obekTakmaCoz(ham), tur: 'obek' };
+    }
     if (KENDI.call(KELIME_ILERLEME_KIMLIKLERI, ham)) {
       return { ad: ham, tur: 'obek' };
     }

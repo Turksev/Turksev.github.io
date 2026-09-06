@@ -29,14 +29,15 @@ var belgeliPuansiz = new Set(ozelKartlar.filter(function (x) {
   return x.p === null && x.k === 6 && typeof x.reason === 'string' && x.reason.trim();
 }).map(function (x) { return x.e; }));
 // 02.09.2026: ilk insan denetimli aile kartı partisi 61 ayrı lemma ekledi.
+// 06.09.2026: duz5 puan güncellemesi katmanları yeniden bantladı (5: 2032, 6: 2358, 7: 612).
 // 05.09.2026: 2024-2026 tam kitapçıkları + 2023 görsel transkriptleri ile
 // kelime havuzu 8.440 -> 9379, öbek 1.631 -> 1877.
 assert.strictEqual(dizin.length, 9379);
 assert.strictEqual(dizinKumesi.size, 9379, 'dizinde yinelenen başlık');
 assert.strictEqual(pencere.SAYILAR.kelime, 9379);
-assert.strictEqual(pencere.SAYILAR.katman['5'], 2139);
-assert.strictEqual(pencere.SAYILAR.katman['6'], 2718);
-assert.strictEqual(pencere.SAYILAR.katman['7'], 563);
+assert.strictEqual(pencere.SAYILAR.katman['5'], 2032);
+assert.strictEqual(pencere.SAYILAR.katman['6'], 2358);
+assert.strictEqual(pencere.SAYILAR.katman['7'], 612);
 dizin.forEach(function (x) {
   var puanli = typeof x.p === 'number' && Number.isFinite(x.p);
   assert.ok(puanli || belgeliPuansiz.has(x.e), x.e + ': öncelik puanı veya kabul gerekçesi eksik');

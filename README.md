@@ -13,7 +13,7 @@ Yayında: <https://turksev.github.io>
 | `durum.html` | Çalışılmış her şey tek listede (kelime, öbek, aile üyesi): üstte **sistemdeki toplam kayıt**, kutu sekmelerinde sayı ve bu toplama oranı ("hepsi" dahil), arama/süzme/sıralama |
 | `kelimeler.html` | 9.379 kelime ve yapı, 7 katman + **aralıklı tekrar (Leitner)**: bugünün destesi, kart modu, ipucu, sesli okuma |
 | `obekler.html` | 1.879 kelime öbeği (607 deyimsel fiil, 346 edat kalıbı, 865 sabit, 61 geçiş ifadesi) — ayrı Leitner destesi |
-| `cumleler.html` | 7.658 sınav cümlesi ve Türkçe çevirisi (2013–2026, sınav + bölüm + soru no); liste ve kart modu, kutu (Leitner) ilerlemesi, yıl/bölüm filtresi |
+| `cumleler.html` | 8.071 sınav cümlesi ve Türkçe çevirisi (2013–2026, sınav + bölüm + soru no); liste ve kart modu, kutu (Leitner) ilerlemesi, yıl/bölüm filtresi |
 | `quiz.html` | Alıştırma soruları: 12 kategori, anında çözüm, yanlış defterinden çalışma |
 | `deneme.html` | **Süreli deneme sınavı**: üç sabit 80 soruluk form, geri sayım, soru ızgarası, işaretleme, yenileme sonrası oturum kurtarma, 100 üzerinden YDS puanı, kategori karnesi |
 | `gramer.html` | 10 başlıkta konu anlatımı, kural tabloları ve sınav tuzakları |
@@ -104,8 +104,9 @@ data/
   aileler.js          kalıcı karar manifestinden üretilen kelime aileleri
   kelime-aliaslari.js eski başlıklardaki ilerlemeyi düzeltilmiş başlıklara taşır
   kelime-provenans.json denetlenen öğelerin sınav kimliği/sayfa/soru kaynakları
-  obekler.js          1.879 kelime öbeği
-  cumleler.js         7.658 sınav cümlesi + çevirisi (e, t, s=sınav, b=bölüm, n=soru no, y=yıl)
+  obekler.js          1.854 kelime öbeği (anahtar = lemma; b = eski çekimli biçimler; sonda OBEK_TAKMA)
+  cumleler/<yıl>.js   8.071 sınav cümlesi + çevirisi, yıl dosyaları (e, t, s=sınav, b=bölüm, n=soru no, y=yıl)
+  cumleler-dizin.js   cümle sayıları ve filtre seçenekleri (yıl dosyaları yeniden eskiye yüklenir)
   kelime-bilgi.js     7.820 kelimenin sınav kullanım notu (ℹ; tembel yüklenir, 3,8 MB)
   sayilar.js          içerik sayaçları (üretilir)
   sorular.js          temel soru bankası + okuma parçaları
@@ -259,7 +260,7 @@ en çok 20 soruluk, 5 şıklı boşluk doldurma testi açılır. Cümleler **kar
 YDS okuma parçası kayıtında özgün cümlelerdir; `data/test-k{n}.js` içinde durur
 (`{kelime: {c, b, f, tr}}` — c boşluklu cümle, b boşluğa gelen çekimli biçim, f çekim türü
 `'' | s | past | pp | ing | pl`, tr Türkçesi). **Havuzun tamamı hazır** (28.08.2026):
-7 katman ve modal/özel yapı testleriyle bütün **9.379 kelime ve yapı** için cümle; ayrıca **1.879 öbek kartının 893'ü** için bağımsız test cümlesi var.
+7 katman ve modal/özel yapı testleriyle bütün **9.379 kelime ve yapı** için cümle; ayrıca **1.854 öbek kartının 893'ü** için bağımsız test cümlesi var.
 7. katmanın 563 kaydı için `test-k7.js` bulunur; yükleyici bu katmanı da diğer
 katmanlarla aynı biçimde test havuzuna katar.
 
@@ -402,12 +403,14 @@ veriden bağımsız olarak denetlenebilir kılar.
 
 ## Kelime ve öbek verisini yeniden üretmek
 
-> **DUR — 5 Eylül 2026 denetimi (A2).** Bu betik dizin ve katman dosyalarını sıfırdan yazar.
-> 4–5 Eylül'de eklenen ~1.170 kelime (6 tam kitapçık: 874; 2023: 243; aile: 52) yalnız
-> `data/kelime-*.js` içindedir — XLSX (22 Ağustos), `ek-kelimeler.js` ve aile partilerinde
-> **yoktur**. Betik çalıştırılırsa bu kelimeler kartlarıyla birlikte silinir. Önce onları
-> sürümlü kaynak partilerine (`tools/aile-kart-partileri` modeli) taşı ya da betiğe "dizinde
-> olup üretilmeyecek kelime varsa dur" koruması ekle. Kart verisi
+> **Silme koruması — 5 Eylül 2026 denetimi (A2).** Bu betik dizin, katman ve öbek dosyalarını
+> sıfırdan yazar; ama artık hiçbir dosyayı yazmadan önce üretilecek kümeyi yayımlanmış
+> `data/kelime-dizin.js` ve `data/obekler.js` ile karşılaştırır: mevcut olup üretilmeyecek
+> kelime/öbek varsa listeyi basıp **çıkış kodu 1 ile durur**, yalnız `--silmeye-izin-ver`
+> bayrağıyla devam eder. 4–5 Eylül'de yalnız `data/kelime-*.js` içinde yaşayan 939 sınav
+> kelimesi ve 246 öbek (6 tam kitapçık: 690 + 184; 2023: 181 + 62; aile türevi: 68) bu
+> denetimle `tools/ek-kelime-partileri/2026-09-05_denetim-A2_korunan.json` partisine taşındı;
+> betik onları oradan üretir ve çıktı yayımlanan veriyle birebir aynıdır. Ham kart verisi
 > `03_calisma_listesi/06_sandbox_2026-09/kartlar*/cikti` altında duruyor.
 
 `data/kelime-*.js` ve `data/obekler.js` **elle düzenlenmez** — kaynak XLSX dosyalarından üretilir:
@@ -435,6 +438,7 @@ Okuduğu kaynaklar (salt okunur, hiçbirine yazılmaz):
 | `tools/aile-kart-bekleyenler.json` | Doğrudan sınav kanıtı olmayan, Zipf < 3,5 orta güvenli adayların kart/test üretmeyen denetim defteri |
 | `data/aile-kart-provenans.json` | Aile kartı partilerinin soru metni içermeyen yüzey/rol provenansı ve tam puanla verilen katmanı |
 | `tools/aile-manifest.json` | Kelime ailelerinin tek kaynağı: önceki yayından taşınmış temel aileler ile insan denetimli zorunlu ve yasak bağlar |
+| `tools/ek-kelime-partileri/*.json` | XLSX'te **olmayan** denetimli kelime ve öbek partileri (kendini açıklayan JSON: şema sürümü, açıklama, kaynak, gerekçe, gruplar, tam kart verisi). Dosya adına göre kararlı sırada okunur; XLSX ya da başka bir kaynaktaki kelimeyi ezemez (çakışma = hata) ve `k` katmanı partiden aynen alınır, puan bandına göre yeniden hesaplanmaz. `tools/ek-kelime-partileri-cikar.py` yayımlanmış veride olup ana kaynaklardan üretilmeyen kayıtları böyle bir partiye çıkarır; `tools/test-uretim/ek-kelime-partileri-test.js` şemayı, kaynak çakışmasını ve yayımlanan veriyle birebirliği denetler |
 
 Betik `ii`, `iii`, `iv` gibi cloze şık numarası artıklarını atar, harf varyantlarını birleştirir ve
 `data/sayilar.js` içindeki sayaçları günceller. Yeni kelimeyi elle eklemek istersen
@@ -457,6 +461,18 @@ yuvarlanmamış `source_score` üzerinden hesaplanır. Aynı parti, Günün Test
 Zipf değeri 3,5'in altında kalan orta güvenli adaylar otomatik kart olmaz; 478 adayın
 477'si beklemede, daha önce kök-kart kuralıyla eklenmiş `designate` ise belgeli tarihsel
 istisna olarak `tools/aile-kart-bekleyenler.json` içinde tutulur.
+
+### Üretime katılan düzeltme katmanları (6 Eylül 2026)
+
+`listeyi-aktar.py` xlsx + ek kaynakları birleştirdikten sonra şu dosyaları sırayla uygular;
+hepsi elle düzenlenir, üretim çıktısı değildir:
+
+| Dosya | Ne yapar |
+|---|---|
+| `tools/puan-guncellemesi.json` | Güncel korpus (duz5, 49 sınav) puanları; katmanı sabit olmayan kartların katmanı yeni puandan bantlanır. `tools/puan-guncellemesi-uret.py --yaz` üretir, `tools/puan-guncellemesi-rapor.md` geçişleri listeler. Modal kartlar ve puansız kalıplar dışarıda (lemmatizer `should→shall` kaydırması). |
+| `tools/kart-duzeltmeleri/*.json` | Anlam düzeltmeleri: `bul` ile anlam seçilir, `yaz` alanı değiştirir, `degistir` alt dize değiştirir, `sil` anlamı kaldırır. Yıldızlardan sonra uygulanır; eşleşmeyen kayıt üretimde `ESLESMEDI` diye yazılır. `tools/test-uretim/anlam-dogrula.py --rapor` bulguların kaç tanesinin hâlâ kartta olduğunu sayar. |
+| `tools/obek-lemma.json` | Çekimli öbek anahtarı → lemma. Hedef varsa anlamlar birleşir, yoksa ad değişir; eski biçim `b` alanında, tablo `obekler.js` sonunda `OBEK_TAKMA`. `esitleme-veri.js` ilerleme kimliğini lemmaya çözer, `ilerleme.js` eski kayıtları taşır (`obek-lemma-test.js`). |
+| `tools/kaliplar.js` | `tools/test-uretim/kalip-dogrula.py` (bayraksız) girdi/çıktı paketlerinden üretir; eksik paket için `kalip-paketle.py --eksik` (bayraksız koşulursa ilk tur girdilerini yeniden yazar!). |
 
 ### Kelime ailelerini üretmek
 
