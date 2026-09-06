@@ -34,6 +34,7 @@ async function main() {
       assert.equal(await page.locator('.skip-link,.atla').count(),1,route+': skip');
       assert.equal(await page.locator('.footer-links a').count(),3,route+': footer');
     }
+    const visualFailures=[];
     for (const theme of ['light','dark']) for (const width of [375,1280]) {
       await page.emulateMedia({colorScheme:theme});
       await page.setViewportSize({width,height:812});
@@ -44,14 +45,19 @@ async function main() {
           const r=await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}});
           return r.violations.map(v=>({id:v.id,impact:v.impact,nodes:v.nodes.map(n=>n.target)}));
         });
-        assert.deepEqual(result,[],`${width}px ${route}: accessibility`);
+        if (result.length) visualFailures.push({theme,width,route,accessibility:result});
         const layout=await page.evaluate(()=>({viewport:innerWidth,scroll:document.documentElement.scrollWidth,
           elements:Array.from(document.querySelectorAll('body *')).filter(el=>{
-            const r=el.getBoundingClientRect();return r.width>0&&r.right>innerWidth+1;
+            const r=el.getBoundingClientRect();let right=r.right;
+            for(let parent=el.parentElement;parent;parent=parent.parentElement){
+              if(/^(auto|scroll|hidden|clip)$/.test(getComputedStyle(parent).overflowX))right=Math.min(right,parent.getBoundingClientRect().right);
+            }
+            return r.width>0&&right>innerWidth+1;
           }).slice(0,8).map(el=>({tag:el.tagName,id:el.id,class:el.className,right:el.getBoundingClientRect().right,text:el.textContent.slice(0,100)}))}));
-        assert.ok(layout.scroll<=layout.viewport+1,`${theme} ${width}px ${route}: horizontal page overflow ${JSON.stringify(layout)}`);
+        if (layout.scroll>layout.viewport+1) visualFailures.push({theme,width,route,overflow:layout});
       }
     }
+    assert.equal(visualFailures.length,0,'Visual regressions: '+JSON.stringify(visualFailures));
     await page.goto(base+'/cumleler.html');
     const sentence=page.locator('#liste .cum').first();
     await sentence.waitFor(); await sentence.focus(); await page.keyboard.press('Enter');
