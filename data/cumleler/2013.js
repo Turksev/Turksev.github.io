@@ -1,4 +1,4 @@
-/* YDS cümleleri — 2013 · 460 cümle (460 çevirili)
+/* YDS cümleleri — 2013 · 463 cümle (463 çevirili)
    Alanlar: e=İngilizce cümle, t=Türkçe çeviri, s=sınav, b=bölüm, n=soru numarası, y=yıl.
    tools/cumle/cumle_js_uret.py üretir; elle düzenleme. */
 window.CUMLELER_YIL = window.CUMLELER_YIL || {};
@@ -462,5 +462,8 @@ window.CUMLELER_YIL["2013"] = [
 {e:"Dolphins use half their brain ---- sleep, as it gives them the ability to be on the lookout ---- danger while still technically sleeping.",s:"2013 Sonbahar YDS",b:"Dil Bilgisi",n:13,t:"Yunuslar uyku ---- beyinlerinin yarısını kullanır; çünkü bu, teknik olarak hâlâ uyurken tehlike ---- tetikte olma yeteneği kazandırır.",y:2013},
 {e:"The discovery that the Universe ---- at an accelerating rate ---- two rival teams of scientists a Nobel Prize in Physics.",s:"2013 Sonbahar YDS",b:"Dil Bilgisi",n:14,t:"Evrenin giderek artan bir hızla ---- keşfi, birbirine rakip iki bilim insanı ekibine Nobel Fizik Ödülü'nü ----.",y:2013},
 {e:"---- all the essential amino acids for healtYh and an excellent source of vitamin D, cheese is a highly nutritious food which should be included ---- any healthy diet.",s:"2013 Sonbahar YDS",b:"Dil Bilgisi",n:15,t:"Sağlık için gerekli olan bütün temel amino asitleri ---- ve mükemmel bir D vitamini kaynağı olan peynir, her sağlıklı beslenme düzeni ---- yer alması gereken son derece besleyici bir yiyecektir.",y:2013},
-{e:"The crimes of the rich and the powerful can be explained ---- the same motives as any other Ö criminal act.",s:"2013 Sonbahar YDS",b:"Dil Bilgisi",n:16,t:"Zenginlerin ve güçlülerin işlediği suçlar, diğer bütün suç eylemleriyle aynı güdüler ---- açıklanabilir.",y:2013}
+{e:"The crimes of the rich and the powerful can be explained ---- the same motives as any other Ö criminal act.",s:"2013 Sonbahar YDS",b:"Dil Bilgisi",n:16,t:"Zenginlerin ve güçlülerin işlediği suçlar, diğer bütün suç eylemleriyle aynı güdüler ---- açıklanabilir.",y:2013},
+{e:"The stocks of bluefin tuna, the most valuable fish in the world, have plummeted to such paltry levels that many scientists speculate that the fish could be headed for extinction.",s:"2013 İlkbahar YDS",b:"Anlamca En Yakın",t:"Dünyanın en değerli balığı olan orkinos stokları o kadar cılız düzeylere düştü ki birçok bilim insanı bu balığın yok olmaya doğru gidebileceğini öne sürüyor.",y:2013},
+{e:"Aristotle explored the apparent ties between odour and memory in his work On Sense and the Sensible.",s:"2013 İlkbahar YDS",b:"Anlamca En Yakın",t:"Aristoteles, Duyu ve Duyulur Üzerine adlı eserinde koku ile bellek arasındaki görünür bağları incelemiştir.",y:2013},
+{e:"Make-up artists prepare actors' faces and bodies for the stage to effectively reflect the physical properties of the characters to be played.",s:"2013 Sonbahar YDS",b:"Cloze Test",t:"Makyaj sanatçıları, canlandırılacak karakterlerin fiziksel özelliklerini etkili biçimde yansıtmak için oyuncuların yüzlerini ve bedenlerini sahneye hazırlar.",y:2013}
 ];

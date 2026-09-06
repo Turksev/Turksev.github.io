@@ -1,4 +1,4 @@
-/* YDS cümleleri — 2017 · 586 cümle (586 çevirili)
+/* YDS cümleleri — 2017 · 588 cümle (588 çevirili)
    Alanlar: e=İngilizce cümle, t=Türkçe çeviri, s=sınav, b=bölüm, n=soru numarası, y=yıl.
    tools/cumle/cumle_js_uret.py üretir; elle düzenleme. */
 window.CUMLELER_YIL = window.CUMLELER_YIL || {};
@@ -588,5 +588,7 @@ window.CUMLELER_YIL["2017"] = [
 {e:"---- there have been dozens of proposals for gender-neutral third-person pronouns in English over the past two centuries, none has gained acceptance.",s:"2017 Sonbahar YDS",b:"Dil Bilgisi",n:13,t:"---- son iki yüzyılda İngilizcede cinsiyetten bağımsız üçüncü tekil şahıs zamirleri için onlarca öneri ortaya atılmıştır, bunların hiçbiri kabul görmemiştir.",y:2017},
 {e:"The story of the cat's domestication is one of mutual appreciation: early farming communities benefited from cats' rodent-catching skills ---- cats won themselves protection and shelter without losing their independence.",s:"2017 Sonbahar YDS",b:"Dil Bilgisi",n:14,t:"Kedinin evcilleştirilme öyküsü karşılıklı bir takdirin öyküsüdür: ilk tarım toplulukları kedilerin kemirgen yakalama becerisinden yararlanmış ---- kediler de bağımsızlıklarını yitirmeden kendilerine korunma ve barınak sağlamıştır.",y:2017},
 {e:"In most cultures around the world, men and women typically differ in a number of ways ---- physical appearance, personality traits, and occupational preferences.",s:"2017 Sonbahar YDS",b:"Dil Bilgisi",n:15,t:"Dünyanın çoğu kültüründe kadınlar ve erkekler, fiziksel görünüm, kişilik özellikleri ve mesleki tercihler ---- pek çok bakımdan birbirinden farklılık gösterir.",y:2017},
-{e:"19th-century scientists fell into a bitter debate as to ---- intelligence lay in anatomy ---- a vital force was responsible for thoughts.",s:"2017 Sonbahar YDS",b:"Dil Bilgisi",n:16,t:"19. yüzyıl bilim insanları, ---- zekânın anatomide bulunduğu ---- düşüncelerden yaşamsal bir gücün sorumlu olduğu konusunda sert bir tartışmaya girmiştir.",y:2017}
+{e:"19th-century scientists fell into a bitter debate as to ---- intelligence lay in anatomy ---- a vital force was responsible for thoughts.",s:"2017 Sonbahar YDS",b:"Dil Bilgisi",n:16,t:"19. yüzyıl bilim insanları, ---- zekânın anatomide bulunduğu ---- düşüncelerden yaşamsal bir gücün sorumlu olduğu konusunda sert bir tartışmaya girmiştir.",y:2017},
+{e:"When we listen to music, electrical waves in our brains synchronise to the tempo, but some people's brains are better at synchronising to the beat.",s:"2017 İlkbahar YDS",b:"Cloze Test",t:"Müzik dinlediğimizde beynimizdeki elektriksel dalgalar tempoyla eşzamanlanır; ancak bazı insanların beyni ritme uyum sağlamada daha iyidir.",y:2017},
+{e:"Images of distant and unknown places have inspired explorers and public for a very long time.",s:"2017 Sonbahar YDS",b:"Cloze Test",t:"Uzak ve bilinmeyen yerlerin görüntüleri çok uzun süredir kâşiflere ve halka ilham vermiştir.",y:2017}
 ];
