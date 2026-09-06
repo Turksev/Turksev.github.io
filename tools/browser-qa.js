@@ -81,4 +81,12 @@ async function main() {
     console.log('Browser QA passed: root routes, light/dark 375/1280px axe, keyboard, search, exam reload persistence, nested 404.');
   } finally {await browser.close(); await new Promise(resolve=>server.close(resolve));}
 }
-main().catch(error=>{console.error(error);server.close();process.exitCode=1;});
+main().catch(error=>{
+  console.error(error);
+  // Public test annotations expose only the isolated fixture's failure, never credentials.
+  if (process.env.GITHUB_ACTIONS) {
+    const detail=String(error.stack||error).replace(/%/g,'%25').replace(/\r/g,'%0D').replace(/\n/g,'%0A');
+    console.error('::error title=Browser QA::'+detail);
+  }
+  server.close();process.exitCode=1;
+});
