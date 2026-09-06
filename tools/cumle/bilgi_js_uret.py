@@ -11,14 +11,20 @@ yonerge bloklari korpustaki gercek kokle degistirilir ya da atilir; baslik/soru-
 onekleri kirpilir; satir sonu tire bolmeleri birlestirilir; kucuk harfli parcalar
 onarilir; kesme sozcuk sinirindan yapilir. Ayrintilar bilgi_temizle.py basinda.
 """
+
+from pathlib import Path as _YdsPath
+import sys as _yds_sys
+_yds_site = next(p for p in _YdsPath(__file__).resolve().parents if (p / "sw.js").is_file())
+_yds_sys.path.insert(0, str(_yds_site / "tools"))
+from yds_paths import site_path, yds_path, scratch_path
 import os, sys, io, re, json, collections
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from bilgi_temizle import (Korpus, Sozluk, yonerge_kok_mu, kok_onar, temizle_kok, temizle_sik,
                            kisalt)
 
-SP = "C:/Users/Trk/Desktop/YDS/03_calisma_listesi/06_sandbox_2026-09"
-VERI = r"C:\Users\Trk\Desktop\YDS\04_Github\data"
+SP = yds_path('03_calisma_listesi', '06_sandbox_2026-09')
+VERI = site_path('data')
 kart = json.load(open(os.path.join(SP, 'bilgi_kart_veri.json'), encoding='utf-8'))
 korpus, sozluk = Korpus(), Sozluk()
 print(f"korpus: {len(korpus.kayitlar):,} blok | sozluk: {len(sozluk.kelimeler):,} kelime, "

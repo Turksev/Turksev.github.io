@@ -93,7 +93,8 @@ hesap.yollar.filter(function (y) { return /^[^/]+\.html$/.test(y) && y !== '404.
     assert.ok(listede[sayfa], 'sw.js TEMEL_DOSYALAR: ' + sayfa + ' çevrimdışı listede değil');
   });
 ['assets/js/cumleler.js', 'assets/js/kelime-bilgi.js'].forEach(function (d) {
-  assert.ok(listede[d], 'sw.js TEMEL_DOSYALAR: ' + d + ' listede değil');
+  var release = JSON.parse(fs.readFileSync(path.join(kok,'release-manifest.json'),'utf8'));
+  assert.ok(listede[release.kok.slice(1)+d], 'sw.js TEMEL_DOSYALAR: ' + d + ' listede değil');
 });
 
 console.log('sw-surum: yds-v' + surum[1] + ', özet ' + hesap.ozet + ' güncel (' + hesap.sayi + ' dosya), kök sayfalar çevrimdışı listede');

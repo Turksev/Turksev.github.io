@@ -3,6 +3,7 @@
 var fs = require('fs');
 var path = require('path');
 var vm = require('vm');
+var tarayiciAPIleri = require('./tarayici-vm');
 var assert = require('assert');
 
 var kok = path.resolve(__dirname, '..', '..');
@@ -42,7 +43,7 @@ var pencere = {
 };
 var baglam = { window: pencere, CustomEvent: CustomEvent, Uint32Array: Uint32Array,
   JSON: JSON, Date: Date, Math: Math, Object: Object, String: String, parseInt: parseInt };
-vm.createContext(baglam);
+vm.createContext(tarayiciAPIleri(baglam));
 ['esitleme-veri.js', 'esitleme-depo.js'].forEach(function (dosya) {
   vm.runInContext(fs.readFileSync(path.join(kok, 'assets', 'js', dosya), 'utf8'), baglam);
 });
@@ -54,7 +55,19 @@ function temiz(v) { return JSON.parse(JSON.stringify(v)); }
 
 // Eski localStorage verisi otomatik zarf olur; görünür veri değişmez.
 assert.deepStrictEqual(temiz(Depo.oku('yds-leitner', {})), { base: { k: 1, g: 10 } });
-assert.strictEqual(JSON.parse(bellek.get(D.ANAHTAR)).surum, 2);
+var kaliciYerel = JSON.parse(bellek.get(D.ANAHTAR));
+assert.strictEqual(D.ANAHTAR, 'yds-esitleme-yerel-v3');
+assert.strictEqual(kaliciYerel.surum, 3);
+assert.strictEqual(pencere.YDS.YerelZarfKodlama.coz(kaliciYerel.z).surum, M.SURUM);
+assert.strictEqual(M.kararliJson(pencere.YDS.YerelZarfKodlama.coz(kaliciYerel.z)),
+  M.kararliJson(D.zarf()), 'kalıcı sıkıştırılmış zarf API zarfıyla birebir olmalı');
+Object.keys(D.zarf().alanlar).forEach(function (anahtar) {
+  var kayitlar = D.zarf().alanlar[anahtar].i;
+  Object.keys(kayitlar).forEach(function (id) {
+    assert.strictEqual(kayitlar[id].m, 0,
+      'ilk göç normalizasyonu yeni düzenleme saati üretmemeli: ' + anahtar + '/' + id);
+  });
+});
 var normallesmisPaket = temiz(eskiPaket);
 // Eski yanlış kayıtlarına, iki-gün kuralının sonraki birleşimlerde doğru
 // çalışması için görünmeyen son-güncelleme alanı eklenir.
@@ -62,9 +75,10 @@ normallesmisPaket['yds-yanlis'][0].u = normallesmisPaket['yds-yanlis'][0].t;
 normallesmisPaket['yds-test-yanlis'].ability.u = normallesmisPaket['yds-test-yanlis'].ability.t;
 assert.strictEqual(M.kararliJson(D.paket()), M.kararliJson(normallesmisPaket));
 
-// Geçişten önce alınan otomatik yedek bütün eski anahtarlarla birebir aynıdır.
-var gecisYedegi = JSON.parse(bellek.get('yds-esitleme-gecis-yedegi'));
-assert.strictEqual(M.kararliJson(gecisYedegi.veri), M.kararliJson(eskiPaket));
+// Başarılı, kayıpsız göçten sonra birebir tekrar olan yedek kota tüketmez.
+// Yukarıdaki tüm-alan eşitliği eski verinin eksiksiz korunduğunu sınar.
+assert.strictEqual(bellek.has('yds-esitleme-gecis-yedegi'), false);
+assert.strictEqual(bellek.has('yds-esitleme-v2'), false);
 
 // Doğrudan kayıt yazımı da boş alan fallback'inde prototip adlarını yutmamalı;
 // ardından K2 çözümü, görünür paket ve gerçek Depo.uygula yolu kayıpsız kalır.
@@ -119,8 +133,9 @@ assert.deepStrictEqual(Object.keys(Depo.oku('yds-leitner', {})).sort(), ['alpha'
 // Diğer sekmeden gelen zarf otomatik birleşir ve klasik anahtara yansır.
 var uzaktan = M.kayitlariYaz(M.zarfaCevir({ 'yds-leitner': { base: { k: 1, g: 10 } } }),
   'yds-leitner', { beta: { k: 3, g: 30, c: 16 } }, function () { return '9999999999999:B'; });
-bellek.set(D.ANAHTAR, JSON.stringify(uzaktan));
-dinleyiciler.storage({ key: D.ANAHTAR, newValue: JSON.stringify(uzaktan) });
+var uzaktanYerel = { surum: 3, z: pencere.YDS.YerelZarfKodlama.kodla(uzaktan) };
+bellek.set(D.ANAHTAR, JSON.stringify(uzaktanYerel));
+dinleyiciler.storage({ key: D.ANAHTAR, newValue: JSON.stringify(uzaktanYerel) });
 assert.deepStrictEqual(Object.keys(Depo.oku('yds-leitner', {})).sort(), ['alpha', 'base', 'beta']);
 
 // Kayıt silme işareti, eski bulut görüntüsü tekrar uygulanınca da korunur.

@@ -8,6 +8,12 @@ dizinler kayar ve temizlik kaybolur. Bu tablo ham (sinav, Ingilizce metin) anaht
 
 Kullanim: python cumle_tablo_turet.py [--yaz]
 """
+
+from pathlib import Path as _YdsPath
+import sys as _yds_sys
+_yds_site = next(p for p in _YdsPath(__file__).resolve().parents if (p / "sw.js").is_file())
+_yds_sys.path.insert(0, str(_yds_site / "tools"))
+from yds_paths import site_path, yds_path, scratch_path
 import collections
 import glob
 import io
@@ -17,9 +23,9 @@ import re
 import sys
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
-SP = "C:/Users/Trk/Desktop/YDS/03_calisma_listesi/06_sandbox_2026-09"
+SP = yds_path('03_calisma_listesi', '06_sandbox_2026-09')
 C = os.path.join(SP, 'cumleler')
-VERI = r"C:\Users\Trk\Desktop\YDS\04_Github\data"
+VERI = site_path('data')
 TABLO = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'cumle_duzeltmeleri.json')
 YAZ = '--yaz' in sys.argv
 

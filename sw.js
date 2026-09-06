@@ -4,22 +4,23 @@
    Strateji:
      • Gezinme (HTML): önce ağ, olmazsa önbellek. Böylece site
        güncellendiğinde kullanıcı eski sürümde kalmaz.
-     • Diğer dosyalar (CSS/JS/veri/ikon): önce önbellek, arka planda
-       tazele. Açılış hızlı olur, bir sonraki ziyarette güncel gelir.
+     • Sürümlü dosyalar (CSS/JS/veri/ikon): değişmez yol, önce önbellek.
+       Önbellekte yoksa ağdan al; yazımı yaşam döngüsü tamamlanana dek beklet.
 
-   SÜRÜM değiştiğinde eski önbellekler silinir. Siteye dosya
-   eklediğinde listeye ekle; sürümü elle artırma, her yayından önce
-   "python tools/sw-surum.py" çalıştır (özet değiştiyse SURUM'u artırır).
+   Kurulumda zorunlu dosyalardan biri eksikse yeni sürüm etkinleşmez.
+   Bir önceki YDS önbelleği ve başka uygulamaların önbellekleri korunur.
+   Her yayından önce "pnpm generate" çalıştır: değişmez varlık yollarını,
+   dosya listesini ve içerik özetine bağlı worker sürümünü birlikte üretir.
    ============================================================ */
 
-var SURUM = 'yds-v181';
+var SURUM = 'yds-v184';
 /* İçerik özeti — tools/sw-surum.py üretir, elle değiştirme. Yayımlanan
    HTML/JS/CSS/veri dosyaları değişince özet değişir ve betik SURUM'u
    artırır. tools/test-uretim/sw-surum-test.js aynı özeti hesaplayıp
    karşılaştırır: dosya değişip sürüm artmamışsa CI kırmızıya döner.
    (5 Eylül 2026: altı yayın boyunca sürüm v173'te kaldı; kullanıcı yeni
    HTML + eski JS gördü.) */
-var ICERIK_OZETI = '2c06a189';
+var ICERIK_OZETI = '226d8a4f';
 var ONBELLEK = SURUM;
 
 /* Kurulumda indirilenler: sayfalar, kod ve küçük veri dosyaları.
@@ -43,128 +44,118 @@ var TEMEL_DOSYALAR = [
   './yontem.html',
   './ayarlar.html',
   './cumleler.html',
-  './assets/css/style.css',
-  './assets/js/main.js',
-  './data/depo.js',
-  './data/kelime-aliaslari.js',
-  './data/kaynak-manifest.json',
-  './data/kelime-provenans.json',
-  './assets/js/esitleme-ayar.js',
-  './assets/js/esitleme-veri.js',
-  './assets/js/esitleme-depo.js',
-  './assets/js/esitleme-v2.js',
-  './assets/js/cekim.js',
-  './assets/js/gunun-testi.js',
-  './assets/js/ilerleme.js',
-  './assets/js/veri.js',
-  './assets/js/durum.js',
-  './assets/js/konular.js',
-  './assets/js/kelimeler.js',
-  './assets/js/aileler.js',
-  './assets/js/obekler.js',
-  './assets/js/quiz.js',
-  './assets/js/deneme-oturum.js',
-  './assets/js/deneme.js',
-  './assets/js/soru-konu.js',
-  './assets/js/baglaclar.js',
-  './assets/js/ara.js',
-  './assets/js/ayarlar.js',
-  './assets/js/cumleler.js',
-  './assets/js/kelime-bilgi.js',
-  './data/kelime-dizin.js',
-  './data/aileler.js',
-  './data/konular.js',
-  './data/konu-metinleri.js',
-  './data/konu-metinleri-t-ek.js',
-  './data/konu-metinleri-e1-ek.js',
-  './data/konu-metinleri-e2-ek.js',
-  './data/olumsuzlar.js',
-  './data/sayilar.js',
-  './data/yds-dagilim.js',
-  './data/sorular.js',
-  './data/sorular-ek.js',
-  './data/deneme-formlari.js',
-  './data/baglaclar.js',
+  './releases/0069fe0bafac/assets/css/style.css',
+  './releases/0069fe0bafac/assets/js/main.js',
+  './releases/0069fe0bafac/data/kelime-aliaslari.js',
+  './releases/0069fe0bafac/data/kaynak-manifest.json',
+  './releases/0069fe0bafac/data/kelime-provenans.json',
+  './releases/0069fe0bafac/assets/js/esitleme-ayar.js',
+  './releases/0069fe0bafac/assets/js/esitleme-veri.js',
+  './releases/0069fe0bafac/assets/js/esitleme-depo.js',
+  './releases/0069fe0bafac/assets/js/esitleme-v2.js',
+  './releases/0069fe0bafac/assets/js/cekim.js',
+  './releases/0069fe0bafac/assets/js/gunun-testi.js',
+  './releases/0069fe0bafac/assets/js/ilerleme.js',
+  './releases/0069fe0bafac/assets/js/veri.js',
+  './releases/0069fe0bafac/assets/js/durum.js',
+  './releases/0069fe0bafac/assets/js/konular.js',
+  './releases/0069fe0bafac/assets/js/kelimeler.js',
+  './releases/0069fe0bafac/assets/js/aileler.js',
+  './releases/0069fe0bafac/assets/js/obekler.js',
+  './releases/0069fe0bafac/assets/js/quiz.js',
+  './releases/0069fe0bafac/assets/js/deneme-oturum.js',
+  './releases/0069fe0bafac/assets/js/deneme.js',
+  './releases/0069fe0bafac/assets/js/soru-konu.js',
+  './releases/0069fe0bafac/assets/js/baglaclar.js',
+  './releases/0069fe0bafac/assets/js/ara.js',
+  './releases/0069fe0bafac/assets/js/ayarlar.js',
+  './releases/0069fe0bafac/assets/js/cumleler.js',
+  './releases/0069fe0bafac/assets/js/kelime-bilgi.js',
+  './releases/0069fe0bafac/data/kelime-dizin.js',
+  './releases/0069fe0bafac/data/aileler.js',
+  './releases/0069fe0bafac/data/konular.js',
+  './releases/0069fe0bafac/data/konu-metinleri.js',
+  './releases/0069fe0bafac/data/konu-metinleri-t-ek.js',
+  './releases/0069fe0bafac/data/konu-metinleri-e1-ek.js',
+  './releases/0069fe0bafac/data/konu-metinleri-e2-ek.js',
+  './releases/0069fe0bafac/data/olumsuzlar.js',
+  './releases/0069fe0bafac/data/sayilar.js',
+  './releases/0069fe0bafac/data/yds-dagilim.js',
+  './releases/0069fe0bafac/data/sorular.js',
+  './releases/0069fe0bafac/data/sorular-ek.js',
+  './releases/0069fe0bafac/data/deneme-formlari.js',
+  './releases/0069fe0bafac/data/baglaclar.js',
   './manifest.webmanifest',
-  './assets/img/icon-192.png',
-  './assets/img/icon-512.png'
+  './releases/0069fe0bafac/assets/img/icon-192.png',
+  './releases/0069fe0bafac/assets/img/icon-512.png'
 ];
 
 self.addEventListener('install', function (e) {
-  e.waitUntil(
-    caches.open(ONBELLEK)
-      .then(function (c) {
-        // Tek bir dosya düşerse kurulum tümden başarısız olmasın.
-        return Promise.all(TEMEL_DOSYALAR.map(function (u) {
-          return c.add(u).catch(function () { /* atla */ });
-        }));
-      })
-  );
+  // addAll is atomic: one missing required asset leaves the old worker active.
+  // Request.cache bypasses a potentially stale HTTP cache during installation.
+  e.waitUntil(caches.open(ONBELLEK).then(function (c) {
+    return c.addAll(TEMEL_DOSYALAR.map(function (u) {
+      return new Request(new URL(u, self.location.href).toString(), { cache: 'reload' });
+    }));
+  }));
 });
 
-/* Yeni sürüm, kullanıcı çalışma/deneme ortasındayken sayfayı yenilemez.
-   Görünür güncelleme düğmesi bu mesajı gönderince devralır. */
 self.addEventListener('message', function (e) {
-  if (e.data && e.data.type === 'YENI_SURUMU_ETKINLESTIR') self.skipWaiting();
+  if (!e.data) return;
+  if (e.data.type === 'YENI_SURUMU_ETKINLESTIR') self.skipWaiting();
+  if (e.data.type === 'YDS_SURUM_SOR' && e.ports && e.ports[0]) {
+    e.ports[0].postMessage({ surum: SURUM, icerik: ICERIK_OZETI });
+  }
 });
 
 self.addEventListener('activate', function (e) {
-  e.waitUntil(
-    caches.keys()
-      .then(function (adlar) {
-        return Promise.all(adlar
-          .filter(function (a) { return a !== ONBELLEK; })
-          .map(function (a) { return caches.delete(a); }));
-      })
-      .then(function () { return self.clients.claim(); })
-  );
+  e.waitUntil(caches.keys().then(function (adlar) {
+    // Origin may contain unrelated projects. Keep one previous YDS cache for
+    // an existing offline tab, and never delete another application's cache.
+    var eski = adlar.filter(function (a) { return /^yds-v\d+$/.test(a) && a !== ONBELLEK; })
+      .sort(function (a, b) { return Number(b.slice(5)) - Number(a.slice(5)); });
+    return Promise.all(eski.slice(1).map(function (a) { return caches.delete(a); }));
+  }).then(function () { return self.clients.claim(); }));
 });
 
 self.addEventListener('fetch', function (e) {
   var istek = e.request;
-
-  // Yalnızca kendi kaynağımızdaki GET isteklerini yönet.
   if (istek.method !== 'GET') return;
-  if (new URL(istek.url).origin !== self.location.origin) return;
-
-  // Arama/filtre sorguları aynı statik dosyanın yüzlerce kopyasını üretmesin.
   var url = new URL(istek.url);
-  url.search = '';
-  url.hash = '';
-  var onbellekAnahtari = url.toString();
+  if (url.origin !== self.location.origin) return;
+  url.search = ''; url.hash = '';
+  var anahtar = url.toString();
 
-  // Sayfa gezinmesi: önce ağ
-  if (istek.mode === 'navigate') {
-    e.respondWith(
-      fetch(istek)
-        .then(function (yanit) {
-          if (yanit && yanit.ok && yanit.type === 'basic') {
-            var kopya = yanit.clone();
-            caches.open(ONBELLEK).then(function (c) { c.put(onbellekAnahtari, kopya); });
-          }
-          return yanit;
-        })
-        .catch(function () {
-          return caches.match(onbellekAnahtari).then(function (v) {
-            return v || caches.match('./index.html');
-          });
-        })
-    );
-    return;
+  function kaydet(yanit) {
+    if (!yanit || !yanit.ok || yanit.type !== 'basic') return Promise.resolve(yanit);
+    return caches.open(ONBELLEK).then(function (c) {
+      return c.put(anahtar, yanit.clone()).then(function () { return yanit; });
+    });
+  }
+  function guncelOnbellek() {
+    return caches.open(ONBELLEK).then(function (c) { return c.match(anahtar); });
   }
 
-  // Varlıklar: önce önbellek, arka planda tazele
-  e.respondWith(
-    caches.match(onbellekAnahtari).then(function (onbellekte) {
-      var agdan = fetch(istek).then(function (yanit) {
-        if (yanit && yanit.ok && yanit.type === 'basic') {
-          var kopya = yanit.clone();
-          caches.open(ONBELLEK).then(function (c) { c.put(onbellekAnahtari, kopya); });
-        }
-        return yanit;
-      }).catch(function () { return onbellekte; });
-
-      return onbellekte || agdan;
-    })
-  );
+  var sonuc;
+  if (istek.mode === 'navigate') {
+    // Each HTML document refers only to immutable release paths. Network-first
+    // navigation can therefore never pair fresh HTML with an older JS URL.
+    sonuc = fetch(istek).then(kaydet).catch(function () {
+      return guncelOnbellek().then(function (cached) {
+        if (cached) return cached;
+        return new Response('Bu sayfa çevrimdışı kullanım için henüz indirilmedi. İnternet bağlantın geldiğinde yeniden aç.', {
+          status: 503, headers: { 'Content-Type': 'text/plain; charset=utf-8' }
+        });
+      });
+    });
+  } else {
+    // Never replace the bytes at an already-cached release URL. A release
+    // update changes the PATH, not only ?v=, including all dynamically loaded
+    // word layers, examples and test data. Misses are cached in this version.
+    sonuc = guncelOnbellek().then(function (cached) {
+      return cached || fetch(istek).then(kaydet);
+    });
+  }
+  e.respondWith(sonuc);
+  e.waitUntil(sonuc.then(function () {}, function () {}));
 });

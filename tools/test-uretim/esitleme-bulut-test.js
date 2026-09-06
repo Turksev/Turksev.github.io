@@ -3,6 +3,7 @@
 var fs = require('fs');
 var path = require('path');
 var vm = require('vm');
+var tarayiciAPIleri = require('./tarayici-vm');
 var assert = require('assert');
 
 var kok = path.resolve(__dirname, '..', '..');
@@ -261,7 +262,7 @@ var baglam = {
   JSON: JSON, Date: Date, Math: Math, Object: Object, String: String, Promise: Promise,
   Error: Error, parseInt: parseInt, setTimeout: hizliSetTimeout, clearTimeout: clearTimeout
 };
-vm.createContext(baglam);
+vm.createContext(tarayiciAPIleri(baglam));
 vm.runInContext(fs.readFileSync(path.join(kok, 'data', 'kelime-aliaslari.js'), 'utf8'), baglam);
 ['esitleme-veri.js', 'esitleme-depo.js', 'esitleme-v2.js'].forEach(function (dosya) {
   vm.runInContext(fs.readFileSync(path.join(kok, 'assets', 'js', dosya), 'utf8'), baglam);

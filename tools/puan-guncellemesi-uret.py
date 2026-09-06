@@ -14,6 +14,12 @@ eşlemesi yaptığı için modal sayımları kaynağa göre kaymış olur) ve pu
 
 Kullanım: python tools/puan-guncellemesi-uret.py [--yaz]
 """
+
+from pathlib import Path as _YdsPath
+import sys as _yds_sys
+_yds_site = next(p for p in _YdsPath(__file__).resolve().parents if (p / "sw.js").is_file())
+_yds_sys.path.insert(0, str(_yds_site / "tools"))
+from yds_paths import site_path, yds_path, scratch_path
 import collections
 import io
 import json
@@ -24,7 +30,7 @@ import sys
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 G = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PUA = r"C:\Users\Trk\Desktop\YDS\03_calisma_listesi\06_sandbox_2026-09\sandbox\duz5\03_puanlama\puanlama.sqlite"
+PUA = yds_path('03_calisma_listesi', '06_sandbox_2026-09', 'sandbox', 'duz5', '03_puanlama', 'puanlama.sqlite')
 CIKTI = os.path.join(G, 'tools', 'puan-guncellemesi.json')
 RAPOR = os.path.join(G, 'tools', 'puan-guncellemesi-rapor.md')
 MODAL_LEMMA = {'shall', 'can', 'may', 'will', 'must', 'ought', 'need', 'dare'}

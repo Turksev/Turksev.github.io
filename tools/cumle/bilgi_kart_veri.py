@@ -10,15 +10,21 @@ duz3 ile uretilen arsivdeki bilgi_kart_veri.json 7.820 kelimedir, duz4 puanlamas
 yeniden kosulursa 8.043 kelime cikar (2023 transkript + 2024-2026 kitapcik kaniti).
 Soru koku secimi: Turkce yonerge bloklari (cevap kagidi/sinav kurallari) atlanir.
 """
+
+from pathlib import Path as _YdsPath
+import sys as _yds_sys
+_yds_site = next(p for p in _YdsPath(__file__).resolve().parents if (p / "sw.js").is_file())
+_yds_sys.path.insert(0, str(_yds_site / "tools"))
+from yds_paths import site_path, yds_path, scratch_path
 import os, sys, io, re, json, sqlite3, collections
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from bilgi_temizle import kok_sec
 
-SP = "C:/Users/Trk/Desktop/YDS/03_calisma_listesi/06_sandbox_2026-09"
+SP = yds_path('03_calisma_listesi', '06_sandbox_2026-09')
 PUA = os.path.join(SP, 'sandbox', 'duz4', '03_puanlama', 'puanlama.sqlite')
 KOR = os.path.join(SP, 'sandbox', 'duz4', '02_korpus', 'korpus.jsonl')
-VERI = r"C:\Users\Trk\Desktop\YDS\04_Github\data"
+VERI = site_path('data')
 
 BANT = [(1, 6, 'Kelime Bilgisi'), (7, 16, 'Dil Bilgisi'), (17, 26, 'Cloze Test'),
         (27, 36, 'Cümle Tamamlama'), (37, 42, 'Çeviri'), (43, 62, 'Paragraf / Okuma'),

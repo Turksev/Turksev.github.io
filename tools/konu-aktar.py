@@ -18,6 +18,12 @@ Kullanim:
   "C:/Users/Trk/Desktop/YDS/03_calisma_listesi/.venv/Scripts/python.exe" tools/konu-aktar.py
 Kaynak klasore YAZILMAZ.
 """
+
+from pathlib import Path as _YdsPath
+import sys as _yds_sys
+_yds_site = next(p for p in _YdsPath(__file__).resolve().parents if (p / "sw.js").is_file())
+_yds_sys.path.insert(0, str(_yds_site / "tools"))
+from yds_paths import site_path, yds_path, scratch_path
 import html
 import json
 import os
@@ -27,7 +33,7 @@ import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
 
-KAYNAK = r'C:\Users\Trk\Desktop\YDS\05_konu_haritalari\English konu - chatgpt'
+KAYNAK = yds_path('05_konu_haritalari', 'English konu - chatgpt')
 SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 VERI = os.path.join(SITE, 'data')
 

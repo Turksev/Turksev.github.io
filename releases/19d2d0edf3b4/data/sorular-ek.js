@@ -1,0 +1,2378 @@
+/* Özgün ek soru bankası; gerçek ÖSYM sorusu içermez — bu dosya tools/deneme-bankasi-uret.js ile üretilir. */
+(function(){
+  window.PARCALAR = Object.assign(window.PARCALAR || {}, {
+  "rp05": "Cities often present tree planting as a simple response to rising temperatures, but the cooling value of an urban forest depends on far more than the number of seedlings placed in the ground. Mature trees provide broad shade and release substantial amounts of water vapour, whereas newly planted trees may take decades to deliver comparable benefits. Their survival also varies sharply with soil volume, irrigation, species choice and protection from construction damage. These factors create what some planners call a canopy debt: when an old tree is removed, its environmental service is lost immediately, but the replacement repays that loss only gradually. The problem is also social. Wealthier districts often have established gardens and residents who can advocate for maintenance, while hotter, densely built neighbourhoods may offer little space for roots. A campaign that reports only the total number of trees planted can therefore appear successful even when most new shade is concentrated where temperatures are already lower. More informative programmes map heat exposure, monitor survival for several years and fund care as seriously as planting. Urban trees remain a valuable climate measure, but they are infrastructure rather than decoration; their benefits depend on where they are placed and whether they live long enough to grow.",
+  "rp06": "Sleep is often described as a period in which the brain simply stores the day's experiences, yet research suggests a more selective process. During sleep, recently formed memories are repeatedly reactivated, and some become more stable while others fade. Emotional importance, previous knowledge and the likelihood that information will be useful can all influence this sorting. In one type of experiment, participants learn the locations of objects while particular sounds are played. When some of those sounds are presented quietly during sleep, the associated locations are often remembered more accurately the next day. The result does not mean that people can master entirely new material while unconscious. Rather, a cue appears to strengthen a memory that was first created while the person was awake. Timing also matters: disrupting sleep soon after learning may be more harmful than losing the same amount of sleep several days later. This evidence has practical implications, but it does not support replacing study with extra hours in bed. Learning supplies the material; sleep helps reorganise and stabilise it. For students, the sensible conclusion is that regular sleep should be treated as part of a study schedule, especially after demanding practice, rather than as time borrowed whenever work remains unfinished.",
+  "rp07": "Citizen-science projects invite members of the public to record birds, insects, weather or other features of the natural world. Their great advantage is scale: thousands of volunteers can gather observations across areas that a small research team could never visit regularly. Nevertheless, a large dataset is not automatically a representative one. Volunteers tend to sample places that are pleasant, safe and easy to reach, and they are more active at weekends or during favourable weather. Rare species may also attract disproportionate attention, while common ones go unreported because observers assume they are uninteresting. This pattern can produce misleading maps unless researchers account for where and when people looked, including occasions when they found nothing. Digital platforms increasingly address the problem by recording search effort, suggesting under-sampled locations and asking users to complete standardised surveys. Statistical models can then separate changes in observer behaviour from probable changes in wildlife. Such adjustments do not reduce volunteers to imperfect substitutes for professionals. On the contrary, they allow the distinctive strengths of public participation to be used responsibly. Citizen science is most informative when enthusiasm is combined with careful project design, clear training and transparent acknowledgement of uncertainty, rather than when the sheer number of submitted records is treated as proof of accuracy.",
+  "rp08": "Desalination is becoming an important source of drinking water in regions where rainfall is unreliable and groundwater is being depleted. Modern plants commonly use reverse osmosis, forcing seawater through membranes that allow water molecules to pass while retaining most salts. Improvements in membrane design have reduced energy use, yet the process still creates a concentrated waste stream known as brine. If released carelessly, brine can raise salinity near the seabed and may contain cleaning chemicals or metals from plant equipment. The environmental effect depends not only on its composition but also on local currents, depth and the sensitivity of nearby habitats. Consequently, there is no single disposal method suitable for every coast. Diffusers can mix brine rapidly with seawater, while some facilities combine it with treated wastewater before discharge. Researchers are also exploring whether magnesium, lithium and other materials can be recovered from brine, turning part of a waste problem into a resource. Such recovery is not yet economical everywhere and should not be presented as a universal solution. Desalination can strengthen water security, particularly when powered by low-carbon electricity, but responsible planning must consider energy supply, marine monitoring and waste management together rather than evaluating the volume of fresh water alone.",
+  "rp09": "Museum labels appear to be minor features beside the objects they describe, but they strongly influence how visitors interpret a collection. A label may identify the maker and date, yet its choice of words can also imply why an object matters and whose perspective deserves authority. Traditionally, many institutions used a detached, expert voice that presented interpretations as settled facts. More recently, some museums have begun naming uncertainty, acknowledging disputed ownership and including testimony from communities connected to the exhibits. This change does not require labels to become lengthy essays. Studies of visitor behaviour show that people often avoid dense blocks of text, particularly when standing in crowded galleries. The challenge is therefore to provide enough context for meaningful engagement without directing every possible response. Layered interpretation offers one solution: a concise label gives essential information, while digital displays, audio or optional panels provide further detail. Even then, technology should not be assumed to solve a problem of trust. If additional material merely repeats the institution's original viewpoint, the apparent variety is superficial. Effective labels make curatorial choices visible and invite attention to evidence. They do not abandon expertise; instead, they show that expert knowledge is produced through questions, comparisons and, at times, revision.",
+  "rp10": "Modern agriculture often relies on a limited number of crop varieties selected for high yield, uniform ripening and compatibility with machinery. This uniformity can make food production efficient, but it also narrows the range of genetic traits available when conditions change. Traditional varieties may produce less under ideal circumstances, yet some tolerate drought, poor soils or particular diseases. Seed banks preserve this diversity by storing seeds at low temperature and humidity, slowing the biological processes that cause them to deteriorate. Storage alone, however, is not enough. Seeds must periodically be grown so that fresh material can be collected, and curators must verify that samples have not been mixed or genetically altered during regeneration. Moreover, not every crop can be conserved as an ordinary dry seed. Some species produce seeds that are damaged by drying, while others are normally propagated from cuttings. These require living collections or tissue maintained under specialised conditions. Seed banks should therefore be understood as one part of a wider conservation system that also includes farmers who continue to cultivate local varieties. Their fields allow crops to adapt to changing environments, whereas frozen samples preserve a snapshot from the past. Combining both approaches offers a more resilient source of traits for future breeding than relying on either one alone.",
+  "rp11": "Ecologists have long surveyed wildlife by looking for animals or their tracks, but an increasing number now listen as well. Automated recorders can remain in forests, wetlands or cities for weeks, capturing sounds made by birds, frogs, insects and mammals. Because recording does not require an observer to be present, it can reveal nocturnal activity and reduce differences caused by individual surveyors. The resulting files, however, create a new difficulty: a single project may collect thousands of hours of audio. Machine-learning systems can help locate probable calls, but their accuracy is uneven when several species vocalise together or traffic and wind mask the signal. Researchers must therefore test automated classifications against recordings checked by trained listeners. Sound also provides information beyond the presence of a species. The timing and frequency of calls may indicate breeding activity, competition or responses to human noise. In cities, some birds shift their songs upward in pitch, apparently to avoid low-frequency traffic sounds. Such adjustment shows flexibility, but it should not automatically be interpreted as evidence that noise has no cost. Animals may expend more energy, lose communication range or abandon otherwise suitable habitat. Acoustic monitoring is thus most powerful when sound patterns are linked to behaviour and environmental conditions, not merely counted as isolated detections.",
+  "rp12": "Remote work has altered not only where employees complete tasks but also how workplace relationships are formed. Scheduled online meetings can maintain collaboration among colleagues who already know one another, and written channels may give quieter participants more time to contribute. Yet these tools are less successful at reproducing brief, unplanned encounters: the conversation before a meeting, a question asked across a desk or an introduction made by chance. Such encounters often create weak ties between people in different teams. Although weak ties may seem less valuable than close working relationships, they can carry unfamiliar information and help employees discover expertise outside their immediate group. Organisations sometimes respond by adding virtual social events, but compulsory informality can feel artificial and can increase screen fatigue. A more effective approach may be to redesign work processes so that useful contact occurs naturally—for example, through cross-team review sessions, rotating project pairs or searchable records of current work. Occasional office days can also help, provided they are coordinated; an employee gains little from travelling to an almost empty building. The central issue is not whether remote or office work is inherently superior. It is whether an organisation deliberately supports both focused individual work and the broader networks through which ideas, assistance and opportunities circulate.",
+  "rp13": "Archaeologists once learned about ancient diets mainly from animal bones, seeds and cooking vessels that survived at excavation sites. Chemical analysis now allows them to recover evidence that is invisible to the eye. Tiny residues absorbed into pottery can contain lipids, stable molecules that sometimes remain detectable for thousands of years. Different combinations of these molecules may suggest that a vessel held dairy products, marine food or the fat of land animals. The method has transformed interpretations of early farming, but its conclusions are rarely as simple as matching one chemical signal to one meal. A pot may have been used repeatedly for different foods, substances can change as they age, and material from the surrounding soil may enter the ceramic. Researchers therefore compare residues with experimental samples and examine the archaeological context, including vessel shape, location and traces of heating. They also avoid assuming that the contents of one pot represent the diet of an entire community. An unusual vessel might have been reserved for ritual use or seasonal preparation. Residue analysis is valuable precisely because it adds another line of evidence, not because it replaces traditional excavation. When chemical, botanical and animal remains point in the same direction, claims about past food practices become substantially stronger.",
+  "rp14": "Hospitals are increasingly testing algorithms that estimate which patients are likely to deteriorate, return after discharge or require urgent attention. Such systems can process more variables than a clinician could review at once, but a high overall accuracy does not guarantee safe decisions for every group. An algorithm trained on records from one hospital may perform poorly elsewhere because disease patterns, equipment and documentation practices differ. Even within the same institution, historical data can encode unequal access to care. If previous spending is used as a substitute for medical need, for instance, patients who received less care in the past may be assigned lower risk despite being equally ill. Evaluation must therefore examine calibration: whether a predicted probability corresponds to the observed rate of an outcome across relevant populations. A model that labels one hundred patients as having a 20 percent risk should, over time, be correct for roughly twenty of them. Calibration can shift as treatments or patient populations change, so monitoring cannot end when software is installed. Nor should an alert be treated as a diagnosis. Its value depends on how clinicians interpret it, whether they can challenge it and what action follows. Medical algorithms are best regarded as components of a care system whose data, users and consequences require continuous assessment.",
+  "rp15": "Large volcanic eruptions can affect climate when they inject sulphur-bearing gases high into the stratosphere. There, the gases form tiny aerosol particles that reflect a portion of incoming sunlight, producing temporary cooling at the Earth's surface. The effect is not determined by the amount of ash visible near the volcano; ash usually falls out of the atmosphere relatively quickly. Altitude, sulphur content, latitude and atmospheric circulation are more important for estimating how widely aerosols will spread and how long they will remain. Historical records show that major eruptions can alter rainfall patterns as well as temperature, but their influence differs between regions and seasons. This complexity makes volcanic episodes useful yet imperfect tests of climate models. Scientists can compare model predictions with observations after an eruption, while recognising that the event also interacts with ocean conditions and natural climate variability. Volcanic cooling does not contradict long-term warming caused by greenhouse gases. Aerosols generally persist for only a few years, whereas carbon dioxide accumulates and influences climate over much longer periods. A cool year following an eruption may therefore interrupt the upward temperature trend without reversing its underlying cause, much as a brief downhill section does not change the overall ascent of a long road.",
+  "rp16": "Digital tools are increasingly used in efforts to revitalise languages spoken by small or ageing communities. Online dictionaries, keyboards and messaging groups can make a language easier to use in daily life, especially for learners who live far from fluent speakers. Recording elders can also preserve pronunciations, stories and specialised vocabulary that might otherwise disappear. Yet preservation and revitalisation are not identical. An archive may store thousands of hours of speech while the language continues to lose everyday users. Revitalisation requires opportunities for people to speak, make mistakes, create new expressions and transmit the language to children. Technology can support these activities, but it also introduces choices about ownership and control. A commercial platform may change its policies, and unrestricted public access may conflict with community rules governing sacred or private knowledge. Successful projects therefore involve speakers in deciding what will be recorded, who may access it and how new terms will be developed. They also train local participants to manage the tools rather than depending indefinitely on outside specialists. The most useful measure of a digital project's success is not simply the size of its database or the number of downloads. It is whether the technology strengthens relationships among speakers and helps the language function in more settings than before.",
+  "rp17": "All organisms leave biological traces in their surroundings: fish release scales and mucus, insects lose fragments of tissue, and mammals shed cells or produce waste. Environmental DNA, commonly called eDNA, allows researchers to detect these traces in samples of water or soil without seeing or capturing the organisms themselves. The method is especially useful for surveying rare, secretive or easily disturbed species. However, a positive result does not reveal precisely when or where an organism was present. DNA may persist after the animal has left, and in rivers it can travel downstream from its source. This ambiguity means that detection should not automatically be treated as evidence of a local breeding population. Reliability also depends on laboratory practice and the quality of reference databases used to identify genetic sequences. Contamination can create a false detection, while an incomplete database may leave a genuine sequence unnamed. Researchers reduce these risks by collecting repeated samples, including controls and interpreting eDNA alongside habitat observations or conventional surveys. The technique is therefore most valuable as an additional source of evidence rather than a flawless replacement for fieldwork. Used carefully, it can reveal where closer investigation is needed and make biodiversity monitoring more efficient.",
+  "rp18": "Several cities have experimented with eliminating fares on buses and trams. Supporters argue that fare-free transport removes a financial barrier, speeds boarding and makes mobility easier for residents with low incomes. Passenger numbers often rise after fares disappear, but increased ridership does not necessarily represent an equal reduction in car use. Some new passengers previously walked or cycled, while motorists may continue driving if services are slow, infrequent or poorly connected. The policy's environmental outcome therefore depends partly on whether the network is attractive enough to compete with private cars. Financing also matters. In systems where fares provide only a small share of operating income, replacing that revenue may be manageable. Elsewhere, removing fares without additional funding could lead to crowded vehicles or service cuts, weakening the very benefits the policy seeks to create. Some authorities instead offer targeted discounts while investing remaining funds in frequency and coverage. The appropriate choice depends on the principal goal: reducing household costs, improving access or changing travel behaviour. Fare-free transport should thus be assessed not merely by counting extra journeys but by examining who travels, which modes they previously used and whether service quality is maintained as demand grows.",
+  "rp19": "Ecological restoration is often described as returning a damaged ecosystem to an earlier condition. In practice, deciding which condition to restore is difficult. Historical records may be incomplete, and the period chosen as a baseline may already reflect farming, hunting or introduced species. Moreover, climate change means that some past combinations of temperature, rainfall and species may no longer be sustainable. A reference ecosystem can still offer valuable guidance by showing how soils, water and organisms once interacted, but it is better treated as a guide than as a fixed blueprint. Restoration teams increasingly set functional goals, such as stabilising soil, supporting pollinators or allowing rivers to flood safely, while accepting that the resulting community may not reproduce the past exactly. This approach does not give managers permission to choose any outcome they find convenient. Goals must be explicit, ecologically plausible and monitored over time, and local communities may reasonably disagree about which benefits deserve priority. Restoration is consequently both a scientific and a social process. Its success cannot always be judged from a single photograph taken after planting. A project may look green yet remain dependent on irrigation, whereas a less tidy landscape may be self-sustaining and provide stronger ecological functions.",
+  "cp01": "Although many cities have expanded their tree-planting programmes, the cooling benefit of urban forests is not automatic. Trees lower surface temperatures by casting shade and releasing water vapour; (I) ----, the size of this effect varies with species, soil moisture and street geometry. A broad-leaved tree may (II) ---- more sunlight than a narrow-crowned one, while trees planted in dry, compacted soil can lose much of their cooling capacity. Researchers also warn that dense rows of trees in narrow streets may restrict airflow, (III) ---- can trap traffic-related pollutants near pedestrians. For this reason, planners need to select species and planting locations (IV) ---- the basis of local climate data rather than appearance alone. Several long-term studies (V) ---- that mixed planting schemes are more resilient to drought and disease than streets dominated by a single species. Urban trees remain a valuable response to heat, but their performance depends on careful design, regular maintenance and enough water during the years when they become established.",
+  "cp02": "Archaeologists once relied mainly on the shape and decoration of pottery to infer how ancient communities used it. Chemical residue analysis now allows researchers to examine microscopic traces of fats, waxes and proteins that (I) ---- inside a vessel's pores. These traces can reveal whether a pot held dairy products, marine resources or plant oils. Yet the method is not straightforward, because compounds may change (II) ---- they remain buried for centuries. Soil conditions, cleaning practices and modern handling can also affect the sample, (III) ---- researchers must compare residues from the vessel with those from the surrounding earth. In a recent experiment, replicas were filled with known foods and then exposed (IV) ---- different temperatures. The results demonstrated that some chemical signals disappear quickly, whereas others remain detectable long after visible evidence has vanished. Such experiments are essential if archaeologists (V) ---- reliable conclusions from ancient residues rather than treating every molecular trace as direct proof of a particular meal.",
+  "cp03": "Sleep is often described as a passive state, but brain-imaging studies suggest that it plays an active role in organising memory. During deep sleep, recently formed neural patterns are repeatedly reactivated, a process that may help new information (I) ---- with existing knowledge. This does not mean that every memory is strengthened equally. Material associated with emotion or future goals appears to receive priority, (II) ---- irrelevant detail is more likely to fade. Scientists are still debating how the sleeping brain identifies what matters. One possibility is that attention paid during learning leaves a chemical marker (III) ---- guides later processing. Experiments have also shown that a sound linked to a learning task can improve recall when it is replayed quietly (IV) ---- sleep, provided that it does not wake the participant. If these findings are confirmed outside laboratories, educators (V) ---- sleep as part of learning design rather than as time lost after study.",
+  "cp04": "Large biodiversity surveys traditionally depended on trained specialists, which limited how often and how widely observations could be made. Smartphone applications now allow volunteers to (I) ---- photographs and location data whenever they encounter a plant or animal. The resulting databases can contain millions of records, but quantity alone does not guarantee scientific value. Misidentified species and uneven participation may distort patterns, especially (II) ---- observations tend to cluster near cities and popular walking routes. To improve reliability, some projects ask several volunteers to review each image, while uncertain records are sent to experts (III) ---- knowledge is relevant to the species concerned. Researchers then combine these observations (IV) ---- statistical models that account for differences in effort. Without contributions from the public, mapping seasonal movement across an entire continent (V) ---- for most research teams. Citizen science therefore works best not as a replacement for professional fieldwork, but as a complementary method whose limitations are measured and reported openly.",
+  "cp05": "As wind and solar power supply a larger share of electricity, grid operators must deal with production that (I) ---- according to weather and time of day. Energy storage is (II) ---- becoming central to the design of low-carbon power systems. Lithium-ion batteries respond rapidly and are useful for balancing short-term changes, but storing electricity for several weeks may require different technologies. One option is to use excess power to produce hydrogen, which can be kept until demand rises. However, energy is lost (III) ---- electricity is converted into hydrogen and then converted back again. Researchers are consequently looking for materials (IV) ---- storing heat or chemical energy at lower cost and with fewer environmental risks. Recent work (V) ---- not only on efficiency but also on the availability of minerals, recycling and the lifetime of equipment. No single technology is likely to meet every need; a resilient grid will probably depend on several forms of storage operating over different timescales.",
+  "cp06": "Linguistic diversity is declining as younger generations shift toward languages associated with education, employment and public life. A language may still be (I) ---- by thousands of adults, yet be endangered if few children learn it at home. Documentation projects record stories, grammar and vocabulary, but recordings alone cannot keep a language socially active. Revitalisation is unlikely to succeed (II) ---- speakers themselves decide how and where the language should be used. In several communities, local schools have developed lessons based on traditional ecological knowledge, (III) ---- gives children a reason to use ancestral terms in meaningful settings. Digital tools can support this work by connecting learners who live far (IV) ---- one another and by making rare materials easier to access. Even so, researchers increasingly acknowledge that they (V) ---- the importance of housing, migration and economic policy in language survival. Protecting linguistic diversity therefore requires more than dictionaries; it depends on creating conditions in which speakers can transmit a language confidently to the next generation."
+});
+  window.SORULAR = (window.SORULAR || []).concat([
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Kelime",
+    "s": "Because the survey covered only two villages, the researchers described their estimate as ---- rather than definitive.",
+    "se": [
+      "provisional",
+      "intrinsic",
+      "compulsory",
+      "simultaneous",
+      "irreversible"
+    ],
+    "d": 0,
+    "ac": "Doğru cevap provisional'dır: 'geçici, kesinleşmemiş' demektir. Araştırma yalnızca iki köyü kapsadığı için tahminin kesin değil, ön nitelikte olduğu belirtilmektedir."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Kelime",
+    "s": "The new regulations are intended to ---- the excessive use of antibiotics in livestock farming.",
+    "se": [
+      "retain",
+      "curb",
+      "compile",
+      "restore",
+      "disclose"
+    ],
+    "d": 1,
+    "ac": "Curb, 'dizginlemek, sınırlamak' anlamındadır. Düzenlemelerin amacı antibiyotiklerin aşırı kullanımını azaltmaktır; diğer seçenekler bu amaç ilişkisini kurmaz."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Kelime",
+    "s": "Since many documents were destroyed during the conflict, the surviving archival record is highly ----.",
+    "se": [
+      "coherent",
+      "abundant",
+      "fragmentary",
+      "impartial",
+      "conclusive"
+    ],
+    "d": 2,
+    "ac": "Fragmentary, 'parça parça ve eksik' demektir. Belgelerin çoğunun yok edilmiş olması, geriye kalan arşiv kaydının bütünlüklü değil parçalı olduğunu gösterir."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Kelime",
+    "s": "The distinction between correlation and causation is ---- but crucial, and it is often missed in public debates.",
+    "se": [
+      "arbitrary",
+      "obsolete",
+      "explicit",
+      "subtle",
+      "uniform"
+    ],
+    "d": 3,
+    "ac": "Subtle, 'ince, kolay fark edilmeyen' anlamındadır. Ayrımın kamusal tartışmalarda sıkça gözden kaçması bu anlamı destekler; buna rağmen ayrımın önemli olduğu vurgulanır."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Kelime",
+    "s": "Digitising the manuscripts has made them readily ---- to scholars who cannot travel to the archive.",
+    "se": [
+      "accountable",
+      "compatible",
+      "susceptible",
+      "comparable",
+      "accessible"
+    ],
+    "d": 4,
+    "ac": "Accessible to, 'erişilebilir' demektir. Dijitalleştirme sayesinde arşive gidemeyen araştırmacılar yazmalara kolayca ulaşabilmektedir."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Kelime",
+    "s": "Independent satellite images helped ---- residents' reports that the lake had begun to shrink months earlier.",
+    "se": [
+      "corroborate",
+      "distort",
+      "invalidate",
+      "withhold",
+      "anticipate"
+    ],
+    "d": 0,
+    "ac": "Corroborate, bir iddia ya da anlatıyı bağımsız kanıtla 'doğrulamak, desteklemek' anlamına gelir. Uydu görüntüleri, bölge sakinlerinin bildirimlerini desteklemektedir."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Dil Bilgisi",
+    "s": "Had the flood warning been issued an hour earlier, many more residents ---- before the roads became impassable.",
+    "se": [
+      "will be evacuated",
+      "could have been evacuated",
+      "had evacuated",
+      "would evacuate",
+      "were being evacuated"
+    ],
+    "d": 1,
+    "ac": "Devrik Type 3 koşul yapısı vardır: Had + özne + V3, if the warning had been issued anlamına gelir. Geçmişte gerçekleşmemiş olası sonuç için could have been evacuated kullanılır."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Dil Bilgisi",
+    "s": "The review panel recommended that the safety protocol ---- before any further trials were authorised.",
+    "se": [
+      "was revised",
+      "would revise",
+      "be revised",
+      "has revised",
+      "is revising"
+    ],
+    "d": 2,
+    "ac": "Recommend that yapısından sonra subjunctive kullanılır: fiil yalın biçimde gelir. Protokol eylemi yapan değil etkilenen olduğu için doğru edilgen yapı be revised'dır."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Dil Bilgisi",
+    "s": "Not until the samples were re-examined under a stronger microscope ---- that two species had been confused.",
+    "se": [
+      "the researchers realised",
+      "the researchers had realised",
+      "had the researchers realised",
+      "did the researchers realise",
+      "the researchers would realise"
+    ],
+    "d": 3,
+    "ac": "Not until cümle başına geldiğinde ana cümlede devrik yapı gerekir: did + özne + fiilin yalın hâli. Bu nedenle did the researchers realise doğrudur."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Dil Bilgisi",
+    "s": "The samples are believed ---- during transport, although the source of the contamination remains uncertain.",
+    "se": [
+      "contaminating",
+      "to contaminate",
+      "to be contaminating",
+      "having contaminated",
+      "to have been contaminated"
+    ],
+    "d": 4,
+    "ac": "Kirlenmenin inanma eyleminden önce gerçekleştiği ve örneklerin edilgen olduğu anlatılır. Bu nedenle perfect passive infinitive olan to have been contaminated gerekir."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Dil Bilgisi",
+    "s": "Having been translated into more than thirty languages, ----.",
+    "se": [
+      "the novel reached readers far beyond its country of origin",
+      "critics began to translate the novel more carefully",
+      "the author's reputation had concerned the publishers",
+      "several translators were discussing the final chapter",
+      "there were readers who preferred the original edition"
+    ],
+    "d": 0,
+    "ac": "Kısaltılmış yan cümlenin mantıksal öznesi ana cümlenin öznesi olmalıdır. Çevrilen şey romandır; bu nedenle ana cümle the novel ile başlamalıdır."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Dil Bilgisi",
+    "s": "Each of the monitoring devices ---- individually before being installed in the field.",
+    "se": [
+      "have been tested",
+      "has been tested",
+      "were testing",
+      "are to test",
+      "test"
+    ],
+    "d": 1,
+    "ac": "Each tekil kabul edilir ve has alır. Cihazlar test eden değil test edilen olduğundan Present Perfect Passive, has been tested, doğru yapıdır."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Bağlaç",
+    "s": "---- several small studies have reported promising results, no large-scale trial has yet confirmed the treatment's effectiveness.",
+    "se": [
+      "Because",
+      "Provided that",
+      "Although",
+      "As long as",
+      "So that"
+    ],
+    "d": 2,
+    "ac": "İlk bölümde umut verici sonuçlar, ikinci bölümde ise bunların henüz doğrulanmadığı belirtilir. Bu karşıtlığı tam cümle alan Although kurar."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Bağlaç",
+    "s": "The museum will lend the tablets to the exhibition ---- they are transported under strictly controlled conditions.",
+    "se": [
+      "even if",
+      "as though",
+      "whereas",
+      "provided that",
+      "in case"
+    ],
+    "d": 3,
+    "ac": "Provided that, 'şu koşulla ki' anlamındadır. Müzenin eserleri ödünç vermesi, kontrollü taşıma koşuluna bağlanmıştır."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Bağlaç",
+    "s": "Urban trees can lower street temperatures, ---- poorly insulated buildings may remain dangerously hot indoors.",
+    "se": [
+      "therefore",
+      "moreover",
+      "for example",
+      "as a result",
+      "whereas"
+    ],
+    "d": 4,
+    "ac": "Whereas iki zıt durumu karşılaştırır: ağaçlar dış ortam sıcaklığını düşürebilirken kötü yalıtılmış binaların içi sıcak kalabilir."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Bağlaç",
+    "s": "The reservoir received far less rainfall than expected. ----, restrictions on agricultural water use were introduced in early summer.",
+    "se": [
+      "As a result",
+      "Nevertheless",
+      "In contrast",
+      "Similarly",
+      "Meanwhile"
+    ],
+    "d": 0,
+    "ac": "Yağış azlığı neden, su kısıtlamalarının getirilmesi sonuçtur. Bu neden-sonuç ilişkisini As a result kurar."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Bağlaç",
+    "s": "All field notes must be backed up at the end of each day; ----, months of observations could be lost through a single equipment failure.",
+    "se": [
+      "likewise",
+      "otherwise",
+      "indeed",
+      "hence",
+      "for instance"
+    ],
+    "d": 1,
+    "ac": "Otherwise, 'aksi takdirde' anlamıyla yapılması gereken işin yapılmaması hâlindeki olumsuz sonucu verir: notlar yedeklenmezse gözlemler kaybolabilir."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Bağlaç",
+    "s": "---- the island lies on a major migration route, even modest habitat loss there can affect bird populations across several continents.",
+    "se": [
+      "Unless",
+      "Even though",
+      "Given that",
+      "In case",
+      "Rather than"
+    ],
+    "d": 2,
+    "ac": "Given that, 'göz önüne alındığında / çünkü' anlamıyla gerekçe sunar. Adanın önemli göç rotasında bulunması, küçük habitat kaybının bile geniş etkisini açıklar."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Preposition",
+    "s": "The recent decline in bee populations cannot be attributed ---- a single cause.",
+    "se": [
+      "with",
+      "for",
+      "at",
+      "to",
+      "from"
+    ],
+    "d": 3,
+    "ac": "Doğru kalıp attribute something to something'dir: bir şeyi bir nedene bağlamak. Edilgen biçimde be attributed to kullanılır."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Preposition",
+    "s": "Manufacturers that fail to comply ---- the new emission standards may face substantial fines.",
+    "se": [
+      "to",
+      "at",
+      "for",
+      "on",
+      "with"
+    ],
+    "d": 4,
+    "ac": "Comply with, 'bir kurala veya standarda uymak' anlamındaki sabit edat kalıbıdır."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Preposition",
+    "s": "All applications will be assessed on the same criteria, regardless ---- the applicant's nationality.",
+    "se": [
+      "of",
+      "from",
+      "with",
+      "about",
+      "by"
+    ],
+    "d": 0,
+    "ac": "Regardless of, '-e bakılmaksızın' anlamındaki sabit kalıptır. Başvuruların uyruktan bağımsız biçimde değerlendirileceğini anlatır."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cümle Tamamlama",
+    "s": "Although remote sensing provides an efficient way to monitor large forests, ----.",
+    "se": [
+      "satellites had completely replaced field researchers decades ago",
+      "ground observations are still needed to identify many species accurately",
+      "the method was developed only after all forests had disappeared",
+      "its images always reveal the exact cause of ecological change",
+      "researchers use it because field data are never reliable"
+    ],
+    "d": 1,
+    "ac": "Although bir üstünlüğe rağmen yöntemin sınırlılığını getirmelidir. Geniş alanları izleme verimliliğine karşın türleri doğru belirlemek için saha gözlemlerinin gerekmesi tutarlı tamamlamadır."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cümle Tamamlama",
+    "s": "If coastal wetlands continue to disappear at the current rate, ----.",
+    "se": [
+      "they had supported fishing communities for centuries",
+      "their restoration would have been unnecessary",
+      "many settlements will become more exposed to storm surges",
+      "local authorities were already mapping the shoreline",
+      "the rate of loss has been calculated differently in the past"
+    ],
+    "d": 2,
+    "ac": "If + Simple Present ile kurulan gerçek gelecek koşulunda ana cümle will + fiil alır. Sulak alanların kaybı, yerleşimlerin fırtına kabarmalarına daha açık hâle gelmesi sonucunu doğurur."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cümle Tamamlama",
+    "s": "The historian compared tax registers from three different provinces in order to ----.",
+    "se": [
+      "the records had been preserved under unsuitable conditions",
+      "each province adopted a new tax system last year",
+      "whether rural households were mentioned in the registers",
+      "determine whether the same demographic pattern appeared across the region",
+      "the comparison was rejected by several archivists"
+    ],
+    "d": 3,
+    "ac": "In order to sonrasında yalın fiil ve araştırmanın amacı gelmelidir. Determine ile başlayan seçenek hem dilbilgisel olarak hem de üç bölgenin karşılaştırılma amacı bakımından uygundur."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cümle Tamamlama",
+    "s": "No matter how sophisticated a climate model is, ----.",
+    "se": [
+      "it had predicted every local event with complete precision",
+      "governments no longer need to prepare for uncertainty",
+      "its assumptions were always more important than its findings",
+      "researchers will have abandoned simpler observations",
+      "its projections still contain some degree of uncertainty"
+    ],
+    "d": 4,
+    "ac": "No matter how, 'ne kadar ... olursa olsun' anlamıyla ödünleme kurar. Model çok gelişmiş olsa da projeksiyonların belirli ölçüde belirsizlik taşıması mantıklı sonuçtur."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cümle Tamamlama",
+    "s": "The excavation was suspended temporarily because ----.",
+    "se": [
+      "heavy rain had made the exposed walls vulnerable to collapse",
+      "the team will publish its findings several years later",
+      "archaeologists usually document each layer before removing it",
+      "the site attracts thousands of visitors every summer",
+      "the oldest objects are displayed in the regional museum"
+    ],
+    "d": 0,
+    "ac": "Because neden bildirir. Şiddetli yağmurun açığa çıkarılmış duvarlarda çökme riski yaratması, kazının geçici olarak durdurulmasını doğrudan açıklar."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cümle Tamamlama",
+    "s": "----, the medication should not be regarded as a substitute for regular exercise and a balanced diet.",
+    "se": [
+      "Since the medication had been withdrawn before clinical trials",
+      "Even if it helps reduce blood sugar levels in some patients",
+      "Unless every patient experiences the same side effects",
+      "So that doctors can prescribe a higher dose",
+      "Because its benefits have never been studied"
+    ],
+    "d": 1,
+    "ac": "İlaç bazı hastalarda yararlı olsa bile yaşam biçiminin yerine geçmemelidir. Bu ödünleme ilişkisini Even if doğru biçimde kurar."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cümle Tamamlama",
+    "s": "By analysing tiny air bubbles trapped in ancient ice, scientists can ----.",
+    "se": [
+      "prevent glaciers from responding to rising temperatures",
+      "decide where future snowfall must occur",
+      "estimate the composition of Earth's atmosphere thousands of years ago",
+      "ensure that every ice core contains identical evidence",
+      "explain why modern instruments no longer measure carbon dioxide"
+    ],
+    "d": 2,
+    "ac": "Eski buzda hapsolmuş hava kabarcıkları geçmiş atmosferden örnekler taşır. Bu nedenle bilim insanları geçmişteki atmosfer bileşimini tahmin edebilir."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cümle Tamamlama",
+    "s": "The council postponed the vote until an independent committee ----.",
+    "se": [
+      "has already rejected the proposal without reading it",
+      "was being appointed after the final vote",
+      "will publish a report several months ago",
+      "had examined the proposal's environmental impact",
+      "would have no authority to examine the evidence"
+    ],
+    "d": 3,
+    "ac": "Oylama geçmişte ertelenmiştir ve kurulun incelemesi oylamadan önce tamamlanacak koşul olarak sunulur. Seçenekler içinde hem anlamı hem zaman sırasını kuran had examined'dır."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cümle Tamamlama",
+    "s": "So little was known about the deep-sea species ----.",
+    "se": [
+      "because researchers have catalogued it in every ocean",
+      "even though its behaviour has been observed continuously",
+      "that its complete genome had explained all of its habits",
+      "whereas marine biologists no longer study rare organisms",
+      "that even its feeding behaviour remained a matter of speculation"
+    ],
+    "d": 4,
+    "ac": "So little ... that kalıbı sonuç bildirir: tür hakkında o kadar az şey biliniyordu ki beslenme davranışı bile varsayım düzeyinde kalmıştı."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cümle Tamamlama",
+    "s": "Unless the raw data are made available to other researchers, ----.",
+    "se": [
+      "the study's conclusions cannot be independently verified",
+      "the original team had collected them over several years",
+      "the journal published the article in its latest issue",
+      "independent verification has already confirmed every result",
+      "the data set was larger than initially expected"
+    ],
+    "d": 0,
+    "ac": "Unless, '-medikçe' anlamındadır. Ham veriler paylaşılmazsa sonuçların bağımsız biçimde doğrulanamayacağı mantıksal ve dilbilgisel olarak uygun sonuçtur."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cümle Tamamlama",
+    "s": "While the invention is often associated with a single engineer, ----.",
+    "se": [
+      "the engineer refused to apply for a patent",
+      "it was actually the product of contributions made by several teams",
+      "no comparable device has ever been manufactured",
+      "its commercial success was guaranteed from the beginning",
+      "the earliest model is now kept in a museum"
+    ],
+    "d": 1,
+    "ac": "While burada karşıtlık kurar: buluş tek bir mühendisle ilişkilendirilse de gerçekte çeşitli ekiplerin katkılarının ürünüdür."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cümle Tamamlama",
+    "s": "The researchers repeated the experiment under different lighting conditions so as to ----.",
+    "se": [
+      "the original laboratory had no windows",
+      "the results were published before the experiment",
+      "rule out the possibility that light had influenced the animals' behaviour",
+      "whether the animals had been exposed to sound",
+      "the equipment could record movements more accurately"
+    ],
+    "d": 2,
+    "ac": "So as to amaç bildirir ve ardından yalın fiil gelir. Farklı ışık koşullarında tekrarın amacı, ışığın davranışı etkilemiş olma ihtimalini elemek olabilir."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cümle Tamamlama",
+    "s": "Only after the inscription had been cleaned ----.",
+    "se": [
+      "the missing section will be discovered elsewhere",
+      "the conservators had photographed it under normal light",
+      "its surface is damaged by earlier restoration attempts",
+      "did the final line become legible",
+      "the museum displays it beside similar objects"
+    ],
+    "d": 3,
+    "ac": "Only after cümle başına geldiğinde ana cümle devrik olur: did + özne + yalın fiil. Temizlemeden sonra son satırın okunabilir hâle gelmesi anlamca da uygundur."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cümle Tamamlama",
+    "s": "Even though the city has expanded its cycle-lane network considerably, ----.",
+    "se": [
+      "the first lane was built along an abandoned railway",
+      "cycling is the least expensive form of transport infrastructure",
+      "the network had been planned by transport engineers",
+      "most residents own at least one bicycle",
+      "many routes remain disconnected from one another"
+    ],
+    "d": 4,
+    "ac": "Even though olumlu gelişmeye rağmen süren bir sorunu gerektirir. Ağ genişletilmiş olsa da güzergâhların birbirinden kopuk kalması bu karşıtlığı kurar."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cümle Tamamlama",
+    "s": "Since oral histories may change as they are retold, ----.",
+    "se": [
+      "historians compare them with contemporary documents and other testimony",
+      "every spoken account should be rejected as entirely unreliable",
+      "written records are never influenced by the people who produce them",
+      "communities stopped transmitting memories before writing emerged",
+      "interviewees must all remember an event in exactly the same way"
+    ],
+    "d": 0,
+    "ac": "Since neden bildirir. Sözlü anlatılar aktarım sırasında değişebildiği için tarihçilerin bunları başka kaynaklarla karşılaştırması uygun yöntemsel sonuçtur."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cümle Tamamlama",
+    "s": "Were a cheaper storage technology to become widely available, ----.",
+    "se": [
+      "renewable energy had remained too costly for most countries",
+      "solar and wind power could supply electricity more consistently",
+      "fossil-fuel prices have never affected energy policy",
+      "existing batteries were disposed of before being used",
+      "electricity demand will have disappeared entirely"
+    ],
+    "d": 1,
+    "ac": "Were ... to yapısı devrik ve varsayımsal bir koşuldur: If a cheaper technology became available. Olası sonuç could supply ile verilir."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cümle Tamamlama",
+    "s": "The artefacts were returned to the excavation site after ----.",
+    "se": [
+      "the museum will arrange a permanent exhibition",
+      "archaeologists are mapping an unexplored area",
+      "conservators had documented and stabilised each item",
+      "the transport crate is inspected next month",
+      "their precise age remains unknown today"
+    ],
+    "d": 2,
+    "ac": "İade edilmeden önce tamamlanan iki işlem Past Perfect ile anlatılır: conservators had documented and stabilised each item. Zaman sırası ve özne-yüklem ilişkisi açıktır."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cümle Tamamlama",
+    "s": "Whatever the immediate cause of the power failure was, ----.",
+    "se": [
+      "engineers had restored electricity within an hour",
+      "the hospital owns two emergency generators",
+      "the investigation was cancelled before it began",
+      "the incident exposed serious weaknesses in the backup system",
+      "staff members routinely test the alarm system"
+    ],
+    "d": 3,
+    "ac": "Whatever ... was, 'yakın neden ne olursa olsun' anlamındadır. Nedenden bağımsız kesin çıkarım, olayın yedek sistemdeki ciddi zayıflıkları ortaya çıkarmasıdır."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Çeviri",
+    "s": "Much of what is known about the settlement comes from objects discarded by its inhabitants rather than from written records.",
+    "se": [
+      "Yerleşim hakkında bilinenlerin çoğu yazılı kayıtlara dayansa da sakinlerin attığı nesneler de incelenmiştir.",
+      "Yerleşimin sakinleri, yazılı kayıtlar bırakmak yerine bildikleri nesnelerin çoğunu atmışlardır.",
+      "Yazılı kayıtlar bulunmadığı için yerleşimdeki bütün nesnelerin sakinlerce atıldığı düşünülmektedir.",
+      "Yerleşimle ilgili nesnelerin çoğu, yazılı kayıtları tutan sakinler tarafından gözden çıkarılmıştır.",
+      "Yerleşim hakkında bilinenlerin büyük bölümü yazılı kayıtlardan değil, sakinlerinin attığı nesnelerden gelmektedir."
+    ],
+    "d": 4,
+    "ac": "Rather than from written records karşılaştırması 'yazılı kayıtlardan değil' biçiminde aktarılmalıdır. What is known = bilinenler; discarded by its inhabitants = sakinlerinin attığı nesneler anlamındadır."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Çeviri",
+    "s": "Even if emissions were reduced immediately, some effects of climate change would persist for decades.",
+    "se": [
+      "Emisyonlar hemen azaltılsa bile iklim değişikliğinin bazı etkileri onlarca yıl devam edecektir.",
+      "Emisyonlar ancak iklim değişikliğinin etkileri onlarca yıl sürerse hemen azaltılabilir.",
+      "İklim değişikliğinin bazı etkileri azaldığı için emisyonların derhâl düşürülmesi gerekir.",
+      "Emisyonların hemen azaltılması, iklim değişikliğinin bütün etkilerini birkaç yıl içinde ortadan kaldıracaktır.",
+      "İklim değişikliği onlarca yıl devam etse de emisyonlarda herhangi bir azalma olmayacaktır."
+    ],
+    "d": 0,
+    "ac": "Even if = '-sa bile'; were reduced edilgen koşul, would persist ise varsayımsal sonuçtur. Birinci seçenek hem ödünleme ilişkisini hem 'bazı etkiler' sınırlamasını korur."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Çeviri",
+    "s": "The committee has yet to determine whether the benefits of the proposal outweigh its potential costs.",
+    "se": [
+      "Komite, önerinin olası maliyetlerinin yararlarından fazla olduğuna çoktan karar vermiştir.",
+      "Komite, önerinin yararlarının olası maliyetlerinden ağır basıp basmadığını henüz belirlememiştir.",
+      "Önerinin yararları belirlenmedikçe komite olası maliyetleri dikkate almayacaktır.",
+      "Komiteye göre önerinin hem yararları hem de olası maliyetleri olduğundan fazladır.",
+      "Komite, önerinin maliyetini azaltmanın yararlarını araştırmaya henüz başlamıştır."
+    ],
+    "d": 1,
+    "ac": "Has yet to determine, 'henüz belirlememiştir'; whether ... outweigh, '-den ağır basıp basmadığı' demektir. Doğru seçenek belirsizliği ve henüz tamamlanmamış değerlendirmeyi korur."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Çeviri",
+    "s": "Not until reliable maps became available did merchants begin to use the northern route regularly.",
+    "se": [
+      "Güvenilir haritalar elde edilmeden önce tüccarlar kuzey rotasını düzenli olarak kullanmaya başlamıştı.",
+      "Tüccarlar kuzey rotasını düzenli kullanınca güvenilir haritalar hazırlanmaya başlandı.",
+      "Tüccarlar, güvenilir haritalar kullanıma sunulana kadar kuzey rotasını düzenli biçimde kullanmaya başlamadılar.",
+      "Kuzey rotası tüccarlar tarafından düzenli kullanılsa da güvenilir bir haritası çıkarılamadı.",
+      "Güvenilir haritaların bulunması tüccarların kuzey rotasını kullanmayı bırakmasına yol açtı."
+    ],
+    "d": 2,
+    "ac": "Not until ... did yapısı, '... olana kadar başlamadı' biçiminde çevrilir. Olay sırası ve kuzey rotasının düzenli kullanımı yalnız üçüncü seçenekte korunmuştur."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Çeviri",
+    "s": "Had the disease been detected sooner, the outbreak might have been contained before reaching the capital.",
+    "se": [
+      "Hastalık başkente ulaştıktan sonra tespit edildiği hâlde salgın kısa sürede kontrol altına alındı.",
+      "Salgının başkente ulaşmaması, hastalığın ne kadar erken tespit edildiğine bağlıdır.",
+      "Hastalık daha erken tespit edilirse salgın başkente ulaşmadan önce kesinlikle durdurulacaktır.",
+      "Hastalık daha erken tespit edilmiş olsaydı salgın başkente ulaşmadan kontrol altına alınabilirdi.",
+      "Salgın kontrol altına alınamadığı için hastalığın başkente ne zaman ulaştığı belirlenemedi."
+    ],
+    "d": 3,
+    "ac": "Had the disease been detected, if the disease had been detected anlamında devrik Type 3 koşuldur. Might have been contained ise geçmişte gerçekleşmemiş olasılığı 'kontrol altına alınabilirdi' diye verir."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Çeviri",
+    "s": "The device is small enough to be carried by one person, yet sensitive enough to detect minute changes in air quality.",
+    "se": [
+      "Cihaz bir kişi tarafından taşınamayacak kadar küçük olsa da hava kalitesindeki önemli değişikliklere duyarlıdır.",
+      "Bir kişinin taşıdığı küçük cihaz, hava kalitesini değiştirecek kadar hassas olabilir.",
+      "Cihazın küçük olması, hava kalitesindeki çok ufak değişimleri tespit etmesini engellemektedir.",
+      "Hava kalitesindeki değişimler çok küçük olduğundan cihazı taşımak için bir kişi yeterlidir.",
+      "Cihaz bir kişinin taşıyabileceği kadar küçük, ancak hava kalitesindeki çok küçük değişimleri saptayacak kadar hassastır."
+    ],
+    "d": 4,
+    "ac": "Enough to yapıları hem taşınabilirlik hem hassasiyet derecesini verir; yet ise iki özelliği karşıt beklentiyle bağlar. Minute changes burada 'çok küçük değişimler'dir."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Çeviri",
+    "s": "Yeni kanıtlar ortaya çıktıkça, geçmişle ilgili yerleşik görüşlerin yeniden değerlendirilmesi gerekebilir.",
+    "se": [
+      "As new evidence emerges, established views of the past may need to be reassessed.",
+      "New evidence cannot emerge unless established views of the past have been rejected.",
+      "Established views of the past were reassessed before any new evidence emerged.",
+      "The emergence of new evidence prevents historians from evaluating the past objectively.",
+      "However established a view of the past is, it should never be reassessed."
+    ],
+    "d": 0,
+    "ac": "'-dıkça' için as; 'gerekebilir' için may need to; edilgen 'yeniden değerlendirilmesi' için be reassessed kullanılır. Birinci seçenek tüm anlam öğelerini korur."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Çeviri",
+    "s": "Araştırmacılar, bulguların başka gruplar tarafından tekrarlanmadıkça kesin kabul edilmemesi gerektiğini vurguluyor.",
+    "se": [
+      "Researchers accept the findings as conclusive because several other groups have repeated them.",
+      "Researchers emphasise that the findings should not be regarded as conclusive unless they are replicated by other groups.",
+      "Other groups have been told to reach the same conclusion without repeating the research.",
+      "Researchers question whether conclusive findings should ever be shared with other groups.",
+      "The findings need not be replicated once researchers have emphasised their importance."
+    ],
+    "d": 1,
+    "ac": "'Vurguluyor' emphasise; 'kesin kabul edilmemeli' should not be regarded as conclusive; '-madıkça' unless ve edilgen tekrar için are replicated gerekir."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Çeviri",
+    "s": "Şehir hızla büyümüş olmasına rağmen, toplu taşıma ağı artan talebe ayak uyduramamıştır.",
+    "se": [
+      "Since the city grew rapidly, demand for public transport has begun to decline.",
+      "The public transport network expanded rapidly enough to meet the city's growing demand.",
+      "Although the city has grown rapidly, its public transport network has failed to keep pace with rising demand.",
+      "The city would not have grown so rapidly without increasing demand for public transport.",
+      "Rapid urban growth is likely only when a public transport network has already met demand."
+    ],
+    "d": 2,
+    "ac": "'-mesine rağmen' Although; 'ayak uyduramamıştır' has failed to keep pace with; 'artan talep' rising demand biçiminde doğru aktarılır."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Çeviri",
+    "s": "Bu yöntemin başlıca avantajı, pahalı ekipman gerektirmeden güvenilir sonuçlar vermesidir.",
+    "se": [
+      "This method requires expensive equipment if its results are to remain reliable.",
+      "The reliability of this method is its only advantage over expensive equipment.",
+      "Although the equipment is costly, the method may eventually produce reliable results.",
+      "The main advantage of this method is that it produces reliable results without requiring expensive equipment.",
+      "The method's results are reliable mainly because expensive equipment is not widely available."
+    ],
+    "d": 3,
+    "ac": "'Başlıca avantajı' the main advantage; '... vermesidir' is that it produces; 'gerektirmeden' without requiring yapıları dördüncü seçenekte eksiksizdir."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Çeviri",
+    "s": "Yetkililer, kuraklığın ne kadar süreceğini öngörmenin mümkün olmadığını kabul etti.",
+    "se": [
+      "The authorities predicted how long the drought would last but refused to disclose it.",
+      "The authorities admitted that the drought had lasted longer than anyone expected.",
+      "It was impossible for the authorities to acknowledge that the drought had ended.",
+      "The authorities accepted the prediction only after the drought was over.",
+      "The authorities acknowledged that it was impossible to predict how long the drought would last."
+    ],
+    "d": 4,
+    "ac": "'Kabul etti' acknowledged; 'mümkün olmadığını' it was impossible; 'ne kadar süreceğini' how long ... would last biçiminde karşılanır."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Çeviri",
+    "s": "Müze, eserlerin zarar görmesini önlemek amacıyla ziyaretçi sayısını geçici olarak sınırlandırdı.",
+    "se": [
+      "The museum temporarily limited the number of visitors in order to prevent the artefacts from being damaged.",
+      "The artefacts were temporarily removed because the museum expected visitor numbers to fall.",
+      "The museum prevented visitors from seeing the artefacts until their number increased.",
+      "Visitor numbers were limited after several artefacts had been deliberately damaged by the museum.",
+      "The museum intended to display fewer artefacts so that it could attract more visitors."
+    ],
+    "d": 0,
+    "ac": "'Amacıyla' in order to; 'zarar görmesini önlemek' prevent ... from being damaged; 'geçici olarak sınırlandırdı' temporarily limited biçiminde doğru aktarılmıştır."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Diyalog",
+    "s": "Maya: The council says the river is cleaner than it was ten years ago.\nKerem: That may be true, but their report covers only chemical pollution.\nMaya: ----\nKerem: Exactly. Without biological data, we cannot tell whether the ecosystem has recovered.",
+    "se": [
+      "Then the council must have measured every species in the river.",
+      "So it tells us little about whether fish and insect populations have returned.",
+      "Chemical pollution is the only factor that affects river ecosystems.",
+      "The report must therefore prove that the river is fully restored.",
+      "I suppose biological monitoring was unnecessary ten years ago."
+    ],
+    "d": 1,
+    "ac": "Kerem'in son cümlesindeki Without biological data ifadesi, Maya'nın raporun balık ve böcek popülasyonları hakkında az şey söylediği çıkarımını onaylar. Exactly bağlantısı bunu açıkça gösterir."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Diyalog",
+    "s": "Editor: You argue that the reform failed, but you discuss only its first six months.\nAuthor: Later figures are not yet available.\nEditor: ----\nAuthor: You're right. I'll describe the conclusion as preliminary.",
+    "se": [
+      "Then you should remove all the figures from the article.",
+      "Six months is always enough to judge any public policy.",
+      "In that case, your conclusion needs to reflect the limited time span of the evidence.",
+      "The reform must have succeeded after the first year.",
+      "Readers will not be interested in evidence collected so recently."
+    ],
+    "d": 2,
+    "ac": "Yazarın sonucu preliminary olarak nitelemesi, editörün kanıtın yalnız altı aylık dönemi kapsadığını sonuca yansıtma önerisine verilen doğrudan yanıttır."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Diyalog",
+    "s": "Student: I can understand the article, but I cannot remember its argument the next day.\nTutor: How do you take notes while reading?\nStudent: I copy entire sentences that seem important.\nTutor: ----",
+    "se": [
+      "Then you should choose articles with fewer technical terms.",
+      "Copying more sentences will guarantee long-term recall.",
+      "The author's wording is probably too simple for your level.",
+      "Try closing the text after each section and summarising the point in your own words.",
+      "You should avoid checking whether your summary is accurate."
+    ],
+    "d": 3,
+    "ac": "Sorun anlamaktan çok hatırlamadır; öğrencinin pasif biçimde cümle kopyaladığı anlaşılır. Metni kapatıp kendi sözleriyle özetlemek aktif hatırlamayı destekleyen uygun öneridir."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Diyalog",
+    "s": "Researcher: The sensors recorded a sharp temperature rise at midnight.\nTechnician: That's when the backup heater is tested automatically.\nResearcher: ----\nTechnician: Yes, we should repeat the measurements with the test function disabled.",
+    "se": [
+      "The rise proves that the room cools rapidly after midnight.",
+      "Then the sensors must have stopped recording before the test.",
+      "Automatic tests never influence environmental measurements.",
+      "We can publish the result without mentioning the heater.",
+      "So the apparent rise may have been caused by the equipment rather than the room itself."
+    ],
+    "d": 4,
+    "ac": "Teknisyenin ölçümü test işlevi kapalıyken yineleme önerisi, sıcaklık artışının odadan değil yedek ısıtıcı testinden kaynaklanmış olabileceği çıkarımına karşılıktır."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Diyalog",
+    "s": "Deniz: I thought the exhibition was about everyday life in the Bronze Age.\nSelin: It is, but almost every object on display comes from elite burials.\nDeniz: ----\nSelin: Precisely; ordinary households may have left a very different material record.",
+    "se": [
+      "Then the exhibition may give a distorted picture of how most people lived.",
+      "So elite burials contain no objects from the Bronze Age.",
+      "That proves ordinary households used exactly the same objects.",
+      "The exhibition must focus mainly on modern burial customs.",
+      "Everyday life can be reconstructed only from written records."
+    ],
+    "d": 0,
+    "ac": "Sergide yalnız seçkin mezarlarından gelen nesnelerin ağırlıkta olması, çoğunluğun yaşamını çarpık gösterebilir. Selin'in sıradan hanelerin farklı iz bırakmış olabileceği yanıtı bu çıkarımı destekler."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Diyalog",
+    "s": "Doctor: The medicine reduced your symptoms, but the trial lasted only four weeks.\nPatient: Does that mean we know nothing about it?\nDoctor: ----\nPatient: I see; short-term benefit does not necessarily show long-term safety.",
+    "se": [
+      "Yes, the trial produced no useful information whatsoever.",
+      "Not at all; it suggests short-term effectiveness, but longer follow-up is needed to assess lasting effects and risks.",
+      "Four weeks is enough to establish that every patient will benefit.",
+      "Long-term safety can be inferred without observing any patients.",
+      "The symptoms would have disappeared even if you had not taken it."
+    ],
+    "d": 1,
+    "ac": "Hastanın son cümlesi, doktorun kısa vadeli yarar ile uzun vadeli güvenliği ayırdığını gösterir. İkinci seçenek bu ayrımı dengeli biçimde açıklar."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Diyalog",
+    "s": "Manager: Online attendance at the seminar was twice as high as in-person attendance.\nAnalyst: But registration was free online and costly in person.\nManager: ----\nAnalyst: Exactly; we cannot attribute the difference to format alone.",
+    "se": [
+      "Then people clearly learn twice as much in online seminars.",
+      "The fee proves that in-person seminars are always more effective.",
+      "So the price difference is a competing explanation for the attendance figures.",
+      "We should assume that all registered participants attended the full seminar.",
+      "Format cannot possibly affect attendance under any circumstances."
+    ],
+    "d": 2,
+    "ac": "Analistin format alone ifadesi, ücret farkının alternatif açıklama olduğunu kabul eder. Bu nedenle fiyat farkını competing explanation olarak tanımlayan seçenek uygundur."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Paragraf Tamamlama",
+    "metin": "For decades, archaeologists interpreted large monuments mainly through the intentions of rulers who commissioned them. Recent research has broadened that perspective. ----. Studying tool marks, unfinished sections and workers' settlements can therefore reveal not only how monuments were built but also how labour was organised and negotiated.",
+    "s": "Parçada boş bırakılan yere aşağıdakilerden hangisi getirilebilir?",
+    "se": [
+      "Written accounts by rulers always describe construction work with complete accuracy",
+      "Most ancient monuments were built without specialised tools or organised labour",
+      "The political meaning of a monument disappears once its construction is completed",
+      "Scholars now also ask what construction demanded of craftspeople and labourers",
+      "Workers' settlements are generally located too far from monuments to be studied"
+    ],
+    "d": 3,
+    "ac": "Önce bakış açısının genişlediği söylenir; sonraki cümle işçilik izleri ve işçi yerleşimlerinden söz eder. Bu geçişi, araştırmacıların emekçi ve zanaatkârların deneyimini de sormaya başladığını belirten seçenek kurar."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Paragraf Tamamlama",
+    "metin": "Many plants release chemical compounds when attacked by insects. Some of these compounds attract predators that feed on the attacking insects. ----. Experiments must therefore distinguish between a signal that evolved for communication and a chemical by-product that another species has learned to exploit.",
+    "s": "Parçada boş bırakılan yere aşağıdakilerden hangisi getirilebilir?",
+    "se": [
+      "Predatory insects are unable to detect chemical compounds released by plants",
+      "All plant chemicals have evolved solely to benefit neighbouring species",
+      "Plants stop producing defensive compounds once predators arrive",
+      "Such experiments show that insect attacks rarely affect plant chemistry",
+      "However, attraction alone does not prove that the plant is deliberately signalling for help"
+    ],
+    "d": 4,
+    "ac": "Son cümlede iletişim için evrimleşmiş sinyal ile başkasının yararlandığı yan ürün ayrılıyor. Bu ayrımın gerekçesi, avcıların kimyasala çekilmesinin tek başına kasıtlı yardım sinyalini kanıtlamamasıdır."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Paragraf Tamamlama",
+    "metin": "Early weather observations were often recorded in diaries, ships' logs and agricultural accounts rather than in standard scientific tables. Their terminology varies, and instruments were not always calibrated. ----. When combined carefully across many locations, they can extend regional climate records by centuries.",
+    "s": "Parçada boş bırakılan yere aşağıdakilerden hangisi getirilebilir?",
+    "se": [
+      "Despite these limitations, such documents can still provide valuable evidence of past conditions",
+      "Consequently, historians have discarded every observation made before modern instruments",
+      "Standardised weather stations had already operated for centuries before diaries were written",
+      "Agricultural accounts were designed primarily to predict global climate change",
+      "A single ship's log is sufficient to reconstruct the climate of an entire continent"
+    ],
+    "d": 0,
+    "ac": "İlk iki cümle eski kayıtların sınırlılıklarını, son cümle ise dikkatli birleştirildiklerinde yararını anlatır. Despite these limitations ile başlayan seçenek bu karşıt geçişi sağlar."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Paragraf Tamamlama",
+    "metin": "Public libraries increasingly lend tools, musical instruments and other objects in addition to books. These collections can reduce the cost of trying a new activity and prevent rarely used items from being purchased by every household. ----. Libraries must consider storage, maintenance, safety and staff training before expanding such programmes.",
+    "s": "Parçada boş bırakılan yere aşağıdakilerden hangisi getirilebilir?",
+    "se": [
+      "Books are no longer borrowed from public libraries in most cities",
+      "Yet lending physical objects also creates practical responsibilities that book collections do not",
+      "Every household prefers to own tools that it uses only once",
+      "Musical instruments require neither maintenance nor specialised storage",
+      "Such programmes eliminate the need for trained library staff"
+    ],
+    "d": 1,
+    "ac": "İlk bölüm nesne ödünç vermenin yararlarını, son cümle ise getirdiği operasyonel yükleri anlatır. Yet ile bu iki yönü bağlayan ikinci seçenek paragrafın akışını tamamlar."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Paragraf Tamamlama",
+    "metin": "A scientific model is not a miniature copy of reality. It deliberately leaves out features that are irrelevant to the question being investigated. ----. A model that is useful for forecasting regional rainfall, for example, may be poorly suited to explaining the formation of individual clouds.",
+    "s": "Parçada boş bırakılan yere aşağıdakilerden hangisi getirilebilir?",
+    "se": [
+      "The most detailed model is necessarily the most accurate for every purpose",
+      "Scientific models cease to be useful as soon as one variable is omitted",
+      "Its value should therefore be judged in relation to the purpose for which it was built",
+      "Regional rainfall can be explained only by observing individual clouds",
+      "All models answer the same questions regardless of their assumptions"
+    ],
+    "d": 2,
+    "ac": "Parça, modellerin amaca göre bazı ayrıntıları dışarıda bıraktığını ve bir amaç için yararlı modelin başka amaçta yetersiz olabileceğini söyler. Bu nedenle modelin değeri yapılış amacına göre değerlendirilmelidir."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Paragraf Tamamlama",
+    "metin": "Restoring a wetland does not simply mean adding water to a low-lying area. Soil structure, seasonal flooding and connections to nearby rivers all influence which species can return. ----. Successful restoration therefore requires long-term monitoring and a willingness to revise the original plan.",
+    "s": "Parçada boş bırakılan yere aşağıdakilerden hangisi getirilebilir?",
+    "se": [
+      "Wetland species respond identically to every change in water level",
+      "A restored wetland reaches its final ecological state within a few days",
+      "Monitoring is unnecessary when the original engineering plan is detailed",
+      "Moreover, ecological responses may unfold slowly and differ from initial predictions",
+      "Nearby rivers have no effect on the success of wetland restoration"
+    ],
+    "d": 3,
+    "ac": "Son cümlede uzun süreli izleme ve planı değiştirme gereği vardır. Bunun nedeni ekolojik tepkilerin yavaş gelişebilmesi ve ilk tahminlerden farklılaşabilmesidir; moreover önceki karmaşıklıklara bunu ekler."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Anlamı Bozan Cümle",
+    "s": "(I) Coral reefs reduce wave energy before it reaches many tropical shores. (II) This protection can limit erosion and lessen damage during moderate storms. (III) Reefs also support fisheries on which numerous coastal communities depend. (IV) Their decline therefore creates both ecological and economic risks. (V) The deepest point in the world's oceans lies in the Mariana Trench.",
+    "se": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "d": 4,
+    "ac": "I-IV. cümleler mercan resiflerinin kıyı koruması, balıkçılık ve bunların kaybının sonuçlarını işler. V. cümledeki okyanusun en derin noktası bilgisi bu düşünce zinciriyle ilgisizdir."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Anlamı Bozan Cümle",
+    "s": "(I) Some medieval pigments were more expensive than the paintings in which they were used. (II) Tree-ring dating can identify the year in which timber was felled. (III) It is especially useful when wooden beams retain their outermost growth rings. (IV) Researchers compare the pattern of wide and narrow rings with dated regional sequences. (V) The method can thus establish a precise construction date for many timber buildings.",
+    "se": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "d": 0,
+    "ac": "II-V. cümleler ağaç halkası tarihlemesinin yöntemi, koşulu ve sağladığı sonuç hakkındadır. I. cümledeki Orta Çağ pigmentlerinin maliyeti farklı bir konu açar."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Anlamı Bozan Cümle",
+    "s": "(I) Citizen-science projects can gather observations across areas too large for a small research team. (II) Professional telescopes are generally located far from city lights. (III) Volunteers may record bird sightings, rainfall or the flowering dates of plants. (IV) Clear instructions and automated checks help improve the consistency of these records. (V) When carefully validated, the resulting data can reveal changes over long periods and broad regions.",
+    "se": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "d": 1,
+    "ac": "I, III, IV ve V. cümleler yurttaş bilimiyle geniş ölçekte veri toplama, örnekler, kalite kontrolü ve kullanım değerini anlatır. II. cümledeki teleskop konumu bu akışı bozar."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Anlamı Bozan Cümle",
+    "s": "(I) Peatlands accumulate partly decayed plant material in waterlogged conditions. (II) Because decomposition is slow, large amounts of carbon remain stored in the soil. (III) Many desert plants open their flowers only after sunset. (IV) Draining peatlands exposes this material to oxygen and accelerates its decay. (V) Protecting them can therefore prevent substantial greenhouse-gas emissions.",
+    "se": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "d": 2,
+    "ac": "I, II, IV ve V. cümleler turbalıkların karbon depolaması, drenajın etkisi ve korunmasının önemini anlatır. III. cümledeki çöl bitkilerinin çiçeklenme zamanı ilgisizdir."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Anlamı Bozan Cümle",
+    "s": "(I) Translating humour involves more than replacing words with their dictionary equivalents. (II) A joke may depend on sound, cultural knowledge or an ambiguity absent from the target language. (III) Translators sometimes recreate the intended effect with a different reference or wordplay. (IV) The earliest dictionaries were often arranged by subject rather than alphabetically. (V) Such solutions may depart from the wording while preserving the joke's function.",
+    "se": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "d": 3,
+    "ac": "I, II, III ve V. cümleler mizah çevirisinin güçlüğünü ve işlevi korumak için kullanılan yaratıcı çözümü açıklar. IV. cümledeki sözlük düzeni bilgisi konu dışıdır."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Anlamı Bozan Cümle",
+    "s": "(I) Producing aluminium from recycled metal requires far less energy than extracting it from ore. (II) Aluminium can also be recycled repeatedly without losing many of its useful properties. (III) Effective collection and sorting systems are needed to keep suitable material in circulation. (IV) Contamination with other materials can reduce the quality of the recycled product. (V) Iron was used for tools in several ancient societies long before aluminium became commercially available.",
+    "se": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "d": 4,
+    "ac": "I-IV. cümleler alüminyum geri dönüşümünün enerji yararı, tekrar kullanılabilirliği ve uygulama koşullarını ele alır. V. cümlenin demir tarihiyle ilgili karşılaştırması paragrafın odağından sapar."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Anlamı Bozan Cümle",
+    "s": "(I) The first public clock towers were often symbols of civic wealth and authority. (II) Seed banks preserve genetic diversity by storing seeds under controlled conditions. (III) Some collections focus on wild relatives of crops that may carry resistance to drought or disease. (IV) Regular germination tests show whether stored seeds remain viable. (V) When viability falls, plants are grown so that a fresh generation of seeds can be collected.",
+    "se": [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "d": 0,
+    "ac": "II-V. cümleler tohum bankalarının genetik çeşitliliği koruması, koleksiyon kapsamı, canlılık testi ve yenileme sürecini anlatır. I. cümledeki saat kuleleri bütünüyle farklı bir konudur."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cloze Test",
+    "s": "(I)",
+    "se": [
+      "however",
+      "moreover",
+      "therefore",
+      "for instance",
+      "likewise"
+    ],
+    "d": 0,
+    "ac": "İlk cümle ağaçlandırmanın arttığını, devamı ise etkinin koşullara göre değiştiğini belirtir. Bu karşıtlığı 'however' kurar.",
+    "pid": "cp01"
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cloze Test",
+    "s": "(II)",
+    "se": [
+      "postpone",
+      "intercept",
+      "restore",
+      "overlook",
+      "withdraw"
+    ],
+    "d": 1,
+    "ac": "Geniş yapraklı bir ağacın daha fazla güneş ışığını kesip tutması anlatılır; bu anlamı 'intercept' verir.",
+    "pid": "cp01"
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cloze Test",
+    "s": "(III)",
+    "se": [
+      "where",
+      "whom",
+      "which",
+      "what",
+      "whose"
+    ],
+    "d": 2,
+    "ac": "Virgülden sonra önceki tüm durumu açıklayan non-defining relative clause gerekir; bu nedenle 'which' doğrudur.",
+    "pid": "cp01"
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cloze Test",
+    "s": "(IV)",
+    "se": [
+      "at",
+      "by",
+      "from",
+      "on",
+      "with"
+    ],
+    "d": 3,
+    "ac": "'On the basis of' kalıbı '... temelinde/dayanarak' anlamına gelir ve burada gereken edat 'on'dur.",
+    "pid": "cp01"
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cloze Test",
+    "s": "(V)",
+    "se": [
+      "showed",
+      "had shown",
+      "would show",
+      "are showing",
+      "have shown"
+    ],
+    "d": 4,
+    "ac": "Belirli bir geçmiş zaman verilmeksizin geçmiş çalışmaların güncel sonucuna değinildiği için present perfect 'have shown' uygundur.",
+    "pid": "cp01"
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cloze Test",
+    "s": "(I)",
+    "se": [
+      "decline",
+      "remain",
+      "deliver",
+      "revise",
+      "originate"
+    ],
+    "d": 1,
+    "ac": "İncelenen şey, kabın gözeneklerinde kalan mikroskobik izlerdir; hem anlam hem de çoğul özneyle uyum bakımından 'remain' doğrudur.",
+    "pid": "cp02"
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cloze Test",
+    "s": "(II)",
+    "se": [
+      "until",
+      "unless",
+      "while",
+      "so that",
+      "even if"
+    ],
+    "d": 2,
+    "ac": "Bileşiklerin yüzyıllarca gömülü kalma süreci içinde değişebileceği anlatılır; eş zamanlılık bildiren 'while' uygundur.",
+    "pid": "cp02"
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cloze Test",
+    "s": "(III)",
+    "se": [
+      "although",
+      "likewise",
+      "otherwise",
+      "so",
+      "instead"
+    ],
+    "d": 3,
+    "ac": "Numuneyi etkileyen dış unsurlar, çevredeki toprakla karşılaştırma gereğini doğurur; sonuç bildiren 'so' doğrudur.",
+    "pid": "cp02"
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cloze Test",
+    "s": "(IV)",
+    "se": [
+      "over",
+      "for",
+      "with",
+      "by",
+      "to"
+    ],
+    "d": 4,
+    "ac": "'Be exposed to' bir şeye maruz bırakılmak anlamındaki sabit kullanımdır; doğru edat 'to'dur.",
+    "pid": "cp02"
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cloze Test",
+    "s": "(V)",
+    "se": [
+      "are to draw",
+      "used to draw",
+      "were drawing",
+      "had drawn",
+      "would have drawn"
+    ],
+    "d": 0,
+    "ac": "'If ... are to draw' yapısı, güvenilir sonuca ulaşılması için gerekli koşulu belirtir; bağlama en uygun seçenek budur.",
+    "pid": "cp02"
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cloze Test",
+    "s": "(I)",
+    "se": [
+      "compete",
+      "interfere",
+      "integrate",
+      "hesitate",
+      "depart"
+    ],
+    "d": 2,
+    "ac": "Yeni bilginin mevcut bilgiyle bütünleşmesi anlatılır. 'Integrate with' bu anlamı ve gerekli edatı birlikte sağlar.",
+    "pid": "cp03"
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cloze Test",
+    "s": "(II)",
+    "se": [
+      "because",
+      "provided that",
+      "as though",
+      "whereas",
+      "once"
+    ],
+    "d": 3,
+    "ac": "Duygusal veya hedefe bağlı bilginin öncelik kazanması ile ilgisiz ayrıntının silinmesi karşılaştırılır; 'whereas' uygundur.",
+    "pid": "cp03"
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cloze Test",
+    "s": "(III)",
+    "se": [
+      "where",
+      "whom",
+      "what",
+      "whose",
+      "that"
+    ],
+    "d": 4,
+    "ac": "Boşluktan sonra fiil gelir ve 'marker' özne görevinde nitelenir; kısıtlayıcı relative clause için 'that' gerekir.",
+    "pid": "cp03"
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cloze Test",
+    "s": "(IV)",
+    "se": [
+      "during",
+      "towards",
+      "beyond",
+      "among",
+      "beside"
+    ],
+    "d": 0,
+    "ac": "Sesin uyku süreci sırasında çalınması anlatıldığı için zaman bildiren 'during' doğru edattır.",
+    "pid": "cp03"
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cloze Test",
+    "s": "(V)",
+    "se": [
+      "must have regarded",
+      "may come to regard",
+      "would have regarded",
+      "had better regarded",
+      "used to regard"
+    ],
+    "d": 1,
+    "ac": "Bulgular gelecekte doğrulanırsa eğitimcilerin zamanla böyle bir görüş geliştirebileceği ifade edilir; 'may come to regard' uygundur.",
+    "pid": "cp03"
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cloze Test",
+    "s": "(I)",
+    "se": [
+      "reject",
+      "conceal",
+      "translate",
+      "submit",
+      "estimate"
+    ],
+    "d": 3,
+    "ac": "Gönüllülerin uygulama üzerinden fotoğraf ve konum verisi göndermesi anlatılır; 'submit' bu bağlama uygun fiildir.",
+    "pid": "cp04"
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cloze Test",
+    "s": "(II)",
+    "se": [
+      "despite",
+      "whereas",
+      "unless",
+      "so that",
+      "since"
+    ],
+    "d": 4,
+    "ac": "Gözlemlerin belirli yerlerde kümelenmesi, örüntülerin neden bozulabileceğini açıklar; sebep bildiren 'since' doğrudur.",
+    "pid": "cp04"
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cloze Test",
+    "s": "(III)",
+    "se": [
+      "whose",
+      "which",
+      "where",
+      "whom",
+      "that"
+    ],
+    "d": 0,
+    "ac": "Uzmanlara ait bilginin nitelenmesi gerekir; sahiplik bildiren relative pronoun 'whose' doğru seçenektir.",
+    "pid": "cp04"
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cloze Test",
+    "s": "(IV)",
+    "se": [
+      "against",
+      "with",
+      "through",
+      "beneath",
+      "upon"
+    ],
+    "d": 1,
+    "ac": "'Combine something with something' kalıbında iki unsurun birlikte kullanılması anlatılır; doğru edat 'with'tir.",
+    "pid": "cp04"
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cloze Test",
+    "s": "(V)",
+    "se": [
+      "has been impossible",
+      "had been impossible",
+      "would be impossible",
+      "will have been impossible",
+      "was to be impossible"
+    ],
+    "d": 2,
+    "ac": "'Without' ile kurulan varsayımsal koşulun şimdiki/genel sonucu 'would be impossible' yapısıyla ifade edilir.",
+    "pid": "cp04"
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cloze Test",
+    "s": "(I)",
+    "se": [
+      "persists",
+      "recovers",
+      "settles",
+      "accumulates",
+      "fluctuates"
+    ],
+    "d": 4,
+    "ac": "Rüzgâr ve güneş üretimi hava ile günün saatine göre değişir; bu dalgalanmayı 'fluctuates' ifade eder.",
+    "pid": "cp05"
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cloze Test",
+    "s": "(II)",
+    "se": [
+      "therefore",
+      "nevertheless",
+      "similarly",
+      "otherwise",
+      "instead"
+    ],
+    "d": 0,
+    "ac": "Değişken üretimle başa çıkma zorunluluğunun sonucu olarak depolama önem kazanır; 'therefore' sonuç ilişkisini kurar.",
+    "pid": "cp05"
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cloze Test",
+    "s": "(III)",
+    "se": [
+      "unless",
+      "when",
+      "even though",
+      "as if",
+      "until"
+    ],
+    "d": 1,
+    "ac": "Enerji kaybının dönüşümün gerçekleştiği sırada ortaya çıktığı belirtilir; zaman bildiren 'when' doğrudur.",
+    "pid": "cp05"
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cloze Test",
+    "s": "(IV)",
+    "se": [
+      "opposed to",
+      "dependent on",
+      "capable of",
+      "irrelevant to",
+      "restricted from"
+    ],
+    "d": 2,
+    "ac": "Malzemelerin enerji depolayabilme yeteneği aranır; 'capable of' sonrasında gerund alarak doğru yapıyı kurar.",
+    "pid": "cp05"
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cloze Test",
+    "s": "(V)",
+    "se": [
+      "focused",
+      "had focused",
+      "would focus",
+      "has focused",
+      "will be focusing"
+    ],
+    "d": 3,
+    "ac": "Yakın geçmişte başlayıp güncel araştırma gündemini etkileyen çalışmalar anlatıldığı için present perfect 'has focused' uygundur.",
+    "pid": "cp05"
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cloze Test",
+    "s": "(I)",
+    "se": [
+      "spoken",
+      "translated",
+      "instructed",
+      "announced",
+      "expressed"
+    ],
+    "d": 0,
+    "ac": "Bir dilin binlerce yetişkin tarafından konuşulması anlatılır; edilgen yapıda 'be spoken by' doğru kullanımdır.",
+    "pid": "cp06"
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cloze Test",
+    "s": "(II)",
+    "se": [
+      "because",
+      "even though",
+      "unless",
+      "as if",
+      "now that"
+    ],
+    "d": 2,
+    "ac": "Konuşurlar kullanım kararına katılmadığı takdirde canlandırmanın başarıya ulaşmayacağı belirtilir; 'unless' bu olumsuz koşulu verir.",
+    "pid": "cp06"
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cloze Test",
+    "s": "(III)",
+    "se": [
+      "what",
+      "where",
+      "whose",
+      "that",
+      "which"
+    ],
+    "d": 4,
+    "ac": "Virgülden sonra önceki uygulamanın sonucunu açıklayan non-defining relative clause gelir; bu kullanımda 'which' gerekir.",
+    "pid": "cp06"
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cloze Test",
+    "s": "(IV)",
+    "se": [
+      "between",
+      "from",
+      "against",
+      "through",
+      "besides"
+    ],
+    "d": 1,
+    "ac": "'Far from one another' birbirinden uzakta anlamındaki yerleşik kullanımdır; doğru edat 'from'dur.",
+    "pid": "cp06"
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Cloze Test",
+    "s": "(V)",
+    "se": [
+      "underestimated",
+      "would underestimate",
+      "had underestimated",
+      "have underestimated",
+      "are underestimated"
+    ],
+    "d": 3,
+    "ac": "Araştırmacıların geçmişte yaptığı değerlendirmenin günümüzde fark edilen sonucu anlatılır; present perfect 'have underestimated' uygundur.",
+    "pid": "cp06"
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp05",
+    "s": "What is the main point of the passage?",
+    "se": [
+      "Urban tree programmes work best when planting is matched with long-term, locally informed care.",
+      "Urban forests can cool cities only after every mature tree has been replaced.",
+      "Wealthier districts should finance all tree planting in densely built neighbourhoods.",
+      "Tree survival depends mainly on selecting species that grow rapidly in shallow soil.",
+      "Cities should report planting totals instead of measuring changes in neighbourhood temperature."
+    ],
+    "d": 0,
+    "ac": "Metin, fidan sayısının tek başına yeterli olmadığını; yer seçimi, bakım ve uzun dönemli yaşamın belirleyici olduğunu savunur."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp05",
+    "s": "According to the passage, why do mature trees generally provide greater cooling than newly planted ones?",
+    "se": [
+      "They are planted mainly in districts where summer temperatures are already lower.",
+      "They offer broader shade and release considerably more water vapour into the air.",
+      "They need less soil because their roots remain close to the ground surface.",
+      "They are protected by building regulations that do not apply to young trees.",
+      "They reflect sunlight more efficiently because their leaves are usually lighter in colour."
+    ],
+    "d": 1,
+    "ac": "Parçada olgun ağaçların geniş gölge sağladığı ve daha fazla su buharı saldığı açıkça belirtilir."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp05",
+    "s": "It can be inferred from the passage that a city which reports only the number of seedlings planted may ----.",
+    "se": [
+      "underestimate the amount of land available for private gardens",
+      "discourage residents from requesting maintenance in wealthy districts",
+      "make an ineffective programme appear more successful than it actually is",
+      "prevent mature trees from being damaged during nearby construction work",
+      "measure temperature differences more accurately than programmes using heat maps"
+    ],
+    "d": 2,
+    "ac": "Fidan sayısı, yaşama oranını ve gölgenin nerede oluştuğunu göstermediği için başarısız bir programı başarılı gösterebilir."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp05",
+    "s": "The phrase \"canopy debt\" in the passage refers to ----.",
+    "se": [
+      "the financial cost of watering trees in low-income neighbourhoods",
+      "the shortage of experts able to select suitable urban tree species",
+      "the obligation of private gardens to provide shade for public streets",
+      "the delayed recovery of benefits lost when a mature tree is removed",
+      "the gradual decline in rainfall caused by expanding urban development"
+    ],
+    "d": 3,
+    "ac": "Olgun ağacın faydası hemen kaybolur; yeni ağacın aynı hizmeti sağlaması yıllar aldığı için bir gecikme borcu doğar."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp06",
+    "s": "What is the main purpose of the passage?",
+    "se": [
+      "To claim that sounds played during sleep can teach completely unfamiliar information",
+      "To compare the emotional value of memories formed at different times of day",
+      "To show why sleeping longer can compensate for studying less before an examination",
+      "To explain why memory experiments should be conducted only on well-rested students",
+      "To explain how sleep selectively supports learning without replacing the learning itself"
+    ],
+    "d": 4,
+    "ac": "Metin, uykunun uyanıkken öğrenilmiş bilgileri seçici biçimde güçlendirdiğini, fakat öğrenmenin yerini tutmadığını açıklar."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp06",
+    "s": "In the experiment described in the passage, participants remembered some object locations better when ----.",
+    "se": [
+      "sounds linked to those locations were quietly replayed while they slept",
+      "they were allowed to study the same locations again the following morning",
+      "objects associated with emotional experiences were removed from the task",
+      "the learning session took place several days after a period of sleep loss",
+      "researchers prevented the newest memories from being reactivated during sleep"
+    ],
+    "d": 0,
+    "ac": "Deneyde öğrenme sırasında eşleşen sesler uykuda yeniden çalındığında ilgili konumlar daha iyi hatırlanmıştır."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp06",
+    "s": "Which of the following can be inferred from the passage?",
+    "se": [
+      "The effect of sleep on memory is identical regardless of when sleep is disrupted.",
+      "Reducing sleep immediately after difficult study may weaken the benefit of that study.",
+      "Information without emotional importance is always removed from memory during sleep.",
+      "Students can avoid active practice if they use carefully selected sounds at night.",
+      "Memory reactivation occurs only when learners know that a sound will be replayed."
+    ],
+    "d": 1,
+    "ac": "Öğrenmeden kısa süre sonra uykunun bozulmasının daha zararlı olabileceği bilgisi bu çıkarımı destekler."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp06",
+    "s": "The word \"selective\" in the passage is closest in meaning to ----.",
+    "se": [
+      "occurring at a fixed rate for every recently formed memory",
+      "depending entirely on the total duration of unconsciousness",
+      "affecting some memories differently from others",
+      "preventing emotional experiences from being remembered",
+      "requiring a deliberate decision by the sleeping person"
+    ],
+    "d": 2,
+    "ac": "Selective, bütün anıların eşit biçimde değil, bazılarının güçlenip bazılarının zayıflaması anlamındadır."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp07",
+    "s": "What is the main idea of the passage?",
+    "se": [
+      "Professional researchers should replace volunteers whenever rare species are being studied.",
+      "The accuracy of wildlife maps depends mainly on increasing the number of submitted records.",
+      "Digital platforms eliminate uncertainty by directing volunteers to attractive survey locations.",
+      "Citizen science becomes reliable when its broad participation is supported by careful design and analysis.",
+      "Standardised surveys are unsuitable because they reduce the enthusiasm of public participants."
+    ],
+    "d": 3,
+    "ac": "Ana düşünce, geniş gönüllü katılımının ancak tasarım, eğitim ve istatistiksel düzeltmeyle güvenilir bilgi ürettiğidir."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp07",
+    "s": "According to the passage, digital platforms may improve citizen-science data by ----.",
+    "se": [
+      "preventing volunteers from recording species that are already common",
+      "limiting observations to weekends with favourable weather conditions",
+      "allowing only professional scientists to confirm unsuccessful searches",
+      "replacing location records with estimates generated by statistical models",
+      "recording search effort and recommending places that receive too little attention"
+    ],
+    "d": 4,
+    "ac": "Metin, platformların arama çabasını kaydedip az örneklenen yerleri önerebildiğini doğrudan söyler."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp07",
+    "s": "It can be inferred that information about occasions when volunteers found nothing is useful because it ----.",
+    "se": [
+      "helps distinguish an absent species from a place that was never searched",
+      "shows that common species are more attractive to observers than rare ones",
+      "allows researchers to remove all observations made in accessible locations",
+      "proves that unfavourable weather has no influence on volunteer behaviour",
+      "makes statistical adjustment unnecessary when producing distribution maps"
+    ],
+    "d": 0,
+    "ac": "Başarısız arama kaydı, türün görülmemesiyle o alana hiç bakılmamasını birbirinden ayırmaya yardım eder."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp07",
+    "s": "The phrase \"This pattern\" in the passage refers to the tendency of volunteers to ----.",
+    "se": [
+      "follow the same training programme as professional field researchers",
+      "observe convenient places and times while favouring noteworthy species",
+      "submit fewer records as the overall size of a project increases",
+      "report common species more frequently than rare or attractive ones",
+      "avoid safe locations when standardised surveys are made available"
+    ],
+    "d": 1,
+    "ac": "İfade, önceki cümlelerde anlatılan kolay yer ve zamanlara yönelme ile nadir türleri fazla bildirme eğilimine gönderme yapar."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp08",
+    "s": "What is the main point made in the passage?",
+    "se": [
+      "Desalination should be restricted to coasts where valuable metals can be recovered from brine.",
+      "Reverse osmosis has removed the need to examine the ecological effects of concentrated waste.",
+      "Desalination can improve water security, but its energy and waste impacts require integrated management.",
+      "Combining brine with wastewater is the only disposal method appropriate for sensitive habitats.",
+      "The environmental cost of desalination is determined solely by the chemicals used to clean membranes."
+    ],
+    "d": 2,
+    "ac": "Parça, su güvenliği yararını kabul ederken enerji, deniz izleme ve atık yönetiminin birlikte ele alınmasını ister."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp08",
+    "s": "According to the passage, the environmental effect of discharging brine varies with ----.",
+    "se": [
+      "the market price of metals that can be recovered from seawater",
+      "the number of membranes installed in a reverse-osmosis plant",
+      "the annual rainfall and groundwater level of the region served",
+      "its contents as well as currents, depth and nearby ecological sensitivity",
+      "the proportion of fresh water used to clean the plant's equipment"
+    ],
+    "d": 3,
+    "ac": "Etkinin bileşime ek olarak akıntı, derinlik ve yakın habitatların hassasiyetine bağlı olduğu açıkça belirtilir."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp08",
+    "s": "Which of the following can be inferred about mineral recovery from brine?",
+    "se": [
+      "It already produces enough income to operate every desalination plant without public funding.",
+      "It prevents salinity from rising even when untreated brine is released near the seabed.",
+      "It is environmentally beneficial only when desalination relies on groundwater rather than seawater.",
+      "It has made diffusers unnecessary at facilities located on coasts with strong currents.",
+      "It is promising but cannot presently solve the waste problem at all facilities."
+    ],
+    "d": 4,
+    "ac": "Metin, geri kazanımın araştırıldığını fakat her yerde ekonomik olmadığını söyleyerek bunun henüz evrensel çözüm olmadığını gösterir."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp08",
+    "s": "The word \"stream\" in the phrase \"a concentrated waste stream\" is closest in meaning to ----.",
+    "se": [
+      "a continuous flow of waste material produced by the process",
+      "a natural current that carries fresh water towards the coast",
+      "a narrow channel constructed to supply seawater to membranes",
+      "a financial return obtained by selling recovered minerals",
+      "a sequence of chemical tests used to monitor marine habitats"
+    ],
+    "d": 0,
+    "ac": "Buradaki stream doğal dere değil, süreçten çıkan sürekli atık akışı anlamında kullanılmıştır."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp09",
+    "s": "What is the main idea of the passage?",
+    "se": [
+      "Museum visitors prefer digital displays because expert labels contain unreliable historical facts.",
+      "Museum labels shape interpretation and should combine concise context with visible, revisable expertise.",
+      "Institutions can restore public trust only by replacing written labels with community testimony.",
+      "Curators should avoid mentioning uncertainty because visitors expect a single authoritative explanation.",
+      "Lengthy labels are necessary whenever the ownership of an exhibited object is disputed."
+    ],
+    "d": 1,
+    "ac": "Metin, etiketlerin yorumu biçimlendirdiğini ve uzmanlığı kesin hüküm gibi değil, kanıta dayalı ve gözden geçirilebilir göstermesi gerektiğini savunur."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp09",
+    "s": "According to the passage, layered interpretation allows museums to ----.",
+    "se": [
+      "remove basic information from labels and place it entirely on digital screens",
+      "prevent visitors from forming interpretations that differ from those of curators",
+      "give essential information briefly while offering optional routes to greater detail",
+      "present disputed ownership as a settled matter without weakening public trust",
+      "replace evidence-based expertise with personal responses collected from visitors"
+    ],
+    "d": 2,
+    "ac": "Katmanlı yorumda kısa etiket temel bilgiyi, isteğe bağlı dijital veya sesli katmanlar ise ayrıntıyı verir."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp09",
+    "s": "It can be inferred from the passage that adding technology to an exhibition will not necessarily ----.",
+    "se": [
+      "reduce the amount of time visitors spend standing in crowded galleries",
+      "make concise labels easier to read from a considerable distance",
+      "allow institutions to identify the maker and date of each object",
+      "provide genuine diversity if it repeats the museum's existing perspective",
+      "enable curators to revise interpretations when new evidence becomes available"
+    ],
+    "d": 3,
+    "ac": "Dijital ek içerik kurumun mevcut bakışını yalnızca tekrarlarsa görünürde çeşitlilik olsa da gerçek çeşitlilik sağlamaz."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp09",
+    "s": "The word \"detached\" in the passage is closest in meaning to ----.",
+    "se": [
+      "openly emotional and based on personal memories",
+      "deliberately brief and intended for crowded spaces",
+      "technologically advanced and available through several media",
+      "uncertain about the identity and ownership of an object",
+      "impersonal and presented from a seemingly neutral distance"
+    ],
+    "d": 4,
+    "ac": "Detached burada kişisel olmayan, tarafsız bir mesafeden konuşuyormuş gibi görünen uzman sesini niteler."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp10",
+    "s": "What is the main point of the passage?",
+    "se": [
+      "Crop diversity is best protected by combining managed collections with continued cultivation by farmers.",
+      "Traditional crop varieties should replace modern high-yield varieties in all agricultural regions.",
+      "Seed banks are effective only when every stored crop can be dried and frozen in the same way.",
+      "Living collections preserve genetic material more accurately than carefully managed seed banks do.",
+      "Future crop breeding should use only varieties that have adapted recently in farmers' fields."
+    ],
+    "d": 0,
+    "ac": "Son bölüm, tohum bankalarıyla çiftçilerin süren yetiştiriciliğinin farklı yararlar sunduğunu ve birlikte daha dayanıklı olduğunu vurgular."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp10",
+    "s": "According to the passage, why must stored seeds sometimes be grown again?",
+    "se": [
+      "To ensure that traditional varieties achieve the same yield as modern crops",
+      "To obtain fresh seeds and check that the stored samples remain correctly identified",
+      "To expose every sample to drought, poor soil and newly emerging crop diseases",
+      "To convert crops normally grown from cuttings into ordinary dry-seed varieties",
+      "To allow frozen genetic material to adapt continuously to changing field conditions"
+    ],
+    "d": 1,
+    "ac": "Metin, yeni materyal toplamak ve örneklerin karışmadığını ya da değişmediğini doğrulamak için yeniden yetiştirme gerektiğini söyler."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp10",
+    "s": "It can be inferred from the passage that a crop which cannot tolerate seed drying may ----.",
+    "se": [
+      "be unsuitable for any form of conservation outside a farmer's field",
+      "lose all useful traits when it is propagated from living cuttings",
+      "need to be maintained through a living collection or specialised tissue storage",
+      "remain genetically stable without periodic examination by trained curators",
+      "produce higher yields because its seeds retain more biological activity"
+    ],
+    "d": 2,
+    "ac": "Kurutma zarar veriyorsa sıradan tohum bankası yöntemi kullanılamaz; canlı koleksiyon veya özel doku saklama gerekir."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp10",
+    "s": "The word \"snapshot\" in the passage is used to mean ----.",
+    "se": [
+      "a detailed image used to identify seeds that have been mixed",
+      "a complete record of every environmental change affecting a crop",
+      "a breeding technique that produces several new traits simultaneously",
+      "a preserved representation of genetic diversity at a particular time",
+      "a brief field survey conducted before seeds are placed in storage"
+    ],
+    "d": 3,
+    "ac": "Snapshot, donmuş örneklerin belirli bir andaki genetik durumu korumasını anlatan mecazi bir ifadedir."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp11",
+    "s": "What is the main purpose of the passage?",
+    "se": [
+      "To argue that trained listeners are no longer needed in ecological field research",
+      "To show that urban animals completely overcome the effects of traffic noise",
+      "To compare the cost of automated recorders with that of visual surveys",
+      "To recommend counting every recorded sound as evidence of a healthy habitat",
+      "To explain both the value and the interpretive limits of acoustic wildlife monitoring"
+    ],
+    "d": 4,
+    "ac": "Metin, ses kaydının gece etkinliği gibi yararlarını ve otomatik sınıflandırma ile yorumlamadaki sınırlılıkları birlikte ele alır."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp11",
+    "s": "According to the passage, automated recorders can improve wildlife surveys because they ----.",
+    "se": [
+      "can collect evidence at night without requiring an observer to remain present",
+      "can reliably separate every species even when calls and traffic noise overlap",
+      "reduce the amount of audio that trained researchers need to examine to zero",
+      "show whether an animal spends more energy when changing the pitch of its call",
+      "prevent differences in recording quality caused by wind and equipment placement"
+    ],
+    "d": 0,
+    "ac": "Kayıt cihazları gözlemci olmadan uzun süre çalıştığı için özellikle gece etkinliğini ortaya çıkarabilir."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp11",
+    "s": "Which of the following can be inferred about birds that sing at a higher pitch in cities?",
+    "se": [
+      "They necessarily communicate over longer distances than birds in quiet habitats.",
+      "Their adjustment may reduce interference without eliminating every cost of noise.",
+      "They are no longer dependent on breeding calls when competing for urban territory.",
+      "Their presence proves that traffic has improved the suitability of urban habitats.",
+      "Their songs can be classified accurately without comparison by trained listeners."
+    ],
+    "d": 1,
+    "ac": "Perde değişimi esneklik gösterir, ancak enerji, iletişim mesafesi ve habitat kaybı gibi maliyetleri ortadan kaldırmaz."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp11",
+    "s": "The phrase \"Such adjustment\" in the passage refers to ----.",
+    "se": [
+      "checking machine classifications against recordings assessed by listeners",
+      "linking the timing of animal calls to breeding and competitive behaviour",
+      "shifting songs to a higher pitch in response to low-frequency traffic noise",
+      "placing automated recorders in forests, wetlands and cities for several weeks",
+      "reducing individual differences among surveyors through standardised training"
+    ],
+    "d": 2,
+    "ac": "İfade, hemen önce anlatılan şehir kuşlarının trafik gürültüsünden kaçınmak için ötüş perdesini yükseltmesine gönderme yapar."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp12",
+    "s": "What is the main idea of the passage?",
+    "se": [
+      "Remote employees build stronger relationships when every informal event is compulsory.",
+      "Office work is inherently better because digital channels silence quieter participants.",
+      "Weak ties become unnecessary when colleagues can search written records of current work.",
+      "Organisations should deliberately support both concentrated work and broad professional connections.",
+      "Occasional office attendance improves collaboration even when employees arrive on different days."
+    ],
+    "d": 3,
+    "ac": "Metin uzaktan ve ofisten çalışmayı yarıştırmak yerine hem odaklanmayı hem geniş iş ağlarını bilinçli biçimde desteklemeyi savunur."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp12",
+    "s": "According to the passage, weak ties can be valuable because they ----.",
+    "se": [
+      "allow employees to avoid scheduled meetings with their immediate colleagues",
+      "make virtual social events feel less artificial and reduce screen fatigue",
+      "replace the need for searchable records of work across an organisation",
+      "ensure that every employee visits the office on the same working day",
+      "bring unfamiliar information and reveal expertise beyond one's own team"
+    ],
+    "d": 4,
+    "ac": "Zayıf bağların farklı ekiplerden yeni bilgi taşıdığı ve kişinin yakın çevresi dışındaki uzmanlığı buldurduğu belirtilir."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp12",
+    "s": "It can be inferred that the author would most likely support an office-attendance policy that ----.",
+    "se": [
+      "coordinates attendance so that employees actually meet relevant colleagues",
+      "requires daily travel regardless of whether collaborative work is planned",
+      "uses office days exclusively for tasks needing uninterrupted concentration",
+      "allows each employee to attend whenever the building is likely to be empty",
+      "replaces cross-team reviews with informal conversations before online meetings"
+    ],
+    "d": 0,
+    "ac": "Yazar, boş binaya gitmenin yararsız olduğunu söylediği için işbirliğini mümkün kılacak koordineli katılımı destekler."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp12",
+    "s": "The phrase \"these tools\" in the passage refers to ----.",
+    "se": [
+      "focused individual tasks and broader professional networks",
+      "scheduled online meetings and written communication channels",
+      "cross-team reviews and pairs that rotate between projects",
+      "office buildings and the transport required to reach them",
+      "brief conversations and introductions that occur by chance"
+    ],
+    "d": 1,
+    "ac": "These tools, bir önceki cümledeki planlı çevrim içi toplantılar ile yazılı iletişim kanallarına gönderme yapar."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp13",
+    "s": "What is the main point of the passage?",
+    "se": [
+      "Chemical residues provide a complete record of every meal prepared by an ancient community.",
+      "Pottery shape is a more reliable guide to ancient diets than any form of chemical evidence.",
+      "Residue analysis strengthens dietary interpretations when combined cautiously with other evidence.",
+      "Ancient lipids can be identified accurately without considering soil or changes through time.",
+      "Archaeologists now study food mainly by replacing excavation with laboratory experiments."
+    ],
+    "d": 2,
+    "ac": "Parça, kalıntı analizinin tek başına kesin sonuç vermediğini; diğer arkeolojik kanıtlarla birleşince yorumları güçlendirdiğini vurgular."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp13",
+    "s": "According to the passage, researchers consider a vessel's shape, location and signs of heating in order to ----.",
+    "se": [
+      "calculate how many years its absorbed lipids have survived",
+      "prevent substances in the surrounding soil from entering the ceramic",
+      "determine whether the vessel was made before farming began",
+      "interpret chemical findings within their archaeological setting",
+      "prove that the vessel was used for only one particular food"
+    ],
+    "d": 3,
+    "ac": "Bu özellikler, kimyasal bulgunun arkeolojik bağlam içinde yorumlanmasına yardımcı olan tamamlayıcı kanıtlardır."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp13",
+    "s": "It can be inferred from the passage that finding dairy lipids in one unusual pot would not by itself prove that ----.",
+    "se": [
+      "chemical substances can survive in pottery for several thousand years",
+      "the pot was used repeatedly for foods with different chemical signatures",
+      "experimental samples are useful for studying how residues change with age",
+      "soil contamination must be considered when analysing an excavated vessel",
+      "dairy products formed a regular part of the whole community's diet"
+    ],
+    "d": 4,
+    "ac": "Tek ve sıra dışı bir kap ritüel ya da mevsimsel kullanım görmüş olabilir; tüm toplumun düzenli beslenmesini temsil etmez."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp13",
+    "s": "The word \"line\" in the phrase \"another line of evidence\" is closest in meaning to ----.",
+    "se": [
+      "a distinct source or category of supporting information",
+      "a visible mark left on pottery by repeated heating",
+      "a chronological sequence of meals prepared in one vessel",
+      "a chemical boundary between absorbed lipids and surrounding soil",
+      "a written description of food practices found during excavation"
+    ],
+    "d": 0,
+    "ac": "Line of evidence, bir iddiayı destekleyen ayrı bir kanıt kaynağı ya da kanıt türü anlamındadır."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp14",
+    "s": "What is the main idea of the passage?",
+    "se": [
+      "Medical algorithms should replace clinical judgement when they process enough patient variables.",
+      "Medical algorithms require group-sensitive evaluation, human interpretation and continuing monitoring.",
+      "An algorithm's overall accuracy guarantees that its risk estimates are safe in every hospital.",
+      "Historical spending is the most reliable measure of a patient's underlying medical need.",
+      "Hospitals should evaluate algorithms only when treatments and patient populations remain stable."
+    ],
+    "d": 1,
+    "ac": "Metin; grup bazlı kalibrasyon, klinisyenin yorumu ve kurulum sonrasında sürekli izleme gereğini birlikte vurgular."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp14",
+    "s": "According to the passage, an algorithm trained at one hospital may perform poorly at another because ----.",
+    "se": [
+      "clinicians at the second hospital are likely to ignore every automated alert",
+      "the same disease always produces different symptoms in separate locations",
+      "patient patterns, equipment and record-keeping practices may not be the same",
+      "calibration can be measured only in the institution that created the software",
+      "a hospital cannot process more than one type of patient variable at a time"
+    ],
+    "d": 2,
+    "ac": "Hastalık örüntüleri, ekipman ve kayıt uygulamalarının kurumlar arasında değişebileceği açıkça belirtilir."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp14",
+    "s": "It can be inferred that using past medical spending as a measure of need may disadvantage patients who ----.",
+    "se": [
+      "have already received more treatment than their medical condition requires",
+      "are treated at hospitals that use identical equipment and documentation",
+      "are assigned high risk even though they have never been seriously ill",
+      "previously had limited access to care despite having substantial health needs",
+      "prefer a clinician's diagnosis to the probability produced by an algorithm"
+    ],
+    "d": 3,
+    "ac": "Geçmişte bakıma erişemeyen hasta az harcama üretir; harcama ihtiyaç sayılırsa gerçek riski haksız biçimde düşük görünebilir."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp14",
+    "s": "In the passage, \"calibration\" refers to the extent to which ----.",
+    "se": [
+      "clinicians agree with every alert generated by installed software",
+      "historical expenditure reflects equal access to care in different groups",
+      "hospital equipment records the same variables in an identical format",
+      "an algorithm transfers successfully from one institution to every other one",
+      "predicted probabilities match the rates of outcomes that actually occur"
+    ],
+    "d": 4,
+    "ac": "Yüzde 20 risk verilen yüz kişinin yaklaşık yirmisinde sonuç görülmesi örneği, tahminle gerçekleşme oranının uyumunu tanımlar."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp15",
+    "s": "What is the main point of the passage?",
+    "se": [
+      "Volcanic aerosols can cause complex short-term cooling without reversing greenhouse-driven long-term warming.",
+      "Visible volcanic ash is the main factor determining the duration of global temperature change.",
+      "Climate models become unnecessary when observations are available after a major eruption.",
+      "Every large eruption reduces rainfall and temperature equally across all regions and seasons.",
+      "Carbon dioxide and volcanic aerosols remain in the atmosphere for approximately the same period."
+    ],
+    "d": 0,
+    "ac": "Metin, aerosollerin geçici ve karmaşık soğutma etkisini, uzun ömürlü sera gazlarının oluşturduğu eğilimden ayırır."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp15",
+    "s": "According to the passage, which factor is more important than visible ash for estimating an eruption's climatic influence?",
+    "se": [
+      "The distance between the volcano and the nearest populated settlement",
+      "The altitude reached by sulphur-bearing gases in the atmosphere",
+      "The number of climate models available before the eruption begins",
+      "The speed at which ash accumulates on land surrounding the volcano",
+      "The annual quantity of carbon dioxide removed by the world's oceans"
+    ],
+    "d": 1,
+    "ac": "Metin, görünür külden ziyade özellikle yükseklik, kükürt içeriği, enlem ve dolaşımın önemli olduğunu söyler."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp15",
+    "s": "Which of the following can be inferred from the passage?",
+    "se": [
+      "A cool year after an eruption demonstrates that greenhouse gases no longer affect climate.",
+      "Regional rainfall responses can be predicted from the visible quantity of ash alone.",
+      "A temporary fall in temperature can occur within a continuing long-term warming trend.",
+      "Volcanic aerosols influence climate longer than accumulated atmospheric carbon dioxide.",
+      "Natural climate variability disappears for several years after every major eruption."
+    ],
+    "d": 2,
+    "ac": "Yol benzetmesi, kısa süreli düşüşün genel yükseliş eğilimi içinde gerçekleşebileceğini anlatır."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp15",
+    "s": "The word \"There\" in the second sentence refers to ----.",
+    "se": [
+      "near the volcano where visible ash returns to the ground",
+      "at the Earth's surface where incoming sunlight is reflected",
+      "within climate models used to predict changes in rainfall",
+      "high in the stratosphere where gases form reflective aerosols",
+      "over oceans whose conditions interact with natural variability"
+    ],
+    "d": 3,
+    "ac": "There, önceki cümledeki kükürtlü gazların ulaştığı stratosferin yüksek kısımlarına gönderme yapar."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp16",
+    "s": "What is the main idea of the passage?",
+    "se": [
+      "A large digital archive is sufficient to reverse the decline of a language community.",
+      "Commercial platforms provide safer long-term control than community-managed technology.",
+      "Public access to every recording is essential for developing specialised vocabulary.",
+      "Language projects should measure success mainly through downloads and database size.",
+      "Digital tools aid revitalisation when community control and real language use remain central."
+    ],
+    "d": 4,
+    "ac": "Metin, teknolojinin ancak topluluk denetimini ve gerçek kullanım alanlarını güçlendirdiğinde canlandırmaya hizmet ettiğini savunur."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp16",
+    "s": "According to the passage, recording elders can help a language project by ----.",
+    "se": [
+      "preserving pronunciation, narratives and vocabulary that may otherwise be lost",
+      "ensuring that children immediately begin using the language in everyday settings",
+      "removing the need for learners to interact directly with fluent community members",
+      "allowing commercial platforms to decide which cultural material should remain private",
+      "guaranteeing that archived speech develops into new expressions without human involvement"
+    ],
+    "d": 0,
+    "ac": "Yaşlı konuşurların kaydı, kaybolma riski taşıyan telaffuzları, hikâyeleri ve özel söz varlığını koruyabilir."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp16",
+    "s": "It can be inferred from the passage that training local participants to manage digital tools may ----.",
+    "se": [
+      "make community rules about restricted knowledge unnecessary",
+      "reduce long-term dependence on specialists from outside the community",
+      "prevent speakers from creating expressions for new situations",
+      "ensure that commercial platforms never alter their policies",
+      "turn preservation into revitalisation without increasing language use"
+    ],
+    "d": 1,
+    "ac": "Yerel katılımcıların eğitilmesi, projenin dış uzmanlara süresiz bağımlı kalmamasını sağlar."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp16",
+    "s": "The phrase \"these activities\" in the passage refers to opportunities for people to ----.",
+    "se": [
+      "store recordings, count downloads and expand the database",
+      "decide which commercial platform should own the archived material",
+      "speak, make mistakes, create expressions and pass the language to children",
+      "replace community rules with unrestricted public access to recordings",
+      "preserve specialist vocabulary without using it in daily communication"
+    ],
+    "d": 2,
+    "ac": "İfade, önceki cümlede sıralanan konuşma, hata yapma, yeni ifade üretme ve çocuklara aktarma fırsatlarına gönderme yapar."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp17",
+    "s": "What is the main idea of the passage?",
+    "se": [
+      "Environmental DNA has made direct field observation unnecessary in biodiversity research.",
+      "A positive DNA result precisely identifies where and when an animal was living.",
+      "Reference databases prevent both contamination and false negative results in laboratories.",
+      "Environmental DNA is a powerful survey aid whose limitations require careful interpretation and supporting evidence.",
+      "Environmental DNA is useful mainly for species that are common and easy to observe."
+    ],
+    "d": 3,
+    "ac": "Metin, eDNA'nın güçlü bir tarama aracı olduğunu; ancak taşınma, kalıcılık ve laboratuvar sınırlılıkları nedeniyle başka kanıtlarla yorumlanması gerektiğini savunur."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp17",
+    "s": "According to the passage, why may a positive eDNA result fail to show a local breeding population?",
+    "se": [
+      "The sampled species may release tissue only during a short breeding season.",
+      "Laboratory controls remove the genetic traces of animals that reproduce locally.",
+      "Reference databases include only organisms captured through conventional fieldwork.",
+      "Water samples cannot preserve biological material released by rare aquatic species.",
+      "The detected DNA may remain after departure or travel from another location."
+    ],
+    "d": 4,
+    "ac": "DNA, canlı ayrıldıktan sonra kalabilir veya nehirde kaynağından aşağı taşınabilir; bu nedenle yerel üreme tek başına kanıtlanmaz."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp17",
+    "s": "It can be inferred from the passage that an incomplete reference database may cause researchers to ----.",
+    "se": [
+      "fail to assign a genuine environmental sequence to the correct organism",
+      "conclude that DNA can never move downstream from its original source",
+      "mistake every laboratory contaminant for evidence of a breeding population",
+      "avoid collecting repeated samples from habitats containing rare species",
+      "identify the exact time at which an organism released biological material"
+    ],
+    "d": 0,
+    "ac": "Karşılaştırma veritabanında ilgili kayıt yoksa gerçek bir genetik dizi doğru organizmayla eşleştirilemeyebilir."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp17",
+    "s": "The phrase \"This ambiguity\" in the passage refers to uncertainty about ----.",
+    "se": [
+      "whether secretive species release enough material to disturb their habitat",
+      "the exact place and time represented by a detected genetic trace",
+      "which controls researchers should include during laboratory analysis",
+      "how conventional surveys affect animals that are easily disturbed",
+      "whether water or soil contains a greater total quantity of genetic material"
+    ],
+    "d": 1,
+    "ac": "İfade, DNA'nın kalabilmesi veya taşınabilmesi yüzünden tespitin kesin yer ve zamanı göstermemesine gönderme yapar."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp18",
+    "s": "What is the main point of the passage?",
+    "se": [
+      "Fare-free transport always reduces car use by the same amount that passenger numbers rise.",
+      "Cities should replace universal fare removal with targeted discounts in every circumstance.",
+      "The value of fare-free transport depends on its goal, funding, users and effects on service quality.",
+      "Public transport fares should be removed only when ticket sales provide most operating income.",
+      "Passenger totals are sufficient for measuring the social and environmental success of fare removal."
+    ],
+    "d": 2,
+    "ac": "Parça, ücretsiz ulaşımın tek başına iyi ya da kötü sayılamayacağını; amaç, finansman, kullanıcı profili ve hizmet kalitesiyle değerlendirilmesini ister."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp18",
+    "s": "According to the passage, why might higher public-transport ridership fail to produce an equal decline in car use?",
+    "se": [
+      "Most existing passengers stop travelling when fares are removed.",
+      "Fare revenue normally increases after boarding becomes faster.",
+      "Motorists are legally prevented from using discounted bus services.",
+      "Some additional passengers may previously have walked or cycled.",
+      "Private cars become less expensive when public transport demand grows."
+    ],
+    "d": 3,
+    "ac": "Yeni yolcuların bir bölümü otomobilden değil, daha önce kullandıkları yürüme veya bisikletten toplu taşımaya geçebilir."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp18",
+    "s": "It can be inferred from the passage that eliminating fares without replacing lost revenue could ----.",
+    "se": [
+      "make low-income residents more dependent on private cars immediately",
+      "guarantee that every new passenger previously travelled by car",
+      "increase service frequency even in systems funded mainly by ticket sales",
+      "remove the need to evaluate who benefits from the transport network",
+      "undermine the policy if crowding or service reductions make travel less attractive"
+    ],
+    "d": 4,
+    "ac": "Gelir açığı kalabalıklaşma veya sefer kesintisi doğurursa hizmet zayıflar ve politikanın amaçladığı yararlar aşınır."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp18",
+    "s": "The phrase \"the very benefits\" in the passage refers to the advantages that ----.",
+    "se": [
+      "the fare-free policy is intended to provide",
+      "private motorists obtain from poorly connected services",
+      "ticket revenue creates for commercial transport operators",
+      "walking and cycling offer to passengers who change modes",
+      "targeted discounts remove from residents with low incomes"
+    ],
+    "d": 0,
+    "ac": "Very benefits, ücretsiz politikanın erişim, maliyet ve kullanım bakımından sağlamayı hedeflediği yararlardır."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp19",
+    "s": "What is the main idea of the passage?",
+    "se": [
+      "Restoration should always reproduce the oldest ecosystem described in historical records.",
+      "Restoration needs evidence-based, monitored goals that may emphasise function rather than exact historical replication.",
+      "A project's visual greenness is the most reliable indication of ecological recovery.",
+      "Climate change has made reference ecosystems entirely useless for restoration planning.",
+      "Local communities should determine restoration outcomes without scientific constraints."
+    ],
+    "d": 1,
+    "ac": "Metin, geçmişi aynen kopyalamak yerine referanstan yararlanan, işlevsel, açık ve izlenen hedefleri öne çıkarır."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp19",
+    "s": "According to the passage, why can choosing a historical baseline be problematic?",
+    "se": [
+      "Functional goals cannot be monitored after restoration work has begun.",
+      "Reference ecosystems contain no information about interactions among soil, water and organisms.",
+      "Records may be incomplete and the chosen period may already include human influence.",
+      "Past ecosystems were always less diverse than communities created by restoration.",
+      "Local communities consistently reject every benefit provided by earlier ecosystems."
+    ],
+    "d": 2,
+    "ac": "Tarihsel kayıtlar eksik olabilir; ayrıca başlangıç sayılan dönem bile tarım, avcılık veya yabancı türlerin etkisini taşıyabilir."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp19",
+    "s": "It can be inferred from the passage that a visually untidy restored landscape may still be successful if it ----.",
+    "se": [
+      "recreates every historical species despite changes in rainfall and temperature",
+      "requires permanent irrigation to preserve a uniformly green appearance",
+      "avoids setting explicit goals that different groups might question",
+      "sustains itself and performs the ecological functions selected for the project",
+      "matches a single photograph taken immediately after planting"
+    ],
+    "d": 3,
+    "ac": "Metin, düzenli görünmeyen bir alanın kendi kendini sürdürebilip güçlü işlevler sunabileceğini belirtir."
+  },
+  {
+    "kaynak": "uzman-ozgun",
+    "kat": "Okuma",
+    "pid": "rp19",
+    "s": "The phrase \"a fixed blueprint\" in the passage is closest in meaning to ----.",
+    "se": [
+      "an incomplete account of how introduced species reached an ecosystem",
+      "a flexible list of social benefits open to continuing negotiation",
+      "a monitoring schedule used to measure changes after planting",
+      "a photograph showing whether restored vegetation appears sufficiently green",
+      "an exact and unchanging model that must be copied"
+    ],
+    "d": 4,
+    "ac": "Fixed blueprint, aynen uygulanması gereken değişmez ve kesin bir model anlamındadır; yazar referans ekosistemi böyle görmemeyi önerir."
+  }
+]);
+})();

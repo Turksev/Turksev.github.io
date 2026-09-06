@@ -9,14 +9,20 @@ cekim.uyar_mi ile dogruluyor. Dogru kodu, reponun kendi cekim modulunu
 kullanarak b (bosluga gelen bicim) uzerinden turetiyoruz; boylece uretilen
 paket dogrulayiciyla birebir tutarli olur.
 """
+
+from pathlib import Path as _YdsPath
+import sys as _yds_sys
+_yds_site = next(p for p in _YdsPath(__file__).resolve().parents if (p / "sw.js").is_file())
+_yds_sys.path.insert(0, str(_yds_site / "tools"))
+from yds_paths import site_path, yds_path, scratch_path
 import io
 import json
 import os
 import re
 import sys
 
-BURASI = "C:/Users/Trk/Desktop/YDS/03_calisma_listesi/06_sandbox_2026-09"
-SITE = r"C:\Users\Trk\Desktop\YDS\04_Github"
+BURASI = yds_path('03_calisma_listesi', '06_sandbox_2026-09')
+SITE = site_path()
 URETIM = os.path.join(SITE, 'tools', 'test-uretim')
 sys.path.insert(0, URETIM)
 import cekim  # noqa: E402

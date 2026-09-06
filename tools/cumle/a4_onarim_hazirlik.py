@@ -3,15 +3,21 @@
 ham korpustan TAM cumleyi akilli sinir kuraliyla cikarir; hangi komsu kayitlarin bu cumlenin
 icinde kaldigini (silinecek) isaretler. Cikti: a4_onarim.json (e_tam + yutulan komsular).
 """
+
+from pathlib import Path as _YdsPath
+import sys as _yds_sys
+_yds_site = next(p for p in _YdsPath(__file__).resolve().parents if (p / "sw.js").is_file())
+_yds_sys.path.insert(0, str(_yds_site / "tools"))
+from yds_paths import site_path, yds_path, scratch_path
 import io
 import json
 import re
 import sys
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
-YOL = r"C:\Users\Trk\Desktop\YDS\04_Github\data\cumleler.js"
-KORPUS = r"C:\Users\Trk\Desktop\YDS\03_calisma_listesi\06_sandbox_2026-09\sandbox\duz4\02_korpus\korpus.jsonl"
-CIKTI = r"C:\Users\Trk\AppData\Local\Temp\claude\C--Users-Trk-Desktop-YDS-Soru-Veritaban-\b089b46c-8e62-4379-9378-1d0942c391a0\scratchpad\a4_onarim.json"
+YOL = site_path('data', 'cumleler.js')
+KORPUS = yds_path('03_calisma_listesi', '06_sandbox_2026-09', 'sandbox', 'duz4', '02_korpus', 'korpus.jsonl')
+CIKTI = scratch_path('a4_onarim.json')
 
 # Onarilacak "capa" kayitlar: parcanin bulundugu kayit (ondalik/kisaltma bolunmesi)
 CAPALAR = [1348, 1826, 2185, 2683, 2706, 3064, 3232, 3444, 4447, 4555, 4578, 4579, 4834, 5005,

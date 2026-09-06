@@ -2,10 +2,16 @@
 # KALICI KOPYA (5 Eylul 2026): ozgun betik 03_calisma_listesi/06_sandbox_2026-09/ altinda;
 # girdi/cikti klasorleri orada oldugu icin SP/BURASI o klasore sabitlendi.
 """Bilgi karti icin hangi veriler mevcut?"""
+
+from pathlib import Path as _YdsPath
+import sys as _yds_sys
+_yds_site = next(p for p in _YdsPath(__file__).resolve().parents if (p / "sw.js").is_file())
+_yds_sys.path.insert(0, str(_yds_site / "tools"))
+from yds_paths import site_path, yds_path, scratch_path
 import os, sys, io, json, sqlite3, collections
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 
-SP = "C:/Users/Trk/Desktop/YDS/03_calisma_listesi/06_sandbox_2026-09"
+SP = yds_path('03_calisma_listesi', '06_sandbox_2026-09')
 PUA = os.path.join(SP, 'sandbox', 'duz4', '03_puanlama', 'puanlama.sqlite')
 KOR = os.path.join(SP, 'sandbox', 'duz4', '02_korpus', 'korpus.jsonl')
 

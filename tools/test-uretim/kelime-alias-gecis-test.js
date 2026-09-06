@@ -3,6 +3,7 @@
 var fs = require('fs');
 var path = require('path');
 var vm = require('vm');
+var tarayiciAPIleri = require('./tarayici-vm');
 var assert = require('assert');
 
 var kok = path.resolve(__dirname, '..', '..');
@@ -20,7 +21,7 @@ var baglam = {
   Array: Array,
   parseInt: parseInt
 };
-vm.createContext(baglam);
+vm.createContext(tarayiciAPIleri(baglam));
 
 ['data/kelime-aliaslari.js', 'assets/js/esitleme-veri.js'].forEach(function (dosya) {
   vm.runInContext(fs.readFileSync(path.join(kok, dosya), 'utf8'), baglam, { filename: dosya });
@@ -203,15 +204,22 @@ var baglam2 = {
   JSON: JSON, Date: Date, Math: Math, Object: Object, String: String, Array: Array,
   parseInt: parseInt
 };
-vm.createContext(baglam2);
+vm.createContext(tarayiciAPIleri(baglam2));
 ['data/kelime-aliaslari.js', 'assets/js/esitleme-veri.js', 'assets/js/esitleme-depo.js']
   .forEach(function (dosya) {
     vm.runInContext(fs.readFileSync(path.join(kok, dosya), 'utf8'), baglam2, { filename: dosya });
   });
-var kaliciZarf = JSON.parse(disk.get('yds-esitleme-v2'));
+var yeniAnahtar = pencere2.YDS.EsitlemeDepo.ANAHTAR;
+assert.strictEqual(yeniAnahtar, 'yds-esitleme-yerel-v3');
+var kaliciYerel = JSON.parse(disk.get(yeniAnahtar));
+assert.strictEqual(kaliciYerel.surum, 3);
+var kaliciZarf = pencere2.YDS.YerelZarfKodlama.coz(kaliciYerel.z);
 assert.deepStrictEqual(Object.keys(kaliciZarf.alanlar['yds-leitner'].i), ['@kelime:hand down']);
-assert.ok(JSON.parse(disk.get('yds-kelime-alias-gecis-yedegi'))
-  .alanlar['yds-leitner']['hand-down']);
+assert.strictEqual(kaliciZarf.alanlar['yds-leitner'].i['@kelime:hand down'].v.k, 3);
+assert.strictEqual(kaliciZarf.alanlar['yds-leitner'].i['@kelime:hand down'].v.g, 250);
+assert.strictEqual(disk.has('yds-esitleme-v2'), false, 'tamamlanmış eski zarf kota tüketmemeli');
+assert.strictEqual(disk.has('yds-kelime-alias-gecis-yedegi'), false,
+  'yalnız kanonik kayıtta eksiksiz korunan alias yedeği temizlenmeli');
 assert.ok(JSON.parse(disk.get('yds-leitner'))['@kelime:hand down']);
 
 // Çalışma API'si aynı görünen kelime ve öbeği bağımsız kutularda ve bağımsız

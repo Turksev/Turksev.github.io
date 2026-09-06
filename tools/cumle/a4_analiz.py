@@ -9,6 +9,12 @@ Her kayit: {i (satir sirasi), e, s, b, n, t, y}. Kategoriler:
   KISALT   kisaltmada bolunmus ("St." / "(c.")                    -> sonraki kayitla birlestir; t yeniden cevrilecek
   DIGER    kucuk harfle baslayan / kisa parcalar                  -> elle karar
 """
+
+from pathlib import Path as _YdsPath
+import sys as _yds_sys
+_yds_site = next(p for p in _YdsPath(__file__).resolve().parents if (p / "sw.js").is_file())
+_yds_sys.path.insert(0, str(_yds_site / "tools"))
+from yds_paths import site_path, yds_path, scratch_path
 import collections
 import io
 import json
@@ -16,8 +22,8 @@ import re
 import sys
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
-YOL = r"C:\Users\Trk\Desktop\YDS\04_Github\data\cumleler.js"
-DOKUM = r"C:\Users\Trk\AppData\Local\Temp\claude\C--Users-Trk-Desktop-YDS-Soru-Veritaban-\b089b46c-8e62-4379-9378-1d0942c391a0\scratchpad\a4_dokum.json"
+YOL = site_path('data', 'cumleler.js')
+DOKUM = scratch_path('a4_dokum.json')
 
 
 def js_str(s, i):

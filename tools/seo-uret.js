@@ -11,6 +11,29 @@ const OUTPUT_DIR = path.join(ROOT, "konu");
 const SITEMAP = path.join(ROOT, "sitemap.xml");
 const ORIGIN = "https://turksev.github.io";
 
+function readLessons() {
+  const context = {window:{}}; vm.createContext(context);
+  for (const file of ['konu-metinleri.js','konu-metinleri-t-ek.js','konu-metinleri-e1-ek.js','konu-metinleri-e2-ek.js']) {
+    vm.runInContext(fs.readFileSync(path.join(ROOT,'data',file),'utf8'),context,{filename:file});
+  }
+  return context.window.KONU_METINLERI;
+}
+const LESSONS = readLessons();
+
+function lessonHtml(topic) {
+  const lesson = LESSONS[topic.k];
+  if (!lesson || !lesson.html) throw new Error(topic.k + ': yayımlanacak anlatım eksik');
+  let body = lesson.html;
+  body = body.replace(/<h2([^>]*)>([^<]*(?:Cevap|cevap|Anahtar|anahtar)[^<]*)<\/h2>([\s\S]*?)(?=<h2|$)/g,
+    '<details class="card"><summary>$2</summary>$3</details>');
+  body = body.replace(/<table([^>]*)>(\s*)(<tr>\s*(?:<th[\s\S]*?<\/th>\s*)+<\/tr>)/g,
+    '<table$1><caption class="sr-only">'+html(topic.ad)+' — kural ve örnekler</caption><thead>$3</thead>');
+  body = body.replace(/<th(?![a-z])([^>]*)>/g, (m,a)=> /scope=/.test(a) ? m : '<th scope="col"'+a+'>');
+  body = body.replace(/<table(?![a-z])([^>]*)>/g, (m,a)=> '<table tabindex="0" aria-description="Tablonun devamı için yatay kaydırın."'+a+'>');
+  body = body.replace(/<div class="tablo-kutu">/g, '<p class="tablo-ipucu">Dar ekranda tablonun devamı için yatay kaydır.</p><div class="tablo-kutu" tabindex="0" role="region" aria-label="'+html(topic.ad)+' tablosu">');
+  return body;
+}
+
 function readTopics() {
   const context = { window: {} };
   vm.createContext(context);
@@ -101,6 +124,8 @@ function pageFor(topic, index, topics) {
 <title>${html(title)}</title>
 <meta name="description" content="${html(description)}">
 <meta name="robots" content="index, follow">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="base-uri 'self'; object-src 'none'">
 <link rel="canonical" href="${html(canonical)}">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%233b5bdb'/><text y='68' x='50' text-anchor='middle' font-size='46' font-family='sans-serif' font-weight='bold' fill='white'>Y</text></svg>">
 <meta name="theme-color" content="#3b5bdb">
@@ -157,19 +182,12 @@ function pageFor(topic, index, topics) {
       <p>${html(topic.eksenAciklama)}</p>
     </section>
 
-    <section aria-labelledby="calisma-odagi" style="margin-top:28px">
-      <h2 id="calisma-odagi">Bu ünitede çalışma odağı</h2>
-      <p><strong>${html(topic.ad)}</strong> ünitesinde temel kapsam şudur: ${html(topic.kapsam)}.</p>
-      <ul>
-        <li>Bu yapıyı önce bağlam içindeki anlam göreviyle tanı; yalnız biçim veya anahtar sözcük ezberine dayanma.</li>
-        <li>Özellikle <strong>${html(topic.soru)}</strong> sorularında yapının cümle ve paragraf ilişkisini nasıl değiştirdiğini kontrol et.</li>
-        <li>Türkçe aktarım riski <strong>${html(topic.risk)}</strong>; karşılaştırmalı iki örnek üretip farkı kendi cümlenle açıkla.</li>
-        <li>Ön koşul: ${html(topic.on)}. Konu anlatımındaki mini tanıyı cevap anahtarını açmadan tamamla.</li>
-      </ul>
+    <section aria-label="Konu anlatımı" class="konu-anlatim" style="margin-top:28px">
+      ${lessonHtml(topic)}
     </section>
 
     <p style="margin-top:32px">
-      <a class="btn primary" href="${html(lessonUrl)}">${html(topic.k)} konu anlatımını aç</a>
+      <a class="btn primary" href="${html(lessonUrl)}">${html(topic.k)} mini tanıyı yap ve ilerlemeni kaydet</a>
     </p>
     <p><a href="../konular.html">← Tüm konulara dön</a></p>
     <nav class="topic-neighbours" aria-label="Önceki ve sonraki konu">
@@ -183,6 +201,7 @@ function pageFor(topic, index, topics) {
   <div class="wrap">
     <span>© 2026 YDS Hazırlık</span>
     <span>YDS konu haritası</span>
+    <nav class="footer-links" aria-label="Site ve veri bilgileri"><a href="../yontem.html">Yöntem ve kaynaklar</a><a href="../ayarlar.html">Gizlilik ve veri ayarları</a><a href="https://github.com/Turksev/Turksev.github.io/issues/new">Hata bildir</a></nav>
   </div>
 </footer>
 </body>
@@ -232,12 +251,9 @@ const STATIC_URLS = [
   ["/cumleler.html", "0.9"],
   ["/quiz.html", "0.9"],
   ["/deneme.html", "0.9"],
-  ["/durum.html", "0.6"],
   ["/gramer.html", "0.8"],
   ["/baglaclar.html", "0.8"],
-  ["/ara.html", "0.4"],
   ["/yontem.html", "0.6"],
-  ["/ayarlar.html", "0.4"],
 ];
 
 function sitemapFor(topics) {

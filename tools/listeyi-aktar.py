@@ -25,6 +25,13 @@ mevcut veriden boyle bir parti cikarir).
 
 Kaynak dosyalara YAZILMAZ, yalniz okunur.
 """
+
+from pathlib import Path as _YdsPath
+import sys as _yds_sys
+_yds_site = next(p for p in _YdsPath(__file__).resolve().parents if (p / "sw.js").is_file())
+_yds_sys.path.insert(0, str(_yds_site / "tools"))
+from yds_paths import site_path, yds_path, scratch_path
+from icerik_kalite import son_kart_duzeltmeleri, son_obek_duzeltmeleri, ek_parti_turlerini_duzelt
 import io
 import json
 import os
@@ -37,7 +44,7 @@ sys.stdout.reconfigure(encoding='utf-8')
 
 import openpyxl
 
-KAYNAK_DIZIN = r'C:\Users\Trk\Desktop\YDS\03_calisma_listesi\04_cikti'
+KAYNAK_DIZIN = yds_path('03_calisma_listesi', '04_cikti')
 SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 VERI = os.path.join(SITE, 'data')
 ARACLAR = os.path.join(SITE, 'tools')
@@ -1472,6 +1479,7 @@ def birlestir(ek_partileri=None):
     if ek_partileri is None:
         ek_partileri = ek_kelime_partilerini_oku()
     ek_parti_eklenen = ek_kelime_partilerini_uygula(kelimeler, ek_partileri)
+    ek_parti_turlerini_duzelt(kelimeler, ek_partileri, tur_d)
 
     # Guncel korpus puanlari (duz5): birlesimden sonra, katman bantlamadan once.
     # Modal kartlar kendi puan/katmanini tasir (modal-kartlar testi kaynakla birebir bekler).
@@ -1492,6 +1500,8 @@ def birlestir(ek_partileri=None):
     print('  anlam duzeltmesi    :', duzeltme_uygulanan, 'uygulandi,', len(duzeltme_eslesmeyen), 'eslesmedi')
     for satir in duzeltme_eslesmeyen:
         print('    ESLESMEDI', satir)
+
+    son_kart_duzeltmeleri(kelimeler, ek_ornekleri_oku())
 
     for en, k in kelimeler.items():
         k['katman'] = k.get('katman_zorla') or katman_bul(k['puan'])
@@ -1786,6 +1796,7 @@ def main(argv=None):
     # Obek anahtar standardi: cekimli anahtarlar lemmaya birlesir (tools/obek-lemma.json).
     obek_takma = obek_lemma_oku()
     obek_birlesen, obek_adlanan, obek_takma_eksik = obek_lemma_uygula(obek_sozlugu, obek_takma)
+    son_obek_duzeltmeleri(obek_sozlugu)
     print('  obek lemma          :', obek_birlesen, 'birlesti,', obek_adlanan, 'yeniden adlandi')
     if obek_takma_eksik:
         print('  UYARI obek-lemma: kaynakta olmayan anahtar:', ', '.join(obek_takma_eksik))

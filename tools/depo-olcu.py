@@ -16,9 +16,12 @@ from datetime import date
 sys.stdout.reconfigure(encoding='utf-8')
 SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ATLA_DIZINLER = {
-    '.git', '.github', '.claude', '__pycache__', 'node_modules', 'tools'
+    '.git', '.github', '.claude', '__pycache__', 'node_modules', 'tools',
+    '.venv-tools', 'test-results', 'playwright-report', 'tmp'
 }
-ATLA_DOSYALAR = {'_config.yml', 'README.md', 'firebase.json', 'firestore.rules'}
+ATLA_DOSYALAR = {'_config.yml', 'README.md', 'firebase.json', 'firestore.rules',
+                  'package.json', 'package-lock.json', 'pnpm-lock.yaml', 'requirements-tools.txt',
+                  'KAYNAK_2026-09-04_yeni_sinavlar.md'}
 
 toplam = 0
 dosya = 0
@@ -27,9 +30,11 @@ klasor = {}
 for kok, dizinler, dosyalar in os.walk(SITE):
     dizinler[:] = [d for d in dizinler if d not in ATLA_DIZINLER]
     for ad in dosyalar:
-        if ad in ATLA_DOSYALAR:
+        if ad in ATLA_DOSYALAR or ad.startswith('.'):
             continue
         yol = os.path.join(kok, ad)
+        if os.path.relpath(yol, SITE).replace('\\', '/') == 'data/depo.js':
+            continue
         try:
             n = os.path.getsize(yol)
         except OSError:
@@ -47,6 +52,7 @@ veri = {
     'sinir': 1024 ** 3,                    # GitHub Pages yumuşak sınırı: 1 GB
     'zaman': date.today().isoformat(),
     'klasor': [{'ad': a, 'bayt': b} for a, b in buyukler],
+    'kapsam': 'Yayın dosyaları; bu ölçüm dosyası hariç. Saklanan sürümlü varlıklar dahildir.',
 }
 
 icerik = ('/* Depo kullanımı — tools/depo-olcu.py üretir, elle düzenleme.\n'

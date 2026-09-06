@@ -24,6 +24,12 @@ Ne yapar:
 
 Kaynak dosyalara YAZILMAZ; yalnız parti dosyası yazılır.
 """
+
+from pathlib import Path as _YdsPath
+import sys as _yds_sys
+_yds_site = next(p for p in _YdsPath(__file__).resolve().parents if (p / "sw.js").is_file())
+_yds_sys.path.insert(0, str(_yds_site / "tools"))
+from yds_paths import site_path, yds_path, scratch_path
 import argparse
 import collections
 import csv
@@ -37,7 +43,7 @@ sys.stdout.reconfigure(encoding='utf-8')
 ARACLAR = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.dirname(ARACLAR)
 VERI = os.path.join(SITE, 'data')
-ARSIV_VARSAYILAN = r'C:\Users\Trk\Desktop\YDS\03_calisma_listesi\06_sandbox_2026-09'
+ARSIV_VARSAYILAN = yds_path('03_calisma_listesi', '06_sandbox_2026-09')
 PARTI_ID_VARSAYILAN = '2026-09-05_denetim-A2_korunan'
 
 GRUPLAR = collections.OrderedDict([

@@ -17,6 +17,12 @@ Cikti: yil dosyalari (window.CUMLELER_YIL["2013"] = [...]) ve dizin (window.CUML
 Tek dosya (data/cumleler.js, 2,7 MB) artik uretilmez; sayfa yil dosyalarini yeniden eskiye
 sirayla yukler (assets/js/cumleler.js).
 """
+
+from pathlib import Path as _YdsPath
+import sys as _yds_sys
+_yds_site = next(p for p in _YdsPath(__file__).resolve().parents if (p / "sw.js").is_file())
+_yds_sys.path.insert(0, str(_yds_site / "tools"))
+from yds_paths import site_path, yds_path, scratch_path
 import collections
 import glob
 import io
@@ -24,12 +30,13 @@ import json
 import os
 import re
 import sys
+from kalite_duzelt import kalite_uygula, kalite_alanlari
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 
-SP = "C:/Users/Trk/Desktop/YDS/03_calisma_listesi/06_sandbox_2026-09"
+SP = yds_path('03_calisma_listesi', '06_sandbox_2026-09')
 C = os.path.join(SP, 'cumleler')
-VERI = r"C:\Users\Trk\Desktop\YDS\04_Github\data"
+VERI = site_path('data')
 BURASI = os.path.dirname(os.path.abspath(__file__))
 TABLO = os.path.join(BURASI, 'cumle_duzeltmeleri.json')
 
@@ -149,6 +156,7 @@ def genel_kurallar(kayitlar):
 
 
 kayitlar = genel_kurallar(kayitlar)
+kayitlar = kalite_uygula(kayitlar)
 print('duzeltmeler:', dict(istat))
 
 # ------------------------------------------------------------------ cikti
@@ -163,6 +171,7 @@ def satir(c):
         alan.append('n:%d' % int(c['n']))
     if c.get('t'):
         alan.append('t:' + J(c['t']))
+    alan.extend(kalite_alanlari(c, J))
     alan.append('y:%s' % int(c['y']))
     return '{' + ','.join(alan) + '}'
 
@@ -179,7 +188,7 @@ for y in sorted(yillar):
     kayit = yillar[y]
     cevirili = sum(1 for k in kayit if k.get('t'))
     icerik = ('/* YDS cümleleri — %s · %d cümle (%d çevirili)\n'
-              '   Alanlar: e=İngilizce cümle, t=Türkçe çeviri, s=sınav, b=bölüm, n=soru numarası, y=yıl.\n'
+              '   Alanlar: e=İngilizce cümle, t=Türkçe çeviri, s=sınav, b=bölüm, n=soru numarası, y=yıl, sid=kalıcı ilerleme kimliği, inceleme=kaynak denetim notu.\n'
               '   tools/cumle/cumle_js_uret.py üretir; elle düzenleme. */\n'
               'window.CUMLELER_YIL = window.CUMLELER_YIL || {};\n'
               'window.CUMLELER_YIL[%s] = [\n' % (y, len(kayit), cevirili, J(y))
@@ -187,7 +196,7 @@ for y in sorted(yillar):
     yol = os.path.join(klasor, '%s.js' % y)
     open(yol, 'w', encoding='utf-8', newline='\n').write(icerik)
     toplam_kb += len(icerik.encode('utf-8')) // 1024
-bolumler = collections.Counter(k['b'] for k in kayitlar if k.get('b'))
+bolumler = collections.Counter(k.get('b') or '' for k in kayitlar)
 dizin = {
     'toplam': len(kayitlar),
     'cevirili': sum(1 for k in kayitlar if k.get('t')),

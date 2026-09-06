@@ -4,11 +4,17 @@
 Tablolar JS dosyasindan OKUNUR (tek kaynak); kurallar elle portlanmistir.
 Chrome uzerinden parite testi: parite.html + parite_kontrol.py
 """
+
+from pathlib import Path as _YdsPath
+import sys as _yds_sys
+_yds_site = next(p for p in _YdsPath(__file__).resolve().parents if (p / "sw.js").is_file())
+_yds_sys.path.insert(0, str(_yds_site / "tools"))
+from yds_paths import site_path, yds_path, scratch_path
 import io
 import re
 import os
 
-SITE = r'C:\Users\Trk\Desktop\YDS\04_Github'
+SITE = site_path()
 JS = os.path.join(SITE, 'assets', 'js', 'cekim.js')
 
 

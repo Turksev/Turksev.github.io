@@ -4,14 +4,20 @@
 Ayrica: bas harf/kisaltmayla biten kayitlar, rakamla baslayan parcalar,
 sonunda soru/sayfa numarasi kalan kayitlar (" 28." / " 4 5.").
 """
+
+from pathlib import Path as _YdsPath
+import sys as _yds_sys
+_yds_site = next(p for p in _YdsPath(__file__).resolve().parents if (p / "sw.js").is_file())
+_yds_sys.path.insert(0, str(_yds_site / "tools"))
+from yds_paths import site_path, yds_path, scratch_path
 import io
 import json
 import re
 import sys
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
-YOL = r"C:\Users\Trk\Desktop\YDS\04_Github\data\cumleler.js"
-KORPUS = r"C:\Users\Trk\Desktop\YDS\03_calisma_listesi\06_sandbox_2026-09\sandbox\duz4\02_korpus\korpus.jsonl"
+YOL = site_path('data', 'cumleler.js')
+KORPUS = yds_path('03_calisma_listesi', '06_sandbox_2026-09', 'sandbox', 'duz4', '02_korpus', 'korpus.jsonl')
 
 
 def js_str(s, i):

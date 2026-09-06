@@ -1,0 +1,20 @@
+'use strict';
+const fs=require('fs'),path=require('path'),vm=require('vm'),assert=require('assert');
+const root=path.resolve(__dirname,'../..');
+const node={getAttribute:k=>k==='data-sid'?'c:abc-10':null,focus:()=>focused++};
+let focused=0;
+const list={innerHTML:'',querySelectorAll:()=>[node],contains:n=>n===node};
+const elements={liste:list,bos:{},dahaFazla:{}};
+const context={window:{YDS:{Ilerleme:{}}},document:{activeElement:node,addEventListener(){},getElementById:id=>elements[id]},console};
+vm.createContext(context);
+const source=fs.readFileSync(path.join(root,'assets/js/cumleler.js'),'utf8').replace(/\}\)\(\);\s*$/,`window.checkList=function(){
+  HEPSI=[{sid:'c:abc-10',e:'An example.',t:'Bir örnek.'},{sid:'c:def-11',e:'Second.',t:'İkinci.'}];
+  suzulmus=HEPSI; listeCiz();
+};})();`);
+vm.runInContext(source,context);context.window.checkList();
+assert.match(list.innerHTML,/class="cum acik"[^>]+data-sid="c:abc-10"[^>]+aria-expanded="true"/);
+assert.match(list.innerHTML,/<div class="cum-tr">Bir örnek\./);
+assert.match(list.innerHTML,/<div class="cum-tr" hidden>İkinci\./);
+assert.strictEqual(focused,1,'Preserve keyboard focus after replacing list nodes');
+context.window.checkList();assert.strictEqual(focused,2);
+console.log('Sentence redraw: open translation and keyboard focus preserved; other rows stay closed.');

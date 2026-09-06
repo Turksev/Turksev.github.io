@@ -11,12 +11,18 @@ Kurtarma, kuyruktaki gercek soru kokunu birakip bastaki sik listesini atmaktir.
 Cevirili kayitlara HIC dokunulmaz: ayristirma yalnizca ',t:"' icermeyen
 satirlara uygulanir (bazi kayitlarda b/n alanlari yok, kacisli tirnak var).
 """
+
+from pathlib import Path as _YdsPath
+import sys as _yds_sys
+_yds_site = next(p for p in _YdsPath(__file__).resolve().parents if (p / "sw.js").is_file())
+_yds_sys.path.insert(0, str(_yds_site / "tools"))
+from yds_paths import site_path, yds_path, scratch_path
 import io
 import sys
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 
-YOL = r"C:\Users\Trk\Desktop\YDS\04_Github\data\cumleler.js"
+YOL = site_path('data', 'cumleler.js')
 
 # Artigin icinde aranan iz -> (birakilacak gercek cumle, Turkce cevirisi)
 KURTAR = {

@@ -4,6 +4,7 @@ var fs = require('fs');
 var path = require('path');
 var assert = require('assert');
 var kok = path.resolve(__dirname, '..', '..');
+var releaseKok = JSON.parse(fs.readFileSync(path.join(kok, 'release-manifest.json'), 'utf8')).kok;
 var sayfalar = [
   'index.html', 'durum.html', 'konular.html', 'kelimeler.html', 'aileler.html',
   'obekler.html', 'quiz.html', 'deneme.html', 'gramer.html', 'baglaclar.html', 'ara.html',
@@ -13,7 +14,12 @@ var sayfalar = [
 sayfalar.forEach(function (dosya) {
   var html = fs.readFileSync(path.join(kok, dosya), 'utf8');
   var betikler = [];
-  html.replace(/<script\s+src="([^"]+)"/g, function (_, src) { betikler.push(src); return _; });
+  html.replace(/<script\s+src="([^"]+)"/g, function (_, src) {
+    if (/^(https?:)?\/\//.test(src)) { betikler.push(src); return _; }
+    assert.ok(src.indexOf(releaseKok) === 0, dosya + ': sürümsüz betik ' + src);
+    assert.ok(fs.existsSync(path.join(kok, src)), dosya + ': eksik sürümlü betik ' + src);
+    betikler.push(src.slice(releaseKok.length)); return _;
+  });
   var main = betikler.indexOf('assets/js/main.js');
   var alias = betikler.indexOf('data/kelime-aliaslari.js');
   var motor = betikler.indexOf('assets/js/esitleme-veri.js');
@@ -54,6 +60,8 @@ sayfalar.forEach(function (dosya) {
 });
 
 var sw = fs.readFileSync(path.join(kok, 'sw.js'), 'utf8');
+// Sıra ve kapsama beklentileri aynı; gerçek release yolları yukarıda doğrulanır.
+sw = sw.split('.' + releaseKok).join('./');
 var main = fs.readFileSync(path.join(kok, 'assets', 'js', 'main.js'), 'utf8');
 var bulut = fs.readFileSync(path.join(kok, 'assets', 'js', 'esitleme-v2.js'), 'utf8');
 // Sürümü sabit bir sayıya çivilemek her yayında bu testi düşürüyordu

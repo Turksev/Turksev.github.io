@@ -11,14 +11,20 @@ Islem siniflari (hepsi OZGUN dizinle calisir, silmeler en sonda uygulanir):
   KUYRUK   sona yapismis soru/sayfa numarasini kirp
   SIL      yonerge satirlari ve salt sik listeleri
 """
+
+from pathlib import Path as _YdsPath
+import sys as _yds_sys
+_yds_site = next(p for p in _YdsPath(__file__).resolve().parents if (p / "sw.js").is_file())
+_yds_sys.path.insert(0, str(_yds_site / "tools"))
+from yds_paths import site_path, yds_path, scratch_path
 import io
 import json
 import re
 import sys
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
-YOL = r"C:\Users\Trk\Desktop\YDS\04_Github\data\cumleler.js"
-DOKUM = r"C:\Users\Trk\Desktop\YDS\A4_DOKUM_2026-09-05.md"
+YOL = site_path('data', 'cumleler.js')
+DOKUM = yds_path('A4_DOKUM_2026-09-05.md')
 YAZ = '--yaz' in sys.argv
 
 

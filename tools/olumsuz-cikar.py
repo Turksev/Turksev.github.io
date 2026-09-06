@@ -19,6 +19,12 @@ gostermek yanlis ogretirdi.
 Kullanim:
   "C:/Users/Trk/Desktop/YDS/03_calisma_listesi/.venv/Scripts/python.exe" tools/olumsuz-cikar.py
 """
+
+from pathlib import Path as _YdsPath
+import sys as _yds_sys
+_yds_site = next(p for p in _YdsPath(__file__).resolve().parents if (p / "sw.js").is_file())
+_yds_sys.path.insert(0, str(_yds_site / "tools"))
+from yds_paths import site_path, yds_path, scratch_path
 import csv
 import io
 import json
@@ -34,7 +40,7 @@ sys.stdout.reconfigure(encoding='utf-8')
 SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 VERI = os.path.join(SITE, 'data')
 ARAC = os.path.dirname(os.path.abspath(__file__))
-MASTER = r'C:\Users\Trk\Desktop\YDS\03_calisma_listesi\04_cikti\YDS_Kelime_Listesi_master.csv'
+MASTER = yds_path('03_calisma_listesi', '04_cikti', 'YDS_Kelime_Listesi_master.csv')
 
 ZIPF_ESIK = 2.5
 ONEK = ['un', 'in', 'im', 'ir', 'il', 'dis', 'non']

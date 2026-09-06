@@ -14,6 +14,12 @@ yeniden yazilmaz.
 Paket adi ilk turda kN-, eksik turunda eN- ile baslar; kalip-dogrula.py girdi
 klasorundeki her pakete karsilik bir cikti bekler, boylece kalan is gorunur olur.
 """
+
+from pathlib import Path as _YdsPath
+import sys as _yds_sys
+_yds_site = next(p for p in _YdsPath(__file__).resolve().parents if (p / "sw.js").is_file())
+_yds_sys.path.insert(0, str(_yds_site / "tools"))
+from yds_paths import site_path, yds_path, scratch_path
 import io
 import json
 import os
@@ -21,7 +27,7 @@ import re
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-SITE = r'C:\Users\Trk\Desktop\YDS\04_Github'
+SITE = site_path()
 BURASI = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(BURASI, 'kalip-girdi')
 os.makedirs(OUT, exist_ok=True)

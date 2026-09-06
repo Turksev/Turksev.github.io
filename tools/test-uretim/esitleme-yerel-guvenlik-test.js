@@ -3,10 +3,11 @@
 var fs = require('fs');
 var path = require('path');
 var vm = require('vm');
+var tarayiciAPIleri = require('./tarayici-vm');
 var assert = require('assert');
 
 var kok = path.resolve(__dirname, '..', '..');
-var ZARF_ANAHTARI = 'yds-esitleme-v2';
+var ZARF_ANAHTARI = 'yds-esitleme-yerel-v3';
 var YEDEK_ANAHTARI = 'yds-son-yedek';
 var ortamSirasi = 0;
 
@@ -28,6 +29,7 @@ function ayni(gelen, beklenen, mesaj) {
 function HamBellek(baslangic) {
   this.veri = new Map();
   this.engellenecekZarfYazimi = 0;
+  this.zarfYazimlariEngelli = false;
   var self = this;
   Object.keys(baslangic || {}).forEach(function (anahtar) {
     self.veri.set(anahtar, JSON.stringify(baslangic[anahtar]));
@@ -58,8 +60,9 @@ HamBellek.prototype.depo = function () {
       return self.oku(anahtar, varsayilan);
     },
     yaz: function (anahtar, deger) {
-      if (anahtar === ZARF_ANAHTARI && self.engellenecekZarfYazimi > 0) {
-        self.engellenecekZarfYazimi--;
+      if (anahtar === ZARF_ANAHTARI &&
+          (self.zarfYazimlariEngelli || self.engellenecekZarfYazimi > 0)) {
+        if (self.engellenecekZarfYazimi > 0) self.engellenecekZarfYazimi--;
         return false;
       }
       self.ata(anahtar, deger);
@@ -116,7 +119,7 @@ function ortamKur(bellek) {
     parseInt: parseInt,
     console: console
   };
-  vm.createContext(baglam);
+  vm.createContext(tarayiciAPIleri(baglam));
   URETIM_DOSYALARI.forEach(function (dosya) {
     vm.runInContext(fs.readFileSync(path.join(kok, dosya), 'utf8'), baglam,
       { filename: dosya });
@@ -310,7 +313,9 @@ function leitnerAnligiDegismedi(ortam, bellek, onceki, mesaj) {
     'yds-esitleme-v2': bosZarf,
     'yds-bilinen': bilinen
   });
-  hataliBellek.sonrakiZarfYaziminiEngelle();
+  // Bootstrap v3'e ayrı bir yazım yapar. Gerçek dolu kota, bootstrap ve
+  // yds-bilinen aktarımı dahil bütün yazımları depolama düzelene kadar reddeder.
+  hataliBellek.zarfYazimlariEngelli = true;
   var hatali = ortamKur(hataliBellek);
 
   ayni(hataliBellek.oku('yds-bilinen', null), bilinen,
@@ -322,13 +327,13 @@ function leitnerAnligiDegismedi(ortam, bellek, onceki, mesaj) {
   assert.strictEqual(hatali.D.paket()['yds-leitner'], undefined,
     'başarısız göç eşitleme paketine sızmamalı');
 
-  hataliBellek.sonrakiZarfYaziminiEngelle();
   var yineHatali = ortamKur(hataliBellek);
   assert.strictEqual(yineHatali.I.kutu('hand-down'), 0,
     'başarısız göç reload sırasında kendiliğinden görünür olmamalı');
   ayni(hataliBellek.oku('yds-bilinen', null), bilinen,
     'tekrarlanan başarısız göçte kaynak liste yine korunmalı');
 
+  hataliBellek.zarfYazimlariEngelli = false;
   var kurtarilan = ortamKur(hataliBellek);
   assert.strictEqual(kurtarilan.I.kutu('hand-down'), 4,
     'depolama düzelince korunan yds-bilinen listesi göçebilmelidir');
@@ -500,4 +505,25 @@ function leitnerAnligiDegismedi(ortam, bellek, onceki, mesaj) {
     'başarısız yayma reload sonrasında da hiçbir g değişikliği bırakmamalı');
 })();
 
-console.log('esitleme-yerel-guvenlik: 6 ana senaryo başarılı');
+/* 7) Tekrar yedekleri temizlenebilir; yalnız yedekte kalan geçmiş korunur. */
+(function benzersizGecisYedegiKorunur() {
+  var eskiYedek = {
+    zaman: 1,
+    veri: { 'yds-leitner': { yalnizYedekte: { k: 5, g: 999, c: 888 } } },
+    not: 'Geri yüklenebilir tarihsel kayıt'
+  };
+  var bellek = new HamBellek({
+    'yds-leitner': { mevcut: { k: 2, g: 200, c: 100 } },
+    'yds-esitleme-gecis-yedegi': eskiYedek
+  });
+  var ortam = ortamKur(bellek);
+  ayni(ortam.Depo.oku('yds-esitleme-gecis-yedegi', null), eskiYedek,
+    'yeni format yalnız yedekte bulunan geçmiş kaydı silmemeli');
+  assert.strictEqual(ortam.D.paket()['yds-leitner'].yalnizYedekte, undefined,
+    'yedek saklamak onu sessizce etkin ilerlemeye geri yüklememeli');
+  var yeniden = ortamKur(bellek);
+  ayni(yeniden.Depo.oku('yds-esitleme-gecis-yedegi', null), eskiYedek,
+    'benzersiz tarihsel yedek reload sonrasında eksiksiz kalmalı');
+})();
+
+console.log('esitleme-yerel-guvenlik: 7 ana senaryo başarılı');

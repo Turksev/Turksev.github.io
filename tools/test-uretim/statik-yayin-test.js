@@ -8,7 +8,7 @@ var kok = path.resolve(__dirname, '..', '..');
 var sayfalar = [
   'index.html', 'durum.html', 'konular.html', 'kelimeler.html', 'aileler.html',
   'obekler.html', 'quiz.html', 'deneme.html', 'gramer.html', 'baglaclar.html', 'ara.html',
-  'yontem.html', 'ayarlar.html'
+  'yontem.html', 'ayarlar.html', 'cumleler.html', '404.html'
 ];
 for (var t = 1; t <= 61; t++) sayfalar.push('konu/T' + String(t).padStart(2, '0') + '.html');
 for (var e = 1; e <= 68; e++) sayfalar.push('konu/E' + String(e).padStart(2, '0') + '.html');
@@ -21,7 +21,8 @@ function yerelMi(ref) {
 function hedefDosya(kaynak, ref) {
   var yol = ref.split('#')[0].split('?')[0];
   if (!yol) return kaynak;
-  var tam = path.resolve(kok, path.dirname(kaynak), decodeURIComponent(yol));
+  var tam = yol.startsWith('/') ? path.resolve(kok, '.'+decodeURIComponent(yol))
+    : path.resolve(kok, path.dirname(kaynak), decodeURIComponent(yol));
   if (yol === './' || (fs.existsSync(tam) && fs.statSync(tam).isDirectory())) {
     tam = path.join(tam, 'index.html');
   }

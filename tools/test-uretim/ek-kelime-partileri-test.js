@@ -40,6 +40,7 @@ function jsDize(ham) { return JSON.parse('"' + ham + '"'); }
 var KAYIT_ALANLARI = ['e', 'y', 't', 'p', 'k', 'g', 'a', 'kl', 'es', 'gerekce', 'kanit'];
 var OBEK_ALANLARI = ['f', 'y', 's', 'kn', 'g', 'a', 'kanit'];
 
+yukle('tools/tur-duzeltme.js');
 yukle('data/kelime-dizin.js');
 for (var katman = 1; katman <= 7; katman++) yukle('data/kelime-k' + katman + '.js');
 yukle('data/obekler.js');
@@ -186,8 +187,8 @@ dosyalar.forEach(function (ad) {
     var d = dizin.get(en);
     assert.ok(d, en + ': dizinde yok');
     assert.deepStrictEqual({ t: d.t, p: d.p, k: d.k, y: d.y },
-      { t: kayit.t, p: kayit.p === null ? undefined : kayit.p, k: kayit.k, y: kayit.y },
-      en + ': dizin alanları partiyle farklı');
+      { t: kayit.t, p: kayit.p === null ? undefined : kayit.p, k: kayit.k, y: pencere.TUR_DUZELTME[en] || kayit.y },
+      en + ': dizin alanları parti + manuel tür düzeltmesiyle farklı');
     var kart = kartlar.get(en);
     assert.ok(kart, en + ': tam kart yok');
     assert.strictEqual(kart.layer, kayit.k, en + ': kart dosyası katmanı (partideki k aynen korunmalı)');

@@ -8,6 +8,12 @@ adından doğrulanabilen sınav kimliğini, dosya boyutunu ve SHA-256 özetini
 
 from __future__ import annotations
 
+from pathlib import Path as _YdsPath
+import sys as _yds_sys
+_yds_site = next(p for p in _YdsPath(__file__).resolve().parents if (p / "sw.js").is_file())
+_yds_sys.path.insert(0, str(_yds_site / "tools"))
+from yds_paths import site_path, yds_path, scratch_path
+
 import argparse
 import hashlib
 import json
@@ -18,7 +24,7 @@ from pathlib import Path
 
 SITE = Path(__file__).resolve().parent.parent
 sys.stdout.reconfigure(encoding="utf-8")
-VARSAYILAN_KAYNAK = Path(r"C:\Users\Trk\Desktop\YDS\01_sinav_arsivi\08_unique_exam_pdfs")
+VARSAYILAN_KAYNAK = Path(yds_path('01_sinav_arsivi', '08_unique_exam_pdfs'))
 VARSAYILAN_CIKTI = SITE / "data" / "kaynak-manifest.json"
 DOSYA_DESENI = re.compile(
     r"^(?P<tur>e?YDS)_(?P<yil>\d{4})_(?P<donem>[^_]+)_"

@@ -29,6 +29,12 @@ Kullanim (bilgi_js_uret.py):
     kok = temizle_kok(kok, soru_no, korpus, sozluk)     # '' donerse baglam atilir
     sk  = temizle_sik(sik_metni, sozluk)
 """
+
+from pathlib import Path as _YdsPath
+import sys as _yds_sys
+_yds_site = next(p for p in _YdsPath(__file__).resolve().parents if (p / "sw.js").is_file())
+_yds_sys.path.insert(0, str(_yds_site / "tools"))
+from yds_paths import site_path, yds_path, scratch_path
 import io
 import json
 import os
@@ -37,7 +43,7 @@ import re
 KOK = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 VERI = os.path.join(KOK, 'data')
 # Guncel korpus (KAYNAK_NOTU.md): duz3 arsive kopyalanmadi, duz4 kopyalandi.
-KORPUS = os.path.join(r"C:\Users\Trk\Desktop\YDS\03_calisma_listesi\06_sandbox_2026-09",
+KORPUS = os.path.join(yds_path('03_calisma_listesi', '06_sandbox_2026-09'),
                       'sandbox', 'duz4', '02_korpus', 'korpus.jsonl')
 
 

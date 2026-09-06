@@ -8,10 +8,16 @@ Kural (denetci gerekcesi):
   Anlamca En Yakın (68-71) -> 6 cumle: 1 kok + 5 parafraz sik
 Ayrica sayfa konumu her iki bolumu de ayirt eder.
 """
+
+from pathlib import Path as _YdsPath
+import sys as _yds_sys
+_yds_site = next(p for p in _YdsPath(__file__).resolve().parents if (p / "sw.js").is_file())
+_yds_sys.path.insert(0, str(_yds_site / "tools"))
+from yds_paths import site_path, yds_path, scratch_path
 import os, sys, io, re, json, glob, collections
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 
-SP = "C:/Users/Trk/Desktop/YDS/03_calisma_listesi/06_sandbox_2026-09"
+SP = yds_path('03_calisma_listesi', '06_sandbox_2026-09')
 B = os.path.join(SP, 'bolum')
 
 girdi = {}

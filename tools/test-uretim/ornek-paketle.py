@@ -7,6 +7,12 @@ Kaynak listede bazi kelimelerin iki turu tek anlam satirinda birlesmis
 ("i. fotograf; f. fotografini cekmek") ve tek ornek verilmis. Ajanlar her
 tur icin ayri ornek yazar; ornek-dogrula.py gecenleri ek-ornekler.js'e ekler.
 """
+
+from pathlib import Path as _YdsPath
+import sys as _yds_sys
+_yds_site = next(p for p in _YdsPath(__file__).resolve().parents if (p / "sw.js").is_file())
+_yds_sys.path.insert(0, str(_yds_site / "tools"))
+from yds_paths import site_path, yds_path, scratch_path
 import io
 import json
 import os
@@ -14,7 +20,7 @@ import re
 import sys
 
 sys.stdout.reconfigure(encoding='utf-8')
-S = r'C:\Users\Trk\Desktop\YDS\04_Github'
+S = site_path()
 BURASI = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(BURASI, 'ornek-girdi')
 os.makedirs(OUT, exist_ok=True)

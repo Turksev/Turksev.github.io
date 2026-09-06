@@ -22,10 +22,11 @@ manifest.sinavlar.forEach(function (x) {
 
 var anaSayfa = fs.readFileSync(path.join(kok, 'index.html'), 'utf8');
 var sw = fs.readFileSync(path.join(kok, 'sw.js'), 'utf8');
+var releaseKok = JSON.parse(fs.readFileSync(path.join(kok, 'release-manifest.json'), 'utf8')).kok;
 ['data/kaynak-manifest.json', 'data/kelime-provenans.json'].forEach(function (dosya) {
-  assert.ok(anaSayfa.indexOf('href="' + dosya + '"') >= 0,
+  assert.ok(anaSayfa.indexOf('href="' + releaseKok + dosya + '"') >= 0,
     dosya + ' ana sayfada görünür değil');
-  assert.ok(sw.indexOf("'./" + dosya + "'") >= 0,
+  assert.ok(sw.indexOf("'." + releaseKok + dosya + "'") >= 0,
     dosya + ' çevrimdışı önbellekte değil');
 });
 
