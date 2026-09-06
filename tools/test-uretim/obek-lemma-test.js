@@ -25,7 +25,10 @@ assert.ok(Object.keys(takma).length >= 38, 'takma tablosu küçüldü');
 
 ['data/kelime-aliaslari.js', 'data/obekler.js', 'assets/js/esitleme-veri.js'].forEach(yukle);
 
-assert.deepStrictEqual(pencere.OBEK_TAKMA, takma, 'obekler.js sonundaki OBEK_TAKMA tabloyla aynı olmalı');
+// vm bağlamındaki nesnelerin prototipi test alanınınkinden farklı; deepStrictEqual
+// prototipi de karşılaştırdığı için önce düz JSON'a indirilir.
+assert.deepStrictEqual(JSON.parse(JSON.stringify(pencere.OBEK_TAKMA)), takma,
+  'obekler.js sonundaki OBEK_TAKMA tabloyla aynı olmalı');
 
 var obekler = new Map(pencere.OBEKLER.map(function (x) { return [x.f, x]; }));
 Object.keys(takma).forEach(function (eski) {
@@ -40,14 +43,16 @@ Object.keys(takma).forEach(function (eski) {
 // Birleşen çiftlerde anlam kaybı olmamalı: look at iki kaynaktan tek tr taşıyordu.
 var lookAt = obekler.get('look at');
 assert.ok(lookAt.a.some(function (a) { return /bakmak|incelemek/.test(a.tr); }));
-assert.deepStrictEqual(lookAt.b, ['looking at']);
+assert.deepStrictEqual(Array.from(lookAt.b), ['looking at']);
 
 // İlerleme kimliği: eski anahtar lemmaya çözülür, lemma olduğu gibi kalır.
 var Motor = pencere.YDS.EsitlemeMotoru;
 assert.strictEqual(Motor.ilerlemeKimligi('looking at', 'obek'), 'look at');
 assert.strictEqual(Motor.ilerlemeKimligi('look at', 'obek'), 'look at');
 assert.strictEqual(Motor.ilerlemeKimligi('stems from', 'obek'), 'stem from');
-assert.deepStrictEqual(Motor.ilerlemeKimliginiCoz('looking at'), { ad: 'look at', tur: 'obek' });
+var cozum = Motor.ilerlemeKimliginiCoz('looking at');
+assert.strictEqual(cozum.ad, 'look at');
+assert.strictEqual(cozum.tur, 'obek');
 // Kelime kimlikleri etkilenmez.
 assert.notStrictEqual(Motor.ilerlemeKimligi('looking', 'kelime'), 'look at');
 
