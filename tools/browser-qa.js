@@ -70,6 +70,36 @@ async function main() {
       }
     }
     assert.equal(visualFailures.length,0,'Visual regressions: '+JSON.stringify(visualFailures));
+    // Istatistik sayfasi bos ilerlemeyle bos durum gosterir; grafik kodu ancak
+    // veri varken calisir. Tohumlanmis bir gunluk kayitla ikinci bir gecis yapip
+    // grafikleri de axe'tan gecirir, sonra depoyu temizleriz (07.09.2026: dar
+    // ekranda kaydirilabilir grafik kutusu odaklanamiyordu, bos sayfada gorunmuyordu).
+    await page.setViewportSize({width:375,height:812});
+    await page.goto(base+'/istatistik.html');
+    await page.evaluate(()=>{
+      const gun=Math.floor(new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate()).getTime()/86400000);
+      const gunluk={},leitner={};
+      for (let i=0;i<40;i++) gunluk[String(gun-i)]={t:10+(i%7),y:3,d:7,m:1,z:0};
+      for (let i=0;i<30;i++) leitner['qa-'+i]={k:(i%5)+1,g:gun+i,c:gun-i,m:0};
+      localStorage.setItem('yds-gunluk-kayit',JSON.stringify(gunluk));
+      localStorage.setItem('yds-leitner',JSON.stringify(leitner));
+    });
+    await page.reload();
+    await page.waitForSelector('#gunlukGrafik svg');
+    for (const theme of ['light','dark']) {
+      await page.emulateMedia({colorScheme:theme});
+      await page.addScriptTag({path:require.resolve('axe-core/axe.min.js')});
+      const dolu=await page.evaluate(async()=>{
+        const r=await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}});
+        return r.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)}));
+      });
+      assert.equal(dolu.length,0,'istatistik.html ('+theme+', veri dolu): '+JSON.stringify(dolu));
+      const tasma=await page.evaluate(()=>({viewport:innerWidth,scroll:document.documentElement.scrollWidth}));
+      assert.ok(tasma.scroll<=tasma.viewport+1,'istatistik.html yatay tasma: '+JSON.stringify(tasma));
+    }
+    await page.evaluate(()=>localStorage.clear());
+    await page.emulateMedia({colorScheme:'light'});
+    await page.setViewportSize({width:1280,height:812});
     await page.goto(base+'/cumleler.html');
     const sentence=page.locator('#liste .cum').first();
     await sentence.waitFor(); await sentence.focus(); await page.keyboard.press('Enter');
