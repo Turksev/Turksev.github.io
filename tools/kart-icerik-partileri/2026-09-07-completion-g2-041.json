@@ -1,0 +1,1046 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 2,
+    "input": "input-041.json"
+  },
+  "enrichments": [
+    {
+      "word": "said",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. dedi, söyledi; söylendiği/söylenir (say fiilinin geçmiş/V3 biçimi)",
+        "ex": "The compound is said to improve the material's resistance to heat.",
+        "exTr": "Bileşiğin malzemenin ısıya dayanıklılığını artırdığı söylenir."
+      },
+      "alternatives": [
+        {
+          "ex": "The director said that the exhibition would remain open late, provided that enough volunteers were available to supervise the additional hours.",
+          "exTr": "Müdür, ek saatlerde gözetim yapacak yeterli gönüllü bulunması koşuluyla serginin geç saatlere kadar açık kalacağını söyledi."
+        }
+      ]
+    },
+    {
+      "word": "salad",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. salata",
+        "ex": "Nutritionists recommend adding a fresh salad to every meal to increase fiber intake.",
+        "exTr": "Beslenme uzmanları, lif alımını artırmak için her öğüne taze bir salata eklenmesini öneriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The catering team labelled each salad separately so that guests could identify its ingredients without asking staff during the busiest part of the event.",
+          "exTr": "İkram ekibi, konukların etkinliğin en yoğun bölümünde çalışanlara sormadan malzemelerini belirleyebilmesi için her salatayı ayrı etiketledi."
+        }
+      ]
+    },
+    {
+      "word": "sale",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. satış",
+        "ex": "The government banned the sale of single-use plastic bags in an effort to cut waste.",
+        "exTr": "Hükümet, atığı azaltma çabasıyla tek kullanımlık plastik torbaların satışını yasakladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The sale of the building was postponed until the owners clarified which fixtures belonged to the tenants rather than to the property itself.",
+          "exTr": "Binanın satışı, mal sahipleri hangi demirbaşların taşınmazın kendisine değil kiracılara ait olduğunu netleştirene kadar ertelendi."
+        }
+      ]
+    },
+    {
+      "word": "salient",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. göze çarpan, dikkat çekici, belirgin",
+        "ex": "The report highlighted several salient factors that contributed to the company's sudden financial decline.",
+        "exTr": "Rapor, şirketin ani mali gerilemesine katkıda bulunan birkaç göze çarpan etkeni vurguladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The summary identifies the salient differences between the proposals, leaving technical calculations in an appendix for readers who need further detail.",
+          "exTr": "Özet, daha fazla ayrıntıya ihtiyaç duyan okuyucular için teknik hesaplamaları ekte bırakarak öneriler arasındaki belirgin farklılıkları ortaya koyuyor."
+        }
+      ]
+    },
+    {
+      "word": "saliva",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. tükürük, salya",
+        "ex": "Dentists explained that saliva plays a crucial role in protecting teeth from decay and bacteria.",
+        "exTr": "Diş hekimleri, tükürüğün dişleri çürümeden ve bakterilerden korumada önemli bir rol oynadığını açıkladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The researchers coded each saliva sample before analysis, ensuring that laboratory staff could not connect a result with a participant's name.",
+          "exTr": "Araştırmacılar, laboratuvar personelinin bir sonucu katılımcının adıyla ilişkilendirememesini sağlayarak her tükürük örneğini analizden önce kodladı."
+        }
+      ]
+    },
+    {
+      "word": "salsa",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. salsa (baharatlı sos)",
+        "ex": "The restaurant served fresh salsa made from tomatoes, onions, and chili peppers alongside the tacos.",
+        "exTr": "Restoran, tacoların yanında domates, soğan ve acı biberden yapılan taze salsa sundu."
+      },
+      "alternatives": [
+        {
+          "ex": "The cooking demonstration offered a mild salsa alongside a hotter version, inviting participants to compare how each complemented the same dish.",
+          "exTr": "Yemek gösterimi, katılımcıları aynı yemeği nasıl tamamladıklarını karşılaştırmaya davet ederek daha acı bir çeşidin yanında az acılı bir salsa sosu sundu."
+        }
+      ]
+    },
+    {
+      "word": "salty",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. tuzlu",
+        "ex": "Constant evaporation makes the water of the inland lake so salty that only a handful of specialised microorganisms can survive there.",
+        "exTr": "Sürekli buharlaşma, iç kesimlerdeki gölün suyunu öylesine tuzlu hâle getirir ki orada yalnızca birkaç özelleşmiş mikroorganizma yaşayabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The testers described the first sample as too salty, so the recipe was adjusted before another group assessed it independently.",
+          "exTr": "Test edenler ilk örneği fazla tuzlu buldu; bu yüzden başka bir grup bağımsız değerlendirme yapmadan önce tarif değiştirildi."
+        }
+      ]
+    },
+    {
+      "word": "samurai",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. samuray",
+        "ex": "Historians study how the samurai code of honor shaped Japanese culture for centuries.",
+        "exTr": "Tarihçiler, samuray onur kodunun Japon kültürünü yüzyıllar boyunca nasıl şekillendirdiğini inceler."
+      },
+      "alternatives": [
+        {
+          "ex": "The exhibition places a samurai's armour beside household objects, encouraging visitors to consider aspects of his life beyond military service.",
+          "exTr": "Sergi, ziyaretçileri yaşamının askerlik dışındaki yönlerini düşünmeye teşvik ederek bir samurayın zırhını ev eşyalarının yanına yerleştiriyor."
+        }
+      ]
+    },
+    {
+      "word": "sand",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kum",
+        "ex": "Desert winds carry enormous quantities of sand that gradually bury ancient ruins and roads.",
+        "exTr": "Çöl rüzgârları, antik kalıntıları ve yolları zamanla gömen muazzam miktarda kum taşır."
+      },
+      "alternatives": [
+        {
+          "ex": "The samples of sand differed in colour and grain size, giving pupils several features to record before discussing where each had been collected.",
+          "exTr": "Kum örnekleri renk ve tane boyutu bakımından farklıydı; bu da öğrencilere her birinin nereden toplandığını tartışmadan önce kaydedecekleri çeşitli özellikler sundu."
+        }
+      ]
+    },
+    {
+      "word": "sarcasm",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. alaycı ve çoğu kez incitici söz; iğneleme",
+        "ex": "Her sarcasm concealed genuine frustration with officials who repeatedly ignored the evidence.",
+        "exTr": "Onun iğneleyici alayı, kanıtları sürekli görmezden gelen yetkililere yönelik gerçek hayal kırıklığını gizliyordu."
+      },
+      "alternatives": [
+        {
+          "ex": "The actor softened the sarcasm in the final line, allowing the audience to hear disappointment as well as hostility in the character's response.",
+          "exTr": "Oyuncu son replikteki iğnelemeyi yumuşatarak izleyicilerin karakterin yanıtında düşmanlığın yanı sıra hayal kırıklığını da duymasını sağladı."
+        }
+      ]
+    },
+    {
+      "word": "satiety",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. tokluk, doyma hissi",
+        "ex": "Foods rich in protein and fibre promote a lasting sense of satiety, which helps people reduce their overall calorie intake without conscious effort.",
+        "exTr": "Protein ve lif açısından zengin besinler kalıcı bir tokluk hissi sağlar; bu da insanların bilinçli bir çaba harcamadan toplam kalori alımlarını azaltmalarına yardımcı olur."
+      },
+      "alternatives": [
+        {
+          "ex": "Participants recorded their sense of satiety at specified intervals, while the researchers kept those descriptions separate from measurements of food intake.",
+          "exTr": "Katılımcılar belirlenen aralıklarla tokluk hislerini kaydederken araştırmacılar bu betimlemeleri yiyecek alımı ölçümlerinden ayrı tuttu."
+        }
+      ]
+    },
+    {
+      "word": "satisfied",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. memnun, tatmin olmuş",
+        "ex": "Surveys showed that most patients were satisfied with the quality of care at the new clinic.",
+        "exTr": "Anketler, hastaların çoğunun yeni klinikteki bakım kalitesinden memnun olduğunu gösterdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The client was satisfied with the layout but requested a second demonstration to check whether the movable partitions were easy to operate.",
+          "exTr": "Müşteri yerleşim düzeninden memnundu; ancak hareketli bölmeleri kullanmanın kolay olup olmadığını kontrol etmek için ikinci bir gösterim istedi."
+        }
+      ]
+    },
+    {
+      "word": "saturated",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. doymuş; (renk) yoğun, koyu",
+        "ex": "Nutritionists advise limiting foods high in saturated fat to protect long-term heart health.",
+        "exTr": "Beslenme uzmanları, uzun vadeli kalp sağlığını korumak için doymuş yağ oranı yüksek besinleri sınırlamayı öneriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The saturated colours of the poster remained striking in daylight, although several details became harder to distinguish under the hall's dim lighting.",
+          "exTr": "Afişin doygun renkleri gün ışığında çarpıcılığını koruyordu; ancak salonun loş ışığında bazı ayrıntıları ayırt etmek zorlaşıyordu."
+        }
+      ]
+    },
+    {
+      "word": "save",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. kurtarmak",
+        "ex": "Simple hygiene measures such as regular handwashing can save thousands of lives every year.",
+        "exTr": "Düzenli el yıkama gibi basit hijyen önlemleri, her yıl binlerce hayat kurtarabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The volunteers managed to save the notebooks from the leaking storeroom before water reached the lower shelves where most were kept.",
+          "exTr": "Gönüllüler, su defterlerin çoğunun bulunduğu alt raflara ulaşmadan önce onları su sızdıran depodan kurtarmayı başardı."
+        }
+      ]
+    },
+    {
+      "word": "savvy",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. pratik bilgi, işbilirlik, kavrayış",
+        "ex": "Young entrepreneurs often have the technical skills to build a product but lack the financial savvy required to keep a company alive.",
+        "exTr": "Genç girişimciler çoğu zaman bir ürün geliştirecek teknik becerilere sahiptir ama bir şirketi ayakta tutmak için gereken finansal işbilirlikten yoksundur."
+      },
+      "alternatives": [
+        {
+          "ex": "Her practical savvy helped the small association negotiate with suppliers, even though she had never received formal training in purchasing.",
+          "exTr": "Satın alma konusunda hiç resmi eğitim almamış olsa da onun pratik işbilirliği küçük derneğin tedarikçilerle pazarlık etmesine yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "say",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. söylemek, demek",
+        "ex": "Economists say the new trade policy could significantly affect small manufacturing businesses.",
+        "exTr": "Ekonomistler, yeni ticaret politikasının küçük üretim işletmelerini önemli ölçüde etkileyebileceğini söylüyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Several residents say that the revised route is more convenient, but those living near the old stop describe a different experience.",
+          "exTr": "Bazı sakinler değiştirilen güzergâhın daha uygun olduğunu söylüyor; ancak eski durağın yakınında yaşayanlar farklı bir deneyim anlatıyor."
+        }
+      ]
+    },
+    {
+      "word": "scale",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ölçek, boyut",
+        "ex": "The scale of the disaster became clear only after rescue teams reached the remote villages.",
+        "exTr": "Felaketin boyutu, ancak kurtarma ekipleri uzak köylere ulaştıktan sonra netlik kazandı."
+      },
+      "alternatives": [
+        {
+          "ex": "The model's scale was clearly marked so that visitors would not mistake a compact display for evidence that the original building was small.",
+          "exTr": "Ziyaretçilerin küçük bir sergi modelini özgün binanın küçük olduğunun kanıtı sanmaması için modelin ölçeği açıkça belirtildi."
+        }
+      ]
+    },
+    {
+      "word": "scandal",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. skandal, rezalet, kamuoyunda yankı uyandıran olay",
+        "ex": "The corruption scandal forced two ministers to resign and prompted a parliamentary inquiry into the awarding of public contracts.",
+        "exTr": "Yolsuzluk skandalı iki bakanın istifasına yol açtı ve kamu ihalelerinin verilmesine ilişkin bir meclis soruşturmasını başlattı."
+      },
+      "alternatives": [
+        {
+          "ex": "The scandal prompted the association to publish its accounts, revealing decisions that members had previously understood only through informal explanations.",
+          "exTr": "Skandal, üyelerin daha önce yalnızca gayriresmî açıklamalarla anladığı kararları ortaya çıkararak derneği hesaplarını yayımlamaya yöneltti."
+        }
+      ]
+    },
+    {
+      "word": "scar",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yara izi",
+        "ex": "The surgery left a small scar along his collarbone that faded within a couple of years.",
+        "exTr": "Ameliyat, birkaç yıl içinde solan, köprücük kemiği boyunca küçük bir yara izi bıraktı."
+      },
+      "alternatives": [
+        {
+          "ex": "The portrait includes a small scar above the sitter's eyebrow, a detail absent from the more idealised image produced for official display.",
+          "exTr": "Portre, resmedilen kişinin kaşının üzerinde resmi sergileme için üretilen daha idealize görüntüde bulunmayan küçük bir yara izi içeriyor."
+        }
+      ]
+    },
+    {
+      "word": "scare",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. korku, panik dalgası",
+        "ex": "The sudden health scare prompted hospitals to increase their supply of protective equipment immediately.",
+        "exTr": "Ani sağlık paniği, hastaneleri koruyucu ekipman stoklarını derhal artırmaya yöneltti."
+      },
+      "alternatives": [
+        {
+          "ex": "The security scare interrupted the performance, but the organisers waited for verified information before explaining the situation to the audience.",
+          "exTr": "Güvenlik paniği gösteriyi kesintiye uğrattı; ancak organizatörler durumu izleyicilere açıklamadan önce doğrulanmış bilgiyi bekledi."
+        }
+      ]
+    },
+    {
+      "word": "scatter",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. dağıtmak, saçmak, dağılmak",
+        "ex": "Strong winds began to scatter autumn leaves across the empty schoolyard.",
+        "exTr": "Güçlü rüzgarlar, sonbahar yapraklarını boş okul bahçesine dağıtmaya başladı."
+      },
+      "alternatives": [
+        {
+          "ex": "A sudden gust began to scatter the loose drawings, sending volunteers across the courtyard to collect them before the rain arrived.",
+          "exTr": "Ani bir rüzgâr hamlesi gevşek çizimleri etrafa saçmaya başlayınca gönüllüler yağmur gelmeden onları toplamak için avluya dağıldı."
+        }
+      ]
+    },
+    {
+      "word": "scavenger",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. leşçil hayvan, leşle beslenen canlı; artık toplayıcı",
+        "ex": "Vultures are efficient scavengers whose feeding on carcasses limits the spread of disease, yet their populations have collapsed across large parts of the continent.",
+        "exTr": "Akbabalar, leşlerle beslenmeleri hastalıkların yayılmasını sınırlayan etkili leşçil hayvanlardır; yine de nüfusları kıtanın büyük bölümünde çökmüştür."
+      },
+      "alternatives": [
+        {
+          "ex": "The camera recorded a scavenger approaching the remains after other animals had left, providing a sequence that observers could examine without disturbing the site.",
+          "exTr": "Kamera, diğer hayvanlar ayrıldıktan sonra kalıntılara yaklaşan bir leşçili kaydederek gözlemcilerin alanı rahatsız etmeden inceleyebileceği bir olay dizisi sağladı."
+        }
+      ]
+    },
+    {
+      "word": "scenic",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. manzaralı, doğal güzelliği olan",
+        "ex": "The scenic road attracts visitors with wide views of forests, lakes, and mountains.",
+        "exTr": "Manzaralı yol ormanların, göllerin ve dağların geniş görüntüleriyle ziyaretçileri çeker."
+      },
+      "alternatives": [
+        {
+          "ex": "The scenic route added an hour to the journey, so the organisers offered it as an option rather than part of the compulsory itinerary.",
+          "exTr": "Manzaralı güzergâh yolculuğa bir saat eklediği için organizatörler onu zorunlu gezi programının parçası olarak değil bir seçenek olarak sundu."
+        }
+      ]
+    },
+    {
+      "word": "sceptical",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. şüpheci, kuşkucu",
+        "ex": "Many scientists remained sceptical about the new theory until further evidence was presented.",
+        "exTr": "Daha fazla kanıt sunulana kadar birçok bilim insanı yeni teori konusunda şüpheci kaldı."
+      },
+      "alternatives": [
+        {
+          "ex": "She remained sceptical of the proposed savings because the estimate excluded the time needed to train staff and transfer existing records.",
+          "exTr": "Tahmin, personeli eğitmek ve mevcut kayıtları aktarmak için gereken zamanı dışarıda bıraktığı için önerilen tasarruflara kuşkuyla yaklaşmayı sürdürdü."
+        }
+      ]
+    },
+    {
+      "word": "scheme",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. plan, program",
+        "ex": "The government launched a new scheme to help young people buy their first homes.",
+        "exTr": "Hükümet, gençlerin ilk evlerini satın almalarına yardımcı olacak yeni bir program başlattı."
+      },
+      "alternatives": [
+        {
+          "ex": "The lending scheme allowed residents to borrow tools, provided that they attended an introductory session and returned the equipment by an agreed date.",
+          "exTr": "Ödünç verme programı, tanıtım oturumuna katılıp ekipmanı kararlaştırılan tarihte geri getirmeleri koşuluyla sakinlerin alet ödünç almasına izin verdi."
+        }
+      ]
+    },
+    {
+      "word": "scholar",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. bilim insanı, akademisyen",
+        "ex": "Many scholars argue that the invention of printing fundamentally changed the spread of knowledge.",
+        "exTr": "Birçok akademisyen, matbaanın icadının bilginin yayılmasını kökten değiştirdiğini savunur."
+      },
+      "alternatives": [
+        {
+          "ex": "The scholar traced an anonymous quotation through several editions before locating a version that identified the source omitted by later printers.",
+          "exTr": "Akademisyen, sonraki matbaacıların çıkardığı kaynağı belirten bir sürümü bulmadan önce anonim bir alıntının izini birkaç baskı boyunca sürdü."
+        }
+      ]
+    },
+    {
+      "word": "school",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. okul",
+        "ex": "Every child in the village walks nearly three kilometers to reach the nearest school.",
+        "exTr": "Köydeki her çocuk, en yakın okula ulaşmak için neredeyse üç kilometre yürüyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The school opened its library to local residents on selected evenings, extending access without interrupting lessons or displacing existing activities.",
+          "exTr": "Okul, dersleri kesintiye uğratmadan ya da mevcut etkinlikleri yerinden etmeden erişimi genişleterek kütüphanesini belirli akşamlarda yerel sakinlere açtı."
+        }
+      ]
+    },
+    {
+      "word": "scientifically",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. bilimsel olarak",
+        "ex": "Researchers eventually proved the ancient remedy scientifically effective against several common bacterial infections.",
+        "exTr": "Araştırmacılar sonunda antik ilacın çeşitli yaygın bakteriyel enfeksiyonlara karşı bilimsel olarak etkili olduğunu kanıtladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The claim could be examined scientifically only after the team specified what would count as supporting evidence and what would challenge it.",
+          "exTr": "İddia, ancak ekip neyin destekleyici kanıt sayılacağını ve neyin ona karşı çıkacağını belirttikten sonra bilimsel olarak incelenebilirdi."
+        }
+      ]
+    },
+    {
+      "word": "scope",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kapsam, alan",
+        "ex": "The committee decided to broaden the scope of its investigation into the chemical spill.",
+        "exTr": "Komite, kimyasal sızıntıyla ilgili soruşturmasının kapsamını genişletmeye karar verdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The scope of the review was limited to public spaces, leaving questions about individual homes for a separate consultation.",
+          "exTr": "İncelemenin kapsamı kamusal alanlarla sınırlandırılarak tek tek konutlarla ilgili sorular ayrı bir görüş alma sürecine bırakıldı."
+        }
+      ]
+    },
+    {
+      "word": "scream",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. çığlık atmak",
+        "ex": "The frightened child screamed for help when the elevator suddenly stopped between floors.",
+        "exTr": "Asansör katlar arasında aniden durunca korkmuş çocuk yardım istemek için çığlık attı."
+      },
+      "alternatives": [
+        {
+          "ex": "The character begins to scream when the lights fail, but the stage directions leave the source of her fear deliberately uncertain.",
+          "exTr": "Işıklar kesilince karakter çığlık atmaya başlıyor; ancak sahne yönergeleri korkusunun kaynağını bilinçli olarak belirsiz bırakıyor."
+        }
+      ]
+    },
+    {
+      "word": "script",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. senaryo",
+        "ex": "The director asked the writers to revise the script before filming the final scene.",
+        "exTr": "Yönetmen, son sahneyi çekmeden önce yazarlardan senaryoyu gözden geçirmelerini istedi."
+      },
+      "alternatives": [
+        {
+          "ex": "The revised script gave the supporting character a stronger motive, making her final decision less dependent on an unexplained change of heart.",
+          "exTr": "Gözden geçirilmiş senaryo, yardımcı karaktere daha güçlü bir güdü vererek son kararını açıklanmamış bir fikir değişikliğine daha az bağımlı kıldı."
+        }
+      ]
+    },
+    {
+      "word": "scrutinise",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. dikkatle incelemek, mercek altına almak, didik didik etmek",
+        "ex": "Independent committees were set up to scrutinise the way pharmaceutical companies advertise their products to doctors and to the general public.",
+        "exTr": "İlaç şirketlerinin ürünlerini doktorlara ve genel kamuoyuna nasıl tanıttığını mercek altına almak için bağımsız komiteler kuruldu."
+      },
+      "alternatives": [
+        {
+          "ex": "The panel will scrutinise the assumptions behind the estimate, including whether the expected number of visitors can realistically be accommodated.",
+          "exTr": "Kurul, beklenen ziyaretçi sayısının gerçekçi biçimde karşılanıp karşılanamayacağı da dâhil olmak üzere tahminin arkasındaki varsayımları dikkatle inceleyecek."
+        }
+      ]
+    },
+    {
+      "word": "sculpture",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. heykel",
+        "ex": "The museum unveiled a bronze sculpture commemorating scientists who contributed to modern medicine.",
+        "exTr": "Müze, modern tıbba katkıda bulunan bilim insanlarını anan bronz bir heykeli tanıttı."
+      },
+      "alternatives": [
+        {
+          "ex": "The sculpture was positioned where its shadow changed throughout the afternoon, making the surrounding wall part of the viewing experience.",
+          "exTr": "Heykel, gölgesinin öğleden sonra boyunca değiştiği bir yere konularak çevredeki duvar izleme deneyiminin parçası hâline getirildi."
+        }
+      ]
+    },
+    {
+      "word": "sea-green",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. deniz yeşili (mavimsi yeşil)",
+        "ex": "The designer chose a sea-green fabric to reflect the calm atmosphere of the coastal hotel.",
+        "exTr": "Tasarımcı, kıyı otelinin sakin atmosferini yansıtmak için deniz yeşili bir kumaş seçti."
+      },
+      "alternatives": [
+        {
+          "ex": "The sea-green tiles survived beneath a later covering, allowing the restoration team to recover part of the entrance hall's original colour scheme.",
+          "exTr": "Deniz yeşili karolar sonraki bir kaplamanın altında korunarak restorasyon ekibinin giriş salonunun özgün renk düzeninin bir bölümünü yeniden ortaya çıkarmasını sağladı."
+        }
+      ]
+    },
+    {
+      "word": "seal",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. mühürlemek, kapatmak, sızdırmaz hale getirmek",
+        "ex": "Engineers used a special adhesive to seal the spacecraft's hull against extreme temperature changes.",
+        "exTr": "Mühendisler, uzay aracının gövdesini aşırı sıcaklık değişimlerine karşı sızdırmaz hale getirmek için özel bir yapıştırıcı kullandı."
+      },
+      "alternatives": [
+        {
+          "ex": "The technicians needed to seal the gap around the panel before testing whether the enclosure could keep dust away from the instrument.",
+          "exTr": "Teknisyenlerin, muhafazanın tozu aletten uzak tutup tutamayacağını sınamadan önce panelin etrafındaki boşluğu kapatması gerekiyordu."
+        }
+      ]
+    },
+    {
+      "word": "search",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. aramak",
+        "ex": "Customs officers routinely search luggage at the border to prevent the smuggling of banned goods.",
+        "exTr": "Gümrük memurları, yasaklı malların kaçakçılığını önlemek için sınırda bagajları rutin olarak arar."
+      },
+      "alternatives": [
+        {
+          "ex": "Volunteers helped search the storage rooms for missing labels, comparing loose cards with photographs taken before the collection was moved.",
+          "exTr": "Gönüllüler, boşta duran kartları koleksiyon taşınmadan önce çekilen fotoğraflarla karşılaştırarak eksik etiketler için depoların aranmasına yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "season",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. mevsim, sezon",
+        "ex": "Tourists flock to the coastal town every year during the busy summer season.",
+        "exTr": "Turistler her yıl yoğun yaz sezonunda kıyı kasabasına akın eder."
+      },
+      "alternatives": [
+        {
+          "ex": "During the quiet season, the hotel used empty rooms for staff training and repairs that would have disturbed guests during busier months.",
+          "exTr": "Otel, sakin sezonda boş odaları personel eğitimi ve daha yoğun aylarda konukları rahatsız edecek onarımlar için kullandı."
+        }
+      ]
+    },
+    {
+      "word": "seawater",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. deniz suyu",
+        "ex": "Engineers are testing a new desalination method that converts seawater into safe drinking water.",
+        "exTr": "Mühendisler, deniz suyunu güvenli içme suyuna dönüştüren yeni bir tuzdan arındırma yöntemini test ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The seawater samples were labelled with collection times as well as locations, allowing the laboratory to compare observations made under different conditions.",
+          "exTr": "Deniz suyu örnekleri konumların yanı sıra toplama saatleriyle de etiketlenerek laboratuvarın farklı koşullarda yapılmış gözlemleri karşılaştırması sağlandı."
+        }
+      ]
+    },
+    {
+      "word": "second",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. saniye; s. ikinci",
+        "ex": "The runner finished the race just two seconds behind the current world record holder.",
+        "exTr": "Koşucu, yarışı mevcut dünya rekoru sahibinin sadece iki saniye gerisinde tamamladı."
+      },
+      "alternatives": [
+        {
+          "ex": "A delay of less than a second was enough to make the recorded sound appear disconnected from the speaker's movements.",
+          "exTr": "Bir saniyeden kısa gecikme, kaydedilmiş sesin konuşmacının hareketlerinden kopuk görünmesi için yeterliydi."
+        }
+      ]
+    },
+    {
+      "word": "second-guess",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. (bir kararı) sonradan eleştirmek, sorgulamak",
+        "ex": "Investors should avoid trying to second-guess every decision the central bank makes about interest rates.",
+        "exTr": "Yatırımcılar, merkez bankasının faiz oranlarıyla ilgili her kararını sonradan sorgulamaya çalışmaktan kaçınmalıdır."
+      },
+      "alternatives": [
+        {
+          "ex": "The review sought to understand the information available at the time, not simply to second-guess decisions with the benefit of later knowledge.",
+          "exTr": "İnceleme, sonraki bilgilerin avantajıyla kararları yalnızca geriye dönük eleştirmek değil, o sırada mevcut olan bilgileri anlamak istiyordu."
+        }
+      ]
+    },
+    {
+      "word": "secondary",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. ikincil, tali",
+        "ex": "For most patients, side effects remain a secondary concern compared to the treatment's overall effectiveness.",
+        "exTr": "Çoğu hasta için yan etkiler, tedavinin genel etkinliğine kıyasla ikincil bir kaygı olmaya devam ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Cost was a secondary consideration once the team realised that only one design allowed visitors to reach every part of the display.",
+          "exTr": "Ekip, ziyaretçilerin serginin her bölümüne ulaşmasını yalnızca bir tasarımın sağladığını fark edince maliyet ikincil bir konu oldu."
+        }
+      ]
+    },
+    {
+      "word": "secretary",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sekreter, kâtip; (ABD'de) bakan (Secretary of State)",
+        "ex": "The department secretary organized all faculty meetings and managed correspondence with visiting researchers.",
+        "exTr": "Bölüm sekreteri, tüm fakülte toplantılarını organize etti ve ziyaretçi araştırmacılarla yazışmaları yönetti."
+      },
+      "alternatives": [
+        {
+          "ex": "The secretary circulated a summary of the discussion, inviting members to correct misunderstandings before the minutes were approved at the next meeting.",
+          "exTr": "Sekreter, tutanaklar sonraki toplantıda onaylanmadan önce üyeleri yanlış anlamaları düzeltmeye davet ederek görüşmenin özetini dağıttı."
+        }
+      ]
+    },
+    {
+      "word": "secretive",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. gizli tutan, ketum, sır saklayan",
+        "ex": "The organisation remained highly secretive about its funding sources, which made independent researchers increasingly suspicious of the motives behind its campaigns.",
+        "exTr": "Kuruluş, fon kaynakları konusunda son derece ketum kaldı; bu da bağımsız araştırmacıları kampanyalarının ardındaki niyetler hakkında giderek daha kuşkulu hâle getirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The narrator becomes increasingly secretive about her visits to the old house, creating a gap between what readers know and what other characters suspect.",
+          "exTr": "Anlatıcı eski eve yaptığı ziyaretler konusunda giderek daha ketumlaşarak okuyucuların bildikleriyle diğer karakterlerin kuşkulandıkları arasında bir boşluk yaratıyor."
+        }
+      ]
+    },
+    {
+      "word": "sector",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sektör, kesim",
+        "ex": "Investment in the technology sector has grown steadily despite broader economic uncertainty.",
+        "exTr": "Teknoloji sektörüne yapılan yatırım, daha geniş ekonomik belirsizliğe rağmen istikrarlı biçimde arttı."
+      },
+      "alternatives": [
+        {
+          "ex": "The training centre consulted employers across the construction sector to identify practical skills that smaller firms struggled to develop internally.",
+          "exTr": "Eğitim merkezi, küçük firmaların kendi bünyelerinde geliştirmekte zorlandığı pratik becerileri belirlemek için inşaat sektörü genelindeki işverenlere danıştı."
+        }
+      ]
+    },
+    {
+      "word": "security",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. güvenlik, emniyet",
+        "ex": "Rising temperatures and unpredictable rainfall increasingly threaten food security in many developing regions.",
+        "exTr": "Yükselen sıcaklıklar ve öngörülemeyen yağışlar, birçok gelişmekte olan bölgede gıda güvenliğini giderek tehdit ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The security review examined how keys were issued and returned, revealing that several former volunteers still appeared on the access list.",
+          "exTr": "Güvenlik incelemesi, anahtarların nasıl verilip geri alındığını araştırarak bazı eski gönüllülerin erişim listesinde hâlâ göründüğünü ortaya çıkardı."
+        }
+      ]
+    },
+    {
+      "word": "see",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. görmek, anlamak",
+        "ex": "Doctors expect to see measurable improvement in patients within the first two weeks of treatment.",
+        "exTr": "Doktorlar, tedavinin ilk iki haftası içinde hastalarda ölçülebilir bir iyileşme görmeyi bekliyor."
+      },
+      "alternatives": [
+        {
+          "ex": "From the balcony, visitors can see how the new walkway connects buildings that previously had no direct pedestrian route between them.",
+          "exTr": "Ziyaretçiler balkondan, yeni yaya yolunun daha önce aralarında doğrudan yaya bağlantısı bulunmayan binaları nasıl birleştirdiğini görebiliyor."
+        }
+      ]
+    },
+    {
+      "word": "seek",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. aramak",
+        "ex": "Patients experiencing chest pain should seek immediate medical attention rather than waiting until morning.",
+        "exTr": "Göğüs ağrısı yaşayan hastalar, sabaha kadar beklemek yerine derhal tıbbi yardım aramalıdır."
+      },
+      "alternatives": [
+        {
+          "ex": "The researcher will seek further evidence in local collections before deciding whether the unexplained gap reflects lost records or an actual interruption.",
+          "exTr": "Araştırmacı, açıklanmayan boşluğun kayıp kayıtlardan mı yoksa gerçek bir kesintiden mi kaynaklandığına karar vermeden önce yerel koleksiyonlarda daha fazla kanıt arayacak."
+        }
+      ]
+    },
+    {
+      "word": "seemingly",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. görünüşte",
+        "ex": "The seemingly minor software glitch eventually caused a major disruption across the entire network.",
+        "exTr": "Görünüşte küçük olan yazılım hatası, sonunda tüm ağda büyük bir aksaklığa yol açtı."
+      },
+      "alternatives": [
+        {
+          "ex": "A seemingly ordinary shopping list became important when its dates placed the traveller in a town absent from the published itinerary.",
+          "exTr": "Görünüşte sıradan bir alışveriş listesi, tarihleri yolcunun yayımlanmış güzergâhta bulunmayan bir kasabada olduğunu gösterince önem kazandı."
+        }
+      ]
+    },
+    {
+      "word": "segregation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ayrımcılık, ayrım (özellikle ırk temelli)",
+        "ex": "Legal segregation in public schools was officially ended after a landmark Supreme Court decision.",
+        "exTr": "Kamu okullarında yasal ayrımcılık, önemli bir Yüksek Mahkeme kararının ardından resmen sona erdirildi."
+      },
+      "alternatives": [
+        {
+          "ex": "The study examines residential segregation through maps and personal accounts, showing how physical boundaries shaped access to shared facilities.",
+          "exTr": "Çalışma, fiziksel sınırların ortak tesislere erişimi nasıl şekillendirdiğini göstererek yerleşim alanlarındaki ayrışmayı haritalar ve kişisel anlatımlar üzerinden inceliyor."
+        }
+      ]
+    },
+    {
+      "word": "seizure",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. el koyma, zapt etme",
+        "ex": "Customs agents carried out the seizure of several containers suspected of holding counterfeit goods.",
+        "exTr": "Gümrük memurları, sahte mal taşıdığından şüphelenilen birkaç konteynerin el konulmasını gerçekleştirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The seizure of the documents interrupted the newspaper's work, and later accounts disagreed about which records had actually been removed.",
+          "exTr": "Belgelere el konulması gazetenin çalışmalarını kesintiye uğrattı; sonraki anlatımlar da gerçekte hangi kayıtların götürüldüğü konusunda çelişti."
+        }
+      ]
+    },
+    {
+      "word": "selected",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. seçilmiş, seçkin",
+        "ex": "Only a few candidates were selected for the final interview round at the research institute.",
+        "exTr": "Araştırma enstitüsündeki son mülakat turu için yalnızca birkaç aday seçildi."
+      },
+      "alternatives": [
+        {
+          "ex": "The selected passages represent different stages of the author's career, rather than simply collecting the sections most frequently quoted by reviewers.",
+          "exTr": "Seçilmiş bölümler, yalnızca eleştirmenlerin en sık alıntıladığı kısımları bir araya getirmek yerine yazarın kariyerinin farklı aşamalarını temsil ediyor."
+        }
+      ]
+    },
+    {
+      "word": "selectivity",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. seçicilik; yalnız belirli unsurları seçme veya etkileme özelliği",
+        "ex": "The drug's selectivity allows it to target tumour cells while leaving most healthy tissue unharmed.",
+        "exTr": "İlacın seçiciliği, sağlıklı dokunun çoğuna zarar vermeden tümör hücrelerini hedeflemesine olanak tanır."
+      },
+      "alternatives": [
+        {
+          "ex": "The selectivity of the archive became apparent when researchers discovered that everyday correspondence had been discarded while official letters were carefully preserved.",
+          "exTr": "Araştırmacılar resmi mektuplar dikkatle korunurken gündelik yazışmaların atıldığını keşfedince arşivin seçiciliği ortaya çıktı."
+        }
+      ]
+    },
+    {
+      "word": "self-acting",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kendi kendine çalışan, otomatik",
+        "ex": "Modern factories increasingly rely on self-acting machinery to regulate temperature without human intervention.",
+        "exTr": "Modern fabrikalar, insan müdahalesi olmadan sıcaklığı ayarlamak için giderek daha çok kendi kendine çalışan makinelere güveniyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The self-acting valve was displayed beside an older manual mechanism, enabling trainees to compare how each responded to changes in pressure.",
+          "exTr": "Kendi kendine çalışan vana, kursiyerlerin her birinin basınç değişikliklerine nasıl tepki verdiğini karşılaştırabilmesi için eski bir elle kumandalı mekanizmanın yanında sergilendi."
+        }
+      ]
+    },
+    {
+      "word": "self-awareness",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. öz farkındalık, kendini bilme",
+        "ex": "Therapists often encourage self-awareness as the first step toward changing unhealthy behavioral patterns.",
+        "exTr": "Terapistler, sağlıksız davranış kalıplarını değiştirmenin ilk adımı olarak genellikle öz farkındalığı teşvik eder."
+      },
+      "alternatives": [
+        {
+          "ex": "The reflective diary encouraged self-awareness by asking trainees to compare their initial reactions with the reasons they later gave for their decisions.",
+          "exTr": "Düşünme günlüğü, kursiyerlerden ilk tepkilerini kararları için daha sonra sundukları gerekçelerle karşılaştırmalarını isteyerek öz farkındalığı teşvik etti."
+        }
+      ]
+    },
+    {
+      "word": "self-control",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. özdenetim, öz kontrol, kendine hâkim olma",
+        "ex": "Learning self-control at a young age helps children manage stress more effectively later in life.",
+        "exTr": "Küçük yaşta özdenetim kazanmak, çocukların ilerideki yaşamlarında stresi daha etkili yönetmesine yardımcı olur."
+      },
+      "alternatives": [
+        {
+          "ex": "The character's self-control begins to weaken when repeated interruptions prevent her from explaining a decision that others have already condemned.",
+          "exTr": "Tekrarlanan söz kesmeler, başkalarının çoktan kınadığı bir kararı açıklamasını engelleyince karakterin özdenetimi zayıflamaya başlıyor."
+        }
+      ]
+    },
+    {
+      "word": "self-direction",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kendi kendini yönlendirme, özerklik",
+        "ex": "The new curriculum encourages self-direction by letting students choose their own research topics.",
+        "exTr": "Yeni müfredat, öğrencilerin kendi araştırma konularını seçmelerine izin vererek kendi kendini yönlendirmeyi teşvik ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The workshop allowed considerable self-direction, but learners still met their tutor regularly to explain their choices and identify difficulties.",
+          "exTr": "Atölye, kişinin kendini yönlendirmesine geniş alan tanıyordu; ancak öğrenciler seçimlerini açıklamak ve güçlükleri belirlemek için eğitmenleriyle düzenli olarak görüşüyordu."
+        }
+      ]
+    },
+    {
+      "word": "self-drive",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sürücüsüz kiralık araç (kendi kullandığın kiralık araba)",
+        "ex": "The travel agency offers self-drive options for tourists who prefer to explore the coastline independently.",
+        "exTr": "Seyahat acentesi, kıyı şeridini bağımsız olarak keşfetmeyi tercih eden turistler için kendi kullandıkları kiralık araç seçenekleri sunuyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The company offered self-drive as an alternative to hiring a vehicle with a driver, clearly listing the responsibilities included in each arrangement.",
+          "exTr": "Şirket, her düzenlemenin içerdiği sorumlulukları açıkça sıralayarak şoförlü araç kiralamanın alternatifi olarak müşterinin aracı kendisinin kullandığı kiralama seçeneğini sundu."
+        }
+      ],
+      "note": "Rental arrangement in which the customer drives; not an autonomous vehicle."
+    },
+    {
+      "word": "self-established",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kendi kendine kurulmuş, kendiliğinden oluşmuş",
+        "ex": "The village council remained a self-established authority long before the government officially recognized it.",
+        "exTr": "Köy meclisi, hükümet onu resmen tanımadan çok önce kendi kendine kurulmuş bir otorite olarak kaldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The self-established committee organised language classes in borrowed rooms, dividing teaching and administration among members who had volunteered their time.",
+          "exTr": "Kendi girişimiyle kurulmuş komite, zamanını gönüllü olarak ayıran üyeler arasında öğretim ve idareyi paylaşarak ödünç alınmış odalarda dil dersleri düzenledi."
+        }
+      ],
+      "note": "Rare adjective, useful attested noun phrase rather than a claim of high-frequency collocation. https://www.wordwebonline.com/en/SELFESTABLISHED ; https://www.vocabulary.com/dictionary/self-established"
+    },
+    {
+      "word": "self-giving",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. özverili, fedakâr",
+        "ex": "Neighbors praised the self-giving nurse who volunteered extra shifts throughout the entire outbreak.",
+        "exTr": "Komşular, salgın boyunca gönüllü olarak fazladan vardiyalar üstlenen özverili hemşireyi övdü."
+      },
+      "alternatives": [
+        {
+          "ex": "The memoir presents a self-giving teacher whose commitment to others is admirable, while also acknowledging the personal needs she repeatedly neglected.",
+          "exTr": "Anı kitabı, başkalarına bağlılığı takdire değer olan özverili bir öğretmeni sunarken tekrar tekrar ihmal ettiği kişisel ihtiyaçlarını da kabul ediyor."
+        }
+      ]
+    },
+    {
+      "word": "self-importance",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kendini gereğinden fazla önemseme, kendini beğenmişlik",
+        "ex": "His obvious self-importance prevented him from accepting useful criticism from more experienced colleagues.",
+        "exTr": "Belirgin kendini beğenmişliği, daha deneyimli meslektaşlarından gelen yararlı eleştiriyi kabul etmesini engelledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The official's self-importance becomes clear when he treats a minor seating dispute as a challenge to his entire public reputation.",
+          "exTr": "Küçük bir oturma düzeni anlaşmazlığını bütün kamusal itibarına yönelik bir meydan okuma sayınca yetkilinin kendini aşırı önemsemesi belirginleşiyor."
+        }
+      ]
+    }
+  ],
+  "collocations": [
+    {
+      "word": "salad",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a mixed salad",
+          "tr": "karışık salata"
+        },
+        {
+          "en": "salad dressing",
+          "tr": "salata sosu"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "samurai",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "samurai armour",
+          "tr": "samuray zırhı"
+        },
+        {
+          "en": "a samurai warrior",
+          "tr": "samuray savaşçı"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "sarcasm",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "biting sarcasm",
+          "tr": "incitici iğneleme"
+        },
+        {
+          "en": "a hint of sarcasm",
+          "tr": "hafif bir alaycılık belirtisi"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "scenic",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a scenic route",
+          "tr": "manzaralı güzergâh"
+        },
+        {
+          "en": "scenic beauty",
+          "tr": "doğal manzara güzelliği"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "sea-green",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a sea-green shade",
+          "tr": "deniz yeşili bir ton"
+        },
+        {
+          "en": "sea-green tiles",
+          "tr": "deniz yeşili karolar"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "self-acting",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a self-acting valve",
+          "tr": "kendi kendine çalışan vana"
+        },
+        {
+          "en": "a self-acting mechanism",
+          "tr": "otomatik çalışan mekanizma"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "self-direction",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "encourage self-direction",
+          "tr": "kişinin kendini yönlendirmesini teşvik etmek"
+        },
+        {
+          "en": "a capacity for self-direction",
+          "tr": "kendini yönlendirme becerisi"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "self-established",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a self-established committee",
+          "tr": "üyelerinin kendi girişimiyle kurulmuş komite"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "self-importance",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "an inflated sense of self-importance",
+          "tr": "şişirilmiş bir kendini önemli görme duygusu"
+        },
+        {
+          "en": "full of self-importance",
+          "tr": "kendini aşırı önemli gören"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

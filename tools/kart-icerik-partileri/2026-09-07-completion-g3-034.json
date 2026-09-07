@@ -1,0 +1,988 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 3,
+    "input": "input-034.json"
+  },
+  "enrichments": [
+    {
+      "word": "pain",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ağrı, acı",
+        "ex": "Chronic back pain affects millions of adults and often limits their daily activities.",
+        "exTr": "Kronik sırt ağrısı milyonlarca yetişkini etkiler ve genellikle günlük aktivitelerini kısıtlar."
+      },
+      "alternatives": [
+        {
+          "ex": "The questionnaire allowed participants to describe pain in their own words before asking them to select a point on a numerical scale.",
+          "exTr": "Anket, katılımcılardan sayısal bir ölçek üzerinde bir nokta seçmelerini istemeden önce ağrılarını kendi sözcükleriyle anlatmalarına olanak tanıdı."
+        }
+      ]
+    },
+    {
+      "word": "painfully",
+      "sense_index": 1,
+      "expected": {
+        "tr": "z. üzücü veya rahatsız edici derecede",
+        "ex": "The limitations of the method became painfully clear during the trial.",
+        "exTr": "Yöntemin sınırlılıkları deneme sırasında rahatsız edici derecede belirginleşti."
+      },
+      "alternatives": [
+        {
+          "ex": "When the projector failed, it became painfully obvious that the presenter had never practised explaining the central argument without relying on slides.",
+          "exTr": "Projektör bozulunca sunum yapan kişinin temel savını slaytlara dayanmadan açıklamayı hiç prova etmediği rahatsız edici derecede açık hâle geldi."
+        }
+      ]
+    },
+    {
+      "word": "paintball",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. paintball (boyalı mermiyle oynanan savaş oyunu)",
+        "ex": "Paintball has grown from a niche hobby into a popular team activity that companies use for training exercises and staff bonding.",
+        "exTr": "Paintball, dar bir hobi olmaktan çıkıp şirketlerin eğitim çalışmalarında ve personel kaynaşmasında kullandığı popüler bir takım etkinliğine dönüştü."
+      },
+      "alternatives": [
+        {
+          "ex": "Although several employees suggested paintball for the staff outing, the organiser also offered a quieter activity so that participation would reflect genuine preferences.",
+          "exTr": "Birkaç çalışan personel gezisi için paintball önerse de organizatör, katılımın gerçek tercihleri yansıtması için daha sakin bir etkinlik de sundu."
+        }
+      ]
+    },
+    {
+      "word": "painting",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. resim, tablo; resim sanatı",
+        "ex": "Restorers spent nearly a decade cleaning and repairing the damaged Renaissance painting.",
+        "exTr": "Restoratörler, hasarlı Rönesans tablosunu temizleyip onarmak için neredeyse on yıl harcadı."
+      },
+      "alternatives": [
+        {
+          "ex": "The painting places the market stalls at the edge of the scene, drawing attention instead to the empty space between the vendors.",
+          "exTr": "Tablo pazar tezgâhlarını sahnenin kenarına yerleştirerek dikkati bunun yerine satıcılar arasındaki boş alana çekiyor."
+        }
+      ]
+    },
+    {
+      "word": "palaeontologist",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. paleontolog",
+        "ex": "A team of palaeontologists uncovered a remarkably well-preserved dinosaur skeleton in the desert.",
+        "exTr": "Bir paleontolog ekibi, çölde dikkat çekici derecede iyi korunmuş bir dinozor iskeleti buldu."
+      },
+      "alternatives": [
+        {
+          "ex": "The palaeontologist examined the surrounding rock as carefully as the fossil, since its position could provide clues about the environment in which it formed.",
+          "exTr": "Paleontolog, konumu oluştuğu çevre hakkında ipuçları sunabileceğinden çevredeki kayayı da fosil kadar dikkatle inceledi."
+        }
+      ]
+    },
+    {
+      "word": "pale",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. soluk, solgun",
+        "ex": "The patient looked unusually pale after losing a significant amount of blood.",
+        "exTr": "Hasta, önemli miktarda kan kaybettikten sonra alışılmadık derecede soluk görünüyordu."
+      },
+      "alternatives": [
+        {
+          "ex": "The pale lettering was difficult to read against the bright background, so the designer increased the contrast before printing the next batch.",
+          "exTr": "Soluk yazıyı parlak arka planda okumak zordu; bu yüzden tasarımcı sonraki partiyi basmadan önce kontrastı artırdı."
+        }
+      ]
+    },
+    {
+      "word": "pancreatic",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. pankreasa ait, pankreatik",
+        "ex": "Pancreatic enzymes break down fats and proteins, and a shortage of them can seriously impair the absorption of essential nutrients.",
+        "exTr": "Pankreas enzimleri yağları ve proteinleri parçalar; bunların eksikliği temel besinlerin emilimini ciddi biçimde bozabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The lecturer used an anatomical model to locate the pancreatic duct, then asked students to identify the same structure in a labelled illustration.",
+          "exTr": "Öğretim görevlisi pankreas kanalını bulmak için anatomik bir model kullandı, ardından öğrencilerden aynı yapıyı etiketli bir çizimde belirlemelerini istedi."
+        }
+      ]
+    },
+    {
+      "word": "panic",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. panik",
+        "ex": "News of the bank's collapse caused widespread panic among small investors across the country.",
+        "exTr": "Bankanın çöktüğü haberi, ülke genelindeki küçük yatırımcılar arasında yaygın bir paniğe yol açtı."
+      },
+      "alternatives": [
+        {
+          "ex": "The sudden cancellation caused panic among exhibitors who had already shipped their materials, especially while no one could explain the arrangements for returning them.",
+          "exTr": "Ani iptal, özellikle kimse malzemelerin geri gönderilmesine ilişkin düzenlemeleri açıklayamazken malzemelerini önceden yollamış katılımcılar arasında paniğe yol açtı."
+        }
+      ]
+    },
+    {
+      "word": "paperwork",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. evrak işi, kırtasiye işleri, yazışma",
+        "ex": "Digital applications have reduced the amount of paperwork citizens must complete, cutting the time needed to obtain an official document.",
+        "exTr": "Dijital uygulamalar, vatandaşların doldurmak zorunda olduğu evrak miktarını azaltarak resmi bir belge almak için gereken süreyi kısalttı."
+      },
+      "alternatives": [
+        {
+          "ex": "Small charities welcomed the simplified paperwork, but some still needed help understanding which details belonged in the revised application and which could be omitted.",
+          "exTr": "Küçük yardım kuruluşları basitleştirilmiş evrak işlerini olumlu karşıladı, ancak bazıları yenilenen başvuruda hangi ayrıntıların gerektiğini, hangilerinin atlanabileceğini anlamak için hâlâ yardıma ihtiyaç duyuyordu."
+        }
+      ]
+    },
+    {
+      "word": "parachute",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. paraşüt",
+        "ex": "The cargo was dropped from the aircraft with a large parachute to ensure a soft landing.",
+        "exTr": "Kargo, yumuşak bir iniş sağlamak amacıyla büyük bir paraşütle uçaktan bırakıldı."
+      },
+      "alternatives": [
+        {
+          "ex": "In the film, the parachute opens against a cloudy sky while the camera cuts to the anxious spectators waiting on the ground.",
+          "exTr": "Filmde paraşüt bulutlu gökyüzünün önünde açılırken kamera yerde bekleyen kaygılı seyircilere dönüyor."
+        }
+      ]
+    },
+    {
+      "word": "paradox",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. paradoks, çelişki",
+        "ex": "Economists often describe the paradox of thrift, in which saving more can slow overall growth.",
+        "exTr": "İktisatçılar, daha fazla tasarrufun genel büyümeyi yavaşlatabildiği tasarruf paradoksunu sıkça anlatır."
+      },
+      "alternatives": [
+        {
+          "ex": "The essay explores a paradox of constant communication: the character receives messages throughout the day yet struggles to find someone willing to listen.",
+          "exTr": "Deneme, sürekli iletişimin bir paradoksunu inceliyor: karakter gün boyunca mesaj almasına rağmen kendisini dinlemeye istekli birini bulmakta zorlanıyor."
+        }
+      ]
+    },
+    {
+      "word": "paragraph",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. paragraf",
+        "ex": "The editor asked the author to shorten the introductory paragraph before submitting the manuscript.",
+        "exTr": "Editör, yazardan makaleyi göndermeden önce giriş paragrafını kısaltmasını istedi."
+      },
+      "alternatives": [
+        {
+          "ex": "One paragraph introduces a competing explanation, allowing the author to address a likely objection before returning to the evidence supporting her interpretation.",
+          "exTr": "Bir paragraf rakip bir açıklamayı sunarak yazarın kendi yorumunu destekleyen kanıtlara dönmeden önce olası bir itirazı ele almasını sağlıyor."
+        }
+      ]
+    },
+    {
+      "word": "parasite",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. parazit, asalak",
+        "ex": "The parasite lives inside the host's intestines, absorbing nutrients before they can be digested.",
+        "exTr": "Parazit, konakçının bağırsaklarında yaşar ve besinler sindirilmeden önce onları emer."
+      },
+      "alternatives": [
+        {
+          "ex": "The biologist examined the insect for signs of a parasite, taking care to distinguish material attached to its body from structures belonging to it.",
+          "exTr": "Biyolog, böceğin vücuduna yapışmış malzemeleri ona ait yapılardan ayırmaya özen göstererek böceği parazit belirtileri açısından inceledi."
+        }
+      ]
+    },
+    {
+      "word": "parasympathetic",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. parasempatik (sinir sistemine ait)",
+        "ex": "The parasympathetic nervous system slows the heart rate and promotes digestion once the body perceives that a threat has passed.",
+        "exTr": "Parasempatik sinir sistemi, vücut tehdidin geçtiğini algıladığında kalp atış hızını yavaşlatır ve sindirimi destekler."
+      },
+      "alternatives": [
+        {
+          "ex": "The diagram marks parasympathetic pathways in a separate colour, helping students trace their connections without confusing them with the neighbouring sensory nerves.",
+          "exTr": "Şema, parasempatik yolları ayrı bir renkle işaretleyerek öğrencilerin bunları komşu duyu sinirleriyle karıştırmadan bağlantılarını izlemesine yardımcı oluyor."
+        }
+      ]
+    },
+    {
+      "word": "pardon",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. af, bağışlama",
+        "ex": "The governor granted a pardon to several nonviolent offenders who had completed rehabilitation programs.",
+        "exTr": "Vali, rehabilitasyon programlarını tamamlamış birkaç şiddet içermeyen suçluyu affetti."
+      },
+      "alternatives": [
+        {
+          "ex": "In the historical drama, the promise of a pardon divides the prisoners between those willing to trust the ruler and those fearing another betrayal.",
+          "exTr": "Tarihî dramada af vaadi, mahkûmları hükümdara güvenmeye istekli olanlarla yeni bir ihanetten korkanlar arasında ikiye ayırıyor."
+        }
+      ]
+    },
+    {
+      "word": "parenthesis",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. parantez; ara söz",
+        "ex": "The editor suggested placing the additional explanation in parenthesis rather than a separate sentence.",
+        "exTr": "Editör, ek açıklamanın ayrı bir cümle yerine parantez içine yerleştirilmesini önerdi."
+      },
+      "alternatives": [
+        {
+          "ex": "A brief parenthesis interrupts the narrator's description of the house, revealing a personal memory that changes how readers interpret the otherwise ordinary scene.",
+          "exTr": "Kısa bir ara söz, anlatıcının ev betimlemesini keserek okurların başka türlü sıradan sayılabilecek sahneyi yorumlama biçimini değiştiren kişisel bir anıyı açığa vuruyor."
+        }
+      ]
+    },
+    {
+      "word": "parliamentary",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. parlamentoya veya parlamenter yönetime ilişkin",
+        "ex": "The inquiry examined whether parliamentary oversight had been weakened by the emergency legislation.",
+        "exTr": "Soruşturma, acil durum mevzuatının parlamenter denetimi zayıflatıp zayıflatmadığını inceledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The documentary follows a parliamentary committee as its members question witnesses, compare written submissions, and negotiate the wording of a joint report.",
+          "exTr": "Belgesel, üyeleri tanıklara soru sorarken, yazılı görüşleri karşılaştırırken ve ortak raporun ifadelerini müzakere ederken bir parlamento komisyonunu izliyor."
+        }
+      ]
+    },
+    {
+      "word": "part",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. parça, bölüm, rol",
+        "ex": "Regular exercise plays an important part in maintaining both physical and mental well-being.",
+        "exTr": "Düzenli egzersiz, hem fiziksel hem de zihinsel iyi oluşu sürdürmede önemli bir rol oynar."
+      },
+      "alternatives": [
+        {
+          "ex": "Listening formed an essential part of the training, as volunteers needed to understand residents' priorities before suggesting changes to the shared garden.",
+          "exTr": "Gönüllülerin ortak bahçede değişiklik önermeden önce sakinlerin önceliklerini anlaması gerektiğinden dinleme, eğitimin temel bir bölümünü oluşturuyordu."
+        }
+      ]
+    },
+    {
+      "word": "partial",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kısmi",
+        "ex": "The excavation revealed only a partial skeleton, making it difficult to identify the species.",
+        "exTr": "Kazı yalnızca kısmi bir iskelet ortaya çıkardı; bu da türün belirlenmesini zorlaştırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The photograph provides only a partial view of the room, leaving researchers uncertain about the objects positioned beyond the edge of the frame.",
+          "exTr": "Fotoğraf odanın yalnızca kısmi bir görünümünü sunarak araştırmacıları kadrajın dışında kalan nesneler konusunda belirsizlik içinde bırakıyor."
+        }
+      ]
+    },
+    {
+      "word": "participate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. katılmak, iştirak etmek",
+        "ex": "Students who actively participate in classroom discussions tend to retain information more effectively.",
+        "exTr": "Sınıf tartışmalarına etkin biçimde katılan öğrenciler, bilgiyi genellikle daha kalıcı biçimde akılda tutar."
+      },
+      "alternatives": [
+        {
+          "ex": "Residents could participate in the planning meeting by telephone, an arrangement intended to include people unable to travel to the town hall.",
+          "exTr": "Sakinler planlama toplantısına telefonla katılabiliyordu; bu düzenleme belediye binasına gidemeyen insanları da sürece dâhil etmeyi amaçlıyordu."
+        }
+      ]
+    },
+    {
+      "word": "particular",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. belirli, özel",
+        "ex": "This particular strain of bacteria appears to be resistant to nearly all common antibiotics.",
+        "exTr": "Bu belirli bakteri suşu, neredeyse tüm yaygın antibiyotiklere dirençli görünmektedir."
+      },
+      "alternatives": [
+        {
+          "ex": "The guide highlighted one particular feature of the bridge: a narrow footpath that had been added long after the original structure was completed.",
+          "exTr": "Rehber köprünün belirli bir özelliğini vurguladı: özgün yapı tamamlandıktan çok sonra eklenmiş dar bir yaya yolu."
+        }
+      ]
+    },
+    {
+      "word": "partly",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. kısmen",
+        "ex": "The decline in bee populations is partly caused by the widespread use of certain pesticides.",
+        "exTr": "Arı popülasyonlarındaki azalma, kısmen belirli pestisitlerin yaygın kullanımından kaynaklanmaktadır."
+      },
+      "alternatives": [
+        {
+          "ex": "The delay was partly a result of unclear instructions, although the team also acknowledged that it had underestimated the time needed for testing.",
+          "exTr": "Gecikme kısmen belirsiz talimatlardan kaynaklanıyordu, ancak ekip test için gereken süreyi olduğundan kısa hesapladığını da kabul etti."
+        }
+      ]
+    },
+    {
+      "word": "parts",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. parçalar, kısımlar",
+        "ex": "The mechanic replaced several worn parts of the old engine before starting it again.",
+        "exTr": "Tamirci, eski motoru yeniden çalıştırmadan önce aşınmış birkaç parçayı değiştirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The model arrived in separate parts, each labelled so that students could assemble it while checking the relationship between the components and the diagram.",
+          "exTr": "Model ayrı parçalar hâlinde geldi; öğrencilerin bileşenlerle şema arasındaki ilişkiyi kontrol ederek birleştirebilmesi için her parça etiketlenmişti."
+        }
+      ]
+    },
+    {
+      "word": "pass-through",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. (ekonomide) maliyet/vergi yansıması",
+        "ex": "Economists studied how quickly the tax pass-through affected retail prices for consumers.",
+        "exTr": "Ekonomistler, vergi yansımasının tüketicilere yönelik perakende fiyatları ne kadar hızlı etkilediğini inceledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The economist cautioned that the pass-through of higher transport costs to retail prices would depend on competition and the terms of existing contracts.",
+          "exTr": "İktisatçı, yüksek taşıma maliyetlerinin perakende fiyatlara yansımasının rekabete ve mevcut sözleşmelerin koşullarına bağlı olacağı konusunda uyardı."
+        }
+      ]
+    },
+    {
+      "word": "passion",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. tutku, ihtiras, güçlü duygu",
+        "ex": "Her lifelong passion for astronomy eventually led her to a career in space research.",
+        "exTr": "Astronomiye yönelik ömür boyu süren tutkusu, onu sonunda uzay araştırmaları alanında bir kariyere yönlendirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "His passion for languages extended beyond collecting unusual expressions; he wanted to understand how speakers used them to negotiate relationships and express belonging.",
+          "exTr": "Dillere tutkusu alışılmadık ifadeler toplamaktan öteye uzanıyordu; konuşanların bunları ilişkileri şekillendirmek ve aidiyet ifade etmek için nasıl kullandığını anlamak istiyordu."
+        }
+      ]
+    },
+    {
+      "word": "passively",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. pasif biçimde, etkin tepki göstermeden",
+        "ex": "Rather than passively receiving information, students compared competing explanations and challenged unsupported claims.",
+        "exTr": "Öğrenciler bilgiyi pasif biçimde almak yerine rakip açıklamaları karşılaştırdı ve desteksiz iddiaları sorguladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The audience did not sit passively through the performance but supplied suggestions that the actors incorporated into the developing story on stage.",
+          "exTr": "Seyirciler gösteri boyunca pasif biçimde oturmak yerine oyuncuların sahnede gelişen hikâyeye kattığı öneriler sundu."
+        }
+      ]
+    },
+    {
+      "word": "pastry",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. hamur işi, pasta hamuru, börek/turta",
+        "ex": "The bakery uses a light pastry made with butter, which turns crisp and golden after only a few minutes in a hot oven.",
+        "exTr": "Fırın, tereyağıyla hazırlanan hafif bir hamur kullanıyor; bu hamur sıcak fırında yalnızca birkaç dakika sonra çıtır ve altın rengi bir hâl alıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The apprentice practised rolling pastry to an even thickness, comparing the finished edges with the centre before attempting the decorative shapes shown by the baker.",
+          "exTr": "Çırak, fırıncının gösterdiği süslü şekilleri denemeden önce açılmış kenarları ortayla karşılaştırarak hamuru eşit kalınlıkta açma alıştırması yaptı."
+        }
+      ]
+    },
+    {
+      "word": "patent",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. patent; f. patent almak",
+        "ex": "The engineer decided to patent her new design before presenting it at the conference.",
+        "exTr": "Mühendis, konferansta sunmadan önce yeni tasarımını patentlemeye karar verdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The exhibition displays an early patent beside a working model, enabling visitors to compare the inventor's written description with the mechanism itself.",
+          "exTr": "Sergi, eski bir patenti çalışan bir modelin yanında sunarak ziyaretçilerin mucidin yazılı açıklamasını mekanizmanın kendisiyle karşılaştırmasına olanak tanıyor."
+        }
+      ]
+    },
+    {
+      "word": "path",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yol, izlenecek yol",
+        "ex": "Choosing a career path requires balancing personal interests with realistic employment opportunities.",
+        "exTr": "Bir kariyer yolu seçmek, kişisel ilgi alanlarını gerçekçi iş olanaklarıyla dengelemeyi gerektirir."
+      },
+      "alternatives": [
+        {
+          "ex": "The report outlines a possible path towards shared ownership, beginning with limited cooperation before asking members to make larger commitments of time and resources.",
+          "exTr": "Rapor, üyelerden zaman ve kaynak açısından daha büyük yükümlülükler üstlenmelerini istemeden önce sınırlı iş birliğiyle başlayarak ortak mülkiyete giden olası bir yol çiziyor."
+        }
+      ]
+    },
+    {
+      "word": "patient",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. hasta",
+        "ex": "Doctors must inform patients about the possible side effects of any treatment.",
+        "exTr": "Doktorlar, hastaları her tedavinin olası yan etkileri hakkında bilgilendirmelidir."
+      },
+      "alternatives": [
+        {
+          "ex": "The patient asked for a written summary of the discussion so that she could review the options with her family after leaving the appointment.",
+          "exTr": "Hasta, randevudan çıktıktan sonra seçenekleri ailesiyle gözden geçirebilmek için görüşmenin yazılı bir özetini istedi."
+        }
+      ]
+    },
+    {
+      "word": "patriotic",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. vatansever, yurtsever, vatanseverlik duygusuyla dolu",
+        "ex": "Governments often appeal to patriotic sentiment during economic crises in order to persuade citizens to accept sacrifices they would otherwise reject.",
+        "exTr": "Hükümetler, vatandaşları başka türlü kabul etmeyecekleri fedakârlıklara razı etmek için ekonomik kriz dönemlerinde sıklıkla vatanseverlik duygusuna seslenir."
+      },
+      "alternatives": [
+        {
+          "ex": "The historian compares patriotic songs with personal letters to explore how public expressions of loyalty differed from the concerns people shared privately.",
+          "exTr": "Tarihçi, kamuya açık bağlılık ifadelerinin insanların özel olarak paylaştığı kaygılardan nasıl farklılaştığını incelemek için vatansever şarkıları kişisel mektuplarla karşılaştırıyor."
+        }
+      ]
+    },
+    {
+      "word": "pattern",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. örüntü, desen",
+        "ex": "Meteorologists have noticed an unusual pattern in seasonal rainfall across the region.",
+        "exTr": "Meteorologlar, bölgedeki mevsimsel yağışlarda alışılmadık bir örüntü fark etti."
+      },
+      "alternatives": [
+        {
+          "ex": "A pattern emerged in the repair log: the same component failed repeatedly after the machines were moved, suggesting that transport conditions deserved closer examination.",
+          "exTr": "Onarım kaydında bir örüntü belirdi: makineler taşındıktan sonra aynı bileşen tekrar tekrar arızalanıyordu; bu da taşıma koşullarının daha yakından incelenmesi gerektiğini düşündürüyordu."
+        }
+      ]
+    },
+    {
+      "word": "paved",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. (pave the way/path) yolunu açtı, zemin hazırladı",
+        "ex": "The discovery paved the way for safer treatments.",
+        "exTr": "Keşif daha güvenli tedavilerin yolunu açtı."
+      },
+      "alternatives": [
+        {
+          "ex": "The successful exchange of equipment paved the way for a broader partnership in which neighbouring schools also shared training sessions and specialist staff.",
+          "exTr": "Başarılı ekipman değişimi, komşu okulların eğitim oturumlarını ve uzman personeli de paylaştığı daha geniş bir ortaklığın yolunu açtı."
+        }
+      ]
+    },
+    {
+      "word": "pay-phone",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ankesörlü telefon",
+        "ex": "Before mobile phones became common, travelers often relied on a pay-phone to contact their families.",
+        "exTr": "Cep telefonları yaygınlaşmadan önce, gezginler ailelerine ulaşmak için sık sık ankesörlü telefona başvururdu."
+      },
+      "alternatives": [
+        {
+          "ex": "The old pay-phone outside the station became a landmark in residents' directions long after it had stopped accepting coins or connecting calls.",
+          "exTr": "İstasyonun dışındaki eski ankesörlü telefon, madeni para kabul etmeyi ve arama bağlamayı bıraktıktan çok sonra bile sakinlerin yol tariflerinde bir işaret noktası oldu."
+        }
+      ]
+    },
+    {
+      "word": "payment",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ödeme",
+        "ex": "Mobile applications now allow instant payment for goods without cash or physical cards.",
+        "exTr": "Mobil uygulamalar artık nakit veya fiziksel kart olmadan ürünler için anında ödeme yapılmasını sağlıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The supplier requested payment in two stages, with the second instalment due after the workshop had confirmed that all components matched the order.",
+          "exTr": "Tedarikçi ödemenin iki aşamada yapılmasını istedi; ikinci taksit, atölye tüm bileşenlerin siparişe uyduğunu doğruladıktan sonra ödenecekti."
+        }
+      ]
+    },
+    {
+      "word": "peace",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. barış",
+        "ex": "Diplomats worked for months to negotiate a lasting peace agreement between the two neighboring countries.",
+        "exTr": "Diplomatlar, iki komşu ülke arasında kalıcı bir barış anlaşması için aylarca müzakere yürüttü."
+      },
+      "alternatives": [
+        {
+          "ex": "The novel presents peace as more than the absence of fighting, showing families rebuilding trust while negotiating the practical problems of returning home.",
+          "exTr": "Roman, evlerine dönmenin pratik sorunlarını çözmeye çalışan ailelerin güveni yeniden kurmasını göstererek barışı çatışmanın yokluğundan daha fazlası olarak sunuyor."
+        }
+      ]
+    },
+    {
+      "word": "peanut",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yer fıstığı",
+        "ex": "Many countries in West Africa rely heavily on peanut farming for local income.",
+        "exTr": "Batı Afrika'daki birçok ülke, yerel gelir için büyük ölçüde yer fıstığı tarımına dayanır."
+      },
+      "alternatives": [
+        {
+          "ex": "The agricultural display includes a peanut plant with its roots exposed, allowing visitors to see where the pods develop rather than guessing from the leaves.",
+          "exTr": "Tarım sergisi, ziyaretçilerin yapraklardan tahmin etmek yerine kapsüllerin nerede geliştiğini görebilmesi için kökleri açığa çıkarılmış bir yer fıstığı bitkisi içeriyor."
+        }
+      ]
+    },
+    {
+      "word": "peasant",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. köylü",
+        "ex": "In medieval Europe, a peasant typically worked the same plot of land for his entire life.",
+        "exTr": "Orta Çağ Avrupası'nda bir köylü, tipik olarak tüm yaşamı boyunca aynı toprak parçasında çalışırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The court record preserves the testimony of a peasant who challenged the landowner's account, offering a rare glimpse of the dispute from below.",
+          "exTr": "Mahkeme kaydı, toprak sahibinin anlatısına itiraz eden bir köylünün ifadesini koruyarak anlaşmazlığa alt tabakanın gözünden nadir bir bakış sunuyor."
+        }
+      ]
+    },
+    {
+      "word": "peculiar",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. tuhaf, garip",
+        "ex": "Researchers noticed a peculiar pattern in the data that warranted further investigation.",
+        "exTr": "Araştırmacılar, verilerde daha fazla incelemeyi gerektiren tuhaf bir örüntü fark etti."
+      },
+      "alternatives": [
+        {
+          "ex": "A peculiar clicking sound came from the cabinet whenever the door was opened, leading the caretaker to inspect the hinges rather than the lock.",
+          "exTr": "Kapı her açıldığında dolaptan tuhaf bir tıkırtı gelmesi, görevliyi kilit yerine menteşeleri incelemeye yöneltti."
+        }
+      ]
+    },
+    {
+      "word": "pediatrician",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. çocuk doktoru, pediatrist",
+        "ex": "Parents are strongly advised to consult a pediatrician before giving any over-the-counter medication to a child under the age of two.",
+        "exTr": "Ebeveynlere, iki yaşından küçük bir çocuğa reçetesiz herhangi bir ilaç vermeden önce mutlaka bir çocuk doktoruna danışmaları öneriliyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The pediatrician helped revise the information leaflet, checking that unfamiliar vocabulary was explained clearly without making the text sound alarming to parents.",
+          "exTr": "Çocuk doktoru, ebeveynleri kaygılandıran bir anlatım oluşturmadan yabancı sözcüklerin açıkça açıklanıp açıklanmadığını kontrol ederek bilgi broşürünün gözden geçirilmesine yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "pen",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kalem",
+        "ex": "She always carries a spare pen in her bag in case the first one runs out of ink.",
+        "exTr": "İlk kalemin mürekkebi biterse diye çantasında her zaman yedek bir kalem taşır."
+      },
+      "alternatives": [
+        {
+          "ex": "Using a different pen for each revision, the student left a visible record of how her interpretation changed as she compared additional sources.",
+          "exTr": "Öğrenci her düzeltmede farklı bir kalem kullanarak ek kaynakları karşılaştırdıkça yorumunun nasıl değiştiğine ilişkin görünür bir kayıt bıraktı."
+        }
+      ]
+    },
+    {
+      "word": "penetrate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. nüfuz etmek, içine işlemek, sızmak",
+        "ex": "Sunlight can barely penetrate the dense canopy of the tropical rainforest.",
+        "exTr": "Güneş ışığı, tropikal yağmur ormanının yoğun tepe örtüsüne neredeyse hiç nüfuz edemez."
+      },
+      "alternatives": [
+        {
+          "ex": "Moisture had begun to penetrate the wooden frame through a small gap, even though the painted surface still appeared intact from a distance.",
+          "exTr": "Boyalı yüzey uzaktan hâlâ sağlam görünse de nem küçük bir aralıktan ahşap çerçeveye nüfuz etmeye başlamıştı."
+        }
+      ]
+    },
+    {
+      "word": "peninsula",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yarımada",
+        "ex": "The narrow peninsula stretching into the sea has a milder climate than the interior, which allows farmers to grow citrus fruit there.",
+        "exTr": "Denize doğru uzanan dar yarımada, iç kesimlere kıyasla daha ılıman bir iklime sahiptir; bu da çiftçilerin orada narenciye yetiştirmesine olanak tanır."
+      },
+      "alternatives": [
+        {
+          "ex": "The walking route follows the edge of the peninsula before turning inland, where a short path connects the two coastal villages.",
+          "exTr": "Yürüyüş güzergâhı, kısa bir patikanın iki kıyı köyünü bağladığı iç kesimlere dönmeden önce yarımadanın kenarı boyunca ilerliyor."
+        }
+      ]
+    },
+    {
+      "word": "people",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. insanlar, halk",
+        "ex": "Local authorities encouraged people to conserve water during the prolonged summer drought last year.",
+        "exTr": "Yerel yetkililer, geçen yıl uzun süren yaz kuraklığı sırasında insanları su tasarrufu yapmaya teşvik etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The exhibition invites people to contribute photographs of everyday life, including ordinary workplaces and kitchens that rarely appear in official celebrations of the town.",
+          "exTr": "Sergi, kasabanın resmî kutlamalarında nadiren yer alan sıradan işyerleri ve mutfaklar da dâhil gündelik yaşam fotoğraflarıyla katkıda bulunmaya insanları davet ediyor."
+        }
+      ]
+    },
+    {
+      "word": "perceive",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. algılamak, fark etmek",
+        "ex": "Young children often perceive the world differently than adults do because of limited experience.",
+        "exTr": "Küçük çocuklar, sınırlı deneyimleri nedeniyle dünyayı genellikle yetişkinlerden farklı algılar."
+      },
+      "alternatives": [
+        {
+          "ex": "Participants perceived the same waiting period differently depending on whether the display provided a clear explanation of the delay or merely repeated a generic message.",
+          "exTr": "Katılımcılar, ekranın gecikmeyi açıkça açıklamasına veya yalnızca genel bir mesajı tekrarlamasına göre aynı bekleme süresini farklı algıladı."
+        }
+      ]
+    },
+    {
+      "word": "percentage",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yüzde, oran",
+        "ex": "A surprisingly high percentage of teenagers reported feeling anxious about climate change in the survey.",
+        "exTr": "Ankette, gençlerin şaşırtıcı derecede yüksek bir yüzdesi iklim değişikliği konusunda kaygılı hissettiğini bildirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The percentage alone was difficult to interpret because the report did not state how many people had been invited or how many had responded.",
+          "exTr": "Rapor kaç kişinin davet edildiğini veya kaçının yanıt verdiğini belirtmediği için yüzdeyi tek başına yorumlamak zordu."
+        }
+      ]
+    },
+    {
+      "word": "percussion",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. vurmalı çalgılar",
+        "ex": "The composer added a section for percussion to give the symphony's finale more dramatic weight.",
+        "exTr": "Besteci, senfoninin finaline daha dramatik bir ağırlık katmak için vurmalı çalgılar bölümü ekledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The percussion entered gradually beneath the spoken lines, building tension without forcing the actors to raise their voices above the music.",
+          "exTr": "Vurmalı çalgılar konuşulan repliklerin altında yavaş yavaş devreye girerek oyuncuları seslerini müziğin üzerine çıkarmaya zorlamadan gerilimi artırdı."
+        }
+      ]
+    },
+    {
+      "word": "perfectly",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. mükemmel şekilde, tamamen",
+        "ex": "The ancient stone blocks fit together so perfectly that no mortar was needed.",
+        "exTr": "Eski taş bloklar birbirine o kadar mükemmel şekilde oturuyordu ki harç gerekmiyordu."
+      },
+      "alternatives": [
+        {
+          "ex": "The two pieces matched perfectly in colour but differed in texture, a distinction that became apparent only when they were examined closely.",
+          "exTr": "İki parça renk bakımından tamamen uyuşuyor, ancak doku bakımından farklılaşıyordu; bu ayrım yalnızca yakından incelendiklerinde belirginleşti."
+        }
+      ]
+    },
+    {
+      "word": "performer",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sanatçı, icracı",
+        "ex": "Tonight, every performer on stage has trained for at least a decade to reach this level.",
+        "exTr": "Bu akşam, sahnedeki her sanatçı bu seviyeye ulaşmak için en az on yıl çalışmıştır."
+      },
+      "alternatives": [
+        {
+          "ex": "The performer adapted the story to the audience's reactions, pausing when children asked questions and returning smoothly to the main sequence of events.",
+          "exTr": "Sanatçı hikâyeyi seyircilerin tepkilerine göre uyarladı; çocuklar soru sorduğunda durakladı ve olayların ana akışına akıcı biçimde geri döndü."
+        }
+      ]
+    },
+    {
+      "word": "perhaps",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. belki, muhtemelen",
+        "ex": "Perhaps the most important consequence of the reform was the wider access it gave rural children.",
+        "exTr": "Belki de reformun en önemli sonucu kırsaldaki çocuklara sağladığı daha geniş erişimdi."
+      },
+      "alternatives": [
+        {
+          "ex": "Perhaps the unexpected result reflects a difference in measurement rather than a genuine change, which is why the team plans to repeat the comparison.",
+          "exTr": "Belki de beklenmedik sonuç gerçek bir değişimden çok ölçümdeki bir farkı yansıtıyor; ekibin karşılaştırmayı tekrarlamayı planlamasının nedeni de bu."
+        }
+      ]
+    },
+    {
+      "word": "periodical",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. süreli yayın, dergi",
+        "ex": "The university library subscribes to hundreds of academic periodicals, most of which are now available electronically to registered students.",
+        "exTr": "Üniversite kütüphanesi yüzlerce akademik süreli yayına abonedir; bunların çoğu artık kayıtlı öğrencilere elektronik ortamda sunulmaktadır."
+      },
+      "alternatives": [
+        {
+          "ex": "Advertisements in the periodical reveal the products its readers were expected to buy, providing evidence that complements the opinions expressed in its articles.",
+          "exTr": "Süreli yayındaki reklamlar, okurlarının satın alması beklenen ürünleri ortaya koyarak makalelerinde ifade edilen görüşleri tamamlayan kanıtlar sunuyor."
+        }
+      ]
+    },
+    {
+      "word": "perishable",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. çabuk bozulan, dayanıksız (gıda)",
+        "ex": "Supermarkets store perishable goods such as dairy and meat in refrigerated sections to slow spoilage.",
+        "exTr": "Süpermarketler, bozulmayı yavaşlatmak için süt ürünleri ve et gibi çabuk bozulan malları soğutmalı bölümlerde saklar."
+      },
+      "alternatives": [
+        {
+          "ex": "The delivery schedule separated perishable food from other supplies, allowing the market to plan storage before the vehicles arrived rather than improvise afterwards.",
+          "exTr": "Teslimat takvimi çabuk bozulan gıdaları diğer malzemelerden ayırarak pazarın depolamayı araçlar geldikten sonra doğaçlama ayarlamak yerine önceden planlamasına olanak tanıdı."
+        }
+      ]
+    },
+    {
+      "word": "permanently",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. kalıcı olarak, sürekli",
+        "ex": "Doctors warned that untreated infections could permanently damage the patient's hearing within a few months.",
+        "exTr": "Doktorlar, tedavi edilmeyen enfeksiyonların birkaç ay içinde hastanın işitmesine kalıcı olarak zarar verebileceği konusunda uyardı."
+      },
+      "alternatives": [
+        {
+          "ex": "The temporary footbridge was removed permanently after the main crossing reopened, although its route remained visible in photographs taken during the repairs.",
+          "exTr": "Ana geçiş yeniden açıldıktan sonra geçici yaya köprüsü kalıcı olarak kaldırıldı, ancak güzergâhı onarımlar sırasında çekilen fotoğraflarda görünür kaldı."
+        }
+      ]
+    },
+    {
+      "word": "permit",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. izin vermek, müsaade etmek",
+        "ex": "The city refused to permit further construction near the wetlands due to environmental concerns.",
+        "exTr": "Belediye, çevresel kaygılar nedeniyle sulak alanların yakınında daha fazla inşaata izin vermeyi reddetti."
+      },
+      "alternatives": [
+        {
+          "ex": "The workshop will permit members to borrow the larger tools only after they have attended the introductory session and understood the booking arrangements.",
+          "exTr": "Atölye, üyelerin büyük aletleri ödünç almasına ancak tanıtım oturumuna katılıp rezervasyon düzenini anladıktan sonra izin verecek."
+        }
+      ]
+    },
+    {
+      "word": "persistence",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. azim, sebat",
+        "ex": "Her persistence throughout years of setbacks eventually led to a groundbreaking scientific discovery.",
+        "exTr": "Yıllarca süren aksiliklere rağmen gösterdiği azim, sonunda çığır açan bir bilimsel keşfe yol açtı."
+      },
+      "alternatives": [
+        {
+          "ex": "Her persistence in contacting former employees eventually produced a detailed account of the factory's closure, including experiences absent from the official minutes.",
+          "exTr": "Eski çalışanlarla iletişim kurma konusundaki azmi sonunda, resmî tutanaklarda yer almayan deneyimleri de içeren ayrıntılı bir fabrika kapanışı anlatısı ortaya çıkardı."
+        }
+      ]
+    },
+    {
+      "word": "person",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kişi, insan, şahıs",
+        "ex": "On average, a person spends roughly one third of their life sleeping.",
+        "exTr": "Ortalama bir insan, hayatının kabaca üçte birini uyuyarak geçirir."
+      },
+      "alternatives": [
+        {
+          "ex": "Each person in the group received a different section of the plan, so completing the task required sharing information rather than working entirely alone.",
+          "exTr": "Gruptaki her kişiye planın farklı bir bölümü verildi; bu yüzden görevi tamamlamak tamamen yalnız çalışmak yerine bilgi paylaşmayı gerektiriyordu."
+        }
+      ]
+    },
+    {
+      "word": "personality",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kişilik",
+        "ex": "Psychologists have long debated whether personality traits remain stable throughout adulthood.",
+        "exTr": "Psikologlar, kişilik özelliklerinin yetişkinlik boyunca sabit kalıp kalmadığını uzun süredir tartışıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The interviewer avoided treating a single hesitant answer as evidence of personality, recognising that unfamiliar surroundings could influence how a participant responded.",
+          "exTr": "Görüşmeci, yabancı bir ortamın katılımcının nasıl yanıt verdiğini etkileyebileceğini kabul ederek tek bir tereddütlü yanıtı kişiliğin kanıtı saymaktan kaçındı."
+        }
+      ]
+    },
+    {
+      "word": "personnel",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. personel",
+        "ex": "The hospital hired additional personnel to manage the sudden rise in emergency room visits.",
+        "exTr": "Hastane, acil servis ziyaretlerindeki ani artışı yönetmek için ek personel işe aldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The museum trained additional personnel to assist visitors with the new booking system, especially on mornings when several school groups were expected.",
+          "exTr": "Müze, özellikle birkaç okul grubunun beklendiği sabahlarda ziyaretçilere yeni rezervasyon sistemiyle ilgili yardımcı olmaları için ek personel eğitti."
+        }
+      ]
+    },
+    {
+      "word": "pervasive",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yaygın, her yere nüfuz eden",
+        "ex": "Social media has become so pervasive that it now shapes political discussions across nearly every country.",
+        "exTr": "Sosyal medya o kadar yaygın hale geldi ki artık neredeyse her ülkede siyasi tartışmaları şekillendiriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "A pervasive sense of uncertainty runs through the novel, even in scenes where the characters discuss seemingly ordinary matters such as meals and travel.",
+          "exTr": "Karakterlerin yemek ve yolculuk gibi görünüşte sıradan konuları tartıştığı sahnelerde bile romana her yere yayılan bir belirsizlik duygusu hâkim."
+        }
+      ]
+    },
+    {
+      "word": "pesticide",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. haşere ilacı, pestisit",
+        "ex": "Excessive pesticide use has been linked to a sharp decline in bee populations worldwide.",
+        "exTr": "Aşırı pestisit kullanımı, dünya genelinde arı popülasyonlarındaki keskin düşüşle ilişkilendirilmiştir."
+      },
+      "alternatives": [
+        {
+          "ex": "The farm's records listed each pesticide application separately, enabling the researcher to compare field histories without assuming that neighbouring plots had received identical treatment.",
+          "exTr": "Çiftliğin kayıtları her pestisit uygulamasını ayrı ayrı listeliyordu; böylece araştırmacı komşu parsellere aynı işlemin uygulandığını varsaymadan tarla geçmişlerini karşılaştırabildi."
+        }
+      ]
+    }
+  ],
+  "collocations": [
+    {
+      "word": "painfully",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "painfully obvious",
+          "tr": "rahatsız edici derecede açık"
+        },
+        {
+          "en": "painfully slow progress",
+          "tr": "üzücü derecede yavaş ilerleme"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "parachute",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a parachute jump",
+          "tr": "paraşütle atlayış"
+        },
+        {
+          "en": "a parachute opens",
+          "tr": "paraşüt açılır"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "pass-through",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "cost pass-through",
+          "tr": "maliyetlerin fiyatlara yansıması"
+        },
+        {
+          "en": "exchange-rate pass-through",
+          "tr": "döviz kurunun fiyatlara yansıması"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "passively",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "listen passively",
+          "tr": "pasif biçimde dinlemek"
+        },
+        {
+          "en": "accept something passively",
+          "tr": "bir şeyi tepki göstermeden kabul etmek"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "pay-phone",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "use a pay-phone",
+          "tr": "ankesörlü telefon kullanmak"
+        },
+        {
+          "en": "a public pay-phone",
+          "tr": "halka açık ankesörlü telefon"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

@@ -5,16 +5,22 @@ const root = path.resolve(__dirname, '../..'), w = {}, context = vm.createContex
 for (let k = 1; k <= 7; k++) vm.runInContext(fs.readFileSync(path.join(root, 'data/kelime-k' + k + '.js'), 'utf8'), context);
 const cards = Object.assign({}, ...Array.from({length: 7}, (_, i) => w['KELIME_K' + (i + 1)]));
 const plain = value => JSON.parse(JSON.stringify(value));
-const seen = new Set(), variants = new Set(), expectedCounts = {corrections: 0, collocations: 0, alternatives: 0};
+const seen = new Set(), variants = new Set(), expectedCounts = {corrections: 0, collocations: 0, alternatives: 0, removed_senses: 0};
 assert.ok(batches.length, 'Reviewed editorial sources are required');
 for (const batch of batches) {
   assert.equal(batch.schema_version, 1);
-  for (const category of ['corrections', 'collocations', 'enrichments']) {
+  for (const category of ['corrections', 'collocations', 'enrichments', 'removals']) {
     for (const row of batch[category] || []) {
       const key = [category, row.word, row.sense_index].join(':');
       assert.ok(!seen.has(key), 'Duplicate editorial operation: ' + key); seen.add(key);
       const card = cards[row.word]; assert.ok(card, key + ': missing headword');
-      if (category === 'collocations') {
+      if (category === 'removals') {
+        assert.ok(card.a.length >= 1, key + ': word card retained');
+        assert.equal(row.sense_index, row.expected_count - 1, key + ': removed last sense only');
+        assert.equal(card.a.length, row.expected_count - 1, key + ': exact retained sense count');
+        assert.ok(!card.a.some(sense => sense.ex === row.expected.ex && sense.tr === row.expected.tr), key + ': invalid derived sense removed');
+        expectedCounts.removed_senses++;
+      } else if (category === 'collocations') {
         assert.deepEqual(plain(card.kl), row.replacement, key + ': exact reviewed collocations');
         expectedCounts.collocations++;
       } else {

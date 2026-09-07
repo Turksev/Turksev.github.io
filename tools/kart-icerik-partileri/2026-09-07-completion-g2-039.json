@@ -1,0 +1,989 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 2,
+    "input": "input-039.json"
+  },
+  "enrichments": [
+    {
+      "word": "reform",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. reform, ıslahat",
+        "ex": "Lawmakers proposed a sweeping reform of the country's outdated healthcare system.",
+        "exTr": "Yasa koyucular, ülkenin eskimiş sağlık sistemine yönelik kapsamlı bir reform önerdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The reform changed how committee members were selected, but left unresolved the question of who could challenge their decisions.",
+          "exTr": "Reform, komite üyelerinin nasıl seçildiğini değiştirdi; ancak kararlarına kimin itiraz edebileceği sorusunu çözümsüz bıraktı."
+        }
+      ]
+    },
+    {
+      "word": "refrain",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. kaçınmak, sakınmak (from)",
+        "ex": "Doctors advised patients to refrain from strenuous exercise for at least two weeks after surgery.",
+        "exTr": "Doktorlar, hastalara ameliyattan sonra en az iki hafta yorucu egzersizden kaçınmalarını tavsiye etti."
+      },
+      "alternatives": [
+        {
+          "ex": "Participants were asked to refrain from discussing the images until everyone had recorded an independent response to the first set.",
+          "exTr": "Katılımcılardan, herkes ilk gruba ilişkin bağımsız bir yanıt kaydedene kadar görüntüleri tartışmaktan kaçınmaları istendi."
+        }
+      ]
+    },
+    {
+      "word": "refugee",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. mülteci, sığınmacı",
+        "ex": "Aid organizations set up temporary shelters to accommodate the growing number of refugee families.",
+        "exTr": "Yardım kuruluşları, artan sayıda mülteci ailesini barındırmak için geçici sığınaklar kurdu."
+      },
+      "alternatives": [
+        {
+          "ex": "The refugee support centre developed its language classes with participants, whose different working hours made a single fixed timetable impractical.",
+          "exTr": "Mülteci destek merkezi dil derslerini, farklı çalışma saatleri tek bir sabit programı uygulanamaz kılan katılımcılarla birlikte geliştirdi."
+        }
+      ]
+    },
+    {
+      "word": "refute",
+      "sense_index": 0,
+      "expected": {
+        "tr": "çürütmek, yalanlamak",
+        "ex": "The theory has since been refuted by new data.",
+        "exTr": "Kuram o zamandan beri yeni verilerle çürütüldü."
+      },
+      "alternatives": [
+        {
+          "ex": "The newly dated letter helped refute the claim that the two artists had never corresponded before their first public exhibition.",
+          "exTr": "Tarihi yeni belirlenen mektup, iki sanatçının halka açık ilk sergilerinden önce hiç yazışmadıkları iddiasını çürütmeye yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "regardless",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. ne olursa olsun; (of) -e bakılmaksızın",
+        "ex": "Everyone deserves quality healthcare regardless of their income or social background.",
+        "exTr": "Gelir düzeyi ya da sosyal geçmişi ne olursa olsun herkes nitelikli sağlık hizmetini hak eder."
+      },
+      "alternatives": [
+        {
+          "ex": "All entries were reviewed against the same criteria regardless of whether their authors had previously contributed to the journal.",
+          "exTr": "Yazarlarının dergiye daha önce katkıda bulunup bulunmadığına bakılmaksızın bütün başvurular aynı ölçütlere göre değerlendirildi."
+        }
+      ]
+    },
+    {
+      "word": "regime",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. rejim, yönetim (siyasi)",
+        "ex": "The new political regime introduced strict censorship laws shortly after taking power.",
+        "exTr": "Yeni siyasi rejim, iktidara geldikten kısa süre sonra sıkı sansür yasaları getirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The archive contains schoolbooks issued under the former regime, allowing researchers to examine how official accounts of national history were presented to children.",
+          "exTr": "Arşiv, araştırmacıların resmi ulusal tarih anlatılarının çocuklara nasıl sunulduğunu incelemesine olanak tanıyan, önceki rejim döneminde yayımlanmış ders kitapları içeriyor."
+        }
+      ]
+    },
+    {
+      "word": "regional",
+      "sense_index": 0,
+      "expected": {
+        "tr": "bölgesel",
+        "ex": "Climate change is expected to have significant regional effects on agriculture and water supplies.",
+        "exTr": "İklim değişikliğinin tarım ve su kaynakları üzerinde önemli bölgesel etkileri olması bekleniyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Regional differences in the survey became clearer once the researchers separated rural responses from those collected in large cities.",
+          "exTr": "Araştırmacılar kırsal kesimden gelen yanıtları büyük kentlerde toplananlardan ayırınca anketteki bölgesel farklılıklar daha belirginleşti."
+        }
+      ]
+    },
+    {
+      "word": "regression",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. gerileme",
+        "ex": "After months of steady improvement, his overall health showed a sudden and worrying regression.",
+        "exTr": "Aylarca süren istikrarlı iyileşmenin ardından, genel sağlığı ani ve endişe verici bir gerileme gösterdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The tutor noticed a regression in the student's confidence after the unsuccessful presentation and arranged a less demanding opportunity to speak.",
+          "exTr": "Eğitmen, başarısız sunumdan sonra öğrencinin özgüveninde bir gerileme fark etti ve daha az zorlayıcı bir konuşma fırsatı düzenledi."
+        }
+      ]
+    },
+    {
+      "word": "regularly",
+      "sense_index": 0,
+      "expected": {
+        "tr": "düzenli olarak, sık sık",
+        "ex": "Doctors advise patients to exercise regularly in order to maintain a healthy heart.",
+        "exTr": "Doktorlar, sağlıklı bir kalbe sahip olmak için hastalara düzenli olarak egzersiz yapmalarını önerir."
+      },
+      "alternatives": [
+        {
+          "ex": "The volunteers regularly checked the noticeboard, which remained an important source of information for residents who did not use online services.",
+          "exTr": "Gönüllüler, çevrimiçi hizmetleri kullanmayan sakinler için önemli bir bilgi kaynağı olmayı sürdüren ilan panosunu düzenli olarak kontrol etti."
+        }
+      ]
+    },
+    {
+      "word": "regulation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. düzenleme, yönetmelik",
+        "ex": "Strict environmental regulation has forced factories to reduce their harmful emissions significantly.",
+        "exTr": "Sıkı çevre düzenlemeleri, fabrikaları zararlı emisyonlarını önemli ölçüde azaltmaya zorlamıştır."
+      },
+      "alternatives": [
+        {
+          "ex": "The proposed regulation specified how delivery vehicles could enter the square, while leaving pedestrian access unchanged throughout the day.",
+          "exTr": "Önerilen düzenleme, gün boyunca yaya erişimini değiştirmeden teslimat araçlarının meydana nasıl girebileceğini belirtiyordu."
+        }
+      ]
+    },
+    {
+      "word": "rehabilitate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. iyileştirmek, eski sağlığına kavuşturmak, rehabilite etmek",
+        "ex": "The centre takes in injured birds of prey and rehabilitates them for several months before releasing them back into their natural habitat.",
+        "exTr": "Merkez, yaralı yırtıcı kuşları kabul ediyor ve onları doğal yaşam alanlarına bırakmadan önce birkaç ay boyunca iyileştiriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The team prepared a detailed plan to rehabilitate the injured seal, recording the observations that would guide later decisions about its care.",
+          "exTr": "Ekip, bakımıyla ilgili sonraki kararlara yön verecek gözlemleri kaydederek yaralı foku rehabilite etmek için ayrıntılı bir plan hazırladı."
+        }
+      ]
+    },
+    {
+      "word": "rehearse",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. prova etmek, prova yapmak",
+        "ex": "Speakers should rehearse their presentation before the conference.",
+        "exTr": "Konuşmacılar konferanstan önce sunumlarının provasını yapmalıdır."
+      },
+      "alternatives": [
+        {
+          "ex": "The cast decided to rehearse the scene without scenery first, concentrating on relationships between the characters before adjusting their movements around furniture.",
+          "exTr": "Oyuncu kadrosu, mobilyaların etrafındaki hareketlerini ayarlamadan önce karakterler arasındaki ilişkilere odaklanarak sahneyi ilk olarak dekorsuz prova etmeye karar verdi."
+        }
+      ]
+    },
+    {
+      "word": "reinforcement",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. pekiştirme, güçlendirme, destekleme",
+        "ex": "Positive reinforcement, such as praise offered immediately after a correct answer, makes learners far more likely to repeat the desired behaviour.",
+        "exTr": "Doğru bir cevabın hemen ardından verilen övgü gibi olumlu pekiştirmeler, öğrenenlerin istenen davranışı tekrarlama olasılığını büyük ölçüde artırır."
+      },
+      "alternatives": [
+        {
+          "ex": "The engineer recommended reinforcement of the balcony before additional seating was considered, since the original drawings did not establish its current capacity.",
+          "exTr": "Özgün çizimler balkonun mevcut taşıma kapasitesini ortaya koymadığı için mühendis, ek oturma yerleri düşünülmeden önce güçlendirilmesini önerdi."
+        }
+      ]
+    },
+    {
+      "word": "rejection",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. reddedilme, ret",
+        "ex": "Despite facing repeated rejection, the young scientist continued applying for research grants.",
+        "exTr": "Genç bilim insanı, tekrar tekrar reddedilmesine rağmen araştırma burslarına başvurmaya devam etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The rejection of the first proposal led the designers to consult residents earlier, rather than assuming that technical improvements would ensure public support.",
+          "exTr": "İlk önerinin reddedilmesi, tasarımcıları teknik iyileştirmelerin halk desteğini garanti edeceğini varsaymak yerine sakinlere daha erken danışmaya yöneltti."
+        }
+      ]
+    },
+    {
+      "word": "related",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. ilgili, ilişkili",
+        "ex": "Diseases related to poor air quality continue to rise in industrial cities.",
+        "exTr": "Kötü hava kalitesiyle ilişkili hastalıklar, sanayi kentlerinde artmaya devam ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The archive links related documents across collections, enabling researchers to follow a single discussion even when its participants worked for different organisations.",
+          "exTr": "Arşiv, katılımcıları farklı kuruluşlarda çalışmış olsa bile araştırmacıların tek bir görüşmeyi takip etmesini sağlayarak ilişkili belgeleri koleksiyonlar arasında birbirine bağlıyor."
+        }
+      ]
+    },
+    {
+      "word": "relationship",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ilişki",
+        "ex": "Researchers discovered a strong relationship between air quality and the prevalence of respiratory illness.",
+        "exTr": "Araştırmacılar, hava kalitesi ile solunum yolu hastalıklarının yaygınlığı arasında güçlü bir ilişki keşfetti."
+      },
+      "alternatives": [
+        {
+          "ex": "The relationship between the narrator and her brother is revealed through their conflicting memories of a house neither has visited for years.",
+          "exTr": "Anlatıcı ile erkek kardeşi arasındaki ilişki, ikisinin de yıllardır gitmediği bir eve dair çelişen anıları üzerinden ortaya çıkıyor."
+        }
+      ]
+    },
+    {
+      "word": "relativity",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. görelilik (izafiyet)",
+        "ex": "Einstein's theory of relativity fundamentally transformed our understanding of space, time, and gravity.",
+        "exTr": "Einstein'ın görelilik kuramı, uzay, zaman ve yerçekimi anlayışımızı temelden dönüştürdü."
+      },
+      "alternatives": [
+        {
+          "ex": "The lecturer introduced relativity by discussing the assumptions behind familiar descriptions of motion, then explained why those assumptions required closer examination.",
+          "exTr": "Öğretim görevlisi, bilinen hareket betimlemelerinin arkasındaki varsayımları tartışarak göreliliğe giriş yaptı; ardından bu varsayımların neden daha yakından incelenmesi gerektiğini açıkladı."
+        }
+      ]
+    },
+    {
+      "word": "release",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. yaymak, salmak",
+        "ex": "Volcanic eruptions release large quantities of sulfur dioxide into the upper atmosphere.",
+        "exTr": "Volkanik patlamalar, üst atmosfere büyük miktarda kükürt dioksit salar."
+      },
+      "alternatives": [
+        {
+          "ex": "The equipment was enclosed during testing to check whether the process would release dust into areas used by other workers.",
+          "exTr": "Sürecin diğer çalışanların kullandığı alanlara toz salıp salmayacağını kontrol etmek için ekipman test sırasında kapalı bir bölmeye alındı."
+        }
+      ]
+    },
+    {
+      "word": "relevant",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. ilgili, konuyla alakalı, yerinde",
+        "ex": "Researchers must review all relevant studies before designing a new experiment on the topic.",
+        "exTr": "Araştırmacılar, konu üzerine yeni bir deney tasarlamadan önce ilgili tüm çalışmaları gözden geçirmelidir."
+      },
+      "alternatives": [
+        {
+          "ex": "Only passages relevant to the ownership dispute were translated at first; the remaining correspondence was examined once the initial account proved incomplete.",
+          "exTr": "İlk başta yalnızca mülkiyet anlaşmazlığıyla ilgili bölümler çevrildi; ilk anlatımın eksik olduğu anlaşılınca kalan yazışmalar incelendi."
+        }
+      ]
+    },
+    {
+      "word": "reliance",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. güvenme, bağımlılık, dayanma",
+        "ex": "The country's heavy reliance on imported oil left its economy vulnerable to price shocks.",
+        "exTr": "Ülkenin ithal petrole yoğun biçimde bağımlılığı, ekonomisini fiyat şoklarına karşı savunmasız bıraktı."
+      },
+      "alternatives": [
+        {
+          "ex": "Reliance on a single supplier left the workshop unable to complete several orders when an essential component was unexpectedly unavailable.",
+          "exTr": "Tek bir tedarikçiye bağımlılık, gerekli bir parça beklenmedik biçimde bulunamaz olunca atölyeyi birkaç siparişi tamamlayamaz durumda bıraktı."
+        }
+      ]
+    },
+    {
+      "word": "relieve",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. hafifletmek, yatıştırmak",
+        "ex": "Doctors prescribed the new medication to relieve the patient's chronic back pain.",
+        "exTr": "Doktorlar, hastanın kronik sırt ağrısını hafifletmek için yeni ilacı reçete etti."
+      },
+      "alternatives": [
+        {
+          "ex": "Opening a second entrance helped relieve congestion near the ticket desk, although staff still needed to guide visitors unfamiliar with the building.",
+          "exTr": "İkinci bir girişin açılması bilet masasının yakınındaki sıkışıklığı hafifletti; ancak çalışanların binayı tanımayan ziyaretçileri hâlâ yönlendirmesi gerekiyordu."
+        }
+      ]
+    },
+    {
+      "word": "relocate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. taşımak, yerini değiştirmek",
+        "ex": "The museum will relocate its archives to a safer building.",
+        "exTr": "Müze arşivlerini daha güvenli bir binaya taşıyacak."
+      },
+      "alternatives": [
+        {
+          "ex": "The council agreed to relocate the bus stop after passengers explained that its original position required them to cross the road twice.",
+          "exTr": "Yolcular, durağın ilk konumunun yolu iki kez geçmelerini gerektirdiğini açıkladıktan sonra belediye meclisi otobüs durağının yerini değiştirmeyi kabul etti."
+        }
+      ]
+    },
+    {
+      "word": "reluctant",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. isteksiz, gönülsüz, çekingen",
+        "ex": "Farmers remained reluctant to adopt the new irrigation technology without clear evidence of its benefits.",
+        "exTr": "Çiftçiler, yararlarına dair açık kanıt olmadan yeni sulama teknolojisini benimsemek konusunda isteksiz kaldı."
+      },
+      "alternatives": [
+        {
+          "ex": "She was reluctant to attribute the unsigned drawing to a famous artist without evidence beyond its resemblance to a better-known work.",
+          "exTr": "Daha tanınmış bir esere benzemesi dışında kanıt olmadan imzasız çizimi ünlü bir sanatçıya atfetmekte isteksizdi."
+        }
+      ]
+    },
+    {
+      "word": "remainder",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kalan (kısım/miktar), artan",
+        "ex": "After paying the initial deposit, buyers must settle the remainder of the balance within thirty days.",
+        "exTr": "Alıcılar, ilk kaporayı ödedikten sonra bakiyenin kalan kısmını otuz gün içinde ödemek zorundadır."
+      },
+      "alternatives": [
+        {
+          "ex": "The first room displays the earliest photographs, while the remainder of the collection is arranged around themes rather than dates.",
+          "exTr": "İlk oda en eski fotoğrafları sergilerken koleksiyonun geri kalanı tarihler yerine temalara göre düzenleniyor."
+        }
+      ]
+    },
+    {
+      "word": "remarkable",
+      "sense_index": 0,
+      "expected": {
+        "tr": "dikkat çekici, olağanüstü, kayda değer",
+        "ex": "The patient made a remarkable recovery within weeks despite the severity of the injury.",
+        "exTr": "Hasta, yaralanmasının ciddiyetine rağmen haftalar içinde kayda değer bir iyileşme gösterdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The remarkable detail in the small sketch became apparent only after it was enlarged, revealing figures barely visible in the original.",
+          "exTr": "Küçük eskizdeki dikkat çekici ayrıntılar ancak büyütüldükten sonra belirginleşerek aslında güçlükle görülebilen figürleri ortaya çıkardı."
+        }
+      ]
+    },
+    {
+      "word": "remediation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. (eksikliği) giderme, düzeltme, telafi eğitimi",
+        "ex": "Early diagnosis allows teachers to design a remediation programme that targets the specific reading difficulties each child experiences in the classroom.",
+        "exTr": "Erken tanı, öğretmenlerin her çocuğun sınıfta yaşadığı belirli okuma güçlüklerini hedefleyen bir telafi programı tasarlamasına olanak tanır."
+      },
+      "alternatives": [
+        {
+          "ex": "The reading remediation plan was revised after teachers found that the exercises addressed decoding difficulties but offered little support for understanding longer passages.",
+          "exTr": "Öğretmenler alıştırmaların sözcükleri çözümleme güçlüklerini ele aldığını fakat uzun bölümleri anlamaya pek destek sağlamadığını fark edince okuma telafi eğitimi planı değiştirildi."
+        }
+      ]
+    },
+    {
+      "word": "remembrance",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. hatırlama, anma veya geçmişteki birinin hatırası",
+        "ex": "The annual ceremony is held in remembrance of workers who died while building the railway.",
+        "exTr": "Yıllık tören demiryolunu inşa ederken ölen işçilerin anısına düzenlenir."
+      },
+      "alternatives": [
+        {
+          "ex": "The garden was designed as a place of remembrance, where families could gather without being required to take part in a formal ceremony.",
+          "exTr": "Bahçe, ailelerin resmi bir törene katılmak zorunda kalmadan bir araya gelebileceği bir anma yeri olarak tasarlandı."
+        }
+      ]
+    },
+    {
+      "word": "remnant",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kalıntı, artık",
+        "ex": "Archaeologists discovered remnants of an ancient wall beneath the city's main square.",
+        "exTr": "Arkeologlar, şehrin ana meydanının altında antik bir duvarın kalıntılarını keşfetti."
+      },
+      "alternatives": [
+        {
+          "ex": "A remnant of the original fence showed that the garden had once extended beyond the boundary marked on the current plan.",
+          "exTr": "Özgün çitten bir kalıntı, bahçenin bir zamanlar mevcut planda işaretlenen sınırın ötesine uzandığını gösterdi."
+        }
+      ]
+    },
+    {
+      "word": "removal",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kaldırma, giderme",
+        "ex": "The city approved the removal of the old bridge to make way for new construction.",
+        "exTr": "Belediye, yeni inşaata yer açmak için eski köprünün kaldırılmasını onayladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The removal of the partition brought more light into the room but also exposed pipes that had been hidden for decades.",
+          "exTr": "Bölmenin kaldırılması odaya daha fazla ışık getirdi; ancak onlarca yıldır gizli kalan boruları da açığa çıkardı."
+        }
+      ]
+    },
+    {
+      "word": "rend",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. yırtmak, parçalamak (şiddetle)",
+        "ex": "The explosion managed to rend the old wooden door from its hinges in an instant.",
+        "exTr": "Patlama, eski ahşap kapıyı menteşelerinden bir anda koparıp parçaladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The violent gust threatened to rend the sail, forcing the crew to abandon their planned route and seek a more sheltered passage.",
+          "exTr": "Şiddetli rüzgâr hamlesi yelkeni parçalama tehdidi yaratınca mürettebat planladığı rotadan vazgeçip daha korunaklı bir geçit aramak zorunda kaldı."
+        }
+      ],
+      "note": "Literary forceful-tearing verb; not the unrelated rent noun."
+    },
+    {
+      "word": "renewable",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yenilenebilir",
+        "ex": "Many countries are investing heavily in renewable energy sources such as wind and solar power.",
+        "exTr": "Birçok ülke, rüzgar ve güneş enerjisi gibi yenilenebilir enerji kaynaklarına büyük yatırım yapıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The proposal compared renewable energy options for the island, including the storage and maintenance arrangements that each option would require.",
+          "exTr": "Öneri, her seçeneğin gerektireceği depolama ve bakım düzenlemelerini de içererek ada için yenilenebilir enerji seçeneklerini karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "rent",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kira",
+        "ex": "Rising rent prices have forced many young professionals to move away from city centers.",
+        "exTr": "Artan kira fiyatları, birçok genç profesyoneli şehir merkezlerinden uzaklaşmaya zorladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The lower rent attracted new tenants, but several asked whether the building's heating costs had been included in the advertised estimate.",
+          "exTr": "Daha düşük kira yeni kiracıları çekti; ancak bazıları binanın ısıtma giderlerinin ilandaki tahmine dâhil edilip edilmediğini sordu."
+        }
+      ]
+    },
+    {
+      "word": "repair",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. onarmak, tamir etmek",
+        "ex": "Engineers worked around the clock to repair the damaged pipeline before it could contaminate nearby rivers.",
+        "exTr": "Mühendisler, yakındaki nehirleri kirletmeden önce hasarlı boru hattını onarmak için gece gündüz çalıştı."
+      },
+      "alternatives": [
+        {
+          "ex": "The technician could repair the damaged switch, but replacing the surrounding panel would require a part no longer produced by the manufacturer.",
+          "exTr": "Teknisyen hasarlı anahtarı onarabilirdi; ancak çevresindeki paneli değiştirmek, üreticinin artık üretmediği bir parçayı gerektirecekti."
+        }
+      ]
+    },
+    {
+      "word": "repeat",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. tekrarlamak, yinelemek",
+        "ex": "Scientists often repeat their experiments several times to confirm that the results are reliable.",
+        "exTr": "Bilim insanları, sonuçların güvenilir olduğunu doğrulamak için deneylerini genellikle birkaç kez tekrarlar."
+      },
+      "alternatives": [
+        {
+          "ex": "The interviewer did not repeat the question immediately, allowing the participant time to distinguish what she remembered from what she had later been told.",
+          "exTr": "Görüşmeci soruyu hemen tekrarlamayarak katılımcıya hatırladıklarını daha sonra kendisine anlatılanlardan ayırması için zaman tanıdı."
+        }
+      ]
+    },
+    {
+      "word": "repercussion",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. (genellikle olumsuz) sonuç, yansıma, etki",
+        "ex": "The decision to cut research funding had serious repercussions for universities that depended on government grants to run their laboratories.",
+        "exTr": "Araştırma fonlarını kesme kararı, laboratuvarlarını işletmek için devlet hibelerine bağımlı olan üniversiteler açısından ciddi sonuçlar doğurdu."
+      },
+      "alternatives": [
+        {
+          "ex": "The cancellation had repercussions beyond the festival itself, affecting suppliers who had already purchased materials specifically for the expected crowds.",
+          "exTr": "İptalin festivalin ötesine uzanan olumsuz sonuçları oldu; beklenen kalabalık için özel olarak malzeme satın almış tedarikçiler de etkilendi."
+        }
+      ]
+    },
+    {
+      "word": "repetitive",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. tekrarlayan, monoton, yeknesak",
+        "ex": "Factory workers often complain that repetitive tasks increase the risk of joint injuries.",
+        "exTr": "Fabrika işçileri, tekrarlayan görevlerin eklem yaralanma riskini artırdığından sıkça şikayet eder."
+      },
+      "alternatives": [
+        {
+          "ex": "The training combined repetitive practice with unfamiliar problems, asking learners both to develop fluency and to explain when a familiar procedure was unsuitable.",
+          "exTr": "Eğitim, öğrencilerden hem akıcılık geliştirmelerini hem de bilinen bir işlemin ne zaman uygunsuz olduğunu açıklamalarını isteyerek tekrarlı alıştırmaları alışılmadık sorunlarla birleştirdi."
+        }
+      ]
+    },
+    {
+      "word": "replace",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. değiştirmek, yerine geçmek",
+        "ex": "Automation is expected to replace a significant number of routine manufacturing jobs by 2035.",
+        "exTr": "Otomasyonun, 2035 yılına kadar rutin imalat işlerinin önemli bir kısmının yerini alması bekleniyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The committee chose to replace the damaged windows individually, preserving sound frames instead of removing every unit in the building.",
+          "exTr": "Komite, binadaki bütün pencere birimlerini sökmek yerine sağlam çerçeveleri koruyarak hasarlı pencereleri tek tek değiştirmeyi seçti."
+        }
+      ]
+    },
+    {
+      "word": "replicate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. tekrarlamak, çoğaltmak, aynısını üretmek",
+        "ex": "Other laboratories were unable to replicate the surprising results of the original study.",
+        "exTr": "Diğer laboratuvarlar, orijinal çalışmanın şaşırtıcı sonuçlarını tekrarlayamadı."
+      },
+      "alternatives": [
+        {
+          "ex": "The designers tried to replicate the original surface texture without reproducing cracks that had resulted from decades of accidental damage.",
+          "exTr": "Tasarımcılar, onlarca yıllık kazara hasarın oluşturduğu çatlakları yeniden üretmeden özgün yüzey dokusunun aynısını oluşturmaya çalıştı."
+        }
+      ]
+    },
+    {
+      "word": "report",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. rapor",
+        "ex": "A recent report shows that global temperatures have risen faster than previously predicted.",
+        "exTr": "Yakın tarihli bir rapor, küresel sıcaklıkların öngörülenden daha hızlı arttığını gösteriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The report distinguishes work already completed from work still dependent on funding, preventing readers from confusing commitments with finished improvements.",
+          "exTr": "Rapor, okuyucuların taahhütleri bitmiş iyileştirmelerle karıştırmasını önleyerek tamamlanmış işleri hâlâ finansmana bağlı olanlardan ayırıyor."
+        }
+      ]
+    },
+    {
+      "word": "reportedly",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. bildirildiğine veya söylendiğine göre",
+        "ex": "The newly identified species reportedly survives only in a narrow belt of high-altitude forest.",
+        "exTr": "Yeni tanımlanan türün bildirildiğine göre yalnızca dar bir yüksek rakım ormanı kuşağında yaşadığı söyleniyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The missing portrait was reportedly seen in a private collection, but the catalogue retained its uncertain status because no photograph had been supplied.",
+          "exTr": "Kayıp portrenin özel bir koleksiyonda görüldüğü bildirildi; ancak fotoğraf sunulmadığı için katalog eserin belirsiz durumunu korudu."
+        }
+      ]
+    },
+    {
+      "word": "representation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. temsil; temsilcilik; gösterim, betimleme",
+        "ex": "Indigenous communities demanded greater representation in decisions affecting their ancestral land.",
+        "exTr": "Yerli topluluklar, atalarından kalma topraklarını etkileyen kararlarda daha fazla temsil hakkı talep etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The diagram offers a simplified representation of the network, omitting minor connections so that the main routes can be followed more easily.",
+          "exTr": "Şema, ana güzergâhların daha kolay izlenebilmesi için küçük bağlantıları çıkararak ağın basitleştirilmiş bir gösterimini sunuyor."
+        }
+      ]
+    },
+    {
+      "word": "reproduce",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. üremek, çoğalmak",
+        "ex": "Many amphibians reproduce in freshwater ponds, making them highly sensitive to changes in water quality.",
+        "exTr": "Birçok amfibi tatlı su göletlerinde ürediği için su kalitesindeki değişikliklere karşı son derece hassastır."
+      },
+      "alternatives": [
+        {
+          "ex": "The field study recorded where the insects reproduce, distinguishing sites with evidence of breeding from places where adults were merely observed.",
+          "exTr": "Saha çalışması, üreme kanıtı bulunan yerleri yalnızca yetişkinlerin gözlemlendiği yerlerden ayırarak böceklerin nerede ürediğini kaydetti."
+        }
+      ]
+    },
+    {
+      "word": "reptile",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sürüngen",
+        "ex": "Fossil evidence suggests that this ancient reptile could grow to more than ten meters long.",
+        "exTr": "Fosil kanıtları, bu antik sürüngenin on metreden daha uzun büyüyebildiğini göstermektedir."
+      },
+      "alternatives": [
+        {
+          "ex": "The reptile remained partly concealed beneath the branch, so the illustrator used several observations to avoid inventing details that were not visible.",
+          "exTr": "Sürüngen dalın altında kısmen gizli kaldığı için çizer, görünmeyen ayrıntıları uydurmamak amacıyla birkaç gözlemden yararlandı."
+        }
+      ]
+    },
+    {
+      "word": "reputation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "itibar, ün, şöhret",
+        "ex": "The university built its international reputation on decades of groundbreaking medical research.",
+        "exTr": "Üniversite, uluslararası itibarını on yıllarca süren çığır açıcı tıbbi araştırmalar üzerine inşa etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The workshop's reputation rested on reliable repairs, making the unexplained failure of a recently restored instrument especially troubling for its owner.",
+          "exTr": "Atölyenin itibarı güvenilir onarımlara dayanıyordu; bu nedenle yeni restore edilmiş bir aletin açıklanamayan arızası sahibi için özellikle kaygı vericiydi."
+        }
+      ]
+    },
+    {
+      "word": "requirement",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. gereklilik, şart, gereksinim",
+        "ex": "Passing a language proficiency test is a common requirement for international university admission.",
+        "exTr": "Bir dil yeterlilik sınavını geçmek, uluslararası üniversite kabulü için yaygın bir gerekliliktir."
+      },
+      "alternatives": [
+        {
+          "ex": "The requirement to attend in person excluded several potential participants, leading organisers to introduce a remote option for the preliminary discussion.",
+          "exTr": "Şahsen katılma koşulu bazı olası katılımcıları dışarıda bırakınca organizatörler ön görüşme için uzaktan katılım seçeneği getirdi."
+        }
+      ]
+    },
+    {
+      "word": "research",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. araştırma",
+        "ex": "The university published its latest research on renewable battery materials in a leading science journal.",
+        "exTr": "Üniversite, yenilenebilir pil malzemeleri üzerine yaptığı son araştırmayı önde gelen bir bilim dergisinde yayımladı."
+      },
+      "alternatives": [
+        {
+          "ex": "Her research follows the movement of household objects between generations, using repairs and alterations as evidence of changing needs and preferences.",
+          "exTr": "Araştırması, değişen ihtiyaç ve tercihlerin kanıtı olarak onarım ve değişikliklerden yararlanarak ev eşyalarının kuşaklar arasındaki aktarımını izliyor."
+        }
+      ]
+    },
+    {
+      "word": "resemble",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. benzemek",
+        "ex": "The newly discovered fossil appears to resemble a species that went extinct millions of years ago.",
+        "exTr": "Yeni keşfedilen fosil, milyonlarca yıl önce nesli tükenen bir türe benziyor gibi görünüyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The two signatures resemble each other closely, but the analyst cautioned that visual similarity did not establish that they had the same author.",
+          "exTr": "İki imza birbirine çok benziyor; ancak uzman, görsel benzerliğin aynı kişi tarafından atıldıklarını kanıtlamadığı konusunda uyardı."
+        }
+      ]
+    },
+    {
+      "word": "reserve",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. rezerv, yedek",
+        "ex": "Conservationists established a nature reserve to protect the region's declining bird population.",
+        "exTr": "Doğa koruyucuları, bölgenin azalan kuş popülasyonunu korumak için bir doğa rezervi kurdu."
+      },
+      "alternatives": [
+        {
+          "ex": "The cooperative kept a reserve of essential materials so that a short delivery delay would not interrupt every workshop at once.",
+          "exTr": "Kooperatif, kısa bir teslimat gecikmesinin bütün atölyeleri aynı anda durdurmaması için temel malzemelerden yedek stok tuttu."
+        }
+      ]
+    },
+    {
+      "word": "reside",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. (bir şeyde) bulunmak",
+        "ex": "According to the constitution, ultimate authority resides in the elected parliament rather than the monarchy.",
+        "exTr": "Anayasaya göre, nihai yetki monarşide değil seçilmiş parlamentoda bulunur."
+      },
+      "alternatives": [
+        {
+          "ex": "Responsibility for the final decision resides with the committee, although individual members may seek advice from specialists before the vote.",
+          "exTr": "Üyeler oylamadan önce uzmanlardan görüş alabilse de nihai kararın sorumluluğu komitededir."
+        }
+      ]
+    },
+    {
+      "word": "residential",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. konutla veya ikametle ilgili, yerleşim amaçlı",
+        "ex": "The abandoned factory was converted into a residential complex containing affordable apartments and shared gardens.",
+        "exTr": "Terk edilmiş fabrika, uygun fiyatlı daireler ve ortak bahçeler içeren bir konut yerleşkesine dönüştürüldü."
+      },
+      "alternatives": [
+        {
+          "ex": "The residential streets were excluded from the delivery route after residents raised concerns about large vehicles passing close to garden entrances.",
+          "exTr": "Sakinler büyük araçların bahçe girişlerine yakın geçmesinden kaygı duyduklarını bildirince konutların bulunduğu sokaklar teslimat güzergâhından çıkarıldı."
+        }
+      ]
+    },
+    {
+      "word": "resign",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. istifa etmek",
+        "ex": "The minister chose to resign rather than face further questions about the funding scandal.",
+        "exTr": "Bakan, finansman skandalıyla ilgili daha fazla soruyla karşılaşmaktansa istifa etmeyi tercih etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The chair offered to resign after members questioned whether her additional role prevented her from representing the association independently.",
+          "exTr": "Üyeler, ek görevinin derneği bağımsız biçimde temsil etmesini engelleyip engellemediğini sorgulayınca başkan istifa etmeyi teklif etti."
+        }
+      ]
+    },
+    {
+      "word": "resilient",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. dayanıklı, çabuk toparlanan",
+        "ex": "Communities that rebuilt after the earthquake proved remarkably resilient in the face of hardship.",
+        "exTr": "Depremden sonra yeniden inşa edilen topluluklar, zorluklar karşısında dikkat çekici derecede dayanıklı çıktı."
+      },
+      "alternatives": [
+        {
+          "ex": "The network proved resilient during the temporary closure, as neighbouring centres shared rooms and staff until the damaged building could reopen.",
+          "exTr": "Hasarlı bina yeniden açılana kadar komşu merkezler oda ve personel paylaşınca ağ geçici kapanış boyunca dayanıklılığını gösterdi."
+        }
+      ]
+    },
+    {
+      "word": "resistance",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. direnç",
+        "ex": "Overusing antibiotics has accelerated the spread of drug resistance among common bacteria.",
+        "exTr": "Antibiyotiklerin aşırı kullanımı, yaygın bakterilerde ilaç direncinin yayılmasını hızlandırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The experiment compared the materials' resistance to bending, using pieces of equal size so that their shapes would not obscure the comparison.",
+          "exTr": "Deney, biçimlerinin karşılaştırmayı belirsizleştirmemesi için eşit boyutlu parçalar kullanarak malzemelerin bükülmeye direncini karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "resonance",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. (mecazi) yankı bulma, karşılık bulma",
+        "ex": "The speech about climate change had a particular resonance with young voters concerned about the planet's future.",
+        "exTr": "İklim değişikliği hakkındaki konuşma, gezegenin geleceğinden endişe duyan genç seçmenler arasında özellikle yankı buldu."
+      },
+      "alternatives": [
+        {
+          "ex": "The story had particular resonance for readers who had left small towns, recalling decisions that official accounts of migration often overlook.",
+          "exTr": "Hikâye, resmi göç anlatılarının sıklıkla gözden kaçırdığı kararları hatırlatarak küçük kasabalardan ayrılmış okuyucularda özellikle karşılık buldu."
+        }
+      ]
+    },
+    {
+      "word": "respect",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. saygı duymak",
+        "ex": "Indigenous communities have long taught their children to respect the surrounding natural environment.",
+        "exTr": "Yerli topluluklar, çocuklarına çevrelerindeki doğal ortama saygı duymayı uzun zamandır öğretiyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The interviewer tried to respect the participant's wish not to discuss certain years, even though those gaps complicated the account.",
+          "exTr": "Bu boşluklar anlatımı karmaşıklaştırsa da görüşmeci, katılımcının belirli yılları tartışmama isteğine saygı duymaya çalıştı."
+        }
+      ]
+    },
+    {
+      "word": "respective",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. her birine ayrı ayrı ait olan; ilgili",
+        "ex": "After the joint briefing, the researchers returned to their respective laboratories to analyse the samples.",
+        "exTr": "Ortak bilgilendirmenin ardından araştırmacılar numuneleri incelemek üzere kendi laboratuvarlarına döndü."
+      },
+      "alternatives": [
+        {
+          "ex": "The architect and the engineer explained their respective responsibilities, clarifying which questions concerned the layout and which required structural assessment.",
+          "exTr": "Mimar ve mühendis, hangi soruların yerleşim düzeniyle ilgili olduğunu ve hangilerinin yapısal değerlendirme gerektirdiğini netleştirerek kendi sorumluluklarını açıkladı."
+        }
+      ]
+    },
+    {
+      "word": "respond",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. yanıt vermek, tepki göstermek",
+        "ex": "Patients often respond differently to the same medication depending on their genetic makeup.",
+        "exTr": "Hastalar, genetik yapılarına bağlı olarak aynı ilaca genellikle farklı yanıt verir."
+      },
+      "alternatives": [
+        {
+          "ex": "The organisers promised to respond to written suggestions before the next meeting, giving residents time to consider the proposed changes.",
+          "exTr": "Organizatörler, sakinlere önerilen değişiklikleri değerlendirme zamanı tanıyarak yazılı önerilere bir sonraki toplantıdan önce yanıt vermeyi taahhüt etti."
+        }
+      ]
+    },
+    {
+      "word": "responsibility",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sorumluluk, yükümlülük",
+        "ex": "Protecting the environment is a shared responsibility that involves governments, companies, and individuals alike.",
+        "exTr": "Çevreyi korumak; hükümetleri, şirketleri ve bireyleri aynı ölçüde ilgilendiren ortak bir sorumluluktur."
+      },
+      "alternatives": [
+        {
+          "ex": "Responsibility for checking the translations was shared between subject specialists and editors, since neither group alone could address every type of error.",
+          "exTr": "İki gruptan hiçbiri tek başına her hata türünü ele alamayacağı için çevirileri kontrol etme sorumluluğu alan uzmanlarıyla editörler arasında paylaşıldı."
+        }
+      ]
+    },
+    {
+      "word": "responsive",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. duyarlı, tepki veren",
+        "ex": "The updated website design is more responsive and loads faster on mobile devices.",
+        "exTr": "Güncellenen web sitesi tasarımı daha duyarlı ve mobil cihazlarda daha hızlı yükleniyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The revised service became more responsive to residents' needs once staff could adjust appointment times instead of following a single fixed schedule.",
+          "exTr": "Çalışanlar tek bir sabit programa uymak yerine randevu saatlerini ayarlayabilir hâle gelince yenilenen hizmet sakinlerin ihtiyaçlarına daha duyarlı oldu."
+        }
+      ]
+    },
+    {
+      "word": "restart",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. yeniden başlatmak, tekrar çalıştırmak",
+        "ex": "Doctors managed to restart the patient's heart with a carefully controlled electrical shock, although the damage to the tissue proved permanent.",
+        "exTr": "Doktorlar, dikkatle kontrol edilen bir elektrik şokuyla hastanın kalbini yeniden çalıştırmayı başardı; ancak dokudaki hasarın kalıcı olduğu ortaya çıktı."
+      },
+      "alternatives": [
+        {
+          "ex": "The technician waited for the files to finish saving before attempting to restart the computer that controlled the display.",
+          "exTr": "Teknisyen, gösterimi yöneten bilgisayarı yeniden başlatmayı denemeden önce dosyaların kaydedilmesinin tamamlanmasını bekledi."
+        }
+      ]
+    }
+  ],
+  "collocations": [
+    {
+      "word": "rehearse",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "rehearse a scene",
+          "tr": "bir sahneyi prova etmek"
+        },
+        {
+          "en": "rehearse for a performance",
+          "tr": "bir gösteri için prova yapmak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "remembrance",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "in remembrance of",
+          "tr": "anısına, anmak için"
+        },
+        {
+          "en": "a remembrance ceremony",
+          "tr": "anma töreni"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "rend",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "rend something apart",
+          "tr": "bir şeyi yırtıp parçalamak"
+        },
+        {
+          "en": "rend one's clothes",
+          "tr": "giysilerini yırtmak; edebî veya tarihsel kullanım"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "reportedly",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "reportedly missing",
+          "tr": "kayıp olduğu bildirilen"
+        },
+        {
+          "en": "reportedly planning to",
+          "tr": "planladığı bildirilen"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "respective",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "their respective roles",
+          "tr": "her birinin kendi rolü"
+        },
+        {
+          "en": "the respective merits",
+          "tr": "her birinin kendine özgü üstün yönleri"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

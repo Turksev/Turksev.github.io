@@ -1,0 +1,1141 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 3,
+    "input": "input-030.json"
+  },
+  "enrichments": [
+    {
+      "word": "microscopic",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. mikroskobik, çok küçük",
+        "ex": "Researchers used a powerful electron beam to examine microscopic particles found in the water sample.",
+        "exTr": "Araştırmacılar, su örneğinde bulunan mikroskobik parçacıkları incelemek için güçlü bir elektron demeti kullandı."
+      },
+      "alternatives": [
+        {
+          "ex": "Microscopic examination of the fabric revealed fibres that could not be distinguished by touch or by looking at the garment under ordinary light.",
+          "exTr": "Kumaşın mikroskobik incelemesi, dokunarak veya giysiye normal ışıkta bakarak ayırt edilemeyen lifleri ortaya çıkardı."
+        }
+      ]
+    },
+    {
+      "word": "mid-on",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. (kriket) atıcının yanındaki alan pozisyonu",
+        "ex": "The captain moved a fielder to mid-on, anticipating that the batsman would play a defensive shot.",
+        "exTr": "Kaptan, vurucunun savunma amaçlı bir vuruş yapacağını öngörerek bir alan oyuncusunu atıcının yanındaki pozisyona kaydırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The ball travelled towards mid-on, where the waiting fielder collected it cleanly and returned it before the batters could attempt another run.",
+          "exTr": "Top mid-on bölgesine ilerledi; orada bekleyen alan oyuncusu topu düzgünce alıp vurucular bir koşu daha deneyemeden geri gönderdi."
+        }
+      ],
+      "note": "Krikette on/leg tarafında atıcıya yakın alan pozisyonu. Collins/Random House tanımı: https://www.dictionary.com/browse/mid-on ."
+    },
+    {
+      "word": "middle-aged",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. orta yaşlı",
+        "ex": "Doctors recommend that middle-aged adults undergo regular screening for early signs of heart disease.",
+        "exTr": "Doktorlar, orta yaşlı yetişkinlerin kalp hastalığının erken belirtileri için düzenli tarama yaptırmasını önerir."
+      },
+      "alternatives": [
+        {
+          "ex": "The evening course attracted middle-aged learners returning to education, many of whom combined study with employment and responsibilities for other family members.",
+          "exTr": "Akşam dersi, çoğu öğrenimi iş ve aile üyelerine yönelik sorumluluklarla birlikte yürüten, eğitime geri dönmüş orta yaşlı öğrencileri çekti."
+        }
+      ]
+    },
+    {
+      "word": "middle-of-the-road",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. ılımlı, ortayolcu (siyasette aşırılıktan uzak)",
+        "ex": "The senator built her career on middle-of-the-road policies that appealed to voters from both parties.",
+        "exTr": "Senatör, kariyerini her iki partiden seçmenlere hitap eden ılımlı politikalar üzerine inşa etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The editorial adopted a middle-of-the-road position, accepting the need for change while questioning proposals to replace the entire system immediately.",
+          "exTr": "Başyazı, değişim ihtiyacını kabul ederken tüm sistemi hemen değiştirme önerilerini sorgulayarak ılımlı bir tutum benimsedi."
+        }
+      ]
+    },
+    {
+      "word": "mighty",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. güçlü, kudretli, kuvvetli",
+        "ex": "The ancient fortress once protected a mighty empire that controlled trade routes across the continent.",
+        "exTr": "Antik kale, bir zamanlar kıta genelindeki ticaret yollarını denetleyen güçlü bir imparatorluğu koruyordu."
+      },
+      "alternatives": [
+        {
+          "ex": "The epic presents the river as a mighty force that frustrates the ruler's plans, challenging his belief that everything can be controlled.",
+          "exTr": "Destan, nehri hükümdarın planlarını bozan kudretli bir güç olarak sunarak onun her şeyin kontrol edilebileceği inancına meydan okur."
+        }
+      ]
+    },
+    {
+      "word": "migration",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. göç",
+        "ex": "Climate change is expected to accelerate migration from coastal areas vulnerable to flooding.",
+        "exTr": "İklim değişikliğinin, sele karşı savunmasız kıyı bölgelerinden göçü hızlandırması bekleniyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The study traced migration through school registers and household records, capturing movements that official accounts of permanent settlement had overlooked.",
+          "exTr": "Çalışma, okul ve hane kayıtları üzerinden göçü izleyerek kalıcı yerleşime ilişkin resmî anlatımların gözden kaçırdığı hareketleri ortaya çıkardı."
+        }
+      ]
+    },
+    {
+      "word": "mild",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. hafif, ılıman",
+        "ex": "The doctor reassured her that the side effects were usually mild and temporary.",
+        "exTr": "Doktor, yan etkilerin genellikle hafif ve geçici olduğu konusunda onu rahatlattı."
+      },
+      "alternatives": [
+        {
+          "ex": "A mild winter allowed repairs to continue outdoors, although the team still checked weather forecasts before planning work on exposed sections.",
+          "exTr": "Ilıman bir kış dışarıdaki onarımların sürmesini sağladı; yine de ekip açık bölümlerdeki işi planlamadan önce hava tahminlerini kontrol ediyordu."
+        }
+      ]
+    },
+    {
+      "word": "milestone",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. dönüm noktası, önemli aşama",
+        "ex": "Completing the marathon marked a personal milestone that she had worked toward for years.",
+        "exTr": "Maratonu tamamlamak, yıllardır uğrunda çalıştığı kişisel bir dönüm noktasına işaret ediyordu."
+      },
+      "alternatives": [
+        {
+          "ex": "Producing the first working prototype was an important milestone, but reliable performance under ordinary conditions still required months of further testing.",
+          "exTr": "İlk çalışan prototipi üretmek önemli bir aşamaydı; ancak sıradan koşullarda güvenilir performans için hâlâ aylarca ek test gerekiyordu."
+        }
+      ]
+    },
+    {
+      "word": "milky",
+      "sense_index": 1,
+      "expected": {
+        "tr": "s. sütlü, süt beyazı",
+        "ex": "The chemist noted that the solution turned milky white after the two chemicals were combined.",
+        "exTr": "Kimyager, iki kimyasal birleştirildikten sonra çözeltinin süt beyazına döndüğünü kaydetti."
+      },
+      "alternatives": [
+        {
+          "ex": "The milky glass softened the incoming light, concealing details of the courtyard while allowing its changing brightness to remain visible indoors.",
+          "exTr": "Süt beyazı cam, avlunun ayrıntılarını gizlerken değişen aydınlığının içeriden görülmesini sağlayarak gelen ışığı yumuşatıyordu."
+        }
+      ]
+    },
+    {
+      "word": "millimeter",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. milimetre",
+        "ex": "The surgeon adjusted the instrument by a single millimeter to avoid damaging surrounding tissue.",
+        "exTr": "Cerrah, çevredeki dokuya zarar vermemek için aleti yalnızca bir milimetre ayarladı."
+      },
+      "alternatives": [
+        {
+          "ex": "A difference of one millimeter prevented the replacement part from fitting, even though its overall shape matched the original drawing.",
+          "exTr": "Genel biçimi özgün çizime uysa da bir milimetrelik fark yedek parçanın yerine oturmasını engelledi."
+        }
+      ]
+    },
+    {
+      "word": "mind-altering",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. algıyı/zihni değiştiren (madde)",
+        "ex": "The clinic warned patients about the risks associated with several mind-altering substances found in the medication.",
+        "exTr": "Klinik, hastaları ilaçta bulunan birkaç zihni değiştiren maddeyle ilişkili riskler konusunda uyardı."
+      },
+      "alternatives": [
+        {
+          "ex": "The lecture examined historical descriptions of mind-altering substances, separating accounts of altered perception from unsupported claims about artistic ability.",
+          "exTr": "Konferans, değişen algıya ilişkin anlatımları sanatsal yetenek hakkındaki temelsiz iddialardan ayırarak zihni etkileyen maddelerin tarihsel betimlemelerini inceledi."
+        }
+      ]
+    },
+    {
+      "word": "mindless",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. düşüncesiz, aptalca",
+        "ex": "Critics described the film's plot as mindless entertainment lacking any real depth or message.",
+        "exTr": "Eleştirmenler, filmin konusunu gerçek bir derinlik ya da mesajdan yoksun, düşüncesiz bir eğlence olarak tanımladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The tutor criticised mindless repetition of formulas, asking students to explain why a method suited one problem but not another.",
+          "exTr": "Öğretmen, öğrencilerden bir yöntemin neden bir probleme uyup diğerine uymadığını açıklamalarını isteyerek formüllerin düşünmeden tekrarlanmasını eleştirdi."
+        }
+      ]
+    },
+    {
+      "word": "mine",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. maden (ocağı)",
+        "ex": "The old coal mine was closed decades ago after several safety violations were discovered.",
+        "exTr": "Eski kömür madeni, birkaç güvenlik ihlali tespit edildikten sonra onlarca yıl önce kapatıldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The former mine now provides evidence of changing extraction methods, with tunnels and discarded equipment documenting different periods of operation.",
+          "exTr": "Eski maden ocağı, tünellerin ve bırakılmış ekipmanın farklı çalışma dönemlerini belgelemesiyle artık değişen çıkarma yöntemlerine ilişkin kanıt sunuyor."
+        }
+      ]
+    },
+    {
+      "word": "minimal",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. asgari, minimum",
+        "ex": "The new surgical technique causes minimal damage to surrounding tissue compared with older methods.",
+        "exTr": "Yeni cerrahi teknik, eski yöntemlere kıyasla çevre dokuda asgari düzeyde hasara yol açıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The installation required minimal alteration to the room, allowing the original wall surfaces to remain visible behind the temporary display panels.",
+          "exTr": "Kurulum odada çok az değişiklik gerektirerek özgün duvar yüzeylerinin geçici sergi panellerinin arkasında görünür kalmasını sağladı."
+        }
+      ]
+    },
+    {
+      "word": "minimize",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. en aza indirmek",
+        "ex": "Engineers design earthquake-resistant buildings to minimize damage and protect residents during severe tremors.",
+        "exTr": "Mühendisler, şiddetli sarsıntılar sırasında hasarı en aza indirmek ve sakinleri korumak için depreme dayanıklı binalar tasarlar."
+      },
+      "alternatives": [
+        {
+          "ex": "To minimize interruptions, the library scheduled noisy maintenance before opening, leaving quieter tasks for hours when readers occupied the study rooms.",
+          "exTr": "Kütüphane, kesintileri en aza indirmek için gürültülü bakımı açılış öncesine planlayıp sessiz işleri okurların çalışma odalarını kullandığı saatlere bıraktı."
+        }
+      ]
+    },
+    {
+      "word": "ministerial",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. bir bakana, bakanlığa veya din görevlisinin makamına ilişkin",
+        "ex": "Ministerial approval is required before the agency can release funds for the national programme.",
+        "exTr": "Kurum ulusal program için kaynak ayırmadan önce bakanlık onayı gerekir."
+      },
+      "alternatives": [
+        {
+          "ex": "The archive contains ministerial correspondence about the railway proposal, revealing disagreements that were absent from the final public announcement.",
+          "exTr": "Arşiv, demir yolu önerisi hakkında bakanlık yazışmaları içererek son kamuoyu açıklamasında yer almayan anlaşmazlıkları ortaya koyar."
+        }
+      ]
+    },
+    {
+      "word": "minority",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. azınlık",
+        "ex": "The report highlighted persistent barriers to healthcare faced by ethnic minority communities.",
+        "exTr": "Rapor, etnik azınlık topluluklarının sağlık hizmetlerine erişimde karşılaştığı kalıcı engelleri vurguladı."
+      },
+      "alternatives": [
+        {
+          "ex": "Only a minority of respondents favoured closing the branch, but their reasons differed considerably from those assumed in the council's initial report.",
+          "exTr": "Katılımcıların yalnızca azınlığı şubenin kapanmasını destekliyordu; ancak gerekçeleri belediyenin ilk raporunda varsayılanlardan oldukça farklıydı."
+        }
+      ]
+    },
+    {
+      "word": "minutes",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. (toplantı) tutanak, zabıt",
+        "ex": "The secretary carefully recorded the minutes of the board meeting for future reference.",
+        "exTr": "Sekreter, ileride başvurmak üzere yönetim kurulu toplantısının tutanağını dikkatle kaydetti."
+      },
+      "alternatives": [
+        {
+          "ex": "The minutes recorded the decision but not the objections raised beforehand, prompting members to request a fuller account of the discussion.",
+          "exTr": "Tutanak kararı kaydetmiş, fakat öncesindeki itirazları içermemişti; bunun üzerine üyeler tartışmanın daha eksiksiz bir anlatımını istedi."
+        }
+      ]
+    },
+    {
+      "word": "misconception",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yanlış anlama, yanlış kanı",
+        "ex": "A common misconception among students is that studying for longer hours always leads to better exam results.",
+        "exTr": "Öğrenciler arasında yaygın bir yanlış kanı, daha uzun saatler çalışmanın her zaman daha iyi sınav sonuçlarına yol açtığıdır."
+      },
+      "alternatives": [
+        {
+          "ex": "The lesson addressed the misconception that a larger sample automatically removes bias, using an example drawn entirely from one neighbourhood.",
+          "exTr": "Ders, bütünüyle tek mahalleden seçilmiş bir örnek kullanarak daha büyük örneklemin yanlılığı otomatik olarak kaldırdığı yönündeki yanlış kanıyı ele aldı."
+        }
+      ]
+    },
+    {
+      "word": "misinformation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yanlış bilgi, asılsız bilgi",
+        "ex": "Public health officials worked hard to counter misinformation circulating about the new vaccine.",
+        "exTr": "Halk sağlığı yetkilileri, yeni aşı hakkında yayılan yanlış bilgilerle mücadele etmek için yoğun çaba gösterdi."
+      },
+      "alternatives": [
+        {
+          "ex": "Incorrect opening times spread as misinformation when several websites copied an outdated notice without checking the library's revised schedule.",
+          "exTr": "Birkaç internet sitesi kütüphanenin yenilenen programını kontrol etmeden eski duyuruyu kopyalayınca yanlış açılış saatleri hatalı bilgi olarak yayıldı."
+        }
+      ]
+    },
+    {
+      "word": "misrepresentation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yanlış tanıtma, çarpıtma, yanlış aktarma",
+        "ex": "The author complains that popular summaries of the theory amount to a misrepresentation of its central claim, which was far more cautious than usually assumed.",
+        "exTr": "Yazar, kuramın popüler özetlerinin, genelde sanılandan çok daha temkinli olan merkezî savının çarpıtılması anlamına geldiğinden yakınıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Describing the temporary closure as permanent was a misrepresentation that discouraged visitors even after the gallery had resumed its normal opening hours.",
+          "exTr": "Geçici kapanmayı kalıcı diye anlatmak, galeri normal çalışma saatlerine döndükten sonra bile ziyaretçileri caydıran bir çarpıtmaydı."
+        }
+      ]
+    },
+    {
+      "word": "missing",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kayıp, eksik",
+        "ex": "Rescue teams searched the mountains for three missing climbers after the storm.",
+        "exTr": "Kurtarma ekipleri, fırtınadan sonra kaybolan üç dağcı için dağlarda arama yaptı."
+      },
+      "alternatives": [
+        {
+          "ex": "The missing page was found inside a different volume, restoring a paragraph that changed how the final letter could be interpreted.",
+          "exTr": "Eksik sayfa başka bir cildin içinde bulundu ve son mektubun yorumunu değiştiren bir paragraf yeniden ortaya çıktı."
+        }
+      ]
+    },
+    {
+      "word": "mist",
+      "sense_index": 2,
+      "expected": {
+        "tr": "i. sis, pus, buğu",
+        "ex": "A thin mist hung over the valley at dawn, hiding the farmhouses until the sun finally burned it away.",
+        "exTr": "Şafakta vadinin üzerine ince bir pus çökmüştü ve güneş sonunda onu dağıtana kadar çiftlik evlerini gizledi."
+      },
+      "alternatives": [
+        {
+          "ex": "Morning mist obscured the opposite bank, so the photographer waited until the outlines of the trees became clear enough to compose the image.",
+          "exTr": "Sabah sisi karşı kıyıyı gizlediği için fotoğrafçı, ağaçların hatları görüntüyü düzenleyecek kadar belirginleşene dek bekledi."
+        }
+      ]
+    },
+    {
+      "word": "mistakenly",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. yanlışlıkla, hataen",
+        "ex": "The lab assistant mistakenly labeled two samples, delaying the results by several days.",
+        "exTr": "Laboratuvar asistanı iki örneği yanlışlıkla etiketleyerek sonuçları birkaç gün geciktirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The curator mistakenly attributed the portrait to a local artist before a signature hidden beneath the frame identified a different painter.",
+          "exTr": "Çerçevenin altındaki imza farklı bir ressamı ortaya çıkarmadan önce küratör portreyi yanlışlıkla yerel bir sanatçıya atfetmişti."
+        }
+      ]
+    },
+    {
+      "word": "misunderstand",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. yanlış anlamak, yanlış yorumlamak",
+        "ex": "Readers may misunderstand the conclusion if the distinction between correlation and causation is not made clear.",
+        "exTr": "Korelasyon ile nedensellik arasındaki ayrım açıklanmazsa okuyucular sonucu yanlış anlayabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "Visitors misunderstood the arrow as an instruction to leave the building, although the designer had intended it to indicate the next exhibition room.",
+          "exTr": "Tasarımcı sonraki sergi odasını göstermeyi amaçlamış olsa da ziyaretçiler oku binadan çıkış yönlendirmesi olarak yanlış anladı."
+        }
+      ]
+    },
+    {
+      "word": "misuse",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kötüye kullanma, suistimal",
+        "ex": "The report warned that misuse of antibiotics is accelerating the spread of drug-resistant bacteria.",
+        "exTr": "Rapor, antibiyotiklerin kötüye kullanımının ilaca dirençli bakterilerin yayılmasını hızlandırdığı konusunda uyardı."
+      },
+      "alternatives": [
+        {
+          "ex": "The policy distinguished accidental mistakes from deliberate misuse of shared accounts, allowing different responses to problems with very different causes.",
+          "exTr": "Politika, ortak hesaplarda kazara yapılan hataları kasıtlı kötüye kullanımdan ayırarak nedenleri çok farklı sorunlara farklı yanıtlar verilmesini sağladı."
+        }
+      ]
+    },
+    {
+      "word": "mix",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. karıştırmak, karışmak",
+        "ex": "Engineers mix cement with water and sand to produce durable concrete for construction.",
+        "exTr": "Mühendisler, inşaat için dayanıklı beton üretmek amacıyla çimentoyu su ve kumla karıştırır."
+      },
+      "alternatives": [
+        {
+          "ex": "The art students mixed small amounts of paint on separate cards, recording proportions so that promising colours could be reproduced later.",
+          "exTr": "Sanat öğrencileri, beğenilen renklerin daha sonra yeniden üretilebilmesi için oranları kaydederek ayrı kartlarda az miktarda boyayı karıştırdı."
+        }
+      ]
+    },
+    {
+      "word": "mixture",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. karışım, harman",
+        "ex": "The vaccine contains a mixture of proteins designed to trigger a strong immune response.",
+        "exTr": "Aşı, güçlü bir bağışıklık tepkisini tetiklemek üzere tasarlanmış bir protein karışımı içerir."
+      },
+      "alternatives": [
+        {
+          "ex": "The collection contains a mixture of professional photographs and family snapshots, offering contrasting views of the same changing neighbourhood.",
+          "exTr": "Koleksiyon, değişen aynı mahalleye karşıt bakışlar sunan profesyonel fotoğraflarla aile fotoğraflarının bir karışımını içerir."
+        }
+      ]
+    },
+    {
+      "word": "mobilize",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. seferber etmek, harekete geçirmek",
+        "ex": "The government moved quickly to mobilize emergency resources after the earthquake struck the coastal region.",
+        "exTr": "Hükümet, deprem kıyı bölgesini vurduktan sonra acil durum kaynaklarını seferber etmek için hızla harekete geçti."
+      },
+      "alternatives": [
+        {
+          "ex": "The parents' association mobilized volunteers to catalogue donated books, turning an unused classroom into a reading space before the new term.",
+          "exTr": "Veli derneği, kullanılmayan bir sınıfı yeni dönemden önce okuma alanına dönüştürmek üzere bağışlanan kitapları kataloglayacak gönüllüleri harekete geçirdi."
+        }
+      ]
+    },
+    {
+      "word": "mode",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. tarz, biçim, yöntem",
+        "ex": "Walking remains the most sustainable mode of transportation for short distances within urban neighborhoods.",
+        "exTr": "Yürüyüş, kentsel mahallelerde kısa mesafeler için en sürdürülebilir ulaşım biçimi olmaya devam ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The survey allowed participants to choose their preferred mode of response, including a telephone interview for those unable to complete the online form.",
+          "exTr": "Anket, çevrim içi formu dolduramayanlar için telefon görüşmesini de sunarak katılımcıların tercih ettikleri yanıt biçimini seçmesine izin verdi."
+        }
+      ]
+    },
+    {
+      "word": "moderately",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. orta derecede, ölçülü biçimde",
+        "ex": "Health experts recommend that adults exercise moderately for at least thirty minutes most days.",
+        "exTr": "Sağlık uzmanları, yetişkinlerin haftanın çoğu günü en az otuz dakika orta düzeyde egzersiz yapmasını tavsiye ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The room was moderately warm, but measurements near the windows differed enough to justify moving the sensitive equipment away from direct sunlight.",
+          "exTr": "Oda orta derecede sıcaktı; ancak pencere yakınındaki ölçümler, hassas ekipmanı doğrudan güneşten uzaklaştırmayı gerektirecek kadar farklıydı."
+        }
+      ]
+    },
+    {
+      "word": "modernism",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. modernizm, çağdaşçılık (sanat ve edebiyat akımı)",
+        "ex": "Modernism rejected the conventions of nineteenth-century realism, encouraging writers to experiment with fragmented narratives and unreliable narrators.",
+        "exTr": "Modernizm, on dokuzuncu yüzyıl gerçekçiliğinin geleneklerini reddederek yazarları parçalı anlatılar ve güvenilmez anlatıcılarla deney yapmaya yöneltti."
+      },
+      "alternatives": [
+        {
+          "ex": "The course approached modernism through architecture as well as literature, comparing experiments in spatial organisation with changes in narrative structure.",
+          "exTr": "Ders, mekânsal düzenleme denemelerini anlatı yapısındaki değişimlerle karşılaştırarak modernizmi edebiyatın yanı sıra mimarlık üzerinden ele aldı."
+        }
+      ]
+    },
+    {
+      "word": "modernize",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. modernleştirmek, çağdaşlaştırmak, yenilemek",
+        "ex": "The government has pledged to modernize the rail network, replacing signalling systems that in some regions have been in service for over fifty years.",
+        "exTr": "Hükümet, bazı bölgelerde elli yılı aşkın süredir kullanımda olan sinyalizasyon sistemlerini değiştirerek demiryolu ağını modernleştirmeyi taahhüt etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The company sought to modernize its booking process while retaining a telephone service for customers who could not use digital forms.",
+          "exTr": "Şirket, dijital formları kullanamayan müşterilere telefon hizmetini sürdürürken rezervasyon sürecini modernleştirmeye çalıştı."
+        }
+      ]
+    },
+    {
+      "word": "modified",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. değiştirilmiş, tadil edilmiş, düzenlenmiş",
+        "ex": "Farmers increasingly plant genetically modified crops that resist drought and common plant diseases better.",
+        "exTr": "Çiftçiler, kuraklığa ve yaygın bitki hastalıklarına daha iyi direnen genetiği değiştirilmiş ürünleri giderek daha çok ekiyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The modified questionnaire replaced technical language with familiar expressions, but retained the distinctions necessary to compare responses with earlier interviews.",
+          "exTr": "Değiştirilmiş anket teknik dili tanıdık ifadelerle değiştirdi; ancak yanıtları önceki görüşmelerle karşılaştırmak için gereken ayrımları korudu."
+        }
+      ]
+    },
+    {
+      "word": "module",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. modül",
+        "ex": "Engineers successfully attached the new module to the space station during a six-hour spacewalk.",
+        "exTr": "Mühendisler, altı saat süren bir uzay yürüyüşü sırasında yeni modülü uzay istasyonuna başarıyla taktı."
+      },
+      "alternatives": [
+        {
+          "ex": "The optional module introduced students to sound recording, combining discussion of acoustic principles with supervised practice using the department's portable equipment.",
+          "exTr": "Seçmeli modül, akustik ilkelerin tartışmasını bölümün taşınabilir ekipmanıyla gözetimli uygulamayla birleştirerek öğrencileri ses kaydıyla tanıştırdı."
+        }
+      ]
+    },
+    {
+      "word": "mole",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. köstebek (hayvan)",
+        "ex": "Gardeners noticed several small mounds of soil, evidence that a mole had been digging tunnels beneath the lawn.",
+        "exTr": "Bahçıvanlar, bir köstebeğin çimin altında tüneller kazdığının kanıtı olan birkaç küçük toprak yığını fark etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The naturalist compared the mole's forelimbs with those of other small mammals, examining how their shapes related to different ways of moving.",
+          "exTr": "Doğa bilimci, biçimlerinin farklı hareket yollarıyla ilişkisini inceleyerek köstebeğin ön uzuvlarını diğer küçük memelilerinkilerle karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "molly",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. molli (bir akvaryum balığı türü)",
+        "ex": "Home aquarium enthusiasts often choose the molly because it adapts easily to different water conditions.",
+        "exTr": "Ev akvaryumu meraklıları, farklı su koşullarına kolayca uyum sağladığı için sık sık molliyi tercih eder."
+      },
+      "alternatives": [
+        {
+          "ex": "The aquarium keeper photographed each molly during routine observation, using visible markings to distinguish individuals in the records of the collection.",
+          "exTr": "Akvaryum görevlisi, koleksiyon kayıtlarında bireyleri ayırt etmek için görünür işaretleri kullanarak rutin gözlem sırasında her molliyi fotoğrafladı."
+        }
+      ],
+      "note": "Poecilia cinsinden akvaryum balığı anlamı; uyuşturucu anlamı kullanılmadı. https://www.merriam-webster.com/dictionary/molly ."
+    },
+    {
+      "word": "momentum",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. momentum, ivme; hız kazanma",
+        "ex": "The renewable energy movement gained momentum after several governments introduced generous tax incentives.",
+        "exTr": "Yenilenebilir enerji hareketi, birçok hükümetin cömert vergi teşvikleri getirmesinin ardından ivme kazandı."
+      },
+      "alternatives": [
+        {
+          "ex": "The repair campaign gained momentum when local shops offered spare parts, enabling volunteers to organise regular sessions rather than occasional events.",
+          "exTr": "Yerel dükkânlar yedek parça sağlayınca onarım kampanyası ivme kazandı ve gönüllüler ara sıra etkinlik yerine düzenli buluşmalar yapabildi."
+        }
+      ]
+    },
+    {
+      "word": "monastery",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. manastır",
+        "ex": "The medieval monastery preserved thousands of classical manuscripts that would otherwise have been lost during the turbulent centuries following the empire's collapse.",
+        "exTr": "Ortaçağ manastırı, imparatorluğun çöküşünü izleyen çalkantılı yüzyıllarda başka türlü yok olup gidecek olan binlerce klasik el yazmasını korudu."
+      },
+      "alternatives": [
+        {
+          "ex": "The monastery's kitchen records revealed purchases from surrounding villages, showing how closely the institution depended on everyday exchanges beyond its walls.",
+          "exTr": "Manastırın mutfak kayıtları çevre köylerden yapılan alımları ortaya koyarak kurumun duvarları dışındaki günlük alışverişlere ne kadar bağlı olduğunu gösterdi."
+        }
+      ]
+    },
+    {
+      "word": "monitor",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. izlemek, denetlemek",
+        "ex": "Satellites monitor changes in polar ice to help scientists track global warming.",
+        "exTr": "Uydular, bilim insanlarının küresel ısınmayı takip etmesine yardımcı olmak için kutup buzlarındaki değişimleri izler."
+      },
+      "alternatives": [
+        {
+          "ex": "Sensors monitored humidity throughout the exhibition, allowing conservators to compare conditions near the entrance with those in less frequently visited rooms.",
+          "exTr": "Sensörler sergi boyunca nemi izleyerek koruma uzmanlarının giriş yakınındaki koşulları daha az ziyaret edilen odalardakilerle karşılaştırmasını sağladı."
+        }
+      ]
+    },
+    {
+      "word": "monopoly",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. tekel",
+        "ex": "The government broke up the railway monopoly to encourage competition and lower ticket prices.",
+        "exTr": "Hükümet, rekabeti teşvik etmek ve bilet fiyatlarını düşürmek için demiryolu tekelini parçaladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The historian investigated the printer's monopoly by tracing who could publish certain books and how rival workshops responded to those restrictions.",
+          "exTr": "Tarihçi, belirli kitapları kimlerin basabildiğini ve rakip atölyelerin kısıtlamalara nasıl karşılık verdiğini izleyerek matbaacının tekelini araştırdı."
+        }
+      ]
+    },
+    {
+      "word": "month",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ay (zaman birimi)",
+        "ex": "Sea levels near the coastal city rose noticeably within just a single month.",
+        "exTr": "Kıyı kentinin yakınındaki deniz seviyesi, yalnızca bir ay içinde belirgin biçimde yükseldi."
+      },
+      "alternatives": [
+        {
+          "ex": "For one month, the residents recorded every journey outside the village, creating a detailed picture of their transport needs across ordinary working weeks.",
+          "exTr": "Sakinler bir ay boyunca köy dışındaki her yolculuğu kaydederek normal çalışma haftalarındaki ulaşım ihtiyaçlarının ayrıntılı tablosunu oluşturdu."
+        }
+      ]
+    },
+    {
+      "word": "monumental",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. anıtsal, çok önemli",
+        "ex": "Completing the human genome project was considered a monumental achievement in modern science.",
+        "exTr": "İnsan genom projesinin tamamlanması, modern bilimde anıtsal bir başarı olarak kabul edildi."
+      },
+      "alternatives": [
+        {
+          "ex": "Restoring the scattered correspondence was a monumental task, requiring researchers to identify unnamed recipients and reconstruct the order of hundreds of letters.",
+          "exTr": "Dağılmış yazışmaları yeniden bir araya getirmek, araştırmacıların isimsiz alıcıları belirleyip yüzlerce mektubun sırasını kurmasını gerektiren devasa bir işti."
+        }
+      ]
+    },
+    {
+      "word": "moon",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ay, uydu",
+        "ex": "Astronomers have discovered that Jupiter's largest moon contains a vast ocean beneath its icy surface.",
+        "exTr": "Gökbilimciler, Jüpiter'in en büyük uydusunun buzlu yüzeyinin altında dev bir okyanus barındırdığını keşfetti."
+      },
+      "alternatives": [
+        {
+          "ex": "The students compared photographs of the moon taken at different times, noting which visible features remained recognisable as the lighting changed.",
+          "exTr": "Öğrenciler, ışık değiştikçe hangi görünür özelliklerin tanınabilir kaldığını not ederek Ay'ın farklı zamanlarda çekilmiş fotoğraflarını karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "morality",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ahlak, ahlakilik",
+        "ex": "Philosophers have long debated whether morality is grounded in reason, emotion, or cultural convention.",
+        "exTr": "Filozoflar, ahlakın akılda mı, duyguda mı yoksa kültürel gelenekte mi temellendiği konusunu uzun süredir tartışıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The philosopher explored morality through conflicting obligations, asking how a promise should be weighed against responsibilities to people affected by keeping it.",
+          "exTr": "Filozof, bir sözün onu tutmaktan etkilenen insanlara karşı sorumluluklarla nasıl tartılması gerektiğini sorarak ahlakı çatışan yükümlülükler üzerinden ele aldı."
+        }
+      ]
+    },
+    {
+      "word": "more",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z./s. daha fazla, daha çok",
+        "ex": "Public health experts recommend more consistent handwashing to reduce the transmission of seasonal illnesses.",
+        "exTr": "Halk sağlığı uzmanları, mevsimsel hastalıkların bulaşmasını azaltmak için daha düzenli el yıkamayı öneriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The revised design provided more storage without enlarging the room, using space beneath the worktables that had previously remained empty.",
+          "exTr": "Yenilenen tasarım, çalışma masalarının altında daha önce boş kalan alanı kullanarak odayı büyütmeden daha fazla depolama sağladı."
+        }
+      ]
+    },
+    {
+      "word": "morning",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sabah",
+        "ex": "Farmers traditionally harvest crops early in the morning before the temperature rises too much.",
+        "exTr": "Çiftçiler geleneksel olarak sıcaklık çok fazla yükselmeden sabahın erken saatlerinde ürünlerini hasat eder."
+      },
+      "alternatives": [
+        {
+          "ex": "Each morning, the volunteers checked the previous day's entries before collecting new observations, ensuring that unclear notes were discussed while memories remained fresh.",
+          "exTr": "Gönüllüler her sabah yeni gözlemler toplamadan önce önceki günün kayıtlarını kontrol ederek belirsiz notların anılar tazeyken tartışılmasını sağladı."
+        }
+      ]
+    },
+    {
+      "word": "morphology",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. biçimbilim, morfoloji; şekil yapısı",
+        "ex": "The study examined the morphology of leaf cells under different levels of sunlight exposure.",
+        "exTr": "Çalışma, farklı güneş ışığı maruziyeti düzeylerinde yaprak hücrelerinin morfolojisini inceledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The linguist compared the morphology of related languages, focusing on how small changes in word structure expressed differences in tense and number.",
+          "exTr": "Dilbilimci, sözcük yapısındaki küçük değişikliklerin zaman ve sayı farklarını nasıl ifade ettiğine odaklanarak akraba dillerin biçimbilimini karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "mortar",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. harç (tuğla/taş birleştirme malzemesi); f. harçlamak",
+        "ex": "Workers mixed sand, cement, and water to prepare the mortar needed for the brick wall.",
+        "exTr": "İşçiler, tuğla duvar için gereken harcı hazırlamak amacıyla kum, çimento ve suyu karıştırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The conservation team analysed the old mortar before planning repairs, seeking to understand the material originally used between the stones.",
+          "exTr": "Koruma ekibi, taşların arasında ilk kullanılan malzemeyi anlamak amacıyla onarımları planlamadan önce eski harcı analiz etti."
+        }
+      ]
+    },
+    {
+      "word": "mosquito",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sivrisinek",
+        "ex": "Standing water near the village provided an ideal breeding ground for disease-carrying mosquitoes.",
+        "exTr": "Köyün yakınındaki durgun su, hastalık taşıyan sivrisinekler için ideal bir üreme alanı sağladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The illustration showed the mosquito beside a scale bar, helping readers understand its actual size rather than judging it from the enlarged drawing.",
+          "exTr": "Çizim sivrisineği bir ölçek çubuğunun yanında göstererek okurların büyütülmüş resimden tahmin etmek yerine gerçek boyutunu anlamasını sağladı."
+        }
+      ]
+    },
+    {
+      "word": "most-valuable",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. en değerli",
+        "ex": "The rookie player was unexpectedly named most-valuable athlete of the entire basketball season.",
+        "exTr": "Yeni oyuncu, beklenmedik biçimde tüm basketbol sezonunun en değerli sporcusu seçildi."
+      },
+      "alternatives": [
+        {
+          "ex": "The workshop's most valuable resource was the technician's experience, which helped newcomers recognise problems that written instructions could not fully anticipate.",
+          "exTr": "Atölyenin en değerli kaynağı teknisyenin deneyimiydi; bu deneyim yeni gelenlerin yazılı yönergelerin tam öngöremediği sorunları fark etmesini sağlıyordu."
+        }
+      ],
+      "note": "Standart doğal yazım most valuable biçiminde ayrı; donmuş most-valuable başlık kimliği korundu."
+    },
+    {
+      "word": "mother-in-law",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kayınvalide",
+        "ex": "She invited her mother-in-law to stay for the entire holiday season this year.",
+        "exTr": "Bu yıl kayınvalidesini tüm tatil sezonu boyunca kalması için davet etti."
+      },
+      "alternatives": [
+        {
+          "ex": "Her mother-in-law contributed family photographs to the oral history project, identifying relatives whose names had been omitted from the album's original captions.",
+          "exTr": "Kayınvalidesi, albümün ilk açıklamalarında adları atlanan akrabaları tanıtarak sözlü tarih projesine aile fotoğraflarıyla katkıda bulundu."
+        }
+      ]
+    },
+    {
+      "word": "motivate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. motive etmek, teşvik etmek",
+        "ex": "Teachers try various strategies to motivate students who struggle with mathematics.",
+        "exTr": "Öğretmenler, matematikte zorlanan öğrencileri motive etmek için çeşitli stratejiler dener."
+      },
+      "alternatives": [
+        {
+          "ex": "The possibility of displaying their work publicly motivated students to revise their designs, although participation in the exhibition remained entirely voluntary.",
+          "exTr": "Sergiye katılım tamamen gönüllü kalsa da çalışmalarını halka sunma olanağı öğrencileri tasarımlarını gözden geçirmeye motive etti."
+        }
+      ]
+    },
+    {
+      "word": "motivator",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. motive edici unsur, itici güç; güdüleyici kişi",
+        "ex": "For many students, visible progress is a stronger motivator than external rewards.",
+        "exTr": "Birçok öğrenci için gözle görülür ilerleme, dış ödüllerden daha güçlü bir motive edici unsurdur."
+      },
+      "alternatives": [
+        {
+          "ex": "For the volunteers interviewed, meeting other residents was an important motivator, alongside the satisfaction of restoring a shared community space.",
+          "exTr": "Görüşülen gönüllüler için ortak alanı yenilemenin verdiği tatminin yanında başka sakinlerle tanışmak önemli bir motive edici unsurdu."
+        }
+      ]
+    },
+    {
+      "word": "mould",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kalıp; f. şekillendirmek",
+        "ex": "Sculptors pour liquid bronze into a mould to create detailed statues for public monuments.",
+        "exTr": "Heykeltıraşlar, kamusal anıtlar için ayrıntılı heykeller oluşturmak amacıyla sıvı bronzu bir kalıba döker."
+      },
+      "alternatives": [
+        {
+          "ex": "The ceramicist inspected the mould for small defects, since imperfections in its surface would be repeated in every object produced from it.",
+          "exTr": "Seramikçi, yüzeyindeki kusurlar ondan üretilen her nesnede tekrarlanacağı için kalıbı küçük bozukluklar açısından inceledi."
+        }
+      ]
+    },
+    {
+      "word": "mountain",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. dağ",
+        "ex": "Climbers faced dangerous weather conditions while attempting to reach the mountain's summit.",
+        "exTr": "Dağcılar, dağın zirvesine ulaşmaya çalışırken tehlikeli hava koşullarıyla karşılaştı."
+      },
+      "alternatives": [
+        {
+          "ex": "The map distinguished paths around the mountain from routes crossing its higher slopes, allowing walkers to compare distance with changes in elevation.",
+          "exTr": "Harita, yürüyüşçülerin mesafeyi yükselti değişimleriyle karşılaştırabilmesi için dağın çevresindeki patikaları yüksek yamaçlarından geçen güzergâhlardan ayırdı."
+        }
+      ]
+    },
+    {
+      "word": "mouth",
+      "sense_index": 1,
+      "expected": {
+        "tr": "nehir ağzı",
+        "ex": "The old fishing village was built near the mouth of a wide river flowing into the sea.",
+        "exTr": "Eski balıkçı köyü, denize dökülen geniş bir nehrin ağzına yakın bir yere kurulmuştu."
+      },
+      "alternatives": [
+        {
+          "ex": "Sediment collected near the river mouth differed from samples upstream, prompting the team to examine how conditions changed towards the coast.",
+          "exTr": "Nehir ağzı yakınından toplanan tortu yukarı kesimlerdeki örneklerden farklıydı; bu da ekibi kıyıya doğru koşulların nasıl değiştiğini incelemeye yöneltti."
+        }
+      ]
+    },
+    {
+      "word": "moved",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. duygulanmış, etkilenmiş",
+        "ex": "The audience was visibly moved by the survivor's account of the devastating earthquake.",
+        "exTr": "Seyirciler, hayatta kalan kişinin yıkıcı depremle ilgili anlatımından belirgin şekilde duygulandı."
+      },
+      "alternatives": [
+        {
+          "ex": "The former students were moved by the recording of their teacher's voice, particularly when they recognised expressions she had used in class.",
+          "exTr": "Eski öğrenciler, özellikle sınıfta kullandığı ifadeleri tanıdıklarında öğretmenlerinin ses kaydını dinlerken duygulandı."
+        }
+      ]
+    },
+    {
+      "word": "moving",
+      "sense_index": 1,
+      "expected": {
+        "tr": "s. dokunaklı",
+        "ex": "The soldier's letter to his family was so moving that even the news anchor struggled to read it aloud without crying.",
+        "exTr": "Askerin ailesine yazdığı mektup o kadar dokunaklıydı ki spiker bile ağlamadan yüksek sesle okumakta zorlandı."
+      },
+      "alternatives": [
+        {
+          "ex": "The play's most moving scene contains almost no dialogue, relying instead on gestures that reveal how the siblings have begun to understand each other.",
+          "exTr": "Oyunun en dokunaklı sahnesi neredeyse hiç diyalog içermez; bunun yerine kardeşlerin birbirini anlamaya başladığını gösteren jestlere dayanır."
+        }
+      ]
+    },
+    {
+      "word": "muddy",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. çamurlu, çamurla kaplı veya bulanık",
+        "ex": "Heavy rain left the unpaved road muddy and inaccessible to ordinary vehicles.",
+        "exTr": "Şiddetli yağmur asfaltlanmamış yolu çamurlu ve sıradan araçlar için geçilemez bıraktı."
+      },
+      "alternatives": [
+        {
+          "ex": "The muddy path preserved clear footprints, allowing the naturalist to compare their shapes before later visitors disturbed the surface.",
+          "exTr": "Çamurlu patika belirgin ayak izlerini koruyarak doğa bilimcinin sonraki ziyaretçiler yüzeyi bozmadan önce biçimlerini karşılaştırmasına olanak tanıdı."
+        }
+      ]
+    }
+  ],
+  "collocations": [
+    {
+      "word": "mid-on",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "field at mid-on",
+          "tr": "mid-on pozisyonunda alan oyunculuğu yapmak"
+        },
+        {
+          "en": "a fielder at mid-on",
+          "tr": "mid-on pozisyonundaki alan oyuncusu"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "mighty",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a mighty river",
+          "tr": "güçlü, büyük bir nehir"
+        },
+        {
+          "en": "a mighty empire",
+          "tr": "kudretli bir imparatorluk"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "millimeter",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a fraction of a millimeter",
+          "tr": "bir milimetrenin küçük bir bölümü"
+        },
+        {
+          "en": "one millimeter thick",
+          "tr": "bir milimetre kalınlığında"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "mindless",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "mindless repetition",
+          "tr": "düşünmeden tekrarlama"
+        },
+        {
+          "en": "mindless violence",
+          "tr": "anlamsız şiddet"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "ministerial",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "ministerial responsibility",
+          "tr": "bakanlık sorumluluğu"
+        },
+        {
+          "en": "ministerial approval",
+          "tr": "bakanlık onayı"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "misunderstand",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "misunderstand an instruction",
+          "tr": "bir yönergeyi yanlış anlamak"
+        },
+        {
+          "en": "easily misunderstood",
+          "tr": "kolayca yanlış anlaşılan"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "moderately",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "moderately successful",
+          "tr": "orta derecede başarılı"
+        },
+        {
+          "en": "moderately priced",
+          "tr": "makul fiyatlı"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "module",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "an optional module",
+          "tr": "seçmeli modül"
+        },
+        {
+          "en": "a training module",
+          "tr": "eğitim modülü"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "mole",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a mole tunnel",
+          "tr": "köstebek tüneli"
+        },
+        {
+          "en": "a mole's burrow",
+          "tr": "köstebek yuvası"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "molly",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a black molly",
+          "tr": "siyah molli"
+        },
+        {
+          "en": "a sailfin molly",
+          "tr": "yelken yüzgeçli molli"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "mortar",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "lime mortar",
+          "tr": "kireç harcı"
+        },
+        {
+          "en": "mortar joints",
+          "tr": "harç derzleri"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "most-valuable",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "the most valuable resource",
+          "tr": "en değerli kaynak"
+        },
+        {
+          "en": "the most valuable player",
+          "tr": "en değerli oyuncu"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "mother-in-law",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "her mother-in-law",
+          "tr": "onun kayınvalidesi"
+        },
+        {
+          "en": "a supportive mother-in-law",
+          "tr": "destekleyici bir kayınvalide"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "motivator",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a powerful motivator",
+          "tr": "güçlü bir motive edici unsur"
+        },
+        {
+          "en": "an effective motivator",
+          "tr": "etkili bir güdüleyici"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "muddy",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a muddy path",
+          "tr": "çamurlu patika"
+        },
+        {
+          "en": "muddy water",
+          "tr": "bulanık su"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

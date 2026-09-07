@@ -1,0 +1,1128 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 3,
+    "input": "input-028.json"
+  },
+  "enrichments": [
+    {
+      "word": "loan",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kredi, borç",
+        "ex": "Small businesses often apply for a bank loan to finance new equipment and expansion.",
+        "exTr": "Küçük işletmeler, yeni ekipman ve büyümeyi finanse etmek için sıklıkla banka kredisine başvurur."
+      },
+      "alternatives": [
+        {
+          "ex": "The cooperative compared a loan with member contributions, considering how regular repayments would affect its ability to maintain the shared equipment.",
+          "exTr": "Kooperatif, düzenli geri ödemelerin ortak ekipmanın bakımını yapma kapasitesini nasıl etkileyeceğini düşünerek krediyi üye katkılarıyla karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "local",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yerel",
+        "ex": "Farmers in the local area noticed unusually early blossoms this year due to a mild winter.",
+        "exTr": "Yerel bölgedeki çiftçiler, ılıman bir kış nedeniyle bu yıl alışılmadık derecede erken çiçeklenme fark etti."
+      },
+      "alternatives": [
+        {
+          "ex": "Local knowledge helped the geographers identify seasonal streams that were absent from the regional map but familiar to nearby farmers.",
+          "exTr": "Yerel bilgi, coğrafyacıların bölge haritasında bulunmayan ancak yakın çiftçilerin bildiği mevsimlik dereleri belirlemesine yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "located",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. konumlanmış, yer alan, bulunan",
+        "ex": "The research station is located nearly two hundred kilometers from the nearest human settlement.",
+        "exTr": "Araştırma istasyonu, en yakın yerleşim yerinden neredeyse iki yüz kilometre uzakta konumlanmıştır."
+      },
+      "alternatives": [
+        {
+          "ex": "The control panel was located beside the entrance, allowing technicians to check readings without walking through the room where sensitive measurements were underway.",
+          "exTr": "Kontrol paneli girişin yanında bulunduğundan teknisyenler, hassas ölçümlerin sürdüğü odadan geçmeden değerleri kontrol edebiliyordu."
+        }
+      ]
+    },
+    {
+      "word": "lockdown",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. karantina, sokağa çıkma kısıtlaması, kapanma",
+        "ex": "During the first lockdown, air pollution in major cities fell sharply because far fewer vehicles were on the roads each morning.",
+        "exTr": "İlk kapanma sırasında her sabah yollarda çok daha az araç bulunduğu için büyük şehirlerde hava kirliliği hızla azaldı."
+      },
+      "alternatives": [
+        {
+          "ex": "Diaries written during lockdown revealed how differently households organised shared space when work, schooling and leisure suddenly took place under one roof.",
+          "exTr": "Kapanma sırasında yazılan günlükler; iş, okul ve boş zaman birden aynı çatı altına taşınınca hanelerin ortak alanı ne kadar farklı düzenlediğini gösterdi."
+        }
+      ]
+    },
+    {
+      "word": "log",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. kaydetmek",
+        "ex": "Ship captains must log every significant event that occurs during the voyage in official records.",
+        "exTr": "Gemi kaptanları, sefer sırasında meydana gelen her önemli olayı resmi kayıtlara işlemek zorundadır."
+      },
+      "alternatives": [
+        {
+          "ex": "Volunteers logged the time and location of each bird sighting, noting when poor visibility made identification less certain than usual.",
+          "exTr": "Gönüllüler, düşük görüşün teşhisi normalden daha belirsiz kıldığı durumları belirterek her kuş gözleminin zamanını ve konumunu kaydetti."
+        }
+      ]
+    },
+    {
+      "word": "logical",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. mantıklı, mantıksal",
+        "ex": "Scientists follow a logical sequence of steps when designing an experiment to test a hypothesis.",
+        "exTr": "Bilim insanları, bir hipotezi sınamak amacıyla deney tasarlarken mantıklı bir adımlar dizisini izler."
+      },
+      "alternatives": [
+        {
+          "ex": "The argument appeared logical until the reviewer noticed that its conclusion depended on a comparison between groups defined in different ways.",
+          "exTr": "Değerlendirmeci, sonucun farklı biçimlerde tanımlanmış gruplar arasındaki karşılaştırmaya dayandığını fark edene kadar sav mantıklı görünüyordu."
+        }
+      ]
+    },
+    {
+      "word": "long",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. uzun",
+        "ex": "Coastal engineers designed a long barrier to protect the city from future storm surges.",
+        "exTr": "Kıyı mühendisleri, şehri gelecekteki fırtına dalgalarından korumak için uzun bir bariyer tasarladı."
+      },
+      "alternatives": [
+        {
+          "ex": "A long corridor connected the workshops, providing space for deliveries but making informal communication difficult between staff at opposite ends.",
+          "exTr": "Atölyeleri uzun bir koridor bağlıyor, teslimatlar için alan sağlarken karşı uçlardaki çalışanların gündelik iletişimini zorlaştırıyordu."
+        }
+      ]
+    },
+    {
+      "word": "long-distance",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. uzun mesafeli",
+        "ex": "Many athletes train for years before competing in a long-distance running event.",
+        "exTr": "Birçok sporcu, uzun mesafeli bir koşu yarışmasına katılmadan önce yıllarca antrenman yapar."
+      },
+      "alternatives": [
+        {
+          "ex": "The geographer studied long-distance commuting through travel diaries, paying attention to journeys that crossed several administrative boundaries before reaching the workplace.",
+          "exTr": "Coğrafyacı, iş yerine ulaşmadan önce birkaç idari sınırı geçen yolculuklara dikkat ederek uzun mesafeli işe gidiş gelişleri yolculuk günlükleri üzerinden inceledi."
+        }
+      ]
+    },
+    {
+      "word": "long-lived",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. uzun ömürlü",
+        "ex": "Certain species of deep-sea coral are remarkably long-lived, surviving for several centuries undisturbed.",
+        "exTr": "Derin deniz mercanlarının bazı türleri, rahatsız edilmeden yüzyıllarca hayatta kalarak dikkat çekici derecede uzun ömürlüdür."
+      },
+      "alternatives": [
+        {
+          "ex": "Studying a long-lived tree requires records spanning different generations of observers, which makes consistent descriptions of its condition particularly important.",
+          "exTr": "Uzun ömürlü bir ağacı incelemek, farklı gözlemci kuşaklarını kapsayan kayıtlar gerektirir; bu da durumunun tutarlı biçimde tanımlanmasını özellikle önemli kılar."
+        }
+      ]
+    },
+    {
+      "word": "long-range",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. uzun menzilli; uzun vadeli",
+        "ex": "The government unveiled a long-range plan to reduce carbon emissions across all major industries by 2050.",
+        "exTr": "Hükümet, 2050 yılına kadar tüm büyük sektörlerde karbon emisyonlarını azaltmayı amaçlayan uzun vadeli bir plan açıkladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The transport authority separated immediate repairs from long-range planning, recognising that replacing worn components would not resolve questions about future demand.",
+          "exTr": "Ulaşım idaresi, aşınmış parçaları değiştirmenin gelecekteki taleple ilgili soruları çözmeyeceğini kabul ederek acil onarımları uzun vadeli planlamadan ayırdı."
+        }
+      ]
+    },
+    {
+      "word": "long-term",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. uzun vadeli",
+        "ex": "Doctors warn that untreated high blood pressure can cause long-term damage to the kidneys.",
+        "exTr": "Doktorlar, tedavi edilmeyen yüksek tansiyonun böbreklerde uzun vadeli hasara yol açabileceği konusunda uyarıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The grant paid for initial construction, but the community still needed a long-term agreement covering maintenance of the new meeting space.",
+          "exTr": "Hibe ilk inşaatı karşıladı; ancak topluluğun yeni toplantı alanının bakımını kapsayan uzun vadeli bir anlaşmaya hâlâ ihtiyacı vardı."
+        }
+      ]
+    },
+    {
+      "word": "longer",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. daha uzun süre",
+        "ex": "People now live longer than ever thanks to advances in medicine and nutrition.",
+        "exTr": "İnsanlar, tıptaki ve beslenmedeki ilerlemeler sayesinde artık her zamankinden daha uzun yaşıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The revised interview lasted longer because participants were given time to explain experiences that the original questionnaire had reduced to simple categories.",
+          "exTr": "Katılımcılara ilk anketin basit kategorilere indirgediği deneyimleri açıklama zamanı verildiği için yenilenen görüşme daha uzun sürdü."
+        }
+      ]
+    },
+    {
+      "word": "longitudinal",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. boylamsal, uzunlamasına; (araştırma) uzun süreli",
+        "ex": "The university launched a longitudinal study to track children's cognitive development from birth to adulthood.",
+        "exTr": "Üniversite, çocukların bilişsel gelişimini doğumdan yetişkinliğe kadar izlemek için uzun süreli (boylamsal) bir araştırma başlattı."
+      },
+      "alternatives": [
+        {
+          "ex": "A longitudinal survey followed the same households through several moves, distinguishing changes within families from differences between unrelated groups of residents.",
+          "exTr": "Boylamsal bir araştırma aynı haneleri birkaç taşınma boyunca izleyerek aile içindeki değişimleri birbiriyle ilgisiz sakin grupları arasındaki farklardan ayırdı."
+        }
+      ]
+    },
+    {
+      "word": "looked-for",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. beklenen, özlenen, aranan",
+        "ex": "The long looked-for rain finally arrived after months of severe drought.",
+        "exTr": "Aylarca süren şiddetli kuraklığın ardından uzun zamandır beklenen yağmur sonunda geldi."
+      },
+      "alternatives": [
+        {
+          "ex": "The looked-for letter finally appeared among unrelated accounts, supplying the missing date without resolving the larger question of who commissioned the voyage.",
+          "exTr": "Aranan mektup sonunda ilgisiz hesap kayıtları arasında ortaya çıkıp eksik tarihi sağladı; ancak yolculuğu kimin düzenlettiğine ilişkin daha büyük soruyu çözmedi."
+        }
+      ]
+    },
+    {
+      "word": "loop",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. döngü, halka",
+        "ex": "Engineers designed a feedback loop that automatically adjusts the reactor's temperature every few seconds.",
+        "exTr": "Mühendisler, reaktörün sıcaklığını birkaç saniyede bir otomatik olarak ayarlayan bir geri besleme döngüsü tasarladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The program entered a loop that repeatedly processed the same record, causing the displayed total to rise without any new information being added.",
+          "exTr": "Program aynı kaydı tekrar tekrar işleyen bir döngüye girerek yeni bilgi eklenmeden gösterilen toplamın yükselmesine yol açtı."
+        }
+      ]
+    },
+    {
+      "word": "lord",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. lord, bey, efendi; (the Lord) Tanrı",
+        "ex": "During the medieval period, every local lord was responsible for defending the villages on his land.",
+        "exTr": "Orta Çağ döneminde, her yerel lord kendi topraklarındaki köyleri savunmaktan sorumluydu."
+      },
+      "alternatives": [
+        {
+          "ex": "The lord's account books recorded payments to skilled workers, offering evidence of everyday exchanges absent from chronicles concerned mainly with warfare.",
+          "exTr": "Beyin hesap defterleri vasıflı işçilere yapılan ödemeleri kaydederek esas olarak savaşla ilgilenen kroniklerde bulunmayan günlük ilişkilere dair kanıt sunuyordu."
+        }
+      ]
+    },
+    {
+      "word": "loss",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kayıp, yitirme; zarar",
+        "ex": "Deforestation has led to a dramatic loss of biodiversity throughout the region's tropical forests.",
+        "exTr": "Ormansızlaşma, bölgenin tropikal ormanlarında çarpıcı bir biyoçeşitlilik kaybına yol açtı."
+      },
+      "alternatives": [
+        {
+          "ex": "The loss of the original labels reduced the scientific value of the collection, even though most specimens remained physically intact.",
+          "exTr": "Örneklerin çoğu fiziksel olarak sağlam kalsa da özgün etiketlerin kaybı koleksiyonun bilimsel değerini azalttı."
+        }
+      ]
+    },
+    {
+      "word": "lost-and-found",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kayıp eşya bürosu",
+        "ex": "She checked the airport's lost-and-found office after realizing she had left her passport on the plane.",
+        "exTr": "Pasaportunu uçakta unuttuğunu fark ettikten sonra havalimanının kayıp eşya bürosunu kontrol etti."
+      },
+      "alternatives": [
+        {
+          "ex": "Staff at the lost-and-found asked the passenger to describe the notebook's distinctive cover before confirming that it matched an item handed in earlier.",
+          "exTr": "Kayıp eşya bürosundaki çalışanlar, yolcunun defterinin daha önce teslim edilen bir eşyayla eşleştiğini doğrulamadan önce ayırt edici kapağını tarif etmesini istedi."
+        }
+      ]
+    },
+    {
+      "word": "lots",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. çok miktar",
+        "ex": "Growing children need lots of sleep, balanced meals, and regular physical activity.",
+        "exTr": "Büyüme çağındaki çocukların bol uykuya, dengeli öğünlere ve düzenli fiziksel aktiviteye ihtiyacı vardır."
+      },
+      "alternatives": [
+        {
+          "ex": "The workshop attracted lots of beginners, prompting the organisers to provide introductory demonstrations alongside the more advanced sessions advertised in the programme.",
+          "exTr": "Atölye çok sayıda acemiyi çekince düzenleyiciler, programda duyurulan ileri oturumların yanında giriş düzeyinde gösterimler de sundu."
+        }
+      ]
+    },
+    {
+      "word": "louvre",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. panjur kanadı, hava deliği kapağı",
+        "ex": "Fresh air entered the workshop through a narrow louvre positioned high on the brick wall.",
+        "exTr": "Tuğla duvarın yüksek bir noktasına yerleştirilen dar bir panjur kanadından atölyeye temiz hava giriyordu."
+      },
+      "alternatives": [
+        {
+          "ex": "The architect sketched an adjustable louvre above the doorway, considering how its angle would affect airflow while limiting direct views into the room.",
+          "exTr": "Mimar, açısının odaya doğrudan bakışı sınırlarken hava akışını nasıl etkileyeceğini düşünerek kapının üzerine ayarlanabilir bir panjur kanadı çizdi."
+        }
+      ]
+    },
+    {
+      "word": "love-song",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. aşk şarkısı",
+        "ex": "The singer wrote her first love-song after a difficult breakup during her final year of college.",
+        "exTr": "Şarkıcı, üniversitenin son yılında zor bir ayrılığın ardından ilk aşk şarkısını yazdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The film returns to the same love-song at different moments, allowing changes in performance to reflect the couple's increasingly uncertain relationship.",
+          "exTr": "Film farklı anlarda aynı aşk şarkısına dönerek icradaki değişimlerin çiftin giderek belirsizleşen ilişkisini yansıtmasını sağlar."
+        }
+      ]
+    },
+    {
+      "word": "lover",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. (bir şeyin) tutkunu, hayranı",
+        "ex": "As a passionate lover of classical music, she attends the symphony almost every weekend.",
+        "exTr": "Klasik müziğin tutkulu bir hayranı olarak neredeyse her hafta sonu senfoni konserine gidiyor."
+      },
+      "alternatives": [
+        {
+          "ex": "A lifelong lover of astronomy, the retired teacher organised informal evening discussions where neighbours could ask questions about the changing night sky.",
+          "exTr": "Ömür boyu astronomi tutkunu olan emekli öğretmen, komşuların değişen gece göğü hakkında sorular sorabildiği samimi akşam sohbetleri düzenledi."
+        }
+      ]
+    },
+    {
+      "word": "low-class",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. alt sınıfa ait, düşük sosyoekonomik statülü",
+        "ex": "The documentary explored stereotypes often associated with low-class neighborhoods in large industrial cities.",
+        "exTr": "Belgesel, büyük sanayi şehirlerindeki alt sınıfa ait mahallelerle sıklıkla ilişkilendirilen kalıp yargıları inceledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The critic examines why the novel's wealthy characters dismiss certain entertainments as low-class, exposing the social prejudices behind their claims of superior taste.",
+          "exTr": "Eleştirmen, romanın zengin karakterlerinin bazı eğlenceleri neden alt sınıfa ait diye küçümsediğini inceleyerek üstün zevk iddialarının ardındaki toplumsal önyargıları açığa çıkarır."
+        }
+      ],
+      "note": "Küçümseyici sınıf etiketi anlatıcının yargısı olarak sunulmadı; kurmaca karakterlerin önyargısını inceleyen bağlama yerleştirildi."
+    },
+    {
+      "word": "low-down",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. iç yüzü, perde arkası bilgi (the low-down)",
+        "ex": "Reporters pressed the spokesperson for the low-down on the company's sudden change in leadership.",
+        "exTr": "Muhabirler, sözcüyü şirketin liderlikteki ani değişikliğinin iç yüzünü açıklaması için sıkıştırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "Before joining the production, the actor asked a colleague for the low-down on rehearsal schedules and the director's approach to improvisation.",
+          "exTr": "Oyuncu yapım ekibine katılmadan önce bir meslektaşından prova takviminin ve yönetmenin doğaçlamaya yaklaşımının perde arkasını öğrenmek istedi."
+        }
+      ]
+    },
+    {
+      "word": "low-interest",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. düşük faizli",
+        "ex": "The government introduced low-interest loans to help small businesses recover after the flood damage.",
+        "exTr": "Hükûmet, sel hasarının ardından küçük işletmelerin toparlanmasına yardımcı olmak için düşük faizli krediler tanıttı."
+      },
+      "alternatives": [
+        {
+          "ex": "The housing association compared low-interest loans with other funding arrangements, focusing on repayment conditions as well as the advertised rate.",
+          "exTr": "Konut birliği, ilan edilen oranın yanı sıra geri ödeme koşullarına da odaklanarak düşük faizli kredileri diğer finansman düzenlemeleriyle karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "low-lying",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. alçak kesimde bulunan",
+        "ex": "Many low-lying fields in the river delta are protected by a network of dikes and pumping stations.",
+        "exTr": "Nehir deltasındaki alçak arazilerin çoğu bir set ve pompa istasyonu ağıyla korunuyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The survey mapped low-lying sections of the campsite separately, noting where standing water remained after rain had cleared from higher ground.",
+          "exTr": "Araştırma, yüksek kesimlerde yağmur suyu çekildikten sonra suyun nerede biriktiğini belirterek kamp alanının alçak bölümlerini ayrı haritaladı."
+        }
+      ]
+    },
+    {
+      "word": "low-set",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. alçak konumlu, aşağıda yerleşmiş",
+        "ex": "Doctors noted that low-set ears can sometimes indicate an underlying genetic condition in infants.",
+        "exTr": "Doktorlar, alçak konumlu kulakların bebeklerde bazen altta yatan genetik bir durumu işaret edebileceğini belirtti."
+      },
+      "alternatives": [
+        {
+          "ex": "Low-set windows gave seated visitors a view of the courtyard, unlike the original openings positioned above the shelves along the wall.",
+          "exTr": "Alçakta yer alan pencereler, duvar boyunca rafların üzerine konmuş ilk açıklıkların aksine oturan ziyaretçilere avluyu görme imkânı verdi."
+        }
+      ]
+    },
+    {
+      "word": "lower-class",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. alt sınıf, düşük gelir grubuna ait",
+        "ex": "Historians argue that industrialization created harsh working conditions for the growing lower-class population.",
+        "exTr": "Tarihçiler, sanayileşmenin artan alt sınıf nüfus için ağır çalışma koşulları yarattığını savunuyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The historian compared lower-class households with wealthier families without assuming that everyone within either category shared the same experiences or ambitions.",
+          "exTr": "Tarihçi, iki kategorideki herkesin aynı deneyim ve beklentileri paylaştığını varsaymadan alt sınıf hanelerini daha varlıklı ailelerle karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "lowest",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s./z. en düşük, en alçak",
+        "ex": "Unemployment in the region dropped to its lowest level in nearly two decades this year.",
+        "exTr": "Bölgedeki işsizlik, bu yıl neredeyse yirmi yılın en düşük seviyesine geriledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The supplier offering the lowest initial price did not necessarily provide the cheapest option once maintenance and replacement parts were included.",
+          "exTr": "Bakım ve yedek parçalar hesaba katıldığında en düşük başlangıç fiyatını veren tedarikçi mutlaka en ucuz seçeneği sunmuyordu."
+        }
+      ]
+    },
+    {
+      "word": "lucid",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. berrak, açık, aklı başında",
+        "ex": "Despite her illness, the elderly patient remained remarkably lucid during the entire family visit.",
+        "exTr": "Hastalığına rağmen, yaşlı hasta tüm aile ziyareti boyunca dikkat çekici derecede aklı başında kaldı."
+      },
+      "alternatives": [
+        {
+          "ex": "Her lucid explanation of the model enabled readers unfamiliar with statistics to follow the argument without concealing the uncertainty of its predictions.",
+          "exTr": "Modeli açık biçimde açıklaması, tahminlerdeki belirsizliği gizlemeden istatistiğe yabancı okurların savı takip etmesini sağladı."
+        }
+      ]
+    },
+    {
+      "word": "lucky",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. şanslı",
+        "ex": "Researchers admitted that the discovery was partly a lucky accident during an unrelated experiment.",
+        "exTr": "Araştırmacılar, keşfin kısmen ilgisiz bir deney sırasında yaşanan şanslı bir kaza olduğunu kabul etti."
+      },
+      "alternatives": [
+        {
+          "ex": "A lucky encounter with a former employee helped the researcher identify a machine whose purpose had remained unclear despite extensive documentary searches.",
+          "exTr": "Eski bir çalışanla şans eseri karşılaşması, araştırmacının kapsamlı belge taramalarına rağmen amacı belirsiz kalan bir makineyi tanımasına yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "lunar",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. aya ait, ay ile ilgili",
+        "ex": "Scientists analyzed lunar soil samples to understand how the moon's surface has changed over billions of years.",
+        "exTr": "Bilim insanları, ayın yüzeyinin milyarlarca yıl içinde nasıl değiştiğini anlamak için ay toprağı örneklerini inceledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The astronomy class compared lunar photographs taken on different nights, discussing how illumination changed the apparent shape of familiar surface features.",
+          "exTr": "Astronomi sınıfı, aydınlanmanın tanıdık yüzey şekillerinin görünüşünü nasıl değiştirdiğini tartışarak farklı gecelerde çekilmiş Ay fotoğraflarını karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "lure",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. çekicilik, cazibe; f. cezbetmek, ayartmak",
+        "ex": "Advertisers often use bright colors and catchy slogans to lure customers into buying new products.",
+        "exTr": "Reklamcılar, müşterileri yeni ürünler satın almaya cezbetmek için sık sık parlak renkler ve akılda kalıcı sloganlar kullanır."
+      },
+      "alternatives": [
+        {
+          "ex": "The lure of a shorter commute persuaded the family to consider a smaller home, although they remained concerned about losing outdoor space.",
+          "exTr": "İşe daha kısa sürede ulaşmanın cazibesi, aileyi daha küçük bir evi düşünmeye ikna etti; ancak açık alanı kaybetme kaygıları sürüyordu."
+        }
+      ]
+    },
+    {
+      "word": "luxurious",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yüksek konfor, kalite veya pahalı ayrıntılar sunan; lüks",
+        "ex": "The hotel appears luxurious, but its water and energy use greatly exceed regional standards.",
+        "exTr": "Otel lüks görünüyor ancak su ve enerji kullanımı bölgesel standartları büyük ölçüde aşıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The train's luxurious dining carriage contrasted sharply with the crowded accommodation described by passengers travelling in its cheaper compartments.",
+          "exTr": "Trenin lüks yemek vagonu, daha ucuz bölmelerde yolculuk edenlerin anlattığı kalabalık koşullarla keskin bir karşıtlık oluşturuyordu."
+        }
+      ]
+    },
+    {
+      "word": "lying-in",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. loğusalık dönemi",
+        "ex": "In the eighteenth century, wealthy women often spent weeks of lying-in under a midwife's close supervision.",
+        "exTr": "On sekizinci yüzyılda varlıklı kadınlar, bir ebenin sıkı gözetimi altında haftalarca loğusalık dönemi geçirirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "Letters written during her lying-in describe the visits and household assistance that followed childbirth, rather than offering a formal account of medical care.",
+          "exTr": "Loğusalığı sırasında yazılan mektuplar, tıbbi bakımın resmî bir anlatımını sunmak yerine doğumu izleyen ziyaretleri ve ev işlerine yardımı betimler."
+        }
+      ],
+      "note": "Tarihsel doğum ve doğum sonrası dönem anlamı; modern yatak istirahati önerisi verilmedi. https://www.merriam-webster.com/dictionary/lying-in ."
+    },
+    {
+      "word": "lyrical",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. lirik, şiirsel, duygu yüklü",
+        "ex": "Critics praised the novel for its lyrical descriptions of the coastline, which many readers found more memorable than the plot itself.",
+        "exTr": "Eleştirmenler romanı, birçok okurun olay örgüsünden bile daha akılda kalıcı bulduğu lirik kıyı betimlemeleri nedeniyle övdü."
+      },
+      "alternatives": [
+        {
+          "ex": "The essay moves from lyrical descriptions of rainfall to a practical discussion of how the village collects and distributes water.",
+          "exTr": "Deneme, yağmurun şiirsel betimlemelerinden köyün suyu nasıl topladığı ve dağıttığına ilişkin uygulamaya dönük bir tartışmaya geçer."
+        }
+      ]
+    },
+    {
+      "word": "machine-like",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. makine gibi, mekanik",
+        "ex": "The factory workers repeated each motion with machine-like precision throughout the entire ten-hour shift.",
+        "exTr": "Fabrika işçileri, on saatlik vardiya boyunca her hareketi makine gibi bir kesinlikle tekrarladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The dancer's deliberately machine-like movements contrasted with the fluid gestures of her partner, making the difference between their characters immediately visible.",
+          "exTr": "Dansçının bilerek makineyi andıran hareketleri, partnerinin akıcı jestleriyle karşıtlık oluşturarak karakterleri arasındaki farkı hemen görünür kıldı."
+        }
+      ]
+    },
+    {
+      "word": "mad",
+      "sense_index": 1,
+      "expected": {
+        "tr": "s. kızgın, çok sinirli",
+        "ex": "He was mad at his colleague for missing the deadline without any explanation.",
+        "exTr": "Hiçbir açıklama yapmadan son teslim tarihini kaçırdığı için meslektaşına çok kızgındı."
+      },
+      "alternatives": [
+        {
+          "ex": "She was mad at the editor for changing the article's title without consultation, since the new wording misrepresented her central argument.",
+          "exTr": "Yeni ifade temel savını çarpıttığı için makalenin başlığını kendisine danışmadan değiştiren editöre kızgındı."
+        }
+      ]
+    },
+    {
+      "word": "made-up",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. uydurma, hayali",
+        "ex": "The journalist was fired after editors discovered that several quotes in his article were made-up.",
+        "exTr": "Gazeteci, makalesindeki birçok alıntının uydurma olduğu editörler tarafından keşfedildikten sonra işten çıkarıldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The training exercise used made-up names and addresses, allowing participants to practise interviewing without exposing personal information about actual residents.",
+          "exTr": "Eğitim alıştırması uydurma ad ve adresler kullanarak katılımcıların gerçek sakinlerin kişisel bilgilerini açığa çıkarmadan görüşme pratiği yapmasını sağladı."
+        }
+      ]
+    },
+    {
+      "word": "magazine",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. dergi",
+        "ex": "The science magazine published an article explaining recent breakthroughs in renewable energy.",
+        "exTr": "Bilim dergisi, yenilenebilir enerjideki son atılımları açıklayan bir makale yayımladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The magazine paired technical articles with interviews, giving readers both detailed explanations of new equipment and accounts of its everyday use.",
+          "exTr": "Dergi teknik yazıları görüşmelerle eşleştirerek okurlara yeni ekipmanların hem ayrıntılı açıklamalarını hem de günlük kullanım anlatımlarını sundu."
+        }
+      ]
+    },
+    {
+      "word": "magically",
+      "sense_index": 1,
+      "expected": {
+        "tr": "z. sanki sihirle olmuş gibi, açıklamasız biçimde",
+        "ex": "The problem will not disappear magically without structural reform.",
+        "exTr": "Sorun yapısal reform olmadan sanki sihirle ortadan kalkmayacak."
+      },
+      "alternatives": [
+        {
+          "ex": "Purchasing new equipment would not magically resolve the delays, because the workshop's main difficulty was coordinating tasks between different teams.",
+          "exTr": "Atölyenin asıl güçlüğü farklı ekipler arasında işleri koordine etmek olduğu için yeni ekipman almak gecikmeleri sihirli biçimde çözmeyecekti."
+        }
+      ]
+    },
+    {
+      "word": "magnetic",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. manyetik",
+        "ex": "Scientists rely on magnetic resonance imaging to examine soft tissue inside the human body.",
+        "exTr": "Bilim insanları, insan vücudundaki yumuşak dokuları incelemek için manyetik rezonans görüntülemeye güvenir."
+      },
+      "alternatives": [
+        {
+          "ex": "Students observed the magnetic needle before and after the nearby equipment was switched on, recording any change in its direction.",
+          "exTr": "Öğrenciler, yakındaki ekipman açılmadan önce ve sonra manyetik iğneyi gözlemleyerek yönündeki değişiklikleri kaydetti."
+        }
+      ]
+    },
+    {
+      "word": "magnification",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. büyütme, bir görüntünün görünür boyutunu artırma derecesi",
+        "ex": "At maximum magnification, the microscope revealed structures that were invisible in the original image.",
+        "exTr": "Mikroskop en yüksek büyütmede, ilk görüntüde görünmeyen yapıları ortaya çıkardı."
+      },
+      "alternatives": [
+        {
+          "ex": "Increasing the magnification made small surface marks easier to inspect, but the technician also needed an overview of the entire specimen.",
+          "exTr": "Büyütmeyi artırmak yüzeydeki küçük izleri incelemeyi kolaylaştırdı; ancak teknisyenin örneğin tamamını da görmesi gerekiyordu."
+        }
+      ]
+    },
+    {
+      "word": "magnitude",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. büyüklük, önem; (deprem) şiddet, magnitüd",
+        "ex": "Seismologists were surprised by the sheer magnitude of the earthquake that struck the coastal region.",
+        "exTr": "Sismologlar, kıyı bölgesini vuran depremin büyüklüğü karşısında şaşkına döndü."
+      },
+      "alternatives": [
+        {
+          "ex": "The magnitude of the funding shortfall became clear only when the committee included maintenance costs previously omitted from the project budget.",
+          "exTr": "Finansman açığının büyüklüğü, ancak komite proje bütçesinden daha önce çıkarılan bakım maliyetlerini eklediğinde netleşti."
+        }
+      ]
+    },
+    {
+      "word": "mainland",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. anakara, ana toprak (adalara karşıt)",
+        "ex": "Ferries connect the remote island communities to the mainland twice a week, though winter storms frequently interrupt the service for several days.",
+        "exTr": "Vapurlar uzak ada topluluklarını haftada iki kez anakaraya bağlar, ancak kış fırtınaları seferleri sık sık günlerce aksatır."
+      },
+      "alternatives": [
+        {
+          "ex": "The island college shared specialist teaching with a mainland institution, combining occasional visits with remote sessions when travel was impractical.",
+          "exTr": "Ada okulu, yolculuk elverişsiz olduğunda uzaktan oturumları ara sıra yapılan ziyaretlerle birleştirerek uzmanlık derslerini ana karadaki bir kurumla ortak yürütüyordu."
+        }
+      ]
+    },
+    {
+      "word": "maintained",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. bakımlı, iyi korunmuş; sürdürülen",
+        "ex": "Visitors often praise the palace gardens, which remain remarkably well maintained after three centuries.",
+        "exTr": "Ziyaretçiler, üç yüzyıl sonra bile dikkat çekici derecede bakımlı kalan saray bahçelerini sıkça övüyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The carefully maintained records allowed a new technician to continue the experiment without relying on the previous operator's memory of minor adjustments.",
+          "exTr": "Özenle tutulmuş kayıtlar, yeni bir teknisyenin küçük ayarlamalar konusunda önceki operatörün belleğine dayanmadan deneyi sürdürmesini sağladı."
+        }
+      ]
+    },
+    {
+      "word": "major",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. büyük, önemli, başlıca",
+        "ex": "Air pollution remains a major cause of respiratory illness in densely populated cities.",
+        "exTr": "Hava kirliliği, yoğun nüfuslu şehirlerde solunum hastalıklarının başlıca nedenlerinden biri olmaya devam ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "A major obstacle to the survey was the absence of a complete address list, especially in recently developed neighbourhoods outside the centre.",
+          "exTr": "Araştırmanın önündeki önemli engellerden biri, özellikle merkez dışında yeni gelişen mahallelerde tam bir adres listesinin bulunmamasıydı."
+        }
+      ]
+    },
+    {
+      "word": "make",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. yapmak, üretmek",
+        "ex": "Engineers must make several critical design adjustments before the bridge can safely reopen to traffic.",
+        "exTr": "Mühendislerin, köprü trafiğe güvenle yeniden açılmadan önce birkaç kritik tasarım değişikliği yapması gerekiyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The students made a scale model of the valley to explore how proposed roads would connect settlements separated by steep slopes.",
+          "exTr": "Öğrenciler, önerilen yolların dik yamaçlarla ayrılmış yerleşimleri nasıl bağlayacağını incelemek için vadinin ölçekli bir modelini yaptı."
+        }
+      ]
+    },
+    {
+      "word": "make-up",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yapı, bileşim",
+        "ex": "Genetic make-up partly explains why some people respond better to certain medications.",
+        "exTr": "Genetik yapı, bazı insanların belirli ilaçlara neden daha iyi yanıt verdiğini kısmen açıklar."
+      },
+      "alternatives": [
+        {
+          "ex": "Changes in the committee's make-up brought experience from smaller organisations into discussions that had previously been dominated by representatives of larger institutions.",
+          "exTr": "Komitenin bileşimindeki değişiklikler, önceden büyük kurumların temsilcilerinin hâkim olduğu tartışmalara küçük kuruluşların deneyimini taşıdı."
+        }
+      ]
+    },
+    {
+      "word": "maladaptive",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. uyum bozucu, uyumsuz, işlevsiz (davranış)",
+        "ex": "Prolonged stress can turn an initially useful survival response into a maladaptive pattern that gradually undermines both physical health and social relationships.",
+        "exTr": "Uzun süreli stres, başlangıçta yararlı olan bir hayatta kalma tepkisini, hem fiziksel sağlığı hem de sosyal ilişkileri yavaş yavaş zayıflatan uyum bozucu bir örüntüye dönüştürebilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The seminar examined when avoiding an uncomfortable task becomes a maladaptive habit, distinguishing temporary relief from consequences that make future participation harder.",
+          "exTr": "Seminer, geçici rahatlamayı gelecekte katılımı zorlaştıran sonuçlardan ayırarak rahatsız edici bir görevden kaçınmanın ne zaman uyum bozucu alışkanlığa dönüştüğünü inceledi."
+        }
+      ]
+    },
+    {
+      "word": "malicious",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kötü niyetli, kasıtlı zarar veren",
+        "ex": "The company's servers were shut down after security experts detected malicious software on the network.",
+        "exTr": "Güvenlik uzmanları ağda kötü niyetli bir yazılım tespit edince, şirketin sunucuları kapatıldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The moderator removed malicious comments aimed at intimidating contributors, while retaining criticism that challenged the proposal without attacking the people discussing it.",
+          "exTr": "Moderatör, tartışan kişilere saldırmadan öneriyi sorgulayan eleştirileri korurken katılımcıları sindirmeyi amaçlayan kötü niyetli yorumları kaldırdı."
+        }
+      ]
+    },
+    {
+      "word": "malnutrition",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yetersiz beslenme, kötü beslenme",
+        "ex": "Chronic malnutrition during early childhood can permanently limit cognitive development, and its effects are rarely reversed by an improved diet later in life.",
+        "exTr": "Erken çocuklukta görülen kronik yetersiz beslenme bilişsel gelişimi kalıcı olarak sınırlayabilir ve etkileri ilerleyen yaşlarda daha iyi bir beslenmeyle nadiren geri döner."
+      },
+      "alternatives": [
+        {
+          "ex": "The report examined malnutrition alongside food prices and access to services, avoiding the assumption that household income alone explained every case.",
+          "exTr": "Rapor, tek başına hane gelirinin her vakayı açıkladığını varsaymadan kötü beslenmeyi gıda fiyatları ve hizmetlere erişimle birlikte inceledi."
+        }
+      ]
+    },
+    {
+      "word": "mammalian",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. memeli, memelilere ait",
+        "ex": "The mammalian brain devotes a remarkably large proportion of its energy to maintaining neural connections, even when the animal is completely at rest.",
+        "exTr": "Memeli beyni, hayvan tamamen dinlenme hâlindeyken bile enerjisinin şaşırtıcı derecede büyük bir bölümünü sinirsel bağlantıları sürdürmeye ayırır."
+      },
+      "alternatives": [
+        {
+          "ex": "The comparative anatomy course uses mammalian skeletons to show how shared structures can take different forms in animals with contrasting patterns of movement.",
+          "exTr": "Karşılaştırmalı anatomi dersi, hareket biçimleri farklı hayvanlarda ortak yapıların nasıl farklı biçimler alabildiğini göstermek için memeli iskeletlerini kullanır."
+        }
+      ]
+    },
+    {
+      "word": "man",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. adam, erkek",
+        "ex": "A young man approached the researchers and volunteered to take part in the clinical trial.",
+        "exTr": "Genç bir adam araştırmacılara yaklaştı ve klinik denemeye katılmak için gönüllü oldu."
+      },
+      "alternatives": [
+        {
+          "ex": "The man repairing bicycles outside the station explained that many customers needed practical transport rather than equipment designed for competitive sport.",
+          "exTr": "İstasyonun dışında bisiklet onaran adam, birçok müşterinin yarış sporu için tasarlanmış ekipmandan ziyade kullanışlı ulaşıma ihtiyaç duyduğunu anlattı."
+        }
+      ]
+    },
+    {
+      "word": "man-child",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. olgunlaşmamış yetişkin erkek, büyümemiş adam (mecazi)",
+        "ex": "Critics described the immature protagonist as a man-child who avoided responsibility at every opportunity.",
+        "exTr": "Eleştirmenler, olgunlaşmamış baş karakteri her fırsatta sorumluluktan kaçan büyümemiş bir adam olarak tanımladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The comedy gradually exposes the cost of living with a man-child whose playful charm leaves his partner responsible for every practical decision.",
+          "exTr": "Komedi, oyuncu çekiciliği yüzünden bütün günlük kararların sorumluluğunu partnerine bırakan büyümemiş bir adamla yaşamanın bedelini zamanla açığa çıkarır."
+        }
+      ],
+      "note": "Eleştirel ve küçümseyici mecaz yalnız kurmaca karakter bağlamında kullanıldı."
+    },
+    {
+      "word": "man-month",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. adam-ay (iş gücü ölçü birimi)",
+        "ex": "The software project was estimated to require roughly two hundred man-months of development work.",
+        "exTr": "Yazılım projesinin, yaklaşık iki yüz adam-ay geliştirme çalışması gerektireceği tahmin edildi."
+      },
+      "alternatives": [
+        {
+          "ex": "The estimate expressed total effort in man-months, but the project manager explained why that figure could not directly determine the completion date.",
+          "exTr": "Tahmin toplam emeği adam-ay cinsinden veriyordu; ancak proje yöneticisi bu rakamın tamamlanma tarihini neden doğrudan belirleyemeyeceğini açıkladı."
+        }
+      ],
+      "note": "Tarihsel iş gücü birimi; güncel kapsayıcı alternatif person-month. Toplam emek ile takvim süresi eşit sayılmadı."
+    },
+    {
+      "word": "man-on-a-horse",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. bir yenilebilir mantar türü (sarı şapkalı, halk arasında 'atlı adam mantarı')",
+        "ex": "Local foragers in the forest often searched for the man-on-a-horse mushroom during early autumn mornings.",
+        "exTr": "Ormandaki yerel mantar toplayıcıları, sonbahar sabahlarının erken saatlerinde sıkça atlı adam mantarını arardı."
+      },
+      "alternatives": [
+        {
+          "ex": "The museum retained a man-on-a-horse specimen for reference, attaching updated documentation so that researchers could review its identification and collection history.",
+          "exTr": "Müze, araştırmacıların teşhisini ve toplanma geçmişini inceleyebilmesi için güncel belgeler ekleyerek bir man-on-a-horse mantarı örneğini başvuru amacıyla sakladı."
+        }
+      ],
+      "note": "YAYIN ÖNCESİ GÜVENLİK DÜZELTMESİ: mevcut yenilebilir tanımı proposed-corrections.json ile kaldırılmalı. ANSES/AFSSA risk raporu: https://www.anses.fr/fr/system/files/AUT2002sa0285.pdf . İngilizce ad-T. flavovirens eşlemesi: https://www.cs.rice.edu/~vo9/entrylevel/data/translation-text-based-iccv2013-all.html . Tüketim veya toplama önerisi verilmedi."
+    },
+    {
+      "word": "managed to",
+      "sense_index": 0,
+      "expected": {
+        "tr": "zorluğa rağmen yapmayı başardı; geçmişte belirli başarı",
+        "ex": "Using fragments recovered from the site, conservators managed to reconstruct most of the original mosaic.",
+        "exTr": "Konservatörler alandan çıkarılan parçaları kullanarak özgün mozaiğin büyük bölümünü yeniden oluşturmayı başardı."
+      },
+      "alternatives": [
+        {
+          "ex": "Despite gaps in the recordings, the sound engineer managed to assemble a coherent performance by comparing material from several rehearsal sessions.",
+          "exTr": "Ses mühendisi, kayıtlardaki boşluklara rağmen birkaç prova oturumunun malzemesini karşılaştırarak tutarlı bir icra oluşturmayı başardı."
+        }
+      ]
+    },
+    {
+      "word": "managerial",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yönetsel, yönetimle veya yöneticilikle ilgili",
+        "ex": "Technical expertise does not necessarily provide the managerial skills required to lead a large multidisciplinary team.",
+        "exTr": "Teknik uzmanlık, büyük ve çok disiplinli bir ekibi yönetmek için gereken yönetsel becerileri zorunlu olarak sağlamaz."
+      },
+      "alternatives": [
+        {
+          "ex": "The report separated technical failures from managerial decisions, showing where unclear responsibilities had prevented staff from responding to problems already identified.",
+          "exTr": "Rapor, belirsiz sorumlulukların çalışanların zaten belirlenmiş sorunlara müdahalesini nerede engellediğini göstererek teknik arızaları yönetsel kararlardan ayırdı."
+        }
+      ]
+    },
+    {
+      "word": "mane",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yele (at, aslan)",
+        "ex": "The male lion's dark mane signals both age and health, and females appear to prefer partners whose manes are thicker and darker.",
+        "exTr": "Erkek aslanın koyu yelesi hem yaşı hem sağlığı gösterir ve dişiler, yelesi daha gür ve daha koyu olan eşleri tercih ediyor görünmektedir."
+      },
+      "alternatives": [
+        {
+          "ex": "The illustrator studied photographs of the horse's mane in motion before choosing a pose that would suggest speed without obscuring the rider.",
+          "exTr": "Çizer, biniciyi gizlemeden hız izlenimi verecek bir duruş seçmeden önce atın hareket hâlindeki yelesinin fotoğraflarını inceledi."
+        }
+      ]
+    }
+  ],
+  "collocations": [
+    {
+      "word": "looked-for",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a looked-for opportunity",
+          "tr": "beklenen bir fırsat"
+        },
+        {
+          "en": "a long looked-for answer",
+          "tr": "uzun zamandır aranan bir yanıt"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "lost-and-found",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a lost-and-found office",
+          "tr": "kayıp eşya bürosu"
+        },
+        {
+          "en": "check the lost-and-found",
+          "tr": "kayıp eşya bürosuna bakmak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "love-song",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a traditional love-song",
+          "tr": "geleneksel bir aşk şarkısı"
+        },
+        {
+          "en": "compose a love-song",
+          "tr": "aşk şarkısı bestelemek"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "low-class",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "dismiss something as low-class",
+          "tr": "bir şeyi alt sınıfa ait diye küçümsemek"
+        },
+        {
+          "en": "be regarded as low-class",
+          "tr": "alt sınıfa ait olarak görülmek"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "low-down",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "get the low-down on something",
+          "tr": "bir şeyin iç yüzünü öğrenmek"
+        },
+        {
+          "en": "give someone the low-down",
+          "tr": "birine perde arkası bilgileri vermek"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "low-set",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "low-set windows",
+          "tr": "alçakta yer alan pencereler"
+        },
+        {
+          "en": "a low-set building",
+          "tr": "alçak yapılı bina"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "luxurious",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "luxurious accommodation",
+          "tr": "lüks konaklama"
+        },
+        {
+          "en": "a luxurious interior",
+          "tr": "lüks bir iç mekân"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "lying-in",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "the lying-in period",
+          "tr": "loğusalık dönemi"
+        },
+        {
+          "en": "during her lying-in",
+          "tr": "loğusalığı sırasında"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "mad",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "be mad at someone",
+          "tr": "birine kızgın olmak"
+        },
+        {
+          "en": "drive someone mad",
+          "tr": "birini çileden çıkarmak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "magically",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "magically disappear",
+          "tr": "sanki sihirle ortadan kaybolmak"
+        },
+        {
+          "en": "magically transform",
+          "tr": "sihirli biçimde dönüştürmek"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "magnification",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "high magnification",
+          "tr": "yüksek büyütme"
+        },
+        {
+          "en": "under magnification",
+          "tr": "büyütme altında"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "man-child",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "an irresponsible man-child",
+          "tr": "sorumsuz, büyümemiş bir adam"
+        },
+        {
+          "en": "behave like a man-child",
+          "tr": "büyümemiş bir adam gibi davranmak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "man-month",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "an estimate in man-months",
+          "tr": "adam-ay cinsinden tahmin"
+        },
+        {
+          "en": "ten man-months of work",
+          "tr": "on adam-aylık iş"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "man-on-a-horse",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a man-on-a-horse specimen",
+          "tr": "man-on-a-horse mantarı örneği"
+        },
+        {
+          "en": "man-on-a-horse identification",
+          "tr": "man-on-a-horse mantarının teşhisi"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

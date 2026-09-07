@@ -1,0 +1,1111 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 1,
+    "input": "input-051.json"
+  },
+  "enrichments": [
+    {
+      "word": "voluntary",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. gönüllü, isteğe bağlı",
+        "ex": "Thousands of people joined the voluntary program to plant trees across the region.",
+        "exTr": "Binlerce kişi, bölge genelinde ağaç dikmek için gönüllü programa katıldı."
+      },
+      "alternatives": [
+        {
+          "ex": "Participation remained voluntary throughout the project, and residents could stop contributing without losing access to the community services offered alongside it.",
+          "exTr": "Katılım proje boyunca isteğe bağlı kaldı ve sakinler, proje kapsamında sunulan toplum hizmetlerine erişimlerini kaybetmeden katkıda bulunmayı bırakabiliyordu."
+        }
+      ]
+    },
+    {
+      "word": "vote",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. oy",
+        "ex": "Each shareholder receives one vote for every share of stock they own in the company.",
+        "exTr": "Her hissedar, şirkette sahip olduğu her hisse senedi için bir oy alır."
+      },
+      "alternatives": [
+        {
+          "ex": "The final vote revealed less support for the proposal than earlier discussions had suggested, prompting the chair to ask which concerns remained unresolved.",
+          "exTr": "Son oylama, teklifin önceki tartışmaların düşündürdüğünden daha az destek gördüğünü ortaya koydu; bunun üzerine başkan hangi kaygıların giderilmediğini sordu."
+        }
+      ]
+    },
+    {
+      "word": "voyage",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. deniz yolculuğu, sefer",
+        "ex": "The explorers documented every stage of their voyage across the Atlantic Ocean.",
+        "exTr": "Kâşifler, Atlantik Okyanusu boyunca yaptıkları deniz yolculuğunun her aşamasını belgeledi."
+      },
+      "alternatives": [
+        {
+          "ex": "Damage sustained during the voyage forced the crew to postpone unloading, leaving merchants uncertain about when the remaining cargo would reach the market.",
+          "exTr": "Deniz yolculuğu sırasında oluşan hasar mürettebatı boşaltmayı ertelemek zorunda bıraktı; bu da tüccarları kalan yükün pazara ne zaman ulaşacağı konusunda belirsizlik içinde bıraktı."
+        }
+      ]
+    },
+    {
+      "word": "vulnerable",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. savunmasız, kırılgan, zarar görmeye açık",
+        "ex": "Coastal cities remain particularly vulnerable to flooding as global sea levels continue to rise.",
+        "exTr": "Küresel deniz seviyeleri yükselmeye devam ettikçe, kıyı kentleri sel baskınlarına karşı özellikle savunmasız kalmaya devam ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Small collections are particularly vulnerable to the loss of specialist knowledge when the only person familiar with their history leaves the institution.",
+          "exTr": "Küçük koleksiyonlar, geçmişlerini bilen tek kişi kurumdan ayrıldığında uzmanlık bilgisinin kaybına karşı özellikle savunmasızdır."
+        }
+      ]
+    },
+    {
+      "word": "wait",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. beklemek",
+        "ex": "Patients often wait several months before receiving an appointment with a specialist.",
+        "exTr": "Hastalar, bir uzmanla randevu almadan önce genellikle birkaç ay beklerler."
+      },
+      "alternatives": [
+        {
+          "ex": "The conservators decided to wait until the material had been identified before selecting a cleaning method that might permanently alter its surface.",
+          "exTr": "Koruma uzmanları, yüzeyi kalıcı biçimde değiştirebilecek bir temizleme yöntemi seçmeden önce malzemenin belirlenmesini beklemeye karar verdi."
+        }
+      ]
+    },
+    {
+      "word": "wale",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. (gemi bordasında) kalın kaplama tahtası, kuşak",
+        "ex": "Shipbuilders reinforced the hull with a thick wale to protect it from collisions with floating debris.",
+        "exTr": "Gemi yapımcıları, sürüklenen enkazla çarpışmalara karşı korumak için gövdeyi kalın bir kuşakla güçlendirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The ship model included a dark wooden wale along the hull, allowing visitors to distinguish this reinforcing timber from the surrounding planking.",
+          "exTr": "Gemi modelinin gövdesi boyunca koyu renkli ahşap bir kuşak bulunuyordu; böylece ziyaretçiler bu güçlendirici keresteyi çevresindeki kaplama tahtalarından ayırt edebiliyordu."
+        }
+      ],
+      "note": "Denizcilik anlamı Collins wale maddesinde doğrulandı; teknik ad öbeği örüntüleri."
+    },
+    {
+      "word": "walk-off",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. (spor) maçı anında bitiren",
+        "ex": "The stadium erupted when the batter hit a walk-off home run in the final inning.",
+        "exTr": "Vurucu, son devrede maçı anında bitiren bir vuruş yaptığında stadyum coştu."
+      },
+      "alternatives": [
+        {
+          "ex": "The commentary focused on the walk-off hit, but the later analysis also examined earlier defensive errors that had kept the home team in contention.",
+          "exTr": "Maç anlatımı maçı bitiren vuruşa odaklandı; ancak sonraki analiz ev sahibi takımın kazanma şansını korumasını sağlayan önceki savunma hatalarını da inceledi."
+        }
+      ],
+      "note": "Beyzbola özgü terim; https://www.mlb.com/glossary/standard-stats/walk-off. Özgün cümle kaynak örneğini kopyalamaz."
+    },
+    {
+      "word": "walk-up",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s./i. asansörsüz (bina/daire, merdivenle çıkılan)",
+        "ex": "They eventually gave up their fifth-floor walk-up apartment after climbing the stairs became too difficult.",
+        "exTr": "Merdivenleri çıkmak çok zorlaştıktan sonra sonunda beşinci kattaki asansörsüz dairelerinden vazgeçtiler."
+      },
+      "alternatives": [
+        {
+          "ex": "The housing survey recorded whether each building was a walk-up, since the absence of a lift could affect residents' ability to remain there as they aged.",
+          "exTr": "Asansör bulunmaması sakinlerin yaşlandıkça orada kalabilmesini etkileyebileceğinden konut araştırması her binanın asansörsüz olup olmadığını kaydetti."
+        }
+      ]
+    },
+    {
+      "word": "walking distance",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yürüme mesafesi, yürüyerek ulaşılabilecek uzaklık",
+        "ex": "Most residents live within walking distance of a public park.",
+        "exTr": "Sakinlerin çoğu halka açık bir parka yürüme mesafesinde yaşıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The planning team asked residents what they considered a reasonable walking distance, recognising that the same route might present different challenges to different people.",
+          "exTr": "Planlama ekibi, aynı güzergâhın farklı kişilere farklı güçlükler çıkarabileceğini kabul ederek sakinlere neyi makul bir yürüme mesafesi saydıklarını sordu."
+        }
+      ]
+    },
+    {
+      "word": "wander",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. dolaşmak, gezinmek; başıboş dolanmak",
+        "ex": "Elephants often wander long distances across the savanna in search of water and food.",
+        "exTr": "Filler, su ve yiyecek arayışıyla savanda çoğu zaman uzun mesafeler dolaşır."
+      },
+      "alternatives": [
+        {
+          "ex": "Visitors were free to wander through the exhibition rather than follow a fixed route, an arrangement intended to encourage unexpected connections between the objects.",
+          "exTr": "Nesneler arasında beklenmedik bağlantılar kurulmasını teşvik etmeyi amaçlayan düzenleme sayesinde ziyaretçiler sabit bir güzergâh izlemek yerine sergide serbestçe dolaşabiliyordu."
+        }
+      ]
+    },
+    {
+      "word": "war",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. savaş",
+        "ex": "Historians continue to debate the economic factors that ultimately triggered the war.",
+        "exTr": "Tarihçiler, sonunda savaşı tetikleyen ekonomik etkenleri tartışmaya devam ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The study traces how the war disrupted ordinary correspondence, showing that missing letters may reflect damaged communication networks rather than broken personal relationships.",
+          "exTr": "Çalışma, kayıp mektupların kopmuş kişisel ilişkilerden ziyade zarar görmüş iletişim ağlarını yansıtabileceğini göstererek savaşın gündelik yazışmaları nasıl aksattığını izliyor."
+        }
+      ]
+    },
+    {
+      "word": "wardrobe",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. gardırop, elbise dolabı",
+        "ex": "She keeps her winter coats folded neatly at the bottom of the wardrobe.",
+        "exTr": "Kış paltolarını gardırobun altında düzgünce katlanmış şekilde tutuyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The inventory described a wardrobe with a concealed lower compartment, but the surviving piece showed no sign that such a feature had ever existed.",
+          "exTr": "Envanter gizli bir alt bölmesi olan bir gardırop tarif ediyordu; ancak günümüze ulaşan mobilyada böyle bir özelliğin var olduğuna dair hiçbir iz yoktu."
+        }
+      ]
+    },
+    {
+      "word": "warm-up",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ısınma (egzersiz)",
+        "ex": "Physiotherapists recommend a proper warm-up before engaging in any intense physical activity.",
+        "exTr": "Fizyoterapistler, yoğun bir fiziksel etkinliğe başlamadan önce uygun bir ısınma yapılmasını öneriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The coach recorded the duration of each warm-up separately from the main training session so that the team's practice schedule could be compared accurately.",
+          "exTr": "Takımın çalışma programının doğru biçimde karşılaştırılabilmesi için antrenör her ısınmanın süresini ana antrenmandan ayrı kaydetti."
+        }
+      ]
+    },
+    {
+      "word": "warmth",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sıcaklık, içtenlik",
+        "ex": "Exchange students immediately felt at home, thanks to the warmth of their host family.",
+        "exTr": "Değişim öğrencileri, ev sahibi ailelerinin içtenliği sayesinde kendilerini hemen evlerinde gibi hissetti."
+      },
+      "alternatives": [
+        {
+          "ex": "The warmth of the introduction eased the visitors' initial hesitation, although several remained reluctant to speak until the discussion moved to familiar topics.",
+          "exTr": "Tanışmanın içtenliği ziyaretçilerin başlangıçtaki tereddüdünü azalttı; ancak bazıları tartışma bildikleri konulara geçene kadar konuşmaya isteksiz kaldı."
+        }
+      ]
+    },
+    {
+      "word": "warrant",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. gerektirmek, haklı kılmak",
+        "ex": "The unusual symptoms warrant further testing before doctors can confirm a diagnosis.",
+        "exTr": "Alışılmadık belirtiler, doktorlar bir teşhisi doğrulayabilmeden önce ileri tetkikleri gerektiriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "A difference this small would not warrant replacing the equipment unless the improvement could be reproduced under the conditions in which it was normally used.",
+          "exTr": "İyileşme, ekipmanın normalde kullanıldığı koşullarda tekrar elde edilemedikçe bu kadar küçük bir fark ekipmanın değiştirilmesini haklı kılmazdı."
+        }
+      ]
+    },
+    {
+      "word": "was/were able to",
+      "sense_index": 0,
+      "expected": {
+        "tr": "geçmişte belirli bir olayda bir şeyi başarıyla yapabildi",
+        "ex": "Despite the poor visibility, the rescue team was able to locate the missing climbers before nightfall.",
+        "exTr": "Görüşün kötü olmasına rağmen kurtarma ekibi kayıp dağcıları gece olmadan bulabildi."
+      },
+      "alternatives": [
+        {
+          "ex": "By comparing entries in three separate registers, the historian was able to reconstruct a journey that none of the surviving letters described in full.",
+          "exTr": "Tarihçi, üç ayrı defterdeki kayıtları karşılaştırarak günümüze ulaşan mektupların hiçbirinin bütünüyle anlatmadığı bir yolculuğu yeniden oluşturabildi."
+        }
+      ]
+    },
+    {
+      "word": "wash",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. yıkamak",
+        "ex": "Heavy rains began to wash away topsoil from the recently deforested hillside.",
+        "exTr": "Şiddetli yağmurlar, yakın zamanda ormansızlaştırılmış tepenin üst toprağını yıkayıp götürmeye başladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The laboratory team had to wash the containers between trials to prevent traces of material from one sample affecting the measurements of the next.",
+          "exTr": "Laboratuvar ekibi, bir örnekteki malzeme izlerinin sonraki örneğin ölçümlerini etkilemesini önlemek için kapları denemeler arasında yıkamak zorundaydı."
+        }
+      ]
+    },
+    {
+      "word": "watch",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. izlemek, gözlemek",
+        "ex": "Biologists watch animal behavior for months in the wild before drawing any firm conclusions.",
+        "exTr": "Biyologlar, kesin sonuçlara varmadan önce hayvan davranışlarını doğal ortamda aylarca gözlemler."
+      },
+      "alternatives": [
+        {
+          "ex": "Trainees could watch the procedure from an adjoining room, where a live feed allowed them to observe details without crowding the working area.",
+          "exTr": "Canlı görüntü aktarımının çalışma alanını kalabalıklaştırmadan ayrıntıları gözlemlemelerini sağladığı bitişik odadan kursiyerler işlemi izleyebiliyordu."
+        }
+      ]
+    },
+    {
+      "word": "water-color",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. suluboya",
+        "ex": "The elderly artist still prefers water-color over acrylic paint for capturing soft coastal light.",
+        "exTr": "Yaşlı sanatçı, yumuşak kıyı ışığını yakalamak için hâlâ akrilik boya yerine suluboyayı tercih ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The water-color showed a shoreline that had since been altered, making the painting useful to researchers comparing historical descriptions of the harbour.",
+          "exTr": "Suluboya resim, daha sonra değişmiş bir kıyı şeridini gösteriyordu; bu da tabloyu limanın tarihsel tasvirlerini karşılaştıran araştırmacılar için yararlı kılıyordu."
+        }
+      ]
+    },
+    {
+      "word": "water-target",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. su kalkanı (Brasenia; yüzen oval yapraklı, mor çiçekli bir su bitkisi)",
+        "ex": "The pond was covered with water-target plants whose purple flowers attracted many small insects.",
+        "exTr": "Gölet, mor çiçekleri birçok küçük böceği kendine çeken su kalkanı bitkileriyle kaplıydı."
+      },
+      "alternatives": [
+        {
+          "ex": "The botanical survey recorded water-target beside other floating-leaved plants, noting its location carefully so that the same patch could be examined the following season.",
+          "exTr": "Botanik araştırması, aynı bitki öbeğinin sonraki mevsimde incelenebilmesi için konumunu dikkatle not ederek su kalkanını diğer yüzen yapraklı bitkilerin yanında kaydetti."
+        }
+      ],
+      "note": "Seyrek Brasenia adı: https://www.dictionary.com/browse/water-target. Genel isim tamlamaları, yaygın YDS terimi olduğu iddia edilmez."
+    },
+    {
+      "word": "waters",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. sular",
+        "ex": "The calm waters of the lake reflected the mountains so perfectly that photographers rushed to capture the scene.",
+        "exTr": "Gölün durgun suları, dağları o kadar mükemmel yansıtıyordu ki fotoğrafçılar sahneyi yakalamak için koştu."
+      },
+      "alternatives": [
+        {
+          "ex": "The team sampled the shallow waters near the shore separately from the deeper channel, avoiding the assumption that conditions were uniform across the lake.",
+          "exTr": "Ekip, koşulların göl boyunca aynı olduğunu varsaymaktan kaçınarak kıyıya yakın sığ sulardan derin kanaldan ayrı örnek aldı."
+        }
+      ]
+    },
+    {
+      "word": "watery",
+      "sense_index": 2,
+      "expected": {
+        "tr": "s. fazla sulandırılmış, zayıf ve tatsız",
+        "ex": "The soup became watery after too much stock was added.",
+        "exTr": "Çok fazla et suyu eklenince çorba sulandı ve tatsızlaştı."
+      },
+      "alternatives": [
+        {
+          "ex": "Participants described the drink as watery when compared with the original recipe, suggesting that reducing its concentration had also changed their perception of flavour.",
+          "exTr": "Katılımcılar içeceği özgün tarifle karşılaştırdıklarında fazla sulandırılmış olarak tanımladı; bu, yoğunluğunu azaltmanın tat algılarını da değiştirdiğini düşündürüyordu."
+        }
+      ]
+    },
+    {
+      "word": "way",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yol, yöntem, tarz",
+        "ex": "Engineers found a more sustainable way to recycle electronic waste without harming the environment.",
+        "exTr": "Mühendisler, çevreye zarar vermeden elektronik atıkları geri dönüştürmenin daha sürdürülebilir bir yolunu buldu."
+      },
+      "alternatives": [
+        {
+          "ex": "The new index offered a way of locating related documents even when their authors had used different terms to describe the same event.",
+          "exTr": "Yeni dizin, yazarları aynı olayı anlatmak için farklı terimler kullanmış olsa bile ilişkili belgeleri bulmanın bir yolunu sundu."
+        }
+      ]
+    },
+    {
+      "word": "weak",
+      "sense_index": 0,
+      "expected": {
+        "tr": "zayıf, güçsüz",
+        "ex": "Patients recovering from surgery often feel too weak to perform simple daily tasks.",
+        "exTr": "Ameliyat sonrası iyileşen hastalar, kendilerini çoğu zaman basit günlük işleri yapamayacak kadar güçsüz hisseder."
+      },
+      "alternatives": [
+        {
+          "ex": "The evidence for the proposed date remained weak because the argument relied on a single reference whose meaning was open to several interpretations.",
+          "exTr": "Önerilen tarihe ilişkin kanıt zayıf kaldı; çünkü sav, anlamı birden çok yoruma açık tek bir göndermeye dayanıyordu."
+        }
+      ]
+    },
+    {
+      "word": "weakness",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. zayıflık",
+        "ex": "The audit revealed a serious weakness in the company's approach to protecting customer data.",
+        "exTr": "Denetim, şirketin müşteri verilerini koruma yaklaşımında ciddi bir zayıflık ortaya çıkardı."
+      },
+      "alternatives": [
+        {
+          "ex": "A major weakness of the survey was its failure to include people who had stopped using the service, whose experiences might explain falling demand.",
+          "exTr": "Anketin önemli bir zayıflığı, deneyimleri azalan talebi açıklayabilecek olan, hizmeti kullanmayı bırakmış kişileri kapsamamasıydı."
+        }
+      ]
+    },
+    {
+      "word": "weapon",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. silah",
+        "ex": "Vaccination is the most effective weapon against infectious diseases that once killed millions.",
+        "exTr": "Aşı, bir zamanlar milyonları öldüren bulaşıcı hastalıklara karşı en etkili silahtır."
+      },
+      "alternatives": [
+        {
+          "ex": "The catalogue identified the object as a ceremonial weapon, although marks on its surface led later researchers to question whether it had also seen practical use.",
+          "exTr": "Katalog nesneyi törensel bir silah olarak tanımlıyordu; ancak yüzeyindeki izler sonraki araştırmacıları bunun uygulamada da kullanılıp kullanılmadığını sorgulamaya yöneltti."
+        }
+      ]
+    },
+    {
+      "word": "wearer",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. giyen kişi, takan kişi, kullanan kimse",
+        "ex": "The new fabric adapts to body temperature, keeping the wearer comfortable in both freezing winds and humid summer heat.",
+        "exTr": "Yeni kumaş vücut sıcaklığına uyum sağlayarak, giyen kişiyi hem dondurucu rüzgârlarda hem de nemli yaz sıcağında rahat tutuyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The protective garment was tested while the wearer performed ordinary movements, since a comfortable fit when standing still did not guarantee freedom of movement.",
+          "exTr": "Hareketsiz dururken rahat oturması hareket özgürlüğünü garanti etmediğinden koruyucu giysi, giyen kişi sıradan hareketler yaparken test edildi."
+        }
+      ]
+    },
+    {
+      "word": "web",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ağ",
+        "ex": "Researchers mapped a complex web of relationships connecting diet, exercise, and long-term cardiovascular health.",
+        "exTr": "Araştırmacılar, diyet, egzersiz ve uzun vadeli kardiyovasküler sağlık arasındaki karmaşık ilişkiler ağını haritalandırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The correspondence revealed a web of contacts linking provincial booksellers with distant publishers, challenging the assumption that the town had been culturally isolated.",
+          "exTr": "Yazışmalar, taşradaki kitapçıları uzaktaki yayıncılara bağlayan bir ilişkiler ağı ortaya koyarak kasabanın kültürel açıdan yalıtılmış olduğu varsayımına meydan okudu."
+        }
+      ]
+    },
+    {
+      "word": "wedding",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. düğün, evlilik töreni",
+        "ex": "Nearly two hundred guests attended the wedding, which was held in a restored countryside barn.",
+        "exTr": "Restore edilmiş bir kır ambarında düzenlenen düğüne yaklaşık iki yüz misafir katıldı."
+      },
+      "alternatives": [
+        {
+          "ex": "Descriptions of the wedding differed sharply between the family diary and the newspaper report, suggesting that private and public accounts served different purposes.",
+          "exTr": "Düğünün tasvirleri aile günlüğü ile gazete haberi arasında belirgin biçimde farklılaşıyordu; bu da özel ve kamusal anlatımların farklı amaçlara hizmet ettiğini düşündürüyordu."
+        }
+      ]
+    },
+    {
+      "word": "weekend",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. hafta sonu",
+        "ex": "The team plans to finish the full report before the weekend actually begins.",
+        "exTr": "Ekip, hafta sonu gerçekten başlamadan önce tam raporu bitirmeyi planlıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The museum offered a weekend programme for visitors unable to attend during working hours, then compared attendance with that of its weekday sessions.",
+          "exTr": "Müze, çalışma saatlerinde gelemeyen ziyaretçiler için hafta sonu programı sundu; ardından katılımı hafta içi oturumlarındaki katılımla karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "weight",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ağırlık",
+        "ex": "Excess body weight is strongly linked to a higher risk of type 2 diabetes.",
+        "exTr": "Aşırı vücut ağırlığı, tip 2 diyabet riskinin artmasıyla güçlü biçimde bağlantılıdır."
+      },
+      "alternatives": [
+        {
+          "ex": "The bridge assessment considered not only the total weight of the load but also how unevenly it might be distributed across the supporting structure.",
+          "exTr": "Köprü değerlendirmesi yalnızca yükün toplam ağırlığını değil, taşıyıcı yapı boyunca ne ölçüde dengesiz dağılabileceğini de dikkate aldı."
+        }
+      ]
+    },
+    {
+      "word": "welfare",
+      "sense_index": 0,
+      "expected": {
+        "tr": "refah, esenlik",
+        "ex": "Environmental groups called for stricter laws to protect the welfare of animals kept in captivity.",
+        "exTr": "Çevre grupları, esaret altında tutulan hayvanların refahını korumak için daha sıkı yasalar çağrısında bulundu."
+      },
+      "alternatives": [
+        {
+          "ex": "The committee placed the children's welfare at the centre of its discussion, asking how each proposed change would affect their ordinary daily routines.",
+          "exTr": "Kurul, önerilen her değişikliğin çocukların olağan gündelik düzenlerini nasıl etkileyeceğini sorarak onların esenliğini tartışmasının merkezine koydu."
+        }
+      ]
+    },
+    {
+      "word": "well-being",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. iyi oluş hâli, refah",
+        "ex": "Regular social interaction plays a crucial role in maintaining emotional well-being among older adults.",
+        "exTr": "Düzenli sosyal etkileşim, yaşlı yetişkinlerde duygusal iyi oluş hâlinin korunmasında çok önemli bir rol oynar."
+      },
+      "alternatives": [
+        {
+          "ex": "The evaluation treated well-being as more than satisfaction with the service, including questions about independence, relationships and the ability to pursue meaningful activities.",
+          "exTr": "Değerlendirme, bağımsızlık, ilişkiler ve anlamlı etkinlikleri sürdürebilme hakkında sorular da içererek iyi oluşu hizmetten memnun olmanın ötesinde ele aldı."
+        }
+      ]
+    },
+    {
+      "word": "well-educated",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. iyi eğitimli",
+        "ex": "Employers increasingly prefer well-educated candidates who can adapt quickly to new digital technologies.",
+        "exTr": "İşverenler, yeni dijital teknolojilere hızla uyum sağlayabilen iyi eğitimli adayları giderek daha çok tercih ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Even well-educated readers found the instructions difficult when specialised terms were introduced without explanation, suggesting that formal qualifications alone did not ensure understanding.",
+          "exTr": "Uzmanlık terimleri açıklanmadan sunulduğunda iyi eğitimli okuyucular bile yönergeleri zor buldu; bu, resmî niteliklerin tek başına anlamayı sağlamadığını düşündürüyordu."
+        }
+      ]
+    },
+    {
+      "word": "well-kept",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. iyi bakılmış, bakımlı",
+        "ex": "Visitors praised the well-kept gardens surrounding the old palace, now open to the public.",
+        "exTr": "Ziyaretçiler, artık halka açık olan eski sarayı çevreleyen bakımlı bahçeleri övdü."
+      },
+      "alternatives": [
+        {
+          "ex": "The photographs show a well-kept courtyard despite the building's age, indicating that maintenance continued long after the institution's main activities had moved elsewhere.",
+          "exTr": "Fotoğraflar, binanın yaşına rağmen bakımlı bir avlu gösteriyor; bu da kurumun ana etkinlikleri başka yere taşındıktan çok sonra bile bakımın sürdüğüne işaret ediyor."
+        }
+      ]
+    },
+    {
+      "word": "well-meant",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. iyi niyetli",
+        "ex": "Even though it confused the patient further, the advice from her friend was clearly well-meant.",
+        "exTr": "Hastanın kafasını daha da karıştırsa da doktorun iyi niyetli tavsiyesi içtenlikle verilmişti."
+      },
+      "alternatives": [
+        {
+          "ex": "The well-meant offer of assistance was declined because the organisers felt it would reduce the participants' opportunity to develop their own solutions.",
+          "exTr": "Düzenleyiciler katılımcıların kendi çözümlerini geliştirme fırsatını azaltacağını düşündüğünden iyi niyetli yardım teklifi reddedildi."
+        }
+      ]
+    },
+    {
+      "word": "well-read",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. çok okumuş, geniş kültürlü",
+        "ex": "Colleagues considered him remarkably well-read, often quoting classic novels during casual conversations.",
+        "exTr": "İş arkadaşları, gündelik sohbetlerde sık sık klasik romanlardan alıntı yaptığı için onu dikkat çekici derecede çok okumuş sayıyordu."
+      },
+      "alternatives": [
+        {
+          "ex": "The discussion benefited from a well-read moderator who could connect the speaker's argument with ideas from disciplines unfamiliar to much of the audience.",
+          "exTr": "Tartışma, konuşmacının savını dinleyicilerin çoğunun bilmediği disiplinlerdeki düşüncelerle ilişkilendirebilen geniş kültürlü bir moderatörden yarar gördü."
+        }
+      ]
+    },
+    {
+      "word": "well-timed",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. zamanlaması iyi, tam zamanında yapılan, yerinde",
+        "ex": "A well-timed intervention by the central bank prevented what could easily have become a far deeper financial crisis.",
+        "exTr": "Merkez bankasının zamanlaması isabetli bir müdahalesi, kolaylıkla çok daha derin bir mali krize dönüşebilecek olan durumu önledi."
+      },
+      "alternatives": [
+        {
+          "ex": "A well-timed reminder brought several overlooked applications to the committee's attention before the shortlist was finalised, allowing them to be assessed alongside the others.",
+          "exTr": "Zamanlaması yerinde bir hatırlatma, kısa liste kesinleşmeden önce gözden kaçmış birkaç başvuruyu kurulun dikkatine sunarak diğerleriyle birlikte değerlendirilmelerini sağladı."
+        }
+      ]
+    },
+    {
+      "word": "well-worn",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. çok kullanılmış, aşınmış, yıpranmış",
+        "ex": "The brain prefers to follow well-worn neural pathways, which is why breaking an established habit demands so much conscious effort.",
+        "exTr": "Beyin, çok kullanılmış sinirsel yolları izlemeyi tercih eder; yerleşik bir alışkanlığı kırmanın bu kadar bilinçli çaba istemesinin nedeni budur."
+      },
+      "alternatives": [
+        {
+          "ex": "The well-worn steps near the entrance contrasted with the nearly untouched rear staircase, offering clues about how people had moved through the house.",
+          "exTr": "Girişin yanındaki aşınmış basamaklar, neredeyse hiç kullanılmamış arka merdivenle tezat oluşturarak insanların ev içinde nasıl hareket ettiğine ilişkin ipuçları veriyordu."
+        }
+      ]
+    },
+    {
+      "word": "west",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. batı",
+        "ex": "The sun sets in the west, casting long shadows across the quiet village streets.",
+        "exTr": "Güneş batıda batar ve sessiz köy sokaklarına uzun gölgeler düşürür."
+      },
+      "alternatives": [
+        {
+          "ex": "The survey concentrated on settlements to the west of the river, where older maps suggested that several roads had disappeared beneath later construction.",
+          "exTr": "Araştırma, eski haritaların birkaç yolun sonraki yapılaşmanın altında kaldığını düşündürdüğü, nehrin batısındaki yerleşimlere odaklandı."
+        }
+      ]
+    },
+    {
+      "word": "westward",
+      "sense_index": 1,
+      "expected": {
+        "tr": "s. batı yönündeki",
+        "ex": "The westward expansion of the railway network turned dozens of small settlements into busy trading towns.",
+        "exTr": "Demiryolu ağının batı yönündeki genişlemesi, onlarca küçük yerleşimi hareketli ticaret kasabalarına dönüştürdü."
+      },
+      "alternatives": [
+        {
+          "ex": "The westward movement of the settlement can be traced through successive maps, which show new streets appearing beyond the former boundary.",
+          "exTr": "Yerleşimin batı yönündeki hareketi, eski sınırın ötesinde yeni sokakların belirdiğini gösteren birbirini izleyen haritalardan takip edilebilir."
+        }
+      ]
+    },
+    {
+      "word": "whale",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. balina",
+        "ex": "Blue whales, the largest animals ever known, feed almost exclusively on tiny shrimp-like krill.",
+        "exTr": "Bilinen en büyük hayvanlar olan mavi balinalar, neredeyse yalnızca karides benzeri küçük krillerle beslenir."
+      },
+      "alternatives": [
+        {
+          "ex": "The researchers compared photographs of the whale taken on different dates, looking for distinctive markings that could help establish whether the sightings involved the same animal.",
+          "exTr": "Araştırmacılar, gözlemlerin aynı hayvana ait olup olmadığını belirlemeye yardımcı olabilecek ayırt edici işaretler arayarak balinanın farklı tarihlerde çekilmiş fotoğraflarını karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "wheat",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. buğday",
+        "ex": "Prolonged drought significantly reduced wheat production across the region's major farming areas last year.",
+        "exTr": "Uzun süren kuraklık, geçen yıl bölgenin başlıca tarım alanlarındaki buğday üretimini önemli ölçüde azalttı."
+      },
+      "alternatives": [
+        {
+          "ex": "Samples of wheat from separate plots were stored under identical conditions so that differences observed later would not simply reflect how the grain had been kept.",
+          "exTr": "Daha sonra gözlenen farkların yalnızca tahılın nasıl saklandığını yansıtmaması için ayrı parsellerden alınan buğday örnekleri aynı koşullarda depolandı."
+        }
+      ]
+    },
+    {
+      "word": "whenever",
+      "sense_index": 0,
+      "expected": {
+        "tr": "e. ne zaman olsa, her -dığında",
+        "ex": "Volcanic ash disrupts air traffic across the region whenever an eruption sends debris into the stratosphere.",
+        "exTr": "Bir patlama stratosfere enkaz gönderdiğinde volkanik kül bölge genelinde hava trafiğini aksatır."
+      },
+      "alternatives": [
+        {
+          "ex": "Whenever a participant changed an earlier answer, the interviewer asked for an explanation rather than assuming that the revision indicated a mistake.",
+          "exTr": "Bir katılımcı önceki yanıtını her değiştirdiğinde görüşmeci, değişikliğin bir hataya işaret ettiğini varsaymak yerine açıklama istedi."
+        }
+      ]
+    },
+    {
+      "word": "whisper",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. fısıltı",
+        "ex": "The library was so quiet that even a soft whisper could be heard across the room.",
+        "exTr": "Kütüphane o kadar sessizdi ki yumuşak bir fısıltı bile odanın öbür ucundan duyulabiliyordu."
+      },
+      "alternatives": [
+        {
+          "ex": "The recording captured only a whisper at the end of the exchange, leaving the researchers unable to determine whether the speaker had agreed or objected.",
+          "exTr": "Kayıt konuşmanın sonunda yalnızca bir fısıltı yakaladığı için araştırmacılar konuşmacının kabul mü yoksa itiraz mı ettiğini belirleyemedi."
+        }
+      ]
+    },
+    {
+      "word": "white-hot",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. akkor, beyaz ısıda parlayan",
+        "ex": "Blacksmiths must shape the metal while it is still white-hot and easy to bend.",
+        "exTr": "Demirciler, metali hâlâ akkor hâldeyken ve bükülmesi kolayken şekillendirmelidir."
+      },
+      "alternatives": [
+        {
+          "ex": "The workshop display used a photograph of white-hot metal to illustrate how dramatically a material's appearance can change at high temperatures.",
+          "exTr": "Atölyedeki sergileme, bir malzemenin görünümünün yüksek sıcaklıklarda ne kadar belirgin değişebileceğini göstermek için beyaz akkor metal fotoğrafı kullandı."
+        }
+      ]
+    },
+    {
+      "word": "whole-wheat",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. tam buğday, kepekli",
+        "ex": "Nutritionists recommend replacing white bread with whole-wheat bread to increase daily fiber intake.",
+        "exTr": "Beslenme uzmanları, günlük lif alımını artırmak için beyaz ekmeğin yerine kepekli ekmek tüketilmesini öneriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The baking trial compared whole-wheat flour with refined flour while keeping the other ingredients constant, allowing the team to examine differences in texture.",
+          "exTr": "Ekmek pişirme denemesi, ekibin dokudaki farkları incelemesini sağlayarak diğer malzemeleri sabit tutup tam buğday ununu rafine unla karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "wide-body",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s./i. geniş gövdeli (uçak)",
+        "ex": "Airlines increasingly rely on wide-body aircraft for long-haul routes connecting distant continents.",
+        "exTr": "Havayolları, uzak kıtaları birbirine bağlayan uzun mesafeli rotalar için giderek daha fazla geniş gövdeli uçaklara güveniyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The airport model included a wide-body aircraft to test whether the proposed gate arrangement would leave sufficient space for surrounding ground vehicles.",
+          "exTr": "Havaalanı modeli, önerilen kapı düzenlemesinin çevredeki yer hizmet araçlarına yeterli alan bırakıp bırakmayacağını sınamak için geniş gövdeli bir uçak içeriyordu."
+        }
+      ]
+    },
+    {
+      "word": "widely",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. yaygın olarak, geniş çapta",
+        "ex": "This antibiotic is widely prescribed despite growing concerns about bacterial resistance.",
+        "exTr": "Bu antibiyotik, bakteriyel dirençle ilgili artan endişelere rağmen yaygın biçimde reçete edilmektedir."
+      },
+      "alternatives": [
+        {
+          "ex": "Although the interpretation was widely accepted when the catalogue appeared, newly discovered documents later prompted scholars to reconsider the evidence on which it rested.",
+          "exTr": "Katalog yayımlandığında yorum yaygın olarak kabul görse de sonradan bulunan belgeler araştırmacıları dayandığı kanıtları yeniden değerlendirmeye yöneltti."
+        }
+      ]
+    },
+    {
+      "word": "wild",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. vahşi, yabani",
+        "ex": "A wild boar suddenly appeared on the road, forcing the driver to brake sharply.",
+        "exTr": "Yolda aniden bir yaban domuzu belirdi ve sürücüyü sert fren yapmak zorunda bıraktı."
+      },
+      "alternatives": [
+        {
+          "ex": "The garden included wild plants collected from nearby habitats, with labels explaining why their presence mattered beyond their appeal as ornamental species.",
+          "exTr": "Bahçe, varlıklarının süs bitkisi olarak çekiciliklerinin ötesinde neden önemli olduğunu açıklayan etiketlerle, yakın yaşam alanlarından toplanmış yabani bitkiler içeriyordu."
+        }
+      ]
+    },
+    {
+      "word": "will",
+      "sense_index": 1,
+      "expected": {
+        "tr": "isteklilik, ani karar, teklif veya söz bildirmek",
+        "ex": "The laboratory will share its raw data with any team willing to repeat the experiment.",
+        "exTr": "Laboratuvar, ham verilerini deneyi tekrarlamaya istekli her ekiple paylaşacak."
+      },
+      "alternatives": [
+        {
+          "ex": "The archive will provide additional copies on request, but visitors are asked to identify the pages they need before submitting an order.",
+          "exTr": "Arşiv istek üzerine ek kopyalar sağlayacak; ancak ziyaretçilerden sipariş vermeden önce ihtiyaç duydukları sayfaları belirlemeleri isteniyor."
+        }
+      ]
+    },
+    {
+      "word": "willingness",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. isteklilik, gönüllülük",
+        "ex": "The negotiations succeeded largely because both governments showed genuine willingness to compromise on key issues.",
+        "exTr": "Müzakereler büyük ölçüde başarılı oldu çünkü her iki hükümet de temel konularda uzlaşma konusunda gerçek bir isteklilik gösterdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The residents' willingness to participate depended partly on whether they believed the consultation could influence decisions rather than merely endorse an existing plan.",
+          "exTr": "Sakinlerin katılma isteği, kısmen görüş alma sürecinin yalnızca mevcut bir planı onaylamak yerine kararları etkileyebileceğine inanıp inanmadıklarına bağlıydı."
+        }
+      ]
+    },
+    {
+      "word": "wind",
+      "sense_index": 1,
+      "expected": {
+        "tr": "f. sarmak, dolamak; kıvrılmak",
+        "ex": "The narrow path winds through the forest before reaching a small waterfall near the mountain's base.",
+        "exTr": "Dar patika, dağın eteğindeki küçük bir şelaleye ulaşmadan önce ormanın içinden kıvrılarak geçer."
+      },
+      "alternatives": [
+        {
+          "ex": "The technician had to wind the cable around a wider reel to prevent sharp bends from damaging the material during storage.",
+          "exTr": "Teknisyen, depolama sırasında keskin bükülmelerin malzemeye zarar vermesini önlemek için kabloyu daha geniş bir makaraya sarmak zorundaydı."
+        }
+      ]
+    },
+    {
+      "word": "wine",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. şarap",
+        "ex": "Archaeologists found traces of ancient wine residue inside clay jars buried near the temple.",
+        "exTr": "Arkeologlar, tapınağın yakınına gömülü kil kavanozların içinde antik şarap kalıntısı izlerine rastladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The exhibition compared containers used for transporting wine, showing how their shapes reflected the practical demands of storage, handling and long-distance trade.",
+          "exTr": "Sergi, biçimlerinin depolama, taşıma ve uzun mesafeli ticaretin pratik gereklerini nasıl yansıttığını göstererek şarap taşımakta kullanılan kapları karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "winter",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kış",
+        "ex": "The mountain village receives heavy snowfall every winter, often cutting it off from nearby towns.",
+        "exTr": "Dağ köyü her kış yoğun kar yağışı alır ve bu genellikle onu yakın kasabalardan koparır."
+      },
+      "alternatives": [
+        {
+          "ex": "The survey team returned in winter to determine whether routes recorded during the summer remained accessible when daylight was shorter and ground conditions had changed.",
+          "exTr": "Araştırma ekibi, gündüz süresi kısaldığında ve zemin koşulları değiştiğinde yazın kaydedilen güzergâhların erişilebilir kalıp kalmadığını belirlemek için kışın geri döndü."
+        }
+      ]
+    },
+    {
+      "word": "wireless",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kablosuz, telsiz",
+        "ex": "Mobile commerce depends on wireless devices that can complete secure transactions wherever a reliable data connection happens to be available.",
+        "exTr": "Mobil ticaret, güvenilir bir veri bağlantısının bulunduğu her yerde güvenli işlemleri tamamlayabilen kablosuz cihazlara dayanır."
+      },
+      "alternatives": [
+        {
+          "ex": "A wireless sensor transmitted readings from the roof to a receiver inside the building, reducing the need for staff to access the exposed measuring point.",
+          "exTr": "Kablosuz bir sensör, personelin açıkta kalan ölçüm noktasına çıkma ihtiyacını azaltarak çatıdaki ölçümleri binanın içindeki bir alıcıya iletti."
+        }
+      ]
+    },
+    {
+      "word": "wisely",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. sağlam yargı göstererek; akıllıca",
+        "ex": "The village wisely invested its limited funds in reliable drinking-water systems before expanding tourism.",
+        "exTr": "Köy, turizmi genişletmeden önce sınırlı kaynaklarını akıllıca güvenilir içme suyu sistemlerine yatırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The organisers wisely left time between sessions, allowing participants to discuss unresolved questions instead of moving immediately from one presentation to the next.",
+          "exTr": "Düzenleyiciler akıllıca davranarak oturumlar arasında zaman bıraktı; böylece katılımcılar bir sunumdan hemen diğerine geçmek yerine çözülmemiş soruları tartışabildi."
+        }
+      ]
+    },
+    {
+      "word": "withdraw",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. geri çekmek; çekilmek",
+        "ex": "The company had to withdraw the product from the market after safety tests revealed serious defects.",
+        "exTr": "Şirket, güvenlik testleri ciddi kusurlar ortaya çıkarınca ürünü piyasadan çekmek zorunda kaldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The author agreed to withdraw the disputed claim after discovering that the source referred to a different location with a similar name.",
+          "exTr": "Yazar, kaynağın benzer ad taşıyan farklı bir yeri işaret ettiğini fark ettikten sonra tartışmalı iddiayı geri çekmeyi kabul etti."
+        }
+      ]
+    },
+    {
+      "word": "without",
+      "sense_index": 0,
+      "expected": {
+        "tr": "e. -sız, -meden, olmaksızın",
+        "ex": "Certain desert plants can survive for months without any measurable rainfall reaching their roots.",
+        "exTr": "Bazı çöl bitkileri, köklerine ölçülebilir hiçbir yağmur ulaşmadan aylarca hayatta kalabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The results cannot be compared meaningfully without knowing how the two teams selected participants and whether they measured the same underlying characteristics.",
+          "exTr": "İki ekibin katılımcıları nasıl seçtiği ve aynı temel özellikleri ölçüp ölçmediği bilinmeden sonuçlar anlamlı biçimde karşılaştırılamaz."
+        }
+      ]
+    },
+    {
+      "word": "wolf",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kurt",
+        "ex": "A lone wolf howled in the distance as the campers settled in for the night.",
+        "exTr": "Kampçılar geceye hazırlanırken uzaklarda yalnız bir kurt uludu."
+      },
+      "alternatives": [
+        {
+          "ex": "The camera recorded a wolf crossing the clearing, but the brief image did not reveal whether other members of the pack were nearby.",
+          "exTr": "Kamera açıklıktan geçen bir kurt kaydetti; ancak kısa görüntü sürünün diğer üyelerinin yakınlarda olup olmadığını ortaya koymadı."
+        }
+      ]
+    }
+  ],
+  "collocations": [
+    {
+      "word": "wale",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a wooden wale",
+          "tr": "ahşap borda kuşağı"
+        },
+        {
+          "en": "the ship's wale",
+          "tr": "geminin borda kuşağı"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "walk-off",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a walk-off hit",
+          "tr": "maçı ev sahibi lehine bitiren vuruş"
+        },
+        {
+          "en": "a walk-off win",
+          "tr": "son hücumda maçı bitirerek elde edilen galibiyet"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "walk-up",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a walk-up apartment",
+          "tr": "asansörsüz binada bir daire"
+        },
+        {
+          "en": "a five-storey walk-up",
+          "tr": "beş katlı asansörsüz bina"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "warm-up",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a warm-up session",
+          "tr": "ısınma seansı"
+        },
+        {
+          "en": "a brief warm-up",
+          "tr": "kısa bir ısınma"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "wash",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "wash thoroughly",
+          "tr": "iyice yıkamak"
+        },
+        {
+          "en": "a cold wash",
+          "tr": "soğuk suyla yıkama"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "water-color",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a water-color painting",
+          "tr": "suluboya resim"
+        },
+        {
+          "en": "paint in water-color",
+          "tr": "suluboyayla resim yapmak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "water-target",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "water-target leaves",
+          "tr": "su kalkanı bitkisinin yaprakları"
+        },
+        {
+          "en": "a patch of water-target",
+          "tr": "bir su kalkanı bitki öbeği"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "watery",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "watery eyes",
+          "tr": "sulanan gözler"
+        },
+        {
+          "en": "a watery soup",
+          "tr": "fazla sulandırılmış çorba"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "well-read",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a well-read audience",
+          "tr": "çok okumuş bir dinleyici kitlesi"
+        },
+        {
+          "en": "well-read in history",
+          "tr": "tarih alanında çok okumuş"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "westward",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "westward movement",
+          "tr": "batı yönündeki hareket"
+        },
+        {
+          "en": "travel westward",
+          "tr": "batıya doğru yolculuk etmek"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "whisper",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "speak in a whisper",
+          "tr": "fısıltıyla konuşmak"
+        },
+        {
+          "en": "whisper something to someone",
+          "tr": "birine bir şey fısıldamak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "wisely",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "choose wisely",
+          "tr": "akıllıca seçim yapmak"
+        },
+        {
+          "en": "use resources wisely",
+          "tr": "kaynakları akıllıca kullanmak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "wolf",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a wolf pack",
+          "tr": "kurt sürüsü"
+        },
+        {
+          "en": "a lone wolf",
+          "tr": "yalnız kurt"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

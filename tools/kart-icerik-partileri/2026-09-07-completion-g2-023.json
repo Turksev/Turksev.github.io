@@ -1,0 +1,1075 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 2,
+    "input": "input-023.json"
+  },
+  "enrichments": [
+    {
+      "word": "history",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. tarih; geçmiş",
+        "ex": "Throughout human history, epidemics have repeatedly reshaped societies, economies, and political structures.",
+        "exTr": "İnsanlık tarihi boyunca salgınlar; toplumları, ekonomileri ve siyasi yapıları defalarca yeniden şekillendirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "Oral testimony adds a personal dimension to the history of the railway that engineering plans and passenger statistics cannot supply.",
+          "exTr": "Sözlü tanıklık demiryolunun tarihine mühendislik planlarıyla yolcu istatistiklerinin sağlayamayacağı kişisel bir boyut ekler."
+        }
+      ]
+    },
+    {
+      "word": "hit-or-miss",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. gelişigüzel, rastgele",
+        "ex": "Their approach to quality control was largely hit-or-miss, leading to inconsistent results.",
+        "exTr": "Kalite kontrolüne yaklaşımları büyük ölçüde gelişigüzeldi, bu da tutarsız sonuçlara yol açtı."
+      },
+      "alternatives": [
+        {
+          "ex": "Without a shared index, searching the old records remained a hit-or-miss process dependent on which member of staff happened to be available.",
+          "exTr": "Ortak dizin olmadığından eski kayıtları aramak, hangi personelin o anda bulunduğuna bağlı gelişigüzel bir süreç olarak kaldı."
+        }
+      ]
+    },
+    {
+      "word": "hobby",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. hobi, uğraş",
+        "ex": "Gardening is a popular hobby that reduces stress and encourages physical activity among adults.",
+        "exTr": "Bahçecilik, yetişkinlerde stresi azaltan ve fiziksel aktiviteyi teşvik eden popüler bir hobidir."
+      },
+      "alternatives": [
+        {
+          "ex": "What began as a hobby became a source of historical evidence when neighbours asked her to preserve their family recordings.",
+          "exTr": "Komşuları aile kayıtlarını korumasını isteyince hobi olarak başlayan uğraş tarihsel kanıt kaynağına dönüştü."
+        }
+      ]
+    },
+    {
+      "word": "holder",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. (unvan/hisse vb.) sahibi",
+        "ex": "As the current holder of the world record, she trains every day to defend her title next season.",
+        "exTr": "Dünya rekorunun mevcut sahibi olarak, gelecek sezon unvanını korumak için her gün antrenman yapıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Only the holder of a valid entry pass could collect the reserved equipment, a condition clearly stated in the booking confirmation.",
+          "exTr": "Yalnızca geçerli giriş kartı sahibi ayrılmış ekipmanı teslim alabiliyordu; bu koşul rezervasyon onayında açıkça belirtilmişti."
+        }
+      ]
+    },
+    {
+      "word": "holiday",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. tatil",
+        "ex": "Many families in the region travel abroad during the summer holiday season.",
+        "exTr": "Bölgedeki pek çok aile, yaz tatili döneminde yurt dışına seyahat ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "During her holiday, the engineer visited several small workshops whose improvised solutions later influenced her approach to teaching design.",
+          "exTr": "Mühendis tatilinde, doğaçlama çözümleri daha sonra tasarım öğretme yaklaşımını etkileyen birkaç küçük atölyeyi ziyaret etti."
+        }
+      ]
+    },
+    {
+      "word": "home",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ev, yuva",
+        "ex": "Many refugees still dream of rebuilding a home once the ongoing conflict in their country finally ends.",
+        "exTr": "Birçok mülteci, ülkelerindeki devam eden çatışma sonunda bittiğinde bir yuva yeniden kurmayı hâlâ hayal ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "For the narrator, home is defined less by a particular building than by the people who remember its shared routines.",
+          "exTr": "Anlatıcı için yuvayı belirli bir binadan çok ortak rutinlerini hatırlayan insanlar tanımlar."
+        }
+      ]
+    },
+    {
+      "word": "home-grown",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yerli, kendi yetiştirdiği",
+        "ex": "The city invested heavily in home-grown technology firms instead of relying on foreign imports.",
+        "exTr": "Şehir, yabancı ithalata bağımlı olmak yerine yerli teknoloji firmalarına büyük yatırım yaptı."
+      },
+      "alternatives": [
+        {
+          "ex": "Home-grown expertise helped the firm adapt imported machinery to local materials without becoming entirely dependent on advice from overseas suppliers.",
+          "exTr": "Yerli uzmanlık, firmanın yurt dışındaki tedarikçilerin tavsiyelerine tamamen bağımlı olmadan ithal makineleri yerel malzemelere uyarlamasına yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "homeland",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. anavatan, memleket",
+        "ex": "Thousands of refugees hope to return to their homeland once the conflict finally ends.",
+        "exTr": "Binlerce mülteci, çatışma sona erdiğinde anavatanlarına dönmeyi umuyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Songs from her homeland acquired new meanings abroad, where listeners connected familiar melodies with experiences of departure and belonging.",
+          "exTr": "Dinleyicilerin tanıdık ezgileri ayrılık ve aidiyet deneyimleriyle ilişkilendirdiği yurt dışında anavatanının şarkıları yeni anlamlar kazandı."
+        }
+      ]
+    },
+    {
+      "word": "homo",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. (argo, çoğunlukla aşağılayıcı) eşcinsel erkek",
+        "ex": "Sociolinguists note that the word 'homo' is now widely regarded as an offensive slur in everyday speech.",
+        "exTr": "Sosyodilbilimciler, 'homo' sözcüğünün günlük konuşmada artık büyük ölçüde aşağılayıcı bir hakaret olarak görüldüğünü belirtiyor."
+      },
+      "alternatives": [
+        {
+          "ex": "While translating the old testimony, the researcher retained the offensive term 'homo' only where its presence was necessary to document the speaker's prejudice.",
+          "exTr": "Araştırmacı, eski tanıklık metnini çevirirken aşağılayıcı 'homo' ifadesini yalnızca konuşmacının önyargısını belgelemek için gerekli olduğu yerlerde korudu."
+        }
+      ],
+      "note": "Bu madde aşağılayıcı/tabu bir hakarettir. Kullanımın onayı veya gündelik üretim önerisi değildir; tarihsel kaynaktaki önyargıyı belgeleyen metadil bağlamıdır. Eklenen dizi yerleşik bir eşdizim değil, açık uyarı taşıyan güvenli bağlam örüntüsüdür. Bu özel madde için metadil istisnası ve tam EN/TR çifti root bağımsız ikinci okumasıyla onaylandı. https://dictionary.cambridge.org/us/dictionary/english/homo ; https://www.oxfordlearnersdictionaries.com/us/definition/english/homo_1"
+    },
+    {
+      "word": "honestly",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. dürüstçe; gerçekten",
+        "ex": "Researchers asked participants to answer honestly about their eating habits, even if the results seemed embarrassing.",
+        "exTr": "Araştırmacılar, sonuçlar utandırıcı görünse bile katılımcılardan yeme alışkanlıkları hakkında dürüstçe cevap vermelerini istedi."
+      },
+      "alternatives": [
+        {
+          "ex": "Acknowledging uncertainty honestly made the speaker more credible than pretending to answer questions that the available evidence could not resolve.",
+          "exTr": "Belirsizliği dürüstçe kabul etmek, mevcut kanıtın çözemediği soruları yanıtlıyormuş gibi yapmaya kıyasla konuşmacıyı daha güvenilir kıldı."
+        }
+      ]
+    },
+    {
+      "word": "honor",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. onur, şeref",
+        "ex": "The scientist was given a special honor for her lifelong contribution to medical research.",
+        "exTr": "Bilim insanına, tıbbi araştırmalara ömür boyu süren katkısından dolayı özel bir onur verildi."
+      },
+      "alternatives": [
+        {
+          "ex": "Receiving the honor mattered to her chiefly because it drew attention to colleagues whose contributions had previously remained unrecognised.",
+          "exTr": "Bu onura layık görülmek, esas olarak daha önce katkıları takdir edilmemiş meslektaşlarına dikkat çektiği için onun açısından önemliydi."
+        }
+      ]
+    },
+    {
+      "word": "honourable",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. onurlu, şerefli, dürüst",
+        "ex": "The judge praised the witness for giving an honourable and completely truthful account of events.",
+        "exTr": "Yargıç, tanığı olaylara dair onurlu ve tamamen doğru bir anlatım sunduğu için övdü."
+      },
+      "alternatives": [
+        {
+          "ex": "An honourable compromise would acknowledge both sides' legitimate concerns rather than allow the stronger partner to dictate every condition.",
+          "exTr": "Onurlu bir uzlaşma, daha güçlü ortağın her koşulu dayatmasına izin vermek yerine iki tarafın meşru kaygılarını kabul ederdi."
+        }
+      ]
+    },
+    {
+      "word": "hope",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. ummak",
+        "ex": "Doctors hope the new treatment will slow the progression of the disease significantly.",
+        "exTr": "Doktorlar, yeni tedavinin hastalığın ilerlemesini önemli ölçüde yavaşlatacağını umuyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The organisers hope to attract participants from outside the city by offering sessions at times compatible with regional train services.",
+          "exTr": "Düzenleyiciler bölgesel tren seferleriyle uyumlu saatlerde oturumlar sunarak şehir dışından katılımcı çekmeyi umuyor."
+        }
+      ]
+    },
+    {
+      "word": "horizon",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ufuk",
+        "ex": "Sailors traditionally used the horizon to estimate their ship's position before modern navigation technology existed.",
+        "exTr": "Denizciler geleneksel olarak, modern seyrüsefer teknolojisi var olmadan önce gemilerinin konumunu tahmin etmek için ufku kullanırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "Beyond the harbour, a dark line on the horizon gradually resolved into the outline of the island they had been seeking.",
+          "exTr": "Limanın ötesinde, ufuktaki koyu bir çizgi yavaş yavaş aradıkları adanın dış hatları olarak belirginleşti."
+        }
+      ]
+    },
+    {
+      "word": "hormonal",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. hormonla ilgili, hormonların neden olduğu",
+        "ex": "Hormonal changes can influence sleep patterns.",
+        "exTr": "Hormonal değişiklikler uyku düzenini etkileyebilir."
+      },
+      "alternatives": [
+        {
+          "ex": "Before comparing hormonal measurements across studies, the reviewers checked how sampling times and analytical methods had been documented in each report.",
+          "exTr": "Değerlendiriciler çalışmaların hormon ölçümlerini karşılaştırmadan önce her raporda örnekleme saatleriyle analiz yöntemlerinin nasıl belgelendiğini kontrol etti."
+        }
+      ]
+    },
+    {
+      "word": "horrible",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. korkunç, berbat, dehşetli",
+        "ex": "Survivors described the horrible conditions inside the refugee camp during the harsh winter.",
+        "exTr": "Hayatta kalanlar, sert kış boyunca mülteci kampındaki korkunç koşulları anlattı."
+      },
+      "alternatives": [
+        {
+          "ex": "A horrible noise interrupted the rehearsal, but the musicians soon discovered that a loose panel, not a damaged instrument, was responsible.",
+          "exTr": "Korkunç bir ses provayı böldü; ancak müzisyenler çok geçmeden nedenin hasarlı bir çalgı değil gevşek bir panel olduğunu keşfetti."
+        }
+      ]
+    },
+    {
+      "word": "horrifying",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. dehşet verici, korkunç",
+        "ex": "Survivors described the horrifying moment when the earthquake collapsed several buildings in the city center.",
+        "exTr": "Hayatta kalanlar, depremin şehir merkezindeki birkaç binayı çökerttiği dehşet verici anı anlattı."
+      },
+      "alternatives": [
+        {
+          "ex": "The film presents the discovery as horrifying through the witnesses' reactions, without showing the audience the object of their fear.",
+          "exTr": "Film, seyirciye korkunun nesnesini göstermeden tanıkların tepkileri aracılığıyla keşfi dehşet verici olarak sunuyor."
+        }
+      ]
+    },
+    {
+      "word": "horse-drawn",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. atla çekilen, at koşulu",
+        "ex": "Visitors can tour the historic district in a horse-drawn carriage during the summer festival.",
+        "exTr": "Ziyaretçiler, yaz festivali sırasında tarihi bölgeyi atlı bir araba ile gezebilir."
+      },
+      "alternatives": [
+        {
+          "ex": "A horse-drawn cart appears beside the railway in the photograph, challenging any simple division between older transport methods and industrial change.",
+          "exTr": "Fotoğrafta demiryolunun yanında atla çekilen bir araba görülmesi, eski ulaşım yöntemleriyle sanayileşme arasında basit bir ayrım yapılmasını sorgulatıyor."
+        }
+      ]
+    },
+    {
+      "word": "hospital",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. hastane",
+        "ex": "The new hospital was built near the city center to serve elderly residents efficiently.",
+        "exTr": "Yeni hastane, yaşlı sakinlere etkin biçimde hizmet vermek için şehir merkezine yakın inşa edildi."
+      },
+      "alternatives": [
+        {
+          "ex": "The hospital's entrance was relocated after consultation showed that visitors arriving by bus faced a confusing walk through the grounds.",
+          "exTr": "Danışmalar otobüsle gelen ziyaretçilerin bahçede yön bulması zor bir yürüyüşle karşılaştığını gösterince hastanenin girişi taşındı."
+        }
+      ]
+    },
+    {
+      "word": "host",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. ev sahipliği yapmak, barındırmak",
+        "ex": "The city will host an international conference on renewable energy next spring.",
+        "exTr": "Kent, gelecek ilkbaharda yenilenebilir enerji üzerine uluslararası bir konferansa ev sahipliği yapacak."
+      },
+      "alternatives": [
+        {
+          "ex": "Small libraries can host discussions that connect specialist research with local experience, provided that the format gives both groups opportunities to contribute.",
+          "exTr": "Biçim her iki gruba da katkı fırsatı verdiği sürece küçük kütüphaneler uzmanlık araştırmalarını yerel deneyimle bağlayan tartışmalara ev sahipliği yapabilir."
+        }
+      ]
+    },
+    {
+      "word": "hot",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. sıcak",
+        "ex": "Extremely hot weather this summer forced several countries to issue public health warnings.",
+        "exTr": "Bu yaz yaşanan aşırı sıcak hava, birçok ülkeyi halk sağlığı uyarıları yayımlamak zorunda bıraktı."
+      },
+      "alternatives": [
+        {
+          "ex": "On hot afternoons, the western rooms were left unused, a pattern that influenced the architect's proposal for relocating the study area.",
+          "exTr": "Sıcak öğleden sonralarında batı odaları kullanılmıyordu; bu örüntü mimarın çalışma alanını taşıma önerisini etkiledi."
+        }
+      ]
+    },
+    {
+      "word": "hotel",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. otel",
+        "ex": "The coastal town built a large hotel to accommodate the growing number of tourists.",
+        "exTr": "Kıyı kasabası, artan turist sayısını ağırlamak için büyük bir otel inşa etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The former hotel now accommodates visiting artists, but traces of its earlier function remain in the arrangement of corridors and shared rooms.",
+          "exTr": "Eski otel şimdi konuk sanatçıları barındırıyor; ancak önceki işlevinin izleri koridorlarla ortak odaların düzeninde sürüyor."
+        }
+      ]
+    },
+    {
+      "word": "hour",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. saat (süre)",
+        "ex": "Adults who sleep fewer than six hours a night face higher health risks.",
+        "exTr": "Gecede altı saatten az uyuyan yetişkinler, daha yüksek sağlık riskleriyle karşı karşıyadır."
+      },
+      "alternatives": [
+        {
+          "ex": "An extra hour of preparation allowed the team to discover a missing connection before the demonstration was due to begin.",
+          "exTr": "Fazladan bir saat hazırlık, ekibin gösterim başlamadan önce eksik bir bağlantıyı keşfetmesini sağladı."
+        }
+      ]
+    },
+    {
+      "word": "house",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ev, konut",
+        "ex": "The old stone house at the edge of the village has remained empty for nearly thirty years.",
+        "exTr": "Köyün kenarındaki eski taş ev, neredeyse otuz yıldır boş kalmış durumda."
+      },
+      "alternatives": [
+        {
+          "ex": "Although the house had changed owners repeatedly, a sequence of family photographs made it possible to trace alterations to its main entrance.",
+          "exTr": "Ev defalarca el değiştirmiş olsa da bir dizi aile fotoğrafı ana girişindeki değişiklikleri izlemeyi mümkün kıldı."
+        }
+      ]
+    },
+    {
+      "word": "house-to-house",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kapı kapı (dolaşarak yapılan)",
+        "ex": "Volunteers conducted a house-to-house search for survivors after the earthquake struck the town.",
+        "exTr": "Deprem kasabayı vurduktan sonra gönüllüler, hayatta kalanları bulmak için kapı kapı bir arama yaptı."
+      },
+      "alternatives": [
+        {
+          "ex": "A house-to-house survey reached residents who had not responded online, revealing priorities absent from the first round of consultation.",
+          "exTr": "Kapı kapı yapılan araştırma çevrim içi yanıt vermeyen sakinlere ulaşarak ilk danışma turunda bulunmayan öncelikleri ortaya çıkardı."
+        }
+      ]
+    },
+    {
+      "word": "housing",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. konut, barınma",
+        "ex": "City officials approved a plan to build affordable housing for low-income families near downtown.",
+        "exTr": "Kent yetkilileri, şehir merkezine yakın düşük gelirli aileler için uygun fiyatlı konut inşa etme planını onayladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The housing proposal included shared gardens, but residents wanted assurances that maintaining them would not create unexpected costs for individual households.",
+          "exTr": "Konut önerisi ortak bahçeler içeriyordu; ancak sakinler bakımlarının hanelere beklenmedik masraflar çıkarmayacağı konusunda güvence istedi."
+        }
+      ]
+    },
+    {
+      "word": "hugely",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. son derece, muazzam ölçüde",
+        "ex": "The new vaccine proved hugely effective in reducing hospitalizations during the winter outbreak.",
+        "exTr": "Yeni aşı, kış salgını sırasında hastaneye yatışları azaltmada son derece etkili olduğunu kanıtladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The evening sessions proved hugely popular with shift workers, whose schedules had prevented them from attending the centre's earlier daytime programme.",
+          "exTr": "Programları merkezin önceki gündüz eğitimine katılmalarını engelleyen vardiyalı çalışanlar arasında akşam oturumları son derece rağbet gördü."
+        }
+      ]
+    },
+    {
+      "word": "humanist",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. hümanist; insan aklını, onurunu veya refahını öne çıkaran kişi",
+        "ex": "Renaissance humanists translated classical works and circulated them among European scholars.",
+        "exTr": "Rönesans hümanistleri klasik eserleri çevirdi ve Avrupalı bilim insanları arasında dolaşıma soktu."
+      },
+      "alternatives": [
+        {
+          "ex": "As a humanist, the essayist places human dignity at the centre of her argument without dismissing the importance of disagreement and critical enquiry.",
+          "exTr": "Deneme yazarı, bir hümanist olarak görüş ayrılığı ve eleştirel sorgulamanın önemini küçümsemeden insan onurunu savının merkezine yerleştiriyor."
+        }
+      ]
+    },
+    {
+      "word": "humanity",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. insanlık",
+        "ex": "Some scientists argue that artificial intelligence could pose serious risks to humanity if left unregulated.",
+        "exTr": "Bazı bilim insanları, düzenlenmediği takdirde yapay zekânın insanlık için ciddi riskler oluşturabileceğini savunuyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The exhibition asks what future generations might learn about humanity from ordinary objects, rather than from monuments deliberately designed to represent power.",
+          "exTr": "Sergi, gelecek kuşakların insanlık hakkında iktidarı temsil etmek için özel tasarlanmış anıtlardan değil sıradan nesnelerden neler öğrenebileceğini soruyor."
+        }
+      ]
+    },
+    {
+      "word": "humble",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. alçakgönüllü, mütevazı",
+        "ex": "Despite winning the award, the scientist remained humble about her contribution to the discovery.",
+        "exTr": "Ödülü kazanmasına rağmen, bilim insanı keşfe katkısı konusunda alçakgönüllü kaldı."
+      },
+      "alternatives": [
+        {
+          "ex": "Despite decades of experience, the designer remained humble about predictions whose accuracy depended on how people would actually use the building.",
+          "exTr": "Onlarca yıllık deneyimine rağmen tasarımcı, doğruluğu insanların binayı gerçekte nasıl kullanacağına bağlı tahminleri konusunda mütevazı kaldı."
+        }
+      ]
+    },
+    {
+      "word": "humiliate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. küçük düşürmek, aşağılamak, utandırmak",
+        "ex": "Publicly ranking weak performers can humiliate employees without helping them develop the skills they lack.",
+        "exTr": "Düşük performans gösterenleri herkesin önünde sıralamak, eksik becerilerini geliştirmelerine yardım etmeden çalışanları küçük düşürebilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The tutor refused to humiliate the apprentice for an unsuccessful repair, choosing instead to examine the decision that had caused the difficulty.",
+          "exTr": "Eğitmen, başarısız onarım nedeniyle çırağı aşağılamayı reddederek bunun yerine güçlüğe yol açan kararı incelemeyi seçti."
+        }
+      ]
+    },
+    {
+      "word": "humor",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. mizah, espri; mizaç, ruh hali",
+        "ex": "The author's clever humor kept readers entertained throughout the otherwise serious historical novel.",
+        "exTr": "Yazarın zekice mizahı, diğer türlü ciddi olan tarihi romanda okuyucuları eğlendirmeye devam etti."
+      },
+      "alternatives": [
+        {
+          "ex": "Much of the story's humor depends on what the reader knows and the self-confident narrator repeatedly fails to notice.",
+          "exTr": "Hikâyedeki mizahın büyük bölümü okurun bildiği, kendinden emin anlatıcının ise sürekli fark edemediği şeylere dayanıyor."
+        }
+      ]
+    },
+    {
+      "word": "hundred",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s./i. yüz (sayı)",
+        "ex": "More than a hundred species of coral have vanished from the reef since 1990.",
+        "exTr": "1990'dan bu yana resiften yüzden fazla mercan türü yok oldu."
+      },
+      "alternatives": [
+        {
+          "ex": "More than a hundred drawings survived, yet only a small proportion could be linked confidently to buildings that still stood.",
+          "exTr": "Yüzden fazla çizim günümüze ulaştı; yine de yalnızca küçük bir bölümü hâlâ ayakta olan binalarla güvenle ilişkilendirilebildi."
+        }
+      ]
+    },
+    {
+      "word": "hungry",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. aç",
+        "ex": "After the long hike, the exhausted travelers were hungry enough to eat almost anything.",
+        "exTr": "Uzun yürüyüşün ardından bitkin gezginler, neredeyse her şeyi yiyebilecek kadar açtı."
+      },
+      "alternatives": [
+        {
+          "ex": "The hungry travellers welcomed a simple meal more warmly than the elaborate entertainment their host had spent weeks preparing.",
+          "exTr": "Aç yolcular, ev sahiplerinin haftalarca hazırladığı gösterişli eğlenceden daha büyük memnuniyetle sade bir yemeği karşıladı."
+        }
+      ]
+    },
+    {
+      "word": "hunter",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. avcı",
+        "ex": "Wildlife officials warned local hunters to avoid the protected forest during breeding season.",
+        "exTr": "Yaban hayatı yetkilileri, yerel avcıları üreme mevsiminde korunan ormandan uzak durmaları konusunda uyardı."
+      },
+      "alternatives": [
+        {
+          "ex": "In the painting, the hunter occupies only a small part of the landscape, reversing the heroic emphasis found in the accompanying poem.",
+          "exTr": "Resimde avcı manzaranın yalnızca küçük bir bölümünü kaplayarak eşlik eden şiirdeki kahramanlık vurgusunu tersine çeviriyor."
+        }
+      ]
+    },
+    {
+      "word": "hurricane",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kasırga",
+        "ex": "Residents along the coast evacuated their homes before the hurricane made landfall early the next morning.",
+        "exTr": "Kıyı boyunca yaşayan sakinler, kasırga ertesi sabah erkenden karaya ulaşmadan önce evlerini boşalttı."
+      },
+      "alternatives": [
+        {
+          "ex": "Newspaper accounts of the hurricane emphasised dramatic scenes, while later interviews documented the less visible work of rebuilding everyday routines.",
+          "exTr": "Kasırgayla ilgili gazete anlatımları çarpıcı sahneleri vurgularken sonraki görüşmeler günlük rutinleri yeniden kurmanın daha az görünür çabasını belgeledi."
+        }
+      ]
+    },
+    {
+      "word": "hurtful",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. incitici, kırıcı",
+        "ex": "She regretted making such a hurtful comment during the argument with her sister.",
+        "exTr": "Kız kardeşiyle yaptığı tartışma sırasında bu kadar incitici bir yorum yaptığına pişman oldu."
+      },
+      "alternatives": [
+        {
+          "ex": "A seemingly minor joke became hurtful when repeated before an unfamiliar audience, revealing how context can change the meaning of an exchange.",
+          "exTr": "Önemsiz görünen bir şaka tanımadık bir dinleyici topluluğu önünde yinelenince incitici oldu; bağlamın konuşmanın anlamını nasıl değiştirebildiğini gösterdi."
+        }
+      ]
+    },
+    {
+      "word": "hybrid",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s./i. melez, hibrit",
+        "ex": "Automakers are investing heavily in hybrid vehicles that combine electric and gasoline engines.",
+        "exTr": "Otomobil üreticileri, elektrikli ve benzinli motorları birleştiren hibrit araçlara büyük yatırım yapıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The hybrid design combined a familiar wooden frame with replaceable metal joints, giving the workshop more options for future repairs.",
+          "exTr": "Hibrit tasarım tanıdık ahşap iskeleti değiştirilebilir metal birleşimlerle birleştirerek atölyeye gelecekteki onarımlar için daha fazla seçenek verdi."
+        }
+      ]
+    },
+    {
+      "word": "hydroelectric",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. hidroelektrik",
+        "ex": "The government approved funding for a new hydroelectric dam along the river's upper basin.",
+        "exTr": "Hükümet, nehrin yukarı havzası boyunca yeni bir hidroelektrik baraj için finansman onayladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The proposed hydroelectric scheme was assessed alongside other uses of the river, including navigation and the needs of downstream settlements.",
+          "exTr": "Önerilen hidroelektrik proje, gemi ulaşımı ve aşağı kesimdeki yerleşimlerin ihtiyaçları dâhil nehrin diğer kullanımlarıyla birlikte değerlendirildi."
+        }
+      ]
+    },
+    {
+      "word": "hygiene",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. hijyen, temizlik",
+        "ex": "Public health officials stress that proper hygiene remains the simplest way to prevent seasonal infections.",
+        "exTr": "Halk sağlığı yetkilileri, uygun hijyenin mevsimsel enfeksiyonları önlemenin en basit yolu olmaya devam ettiğini vurguluyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The workplace manual placed hygiene instructions beside the relevant tasks, rather than expecting staff to consult a separate document during busy periods.",
+          "exTr": "İş yeri kılavuzu, yoğun zamanlarda personelin ayrı bir belgeye başvurmasını beklemek yerine hijyen talimatlarını ilgili görevlerin yanına yerleştirdi."
+        }
+      ]
+    },
+    {
+      "word": "hyperactivity",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. aşırı hareketlilik",
+        "ex": "The teacher noticed signs of hyperactivity in several children during the afternoon classes.",
+        "exTr": "Öğretmen, öğleden sonraki derslerde birkaç çocukta aşırı hareketlilik belirtileri fark etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The review compared how studies recorded hyperactivity, warning that inconsistent definitions could make apparently similar findings difficult to interpret together.",
+          "exTr": "İnceleme, tutarsız tanımların benzer görünen bulguları birlikte yorumlamayı zorlaştırabileceğini belirterek çalışmaların aşırı hareketliliği nasıl kaydettiğini karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "hypothetical",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. gerçek olduğu kanıtlanmamış bir varsayıma dayanan; varsayımsal",
+        "ex": "Researchers used a hypothetical outbreak to test whether hospitals could coordinate their emergency responses.",
+        "exTr": "Araştırmacılar hastanelerin acil durum müdahalelerini koordine edip edemeyeceğini sınamak için varsayımsal bir salgın kullandı."
+      },
+      "alternatives": [
+        {
+          "ex": "A hypothetical shortage of materials forced the design students to reconsider priorities without exposing a real construction project to delays.",
+          "exTr": "Varsayımsal malzeme kıtlığı, gerçek bir inşaat projesini gecikmeye maruz bırakmadan tasarım öğrencilerini önceliklerini yeniden düşünmeye zorladı."
+        }
+      ]
+    },
+    {
+      "word": "ice-free",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. buzsuz, buzdan arınmış",
+        "ex": "Warmer temperatures have kept the northern harbor ice-free for several extra weeks each winter.",
+        "exTr": "Daha sıcak hava koşulları, kuzeydeki limanı her kış birkaç hafta daha fazla buzsuz tuttu."
+      },
+      "alternatives": [
+        {
+          "ex": "The expedition waited for an ice-free channel before moving the supply boat, although conditions farther along the planned route remained uncertain.",
+          "exTr": "Planlanan güzergâhın ilerisindeki koşullar belirsiz kalsa da sefer ekibi ikmal teknesini hareket ettirmeden önce buzsuz bir geçit oluşmasını bekledi."
+        }
+      ]
+    },
+    {
+      "word": "icy",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. buzla kaplı, buz içeren veya aşırı soğuk",
+        "ex": "Icy roads forced the authorities to close the mountain pass before sunrise.",
+        "exTr": "Buzlu yollar yetkilileri gün doğmadan dağ geçidini kapatmaya zorladı."
+      },
+      "alternatives": [
+        {
+          "ex": "An icy surface prevented the surveyors from reaching the upper terrace, so they postponed measurements that required direct access.",
+          "exTr": "Buzlu yüzey ölçüm uzmanlarının üst terasa ulaşmasını engellediği için doğrudan erişim gerektiren ölçümleri ertelediler."
+        }
+      ]
+    },
+    {
+      "word": "idealisation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. idealleştirme, ülküleştirme, kusursuzlaştırma",
+        "ex": "Renaissance sculpture reveals a growing idealisation of the human body, in which anatomical accuracy is combined with an imagined perfection.",
+        "exTr": "Rönesans heykelciliği, anatomik doğruluğun hayal edilen bir kusursuzlukla birleştiği, insan bedeninin giderek artan bir idealleştirmesini ortaya koyar."
+      },
+      "alternatives": [
+        {
+          "ex": "The critic questions the idealisation of village life in the memoir, pointing to difficult experiences that its nostalgic descriptions leave unexplored.",
+          "exTr": "Eleştirmen, nostaljik betimlemelerinin incelemediği güç deneyimlere işaret ederek anı kitabındaki köy yaşamının idealleştirilmesini sorguluyor."
+        }
+      ]
+    },
+    {
+      "word": "identifiable",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. tanımlanabilir, belirlenebilir, teşhis edilebilir",
+        "ex": "The disease has no single identifiable cause.",
+        "exTr": "Hastalığın belirlenebilir tek bir nedeni yoktur."
+      },
+      "alternatives": [
+        {
+          "ex": "A clearly identifiable landmark in the background allowed the team to locate the photograph despite the absence of a written caption.",
+          "exTr": "Arka planda açıkça belirlenebilen bir işaret, yazılı açıklama olmamasına rağmen ekibin fotoğrafın çekildiği yeri bulmasını sağladı."
+        }
+      ]
+    },
+    {
+      "word": "identify",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. tespit etmek, belirlemek",
+        "ex": "Genetic testing can help doctors identify patients at high risk of hereditary diseases.",
+        "exTr": "Genetik testler, doktorların kalıtsal hastalık riski yüksek hastaları belirlemesine yardımcı olabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "Repeated interviews helped identify which difficulties arose from the timetable and which reflected problems with the building itself.",
+          "exTr": "Tekrarlanan görüşmeler hangi güçlüklerin programdan kaynaklandığını, hangilerinin binanın kendisiyle ilgili sorunları yansıttığını belirlemeye yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "ideological",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. ideolojik",
+        "ex": "The two political parties remained divided by deep ideological differences throughout the entire campaign.",
+        "exTr": "İki siyasi parti, kampanya boyunca derin ideolojik farklılıklarla bölünmüş durumda kaldı."
+      },
+      "alternatives": [
+        {
+          "ex": "Their ideological disagreement concerned who should make decisions, not whether the community needed a reliable and affordable transport service.",
+          "exTr": "İdeolojik anlaşmazlıkları topluluğun güvenilir ve uygun fiyatlı ulaşıma ihtiyacı olup olmadığıyla değil kararları kimin vermesi gerektiğiyle ilgiliydi."
+        }
+      ]
+    },
+    {
+      "word": "idle",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. boş, atıl, çalışmayan (makine/kişi)",
+        "ex": "Factory managers were troubled to see expensive machinery sitting idle for weeks due to a parts shortage.",
+        "exTr": "Fabrika yöneticileri, parça sıkıntısı yüzünden pahalı makinelerin haftalarca atıl durduğunu görmekten rahatsız oldu."
+      },
+      "alternatives": [
+        {
+          "ex": "Expensive tools remained idle because no one had arranged training, demonstrating why purchasing equipment alone did not guarantee increased capacity.",
+          "exTr": "Kimse eğitim düzenlemediği için pahalı aletler atıl kaldı; bu durum yalnızca ekipman satın almanın neden kapasite artışı sağlamadığını gösterdi."
+        }
+      ]
+    },
+    {
+      "word": "if",
+      "sense_index": 0,
+      "expected": {
+        "tr": "e. eğer, -se",
+        "ex": "Vaccination rates must stay high if outbreaks of measles are to be prevented entirely.",
+        "exTr": "Kızamık salgınlarının tamamen önlenmesi isteniyorsa aşılama oranları yüksek kalmalıdır."
+      },
+      "alternatives": [
+        {
+          "ex": "If the archive contains an earlier version, comparing the two texts may reveal which changes were introduced before publication.",
+          "exTr": "Arşivde daha eski bir sürüm varsa iki metni karşılaştırmak yayımdan önce hangi değişikliklerin yapıldığını ortaya çıkarabilir."
+        }
+      ]
+    },
+    {
+      "word": "ignorant",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. cahil, bilgisiz",
+        "ex": "The lecturer criticized public policies that remain ignorant of basic scientific evidence.",
+        "exTr": "Öğretim görevlisi, temel bilimsel kanıtlardan habersiz kalan kamu politikalarını eleştirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "New residents were not necessarily ignorant of local history; some had studied it more carefully than neighbours whose families had lived there for generations.",
+          "exTr": "Yeni sakinler yerel tarih konusunda mutlaka bilgisiz değildi; bazıları konuyu aileleri kuşaklardır orada yaşayan komşularından daha dikkatli incelemişti."
+        }
+      ]
+    },
+    {
+      "word": "ill",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. hasta",
+        "ex": "She had been feeling ill for several days before finally deciding to see a doctor.",
+        "exTr": "Birkaç gündür kendini hasta hissediyordu, sonunda bir doktora görünmeye karar verdi."
+      },
+      "alternatives": [
+        {
+          "ex": "When the lecturer became ill, colleagues rearranged the programme so that students could complete practical work before the postponed discussion.",
+          "exTr": "Öğretim görevlisi hastalanınca meslektaşları, ertelenen tartışmadan önce öğrencilerin uygulama çalışmalarını tamamlayabilmesi için programı yeniden düzenledi."
+        }
+      ]
+    },
+    {
+      "word": "ill-formed",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kurallara aykırı, bozuk yapılı",
+        "ex": "Linguists use computer programs to automatically flag ill-formed sentences in large text databases.",
+        "exTr": "Dilbilimciler, büyük metin veri tabanlarındaki kurallara aykırı cümleleri otomatik olarak tespit etmek için bilgisayar programları kullanır."
+      },
+      "alternatives": [
+        {
+          "ex": "An ill-formed query prevented the database from returning results, even though the requested records had been entered correctly and remained available.",
+          "exTr": "İstenen kayıtlar doğru girilmiş ve erişilebilir olsa da bozuk yapılı bir sorgu veri tabanının sonuç döndürmesini engelledi."
+        }
+      ]
+    },
+    {
+      "word": "illegal",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yasa dışı, kanunsuz",
+        "ex": "Authorities seized several tons of illegal timber being smuggled out of the protected forest.",
+        "exTr": "Yetkililer, korunan ormandan kaçak yollarla çıkarılan birkaç ton yasa dışı keresteye el koydu."
+      },
+      "alternatives": [
+        {
+          "ex": "The fictional investigation concerns illegal sales, but the plot turns on the difficulty of distinguishing deliberate deception from poorly maintained records.",
+          "exTr": "Kurgusal soruşturma yasa dışı satışları konu alıyor; ancak olay örgüsü bilinçli aldatmayı kötü tutulmuş kayıtlardan ayırma güçlüğü etrafında şekilleniyor."
+        }
+      ]
+    },
+    {
+      "word": "illicitly",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. yasa dışı biçimde, kaçak yoldan, gizlice",
+        "ex": "Thousands of artefacts were illicitly removed from archaeological sites and sold to private collectors before the new law took effect.",
+        "exTr": "Yeni yasa yürürlüğe girmeden önce binlerce eser arkeolojik alanlardan yasa dışı biçimde çıkarılıp özel koleksiyonculara satıldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The catalogue noted that some objects had been acquired illicitly, making questions of ownership central to the proposed exhibition.",
+          "exTr": "Katalog bazı nesnelerin yasa dışı edinildiğini belirterek mülkiyet sorularını önerilen serginin merkezine yerleştirdi."
+        }
+      ]
+    },
+    {
+      "word": "illuminate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. açıklığa kavuşturmak, aydınlatmak (mecazi; konuyu netleştirmek)",
+        "ex": "The professor's new study helps illuminate the causes behind the sudden economic collapse.",
+        "exTr": "Profesörün yeni çalışması, ani ekonomik çöküşün ardındaki nedenleri aydınlatmaya yardımcı oluyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Contrasting accounts of the same meeting illuminate assumptions that remain invisible when either participant's version is read on its own.",
+          "exTr": "Aynı toplantının karşıt anlatımları, katılımcılardan birinin sürümü tek başına okunduğunda görünmez kalan varsayımları aydınlatıyor."
+        }
+      ]
+    },
+    {
+      "word": "illustrated",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. resimli, açıklamalı",
+        "ex": "The museum published an illustrated catalogue describing each artifact discovered during the excavation.",
+        "exTr": "Müze, kazı sırasında bulunan her eseri anlatan resimli bir katalog yayımladı."
+      },
+      "alternatives": [
+        {
+          "ex": "An illustrated guide accompanied the workshop, showing intermediate stages that would have been difficult to reconstruct from the written instructions alone.",
+          "exTr": "Atölyeye eşlik eden resimli rehber, yalnızca yazılı talimatlardan yeniden oluşturulması güç olan ara aşamaları gösteriyordu."
+        }
+      ]
+    },
+    {
+      "word": "image",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. görüntü, imge",
+        "ex": "Researchers used high-resolution satellite images to track glacier retreat in the Arctic region.",
+        "exTr": "Araştırmacılar, Arktik bölgesindeki buzul erimesini izlemek için yüksek çözünürlüklü uydu görüntülerini kullandı."
+      },
+      "alternatives": [
+        {
+          "ex": "A single image cannot reveal how a place changes through the day, however carefully the photographer chooses the moment of exposure.",
+          "exTr": "Fotoğrafçı çekim anını ne kadar dikkatli seçerse seçsin tek bir görüntü bir yerin gün boyunca nasıl değiştiğini gösteremez."
+        }
+      ]
+    },
+    {
+      "word": "imagination",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. hayal gücü; hayal",
+        "ex": "Reading fiction from an early age stimulates children's imagination and enriches their vocabulary.",
+        "exTr": "Erken yaşta kurgu okumak, çocukların hayal gücünü harekete geçirir ve kelime dağarcıklarını zenginleştirir."
+      },
+      "alternatives": [
+        {
+          "ex": "The missing pages leave room for imagination, but the editor clearly separates possible reconstructions from passages supported by surviving evidence.",
+          "exTr": "Eksik sayfalar hayal gücüne alan bırakıyor; ancak editör olası yeniden oluşturmaları günümüze kalan kanıtlarla desteklenen bölümlerden açıkça ayırıyor."
+        }
+      ]
+    },
+    {
+      "word": "imitate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. taklit etmek, öykünmek",
+        "ex": "Young songbirds learn to imitate the complex melodies produced by adult members of their species.",
+        "exTr": "Genç ötücü kuşlar, türlerinin yetişkin üyelerinin ürettiği karmaşık melodileri taklit etmeyi öğrenir."
+      },
+      "alternatives": [
+        {
+          "ex": "Apprentices first imitate an experienced craftsperson's movements, then discuss how the method must change when the material behaves differently.",
+          "exTr": "Çıraklar önce deneyimli bir zanaatkârın hareketlerini taklit ediyor, ardından malzeme farklı davrandığında yöntemin nasıl değişmesi gerektiğini tartışıyor."
+        }
+      ]
+    }
+  ],
+  "collocations": [
+    {
+      "word": "homo",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "the offensive term 'homo'",
+          "tr": "hakaret içeren 'homo' ifadesi"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "honestly",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "answer honestly",
+          "tr": "dürüstçe yanıtlamak"
+        },
+        {
+          "en": "honestly admit a mistake",
+          "tr": "bir hatayı dürüstçe kabul etmek"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "horrible",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a horrible experience",
+          "tr": "berbat bir deneyim"
+        },
+        {
+          "en": "a horrible noise",
+          "tr": "korkunç bir gürültü"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "horrifying",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a horrifying experience",
+          "tr": "dehşet verici bir deneyim"
+        },
+        {
+          "en": "a horrifying discovery",
+          "tr": "dehşet verici bir keşif"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "horse-drawn",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a horse-drawn carriage",
+          "tr": "atlı fayton"
+        },
+        {
+          "en": "a horse-drawn cart",
+          "tr": "at arabası"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "house-to-house",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a house-to-house survey",
+          "tr": "kapı kapı yapılan araştırma"
+        },
+        {
+          "en": "a house-to-house search",
+          "tr": "ev ev arama"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "humanist",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a Renaissance humanist",
+          "tr": "Rönesans hümanisti"
+        },
+        {
+          "en": "a secular humanist",
+          "tr": "seküler hümanist"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "humiliate",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "publicly humiliate someone",
+          "tr": "birini başkalarının önünde aşağılamak"
+        },
+        {
+          "en": "humiliate an opponent",
+          "tr": "bir rakibi küçük düşürmek"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "ice-free",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "an ice-free port",
+          "tr": "buz tutmayan liman"
+        },
+        {
+          "en": "ice-free waters",
+          "tr": "buzsuz sular"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "icy",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "an icy surface",
+          "tr": "buzlu yüzey"
+        },
+        {
+          "en": "icy conditions",
+          "tr": "buzlanmalı koşullar"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "ill-formed",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "an ill-formed sentence",
+          "tr": "bozuk yapılı cümle"
+        },
+        {
+          "en": "an ill-formed expression",
+          "tr": "kurallara aykırı oluşturulmuş ifade"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

@@ -1,0 +1,1112 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 2,
+    "input": "input-021.json"
+  },
+  "enrichments": [
+    {
+      "word": "girl",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kız, kız çocuğu",
+        "ex": "The scholarship program aims to keep more girls enrolled in secondary school across the region.",
+        "exTr": "Burs programı, bölge genelinde daha fazla kız çocuğunun ortaöğretime devam etmesini sağlamayı amaçlıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The novel follows a girl whose questions gradually reveal contradictions in the explanations offered by the adults around her.",
+          "exTr": "Roman, soruları çevresindeki yetişkinlerin açıklamalarındaki çelişkileri yavaş yavaş ortaya çıkaran bir kız çocuğunu izliyor."
+        }
+      ]
+    },
+    {
+      "word": "give-away",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. (give away) ele vermek, açığa vurmak",
+        "ex": "A small tremor in her voice gave away how nervous the scientist really was before the presentation.",
+        "exTr": "Sesindeki hafif titreme, bilim insanının sunumdan önce aslında ne kadar gergin olduğunu ele veriyordu."
+      },
+      "alternatives": [
+        {
+          "ex": "The repeated use of an unusual expression gave away the anonymous writer's identity before anyone had examined the handwriting closely.",
+          "exTr": "Alışılmadık bir ifadenin tekrarlanması, kimse el yazısını yakından incelemeden isimsiz yazarın kimliğini ele verdi."
+        }
+      ],
+      "note": "Fiil anlamında standart give away/gave away açık yazımı; dondurulmuş başlık değiştirilmedi."
+    },
+    {
+      "word": "giving",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. verme, bağışta bulunma",
+        "ex": "Charitable giving tends to increase during economic booms and decline sharply during recessions.",
+        "exTr": "Hayır amaçlı bağışlar, ekonomik canlanma dönemlerinde artma, durgunluklarda ise keskin biçimde azalma eğilimindedir."
+      },
+      "alternatives": [
+        {
+          "ex": "The survey distinguished regular giving from occasional donations, recognising that the same annual total could reflect very different patterns of support.",
+          "exTr": "Anket, aynı yıllık toplamın çok farklı destek örüntülerini yansıtabileceğini kabul ederek düzenli bağış yapmayı ara sıra verilen bağışlardan ayırdı."
+        }
+      ]
+    },
+    {
+      "word": "gladly",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. memnuniyetle",
+        "ex": "Local businesses gladly supported a festival that attracted visitors outside the usual tourist season.",
+        "exTr": "Yerel işletmeler, olağan turizm sezonunun dışında ziyaretçi çeken bir festivali memnuniyetle destekledi."
+      },
+      "alternatives": [
+        {
+          "ex": "She gladly shared her notes with the new researcher, provided that quotations were checked against the original recordings before publication.",
+          "exTr": "Alıntıların yayımlanmadan önce özgün kayıtlarla karşılaştırılması koşuluyla notlarını yeni araştırmacıyla memnuniyetle paylaştı."
+        }
+      ]
+    },
+    {
+      "word": "glass",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. cam, bardak",
+        "ex": "She filled the glass with cold water before serving it to the guests.",
+        "exTr": "Misafirlere sunmadan önce bardağı soğuk suyla doldurdu."
+      },
+      "alternatives": [
+        {
+          "ex": "The glass reflected the gallery lights, so the photographer adjusted the viewing angle without moving the fragile object behind it.",
+          "exTr": "Cam galeri ışıklarını yansıttığı için fotoğrafçı arkasındaki kırılgan nesneyi hareket ettirmeden görüş açısını ayarladı."
+        }
+      ]
+    },
+    {
+      "word": "glide",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. süzülüş, süzülme, kayış",
+        "ex": "The albatross covers enormous distances with an effortless glide, rarely flapping its wings as it exploits the winds above the open ocean.",
+        "exTr": "Albatros, açık okyanus üzerindeki rüzgârlardan yararlanırken kanatlarını nadiren çırparak zahmetsiz bir süzülüşle muazzam mesafeler kateder."
+      },
+      "alternatives": [
+        {
+          "ex": "The model aircraft's long glide surprised the students, who had expected the heavier design to descend more quickly after release.",
+          "exTr": "Daha ağır tasarımın bırakıldıktan sonra daha hızlı alçalmasını bekleyen öğrencileri model uçağın uzun süzülüşü şaşırttı."
+        }
+      ]
+    },
+    {
+      "word": "globalization",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. küreselleşme",
+        "ex": "Economists continue to debate whether globalization has widened or narrowed the gap between rich and poor nations.",
+        "exTr": "Ekonomistler, küreselleşmenin zengin ve yoksul uluslar arasındaki uçurumu genişlettiğini mi yoksa daralttığını mı tartışmaya devam ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The seminar examined globalization through ordinary household goods, tracing relationships between local purchases and production networks extending beyond national borders.",
+          "exTr": "Seminer, yerel alışverişlerle ulusal sınırların ötesine uzanan üretim ağları arasındaki ilişkileri izleyerek küreselleşmeyi sıradan ev eşyaları üzerinden inceledi."
+        }
+      ]
+    },
+    {
+      "word": "gloomy",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kasvetli, karamsar",
+        "ex": "Economists painted a gloomy picture of next year's growth prospects amid rising global uncertainty.",
+        "exTr": "Ekonomistler, artan küresel belirsizlik ortasında gelecek yılın büyüme beklentileri için karamsar bir tablo çizdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The room appeared gloomy despite its large windows because surrounding buildings blocked much of the light during the hours of greatest use.",
+          "exTr": "En yoğun kullanım saatlerinde çevredeki binalar ışığın çoğunu kestiği için oda büyük pencerelerine rağmen kasvetli görünüyordu."
+        }
+      ]
+    },
+    {
+      "word": "glow",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. parıltı, ışıltı",
+        "ex": "A faint glow appeared on the horizon shortly before the sun rose over the desert.",
+        "exTr": "Güneş çölün üzerinde doğmadan kısa süre önce ufukta soluk bir parıltı belirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The warm glow from the workshop windows formed a contrast with the empty street, suggesting activity that the photograph did not directly reveal.",
+          "exTr": "Atölye pencerelerinden gelen sıcak ışıltı boş sokakla karşıtlık oluşturarak fotoğrafın doğrudan göstermediği bir faaliyeti ima ediyordu."
+        }
+      ]
+    },
+    {
+      "word": "go-ahead",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. onay, izin, yeşil ışık",
+        "ex": "Regulators finally gave the go-ahead for construction after two years of environmental review.",
+        "exTr": "Düzenleyiciler, iki yıllık çevresel incelemenin ardından inşaat için sonunda onay verdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The team received the go-ahead to begin interviews after explaining how participants could review quotations intended for the final exhibition.",
+          "exTr": "Ekip, katılımcıların son sergide kullanılacak alıntıları nasıl inceleyebileceğini açıkladıktan sonra görüşmelere başlama izni aldı."
+        }
+      ]
+    },
+    {
+      "word": "go-slow",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. iş yavaşlatma eylemi",
+        "ex": "Factory workers staged a go-slow to pressure management without risking a full strike.",
+        "exTr": "Fabrika işçileri, tam bir greve girmeden yönetime baskı yapmak için bir iş yavaşlatma eylemi başlattı."
+      },
+      "alternatives": [
+        {
+          "ex": "The historical account describes a go-slow that disrupted production while keeping workers inside the factory and in contact with one another.",
+          "exTr": "Tarihsel anlatım, işçileri fabrikanın içinde ve birbirleriyle iletişim hâlinde tutarken üretimi aksatan bir iş yavaşlatma eylemini betimliyor."
+        }
+      ]
+    },
+    {
+      "word": "goal",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. amaç, hedef",
+        "ex": "Reducing plastic waste by fifty percent remains the city's primary environmental goal for this decade.",
+        "exTr": "Plastik atığı yüzde elli azaltmak, kentin bu on yıl için başlıca çevresel hedefi olmayı sürdürüyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The immediate goal was to make the collection searchable, leaving more detailed interpretation for a later stage involving community contributions.",
+          "exTr": "Acil hedef koleksiyonu aranabilir kılmaktı; daha ayrıntılı yorumlama ise topluluk katkılarının yer alacağı sonraki aşamaya bırakılmıştı."
+        }
+      ]
+    },
+    {
+      "word": "goddess",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. tanrıça",
+        "ex": "Ancient temples throughout the region were dedicated to a goddess believed to protect farmers and their harvests.",
+        "exTr": "Bölgedeki antik tapınaklar, çiftçileri ve hasatlarını koruduğuna inanılan bir tanrıçaya adanmıştı."
+      },
+      "alternatives": [
+        {
+          "ex": "The sculpture depicts a goddess holding an unfamiliar object, whose identification remains disputed because comparable examples survive only in damaged form.",
+          "exTr": "Heykel, benzer örnekleri yalnızca hasarlı hâlde kaldığı için ne olduğu tartışmalı olan alışılmadık bir nesneyi tutan tanrıçayı betimliyor."
+        }
+      ]
+    },
+    {
+      "word": "golden",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. altın, altın renkli; çok değerli",
+        "ex": "Analysts described the early 2000s as a golden era for the technology industry.",
+        "exTr": "Analistler, 2000'lerin başını teknoloji sektörü için altın bir dönem olarak tanımladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The golden surface drew attention to the central figure, while the surrounding decoration remained deliberately subdued to avoid competing with it.",
+          "exTr": "Altın renkli yüzey dikkati merkezdeki figüre çekiyor; çevredeki süsleme ise onunla yarışmaması için bilinçli olarak ölçülü tutuluyordu."
+        }
+      ]
+    },
+    {
+      "word": "good",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. iyi",
+        "ex": "Regular sleep has proven to be good for both mental clarity and long-term cardiovascular health.",
+        "exTr": "Düzenli uykunun hem zihinsel netlik hem de uzun vadeli kalp sağlığı için iyi olduğu kanıtlanmıştır."
+      },
+      "alternatives": [
+        {
+          "ex": "A good explanation should clarify the evidence without hiding its limits, especially when readers may use the conclusion in a different context.",
+          "exTr": "Özellikle okurlar sonucu farklı bağlamda kullanabilecekse iyi bir açıklama, sınırlarını gizlemeden kanıtı anlaşılır kılmalıdır."
+        }
+      ]
+    },
+    {
+      "word": "good-for-nothing",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. işe yaramaz",
+        "ex": "The old farmer complained about his good-for-nothing tractor, which broke down every second week.",
+        "exTr": "Yaşlı çiftçi, iki haftada bir bozulan işe yaramaz traktöründen şikayet etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The novel initially presents the apprentice as good-for-nothing, then reveals abilities that his impatient employer has never taken the time to recognise.",
+          "exTr": "Roman çırağı önce işe yaramaz gösteriyor, ardından sabırsız işvereninin fark etmek için hiç zaman ayırmadığı yeteneklerini ortaya koyuyor."
+        }
+      ],
+      "note": "Aşağılayıcı gündelik niteleme, kurgusal karakterin ilk sunumu bağlamında."
+    },
+    {
+      "word": "goodbye",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. elveda, hoşça kal (sözü)",
+        "ex": "She struggled to hold back tears while saying goodbye to her family at the airport.",
+        "exTr": "Havalimanında ailesine elveda derken gözyaşlarını tutmakta zorlandı."
+      },
+      "alternatives": [
+        {
+          "ex": "Their hurried goodbye acquires greater significance later in the novel, when readers learn why neither character expected another meeting.",
+          "exTr": "Okurlar iki karakterin de neden yeniden buluşmayı beklemediğini öğrendiğinde acele vedaları romanın ilerleyen bölümünde daha büyük önem kazanıyor."
+        }
+      ]
+    },
+    {
+      "word": "gorgeous",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. muhteşem, çok güzel",
+        "ex": "Tourists gathered on the cliff to photograph the gorgeous sunset over the calm ocean waters.",
+        "exTr": "Turistler, sakin okyanus sularının üzerindeki muhteşem gün batımını fotoğraflamak için uçurumda toplandı."
+      },
+      "alternatives": [
+        {
+          "ex": "The catalogue called the restored room gorgeous, but its photographs omitted the practical alterations that had made the space accessible.",
+          "exTr": "Katalog restore edilen odayı muhteşem diye nitelendirdi; ancak fotoğrafları alanı erişilebilir kılan pratik değişiklikleri göstermedi."
+        }
+      ],
+      "note": "Gündelik övgü ifadesi, katalog dili aktarımı bağlamında."
+    },
+    {
+      "word": "gothic",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. gotik",
+        "ex": "Tourists often admire the tall spires and pointed arches of gothic cathedrals across Europe.",
+        "exTr": "Turistler genellikle Avrupa'daki gotik katedrallerin yüksek kulelerine ve sivri kemerlerine hayran kalır."
+      },
+      "alternatives": [
+        {
+          "ex": "The architect retained the Gothic windows while redesigning the interior, creating a contrast between the building's historical appearance and its new public function.",
+          "exTr": "Mimar iç mekânı yeniden tasarlarken Gotik pencereleri koruyarak binanın tarihsel görünümüyle yeni kamusal işlevi arasında karşıtlık oluşturdu."
+        }
+      ]
+    },
+    {
+      "word": "governed",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. yönetilmek",
+        "ex": "For centuries, the region was governed by a series of powerful local rulers and councils.",
+        "exTr": "Yüzyıllar boyunca, bölge bir dizi güçlü yerel yönetici ve konsey tarafından yönetildi."
+      },
+      "alternatives": [
+        {
+          "ex": "The association was governed by a council elected from its members, although informal influence often mattered as much as the written rules.",
+          "exTr": "Gayriresmî nüfuz çoğu zaman yazılı kurallar kadar önemli olsa da dernek üyeleri arasından seçilen bir konsey tarafından yönetiliyordu."
+        }
+      ]
+    },
+    {
+      "word": "governor",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. vali",
+        "ex": "The governor announced emergency funding to repair the roads damaged by the flood.",
+        "exTr": "Vali, selin zarar verdiği yolları onarmak için acil durum fonu açıkladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The governor's correspondence records repeated requests from local councils, allowing the historian to compare central priorities with concerns raised outside the capital.",
+          "exTr": "Valinin yazışmaları yerel meclislerin tekrarlanan taleplerini kaydederek tarihçinin merkezî öncelikleri başkent dışında dile getirilen kaygılarla karşılaştırmasını sağlıyor."
+        }
+      ]
+    },
+    {
+      "word": "graceful",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. zarif, ince, akıcı",
+        "ex": "The dancer's graceful movements captivated the entire audience throughout the ninety-minute performance.",
+        "exTr": "Dansçının zarif hareketleri, doksan dakikalık performans boyunca tüm izleyicileri büyüledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The graceful curve of the staircase conceals an awkward turn, reminding the designer that visual harmony does not always guarantee convenient movement.",
+          "exTr": "Merdivenin zarif eğrisi kullanışsız bir dönüşü gizleyerek tasarımcıya görsel uyumun her zaman rahat hareket sağlamadığını hatırlatıyor."
+        }
+      ]
+    },
+    {
+      "word": "gradual",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kademeli, aşama aşama olan",
+        "ex": "Climate scientists documented a gradual rise in average ocean temperatures over the last fifty years.",
+        "exTr": "İklim bilimciler, son elli yılda ortalama okyanus sıcaklıklarında kademeli bir artış olduğunu belgeledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The gradual transfer of responsibilities allowed experienced staff to explain unwritten routines before newer colleagues assumed full control of the service.",
+          "exTr": "Sorumlulukların kademeli devri, yeni meslektaşlar hizmetin tam denetimini üstlenmeden önce deneyimli personelin yazılı olmayan rutinleri açıklamasını sağladı."
+        }
+      ]
+    },
+    {
+      "word": "graduation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. mezuniyet",
+        "ex": "Her parents traveled from another country to attend her graduation ceremony at the university.",
+        "exTr": "Ailesi, üniversitedeki mezuniyet törenine katılmak için başka bir ülkeden geldi."
+      },
+      "alternatives": [
+        {
+          "ex": "After graduation, she continued to meet former classmates through a professional network that supported projects beyond the university's formal programmes.",
+          "exTr": "Mezuniyetten sonra üniversitenin resmî programları dışındaki projeleri destekleyen mesleki bir ağ üzerinden eski sınıf arkadaşlarıyla görüşmeyi sürdürdü."
+        }
+      ]
+    },
+    {
+      "word": "gram",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. gram",
+        "ex": "The recipe calls for exactly one gram of saffron to achieve the right flavor.",
+        "exTr": "Tarif, doğru lezzeti elde etmek için tam olarak bir gram safran gerektiriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The balance recorded changes smaller than a gram, enabling the students to compare samples that appeared identical when held in the hand.",
+          "exTr": "Terazi bir gramdan küçük değişiklikleri kaydederek öğrencilerin elde tutulduğunda aynı görünen örnekleri karşılaştırmasını sağladı."
+        }
+      ]
+    },
+    {
+      "word": "grand",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. görkemli, muhteşem, büyük",
+        "ex": "The building's grand entrance impressed every visitor who attended the international conference last year.",
+        "exTr": "Binanın görkemli girişi, geçen yıl uluslararası konferansa katılan her ziyaretçiyi etkiledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The grand design attracted donors, but the committee asked how its impressive public spaces would serve the ordinary work of the institution.",
+          "exTr": "Görkemli tasarım bağışçıları çekti; ancak komite etkileyici kamusal alanlarının kurumun gündelik çalışmalarına nasıl hizmet edeceğini sordu."
+        }
+      ]
+    },
+    {
+      "word": "grandmother",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. büyükanne",
+        "ex": "Every summer, the children traveled to visit their grandmother in the countryside.",
+        "exTr": "Her yaz çocuklar, kırsalda yaşayan büyükannelerini ziyaret etmek için yolculuk yapardı."
+      },
+      "alternatives": [
+        {
+          "ex": "Her grandmother's recollections linked the family photographs with places that had changed too much to be recognised from the images alone.",
+          "exTr": "Büyükannesinin anıları, aile fotoğraflarını yalnızca görüntülerden tanınamayacak kadar değişmiş yerlerle ilişkilendirdi."
+        }
+      ]
+    },
+    {
+      "word": "grape",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. üzüm",
+        "ex": "This region is famous for producing sweet grapes used in local wine production.",
+        "exTr": "Bu bölge, yerel şarap üretiminde kullanılan tatlı üzümler yetiştirmesiyle ünlüdür."
+      },
+      "alternatives": [
+        {
+          "ex": "The researcher compared grape samples from neighbouring plots, recording differences in harvesting dates before examining variation in size and colour.",
+          "exTr": "Araştırmacı, büyüklük ve renk farklarını incelemeden önce hasat tarihi farklılıklarını kaydederek komşu parsellerden gelen üzüm örneklerini karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "graphic",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. çarpıcı, canlı (anlatım)",
+        "ex": "The report gave a graphic account of the conditions inside the overcrowded refugee camps.",
+        "exTr": "Rapor, aşırı kalabalık mülteci kamplarındaki koşulların çarpıcı bir anlatımını sundu."
+      },
+      "alternatives": [
+        {
+          "ex": "The memoir offers a graphic description of the crowded journey, using vivid sensory detail rather than a detached summary of the route.",
+          "exTr": "Anı kitabı, güzergâhın mesafeli bir özeti yerine canlı duyusal ayrıntılar kullanarak kalabalık yolculuğu çarpıcı biçimde betimliyor."
+        }
+      ]
+    },
+    {
+      "word": "grassland",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. çayır, otlak, bozkır",
+        "ex": "Vast herds of migratory animals cross the open grassland each year in search of fresh water.",
+        "exTr": "Göçmen hayvanların büyük sürüleri, temiz su arayışıyla her yıl açık otlağı geçer."
+      },
+      "alternatives": [
+        {
+          "ex": "The survey mapped paths across the grassland before assessing which areas had received the greatest disturbance from repeated vehicle access.",
+          "exTr": "Araştırma, tekrarlanan araç girişinin en çok hangi alanları bozduğunu değerlendirmeden önce çayır boyunca uzanan yolları haritaladı."
+        }
+      ]
+    },
+    {
+      "word": "grave",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. ciddi, ağır, vahim",
+        "ex": "Doctors warned that delaying the surgery any further could lead to grave complications.",
+        "exTr": "Doktorlar, ameliyatı daha fazla ertelemenin ciddi komplikasyonlara yol açabileceği konusunda uyardı."
+      },
+      "alternatives": [
+        {
+          "ex": "The omission raised grave doubts about the report's reliability, since the missing evidence directly contradicted the explanation presented as its main conclusion.",
+          "exTr": "Eksik kanıt temel sonuç olarak sunulan açıklamayla doğrudan çeliştiği için bu atlama raporun güvenilirliği hakkında ciddi kuşkular doğurdu."
+        }
+      ]
+    },
+    {
+      "word": "gravitational",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yer çekimsel",
+        "ex": "Physicists measured how the moon's gravitational pull influences ocean tides along the coastline.",
+        "exTr": "Fizikçiler, ayın yer çekimsel kuvvetinin kıyı boyunca gelgitleri nasıl etkilediğini ölçtü."
+      },
+      "alternatives": [
+        {
+          "ex": "The simulation allowed students to vary gravitational acceleration while keeping other conditions constant, making the assumptions behind the resulting motion easier to examine.",
+          "exTr": "Benzetim diğer koşulları sabit tutarken öğrencilerin yer çekimi ivmesini değiştirmesine izin vererek ortaya çıkan hareketin ardındaki varsayımları incelemeyi kolaylaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "grazing",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. otlatma, otlama, mera kullanımı",
+        "ex": "Uncontrolled grazing on the steppe has stripped the soil of vegetation, leaving it exposed to wind erosion during the dry season.",
+        "exTr": "Bozkırda denetimsiz otlatma toprağı bitki örtüsünden yoksun bırakmış ve kurak mevsimde rüzgâr erozyonuna açık hâle getirmiştir."
+      },
+      "alternatives": [
+        {
+          "ex": "The agreement set aside land for grazing while preserving a public footpath, requiring the two uses to be considered together during seasonal planning.",
+          "exTr": "Anlaşma kamusal yaya yolunu korurken otlatmaya arazi ayırdı; mevsimlik planlamada iki kullanımın birlikte düşünülmesini gerektirdi."
+        }
+      ]
+    },
+    {
+      "word": "greatest",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. en büyük; en önemli",
+        "ex": "Antibiotic resistance is considered one of the greatest threats to global public health today.",
+        "exTr": "Antibiyotik direnci, bugün küresel halk sağlığına yönelik en büyük tehditlerden biri olarak görülüyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The greatest difficulty was not collecting information but deciding how conflicting accounts should be represented without erasing meaningful differences between witnesses.",
+          "exTr": "En büyük güçlük bilgi toplamak değil, tanıklar arasındaki anlamlı farkları silmeden çelişen anlatımların nasıl sunulacağına karar vermekti."
+        }
+      ]
+    },
+    {
+      "word": "green",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. çevreci, çevre dostu",
+        "ex": "The city council approved new green policies designed to reduce carbon emissions from public buildings.",
+        "exTr": "Belediye meclisi, kamu binalarından kaynaklanan karbon emisyonlarını azaltmak için tasarlanan yeni çevreci politikaları onayladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The company described its packaging as green, prompting reviewers to ask which measurable improvements supported that broad environmental claim.",
+          "exTr": "Şirket ambalajını çevre dostu diye tanımlayınca değerlendiriciler bu geniş çevresel iddiayı hangi ölçülebilir iyileştirmelerin desteklediğini sordu."
+        }
+      ]
+    },
+    {
+      "word": "greenish",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yeşilimsi, yeşile çalan",
+        "ex": "The water in the shallow pond took on a greenish tint as algae multiplied rapidly during the unusually warm summer.",
+        "exTr": "Sığ göletteki su, alışılmadık derecede sıcak geçen yazda algler hızla çoğaldıkça yeşilimsi bir renk aldı."
+      },
+      "alternatives": [
+        {
+          "ex": "A greenish reflection appeared on the polished surface, disappearing when the photographer moved the coloured screen that had been standing nearby.",
+          "exTr": "Parlak yüzeyde yeşilimsi bir yansıma belirdi; fotoğrafçı yakındaki renkli paravanı taşıyınca yansıma kayboldu."
+        }
+      ]
+    },
+    {
+      "word": "grid",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. şebeke (elektrik şebekesi), ızgara/kafes düzeni",
+        "ex": "Engineers connected the solar farm directly to the national power grid last spring.",
+        "exTr": "Mühendisler, geçen ilkbaharda güneş enerjisi çiftliğini doğrudan ulusal elektrik şebekesine bağladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The drawing used a grid to locate each fragment precisely, allowing later researchers to reconstruct its position without relying on memory.",
+          "exTr": "Çizim her parçayı tam konumlandırmak için kareli bir düzen kullanarak sonraki araştırmacıların hafızaya dayanmadan konumunu yeniden belirlemesini sağladı."
+        }
+      ]
+    },
+    {
+      "word": "grin",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. sırıtmak",
+        "ex": "The little boy could not help but grin widely when he saw the puppy waiting for him at the door.",
+        "exTr": "Küçük çocuk, kapıda kendisini bekleyen yavru köpeği görünce geniş bir şekilde sırıtmaktan kendini alamadı."
+      },
+      "alternatives": [
+        {
+          "ex": "The actor began to grin at the unexpected reply, briefly revealing an amusement that the character was otherwise careful to conceal.",
+          "exTr": "Oyuncu beklenmedik yanıta sırıtarak karakterin aslında eğlendiğini kısaca belli etti; oysa karakter normalde bunu gizlemeye özen gösteriyordu."
+        }
+      ]
+    },
+    {
+      "word": "grocery",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. bakkaliye, market",
+        "ex": "Rising fuel prices have driven up the cost of grocery deliveries across the city.",
+        "exTr": "Artan yakıt fiyatları, şehir genelinde market teslimatlarının maliyetini yükseltti."
+      },
+      "alternatives": [
+        {
+          "ex": "The grocery store served as an informal meeting place, where customers exchanged local news while waiting for their orders to be prepared.",
+          "exTr": "Bakkal, müşterilerin siparişleri hazırlanırken yerel haberleri paylaştığı gayriresmî bir buluşma yeri işlevi görüyordu."
+        }
+      ]
+    },
+    {
+      "word": "ground-floor",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. zemin kat(a ait), zemin kattaki",
+        "ex": "The elderly couple requested a ground-floor apartment because climbing stairs had become increasingly difficult.",
+        "exTr": "Yaşlı çift, merdiven çıkmak giderek zorlaştığı için zemin kattaki bir daire talep etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The ground-floor workshop opened directly onto the courtyard, allowing bulky materials to be delivered without passing through the shared entrance hall.",
+          "exTr": "Zemin kattaki atölye doğrudan avluya açılarak hacimli malzemelerin ortak giriş holünden geçmeden teslim edilmesini sağlıyordu."
+        }
+      ]
+    },
+    {
+      "word": "grow",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. büyümek; artmak",
+        "ex": "Urban populations continue to grow rapidly, placing enormous pressure on housing and transport systems.",
+        "exTr": "Kent nüfusları hızla büyümeye devam ediyor ve bu durum konut ile ulaşım sistemleri üzerinde muazzam baskı oluşturuyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Confidence began to grow as the apprentices completed increasingly complex repairs, although they still consulted experienced colleagues when unfamiliar faults appeared.",
+          "exTr": "Çıraklar giderek karmaşıklaşan onarımları tamamladıkça özgüven artmaya başladı; ancak tanımadıkları arızalar çıktığında hâlâ deneyimli meslektaşlarına danışıyorlardı."
+        }
+      ]
+    },
+    {
+      "word": "growth",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. büyüme, artış",
+        "ex": "Economists attribute the country's rapid economic growth to sustained investment in education and infrastructure.",
+        "exTr": "Ekonomistler, ülkenin hızlı ekonomik büyümesini eğitim ve altyapıya yapılan sürekli yatırıma bağlıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The growth of the collection created a storage problem that could not be solved simply by placing additional shelves in the existing rooms.",
+          "exTr": "Koleksiyonun büyümesi, yalnızca mevcut odalara ek raflar yerleştirilerek çözülemeyecek bir depolama sorunu yarattı."
+        }
+      ]
+    },
+    {
+      "word": "guardian",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. koruyucu, bekçi, muhafız",
+        "ex": "Museums increasingly present themselves as guardians of cultural heritage rather than mere collectors, emphasising their duty to protect objects for future generations.",
+        "exTr": "Müzeler kendilerini giderek yalnızca koleksiyoncular olarak değil, kültürel mirasın koruyucuları olarak sunmakta ve nesneleri gelecek kuşaklar için koruma görevlerini vurgulamaktadır."
+      },
+      "alternatives": [
+        {
+          "ex": "The librarian acted as a guardian of the collection while encouraging access, balancing protection of fragile material with its value for new research.",
+          "exTr": "Kütüphaneci, hassas materyalin korunmasını yeni araştırmalar için değeriyle dengeleyerek erişimi teşvik ederken koleksiyonun koruyucusu olarak hareket etti."
+        }
+      ]
+    },
+    {
+      "word": "guidance",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. rehberlik, yönlendirme",
+        "ex": "Students often seek guidance from their advisors before choosing a university major.",
+        "exTr": "Öğrenciler, bir üniversite bölümü seçmeden önce genellikle danışmanlarından rehberlik ister."
+      },
+      "alternatives": [
+        {
+          "ex": "The instructions offer guidance rather than a fixed script, encouraging interviewers to follow unexpected details that remain relevant to the research question.",
+          "exTr": "Talimatlar sabit bir metin yerine rehberlik sunarak görüşmecileri araştırma sorusuyla ilgili kalan beklenmedik ayrıntıların peşinden gitmeye teşvik ediyor."
+        }
+      ]
+    },
+    {
+      "word": "guidelines",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yönerge(ler), kılavuz ilkeler",
+        "ex": "The health ministry issued new guidelines requiring restaurants to disclose calorie counts on menus.",
+        "exTr": "Sağlık bakanlığı, restoranların menülerde kalori miktarlarını belirtmesini zorunlu kılan yeni yönergeler yayımladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The revised guidelines explain how to acknowledge uncertainty, helping authors avoid presenting tentative interpretations as established facts in the final report.",
+          "exTr": "Yenilenen kılavuz ilkeler belirsizliğin nasıl belirtileceğini açıklayarak yazarların son raporda geçici yorumları kanıtlanmış olgular gibi sunmasını önlemeye yardımcı oluyor."
+        }
+      ]
+    },
+    {
+      "word": "guise",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kılık, görünüş, maske; ... adı, bahanesi",
+        "ex": "Under the guise of protecting local industry, the government introduced tariffs that mainly benefited a handful of powerful companies.",
+        "exTr": "Yerel sanayiyi koruma adı altında hükûmet, esas olarak bir avuç güçlü şirketin işine yarayan gümrük vergileri getirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The narrator offers criticism in the guise of friendly advice, leaving the other characters unaware of the resentment behind her apparent concern.",
+          "exTr": "Anlatıcı eleştiriyi dostça öğüt kılığında sunarak diğer karakterleri görünürdeki ilgisinin ardındaki kırgınlıktan habersiz bırakıyor."
+        }
+      ]
+    },
+    {
+      "word": "gun",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. silah, tüfek",
+        "ex": "Investigators found no evidence that the suspect had ever owned a gun legally.",
+        "exTr": "Soruşturmacılar, şüphelinin daha önce yasal yollarla bir silaha sahip olduğuna dair hiçbir kanıt bulamadı."
+      },
+      "alternatives": [
+        {
+          "ex": "The theatrical production used a clearly documented replica gun, and the programme explained how props contributed to the historical setting.",
+          "exTr": "Tiyatro yapımı niteliği açıkça belgelenmiş bir replika silah kullandı; program kitapçığı aksesuarların tarihsel ortama nasıl katkı sağladığını açıkladı."
+        }
+      ]
+    },
+    {
+      "word": "guy",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. (günl.) adam, herif, tip",
+        "ex": "The tour guide was a friendly guy who knew every historical detail about the old fortress.",
+        "exTr": "Tur rehberi, eski kale hakkındaki her tarihi ayrıntıyı bilen sıcakkanlı bir adamdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The narrator dismisses the newcomer as an ordinary guy, only to discover later that he understands the town's history better than anyone expected.",
+          "exTr": "Anlatıcı yeni geleni sıradan bir adam diye önemsemiyor; ancak sonra onun kasabanın tarihini herkesin beklediğinden daha iyi bildiğini keşfediyor."
+        }
+      ],
+      "note": "Gündelik dil; anlatıcının karakter değerlendirmesi içinde kullanıldı."
+    },
+    {
+      "word": "habitable",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yaşanabilir, oturmaya elverişli",
+        "ex": "Astronomers continue searching for planets that might remain habitable within their star's temperate zone.",
+        "exTr": "Gökbilimciler, yıldızlarının ılıman bölgesinde yaşanabilir kalabilecek gezegenleri aramaya devam ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The upper rooms became habitable after the roof was repaired, although further work was needed before the building could accommodate larger groups.",
+          "exTr": "Çatı onarıldıktan sonra üst odalar oturulabilir hâle geldi; ancak binanın daha büyük grupları barındırabilmesi için ek çalışma gerekiyordu."
+        }
+      ]
+    },
+    {
+      "word": "habitual",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. alışılmış, alışkanlık haline gelmiş",
+        "ex": "The therapist helped him recognize habitual patterns of negative thinking that had persisted since childhood.",
+        "exTr": "Terapist, çocukluktan beri süregelen alışkanlık haline gelmiş olumsuz düşünme kalıplarını fark etmesine yardımcı oldu."
+      },
+      "alternatives": [
+        {
+          "ex": "A change in the timetable disrupted the caretaker's habitual route through the building, revealing tasks that no written schedule had previously recorded.",
+          "exTr": "Programdaki değişiklik görevlinin binadaki alışılmış güzergâhını bozarak daha önce hiçbir yazılı çizelgenin kaydetmediği işleri ortaya çıkardı."
+        }
+      ]
+    },
+    {
+      "word": "had better",
+      "sense_index": 0,
+      "expected": {
+        "tr": "yapsa iyi olur; olumsuz sonuç uyarısı taşıyan güçlü tavsiye",
+        "ex": "The authorities had better reinforce the river banks before the next period of heavy rainfall.",
+        "exTr": "Yetkililer bir sonraki şiddetli yağış döneminden önce nehir kıyılarını güçlendirse iyi olur."
+      },
+      "alternatives": [
+        {
+          "ex": "We had better confirm the delivery time before closing the gallery, or the arriving crew may find the equipment inaccessible.",
+          "exTr": "Galeriyi kapatmadan önce teslimat saatini doğrulasak iyi olur; yoksa gelen ekip ekipmana erişemeyebilir."
+        }
+      ]
+    },
+    {
+      "word": "hail",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. (övgüyle) karşılamak, ...olarak ilan etmek",
+        "ex": "Scientists hailed the discovery as one of the most important breakthroughs in modern medicine.",
+        "exTr": "Bilim insanları, bu keşfi modern tıptaki en önemli buluşlardan biri olarak nitelendirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "Critics were quick to hail the new translation as a major achievement, although later reviews questioned several choices in its treatment of humour.",
+          "exTr": "Sonraki incelemeler mizahı ele alışındaki bazı tercihleri sorgulasa da eleştirmenler yeni çeviriyi hemen büyük bir başarı olarak selamladı."
+        }
+      ]
+    },
+    {
+      "word": "half",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yarı, yarım",
+        "ex": "Nearly half of the coral reefs studied showed clear signs of bleaching caused by warmer waters.",
+        "exTr": "İncelenen mercan resiflerinin neredeyse yarısı, daha sıcak sulardan kaynaklanan ağarma belirtileri gösterdi."
+      },
+      "alternatives": [
+        {
+          "ex": "Half of the available time was devoted to discussion, allowing participants to question the assumptions behind the demonstrations they had just observed.",
+          "exTr": "Mevcut sürenin yarısı tartışmaya ayrılarak katılımcıların az önce gözledikleri gösterimlerin ardındaki varsayımları sorgulaması sağlandı."
+        }
+      ]
+    },
+    {
+      "word": "half-century",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yarım yüzyıl, elli yıl",
+        "ex": "Over the past half-century, average life expectancy has increased significantly across most developing countries.",
+        "exTr": "Geçtiğimiz yarım yüzyılda, ortalama yaşam beklentisi çoğu gelişmekte olan ülkede önemli ölçüde arttı."
+      },
+      "alternatives": [
+        {
+          "ex": "The exhibition follows the workshop over a half-century, tracing changes in ownership through objects that continued to be used by successive generations.",
+          "exTr": "Sergi, ardışık kuşakların kullanmayı sürdürdüğü nesneler üzerinden mülkiyet değişimlerini izleyerek atölyenin yarım yüzyılını takip ediyor."
+        }
+      ]
+    },
+    {
+      "word": "half-life",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yarı ömür (radyoaktif bozunma)",
+        "ex": "Scientists use a radioactive isotope's half-life to estimate the age of ancient organic remains.",
+        "exTr": "Bilim insanları, antik organik kalıntıların yaşını tahmin etmek için radyoaktif bir izotopun yarı ömrünü kullanır."
+      },
+      "alternatives": [
+        {
+          "ex": "Students compared half-life calculations with a graph of radioactive decay, checking whether their numerical answers matched the pattern represented visually.",
+          "exTr": "Öğrenciler sayısal yanıtlarının görsel sunulan örüntüyle eşleşip eşleşmediğini kontrol ederek yarı ömür hesaplarını radyoaktif bozunma grafiğiyle karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "half-price",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. yarı fiyatına",
+        "ex": "The bookstore sells last season's calendars at half-price once the new year begins.",
+        "exTr": "Kitabevi, yeni yıl başladığında geçen sezonun takvimlerini yarı fiyatına satıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Remaining tickets were sold half-price shortly before the performance, filling seats that would otherwise have stayed empty despite considerable interest.",
+          "exTr": "Kalan biletler gösteriden hemen önce yarı fiyatına satılarak yoğun ilgiye rağmen aksi hâlde boş kalacak koltuklar dolduruldu."
+        }
+      ]
+    },
+    {
+      "word": "half-staff",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yarıya indirilmiş bayrak konumu",
+        "ex": "The mayor ordered flags across the city to be flown at half-staff following the tragic accident.",
+        "exTr": "Belediye başkanı, trajik kazanın ardından şehir genelindeki bayrakların yarıya indirilmiş şekilde dalgalandırılmasını emretti."
+      },
+      "alternatives": [
+        {
+          "ex": "The photograph shows flags at half-staff outside the town hall, a detail that helped researchers narrow the possible date of the image.",
+          "exTr": "Fotoğraf belediye binasının dışında yarıya indirilmiş bayraklar gösteriyor; bu ayrıntı araştırmacıların görüntünün olası tarih aralığını daraltmasına yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "half-track",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. paletli-tekerlekli araç (yarı palet)",
+        "ex": "The museum displayed a restored military half-track that had been used during the Second World War.",
+        "exTr": "Müze, İkinci Dünya Savaşı sırasında kullanılmış, restore edilmiş bir askeri yarı paletli aracı sergiledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The restored half-track was displayed beside photographs of its transport role, directing attention towards logistics rather than battlefield spectacle.",
+          "exTr": "Restore edilmiş yarı paletli araç, dikkati savaş alanı gösterişinden çok lojistiğe yönelterek taşıma görevini gösteren fotoğrafların yanında sergilendi."
+        }
+      ]
+    },
+    {
+      "word": "hall",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. salon, hol; koridor",
+        "ex": "Hundreds of graduates gathered in the main hall to receive their diplomas.",
+        "exTr": "Yüzlerce mezun, diplomalarını almak için ana salonda toplandı."
+      },
+      "alternatives": [
+        {
+          "ex": "The hall had to accommodate both quiet displays and live demonstrations, so the organisers tested different arrangements before finalising the programme.",
+          "exTr": "Salon hem sessiz sergilemeleri hem canlı gösterimleri barındırmak zorunda olduğundan düzenleyiciler programı kesinleştirmeden önce farklı düzenlemeler denedi."
+        }
+      ]
+    },
+    {
+      "word": "hand",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. el",
+        "ex": "The surgeon's steady hand allowed her to complete the delicate operation without complications.",
+        "exTr": "Cerrahın sağlam eli, hassas ameliyatı komplikasyonsuz tamamlamasını sağladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The painter altered the position of the subject's hand, changing the apparent relationship between the seated figure and the object beside her.",
+          "exTr": "Ressam, oturan figürle yanındaki nesne arasındaki görünür ilişkiyi değiştirerek modelin elinin konumunu yeniden düzenledi."
+        }
+      ]
+    }
+  ],
+  "collocations": [
+    {
+      "word": "gladly",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "gladly accept an invitation",
+          "tr": "bir daveti memnuniyetle kabul etmek"
+        },
+        {
+          "en": "gladly offer assistance",
+          "tr": "memnuniyetle yardım teklif etmek"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "good-for-nothing",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a good-for-nothing fellow",
+          "tr": "işe yaramaz bir adam"
+        },
+        {
+          "en": "a good-for-nothing machine",
+          "tr": "hiçbir işe yaramayan makine"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "gorgeous",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a gorgeous view",
+          "tr": "muhteşem manzara"
+        },
+        {
+          "en": "look gorgeous",
+          "tr": "çok güzel görünmek"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "governor",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a provincial governor",
+          "tr": "il valisi"
+        },
+        {
+          "en": "appoint a governor",
+          "tr": "vali atamak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "graceful",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a graceful movement",
+          "tr": "zarif bir hareket"
+        },
+        {
+          "en": "a graceful curve",
+          "tr": "zarif bir eğri"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "gram",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a gram of sugar",
+          "tr": "bir gram şeker"
+        },
+        {
+          "en": "weigh one gram",
+          "tr": "bir gram ağırlığında olmak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "grandmother",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a maternal grandmother",
+          "tr": "anneanne"
+        },
+        {
+          "en": "a paternal grandmother",
+          "tr": "babaanne"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "grape",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a bunch of grapes",
+          "tr": "bir salkım üzüm"
+        },
+        {
+          "en": "grape juice",
+          "tr": "üzüm suyu"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "grassland",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "open grassland",
+          "tr": "açık otlak"
+        },
+        {
+          "en": "grassland habitat",
+          "tr": "çayır yaşam alanı"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "grin",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "grin broadly",
+          "tr": "genişçe gülümsemek, sırıtmak"
+        },
+        {
+          "en": "grin from ear to ear",
+          "tr": "ağzı kulaklarına varmak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "gun",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a replica gun",
+          "tr": "replika, taklit silah"
+        },
+        {
+          "en": "a gun collection",
+          "tr": "silah koleksiyonu"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "guy",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "an ordinary guy",
+          "tr": "sıradan bir adam"
+        },
+        {
+          "en": "a decent guy",
+          "tr": "düzgün, iyi bir adam"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "half-track",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a military half-track",
+          "tr": "askerî yarı paletli araç"
+        },
+        {
+          "en": "a half-track vehicle",
+          "tr": "yarı paletli araç"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

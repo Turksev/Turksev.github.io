@@ -1,0 +1,988 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 1,
+    "input": "input-016.json"
+  },
+  "enrichments": [
+    {
+      "word": "element",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. öge, unsur",
+        "ex": "Trust is a key element of any successful cooperation between nations.",
+        "exTr": "Güven, uluslar arasındaki her başarılı iş birliğinin kilit unsurudur."
+      },
+      "alternatives": [
+        {
+          "ex": "An important element of the proposal is the opportunity for residents to revise their comments after seeing how the plan has changed.",
+          "exTr": "Önerinin önemli bir unsuru, sakinlerin planın nasıl değiştiğini gördükten sonra yorumlarını gözden geçirebilme olanağıdır."
+        }
+      ]
+    },
+    {
+      "word": "elements",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. unsurlar, öğeler, elementler",
+        "ex": "Chemists identified several rare elements in the mineral samples collected from the volcano.",
+        "exTr": "Kimyagerler, yanardağdan toplanan mineral örneklerinde birkaç nadir element tespit etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The design retains several elements of the original workshop while introducing features that make the building accessible to a wider range of users.",
+          "exTr": "Tasarım, binayı daha geniş bir kullanıcı kitlesi için erişilebilir kılan özellikler eklerken özgün atölyenin bazı unsurlarını koruyor."
+        }
+      ]
+    },
+    {
+      "word": "elevated",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yüksek, yükseltilmiş, artmış (seviye/değer için)",
+        "ex": "The nurse noted that the patient's elevated blood pressure required immediate attention from the medical team.",
+        "exTr": "Hemşire, hastanın yükselmiş tansiyonunun tıbbi ekibin acil ilgisini gerektirdiğini belirtti."
+      },
+      "alternatives": [
+        {
+          "ex": "Elevated moisture levels in the storage room prompted staff to inspect the ventilation system before moving the collection elsewhere.",
+          "exTr": "Depodaki artmış nem düzeyleri, personeli koleksiyonu başka yere taşımadan önce havalandırma sistemini incelemeye yöneltti."
+        }
+      ]
+    },
+    {
+      "word": "eleven",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i./s. on bir",
+        "ex": "The coach selected exactly eleven players to represent the school in the regional tournament.",
+        "exTr": "Antrenör, okulu bölgesel turnuvada temsil etmesi için tam olarak on bir oyuncu seçti."
+      },
+      "alternatives": [
+        {
+          "ex": "The eleven participating schools agreed on a common method of recording attendance, enabling comparisons that had previously been complicated by inconsistent definitions.",
+          "exTr": "Katılan on bir okul, katılımı kaydetmek için ortak bir yöntem üzerinde anlaşarak daha önce tutarsız tanımların güçleştirdiği karşılaştırmaları mümkün kıldı."
+        }
+      ]
+    },
+    {
+      "word": "elimination",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. eleme, ortadan kaldırma",
+        "ex": "The health ministry announced an ambitious plan for the elimination of malaria within the next decade.",
+        "exTr": "Sağlık bakanlığı, önümüzdeki on yıl içinde sıtmanın ortadan kaldırılmasına yönelik iddialı bir plan açıkladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The elimination of repeated approval stages shortened the process without removing the independent checks considered essential for reliable assessment.",
+          "exTr": "Tekrarlanan onay aşamalarının kaldırılması, güvenilir değerlendirme için gerekli görülen bağımsız kontrolleri ortadan kaldırmadan süreci kısalttı."
+        }
+      ]
+    },
+    {
+      "word": "eloquent",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. güzel ve etkileyici konuşan, hitabeti güçlü; anlamlı, etkili",
+        "ex": "In an eloquent speech to the assembly, the young lawyer defended the rights of communities that had been displaced by the dam project.",
+        "exTr": "Meclise yaptığı etkileyici bir konuşmada genç avukat, baraj projesi yüzünden yerinden edilen toplulukların haklarını savundu."
+      },
+      "alternatives": [
+        {
+          "ex": "Her eloquent account of daily travel difficulties persuaded the panel to examine experiences that the numerical summary had largely overlooked.",
+          "exTr": "Günlük ulaşım güçlüklerine ilişkin etkileyici anlatımı, kurulu sayısal özetin büyük ölçüde gözden kaçırdığı deneyimleri incelemeye ikna etti."
+        }
+      ]
+    },
+    {
+      "word": "elsewhere",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. başka yerde, başka yere",
+        "ex": "As water supplies dwindled, entire farming communities were forced to seek livelihoods elsewhere.",
+        "exTr": "Su kaynakları tükendikçe, çiftçi topluluklarının tamamı geçimlerini başka yerlerde aramak zorunda kaldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The method worked well in the pilot district, but applying it elsewhere required a closer understanding of differences in staffing and available equipment.",
+          "exTr": "Yöntem pilot bölgede iyi işledi; ancak başka yerlerde uygulanması personel ve mevcut ekipman farklılıklarının daha yakından anlaşılmasını gerektirdi."
+        }
+      ]
+    },
+    {
+      "word": "email",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. e-posta",
+        "ex": "She quickly sent an email to confirm the meeting time with her supervisor.",
+        "exTr": "Yöneticisiyle toplantı saatini teyit etmek için hızlıca bir e-posta gönderdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The email summarised the decisions reached during the meeting and identified questions that still required evidence before a final recommendation could be made.",
+          "exTr": "E-posta, toplantıda alınan kararları özetledi ve son öneri yapılmadan önce hâlâ kanıt gerektiren soruları belirledi."
+        }
+      ]
+    },
+    {
+      "word": "embed",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. gömmek, yerleştirmek, saplamak",
+        "ex": "Scientists managed to embed tiny sensors within the coral reef to monitor changing ocean temperatures.",
+        "exTr": "Bilim insanları, değişen okyanus sıcaklıklarını izlemek için mercan resifine minik sensörler yerleştirmeyi başardı."
+      },
+      "alternatives": [
+        {
+          "ex": "The designers chose to embed the measuring device within a removable panel so that repairs would not require dismantling the entire structure.",
+          "exTr": "Tasarımcılar, onarımların bütün yapının sökülmesini gerektirmemesi için ölçüm aygıtını çıkarılabilir bir panelin içine yerleştirmeyi seçti."
+        }
+      ]
+    },
+    {
+      "word": "embody",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. somutlaştırmak, temsil etmek",
+        "ex": "The new museum was designed to embody the region's long artistic and cultural traditions.",
+        "exTr": "Yeni müze, bölgenin köklü sanatsal ve kültürel geleneklerini somutlaştıracak şekilde tasarlandı."
+      },
+      "alternatives": [
+        {
+          "ex": "The shared workshop was intended to embody the principle that useful equipment should remain accessible even to organisations with limited financial resources.",
+          "exTr": "Ortak atölyenin, yararlı ekipmanın mali kaynakları sınırlı kuruluşlar için bile erişilebilir kalması ilkesini somutlaştırması amaçlandı."
+        }
+      ]
+    },
+    {
+      "word": "embroidery",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. nakış, işleme, el işi",
+        "ex": "Traditional embroidery from the region uses silk thread and geometric motifs that have been passed down through families for many generations.",
+        "exTr": "Bölgenin geleneksel nakışı, ailelerde nesiller boyunca aktarılan ipek iplik ve geometrik motifler kullanır."
+      },
+      "alternatives": [
+        {
+          "ex": "The exhibition places embroidery beside unfinished sketches, revealing decisions about colour and pattern that are less apparent in the completed textile.",
+          "exTr": "Sergi, tamamlanmış kumaşta daha az belirgin olan renk ve desen kararlarını ortaya çıkarmak için nakışları bitirilmemiş eskizlerin yanına yerleştiriyor."
+        }
+      ]
+    },
+    {
+      "word": "emerging",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yeni ortaya çıkan, gelişmekte olan",
+        "ex": "Public health officials are closely monitoring an emerging virus that has spread across three continents.",
+        "exTr": "Halk sağlığı yetkilileri, üç kıtaya yayılan yeni ortaya çıkan bir virüsü yakından izliyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The emerging pattern suggested that access to transport mattered more than distance alone, although further interviews were needed to clarify the relationship.",
+          "exTr": "Ortaya çıkmaya başlayan örüntü, ulaşıma erişimin tek başına mesafeden daha önemli olduğunu düşündürdü; ancak ilişkiyi netleştirmek için ek görüşmeler gerekti."
+        }
+      ]
+    },
+    {
+      "word": "emit",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. yaymak, salmak (ışık, ses, gaz vb.)",
+        "ex": "Older diesel engines emit significantly more particulate pollution than modern electric vehicles.",
+        "exTr": "Eski dizel motorlar, modern elektrikli araçlara kıyasla çok daha fazla partikül kirliliği yayar."
+      },
+      "alternatives": [
+        {
+          "ex": "The lamps emit light at different wavelengths, enabling students to compare how the same surface appears under changing illumination.",
+          "exTr": "Lambalar farklı dalga boylarında ışık yayarak öğrencilerin aynı yüzeyin değişen aydınlatma altında nasıl göründüğünü karşılaştırmasına olanak tanıyor."
+        }
+      ]
+    },
+    {
+      "word": "emotionally",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. duygusal olarak",
+        "ex": "The counselor explained that children who witness conflict at home often struggle emotionally later in life.",
+        "exTr": "Danışman, evde çatışmaya tanık olan çocukların hayatlarının ilerleyen dönemlerinde duygusal olarak zorlandığını açıkladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The interviews were emotionally demanding for some participants, so the research plan allowed them to pause or withdraw without explaining their decision.",
+          "exTr": "Görüşmeler bazı katılımcılar için duygusal açıdan zorlayıcı olduğundan araştırma planı, kararlarını açıklamadan ara vermelerine ya da çekilmelerine izin verdi."
+        }
+      ]
+    },
+    {
+      "word": "emperor",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. imparator",
+        "ex": "The Roman emperor ordered the construction of a vast network of roads connecting distant provinces.",
+        "exTr": "Roma imparatoru, uzak eyaletleri birbirine bağlayan geniş bir yol ağının inşasını emretti."
+      },
+      "alternatives": [
+        {
+          "ex": "The inscription praises the emperor for restoring public buildings, but it provides little information about who financed or carried out the repairs.",
+          "exTr": "Yazıt, kamu binalarını onardığı için imparatoru övüyor; ancak onarımları kimin finanse ettiği ya da gerçekleştirdiği hakkında pek az bilgi veriyor."
+        }
+      ]
+    },
+    {
+      "word": "emphasize",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. vurgulamak, üzerinde durmak",
+        "ex": "Health experts emphasize the importance of regular exercise in preventing cardiovascular diseases.",
+        "exTr": "Sağlık uzmanları, kalp-damar hastalıklarını önlemede düzenli egzersizin önemini vurgulamaktadır."
+      },
+      "alternatives": [
+        {
+          "ex": "The authors emphasize the limits of the comparison, noting that the two communities differed in several ways before the programme began.",
+          "exTr": "Yazarlar, program başlamadan önce iki topluluğun çeşitli yönlerden farklı olduğunu belirterek karşılaştırmanın sınırlılıklarını vurguluyor."
+        }
+      ]
+    },
+    {
+      "word": "empirically",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. deneysel olarak, gözleme dayalı biçimde, ampirik olarak",
+        "ex": "The hypothesis sounds plausible, but it has never been tested empirically under conditions that researchers are able to control and repeat.",
+        "exTr": "Hipotez makul görünüyor, ancak araştırmacıların denetleyip tekrarlayabildiği koşullarda hiçbir zaman deneysel olarak sınanmadı."
+      },
+      "alternatives": [
+        {
+          "ex": "The predicted relationship can be examined empirically by comparing observations from sites that differ in the relevant environmental conditions.",
+          "exTr": "Öngörülen ilişki, ilgili çevresel koşullar bakımından farklılaşan alanlardan elde edilen gözlemler karşılaştırılarak ampirik biçimde incelenebilir."
+        }
+      ]
+    },
+    {
+      "word": "employee",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. çalışan, işçi, personel",
+        "ex": "Companies that invest in employee training tend to experience lower turnover and higher productivity.",
+        "exTr": "Çalışan eğitimine yatırım yapan şirketler, genellikle daha düşük personel devri ve daha yüksek verimlilik yaşar."
+      },
+      "alternatives": [
+        {
+          "ex": "Each employee was invited to suggest improvements based on practical experience, rather than leaving the redesign entirely to managers unfamiliar with routine tasks.",
+          "exTr": "Yeniden tasarımı bütünüyle rutin görevlere yabancı yöneticilere bırakmak yerine her çalışan, uygulama deneyimine dayalı iyileştirmeler önermeye davet edildi."
+        }
+      ]
+    },
+    {
+      "word": "empower",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. yetki vermek, güçlendirmek",
+        "ex": "The new policy aims to empower local communities to make their own environmental decisions.",
+        "exTr": "Yeni politika, yerel toplulukları kendi çevresel kararlarını almaları için güçlendirmeyi amaçlıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Clear information can empower users to question unsuitable arrangements, but meaningful influence also requires a procedure for responding to their concerns.",
+          "exTr": "Açık bilgi, kullanıcıları uygun olmayan düzenlemeleri sorgulayabilecek biçimde güçlendirebilir; ancak anlamlı etki, kaygılarına karşılık verecek bir yöntem de gerektirir."
+        }
+      ]
+    },
+    {
+      "word": "emulate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. örnek almak, öykünmek, taklit etmeye çalışmak",
+        "ex": "Younger scientists in the laboratory openly emulate their supervisor's habit of testing every assumption before publishing even the smallest result.",
+        "exTr": "Laboratuvardaki genç bilim insanları, danışmanlarının en küçük sonucu bile yayımlamadan önce her varsayımı sınama alışkanlığını açıkça örnek alıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The students tried to emulate the craftsperson's precise movements, gradually discovering which aspects depended on judgement rather than a fixed sequence of actions.",
+          "exTr": "Öğrenciler, zanaatkârın hassas hareketlerini örnek almaya çalışarak hangi yönlerin sabit bir eylem sırasından çok muhakemeye bağlı olduğunu zamanla keşfetti."
+        }
+      ]
+    },
+    {
+      "word": "encapsulate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. özetlemek, özünü yansıtmak, özlü biçimde ifade etmek",
+        "ex": "The final paragraph of the report neatly encapsulates the committee's argument in a single sentence that journalists quoted repeatedly.",
+        "exTr": "Raporun son paragrafı, komitenin savını gazetecilerin defalarca alıntıladığı tek bir cümlede ustaca özetliyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The contrasting photographs encapsulate the report's central concern: visible improvements may coexist with unresolved difficulties in access and maintenance.",
+          "exTr": "Karşıt fotoğraflar raporun temel kaygısını özlü biçimde yansıtıyor: görünür iyileşmeler, erişim ve bakımla ilgili çözülmemiş güçlüklerle bir arada bulunabilir."
+        }
+      ]
+    },
+    {
+      "word": "encourage",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. teşvik etmek, cesaretlendirmek",
+        "ex": "Teachers are encouraged to use interactive methods that engage students more actively in the classroom.",
+        "exTr": "Öğretmenler, sınıfta öğrencileri daha etkin biçimde derse katan etkileşimli yöntemler kullanmaya teşvik ediliyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The workshop was designed to encourage questions that challenged familiar assumptions, provided participants could explain the evidence behind their objections.",
+          "exTr": "Atölye, katılımcıların itirazlarının arkasındaki kanıtları açıklayabilmesi koşuluyla tanıdık varsayımları sorgulayan soruları teşvik etmek üzere tasarlandı."
+        }
+      ]
+    },
+    {
+      "word": "encouraging",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. cesaret verici, umut verici, teşvik edici",
+        "ex": "Early clinical trials produced encouraging results for the newly developed vaccine against the seasonal virus.",
+        "exTr": "Erken klinik denemeler, mevsimsel virüse karşı yeni geliştirilen aşı için umut verici sonuçlar üretti."
+      },
+      "alternatives": [
+        {
+          "ex": "The initial response was encouraging, but the organisers waited for evidence of sustained participation before deciding to expand the programme.",
+          "exTr": "İlk tepki umut vericiydi; ancak organizatörler programı genişletmeye karar vermeden önce katılımın sürdüğüne ilişkin kanıt bekledi."
+        }
+      ]
+    },
+    {
+      "word": "end-stopped",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. dize sonunda duraklı (şiirde)",
+        "ex": "Traditional sonnets often rely on end-stopped lines to emphasize the poem's formal structure.",
+        "exTr": "Geleneksel soneler, şiirin biçimsel yapısını vurgulamak için genellikle dize sonunda duraklı satırlara dayanır."
+      },
+      "alternatives": [
+        {
+          "ex": "The end-stopped lines give the opening stanza a measured rhythm, contrasting with the interrupted movement that develops later in the poem.",
+          "exTr": "Dize sonunda duraklanan satırlar ilk kıtaya ölçülü bir ritim kazandırarak şiirin ilerleyen kısmında gelişen kesintili hareketle karşıtlık oluşturuyor."
+        }
+      ]
+    },
+    {
+      "word": "endanger",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. tehlikeye atmak, tehdit etmek",
+        "ex": "Unregulated fishing practices continue to endanger several marine species across the world's oceans.",
+        "exTr": "Denetimsiz balıkçılık uygulamaları, dünya okyanuslarındaki çeşitli deniz türlerini tehlikeye atmaya devam ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Moving heavy equipment through the narrow passage could endanger both workers and visitors, so the team arranged a temporary alternative route.",
+          "exTr": "Ağır ekipmanı dar geçitten taşımak hem çalışanları hem de ziyaretçileri tehlikeye atabileceği için ekip geçici bir alternatif güzergâh düzenledi."
+        }
+      ]
+    },
+    {
+      "word": "ended",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. (bileşiklerde) -uçlu",
+        "ex": "The survey used open ended questions to gather more detailed opinions from the participants.",
+        "exTr": "Anket, katılımcılardan daha ayrıntılı görüşler toplamak için açık uçlu sorular kullandı."
+      },
+      "alternatives": [
+        {
+          "ex": "The double-ended tool reduced the need to switch instruments, although users needed time to become familiar with its unusual balance.",
+          "exTr": "İki uçlu alet, alet değiştirme ihtiyacını azalttı; ancak kullanıcıların alışılmadık dengesine alışmak için zamana ihtiyacı oldu."
+        }
+      ]
+    },
+    {
+      "word": "endless",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. sonsuz, bitmez tükenmez",
+        "ex": "Researchers described the desert as an endless expanse of sand stretching beyond the horizon.",
+        "exTr": "Araştırmacılar çölü, ufkun ötesine uzanan sonsuz bir kum genişliği olarak tanımladı."
+      },
+      "alternatives": [
+        {
+          "ex": "What seemed an endless sequence of revisions became manageable once the team distinguished essential corrections from optional changes in presentation.",
+          "exTr": "Ekip gerekli düzeltmeleri sunumdaki isteğe bağlı değişikliklerden ayırınca bitmek bilmez görünen düzenleme dizisi yönetilebilir hâle geldi."
+        }
+      ]
+    },
+    {
+      "word": "endorsement",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. destek, onay, resmî tavsiye",
+        "ex": "The programme gained credibility after receiving endorsement from several respected medical organisations.",
+        "exTr": "Program, bazı saygın tıp kuruluşlarının desteğini aldıktan sonra güvenilirlik kazandı."
+      },
+      "alternatives": [
+        {
+          "ex": "The committee's endorsement increased confidence in the proposal, but it did not remove the need for independent evaluation after implementation.",
+          "exTr": "Komitenin onayı öneriye duyulan güveni artırdı; ancak uygulamadan sonra bağımsız değerlendirme ihtiyacını ortadan kaldırmadı."
+        }
+      ]
+    },
+    {
+      "word": "endurance",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. dayanıklılık, tahammül, sabır",
+        "ex": "Completing the mountain expedition demanded extraordinary physical endurance from every member of the team.",
+        "exTr": "Dağ seferini tamamlamak, ekibin her üyesinden olağanüstü bir fiziksel dayanıklılık gerektiriyordu."
+      },
+      "alternatives": [
+        {
+          "ex": "The long journey tested the team's endurance, especially when repeated delays forced members to remain focused despite fatigue and uncertain conditions.",
+          "exTr": "Uzun yolculuk, özellikle tekrarlanan gecikmeler üyeleri yorgunluğa ve belirsiz koşullara rağmen odaklanmaya zorladığında ekibin dayanıklılığını sınadı."
+        }
+      ]
+    },
+    {
+      "word": "energetic",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. enerjik, hareketli",
+        "ex": "The energetic volunteers delivered food and medicine throughout the flooded district.",
+        "exTr": "Enerjik gönüllüler, sel basan bölgenin tamamında yiyecek ve ilaç dağıttı."
+      },
+      "alternatives": [
+        {
+          "ex": "An energetic discussion generated several promising ideas, which the participants then examined more critically against the project's limited time and resources.",
+          "exTr": "Enerjik bir tartışma birkaç umut verici fikir üretti; katılımcılar daha sonra bunları projenin sınırlı zamanı ve kaynakları ışığında daha eleştirel inceledi."
+        }
+      ]
+    },
+    {
+      "word": "enforce",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. uygulamak, yürürlüğe koymak, zorla uygulatmak",
+        "ex": "Local police began to enforce stricter parking regulations near the newly renovated city square.",
+        "exTr": "Yerel polis, yeni yenilenen şehir meydanının yakınında daha katı park kurallarını uygulamaya başladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The cooperative needed a consistent way to enforce shared booking rules without making occasional mistakes a source of unnecessary conflict.",
+          "exTr": "Kooperatifin, ara sıra yapılan hataları gereksiz çatışma kaynağına dönüştürmeden ortak rezervasyon kurallarını uygulayacak tutarlı bir yönteme ihtiyacı vardı."
+        }
+      ]
+    },
+    {
+      "word": "engaged",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. meşgul, katılımlı, ilgili",
+        "ex": "Students who remain actively engaged during lectures tend to score higher on final exams.",
+        "exTr": "Dersler sırasında aktif biçimde katılımını sürdüren öğrenciler, final sınavlarında genellikle daha yüksek puan alır."
+      },
+      "alternatives": [
+        {
+          "ex": "The pupils remained engaged when they could compare their predictions with visible results and discuss why the outcomes differed from their expectations.",
+          "exTr": "Öğrenciler, öngörülerini görünür sonuçlarla karşılaştırıp sonuçların beklentilerinden neden farklı olduğunu tartışabildiklerinde etkinliğe ilgilerini sürdürdü."
+        }
+      ]
+    },
+    {
+      "word": "engine",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. motor; makine",
+        "ex": "The steam engine transformed nineteenth-century industry by allowing factories to operate far from rivers and waterfalls.",
+        "exTr": "Buhar motoru, fabrikaların nehirlerden ve şelalelerden uzakta çalışmasına olanak tanıyarak on dokuzuncu yüzyıl sanayisini dönüştürdü."
+      },
+      "alternatives": [
+        {
+          "ex": "The engine was inspected after operators noticed a change in vibration, even though its output appeared to remain within the expected range.",
+          "exTr": "Ürettiği güç beklenen aralıkta kalıyor görünse de operatörler titreşimde değişiklik fark ettikten sonra motor incelendi."
+        }
+      ]
+    },
+    {
+      "word": "enhanced",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. geliştirilmiş, artırılmış, iyileştirilmiş",
+        "ex": "For better photography in low light, the new smartphone model features an enhanced camera.",
+        "exTr": "Az ışıkta daha iyi fotoğraf çekimi için yeni akıllı telefon modeli, geliştirilmiş bir kameraya sahip."
+      },
+      "alternatives": [
+        {
+          "ex": "The enhanced image revealed faint markings, but the investigators kept the original available so that others could assess how processing had affected the result.",
+          "exTr": "İyileştirilmiş görüntü silik işaretleri ortaya çıkardı; ancak araştırmacılar başkalarının işlemenin sonucu nasıl etkilediğini değerlendirebilmesi için özgün görüntüyü erişilebilir tuttu."
+        }
+      ]
+    },
+    {
+      "word": "enjoy",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. sahip olmak, tadını çıkarmak (bir avantaja/duruma)",
+        "ex": "Despite the economic crisis, the company continued to enjoy strong support from its loyal customers.",
+        "exTr": "Ekonomik krize rağmen şirket, sadık müşterilerinden gelen güçlü desteğe sahip olmaya devam etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The project continued to enjoy local support because residents could see how their earlier suggestions had influenced the final design.",
+          "exTr": "Sakinler önceki önerilerinin son tasarımı nasıl etkilediğini görebildiği için proje yerel destek görmeye devam etti."
+        }
+      ]
+    },
+    {
+      "word": "enlarged",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. enlarge fiilinin geçmiş/V3 biçimi: büyüttü, genişletti",
+        "ex": "Farmers enlarged their fields after buying new land.",
+        "exTr": "Çiftçiler yeni arazi aldıktan sonra tarlalarını genişletti."
+      },
+      "alternatives": [
+        {
+          "ex": "The college enlarged the workshop after a pilot programme showed that students needed more space to work safely around shared machinery.",
+          "exTr": "Pilot program, öğrencilerin ortak makinelerin çevresinde güvenli çalışmak için daha fazla alana ihtiyaç duyduğunu gösterince yüksekokul atölyeyi genişletti."
+        }
+      ]
+    },
+    {
+      "word": "enormous",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. çok büyük, muazzam, devasa",
+        "ex": "Social media has an enormous influence on how young people view themselves.",
+        "exTr": "Sosyal medyanın, gençlerin kendilerini nasıl gördükleri üzerinde muazzam bir etkisi vardır."
+      },
+      "alternatives": [
+        {
+          "ex": "The collection contains an enormous amount of material, making clear selection criteria essential for any study that aims to draw balanced conclusions.",
+          "exTr": "Koleksiyon muazzam miktarda malzeme içeriyor; bu da dengeli sonuçlara ulaşmayı amaçlayan her çalışma için açık seçim ölçütlerini gerekli kılıyor."
+        }
+      ]
+    },
+    {
+      "word": "enrichment",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. zenginleştirme, zenginleşme; besleyici hâle getirme",
+        "ex": "Providing captive animals with environmental enrichment, such as puzzles and varied surfaces, significantly reduces the repetitive behaviours associated with boredom and stress.",
+        "exTr": "Tutsak hayvanlara bulmacalar ve farklı yüzeyler gibi çevresel zenginleştirme sağlamak, can sıkıntısı ve stresle ilişkili yinelenen davranışları önemli ölçüde azaltır."
+      },
+      "alternatives": [
+        {
+          "ex": "The observation schedule recorded how animals used each form of environmental enrichment, rather than assuming that every added feature was equally valuable.",
+          "exTr": "Gözlem programı, eklenen her özelliğin aynı derecede değerli olduğunu varsaymak yerine hayvanların çevresel zenginleştirmenin her biçimini nasıl kullandığını kaydetti."
+        }
+      ]
+    },
+    {
+      "word": "enrollment",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kayıt, kaydolma; kayıtlı öğrenci sayısı",
+        "ex": "University enrollment in engineering programmes has risen sharply over the past decade, largely because of the strong demand for qualified technical staff.",
+        "exTr": "Mühendislik programlarına üniversite kayıtları, büyük ölçüde nitelikli teknik personele duyulan güçlü talep nedeniyle son on yılda keskin biçimde artmıştır."
+      },
+      "alternatives": [
+        {
+          "ex": "Higher enrollment did not necessarily mean broader access, since many new students came from districts already well served by public transport.",
+          "exTr": "Yeni öğrencilerin çoğu toplu taşımanın zaten iyi hizmet verdiği bölgelerden geldiği için artan kayıt sayısı mutlaka daha geniş erişim anlamına gelmiyordu."
+        }
+      ]
+    },
+    {
+      "word": "ensue",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. ardından gelmek, sonuç olarak ortaya çıkmak",
+        "ex": "If vaccination rates fall sharply, new outbreaks may ensue even in regions where the disease was controlled.",
+        "exTr": "Aşılama oranları keskin biçimde düşerse hastalığın kontrol altına alındığı bölgelerde bile yeni salgınlar ortaya çıkabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "Confusion may ensue if the revised instructions are distributed without explaining which earlier procedures they are intended to replace.",
+          "exTr": "Yenilenmiş talimatlar daha önceki hangi yöntemlerin yerini almasının amaçlandığı açıklanmadan dağıtılırsa karışıklık ortaya çıkabilir."
+        }
+      ]
+    },
+    {
+      "word": "enter",
+      "sense_index": 1,
+      "expected": {
+        "tr": "f. kaydetmek",
+        "ex": "Clerks must enter each transaction into the system immediately to keep the financial records accurate.",
+        "exTr": "Katipler, mali kayıtları doğru tutmak için her işlemi sisteme derhal kaydetmelidir."
+      },
+      "alternatives": [
+        {
+          "ex": "Researchers enter the observations in a shared register immediately after each visit, preserving details that might otherwise be forgotten before analysis begins.",
+          "exTr": "Araştırmacılar, analiz başlamadan önce unutulabilecek ayrıntıları korumak için her ziyaretten hemen sonra gözlemleri ortak kayda işliyor."
+        }
+      ]
+    },
+    {
+      "word": "enterprising",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. girişimci, atılgan, becerikli",
+        "ex": "An enterprising graduate turned an abandoned warehouse into a shared workspace, attracting dozens of small firms that could not afford city-centre offices.",
+        "exTr": "Girişimci bir mezun, terk edilmiş bir depoyu ortak çalışma alanına dönüştürerek şehir merkezinde ofis tutamayan onlarca küçük firmayı kendine çekti."
+      },
+      "alternatives": [
+        {
+          "ex": "An enterprising group of students organised a repair exchange, bringing unused equipment together with volunteers who could restore it to working condition.",
+          "exTr": "Girişimci bir öğrenci grubu, kullanılmayan ekipmanı onu çalışır duruma getirebilecek gönüllülerle buluşturan bir onarım paylaşım etkinliği düzenledi."
+        }
+      ]
+    },
+    {
+      "word": "entertainer",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. eğlendirici kişi, sahne sanatçısı",
+        "ex": "A skilled entertainer can adapt a performance to audiences of different ages.",
+        "exTr": "Yetenekli bir sahne sanatçısı gösterisini farklı yaşlardaki izleyicilere uyarlayabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The entertainer adjusted the pace of the performance after noticing that younger audience members needed more time to follow the visual sequence.",
+          "exTr": "Sahne sanatçısı, daha küçük yaştaki seyircilerin görsel diziyi izlemek için daha fazla zamana ihtiyaç duyduğunu fark edince gösterinin temposunu ayarladı."
+        }
+      ]
+    },
+    {
+      "word": "enthusiasm",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. coşku, heves, şevk",
+        "ex": "The new teacher's enthusiasm for science inspired many students to pursue careers in research.",
+        "exTr": "Yeni öğretmenin bilime olan coşkusu, birçok öğrenciyi araştırma alanında kariyer yapmaya teşvik etti."
+      },
+      "alternatives": [
+        {
+          "ex": "Initial enthusiasm for the scheme was sustained by regular feedback showing participants how their contributions were being used in practical decisions.",
+          "exTr": "Katılımcılara katkılarının uygulamaya yönelik kararlarda nasıl kullanıldığını gösteren düzenli geri bildirim, plana duyulan ilk heyecanın sürmesini sağladı."
+        }
+      ]
+    },
+    {
+      "word": "entice",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. cezbetmek, ayartmak, kandırıp yönlendirmek",
+        "ex": "Advertisers often use bright colors and catchy slogans to entice customers into buying new products.",
+        "exTr": "Reklamcılar, müşterileri yeni ürünler satın almaya cezbetmek için genellikle parlak renkler ve akılda kalıcı sloganlar kullanır."
+      },
+      "alternatives": [
+        {
+          "ex": "The centre offered introductory workshops to entice hesitant visitors into trying activities that they had previously assumed required specialist skills.",
+          "exTr": "Merkez, tereddüt eden ziyaretçileri daha önce uzmanlık gerektirdiğini düşündükleri etkinlikleri denemeye cezbetmek için başlangıç atölyeleri sundu."
+        }
+      ]
+    },
+    {
+      "word": "entirety",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. bütünlük, tamamı (in its entirety: tümüyle)",
+        "ex": "The committee reviewed the proposal in its entirety before recommending any changes to the budget.",
+        "exTr": "Komite, bütçede herhangi bir değişiklik önermeden önce teklifi tamamıyla gözden geçirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "Reading the correspondence in its entirety revealed qualifications that had disappeared from the short extracts cited in earlier accounts.",
+          "exTr": "Yazışmaların tamamını okumak, önceki anlatımlarda alıntılanan kısa parçalarda kaybolmuş sınırlayıcı açıklamaları ortaya çıkardı."
+        }
+      ]
+    },
+    {
+      "word": "entitlement",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. hak, yasal hak (özellikle sosyal yardım)",
+        "ex": "Many citizens rely on government entitlement programs to receive healthcare during periods of unemployment.",
+        "exTr": "Birçok vatandaş, işsizlik dönemlerinde sağlık hizmeti alabilmek için devletin hak programlarına güveniyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The information sheet explains how applicants can check their entitlement to support, while making clear that individual circumstances may affect the outcome.",
+          "exTr": "Bilgi formu, kişisel koşulların sonucu etkileyebileceğini açıklığa kavuştururken başvuranların destek alma haklarını nasıl kontrol edebileceğini açıklıyor."
+        }
+      ]
+    },
+    {
+      "word": "entrant",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. katılımcı, yarışmacı",
+        "ex": "Every entrant in the competition had to submit a portfolio demonstrating their artistic skills.",
+        "exTr": "Yarışmaya her katılımcı, sanatsal becerilerini gösteren bir portföy sunmak zorundaydı."
+      },
+      "alternatives": [
+        {
+          "ex": "Each entrant received the same description of the design problem, but competitors were free to justify different approaches to its solution.",
+          "exTr": "Her yarışmacıya tasarım sorununun aynı açıklaması verildi; ancak yarışmacılar çözüme yönelik farklı yaklaşımları gerekçelendirmekte serbestti."
+        }
+      ]
+    },
+    {
+      "word": "entrepreneurship",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. girişimcilik, iş kurma becerisi",
+        "ex": "Universities now offer courses in entrepreneurship so that graduates can turn research findings into commercial products rather than waiting for established firms to hire them.",
+        "exTr": "Üniversiteler artık girişimcilik dersleri veriyor; böylece mezunlar, köklü şirketlerin kendilerini işe almasını beklemek yerine araştırma bulgularını ticari ürünlere dönüştürebiliyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The course approaches entrepreneurship through practical questions about demand, costs and cooperation, rather than presenting business creation as a purely individual achievement.",
+          "exTr": "Ders, iş kurmayı yalnızca bireysel bir başarı olarak sunmak yerine girişimciliğe talep, maliyet ve iş birliğiyle ilgili uygulamalı sorular üzerinden yaklaşıyor."
+        }
+      ]
+    },
+    {
+      "word": "enumerate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. sayıp dökmek, tek tek saymak, sıralamak",
+        "ex": "Before proposing any solution, the report enumerates the main obstacles that have prevented rural schools from adopting the newly designed curriculum.",
+        "exTr": "Rapor, herhangi bir çözüm önermeden önce kırsal okulların yeni tasarlanan müfredatı benimsemesini engelleyen başlıca engelleri tek tek sıralıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The authors enumerate the assumptions behind their estimate so that readers can identify which changes would have the greatest effect on the outcome.",
+          "exTr": "Yazarlar, okuyucuların hangi değişikliklerin sonuç üzerinde en büyük etkiyi yaratacağını belirleyebilmesi için tahminlerinin dayandığı varsayımları tek tek sıralıyor."
+        }
+      ]
+    },
+    {
+      "word": "environment",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. çevre, ortam",
+        "ex": "Industrial waste continues to pose a serious threat to the surrounding natural environment.",
+        "exTr": "Endüstriyel atıklar, çevredeki doğal ortam için ciddi bir tehdit oluşturmaya devam ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "A supportive learning environment allows mistakes to become occasions for explanation rather than reasons for students to avoid asking further questions.",
+          "exTr": "Destekleyici bir öğrenme ortamı, hataların öğrencilerin başka soru sormaktan kaçınmasına neden olmak yerine açıklama fırsatlarına dönüşmesini sağlar."
+        }
+      ]
+    },
+    {
+      "word": "environmentally",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. çevresel açıdan, çevreyle ilgili olarak",
+        "ex": "Consumers increasingly prefer products that are manufactured in an environmentally responsible manner.",
+        "exTr": "Tüketiciler, çevresel açıdan sorumlu bir biçimde üretilen ürünleri giderek daha fazla tercih ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "An environmentally responsible purchasing policy considers durability and repair options alongside the resources required to manufacture and transport the product.",
+          "exTr": "Çevresel açıdan sorumlu bir satın alma politikası, ürünü üretip taşımak için gereken kaynakların yanında dayanıklılığı ve onarım seçeneklerini de dikkate alır."
+        }
+      ]
+    },
+    {
+      "word": "epic",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. destan (edebi tür)",
+        "ex": "Scholars consider Homer's Odyssey one of the earliest surviving epics in Western literature.",
+        "exTr": "Bilim insanları, Homeros'un Odysseia'sını Batı edebiyatının günümüze ulaşan en eski destanlarından biri olarak kabul eder."
+      },
+      "alternatives": [
+        {
+          "ex": "The epic connects the hero's journey with the fate of the wider community, giving personal choices consequences beyond individual success or failure.",
+          "exTr": "Destan, kahramanın yolculuğunu daha geniş topluluğun kaderiyle ilişkilendirerek kişisel seçimlere bireysel başarı ya da başarısızlığın ötesinde sonuçlar yüklüyor."
+        }
+      ]
+    },
+    {
+      "word": "episode",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. bölüm (dizi)",
+        "ex": "Fans eagerly awaited the release of the final episode of the popular television series.",
+        "exTr": "Hayranlar, popüler televizyon dizisinin son bölümünün yayınlanmasını heyecanla bekledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The final episode returns to the opening interview, inviting viewers to reconsider the speaker's confidence in light of everything revealed afterwards.",
+          "exTr": "Son bölüm ilk görüşmeye dönerek izleyicileri konuşmacının kendinden emin tavrını sonradan ortaya çıkan her şeyin ışığında yeniden değerlendirmeye davet ediyor."
+        }
+      ]
+    },
+    {
+      "word": "equality",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. eşitlik",
+        "ex": "The constitution guarantees equality before the law for all citizens regardless of origin.",
+        "exTr": "Anayasa, kökenine bakılmaksızın tüm vatandaşlar için yasa önünde eşitliği güvence altına alır."
+      },
+      "alternatives": [
+        {
+          "ex": "Formal equality of access means little if practical barriers prevent some residents from using the facilities available to everyone in principle.",
+          "exTr": "Uygulamadaki engeller bazı sakinlerin ilke olarak herkese açık tesisleri kullanmasını önlüyorsa erişimde biçimsel eşitlik pek az şey ifade eder."
+        }
+      ]
+    },
+    {
+      "word": "equation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. denklem",
+        "ex": "Students spent the entire class trying to solve a complex equation involving several variables.",
+        "exTr": "Öğrenciler, birkaç değişken içeren karmaşık bir denklemi çözmeye çalışarak tüm dersi geçirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The equation describes a simplified relationship, so the lecturer explained which real-world influences had been left outside the model.",
+          "exTr": "Denklem basitleştirilmiş bir ilişkiyi betimlediği için öğretim görevlisi gerçek dünyadaki hangi etkilerin model dışında bırakıldığını açıkladı."
+        }
+      ]
+    },
+    {
+      "word": "equestrian",
+      "sense_index": 1,
+      "expected": {
+        "tr": "s. binicilikle ilgili, atçılığa ait",
+        "ex": "Equestrian events have been part of the modern Olympic programme since 1900, and they remain among the few sports where men and women compete together.",
+        "exTr": "Binicilik yarışmaları 1900'den beri modern Olimpiyat programının bir parçasıdır ve kadınlarla erkeklerin birlikte yarıştığı az sayıdaki spor dalından biri olmayı sürdürmektedir."
+      },
+      "alternatives": [
+        {
+          "ex": "The equestrian centre revised its visitor routes to keep spectators separate from areas where horses were being prepared for training.",
+          "exTr": "Binicilik merkezi, seyircileri atların eğitim için hazırlandığı alanlardan ayrı tutmak üzere ziyaretçi güzergâhlarını değiştirdi."
+        }
+      ]
+    },
+    {
+      "word": "equipment",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ekipman, donanım, teçhizat",
+        "ex": "Hospitals in remote regions often lack the modern equipment needed to diagnose rare diseases quickly.",
+        "exTr": "Uzak bölgelerdeki hastaneler, nadir hastalıkları hızla teşhis etmek için gereken modern ekipmandan genellikle yoksundur."
+      },
+      "alternatives": [
+        {
+          "ex": "The agreement covers shared equipment but leaves each institution responsible for the consumable materials required by its own teaching activities.",
+          "exTr": "Anlaşma ortak ekipmanı kapsıyor; ancak her kurumu kendi öğretim etkinliklerinin gerektirdiği sarf malzemelerinden sorumlu tutuyor."
+        }
+      ]
+    },
+    {
+      "word": "equivalent",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. eşdeğer, denk",
+        "ex": "Walking briskly for an hour burns an amount of energy roughly equivalent to a light jog.",
+        "exTr": "Bir saat tempolu yürüyüş, hafif bir koşuya kabaca eşdeğer miktarda enerji yakar."
+      },
+      "alternatives": [
+        {
+          "ex": "The two qualifications were treated as equivalent for admission, although applicants still had to demonstrate the practical skills required by the course.",
+          "exTr": "İki yeterlilik kabul için eşdeğer sayıldı; ancak başvuranların dersin gerektirdiği uygulamalı becerileri yine de göstermesi gerekiyordu."
+        }
+      ]
+    },
+    {
+      "word": "eradication",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yok etme, kökünü kazıma",
+        "ex": "Global health organizations have invested heavily in the eradication of infectious diseases such as polio.",
+        "exTr": "Küresel sağlık örgütleri, çocuk felci gibi bulaşıcı hastalıkların kökünün kazınması için büyük yatırım yaptı."
+      },
+      "alternatives": [
+        {
+          "ex": "The eradication of an invasive plant from one site does not ensure lasting success if seeds can arrive from untreated neighbouring areas.",
+          "exTr": "Tohumlar müdahale edilmemiş komşu alanlardan gelebiliyorsa istilacı bir bitkinin tek bir alandan tamamen yok edilmesi kalıcı başarıyı garanti etmez."
+        }
+      ]
+    }
+  ],
+  "collocations": [
+    {
+      "word": "eleven",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "eleven consecutive years",
+          "tr": "art arda on bir yıl"
+        },
+        {
+          "en": "a group of eleven",
+          "tr": "on bir kişilik veya parçalık bir grup"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "end-stopped",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "an end-stopped line",
+          "tr": "sonunda durak bulunan bir dize"
+        },
+        {
+          "en": "end-stopped verse",
+          "tr": "dizeleri sonunda duraklanan şiir"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "energetic",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "an energetic campaign",
+          "tr": "enerjik bir kampanya"
+        },
+        {
+          "en": "an energetic approach",
+          "tr": "dinamik bir yaklaşım"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "entertainer",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a professional entertainer",
+          "tr": "profesyonel bir sahne sanatçısı"
+        },
+        {
+          "en": "a children's entertainer",
+          "tr": "çocuklara yönelik gösteri sanatçısı"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "entrant",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a competition entrant",
+          "tr": "bir yarışma katılımcısı"
+        },
+        {
+          "en": "a successful entrant",
+          "tr": "başarılı bir katılımcı"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

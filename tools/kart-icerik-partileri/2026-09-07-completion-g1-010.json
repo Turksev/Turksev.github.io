@@ -1,0 +1,1000 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 1,
+    "input": "input-010.json"
+  },
+  "enrichments": [
+    {
+      "word": "computer",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. bilgisayar",
+        "ex": "Modern weather forecasts depend heavily on powerful computers that process vast amounts of data.",
+        "exTr": "Modern hava tahminleri, büyük miktarda veriyi işleyen güçlü bilgisayarlara büyük ölçüde bağlıdır."
+      },
+      "alternatives": [
+        {
+          "ex": "The computer produced a plausible result, but the analyst checked the underlying assumptions before accepting the calculation as meaningful.",
+          "exTr": "Bilgisayar makul bir sonuç üretti; ancak analist hesaplamayı anlamlı kabul etmeden önce temelindeki varsayımları kontrol etti."
+        }
+      ]
+    },
+    {
+      "word": "concentrate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. odaklanmak, konsantre olmak",
+        "ex": "Students find it harder to concentrate when they constantly check their phones during study sessions.",
+        "exTr": "Öğrenciler, ders çalışırken sürekli telefonlarına baktıklarında odaklanmakta daha çok zorlanır."
+      },
+      "alternatives": [
+        {
+          "ex": "By separating routine enquiries from complex cases, the office enabled experienced staff to concentrate on problems that required specialist judgement.",
+          "exTr": "Büro, rutin soruları karmaşık vakalardan ayırarak deneyimli personelin uzman değerlendirmesi gerektiren sorunlara odaklanmasını sağladı."
+        }
+      ]
+    },
+    {
+      "word": "concept",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kavram, fikir",
+        "ex": "The concept of zero revolutionized mathematics long before it was formally adopted in Europe.",
+        "exTr": "Sıfır kavramı, Avrupa'da resmen benimsenmeden çok önce matematiği kökten değiştirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The concept of fairness becomes harder to apply when different groups disagree about which costs and benefits should be counted.",
+          "exTr": "Farklı gruplar hangi maliyet ve faydaların hesaba katılması gerektiği konusunda anlaşamadığında adalet kavramını uygulamak zorlaşır."
+        }
+      ]
+    },
+    {
+      "word": "concern",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. endişe, kaygı",
+        "ex": "Parents expressed growing concern about the amount of time teenagers spend on social media.",
+        "exTr": "Ebeveynler, gençlerin sosyal medyada geçirdiği süre konusunda artan bir endişe dile getirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "Residents voiced concern that the proposed road would divide their neighbourhood without substantially improving access to employment or essential services.",
+          "exTr": "Sakinler, önerilen yolun istihdama ya da temel hizmetlere erişimi kayda değer biçimde iyileştirmeden mahallelerini böleceğine ilişkin kaygılarını dile getirdi."
+        }
+      ]
+    },
+    {
+      "word": "concession",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. taviz, ödün",
+        "ex": "Neither side was willing to make the first concession, and the negotiations therefore collapsed after three exhausting days of talks.",
+        "exTr": "Taraflardan hiçbiri ilk tavizi vermeye yanaşmadı ve görüşmeler bu nedenle üç yorucu günün ardından çöktü."
+      },
+      "alternatives": [
+        {
+          "ex": "The concession on delivery dates helped the negotiations progress, although disagreement over maintenance costs remained unresolved at the end of the meeting.",
+          "exTr": "Teslim tarihlerinde verilen taviz görüşmelerin ilerlemesine yardımcı oldu; ancak bakım maliyetleri konusundaki anlaşmazlık toplantı sonunda çözümsüz kaldı."
+        }
+      ]
+    },
+    {
+      "word": "conclude",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. sonuçlandırmak, sonuca varmak",
+        "ex": "After reviewing years of climate data, the researchers concluded that sea levels are rising faster than predicted.",
+        "exTr": "Yıllara dayanan iklim verilerini inceledikten sonra araştırmacılar, deniz seviyesinin tahmin edilenden daha hızlı yükseldiği sonucuna vardı."
+      },
+      "alternatives": [
+        {
+          "ex": "The team could not conclude that the new method was superior because the comparison had excluded several demanding test conditions.",
+          "exTr": "Karşılaştırma bazı zorlu test koşullarını dışarıda bıraktığı için ekip yeni yöntemin üstün olduğu sonucuna varamadı."
+        }
+      ]
+    },
+    {
+      "word": "conclusive",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kesin, kuşkuya yer bırakmayan; sonuçlandırıcı",
+        "ex": "The small study did not provide conclusive evidence that the treatment was effective.",
+        "exTr": "Küçük çalışma, tedavinin etkili olduğuna ilişkin kesin kanıt sağlamadı."
+      },
+      "alternatives": [
+        {
+          "ex": "The inscription offers suggestive rather than conclusive evidence, since its damaged final line permits more than one interpretation of the date.",
+          "exTr": "Yazıt, hasarlı son satırı tarihin birden fazla biçimde yorumlanmasına izin verdiği için kesin olmaktan ziyade fikir verici bir kanıt sunuyor."
+        }
+      ]
+    },
+    {
+      "word": "condemn",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. kınamak",
+        "ex": "World leaders quickly moved to condemn the attack on the humanitarian convoy.",
+        "exTr": "Dünya liderleri, insani yardım konvoyuna yapılan saldırıyı kınamak için hızla harekete geçti."
+      },
+      "alternatives": [
+        {
+          "ex": "The association condemned the deliberate destruction of cultural sites and called for independent documentation of the damage already reported.",
+          "exTr": "Dernek, kültürel alanların kasıtlı olarak tahrip edilmesini kınadı ve daha önce bildirilen zararın bağımsız biçimde belgelenmesi çağrısında bulundu."
+        }
+      ]
+    },
+    {
+      "word": "conditional",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. koşullu, şarta bağlı",
+        "ex": "The bank approved a conditional loan that depended on the applicant's future income verification.",
+        "exTr": "Banka, başvuranın gelecekteki gelir doğrulamasına bağlı koşullu bir kredi onayladı."
+      },
+      "alternatives": [
+        {
+          "ex": "Approval of the expansion was conditional on a revised plan that preserved pedestrian access throughout the construction period.",
+          "exTr": "Genişlemenin onaylanması, inşaat süresi boyunca yaya erişimini koruyan gözden geçirilmiş bir plan hazırlanması koşuluna bağlıydı."
+        }
+      ]
+    },
+    {
+      "word": "conducting",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yürütme, yönetme",
+        "ex": "The professor gained international recognition for conducting groundbreaking research on renewable energy storage.",
+        "exTr": "Profesör, yenilenebilir enerji depolama üzerine çığır açan araştırmalar yürütmesiyle uluslararası tanınırlık kazandı."
+      },
+      "alternatives": [
+        {
+          "ex": "Conducting interviews in participants' preferred language required additional preparation but reduced the risk of misunderstanding questions about unfamiliar services.",
+          "exTr": "Görüşmeleri katılımcıların tercih ettiği dilde yürütmek ek hazırlık gerektirdi; ancak tanınmayan hizmetlerle ilgili soruların yanlış anlaşılması riskini azalttı."
+        }
+      ]
+    },
+    {
+      "word": "cone",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kozalak",
+        "ex": "Botanists examined how seeds develop inside the pine cone before winter dormancy begins.",
+        "exTr": "Botanikçiler, kış uykusu başlamadan önce çam kozalağının içinde tohumların nasıl geliştiğini inceledi."
+      },
+      "alternatives": [
+        {
+          "ex": "A single cone contained seeds at different stages of development, which the students separated and photographed for their botanical record.",
+          "exTr": "Tek bir kozalak, öğrencilerin botanik kayıtları için ayırıp fotoğrafladığı farklı gelişim evrelerindeki tohumları içeriyordu."
+        }
+      ]
+    },
+    {
+      "word": "confidence",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. güven, özgüven",
+        "ex": "Regular practice gradually gave the young violinist more confidence before performances.",
+        "exTr": "Düzenli pratik, genç kemancıya performanslardan önce yavaş yavaş daha fazla özgüven kazandırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "Confidence in the findings increased when another laboratory obtained similar measurements using equipment calibrated independently of the original team's instruments.",
+          "exTr": "Başka bir laboratuvar ilk ekibin aletlerinden bağımsız biçimde kalibre edilmiş donanımla benzer ölçümler elde edince bulgulara duyulan güven arttı."
+        }
+      ]
+    },
+    {
+      "word": "confidentiality",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. gizlilik, mahremiyet, sır saklama yükümlülüğü",
+        "ex": "Researchers must guarantee the confidentiality of the personal data they collect, since participants are unlikely to answer honestly if their identities could be revealed.",
+        "exTr": "Araştırmacılar topladıkları kişisel verilerin gizliliğini güvence altına almalıdır; çünkü kimlikleri açığa çıkabilecekse katılımcıların dürüstçe yanıt vermesi beklenemez."
+      },
+      "alternatives": [
+        {
+          "ex": "The research agreement explains the limits of confidentiality and states who may access the interview recordings during analysis.",
+          "exTr": "Araştırma anlaşması gizliliğin sınırlarını açıklıyor ve analiz sırasında görüşme kayıtlarına kimlerin erişebileceğini belirtiyor."
+        }
+      ]
+    },
+    {
+      "word": "confine",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. sınırlamak, kısıtlamak",
+        "ex": "The chairman asked speakers to confine their remarks to the items already on the agenda.",
+        "exTr": "Başkan, konuşmacılardan görüşlerini yalnızca gündemdeki maddelerle sınırlamalarını istedi."
+      },
+      "alternatives": [
+        {
+          "ex": "The authors confine their conclusions to the sampled districts because conditions elsewhere may differ in ways the study did not examine.",
+          "exTr": "Yazarlar, başka yerlerdeki koşullar çalışmanın incelemediği yönlerden farklılaşabileceği için sonuçlarını örneklenen bölgelerle sınırlandırıyor."
+        }
+      ]
+    },
+    {
+      "word": "confirmation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. bir iddianın doğru olduğunu gösteren doğrulama veya ek kanıt",
+        "ex": "Independent replication provided confirmation that the observed effect was not a statistical accident.",
+        "exTr": "Bağımsız tekrar, gözlenen etkinin istatistiksel bir rastlantı olmadığını doğruladı."
+      },
+      "alternatives": [
+        {
+          "ex": "Further confirmation of the proposed sequence came from pottery fragments found in a neighbouring layer during a later excavation.",
+          "exTr": "Daha sonraki bir kazıda komşu bir tabakada bulunan çanak çömlek parçaları, önerilen sıralamayı doğrulayan ek kanıt sağladı."
+        }
+      ]
+    },
+    {
+      "word": "conform",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. uymak, uygun davranmak; benzemek",
+        "ex": "New employees are expected to conform to the company's strict safety regulations from day one.",
+        "exTr": "Yeni çalışanların, ilk günden itibaren şirketin katı güvenlik kurallarına uyması bekleniyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The submitted drawings did not conform to the agreed format, so several measurements had to be clarified before production could begin.",
+          "exTr": "Sunulan çizimler üzerinde anlaşılmış biçime uymadığı için üretim başlamadan önce bazı ölçülerin netleştirilmesi gerekti."
+        }
+      ]
+    },
+    {
+      "word": "confront",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. yüzleşmek, karşı karşıya gelmek",
+        "ex": "Scientists must confront growing skepticism when communicating complex climate data to the public.",
+        "exTr": "Bilim insanları, karmaşık iklim verilerini halka aktarırken artan şüpheciliğe göğüs germek zorundadır."
+      },
+      "alternatives": [
+        {
+          "ex": "Expanding the programme forced organisers to confront weaknesses in a system that had worked adequately when the number of participants was smaller.",
+          "exTr": "Programın genişletilmesi, organizatörleri katılımcı sayısı daha azken yeterince iyi işleyen bir sistemin zayıflıklarıyla yüzleşmeye zorladı."
+        }
+      ]
+    },
+    {
+      "word": "confuse",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. karıştırmak, şaşırtmak",
+        "ex": "Conflicting medical advice can easily confuse patients trying to manage a chronic illness.",
+        "exTr": "Çelişkili tıbbi tavsiyeler, kronik bir hastalığı yönetmeye çalışan hastaların kafasını kolayca karıştırabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "Similar labels can confuse users when two controls perform different functions but occupy almost identical positions on the screen.",
+          "exTr": "İki kontrol farklı işlevleri yerine getirdiği hâlde ekranda neredeyse aynı konumlarda yer aldığında benzer etiketler kullanıcıların kafasını karıştırabilir."
+        }
+      ]
+    },
+    {
+      "word": "confusion",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. karışıklık, kafa karışıklığı, şaşkınlık",
+        "ex": "Unclear instructions from the airline caused considerable confusion among passengers during the delay.",
+        "exTr": "Havayolu şirketinin belirsiz talimatları, gecikme sırasında yolcular arasında büyük bir kafa karışıklığına yol açtı."
+      },
+      "alternatives": [
+        {
+          "ex": "The introduction distinguishes the two meanings of the term to prevent confusion when the discussion moves from theory to practical examples.",
+          "exTr": "Giriş, tartışma kuramdan uygulamalı örneklere geçtiğinde karışıklığı önlemek için terimin iki anlamını birbirinden ayırıyor."
+        }
+      ]
+    },
+    {
+      "word": "congratulations",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. tebrikler",
+        "ex": "The entire office sent congratulations to their colleague after she earned her doctoral degree.",
+        "exTr": "Tüm ofis, doktora derecesini kazandıktan sonra meslektaşlarına tebriklerini gönderdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The director offered congratulations to the apprentices, emphasising that completing the project had required cooperation as well as individual technical skill.",
+          "exTr": "Müdür, projeyi tamamlamanın bireysel teknik becerinin yanı sıra iş birliği gerektirdiğini vurgulayarak çırakları tebrik etti."
+        }
+      ]
+    },
+    {
+      "word": "congruent",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. uyumlu, örtüşen; (geometri) eş",
+        "ex": "The two triangles were proven congruent because their corresponding sides had equal lengths.",
+        "exTr": "İki üçgenin karşılık gelen kenarları eşit uzunlukta olduğundan, eş oldukları kanıtlandı."
+      },
+      "alternatives": [
+        {
+          "ex": "The two designs are congruent with the project's environmental aims, although they differ considerably in their expected maintenance costs.",
+          "exTr": "Beklenen bakım maliyetleri bakımından önemli ölçüde farklılaşsalar da iki tasarım da projenin çevresel hedefleriyle uyumludur."
+        }
+      ]
+    },
+    {
+      "word": "connected",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. bağlı, bağlantılı, ilişkili",
+        "ex": "Researchers found that socially connected elderly people tend to live longer, healthier lives.",
+        "exTr": "Araştırmacılar, sosyal olarak bağlantılı yaşlı insanların genellikle daha uzun ve sağlıklı yaşadığını buldu."
+      },
+      "alternatives": [
+        {
+          "ex": "Well-connected neighbourhoods offer several routes to essential services, reducing dependence on a single road that may become blocked during maintenance.",
+          "exTr": "Ulaşım bağlantıları güçlü mahalleler, temel hizmetlere birkaç güzergâh sunarak bakım sırasında kapanabilecek tek bir yola bağımlılığı azaltır."
+        }
+      ]
+    },
+    {
+      "word": "connectivity",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. bağlantı, bağlantılılık, bağlantı kurabilme",
+        "ex": "Neuroimaging studies suggest that intensive musical training increases functional connectivity between the brain regions responsible for hearing and fine motor control.",
+        "exTr": "Beyin görüntüleme çalışmaları, yoğun müzik eğitiminin işitmeden ve ince motor kontrolden sorumlu beyin bölgeleri arasındaki işlevsel bağlantıyı artırdığını göstermektedir."
+      },
+      "alternatives": [
+        {
+          "ex": "Improved connectivity between habitat patches may help animals move through farmland, but the effectiveness of each corridor requires local assessment.",
+          "exTr": "Yaşam alanı parçaları arasındaki bağlantılılığın iyileştirilmesi, hayvanların tarım arazilerinden geçmesine yardımcı olabilir; ancak her koridorun etkililiği yerel değerlendirme gerektirir."
+        }
+      ]
+    },
+    {
+      "word": "conquer",
+      "sense_index": 1,
+      "expected": {
+        "tr": "f. yenmek, alt etmek, üstesinden gelmek",
+        "ex": "Medical researchers hope that new gene-editing techniques will eventually help conquer several inherited diseases.",
+        "exTr": "Tıp araştırmacıları, yeni gen düzenleme tekniklerinin sonunda birçok kalıtsal hastalığın üstesinden gelmeye yardımcı olacağını umuyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Regular opportunities to speak before a supportive audience helped the student conquer her initial fear of presenting unfamiliar material.",
+          "exTr": "Destekleyici bir dinleyici kitlesi önünde düzenli konuşma fırsatları, öğrencinin bilmediği bir içeriği sunmaya ilişkin başlangıçtaki korkusunu yenmesine yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "conscious",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. bilinçli, farkında",
+        "ex": "Consumers are becoming increasingly conscious of the environmental impact of their daily choices.",
+        "exTr": "Tüketiciler, günlük tercihlerinin çevresel etkisinin giderek daha fazla farkına varıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The editors made a conscious effort to include accounts that challenged the interpretation favoured in earlier editions of the book.",
+          "exTr": "Editörler, kitabın önceki baskılarında tercih edilen yoruma karşı çıkan anlatımları dahil etmek için bilinçli bir çaba gösterdi."
+        }
+      ]
+    },
+    {
+      "word": "consensus",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. fikir birliği, uzlaşma",
+        "ex": "There is broad scientific consensus that human activity is the main driver of climate change.",
+        "exTr": "İnsan faaliyetlerinin iklim değişikliğinin başlıca nedeni olduğu konusunda geniş bir bilimsel fikir birliği vardır."
+      },
+      "alternatives": [
+        {
+          "ex": "The panel reached a consensus on the main priorities while acknowledging that members still disagreed about the best order for implementing them.",
+          "exTr": "Kurul, üyelerin bunları uygulamak için en iyi sıra konusunda hâlâ anlaşamadığını kabul ederken temel öncelikler üzerinde fikir birliğine vardı."
+        }
+      ]
+    },
+    {
+      "word": "consequent",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. sonucunda ortaya çıkan; -e bağlı",
+        "ex": "Heavy rainfall and the consequent flooding damaged hundreds of homes along the riverbank.",
+        "exTr": "Şiddetli yağmur ve bunun sonucunda ortaya çıkan sel, nehir kıyısındaki yüzlerce evi hasara uğrattı."
+      },
+      "alternatives": [
+        {
+          "ex": "The closure of the repair workshop and the consequent loss of local expertise made routine maintenance more difficult for nearby farms.",
+          "exTr": "Onarım atölyesinin kapanması ve bunun sonucunda yerel uzmanlığın kaybedilmesi, yakındaki çiftlikler için rutin bakımı güçleştirdi."
+        }
+      ]
+    },
+    {
+      "word": "conservative",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. ölçülü, temkinli",
+        "ex": "Economists offered a conservative estimate of growth to avoid raising unrealistic public expectations.",
+        "exTr": "Ekonomistler, gerçekçi olmayan kamu beklentilerine yol açmamak için temkinli bir büyüme tahmini sundu."
+      },
+      "alternatives": [
+        {
+          "ex": "Using a conservative estimate of future demand, the planners proposed a facility that could be expanded if the initial projections proved too low.",
+          "exTr": "Planlamacılar, gelecekteki talep için temkinli bir tahmin kullanarak ilk öngörülerin fazla düşük çıkması durumunda genişletilebilecek bir tesis önerdi."
+        }
+      ]
+    },
+    {
+      "word": "considerable",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. hatırı sayılır, önemli, epey",
+        "ex": "The renovation project required a considerable amount of funding from both public and private sources.",
+        "exTr": "Yenileme projesi, hem kamu hem de özel kaynaklardan hatırı sayılır miktarda finansman gerektirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "There was considerable variation within each age group, suggesting that age alone could not account for the differences observed in performance.",
+          "exTr": "Her yaş grubu içinde önemli ölçüde değişkenlik vardı; bu da performansta gözlenen farklılıkları yaşın tek başına açıklayamayacağını düşündürdü."
+        }
+      ]
+    },
+    {
+      "word": "considered",
+      "sense_index": 1,
+      "expected": {
+        "tr": "s. dikkatle tartılmış, özenli",
+        "ex": "The panel published a carefully considered response to the criticisms raised in the earlier report.",
+        "exTr": "Kurul, önceki raporda dile getirilen eleştirilere karşı dikkatle tartılmış bir yanıt yayımladı."
+      },
+      "alternatives": [
+        {
+          "ex": "A considered response to criticism should distinguish errors that require correction from disagreements about assumptions that remain open to debate.",
+          "exTr": "Eleştiriye verilecek dikkatle tartılmış bir yanıt, düzeltilmesi gereken hataları tartışmaya açık kalan varsayımlar hakkındaki görüş ayrılıklarından ayırmalıdır."
+        }
+      ]
+    },
+    {
+      "word": "consistently",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. tutarlı biçimde, sürekli olarak",
+        "ex": "The laboratory results consistently showed higher pollution levels near the industrial zone.",
+        "exTr": "Laboratuvar sonuçları, sanayi bölgesi yakınında tutarlı biçimde daha yüksek kirlilik düzeyleri gösterdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The same assessment criteria must be applied consistently across departments if students' results are to be compared fairly.",
+          "exTr": "Öğrenci sonuçları adil biçimde karşılaştırılacaksa aynı değerlendirme ölçütleri bütün bölümlerde tutarlı biçimde uygulanmalıdır."
+        }
+      ]
+    },
+    {
+      "word": "consolidation",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. birleşme, birleştirme, güçlendirme",
+        "ex": "The consolidation of several small firms into a single corporation reduced competition in the sector and eventually pushed consumer prices upwards.",
+        "exTr": "Birkaç küçük firmanın tek bir şirket çatısı altında birleşmesi sektördeki rekabeti azalttı ve sonunda tüketici fiyatlarını yukarı çekti."
+      },
+      "alternatives": [
+        {
+          "ex": "The consolidation of several purchasing systems reduced duplicated work, although departments needed time to agree on a common set of procedures.",
+          "exTr": "Birkaç satın alma sisteminin birleştirilmesi yinelenen işleri azalttı; ancak bölümlerin ortak bir yöntemler bütünü üzerinde anlaşmak için zamana ihtiyacı oldu."
+        }
+      ]
+    },
+    {
+      "word": "constantly",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. sürekli, devamlı",
+        "ex": "Climate scientists constantly update their models as new data becomes available.",
+        "exTr": "İklim bilimciler, yeni veriler elde edildikçe modellerini sürekli günceller."
+      },
+      "alternatives": [
+        {
+          "ex": "The software constantly records temperature changes, producing a detailed series that can reveal fluctuations missed by occasional manual readings.",
+          "exTr": "Yazılım sıcaklık değişikliklerini sürekli kaydederek ara sıra yapılan elle ölçümlerin kaçırdığı dalgalanmaları ortaya çıkarabilecek ayrıntılı bir veri dizisi oluşturuyor."
+        }
+      ]
+    },
+    {
+      "word": "constitute",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. oluşturmak, teşkil etmek",
+        "ex": "Renewable sources now constitute nearly a third of the country's total electricity supply.",
+        "exTr": "Yenilenebilir kaynaklar, artık ülkenin toplam elektrik arzının neredeyse üçte birini oluşturuyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The surviving letters constitute an important source of evidence, but they reflect the concerns of only a limited section of the population.",
+          "exTr": "Günümüze ulaşan mektuplar önemli bir kanıt kaynağı oluşturuyor; ancak nüfusun yalnızca sınırlı bir kesiminin kaygılarını yansıtıyor."
+        }
+      ]
+    },
+    {
+      "word": "constraint",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kısıtlama, sınırlama",
+        "ex": "Budget constraints forced the research team to postpone several planned experiments until next year.",
+        "exTr": "Bütçe kısıtlamaları, araştırma ekibini planlanan birkaç deneyi gelecek yıla ertelemek zorunda bıraktı."
+      },
+      "alternatives": [
+        {
+          "ex": "Limited access to reliable transport was the main constraint on participation, even after the organisers reduced the cost of the course.",
+          "exTr": "Organizatörler kurs ücretini düşürdükten sonra bile güvenilir ulaşıma erişimin sınırlı olması katılımın önündeki başlıca kısıtlamaydı."
+        }
+      ]
+    },
+    {
+      "word": "constructive",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yapıcı, olumlu",
+        "ex": "Teachers were encouraged to offer constructive feedback rather than simply pointing out mistakes.",
+        "exTr": "Öğretmenler, sadece hataları belirtmek yerine yapıcı geri bildirim vermeye teşvik edildi."
+      },
+      "alternatives": [
+        {
+          "ex": "The meeting became more constructive once participants began suggesting workable alternatives instead of repeating objections that had already been recorded.",
+          "exTr": "Katılımcılar daha önce kayda geçirilmiş itirazları tekrarlamak yerine uygulanabilir alternatifler önermeye başlayınca toplantı daha yapıcı hâle geldi."
+        }
+      ]
+    },
+    {
+      "word": "consult",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. danışmak, başvurmak",
+        "ex": "Patients experiencing unusual symptoms should consult a doctor as soon as possible.",
+        "exTr": "Alışılmadık belirtiler yaşayan hastalar, mümkün olan en kısa sürede bir doktora danışmalıdır."
+      },
+      "alternatives": [
+        {
+          "ex": "Before changing the access arrangements, the university will consult students who use mobility aids and staff responsible for maintaining the building.",
+          "exTr": "Üniversite, erişim düzenlemelerini değiştirmeden önce hareket yardımcıları kullanan öğrencilere ve binanın bakımından sorumlu personele danışacak."
+        }
+      ]
+    },
+    {
+      "word": "consumable",
+      "sense_index": 1,
+      "expected": {
+        "tr": "s. kullanıldıkça tükenen; sarf edilebilir",
+        "ex": "Gloves, filters and testing strips are consumable supplies that laboratories must replace regularly.",
+        "exTr": "Eldivenler, filtreler ve test şeritleri laboratuvarların düzenli olarak yenilemesi gereken sarf malzemeleridir."
+      },
+      "alternatives": [
+        {
+          "ex": "The budget distinguishes durable equipment from consumable materials so that the laboratory can estimate recurring costs more accurately.",
+          "exTr": "Bütçe, laboratuvarın tekrarlanan maliyetleri daha doğru tahmin edebilmesi için dayanıklı ekipmanı sarf malzemelerinden ayırıyor."
+        }
+      ]
+    },
+    {
+      "word": "consumer",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. tüketici",
+        "ex": "New labeling rules help the average consumer identify hidden sugar in packaged food.",
+        "exTr": "Yeni etiketleme kuralları, ortalama bir tüketicinin paketli gıdadaki gizli şekeri fark etmesine yardımcı olur."
+      },
+      "alternatives": [
+        {
+          "ex": "The consumer survey explored whether repair information influenced purchasing decisions as strongly as price and the appearance of the product.",
+          "exTr": "Tüketici anketi, onarım bilgilerinin satın alma kararlarını fiyat ve ürünün görünüşü kadar güçlü biçimde etkileyip etkilemediğini araştırdı."
+        }
+      ]
+    },
+    {
+      "word": "consumption",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. tüketim",
+        "ex": "Excessive consumption of sugar has been linked to obesity and heart disease.",
+        "exTr": "Aşırı şeker tüketimi, obezite ve kalp hastalığıyla ilişkilendirilmiştir."
+      },
+      "alternatives": [
+        {
+          "ex": "Water consumption fell after leaks were repaired, although further monitoring was needed to separate this effect from changes in seasonal demand.",
+          "exTr": "Sızıntılar onarıldıktan sonra su tüketimi düştü; ancak bu etkiyi mevsimsel talepteki değişikliklerden ayırmak için ek izleme gerekti."
+        }
+      ]
+    },
+    {
+      "word": "contain",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. içermek",
+        "ex": "The final report contains several statistical errors that seriously undermine its overall credibility.",
+        "exTr": "Nihai rapor, genel güvenilirliğini ciddi biçimde zedeleyen birkaç istatistiksel hata içermektedir."
+      },
+      "alternatives": [
+        {
+          "ex": "The appendix contains detailed descriptions of the methods that would interrupt the argument if included in the main text.",
+          "exTr": "Ek bölüm, ana metne dahil edilmesi hâlinde savın akışını kesecek yöntemlerin ayrıntılı açıklamalarını içeriyor."
+        }
+      ]
+    },
+    {
+      "word": "contaminate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. kirletmek; zararlı madde veya mikropla bulaştırmak",
+        "ex": "Untreated industrial waste can contaminate groundwater used by communities many kilometres downstream.",
+        "exTr": "Arıtılmamış sanayi atıkları, kilometrelerce aşağıdaki toplulukların kullandığı yer altı suyunu kirletebilir."
+      },
+      "alternatives": [
+        {
+          "ex": "Dust from nearby construction could contaminate the samples, so the team postponed collection until the immediate area had been assessed.",
+          "exTr": "Yakındaki inşaattan gelen toz örnekleri kirletebileceği için ekip, yakın çevre değerlendirilene kadar örnek toplamayı erteledi."
+        }
+      ]
+    },
+    {
+      "word": "contemplate",
+      "sense_index": 1,
+      "expected": {
+        "tr": "f. (yapmayı) düşünmek, tasarlamak, göze almak",
+        "ex": "Few governments are willing to contemplate the radical measures that climate scientists insist are necessary to limit global warming.",
+        "exTr": "Çok az hükümet, iklim bilimcilerin küresel ısınmayı sınırlamak için zorunlu gördüğü radikal önlemleri göze almaya yanaşıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The cooperative began to contemplate opening a second workshop after demand repeatedly exceeded what the existing facility could supply.",
+          "exTr": "Talep, mevcut tesisin sağlayabileceği miktarı tekrar tekrar aştıktan sonra kooperatif ikinci bir atölye açmayı düşünmeye başladı."
+        }
+      ]
+    },
+    {
+      "word": "contend",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. iddia etmek, savunmak; mücadele etmek",
+        "ex": "Many economists contend that rising interest rates will eventually slow inflation significantly.",
+        "exTr": "Birçok iktisatçı, yükselen faiz oranlarının sonunda enflasyonu önemli ölçüde yavaşlatacağını iddia ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The authors contend that a longer observation period is necessary because short-term improvements may not persist once external support is withdrawn.",
+          "exTr": "Yazarlar, dış destek çekildiğinde kısa vadeli iyileşmeler sürmeyebileceği için daha uzun bir gözlem süresinin gerekli olduğunu savunuyor."
+        }
+      ]
+    },
+    {
+      "word": "contention",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. iddia, sav",
+        "ex": "The report's central contention is that economic growth alone cannot guarantee improvements in public well-being.",
+        "exTr": "Raporun temel savı, ekonomik büyümenin tek başına kamu refahında iyileşme sağlayamayacağıdır."
+      },
+      "alternatives": [
+        {
+          "ex": "Her central contention is that access to equipment matters little unless users also receive training suited to their actual responsibilities.",
+          "exTr": "Onun temel savı, kullanıcılar gerçek sorumluluklarına uygun eğitim de almadıkça ekipmana erişimin pek az önem taşıdığıdır."
+        }
+      ]
+    },
+    {
+      "word": "context",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. bağlam; ortam, koşullar",
+        "ex": "Historical events can only be understood properly within the social and political context of their time.",
+        "exTr": "Tarihsel olaylar ancak kendi dönemlerinin sosyal ve siyasal bağlamı içinde doğru biçimde anlaşılabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "Placed in context, the apparently abrupt policy change followed several years of unsuccessful attempts to solve the same administrative problem.",
+          "exTr": "Bağlamı içinde ele alındığında, görünüşte ani olan politika değişikliği aynı idari sorunu çözmeye yönelik birkaç yıllık başarısız girişimi izliyordu."
+        }
+      ]
+    },
+    {
+      "word": "continent",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kıta",
+        "ex": "Antarctica remains the only continent without a permanent human population.",
+        "exTr": "Antarktika, kalıcı insan nüfusu bulunmayan tek kıta olmaya devam ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The exhibition follows the movement of crops across the continent, showing how trade linked regions with very different climates.",
+          "exTr": "Sergi, ticaretin çok farklı iklimlere sahip bölgeleri nasıl birbirine bağladığını göstererek tarım ürünlerinin kıta boyunca hareketini izliyor."
+        }
+      ]
+    },
+    {
+      "word": "continual",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. sürekli, aralıksız, devamlı",
+        "ex": "The engineers faced continual delays because of unpredictable weather conditions throughout the construction period.",
+        "exTr": "Mühendisler, inşaat süresi boyunca öngörülemeyen hava koşulları nedeniyle sürekli gecikmelerle karşılaştı."
+      },
+      "alternatives": [
+        {
+          "ex": "Continual revisions to the timetable made coordination difficult, particularly for staff who divided their time between several teaching sites.",
+          "exTr": "Ders programında sürekli yapılan değişiklikler, özellikle zamanını birkaç öğretim merkezi arasında bölen personel için koordinasyonu güçleştirdi."
+        }
+      ]
+    },
+    {
+      "word": "continue",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. devam etmek; sürdürmek",
+        "ex": "Global temperatures will continue to rise unless carbon emissions are cut drastically.",
+        "exTr": "Karbon emisyonları ciddi biçimde azaltılmadıkça küresel sıcaklıklar yükselmeye devam edecek."
+      },
+      "alternatives": [
+        {
+          "ex": "The team will continue collecting observations through the winter because measurements from warmer months cannot represent the full range of local conditions.",
+          "exTr": "Daha sıcak aylardaki ölçümler yerel koşulların bütün çeşitliliğini temsil edemeyeceği için ekip kış boyunca gözlem toplamayı sürdürecek."
+        }
+      ]
+    },
+    {
+      "word": "continuity",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. süreklilik, devamlılık",
+        "ex": "The company appointed an interim director to ensure continuity during the leadership transition.",
+        "exTr": "Şirket, liderlik geçişi sırasında sürekliliği sağlamak için geçici bir yönetici atadı."
+      },
+      "alternatives": [
+        {
+          "ex": "Detailed handover notes helped maintain continuity when the project coordinator changed, preventing useful experience from being lost between successive teams.",
+          "exTr": "Ayrıntılı devir notları, proje koordinatörü değiştiğinde sürekliliğin korunmasına yardımcı olarak yararlı deneyimin birbirini izleyen ekipler arasında kaybolmasını önledi."
+        }
+      ]
+    },
+    {
+      "word": "contour",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. dış hat, çevre çizgisi",
+        "ex": "Cartographers use contour lines on maps to represent changes in elevation across a landscape.",
+        "exTr": "Haritacılar, bir arazideki yükseklik değişimlerini göstermek için haritalarda eşyükselti çizgileri kullanır."
+      },
+      "alternatives": [
+        {
+          "ex": "The outer contour of the object remained visible in the scan, although damage had erased most of the details on its surface.",
+          "exTr": "Hasar, yüzeyindeki ayrıntıların çoğunu silmiş olsa da nesnenin dış hattı tarama görüntüsünde görünür kaldı."
+        }
+      ]
+    },
+    {
+      "word": "contradict",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. çelişmek, yalanlamak",
+        "ex": "The new archaeological evidence appears to contradict earlier theories about when humans first arrived.",
+        "exTr": "Yeni arkeolojik kanıtlar, insanların ilk ne zaman geldiğine dair önceki teorilerle çelişiyor gibi görünüyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The two accounts appear to contradict each other until the reader notices that they describe different stages of the same event.",
+          "exTr": "Okuyucu aynı olayın farklı evrelerini anlattıklarını fark edene kadar iki anlatım birbiriyle çelişiyor gibi görünüyor."
+        }
+      ]
+    },
+    {
+      "word": "contrarily",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. aksine, tersine, buna karşılık",
+        "ex": "Ancient societies valued gold for its rarity; contrarily, iron was regarded as an ordinary metal despite being far more useful in daily life.",
+        "exTr": "Eski toplumlar altını nadirliği yüzünden değerli görürdü; buna karşılık demir, günlük yaşamda çok daha yararlı olmasına rağmen sıradan bir metal sayılırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "One interpretation treats the silence as agreement; contrarily, the alternative account suggests that participants lacked an opportunity to express their objections.",
+          "exTr": "Bir yorum sessizliği kabul olarak ele alırken buna karşılık alternatif anlatım, katılımcıların itirazlarını dile getirme fırsatı bulamadığını öne sürüyor."
+        }
+      ],
+      "note": "Karşıtlık bildiren zarf anlamı ve contrarily to örüntüsü Cambridge ile doğrulandı; daha yaygın contrary to ile karıştırılmadı: https://dictionary.cambridge.org/dictionary/english/contrarily ."
+    },
+    {
+      "word": "contributing",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. katkıda bulunan; (bir soruna) yol açan, sebep olan",
+        "ex": "Poor sleep quality is often a contributing factor in reduced academic performance among students.",
+        "exTr": "Kötü uyku kalitesi, öğrenciler arasında düşen akademik başarıda çoğu zaman katkıda bulunan bir etkendir."
+      },
+      "alternatives": [
+        {
+          "ex": "The review identified unreliable transport as a contributing factor in staff turnover, rather than attributing every departure to dissatisfaction with pay.",
+          "exTr": "İnceleme, her ayrılığı ücret memnuniyetsizliğine bağlamak yerine personel değişimine katkıda bulunan bir etken olarak güvenilir olmayan ulaşımı belirledi."
+        }
+      ]
+    },
+    {
+      "word": "control",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. kontrol etmek",
+        "ex": "Public health officials struggled to control the outbreak before it spread to neighboring regions.",
+        "exTr": "Halk sağlığı yetkilileri, komşu bölgelere yayılmadan önce salgını kontrol altına almakta zorlandı."
+      },
+      "alternatives": [
+        {
+          "ex": "The experiment was designed to control temperature while allowing light levels to vary, making the separate effects easier to examine.",
+          "exTr": "Deney, ışık düzeylerinin değişmesine izin verirken sıcaklığı kontrol edecek biçimde tasarlandı; bu da ayrı etkilerin incelenmesini kolaylaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "controversial",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. tartışmalı, ihtilaflı",
+        "ex": "Genetic modification of crops remains a controversial issue among scientists, farmers, and consumers.",
+        "exTr": "Tarım ürünlerinde genetik değişiklik; bilim insanları, çiftçiler ve tüketiciler arasında tartışmalı bir konu olmaya devam ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The proposal remained controversial because its supporters and critics used different assumptions about how future demand would develop.",
+          "exTr": "Destekleyenler ve eleştirenler gelecekteki talebin nasıl gelişeceği hakkında farklı varsayımlar kullandığı için öneri tartışmalı kalmaya devam etti."
+        }
+      ]
+    },
+    {
+      "word": "convene",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. toplanmak; toplantıya çağırmak",
+        "ex": "Delegates from forty countries will convene next month to discuss new measures against ocean pollution.",
+        "exTr": "Kırk ülkeden gelen delegeler, okyanus kirliliğine karşı yeni önlemleri görüşmek için gelecek ay toplanacak."
+      },
+      "alternatives": [
+        {
+          "ex": "The university will convene a panel of independent reviewers to examine the project before deciding whether to extend its funding.",
+          "exTr": "Üniversite, finansmanını uzatıp uzatmayacağına karar vermeden önce projeyi incelemek üzere bağımsız değerlendiricilerden oluşan bir kurul toplayacak."
+        }
+      ]
+    },
+    {
+      "word": "conveniently",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. uygun biçimde, elverişli şekilde",
+        "ex": "The new subway station is conveniently located just a short walk from the university campus.",
+        "exTr": "Yeni metro istasyonu, üniversite kampüsüne kısa bir yürüyüş mesafesinde uygun biçimde konumlanmıştır."
+      },
+      "alternatives": [
+        {
+          "ex": "The booking system conveniently displays available rooms beside their equipment lists, reducing the need to consult several separate documents.",
+          "exTr": "Rezervasyon sistemi, uygun odaları donanım listelerinin yanında pratik biçimde göstererek birkaç ayrı belgeye başvurma gereğini azaltıyor."
+        }
+      ]
+    },
+    {
+      "word": "conventionally",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. geleneksel veya alışılmış biçimde",
+        "ex": "The disease was conventionally treated with antibiotics.",
+        "exTr": "Hastalık geleneksel olarak antibiyotiklerle tedavi ediliyordu."
+      },
+      "alternatives": [
+        {
+          "ex": "The artists used materials conventionally associated with industrial production, challenging visitors to reconsider the boundaries between manufacturing and sculpture.",
+          "exTr": "Sanatçılar, geleneksel olarak sanayi üretimiyle ilişkilendirilen malzemeleri kullanarak ziyaretçileri imalat ile heykel arasındaki sınırları yeniden düşünmeye yöneltti."
+        }
+      ]
+    },
+    {
+      "word": "convergent",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. farklı yönlerden aynı noktaya veya sonuca yaklaşan; yakınsak",
+        "ex": "Convergent evidence from genetics, archaeology and linguistics strengthened the proposed account of early migration.",
+        "exTr": "Genetik, arkeoloji ve dil biliminden gelen birbirini destekleyen kanıtlar erken göçe ilişkin önerilen açıklamayı güçlendirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "Convergent results from interviews and classroom observations increased confidence in the conclusion, despite differences in how the two methods recorded behaviour.",
+          "exTr": "İki yöntemin davranışı kaydetme biçimlerindeki farklılıklara rağmen görüşmelerden ve sınıf gözlemlerinden elde edilen birbirini destekleyen sonuçlar, varılan sonuca güveni artırdı."
+        }
+      ]
+    }
+  ],
+  "collocations": [
+    {
+      "word": "conducting",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "conducting interviews",
+          "tr": "görüşmeler yürütme"
+        },
+        {
+          "en": "conducting an investigation",
+          "tr": "bir soruşturma yürütme"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "cone",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a pine cone",
+          "tr": "çam kozalağı"
+        },
+        {
+          "en": "a mature cone",
+          "tr": "olgunlaşmış bir kozalak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "congratulations",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "offer congratulations",
+          "tr": "tebriklerini sunmak"
+        },
+        {
+          "en": "sincere congratulations",
+          "tr": "içten tebrikler"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "consumable",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "consumable supplies",
+          "tr": "sarf malzemeleri"
+        },
+        {
+          "en": "consumable materials",
+          "tr": "kullanıldıkça tükenen malzemeler"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "contrarily",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "contrarily to expectations",
+          "tr": "beklentilerin aksine"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "conveniently",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "conveniently located",
+          "tr": "elverişli bir konumda bulunan"
+        },
+        {
+          "en": "conveniently arranged",
+          "tr": "kullanışlı biçimde düzenlenmiş"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

@@ -1,0 +1,660 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 1,
+    "input": "input-052.json"
+  },
+  "enrichments": [
+    {
+      "word": "won",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. (win fiilinin geçmişi) kazandı, elde etti",
+        "ex": "The scientist won an award for her climate research.",
+        "exTr": "Bilim insanı iklim araştırmasıyla bir ödül kazandı."
+      },
+      "alternatives": [
+        {
+          "ex": "The proposal won the committee's support only after its authors explained how they would evaluate outcomes that could not easily be expressed as numbers.",
+          "exTr": "Teklif, ancak yazarları sayılarla kolayca ifade edilemeyen sonuçları nasıl değerlendireceklerini açıkladıktan sonra kurulun desteğini kazandı."
+        }
+      ]
+    },
+    {
+      "word": "wonderfully",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. son derece iyi, güzel veya etkileyici biçimde",
+        "ex": "The restored wetland responded wonderfully, attracting birds that had not nested there for decades.",
+        "exTr": "Onarılan sulak alan olağanüstü biçimde karşılık verdi ve onlarca yıldır orada yuva yapmayan kuşları çekti."
+      },
+      "alternatives": [
+        {
+          "ex": "The restored recording captured the singer's voice wonderfully, preserving small changes in tone that earlier copies had obscured beneath background noise.",
+          "exTr": "Restore edilmiş kayıt, önceki kopyalarda arka plan gürültüsünün örttüğü küçük ton değişimlerini koruyarak şarkıcının sesini harika biçimde yansıttı."
+        }
+      ]
+    },
+    {
+      "word": "wooden",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. tahtadan, ahşap",
+        "ex": "Archaeologists carefully preserved the ancient wooden structure discovered beneath layers of volcanic ash.",
+        "exTr": "Arkeologlar, volkanik kül katmanlarının altında keşfedilen antik ahşap yapıyı özenle korudu."
+      },
+      "alternatives": [
+        {
+          "ex": "The wooden frame showed signs of repeated adjustment, suggesting that the instrument had been adapted to different uses rather than built for one fixed purpose.",
+          "exTr": "Ahşap çerçeve tekrar tekrar ayarlanmış olduğuna dair izler taşıyordu; bu da aletin tek bir sabit amaç için yapılmak yerine farklı kullanımlara uyarlandığını düşündürüyordu."
+        }
+      ]
+    },
+    {
+      "word": "wool",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yün, yapağı",
+        "ex": "Traditional sweaters woven from thick wool keep shepherds warm during harsh mountain winters.",
+        "exTr": "Kalın yünden dokunan geleneksel kazaklar, çobanları sert dağ kışlarında sıcak tutar."
+      },
+      "alternatives": [
+        {
+          "ex": "The researchers compared wool from several flocks before examining the finished textiles, keeping differences in raw material separate from differences caused by processing.",
+          "exTr": "Araştırmacılar bitmiş tekstil ürünlerini incelemeden önce birkaç sürüden alınan yünü karşılaştırarak ham madde farklarını işleme nedeniyle oluşan farklardan ayrı tuttu."
+        }
+      ]
+    },
+    {
+      "word": "word-of-mouth",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. ağızdan ağıza yayılan, sözlü",
+        "ex": "The small restaurant became popular almost entirely through word-of-mouth recommendations from satisfied customers.",
+        "exTr": "Küçük restoran, memnun müşterilerin ağızdan ağıza yayılan tavsiyeleri sayesinde neredeyse tamamen popüler hale geldi."
+      },
+      "alternatives": [
+        {
+          "ex": "The survey traced word-of-mouth information about the exhibition, asking visitors who had first mentioned it and whether that recommendation influenced their decision to attend.",
+          "exTr": "Anket, ziyaretçilere sergiden ilk kimin söz ettiğini ve bu tavsiyenin katılma kararlarını etkileyip etkilemediğini sorarak sergi hakkında kulaktan kulağa yayılan bilgilerin izini sürdü."
+        }
+      ]
+    },
+    {
+      "word": "work",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. çalışmak, işlemek",
+        "ex": "Engineers continue to work on more efficient battery designs to support renewable energy storage.",
+        "exTr": "Mühendisler, yenilenebilir enerji depolamayı desteklemek için daha verimli pil tasarımları üzerinde çalışmaya devam ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The two departments agreed to work together on the catalogue, combining detailed knowledge of individual objects with experience in making specialist information accessible.",
+          "exTr": "İki bölüm, tek tek nesnelere ilişkin ayrıntılı bilgiyi uzmanlık bilgisini erişilebilir kılma deneyimiyle birleştirerek katalog üzerinde birlikte çalışmayı kabul etti."
+        }
+      ]
+    },
+    {
+      "word": "work-in",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. üretimi sürdürerek yapılan protesto, iş bırakmama eylemi",
+        "ex": "Employees organized a work-in to protest the factory's sudden closure while keeping production running.",
+        "exTr": "Çalışanlar, üretimi sürdürerek fabrikanın ani kapanışını protesto etmek amacıyla iş bırakmama eylemi düzenledi."
+      },
+      "alternatives": [
+        {
+          "ex": "Reports of the work-in focused on continued production, while interviews with employees revealed disagreements about how long the protest could be sustained.",
+          "exTr": "İş bırakmama eylemine ilişkin haberler üretimin devamına odaklanırken çalışanlarla yapılan görüşmeler protestonun ne kadar sürdürülebileceği konusunda anlaşmazlıklar olduğunu ortaya koydu."
+        }
+      ]
+    },
+    {
+      "word": "working",
+      "sense_index": 2,
+      "expected": {
+        "tr": "s. (working definition) taslak, çalışma amaçlı",
+        "ex": "The committee adopted a working definition of poverty based on household income and access to basic services.",
+        "exTr": "Komite, hane geliri ve temel hizmetlere erişime dayalı olarak yoksulluğa ilişkin çalışma tanımını benimsedi."
+      },
+      "alternatives": [
+        {
+          "ex": "The team used a working definition of participation that included informal contributions, while leaving room to revise the category after analysing the interviews.",
+          "exTr": "Ekip, görüşmeleri analiz ettikten sonra kategoriyi değiştirmeye açık kapı bırakarak gayriresmî katkıları da içeren geçici bir katılım tanımı kullandı."
+        }
+      ]
+    },
+    {
+      "word": "workout",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. antrenman, egzersiz",
+        "ex": "A short workout every morning can noticeably improve concentration throughout the day.",
+        "exTr": "Her sabah yapılan kısa bir antrenman, gün boyu konsantrasyonu belirgin şekilde artırabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "Participants logged each workout alongside information about sleep and daily schedules, enabling the study to distinguish exercise sessions from other activities in their routines.",
+          "exTr": "Katılımcılar her antrenmanı uyku ve günlük program bilgileriyle birlikte kaydederek çalışmanın egzersiz seanslarını rutinlerindeki diğer etkinliklerden ayırmasını sağladı."
+        }
+      ]
+    },
+    {
+      "word": "workshop",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. çalıştay",
+        "ex": "The university organized a three-day workshop to train teachers in digital learning tools.",
+        "exTr": "Üniversite, öğretmenleri dijital öğrenme araçları konusunda eğitmek için üç günlük bir çalıştay düzenledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The workshop brought teachers and museum staff together to test activities that linked classroom questions with objects students could examine directly.",
+          "exTr": "Çalıştay, sınıftaki soruları öğrencilerin doğrudan inceleyebileceği nesnelerle ilişkilendiren etkinlikleri denemek için öğretmenleri ve müze personelini bir araya getirdi."
+        }
+      ]
+    },
+    {
+      "word": "world-wide",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. dünya çapında, küresel",
+        "ex": "The pandemic triggered a world-wide effort to develop and distribute effective vaccines quickly.",
+        "exTr": "Pandemi, etkili aşıları hızla geliştirmek ve dağıtmak için dünya çapında bir çaba başlattı."
+      },
+      "alternatives": [
+        {
+          "ex": "The exhibition drew on a world-wide network of archives, although differences in cataloguing practices made it difficult to identify related material across institutions.",
+          "exTr": "Sergi dünya çapında bir arşiv ağından yararlandı; ancak kataloglama uygulamalarındaki farklar kurumlar arasında ilişkili malzemeleri belirlemeyi zorlaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "worn-out",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yıpranmış, eskimiş; bitkin, tükenmiş",
+        "ex": "The hikers finally replaced their worn-out boots after the long mountain expedition.",
+        "exTr": "Yürüyüşçüler, uzun dağ seferinin ardından nihayet yıpranmış botlarını değiştirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The worn-out binding was retained beside the repaired volume because its materials offered evidence about earlier methods of book production and repair.",
+          "exTr": "Malzemeleri önceki kitap üretim ve onarım yöntemlerine ilişkin kanıt sunduğu için yıpranmış cilt kapağı onarılmış cildin yanında korundu."
+        }
+      ]
+    },
+    {
+      "word": "worse",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s./z. daha kötü",
+        "ex": "Air quality in the capital has grown considerably worse since the new factories began operating.",
+        "exTr": "Başkentteki hava kalitesi, yeni fabrikalar faaliyete geçtiğinden beri önemli ölçüde kötüleşti."
+      },
+      "alternatives": [
+        {
+          "ex": "Access became worse after the temporary entrance was moved, particularly for visitors who relied on clear signs to navigate an unfamiliar building.",
+          "exTr": "Geçici giriş taşındıktan sonra erişim, özellikle tanımadıkları bir binada yolunu bulmak için açık levhalara ihtiyaç duyan ziyaretçiler açısından daha kötü hâle geldi."
+        }
+      ]
+    },
+    {
+      "word": "worst",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s./z. en kötü",
+        "ex": "The drought of 1936 was among the worst environmental disasters in the nation's recorded history.",
+        "exTr": "1936 kuraklığı, ülkenin kayıtlı tarihindeki en kötü çevre felaketleri arasındaydı."
+      },
+      "alternatives": [
+        {
+          "ex": "The worst results occurred when participants received contradictory instructions, suggesting that confusion about the task mattered more than lack of familiarity with the equipment.",
+          "exTr": "En kötü sonuçlar katılımcılara çelişkili yönergeler verildiğinde ortaya çıktı; bu, göreve ilişkin karışıklığın ekipmana aşina olmamaktan daha önemli olduğunu düşündürüyordu."
+        }
+      ]
+    },
+    {
+      "word": "worthy",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. değerli, layık; worthy of = -e layık, değer",
+        "ex": "The proposal is worthy of serious consideration.",
+        "exTr": "Öneri ciddi biçimde değerlendirilmeye layıktır."
+      },
+      "alternatives": [
+        {
+          "ex": "Even an incomplete account may be worthy of attention if it preserves details that more polished descriptions omit or treat as unimportant.",
+          "exTr": "Daha özenli anlatımların atladığı veya önemsiz saydığı ayrıntıları koruyorsa eksik bir anlatım bile dikkate değer olabilir."
+        }
+      ]
+    },
+    {
+      "word": "would prefer to",
+      "sense_index": 0,
+      "expected": {
+        "tr": "yapmayı tercih etmek; daha açık veya resmî tercih bildirmek",
+        "ex": "Many participants would prefer to receive the questionnaire electronically rather than by post.",
+        "exTr": "Birçok katılımcı anketi posta yerine elektronik olarak almayı tercih eder."
+      },
+      "alternatives": [
+        {
+          "ex": "The curator would prefer to display fewer objects with fuller explanations rather than fill every available surface with material visitors had little time to examine.",
+          "exTr": "Küratör, mevcut her yüzeyi ziyaretçilerin incelemeye pek vakti olmayan malzemeyle doldurmak yerine daha az nesneyi daha kapsamlı açıklamalarla sergilemeyi tercih ederdi."
+        }
+      ]
+    },
+    {
+      "word": "would-be",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. müstakbel, olmaya çalışan; sözde",
+        "ex": "Several would-be entrepreneurs abandoned their startups once venture capital funding became scarce.",
+        "exTr": "Sermaye fonu bulmak zorlaşınca, girişimci olmaya çalışan birçok kişi start-up'larından vazgeçti."
+      },
+      "alternatives": [
+        {
+          "ex": "The course asked would-be translators to justify their choices, emphasising that a plausible sentence still needed to preserve the meaning and tone of the original.",
+          "exTr": "Kurs, makul görünen bir cümlenin yine de özgün metnin anlamını ve tonunu koruması gerektiğini vurgulayarak çevirmen adaylarından tercihlerini gerekçelendirmelerini istedi."
+        }
+      ]
+    },
+    {
+      "word": "woven",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. dokunmuş, örülmüş, iç içe geçmiş",
+        "ex": "The museum displays finely woven textiles whose intricate patterns reveal how migrating communities preserved their traditions over several centuries.",
+        "exTr": "Müze, karmaşık desenleri göç eden toplulukların geleneklerini yüzyıllar boyunca nasıl koruduğunu ortaya koyan, ince dokunmuş tekstil ürünlerini sergiliyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The woven basket retained the impression of its contents, allowing researchers to consider how the container had been used as well as how it was made.",
+          "exTr": "Örülmüş sepet içindekilerin izini koruyordu; bu da araştırmacıların kabın nasıl yapıldığının yanı sıra nasıl kullanıldığını da değerlendirmesini sağladı."
+        }
+      ]
+    },
+    {
+      "word": "wright",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. usta, yapımcı (genellikle bileşik sözcüklerde: playwright, shipwright)",
+        "ex": "In medieval guild records, a wright was any skilled craftsman who built or repaired tools.",
+        "exTr": "Ortaçağ lonca kayıtlarında wright, alet yapan veya onaran herhangi bir usta zanaatkâr anlamına gelirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The household accounts mention payments to a wright for repairing wooden fittings, revealing maintenance work that the family's formal correspondence never discussed.",
+          "exTr": "Ev hesapları ahşap donanımları onarması için bir ustaya yapılan ödemelerden söz ederek ailenin resmî yazışmalarında hiç ele alınmayan bakım işlerini ortaya koyuyor."
+        }
+      ],
+      "note": "Bağımsız wright bugün seyrektir, tarihsel hesap bağlamı kullanıldı; https://www.collinsdictionary.com/us/dictionary/english/wright ."
+    },
+    {
+      "word": "write-down",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. (muhasebe) değer düşüklüğü kaydı",
+        "ex": "The bank announced a significant write-down on its property holdings following the sudden market downturn.",
+        "exTr": "Banka, ani piyasa gerilemesinin ardından gayrimenkul varlıklarında önemli bir değer düşüklüğü kaydı açıkladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The report explained the write-down separately from operating costs so that readers could see why the recorded value of the equipment had changed.",
+          "exTr": "Rapor, okuyucuların ekipmanın kayıtlı değerinin neden değiştiğini görebilmesi için değer düşüklüğü kaydını işletme maliyetlerinden ayrı açıkladı."
+        }
+      ]
+    },
+    {
+      "word": "writer",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yazar",
+        "ex": "The writer spent nearly a decade researching the history of the ancient trade routes.",
+        "exTr": "Yazar, antik ticaret yollarının tarihini araştırmak için neredeyse on yıl harcadı."
+      },
+      "alternatives": [
+        {
+          "ex": "The writer acknowledged uncertainty where the sources disagreed, allowing readers to distinguish a well-supported conclusion from an interpretation that remained open to revision.",
+          "exTr": "Yazar, kaynakların çeliştiği yerlerde belirsizliği kabul ederek okuyucuların iyi desteklenmiş bir sonucu değişikliğe açık kalan bir yorumdan ayırmasını sağladı."
+        }
+      ]
+    },
+    {
+      "word": "wrong",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yanlış",
+        "ex": "Investigators concluded that a wrong assumption about wind speed contributed to the aircraft's crash.",
+        "exTr": "Soruşturmacılar, rüzgâr hızına ilişkin yanlış bir varsayımın uçağın düşmesine katkıda bulunduğu sonucuna vardı."
+      },
+      "alternatives": [
+        {
+          "ex": "The wrong date had been copied into several later catalogues, showing how a minor error could acquire apparent authority through repeated citation.",
+          "exTr": "Yanlış tarih daha sonraki birkaç kataloğa kopyalanmıştı; bu, küçük bir hatanın tekrar tekrar alıntılanarak nasıl görünürde güvenilirlik kazanabileceğini gösteriyordu."
+        }
+      ]
+    },
+    {
+      "word": "wrought",
+      "sense_index": 1,
+      "expected": {
+        "tr": "f. (work fiilinin eski biçimi) meydana getirmiş, yol açmış, gerçekleştirmiş",
+        "ex": "The invention of the printing press wrought profound changes in the way knowledge was stored and transmitted across Europe.",
+        "exTr": "Matbaanın icadı, bilginin Avrupa genelinde saklanma ve aktarılma biçiminde köklü değişiklikler meydana getirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The reorganisation wrought lasting changes in how the archive served readers, replacing separate departmental lists with a shared system that staff continued to refine.",
+          "exTr": "Yeniden düzenleme, ayrı bölüm listelerinin yerine personelin geliştirmeye devam ettiği ortak bir sistem getirerek arşivin okuyuculara hizmet verme biçiminde kalıcı değişiklikler yarattı."
+        }
+      ]
+    },
+    {
+      "word": "yard",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. avlu, bahçe",
+        "ex": "Archaeologists uncovered a paved yard behind the farmhouse where livestock had once been kept.",
+        "exTr": "Arkeologlar, çiftlik evinin arkasında bir zamanlar hayvanların tutulduğu taş döşeli bir avlu ortaya çıkardı."
+      },
+      "alternatives": [
+        {
+          "ex": "The narrow yard linked the workshop to the storehouse, explaining why goods could be moved between the two buildings without entering the public street.",
+          "exTr": "Dar avlu atölyeyi depoya bağlıyordu; bu da malların sokağa çıkmadan iki bina arasında neden taşınabildiğini açıklıyordu."
+        }
+      ]
+    },
+    {
+      "word": "year",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yıl, sene",
+        "ex": "The number of international students enrolling in the program has grown steadily every year.",
+        "exTr": "Programa kayıt yaptıran uluslararası öğrenci sayısı her yıl istikrarlı biçimde artıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The first year of observations established a baseline, against which the researchers planned to compare later changes rather than immediately claiming a long-term trend.",
+          "exTr": "İlk gözlem yılı bir başlangıç düzeyi oluşturdu; araştırmacılar hemen uzun vadeli bir eğilim iddia etmek yerine sonraki değişimleri bununla karşılaştırmayı planladı."
+        }
+      ]
+    },
+    {
+      "word": "yearly",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s./z. yıllık, her yıl (bir kez)",
+        "ex": "The museum hosts a yearly exhibition that showcases artwork from talented local and international artists.",
+        "exTr": "Müze, yetenekli yerel ve uluslararası sanatçıların eserlerini sergileyen yıllık bir sergiye ev sahipliği yapıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The yearly review included comments from former participants, ensuring that the programme was not evaluated solely through the experiences of those still attending.",
+          "exTr": "Yıllık inceleme, programın yalnızca katılmaya devam edenlerin deneyimleri üzerinden değerlendirilmemesini sağlayarak eski katılımcıların yorumlarını da içerdi."
+        }
+      ]
+    },
+    {
+      "word": "yeast",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. maya",
+        "ex": "Bakers rely on yeast to make bread dough rise before it goes into the oven.",
+        "exTr": "Fırıncılar, ekmek hamurunun fırına girmeden önce kabarması için mayaya güvenir."
+      },
+      "alternatives": [
+        {
+          "ex": "The class compared dough prepared with different amounts of yeast, keeping temperature and resting time constant so that the results could be interpreted more clearly.",
+          "exTr": "Sınıf, sonuçların daha açık yorumlanabilmesi için sıcaklığı ve dinlenme süresini sabit tutarak farklı miktarlarda mayayla hazırlanmış hamurları karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "yes-man",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. evet efendimci, yağcı, her dediğini onaylayan kişi",
+        "ex": "The new director refused to hire another yes-man and instead sought advisors who would challenge him.",
+        "exTr": "Yeni direktör, bir evet efendimci daha işe almayı reddetti ve bunun yerine kendisine karşı çıkabilecek danışmanlar aradı."
+      },
+      "alternatives": [
+        {
+          "ex": "The memoir describes the adviser as a yes-man, but private letters reveal occasions when he challenged the decisions he later defended in public.",
+          "exTr": "Anı kitabı danışmanı bir evet efendimci olarak tanımlıyor; ancak özel mektuplar daha sonra kamuoyu önünde savunduğu kararlara karşı çıktığı durumları ortaya koyuyor."
+        }
+      ]
+    },
+    {
+      "word": "yoga",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yoga",
+        "ex": "Regular yoga practice has been associated with lower stress levels, greater flexibility and a modest but measurable reduction in blood pressure.",
+        "exTr": "Düzenli yoga pratiği, daha düşük stres düzeyleri, daha fazla esneklik ve kan basıncında mütevazı ama ölçülebilir bir azalmayla ilişkilendirilmiştir."
+      },
+      "alternatives": [
+        {
+          "ex": "The evaluation asked newcomers why they had joined the yoga class, distinguishing interest in physical movement from expectations about relaxation or social contact.",
+          "exTr": "Değerlendirme, bedensel harekete duyulan ilgiyi gevşeme ya da sosyal iletişim beklentilerinden ayırarak yeni katılanlara yoga dersine neden geldiklerini sordu."
+        }
+      ]
+    },
+    {
+      "word": "you-drive",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kiralık araba (kendin kullan)",
+        "ex": "Before the trip, they rented a you-drive from a small agency near the airport.",
+        "exTr": "Yolculuktan önce, havaalanına yakın küçük bir acenteden kiralık bir araba tuttular."
+      },
+      "alternatives": [
+        {
+          "ex": "The old travel brochure advertised a you-drive for visitors who wished to explore the district independently rather than join the operator's organised excursions.",
+          "exTr": "Eski seyahat broşürü, işletmecinin düzenlediği gezilere katılmak yerine bölgeyi bağımsız keşfetmek isteyen ziyaretçiler için kendilerinin kullanacağı kiralık bir araba tanıtıyordu."
+        }
+      ],
+      "note": "Seyrek Amerikan kiralık araba ismi, tarihsel reklam bağlamında. WordWeb u-drive maddesi you-drive eşanlamını doğrular: https://www.wordwebonline.com/en/UDRIVE ."
+    },
+    {
+      "word": "youngster",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. genç, delikanlı, çocuk",
+        "ex": "The coach encouraged every youngster on the team to practice consistently, regardless of natural talent.",
+        "exTr": "Antrenör, doğal yetenekten bağımsız olarak takımdaki her genci düzenli çalışmaya teşvik etti."
+      },
+      "alternatives": [
+        {
+          "ex": "Each youngster in the workshop could choose an object to investigate, giving the educators insight into questions that adult-designed activities might not have anticipated.",
+          "exTr": "Atölyedeki her çocuk araştıracağı bir nesne seçebiliyordu; bu, eğitimcilere yetişkinlerin tasarladığı etkinliklerde öngörülmemiş olabilecek sorular hakkında fikir verdi."
+        }
+      ]
+    },
+    {
+      "word": "zenith",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. zirve, doruk noktası, en parlak dönem",
+        "ex": "The empire reached its zenith in the second century, when its territory stretched from the Atlantic coast to the Persian Gulf.",
+        "exTr": "İmparatorluk, topraklarının Atlantik kıyısından Basra Körfezi'ne kadar uzandığı ikinci yüzyılda zirvesine ulaştı."
+      },
+      "alternatives": [
+        {
+          "ex": "The exhibition traced the studio's influence from its uncertain beginnings to the zenith of its reputation, while also examining criticism overlooked by earlier accounts.",
+          "exTr": "Sergi, önceki anlatımların gözden kaçırdığı eleştirileri de inceleyerek stüdyonun etkisini belirsiz başlangıcından itibarının doruğuna kadar izledi."
+        }
+      ]
+    },
+    {
+      "word": "zone",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. bölge, kuşak",
+        "ex": "Authorities established a protected zone around the reef to allow marine life to recover.",
+        "exTr": "Yetkililer, deniz yaşamının kendini toparlayabilmesi için resifin çevresinde korunan bir bölge oluşturdu."
+      },
+      "alternatives": [
+        {
+          "ex": "The survey divided the site into a central zone and several outer areas, recording differences that a single overall description would have concealed.",
+          "exTr": "Araştırma alanı merkezî bir bölgeye ve birkaç dış kesime ayırarak tek bir genel açıklamanın gizleyeceği farkları kaydetti."
+        }
+      ]
+    }
+  ],
+  "collocations": [
+    {
+      "word": "won",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "won approval",
+          "tr": "onay kazandı"
+        },
+        {
+          "en": "won a contract",
+          "tr": "bir sözleşme elde etti"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "wonderfully",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "work wonderfully",
+          "tr": "harika biçimde işlemek"
+        },
+        {
+          "en": "wonderfully clear",
+          "tr": "son derece berrak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "wooden",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a wooden frame",
+          "tr": "ahşap çerçeve"
+        },
+        {
+          "en": "a wooden expression",
+          "tr": "donuk bir yüz ifadesi"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "workout",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a regular workout",
+          "tr": "düzenli antrenman"
+        },
+        {
+          "en": "complete a workout",
+          "tr": "antrenmanı tamamlamak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "worn-out",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "worn-out equipment",
+          "tr": "yıpranmış ekipman"
+        },
+        {
+          "en": "feel worn out",
+          "tr": "kendini bitkin hissetmek"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "would prefer to",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "would prefer to wait",
+          "tr": "beklemeyi tercih ederdi"
+        },
+        {
+          "en": "would prefer to remain",
+          "tr": "kalmayı tercih ederdi"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "wright",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a skilled wright",
+          "tr": "becerikli bir yapım ustası"
+        },
+        {
+          "en": "a local wright",
+          "tr": "yerel bir yapım ustası"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "yes-man",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "surround oneself with yes-men",
+          "tr": "etrafını evet efendimcilerle doldurmak"
+        },
+        {
+          "en": "be regarded as a yes-man",
+          "tr": "evet efendimci olarak görülmek"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "you-drive",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "hire a you-drive",
+          "tr": "kendi kullanacağı bir araba kiralamak"
+        },
+        {
+          "en": "a you-drive car",
+          "tr": "müşterinin kendisinin kullandığı kiralık araba"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "youngster",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "an enthusiastic youngster",
+          "tr": "hevesli bir genç veya çocuk"
+        },
+        {
+          "en": "a group of youngsters",
+          "tr": "bir grup genç veya çocuk"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

@@ -3,6 +3,33 @@
   "aciklama": "PDF kaynak denetimi ve yetkili sözlük doğrulamasıyla düzeltilen kelime başlıkları. Eskiler alanı ilerleme göçünün, ilerleme_kimligi alanı ise öbeklerle çakışan kelime kartlarının iç kimliğinin tek kaynağıdır.",
   "duzeltmeler": [
     {
+      "eskiler": ["stone-face"],
+      "yeni": "stone face",
+      "tip": "isim",
+      "puan_kaynak_basligi": "stone-face",
+      "anlamlar": [{"tr":"i. taş gibi anlamsız yüz ifadesi","ex":"Despite the shocking announcement, the negotiator kept a stone-face throughout the entire meeting.","exTr":"Şok edici açıklamaya rağmen müzakereci, toplantı boyunca taş gibi bir yüz ifadesini korudu."}],
+      "kaynaklar": [],
+      "sozluk": "https://russian.cornell.edu/body/unaccented/LIT/LITLR15B.HTM",
+      "gerekce": "Mecazi isim öbeği stone face açık yazılır. Donuk/ifadesiz anlamı ve doğal örnek ayrıca tam eski-metin korumalı kart içerik düzeltmesinde uygulanır. Eski öğrenme kimliği alias, önceki öncelik puanı kaynak başlığıyla korunur."
+    },
+    {
+      "eskiler": ["alexander"],
+      "yeni": "alexanders",
+      "tip": "isim",
+      "puan_kaynak_basligi": "alexander",
+      "anlamlar": [
+        {
+          "tr": "i. bir tür kereviz benzeri bitki",
+          "ex": "Foragers sometimes gather wild alexanders along the coastline and cook its stems like celery.",
+          "exTr": "Yiyecek toplayıcıları, bazen kıyı boyunca yabani alexanders otu toplar ve sapını kereviz gibi pişirir."
+        }
+      ],
+      "kaynaklar": [],
+      "sozluk": "https://www.collinsdictionary.com/dictionary/english/alexanders",
+      "ek_kaynaklar": ["https://www.rhs.org.uk/plants/17434/smyrnium-olusatrum/details"],
+      "gerekce": "Mevcut bitki anlamının standart başlığı alexanders olmalıdır. Eski kimlik arama ve öğrenme kayıtları için alias olarak korunur. Öncelik puanı eski başlıktan devralınır; bu aktarım bitki anlamının sınavlarda geçtiğine ilişkin yeni bir iddia değildir."
+    },
+    {
       "eskiler": [
         "hand-down",
         "handed-down"

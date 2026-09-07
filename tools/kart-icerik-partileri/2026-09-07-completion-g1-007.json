@@ -1,0 +1,1108 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 1,
+    "input": "input-007.json"
+  },
+  "enrichments": [
+    {
+      "word": "buyer",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. alıcı, müşteri",
+        "ex": "The company found a foreign buyer willing to purchase the entire factory despite its outdated equipment.",
+        "exTr": "Şirket, eski ekipmanına rağmen tüm fabrikayı satın almaya istekli yabancı bir alıcı buldu."
+      },
+      "alternatives": [
+        {
+          "ex": "A potential buyer requested independent evidence of the equipment's condition before agreeing to the supplier's proposed price.",
+          "exTr": "Potansiyel bir alıcı, tedarikçinin önerdiği fiyatı kabul etmeden önce ekipmanın durumuna ilişkin bağımsız kanıt istedi."
+        }
+      ]
+    },
+    {
+      "word": "buzzer",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sinyal zili, vızıldayan alarm",
+        "ex": "The referee's buzzer signaled the end of the first half just as the crowd began to cheer.",
+        "exTr": "Hakemin sinyal zili, seyirci tezahürat etmeye başlarken ilk yarının bitişini bildirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "A buzzer sounded whenever the participant pressed the wrong key, providing immediate feedback during the learning task.",
+          "exTr": "Katılımcı yanlış tuşa her bastığında bir sinyal zili çalarak öğrenme görevi sırasında anında geri bildirim sağladı."
+        }
+      ]
+    },
+    {
+      "word": "by-line",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yazar satırı (gazete/dergi makalesinde)",
+        "ex": "The editor insisted on adding a by-line so readers would know who wrote the investigative report.",
+        "exTr": "Editör, okuyucuların araştırma haberini kimin yazdığını bilmesi için bir yazar satırı eklenmesinde ısrar etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The by-line identifies both journalists, acknowledging that the investigation depended on their combined reporting rather than a single author's work.",
+          "exTr": "Yazar satırı her iki gazeteciyi de belirterek araştırmanın tek bir yazarın çalışmasına değil, ortak haberciliklerine dayandığını teslim ediyor."
+        }
+      ]
+    },
+    {
+      "word": "cabbage",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. lahana",
+        "ex": "Farmers stored large heads of cabbage in the cellar to keep them fresh through winter.",
+        "exTr": "Çiftçiler, kışın boyunca taze kalmalarını sağlamak için büyük lahana başlarını kilerde sakladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The growers compared several cabbage varieties to determine which could remain marketable after a longer journey to urban retailers.",
+          "exTr": "Yetiştiriciler, kentlerdeki perakendecilere yapılan daha uzun bir yolculuktan sonra hangilerinin satılabilir durumda kalacağını belirlemek için birkaç lahana çeşidini karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "cache",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. önbellek (bilgisayar)",
+        "ex": "Clearing the browser cache frees up storage space and often solves problems caused by outdated versions of a web page.",
+        "exTr": "Tarayıcı önbelleğini temizlemek depolama alanı açar ve çoğu zaman bir web sayfasının güncel olmayan sürümlerinden kaynaklanan sorunları çözer."
+      },
+      "alternatives": [
+        {
+          "ex": "Storing frequently requested images in a cache reduced unnecessary downloads, although the developers still needed a way to refresh outdated files.",
+          "exTr": "Sık istenen görüntüleri önbellekte saklamak gereksiz indirmeleri azalttı; ancak geliştiricilerin güncelliğini yitiren dosyaları yenileyecek bir yönteme hâlâ ihtiyacı vardı."
+        }
+      ]
+    },
+    {
+      "word": "cage",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kafes",
+        "ex": "Zookeepers moved the injured eagle into a spacious cage for careful observation.",
+        "exTr": "Hayvanat bahçesi görevlileri, yaralı kartalı dikkatli gözlem için geniş bir kafese taşıdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The rehabilitation centre designed a larger cage that allowed the recovering bird to move without approaching visitors too closely.",
+          "exTr": "Rehabilitasyon merkezi, iyileşmekte olan kuşun ziyaretçilere fazla yaklaşmadan hareket etmesine olanak tanıyan daha büyük bir kafes tasarladı."
+        }
+      ]
+    },
+    {
+      "word": "calcified",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kireçlenmiş, taşlaşmış, kalsiyum birikmiş",
+        "ex": "Researchers found calcified remains of birds along the shore, preserved almost perfectly by the mineral-rich water of the lake.",
+        "exTr": "Araştırmacılar kıyı boyunca, gölün mineral bakımından zengin suyu sayesinde neredeyse kusursuz biçimde korunmuş kireçlenmiş kuş kalıntıları buldu."
+      },
+      "alternatives": [
+        {
+          "ex": "The team used imaging equipment to examine the calcified tissue without damaging the specimen needed for subsequent analysis.",
+          "exTr": "Ekip, daha sonraki analiz için gerekli örneğe zarar vermeden kalsiyum birikmiş dokuyu incelemek için görüntüleme ekipmanı kullandı."
+        }
+      ]
+    },
+    {
+      "word": "calculated",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. hesaplı, önceden düşünülmüş, planlı",
+        "ex": "The company launched a calculated marketing campaign designed to attract younger consumers during the recession.",
+        "exTr": "Şirket, durgunluk döneminde daha genç tüketicileri çekmek için hesaplı bir pazarlama kampanyası başlattı."
+      },
+      "alternatives": [
+        {
+          "ex": "Opening the factory in a less familiar market was a calculated risk based on extensive consultation with potential customers.",
+          "exTr": "Fabrikayı daha az tanınan bir pazarda açmak, potansiyel müşterilerle yapılan kapsamlı görüşmelere dayanan hesaplanmış bir riskti."
+        }
+      ]
+    },
+    {
+      "word": "calculus",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kalkülüs (matematik)",
+        "ex": "Engineering students must complete an advanced calculus course before beginning their thesis research.",
+        "exTr": "Mühendislik öğrencilerinin, tez araştırmalarına başlamadan önce ileri düzey bir kalkülüs dersini tamamlaması gerekir."
+      },
+      "alternatives": [
+        {
+          "ex": "The lecturer used calculus to show how a model could describe changes in a reservoir's water level over time.",
+          "exTr": "Öğretim görevlisi, bir modelin rezervuarın su seviyesindeki zamana bağlı değişiklikleri nasıl betimleyebileceğini göstermek için kalkülüs kullandı."
+        }
+      ]
+    },
+    {
+      "word": "call",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. çağırmak, çağrıda bulunmak",
+        "ex": "Environmental groups call for stricter regulations on industrial waste disposal in rivers.",
+        "exTr": "Çevre grupları, sanayi atıklarının nehirlere boşaltılmasına ilişkin daha sıkı düzenlemeler için çağrıda bulunuyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The committee called a special meeting to consider concerns that had not been addressed during the original consultation.",
+          "exTr": "Komite, ilk istişare sırasında ele alınmamış kaygıları değerlendirmek için özel bir toplantı çağrısı yaptı."
+        }
+      ]
+    },
+    {
+      "word": "call-out",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. acil çağrı, göreve çağırma",
+        "ex": "The mountain rescue team handled three emergency call-outs during the storm.",
+        "exTr": "Dağ kurtarma ekibi fırtına sırasında üç acil çağrıya müdahale etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The maintenance contract covers an emergency call-out, but routine inspections must be arranged separately with the service provider.",
+          "exTr": "Bakım sözleşmesi bir acil servis çağrısını kapsıyor; ancak rutin denetimler hizmet sağlayıcıyla ayrıca planlanmak zorunda."
+        }
+      ]
+    },
+    {
+      "word": "calm",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. sakin, durgun",
+        "ex": "Flight attendants are trained to remain calm and reassure passengers during unexpected emergencies.",
+        "exTr": "Kabin görevlileri, beklenmedik acil durumlarda sakin kalmak ve yolcuları rahatlatmak üzere eğitilir."
+      },
+      "alternatives": [
+        {
+          "ex": "A calm discussion of the evidence helped the group separate genuine disagreements from misunderstandings caused by ambiguous terminology.",
+          "exTr": "Kanıtların sakin biçimde tartışılması, grubun gerçek görüş ayrılıklarını belirsiz terimlerden kaynaklanan yanlış anlamalardan ayırmasına yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "calorific",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kalorili, ısı veren, kalori değeriyle ilgili",
+        "ex": "Engineers measure the calorific value of a fuel in order to determine how much heat it releases when a given quantity is burned.",
+        "exTr": "Mühendisler, belirli bir miktar yakıldığında ne kadar ısı açığa çıktığını belirlemek için bir yakıtın kalori değerini ölçer."
+      },
+      "alternatives": [
+        {
+          "ex": "The report lists the calorific value of each biomass sample alongside its moisture content, allowing a more meaningful comparison between fuels.",
+          "exTr": "Rapor, yakıtlar arasında daha anlamlı bir karşılaştırmaya olanak tanımak için her biyokütle örneğinin ısıl değerini nem içeriğiyle birlikte sıralıyor."
+        }
+      ]
+    },
+    {
+      "word": "camouflage",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kamuflaj",
+        "ex": "Certain insects use camouflage to blend perfectly with the leaves and bark surrounding them.",
+        "exTr": "Bazı böcekler, çevrelerindeki yapraklar ve kabuklarla mükemmel bir şekilde kaynaşmak için kamuflaj kullanır."
+      },
+      "alternatives": [
+        {
+          "ex": "The experiment tested whether an insect's camouflage remained effective when it moved from dry leaves onto a contrasting green background.",
+          "exTr": "Deney, bir böceğin kuru yapraklardan karşıt renkteki yeşil bir arka plana geçtiğinde kamuflajının etkili kalıp kalmadığını sınadı."
+        }
+      ]
+    },
+    {
+      "word": "campaign",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kampanya",
+        "ex": "The health ministry launched a nationwide campaign to encourage regular vaccination among children.",
+        "exTr": "Sağlık bakanlığı, çocuklar arasında düzenli aşılamayı teşvik etmek için ülke çapında bir kampanya başlattı."
+      },
+      "alternatives": [
+        {
+          "ex": "The campaign encouraged residents to repair household items and provided information about local workshops where practical skills could be learned.",
+          "exTr": "Kampanya, sakinleri ev eşyalarını onarmaya teşvik etti ve uygulamalı becerilerin öğrenilebileceği yerel atölyeler hakkında bilgi sağladı."
+        }
+      ]
+    },
+    {
+      "word": "can-do",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. girişken, azimli, iş bitirici",
+        "ex": "Employers value graduates with a can-do attitude who embrace challenges rather than avoiding them.",
+        "exTr": "İşverenler, zorluklardan kaçmak yerine onları kucaklayan, girişken tutumlu mezunlara değer verir."
+      },
+      "alternatives": [
+        {
+          "ex": "Her can-do approach helped the team maintain momentum, while careful planning ensured that enthusiasm did not replace realistic assessment.",
+          "exTr": "Onun iş bitirici yaklaşımı ekibin çalışma temposunu korumasına yardımcı olurken dikkatli planlama, heyecanın gerçekçi değerlendirmenin yerini almasını önledi."
+        }
+      ]
+    },
+    {
+      "word": "cancel",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. iptal etmek",
+        "ex": "Organizers had to cancel the outdoor festival due to an approaching tropical storm.",
+        "exTr": "Organizatörler, yaklaşan bir tropik fırtına nedeniyle açık hava festivalini iptal etmek zorunda kaldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The university decided to cancel the field visit after inspectors reported that the access road was no longer safe.",
+          "exTr": "Denetçilerin ulaşım yolunun artık güvenli olmadığını bildirmesinin ardından üniversite saha ziyaretini iptal etmeye karar verdi."
+        }
+      ]
+    },
+    {
+      "word": "candidate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. aday",
+        "ex": "The research team selected a promising candidate vaccine for further clinical trials.",
+        "exTr": "Araştırma ekibi, daha ileri klinik denemeler için umut verici bir aday aşı seçti."
+      },
+      "alternatives": [
+        {
+          "ex": "Each candidate was asked to explain how they would involve local communities in decisions about the proposed development.",
+          "exTr": "Her adaydan, önerilen yapılaşmayla ilgili kararlara yerel toplulukları nasıl dahil edeceğini açıklaması istendi."
+        }
+      ]
+    },
+    {
+      "word": "cane",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kamış; sugar cane = şeker kamışı",
+        "ex": "Sugar cane grows best in warm, wet climates.",
+        "exTr": "Şeker kamışı sıcak ve yağışlı iklimlerde en iyi şekilde yetişir."
+      },
+      "alternatives": [
+        {
+          "ex": "The study followed the movement of harvested sugar cane from small farms to processing plants located beyond the main growing area.",
+          "exTr": "Çalışma, hasat edilen şeker kamışının küçük çiftliklerden başlıca yetiştirme alanının dışında bulunan işleme tesislerine taşınmasını izledi."
+        }
+      ]
+    },
+    {
+      "word": "capability",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yetenek, kapasite",
+        "ex": "The new satellite has the capability to monitor deforestation across entire continents in real time.",
+        "exTr": "Yeni uydu, kıtalar genelindeki ormansızlaşmayı gerçek zamanlı olarak izleme kapasitesine sahiptir."
+      },
+      "alternatives": [
+        {
+          "ex": "Training alone will not improve the laboratory's testing capability unless staff also have reliable equipment and sufficient time to use it.",
+          "exTr": "Personelin güvenilir donanıma ve onu kullanmak için yeterli zamana da sahip olmaması durumunda eğitim tek başına laboratuvarın test kapasitesini artırmayacaktır."
+        }
+      ]
+    },
+    {
+      "word": "cape",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. burun (denize uzanan kara parçası)",
+        "ex": "Sailors have long feared the rough waters near the southern cape of the continent.",
+        "exTr": "Denizciler, kıtanın güney burnu yakınındaki sert sulardan uzun süredir çekinir."
+      },
+      "alternatives": [
+        {
+          "ex": "The lighthouse stands on a rocky cape where ships entering the bay first become visible from the coastal road.",
+          "exTr": "Deniz feneri, koya giren gemilerin kıyı yolundan ilk kez görülebildiği kayalık bir burun üzerinde yer alıyor."
+        }
+      ]
+    },
+    {
+      "word": "capital",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sermaye",
+        "ex": "Foreign investors have provided substantial capital to support the country's renewable energy projects.",
+        "exTr": "Yabancı yatırımcılar, ülkenin yenilenebilir enerji projelerini desteklemek için önemli miktarda sermaye sağladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The enterprise attracted enough capital to begin production, but it still needed a reliable network for distributing its goods.",
+          "exTr": "Girişim üretime başlamak için yeterli sermayeyi çekti; ancak ürünlerini dağıtmak üzere güvenilir bir ağa hâlâ ihtiyaç duyuyordu."
+        }
+      ]
+    },
+    {
+      "word": "capitalist",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kapitalist",
+        "ex": "Historians debate how rapidly capitalist economies expanded following the end of the war.",
+        "exTr": "Tarihçiler, savaşın bitiminin ardından kapitalist ekonomilerin ne kadar hızlı büyüdüğünü tartışıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The course explores how public institutions and private firms interact within capitalist economies, rather than treating them as entirely separate spheres.",
+          "exTr": "Ders, kamu kurumlarıyla özel şirketleri bütünüyle ayrı alanlar olarak ele almak yerine kapitalist ekonomilerde nasıl etkileşime girdiklerini inceliyor."
+        }
+      ]
+    },
+    {
+      "word": "captivate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. büyülemek, cezbetmek; bütün ilgisini çekmek",
+        "ex": "The exhibition captivated visitors with its reconstruction of daily life in ancient cities.",
+        "exTr": "Sergi, antik kentlerdeki günlük yaşamı yeniden canlandırmasıyla ziyaretçileri büyüledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The astronomer's account of searching for distant planets captivated the students and prompted questions that extended well beyond the planned lesson.",
+          "exTr": "Gökbilimcinin uzak gezegenleri aramaya ilişkin anlatımı öğrencilerin bütün ilgisini çekti ve planlanan dersin çok ötesine geçen sorular doğurdu."
+        }
+      ]
+    },
+    {
+      "word": "captivity",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. esaret, tutsaklık",
+        "ex": "Conservationists released the rehabilitated eagle back into the wild after months spent in captivity.",
+        "exTr": "Doğa koruma uzmanları, rehabilite edilen kartalı esarette geçen ayların ardından tekrar doğaya saldı."
+      },
+      "alternatives": [
+        {
+          "ex": "Behaviour observed in captivity may differ from behaviour in the wild, so the researchers avoided drawing broad conclusions from enclosure observations alone.",
+          "exTr": "Esaret altında gözlenen davranışlar doğadakilerden farklı olabileceği için araştırmacılar yalnızca kapalı alan gözlemlerinden kapsamlı sonuçlar çıkarmaktan kaçındı."
+        }
+      ]
+    },
+    {
+      "word": "carbohydrate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. karbonhidrat",
+        "ex": "Athletes often increase their carbohydrate intake before competitions to maximize their energy reserves.",
+        "exTr": "Sporcular, enerji rezervlerini en üst düzeye çıkarmak için müsabakalardan önce genellikle karbonhidrat alımlarını artırır."
+      },
+      "alternatives": [
+        {
+          "ex": "The analysis compared the carbohydrate content of grain samples grown under different conditions without making recommendations about individual diets.",
+          "exTr": "Analiz, bireysel beslenme düzenleri hakkında öneride bulunmadan farklı koşullarda yetiştirilmiş tahıl örneklerinin karbonhidrat içeriğini karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "carbonisation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. karbonlaşma, kömürleşme",
+        "ex": "The carbonisation of the wooden beams during the fire preserved their shape, allowing researchers to identify the species of tree used.",
+        "exTr": "Yangın sırasında ahşap kirişlerin kömürleşmesi biçimlerini korudu ve araştırmacıların kullanılan ağaç türünü belirlemesine olanak tanıdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The laboratory examined how carbonisation changed the structure of plant material heated under carefully controlled experimental conditions.",
+          "exTr": "Laboratuvar, dikkatle kontrol edilen deney koşullarında ısıtılan bitkisel malzemenin yapısının kömürleşmeyle nasıl değiştiğini inceledi."
+        }
+      ]
+    },
+    {
+      "word": "card-playing",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kâğıt oyunu oynayan, iskambil meraklısı",
+        "ex": "The novel portrays a card-playing society obsessed with wealth, gossip, and appearances in the nineteenth century.",
+        "exTr": "Roman, on dokuzuncu yüzyılda servete, dedikoduya ve görünüşe takıntılı, iskambil meraklısı bir toplumu betimliyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The sociologist interviewed a card-playing group whose weekly meetings had become an important source of companionship after retirement.",
+          "exTr": "Sosyolog, haftalık buluşmaları emeklilik sonrasında önemli bir arkadaşlık kaynağı hâline gelen, iskambil oynayan bir grupla görüştü."
+        }
+      ]
+    },
+    {
+      "word": "care",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. bakım, özen",
+        "ex": "Elderly people living alone often need professional care to maintain their quality of life.",
+        "exTr": "Yalnız yaşayan yaşlılar, yaşam kalitelerini korumak için genellikle profesyonel bakıma ihtiyaç duyar."
+      },
+      "alternatives": [
+        {
+          "ex": "The proposal recognises that providing care involves emotional support as well as practical assistance with everyday activities.",
+          "exTr": "Öneri, bakım sağlamanın günlük etkinliklerde uygulamalı yardımın yanı sıra duygusal desteği de içerdiğini kabul ediyor."
+        }
+      ]
+    },
+    {
+      "word": "carefully",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. dikkatle, özenle",
+        "ex": "Conservationists carefully monitor the endangered species to track changes in its population size.",
+        "exTr": "Doğa koruma uzmanları, popülasyon büyüklüğündeki değişimleri izlemek için nesli tükenmekte olan türü dikkatle gözlemliyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Before combining the datasets, the analyst carefully checked whether the two teams had measured the same variables in comparable ways.",
+          "exTr": "Analist, veri kümelerini birleştirmeden önce iki ekibin aynı değişkenleri karşılaştırılabilir yöntemlerle ölçüp ölçmediğini dikkatle kontrol etti."
+        }
+      ]
+    },
+    {
+      "word": "caring",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. şefkatli, ilgili",
+        "ex": "Nurses in the pediatric ward are known for their patient and caring approach to children.",
+        "exTr": "Çocuk servisindeki hemşireler, çocuklara karşı sabırlı ve şefkatli yaklaşımlarıyla tanınır."
+      },
+      "alternatives": [
+        {
+          "ex": "A caring teacher can acknowledge a student's frustration while still encouraging the independent effort needed to solve a difficult problem.",
+          "exTr": "İlgili bir öğretmen, zor bir problemi çözmek için gereken bağımsız çabayı teşvik etmeyi sürdürürken öğrencinin yaşadığı yılgınlığı anlayışla karşılayabilir."
+        }
+      ]
+    },
+    {
+      "word": "carpet-weaving",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. halı dokumacılığı, halı dokuma",
+        "ex": "Carpet weaving remains an important source of income in rural areas, where traditional patterns are still passed down from mother to daughter.",
+        "exTr": "Halı dokumacılığı, geleneksel desenlerin hâlâ anneden kıza aktarıldığı kırsal bölgelerde önemli bir gelir kaynağı olmayı sürdürüyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The cooperative offers carpet-weaving workshops in which experienced craftspeople explain both the technical process and the significance of regional designs.",
+          "exTr": "Kooperatif, deneyimli zanaatkârların hem teknik süreci hem de yöresel desenlerin önemini açıkladığı halı dokuma atölyeleri düzenliyor."
+        }
+      ]
+    },
+    {
+      "word": "carry-forward",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. devreden bakiye (muhasebe)",
+        "ex": "The accountant recorded a small carry-forward from last year's budget into the current fiscal report.",
+        "exTr": "Muhasebeci, geçen yılın bütçesinden küçük bir devreden bakiyeyi mevcut mali rapora işledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The committee approved a carry-forward of unspent funds so that the postponed equipment purchase could proceed in the following financial year.",
+          "exTr": "Komite, ertelenen ekipman alımının sonraki mali yılda gerçekleştirilebilmesi için harcanmamış fonların devrini onayladı."
+        }
+      ]
+    },
+    {
+      "word": "cartoon",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. karikatür, mizahi çizim",
+        "ex": "The newspaper's political cartoon mocked the minister so sharply that it provoked a heated public debate about the limits of press freedom.",
+        "exTr": "Gazetenin siyasi karikatürü bakanla o kadar sert alay etti ki basın özgürlüğünün sınırları üzerine hararetli bir kamusal tartışma başlattı."
+      },
+      "alternatives": [
+        {
+          "ex": "The cartoon exaggerates the contrast between official promises and daily experience, inviting readers to question the credibility of the announcement.",
+          "exTr": "Karikatür, resmî vaatlerle günlük deneyim arasındaki karşıtlığı abartarak okuyucuları duyurunun inandırıcılığını sorgulamaya davet ediyor."
+        }
+      ]
+    },
+    {
+      "word": "carved",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. oyma, oyulmuş",
+        "ex": "Visitors admired the intricately carved wooden doors at the entrance of the old temple.",
+        "exTr": "Ziyaretçiler, eski tapınağın girişindeki karmaşık desenli oyma ahşap kapılara hayran kaldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The carved stone panels show variations in technique that may indicate contributions from several workshops rather than one group of artists.",
+          "exTr": "Oyma taş panolar, tek bir sanatçı grubundan ziyade birkaç atölyenin katkısını gösterebilecek teknik farklılıklar sergiliyor."
+        }
+      ]
+    },
+    {
+      "word": "cash",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. nakit, peşin para",
+        "ex": "Many businesses no longer accept cash, preferring digital payments for speed and security.",
+        "exTr": "Birçok işletme artık nakit kabul etmiyor; hız ve güvenlik açısından dijital ödemeleri tercih ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Although online payments were increasing, the survey found that some rural businesses still relied on cash for most small transactions.",
+          "exTr": "Çevrim içi ödemeler artıyor olsa da anket, bazı kırsal işletmelerin küçük işlemlerin çoğunda hâlâ nakde dayandığını ortaya koydu."
+        }
+      ]
+    },
+    {
+      "word": "cast-off",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. atılmış, elden çıkarılmış",
+        "ex": "The charity collected cast-off clothing from local residents to distribute among families in need.",
+        "exTr": "Hayır kurumu, ihtiyaç sahibi ailelere dağıtmak üzere yerel sakinlerden atılmış giysiler topladı."
+      },
+      "alternatives": [
+        {
+          "ex": "Students transformed cast-off furniture into functional study spaces, demonstrating how design skills could extend the useful life of existing materials.",
+          "exTr": "Öğrenciler, elden çıkarılmış mobilyaları işlevsel çalışma alanlarına dönüştürerek tasarım becerilerinin mevcut malzemelerin kullanım ömrünü nasıl uzatabileceğini gösterdi."
+        }
+      ]
+    },
+    {
+      "word": "casual",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. gündelik, rahat; resmi olmayan, teklifsiz; rastgele",
+        "ex": "Many technology firms now allow employees to wear casual clothing throughout the entire week.",
+        "exTr": "Birçok teknoloji şirketi, artık çalışanların hafta boyunca gündelik kıyafetler giymesine izin veriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "A casual conversation during the workshop revealed that two departments had been collecting similar information without knowing about each other's work.",
+          "exTr": "Atölye sırasında yapılan resmî olmayan bir sohbet, iki bölümün birbirinin çalışmalarından habersiz biçimde benzer bilgiler topladığını ortaya çıkardı."
+        }
+      ]
+    },
+    {
+      "word": "catalog",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. katalog",
+        "ex": "The museum published an online catalog listing every artifact currently on display.",
+        "exTr": "Müze, şu anda sergilenen her eseri listeleyen çevrimiçi bir katalog yayımladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The supplier's catalog includes information about repair options, allowing schools to consider long-term maintenance before purchasing new equipment.",
+          "exTr": "Tedarikçinin kataloğu onarım seçenekleri hakkında bilgi içererek okulların yeni ekipman satın almadan önce uzun vadeli bakımı değerlendirmesine olanak tanıyor."
+        }
+      ]
+    },
+    {
+      "word": "cataract",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. büyük çağlayan, şelale",
+        "ex": "The explorers could hear the roar of the cataract long before they reached the canyon's edge.",
+        "exTr": "Kâşifler, kanyonun kenarına ulaşmadan çok önce çağlayanın gürültüsünü duyabiliyordu."
+      },
+      "alternatives": [
+        {
+          "ex": "The river narrows above the cataract, where the survey team installed a camera to document seasonal changes in water flow.",
+          "exTr": "Araştırma ekibinin su akışındaki mevsimsel değişiklikleri belgelemek için kamera yerleştirdiği çağlayanın yukarısında nehir daralıyor."
+        }
+      ]
+    },
+    {
+      "word": "catch",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. yakalamak",
+        "ex": "Fishermen along the coast have noticed it takes longer to catch the same amount of fish.",
+        "exTr": "Kıyı boyunca çalışan balıkçılar, aynı miktarda balık tutmanın daha uzun sürdüğünü fark etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The students used shallow trays to catch falling seeds, enabling them to compare dispersal beneath different sections of the tree canopy.",
+          "exTr": "Öğrenciler, ağaç örtüsünün farklı bölümlerinin altındaki yayılımı karşılaştırabilmek için düşen tohumları sığ tepsilerle yakaladı."
+        }
+      ]
+    },
+    {
+      "word": "categorised",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kategorilere ayrılmış, sınıflandırılmış",
+        "ex": "The museum's artifacts are carefully categorised by era, making the archive easier to navigate.",
+        "exTr": "Müzenin eserleri döneme göre dikkatle sınıflandırılmıştır, bu da arşivde gezinmeyi kolaylaştırır."
+      },
+      "alternatives": [
+        {
+          "ex": "The categorised responses revealed differences between age groups that had been difficult to recognise in the original collection of interview notes.",
+          "exTr": "Kategorilere ayrılmış yanıtlar, ilk görüşme notları derlemesinde fark edilmesi güç olan yaş grupları arasındaki farklılıkları ortaya çıkardı."
+        }
+      ]
+    },
+    {
+      "word": "caterpillar",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. tırtıl",
+        "ex": "A hungry caterpillar can consume several times its own body weight in leaves each day.",
+        "exTr": "Aç bir tırtıl, her gün kendi vücut ağırlığının birkaç katı kadar yaprak tüketebilir."
+      },
+      "alternatives": [
+        {
+          "ex": "Pupils observed a caterpillar over several weeks and recorded changes without disturbing the leaves on which it was feeding.",
+          "exTr": "Öğrenciler, bir tırtılı birkaç hafta boyunca gözlemleyerek beslendiği yaprakları bozmadan değişiklikleri kaydetti."
+        }
+      ]
+    },
+    {
+      "word": "causation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. nedensellik, sebep-sonuç ilişkisi",
+        "ex": "Statisticians constantly warn that a strong correlation between two variables does not by itself establish causation, however tempting such an interpretation seems.",
+        "exTr": "İstatistikçiler, iki değişken arasındaki güçlü bir korelasyonun tek başına nedenselliği kanıtlamadığı konusunda sürekli uyarır; böyle bir yorum ne kadar cazip görünürse görünsün."
+      },
+      "alternatives": [
+        {
+          "ex": "A claim of causation requires the researcher to consider alternative explanations, including factors that may influence both the supposed cause and outcome.",
+          "exTr": "Nedensellik iddiası, araştırmacının varsayılan nedeni ve sonucu birlikte etkileyebilecek etkenler dahil alternatif açıklamaları dikkate almasını gerektirir."
+        }
+      ]
+    },
+    {
+      "word": "cautious",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. dikkatli, ihtiyatlı",
+        "ex": "Economists remain cautious about predicting long-term growth given the current global market instability.",
+        "exTr": "Ekonomistler, mevcut küresel piyasa istikrarsızlığı göz önüne alındığında uzun vadeli büyüme tahmini konusunda temkinli kalmaya devam ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The authors were cautious in interpreting the initial results because several participants had not yet completed the follow-up interviews.",
+          "exTr": "Bazı katılımcılar izlem görüşmelerini henüz tamamlamadığı için yazarlar ilk sonuçları yorumlarken ihtiyatlı davrandı."
+        }
+      ]
+    },
+    {
+      "word": "cavity",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. boşluk, oyuk (genel)",
+        "ex": "Engineers inspect the wall for a hidden cavity where moisture might accumulate and weaken the structure over time.",
+        "exTr": "Mühendisler, zamanla nem birikerek yapıyı zayıflatabilecek gizli bir boşluk olup olmadığını anlamak için duvarı inceler."
+      },
+      "alternatives": [
+        {
+          "ex": "A small cavity inside the fossil contained sediment that differed from the surrounding rock, raising questions about its burial history.",
+          "exTr": "Fosilin içindeki küçük bir boşluk, çevredeki kayadan farklı tortu içeriyordu; bu da fosilin gömülme geçmişi hakkında sorular doğurdu."
+        }
+      ]
+    },
+    {
+      "word": "celebration",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kutlama, tören",
+        "ex": "The city organized a grand celebration to mark the hundredth anniversary of its founding.",
+        "exTr": "Şehir, kuruluşunun yüzüncü yıl dönümünü kutlamak için görkemli bir tören düzenledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The annual celebration combines public performances with workshops that allow younger residents to learn skills from older members of the community.",
+          "exTr": "Yıllık kutlama, halka açık gösterileri genç sakinlerin topluluğun yaşlı üyelerinden beceriler öğrenmesine olanak tanıyan atölyelerle birleştiriyor."
+        }
+      ]
+    },
+    {
+      "word": "cell",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. hücre",
+        "ex": "Cancer begins when a single cell starts to divide in an uncontrolled way.",
+        "exTr": "Kanser, tek bir hücrenin kontrolsüz biçimde bölünmeye başlamasıyla ortaya çıkar."
+      },
+      "alternatives": [
+        {
+          "ex": "The microscope images show the same cell at successive stages, helping students distinguish gradual changes from differences between separate specimens.",
+          "exTr": "Mikroskop görüntüleri aynı hücreyi art arda gelen evrelerde göstererek öğrencilerin aşamalı değişiklikleri ayrı örnekler arasındaki farklılıklardan ayırmasına yardımcı oluyor."
+        }
+      ]
+    },
+    {
+      "word": "cellular",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. hücresel",
+        "ex": "Researchers observed significant cellular damage in tissue samples exposed to high radiation levels.",
+        "exTr": "Araştırmacılar, yüksek radyasyona maruz kalan doku örneklerinde önemli hücresel hasar gözlemledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The course introduces cellular processes through simplified models before asking students to interpret images of more complex biological structures.",
+          "exTr": "Ders, öğrencilerden daha karmaşık biyolojik yapıların görüntülerini yorumlamalarını istemeden önce hücresel süreçleri basitleştirilmiş modellerle tanıtıyor."
+        }
+      ]
+    },
+    {
+      "word": "cement",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. pekiştirmek, sağlamlaştırmak (ilişki/anlaşma)",
+        "ex": "The joint research project helped cement the long-term partnership between the two universities.",
+        "exTr": "Ortak araştırma projesi, iki üniversite arasındaki uzun vadeli ortaklığı pekiştirmeye yardımcı oldu."
+      },
+      "alternatives": [
+        {
+          "ex": "A successful exchange of technical expertise helped cement the relationship between the engineering department and the local manufacturing cooperative.",
+          "exTr": "Başarılı bir teknik uzmanlık alışverişi, mühendislik bölümü ile yerel üretim kooperatifi arasındaki ilişkiyi pekiştirmeye yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "census",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. nüfus sayımı",
+        "ex": "The government conducts a national census every ten years to track population changes accurately.",
+        "exTr": "Hükümet, nüfus değişikliklerini doğru şekilde takip etmek için her on yılda bir ulusal nüfus sayımı yapar."
+      },
+      "alternatives": [
+        {
+          "ex": "The census data allowed planners to identify neighbourhoods where demand for schools was likely to differ from earlier projections.",
+          "exTr": "Nüfus sayımı verileri, planlamacıların okul talebinin önceki öngörülerden farklılaşmasının olası olduğu mahalleleri belirlemesine olanak tanıdı."
+        }
+      ]
+    },
+    {
+      "word": "central",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. merkezi; temel, ana",
+        "ex": "Trust plays a central role in maintaining healthy relationships between doctors and patients.",
+        "exTr": "Güven, doktorlar ve hastalar arasında sağlıklı ilişkilerin sürdürülmesinde temel bir rol oynar."
+      },
+      "alternatives": [
+        {
+          "ex": "Access to reliable information is central to meaningful public participation in decisions about transport, housing and environmental protection.",
+          "exTr": "Güvenilir bilgiye erişim, halkın ulaşım, konut ve çevre korumayla ilgili kararlara anlamlı biçimde katılması açısından temel önemdedir."
+        }
+      ]
+    },
+    {
+      "word": "centre",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. merkez",
+        "ex": "The new research centre will focus primarily on developing sustainable farming techniques.",
+        "exTr": "Yeni araştırma merkezi, öncelikle sürdürülebilir tarım tekniklerinin geliştirilmesine odaklanacak."
+      },
+      "alternatives": [
+        {
+          "ex": "The training centre shares equipment with nearby colleges, enabling students from smaller institutions to gain experience with specialised technology.",
+          "exTr": "Eğitim merkezi, yakınlardaki yüksekokullarla ekipman paylaşarak daha küçük kurumlardaki öğrencilerin uzmanlık gerektiren teknolojilerle deneyim kazanmasını sağlıyor."
+        }
+      ]
+    },
+    {
+      "word": "ceramics",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. seramik (sanatı/eşyaları)",
+        "ex": "The museum's new exhibit features ceramics crafted by indigenous artisans several centuries ago.",
+        "exTr": "Müzenin yeni sergisi, yerli zanaatkarların yüzyıllar önce ürettiği seramikleri konu alıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The exhibition places contemporary ceramics beside sketches and unfinished pieces to show how artists develop an idea through repeated experimentation.",
+          "exTr": "Sergi, sanatçıların bir fikri tekrarlanan denemelerle nasıl geliştirdiğini göstermek için çağdaş seramikleri eskizlerin ve bitirilmemiş parçaların yanına yerleştiriyor."
+        }
+      ]
+    },
+    {
+      "word": "ceremony",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. tören",
+        "ex": "The university held a graduation ceremony to honor students who had completed their degrees despite numerous challenges.",
+        "exTr": "Üniversite, sayısız zorluğa rağmen derecelerini tamamlayan öğrencileri onurlandırmak için bir mezuniyet töreni düzenledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The opening ceremony acknowledged the contributions of local volunteers, whose practical work had made the new community centre possible.",
+          "exTr": "Açılış töreninde, uygulamadaki çalışmalarıyla yeni toplum merkezinin kurulmasını mümkün kılan yerel gönüllülerin katkıları takdir edildi."
+        }
+      ]
+    },
+    {
+      "word": "cessation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. son verme, kesilme, durma",
+        "ex": "The treaty called for an immediate cessation of hostilities, but sporadic fighting continued along the mountainous border for several more months.",
+        "exTr": "Antlaşma, çatışmalara derhal son verilmesini öngörüyordu; ancak dağlık sınır boyunca dağınık çarpışmalar birkaç ay daha sürdü."
+      },
+      "alternatives": [
+        {
+          "ex": "The sudden cessation of funding left several training programmes unfinished and forced organisers to reconsider their commitments for the following year.",
+          "exTr": "Finansmanın aniden kesilmesi, birkaç eğitim programını yarım bıraktı ve organizatörleri sonraki yıla ilişkin taahhütlerini yeniden değerlendirmeye zorladı."
+        }
+      ]
+    },
+    {
+      "word": "chairman",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. başkan",
+        "ex": "The board elected a new chairman to lead the committee for the next term.",
+        "exTr": "Yönetim kurulu, komiteye bir sonraki dönem başkanlık edecek yeni bir başkan seçti."
+      },
+      "alternatives": [
+        {
+          "ex": "The chairman asked committee members to declare any personal interests before discussing the proposals submitted by competing contractors.",
+          "exTr": "Başkan, rakip yüklenicilerin sunduğu öneriler tartışılmadan önce komite üyelerinden varsa kişisel çıkar bağlantılarını açıklamalarını istedi."
+        }
+      ]
+    },
+    {
+      "word": "chamber",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. oda, hazne, bölme",
+        "ex": "The heart's left chamber pumps oxygen-rich blood to every organ in the body.",
+        "exTr": "Kalbin sol odacığı, oksijence zengin kanı vücuttaki her organa pompalar."
+      },
+      "alternatives": [
+        {
+          "ex": "Seeds were placed in a temperature-controlled chamber so that their response to light could be studied under otherwise similar conditions.",
+          "exTr": "Diğer koşullar benzer tutulurken ışığa tepkilerinin incelenebilmesi için tohumlar sıcaklığı kontrol edilen bir bölmeye yerleştirildi."
+        }
+      ]
+    },
+    {
+      "word": "champion",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. savunmak, desteklemek",
+        "ex": "The scientist has long championed renewable energy as a solution to climate change.",
+        "exTr": "Bilim insanı, uzun süredir yenilenebilir enerjiyi iklim değişikliğine bir çözüm olarak savunuyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The association champions accessible public transport, arguing that mobility should not depend on whether a person can afford a private vehicle.",
+          "exTr": "Dernek, hareketliliğin kişinin özel bir araç satın alabilecek durumda olmasına bağlı olmaması gerektiğini savunarak erişilebilir toplu taşımayı destekliyor."
+        }
+      ]
+    },
+    {
+      "word": "change",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. değişim",
+        "ex": "Communities along the coast must adapt quickly to change brought on by rising sea levels.",
+        "exTr": "Kıyı boyunca yaşayan topluluklar, yükselen deniz seviyelerinin getirdiği değişime hızla uyum sağlamak zorunda."
+      },
+      "alternatives": [
+        {
+          "ex": "The change in working hours was introduced gradually to allow employees and managers to identify problems before the new schedule became permanent.",
+          "exTr": "Çalışma saatlerindeki değişim, çalışanların ve yöneticilerin yeni program kalıcı hâle gelmeden önce sorunları belirlemesine olanak tanımak için aşamalı olarak uygulandı."
+        }
+      ]
+    }
+  ],
+  "collocations": [
+    {
+      "word": "buzzer",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "sound a buzzer",
+          "tr": "bir sinyal zilini çalmak"
+        },
+        {
+          "en": "an alarm buzzer",
+          "tr": "alarm zili"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "by-line",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a shared by-line",
+          "tr": "ortak yazar satırı"
+        },
+        {
+          "en": "carry a by-line",
+          "tr": "yazar adı taşımak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "cage",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a wire cage",
+          "tr": "tel kafes"
+        },
+        {
+          "en": "a spacious cage",
+          "tr": "geniş bir kafes"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "calculus",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "differential calculus",
+          "tr": "diferansiyel hesap"
+        },
+        {
+          "en": "integral calculus",
+          "tr": "integral hesap"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "call-out",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "an emergency call-out",
+          "tr": "acil servis çağrısı"
+        },
+        {
+          "en": "a call-out fee",
+          "tr": "yerinde servis çağrı ücreti"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "cape",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a rocky cape",
+          "tr": "kayalık bir burun"
+        },
+        {
+          "en": "round a cape",
+          "tr": "bir burnu dönmek"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "captivate",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "captivate an audience",
+          "tr": "dinleyicileri büyülemek"
+        },
+        {
+          "en": "captivate the imagination",
+          "tr": "hayal gücünü cezbetmek"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "card-playing",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a card-playing group",
+          "tr": "iskambil oynayan bir grup"
+        },
+        {
+          "en": "card-playing companions",
+          "tr": "iskambil oyunu arkadaşları"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "carry-forward",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a carry-forward of funds",
+          "tr": "fonların sonraki döneme devri"
+        },
+        {
+          "en": "a carry-forward balance",
+          "tr": "devreden bakiye"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "catalog",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a product catalog",
+          "tr": "ürün kataloğu"
+        },
+        {
+          "en": "an online catalog",
+          "tr": "çevrim içi katalog"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "caterpillar",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a caterpillar feeding on leaves",
+          "tr": "yapraklarla beslenen bir tırtıl"
+        },
+        {
+          "en": "caterpillar damage",
+          "tr": "tırtıl zararı"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "ceramics",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "glazed ceramics",
+          "tr": "sırlı seramikler"
+        },
+        {
+          "en": "contemporary ceramics",
+          "tr": "çağdaş seramik sanatı ve eserleri"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "chairman",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "the chairman of the board",
+          "tr": "yönetim kurulu başkanı"
+        },
+        {
+          "en": "appoint a chairman",
+          "tr": "bir başkan atamak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

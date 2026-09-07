@@ -1,0 +1,1066 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 2,
+    "input": "input-045.json"
+  },
+  "enrichments": [
+    {
+      "word": "steady",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. istikrarlı, düzenli, sabit",
+        "ex": "The economy showed a steady rate of growth despite ongoing global trade tensions.",
+        "exTr": "Ekonomi, devam eden küresel ticaret gerilimlerine rağmen istikrarlı bir büyüme oranı gösterdi."
+      },
+      "alternatives": [
+        {
+          "ex": "A steady flow of visitors allowed the researchers to compare responses throughout the day rather than relying on a single crowded period.",
+          "exTr": "Düzenli ziyaretçi akışı, araştırmacıların yalnızca tek bir kalabalık zaman dilimine dayanmak yerine gün boyunca yanıtları karşılaştırmasına olanak tanıdı."
+        }
+      ]
+    },
+    {
+      "word": "steam",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. buhar",
+        "ex": "Early factories relied on steam engines to power much of their heavy machinery.",
+        "exTr": "İlk fabrikalar, ağır makinelerinin çoğunu çalıştırmak için buharlı motorlara güveniyordu."
+      },
+      "alternatives": [
+        {
+          "ex": "The display traced the movement of steam through a simplified model, revealing connections that were difficult to see inside the original engine.",
+          "exTr": "Sergi, asıl motorun içinde görülmesi güç bağlantıları ortaya koyarak buharın basitleştirilmiş bir modeldeki hareketini izliyordu."
+        }
+      ]
+    },
+    {
+      "word": "steep",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. dik, sarp (yokuş/eğim için)",
+        "ex": "Cyclists struggled to climb the steep mountain road during the final stage of the race.",
+        "exTr": "Bisikletçiler, yarışın son etabında dik dağ yolunu tırmanmakta zorlandı."
+      },
+      "alternatives": [
+        {
+          "ex": "The steep slope restricted access to the excavation, so equipment had to be carried along a longer route from the valley floor.",
+          "exTr": "Dik yamaç kazıya erişimi sınırladığından donanımın vadi tabanından daha uzun bir güzergâh boyunca taşınması gerekti."
+        }
+      ]
+    },
+    {
+      "word": "step",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. adım",
+        "ex": "Each step of the experiment was carefully recorded to ensure the results could be reproduced.",
+        "exTr": "Deneyin her adımı, sonuçların yeniden üretilebilmesini sağlamak için dikkatle kaydedildi."
+      },
+      "alternatives": [
+        {
+          "ex": "The next step was to compare the witness accounts, paying particular attention to details that could be checked against independent records.",
+          "exTr": "Sonraki adım, bağımsız kayıtlarla kontrol edilebilen ayrıntılara özellikle dikkat ederek tanık anlatımlarını karşılaştırmaktı."
+        }
+      ]
+    },
+    {
+      "word": "step-in",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i./s. bağcıksız, içine adım atılarak giyilen (ayakkabı)",
+        "ex": "The elderly man preferred simple step-in shoes because tying laces had become difficult for him.",
+        "exTr": "Yaşlı adam, bağcık bağlamak onun için zorlaştığından basit, bağcıksız ayakkabıları tercih etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The catalogue placed the step-in shoes beside a drawing of their elastic inserts, explaining how the design differed from a lace-up model.",
+          "exTr": "Katalog, tasarımın bağcıklı bir modelden nasıl ayrıldığını açıklayarak içine adım atılarak giyilen ayakkabıları esnek ek parçalarının çiziminin yanına yerleştirdi."
+        }
+      ],
+      "note": "Ayakkabı/giysi sıfatı ve ismi Merriam-Webster ile doğrulandı; müdahale etmek anlamındaki step in fiiliyle karıştırılmadı. https://www.merriam-webster.com/dictionary/step-in"
+    },
+    {
+      "word": "steps",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. adımlar; basamaklar, merdiven",
+        "ex": "Public health officials outlined several practical steps that citizens could take to prevent infection.",
+        "exTr": "Halk sağlığı yetkilileri, vatandaşların enfeksiyonu önlemek için atabileceği birkaç pratik adımı özetledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The committee listed the steps needed to reopen the library, distinguishing essential repairs from improvements that could wait until later.",
+          "exTr": "Komite, temel onarımları sonraya bırakılabilecek iyileştirmelerden ayırarak kütüphaneyi yeniden açmak için gereken adımları listeledi."
+        }
+      ]
+    },
+    {
+      "word": "sterilisation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sterilizasyon, mikroplardan arındırma",
+        "ex": "Modern food industries rely on heat sterilisation to eliminate harmful microorganisms without significantly altering the nutritional value of packaged products.",
+        "exTr": "Modern gıda endüstrileri, paketlenmiş ürünlerin besin değerini önemli ölçüde değiştirmeden zararlı mikroorganizmaları yok etmek için ısıl sterilizasyona başvurur."
+      },
+      "alternatives": [
+        {
+          "ex": "The training materials distinguished sterilisation from routine cleaning, and asked learners to identify which process each diagram was intended to represent.",
+          "exTr": "Eğitim malzemeleri sterilizasyonu rutin temizlikten ayırıyor ve öğrenenlerden her şemanın hangi süreci göstermeyi amaçladığını belirlemelerini istiyordu."
+        }
+      ]
+    },
+    {
+      "word": "stickiness",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yapışkanlık, yapışma özelliği",
+        "ex": "Food scientists measure the stickiness of cooked rice, since excess surface starch makes the grains cling together rather than remain separate.",
+        "exTr": "Gıda bilimciler pişmiş pirincin yapışkanlığını ölçer; çünkü yüzeydeki fazla nişasta, tanelerin ayrı kalmak yerine birbirine yapışmasına yol açar."
+      },
+      "alternatives": [
+        {
+          "ex": "The stickiness of the adhesive varied between samples, leading the designers to investigate whether storage conditions had affected its performance.",
+          "exTr": "Yapıştırıcının yapışkanlığı numuneler arasında değişiyordu; bu da tasarımcıları depolama koşullarının performansını etkileyip etkilemediğini araştırmaya yöneltti."
+        }
+      ]
+    },
+    {
+      "word": "still",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. hâlâ",
+        "ex": "Although decades have passed, researchers are still debating the precise causes of the disaster.",
+        "exTr": "Aradan on yıllar geçmiş olmasına rağmen araştırmacılar felaketin kesin nedenlerini hâlâ tartışıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The revised map included the new footpath, but several older routes were still shown as accessible despite the barriers reported by walkers.",
+          "exTr": "Yenilenmiş harita yeni patikayı içeriyordu; ancak yürüyüşçülerin bildirdiği engellere rağmen birkaç eski güzergâh hâlâ erişilebilir gösteriliyordu."
+        }
+      ]
+    },
+    {
+      "word": "stimulate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. teşvik etmek, uyarmak, canlandırmak",
+        "ex": "Moderate exercise is known to stimulate blood circulation and improve overall cardiovascular health.",
+        "exTr": "Orta düzeyde egzersizin kan dolaşımını uyardığı ve genel kalp-damar sağlığını iyileştirdiği bilinmektedir."
+      },
+      "alternatives": [
+        {
+          "ex": "Contrasting accounts of the same event were used to stimulate discussion about how a narrator's position can shape an apparently factual description.",
+          "exTr": "Bir anlatıcının konumunun görünüşte olgusal bir betimlemeyi nasıl şekillendirebileceği üzerine tartışmayı canlandırmak için aynı olaya ilişkin karşıt anlatımlar kullanıldı."
+        }
+      ]
+    },
+    {
+      "word": "stir",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. heyecan, telaş, yaygara",
+        "ex": "The controversial documentary caused a stir among historians who disputed its central claims.",
+        "exTr": "Tartışmalı belgesel, temel iddialarına itiraz eden tarihçiler arasında büyük yankı uyandırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The unexpected discovery caused a stir among local historians, although the object still needed to be examined before claims about its age could be assessed.",
+          "exTr": "Beklenmedik buluş yerel tarihçiler arasında heyecan yarattı; ancak yaşıyla ilgili iddialar değerlendirilmeden önce nesnenin hâlâ incelenmesi gerekiyordu."
+        }
+      ]
+    },
+    {
+      "word": "stock-in-trade",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. alışılmış araç/yöntem",
+        "ex": "Clever wordplay and dry humor have long been the stock-in-trade of British sitcom writers.",
+        "exTr": "Zekice kelime oyunları ve kuru mizah, uzun zamandır İngiliz durum komedisi yazarlarının alışılmış yöntemi olmuştur."
+      },
+      "alternatives": [
+        {
+          "ex": "Detailed observation was the travel writer's stock-in-trade, giving even short descriptions a specificity that distinguished them from conventional tourist accounts.",
+          "exTr": "Ayrıntılı gözlem gezi yazarının alışılmış aracıydı; kısa betimlemelerine bile onları sıradan turist anlatımlarından ayıran bir özgüllük kazandırıyordu."
+        }
+      ]
+    },
+    {
+      "word": "stock-taking",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. envanter sayımı, durum değerlendirmesi",
+        "ex": "The retailer closes its doors every January for annual stock-taking before the new season begins.",
+        "exTr": "Perakendeci, yeni sezon başlamadan önce her Ocak ayında yıllık envanter sayımı için kapılarını kapatır."
+      },
+      "alternatives": [
+        {
+          "ex": "During stock-taking, staff discovered that several objects had been entered under two different names, inflating the collection's recorded size.",
+          "exTr": "Envanter sayımı sırasında çalışanlar birkaç nesnenin iki farklı adla kaydedildiğini ve bunun koleksiyonun kayıtlardaki büyüklüğünü şişirdiğini fark etti."
+        }
+      ]
+    },
+    {
+      "word": "stone face",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. taş gibi anlamsız yüz ifadesi",
+        "ex": "Despite the shocking announcement, the negotiator kept a stone-face throughout the entire meeting.",
+        "exTr": "Şok edici açıklamaya rağmen müzakereci, toplantı boyunca taş gibi bir yüz ifadesini korudu."
+      },
+      "alternatives": [
+        {
+          "ex": "The actor maintained a stone face while the other characters argued, leaving the audience uncertain about what his silence signified.",
+          "exTr": "Diğer karakterler tartışırken oyuncu donuk bir yüz ifadesini korudu ve sessizliğinin ne anlama geldiği konusunda izleyicileri belirsizlik içinde bıraktı."
+        }
+      ],
+      "note": "Donuk ifade için açık yazılmış stone face kullanıldı; botanical stoneface ile karıştırılmadı. Cornell öğretim kaynağı: https://russian.cornell.edu/body/unaccented/LIT/LITLR15B.HTM . Başlığın açık yazım düzeltmesini root uygular."
+    },
+    {
+      "word": "stopped-up",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. tıkalı",
+        "ex": "A stopped-up drain in the basement caused the water to back up during the storm.",
+        "exTr": "Bodrumdaki tıkalı bir gider, fırtına sırasında suyun geri tepmesine neden oldu."
+      },
+      "alternatives": [
+        {
+          "ex": "Inspection photographs showed a stopped-up outlet behind the panel, explaining why the earlier repair had failed to restore normal drainage.",
+          "exTr": "İnceleme fotoğrafları panelin arkasında tıkalı bir çıkış göstererek önceki onarımın normal su tahliyesini neden sağlayamadığını açıklıyordu."
+        }
+      ]
+    },
+    {
+      "word": "store",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. depolamak, saklamak",
+        "ex": "Plants store excess energy as starch within their roots and stems.",
+        "exTr": "Bitkiler, fazla enerjiyi köklerinde ve gövdelerinde nişasta olarak depolar."
+      },
+      "alternatives": [
+        {
+          "ex": "The project needed a reliable way to store interview recordings while keeping identifying information separate from the material used for analysis.",
+          "exTr": "Projenin, kimliği belirleyici bilgileri analizde kullanılan malzemeden ayrı tutarken görüşme kayıtlarını saklamanın güvenilir bir yoluna ihtiyacı vardı."
+        }
+      ]
+    },
+    {
+      "word": "storyteller",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. hikâye anlatıcısı, masalcı",
+        "ex": "The old storyteller gathered children around the fire every evening to share ancient legends.",
+        "exTr": "Yaşlı hikâye anlatıcısı, her akşam eski efsaneleri paylaşmak için çocukları ateşin etrafında toplardı."
+      },
+      "alternatives": [
+        {
+          "ex": "The storyteller adjusted the pace when listeners asked questions, showing how an oral narrative can develop through interaction with its audience.",
+          "exTr": "Hikâye anlatıcısı dinleyiciler soru sorduğunda anlatım hızını ayarlayarak sözlü bir anlatının dinleyiciyle etkileşim içinde nasıl gelişebildiğini gösterdi."
+        }
+      ]
+    },
+    {
+      "word": "straight-out",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. dosdoğru, açık, çekincesiz",
+        "ex": "The committee issued a straight-out rejection of the proposal without offering any further explanation.",
+        "exTr": "Komite, herhangi bir açıklama sunmadan teklifi dosdoğru bir şekilde reddetti."
+      },
+      "alternatives": [
+        {
+          "ex": "A straight-out refusal would have ended the discussion, so the negotiator instead explained which parts of the proposal remained unacceptable.",
+          "exTr": "Kesin bir ret tartışmayı sona erdireceğinden müzakereci bunun yerine önerinin hangi kısımlarının hâlâ kabul edilemez olduğunu açıkladı."
+        }
+      ]
+    },
+    {
+      "word": "strand",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. tel, iplik, şerit (saç/DNA vb.)",
+        "ex": "A single strand of hair found at the crime scene helped investigators identify the suspect through DNA analysis.",
+        "exTr": "Olay yerinde bulunan tek bir saç teli, soruşturmacıların şüpheliyi DNA analiziyle belirlemesine yardımcı oldu."
+      },
+      "alternatives": [
+        {
+          "ex": "The conservator removed a loose strand from the damaged fabric and examined whether it matched the material used in the original weaving.",
+          "exTr": "Konservatör hasarlı kumaştan gevşek bir iplik çıkardı ve bunun ilk dokumada kullanılan malzemeyle eşleşip eşleşmediğini inceledi."
+        }
+      ]
+    },
+    {
+      "word": "stranger",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yabancı, tanımadık kişi",
+        "ex": "Sociologists studied how quickly a stranger's trustworthiness is judged based on facial expressions alone.",
+        "exTr": "Sosyologlar, bir yabancının güvenilirliğinin yalnızca yüz ifadelerine bakılarak ne kadar hızlı değerlendirildiğini inceledi."
+      },
+      "alternatives": [
+        {
+          "ex": "To a stranger, the unmarked doorway gave little indication that a public reading room occupied the building's upper floor.",
+          "exTr": "Tanımayan biri için işaretsiz kapı, binanın üst katında halka açık bir okuma salonu bulunduğuna ilişkin pek az ipucu veriyordu."
+        }
+      ]
+    },
+    {
+      "word": "stratification",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. tabakalaşma, katmanlaşma",
+        "ex": "Sociologists studying social stratification examine how wealth, education and occupation combine to place individuals in distinct and often inherited social layers.",
+        "exTr": "Toplumsal tabakalaşmayı inceleyen sosyologlar; servetin, eğitimin ve mesleğin bireyleri belirgin ve çoğu zaman kalıtsal toplumsal katmanlara nasıl yerleştirdiğini araştırır."
+      },
+      "alternatives": [
+        {
+          "ex": "The discussion of social stratification compared access to education across generations rather than treating occupational categories as fixed and isolated groups.",
+          "exTr": "Toplumsal tabakalaşma tartışması, meslek kategorilerini sabit ve birbirinden kopuk gruplar olarak ele almak yerine kuşaklar arasında eğitime erişimi karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "stray",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. başıboş, sahipsiz",
+        "ex": "Volunteers at the shelter spend most mornings feeding stray cats found around the neighborhood.",
+        "exTr": "Barınaktaki gönüllüler, sabahlarının çoğunu mahallede bulunan sahipsiz kedileri besleyerek geçiriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The survey recorded where stray dogs were observed, but did not assume that every animal without a visible collar had no owner.",
+          "exTr": "Araştırma sahipsiz köpeklerin nerelerde gözlemlendiğini kaydetti; ancak görünür tasması olmayan her hayvanın sahipsiz olduğunu varsaymadı."
+        }
+      ]
+    },
+    {
+      "word": "street-smart",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. sokak zekâsına sahip",
+        "ex": "Growing up in a rough neighborhood made her street-smart and remarkably resourceful from a young age.",
+        "exTr": "Zorlu bir mahallede büyümek, onu küçük yaşından itibaren sokak zekâsına sahip ve son derece becerikli yaptı."
+      },
+      "alternatives": [
+        {
+          "ex": "The interviewer described the guide as street-smart because she recognised practical obstacles that were absent from the official description of the neighbourhood.",
+          "exTr": "Görüşmeci, mahallenin resmî betimlemesinde bulunmayan gündelik engelleri fark ettiği için rehberi sokak zekâsına sahip biri olarak tanımladı."
+        }
+      ]
+    },
+    {
+      "word": "strengthen",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. güçlendirmek, kuvvetlendirmek",
+        "ex": "Regular exercise can strengthen the heart muscle and lower the risk of cardiovascular disease.",
+        "exTr": "Düzenli egzersiz, kalp kasını güçlendirebilir ve kardiyovasküler hastalık riskini azaltabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "Independent confirmation would strengthen the argument, particularly if it came from records created for a purpose unrelated to the disputed event.",
+          "exTr": "Bağımsız doğrulama, özellikle tartışmalı olayla ilgisiz bir amaçla oluşturulmuş kayıtlardan gelirse savı güçlendirirdi."
+        }
+      ]
+    },
+    {
+      "word": "stressed",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. vurguladı, önemle belirtti",
+        "ex": "The report stressed the need for better flood protection.",
+        "exTr": "Rapor, sele karşı daha iyi koruma gereğini vurguladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The author stressed that the estimates described a possible range, not a precise prediction of what would happen in every district.",
+          "exTr": "Yazar, tahminlerin her ilçede ne olacağına ilişkin kesin bir öngörüyü değil, olası bir aralığı tanımladığını vurguladı."
+        }
+      ]
+    },
+    {
+      "word": "stretching",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. germe, gerinme",
+        "ex": "Physical therapists recommend gentle stretching exercises to improve flexibility after knee surgery.",
+        "exTr": "Fizyoterapistler, diz ameliyatından sonra esnekliği artırmak için hafif germe egzersizleri öneriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The questionnaire asked participants to describe their stretching routines without treating differences in reported habits as evidence of differences in physical ability.",
+          "exTr": "Anket, bildirilen alışkanlıklardaki farkları fiziksel yetenek farklarının kanıtı saymadan katılımcılardan germe rutinlerini anlatmalarını istedi."
+        }
+      ]
+    },
+    {
+      "word": "stride",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. adım, uzun adım, yürüyüş temposu",
+        "ex": "The runner lengthened her stride on the final lap, gradually pulling away from the competitors who had led for most of the race.",
+        "exTr": "Koşucu son turda adımlarını uzattı ve yarışın büyük bölümünde önde giden rakiplerinden yavaş yavaş uzaklaştı."
+      },
+      "alternatives": [
+        {
+          "ex": "The animation exaggerated the character's stride to make the change from cautious movement to confident walking visible even without dialogue.",
+          "exTr": "Animasyon, temkinli hareketten kendinden emin yürüyüşe geçişi konuşma olmadan da görünür kılmak için karakterin adım uzunluğunu abarttı."
+        }
+      ]
+    },
+    {
+      "word": "string",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. dizi, sıra",
+        "ex": "Archaeologists found a string of ancient beads buried alongside the ceremonial artifacts.",
+        "exTr": "Arkeologlar, törensel eserlerin yanına gömülmüş antik boncuklardan oluşan bir dizi buldu."
+      },
+      "alternatives": [
+        {
+          "ex": "A string of apparently minor delays eventually forced the organisers to shorten the exhibition, despite the venue having been booked months in advance.",
+          "exTr": "Görünüşte küçük bir dizi gecikme, mekân aylar öncesinden ayrılmış olmasına rağmen sonunda düzenleyicileri serginin süresini kısaltmaya zorladı."
+        }
+      ]
+    },
+    {
+      "word": "strip",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. şerit, ince parça",
+        "ex": "A narrow strip of land separates the two neighboring countries along the northern border.",
+        "exTr": "Dar bir toprak şeridi, kuzey sınırı boyunca komşu iki ülkeyi birbirinden ayırır."
+      },
+      "alternatives": [
+        {
+          "ex": "A narrow strip of original paint survived beneath the frame, providing evidence that later restorations had altered the picture's colour balance.",
+          "exTr": "Çerçevenin altında özgün boyadan dar bir şerit kalmıştı; bu da sonraki restorasyonların resmin renk dengesini değiştirdiğine kanıt sağlıyordu."
+        }
+      ]
+    },
+    {
+      "word": "stroke",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. inme, felç",
+        "ex": "High blood pressure significantly increases the risk of stroke, especially among elderly patients.",
+        "exTr": "Yüksek tansiyon, özellikle yaşlı hastalarda inme riskini önemli ölçüde artırır."
+      },
+      "alternatives": [
+        {
+          "ex": "The interview study focused on how people described everyday life after a stroke, rather than evaluating the effectiveness of any particular treatment.",
+          "exTr": "Görüşme çalışması, belirli bir tedavinin etkililiğini değerlendirmek yerine insanların inme sonrasındaki gündelik yaşamı nasıl anlattığına odaklandı."
+        }
+      ]
+    },
+    {
+      "word": "strong-smelling",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. keskin kokulu",
+        "ex": "The market stalls were filled with strong-smelling spices imported from distant tropical countries.",
+        "exTr": "Pazar tezgahları, uzak tropikal ülkelerden ithal edilen keskin kokulu baharatlarla doluydu."
+      },
+      "alternatives": [
+        {
+          "ex": "The strong-smelling sample was kept apart from the others during the demonstration so that participants could describe each odour separately.",
+          "exTr": "Katılımcıların her kokuyu ayrı ayrı tanımlayabilmesi için keskin kokulu numune gösterim sırasında diğerlerinden ayrı tutuldu."
+        }
+      ]
+    },
+    {
+      "word": "structural",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yapısal",
+        "ex": "The inspection revealed structural damage that had gone unnoticed since the last storm.",
+        "exTr": "Denetim, son fırtınadan bu yana fark edilmeyen yapısal hasarı ortaya çıkardı."
+      },
+      "alternatives": [
+        {
+          "ex": "The proposed alterations required a structural assessment because removing an internal wall might affect parts of the building beyond the renovated room.",
+          "exTr": "Bir iç duvarın kaldırılması binanın yenilenen oda dışındaki kısımlarını da etkileyebileceğinden önerilen değişiklikler yapısal değerlendirme gerektiriyordu."
+        }
+      ]
+    },
+    {
+      "word": "struggle",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. mücadele etmek, uğraşmak",
+        "ex": "Coral reefs continue to struggle against warming waters and increasing ocean acidity.",
+        "exTr": "Mercan resifleri, ısınan sular ve artan okyanus asitliğiyle mücadeleye devam ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Readers may struggle to follow an argument when unfamiliar terms are introduced before the relationships between the main ideas have been explained.",
+          "exTr": "Ana fikirler arasındaki ilişkiler açıklanmadan bilinmeyen terimler sunulduğunda okurlar bir savı takip etmekte zorlanabilir."
+        }
+      ]
+    },
+    {
+      "word": "stuck",
+      "sense_index": 1,
+      "expected": {
+        "tr": "s. şaşkın, ne yapacağını bilemez",
+        "ex": "Faced with the unexpected equation, the student was completely stuck and asked the teacher for help.",
+        "exTr": "Beklenmedik denklemle karşılaşan öğrenci tamamen şaşkına döndü ve öğretmenden yardım istedi."
+      },
+      "alternatives": [
+        {
+          "ex": "The team was stuck until a comparison with an older map revealed that the same stream had once carried a different name.",
+          "exTr": "Daha eski bir haritayla yapılan karşılaştırma aynı derenin bir zamanlar farklı bir ad taşıdığını ortaya koyana kadar ekip ilerleyemiyordu."
+        }
+      ]
+    },
+    {
+      "word": "studied",
+      "sense_index": 1,
+      "expected": {
+        "tr": "s. kasıtlı, bilinçli",
+        "ex": "The diplomat responded to the accusation with studied calm, careful not to reveal any emotion.",
+        "exTr": "Diplomat, hiçbir duygusunu belli etmemeye özen göstererek suçlamaya bilinçli bir sükûnetle karşılık verdi."
+      },
+      "alternatives": [
+        {
+          "ex": "Her studied indifference during the debate contrasted with the detailed objections she had prepared in private before the meeting.",
+          "exTr": "Tartışma sırasındaki bilinçli kayıtsızlığı, toplantıdan önce özel olarak hazırladığı ayrıntılı itirazlarla çelişiyordu."
+        }
+      ]
+    },
+    {
+      "word": "studying",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. (ders) çalışma, inceleme; öğrenim",
+        "ex": "Many students find that studying in short, focused sessions improves memory retention more than long sessions.",
+        "exTr": "Birçok öğrenci, kısa ve odaklanmış oturumlar hâlinde çalışmanın belleği uzun oturumlardan daha iyi pekiştirdiğini görüyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The interviews explored how studying fitted around paid employment, revealing differences that a simple count of weekly study hours had concealed.",
+          "exTr": "Görüşmeler, ders çalışmanın ücretli işle birlikte nasıl yürütüldüğünü araştırarak haftalık çalışma saatlerinin basitçe sayılmasının gizlediği farkları ortaya koydu."
+        }
+      ]
+    },
+    {
+      "word": "stunningly",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. çarpıcı, göz kamaştırıcı veya şaşırtıcı derecede",
+        "ex": "The mountain valley looked stunningly beautiful after fresh snow covered the dark volcanic rocks.",
+        "exTr": "Taze kar koyu renkli volkanik kayaları kapladıktan sonra dağ vadisi göz kamaştırıcı derecede güzel görünüyordu."
+      },
+      "alternatives": [
+        {
+          "ex": "The restored interior was stunningly different from the earlier photographs, prompting debate about whether too much historical evidence had been removed.",
+          "exTr": "Restore edilen iç mekân eski fotoğraflardan şaşırtıcı derecede farklıydı; bu da tarihî kanıtların gereğinden fazlasının kaldırılıp kaldırılmadığı tartışmasını başlattı."
+        }
+      ]
+    },
+    {
+      "word": "style",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. tarz, üslup, stil",
+        "ex": "Each author develops a distinctive writing style over years of practice.",
+        "exTr": "Her yazar, yıllar süren pratikle kendine özgü bir yazım üslubu geliştirir."
+      },
+      "alternatives": [
+        {
+          "ex": "The translator preserved the author's restrained style, resisting the temptation to make uncertain observations sound more dramatic than they were.",
+          "exTr": "Çevirmen, belirsiz gözlemleri olduklarından daha çarpıcı gösterme eğilimine direnerek yazarın ölçülü üslubunu korudu."
+        }
+      ]
+    },
+    {
+      "word": "stylus",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yazı kalemi, uçlu kalem, kazıma kalemi",
+        "ex": "Ancient scribes pressed a sharpened stylus into soft clay tablets, producing the wedge-shaped marks that we now recognise as cuneiform writing.",
+        "exTr": "Eski yazıcılar sivriltilmiş bir kalemi yumuşak kil tabletlere bastırarak bugün çivi yazısı olarak tanıdığımız kama biçimli işaretleri oluşturmuştur."
+      },
+      "alternatives": [
+        {
+          "ex": "Marks made with the reconstructed stylus were compared with those on the tablet to test assumptions about the scribe's working technique.",
+          "exTr": "Yazıcının çalışma tekniğine ilişkin varsayımları sınamak için yeniden yapılmış yazı kalemiyle oluşturulan izler tabletteki izlerle karşılaştırıldı."
+        }
+      ]
+    },
+    {
+      "word": "subjectivity",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kişisel duygu, izlenim ve yargılara dayanma; öznellik",
+        "ex": "Complete neutrality is difficult because some degree of subjectivity enters every interpretation of historical evidence.",
+        "exTr": "Tam tarafsızlık zordur çünkü tarihsel kanıtların her yorumuna bir ölçüde öznellik girer."
+      },
+      "alternatives": [
+        {
+          "ex": "Acknowledging subjectivity did not mean abandoning evidence; instead, the researchers explained how their own positions might influence the questions they asked.",
+          "exTr": "Öznelliği kabul etmek kanıtlardan vazgeçmek anlamına gelmiyordu; araştırmacılar bunun yerine kendi konumlarının sordukları soruları nasıl etkileyebileceğini açıkladı."
+        }
+      ]
+    },
+    {
+      "word": "submarine",
+      "sense_index": 1,
+      "expected": {
+        "tr": "s. sualtı, denizaltına ait",
+        "ex": "Engineers repaired a damaged submarine cable that had disrupted internet access across the entire region.",
+        "exTr": "Mühendisler, tüm bölgede internet erişimini aksatan hasarlı bir sualtı kablosunu onardı."
+      },
+      "alternatives": [
+        {
+          "ex": "The map traced the submarine cable's route but omitted the shore facilities needed to connect it with the inland network.",
+          "exTr": "Harita denizaltı kablosunun güzergâhını gösteriyor, ancak onu iç kesimlerdeki ağa bağlamak için gereken kıyı tesislerini içermiyordu."
+        }
+      ]
+    },
+    {
+      "word": "submit",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. sunmak, teslim etmek (başvuru vb.)",
+        "ex": "Applicants must submit all required documents before the scholarship deadline expires.",
+        "exTr": "Başvuru sahipleri, burs son başvuru tarihi dolmadan önce gerekli tüm belgeleri sunmalıdır."
+      },
+      "alternatives": [
+        {
+          "ex": "Participants could submit comments anonymously, allowing the committee to collect criticism from people who were reluctant to speak at public meetings.",
+          "exTr": "Katılımcılar yorumlarını isimsiz sunabiliyordu; bu da komitenin halka açık toplantılarda konuşmak istemeyen kişilerden eleştiri toplamasını sağladı."
+        }
+      ]
+    },
+    {
+      "word": "subscriber",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. abone",
+        "ex": "The streaming service gained millions of new subscribers after releasing its most popular series.",
+        "exTr": "Yayın hizmeti, en popüler dizisini yayımladıktan sonra milyonlarca yeni aboneye kavuştu."
+      },
+      "alternatives": [
+        {
+          "ex": "A subscriber who had received the journal for decades donated the complete series, filling gaps that the library had been unable to resolve.",
+          "exTr": "Dergiyi onlarca yıldır alan bir abone, bütün seriyi bağışlayarak kütüphanenin gideremediği eksikleri tamamladı."
+        }
+      ]
+    },
+    {
+      "word": "subsequently",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. sonradan, daha sonra, akabinde",
+        "ex": "The initial experiment failed, but researchers subsequently identified the error and corrected their method.",
+        "exTr": "İlk deney başarısız oldu, ancak araştırmacılar daha sonra hatayı tespit ederek yöntemlerini düzelttiler."
+      },
+      "alternatives": [
+        {
+          "ex": "The building was initially described as a warehouse, but evidence found subsequently suggested that part of it had also served as a school.",
+          "exTr": "Bina başlangıçta depo olarak tanımlanmıştı; ancak sonradan bulunan kanıtlar bir kısmının okul olarak da kullanıldığını düşündürdü."
+        }
+      ]
+    },
+    {
+      "word": "subspecies",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. alt tür (biyoloji)",
+        "ex": "Researchers identified a previously unknown subspecies of butterfly isolated on a remote mountain range.",
+        "exTr": "Araştırmacılar, uzak bir dağ silsilesinde izole kalmış, daha önce bilinmeyen bir kelebek alt türünü tespit etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The identification guide explained why a subspecies name appeared in older records but was treated differently in the classification used by the current survey.",
+          "exTr": "Tür belirleme kılavuzu, bir alt tür adının eski kayıtlarda bulunmasına rağmen güncel araştırmada kullanılan sınıflandırmada neden farklı ele alındığını açıkladı."
+        }
+      ]
+    },
+    {
+      "word": "substitute",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. yerine koymak/geçmek",
+        "ex": "The coach decided to substitute the injured striker with a younger player in the second half.",
+        "exTr": "Antrenör, ikinci yarıda sakatlanan forveti daha genç bir oyuncuyla değiştirmeye karar verdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The exercise allowed students to substitute familiar terms for technical ones, provided that the revised explanation retained the original meaning.",
+          "exTr": "Alıştırma, yenilenen açıklamanın asıl anlamı koruması koşuluyla öğrencilerin teknik terimlerin yerine tanıdık sözcükler koymasına izin veriyordu."
+        }
+      ]
+    },
+    {
+      "word": "subtle",
+      "sense_index": 0,
+      "expected": {
+        "tr": "ince, belli belirsiz; kurnazca",
+        "ex": "Early symptoms of the disease are often so subtle that patients ignore them.",
+        "exTr": "Hastalığın erken belirtileri çoğu zaman o kadar belli belirsizdir ki hastalar bunları görmezden gelir."
+      },
+      "alternatives": [
+        {
+          "ex": "A subtle change in the speaker's wording shifted responsibility from the committee to individual members without explicitly acknowledging that a disagreement had occurred.",
+          "exTr": "Konuşmacının sözlerindeki ince bir değişiklik, anlaşmazlık yaşandığını açıkça kabul etmeden sorumluluğu komiteden tek tek üyelere kaydırdı."
+        }
+      ]
+    },
+    {
+      "word": "subtract",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. çıkarmak (matematikte)",
+        "ex": "Students learned to subtract fractions with different denominators during the math lesson.",
+        "exTr": "Öğrenciler, matematik dersinde farklı paydalı kesirleri çıkarmayı öğrendi."
+      },
+      "alternatives": [
+        {
+          "ex": "To estimate the container's contents, the students had to subtract its empty weight from the total shown on the balance.",
+          "exTr": "Öğrencilerin kabın içindekilerin ağırlığını tahmin etmek için kabın boş ağırlığını terazide gösterilen toplamdan çıkarması gerekiyordu."
+        }
+      ]
+    },
+    {
+      "word": "succeed",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. başarılı olmak",
+        "ex": "Few startups succeed without a clear strategy and sufficient financial backing.",
+        "exTr": "Az sayıda girişim, net bir strateji ve yeterli finansal destek olmadan başarılı olur."
+      },
+      "alternatives": [
+        {
+          "ex": "The collaboration could succeed only if both institutions agreed on how to share the records produced during the investigation.",
+          "exTr": "İş birliği ancak iki kurum da araştırma sırasında oluşturulan kayıtların nasıl paylaşılacağı konusunda anlaşırsa başarılı olabilirdi."
+        }
+      ]
+    },
+    {
+      "word": "successful",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. başarılı",
+        "ex": "The transplant surgery was successful, and the patient is expected to make a full recovery.",
+        "exTr": "Nakil ameliyatı başarılı oldu ve hastanın tamamen iyileşmesi bekleniyor."
+      },
+      "alternatives": [
+        {
+          "ex": "A successful restoration was defined not simply by appearance but by how clearly future researchers could distinguish original material from later additions.",
+          "exTr": "Başarılı bir restorasyon yalnızca görünüşle değil, gelecekteki araştırmacıların özgün malzemeyi sonraki eklerden ne kadar açık ayırabileceğiyle tanımlandı."
+        }
+      ]
+    },
+    {
+      "word": "successive",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. ardışık, art arda gelen",
+        "ex": "The company reported profits for the fifth successive quarter despite ongoing supply chain difficulties.",
+        "exTr": "Şirket, devam eden tedarik zinciri güçlüklerine rağmen art arda beşinci çeyrekte de kâr bildirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "Successive editions of the guide gradually removed local place names, a change that made older descriptions harder for modern readers to follow.",
+          "exTr": "Kılavuzun art arda gelen baskıları yerel yer adlarını giderek kaldırdı; bu değişiklik modern okurların eski betimlemeleri takip etmesini güçleştirdi."
+        }
+      ]
+    },
+    {
+      "word": "such",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. böyle, bu tür, öylesine",
+        "ex": "Historians rarely encounter primary documents that provide such a detailed account of daily medieval life.",
+        "exTr": "Tarihçiler, ortaçağ gündelik yaşamına dair bu denli ayrıntılı bilgi sunan birincil kaynaklarla nadiren karşılaşır."
+      },
+      "alternatives": [
+        {
+          "ex": "The instructions contained such detailed qualifications that users sometimes lost sight of the simple task they were expected to complete.",
+          "exTr": "Yönergeler o kadar ayrıntılı koşullar içeriyordu ki kullanıcılar bazen tamamlamaları beklenen basit görevi gözden kaçırıyordu."
+        }
+      ]
+    },
+    {
+      "word": "suddenly",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. aniden, birden",
+        "ex": "The volcano, dormant for centuries, suddenly erupted and forced thousands of residents to evacuate.",
+        "exTr": "Yüzyıllardır uykuda olan yanardağ aniden patladı ve binlerce sakini tahliyeye zorladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The recording suddenly stopped in the middle of an answer, leaving the interviewer unable to confirm how the participant had completed the explanation.",
+          "exTr": "Kayıt bir yanıtın ortasında aniden durdu ve görüşmeci katılımcının açıklamayı nasıl tamamladığını doğrulayamadı."
+        }
+      ]
+    },
+    {
+      "word": "sufferer",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. (bir hastalıktan) muzdarip kişi, hasta",
+        "ex": "Support groups can provide emotional comfort to every sufferer struggling with a chronic illness.",
+        "exTr": "Destek grupları, kronik bir hastalıktan muzdarip her bireye duygusal rahatlık sağlayabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The memoir describes the writer's experience as a migraine sufferer without presenting that individual account as representative of everyone with the condition.",
+          "exTr": "Anı kitabı, yazarın migren hastası olarak deneyimini anlatırken bu kişisel anlatımı aynı durumdaki herkesin temsilcisi olarak sunmuyor."
+        }
+      ]
+    },
+    {
+      "word": "sugar",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. şeker",
+        "ex": "Excessive sugar consumption has been linked to obesity and type 2 diabetes worldwide.",
+        "exTr": "Aşırı şeker tüketimi, dünya genelinde obezite ve tip 2 diyabetle ilişkilendirilmiştir."
+      },
+      "alternatives": [
+        {
+          "ex": "The historian compared the amount of sugar listed in household accounts with recipes from the same period to investigate changing consumption habits.",
+          "exTr": "Tarihçi, değişen tüketim alışkanlıklarını araştırmak için ev hesaplarında listelenen şeker miktarını aynı dönemin tarifleriyle karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "suicide",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. intihar",
+        "ex": "Mental health experts stress that early intervention can significantly reduce suicide rates among teenagers.",
+        "exTr": "Ruh sağlığı uzmanları, erken müdahalenin gençler arasındaki intihar oranlarını önemli ölçüde azaltabileceğini vurguluyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The journalism workshop discussed how reports about suicide could use respectful language without reducing a person's life to the circumstances of their death.",
+          "exTr": "Gazetecilik atölyesi, intiharla ilgili haberlerin bir kişinin yaşamını ölüm koşullarına indirgemeden nasıl saygılı bir dil kullanabileceğini tartıştı."
+        }
+      ]
+    },
+    {
+      "word": "suite",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. süit (birbirine bağlı odalar takımı, örn. otel süiti)",
+        "ex": "The hotel offered the visiting diplomats a spacious suite overlooking the harbor and the old city.",
+        "exTr": "Otel, ziyaretçi diplomatlara limanı ve eski şehri gören geniş bir süit sundu."
+      },
+      "alternatives": [
+        {
+          "ex": "The original plan showed a suite of connected rooms, whereas later partitions had divided the same area into separate offices.",
+          "exTr": "İlk plan birbirine bağlı odalardan oluşan bir süit gösteriyordu; sonraki bölmeler ise aynı alanı ayrı ofislere ayırmıştı."
+        }
+      ]
+    },
+    {
+      "word": "sum-up",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. özet",
+        "ex": "The final paragraph offers a brief sum-up of the report's main conclusions.",
+        "exTr": "Son paragraf, raporun ana sonuçlarının kısa bir özetini sunuyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The chair's sum-up identified the points of agreement but also recorded the objections that would need further discussion at the next meeting.",
+          "exTr": "Başkanın özeti üzerinde anlaşılan noktaları belirtti, ancak sonraki toplantıda daha fazla tartışılması gereken itirazları da kaydetti."
+        }
+      ],
+      "note": "İsim sum-up Merriam-Webster ile doğrulandı; fiil sum up ayrı kullanımdır. https://www.merriam-webster.com/dictionary/sum-up"
+    },
+    {
+      "word": "summer",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yaz",
+        "ex": "Extreme summer heat has forced several cities to open public cooling centers for residents.",
+        "exTr": "Aşırı yaz sıcakları, birçok kenti sakinleri için halka açık soğutma merkezleri açmak zorunda bıraktı."
+      },
+      "alternatives": [
+        {
+          "ex": "The summer programme combined indoor workshops with outdoor observation, allowing the organisers to adapt activities when weather conditions changed.",
+          "exTr": "Yaz programı kapalı mekân atölyelerini açık hava gözlemleriyle birleştirerek hava koşulları değiştiğinde düzenleyicilerin etkinlikleri uyarlamasına olanak tanıdı."
+        }
+      ]
+    },
+    {
+      "word": "sunk",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. sink fiilinin V3 biçimi: batmış; batırılmış",
+        "ex": "The damaged vessel was sunk in shallow water.",
+        "exTr": "Hasarlı gemi sığ suda batırıldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The record stated that the boat had sunk near the harbour entrance, but later accounts disagreed about the exact location.",
+          "exTr": "Kayıt teknenin liman girişinin yakınında battığını belirtiyordu; ancak sonraki anlatımlar tam konum konusunda uyuşmuyordu."
+        }
+      ]
+    }
+  ],
+  "collocations": [
+    {
+      "word": "step-in",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "step-in shoes",
+          "tr": "bağcıksız, içine adım atılarak giyilen ayakkabılar"
+        },
+        {
+          "en": "a step-in design",
+          "tr": "içine adım atılarak giyilen tasarım"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "stone face",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "maintain a stone face",
+          "tr": "donuk bir yüz ifadesini korumak"
+        },
+        {
+          "en": "with a stone face",
+          "tr": "donuk bir yüz ifadesiyle"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "stopped-up",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a stopped-up drain",
+          "tr": "tıkalı gider"
+        },
+        {
+          "en": "a stopped-up pipe",
+          "tr": "tıkalı boru"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "storyteller",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a skilled storyteller",
+          "tr": "usta bir hikâye anlatıcısı"
+        },
+        {
+          "en": "a traditional storyteller",
+          "tr": "geleneksel hikâye anlatıcısı"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "straight-out",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a straight-out refusal",
+          "tr": "kesin bir ret"
+        },
+        {
+          "en": "a straight-out denial",
+          "tr": "açık ve kesin bir inkâr"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "stretching",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "stretching exercises",
+          "tr": "germe egzersizleri"
+        },
+        {
+          "en": "a stretching routine",
+          "tr": "düzenli germe hareketleri dizisi"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "strong-smelling",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "strong-smelling herbs",
+          "tr": "keskin kokulu otlar"
+        },
+        {
+          "en": "a strong-smelling substance",
+          "tr": "keskin kokulu madde"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "stunningly",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "stunningly beautiful",
+          "tr": "göz kamaştırıcı derecede güzel"
+        },
+        {
+          "en": "stunningly different",
+          "tr": "şaşırtıcı derecede farklı"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "suite",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a hotel suite",
+          "tr": "otel süiti"
+        },
+        {
+          "en": "a suite of rooms",
+          "tr": "birbirine bağlı odalar takımı"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "sum-up",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a brief sum-up",
+          "tr": "kısa bir özet"
+        },
+        {
+          "en": "a sum-up of the findings",
+          "tr": "bulguların özeti"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

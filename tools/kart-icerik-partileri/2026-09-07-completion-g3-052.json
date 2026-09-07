@@ -1,0 +1,599 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 3,
+    "input": "input-052.json"
+  },
+  "enrichments": [
+    {
+      "word": "wonderful",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. harika, muhteşem",
+        "ex": "Volunteers described the community garden project as a wonderful way to bring neighbors together.",
+        "exTr": "Gönüllüler, topluluk bahçesi projesini komşuları bir araya getirmenin harika bir yolu olarak tanımladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The students described the field trip as a wonderful opportunity to connect classroom explanations with features they could measure and discuss directly.",
+          "exTr": "Öğrenciler arazi gezisini, sınıftaki açıklamaları doğrudan ölçüp tartışabilecekleri özelliklerle ilişkilendirmek için harika bir fırsat olarak tanımladı."
+        }
+      ]
+    },
+    {
+      "word": "wood",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ahşap, odun, tahta",
+        "ex": "For centuries, ships were built almost entirely of wood harvested from oak forests.",
+        "exTr": "Yüzyıllar boyunca gemiler, neredeyse tamamen meşe ormanlarından elde edilen ahşaptan inşa edildi."
+      },
+      "alternatives": [
+        {
+          "ex": "The analysis compared wood from the original frame with later repairs, helping researchers identify changes that were difficult to distinguish beneath the paint.",
+          "exTr": "Analiz özgün çerçevenin ahşabını sonraki onarımlardaki ahşapla karşılaştırarak araştırmacıların boyanın altında ayırt edilmesi zor olan değişiklikleri belirlemesine yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "woody",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. odunsu, odun içeren veya oduna benzeyen",
+        "ex": "The shrub develops woody stems that survive winter and produce new leaves each spring.",
+        "exTr": "Çalı, kışı atlatıp her ilkbahar yeni yapraklar üreten odunsu gövdeler geliştirir."
+      },
+      "alternatives": [
+        {
+          "ex": "The team separated woody material from softer plant remains before weighing the samples, allowing differences in composition to be considered alongside total mass.",
+          "exTr": "Ekip örnekleri tartmadan önce odunsu malzemeyi daha yumuşak bitki kalıntılarından ayırarak bileşimdeki farkların toplam kütlenin yanında değerlendirilmesini sağladı."
+        }
+      ]
+    },
+    {
+      "word": "word",
+      "sense_index": 1,
+      "expected": {
+        "tr": "f. ifade etmek, kelimelerle belirtmek",
+        "ex": "The lawyer carefully worded the contract to avoid any possible misinterpretation by either party.",
+        "exTr": "Avukat, her iki tarafça yanlış yorumlanma olasılığını önlemek için sözleşmeyi dikkatle ifade etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The researchers had to word the question carefully so that it did not suggest an answer or assume experience that some participants lacked.",
+          "exTr": "Araştırmacılar, bir yanıtı telkin etmemesi veya bazı katılımcılarda bulunmayan bir deneyimi varsaymaması için soruyu dikkatle ifade etmek zorundaydı."
+        }
+      ]
+    },
+    {
+      "word": "words",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sözler, sözcükler",
+        "ex": "In other words, the experiment failed to support the researchers' original hypothesis.",
+        "exTr": "Başka bir deyişle deney, araştırmacıların başlangıçtaki hipotezini desteklemedi."
+      },
+      "alternatives": [
+        {
+          "ex": "The editor preserved the witness's own words while adding notes to explain local expressions that readers outside the district might not understand.",
+          "exTr": "Editör, bölge dışındaki okuyucuların anlayamayabileceği yerel ifadeleri açıklayan notlar eklerken tanığın kendi sözlerini korudu."
+        }
+      ]
+    },
+    {
+      "word": "work-clothes",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. iş kıyafeti",
+        "ex": "The factory requires all employees to wear proper work-clothes and safety equipment on the floor.",
+        "exTr": "Fabrika, tüm çalışanların üretim alanında uygun iş kıyafeti ve güvenlik ekipmanı giymesini zorunlu kılar."
+      },
+      "alternatives": [
+        {
+          "ex": "The exhibition displayed work-clothes beside photographs of the people who wore them, linking traces of wear to the tasks described in accompanying interviews.",
+          "exTr": "Sergi, aşınma izlerini eşlik eden görüşmelerde anlatılan görevlerle ilişkilendirerek iş kıyafetlerini onları giyen kişilerin fotoğraflarının yanında sergiledi."
+        }
+      ]
+    },
+    {
+      "word": "workforce",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. işgücü",
+        "ex": "Automation is expected to transform the workforce across many manufacturing industries.",
+        "exTr": "Otomasyonun, birçok imalat sektöründe işgücünü dönüştürmesi bekleniyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The report examined changes in the workforce by comparing recruitment with departures, rather than assuming that a stable total meant the same people had remained employed.",
+          "exTr": "Rapor, toplamın sabit kalmasının aynı kişilerin istihdamda kaldığı anlamına geldiğini varsaymak yerine işe alımları ayrılmalarla karşılaştırarak iş gücündeki değişimleri inceledi."
+        }
+      ]
+    },
+    {
+      "word": "workload",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. iş yükü",
+        "ex": "The hospital hired additional nurses to reduce the heavy workload on existing staff.",
+        "exTr": "Hastane, mevcut personel üzerindeki ağır iş yükünü azaltmak için ek hemşireler işe aldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The workload increased unevenly across departments, so the review considered the complexity of individual tasks as well as the number of cases assigned.",
+          "exTr": "İş yükü bölümler arasında eşit artmadığından inceleme, verilen vaka sayısının yanı sıra tek tek görevlerin karmaşıklığını da dikkate aldı."
+        }
+      ]
+    },
+    {
+      "word": "works",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. eserler",
+        "ex": "The complete works of Shakespeare have been translated into more than one hundred languages.",
+        "exTr": "Shakespeare'in tüm eserleri yüzden fazla dile çevrilmiştir."
+      },
+      "alternatives": [
+        {
+          "ex": "The catalogue included unfinished works alongside familiar pieces, enabling readers to follow ideas that the artist explored but never developed into completed paintings.",
+          "exTr": "Katalog, okuyucuların sanatçının araştırdığı ancak hiçbir zaman tamamlanmış tablolara dönüştürmediği düşünceleri izlemesini sağlayarak tanınmış eserlerin yanında bitmemiş eserleri de içerdi."
+        }
+      ]
+    },
+    {
+      "word": "world-class",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. dünya çapında, dünya standartlarında",
+        "ex": "The university recently recruited several world-class researchers to strengthen its engineering department.",
+        "exTr": "Üniversite, mühendislik bölümünü güçlendirmek için yakın zamanda birkaç dünya çapında araştırmacı işe aldı."
+      },
+      "alternatives": [
+        {
+          "ex": "A world-class collection may attract international attention, but the museum still needs clear explanations if local visitors are to understand why its objects matter.",
+          "exTr": "Dünya çapında bir koleksiyon uluslararası ilgi çekebilir; ancak yerel ziyaretçilerin nesnelerin neden önemli olduğunu anlaması için müzenin yine de açık açıklamalara ihtiyacı vardır."
+        }
+      ]
+    },
+    {
+      "word": "worn",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. wear fiilinin V3 biçimi: giyilmiş, takılmış",
+        "ex": "Protective masks were worn throughout the experiment.",
+        "exTr": "Deney boyunca koruyucu maskeler takıldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The badge had been worn by several generations of staff, and its changing design provided a compact record of the institution's evolving identity.",
+          "exTr": "Rozet birkaç kuşak personel tarafından takılmıştı; değişen tasarımı kurumun gelişen kimliğinin kısa bir kaydını sunuyordu."
+        }
+      ]
+    },
+    {
+      "word": "worry",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. endişelenmek, kaygılanmak",
+        "ex": "Public health officials worry that declining vaccination rates could trigger a resurgence of measles.",
+        "exTr": "Halk sağlığı yetkilileri, düşen aşılanma oranlarının kızamığın yeniden yayılmasını tetikleyebileceğinden endişe ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The organisers worry that a complex application process may discourage people whose experience would be valuable but who are unfamiliar with formal funding procedures.",
+          "exTr": "Düzenleyiciler, karmaşık bir başvuru sürecinin deneyimleri değerli olabilecek ancak resmî finansman işlemlerine aşina olmayan kişileri caydırabileceğinden endişeleniyor."
+        }
+      ]
+    },
+    {
+      "word": "worship",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. ibadet, tapınma",
+        "ex": "The ancient temple remains an important center of worship for the local community.",
+        "exTr": "Antik tapınak, yerel toplum için önemli bir ibadet merkezi olmaya devam ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The building continued to serve as a place of worship while also hosting community meetings, a combination reflected in the arrangement of its interior spaces.",
+          "exTr": "Bina, iç mekânlarının düzenine yansıyan bu birleşimle, toplum toplantılarına ev sahipliği yaparken ibadet yeri olarak hizmet vermeyi de sürdürdü."
+        }
+      ]
+    },
+    {
+      "word": "worthwhile",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. değer, zahmete değer, faydalı",
+        "ex": "Volunteers said the exhausting cleanup effort felt worthwhile once the river ran clear again.",
+        "exTr": "Gönüllüler, nehir yeniden berraklaşınca yorucu temizlik çabasının buna değdiğini söyledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The additional interviews proved worthwhile because they revealed practical difficulties that had not appeared in the written responses collected at the start of the study.",
+          "exTr": "Ek görüşmeler, çalışmanın başında toplanan yazılı yanıtlarda görülmeyen pratik güçlükleri ortaya çıkardığı için harcanan çabaya değdi."
+        }
+      ]
+    },
+    {
+      "word": "would have + V3",
+      "sense_index": 0,
+      "expected": {
+        "tr": "geçmişte gerçekleşmemiş koşullu sonucu bildirmek: yapmış olurdu/yapardı",
+        "ex": "Without emergency reinforcement, the bridge would have collapsed during the flood.",
+        "exTr": "Acil güçlendirme yapılmasaydı köprü sel sırasında çökmüş olurdu."
+      },
+      "alternatives": [
+        {
+          "ex": "Without the revised index, the researcher would have overlooked several relevant letters whose catalogue descriptions contained none of the terms used in her initial search.",
+          "exTr": "Gözden geçirilmiş dizin olmasaydı araştırmacı, katalog açıklamalarında ilk aramasındaki terimlerin hiçbiri bulunmayan birkaç ilgili mektubu gözden kaçırmış olurdu."
+        }
+      ]
+    },
+    {
+      "word": "would rather have + V3",
+      "sense_index": 0,
+      "expected": {
+        "tr": "geçmişte farklı bir şey yapmış olmayı tercih etmek",
+        "ex": "The committee would rather have postponed the launch than release a system with unresolved security flaws.",
+        "exTr": "Komite, çözülmemiş güvenlik açıkları bulunan bir sistemi yayımlamaktansa lansmanı ertelemiş olmayı tercih ederdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The curator would rather have borrowed the original drawing than displayed a reproduction, but its fragile condition made transport impractical.",
+          "exTr": "Küratör bir kopyasını sergilemektense özgün çizimi ödünç almış olmayı tercih ederdi; ancak hassas durumu taşınmasını uygulanamaz kılıyordu."
+        }
+      ]
+    },
+    {
+      "word": "wound",
+      "sense_index": 1,
+      "expected": {
+        "tr": "s. sarılmış, sarmal (yay/iplik); (wind fiilinin geçmiş zamanı)",
+        "ex": "The mechanic checked whether the clock's tightly wound spring was causing the ticking noise.",
+        "exTr": "Tamirci, saatin sıkıca sarılmış yayının tıkırtı sesine neden olup olmadığını kontrol etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The tightly wound thread was removed from the spool slowly so that the conservator could examine its condition without disturbing the layers beneath it.",
+          "exTr": "Sıkıca sarılmış iplik, koruma uzmanının alttaki katmanları bozmadan durumunu inceleyebilmesi için makaradan yavaşça çıkarıldı."
+        }
+      ]
+    },
+    {
+      "word": "wreak",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. (zarar, hasar, yıkım) vermek, yol açmak, saçmak",
+        "ex": "Invasive species can wreak considerable damage on fragile island ecosystems, driving native birds and plants towards extinction within just a few decades.",
+        "exTr": "İstilacı türler, kırılgan ada ekosistemlerinde ciddi hasara yol açarak yerli kuş ve bitkileri sadece birkaç on yıl içinde yok olmaya sürükleyebilir."
+      },
+      "alternatives": [
+        {
+          "ex": "A sudden failure in the storage system could wreak havoc on the archive's schedule, delaying requests even when the underlying documents remained intact.",
+          "exTr": "Depolama sistemindeki ani bir arıza, asıl belgeler sağlam kalsa bile talepleri geciktirerek arşivin programını altüst edebilir."
+        }
+      ]
+    },
+    {
+      "word": "write",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. yazmak",
+        "ex": "Historians write detailed accounts of past events using letters, diaries, and official records.",
+        "exTr": "Tarihçiler; mektuplardan, günlüklerden ve resmî kayıtlardan yararlanarak geçmiş olayların ayrıntılı anlatımlarını yazar."
+      },
+      "alternatives": [
+        {
+          "ex": "Participants were asked to write a brief explanation of their choices before discussing them, preserving their initial reasoning independently of the group's later conversation.",
+          "exTr": "Katılımcılardan, ilk gerekçelerini grubun sonraki konuşmasından bağımsız korumak için tercihlerini tartışmadan önce bunlara ilişkin kısa bir açıklama yazmaları istendi."
+        }
+      ]
+    },
+    {
+      "word": "write-off",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. hurdaya çıkmış şey",
+        "ex": "After the collision, the insurance company declared the old car a complete write-off.",
+        "exTr": "Çarpışmadan sonra sigorta şirketi, eski arabayı tamamen hurdaya çıkmış ilan etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The damaged van was considered a write-off, but photographs of its interior still helped the museum document how the former mobile service had operated.",
+          "exTr": "Hasarlı minibüs hurdaya çıkmış sayılsa da içinin fotoğrafları müzenin eski gezici hizmetin nasıl işlediğini belgelemesine yine de yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "written",
+      "sense_index": 1,
+      "expected": {
+        "tr": "s. yazılı",
+        "ex": "Candidates for the position must submit a written report summarizing their research experience.",
+        "exTr": "Bu pozisyona başvuranlar, araştırma deneyimlerini özetleyen yazılı bir rapor sunmalıdır."
+      },
+      "alternatives": [
+        {
+          "ex": "The written instructions were tested with readers unfamiliar with the equipment, revealing assumptions that experienced users had no difficulty filling in for themselves.",
+          "exTr": "Yazılı yönergeler ekipmana yabancı okuyucularla denendi; bu da deneyimli kullanıcıların kendi kendilerine tamamlamakta zorlanmadığı varsayımları ortaya çıkardı."
+        }
+      ]
+    },
+    {
+      "word": "wrongly",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. yanlışlıkla; yanlış şekilde",
+        "ex": "The suspect was wrongly accused of theft before new evidence finally proved his innocence.",
+        "exTr": "Şüpheli, yeni kanıtlar sonunda masumiyetini kanıtlamadan önce hırsızlıkla yanlışlıkla suçlanmıştı."
+      },
+      "alternatives": [
+        {
+          "ex": "The painting had been wrongly attributed to a local artist because an earlier cataloguer mistook the owner's signature for that of its creator.",
+          "exTr": "Önceki bir katalogcu sahibinin imzasını yapan kişinin imzası sandığından tablo yanlış biçimde yerel bir ressama atfedilmişti."
+        }
+      ]
+    },
+    {
+      "word": "yang",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yang (Çin felsefesinde eril/pozitif ilke, 'yin ve yang')",
+        "ex": "Ancient Chinese philosophy explains balance in nature through the interaction between yin and yang.",
+        "exTr": "Antik Çin felsefesi, doğadaki dengeyi yin ve yang arasındaki etkileşimle açıklar."
+      },
+      "alternatives": [
+        {
+          "ex": "The exhibition explained yang in relation to yin, encouraging visitors to consider the two concepts together rather than interpret either as an isolated principle.",
+          "exTr": "Sergi yangı yin ile ilişkisi içinde açıklayarak ziyaretçileri iki kavramdan birini yalıtılmış bir ilke olarak yorumlamak yerine ikisini birlikte düşünmeye teşvik etti."
+        }
+      ]
+    },
+    {
+      "word": "yeah",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. evet, ya (günlük dil)",
+        "ex": "\"Yeah, I think the data supports our hypothesis,\" the research assistant replied during the meeting.",
+        "exTr": "Araştırma asistanı toplantıda, \"Evet, bence veriler hipotezimizi destekliyor,\" diye yanıtladı."
+      },
+      "alternatives": [
+        {
+          "ex": "'Yeah, but I still cannot tell which section applies to my situation,' the participant replied when asked whether the revised instructions were clearer.",
+          "exTr": "Değiştirilmiş yönergelerin daha açık olup olmadığı sorulduğunda katılımcı, 'Evet, ama hangi bölümün benim durumuma uyduğunu hâlâ anlayamıyorum,' diye yanıtladı."
+        }
+      ],
+      "note": "Günlük dil belirteci doğal görüşme alıntısında kullanıldı; resmî yazı üslubu diye sunulmaz."
+    },
+    {
+      "word": "year-round",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yıl boyu süren, her mevsim",
+        "ex": "The coastal city attracts tourists with its year-round mild climate and scenic beaches.",
+        "exTr": "Kıyı şehri, yıl boyu süren ılıman iklimi ve manzaralı plajlarıyla turistleri kendine çekiyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The community requested year-round access to the reading room, arguing that local needs continued after the seasonal exhibition programme had ended.",
+          "exTr": "Topluluk, mevsimlik sergi programı bittikten sonra da yerel ihtiyaçların sürdüğünü savunarak okuma salonuna yıl boyu erişim istedi."
+        }
+      ]
+    },
+    {
+      "word": "years to come",
+      "sense_index": 0,
+      "expected": {
+        "tr": "gelecek yıllar; önümüzdeki yıllar",
+        "ex": "In the years to come, advances in medical imaging may allow earlier diagnosis of several diseases.",
+        "exTr": "Önümüzdeki yıllarda tıbbi görüntülemedeki gelişmeler bazı hastalıkların daha erken teşhis edilmesini sağlayabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The catalogue was designed to remain useful for years to come, with clear records of revisions so that future researchers could trace how interpretations had changed.",
+          "exTr": "Katalog, gelecekteki araştırmacıların yorumların nasıl değiştiğini izleyebilmesi için açık değişiklik kayıtlarıyla, gelecek yıllarda da yararlı kalacak biçimde tasarlandı."
+        }
+      ]
+    },
+    {
+      "word": "yes",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. evet, onay",
+        "ex": "During the referendum, a clear yes from voters gave the government a strong mandate.",
+        "exTr": "Referandumda seçmenlerden gelen net bir evet, hükûmete güçlü bir yetki verdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The questionnaire allowed a yes to be followed by an explanation, recognising that agreement could reflect different reasons that a simple total would conceal.",
+          "exTr": "Anket, kabulün basit bir toplamın gizleyeceği farklı nedenleri yansıtabileceğini kabul ederek evet yanıtının ardından açıklama yapılmasına izin verdi."
+        }
+      ]
+    },
+    {
+      "word": "yet",
+      "sense_index": 1,
+      "expected": {
+        "tr": "e. yine de, ama",
+        "ex": "The theory is controversial, yet many scientists continue to find supporting evidence.",
+        "exTr": "Teori tartışmalıdır; yine de birçok bilim insanı destekleyici kanıtlar bulmaya devam ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The two accounts describe the same meeting, yet they emphasise different decisions, reminding readers that agreement about an event does not ensure agreement about its significance.",
+          "exTr": "İki anlatım aynı toplantıyı betimliyor; ancak farklı kararları vurgulayarak okuyuculara bir olay üzerinde uzlaşmanın onun önemi üzerinde uzlaşmayı sağlamadığını hatırlatıyor."
+        }
+      ]
+    },
+    {
+      "word": "yolk",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yumurta sarısı",
+        "ex": "The yolk of an egg contains most of its vitamins and fats, whereas the surrounding white consists almost entirely of water and protein.",
+        "exTr": "Yumurtanın sarısı vitaminlerin ve yağların çoğunu içerirken, çevresindeki beyaz kısım neredeyse tamamen su ve proteinden oluşur."
+      },
+      "alternatives": [
+        {
+          "ex": "The demonstration used egg yolk to prepare a traditional paint mixture, allowing students to compare its handling properties with those of a modern substitute.",
+          "exTr": "Gösterimde geleneksel bir boya karışımı hazırlamak için yumurta sarısı kullanıldı; böylece öğrenciler kullanım özelliklerini modern bir alternatifinkiyle karşılaştırabildi."
+        }
+      ]
+    },
+    {
+      "word": "younger",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. daha genç, küçük (kardeş vb.)",
+        "ex": "Studies show that younger siblings often develop different social skills than their older counterparts.",
+        "exTr": "Araştırmalar, küçük kardeşlerin genellikle büyük kardeşlerinden farklı sosyal beceriler geliştirdiğini gösteriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The younger participants were more familiar with the digital interface, but older members contributed local knowledge that proved equally important to interpreting the maps.",
+          "exTr": "Daha genç katılımcılar dijital arayüze daha aşinaydı; ancak yaşça büyük üyeler haritaları yorumlamada aynı derecede önemli olduğu görülen yerel bilgiler sundu."
+        }
+      ]
+    },
+    {
+      "word": "youthful",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. genç, gençlik dolu, dinç",
+        "ex": "Despite his advanced age, the scientist retained a remarkably youthful curiosity about the world.",
+        "exTr": "İleri yaşına rağmen bilim insanı, dünyaya karşı dikkat çekici derecede genç bir merak koruyordu."
+      },
+      "alternatives": [
+        {
+          "ex": "The biography contrasts the reformer's youthful confidence with later doubts, showing how experience complicated views that had once seemed straightforward.",
+          "exTr": "Biyografi, deneyimin bir zamanlar basit görünen görüşleri nasıl karmaşıklaştırdığını göstererek reformcunun gençlik özgüvenini sonraki kuşkularıyla karşılaştırıyor."
+        }
+      ]
+    },
+    {
+      "word": "zinc",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. çinko",
+        "ex": "Old plumbing pipes were often lined with zinc to prevent corrosion from water exposure.",
+        "exTr": "Eski su tesisatı boruları, suya maruz kalmaktan kaynaklanan korozyonu önlemek için genellikle çinko ile kaplanırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The laboratory measured zinc in samples from several sources, reporting the method used so that readers could assess whether the results were comparable.",
+          "exTr": "Laboratuvar, okuyucuların sonuçların karşılaştırılabilir olup olmadığını değerlendirebilmesi için kullanılan yöntemi bildirerek birkaç kaynaktan alınan örneklerde çinko ölçümü yaptı."
+        }
+      ]
+    },
+    {
+      "word": "zoology",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. zooloji, hayvan bilimi",
+        "ex": "Her fascination with zoology began during a childhood trip to a wildlife sanctuary.",
+        "exTr": "Zoolojiye duyduğu hayranlık, çocukken bir yaban hayatı koruma alanına yaptığı gezi sırasında başladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The zoology course combined observation with careful description, asking students to justify classifications using features they could identify rather than relying on familiar names.",
+          "exTr": "Zooloji dersi, öğrencilerden tanıdık adlara dayanmak yerine belirleyebildikleri özellikleri kullanarak sınıflandırmaları gerekçelendirmelerini isteyerek gözlemi dikkatli betimlemeyle birleştirdi."
+        }
+      ]
+    }
+  ],
+  "collocations": [
+    {
+      "word": "woody",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "woody stems",
+          "tr": "odunsu gövdeler"
+        },
+        {
+          "en": "woody vegetation",
+          "tr": "odunsu bitki örtüsü"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "work-clothes",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "change into work clothes",
+          "tr": "iş kıyafetlerini giymek"
+        },
+        {
+          "en": "protective work clothes",
+          "tr": "koruyucu iş kıyafetleri"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "would rather have + V3",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "would rather have waited",
+          "tr": "beklemiş olmayı tercih ederdi"
+        },
+        {
+          "en": "would rather have chosen",
+          "tr": "seçmiş olmayı tercih ederdi"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "yeah",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "yeah, but",
+          "tr": "evet, ama (günlük dil)"
+        },
+        {
+          "en": "oh yeah",
+          "tr": "ha evet (bağlama ve tona göre)"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "years to come",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "for years to come",
+          "tr": "gelecek yıllar boyunca"
+        },
+        {
+          "en": "in the years to come",
+          "tr": "önümüzdeki yıllarda"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "zoology",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "study zoology",
+          "tr": "zooloji okumak veya çalışmak"
+        },
+        {
+          "en": "a department of zoology",
+          "tr": "zooloji bölümü"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

@@ -1,0 +1,1095 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 2,
+    "input": "input-044.json"
+  },
+  "enrichments": [
+    {
+      "word": "somewhere",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. bir yerde, bir yere",
+        "ex": "Geologists believe the meteorite landed somewhere within a remote stretch of the Siberian forest.",
+        "exTr": "Jeologlar, meteorun Sibirya ormanının ıssız bir bölümünde bir yere düştüğüne inanıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The missing connection lay somewhere between the two stations, but the available plans were too imprecise to establish its exact position.",
+          "exTr": "Eksik bağlantı iki istasyon arasında bir yerdeydi; ancak mevcut planlar tam konumunu belirlemek için fazla belirsizdi."
+        }
+      ]
+    },
+    {
+      "word": "song",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. şarkı",
+        "ex": "Folk musicians have preserved this traditional song for more than two centuries.",
+        "exTr": "Halk müzisyenleri, bu geleneksel şarkıyı iki yüzyıldan uzun bir süredir korumuştur."
+      },
+      "alternatives": [
+        {
+          "ex": "Each recorded version of the song contained small changes, allowing the researcher to trace how performers adapted it for different audiences.",
+          "exTr": "Şarkının kaydedilmiş her sürümü küçük değişiklikler içeriyordu; bu da araştırmacının icracıların onu farklı dinleyicilere nasıl uyarladığını izlemesine olanak tanıdı."
+        }
+      ]
+    },
+    {
+      "word": "sooner",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. daha erken, daha önce",
+        "ex": "Doctors recommend that patients with these symptoms seek medical attention sooner rather than later.",
+        "exTr": "Doktorlar, bu belirtileri gösteren hastaların tıbbi yardımı geç kalmadan, daha erken almasını öneriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The replacement parts arrived sooner than expected, enabling the workshop to resume production before the remaining orders were cancelled.",
+          "exTr": "Yedek parçalar beklenenden daha erken ulaştı ve atölyenin kalan siparişler iptal edilmeden üretime yeniden başlamasını sağladı."
+        }
+      ]
+    },
+    {
+      "word": "sophisticated",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. gelişmiş, karmaşık; incelikli",
+        "ex": "Modern telescopes use sophisticated instruments capable of detecting light from galaxies billions of years old.",
+        "exTr": "Modern teleskoplar, milyarlarca yıllık galaksilerden gelen ışığı algılayabilen gelişmiş aletler kullanır."
+      },
+      "alternatives": [
+        {
+          "ex": "A sophisticated model may still produce misleading results if its assumptions fail to reflect the conditions under which the data were collected.",
+          "exTr": "Gelişmiş bir model, varsayımları verilerin toplandığı koşulları yansıtmazsa yine de yanıltıcı sonuçlar üretebilir."
+        }
+      ]
+    },
+    {
+      "word": "sort",
+      "sense_index": 1,
+      "expected": {
+        "tr": "f. sınıflandırmak, ayırmak",
+        "ex": "Librarians use a computer system to sort thousands of books by subject and author.",
+        "exTr": "Kütüphaneciler, binlerce kitabı konu ve yazara göre sınıflandırmak için bir bilgisayar sistemi kullanır."
+      },
+      "alternatives": [
+        {
+          "ex": "Participants were asked to sort the photographs according to their own criteria before explaining which features had guided their decisions.",
+          "exTr": "Katılımcılardan, kararlarına hangi özelliklerin yön verdiğini açıklamadan önce fotoğrafları kendi ölçütlerine göre sınıflandırmaları istendi."
+        }
+      ]
+    },
+    {
+      "word": "sound",
+      "sense_index": 1,
+      "expected": {
+        "tr": "s. sağlam, geçerli, makul",
+        "ex": "The committee praised the proposal for being both economically sound and environmentally responsible.",
+        "exTr": "Komite, öneriyi hem ekonomik açıdan sağlam hem çevresel açıdan sorumlu olduğu için övdü."
+      },
+      "alternatives": [
+        {
+          "ex": "The argument appeared sound until a reader identified an assumption that the author had treated as an established fact.",
+          "exTr": "Bir okur, yazarın kanıtlanmış bir olgu olarak ele aldığı varsayımı belirleyene kadar sav geçerli görünüyordu."
+        }
+      ]
+    },
+    {
+      "word": "sour",
+      "sense_index": 1,
+      "expected": {
+        "tr": "f. ekşimek, bozulmak",
+        "ex": "Relations between the two neighboring countries soured after the border dispute escalated last spring.",
+        "exTr": "İki komşu ülke arasındaki ilişkiler, geçen ilkbaharda sınır anlaşmazlığı tırmandıktan sonra bozuldu."
+      },
+      "alternatives": [
+        {
+          "ex": "Disagreements over access to the shared equipment began to sour relations between departments that had previously cooperated on several successful projects.",
+          "exTr": "Ortak donanıma erişim konusundaki anlaşmazlıklar, daha önce birkaç başarılı projede iş birliği yapmış bölümler arasındaki ilişkileri bozmaya başladı."
+        }
+      ]
+    },
+    {
+      "word": "south-central",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. güney-orta (bölgede)",
+        "ex": "Farmers in the south-central region reported unusually heavy rainfall throughout the entire growing season.",
+        "exTr": "Güney-orta bölgedeki çiftçiler, tüm yetiştirme sezonu boyunca alışılmadık derecede şiddetli yağış bildirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The survey covered the south-central districts first, where scattered settlements made it difficult to arrange interviews within a single day.",
+          "exTr": "Anket önce, dağınık yerleşimlerin görüşmeleri tek bir güne sığdırmayı güçleştirdiği güney-orta ilçeleri kapsadı."
+        }
+      ]
+    },
+    {
+      "word": "southeast",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. güneydoğu",
+        "ex": "The southeast of the country experienced record temperatures during last summer's heat wave.",
+        "exTr": "Ülkenin güneydoğusu, geçen yazki sıcak hava dalgası sırasında rekor sıcaklıklar yaşadı."
+      },
+      "alternatives": [
+        {
+          "ex": "Transport links in the southeast received less attention in the report than those near the capital, prompting requests for a separate regional assessment.",
+          "exTr": "Raporda güneydoğudaki ulaşım bağlantılarına başkent yakınındakilerden daha az yer verilmesi, ayrı bir bölgesel değerlendirme talebine yol açtı."
+        }
+      ]
+    },
+    {
+      "word": "southwestern",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. güneybatı, güneybatıya ait",
+        "ex": "Severe drought has affected farming communities across the southwestern part of the country for years.",
+        "exTr": "Şiddetli kuraklık, yıllardır ülkenin güneybatı kesimindeki tarım topluluklarını etkiliyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The southwestern entrance remained visible in the older photographs, although later extensions had concealed it from the street.",
+          "exTr": "Sonraki ek yapılar onu sokaktan görünmez hâle getirmiş olsa da güneybatı girişi eski fotoğraflarda görülebiliyordu."
+        }
+      ]
+    },
+    {
+      "word": "soviet",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sovyet (konsey/meclis)",
+        "ex": "Historians examined how each local soviet influenced regional policy during the early years of the union.",
+        "exTr": "Tarihçiler, birliğin ilk yıllarında her yerel sovyetin bölgesel politikayı nasıl etkilediğini inceledi."
+      },
+      "alternatives": [
+        {
+          "ex": "Minutes of the local soviet recorded disagreements over food distribution, offering a more complex picture than the unanimous decisions reported in newspapers.",
+          "exTr": "Yerel sovyetin tutanakları gıda dağıtımı konusundaki anlaşmazlıkları kaydediyor, gazetelerde bildirilen oy birliği kararlarından daha karmaşık bir tablo sunuyordu."
+        }
+      ]
+    },
+    {
+      "word": "space",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. alan, boşluk",
+        "ex": "Urban planners are redesigning public space to encourage walking and reduce car dependency.",
+        "exTr": "Kent plancıları, yürümeyi teşvik etmek ve araba bağımlılığını azaltmak için kamusal alanı yeniden tasarlıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The exhibition left enough space around each object for visitors to examine it from several angles without obstructing the main route.",
+          "exTr": "Sergide ziyaretçilerin ana geçiş yolunu kapatmadan nesneleri birkaç açıdan inceleyebilmesi için her nesnenin çevresinde yeterli alan bırakıldı."
+        }
+      ]
+    },
+    {
+      "word": "span",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. süre, aralık",
+        "ex": "The research project was completed within a span of five years, much faster than expected.",
+        "exTr": "Araştırma projesi, beklenenden çok daha hızlı biçimde beş yıllık bir süre içinde tamamlandı."
+      },
+      "alternatives": [
+        {
+          "ex": "Changes within a short span of time were difficult to interpret because the survey had used different questions in successive years.",
+          "exTr": "Ankette art arda gelen yıllarda farklı sorular kullanıldığından kısa bir zaman aralığındaki değişiklikleri yorumlamak güçtü."
+        }
+      ]
+    },
+    {
+      "word": "sparrow",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. serçe",
+        "ex": "House sparrows have declined sharply in many European cities, possibly because modern buildings offer far fewer suitable nesting sites.",
+        "exTr": "Ev serçelerinin sayısı birçok Avrupa kentinde hızla azaldı; bunun nedeni modern binaların çok daha az uygun yuvalanma yeri sunması olabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "A photograph of the sparrow was added to the observation record so that another volunteer could check the initial identification.",
+          "exTr": "Başka bir gönüllünün ilk tür tespitini kontrol edebilmesi için serçenin fotoğrafı gözlem kaydına eklendi."
+        }
+      ]
+    },
+    {
+      "word": "speak",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. konuşmak",
+        "ex": "Fewer young people in the region speak the traditional language fluently today.",
+        "exTr": "Bölgedeki genç insanların daha azı bugün geleneksel dili akıcı biçimde konuşabiliyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Several residents preferred to speak in small groups, explaining that a public meeting would not allow them to describe their concerns fully.",
+          "exTr": "Birkaç sakin, halka açık bir toplantının kaygılarını tam olarak anlatmalarına izin vermeyeceğini açıklayarak küçük gruplarda konuşmayı tercih etti."
+        }
+      ]
+    },
+    {
+      "word": "special",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. özel",
+        "ex": "Doctors recommend a special diet for patients recovering from major surgery.",
+        "exTr": "Doktorlar, büyük bir ameliyattan iyileşmekte olan hastalar için özel bir diyet öneriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Researchers needed special permission to consult fragile documents, even though ordinary reference materials were freely available in the reading room.",
+          "exTr": "Okuma salonunda sıradan başvuru kaynakları serbestçe kullanılabilse de araştırmacıların hassas belgeleri incelemek için özel izin alması gerekiyordu."
+        }
+      ]
+    },
+    {
+      "word": "specialised",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. uzmanlaşmış, özelleşmiş",
+        "ex": "The hospital opened a specialised unit dedicated entirely to treating rare genetic disorders.",
+        "exTr": "Hastane, tamamen nadir genetik hastalıkların tedavisine adanmış özelleşmiş bir birim açtı."
+      },
+      "alternatives": [
+        {
+          "ex": "The specialised vocabulary made the report precise for engineers but difficult for residents who needed to understand the proposed changes.",
+          "exTr": "Uzmanlık alanına özgü sözcükler raporu mühendisler için kesin bir anlatıma kavuştururken önerilen değişiklikleri anlaması gereken sakinler için güçleştirdi."
+        }
+      ]
+    },
+    {
+      "word": "specialize",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. uzmanlaşmak, ihtisaslaşmak",
+        "ex": "The clinic decided to specialize in the treatment of rare genetic disorders.",
+        "exTr": "Klinik, nadir genetik bozuklukların tedavisinde uzmanlaşmaya karar verdi."
+      },
+      "alternatives": [
+        {
+          "ex": "Small workshops that specialize in repairing older instruments may depend on skills that are rarely covered in general manufacturing courses.",
+          "exTr": "Eski aletleri onarmakta uzmanlaşan küçük atölyeler, genel üretim derslerinde nadiren ele alınan becerilere ihtiyaç duyabilir."
+        }
+      ]
+    },
+    {
+      "word": "specialty",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. uzmanlık alanı",
+        "ex": "The young surgeon chose cardiology as her specialty after completing medical school.",
+        "exTr": "Genç cerrah, tıp fakültesini bitirdikten sonra uzmanlık alanı olarak kardiyolojiyi seçti."
+      },
+      "alternatives": [
+        {
+          "ex": "Although manuscript dating was her specialty, the historian consulted a chemist when the composition of the ink became central to the investigation.",
+          "exTr": "El yazmalarını tarihlendirmek uzmanlık alanı olsa da mürekkebin bileşimi araştırmanın merkezine yerleşince tarihçi bir kimyacıya danıştı."
+        }
+      ]
+    },
+    {
+      "word": "specifically",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. özellikle, belirli olarak",
+        "ex": "The vaccine was specifically designed to target a mutated strain of the virus.",
+        "exTr": "Aşı, virüsün mutasyona uğramış bir suşunu hedeflemek üzere özel olarak tasarlandı."
+      },
+      "alternatives": [
+        {
+          "ex": "The grant was specifically intended for equipment maintenance, so the department could not use it to finance an additional research post.",
+          "exTr": "Hibe özellikle donanım bakımı için ayrıldığından bölüm onu ek bir araştırma kadrosunu finanse etmek için kullanamıyordu."
+        }
+      ]
+    },
+    {
+      "word": "specimen",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. numune, örnek",
+        "ex": "The biologist collected several plant specimens from the rainforest for further laboratory analysis.",
+        "exTr": "Biyolog, daha ayrıntılı laboratuvar analizi için yağmur ormanından birkaç bitki numunesi topladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The specimen's label gave a collection date but no location, limiting what could be inferred about its original habitat.",
+          "exTr": "Numunenin etiketinde toplama tarihi vardı ancak konum yoktu; bu da asıl yaşam alanı hakkında yapılabilecek çıkarımları sınırlıyordu."
+        }
+      ]
+    },
+    {
+      "word": "spectacularly",
+      "sense_index": 1,
+      "expected": {
+        "tr": "z. fena hâlde, tam anlamıyla (olumsuz sonuçlar için)",
+        "ex": "The initial trial failed spectacularly, yet the unexpected data it produced eventually opened up an entirely new line of research.",
+        "exTr": "İlk deneme fena hâlde başarısız oldu; yine de ortaya çıkardığı beklenmedik veriler sonunda bambaşka bir araştırma alanının kapısını açtı."
+      },
+      "alternatives": [
+        {
+          "ex": "The publicity campaign failed spectacularly when audiences interpreted its central message in a way the organisers had never anticipated.",
+          "exTr": "İzleyiciler ana mesajını düzenleyicilerin hiç öngörmediği biçimde yorumlayınca tanıtım kampanyası fena hâlde başarısız oldu."
+        }
+      ]
+    },
+    {
+      "word": "speculate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. tahmin yürütmek; varsayımda bulunmak",
+        "ex": "Without complete fossil evidence, paleontologists can only speculate about the exact appearance of the ancient creature.",
+        "exTr": "Tam fosil kanıtı olmadan, paleontologlar bu antik yaratığın kesin görünümü hakkında ancak tahmin yürütebilir."
+      },
+      "alternatives": [
+        {
+          "ex": "It would be premature to speculate about the author's motives before establishing whether the unsigned letter was actually written by her.",
+          "exTr": "İmzasız mektubun gerçekten yazar tarafından yazılıp yazılmadığı belirlenmeden onun amaçları hakkında tahmin yürütmek erken olurdu."
+        }
+      ]
+    },
+    {
+      "word": "speech",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. konuşma, söylev",
+        "ex": "The politician delivered a passionate speech about the importance of protecting natural resources.",
+        "exTr": "Politikacı, doğal kaynakları korumanın önemi hakkında tutkulu bir konuşma yaptı."
+      },
+      "alternatives": [
+        {
+          "ex": "Comparing the draft with the delivered speech revealed that several cautious qualifications had been removed before the public announcement.",
+          "exTr": "Taslak ile yapılan konuşmanın karşılaştırılması, kamuya açıklamadan önce birkaç temkinli sınırlayıcı ifadenin çıkarıldığını ortaya koydu."
+        }
+      ]
+    },
+    {
+      "word": "speed-reading",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. hızlı okuma",
+        "ex": "The university library offers a free speed-reading workshop for students preparing for final exams.",
+        "exTr": "Üniversite kütüphanesi, final sınavlarına hazırlanan öğrenciler için ücretsiz bir hızlı okuma atölyesi sunuyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The evaluation of the speed-reading course measured comprehension as well as reading time, since finishing quickly did not necessarily imply accurate understanding.",
+          "exTr": "Hızlı okuma kursunun değerlendirmesinde okuma süresinin yanı sıra anlama da ölçüldü; çünkü çabuk bitirmek mutlaka doğru anlamak demek değildi."
+        }
+      ]
+    },
+    {
+      "word": "spend",
+      "sense_index": 1,
+      "expected": {
+        "tr": "f. (zaman) geçirmek",
+        "ex": "Many teenagers now spend several hours each day interacting with digital devices instead of engaging in physical activity.",
+        "exTr": "Birçok genç artık her gün fiziksel aktivitelerle uğraşmak yerine dijital cihazlarla etkileşim hâlinde saatler geçirmektedir."
+      },
+      "alternatives": [
+        {
+          "ex": "Students who spend time discussing competing interpretations may notice weaknesses in their initial arguments before submitting a final essay.",
+          "exTr": "Farklı yorumları tartışarak zaman geçiren öğrenciler, son yazılarını teslim etmeden önce ilk savlarındaki zayıflıkları fark edebilir."
+        }
+      ]
+    },
+    {
+      "word": "sperm",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sperm",
+        "ex": "Biologists observed that sperm count in several fish species had declined due to water pollution.",
+        "exTr": "Biyologlar, su kirliliği nedeniyle birkaç balık türünde sperm sayısının azaldığını gözlemledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The laboratory report distinguished sperm concentration from total sperm count, warning that the two measurements should not be treated as interchangeable.",
+          "exTr": "Laboratuvar raporu sperm yoğunluğunu toplam sperm sayısından ayırıyor ve iki ölçümün birbirinin yerine kullanılmaması gerektiğini belirtiyordu."
+        }
+      ]
+    },
+    {
+      "word": "spice",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. baharat",
+        "ex": "Traders once crossed entire continents to bring rare spice back to European markets.",
+        "exTr": "Tüccarlar bir zamanlar Avrupa pazarlarına nadir baharat getirmek için tüm kıtaları aşardı."
+      },
+      "alternatives": [
+        {
+          "ex": "The recipe's reference to an unnamed spice prompted the researcher to compare household accounts with ingredients listed in contemporary market records.",
+          "exTr": "Tarifte adı belirtilmeyen bir baharata değinilmesi, araştırmacıyı ev hesaplarını dönemin pazar kayıtlarında listelenen malzemelerle karşılaştırmaya yöneltti."
+        }
+      ]
+    },
+    {
+      "word": "spill",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. dökmek, dökülmek",
+        "ex": "A truck accident caused chemicals to spill onto the highway during rush hour.",
+        "exTr": "Bir kamyon kazası, yoğun saatlerde otoyola kimyasal madde dökülmesine neden oldu."
+      },
+      "alternatives": [
+        {
+          "ex": "During the demonstration, an unstable handle caused water to spill from the container, exposing a design problem that earlier measurements had missed.",
+          "exTr": "Gösterim sırasında sağlam durmayan bir sap kaptan su dökülmesine yol açarak önceki ölçümlerin gözden kaçırdığı tasarım sorununu ortaya çıkardı."
+        }
+      ]
+    },
+    {
+      "word": "spinal",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. omurgaya veya omuriliğe ilişkin",
+        "ex": "A spinal injury can interrupt communication between the brain and muscles below the damaged area.",
+        "exTr": "Bir omurga yaralanması beyin ile hasarlı bölgenin altındaki kaslar arasındaki iletişimi kesebilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The anatomy display used separate colours for the spinal cord and the surrounding bones to help visitors distinguish structures that are often confused.",
+          "exTr": "Anatomi sergisi, ziyaretçilerin sıkça karıştırılan yapıları ayırt etmesine yardımcı olmak için omuriliği ve çevresindeki kemikleri ayrı renklerle gösterdi."
+        }
+      ]
+    },
+    {
+      "word": "spirit",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. moral, ruh",
+        "ex": "The team's spirit remained high despite facing several setbacks during the project.",
+        "exTr": "Takımın morali, proje sırasında birçok aksiliğe rağmen yüksek kaldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The volunteers maintained a cooperative spirit throughout the restoration, even when disagreements arose over which historical features should receive priority.",
+          "exTr": "Gönüllüler, hangi tarihî özelliklere öncelik verilmesi gerektiği konusunda anlaşmazlıklar çıktığında bile restorasyon boyunca iş birliği ruhunu korudu."
+        }
+      ]
+    },
+    {
+      "word": "spite",
+      "sense_index": 0,
+      "expected": {
+        "tr": "e. (in spite of) rağmen",
+        "ex": "In spite of repeated warnings from scientists, global carbon emissions continued to rise sharply.",
+        "exTr": "Bilim insanlarının tekrarlanan uyarılarına rağmen, küresel karbon emisyonları keskin biçimde artmaya devam etti."
+      },
+      "alternatives": [
+        {
+          "ex": "In spite of the additional funding, the project remained behind schedule because the required materials could not be obtained locally.",
+          "exTr": "Ek finansmana rağmen gerekli malzemeler yerel olarak temin edilemediğinden proje takvimin gerisinde kaldı."
+        }
+      ]
+    },
+    {
+      "word": "split-up",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ayrılma, dağılma",
+        "ex": "After years of disagreements, the founding partners finally announced their split-up.",
+        "exTr": "Yıllar süren anlaşmazlıkların ardından kurucu ortaklar sonunda ayrılıklarını duyurdu."
+      },
+      "alternatives": [
+        {
+          "ex": "The committee examined the proposed split-up of the organisation, asking how its shared responsibilities would be distributed among the new bodies.",
+          "exTr": "Komite, ortak sorumluluklarının yeni kuruluşlar arasında nasıl dağıtılacağını sorarak örgütün önerilen bölünmesini inceledi."
+        }
+      ],
+      "note": "Karttaki ayrılma/dağılma isim anlamı için tireli split-up doğrulandı; tür isim olmalı. https://www.collinsdictionary.com/dictionary/english/split-up"
+    },
+    {
+      "word": "spoken",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. sözlü, konuşulan",
+        "ex": "Fluency in the spoken language often develops faster than mastery of its written grammar.",
+        "exTr": "Konuşulan dildeki akıcılık, genellikle yazılı dilbilgisine hakimiyetten daha hızlı gelişir."
+      },
+      "alternatives": [
+        {
+          "ex": "The study compared spoken instructions with written versions, examining which details participants remembered after completing an unfamiliar practical task.",
+          "exTr": "Çalışma, alışılmadık bir uygulama görevini tamamladıktan sonra katılımcıların hangi ayrıntıları hatırladığını inceleyerek sözlü yönergeleri yazılı sürümleriyle karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "sponsor",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sponsor, destekleyici",
+        "ex": "The marathon's main sponsor provided free water and equipment for all the runners.",
+        "exTr": "Maratonun ana sponsoru, tüm koşuculara ücretsiz su ve ekipman sağladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The exhibition's sponsor was acknowledged at the entrance, while a separate statement explained that curatorial decisions remained with the museum.",
+          "exTr": "Serginin sponsoru girişte belirtilirken ayrı bir açıklamada sergi düzenleme kararlarının müzeye ait olduğu ifade edildi."
+        }
+      ]
+    },
+    {
+      "word": "spontaneously",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. kendiliğinden, aniden, doğaçlama olarak",
+        "ex": "The crowd began cheering spontaneously the moment the national team scored the winning goal.",
+        "exTr": "Millî takım kazandıran golü attığı anda kalabalık kendiliğinden tezahürat yapmaya başladı."
+      },
+      "alternatives": [
+        {
+          "ex": "Participants spontaneously began comparing their drawings, producing a discussion that the facilitator had originally planned for a later stage of the workshop.",
+          "exTr": "Katılımcılar kendiliğinden çizimlerini karşılaştırmaya başlayarak yürütücünün başlangıçta atölyenin sonraki bir aşaması için planladığı tartışmayı başlattı."
+        }
+      ]
+    },
+    {
+      "word": "spot",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. fark etmek, saptamak",
+        "ex": "Trained radiologists can spot early signs of cancer that automated systems sometimes miss.",
+        "exTr": "Deneyimli radyologlar, otomatik sistemlerin bazen gözden kaçırdığı erken kanser belirtilerini fark edebilir."
+      },
+      "alternatives": [
+        {
+          "ex": "A reader familiar with local geography was able to spot an incorrect place name that had escaped the editor's attention.",
+          "exTr": "Yerel coğrafyayı bilen bir okur, editörün dikkatinden kaçmış yanlış bir yer adını fark edebildi."
+        }
+      ]
+    },
+    {
+      "word": "spouse",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. eş (karı/koca)",
+        "ex": "Company policy now allows employees to add a spouse to their health insurance plan at no extra cost.",
+        "exTr": "Şirket politikası artık çalışanların ek bir ücret ödemeden eşlerini sağlık sigortası planına eklemesine izin veriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The biographer consulted letters written by the scientist's spouse, finding accounts of everyday work that were absent from the official memoir.",
+          "exTr": "Biyografi yazarı, bilim insanının eşinin yazdığı mektupları inceleyerek resmî anılarda bulunmayan gündelik çalışma anlatımlarına ulaştı."
+        }
+      ]
+    },
+    {
+      "word": "spread-out",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yayılmış, dağınık",
+        "ex": "Satellite images revealed a spread-out pattern of wildfires across the drought-affected region.",
+        "exTr": "Uydu görüntüleri, kuraklıktan etkilenen bölgede yayılmış bir orman yangını düzeni ortaya çıkardı."
+      },
+      "alternatives": [
+        {
+          "ex": "The spread-out arrangement of the buildings increased the distance between departments, an issue that the proposed transport plan had not addressed.",
+          "exTr": "Binaların dağınık yerleşimi bölümler arasındaki mesafeyi artırıyordu; önerilen ulaşım planı bu konuyu ele almamıştı."
+        }
+      ]
+    },
+    {
+      "word": "spring",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. kaynak, pınar",
+        "ex": "Villagers have relied on the same natural spring for fresh drinking water for many generations.",
+        "exTr": "Köylüler, birçok nesil boyunca temiz içme suyu için aynı doğal kaynağa güvendi."
+      },
+      "alternatives": [
+        {
+          "ex": "The map marked a spring near the abandoned mill, but a later survey was needed to establish whether water still emerged there.",
+          "exTr": "Harita terk edilmiş değirmenin yakınında bir pınar gösteriyordu; ancak oradan hâlâ su çıkıp çıkmadığını belirlemek için sonraki bir inceleme gerekiyordu."
+        }
+      ]
+    },
+    {
+      "word": "squad",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ekip, takım, manga",
+        "ex": "The national coach announced his final squad for the upcoming international tournament yesterday afternoon.",
+        "exTr": "Millî takım teknik direktörü, dün öğleden sonra yaklaşan uluslararası turnuva için kesin kadrosunu açıkladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The coach selected a smaller squad for the training camp so that each player's performance could be observed in several different positions.",
+          "exTr": "Antrenör, her oyuncunun performansının birkaç farklı mevkide gözlemlenebilmesi için antrenman kampına daha küçük bir kadro seçti."
+        }
+      ]
+    },
+    {
+      "word": "squeeze",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. sıkmak",
+        "ex": "She had to squeeze the fresh lemons by hand because the kitchen's juicer was broken.",
+        "exTr": "Mutfaktaki meyve sıkacağı bozuk olduğu için taze limonları elle sıkmak zorunda kaldı."
+      },
+      "alternatives": [
+        {
+          "ex": "Children were asked to squeeze the soft material and describe how its shape changed when the pressure was released.",
+          "exTr": "Çocuklardan yumuşak malzemeyi sıkmaları ve basınç kaldırıldığında biçiminin nasıl değiştiğini anlatmaları istendi."
+        }
+      ]
+    },
+    {
+      "word": "stability",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. istikrar, denge, kararlılık",
+        "ex": "Central banks often raise interest rates to maintain economic stability during periods of high inflation.",
+        "exTr": "Merkez bankaları, yüksek enflasyon dönemlerinde ekonomik istikrarı korumak için genellikle faiz oranlarını yükseltir."
+      },
+      "alternatives": [
+        {
+          "ex": "The stability of the measuring platform was checked before each trial, since slight movement could make comparisons between observations unreliable.",
+          "exTr": "Hafif bir hareket gözlemler arasındaki karşılaştırmaları güvenilmez kılabileceğinden ölçüm platformunun sağlamlığı her denemeden önce kontrol edildi."
+        }
+      ]
+    },
+    {
+      "word": "stack",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yığın, istif",
+        "ex": "Researchers carefully organized a tall stack of historical documents before digitizing the archive.",
+        "exTr": "Araştırmacılar, arşivi dijitalleştirmeden önce yüksek bir tarihî belge yığınını dikkatlice düzenledi."
+      },
+      "alternatives": [
+        {
+          "ex": "A stack of unused tickets helped the historian estimate the event's capacity, although it could not establish how many people had actually attended.",
+          "exTr": "Bir yığın kullanılmamış bilet, gerçekte kaç kişinin katıldığını belirleyemese de tarihçinin etkinliğin kapasitesini tahmin etmesine yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "stage",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. aşama, evre",
+        "ex": "Cancer treatment strategies often vary depending on the stage at which the disease is detected.",
+        "exTr": "Kanser tedavi stratejileri, hastalığın hangi evrede tespit edildiğine bağlı olarak sıklıkla değişir."
+      },
+      "alternatives": [
+        {
+          "ex": "At an early stage of the investigation, the team decided to document uncertainty rather than present incomplete findings as firm conclusions.",
+          "exTr": "Ekip, araştırmanın erken bir aşamasında eksik bulguları kesin sonuçlar olarak sunmak yerine belirsizliği kaydetmeye karar verdi."
+        }
+      ]
+    },
+    {
+      "word": "stain",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. leke",
+        "ex": "She scrubbed for an hour, but the ink stain on the tablecloth would not disappear.",
+        "exTr": "Bir saat boyunca ovaladı ama masa örtüsündeki mürekkep lekesi bir türlü çıkmadı."
+      },
+      "alternatives": [
+        {
+          "ex": "The stain extended beneath a later repair, suggesting that the fabric had been damaged before the additional stitching was applied.",
+          "exTr": "Leke sonradan yapılmış bir onarımın altına uzanıyordu; bu da kumaşın ek dikiş atılmadan önce zarar gördüğünü düşündürüyordu."
+        }
+      ]
+    },
+    {
+      "word": "stalk",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. bitki sapı, gövde",
+        "ex": "A thick stalk supports each sunflower.",
+        "exTr": "Kalın bir sap her ayçiçeğini taşır."
+      },
+      "alternatives": [
+        {
+          "ex": "The drawing showed a broken stalk beside the flower, a detail that helped the botanist interpret how the specimen had been prepared.",
+          "exTr": "Çizimde çiçeğin yanında kırık bir sap görülüyordu; bu ayrıntı botanikçinin numunenin nasıl hazırlandığını yorumlamasına yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "stamp",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. pul",
+        "ex": "Collectors paid a remarkably high price for a rare stamp printed during the early twentieth century.",
+        "exTr": "Koleksiyoncular, yirminci yüzyılın başlarında basılmış nadir bir pul için dikkat çekici derecede yüksek bir fiyat ödedi."
+      },
+      "alternatives": [
+        {
+          "ex": "The stamp on the envelope provided a possible date range, but the researcher also checked the postmark before dating the letter.",
+          "exTr": "Zarfın üzerindeki pul olası bir tarih aralığı sağladı; ancak araştırmacı mektubu tarihlendirmeden önce posta damgasını da kontrol etti."
+        }
+      ]
+    },
+    {
+      "word": "stand-alone",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. bağımsız çalışan, tek başına kullanılabilen",
+        "ex": "The software can function as a stand-alone application without requiring an internet connection at all.",
+        "exTr": "Yazılım, hiçbir internet bağlantısı gerektirmeden bağımsız çalışan bir uygulama olarak işlev görebilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The chapter was revised as a stand-alone introduction, allowing readers unfamiliar with the earlier volumes to follow its argument.",
+          "exTr": "Bölüm, önceki ciltleri bilmeyen okurların savını takip edebilmesi için tek başına kullanılabilecek bir giriş olarak yeniden düzenlendi."
+        }
+      ]
+    },
+    {
+      "word": "stand-up",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. stand-up (tek kişilik sahne komedisi)",
+        "ex": "The comedian performed a stand-up routine that addressed everyday struggles with technology and social media.",
+        "exTr": "Komedyen, teknoloji ve sosyal medyayla ilgili günlük zorlukları ele alan bir stand-up gösterisi sundu."
+      },
+      "alternatives": [
+        {
+          "ex": "The study examined how a stand-up performance changed between venues, focusing on the adjustments made when audiences responded differently to the same material.",
+          "exTr": "Çalışma, izleyiciler aynı içeriğe farklı tepki verdiğinde yapılan uyarlamalara odaklanarak bir stand-up gösterisinin mekânlar arasında nasıl değiştiğini inceledi."
+        }
+      ]
+    },
+    {
+      "word": "standardize",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. standartlaştırmak",
+        "ex": "International organizations worked to standardize safety regulations for commercial aircraft across different countries.",
+        "exTr": "Uluslararası kuruluşlar, ticari uçaklara yönelik güvenlik kurallarını farklı ülkelerde standartlaştırmak için çalıştı."
+      },
+      "alternatives": [
+        {
+          "ex": "The researchers agreed to standardize interview headings while retaining space for observations that did not fit the original categories.",
+          "exTr": "Araştırmacılar, ilk kategorilere uymayan gözlemler için alan bırakırken görüşme başlıklarını standartlaştırma konusunda anlaştı."
+        }
+      ]
+    },
+    {
+      "word": "staphylococcus",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. stafilokok (besin zehirlenmesi ve enfeksiyona yol açan bir bakteri cinsi)",
+        "ex": "Staphylococcus can survive on dry surfaces for weeks, which is why hospitals enforce strict cleaning routines in operating theatres.",
+        "exTr": "Stafilokok kuru yüzeylerde haftalarca canlı kalabilir; hastanelerin ameliyathanelerde katı temizlik kuralları uygulamasının nedeni budur."
+      },
+      "alternatives": [
+        {
+          "ex": "The report identified Staphylococcus as the bacterial genus detected in the sample, while reserving species identification for a separate analysis.",
+          "exTr": "Rapor, numunede saptanan bakteri cinsini Staphylococcus olarak belirtti; türün belirlenmesini ise ayrı bir analize bıraktı."
+        }
+      ]
+    },
+    {
+      "word": "starling",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sığırcık (kuş)",
+        "ex": "Thousands of starlings gather at dusk and move as a single body, producing the swirling formations that ornithologists refer to as murmurations.",
+        "exTr": "Binlerce sığırcık akşam karanlığında toplanır ve tek bir kütle hâlinde hareket ederek kuş bilimcilerin \"murmuration\" dediği burgaçlı düzenleri oluşturur."
+      },
+      "alternatives": [
+        {
+          "ex": "The starling appeared in only one of the survey photographs, so the team checked the observer's notes before including the sighting in its records.",
+          "exTr": "Sığırcık araştırma fotoğraflarından yalnızca birinde göründüğünden ekip gözlemi kayıtlarına eklemeden önce gözlemcinin notlarını kontrol etti."
+        }
+      ]
+    },
+    {
+      "word": "starting",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. başlangıçtaki, ilk",
+        "ex": "Researchers emphasized that the starting point of the experiment determined the reliability of subsequent measurements.",
+        "exTr": "Araştırmacılar, deneyin başlangıç noktasının sonraki ölçümlerin güvenilirliğini belirlediğini vurguladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The starting assumptions were listed explicitly, allowing readers to judge whether the proposed explanation depended on conditions absent from their own setting.",
+          "exTr": "Başlangıç varsayımları açıkça listelendi; böylece okurlar önerilen açıklamanın kendi ortamlarında bulunmayan koşullara dayanıp dayanmadığını değerlendirebildi."
+        }
+      ]
+    },
+    {
+      "word": "starve",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. aç kalmak, aç bırakmak",
+        "ex": "Thousands of people continued to starve as the drought destroyed crops across the entire region.",
+        "exTr": "Kuraklık bölgenin tamamındaki ekinleri yok ederken, binlerce insan aç kalmaya devam etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The witness feared that isolated households would starve before deliveries resumed, although the surviving records do not establish how much food remained.",
+          "exTr": "Günümüze ulaşan kayıtlar ne kadar yiyecek kaldığını göstermese de tanık, teslimatlar yeniden başlamadan önce yalıtılmış hanelerin aç kalacağından korkuyordu."
+        }
+      ]
+    },
+    {
+      "word": "stated",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. belirtilen, ifade edilen",
+        "ex": "The company failed to meet its previously stated goal of reducing emissions by half.",
+        "exTr": "Şirket, emisyonları yarı yarıya azaltma yönünde daha önce belirttiği hedefe ulaşamadı."
+      },
+      "alternatives": [
+        {
+          "ex": "The stated purpose of the survey was to improve access, yet several questions collected information unrelated to that objective.",
+          "exTr": "Anketin belirtilen amacı erişimi iyileştirmekti; buna karşın birkaç soru bu hedefle ilgisiz bilgiler topluyordu."
+        }
+      ]
+    },
+    {
+      "word": "static",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. durağan, sabit",
+        "ex": "House prices remained static for months despite repeated interest rate cuts by the central bank.",
+        "exTr": "Merkez bankasının art arda faiz indirimlerine rağmen konut fiyatları aylarca durağan kaldı."
+      },
+      "alternatives": [
+        {
+          "ex": "A static diagram could show the components clearly, but an animation was needed to explain how they moved in relation to one another.",
+          "exTr": "Durağan bir şema parçaları açıkça gösterebiliyordu; ancak birbirlerine göre nasıl hareket ettiklerini açıklamak için bir animasyon gerekiyordu."
+        }
+      ]
+    },
+    {
+      "word": "statistical",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. istatistiksel",
+        "ex": "Researchers used statistical methods to determine whether the new treatment was genuinely effective.",
+        "exTr": "Araştırmacılar, yeni tedavinin gerçekten etkili olup olmadığını belirlemek için istatistiksel yöntemler kullandı."
+      },
+      "alternatives": [
+        {
+          "ex": "The statistical comparison excluded records with missing dates, and the authors discussed how this decision might affect the interpretation of their findings.",
+          "exTr": "İstatistiksel karşılaştırma tarihi eksik kayıtları dışarıda bıraktı; yazarlar bu kararın bulgularının yorumlanmasını nasıl etkileyebileceğini tartıştı."
+        }
+      ]
+    },
+    {
+      "word": "stats",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. istatistikler (gündelik dil)",
+        "ex": "Coaches now rely heavily on detailed player stats to plan their strategy before each match.",
+        "exTr": "Antrenörler, her maçtan önce stratejilerini planlamak için artık ayrıntılı oyuncu istatistiklerine büyük ölçüde güveniyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The coach reviewed the team's stats before the final meeting, asking whether the figures reflected individual performance or differences in playing time.",
+          "exTr": "Antrenör, son toplantıdan önce takımın istatistiklerini inceleyerek rakamların bireysel performansı mı yoksa oynama süresindeki farklılıkları mı yansıttığını sordu."
+        }
+      ],
+      "note": "Stats, statistics sözcüğünün gündelik kısaltmasıdır; özgün örnekte spor değerlendirmesi bağlamında kullanılmıştır."
+    },
+    {
+      "word": "stay",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. kalmak, devam etmek",
+        "ex": "Patients are advised to stay hydrated for several hours following the medical procedure.",
+        "exTr": "Hastalara, tıbbi işlemin ardından birkaç saat boyunca yeterince sıvı tüketmeye devam etmeleri öneriliyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Visitors could stay after the lecture to examine the demonstration materials and ask questions that had not been addressed during the discussion.",
+          "exTr": "Ziyaretçiler, gösterim malzemelerini incelemek ve tartışmada ele alınmamış soruları sormak için dersten sonra kalabiliyordu."
+        }
+      ]
+    }
+  ],
+  "collocations": [
+    {
+      "word": "south-central",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "the south-central region",
+          "tr": "güney-orta bölge"
+        },
+        {
+          "en": "south-central districts",
+          "tr": "güney-orta ilçeler"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "southeast",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "in the southeast",
+          "tr": "güneydoğuda"
+        },
+        {
+          "en": "to the southeast of",
+          "tr": "bir yerin güneydoğusunda"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "southwestern",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "the southwestern coast",
+          "tr": "güneybatı kıyısı"
+        },
+        {
+          "en": "the southwestern corner",
+          "tr": "güneybatı köşesi"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "soviet",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a local soviet",
+          "tr": "yerel sovyet konseyi"
+        },
+        {
+          "en": "a workers' soviet",
+          "tr": "işçi sovyeti"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "specialty",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "an academic specialty",
+          "tr": "akademik uzmanlık alanı"
+        },
+        {
+          "en": "a local specialty",
+          "tr": "yöreye özgü özel ürün veya yemek"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "sperm",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "sperm count",
+          "tr": "sperm sayısı"
+        },
+        {
+          "en": "sperm cells",
+          "tr": "sperm hücreleri"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "split-up",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "the split-up of a company",
+          "tr": "bir şirketin bölünmesi"
+        },
+        {
+          "en": "a family split-up",
+          "tr": "bir ailenin dağılması"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "spouse",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a surviving spouse",
+          "tr": "hayatta kalan eş"
+        },
+        {
+          "en": "a former spouse",
+          "tr": "eski eş"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "spread-out",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a spread-out settlement",
+          "tr": "dağınık bir yerleşim"
+        },
+        {
+          "en": "a spread-out layout",
+          "tr": "geniş alana yayılmış yerleşim düzeni"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "stalk",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a flower stalk",
+          "tr": "çiçek sapı"
+        },
+        {
+          "en": "stalk prey",
+          "tr": "avını sinsice takip etmek"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "stand-up",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a stand-up comedian",
+          "tr": "stand-up komedyeni"
+        },
+        {
+          "en": "a stand-up routine",
+          "tr": "stand-up gösterisi"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "stats",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "player stats",
+          "tr": "oyuncu istatistikleri"
+        },
+        {
+          "en": "check the stats",
+          "tr": "istatistikleri kontrol etmek"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

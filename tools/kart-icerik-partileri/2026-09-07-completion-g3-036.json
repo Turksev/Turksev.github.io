@@ -1,0 +1,1003 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 3,
+    "input": "input-036.json"
+  },
+  "enrichments": [
+    {
+      "word": "possible",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. mümkün, olası",
+        "ex": "Engineers believe it is possible to build earthquake-resistant skyscrapers using flexible steel frames.",
+        "exTr": "Mühendisler, esnek çelik iskeletlerle depreme dayanıklı gökdelenler inşa etmenin mümkün olduğuna inanıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "It may be possible to reuse the existing shelves, provided that the team measures the new room carefully before ordering additional furniture.",
+          "exTr": "Ek mobilya sipariş etmeden önce ekip yeni odayı dikkatle ölçerse mevcut rafları yeniden kullanmak mümkün olabilir."
+        }
+      ]
+    },
+    {
+      "word": "post-free",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s./z. posta ücretsiz, posta ücreti ödenmeden",
+        "ex": "Readers can order the museum's new catalogue post-free if they submit their request before the end of March.",
+        "exTr": "Okuyucular, taleplerini Mart sonundan önce gönderirlerse müzenin yeni katalogunu posta ücretsiz olarak sipariş edebilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The publisher offered to send replacement pages post-free after readers reported that a printing error had made several diagrams difficult to interpret.",
+          "exTr": "Okuyucular bir baskı hatasının birkaç şemayı yorumlamayı zorlaştırdığını bildirince yayınevi yeni sayfaları posta ücreti almadan göndermeyi teklif etti."
+        }
+      ]
+    },
+    {
+      "word": "postage",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. posta ücreti",
+        "ex": "The museum increased the postage on international orders after shipping costs rose sharply last year.",
+        "exTr": "Müze, geçen yıl kargo maliyetleri hızla arttıktan sonra uluslararası siparişlerdeki posta ücretini yükseltti."
+      },
+      "alternatives": [
+        {
+          "ex": "The price listed on the order form did not include postage, so overseas readers needed a separate estimate before confirming their purchase.",
+          "exTr": "Sipariş formunda belirtilen fiyata posta ücreti dâhil değildi; bu yüzden yurt dışındaki okurlar satın almayı onaylamadan önce ayrı bir fiyat tahminine ihtiyaç duyuyordu."
+        }
+      ]
+    },
+    {
+      "word": "postgraduate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. lisansüstü",
+        "ex": "Many postgraduate students choose to specialize in renewable energy engineering these days.",
+        "exTr": "Günümüzde birçok lisansüstü öğrenci, yenilenebilir enerji mühendisliğinde uzmanlaşmayı tercih ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The postgraduate seminar brought together students from architecture and sociology to discuss how different disciplines study the use of public space.",
+          "exTr": "Lisansüstü seminer, farklı disiplinlerin kamusal alan kullanımını nasıl incelediğini tartışmak üzere mimarlık ve sosyoloji öğrencilerini bir araya getirdi."
+        }
+      ]
+    },
+    {
+      "word": "postmodernist",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. postmodernist, postmodernizme ilişkin",
+        "ex": "Postmodernist critics question the idea that any single narrative can capture historical truth objectively and completely.",
+        "exTr": "Postmodernist eleştirmenler, tek bir anlatının tarihsel gerçeği nesnel ve eksiksiz biçimde yakalayabileceği düşüncesini sorgular."
+      },
+      "alternatives": [
+        {
+          "ex": "The novel's postmodernist structure lets characters comment on their own story, repeatedly unsettling the reader's expectations about who controls the narrative.",
+          "exTr": "Romanın postmodernist yapısı, karakterlerin kendi hikâyeleri hakkında yorum yapmasına izin vererek okurun anlatıyı kimin yönettiğine dair beklentilerini tekrar tekrar sarsıyor."
+        }
+      ]
+    },
+    {
+      "word": "pot",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. tencere, çömlek",
+        "ex": "Archaeologists found a clay pot containing seeds that farmers stored thousands of years ago.",
+        "exTr": "Arkeologlar, çiftçilerin binlerce yıl önce sakladığı tohumları içeren bir toprak çömlek buldu."
+      },
+      "alternatives": [
+        {
+          "ex": "The cook chose a wider pot so that she could stir the mixture comfortably without spilling it onto the stove.",
+          "exTr": "Aşçı, karışımı ocağa dökmeden rahatça karıştırabilmek için daha geniş bir tencere seçti."
+        }
+      ]
+    },
+    {
+      "word": "potent",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. güçlü; etkili",
+        "ex": "Researchers discovered a potent compound in the plant that could someday treat certain infections.",
+        "exTr": "Araştırmacılar, bitkide gelecekte belirli enfeksiyonları tedavi edebilecek güçlü bir bileşik keşfetti."
+      },
+      "alternatives": [
+        {
+          "ex": "A single photograph became a potent symbol of the campaign, conveying the residents' determination more directly than the lengthy statement issued by the organisers.",
+          "exTr": "Tek bir fotoğraf, sakinlerin kararlılığını organizatörlerin yayımladığı uzun açıklamadan daha doğrudan aktararak kampanyanın güçlü bir simgesine dönüştü."
+        }
+      ]
+    },
+    {
+      "word": "pottery",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. çömlekçilik, seramik eşya",
+        "ex": "Archaeologists found fragments of ancient pottery scattered throughout the excavation site.",
+        "exTr": "Arkeologlar, kazı alanına dağılmış antik çömlek parçaları buldu."
+      },
+      "alternatives": [
+        {
+          "ex": "The pottery class encouraged learners to keep unsuccessful pieces, since cracks and uneven walls could reveal problems that a finished object might conceal.",
+          "exTr": "Çömlekçilik kursu, çatlaklar ve eşit olmayan duvarlar bitmiş bir nesnenin gizleyebileceği sorunları ortaya çıkarabileceği için öğrencileri başarısız parçaları saklamaya teşvik etti."
+        }
+      ]
+    },
+    {
+      "word": "pour",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. dökmek, akıtmak",
+        "ex": "Laboratory assistants carefully pour the chemical solution into labeled containers before testing.",
+        "exTr": "Laboratuvar asistanları, test etmeden önce kimyasal çözeltiyi dikkatle etiketli kaplara döker."
+      },
+      "alternatives": [
+        {
+          "ex": "As she poured water into the transparent container, the teacher asked the class to observe how the marked level changed with each addition.",
+          "exTr": "Öğretmen şeffaf kaba su dökerken sınıftan işaretli seviyenin her eklemeyle nasıl değiştiğini gözlemlemesini istedi."
+        }
+      ]
+    },
+    {
+      "word": "power",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. güç; elektrik",
+        "ex": "Wind turbines now generate enough power to supply millions of homes across Europe.",
+        "exTr": "Rüzgâr türbinleri artık Avrupa genelinde milyonlarca eve yetecek kadar elektrik üretiyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The portable display used less power than the older model, allowing the exhibition team to run it longer from the same battery.",
+          "exTr": "Taşınabilir ekran eski modelden daha az elektrik tüketerek sergi ekibinin onu aynı pille daha uzun süre çalıştırmasını sağladı."
+        }
+      ]
+    },
+    {
+      "word": "powerless",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. güçsüz; çaresiz",
+        "ex": "Without proper equipment, rescue workers felt powerless to help those trapped beneath the rubble.",
+        "exTr": "Uygun ekipman olmadan, kurtarma ekipleri enkaz altında kalanlara yardım etmekte çaresiz hissetti."
+      },
+      "alternatives": [
+        {
+          "ex": "The residents felt powerless when their complaints disappeared into separate departments, until a joint meeting established who was responsible for responding.",
+          "exTr": "Ortak bir toplantı yanıt vermekten kimin sorumlu olduğunu belirleyene kadar şikâyetleri ayrı birimler arasında kaybolan sakinler kendilerini çaresiz hissetti."
+        }
+      ]
+    },
+    {
+      "word": "practice",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. uygulamak; (mesleği) icra etmek",
+        "ex": "Doctors who practice in rural clinics often face a shortage of specialized medical equipment.",
+        "exTr": "Kırsal kliniklerde hekimlik yapan doktorlar, çoğu zaman özel tıbbi ekipman eksikliğiyle karşılaşır."
+      },
+      "alternatives": [
+        {
+          "ex": "Architects who practice in small towns may work closely with local craftspeople, adapting their designs to the skills and materials available nearby.",
+          "exTr": "Küçük kasabalarda mesleğini icra eden mimarlar, tasarımlarını yakın çevredeki becerilere ve malzemelere uyarlayarak yerel zanaatkârlarla yakın çalışabilir."
+        }
+      ]
+    },
+    {
+      "word": "practised",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. deneyimli, usta, alışkın",
+        "ex": "A practised negotiator can often resolve conflicts that seem impossible to settle.",
+        "exTr": "Deneyimli bir müzakereci, çözülmesi imkansız görünen anlaşmazlıkları genellikle çözebilir."
+      },
+      "alternatives": [
+        {
+          "ex": "With a practised eye, the tailor noticed that the sleeve hung unevenly, even though the difference was barely visible to the customer.",
+          "exTr": "Fark müşteriye güçlükle görünse de terzi, deneyimli gözüyle kolun düzgün durmadığını fark etti."
+        }
+      ]
+    },
+    {
+      "word": "praise",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. övmek",
+        "ex": "Critics praised the novel for its vivid portrayal of life during the industrial revolution.",
+        "exTr": "Eleştirmenler, romanı sanayi devrimi döneminin canlı tasviri nedeniyle övdü."
+      },
+      "alternatives": [
+        {
+          "ex": "The review praised the documentary for allowing conflicting memories to remain unresolved instead of forcing every interview into a single convenient explanation.",
+          "exTr": "Eleştiri, her görüşmeyi tek ve kolay bir açıklamaya zorlamak yerine çelişkili anıları çözümsüz bırakmaya izin verdiği için belgeseli övdü."
+        }
+      ]
+    },
+    {
+      "word": "pre-game",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. maç/parti öncesi buluşma",
+        "ex": "Students organised a small pre-game gathering outside the stadium before the championship match began.",
+        "exTr": "Öğrenciler, şampiyonluk maçı başlamadan önce stadyumun dışında küçük bir maç öncesi buluşma düzenledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The supporters' pre-game included a discussion of the club's history, giving younger fans a chance to question former players about memorable seasons.",
+          "exTr": "Taraftarların maç öncesi buluşması, genç taraftarlara eski oyunculara unutulmaz sezonlar hakkında soru sorma fırsatı veren bir kulüp tarihi sohbeti içeriyordu."
+        }
+      ]
+    },
+    {
+      "word": "precedent",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. emsal, sonraki kararlar için örnek oluşturan önceki olay",
+        "ex": "The ruling created a legal precedent for later cases involving digital privacy.",
+        "exTr": "Karar, dijital gizlilikle ilgili sonraki davalar için yasal bir emsal oluşturdu."
+      },
+      "alternatives": [
+        {
+          "ex": "Allowing one group to use the hall without charge created a precedent that the committee had to consider when similar requests arrived.",
+          "exTr": "Bir grubun salonu ücretsiz kullanmasına izin vermek, benzer talepler geldiğinde komitenin dikkate almak zorunda kaldığı bir emsal oluşturdu."
+        }
+      ]
+    },
+    {
+      "word": "precise",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kesin, tam, hassas",
+        "ex": "Astronomers need precise calculations to predict exactly when the eclipse will occur.",
+        "exTr": "Gökbilimciler, tutulmanın tam olarak ne zaman gerçekleşeceğini tahmin etmek için kesin hesaplamalara ihtiyaç duyar."
+      },
+      "alternatives": [
+        {
+          "ex": "A precise description of the fault helped the technician reproduce it, whereas the original complaint had merely stated that the system sometimes failed.",
+          "exTr": "Arızanın kesin bir açıklaması teknisyenin onu yeniden oluşturmasına yardımcı oldu; oysa ilk şikâyet yalnızca sistemin bazen çalışmadığını belirtmişti."
+        }
+      ]
+    },
+    {
+      "word": "precursor",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. öncü; haberci",
+        "ex": "Many historians view the pamphlet as a precursor to the revolutionary movements that followed decades later.",
+        "exTr": "Birçok tarihçi, bu broşürü onlarca yıl sonra ortaya çıkan devrimci hareketlerin habercisi olarak görür."
+      },
+      "alternatives": [
+        {
+          "ex": "The small neighbourhood newsletter became a precursor to the regional magazine, establishing a network of contributors before the larger publication was conceived.",
+          "exTr": "Küçük mahalle bülteni, daha büyük yayın düşünülmeden önce bir katkı sağlayıcılar ağı oluşturarak bölgesel derginin öncüsü oldu."
+        }
+      ]
+    },
+    {
+      "word": "predator",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yırtıcı (hayvan)",
+        "ex": "Removing top predators from an ecosystem can trigger unexpected changes throughout the food chain.",
+        "exTr": "Bir ekosistemden üst düzey yırtıcıların kaldırılması, besin zinciri boyunca beklenmedik değişikliklere yol açabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The wildlife camera recorded a predator approaching the feeding site, prompting the team to review how the equipment might be influencing animal behaviour.",
+          "exTr": "Yaban hayatı kamerası beslenme alanına yaklaşan bir yırtıcıyı kaydederek ekibi, ekipmanın hayvan davranışını nasıl etkiliyor olabileceğini gözden geçirmeye yöneltti."
+        }
+      ]
+    },
+    {
+      "word": "predict",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. tahmin etmek, öngörmek",
+        "ex": "Meteorologists use satellite data to predict the path and intensity of approaching hurricanes.",
+        "exTr": "Meteorologlar, yaklaşan kasırgaların rotasını ve şiddetini tahmin etmek için uydu verilerini kullanır."
+      },
+      "alternatives": [
+        {
+          "ex": "Previous attendance figures helped the organisers predict demand, but they also reserved additional space in case the new location attracted a different audience.",
+          "exTr": "Önceki katılım rakamları organizatörlerin talebi tahmin etmesine yardımcı oldu, ancak yeni konum farklı bir kitle çekerse diye ek alan da ayırdılar."
+        }
+      ]
+    },
+    {
+      "word": "predisposition",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yatkınlık, eğilim",
+        "ex": "Doctors explained that a family history of heart disease can create a genetic predisposition toward similar conditions.",
+        "exTr": "Doktorlar, ailede kalp hastalığı öyküsünün benzer durumlara karşı genetik bir yatkınlık yaratabileceğini açıkladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The biographer describes a predisposition towards caution in the explorer, challenging the popular image of a person driven entirely by reckless ambition.",
+          "exTr": "Biyografi yazarı, kâşifte temkinliliğe yönelik bir eğilim betimleyerek bütünüyle gözü kara hırsın yönlendirdiği bir insan şeklindeki yaygın imaja karşı çıkıyor."
+        }
+      ]
+    },
+    {
+      "word": "predominate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. baskın veya çoğunlukta olmak; üstün gelmek",
+        "ex": "Small family farms predominate in the region, although large commercial estates control most exports.",
+        "exTr": "Büyük ticari işletmeler ihracatın çoğunu denetlese de bölgede küçük aile çiftlikleri baskındır."
+      },
+      "alternatives": [
+        {
+          "ex": "Short comments predominate in the feedback, while the few detailed responses offer a clearer picture of how participants actually used the materials.",
+          "exTr": "Geri bildirimlerde kısa yorumlar çoğunluktayken az sayıdaki ayrıntılı yanıt, katılımcıların malzemeleri gerçekte nasıl kullandığını daha açık gösteriyor."
+        }
+      ]
+    },
+    {
+      "word": "preferred",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. tercih edilen",
+        "ex": "Email remains the preferred method of communication in most professional and academic settings.",
+        "exTr": "E-posta, çoğu profesyonel ve akademik ortamda tercih edilen iletişim yöntemi olmayı sürdürmektedir."
+      },
+      "alternatives": [
+        {
+          "ex": "The preferred design provided more storage, but the group chose another option because its wider entrance would accommodate visitors using mobility aids.",
+          "exTr": "Tercih edilen tasarım daha fazla depolama alanı sağlıyordu, ancak grup daha geniş girişi hareket yardımcıları kullanan ziyaretçilere uygun olduğu için başka bir seçenek seçti."
+        }
+      ]
+    },
+    {
+      "word": "prehistoric",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. tarih öncesine ait, çok eski",
+        "ex": "Archaeologists uncovered prehistoric tools that provide insight into early human survival techniques.",
+        "exTr": "Arkeologlar, erken insanların hayatta kalma tekniklerine ışık tutan tarih öncesi aletler buldu."
+      },
+      "alternatives": [
+        {
+          "ex": "The exhibition places prehistoric objects beside explanations of how their age is estimated, making uncertainty part of the story rather than hiding it.",
+          "exTr": "Sergi, tarih öncesi nesneleri yaşlarının nasıl tahmin edildiğine ilişkin açıklamaların yanına yerleştirerek belirsizliği gizlemek yerine anlatının parçası yapıyor."
+        }
+      ]
+    },
+    {
+      "word": "preliminary",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. ön, hazırlık niteliğinde",
+        "ex": "According to preliminary results from the clinical trial, the new drug reduces inflammation significantly.",
+        "exTr": "Klinik denemeden elde edilen ön sonuçlara göre, yeni ilaç iltihabı önemli ölçüde azaltıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "A preliminary inspection found enough evidence of damage to justify a closer examination, but the team avoided estimating repair costs before completing that work.",
+          "exTr": "Ön inceleme, daha yakından değerlendirmeyi gerektirecek kadar hasar kanıtı buldu, ancak ekip bu çalışmayı tamamlamadan onarım maliyetlerini tahmin etmekten kaçındı."
+        }
+      ]
+    },
+    {
+      "word": "premier",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. başlıca, en önde gelen, birinci",
+        "ex": "The institute is regarded as the premier centre for climate research in the region, attracting scientists from more than thirty countries.",
+        "exTr": "Enstitü, bölgedeki başlıca iklim araştırma merkezi olarak görülüyor ve otuzdan fazla ülkeden bilim insanını kendine çekiyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The town's premier concert venue offered excellent acoustics, yet its limited backstage space made it unsuitable for the large production proposed by the director.",
+          "exTr": "Kasabanın önde gelen konser mekânı mükemmel akustik sunuyordu, ancak sınırlı sahne arkası alanı onu yönetmenin önerdiği büyük yapım için uygunsuz kılıyordu."
+        }
+      ]
+    },
+    {
+      "word": "preoccupation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. saplantı, kafa meşguliyeti",
+        "ex": "Modern society's preoccupation with constant connectivity has raised new concerns among sleep researchers.",
+        "exTr": "Modern toplumun sürekli bağlantıda kalma saplantısı, uyku araştırmacıları arasında yeni endişelere yol açtı."
+      },
+      "alternatives": [
+        {
+          "ex": "His preoccupation with the deadline made him overlook a simpler method, which a colleague suggested after reading the instructions more carefully.",
+          "exTr": "Teslim tarihinin zihnini meşgul etmesi, bir çalışma arkadaşının talimatları daha dikkatli okuduktan sonra önerdiği daha basit bir yöntemi gözden kaçırmasına neden oldu."
+        }
+      ]
+    },
+    {
+      "word": "prepare",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. hazırlamak, hazırlanmak",
+        "ex": "Universities should prepare students not only for employment but also for lifelong learning.",
+        "exTr": "Üniversiteler öğrencileri yalnızca iş hayatına değil, yaşam boyu öğrenmeye de hazırlamalıdır."
+      },
+      "alternatives": [
+        {
+          "ex": "The volunteers helped prepare the room for interviews by removing distracting posters and arranging chairs so that participants could speak without interruption.",
+          "exTr": "Gönüllüler, dikkat dağıtan afişleri kaldırıp sandalyeleri katılımcıların kesintisiz konuşabileceği biçimde düzenleyerek odanın görüşmelere hazırlanmasına yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "preschool",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. anaokulu, okul öncesi",
+        "ex": "Studies show that children who attend preschool often develop stronger early language skills.",
+        "exTr": "Araştırmalar, anaokuluna giden çocukların genellikle daha güçlü erken dil becerileri geliştirdiğini gösteriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The preschool invited parents to share songs from home, creating a collection that reflected the languages children encountered outside the classroom.",
+          "exTr": "Anaokulu, çocukların sınıf dışında karşılaştığı dilleri yansıtan bir derleme oluşturmak için ebeveynleri evde söyledikleri şarkıları paylaşmaya davet etti."
+        }
+      ]
+    },
+    {
+      "word": "prescription",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. reçete",
+        "ex": "The doctor wrote a prescription for antibiotics after confirming the bacterial infection.",
+        "exTr": "Doktor, bakteriyel enfeksiyonu doğruladıktan sonra antibiyotik için bir reçete yazdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The pharmacist contacted the clinic to clarify an unclear instruction on the prescription rather than ask the patient to guess what had been intended.",
+          "exTr": "Eczacı, hastadan ne kastedildiğini tahmin etmesini istemek yerine reçetedeki belirsiz bir talimatı açıklığa kavuşturmak için klinikle iletişime geçti."
+        }
+      ]
+    },
+    {
+      "word": "present",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. sunmak, takdim etmek",
+        "ex": "The committee will present its findings to the city council next Tuesday.",
+        "exTr": "Komite, bulgularını gelecek salı günü belediye meclisine sunacak."
+      },
+      "alternatives": [
+        {
+          "ex": "The students will present their designs alongside rejected alternatives, explaining how feedback changed their priorities during the development of the final version.",
+          "exTr": "Öğrenciler tasarımlarını elenen seçeneklerle birlikte sunarak son sürümü geliştirirken geri bildirimin önceliklerini nasıl değiştirdiğini açıklayacak."
+        }
+      ]
+    },
+    {
+      "word": "presenter",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sunucu (TV/radyo); sunum yapan kişi",
+        "ex": "The television presenter interviewed several scientists about recent breakthroughs in renewable energy.",
+        "exTr": "Televizyon sunucusu, yenilenebilir enerjideki son gelişmeler hakkında birkaç bilim insanıyla röportaj yaptı."
+      },
+      "alternatives": [
+        {
+          "ex": "The presenter paused after each demonstration, giving the audience time to compare the result with the prediction they had written down beforehand.",
+          "exTr": "Sunum yapan kişi her gösterimden sonra duraklayarak dinleyicilere sonucu önceden yazdıkları tahminle karşılaştırma zamanı verdi."
+        }
+      ]
+    },
+    {
+      "word": "preservative",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. bozulmayı veya çürümeyi önleyen koruyucu madde",
+        "ex": "Salt has long served as a preservative for fish in communities without reliable refrigeration.",
+        "exTr": "Tuz, güvenilir soğutma imkânı bulunmayan topluluklarda uzun zamandır balık için koruyucu madde olarak kullanılır."
+      },
+      "alternatives": [
+        {
+          "ex": "The label listed the preservative separately from the flavourings, enabling students to discuss the different functions of ingredients rather than treating additives as identical.",
+          "exTr": "Etiket koruyucu maddeyi aroma vericilerden ayrı listeliyordu; böylece öğrenciler katkı maddelerini aynı saymak yerine bileşenlerin farklı işlevlerini tartışabildi."
+        }
+      ]
+    },
+    {
+      "word": "preset",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. önceden ayarlanmış, önceden belirlenmiş",
+        "ex": "The thermostat switches the heating off automatically once the room reaches a preset temperature, which saves a considerable amount of energy.",
+        "exTr": "Termostat, oda önceden ayarlanmış sıcaklığa ulaştığında ısıtmayı otomatik olarak kapatır; bu da hatırı sayılır miktarda enerji tasarrufu sağlar."
+      },
+      "alternatives": [
+        {
+          "ex": "The camera's preset settings were convenient for beginners, but the instructor demonstrated how unusual lighting could require adjustments that the automatic mode did not anticipate.",
+          "exTr": "Kameranın önceden ayarlanmış seçenekleri yeni başlayanlar için kullanışlıydı, ancak eğitmen alışılmadık ışığın otomatik modun öngörmediği ayarlamalar gerektirebileceğini gösterdi."
+        }
+      ]
+    },
+    {
+      "word": "press",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. basın, matbaa",
+        "ex": "The local press criticized the government's decision to reduce funding for public hospitals.",
+        "exTr": "Yerel basın, hükümetin kamu hastanelerine ayrılan fonu azaltma kararını eleştirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The local press covered the workshop's opening, while a later series of interviews explored whether it had met the expectations of residents.",
+          "exTr": "Yerel basın atölyenin açılışını haber yaptı; daha sonraki bir röportaj dizisi ise sakinlerin beklentilerini karşılayıp karşılamadığını inceledi."
+        }
+      ]
+    },
+    {
+      "word": "prestige",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. saygınlık, itibar, yüksek statü",
+        "ex": "The award increased the institute's prestige but did not solve its long-term funding problems.",
+        "exTr": "Ödül enstitünün saygınlığını artırdı ancak uzun vadeli finansman sorunlarını çözmedi."
+      },
+      "alternatives": [
+        {
+          "ex": "The designer valued the commission less for its prestige than for the chance to collaborate with craftspeople whose methods she had long admired.",
+          "exTr": "Tasarımcı siparişi, getirdiği itibardan çok yöntemlerine uzun süredir hayran olduğu zanaatkârlarla iş birliği yapma fırsatı nedeniyle değerli buldu."
+        }
+      ]
+    },
+    {
+      "word": "presumption",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. varsayım; karine, doğru kabul edilen görüş",
+        "ex": "The policy rests on the presumption that all households have reliable internet access.",
+        "exTr": "Politika, bütün hanelerin güvenilir internet erişimine sahip olduğu varsayımına dayanıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The plan depended on the presumption that volunteers would remain available throughout the summer, an assumption the coordinator decided to check directly.",
+          "exTr": "Plan, gönüllülerin yaz boyunca müsait kalacağı varsayımına dayanıyordu; koordinatör bu varsayımı doğrudan kontrol etmeye karar verdi."
+        }
+      ]
+    },
+    {
+      "word": "pretty",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. oldukça, epey",
+        "ex": "The initial results of the vaccine trial look pretty promising to most experts.",
+        "exTr": "Aşı denemesinin ilk sonuçları çoğu uzmana oldukça umut verici görünüyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The instructions seemed pretty straightforward until the team discovered that the diagrams referred to an earlier model with a different set of controls.",
+          "exTr": "Ekip şemaların farklı bir kumanda düzenine sahip eski bir modele ait olduğunu keşfedene kadar talimatlar oldukça anlaşılır görünüyordu."
+        }
+      ]
+    },
+    {
+      "word": "prevailing",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. hakim, yaygın, hüküm süren",
+        "ex": "Sailors had to adjust their route according to the prevailing winds across the ocean.",
+        "exTr": "Denizciler, rotalarını okyanustaki hakim rüzgarlara göre ayarlamak zorunda kaldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The prevailing view among the organisers was that a smaller event would allow more meaningful discussion, even if it attracted less publicity.",
+          "exTr": "Organizatörler arasındaki hâkim görüş, daha küçük bir etkinliğin daha az tanıtım sağlasa bile daha anlamlı tartışmaya olanak tanıyacağıydı."
+        }
+      ]
+    },
+    {
+      "word": "preventable",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. önlenebilir",
+        "ex": "Public health officials stressed that most childhood injuries at home are actually preventable.",
+        "exTr": "Halk sağlığı yetkilileri, evdeki çocukluk çağı yaralanmalarının çoğunun aslında önlenebilir olduğunu vurguladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The duplicated order was a preventable mistake, arising because two departments used separate records and neither checked whether the other had already made the purchase.",
+          "exTr": "Aynı siparişin iki kez verilmesi önlenebilir bir hataydı; iki bölüm ayrı kayıtlar kullanmış ve hiçbiri diğerinin satın almayı yapıp yapmadığını kontrol etmemişti."
+        }
+      ]
+    },
+    {
+      "word": "preview",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ön izleme, fragman",
+        "ex": "Critics were invited to a private preview of the film several weeks before its official release.",
+        "exTr": "Eleştirmenler, filmin resmi gösteriminden birkaç hafta önce özel bir ön izlemeye davet edildi."
+      },
+      "alternatives": [
+        {
+          "ex": "The preview revealed that several captions disappeared on smaller screens, giving the editor time to correct the layout before the digital exhibition opened.",
+          "exTr": "Ön izleme, küçük ekranlarda birkaç altyazının kaybolduğunu göstererek editöre dijital sergi açılmadan önce yerleşimi düzeltme zamanı verdi."
+        }
+      ]
+    },
+    {
+      "word": "prey",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. av, kurban",
+        "ex": "Owls hunt after dark, swooping silently down on unsuspecting prey that cannot hear their approaching wings.",
+        "exTr": "Baykuşlar karanlık bastıktan sonra avlanır; yaklaşan kanatlarını duyamayan habersiz avın üzerine sessizce süzülür."
+      },
+      "alternatives": [
+        {
+          "ex": "The documentary shows the prey escaping behind a rock, reminding viewers that an attempted hunt does not always end with a successful capture.",
+          "exTr": "Belgesel, avın bir kayanın arkasına kaçışını göstererek izleyicilere bir avlanma girişiminin her zaman başarıyla yakalamayla sonuçlanmadığını hatırlatıyor."
+        }
+      ]
+    },
+    {
+      "word": "pride",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. gurur, onur",
+        "ex": "National pride swept through the country after the team's unexpected victory in the championship.",
+        "exTr": "Takımın şampiyonada beklenmedik zaferinin ardından ülke genelinde ulusal bir gurur dalgası yayıldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The apprentices took pride in the finished cabinet, not because it was flawless but because they could explain how each difficulty had been resolved.",
+          "exTr": "Çıraklar, kusursuz olduğu için değil her güçlüğün nasıl çözüldüğünü açıklayabildikleri için bitmiş dolapla gurur duydu."
+        }
+      ]
+    },
+    {
+      "word": "primary",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. birincil, ana, temel",
+        "ex": "Reducing carbon emissions remains the primary goal of most international climate agreements.",
+        "exTr": "Karbon emisyonlarını azaltmak, çoğu uluslararası iklim anlaşmasının temel amacı olmayı sürdürüyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The primary concern was keeping the archive accessible during the move, so the team arranged temporary access before deciding where to place the furniture.",
+          "exTr": "Temel kaygı taşınma sırasında arşivi erişilebilir tutmaktı; bu yüzden ekip mobilyaların yerini belirlemeden önce geçici erişimi düzenledi."
+        }
+      ]
+    },
+    {
+      "word": "primer",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. başlangıç kitabı",
+        "ex": "The professor wrote a concise primer on molecular biology for first-year university students.",
+        "exTr": "Profesör, birinci sınıf üniversite öğrencileri için moleküler biyoloji üzerine özlü bir başlangıç kitabı yazdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The primer introduces statistical reasoning through everyday decisions, allowing readers to understand the questions before encountering the formulas used to answer them.",
+          "exTr": "Başlangıç kitabı, istatistiksel akıl yürütmeyi gündelik kararlarla tanıtarak okurların soruları yanıtlayan formüllerle karşılaşmadan önce onları anlamasına olanak tanıyor."
+        }
+      ]
+    },
+    {
+      "word": "princess",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. prenses",
+        "ex": "The exhibition displayed jewelry once owned by a princess from the eighteenth century.",
+        "exTr": "Sergide, on sekizinci yüzyıldan bir prensese ait olan mücevherler sergilendi."
+      },
+      "alternatives": [
+        {
+          "ex": "The play gives the princess responsibility for negotiating the dispute, replacing the familiar rescue plot with a story about judgement and competing obligations.",
+          "exTr": "Oyun, bildik kurtarma olay örgüsünü muhakeme ve çatışan yükümlülükler hakkındaki bir hikâyeyle değiştirerek prensese anlaşmazlığı müzakere etme sorumluluğu veriyor."
+        }
+      ]
+    },
+    {
+      "word": "print",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. basmak, yazdırmak",
+        "ex": "The invention of movable type made it possible to print books quickly and cheaply.",
+        "exTr": "Hareketli harflerin icadı, kitapların hızlı ve ucuz biçimde basılmasını mümkün kıldı."
+      },
+      "alternatives": [
+        {
+          "ex": "Before the workshop printed the full set of labels, volunteers checked a sample sheet for spelling errors and compared its colours with the original design.",
+          "exTr": "Atölye tüm etiketleri basmadan önce gönüllüler örnek bir sayfayı yazım hataları açısından kontrol etti ve renklerini özgün tasarımla karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "prioritise",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. önceliklendirmek, öncelik vermek",
+        "ex": "Hospital administrators must prioritise emergency cases whenever resources become limited during a crisis.",
+        "exTr": "Hastane yöneticileri, bir kriz sırasında kaynaklar kısıtlı hale geldiğinde acil vakalara öncelik vermelidir."
+      },
+      "alternatives": [
+        {
+          "ex": "The repair team agreed to prioritise equipment needed by several groups, while explaining to individual users why less urgent requests would take longer.",
+          "exTr": "Onarım ekibi, bireysel kullanıcılara daha az acil taleplerin neden daha uzun süreceğini açıklayarak birkaç grubun ihtiyaç duyduğu ekipmana öncelik vermeyi kabul etti."
+        }
+      ]
+    },
+    {
+      "word": "prison",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. hapishane, cezaevi",
+        "ex": "Education programmes in prison significantly reduce the likelihood that inmates will reoffend after release.",
+        "exTr": "Cezaevindeki eğitim programları, mahkûmların tahliyeden sonra yeniden suç işleme olasılığını önemli ölçüde azaltır."
+      },
+      "alternatives": [
+        {
+          "ex": "The memoir describes the prison library as a place where the narrator encountered ideas that challenged his earlier assumptions about responsibility and belonging.",
+          "exTr": "Anı kitabı, cezaevi kütüphanesini anlatıcının sorumluluk ve aidiyet hakkındaki önceki varsayımlarını sorgulayan fikirlerle karşılaştığı bir yer olarak betimliyor."
+        }
+      ]
+    },
+    {
+      "word": "private",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. özel",
+        "ex": "Researchers stressed the importance of keeping patient data private to comply with medical ethics standards.",
+        "exTr": "Araştırmacılar, tıbbi etik standartlarına uymak için hasta verilerini özel tutmanın önemini vurguladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The interview included a private section that would not be published, allowing the participant to explain why certain memories remained difficult to discuss publicly.",
+          "exTr": "Görüşme yayımlanmayacak özel bir bölüm içeriyor, böylece katılımcı bazı anıları kamuya açık biçimde konuşmanın neden hâlâ zor olduğunu açıklayabiliyordu."
+        }
+      ]
+    },
+    {
+      "word": "prize",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ödül",
+        "ex": "The young chemist received an international prize for her discovery of a new method to purify water.",
+        "exTr": "Genç kimyager, suyu arıtmak için yeni bir yöntem keşfettiği için uluslararası bir ödül aldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The prize included access to a shared studio, which the young illustrator found more useful than the publicity surrounding the announcement of the winners.",
+          "exTr": "Ödül ortak bir stüdyoya erişim içeriyordu; genç çizer bunu kazananların duyurulması çevresindeki tanıtımdan daha yararlı buldu."
+        }
+      ]
+    },
+    {
+      "word": "probability",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. olasılık, ihtimal",
+        "ex": "The probability of severe flooding increases significantly when deforestation occurs near river basins.",
+        "exTr": "Nehir havzalarının yakınında ormansızlaşma meydana geldiğinde şiddetli sel olasılığı önemli ölçüde artar."
+      },
+      "alternatives": [
+        {
+          "ex": "The exercise compares probability with certainty, asking students to explain why a likely outcome can still fail to occur in a single trial.",
+          "exTr": "Alıştırma olasılığı kesinlikle karşılaştırarak öğrencilerden muhtemel bir sonucun tek bir denemede yine de neden gerçekleşmeyebileceğini açıklamalarını istiyor."
+        }
+      ]
+    },
+    {
+      "word": "probe",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. soruşturma; (uzay) sonda",
+        "ex": "NASA launched a new probe to examine the icy moons orbiting the outer planets.",
+        "exTr": "NASA, dış gezegenlerin etrafında dönen buzlu ayları incelemek için yeni bir uzay sondası fırlattı."
+      },
+      "alternatives": [
+        {
+          "ex": "The proposed space probe would carry cameras to map the surface, but engineers first needed to resolve how its instruments would share limited power.",
+          "exTr": "Önerilen uzay sondası yüzeyi haritalamak için kameralar taşıyacaktı, ancak mühendislerin önce aygıtların sınırlı elektriği nasıl paylaşacağını çözmesi gerekiyordu."
+        }
+      ]
+    },
+    {
+      "word": "procedural",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. belirlenmiş işlem adımlarına, usule veya hukuk yargılaması uygulamasına ilişkin",
+        "ex": "A procedural error invalidated the vote even though most members supported the proposal.",
+        "exTr": "Usule ilişkin bir hata, üyelerin çoğu öneriyi desteklemesine rağmen oylamayı geçersiz kıldı."
+      },
+      "alternatives": [
+        {
+          "ex": "A procedural disagreement delayed the meeting because members could not agree whether the revised proposal required another consultation before a final vote.",
+          "exTr": "Üyeler, gözden geçirilmiş önerinin son oylamadan önce yeniden danışmayı gerektirip gerektirmediğinde anlaşamadığından usule ilişkin bir anlaşmazlık toplantıyı geciktirdi."
+        }
+      ]
+    },
+    {
+      "word": "proceedings",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. toplantı veya konferansta sunulan çalışmaların yayımlanmış kaydı",
+        "ex": "The conference proceedings contain revised versions of the papers presented during the annual meeting.",
+        "exTr": "Konferans bildirileri yıllık toplantıda sunulan çalışmaların gözden geçirilmiş sürümlerini içerir."
+      },
+      "alternatives": [
+        {
+          "ex": "The proceedings include a discussion section that preserves questions from the audience, offering context absent from the speakers' more polished written papers.",
+          "exTr": "Bildiriler kitabı, dinleyicilerin sorularını koruyan bir tartışma bölümü içererek konuşmacıların daha işlenmiş yazılı çalışmalarında bulunmayan bağlamı sunuyor."
+        }
+      ]
+    },
+    {
+      "word": "procession",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. alay, tören yürüyüşü, kortej",
+        "ex": "A long procession of mourners followed the coffin slowly through the narrow streets of the old town.",
+        "exTr": "Uzun bir yas tutanlar alayı, tabutun ardından eski kasabanın dar sokaklarında yavaşça yürüdü."
+      },
+      "alternatives": [
+        {
+          "ex": "The procession moved slowly through the square, allowing musicians and dancers from different neighbourhoods to perform before the group continued towards the river.",
+          "exTr": "Kortej meydandan yavaşça geçerek grup nehre doğru ilerlemeden önce farklı mahallelerden müzisyenlerin ve dansçıların gösteri yapmasına olanak tanıdı."
+        }
+      ]
+    },
+    {
+      "word": "produce",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. üretmek; yol açmak",
+        "ex": "Modern factories can produce thousands of electric vehicles each month using automated assembly lines.",
+        "exTr": "Modern fabrikalar, otomatik montaj hatları sayesinde her ay binlerce elektrikli araç üretebiliyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The workshop could produce more pieces by simplifying the design, but its members first discussed whether the change would affect durability or ease of repair.",
+          "exTr": "Atölye tasarımı basitleştirerek daha fazla parça üretebilirdi, ancak üyeleri önce değişikliğin dayanıklılığı veya onarım kolaylığını etkileyip etkilemeyeceğini tartıştı."
+        }
+      ]
+    },
+    {
+      "word": "production",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. üretim, yapım",
+        "ex": "Global steel production increased sharply during the postwar industrial expansion of the 1950s.",
+        "exTr": "Küresel çelik üretimi, 1950'lerdeki savaş sonrası sanayi genişlemesi sırasında keskin biçimde arttı."
+      },
+      "alternatives": [
+        {
+          "ex": "The film's production required careful coordination between locations, since the same room had to represent several different places without confusing the audience.",
+          "exTr": "Aynı odanın seyircinin kafasını karıştırmadan birkaç farklı yeri temsil etmesi gerektiği için filmin yapımı mekânlar arasında dikkatli koordinasyon gerektiriyordu."
+        }
+      ]
+    },
+    {
+      "word": "productivity",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. verimlilik",
+        "ex": "Remote work arrangements have had mixed effects on overall employee productivity across industries.",
+        "exTr": "Uzaktan çalışma düzenlemeleri, sektörler genelinde çalışan verimliliği üzerinde karışık etkiler yarattı."
+      },
+      "alternatives": [
+        {
+          "ex": "The manager questioned a measure of productivity that counted completed calls but ignored whether customers had to contact the service again about the same problem.",
+          "exTr": "Yönetici, tamamlanan aramaları sayan ancak müşterilerin aynı sorun için hizmeti tekrar aramak zorunda kalıp kalmadığını dikkate almayan bir verimlilik ölçüsünü sorguladı."
+        }
+      ]
+    },
+    {
+      "word": "professional",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. mesleki, profesyonel",
+        "ex": "The lawyer was praised for her professional conduct throughout the lengthy and difficult trial.",
+        "exTr": "Avukat, uzun ve zorlu dava boyunca gösterdiği mesleki tutumundan dolayı övgü aldı."
+      },
+      "alternatives": [
+        {
+          "ex": "Her professional approach became evident when she acknowledged the error, explained its consequences clearly, and proposed a practical way to correct the record.",
+          "exTr": "Hatayı kabul edip sonuçlarını açıkça açıkladığında ve kaydı düzeltmek için uygulanabilir bir yol önerdiğinde profesyonel yaklaşımı belirginleşti."
+        }
+      ]
+    }
+  ],
+  "collocations": [
+    {
+      "word": "post-free",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "send something post-free",
+          "tr": "bir şeyi posta ücreti almadan göndermek"
+        },
+        {
+          "en": "delivered post-free",
+          "tr": "posta ücreti alınmadan teslim edilen"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "pottery",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a pottery workshop",
+          "tr": "çömlekçilik atölyesi"
+        },
+        {
+          "en": "handmade pottery",
+          "tr": "el yapımı seramik eşya"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "presenter",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a radio presenter",
+          "tr": "radyo sunucusu"
+        },
+        {
+          "en": "a guest presenter",
+          "tr": "konuk sunucu"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "prestige",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "social prestige",
+          "tr": "toplumsal saygınlık"
+        },
+        {
+          "en": "enhance an institution's prestige",
+          "tr": "bir kurumun saygınlığını artırmak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "primer",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a primer on statistics",
+          "tr": "istatistiğe giriş kitabı"
+        },
+        {
+          "en": "a concise primer",
+          "tr": "özlü bir giriş kitabı"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "princess",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a young princess",
+          "tr": "genç prenses"
+        },
+        {
+          "en": "a fairy-tale princess",
+          "tr": "masal prensesi"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

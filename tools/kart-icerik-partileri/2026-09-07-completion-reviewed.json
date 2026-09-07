@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "corrections": [
+    {
+      "word": "crazy", "sense_index": 1,
+      "expected": {"tr":"i. deli (kişi, argo)","ex":"Neighbors used to call him a crazy because he talked to the birds in his garden every morning.","exTr":"Komşular, her sabah bahçesindeki kuşlarla konuştuğu için ona bir deli derlerdi."},
+      "replacement": {"tr":"s. (crazy about; gayriresmî) birine veya bir şeye çok düşkün, çok meraklı","ex":"The interviewee was crazy about astronomy as a child, but only later discovered how much mathematics professional research required.","exTr":"Görüşülen kişi çocukken astronomiye çok meraklıydı; ancak profesyonel araştırmanın ne kadar matematik gerektirdiğini daha sonra keşfetti."},
+      "reason":"Damgalayıcı ve düşük öğreticilikte kişi etiketi yerine yaygın crazy about kullanımı; tür sıfat olarak eşzamanlı düzeltildi. İkinci editoryal okuma yapıldı.",
+      "sources":["https://dictionary.cambridge.org/dictionary/english/crazy-about"]
+    },
+    {
+      "word":"core", "sense_index":0,
+      "expected":{"tr":"i. çekirdek, öz, merkez","ex":"Geologists study samples from the Earth's core to understand how the magnetic field forms.","exTr":"Jeologlar, manyetik alanın nasıl oluştuğunu anlamak için Dünya'nın çekirdeğinden alınan örnekleri inceliyor."},
+      "replacement":{"tr":"i. çekirdek, öz, merkez","ex":"Geologists analyse seismic records to investigate the Earth's core, comparing observations with models rather than relying on samples collected directly from it.","exTr":"Jeologlar Dünya'nın çekirdeğini araştırmak için sismik kayıtları analiz ediyor ve doğrudan çekirdekten alınmış örneklere dayanmak yerine gözlemleri modellerle karşılaştırıyor."},
+      "reason":"Doğrudan çekirdek örneği alınmış izlenimi veren hata, dolaylı sismik inceleme bağlamıyla düzeltildi. İkinci editoryal okuma yapıldı.",
+      "sources":["https://pubs.usgs.gov/gip/interior/index.html","https://www.usgs.gov/programs/earthquake-hazards/seismographs-keeping-track-earthquakes"]
+    },
+    {
+      "word":"cranberry", "sense_index":0,
+      "expected":{"tr":"i. kızılcık, turna yemişi","ex":"Families traditionally serve cranberry sauce alongside roasted turkey during the annual Thanksgiving holiday dinner.","exTr":"Aileler geleneksel olarak yıllık Şükran Günü akşam yemeğinde kızarmış hindinin yanında kızılcık sosu ikram eder."},
+      "replacement":{"tr":"i. turna yemişi","ex":"The researchers compared cranberry samples from several farms, recording storage conditions before examining differences in colour and texture.","exTr":"Araştırmacılar, renk ve doku farklılıklarını incelemeden önce saklama koşullarını kaydederek birkaç çiftlikten gelen turna yemişi örneklerini karşılaştırdı."},
+      "reason":"Vaccinium cranberry ile Cornus mas kızılcık aynı bitki değildir; anlam ve eşdizim çevirisi birlikte düzeltildi. İkinci editoryal okuma yapıldı.",
+      "sources":["https://www.kew.org/plants/cranberry","https://www.tarimorman.gov.tr/BUGEM/TTSM/Sayfalar/Detay.aspx?SayfaId=35","https://www.denib.gov.tr/files/downloads/sirku_ekleri_2024/2024-372-ek1-1.pdf"]
+    },
+    {
+      "word":"creole", "sense_index":0,
+      "expected":{"tr":"i. kreol dili (karma bir dilden doğup ana dile dönüşen dil)","ex":"A creole develops when a simplified contact language is acquired by children as their mother tongue and gradually gains a full grammatical system.","exTr":"Bir kreol dili, basitleştirilmiş bir temas dilinin çocuklarca ana dil olarak edinilmesi ve zamanla eksiksiz bir dil bilgisi kazanmasıyla ortaya çıkar."},
+      "replacement":{"tr":"i. kreol dili (dil teması koşullarında gelişmiş ve bir topluluğun ana dili olarak kullanılan dil)","ex":"The linguists recorded conversations in a local creole to compare how speakers adjusted their language across family, school and workplace settings.","exTr":"Dilbilimciler, konuşmacıların dillerini aile, okul ve iş yeri ortamlarında nasıl uyarladıklarını karşılaştırmak için yerel bir kreol dilindeki konuşmaları kaydetti."},
+      "reason":"Tek gelişim kuramını evrensel süreç olarak sunan ve gramer eksikliği ima eden açıklama tarafsızlaştırıldı. İkinci editoryal okuma yapıldı.",
+      "sources":["https://www.merriam-webster.com/dictionary/creole","https://dictionary.cambridge.org/us/dictionary/english/creole"]
+    }
+  ],
+  "collocations": [
+    {"word":"cranberry","expected":[{"en":"cranberry juice","tr":"kızılcık suyu"}],"replacement":[{"en":"cranberry juice","tr":"turna yemişi suyu"}],"reason":"Cranberry/Cornus ayrımı eşdizime de uygulandı.","sources":["https://www.kew.org/plants/cranberry","https://www.denib.gov.tr/files/downloads/sirku_ekleri_2024/2024-372-ek1-1.pdf"]}
+  ]
+}

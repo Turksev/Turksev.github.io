@@ -1214,7 +1214,7 @@ def yayimlanmis_adlari_oku(dosya, desen):
 PUAN_GUNCELLEMESI = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'puan-guncellemesi.json')
 
 
-def puan_guncellemesini_uygula(kelimeler, disla=()):
+def puan_guncellemesini_uygula(kelimeler, disla=(), baslik_duzeltmeleri=()):
     """Guncel korpus puanlarini (tools/puan-guncellemesi.json) kelimelere uygular.
 
     xlsx puanlari 22 Agustos korpusundan (45 sinav) geliyordu; duz5 (49 sinav,
@@ -1231,9 +1231,20 @@ def puan_guncellemesini_uygula(kelimeler, disla=()):
     if veri.get('sema') != 1:
         raise SystemExit('puan-guncellemesi.json: bilinmeyen sema %r' % veri.get('sema'))
     kayit = veri['kayitlar']
+    # Başlık yazımı düzeltilen kartın mevcut puanı eski başlığından okunur.
+    # Yalnız açıkça belirtilmiş kaynaklar kullanılır; başka kartların puanı
+    # değişmez ve yazım düzeltmesi yeni bir sınav sıklığı iddiası oluşturmaz.
+    puan_basliklari = {}
+    for d in baslik_duzeltmeleri:
+        eski = d.get('puan_kaynak_basligi')
+        if eski is None:
+            continue
+        if eski not in d.get('eskiler', []) or eski not in kayit:
+            raise ValueError('Geçersiz eski puan başlığı: %r' % eski)
+        puan_basliklari[d['yeni']] = eski
     guncel = 0
     for en, k in kelimeler.items():
-        v = kayit.get(en)
+        v = kayit.get(puan_basliklari.get(en, en))
         # Katmani kaynaginca sabitlenmis kartlar (aile partisi, ek-kelime partisi,
         # modal kart, denetimli ek) kaynak puanini korur; testler parti dosyasiyla
         # birebir esitlik bekler.
@@ -1350,7 +1361,7 @@ def obek_lemma_uygula(obekler, takma):
     return birlesen, adlanan, eksik
 
 
-def silme_korumasi(kelimeler, obekler, izin=False, obek_takma=None):
+def silme_korumasi(kelimeler, obekler, izin=False, obek_takma=None, kelime_takma=None):
     """Üretilecek küme yayımlanmış veriden kayıt düşürüyorsa DUR (çıkış kodu 1).
 
     05.09.2026 denetimi (A2): 4-5 Eylül'de eklenen sınav kelimeleri yalnız
@@ -1358,9 +1369,13 @@ def silme_korumasi(kelimeler, obekler, izin=False, obek_takma=None):
     olup üretilmeyecek her kelime/öbek listelenir ve yalnız --silmeye-izin-ver
     ile devam edilir. Döndürdüğü sayı, izinle silinecek kayıt adedidir.
     """
+    # Açık bir alias ile var olan hedefe taşınmış başlık silinmiş değildir.
+    # Hedefi eksik veya kendisine bağlanan kayıtlar korumayı geçemez.
+    tasinan_kelimeler = {eski for eski, yeni in (kelime_takma or {}).items()
+                        if eski != yeni and yeni in kelimeler and eski not in kelimeler}
     eksik_kelime = sorted(
         yayimlanmis_adlari_oku('kelime-dizin.js', r'(?m)^\{e:"((?:[^"\\]|\\.)*)"') -
-        set(kelimeler))
+        set(kelimeler) - tasinan_kelimeler)
     eksik_obek = sorted(
         yayimlanmis_adlari_oku('obekler.js', r'(?m)^\{f:"((?:[^"\\]|\\.)*)"') -
         set(obekler) - set(obek_takma or {}))
@@ -1484,7 +1499,8 @@ def birlestir(ek_partileri=None):
 
     # Guncel korpus puanlari (duz5): birlesimden sonra, katman bantlamadan once.
     # Modal kartlar kendi puan/katmanini tasir (modal-kartlar testi kaynakla birebir bekler).
-    puan_guncel = puan_guncellemesini_uygula(kelimeler, disla={k['e'] for k in modal_kartlar})
+    puan_guncel = puan_guncellemesini_uygula(kelimeler, disla={k['e'] for k in modal_kartlar},
+                                          baslik_duzeltmeleri=baslik_d.get('duzeltmeler', []))
     print('  puan guncellemesi   :', puan_guncel, 'kelimenin puani degisti (tools/puan-guncellemesi.json)')
 
     # Anlam yildizlari: onemliyi basa al
@@ -1808,7 +1824,15 @@ def main(argv=None):
         print('  UYARI obek-lemma: kaynakta olmayan anahtar:', ', '.join(obek_takma_eksik))
 
     # Hicbir dosya yazilmadan once: yayimlanmis veriden kayit dusuyor mu?
-    silinen = silme_korumasi(kelimeler, obek_sozlugu, silmeye_izin, obek_takma)
+    kelime_takma = {}
+    for d in baslik_d.get('duzeltmeler', []):
+        for eski in d.get('eskiler', []):
+            if eski == d['yeni']:
+                continue
+            if eski in kelime_takma and kelime_takma[eski] != d['yeni']:
+                raise ValueError('Çelişkili kelime başlığı yönlendirmesi: %s' % eski)
+            kelime_takma[eski] = d['yeni']
+    silinen = silme_korumasi(kelimeler, obek_sozlugu, silmeye_izin, obek_takma, kelime_takma)
 
     sirali, ozet = kelimeleri_yaz(kelimeler)
     obekler, obek_boyut = obekleri_yaz(obek_sozlugu, obek_takma)

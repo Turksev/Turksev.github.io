@@ -36,7 +36,8 @@ def uygula(kelimeler, batches=None):
     source = deepcopy(kelimeler)
     changes = deepcopy(kelimeler)
     seen = set()
-    counts = {'corrections': 0, 'collocations': 0, 'alternatives': 0}
+    counts = {'corrections': 0, 'collocations': 0, 'alternatives': 0, 'removed_senses': 0}
+    removals = []
 
     def sense(row):
         word, index = row.get('word'), row.get('sense_index')
@@ -52,7 +53,7 @@ def uygula(kelimeler, batches=None):
     for batch in batches:
         if batch.get('schema_version') != 1:
             raise ValueError('Unsupported editorial schema')
-        for category in ('corrections', 'enrichments', 'collocations'):
+        for category in ('corrections', 'enrichments', 'collocations', 'removals'):
             rows = batch.get(category, [])
             if not isinstance(rows, list):
                 raise ValueError(f'{category}: expected a list')
@@ -76,7 +77,19 @@ def uygula(kelimeler, batches=None):
                     counts['collocations'] += 1
                     continue
                 target = sense(row)
-                if category == 'corrections':
+                if category == 'removals':
+                    meanings = source[word]['anlamlar']
+                    index = row['sense_index']
+                    if set(row['expected']) != {'tr', 'ex', 'exTr'}:
+                        raise ValueError(f'{word}: removal requires a full sense guard')
+                    if type(row.get('expected_count')) is not int or row['expected_count'] != len(meanings):
+                        raise ValueError(f'{word}: stale removal count guard')
+                    if len(meanings) < 2 or index != len(meanings) - 1:
+                        raise ValueError(f'{word}: removal must leave a card and remove only its last sense')
+                    if meanings[index].get('exs'):
+                        raise ValueError(f'{word}: removal would discard alternative examples')
+                    removals.append((word, index))
+                elif category == 'corrections':
                     replacement = row.get('replacement', {})
                     if set(replacement) - {'tr', 'ex', 'exTr'} or not {'ex', 'exTr'} <= set(replacement):
                         raise ValueError(f'{word}: correction must contain a full EN/TR pair')
@@ -93,6 +106,14 @@ def uygula(kelimeler, batches=None):
                         _pair(pair)
                     target['exs'] = deepcopy(alternatives)
                     counts['alternatives'] += len(alternatives)
+
+    # Defer removals until all original-index operations have been checked.
+    # Never shift a retained sense or silently discard an enrichment/correction.
+    for word, index in removals:
+        if any((category, word, index) in seen for category in ('corrections', 'enrichments')):
+            raise ValueError(f'{word}: removal overlaps another sense operation')
+        changes[word]['anlamlar'].pop()
+        counts['removed_senses'] += 1
 
     # Final checks run after corrections regardless of the order of batch files.
     for word, card in changes.items():

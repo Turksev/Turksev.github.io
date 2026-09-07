@@ -1,0 +1,1006 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 1,
+    "input": "input-019.json"
+  },
+  "enrichments": [
+    {
+      "word": "finally",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. sonunda, nihayet",
+        "ex": "After years of negotiation, the two countries finally signed a treaty to protect the shared river basin.",
+        "exTr": "Yıllar süren müzakerelerin ardından iki ülke, paylaşılan nehir havzasını korumak için sonunda bir antlaşma imzaladı."
+      },
+      "alternatives": [
+        {
+          "ex": "After comparing several possible routes, the planning committee finally agreed on one that avoided the most sensitive wetlands.",
+          "exTr": "Planlama komitesi, birkaç olası güzergâhı karşılaştırdıktan sonra sonunda en hassas sulak alanlardan kaçınan bir güzergâh üzerinde anlaştı."
+        }
+      ]
+    },
+    {
+      "word": "financially",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. mali açıdan, finansal olarak",
+        "ex": "The scholarship program helps financially disadvantaged students continue their education at top universities.",
+        "exTr": "Burs programı, mali açıdan dezavantajlı öğrencilerin en iyi üniversitelerde eğitimlerine devam etmesine yardımcı olur."
+      },
+      "alternatives": [
+        {
+          "ex": "The cooperative remained financially independent by setting aside part of its annual income for equipment repairs and unexpected expenses.",
+          "exTr": "Kooperatif, yıllık gelirinin bir bölümünü ekipman onarımları ve beklenmedik giderler için ayırarak mali açıdan bağımsız kaldı."
+        }
+      ]
+    },
+    {
+      "word": "fine",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. ince, güzel, iyi",
+        "ex": "The tailor used a fine silk fabric to make the wedding dress look elegant.",
+        "exTr": "Terzi, gelinliğin zarif görünmesi için ince bir ipek kumaş kullandı."
+      },
+      "alternatives": [
+        {
+          "ex": "The laboratory used a fine powder rather than large crystals to obtain a more even coating on the experimental surface.",
+          "exTr": "Laboratuvar, deney yüzeyinde daha düzgün bir kaplama elde etmek için büyük kristaller yerine ince bir toz kullandı."
+        }
+      ]
+    },
+    {
+      "word": "fingerprint",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. parmak izi",
+        "ex": "Police used a fingerprint found on the window to identify a suspect within hours.",
+        "exTr": "Polis, pencerede bulunan bir parmak izini kullanarak birkaç saat içinde bir şüpheliyi tespit etti."
+      },
+      "alternatives": [
+        {
+          "ex": "A fingerprint preserved in the wet clay suggested that the vessel had been handled before its final firing.",
+          "exTr": "Islak kilde korunmuş bir parmak izi, kabın son kez pişirilmeden önce elle tutulduğuna işaret ediyordu."
+        }
+      ]
+    },
+    {
+      "word": "finished",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. bitmiş, tamamlanmış",
+        "ex": "The finished product underwent several quality tests before being approved for commercial distribution.",
+        "exTr": "Bitmiş ürün, ticari dağıtım için onaylanmadan önce çeşitli kalite testlerinden geçti."
+      },
+      "alternatives": [
+        {
+          "ex": "Although the finished chairs looked identical, the design students had used different methods to strengthen their wooden joints.",
+          "exTr": "Bitmiş sandalyeler aynı görünmesine rağmen tasarım öğrencileri ahşap birleşim yerlerini güçlendirmek için farklı yöntemler kullanmıştı."
+        }
+      ]
+    },
+    {
+      "word": "fire-tree",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. alev ağacı (kırmızı çiçekli bir ağaç)",
+        "ex": "During the dry season, the fire-tree bursts into brilliant orange-red blossoms across the savanna landscape.",
+        "exTr": "Kurak mevsimde, alev ağacı savan manzarasında parlak turuncu-kırmızı çiçeklerle kaplanır."
+      },
+      "alternatives": [
+        {
+          "ex": "The botanist assigned a specimen number to the fire-tree so that observations made by different field teams could be compared.",
+          "exTr": "Botanikçi, farklı arazi ekiplerinin yaptığı gözlemlerin karşılaştırılabilmesi için alev ağacına bir örnek numarası verdi."
+        }
+      ],
+      "note": "Ortak bitki adı birden fazla türle ilişkilendirilebilir; yeni cümle tür, doğal yayılış veya çiçek rengi iddiası içermez. Mevcut ana örneğin türü ayrıca doğrulanmalı."
+    },
+    {
+      "word": "firm",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. firma, şirket",
+        "ex": "The pharmaceutical firm announced that it would lower the price of its medication.",
+        "exTr": "İlaç firması, ilacının fiyatını düşüreceğini açıkladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The engineering firm hired local apprentices to maintain the irrigation system after the initial construction team had left the valley.",
+          "exTr": "Mühendislik firması, ilk inşaat ekibi vadiden ayrıldıktan sonra sulama sisteminin bakımını yapmaları için yerel çıraklar işe aldı."
+        }
+      ]
+    },
+    {
+      "word": "first-class",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. birinci sınıf, üstün nitelikli",
+        "ex": "The airline upgraded several passengers to first-class seating after the original flight was overbooked.",
+        "exTr": "Havayolu, orijinal uçuş kontenjanının üzerinde rezervasyon aldığı için birkaç yolcuyu birinci sınıf koltuklara yükseltti."
+      },
+      "alternatives": [
+        {
+          "ex": "First-class equipment alone cannot guarantee useful results when the research question is unclear and the sampling procedure is poorly designed.",
+          "exTr": "Araştırma sorusu belirsiz ve örnekleme yöntemi kötü tasarlanmış olduğunda, birinci sınıf ekipman tek başına yararlı sonuçları garanti edemez."
+        }
+      ]
+    },
+    {
+      "word": "first-rate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s./z. birinci sınıf, mükemmel",
+        "ex": "The hospital is known throughout the region for its first-rate medical staff and modern equipment.",
+        "exTr": "Hastane, birinci sınıf tıbbi personeli ve modern ekipmanıyla bölge genelinde tanınır."
+      },
+      "alternatives": [
+        {
+          "ex": "The committee praised the first-rate translation for preserving the argument's precision without making the Turkish unnecessarily difficult to read.",
+          "exTr": "Komite, Türkçeyi gereksiz yere okunması güç hâle getirmeden savın kesinliğini koruyan mükemmel çeviriyi övdü."
+        }
+      ]
+    },
+    {
+      "word": "fish",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. balık",
+        "ex": "The lake still contains a healthy population of fish despite years of industrial pollution.",
+        "exTr": "Göl, yıllarca süren endüstriyel kirliliğe rağmen hâlâ sağlıklı bir balık popülasyonu barındırıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The survey recorded the size of each fish before returning it to the water, allowing comparisons between different parts of the river.",
+          "exTr": "Araştırmada her balık suya geri bırakılmadan önce boyu kaydedildi; böylece nehrin farklı kesimleri arasında karşılaştırma yapılabildi."
+        }
+      ]
+    },
+    {
+      "word": "fist",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yumruk",
+        "ex": "The boxer clenched his fist tightly before stepping into the ring for the championship match.",
+        "exTr": "Boksör, şampiyonluk maçı için ringe çıkmadan önce yumruğunu sıkıca sıktı."
+      },
+      "alternatives": [
+        {
+          "ex": "In the poster, a raised fist symbolised collective resistance, whereas the accompanying photographs emphasised the everyday conditions that had prompted it.",
+          "exTr": "Posterde havaya kaldırılmış bir yumruk ortak direnişi simgelerken, beraberindeki fotoğraflar bu direnişe yol açan gündelik koşulları vurguluyordu."
+        }
+      ]
+    },
+    {
+      "word": "five",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. beş",
+        "ex": "The human hand contains five fingers, each controlled by a complex network of tendons.",
+        "exTr": "İnsan eli, her biri karmaşık bir tendon ağıyla kontrol edilen beş parmaktan oluşur."
+      },
+      "alternatives": [
+        {
+          "ex": "The students tested five versions of the model, changing only the roof angle to isolate its effect on water collection.",
+          "exTr": "Öğrenciler, su toplamaya etkisini diğer etkenlerden ayırmak için yalnızca çatı açısını değiştirerek modelin beş farklı sürümünü test etti."
+        }
+      ]
+    },
+    {
+      "word": "fix",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. onarmak, tamir etmek, düzeltmek, sabitlemek",
+        "ex": "Technicians were called in to fix the malfunctioning equipment before production could resume.",
+        "exTr": "Üretimin yeniden başlayabilmesi için arızalı ekipmanı onarmak üzere teknisyenler çağrıldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The workshop asked trainees to explain why the pump had stopped before attempting to fix it or replace any parts.",
+          "exTr": "Atölyede kursiyerlerden, pompayı onarmaya ya da herhangi bir parçayı değiştirmeye girişmeden önce neden durduğunu açıklamaları istendi."
+        }
+      ]
+    },
+    {
+      "word": "flame",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. alev",
+        "ex": "Firefighters managed to control the flame before it could spread to nearby buildings in the district.",
+        "exTr": "İtfaiyeciler, bölgedeki yakın binalara yayılmadan önce alevi kontrol altına almayı başardı."
+      },
+      "alternatives": [
+        {
+          "ex": "The camera recorded changes in the flame while the researcher adjusted the air supply within the enclosed experimental apparatus.",
+          "exTr": "Araştırmacı kapalı deney düzeneğindeki hava beslemesini ayarlarken kamera alevdeki değişimleri kaydetti."
+        }
+      ]
+    },
+    {
+      "word": "flash",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. an, ışıltı",
+        "ex": "A sudden flash of lightning illuminated the entire sky just before the thunder began.",
+        "exTr": "Ani bir şimşek ışıltısı, gök gürültüsü başlamadan hemen önce tüm gökyüzünü aydınlattı."
+      },
+      "alternatives": [
+        {
+          "ex": "A brief flash of light marked the start of each trial, ensuring that all participants responded to the same visual signal.",
+          "exTr": "Kısa bir ışık parlaması her denemenin başlangıcını işaret ederek tüm katılımcıların aynı görsel sinyale tepki vermesini sağladı."
+        }
+      ]
+    },
+    {
+      "word": "flavour",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. tat, lezzet",
+        "ex": "Chefs often add local spices to enhance the natural flavour of the dish.",
+        "exTr": "Şefler, yemeğin doğal tadını artırmak için genellikle yerel baharatlar ekler."
+      },
+      "alternatives": [
+        {
+          "ex": "To compare flavour without the influence of packaging, the tasting panel received the products in identical containers marked only with numbers.",
+          "exTr": "Ambalajın etkisi olmadan lezzeti karşılaştırmak için tadım kuruluna ürünler yalnızca sayılarla işaretlenmiş aynı tip kaplarda verildi."
+        }
+      ]
+    },
+    {
+      "word": "flesh",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. (meyve) etli kısım",
+        "ex": "The flesh of a perfectly ripe mango is soft, juicy, and deep orange in color.",
+        "exTr": "Tam olgunlaşmış bir mangonun etli kısmı yumuşak, sulu ve koyu turuncudur."
+      },
+      "alternatives": [
+        {
+          "ex": "The students compared the firmness of the fruit's flesh at several stages of ripening rather than relying solely on skin colour.",
+          "exTr": "Öğrenciler, yalnızca kabuk rengine dayanmak yerine olgunlaşmanın çeşitli aşamalarında meyvenin etli kısmının sertliğini karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "flexible",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. esnek",
+        "ex": "Many companies now offer flexible working hours to improve employee satisfaction and productivity.",
+        "exTr": "Birçok şirket, çalışan memnuniyetini ve verimliliğini artırmak için artık esnek çalışma saatleri sunuyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The training programme used a flexible timetable so that seasonal workers could attend classes without abandoning their main source of income.",
+          "exTr": "Eğitim programında, mevsimlik işçilerin başlıca gelir kaynaklarından vazgeçmeden derslere katılabilmesi için esnek bir zaman çizelgesi kullanıldı."
+        }
+      ]
+    },
+    {
+      "word": "flip",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. çevirmek, ters çevirmek; takla atmak",
+        "ex": "She flipped the pancake to cook the other side.",
+        "exTr": "Diğer tarafını pişirmek için krebi çevirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "Participants were asked to flip each card only after making a prediction, allowing the instructor to distinguish initial reasoning from later corrections.",
+          "exTr": "Katılımcılardan her kartı yalnızca bir tahminde bulunduktan sonra çevirmeleri istendi; böylece eğitmen ilk akıl yürütmeyle sonraki düzeltmeleri ayırt edebildi."
+        }
+      ]
+    },
+    {
+      "word": "flooding",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sel baskını, su basması",
+        "ex": "Heavy monsoon rains caused severe flooding that displaced thousands of families across the region.",
+        "exTr": "Şiddetli muson yağmurları, bölge genelinde binlerce aileyi yerinden eden ciddi bir sel baskınına yol açtı."
+      },
+      "alternatives": [
+        {
+          "ex": "The housing assessment considered both the likelihood of flooding and the difficulty of evacuating residents whose mobility was limited.",
+          "exTr": "Konut değerlendirmesinde hem sel olasılığı hem de hareket kabiliyeti sınırlı sakinleri tahliye etmenin güçlüğü dikkate alındı."
+        }
+      ]
+    },
+    {
+      "word": "floriculture",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. çiçekçilik, çiçek yetiştiriciliği",
+        "ex": "Floriculture has become a major export industry in several East African countries, where cut flowers are flown to European markets every day.",
+        "exTr": "Çiçekçilik, kesme çiçeklerin her gün uçakla Avrupa pazarlarına gönderildiği birkaç Doğu Afrika ülkesinde önemli bir ihracat sektörü hâline geldi."
+      },
+      "alternatives": [
+        {
+          "ex": "The course examined how floriculture businesses balance the demand for visually perfect flowers against the costs of water, labour, and transport.",
+          "exTr": "Derste, çiçek yetiştiriciliği işletmelerinin görsel açıdan kusursuz çiçek talebini su, iş gücü ve ulaşım maliyetleriyle nasıl dengelediği incelendi."
+        }
+      ]
+    },
+    {
+      "word": "flower",
+      "sense_index": 1,
+      "expected": {
+        "tr": "f. çiçek açmak",
+        "ex": "Botanists observed that the rare plant tends to flower only once every several years.",
+        "exTr": "Botanikçiler, nadir bitkinin genellikle birkaç yılda yalnızca bir kez çiçek açtığını gözlemledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The school garden allowed children to observe when different plants began to flower and to relate their records to local weather conditions.",
+          "exTr": "Okul bahçesi, çocukların farklı bitkilerin ne zaman çiçek açmaya başladığını gözlemlemesine ve kayıtlarını yerel hava koşullarıyla ilişkilendirmesine olanak sağladı."
+        }
+      ]
+    },
+    {
+      "word": "fluctuation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. dalgalanma",
+        "ex": "Farmers struggled to plan ahead because of constant fluctuation in seasonal crop prices.",
+        "exTr": "Çiftçiler, mevsimlik ürün fiyatlarındaki sürekli dalgalanma nedeniyle önceden plan yapmakta zorlandı."
+      },
+      "alternatives": [
+        {
+          "ex": "A short-term fluctuation in attendance should not be mistaken for a lasting trend without examining records from several comparable periods.",
+          "exTr": "Birkaç karşılaştırılabilir döneme ait kayıtlar incelenmeden, katılımdaki kısa süreli bir dalgalanma kalıcı bir eğilim sanılmamalıdır."
+        }
+      ]
+    },
+    {
+      "word": "fluffy",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kabarık, yumuşak, tüy gibi",
+        "ex": "Whipping the egg whites for several minutes traps air inside them and produces the light, fluffy texture that gives the cake its volume.",
+        "exTr": "Yumurta aklarının birkaç dakika çırpılması içlerine hava hapseder ve keke hacmini veren hafif, kabarık dokuyu oluşturur."
+      },
+      "alternatives": [
+        {
+          "ex": "The apparently fluffy surface was examined under magnification to determine whether its texture came from fibres, trapped air, or both.",
+          "exTr": "Görünüşte kabarık ve yumuşak olan yüzey, dokusunun liflerden mi, hapsolmuş havadan mı yoksa her ikisinden mi kaynaklandığını belirlemek için büyütülerek incelendi."
+        }
+      ]
+    },
+    {
+      "word": "fluorescent",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. floresan, ışıyan, flüorışıl",
+        "ex": "Researchers attached a fluorescent marker to the protein so that its movement inside living cells could be tracked under a microscope.",
+        "exTr": "Araştırmacılar, proteinin canlı hücreler içindeki hareketinin mikroskop altında izlenebilmesi için ona floresan bir işaretleyici bağladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The fluorescent dye made it easier to trace the movement of liquid through the transparent model during the classroom demonstration.",
+          "exTr": "Floresan boya, sınıftaki gösterim sırasında sıvının şeffaf model içindeki hareketinin izlenmesini kolaylaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "flux",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sürekli değişim, akış",
+        "ex": "Economic policy in the region remained in constant flux throughout the political crisis.",
+        "exTr": "Bölgedeki ekonomi politikası, siyasi kriz boyunca sürekli değişim içinde kaldı."
+      },
+      "alternatives": [
+        {
+          "ex": "With responsibilities still in flux, the new organisation postponed its public launch until staff knew who would handle each service.",
+          "exTr": "Sorumluluklar hâlâ değişmekte olduğundan yeni kuruluş, personel her hizmeti kimin yürüteceğini öğrenene kadar halka açılışını erteledi."
+        }
+      ]
+    },
+    {
+      "word": "fly-by-night",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. güvenilmez, gelip geçici",
+        "ex": "Consumers were warned to avoid the fly-by-night contractor who disappeared after taking payment.",
+        "exTr": "Tüketiciler, ödemeyi aldıktan sonra ortadan kaybolan güvenilmez müteahhitten kaçınmaları konusunda uyarıldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The buyers sought evidence of previous maintenance work because a low quotation could also come from a fly-by-night supplier.",
+          "exTr": "Düşük fiyat teklifinin güvenilmez ve geçici bir tedarikçiden de gelebileceğini düşünen alıcılar, daha önce yapılmış bakım işlerine ilişkin kanıt istedi."
+        }
+      ]
+    },
+    {
+      "word": "focus",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. odaklanmak; odaklamak",
+        "ex": "Recent studies focus on how social media affects the attention span of teenagers.",
+        "exTr": "Son çalışmalar, sosyal medyanın gençlerin dikkat süresini nasıl etkilediğine odaklanıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The second workshop will focus on interpreting uncertainty, since several participants had treated preliminary estimates as if they were exact measurements.",
+          "exTr": "Bazı katılımcılar ilk tahminleri kesin ölçümlermiş gibi değerlendirdiği için ikinci atölye belirsizliği yorumlamaya odaklanacak."
+        }
+      ]
+    },
+    {
+      "word": "fodder",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. hayvan yemi, kaba yem",
+        "ex": "During the long winter months, farmers depended on stored hay and other fodder to keep their livestock alive until the pastures recovered in spring.",
+        "exTr": "Uzun kış ayları boyunca çiftçiler, ilkbaharda meralar toparlanana kadar hayvanlarını hayatta tutmak için depolanmış saman ve diğer yemlere bağımlıydı."
+      },
+      "alternatives": [
+        {
+          "ex": "Before expanding the herd, the cooperative calculated how much fodder could be stored without reducing the space needed for equipment.",
+          "exTr": "Kooperatif, sürüyü büyütmeden önce ekipman için gereken alanı azaltmadan ne kadar hayvan yemi depolanabileceğini hesapladı."
+        }
+      ]
+    },
+    {
+      "word": "fold",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kat, kıvrım",
+        "ex": "Geologists study rock folds to understand how tectonic pressure has shaped mountain ranges over millions of years.",
+        "exTr": "Jeologlar, tektonik basıncın milyonlarca yıl içinde dağ sıralarını nasıl şekillendirdiğini anlamak için kaya kıvrımlarını inceler."
+      },
+      "alternatives": [
+        {
+          "ex": "The geologists traced the fold across several exposed rock layers to investigate whether its shape continued beneath the neighbouring hillside.",
+          "exTr": "Jeologlar, biçiminin komşu yamacın altında devam edip etmediğini araştırmak için kıvrımı açıkta kalan birkaç kaya tabakası boyunca izledi."
+        }
+      ]
+    },
+    {
+      "word": "follow",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. takip etmek, izlemek; uymak",
+        "ex": "Patients who follow their doctor's instructions carefully tend to recover much faster.",
+        "exTr": "Doktorlarının talimatlarına dikkatle uyan hastalar, genellikle çok daha hızlı iyileşir."
+      },
+      "alternatives": [
+        {
+          "ex": "Readers may struggle to follow an argument when the writer introduces technical terms before explaining the problem those terms help describe.",
+          "exTr": "Yazar, teknik terimleri bu terimlerin tanımlamaya yardımcı olduğu sorunu açıklamadan önce sunarsa okurlar savın akışını takip etmekte zorlanabilir."
+        }
+      ]
+    },
+    {
+      "word": "follow-up",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. takip, ek çalışma",
+        "ex": "Doctors scheduled a follow-up appointment to check whether the treatment had been effective.",
+        "exTr": "Doktorlar, tedavinin etkili olup olmadığını kontrol etmek için bir takip randevusu planladı."
+      },
+      "alternatives": [
+        {
+          "ex": "A follow-up interview explored why some trainees had stopped using the software after initially reporting that it was easy to learn.",
+          "exTr": "Bir takip görüşmesinde, başlangıçta yazılımı öğrenmenin kolay olduğunu bildiren bazı kursiyerlerin daha sonra neden onu kullanmayı bıraktığı araştırıldı."
+        }
+      ]
+    },
+    {
+      "word": "following",
+      "sense_index": 0,
+      "expected": {
+        "tr": "e. ardından, sonrasında",
+        "ex": "Following the storm, several coastal villages were evacuated.",
+        "exTr": "Fırtınanın ardından birkaç kıyı köyü tahliye edildi."
+      },
+      "alternatives": [
+        {
+          "ex": "Following the closure of the main road, the distribution team revised its schedule to keep deliveries to the island settlements running.",
+          "exTr": "Ana yolun kapanmasının ardından dağıtım ekibi, ada yerleşimlerine teslimatların sürmesini sağlamak için programını yeniden düzenledi."
+        }
+      ]
+    },
+    {
+      "word": "food",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yiyecek, gıda",
+        "ex": "Urban gardens provide fresh food to communities with limited access to grocery stores.",
+        "exTr": "Kentsel bahçeler, market erişimi sınırlı olan topluluklara taze gıda sağlıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The school survey asked families about access to fresh food as well as the time available for preparing meals at home.",
+          "exTr": "Okul anketinde ailelere, evde yemek hazırlamak için ayırabildikleri zamanın yanı sıra taze gıdaya erişimleri de soruldu."
+        }
+      ]
+    },
+    {
+      "word": "foolish",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. aptalca, akılsızca, saçma",
+        "ex": "Investing all your savings in a single unproven stock is considered a foolish financial decision.",
+        "exTr": "Tüm birikimini tek ve kanıtlanmamış bir hisse senedine yatırmak, aptalca bir mali karar olarak kabul edilir."
+      },
+      "alternatives": [
+        {
+          "ex": "It would be foolish to discard the unusual measurement before checking whether it reflects a recording error or a genuinely different condition.",
+          "exTr": "Olağandışı ölçümün bir kayıt hatasını mı yoksa gerçekten farklı bir koşulu mu yansıttığı kontrol edilmeden onu dışlamak aptalca olurdu."
+        }
+      ]
+    },
+    {
+      "word": "football",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. futbol",
+        "ex": "Local officials built a new stadium to host international football matches next summer.",
+        "exTr": "Yerel yetkililer, önümüzdeki yaz uluslararası futbol maçlarına ev sahipliği yapmak için yeni bir stadyum inşa etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The town's football ground became central to the planning debate because residents used the surrounding paths even when no matches were scheduled.",
+          "exTr": "Hiç maç planlanmadığında bile sakinler çevredeki yolları kullandığı için kasabanın futbol sahası planlama tartışmasının merkezine yerleşti."
+        }
+      ]
+    },
+    {
+      "word": "footprint",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. (mecazi) etki/kaplama alanı",
+        "ex": "Many companies are working to reduce their carbon footprint by switching to renewable energy sources.",
+        "exTr": "Birçok şirket, yenilenebilir enerji kaynaklarına geçerek karbon ayak izini azaltmaya çalışıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The assessment compared the environmental footprint of repairing existing furniture with that of replacing it, including transport and material use.",
+          "exTr": "Değerlendirmede, ulaşım ve malzeme kullanımı da hesaba katılarak mevcut mobilyaları onarmanın çevresel ayak izi yenileriyle değiştirmeninkiyle karşılaştırıldı."
+        }
+      ]
+    },
+    {
+      "word": "forage",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. yiyecek aramak, yem toplamak",
+        "ex": "Wild boars often forage for roots and insects along the forest floor at night.",
+        "exTr": "Yaban domuzları, geceleri orman zemininde genellikle kök ve böcek arayarak yiyecek toplar."
+      },
+      "alternatives": [
+        {
+          "ex": "The field team observed where the animals chose to forage after part of their usual feeding area had been temporarily fenced off.",
+          "exTr": "Arazi ekibi, hayvanların olağan beslenme alanlarının bir bölümü geçici olarak çitle kapatıldıktan sonra nerelerde yiyecek aramayı seçtiğini gözlemledi."
+        }
+      ]
+    },
+    {
+      "word": "forbidden",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yasak, yasaklanmış",
+        "ex": "Climbing beyond the marked trail is strictly forbidden because the cliffs are extremely unstable.",
+        "exTr": "İşaretli patikanın ötesine tırmanmak, kayalıklar son derece dengesiz olduğu için kesinlikle yasaktır."
+      },
+      "alternatives": [
+        {
+          "ex": "Photography was forbidden in the testing room because visible images of the equipment could reveal details of the unpublished design.",
+          "exTr": "Ekipmanın görüntüleri yayımlanmamış tasarımın ayrıntılarını açığa çıkarabileceğinden test odasında fotoğraf çekmek yasaktı."
+        }
+      ]
+    },
+    {
+      "word": "force-out",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. (beyzbolda) zorunlu oyun dışı bırakma",
+        "ex": "The shortstop completed an easy force-out at second base to end the dangerous inning quickly.",
+        "exTr": "Kısa saha oyuncusu, tehlikeli devreyi hızla bitirmek için ikinci kalede kolay bir zorunlu oyun dışı bırakma gerçekleştirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The coach replayed the force-out from two angles so that the players could discuss how their positions had influenced the sequence.",
+          "exTr": "Antrenör, oyuncuların konumlarının olayların akışını nasıl etkilediğini tartışabilmesi için beyzboldaki zorunlu oyun dışı bırakma pozisyonunu iki açıdan yeniden oynattı."
+        }
+      ],
+      "note": "Beyzbol anlamı Cambridge force-out maddesiyle doğrulandı; örnek özgündür."
+    },
+    {
+      "word": "forecast",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. tahmin etmek",
+        "ex": "Meteorologists forecast heavy rainfall across the coastal region for the upcoming weekend.",
+        "exTr": "Meteorologlar, önümüzdeki hafta sonu için kıyı bölgesinde şiddetli yağış öngörüyor."
+      },
+      "alternatives": [
+        {
+          "ex": "To forecast future demand, the transport authority compared recent ticket sales with population estimates and planned changes to nearby workplaces.",
+          "exTr": "Ulaşım idaresi, gelecekteki talebi tahmin etmek için son bilet satışlarını nüfus tahminleriyle ve yakındaki iş yerlerinde planlanan değişikliklerle karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "foreign",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yabancı, dış",
+        "ex": "Learning a foreign language at a young age can improve long-term cognitive flexibility.",
+        "exTr": "Küçük yaşta yabancı dil öğrenmek, uzun vadeli bilişsel esnekliği artırabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The researchers distinguished between students who had studied a foreign language at school and those who regularly used one at home.",
+          "exTr": "Araştırmacılar, okulda yabancı dil öğrenmiş öğrencilerle evde düzenli olarak yabancı dil kullanan öğrencileri birbirinden ayırdı."
+        }
+      ]
+    },
+    {
+      "word": "foremost",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. en önde gelen, başlıca",
+        "ex": "She is widely regarded as the foremost expert on ancient Mediterranean trade routes.",
+        "exTr": "Kendisi, antik Akdeniz ticaret yolları konusunda en önde gelen uzman olarak kabul edilmektedir."
+      },
+      "alternatives": [
+        {
+          "ex": "The foremost concern was whether the replacement bridge could remain accessible while construction continued on the roads leading to it.",
+          "exTr": "En önemli kaygı, yeni köprüye çıkan yollarda inşaat sürerken köprünün erişilebilir durumda kalıp kalamayacağıydı."
+        }
+      ]
+    },
+    {
+      "word": "forerunner",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. öncü, ilk örnek, habercisi",
+        "ex": "The mechanical calculating machine built in the nineteenth century is widely regarded as the forerunner of the modern electronic computer.",
+        "exTr": "On dokuzuncu yüzyılda yapılan mekanik hesap makinesi, genel olarak modern elektronik bilgisayarın öncüsü kabul edilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The exhibition presented the hand-operated device as a forerunner of later machines, while explaining the limitations that subsequent designs addressed.",
+          "exTr": "Sergi, elle çalıştırılan aygıtı sonraki makinelerin bir öncüsü olarak sunarken daha sonraki tasarımların giderdiği sınırlılıkları da açıklıyordu."
+        }
+      ]
+    },
+    {
+      "word": "forest",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. orman",
+        "ex": "Illegal logging has destroyed a significant portion of the tropical forest in recent years.",
+        "exTr": "Yasa dışı kereste kesimi, son yıllarda tropikal ormanın önemli bir bölümünü yok etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The management plan divided the forest into zones according to habitat sensitivity rather than treating every area as equally suitable for visitors.",
+          "exTr": "Yönetim planı, her alanı ziyaretçilere aynı ölçüde uygun saymak yerine ormanı yaşam alanlarının hassasiyetine göre bölgelere ayırdı."
+        }
+      ]
+    },
+    {
+      "word": "forever",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. sonsuza dek, her zaman",
+        "ex": "Some environmentalists warn that certain species lost to deforestation may be gone forever.",
+        "exTr": "Bazı çevreciler, ormansızlaşma nedeniyle kaybedilen bazı türlerin sonsuza dek yok olabileceği konusunda uyarıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The residents feared that replacing the market with private offices would change the character of their neighbourhood forever.",
+          "exTr": "Sakinler, pazar yerinin özel ofislerle değiştirilmesinin mahallelerinin karakterini sonsuza dek değiştireceğinden korkuyordu."
+        }
+      ]
+    },
+    {
+      "word": "forget-me-not",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. unutmabeni (çiçeği)",
+        "ex": "Small blue forget-me-not flowers lined the edge of the garden path throughout early spring.",
+        "exTr": "Küçük mavi unutmabeni çiçekleri, ilkbaharın başlarında bahçe patikasının kenarını süslüyordu."
+      },
+      "alternatives": [
+        {
+          "ex": "The gardener left one patch of forget-me-not untouched so that students could compare its growth with plants in the regularly maintained beds.",
+          "exTr": "Bahçıvan, öğrencilerin büyümesini düzenli bakılan tarhlardaki bitkilerle karşılaştırabilmesi için bir unutma beni çiçeği alanına müdahale etmedi."
+        }
+      ]
+    },
+    {
+      "word": "forgotten",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. unutulmuş",
+        "ex": "Archaeologists recently rediscovered a forgotten temple buried beneath centuries of volcanic ash.",
+        "exTr": "Arkeologlar, yüzyıllardır volkanik külün altında gömülü unutulmuş bir tapınağı yakın zamanda yeniden keşfetti."
+      },
+      "alternatives": [
+        {
+          "ex": "A forgotten calculation in an early notebook helped the engineering students understand why the designer had abandoned the original mechanism.",
+          "exTr": "Eski bir defterde unutulmuş bir hesaplama, mühendislik öğrencilerinin tasarımcının ilk mekanizmadan neden vazgeçtiğini anlamasına yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "formal",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. resmi, biçimsel",
+        "ex": "The committee requires a formal written request before approving any changes to the curriculum.",
+        "exTr": "Komite, müfredatta herhangi bir değişikliği onaylamadan önce resmi bir yazılı talep istiyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The association introduced a formal appeals process after members complained that decisions were being reconsidered only through personal conversations.",
+          "exTr": "Üyelerin kararların yalnızca kişisel görüşmeler yoluyla yeniden değerlendirildiğinden yakınması üzerine dernek resmî bir itiraz süreci oluşturdu."
+        }
+      ]
+    },
+    {
+      "word": "formation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. oluşum, teşekkül, şekillenme",
+        "ex": "Geologists study rock formation to understand how mountains developed over millions of years.",
+        "exTr": "Jeologlar, dağların milyonlarca yıl boyunca nasıl geliştiğini anlamak için kaya oluşumunu inceler."
+      },
+      "alternatives": [
+        {
+          "ex": "The experiment examined the formation of droplets on different surfaces while keeping the surrounding temperature and humidity as consistent as possible.",
+          "exTr": "Deneyde, ortam sıcaklığı ve nemi mümkün olduğunca sabit tutulurken farklı yüzeylerde damlacık oluşumu incelendi."
+        }
+      ]
+    },
+    {
+      "word": "formerly",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. eskiden, önceden, daha önce",
+        "ex": "The building now used as a museum was formerly a busy railway station.",
+        "exTr": "Şimdi müze olarak kullanılan bina, eskiden işlek bir tren istasyonuydu."
+      },
+      "alternatives": [
+        {
+          "ex": "The building formerly housed a printing workshop, and its strong floors made it suitable for conversion into a technical training centre.",
+          "exTr": "Bina eskiden bir basım atölyesine ev sahipliği yapıyordu; sağlam döşemeleri de onu bir teknik eğitim merkezine dönüştürmeye uygun kılıyordu."
+        }
+      ]
+    },
+    {
+      "word": "formulation",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. ifade etme, dile getirme",
+        "ex": "The professor praised the student's clear formulation of a complex philosophical argument.",
+        "exTr": "Profesör, öğrencinin karmaşık bir felsefi argümanı açıkça dile getirmesini övdü."
+      },
+      "alternatives": [
+        {
+          "ex": "A clearer formulation of the question helped the class distinguish disagreement about the evidence from disagreement about the meaning of the terms.",
+          "exTr": "Sorunun daha açık ifade edilmesi, sınıfın kanıtlara ilişkin görüş ayrılığıyla terimlerin anlamına ilişkin görüş ayrılığını ayırt etmesine yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "forthcoming",
+      "sense_index": 1,
+      "expected": {
+        "tr": "s. (kişi için) açık, samimi, bilgi paylaşımına istekli",
+        "ex": "Colleagues found the new manager surprisingly forthcoming about the company's ongoing financial difficulties.",
+        "exTr": "Meslektaşlar, yeni müdürün şirketin süregelen mali sıkıntıları konusunda şaşırtıcı derecede açık olduğunu fark etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The interviewees became more forthcoming about workplace difficulties once they understood that their individual responses would not be shared with supervisors.",
+          "exTr": "Görüşülen kişiler, bireysel yanıtlarının amirlerle paylaşılmayacağını anlayınca iş yerindeki güçlükler konusunda daha açık sözlü oldu."
+        }
+      ]
+    },
+    {
+      "word": "fortune",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. servet",
+        "ex": "She built a fortune through careful investments.",
+        "exTr": "Dikkatli yatırımlarla bir servet yaptı."
+      },
+      "alternatives": [
+        {
+          "ex": "The family invested part of its fortune in restoring the mill, hoping that rental income would eventually cover its maintenance costs.",
+          "exTr": "Aile, kira gelirinin zamanla bakım giderlerini karşılayacağını umarak servetinin bir bölümünü değirmeni onarmaya yatırdı."
+        }
+      ]
+    },
+    {
+      "word": "forward",
+      "sense_index": 1,
+      "expected": {
+        "tr": "f. iletmek, göndermek",
+        "ex": "Please forward this email to the entire marketing team before the end of the day.",
+        "exTr": "Lütfen bu e-postayı gün bitmeden tüm pazarlama ekibine iletin."
+      },
+      "alternatives": [
+        {
+          "ex": "Please forward the revised questionnaire to the field team so that everyone uses the same wording during the next round of interviews.",
+          "exTr": "Bir sonraki görüşme turunda herkesin aynı ifadeleri kullanması için lütfen gözden geçirilmiş anketi arazi ekibine iletin."
+        }
+      ]
+    },
+    {
+      "word": "fossil",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. fosil",
+        "ex": "The museum acquired a rare fossil of a winged reptile discovered in the desert.",
+        "exTr": "Müze, çölde keşfedilen kanatlı bir sürüngene ait nadir bir fosil edindi."
+      },
+      "alternatives": [
+        {
+          "ex": "Before attempting to identify the fossil, the students described its visible features and recorded exactly where it had been found.",
+          "exTr": "Öğrenciler, fosili tanımlamaya girişmeden önce görünür özelliklerini betimledi ve tam olarak nerede bulunduğunu kaydetti."
+        }
+      ]
+    },
+    {
+      "word": "found",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. kurmak",
+        "ex": "Philanthropists often found research institutes to advance medical science and public health education.",
+        "exTr": "Hayırseverler, tıp bilimini ve halk sağlığı eğitimini ilerletmek amacıyla sık sık araştırma enstitüleri kurar."
+      },
+      "alternatives": [
+        {
+          "ex": "The growers decided to found a cooperative when individual deliveries proved too costly for farms located far from the regional market.",
+          "exTr": "Bireysel teslimatlar bölge pazarından uzaktaki çiftlikler için fazla maliyetli çıkınca üreticiler bir kooperatif kurmaya karar verdi."
+        }
+      ]
+    },
+    {
+      "word": "founding",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kuruluş, kurma",
+        "ex": "Historians examined letters written around the founding of the university nearly two centuries ago.",
+        "exTr": "Tarihçiler, üniversitenin yaklaşık iki yüzyıl önceki kuruluşu döneminde yazılan mektupları inceledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The study traced the founding of the adult learning centre through interviews with its first teachers and minutes from local council meetings.",
+          "exTr": "Çalışma, ilk öğretmenleriyle yapılan görüşmeler ve yerel meclis toplantı tutanakları üzerinden yetişkin eğitim merkezinin kuruluş sürecini izledi."
+        }
+      ]
+    },
+    {
+      "word": "four-in-hand",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. düz kravat bağı (yaygın bir kravat düğümü türü)",
+        "ex": "He learned to tie a simple four-in-hand knot before his first job interview in college.",
+        "exTr": "Üniversitedeki ilk iş görüşmesinden önce basit bir düz kravat bağı yapmayı öğrendi."
+      },
+      "alternatives": [
+        {
+          "ex": "The costume designer chose a four-in-hand knot because its shape suited the character's narrow collar better than the alternatives tested during rehearsal.",
+          "exTr": "Kostüm tasarımcısı, biçimi karakterin dar yakasına provada denenen diğer seçeneklerden daha uygun olduğu için four-in-hand kravat düğümünü seçti."
+        }
+      ],
+      "note": "Kravat düğümü anlamı Merriam-Webster four-in-hand maddesiyle doğrulandı; örnek özgündür."
+    },
+    {
+      "word": "four-year-old",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. dört yaşındaki",
+        "ex": "The four-year-old boy proudly showed his grandmother the picture he had just drawn.",
+        "exTr": "Dört yaşındaki çocuk, yeni çizdiği resmi büyükannesine gururla gösterdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The observation sheet recorded how each four-year-old child explained a drawing, without assuming that a detailed picture necessarily reflected better understanding.",
+          "exTr": "Gözlem formuna, ayrıntılı bir resmin mutlaka daha iyi anlayışı yansıttığı varsayılmadan, dört yaşındaki her çocuğun çizimini nasıl açıkladığı kaydedildi."
+        }
+      ]
+    }
+  ],
+  "collocations": [
+    {
+      "word": "fire-tree",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "flowering fire-tree",
+          "tr": "çiçek açan alev ağacı"
+        },
+        {
+          "en": "mature fire-tree",
+          "tr": "olgun alev ağacı"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "football",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "football ground",
+          "tr": "futbol sahası"
+        },
+        {
+          "en": "professional football",
+          "tr": "profesyonel futbol"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "force-out",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "complete a force-out",
+          "tr": "bir zorunlu oyun dışı bırakma pozisyonunu tamamlamak"
+        },
+        {
+          "en": "a force-out at second base",
+          "tr": "ikinci kalede zorunlu oyun dışı bırakma"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "forget-me-not",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "forget-me-not flowers",
+          "tr": "unutma beni çiçekleri"
+        },
+        {
+          "en": "a patch of forget-me-not",
+          "tr": "unutma beni çiçekleriyle kaplı küçük bir alan"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "four-in-hand",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a four-in-hand knot",
+          "tr": "four-in-hand tipi kravat düğümü"
+        },
+        {
+          "en": "tie a four-in-hand",
+          "tr": "four-in-hand kravat düğümü bağlamak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "four-year-old",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a four-year-old child",
+          "tr": "dört yaşında bir çocuk"
+        },
+        {
+          "en": "four-year-old children",
+          "tr": "dört yaşındaki çocuklar"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

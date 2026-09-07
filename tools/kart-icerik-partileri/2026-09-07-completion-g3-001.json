@@ -1,0 +1,975 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 3,
+    "input": "input-001.json"
+  },
+  "enrichments": [
+    {
+      "word": "abandon",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. terk etmek, bırakmak, vazgeçmek",
+        "ex": "Thousands of families were forced to abandon their homes when the floodwaters rose rapidly.",
+        "exTr": "Sel suları hızla yükselince binlerce aile evlerini terk etmek zorunda kaldı."
+      },
+      "alternatives": [
+        {
+          "ex": "Rather than abandon the railway project entirely, the council proposed completing its busiest section before seeking further funding.",
+          "exTr": "Belediye meclisi, demiryolu projesinden tamamen vazgeçmek yerine ek finansman aramadan önce en yoğun bölümünü tamamlamayı önerdi."
+        }
+      ]
+    },
+    {
+      "word": "abdominal",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. karınla ilgili, karın-",
+        "ex": "The surgeon detected mild abdominal swelling during the patient's routine post-operative examination.",
+        "exTr": "Cerrah, hastanın rutin ameliyat sonrası muayenesinde hafif karın şişliği tespit etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The anatomy textbook uses transparent overlays to show the position of each abdominal organ without obscuring the surrounding structures.",
+          "exTr": "Anatomi ders kitabı, çevredeki yapıları gizlemeden karın bölgesindeki her organın konumunu göstermek için saydam katmanlar kullanıyor."
+        }
+      ]
+    },
+    {
+      "word": "able",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yapabilen, muktedir; yetenekli",
+        "ex": "Thanks to new hearing implants, many deaf children are now able to perceive speech.",
+        "exTr": "Yeni işitme implantları sayesinde birçok işitme engelli çocuk artık konuşma seslerini algılayabiliyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Once the handwritten records had been digitised, historians were able to compare household incomes across several generations.",
+          "exTr": "El yazması kayıtlar dijitalleştirildikten sonra tarihçiler, birkaç kuşak boyunca hane gelirlerini karşılaştırabildi."
+        }
+      ]
+    },
+    {
+      "word": "abolish",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. kaldırmak; ilga etmek",
+        "ex": "Reformers campaigned for years to abolish child labor in the country's textile factories.",
+        "exTr": "Reformcular, ülkenin tekstil fabrikalarındaki çocuk işçiliğini kaldırmak için yıllarca mücadele etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The student council asked the university to abolish late registration fees for applicants whose documents had been delayed abroad.",
+          "exTr": "Öğrenci konseyi, belgeleri yurt dışında geciken adaylar için geç kayıt ücretlerinin kaldırılmasını üniversiteden istedi."
+        }
+      ]
+    },
+    {
+      "word": "aboriginal",
+      "sense_index": 1,
+      "expected": {
+        "tr": "s. yerli, bir bölgenin en eski sakinlerine ait, özgün",
+        "ex": "Anthropologists have documented how aboriginal communities transmitted detailed ecological knowledge orally for thousands of years without producing any written records.",
+        "exTr": "Antropologlar, yerli toplulukların ayrıntılı ekolojik bilgiyi hiçbir yazılı kayıt üretmeden binlerce yıl boyunca sözlü olarak nasıl aktardığını belgelemiştir."
+      },
+      "alternatives": [
+        {
+          "ex": "The planning committee invited representatives of Aboriginal communities to identify cultural sites that the proposed road might affect.",
+          "exTr": "Planlama komitesi, önerilen yolun etkileyebileceği kültürel alanları belirlemeleri için Aborjin topluluklarının temsilcilerini davet etti."
+        }
+      ],
+      "note": "Sıfat anlamı seçildi; Avustralya toplulukları için büyük harfli Aboriginal kullanıldı. https://dictionary.cambridge.org/us/dictionary/english/aboriginal"
+    },
+    {
+      "word": "about-face",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. geriye dönüş (180 derece), ani fikir değişikliği",
+        "ex": "The minister performed a surprising about-face on the controversial tax proposal within days.",
+        "exTr": "Bakan, tartışmalı vergi teklifi konusunda günler içinde şaşırtıcı bir ani fikir değişikliğine gitti."
+      },
+      "alternatives": [
+        {
+          "ex": "The publisher's decision to restore the cancelled journal marked an unexpected about-face after months of defending the closure.",
+          "exTr": "Yayınevinin, kapatmayı aylarca savunduktan sonra yayını durdurulan dergiyi yeniden çıkarmaya karar vermesi beklenmedik bir fikir değişikliğiydi."
+        }
+      ]
+    },
+    {
+      "word": "above-named",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yukarıda adı geçen",
+        "ex": "The contract states that the above-named parties agree to all listed conditions.",
+        "exTr": "Sözleşme, yukarıda adı geçen tarafların listelenen tüm koşulları kabul ettiğini belirtir."
+      },
+      "alternatives": [
+        {
+          "ex": "Any correspondence concerning the equipment loan should be sent to the above-named coordinator, whose contact details appear on the application.",
+          "exTr": "Ekipmanın ödünç verilmesine ilişkin tüm yazışmalar, iletişim bilgileri başvuruda bulunan ve yukarıda adı geçen koordinatöre gönderilmelidir."
+        }
+      ]
+    },
+    {
+      "word": "abruptly",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. aniden, birdenbire, ansızın",
+        "ex": "The lecture ended abruptly when the speaker realized that the data he had presented contained a serious statistical error.",
+        "exTr": "Konuşmacı, sunduğu verilerde ciddi bir istatistiksel hata bulunduğunu fark edince ders aniden sona erdi."
+      },
+      "alternatives": [
+        {
+          "ex": "Beyond the last village, the paved road turns abruptly towards the mountains, leaving the river valley far below.",
+          "exTr": "Son köyün ilerisinde asfalt yol aniden dağlara doğru döner ve nehir vadisini çok aşağıda bırakır."
+        }
+      ]
+    },
+    {
+      "word": "absolute",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. mutlak, kesin, tam",
+        "ex": "Scientists once believed that time was an absolute measure, unaffected by speed or gravity.",
+        "exTr": "Bilim insanları bir zamanlar zamanın hız veya yerçekiminden etkilenmeyen mutlak bir ölçü olduğuna inanıyordu."
+      },
+      "alternatives": [
+        {
+          "ex": "Even an experienced translator cannot offer absolute certainty when an ancient manuscript contains several damaged passages and unfamiliar expressions.",
+          "exTr": "Eski bir el yazmasında hasarlı bölümler ve alışılmadık ifadeler bulunduğunda deneyimli bir çevirmen bile mutlak kesinlik sunamaz."
+        }
+      ]
+    },
+    {
+      "word": "absorbed",
+      "sense_index": 1,
+      "expected": {
+        "tr": "s. (dikkatini) kaptırmış",
+        "ex": "The scientist was so absorbed in her experiment that she completely forgot about the scheduled meeting.",
+        "exTr": "Bilim insanı, deneyine öylesine dikkatini kaptırmıştı ki planlanan toplantıyı tamamen unuttu."
+      },
+      "alternatives": [
+        {
+          "ex": "Absorbed in the letters of a nineteenth-century traveller, the researcher barely noticed that the archive was about to close.",
+          "exTr": "On dokuzuncu yüzyıldan bir gezginin mektuplarına kendini kaptıran araştırmacı, arşivin kapanmak üzere olduğunu güçlükle fark etti."
+        }
+      ]
+    },
+    {
+      "word": "abstain",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. kaçınmak, kendini alıkoymak",
+        "ex": "Doctors advised the patient to abstain from alcohol during the course of treatment.",
+        "exTr": "Doktorlar, tedavi süresince hastaya alkolden kaçınmasını tavsiye etti."
+      },
+      "alternatives": [
+        {
+          "ex": "To avoid influencing the discussion, the interviewer agreed to abstain from expressing personal opinions until all participants had spoken.",
+          "exTr": "Görüşmeci, tartışmayı etkilememek için tüm katılımcılar konuşana kadar kişisel görüşlerini belirtmekten kaçınmayı kabul etti."
+        }
+      ]
+    },
+    {
+      "word": "abundance",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. bolluk, bereket, çokluk",
+        "ex": "The coastal region is known for its abundance of marine species, attracting researchers from around the world.",
+        "exTr": "Kıyı bölgesi, dünyanın dört bir yanından araştırmacıları çeken bol deniz türü çeşitliliğiyle tanınır."
+      },
+      "alternatives": [
+        {
+          "ex": "An abundance of surviving receipts allowed the archivists to reconstruct the workshop's expenses even though its account books were missing.",
+          "exTr": "Günümüze ulaşan makbuzların çokluğu, hesap defterleri kayıp olmasına rağmen arşivcilerin atölyenin giderlerini yeniden belirlemesini sağladı."
+        }
+      ]
+    },
+    {
+      "word": "abuse",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. istismar, kötüye kullanma",
+        "ex": "The new regulations aim to prevent the abuse of antibiotics in large-scale livestock farming.",
+        "exTr": "Yeni düzenlemeler, büyük ölçekli hayvancılıkta antibiyotiklerin kötüye kullanılmasını önlemeyi amaçlıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Independent oversight was introduced to discourage the abuse of confidential customer information by employees with unrestricted access to company databases.",
+          "exTr": "Şirketin veri tabanlarına sınırsız erişimi olan çalışanların gizli müşteri bilgilerini kötüye kullanmasını caydırmak için bağımsız denetim getirildi."
+        }
+      ]
+    },
+    {
+      "word": "academician",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. akademisyen",
+        "ex": "The award recognizes an academician whose research has significantly advanced the field of genetics.",
+        "exTr": "Ödül, araştırmaları genetik alanını önemli ölçüde ilerleten bir akademisyeni onurlandırıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "An Indian academician who specialised in rural education questioned whether the proposed examination system would disadvantage students from remote villages.",
+          "exTr": "Kırsal eğitim alanında uzmanlaşmış Hintli bir akademisyen, önerilen sınav sisteminin uzak köylerdeki öğrencileri dezavantajlı duruma düşürüp düşürmeyeceğini sorguladı."
+        }
+      ],
+      "note": "Akademisyen anlamı US/Indian English olarak doğrulandı; bağlam buna göre seçildi. https://dictionary.cambridge.org/us/dictionary/english/academician"
+    },
+    {
+      "word": "accelerated",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. hızlandı, ivme kazandı",
+        "ex": "Economic growth accelerated after the new trade agreement took effect.",
+        "exTr": "Yeni ticaret anlaşması yürürlüğe girdikten sonra ekonomik büyü hızlandı."
+      },
+      "alternatives": [
+        {
+          "ex": "The restoration work accelerated once volunteers finished cataloguing the damaged tiles and specialists could concentrate on repairing the original patterns.",
+          "exTr": "Gönüllüler hasarlı çinileri kataloglamayı tamamlayıp uzmanlar özgün desenleri onarmaya odaklanabildiğinde restorasyon çalışması hızlandı."
+        }
+      ]
+    },
+    {
+      "word": "accent",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. aksan, şive",
+        "ex": "Linguists study how regional accent can reveal information about a speaker's background.",
+        "exTr": "Dilbilimciler, bölgesel aksanın bir konuşmacının geçmişi hakkında nasıl bilgi verebileceğini inceler."
+      },
+      "alternatives": [
+        {
+          "ex": "Although the presenter had lived abroad for decades, her regional accent remained recognisable to listeners from her home town.",
+          "exTr": "Sunucu onlarca yıl yurt dışında yaşamış olsa da bölgesel aksanı, memleketinden dinleyiciler tarafından hâlâ tanınabiliyordu."
+        }
+      ]
+    },
+    {
+      "word": "acceptance",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kabul, kabul edilme",
+        "ex": "Growing public acceptance of renewable energy has encouraged governments to expand solar programs.",
+        "exTr": "Yenilenebilir enerjiye yönelik artan toplumsal kabul, hükümetleri güneş enerjisi programlarını genişletmeye teşvik etti."
+      },
+      "alternatives": [
+        {
+          "ex": "Acceptance of the revised timetable depended on whether the organisers could provide transport for participants attending the early sessions.",
+          "exTr": "Gözden geçirilmiş programın kabulü, organizatörlerin erken oturumlara katılacak kişiler için ulaşım sağlayıp sağlayamayacağına bağlıydı."
+        }
+      ]
+    },
+    {
+      "word": "access",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. erişim",
+        "ex": "Millions of rural households still lack reliable access to high-speed internet services.",
+        "exTr": "Milyonlarca kırsal hane, yüksek hızlı internet hizmetlerine güvenilir erişimden hâlâ yoksun."
+      },
+      "alternatives": [
+        {
+          "ex": "Restoring public access to the waterfront became a central aim of the redevelopment plan after decades of industrial use.",
+          "exTr": "Onlarca yıllık endüstriyel kullanımın ardından halkın kıyıya erişimini yeniden sağlamak, yeniden geliştirme planının temel amaçlarından biri oldu."
+        }
+      ]
+    },
+    {
+      "word": "accident",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kaza",
+        "ex": "Wearing a seat belt greatly increases the chance of surviving a serious traffic accident.",
+        "exTr": "Emniyet kemeri takmak, ciddi bir trafik kazasından sağ kurtulma olasılığını büyük ölçüde artırır."
+      },
+      "alternatives": [
+        {
+          "ex": "Following an accident in the storage area, the museum reviewed how heavy exhibits were transported between the warehouse and galleries.",
+          "exTr": "Depolama alanındaki bir kazanın ardından müze, ağır sergi nesnelerinin depo ile galeriler arasında nasıl taşındığını gözden geçirdi."
+        }
+      ]
+    },
+    {
+      "word": "accommodate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. barındırmak, yer sağlamak",
+        "ex": "The new dormitory was built to accommodate nearly a thousand students from various countries.",
+        "exTr": "Yeni yurt binası, çeşitli ülkelerden gelen neredeyse bin öğrenciyi barındırmak için inşa edildi."
+      },
+      "alternatives": [
+        {
+          "ex": "The former courthouse can accommodate several community organisations, provided that the smaller offices are converted into shared meeting rooms.",
+          "exTr": "Küçük ofislerin ortak toplantı odalarına dönüştürülmesi koşuluyla eski adliye binası, çeşitli toplum kuruluşlarına yer sağlayabilir."
+        }
+      ]
+    },
+    {
+      "word": "accompany",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. eşlik etmek",
+        "ex": "A sharp drop in temperature often seems to accompany sudden changes in atmospheric pressure.",
+        "exTr": "Sıcaklıktaki keskin bir düşüş, genellikle atmosfer basıncındaki ani değişimlere eşlik ediyor gibi görünür."
+      },
+      "alternatives": [
+        {
+          "ex": "Detailed maps will accompany the field report so that readers can locate the sites discussed without consulting a separate atlas.",
+          "exTr": "Okurların ayrı bir atlasa başvurmadan ele alınan alanları bulabilmesi için saha raporuna ayrıntılı haritalar eşlik edecek."
+        }
+      ]
+    },
+    {
+      "word": "accomplishment",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. başarı, başarma",
+        "ex": "Publishing her first novel at twenty was a remarkable accomplishment for the young author.",
+        "exTr": "Yirmi yaşında ilk romanını yayımlamak, genç yazar için dikkate değer bir başarıydı."
+      },
+      "alternatives": [
+        {
+          "ex": "For the small conservation team, reopening the damaged library was an accomplishment made possible by years of patient cooperation.",
+          "exTr": "Küçük koruma ekibi için hasarlı kütüphaneyi yeniden açmak, yıllarca süren sabırlı iş birliği sayesinde mümkün olan bir başarıydı."
+        }
+      ]
+    },
+    {
+      "word": "according",
+      "sense_index": 0,
+      "expected": {
+        "tr": "e. (according to) -e göre",
+        "ex": "Most teenagers now obtain news primarily through social media platforms, according to several recent surveys.",
+        "exTr": "Son birkaç ankete göre, gençlerin çoğu artık haberleri büyük ölçüde sosyal medya platformlarından alıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The museum allocates storage space according to the size and conservation requirements of each collection rather than its popularity.",
+          "exTr": "Müze, depolama alanını her koleksiyonun popülerliğine değil, büyüklüğüne ve korunma gereksinimlerine göre ayırıyor."
+        }
+      ]
+    },
+    {
+      "word": "accountable",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. eylemlerini açıklamakla ve sonuçlarından sorumlu olmakla yükümlü",
+        "ex": "Public officials must remain accountable to citizens for every decision involving public money.",
+        "exTr": "Kamu görevlileri kamu parasını ilgilendiren her karar için yurttaşlara karşı hesap verebilir olmalıdır."
+      },
+      "alternatives": [
+        {
+          "ex": "Under the proposed arrangement, project managers would be accountable for explaining delays as well as reporting expenditure to the board.",
+          "exTr": "Önerilen düzenleme kapsamında proje yöneticileri, harcamaları kurula bildirmenin yanı sıra gecikmeleri açıklamakla da yükümlü olacaktı."
+        }
+      ]
+    },
+    {
+      "word": "accumulate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. biriktirmek, birikmek",
+        "ex": "Over thousands of years, sediment continues to accumulate at the bottom of the ocean floor.",
+        "exTr": "Binlerce yıl boyunca, tortu okyanus tabanının dibinde birikmeye devam ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Unanswered enquiries began to accumulate during the office relocation, prompting staff to establish a temporary telephone service for applicants.",
+          "exTr": "Ofisin taşınması sırasında yanıtlanmamış sorular birikmeye başlayınca çalışanlar, başvuru sahipleri için geçici bir telefon hizmeti kurdu."
+        }
+      ]
+    },
+    {
+      "word": "accurate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. doğru, kesin, isabetli",
+        "ex": "Modern weather satellites provide far more accurate forecasts than those available decades ago.",
+        "exTr": "Modern hava durumu uyduları, on yıllar öncesine göre çok daha doğru tahminler sunuyor."
+      },
+      "alternatives": [
+        {
+          "ex": "An accurate inventory is essential before the collection moves, since several objects have nearly identical labels but different ownership histories.",
+          "exTr": "Bazı nesnelerin etiketleri neredeyse aynı, ancak mülkiyet geçmişleri farklı olduğundan koleksiyon taşınmadan önce doğru bir envanter hazırlanması gereklidir."
+        }
+      ]
+    },
+    {
+      "word": "accuse",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. suçlamak",
+        "ex": "Environmental groups accused the company of dumping untreated waste into the river.",
+        "exTr": "Çevre grupları, şirketi nehre arıtılmamış atık boşaltmakla suçladı."
+      },
+      "alternatives": [
+        {
+          "ex": "Without examining the original documents, it would be unfair to accuse the editor of deliberately omitting evidence that contradicted her argument.",
+          "exTr": "Özgün belgeleri incelemeden editörü, savıyla çelişen kanıtları kasıtlı olarak dışarıda bırakmakla suçlamak haksızlık olurdu."
+        }
+      ]
+    },
+    {
+      "word": "ache",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. ağrımak, sızlamak",
+        "ex": "Muscles often ache for two or three days after intense exercise because tiny tears in the fibres trigger a local inflammatory response.",
+        "exTr": "Yoğun egzersizden sonra kaslar genellikle iki üç gün ağrır; çünkü liflerdeki minik yırtıklar yerel bir iltihaplanma tepkisini tetikler."
+      },
+      "alternatives": [
+        {
+          "ex": "After spending the entire afternoon carrying boxes upstairs, the volunteers found that their shoulders began to ache during the journey home.",
+          "exTr": "Öğleden sonranın tamamını üst kata kutu taşıyarak geçiren gönüllüler, eve dönüş yolunda omuzlarının ağrımaya başladığını fark etti."
+        }
+      ]
+    },
+    {
+      "word": "achievement",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. başarı",
+        "ex": "Landing a rover on Mars was considered a major achievement for the space agency.",
+        "exTr": "Mars'a bir gezici indirmek, uzay ajansı için büyük bir başarı olarak kabul edildi."
+      },
+      "alternatives": [
+        {
+          "ex": "Completing the regional dictionary was a collective achievement, drawing on the knowledge of teachers, farmers and retired factory workers.",
+          "exTr": "Bölgesel sözlüğün tamamlanması; öğretmenlerin, çiftçilerin ve emekli fabrika işçilerinin bilgilerinden yararlanan ortak bir başarıydı."
+        }
+      ]
+    },
+    {
+      "word": "acidification",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. asitlenme, asitleşme",
+        "ex": "Rising carbon dioxide levels are accelerating the acidification of oceans worldwide, threatening coral reefs.",
+        "exTr": "Artan karbondioksit seviyeleri, dünya genelinde okyanusların asitlenmesini hızlandırarak mercan resiflerini tehdit ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The laboratory report compares acidification in the water samples, while carefully distinguishing direct measurements from explanations that still require investigation.",
+          "exTr": "Laboratuvar raporu, su örneklerindeki asitlenmeyi karşılaştırırken doğrudan ölçümleri hâlâ araştırılması gereken açıklamalardan dikkatle ayırıyor."
+        }
+      ]
+    },
+    {
+      "word": "acquaint",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. acquaint someone with: birini bir konu hakkında bilgilendirmek veya tanıştırmak",
+        "ex": "The orientation course will acquaint new staff with laboratory rules, emergency exits and reporting procedures.",
+        "exTr": "Oryantasyon kursu yeni personeli laboratuvar kuralları, acil çıkışlar ve bildirim işlemleriyle tanıştıracak."
+      },
+      "alternatives": [
+        {
+          "ex": "Before consulting the original manuscripts, visitors can acquaint themselves with the archive's catalogue by exploring its illustrated online guide.",
+          "exTr": "Ziyaretçiler, özgün el yazmalarına başvurmadan önce resimli çevrim içi rehberi inceleyerek arşivin kataloğu hakkında bilgi edinebilir."
+        }
+      ]
+    },
+    {
+      "word": "acquired",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. sonradan kazanılmış, edinilmiş",
+        "ex": "Scientists distinguish between acquired traits, shaped by environment, and inherited traits passed down through genes.",
+        "exTr": "Bilim insanları, çevre tarafından şekillendirilen sonradan kazanılmış özelliklerle genler yoluyla aktarılan kalıtsal özellikleri birbirinden ayırır."
+      },
+      "alternatives": [
+        {
+          "ex": "The apprentices demonstrated their newly acquired skills by building a wooden footbridge under the supervision of experienced local carpenters.",
+          "exTr": "Çıraklar, deneyimli yerel marangozların gözetiminde ahşap bir yaya köprüsü yaparak yeni edindikleri becerileri gösterdi."
+        }
+      ]
+    },
+    {
+      "word": "across",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z./e. boyunca, çaprazlamasına",
+        "ex": "The signal traveled across the entire network within milliseconds, alerting every connected device.",
+        "exTr": "Sinyal, milisaniyeler içinde tüm ağ boyunca yayılarak bağlı her cihazı uyardı."
+      },
+      "alternatives": [
+        {
+          "ex": "Copies of the exhibition travelled across the region, allowing schools far from the capital to display material from the national archive.",
+          "exTr": "Serginin kopyaları bölge boyunca dolaştırılarak başkentten uzaktaki okulların ulusal arşivden materyal sergilemesi sağlandı."
+        }
+      ]
+    },
+    {
+      "word": "acting",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. vekâleten görev yapan, geçici",
+        "ex": "The acting director approved the budget while the board searched for a permanent replacement.",
+        "exTr": "Kurul, kalıcı bir isim ararken vekil müdür bütçeyi onayladı."
+      },
+      "alternatives": [
+        {
+          "ex": "As acting head of the department, she could handle routine appointments but needed the dean's approval for any permanent changes.",
+          "exTr": "Vekâleten bölüm başkanı olarak rutin atamalarla ilgilenebiliyor, ancak kalıcı değişiklikler için dekanın onayına ihtiyaç duyuyordu."
+        }
+      ]
+    },
+    {
+      "word": "activated",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. etkinleştirilmiş, harekete geçirilmiş",
+        "ex": "The alarm system remains activated throughout the night to detect any unauthorized entry.",
+        "exTr": "Alarm sistemi, izinsiz girişleri tespit etmek için gece boyunca etkin durumda kalır."
+      },
+      "alternatives": [
+        {
+          "ex": "Only activated accounts appear in the student directory, so newly registered users may not be visible until their details are verified.",
+          "exTr": "Öğrenci rehberinde yalnızca etkinleştirilmiş hesaplar yer aldığından yeni kaydolan kullanıcılar, bilgileri doğrulanana kadar görünmeyebilir."
+        }
+      ]
+    },
+    {
+      "word": "actively",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. aktif olarak, etkin biçimde",
+        "ex": "Environmental organizations are actively campaigning to reduce plastic waste in coastal communities.",
+        "exTr": "Çevre örgütleri, kıyı topluluklarında plastik atığı azaltmak için etkin biçimde kampanya yürütüyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Rather than merely recording complaints, the neighbourhood association actively sought residents' suggestions for redesigning the square and improving pedestrian routes.",
+          "exTr": "Mahalle derneği, şikâyetleri yalnızca kaydetmek yerine meydanın yeniden tasarlanması ve yaya yollarının iyileştirilmesi için sakinlerin önerilerini etkin biçimde toplamaya çalıştı."
+        }
+      ]
+    },
+    {
+      "word": "activity",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. faaliyet, etkinlik; hareketlilik",
+        "ex": "Increased volcanic activity forced authorities to evacuate thousands of residents from the island.",
+        "exTr": "Artan volkanik hareketlilik, yetkilileri adadaki binlerce sakini tahliye etmek zorunda bıraktı."
+      },
+      "alternatives": [
+        {
+          "ex": "The former railway yard now hosts cultural activity throughout the year, from weekend pottery workshops to outdoor theatre performances.",
+          "exTr": "Eski demiryolu sahası artık hafta sonu çömlekçilik atölyelerinden açık hava tiyatro gösterilerine kadar yıl boyunca kültürel etkinliklere ev sahipliği yapıyor."
+        }
+      ]
+    },
+    {
+      "word": "actually",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. aslında, gerçekte",
+        "ex": "Many people assume vaccines are risky, but studies show they are actually very safe.",
+        "exTr": "Birçok insan aşıların riskli olduğunu varsayar, ancak çalışmalar aslında çok güvenli olduklarını gösteriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "What appeared to be a decorative border was actually a sequence of symbols indicating the manuscript's original owner and place of production.",
+          "exTr": "Süsleme bordürü gibi görünen şey, aslında el yazmasının ilk sahibini ve üretildiği yeri gösteren bir dizi simgeydi."
+        }
+      ]
+    },
+    {
+      "word": "ad",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. reklam, ilan",
+        "ex": "A single television ad can reach millions of viewers within just a few minutes.",
+        "exTr": "Tek bir televizyon reklamı, yalnızca birkaç dakika içinde milyonlarca izleyiciye ulaşabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The recruitment ad attracted considerable attention because it invited applicants to demonstrate practical skills instead of listing formal qualifications.",
+          "exTr": "İşe alım ilanı, adaylardan resmî yeterliliklerini sıralamak yerine uygulama becerilerini göstermelerini istediği için büyük ilgi gördü."
+        }
+      ]
+    },
+    {
+      "word": "adapt",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. uyum sağlamak",
+        "ex": "Animals must adapt to changing environments or risk extinction over time.",
+        "exTr": "Hayvanlar, değişen ortamlara uyum sağlamak zorundadır; aksi hâlde zamanla yok olma riskiyle karşılaşır."
+      },
+      "alternatives": [
+        {
+          "ex": "Small publishers had to adapt to changing reading habits while continuing to serve customers who preferred printed books to digital editions.",
+          "exTr": "Küçük yayınevleri, dijital baskılar yerine basılı kitapları tercih eden müşterilerine hizmet vermeyi sürdürürken değişen okuma alışkanlıklarına uyum sağlamak zorundaydı."
+        }
+      ]
+    },
+    {
+      "word": "adaptation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. uyum, adaptasyon",
+        "ex": "Desert plants show remarkable adaptation, storing water efficiently to survive extreme temperatures.",
+        "exTr": "Çöl bitkileri, aşırı sıcaklıklarda hayatta kalmak için suyu verimli biçimde depolayarak dikkat çekici bir uyum gösterir."
+      },
+      "alternatives": [
+        {
+          "ex": "The interviews explored newcomers' adaptation to village life, paying particular attention to transport difficulties and opportunities for social contact.",
+          "exTr": "Görüşmeler, ulaşım güçlüklerine ve sosyal ilişki fırsatlarına özellikle dikkat ederek yeni gelenlerin köy yaşamına uyumunu ele aldı."
+        }
+      ]
+    },
+    {
+      "word": "adaptive",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. uyum sağlayan, uyarlanabilir",
+        "ex": "Camouflage is an adaptive feature that helps many animals avoid detection by predators.",
+        "exTr": "Kamuflaj, birçok hayvanın avcılar tarafından fark edilmesini önleyen uyumsal bir özelliktir."
+      },
+      "alternatives": [
+        {
+          "ex": "The course uses adaptive exercises that become more challenging when learners answer correctly, while offering additional practice after repeated errors.",
+          "exTr": "Kurs, öğrenciler doğru yanıt verdiğinde zorlaşan, tekrarlanan hatalardan sonra ise ek alıştırma sunan uyarlanabilir etkinlikler kullanıyor."
+        }
+      ]
+    },
+    {
+      "word": "add-on",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. eklenti, ek parça",
+        "ex": "Customers can purchase an extended warranty as an add-on when they check out at the store.",
+        "exTr": "Müşteriler, mağazada ödeme yaparken uzatılmış garantiyi bir eklenti olarak satın alabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "An optional add-on allows the mapping software to display historical street names alongside the modern addresses used by municipal services.",
+          "exTr": "İsteğe bağlı bir eklenti, haritalama yazılımının belediye hizmetlerinde kullanılan güncel adreslerin yanında tarihî sokak adlarını da göstermesini sağlıyor."
+        }
+      ]
+    },
+    {
+      "word": "addicted",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. bağımlı",
+        "ex": "Health officials estimate that millions of teenagers worldwide are addicted to nicotine products.",
+        "exTr": "Sağlık yetkilileri, dünya genelinde milyonlarca gencin nikotin ürünlerine bağımlı olduğunu tahmin ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The documentary follows a journalist who became addicted to gambling and later sought support while rebuilding relationships with her family.",
+          "exTr": "Belgesel, kumara bağımlı hâle gelen ve daha sonra ailesiyle ilişkilerini yeniden kurarken destek arayan bir gazeteciyi konu alıyor."
+        }
+      ]
+    },
+    {
+      "word": "addition",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ekleme, ek; (in addition to) -in yanı sıra",
+        "ex": "In addition to reducing costs, the new engine produces significantly fewer emissions.",
+        "exTr": "Yeni motor, maliyetleri düşürmenin yanı sıra önemli ölçüde daha az emisyon üretiyor."
+      },
+      "alternatives": [
+        {
+          "ex": "In addition to recording local songs, the project collected accounts of the occasions on which families traditionally performed them.",
+          "exTr": "Proje, yerel şarkıları kaydetmenin yanı sıra ailelerin bunları geleneksel olarak hangi vesilelerle söylediğine ilişkin anlatıları da derledi."
+        }
+      ]
+    },
+    {
+      "word": "additive",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. katkı maddesi",
+        "ex": "Manufacturers must list every food additive clearly on the product packaging label.",
+        "exTr": "Üreticiler, ürün ambalajı etiketinde her gıda katkı maddesini açıkça belirtmelidir."
+      },
+      "alternatives": [
+        {
+          "ex": "Before altering the recipe, the manufacturer asked its laboratory to compare batches prepared with and without the proposed additive.",
+          "exTr": "Üretici, tarifi değiştirmeden önce laboratuvarından önerilen katkı maddesi kullanılarak ve kullanılmadan hazırlanan partileri karşılaştırmasını istedi."
+        }
+      ]
+    },
+    {
+      "word": "adequacy",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yeterlilik, yeterli olma, elverişlilik",
+        "ex": "The committee openly questioned the adequacy of the safety measures that had been introduced after the first accident at the plant.",
+        "exTr": "Komite, tesisteki ilk kazanın ardından uygulamaya konan güvenlik önlemlerinin yeterliliğini açıkça sorguladı."
+      },
+      "alternatives": [
+        {
+          "ex": "Evaluating the adequacy of the library's resources requires more than counting books; researchers must also consider their relevance and accessibility.",
+          "exTr": "Kütüphane kaynaklarının yeterliliğini değerlendirmek, kitapları saymaktan fazlasını gerektirir; araştırmacılar bunların uygunluğunu ve erişilebilirliğini de dikkate almalıdır."
+        }
+      ]
+    },
+    {
+      "word": "adhere",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. yapışmak; bağlı kalmak, uymak",
+        "ex": "Researchers must adhere to strict ethical guidelines whenever they conduct experiments involving human participants.",
+        "exTr": "Araştırmacılar, insan katılımcıları içeren deneyler yürüttüklerinde katı etik kurallara uymak zorundadır."
+      },
+      "alternatives": [
+        {
+          "ex": "The restoration team chose materials that would adhere to the damaged surface without permanently concealing the original decoration underneath.",
+          "exTr": "Restorasyon ekibi, alttaki özgün süslemeyi kalıcı olarak gizlemeden hasarlı yüzeye yapışacak malzemeler seçti."
+        }
+      ]
+    },
+    {
+      "word": "adjunct",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yardımcı unsur, tamamlayıcı ek, ilave",
+        "ex": "Music therapy is increasingly used as an adjunct to conventional treatment, since it appears to reduce anxiety in patients recovering from surgery.",
+        "exTr": "Müzik terapisi, ameliyat sonrası iyileşme sürecindeki hastalarda kaygıyı azalttığı görüldüğü için giderek daha çok geleneksel tedaviye yardımcı bir yöntem olarak kullanılıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Audio recordings provide a useful adjunct to written interviews, preserving changes in tone that a transcript alone cannot convey.",
+          "exTr": "Ses kayıtları, yalnızca yazıya dökülmüş metnin aktaramadığı ton değişimlerini koruyarak yazılı görüşmeleri yararlı biçimde tamamlar."
+        }
+      ]
+    },
+    {
+      "word": "adjustment",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ayar, uyarlama, düzenleme",
+        "ex": "The pilot made a slight adjustment to the aircraft's altitude to avoid turbulent weather.",
+        "exTr": "Pilot, türbülanslı havadan kaçınmak için uçağın irtifasında küçük bir ayarlama yaptı."
+      },
+      "alternatives": [
+        {
+          "ex": "A minor adjustment to the opening hours made the exhibition accessible to factory workers who previously arrived after the doors had closed.",
+          "exTr": "Açılış saatlerinde yapılan küçük bir düzenleme, daha önce kapılar kapandıktan sonra gelen fabrika işçilerinin sergiyi ziyaret edebilmesini sağladı."
+        }
+      ]
+    },
+    {
+      "word": "administration",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yönetim, idare",
+        "ex": "The hospital administration introduced new procedures to reduce waiting times in the emergency room.",
+        "exTr": "Hastane yönetimi, acil serviste bekleme sürelerini azaltmak için yeni prosedürler getirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "Efficient administration of the scholarship programme depended on clear communication between the finance office, academic departments and prospective students.",
+          "exTr": "Burs programının verimli yönetimi; mali işler birimi, akademik bölümler ve aday öğrenciler arasındaki açık iletişime bağlıydı."
+        }
+      ]
+    },
+    {
+      "word": "admiral",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. amiral (deniz kuvvetlerinde üst düzey rütbe)",
+        "ex": "Yielding to reports of an approaching storm, the admiral ordered the fleet to change course.",
+        "exTr": "Yaklaşan bir fırtınaya dair raporlar aldıktan sonra amiral, filoya rota değiştirmesini emretti."
+      },
+      "alternatives": [
+        {
+          "ex": "In his memoirs, the retired admiral describes the logistical difficulties of supplying ships stationed far from their home ports.",
+          "exTr": "Emekli amiral, anılarında ana limanlarından uzakta konuşlandırılan gemilere malzeme ulaştırmanın lojistik güçlüklerini anlatıyor."
+        }
+      ]
+    },
+    {
+      "word": "admired",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. hayranlık duyulan, takdir edilen",
+        "ex": "The widely admired architect designed several public libraries known for sustainable materials.",
+        "exTr": "Geniş çapta hayranlık duyulan mimar, sürdürülebilir malzemeleriyle bilinen birçok halk kütüphanesi tasarladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The carefully restored theatre became an admired example of how historic buildings could retain their character while accommodating modern facilities.",
+          "exTr": "Özenle restore edilen tiyatro, tarihî binaların modern olanaklara yer verirken karakterlerini nasıl koruyabileceğinin takdir edilen bir örneği oldu."
+        }
+      ]
+    },
+    {
+      "word": "admit",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. kabul etmek, itiraf etmek",
+        "ex": "Many scientists admit that the long-term effects of microplastics on human health remain unknown.",
+        "exTr": "Birçok bilim insanı, mikroplastiklerin insan sağlığı üzerindeki uzun vadeli etkilerinin hâlâ bilinmediğini kabul ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The organisers were reluctant to admit that poor communication, rather than limited funding, had caused most of the delays.",
+          "exTr": "Organizatörler, gecikmelerin çoğuna sınırlı finansmandan ziyade yetersiz iletişimin neden olduğunu kabul etmekte isteksizdi."
+        }
+      ]
+    },
+    {
+      "word": "adopt",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. benimsemek, kabul etmek",
+        "ex": "Several countries have begun to adopt stricter regulations to limit plastic waste in the ocean.",
+        "exTr": "Birçok ülke, okyanuslardaki plastik atığı sınırlamak için daha sıkı düzenlemeleri benimsemeye başladı."
+      },
+      "alternatives": [
+        {
+          "ex": "Before schools adopt the new assessment method, teachers will test it in small classes and discuss the results with parents.",
+          "exTr": "Okullar yeni değerlendirme yöntemini benimsemeden önce öğretmenler yöntemi küçük sınıflarda deneyecek ve sonuçları velilerle görüşecek."
+        }
+      ]
+    },
+    {
+      "word": "adornment",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. süs, süsleme, bezeme",
+        "ex": "Archaeologists interpret the beads and shells found in the graves as personal adornment rather than as objects of purely practical value.",
+        "exTr": "Arkeologlar, mezarlarda bulunan boncuk ve deniz kabuklarını salt işlevsel değeri olan nesneler yerine kişisel süs eşyaları olarak yorumluyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Unlike the richly decorated reception rooms, the servants' quarters contained little adornment beyond a few patterned curtains and simple wall prints.",
+          "exTr": "Zengin süslemeli kabul odalarının aksine hizmetlilerin odalarında, birkaç desenli perde ve sade duvar baskısı dışında pek süsleme yoktu."
+        }
+      ]
+    },
+    {
+      "word": "advance",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. ilerlemek; ilerletmek, geliştirmek",
+        "ex": "New evidence could advance our understanding of the disease.",
+        "exTr": "Yeni kanıtlar hastalığa ilişkin anlayışımızı geliştirebilir."
+      },
+      "alternatives": [
+        {
+          "ex": "Sharing unsuccessful experiments as well as successful ones may advance the investigation by preventing other teams from repeating the same mistakes.",
+          "exTr": "Başarılı deneylerin yanı sıra başarısız olanları da paylaşmak, diğer ekiplerin aynı hataları tekrarlamasını önleyerek araştırmayı ilerletebilir."
+        }
+      ]
+    },
+    {
+      "word": "advantage",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. avantaj, üstünlük",
+        "ex": "Early diagnosis gives doctors a significant advantage in treating aggressive forms of cancer.",
+        "exTr": "Erken teşhis, doktorlara agresif kanser türlerini tedavi etmede önemli bir avantaj sağlar."
+      },
+      "alternatives": [
+        {
+          "ex": "A central location gave the cooperative an advantage over larger suppliers whose warehouses were several hours away from local customers.",
+          "exTr": "Merkezî konumu, kooperatife depoları yerel müşterilerden saatlerce uzakta olan daha büyük tedarikçiler karşısında avantaj sağladı."
+        }
+      ]
+    },
+    {
+      "word": "adventure",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. macera",
+        "ex": "The documentary follows a young explorer's adventure across the remote islands of the Pacific.",
+        "exTr": "Belgesel, genç bir kâşifin Pasifik'in ıssız adalarındaki macerasını konu alıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "What began as a weekend adventure developed into a long-term research project when the hikers discovered traces of an abandoned settlement.",
+          "exTr": "Hafta sonu macerası olarak başlayan gezi, yürüyüşçüler terk edilmiş bir yerleşimin izlerini keşfedince uzun vadeli bir araştırma projesine dönüştü."
+        }
+      ]
+    },
+    {
+      "word": "adverse",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. olumsuz, ters, zararlı",
+        "ex": "Researchers monitored patients closely to detect any adverse reaction to the experimental drug.",
+        "exTr": "Araştırmacılar, deneysel ilaca karşı herhangi bir olumsuz tepkiyi tespit etmek için hastaları yakından izledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The engineering team postponed the bridge inspection because adverse weather conditions would have made it difficult to reach the upper cables safely.",
+          "exTr": "Mühendislik ekibi, olumsuz hava koşulları üst kablolara güvenle ulaşmayı zorlaştıracağı için köprü incelemesini erteledi."
+        }
+      ]
+    }
+  ],
+  "collocations": [
+    {
+      "word": "about-face",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "make an about-face",
+          "tr": "görüşünü tamamen değiştirmek"
+        },
+        {
+          "en": "a sudden about-face",
+          "tr": "ani ve köklü bir fikir değişikliği"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "above-named",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "the above-named person",
+          "tr": "yukarıda adı geçen kişi"
+        },
+        {
+          "en": "the above-named organisation",
+          "tr": "yukarıda adı geçen kuruluş"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "academician",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a distinguished academician",
+          "tr": "seçkin bir akademisyen"
+        },
+        {
+          "en": "a leading academician",
+          "tr": "önde gelen bir akademisyen"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "admiral",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a retired admiral",
+          "tr": "emekli bir amiral"
+        },
+        {
+          "en": "the rank of admiral",
+          "tr": "amiral rütbesi"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

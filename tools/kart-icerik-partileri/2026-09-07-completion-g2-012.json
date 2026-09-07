@@ -1,0 +1,1171 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 2,
+    "input": "input-012.json"
+  },
+  "enrichments": [
+    {
+      "word": "curb",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. sınırlamak, dizginlemek",
+        "ex": "The new regulations aim to curb air pollution in densely populated urban areas.",
+        "exTr": "Yeni düzenlemeler, yoğun nüfuslu kentsel bölgelerde hava kirliliğini sınırlamayı amaçlıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The centre introduced a shared booking system to curb repeated reservations that left rooms empty while other groups waited.",
+          "exTr": "Merkez, başka gruplar beklerken odaları boş bırakan tekrarlı rezervasyonları sınırlamak için ortak bir rezervasyon sistemi getirdi."
+        }
+      ]
+    },
+    {
+      "word": "curious",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. meraklı",
+        "ex": "Young children are naturally curious, constantly asking questions about the world around them.",
+        "exTr": "Küçük çocuklar doğaları gereği meraklıdır ve çevrelerindeki dünya hakkında sürekli sorular sorarlar."
+      },
+      "alternatives": [
+        {
+          "ex": "Curious about the missing signature, the researcher examined related letters before deciding whether the document had been deliberately left anonymous.",
+          "exTr": "Eksik imzayı merak eden araştırmacı, belgenin bilerek isimsiz bırakılıp bırakılmadığına karar vermeden önce ilgili mektupları inceledi."
+        }
+      ]
+    },
+    {
+      "word": "currently",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. şu anda, halen, günümüzde",
+        "ex": "Scientists are currently testing several promising drugs that may slow the progression of Alzheimer's disease.",
+        "exTr": "Bilim insanları şu anda Alzheimer hastalığının ilerlemesini yavaşlatabilecek birkaç umut verici ilacı test ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The collection is currently being catalogued, so visitors should not assume that every object appears in the published index.",
+          "exTr": "Koleksiyon şu anda kataloglandığından ziyaretçiler her nesnenin yayımlanmış dizinde bulunduğunu varsaymamalıdır."
+        }
+      ]
+    },
+    {
+      "word": "curtain",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. perde",
+        "ex": "A heavy curtain hung over the tall windows to block the afternoon sunlight from the reading room.",
+        "exTr": "Ağır bir perde, öğleden sonra güneş ışığının okuma odasına girmesini engellemek için uzun pencerelerin üzerine asılmıştı."
+      },
+      "alternatives": [
+        {
+          "ex": "A curtain separates the stage from the rehearsal area, allowing performers to prepare without distracting the audience during the introduction.",
+          "exTr": "Perde sahneyi prova alanından ayırarak sanatçıların giriş sırasında seyircinin dikkatini dağıtmadan hazırlanmasını sağlıyor."
+        }
+      ]
+    },
+    {
+      "word": "custody",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. gözaltı, resmî gözetim veya tutukluluk",
+        "ex": "The suspect remained in police custody while investigators examined newly recovered evidence.",
+        "exTr": "Şüpheli, araştırmacılar yeni elde edilen kanıtları incelerken polis gözetiminde kaldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The account describes the suspect's time in custody but provides no independent evidence about the circumstances of the arrest.",
+          "exTr": "Anlatım, şüphelinin gözaltında geçirdiği süreyi betimliyor; ancak yakalanma koşullarına ilişkin bağımsız kanıt sunmuyor."
+        }
+      ]
+    },
+    {
+      "word": "customs",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. gümrük",
+        "ex": "Travelers must declare certain goods at customs before entering the country.",
+        "exTr": "Yolcular, ülkeye girmeden önce belirli malları gümrükte beyan etmek zorundadır."
+      },
+      "alternatives": [
+        {
+          "ex": "The shipping records show delays at customs, helping historians distinguish transport difficulties from interruptions caused by missing documentation.",
+          "exTr": "Sevkiyat kayıtları gümrükteki gecikmeleri göstererek tarihçilerin ulaşım güçlüklerini eksik belgelerden kaynaklanan kesintilerden ayırmasına yardımcı oluyor."
+        }
+      ]
+    },
+    {
+      "word": "cut-price",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. indirimli, düşük fiyatlı",
+        "ex": "The airline's cut-price tickets attracted thousands of budget travelers during the summer holidays.",
+        "exTr": "Havayolunun indirimli biletleri, yaz tatilinde binlerce düşük bütçeli gezgini kendine çekti."
+      },
+      "alternatives": [
+        {
+          "ex": "Cut-price admission increased attendance during quiet periods, although the museum still needed to assess whether it attracted new visitors.",
+          "exTr": "İndirimli giriş, sakin dönemlerde katılımı artırdı; ancak müzenin bunun yeni ziyaretçi çekip çekmediğini yine de değerlendirmesi gerekiyordu."
+        }
+      ]
+    },
+    {
+      "word": "cutlery",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. çatal-bıçak takımı, sofra takımı",
+        "ex": "The restaurant carefully polishes its silver cutlery every evening before setting the tables for dinner.",
+        "exTr": "Restoran, akşam yemeği için masaları hazırlamadan önce her akşam gümüş çatal-bıçak takımını özenle parlatır."
+      },
+      "alternatives": [
+        {
+          "ex": "The cutlery was displayed with household inventories, allowing visitors to compare decorative objects with items intended for everyday use.",
+          "exTr": "Çatal bıçak takımı, ziyaretçilerin süs eşyalarını günlük kullanıma yönelik nesnelerle karşılaştırabilmesi için ev envanterleriyle birlikte sergilendi."
+        }
+      ]
+    },
+    {
+      "word": "cyanobacteria",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. siyanobakteriler, mavi-yeşil algler",
+        "ex": "Cyanobacteria were probably the first organisms to release oxygen through photosynthesis, permanently transforming the atmosphere of the young Earth.",
+        "exTr": "Siyanobakteriler, büyük olasılıkla fotosentez yoluyla oksijen açığa çıkaran ilk canlılardı ve genç Dünya'nın atmosferini kalıcı olarak değiştirdiler."
+      },
+      "alternatives": [
+        {
+          "ex": "The students compared images of cyanobacteria produced by different techniques, identifying which features remained visible across the changing scales.",
+          "exTr": "Öğrenciler, değişen ölçeklerde hangi özelliklerin görünür kaldığını belirleyerek farklı tekniklerle üretilmiş siyanobakteri görüntülerini karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "cyclic",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. döngüsel, periyodik",
+        "ex": "Economists identified a cyclic pattern in the housing market that repeats roughly every decade.",
+        "exTr": "Ekonomistler, konut piyasasında yaklaşık her on yılda bir tekrarlanan döngüsel bir örüntü belirledi."
+      },
+      "alternatives": [
+        {
+          "ex": "A cyclic pattern appeared in the records, but the team needed more observations before deciding whether the repetition was consistent.",
+          "exTr": "Kayıtlarda döngüsel bir örüntü ortaya çıktı; ancak tekrarın tutarlı olup olmadığına karar vermeden önce ekibin daha fazla gözleme ihtiyacı vardı."
+        }
+      ]
+    },
+    {
+      "word": "dad",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. baba (gündelik dil)",
+        "ex": "In the documentary, the young scientist credits her dad for sparking her early interest in astronomy.",
+        "exTr": "Belgeselde, genç bilim insanı astronomiye olan erken ilgisini uyandıran kişinin babası olduğunu belirtiyor."
+      },
+      "alternatives": [
+        {
+          "ex": "In the interview, she recalls how her dad taught her to repair household objects rather than replace them immediately.",
+          "exTr": "Görüşmede, babasının ev eşyalarını hemen değiştirmek yerine onarmayı kendisine nasıl öğrettiğini hatırlıyor."
+        }
+      ],
+      "note": "Dad günlük dil kaydıdır; kişisel görüşmenin dolaylı aktarımı bağlamında kullanıldı."
+    },
+    {
+      "word": "daisy",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. papatya",
+        "ex": "Botanists identified a rare daisy species growing only in the higher elevations of the mountain range.",
+        "exTr": "Botanikçiler, yalnızca dağ silsilesinin yüksek kesimlerinde yetişen nadir bir papatya türünü tespit etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The drawing enlarges a single daisy, making details visible that visitors might overlook when observing an entire patch of flowers.",
+          "exTr": "Çizim tek bir papatyayı büyüterek ziyaretçilerin çiçeklerle kaplı bir alanın tamamını gözlemlerken kaçırabileceği ayrıntıları görünür kılıyor."
+        }
+      ]
+    },
+    {
+      "word": "damaged",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. hasarlı, zarar görmüş",
+        "ex": "The earthquake left hundreds of buildings severely damaged across the coastal city.",
+        "exTr": "Deprem, kıyı kentinde yüzlerce binayı ağır hasarlı bıraktı."
+      },
+      "alternatives": [
+        {
+          "ex": "The damaged frame was retained for examination because replacing it immediately would remove evidence about how the joint had failed.",
+          "exTr": "Hemen değiştirmek birleşim yerinin nasıl bozulduğuna ilişkin kanıtı ortadan kaldıracağından hasarlı çerçeve inceleme için saklandı."
+        }
+      ]
+    },
+    {
+      "word": "damp",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. nemli",
+        "ex": "Mold tends to grow rapidly in damp basements that lack proper ventilation systems.",
+        "exTr": "Küf, uygun havalandırma sistemi bulunmayan nemli bodrumlarda hızla üremeye eğilimlidir."
+      },
+      "alternatives": [
+        {
+          "ex": "The damp documents were moved to a separate workspace, where staff recorded their condition before deciding how restoration should proceed.",
+          "exTr": "Nemli belgeler ayrı bir çalışma alanına taşındı; personel restorasyonun nasıl ilerleyeceğine karar vermeden önce durumlarını orada kaydetti."
+        }
+      ]
+    },
+    {
+      "word": "danger",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. tehlike, risk",
+        "ex": "Scientists have repeatedly warned about the danger of ignoring early signs of climate change.",
+        "exTr": "Bilim insanları, iklim değişikliğinin erken belirtilerini görmezden gelmenin tehlikesi konusunda defalarca uyardı."
+      },
+      "alternatives": [
+        {
+          "ex": "There is a danger that a single striking example will dominate discussion even when it is unrepresentative of the broader evidence.",
+          "exTr": "Daha geniş kanıt bütününü temsil etmese bile tek bir çarpıcı örneğin tartışmaya hâkim olması tehlikesi vardır."
+        }
+      ]
+    },
+    {
+      "word": "danish",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. Danish: Danimarkalı, Danimarka'ya ait; i. Danca",
+        "ex": "A Danish firm developed a paving system that stores rainwater.",
+        "exTr": "Danimarkalı bir şirket yağmur suyunu depolayan bir kaldırım sistemi geliştirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The exhibition includes Danish furniture alongside working drawings, allowing visitors to compare finished objects with the decisions made during their development.",
+          "exTr": "Sergi, ziyaretçilerin bitmiş nesneleri geliştirilmeleri sırasında alınan kararlarla karşılaştırabilmesi için Danimarka mobilyalarına uygulama çizimleriyle birlikte yer veriyor."
+        }
+      ],
+      "note": "Ülke ve dil sıfatı Danish büyük harfle yazıldı."
+    },
+    {
+      "word": "dark-blue",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. koyu mavi",
+        "ex": "She painted the nursery walls a calm dark-blue shade to help the baby sleep peacefully.",
+        "exTr": "Bebeğin huzurla uyumasına yardımcı olmak için çocuk odasının duvarlarını sakin bir koyu mavi tona boyadı."
+      },
+      "alternatives": [
+        {
+          "ex": "A dark-blue border distinguishes the revised map from the earlier edition without changing the symbols used for roads and buildings.",
+          "exTr": "Koyu mavi bir kenarlık, yollar ve binalar için kullanılan sembolleri değiştirmeden yeni haritayı önceki baskıdan ayırıyor."
+        }
+      ]
+    },
+    {
+      "word": "darken",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. karartmak, kararmak",
+        "ex": "Thick storm clouds began to darken the sky just minutes before the heavy rain started falling.",
+        "exTr": "Yoğun fırtına bulutları, şiddetli yağmur başlamadan sadece birkaç dakika önce gökyüzünü karartmaya başladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The conservators examined whether the proposed coating would darken the wood, comparing small test areas before treating the whole surface.",
+          "exTr": "Koruma uzmanları, tüm yüzeyi işlemden geçirmeden önce küçük deneme alanlarını karşılaştırarak önerilen kaplamanın ahşabı koyulaştırıp koyulaştırmayacağını inceledi."
+        }
+      ]
+    },
+    {
+      "word": "dashboard",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. gösterge paneli",
+        "ex": "A warning light suddenly appeared on the dashboard while the family was driving through the mountains.",
+        "exTr": "Aile dağlardan geçerken gösterge panelinde aniden bir uyarı ışığı belirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The dashboard grouped essential information near the driver's direct line of sight, leaving less frequently used controls lower down.",
+          "exTr": "Gösterge paneli temel bilgileri sürücünün doğrudan görüş hattına yakın toplarken daha seyrek kullanılan kumandaları aşağıda bırakıyordu."
+        }
+      ]
+    },
+    {
+      "word": "database",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. veritabanı",
+        "ex": "Researchers compiled a comprehensive database containing genetic information from thousands of volunteer participants.",
+        "exTr": "Araştırmacılar, binlerce gönüllü katılımcıdan alınan genetik bilgileri içeren kapsamlı bir veritabanı derledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The database preserves earlier descriptions alongside revised entries, allowing users to trace how interpretations have changed rather than seeing only the latest version.",
+          "exTr": "Veri tabanı, kullanıcıların yalnızca son sürümü görmesi yerine yorumların nasıl değiştiğini izlemesini sağlayarak eski betimlemeleri yenilenmiş kayıtlarla birlikte koruyor."
+        }
+      ]
+    },
+    {
+      "word": "dating",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. tarihleme (yaş belirleme)",
+        "ex": "Radiocarbon dating allowed archaeologists to determine the exact age of the wooden artifacts.",
+        "exTr": "Radyokarbon tarihleme, arkeologların ahşap eserlerin tam yaşını belirlemesine imkân tanıdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The dating of the manuscript remained uncertain because the handwriting and the paper appeared to support different periods.",
+          "exTr": "El yazısı ile kâğıt farklı dönemlere işaret ediyor göründüğünden el yazmasının tarihlendirilmesi belirsiz kaldı."
+        }
+      ]
+    },
+    {
+      "word": "daughter-in-law",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. gelin (oğulun eşi)",
+        "ex": "My grandmother taught her daughter-in-law the family's traditional recipe for bread.",
+        "exTr": "Büyükannem, gelinine ailenin geleneksel ekmek tarifini öğretti."
+      },
+      "alternatives": [
+        {
+          "ex": "The memoir includes letters from her daughter-in-law, whose account of family life differs from the public image presented elsewhere.",
+          "exTr": "Anı kitabı, aile yaşamına ilişkin anlatımı başka yerlerde sunulan kamusal görüntüden farklı olan gelininin mektuplarına yer veriyor."
+        }
+      ]
+    },
+    {
+      "word": "day-and-night",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. gece gündüz süren, aralıksız",
+        "ex": "The factory maintains day-and-night production schedules to meet the rising global demand for electronics.",
+        "exTr": "Fabrika, artan küresel elektronik talebini karşılamak için gece gündüz süren üretim programları uyguluyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Day-and-night monitoring recorded changes missed by occasional visits, giving the engineers a clearer picture of how the structure responded over time.",
+          "exTr": "Gece gündüz süren izleme, ara sıra yapılan ziyaretlerde kaçan değişimleri kaydederek mühendislerin yapının zaman içindeki tepkisini daha açık görmesini sağladı."
+        }
+      ]
+    },
+    {
+      "word": "daydream",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. hayal kurmak, dalıp gitmek",
+        "ex": "During long lectures, many students tend to daydream instead of focusing on the material.",
+        "exTr": "Uzun derslerde birçok öğrenci, konuya odaklanmak yerine hayal kurma eğilimindedir."
+      },
+      "alternatives": [
+        {
+          "ex": "The narrator begins to daydream during the journey, and imagined conversations gradually replace the sounds of the train around her.",
+          "exTr": "Anlatıcı yolculuk sırasında hayal kurmaya başlıyor ve hayalî konuşmalar çevresindeki tren seslerinin yerini giderek alıyor."
+        }
+      ]
+    },
+    {
+      "word": "daytime",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. gündüz",
+        "ex": "The desert experiences extreme daytime heat, with temperatures often exceeding forty degrees Celsius.",
+        "exTr": "Çölde gündüz sıcaklığı aşırı boyutlara ulaşır ve sıcaklık genellikle kırk santigrat dereceyi aşar."
+      },
+      "alternatives": [
+        {
+          "ex": "The timetable offers evening sessions as well as daytime classes, recognising that participants have different working patterns.",
+          "exTr": "Program, katılımcıların farklı çalışma düzenleri olduğunu dikkate alarak gündüz derslerinin yanı sıra akşam oturumları da sunuyor."
+        }
+      ]
+    },
+    {
+      "word": "de-ice",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. buzunu çözmek, buzdan arındırmak",
+        "ex": "Ground crews must de-ice every aircraft wing before it is cleared for takeoff in winter.",
+        "exTr": "Yer ekipleri, kışın kalkışa izin verilmeden önce her uçak kanadının buzunu çözmek zorundadır."
+      },
+      "alternatives": [
+        {
+          "ex": "The maintenance log records when staff had to de-ice the equipment, allowing managers to compare interruptions across successive winters.",
+          "exTr": "Bakım günlüğü, yöneticilerin birbirini izleyen kışlardaki kesintileri karşılaştırabilmesi için personelin ekipmanı ne zaman buzdan arındırması gerektiğini kaydediyor."
+        }
+      ]
+    },
+    {
+      "word": "dead-on",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. tam isabetli, kesinlikle doğru",
+        "ex": "Her prediction about the election results turned out to be dead-on accurate.",
+        "exTr": "Seçim sonuçlarıyla ilgili tahmini, tam isabetli çıktı."
+      },
+      "alternatives": [
+        {
+          "ex": "The review called her portrayal dead-on, praising the small gestures through which she captured the character's reluctance to trust others.",
+          "exTr": "Eleştiri, karakterin başkalarına güvenme isteksizliğini yakaladığı küçük jestleri övdü ve canlandırmasını tam isabetli buldu."
+        }
+      ],
+      "note": "Dead-on günlük değerlendirme dilidir; tiyatro eleştirisi bağlamında kullanıldı."
+    },
+    {
+      "word": "deaf",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. sağır",
+        "ex": "The charity provides free classes in sign language for deaf children and their families.",
+        "exTr": "Hayır kurumu, sağır çocuklar ve aileleri için ücretsiz işaret dili dersleri sunuyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Deaf visitors helped test the visual announcements, ensuring that essential information was not available only through spoken messages.",
+          "exTr": "Sağır ziyaretçiler görsel duyuruların test edilmesine yardımcı olarak temel bilgilerin yalnızca sesli mesajlarla sunulmamasını sağladı."
+        }
+      ]
+    },
+    {
+      "word": "dealing",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. muamele, davranış tarzı",
+        "ex": "Fair dealing with customers builds long-term trust and strengthens a company's reputation in the market.",
+        "exTr": "Müşterilerle dürüst ilişki, uzun vadeli güven oluşturur ve şirketin piyasadaki itibarını güçlendirir."
+      },
+      "alternatives": [
+        {
+          "ex": "Fair dealing with suppliers requires clear explanations when orders change, not merely timely payment after goods arrive.",
+          "exTr": "Tedarikçilere adil davranmak, mallar geldikten sonra yalnızca zamanında ödeme yapmayı değil siparişler değiştiğinde açık açıklamalar sunmayı da gerektirir."
+        }
+      ]
+    },
+    {
+      "word": "death",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ölüm",
+        "ex": "Heart disease remains the leading cause of death in most industrialized nations.",
+        "exTr": "Kalp hastalığı, çoğu sanayileşmiş ülkede önde gelen ölüm nedeni olmaya devam ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The author's death left the manuscript unfinished, prompting later editors to distinguish her final revisions from changes proposed by others.",
+          "exTr": "Yazarın ölümü el yazmasını yarım bırakarak sonraki editörleri onun son düzeltmelerini başkalarının önerdiği değişikliklerden ayırmaya yöneltti."
+        }
+      ]
+    },
+    {
+      "word": "debilitating",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. güçten düşüren, bitkin bırakan, iş göremez hâle getiren",
+        "ex": "Chronic fatigue can be so debilitating that patients are unable to hold a job, even though routine medical tests reveal nothing unusual.",
+        "exTr": "Kronik yorgunluk öylesine güçten düşürücü olabilir ki rutin tıbbi testlerde olağan dışı bir şey çıkmasa da hastalar bir işte çalışamaz hâle gelir."
+      },
+      "alternatives": [
+        {
+          "ex": "The interview describes how debilitating fatigue affected daily routines, without treating one person's experience as representative of everyone with similar symptoms.",
+          "exTr": "Görüşme, tek bir kişinin deneyimini benzer belirtileri olan herkesin temsilcisi saymadan güçten düşüren yorgunluğun günlük rutinleri nasıl etkilediğini anlatıyor."
+        }
+      ]
+    },
+    {
+      "word": "debut",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ilk çıkış, debüt",
+        "ex": "The young violinist's debut at the concert hall received enthusiastic reviews from music critics.",
+        "exTr": "Genç kemancının konser salonundaki ilk çıkışı, müzik eleştirmenlerinden coşkulu yorumlar aldı."
+      },
+      "alternatives": [
+        {
+          "ex": "Her professional debut attracted little notice, but the surviving programme reveals collaborations that became important later in her career.",
+          "exTr": "Profesyonel ilk çıkışı pek dikkat çekmedi; ancak günümüze kalan program meslek hayatının ilerleyen dönemlerinde önem kazanan iş birliklerini ortaya koyuyor."
+        }
+      ]
+    },
+    {
+      "word": "decay",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. çürüme, bozulma, bozunma",
+        "ex": "Radioactive decay allows scientists to accurately determine the age of ancient organic materials.",
+        "exTr": "Radyoaktif bozunma, bilim insanlarının antik organik malzemelerin yaşını doğru biçimde belirlemesini sağlar."
+      },
+      "alternatives": [
+        {
+          "ex": "The survey distinguished superficial staining from structural decay before estimating which parts of the timber could remain in place.",
+          "exTr": "İnceleme, ahşabın hangi bölümlerinin yerinde kalabileceğini tahmin etmeden önce yüzeysel lekelenmeyi yapısal çürümeden ayırdı."
+        }
+      ]
+    },
+    {
+      "word": "decency",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ahlaka, saygıya ve toplumsal uygunluğa uyma; nezaket, edep",
+        "ex": "Basic decency requires employers to provide safe conditions and pay workers the wages they earned.",
+        "exTr": "Temel insanlık ve nezaket, işverenlerin güvenli koşullar sağlamasını ve çalışanlara kazandıkları ücreti ödemesini gerektirir."
+      },
+      "alternatives": [
+        {
+          "ex": "The play presents ordinary decency through small acts of consideration rather than dramatic declarations of moral superiority.",
+          "exTr": "Oyun, sıradan insani terbiyeyi ahlaki üstünlüğün çarpıcı ilanlarıyla değil başkalarını gözeten küçük inceliklerle sunuyor."
+        }
+      ]
+    },
+    {
+      "word": "deception",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. aldatma, hile",
+        "ex": "The company used deception to conceal safety failures from inspectors and investors.",
+        "exTr": "Şirket, güvenlik kusurlarını denetçilerden ve yatırımcılardan gizlemek için hileye başvurdu."
+      },
+      "alternatives": [
+        {
+          "ex": "The narrator's deception becomes apparent when readers compare her confident account with details supplied by other characters.",
+          "exTr": "Okurlar onun kendinden emin anlatımını diğer karakterlerin verdiği ayrıntılarla karşılaştırınca anlatıcının aldatması belirginleşiyor."
+        }
+      ]
+    },
+    {
+      "word": "decided",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kesin, belirgin, bariz (fark/üstünlük vb.)",
+        "ex": "The new treatment showed a decided improvement in patient recovery rates compared to older methods.",
+        "exTr": "Yeni tedavi, eski yöntemlere kıyasla hasta iyileşme oranlarında bariz bir gelişme gösterdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The revised entrance offers a decided advantage in wet weather, since visitors no longer have to queue in the open courtyard.",
+          "exTr": "Ziyaretçiler artık açık avluda sıra beklemek zorunda kalmadığından yeni giriş yağışlı havada belirgin bir üstünlük sağlıyor."
+        }
+      ]
+    },
+    {
+      "word": "decision",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. karar",
+        "ex": "The committee's final decision will determine how research funds are distributed next year.",
+        "exTr": "Komitenin nihai kararı, araştırma fonlarının gelecek yıl nasıl dağıtılacağını belirleyecek."
+      },
+      "alternatives": [
+        {
+          "ex": "The decision was postponed until representatives could explain the proposal to the groups whose activities would be affected.",
+          "exTr": "Temsilciler öneriyi faaliyetleri etkilenecek gruplara açıklayabilene kadar karar ertelendi."
+        }
+      ]
+    },
+    {
+      "word": "declare",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. ilan etmek, beyan etmek",
+        "ex": "The World Health Organization may declare a global emergency when a disease spreads across continents.",
+        "exTr": "Dünya Sağlık Örgütü, bir hastalık kıtalara yayıldığında küresel acil durum ilan edebilir."
+      },
+      "alternatives": [
+        {
+          "ex": "Applicants must declare any previous involvement in the project so that assessors can identify relationships relevant to an impartial review.",
+          "exTr": "Değerlendiricilerin tarafsız bir inceleme açısından ilgili ilişkileri belirleyebilmesi için başvuranlar projeye daha önceki katılımlarını beyan etmelidir."
+        }
+      ]
+    },
+    {
+      "word": "decompose",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. ayrışmak, çürüyüp parçalanmak",
+        "ex": "Fallen leaves gradually decompose on the forest floor, enriching the soil with essential nutrients.",
+        "exTr": "Düşen yapraklar, orman zemininde yavaş yavaş ayrışarak toprağı temel besin maddeleriyle zenginleştirir."
+      },
+      "alternatives": [
+        {
+          "ex": "The experiment compared how plant materials decompose under different conditions, recording changes in mass before discussing possible explanations.",
+          "exTr": "Deney, olası açıklamaları tartışmadan önce kütle değişimlerini kaydederek bitki malzemelerinin farklı koşullarda nasıl ayrıştığını karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "decorated",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. süslenmiş, dekore edilmiş",
+        "ex": "The living room was beautifully decorated with fresh flowers before the guests arrived.",
+        "exTr": "Oturma odası, misafirler gelmeden önce taze çiçeklerle güzelce süslenmişti."
+      },
+      "alternatives": [
+        {
+          "ex": "The decorated ceiling remained largely intact, although later partitions had divided the original room into several smaller spaces.",
+          "exTr": "Sonraki bölmeler özgün odayı birkaç küçük mekâna ayırmış olsa da süslenmiş tavan büyük ölçüde sağlam kalmıştı."
+        }
+      ]
+    },
+    {
+      "word": "decreased",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. azalmış, düşmüş",
+        "ex": "Researchers linked the decreased birth rate to rising living costs and changing social values.",
+        "exTr": "Araştırmacılar, azalan doğum oranını artan yaşam maliyetlerine ve değişen toplumsal değerlere bağladı."
+      },
+      "alternatives": [
+        {
+          "ex": "Decreased attendance prompted an investigation into transport links rather than an immediate assumption that interest in the programme had declined.",
+          "exTr": "Azalan katılım, programa ilginin düştüğünün hemen varsayılması yerine ulaşım bağlantılarının araştırılmasına yol açtı."
+        }
+      ]
+    },
+    {
+      "word": "dedication",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. adanmışlık, özveri",
+        "ex": "The coach praised the team's dedication after months of early morning practice sessions.",
+        "exTr": "Antrenör, aylar süren erken sabah antrenmanlarının ardından takımın özverisini övdü."
+      },
+      "alternatives": [
+        {
+          "ex": "The volunteers' dedication sustained the archive, but the committee recognised that essential services should not depend indefinitely on unpaid work.",
+          "exTr": "Gönüllülerin özverisi arşivi ayakta tuttu; ancak komite temel hizmetlerin süresiz olarak ücretsiz çalışmaya dayanmaması gerektiğini kabul etti."
+        }
+      ]
+    },
+    {
+      "word": "deem",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. saymak, addetmek, ... olarak görmek",
+        "ex": "Health officials will deem the water safe for drinking only after several rounds of laboratory testing.",
+        "exTr": "Sağlık yetkilileri, suyu ancak birkaç tur laboratuvar testinden sonra içmek için güvenli sayacak."
+      },
+      "alternatives": [
+        {
+          "ex": "The reviewers may deem the explanation plausible without accepting that the evidence excludes every competing interpretation.",
+          "exTr": "Değerlendirenler, kanıtların her rakip yorumu dışladığını kabul etmeden açıklamayı makul sayabilir."
+        }
+      ]
+    },
+    {
+      "word": "deep-sea",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. derin deniz, engin denizle ilgili",
+        "ex": "Marine biologists captured rare footage of deep-sea creatures living near hydrothermal vents.",
+        "exTr": "Deniz biyologları, hidrotermal bacalar yakınında yaşayan derin deniz canlılarının nadir görüntülerini kaydetti."
+      },
+      "alternatives": [
+        {
+          "ex": "The deep-sea footage was accompanied by information about the camera's position, allowing viewers to interpret apparent differences in scale.",
+          "exTr": "Derin deniz görüntülerine kameranın konumuna ilişkin bilgiler eşlik ederek izleyicilerin görünür ölçek farklarını yorumlamasını sağladı."
+        }
+      ]
+    },
+    {
+      "word": "deep-water",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. derin su-, derin denize ait",
+        "ex": "Engineers designed a new deep-water port capable of handling the largest container ships.",
+        "exTr": "Mühendisler, en büyük konteyner gemilerini kaldırabilecek yeni bir derin su limanı tasarladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The proposed deep-water terminal would require new connections to inland transport, making its effects relevant beyond the immediate port area.",
+          "exTr": "Önerilen derin su terminali iç bölgelere yeni ulaşım bağlantıları gerektireceğinden etkileri yakın liman alanının ötesinde önem taşıyacaktı."
+        }
+      ]
+    },
+    {
+      "word": "default",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. varsayılan durum, öntanımlı ayar",
+        "ex": "Unless the user changes the settings manually, the software returns to its default configuration every time the computer is restarted.",
+        "exTr": "Kullanıcı ayarları elle değiştirmediği sürece, yazılım bilgisayar her yeniden başlatıldığında varsayılan yapılandırmasına döner."
+      },
+      "alternatives": [
+        {
+          "ex": "The default display shows only recent entries, so researchers examining older material must deliberately expand the selected date range.",
+          "exTr": "Varsayılan görünüm yalnızca yakın tarihli kayıtları gösterdiğinden eski materyali inceleyen araştırmacıların seçili tarih aralığını özellikle genişletmesi gerekir."
+        }
+      ]
+    },
+    {
+      "word": "defence",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. savunma",
+        "ex": "The country increased its defence budget significantly following growing tensions along the border.",
+        "exTr": "Ülke, sınır boyunca artan gerginliklerin ardından savunma bütçesini önemli ölçüde artırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "Her defence of the proposal relied on practical examples rather than appeals to the authority of its original designer.",
+          "exTr": "Öneriyi savunması, ilk tasarımcısının otoritesine başvurmaya değil uygulamadan örneklere dayanıyordu."
+        }
+      ]
+    },
+    {
+      "word": "defender",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. bir kişiyi, görüşü veya yeri savunan ya da koruyan kişi",
+        "ex": "The lawyer became a prominent defender of communities whose land rights had been ignored for decades.",
+        "exTr": "Avukat, arazi hakları onlarca yıldır görmezden gelinen toplulukların önde gelen bir savunucusu oldu."
+      },
+      "alternatives": [
+        {
+          "ex": "A prominent defender of the old market questioned whether redevelopment would preserve the relationships that made the place valuable to residents.",
+          "exTr": "Eski pazarın önde gelen bir savunucusu, yeniden düzenlemenin burayı sakinler için değerli kılan ilişkileri koruyup korumayacağını sorguladı."
+        }
+      ]
+    },
+    {
+      "word": "deferential",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. saygılı, hürmetkâr, el pençe divan duran",
+        "ex": "Junior researchers are often too deferential to senior colleagues, which prevents them from questioning flawed assumptions in published studies.",
+        "exTr": "Genç araştırmacılar kıdemli meslektaşlarına çoğu zaman aşırı saygılı davranır; bu da yayımlanmış çalışmalardaki hatalı varsayımları sorgulamalarını engeller."
+      },
+      "alternatives": [
+        {
+          "ex": "The letters adopt a deferential tone while quietly challenging several decisions made by the person to whom they are addressed.",
+          "exTr": "Mektuplar, hitap edilen kişinin bazı kararlarını sessizce sorgularken hürmetkâr bir ton benimsiyor."
+        }
+      ]
+    },
+    {
+      "word": "deficit",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. açık (bütçe, ticaret); eksiklik",
+        "ex": "The government raised taxes in an effort to reduce the growing budget deficit.",
+        "exTr": "Hükümet, büyüyen bütçe açığını azaltmak amacıyla vergileri artırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The projected deficit disappeared when the budget included income that had previously been recorded under a separate programme.",
+          "exTr": "Bütçeye daha önce ayrı bir program altında kaydedilen gelir dâhil edilince öngörülen açık ortadan kalktı."
+        }
+      ]
+    },
+    {
+      "word": "definite",
+      "sense_index": 0,
+      "expected": {
+        "tr": "kesin, belirli, net",
+        "ex": "Scientists found definite evidence that the virus spreads through airborne droplets.",
+        "exTr": "Bilim insanları, virüsün havada asılı damlacıklar yoluyla yayıldığına dair kesin kanıt buldu."
+      },
+      "alternatives": [
+        {
+          "ex": "No definite date was announced because the organisers could not confirm when repairs to the entrance would be completed.",
+          "exTr": "Düzenleyiciler girişteki onarımların ne zaman tamamlanacağını teyit edemediğinden kesin bir tarih açıklanmadı."
+        }
+      ]
+    },
+    {
+      "word": "definitive",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kesin, nihai, kesinleşmiş",
+        "ex": "Scientists have not yet reached a definitive conclusion about the drug's long-term side effects.",
+        "exTr": "Bilim insanları, ilacın uzun vadeli yan etkileri hakkında henüz kesin bir sonuca ulaşmadı."
+      },
+      "alternatives": [
+        {
+          "ex": "The catalogue is not intended as a definitive account, since newly discovered documents may alter the identification of several objects.",
+          "exTr": "Yeni bulunan belgeler bazı nesnelerin tanımlanmasını değiştirebileceği için katalog nihai bir açıklama olarak tasarlanmamıştır."
+        }
+      ]
+    },
+    {
+      "word": "deforestation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ormansızlaşma, ağaç kesimi",
+        "ex": "Rapid deforestation in the Amazon has raised serious concerns among environmental scientists worldwide.",
+        "exTr": "Amazon'daki hızlı ormansızlaşma, dünya çapındaki çevre bilimcileri arasında ciddi endişelere yol açtı."
+      },
+      "alternatives": [
+        {
+          "ex": "The study maps deforestation alongside changes in land ownership, asking how administrative records can complement observations from aerial images.",
+          "exTr": "Çalışma, idari kayıtların hava görüntülerindeki gözlemleri nasıl tamamlayabileceğini sorarak ormansızlaşmayı toprak mülkiyeti değişimleriyle birlikte haritalıyor."
+        }
+      ]
+    },
+    {
+      "word": "degrade",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. ayrışmak, bozulmak, aşınmak",
+        "ex": "Plastic waste can take centuries to degrade completely in marine environments.",
+        "exTr": "Plastik atıkların deniz ortamlarında tamamen ayrışması yüzyıllar alabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The tests examined how the material might degrade during storage, rather than evaluating its strength only immediately after production.",
+          "exTr": "Testler, malzemenin dayanıklılığını yalnızca üretimden hemen sonra değerlendirmek yerine depolama sırasında nasıl bozulabileceğini inceledi."
+        }
+      ]
+    },
+    {
+      "word": "delegate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. (yetki/görev) devretmek, havale etmek",
+        "ex": "Effective managers delegate routine tasks to their team members so that they can concentrate on long-term strategic planning.",
+        "exTr": "Etkili yöneticiler, uzun vadeli stratejik planlamaya odaklanabilmek için rutin görevleri ekip üyelerine devreder."
+      },
+      "alternatives": [
+        {
+          "ex": "The coordinator can delegate routine correspondence while retaining responsibility for decisions that affect the partnership's overall commitments.",
+          "exTr": "Koordinatör, ortaklığın genel taahhütlerini etkileyen kararların sorumluluğunu korurken rutin yazışmaları başkalarına devredebilir."
+        }
+      ]
+    },
+    {
+      "word": "deliberate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kasıtlı, bilinçli",
+        "ex": "The company faced criticism after investigators concluded the safety failure was a deliberate cost-cutting decision.",
+        "exTr": "Şirket, soruşturmacıların güvenlik hatasının kasıtlı bir maliyet kısma kararı olduğu sonucuna varmasının ardından eleştirilerle karşılaştı."
+      },
+      "alternatives": [
+        {
+          "ex": "The omission appears deliberate because the same passage was removed from several drafts despite repeated requests for its inclusion.",
+          "exTr": "Eklenmesi tekrar tekrar istenmesine rağmen aynı bölüm birkaç taslaktan çıkarıldığı için eksik bırakılması kasıtlı görünüyor."
+        }
+      ]
+    },
+    {
+      "word": "delicately",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. nazikçe, özenle, ince bir işçilikle",
+        "ex": "The ivory figure was delicately carved with tools made from stone and animal bone.",
+        "exTr": "Fildişi figür, taş ve hayvan kemiğinden yapılmış aletlerle ince bir işçilikle oyuldu."
+      },
+      "alternatives": [
+        {
+          "ex": "The negotiator handled the question delicately, recognising that a direct accusation could prevent either side from acknowledging a misunderstanding.",
+          "exTr": "Müzakereci, doğrudan bir suçlamanın tarafların yanlış anlamayı kabul etmesini engelleyebileceğini dikkate alarak konuyu incelikle ele aldı."
+        }
+      ]
+    },
+    {
+      "word": "delinquent",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. suça karışan, suçlu (özellikle genç); kabahatli",
+        "ex": "Sociologists argue that delinquent behaviour among adolescents is often a response to social exclusion rather than an innate personality trait.",
+        "exTr": "Sosyologlar, ergenler arasındaki suça yönelik davranışın çoğu zaman doğuştan gelen bir kişilik özelliğinden ziyade toplumsal dışlanmaya verilen bir tepki olduğunu ileri sürer."
+      },
+      "alternatives": [
+        {
+          "ex": "The report distinguishes delinquent behaviour from breaches of school rules, avoiding the assumption that every disciplinary problem involves a criminal offence.",
+          "exTr": "Rapor, her disiplin sorununun bir suç içerdiğini varsaymaktan kaçınarak suça yönelik davranışları okul kurallarının ihlalinden ayırıyor."
+        }
+      ]
+    },
+    {
+      "word": "delta",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. delta (nehir ağzı)",
+        "ex": "Sediment deposited by the river gradually formed a fertile delta near the coastal settlement.",
+        "exTr": "Nehir tarafından biriktirilen tortu, kıyı yerleşiminin yakınında zamanla verimli bir delta oluşturdu."
+      },
+      "alternatives": [
+        {
+          "ex": "The map shows settlements across the delta, allowing researchers to relate their positions to waterways recorded in earlier surveys.",
+          "exTr": "Harita, araştırmacıların konumlarını önceki incelemelerde kaydedilen su yollarıyla ilişkilendirebilmesi için deltadaki yerleşimleri gösteriyor."
+        }
+      ]
+    },
+    {
+      "word": "demise",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sona erme, çöküş; ölüm",
+        "ex": "Historians still debate the exact causes behind the sudden demise of the ancient civilization.",
+        "exTr": "Tarihçiler, antik uygarlığın ani çöküşünün asıl nedenleri konusunda hâlâ tartışıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The demise of the workshop did not end local production, since several former employees established smaller businesses nearby.",
+          "exTr": "Eski çalışanlardan bazıları yakınlarda daha küçük işletmeler kurduğu için atölyenin kapanması yerel üretimi sona erdirmedi."
+        }
+      ]
+    }
+  ],
+  "collocations": [
+    {
+      "word": "curtain",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a stage curtain",
+          "tr": "sahne perdesi"
+        },
+        {
+          "en": "draw the curtains",
+          "tr": "perdeleri açmak veya kapatmak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "custody",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "in police custody",
+          "tr": "polis gözetiminde, gözaltında"
+        },
+        {
+          "en": "take someone into custody",
+          "tr": "birini gözaltına almak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "cutlery",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a set of cutlery",
+          "tr": "çatal bıçak takımı"
+        },
+        {
+          "en": "stainless-steel cutlery",
+          "tr": "paslanmaz çelik çatal bıçak takımı"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "cyclic",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a cyclic pattern",
+          "tr": "döngüsel örüntü"
+        },
+        {
+          "en": "a cyclic process",
+          "tr": "döngüsel süreç"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "dad",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a stay-at-home dad",
+          "tr": "evde çocuk bakımıyla ilgilenen baba"
+        },
+        {
+          "en": "a single dad",
+          "tr": "çocuğunu tek başına yetiştiren baba"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "daisy",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a common daisy",
+          "tr": "yaygın çayır papatyası"
+        },
+        {
+          "en": "a daisy chain",
+          "tr": "papatyalardan yapılmış zincir veya taç"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "damp",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "damp conditions",
+          "tr": "nemli koşullar"
+        },
+        {
+          "en": "a damp wall",
+          "tr": "nemli duvar"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "danish",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "Danish design",
+          "tr": "Danimarka tasarımı"
+        },
+        {
+          "en": "the Danish language",
+          "tr": "Danca"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "dark-blue",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a dark-blue background",
+          "tr": "koyu mavi arka plan"
+        },
+        {
+          "en": "dark-blue ink",
+          "tr": "koyu mavi mürekkep"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "darken",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "darken the surface",
+          "tr": "yüzeyi koyulaştırmak"
+        },
+        {
+          "en": "the sky darkens",
+          "tr": "gökyüzü kararır"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "day-and-night",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "day-and-night monitoring",
+          "tr": "gece gündüz süren izleme"
+        },
+        {
+          "en": "day-and-night operation",
+          "tr": "gece gündüz kesintisiz çalışma"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "daydream",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "daydream about the future",
+          "tr": "gelecekle ilgili hayaller kurmak"
+        },
+        {
+          "en": "sit and daydream",
+          "tr": "oturup hayal kurmak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "dead-on",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a dead-on assessment",
+          "tr": "tam isabetli değerlendirme"
+        },
+        {
+          "en": "a dead-on impression",
+          "tr": "aslına tam uyan taklit"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "decency",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "common decency",
+          "tr": "temel nezaket ve insani terbiye"
+        },
+        {
+          "en": "a sense of decency",
+          "tr": "edep ve doğruluk duygusu"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "deception",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "deliberate deception",
+          "tr": "kasıtlı aldatma"
+        },
+        {
+          "en": "an act of deception",
+          "tr": "aldatma eylemi"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "defender",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a defender of human rights",
+          "tr": "insan hakları savunucusu"
+        },
+        {
+          "en": "a staunch defender",
+          "tr": "kararlı savunucu"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "delicately",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "handle delicately",
+          "tr": "incelikle ele almak"
+        },
+        {
+          "en": "delicately carved",
+          "tr": "ince işçilikle oyulmuş"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

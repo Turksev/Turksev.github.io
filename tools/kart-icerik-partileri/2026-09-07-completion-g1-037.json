@@ -1,0 +1,1108 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 1,
+    "input": "input-037.json"
+  },
+  "enrichments": [
+    {
+      "word": "professionally",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. profesyonelce, meslek kurallarına uygun biçimde",
+        "ex": "Staff handled the complaint professionally despite the customer's anger and repeated accusations.",
+        "exTr": "Personel, müşterinin öfkesine ve tekrarlanan suçlamalarına rağmen şikâyeti profesyonelce ele aldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The collection was professionally catalogued before being opened to researchers, ensuring that each object could be located through a consistent reference system.",
+          "exTr": "Koleksiyon, her nesnenin tutarlı bir referans sistemiyle bulunabilmesini sağlamak için araştırmacılara açılmadan önce profesyonelce kataloglandı."
+        }
+      ]
+    },
+    {
+      "word": "profit",
+      "sense_index": 1,
+      "expected": {
+        "tr": "f. kâr etmek, yararlanmak",
+        "ex": "Small farmers struggled to profit from their harvest after transportation costs rose sharply.",
+        "exTr": "Küçük çiftçiler, nakliye maliyetleri keskin biçimde arttıktan sonra hasatlarından kâr etmekte zorlandı."
+      },
+      "alternatives": [
+        {
+          "ex": "Small workshops may profit from sharing expensive equipment, provided that the cost of coordination does not exceed the savings they achieve.",
+          "exTr": "Koordinasyon maliyeti sağlanan tasarrufu aşmadığı sürece küçük atölyeler pahalı ekipmanları paylaşmaktan kazanç sağlayabilir."
+        }
+      ]
+    },
+    {
+      "word": "profits",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kâr, kazanç",
+        "ex": "Company profits increased significantly after the introduction of the new automated production line.",
+        "exTr": "Yeni otomatik üretim hattının devreye girmesinin ardından şirket kârları önemli ölçüde arttı."
+      },
+      "alternatives": [
+        {
+          "ex": "The cooperative used part of its profits to improve storage facilities, explaining to members how this investment related to their long-term priorities.",
+          "exTr": "Kooperatif kârlarının bir bölümünü depolama tesislerini iyileştirmek için kullanarak bu yatırımın üyelerin uzun vadeli öncelikleriyle ilişkisini açıkladı."
+        }
+      ]
+    },
+    {
+      "word": "prognosis",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. öngörü, gidişata ilişkin tahmin",
+        "ex": "Economists offered a gloomy prognosis for the region, warning that unemployment would keep rising unless the government invested heavily in vocational training.",
+        "exTr": "İktisatçılar bölge için karamsar bir öngörüde bulunarak, hükûmet mesleki eğitime ciddi yatırım yapmadıkça işsizliğin artmayı sürdüreceği uyarısında bulundu."
+      },
+      "alternatives": [
+        {
+          "ex": "The report's cautious prognosis for the project reflected uncertainty about staffing rather than doubts about the usefulness of its proposed services.",
+          "exTr": "Raporun projenin gidişatına ilişkin temkinli öngörüsü, önerilen hizmetlerin yararlılığına dair kuşkudan çok personel konusundaki belirsizliği yansıtıyordu."
+        }
+      ]
+    },
+    {
+      "word": "programmer",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. programcı",
+        "ex": "The startup hired an experienced programmer to redesign its outdated mobile application from scratch.",
+        "exTr": "Girişim, eski mobil uygulamasını sıfırdan yeniden tasarlamak için deneyimli bir programcı işe aldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The programmer added clear error messages after observing that users often repeated the same action without understanding why their request had failed.",
+          "exTr": "Programcı, kullanıcıların taleplerinin neden başarısız olduğunu anlamadan aynı işlemi sıkça tekrarladığını gözlemledikten sonra açık hata mesajları ekledi."
+        }
+      ]
+    },
+    {
+      "word": "progressive",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. aşamalı, ilerleyen",
+        "ex": "Doctors diagnosed the patient with a progressive muscle disorder that slowly limits mobility over time.",
+        "exTr": "Doktorlar, hastaya zamanla hareket kabiliyetini yavaş yavaş kısıtlayan aşamalı bir kas hastalığı teşhisi koydu."
+      },
+      "alternatives": [
+        {
+          "ex": "A progressive reduction in assistance allowed learners to take responsibility gradually, rather than facing an abrupt transition from guided exercises to independent work.",
+          "exTr": "Yardımın aşamalı olarak azaltılması, öğrenenlerin yönlendirilmiş alıştırmalardan bağımsız çalışmaya ani bir geçişle karşılaşmak yerine sorumluluğu yavaş yavaş üstlenmesini sağladı."
+        }
+      ]
+    },
+    {
+      "word": "prohibited",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yasak, yasaklanmış",
+        "ex": "Smoking is strictly prohibited inside all public hospitals and healthcare facilities.",
+        "exTr": "Sigara içmek, tüm kamu hastanelerinde ve sağlık tesislerinde kesinlikle yasaktır."
+      },
+      "alternatives": [
+        {
+          "ex": "Access to the storage room was prohibited during the inspection, so staff arranged an alternative location for materials needed that afternoon.",
+          "exTr": "Denetim sırasında depoya giriş yasaklandığından personel o öğleden sonra ihtiyaç duyulan malzemeler için başka bir yer ayarladı."
+        }
+      ]
+    },
+    {
+      "word": "project",
+      "sense_index": 1,
+      "expected": {
+        "tr": "f. öngörmek, tahmin etmek",
+        "ex": "Economists project that global demand for renewable energy will double within fifteen years.",
+        "exTr": "Ekonomistler, yenilenebilir enerjiye yönelik küresel talebin on beş yıl içinde ikiye katlanacağını öngörüyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The planners used several scenarios to project future demand, making clear that each estimate depended on assumptions about population and travel behaviour.",
+          "exTr": "Planlamacılar, her tahminin nüfus ve seyahat davranışıyla ilgili varsayımlara bağlı olduğunu açıklığa kavuşturarak gelecekteki talebi öngörmek için birkaç senaryo kullandı."
+        }
+      ]
+    },
+    {
+      "word": "proliferation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. hızlı yayılma, çoğalma",
+        "ex": "International agreements aim to prevent the proliferation of nuclear weapons among unstable governments.",
+        "exTr": "Uluslararası anlaşmalar, nükleer silahların istikrarsız hükümetler arasında yayılmasını önlemeyi amaçlar."
+      },
+      "alternatives": [
+        {
+          "ex": "The proliferation of separate record systems made comparison difficult, prompting the organisation to agree on a common set of categories.",
+          "exTr": "Ayrı kayıt sistemlerinin hızla çoğalması karşılaştırmayı güçleştirerek kuruluşu ortak bir kategori kümesi üzerinde anlaşmaya yöneltti."
+        }
+      ]
+    },
+    {
+      "word": "prominence",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. önem, belirginlik, ün",
+        "ex": "The scientist rose to prominence after publishing groundbreaking research on renewable energy storage.",
+        "exTr": "Bilim insanı, yenilenebilir enerji depolama üzerine çığır açan bir araştırma yayımladıktan sonra üne kavuştu."
+      },
+      "alternatives": [
+        {
+          "ex": "The debate gained prominence after local groups connected the technical proposal with concerns about access to essential services in smaller settlements.",
+          "exTr": "Yerel gruplar teknik öneriyi küçük yerleşimlerde temel hizmetlere erişim kaygılarıyla ilişkilendirdikten sonra tartışma önem kazandı."
+        }
+      ]
+    },
+    {
+      "word": "promise",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. söz, vaat; umut vaat etme",
+        "ex": "Gene therapy holds great promise for treating diseases once considered entirely incurable.",
+        "exTr": "Gen tedavisi, bir zamanlar tamamen tedavi edilemez sayılan hastalıkların tedavisinde büyük umut vaat ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The method showed promise in the initial trials, but the researchers emphasised that reliable performance under varied conditions had yet to be demonstrated.",
+          "exTr": "Yöntem ilk denemelerde umut vadetti, ancak araştırmacılar farklı koşullarda güvenilir performansın henüz gösterilmediğini vurguladı."
+        }
+      ]
+    },
+    {
+      "word": "promoter",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. (etkinlik) organizatörü, empresaryo",
+        "ex": "The concert promoter booked three major stadiums for the band's upcoming international tour.",
+        "exTr": "Konser organizatörü, grubun yaklaşan uluslararası turnesi için üç büyük stadyum ayarladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The festival promoter consulted local residents before selecting venues, recognising that access and noise mattered alongside the artistic programme.",
+          "exTr": "Festival organizatörü, sanatsal programın yanında erişim ve gürültünün de önemli olduğunu kabul ederek mekânları seçmeden önce yerel sakinlere danıştı."
+        }
+      ]
+    },
+    {
+      "word": "prompt",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. harekete geçirmek, teşvik etmek, yöneltmek",
+        "ex": "Rising sea levels have prompted several coastal cities to redesign their flood defenses.",
+        "exTr": "Yükselen deniz seviyeleri, birçok kıyı şehrini sel savunmalarını yeniden tasarlamaya yöneltti."
+      },
+      "alternatives": [
+        {
+          "ex": "Unexpected similarities between the samples prompted the team to check their labels before proposing an explanation based on environmental conditions.",
+          "exTr": "Örnekler arasındaki beklenmedik benzerlikler, ekibi çevre koşullarına dayanan bir açıklama önermeden önce etiketleri kontrol etmeye yöneltti."
+        }
+      ]
+    },
+    {
+      "word": "pronoun",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. zamir",
+        "ex": "In the sentence, the pronoun replaces the noun mentioned earlier to avoid unnecessary repetition.",
+        "exTr": "Cümlede zamir, gereksiz tekrardan kaçınmak için daha önce bahsedilen ismin yerini alır."
+      },
+      "alternatives": [
+        {
+          "ex": "An unclear pronoun in the instructions left readers uncertain about which component should be removed, so the editor repeated the relevant noun.",
+          "exTr": "Yönergelerdeki belirsiz bir zamir hangi parçanın çıkarılacağı konusunda okurları kararsız bıraktığı için editör ilgili ismi tekrarladı."
+        }
+      ]
+    },
+    {
+      "word": "pronunciation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. telaffuz, söyleyiş",
+        "ex": "Language teachers often use recorded native speech to help students improve their pronunciation.",
+        "exTr": "Dil öğretmenleri, öğrencilerin telaffuzlarını geliştirmesine yardımcı olmak için genellikle anadil konuşmacılarının kayıtlarını kullanır."
+      },
+      "alternatives": [
+        {
+          "ex": "The class compared pronunciation across several recordings, focusing on intelligibility rather than assuming that only one regional accent was acceptable.",
+          "exTr": "Sınıf, yalnızca tek bir bölgesel aksanın kabul edilebilir olduğunu varsaymak yerine anlaşılabilirliğe odaklanarak birkaç kayıttaki telaffuzu karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "propel",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. ileri itmek, sürmek",
+        "ex": "Powerful engines propel the spacecraft through the upper layers of the atmosphere.",
+        "exTr": "Güçlü motorlar, uzay aracını atmosferin üst katmanları boyunca ileri iter."
+      },
+      "alternatives": [
+        {
+          "ex": "The students tested how changes to a model boat's design affected the force needed to propel it across a shallow tank.",
+          "exTr": "Öğrenciler model bir teknenin tasarımındaki değişikliklerin onu sığ bir tankta ilerletmek için gereken kuvveti nasıl etkilediğini test etti."
+        }
+      ]
+    },
+    {
+      "word": "property",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. özellik, nitelik",
+        "ex": "Researchers discovered that the compound exhibits unusual magnetic properties at extremely low temperatures.",
+        "exTr": "Araştırmacılar, bileşiğin son derece düşük sıcaklıklarda alışılmadık manyetik özellikler sergilediğini keşfetti."
+      },
+      "alternatives": [
+        {
+          "ex": "Flexibility was the property of greatest interest to the designers, although durability and cost also influenced the final choice of material.",
+          "exTr": "Tasarımcıların en çok ilgilendiği özellik esneklikti, ancak dayanıklılık ve maliyet de son malzeme seçimini etkiledi."
+        }
+      ]
+    },
+    {
+      "word": "proportion",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. oran, orantı; pay, kısım",
+        "ex": "A large proportion of the world's fresh water is stored in polar ice sheets.",
+        "exTr": "Dünyadaki tatlı suyun büyük bir bölümü kutup buz tabakalarında depolanmıştır."
+      },
+      "alternatives": [
+        {
+          "ex": "The proportion of incomplete responses increased in the final section, suggesting that the questionnaire's length deserved closer attention during revision.",
+          "exTr": "Son bölümde tamamlanmamış yanıtların oranı arttı; bu durum gözden geçirme sırasında anketin uzunluğuna daha yakından dikkat edilmesi gerektiğini düşündürüyordu."
+        }
+      ]
+    },
+    {
+      "word": "proposal",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. öneri, teklif",
+        "ex": "The committee rejected the proposal to build a new dam near the protected wetlands.",
+        "exTr": "Komite, korunan sulak alanların yakınına yeni bir baraj inşa etme önerisini reddetti."
+      },
+      "alternatives": [
+        {
+          "ex": "The proposal explained how decisions would be reviewed, giving participants a way to raise concerns after the initial consultation had ended.",
+          "exTr": "Öneri, ilk danışma süreci bittikten sonra katılımcılara kaygılarını dile getirme yolu sunarak kararların nasıl gözden geçirileceğini açıkladı."
+        }
+      ]
+    },
+    {
+      "word": "prospect",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. olasılık, beklenti",
+        "ex": "For many scientists, the prospect of finding life on Mars remains deeply exciting.",
+        "exTr": "Birçok bilim insanı için Mars'ta yaşam bulma ihtimali son derece heyecan verici olmaya devam ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The prospect of losing access to shared equipment encouraged the departments to resolve a disagreement that had delayed their maintenance agreement.",
+          "exTr": "Ortak ekipmana erişimi kaybetme olasılığı, bölümleri bakım anlaşmalarını geciktiren bir anlaşmazlığı çözmeye teşvik etti."
+        }
+      ]
+    },
+    {
+      "word": "prosperous",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. müreffeh, refah içinde",
+        "ex": "Economic reforms in the 1990s helped transform the small nation into a prosperous trading hub.",
+        "exTr": "1990'lardaki ekonomik reformlar, küçük ulusun müreffeh bir ticaret merkezine dönüşmesine yardımcı oldu."
+      },
+      "alternatives": [
+        {
+          "ex": "The town appeared prosperous in official accounts, yet household records revealed substantial differences in living conditions between streets near the market and those farther away.",
+          "exTr": "Kasaba resmî anlatımlarda müreffeh görünüyordu, ancak hane kayıtları pazara yakın sokaklarla daha uzaktakiler arasında yaşam koşullarında önemli farklar olduğunu gösterdi."
+        }
+      ]
+    },
+    {
+      "word": "protagonist",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. başkahraman, baş karakter",
+        "ex": "The protagonist must overcome a series of personal setbacks before achieving her final goal in the novel.",
+        "exTr": "Romandaki nihai hedefine ulaşmadan önce başkahraman bir dizi kişisel aksiliğin üstesinden gelmek zorundadır."
+      },
+      "alternatives": [
+        {
+          "ex": "The protagonist gradually revises her judgement of the town as conversations expose experiences that her first impressions had failed to capture.",
+          "exTr": "Konuşmalar ilk izlenimlerinin yansıtamadığı deneyimleri ortaya çıkardıkça başkahraman kasabayla ilgili yargısını yavaş yavaş gözden geçirir."
+        }
+      ]
+    },
+    {
+      "word": "protecting",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. koruyan, koruyucu",
+        "ex": "New laws protecting endangered species came into force across the region last year.",
+        "exTr": "Nesli tükenmekte olan türleri koruyan yeni yasalar, geçen yıl bölge genelinde yürürlüğe girdi."
+      },
+      "alternatives": [
+        {
+          "ex": "A covering protecting the fragile surface had to remain in place while the conservator examined areas that were already exposed.",
+          "exTr": "Konservatör zaten açıkta olan alanları incelerken hassas yüzeyi koruyan örtünün yerinde kalması gerekiyordu."
+        }
+      ]
+    },
+    {
+      "word": "protector",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. koruyucu",
+        "ex": "The elder brother has always acted as a protector for his younger siblings at school.",
+        "exTr": "Ağabey, okulda her zaman küçük kardeşleri için bir koruyucu gibi davranmıştır."
+      },
+      "alternatives": [
+        {
+          "ex": "A screen protector changed the appearance of the display slightly, so the usability team checked whether it affected the readability of small labels.",
+          "exTr": "Ekran koruyucusu görüntünün görünüşünü biraz değiştirdiğinden kullanılabilirlik ekibi bunun küçük etiketlerin okunabilirliğini etkileyip etkilemediğini kontrol etti."
+        }
+      ]
+    },
+    {
+      "word": "protocol",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. protokol, usul, kurallar",
+        "ex": "Hospital staff must follow strict protocol when handling samples from infected patients.",
+        "exTr": "Hastane personeli, enfekte hastalardan alınan örnekleri işlerken sıkı bir protokole uymalıdır."
+      },
+      "alternatives": [
+        {
+          "ex": "The observation protocol specified when to record behaviour, reducing the chance that different observers would focus only on events they found memorable.",
+          "exTr": "Gözlem protokolü davranışın ne zaman kaydedileceğini belirterek farklı gözlemcilerin yalnızca akılda kalıcı buldukları olaylara odaklanması ihtimalini azalttı."
+        }
+      ]
+    },
+    {
+      "word": "proud",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. gururlu, mağrur",
+        "ex": "The scientists felt proud after their research on renewable energy was published in a leading journal.",
+        "exTr": "Bilim insanları, yenilenebilir enerji üzerine yaptıkları araştırma önde gelen bir dergide yayımlandıktan sonra gurur duydu."
+      },
+      "alternatives": [
+        {
+          "ex": "The volunteers were proud of completing the survey, but they also wanted the final report to acknowledge questions their limited data could not answer.",
+          "exTr": "Gönüllüler araştırmayı tamamlamaktan gururluydu, ancak son raporun sınırlı verilerinin yanıtlayamadığı soruları da kabul etmesini istiyordu."
+        }
+      ]
+    },
+    {
+      "word": "proved",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kanıtlanmış, ispatlanmış",
+        "ex": "The newly proved theorem solved a mathematical puzzle that had puzzled experts for decades.",
+        "exTr": "Yeni kanıtlanmış teorem, uzmanları on yıllardır şaşırtan matematiksel bir bulmacayı çözdü."
+      },
+      "alternatives": [
+        {
+          "ex": "The newly proved result applied only under specified conditions, a restriction that students had to recognise before using it in further calculations.",
+          "exTr": "Yeni kanıtlanmış sonuç yalnızca belirtilen koşullarda geçerliydi; öğrencilerin sonraki hesaplarda onu kullanmadan önce bu sınırlamayı fark etmesi gerekiyordu."
+        }
+      ]
+    },
+    {
+      "word": "provider",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sağlayıcı; (ailede) geçindiren kişi",
+        "ex": "As the family's sole provider, she worked two jobs to cover the household's monthly expenses.",
+        "exTr": "Ailenin tek geçindiricisi olarak, hane halkının aylık giderlerini karşılamak için iki işte çalıştı."
+      },
+      "alternatives": [
+        {
+          "ex": "The training provider collected feedback from employers as well as participants to compare classroom objectives with the demands of everyday work.",
+          "exTr": "Eğitim sağlayıcısı, sınıf hedeflerini gündelik işin gerekleriyle karşılaştırmak için katılımcıların yanı sıra işverenlerden de geri bildirim topladı."
+        }
+      ]
+    },
+    {
+      "word": "provision",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. hüküm, şart (yasal madde)",
+        "ex": "The new law includes a provision requiring factories to report their carbon emissions annually.",
+        "exTr": "Yeni yasa, fabrikaların karbon emisyonlarını yıllık olarak bildirmesini gerektiren bir hüküm içeriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The agreement contained a provision for reviewing the timetable if either organisation found that the initial schedule placed unreasonable demands on its staff.",
+          "exTr": "Anlaşma, kuruluşlardan herhangi biri ilk programın personeline makul olmayan yükler getirdiğini saptarsa takvimin gözden geçirilmesini sağlayan bir hüküm içeriyordu."
+        }
+      ]
+    },
+    {
+      "word": "prowess",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ustalık, hüner, üstün yetenek",
+        "ex": "The engineering prowess of Roman builders is still visible in aqueducts that carried fresh water across deep valleys for many kilometres.",
+        "exTr": "Romalı yapı ustalarının mühendislik ustalığı, temiz suyu derin vadiler boyunca kilometrelerce taşıyan su kemerlerinde hâlâ görülebilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The student's technical prowess was evident in the model, but the assessment also considered how clearly she explained the reasoning behind her choices.",
+          "exTr": "Öğrencinin teknik ustalığı modelde belirgindi, ancak değerlendirme seçimlerinin ardındaki gerekçeyi ne kadar açık anlattığını da dikkate aldı."
+        }
+      ]
+    },
+    {
+      "word": "pseudonym",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. takma ad, mahlas",
+        "ex": "Several nineteenth-century women published their novels under a male pseudonym because critics of the period rarely took female authors seriously.",
+        "exTr": "On dokuzuncu yüzyılda birçok kadın, dönemin eleştirmenleri kadın yazarları nadiren ciddiye aldığı için romanlarını erkek takma adıyla yayımladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The novelist used a pseudonym for the early stories, complicating later attempts to distinguish her work from pieces written by other contributors.",
+          "exTr": "Romancı ilk öykülerinde bir takma ad kullandı; bu da daha sonra eserlerini diğer katkı sağlayanların yazılarından ayırma girişimlerini güçleştirdi."
+        }
+      ]
+    },
+    {
+      "word": "psychic",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. ruhsal, zihinsel, psikolojik",
+        "ex": "Constant conflict drained her psychic energy.",
+        "exTr": "Sürekli çatışma onun ruhsal enerjisini tüketti."
+      },
+      "alternatives": [
+        {
+          "ex": "The literary analysis explored the psychic strain of maintaining two conflicting identities, connecting the character's private reflections with her public behaviour.",
+          "exTr": "Edebî analiz, karakterin kişisel düşüncelerini toplum içindeki davranışıyla ilişkilendirerek çatışan iki kimliği sürdürmenin ruhsal yükünü araştırdı."
+        }
+      ]
+    },
+    {
+      "word": "psychologist",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. psikolog",
+        "ex": "Many psychologists argue that social media use affects teenagers' self-esteem.",
+        "exTr": "Birçok psikolog, sosyal medya kullanımının gençlerin öz saygısını etkilediğini savunuyor."
+      },
+      "alternatives": [
+        {
+          "ex": "A psychologist reviewed the interview questions to identify wording that might unintentionally encourage participants to describe ordinary uncertainty as personal failure.",
+          "exTr": "Bir psikolog, katılımcıları sıradan belirsizliği kişisel başarısızlık olarak betimlemeye istemeden teşvik edebilecek ifadeleri belirlemek için görüşme sorularını inceledi."
+        }
+      ]
+    },
+    {
+      "word": "psychotherapy",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. psikoterapi",
+        "ex": "Many clinical studies confirm that psychotherapy can be as effective as medication for treating mild depression.",
+        "exTr": "Birçok klinik çalışma, psikoterapinin hafif depresyonu tedavi etmede ilaç kadar etkili olabileceğini doğrulamaktadır."
+      },
+      "alternatives": [
+        {
+          "ex": "The research on psychotherapy combined participants' accounts with information about attendance, while treating reported experience and measured outcomes as distinct sources of evidence.",
+          "exTr": "Psikoterapi araştırması, bildirilen deneyimle ölçülen sonuçları ayrı kanıt kaynakları olarak ele alırken katılımcı anlatılarını devam bilgileriyle birleştirdi."
+        }
+      ]
+    },
+    {
+      "word": "public",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kamusal, halka açık",
+        "ex": "Growing public concern over air quality has pushed several cities to restrict diesel vehicles.",
+        "exTr": "Hava kalitesine yönelik artan kamuoyu endişesi, birçok şehri dizel araçları kısıtlamaya yöneltti."
+      },
+      "alternatives": [
+        {
+          "ex": "The public consultation included illustrated summaries so that people without specialist training could examine the proposals before submitting their comments.",
+          "exTr": "Halka açık danışma süreci, uzmanlık eğitimi olmayan kişilerin görüşlerini sunmadan önce önerileri inceleyebilmesi için görselli özetler içeriyordu."
+        }
+      ]
+    },
+    {
+      "word": "publish",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. yayımlamak, yayınlamak",
+        "ex": "The research team plans to publish their findings on renewable energy storage next spring.",
+        "exTr": "Araştırma ekibi, yenilenebilir enerji depolamayla ilgili bulgularını gelecek bahar yayımlamayı planlıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The team decided to publish the revised method alongside an explanation of the errors discovered during its first practical application.",
+          "exTr": "Ekip gözden geçirilmiş yöntemi, ilk uygulamada keşfedilen hataların açıklamasıyla birlikte yayımlamaya karar verdi."
+        }
+      ]
+    },
+    {
+      "word": "pudding",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. puding, tatlı",
+        "ex": "For dessert, the chef served a rich chocolate pudding topped with fresh raspberries.",
+        "exTr": "Tatlı olarak şef, üzerine taze ahududu eklenmiş yoğun bir çikolatalı puding servis etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The recipe collection included several versions of the same pudding, revealing differences in available ingredients rather than a single fixed regional tradition.",
+          "exTr": "Yemek tarifi koleksiyonu aynı tatlının birkaç sürümünü içererek tek ve değişmez bir bölgesel gelenek yerine mevcut malzemelerdeki farklılıkları ortaya koyuyordu."
+        }
+      ]
+    },
+    {
+      "word": "pull-off",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yol kenarı dinlenme alanı",
+        "ex": "Exhausted drivers often stop at a pull-off along the highway to rest before continuing their journey.",
+        "exTr": "Yorgun sürücüler, yolculuklarına devam etmeden önce dinlenmek için genellikle otoyol kenarındaki bir dinlenme alanında dururlar."
+      },
+      "alternatives": [
+        {
+          "ex": "The walking guide identified a small roadside pull-off as the starting point, but noted that space there was limited during busy periods.",
+          "exTr": "Yürüyüş kılavuzu yol kenarındaki küçük bir durma alanını başlangıç noktası olarak gösterdi, ancak yoğun dönemlerde buradaki alanın sınırlı olduğunu belirtti."
+        }
+      ]
+    },
+    {
+      "word": "pulse",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. darbe (kısa titreşim, atım)",
+        "ex": "The radar system emits a rapid pulse of electromagnetic energy to detect aircraft several miles away.",
+        "exTr": "Radar sistemi, birkaç mil ötedeki uçakları tespit etmek için hızlı bir elektromanyetik enerji darbesi yayar."
+      },
+      "alternatives": [
+        {
+          "ex": "The students compared the recorded pulse with the signal that followed it, checking whether the apparent delay changed when the equipment was adjusted.",
+          "exTr": "Öğrenciler kaydedilen atımı onu izleyen sinyalle karşılaştırarak ekipman ayarlandığında görünürdeki gecikmenin değişip değişmediğini kontrol etti."
+        }
+      ]
+    },
+    {
+      "word": "punish",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. cezalandırmak",
+        "ex": "The new law allows courts to punish companies that knowingly release toxic waste into rivers.",
+        "exTr": "Yeni yasa, mahkemelerin nehirlere bilerek zehirli atık bırakan şirketleri cezalandırmasına imkân tanıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "A system designed to punish every mistake may discourage people from reporting problems, making it harder for an organisation to learn from experience.",
+          "exTr": "Her hatayı cezalandırmak için tasarlanmış bir sistem insanları sorun bildirmekten caydırarak bir kuruluşun deneyimlerinden öğrenmesini güçleştirebilir."
+        }
+      ]
+    },
+    {
+      "word": "purchase",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. satın almak",
+        "ex": "Consumers increasingly purchase household goods online rather than visiting physical stores.",
+        "exTr": "Tüketiciler, fiziksel mağazaları ziyaret etmek yerine giderek daha çok ev eşyasını çevrimiçi satın alıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The school agreed to purchase adjustable furniture only after teachers had tested sample desks and explained how they would be used in different classrooms.",
+          "exTr": "Okul, ancak öğretmenler örnek sıraları test edip farklı sınıflarda nasıl kullanılacaklarını açıkladıktan sonra ayarlanabilir mobilya satın almayı kabul etti."
+        }
+      ]
+    },
+    {
+      "word": "purify",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. arıtmak, yabancı veya zararlı maddelerden temizlemek",
+        "ex": "The village installed a low-cost system to purify drinking water after severe flooding contaminated local wells.",
+        "exTr": "Köy, şiddetli sel yerel kuyuları kirlettikten sonra içme suyunu arıtmak için düşük maliyetli bir sistem kurdu."
+      },
+      "alternatives": [
+        {
+          "ex": "The laboratory compared two methods used to purify the sample, measuring what remained after each process instead of relying on appearance alone.",
+          "exTr": "Laboratuvar, yalnızca görünüşe dayanmak yerine her işlemden sonra geriye ne kaldığını ölçerek örneği saflaştırmak için kullanılan iki yöntemi karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "purport",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. iddia etmek, ... olduğunu ileri sürmek, ... gibi görünmek",
+        "ex": "The document purports to be a medieval charter, but chemical analysis of the ink suggests that it was produced much later.",
+        "exTr": "Belge, bir orta çağ fermanı olduğunu iddia etmektedir; ancak mürekkebin kimyasal analizi çok daha sonra üretildiğini göstermektedir."
+      },
+      "alternatives": [
+        {
+          "ex": "The advertisement purports to offer an independent comparison, yet it does not explain why several competing products were excluded from the assessment.",
+          "exTr": "Reklam bağımsız bir karşılaştırma sunduğunu iddia ediyor, ancak birkaç rakip ürünün neden değerlendirme dışında bırakıldığını açıklamıyor."
+        }
+      ]
+    },
+    {
+      "word": "pursuant",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. pursuant to: uyarınca, gereğince veya uygun olarak",
+        "ex": "Pursuant to the agreement, both parties must disclose any financial interest that could influence the study.",
+        "exTr": "Anlaşma uyarınca iki taraf da çalışmayı etkileyebilecek her türlü mali çıkarı açıklamalıdır."
+      },
+      "alternatives": [
+        {
+          "ex": "Pursuant to the committee's agreed procedure, revised proposals were circulated to all members before any decision was taken at the meeting.",
+          "exTr": "Komitenin üzerinde anlaştığı usul uyarınca, toplantıda herhangi bir karar alınmadan önce gözden geçirilmiş öneriler bütün üyelere dağıtıldı."
+        }
+      ]
+    },
+    {
+      "word": "push",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. zorlamak, baskı yapmak",
+        "ex": "Environmental groups continue to push governments toward stricter limits on industrial carbon emissions.",
+        "exTr": "Çevre grupları, hükûmetleri sanayi kaynaklı karbon emisyonlarına daha sıkı sınırlar getirmeye zorlamaya devam ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Rising maintenance costs may push managers to reconsider replacing the equipment, even if the existing machines can still perform their basic functions.",
+          "exTr": "Mevcut makineler temel işlevlerini hâlâ yerine getirebilse bile artan bakım maliyetleri yöneticileri ekipmanı değiştirmeyi yeniden düşünmeye zorlayabilir."
+        }
+      ]
+    },
+    {
+      "word": "put-on",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. numara, şaka, aldatmaca; yapmacık davranış",
+        "ex": "Many viewers believed the news story was real, not realizing it was an elaborate put-on.",
+        "exTr": "Birçok izleyici haberin gerçek olduğuna inandı, bunun ayrıntılı bir şaka olduğunun farkına varmadı."
+      },
+      "alternatives": [
+        {
+          "ex": "The audience initially took the speaker's exaggerated confusion seriously, before recognising it as a put-on intended to expose flaws in the instructions.",
+          "exTr": "Dinleyiciler, konuşmacının abartılı kafa karışıklığını yönergelerdeki kusurları açığa çıkarmayı amaçlayan bir numara olarak fark etmeden önce ciddiye aldı."
+        }
+      ]
+    },
+    {
+      "word": "putt",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. (golf) hafif vuruş",
+        "ex": "The champion golfer sank a difficult putt to win the tournament by one stroke.",
+        "exTr": "Şampiyon golfçü, turnuvayı bir vuruş farkla kazanmak için zor bir vuruşu deliğe soktu."
+      },
+      "alternatives": [
+        {
+          "ex": "The sports analysis compared repeated attempts at the same putt, examining consistency rather than judging the player's ability from one successful shot.",
+          "exTr": "Spor analizi, oyuncunun becerisini tek bir başarılı vuruştan değerlendirmek yerine tutarlılığı inceleyerek aynı kısa golf vuruşunun tekrarlanan denemelerini karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "pyramid",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. piramit",
+        "ex": "Archaeologists continue to investigate how ancient workers managed to build the massive pyramid without modern machinery.",
+        "exTr": "Arkeologlar, antik işçilerin modern makineler olmadan bu devasa piramidi nasıl inşa ettiğini araştırmaya devam ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The model of the pyramid showed internal spaces as well as the outer form, helping visitors connect the monument's appearance with its construction.",
+          "exTr": "Piramit modeli dış biçimin yanı sıra iç mekânları da göstererek ziyaretçilerin anıtın görünüşünü yapımıyla ilişkilendirmesine yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "qualitative",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. nitel, niteliksel",
+        "ex": "The study combined qualitative interviews with statistical analysis to understand patients' experiences of chronic illness.",
+        "exTr": "Çalışma, hastaların kronik hastalık deneyimlerini anlamak için nitel görüşmeleri istatistiksel analizle birleştirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "Qualitative observations helped explain why two groups with similar attendance figures described their experience of the course in markedly different ways.",
+          "exTr": "Nitel gözlemler, benzer devam oranlarına sahip iki grubun kurs deneyimlerini neden belirgin biçimde farklı anlattığını açıklamaya yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "quantitative",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. nicel, sayısal",
+        "ex": "The dissertation combines quantitative survey data with in-depth interviews from local farmers.",
+        "exTr": "Tez, nicel anket verilerini yerel çiftçilerle yapılan derinlemesine görüşmelerle birleştiriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The quantitative comparison used the same reporting period for every branch, avoiding a misleading contrast between annual totals and figures covering only several months.",
+          "exTr": "Nicel karşılaştırma, yıllık toplamlarla yalnızca birkaç ayı kapsayan rakamlar arasında yanıltıcı bir karşıtlıktan kaçınmak için her şubede aynı raporlama dönemini kullandı."
+        }
+      ]
+    },
+    {
+      "word": "quarantine",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. karantina",
+        "ex": "Health officials placed the entire cruise ship under quarantine after several passengers tested positive.",
+        "exTr": "Sağlık yetkilileri, birkaç yolcunun testi pozitif çıktıktan sonra tüm gemiyi karantinaya aldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The historical accounts described life under quarantine from several perspectives, including those responsible for supplies and those separated from their families.",
+          "exTr": "Tarihsel anlatımlar, erzak tedarikinden sorumlu olanlar ve ailelerinden ayrı kalanlar da dâhil olmak üzere karantina altındaki yaşamı birkaç bakış açısından betimliyordu."
+        }
+      ]
+    },
+    {
+      "word": "quarter-century",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. çeyrek yüzyıl, yirmi beş yıllık dönem",
+        "ex": "Over the past quarter-century, mobile technology has transformed the way ordinary people obtain news, manage money and communicate with distant relatives.",
+        "exTr": "Geçtiğimiz çeyrek yüzyılda mobil teknoloji, sıradan insanların haber edinme, para yönetme ve uzaktaki akrabalarıyla iletişim kurma biçimini kökten değiştirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "Records covering a quarter-century allowed the historian to distinguish short-lived fluctuations in trade from changes that persisted across successive trading seasons.",
+          "exTr": "Çeyrek yüzyılı kapsayan kayıtlar, tarihçinin ticaretteki kısa süreli dalgalanmaları art arda gelen ticaret mevsimleri boyunca süren değişimlerden ayırmasını sağladı."
+        }
+      ]
+    },
+    {
+      "word": "queen",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kraliçe",
+        "ex": "Historians debated whether the queen had any real influence over the kingdom's military decisions.",
+        "exTr": "Tarihçiler, kraliçenin krallığın askerî kararları üzerinde gerçek bir etkisi olup olmadığını tartıştı."
+      },
+      "alternatives": [
+        {
+          "ex": "The queen's correspondence revealed her involvement in negotiations that official accounts had attributed almost entirely to the ministers serving at court.",
+          "exTr": "Kraliçenin yazışmaları, resmî anlatımların neredeyse bütünüyle sarayda görevli bakanlara atfettiği müzakerelere onun da katıldığını ortaya koydu."
+        }
+      ]
+    },
+    {
+      "word": "question",
+      "sense_index": 1,
+      "expected": {
+        "tr": "f. sorgulamak",
+        "ex": "Several historians have begun to question the accuracy of traditional accounts of the battle.",
+        "exTr": "Birçok tarihçi, savaşa ilişkin geleneksel anlatıların doğruluğunu sorgulamaya başladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The unexpected result led the class to question an assumption they had accepted earlier simply because it appeared in the textbook.",
+          "exTr": "Beklenmedik sonuç, sınıfı daha önce sırf ders kitabında yer aldığı için kabul ettikleri bir varsayımı sorgulamaya yöneltti."
+        }
+      ]
+    },
+    {
+      "word": "questionnaire",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. anket, soru formu",
+        "ex": "Participants completed a detailed questionnaire about their sleeping habits before the study began.",
+        "exTr": "Katılımcılar, çalışma başlamadan önce uyku alışkanlıkları hakkında ayrıntılı bir anket doldurdu."
+      },
+      "alternatives": [
+        {
+          "ex": "The questionnaire was tested with a small group before wider distribution, revealing terms that participants understood differently from the researchers.",
+          "exTr": "Anket geniş çapta dağıtılmadan önce küçük bir grupla test edilerek katılımcıların araştırmacılardan farklı anladığı terimler ortaya çıkarıldı."
+        }
+      ]
+    },
+    {
+      "word": "quicker",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. daha hızlı, daha çabuk",
+        "ex": "Cycling is quicker than walking for short urban journeys.",
+        "exTr": "Kısa şehir içi yolculuklarda bisiklete binmek yürümekten daha hızlıdır."
+      },
+      "alternatives": [
+        {
+          "ex": "The revised procedure offered a quicker route to the relevant records, but users still needed clear criteria for deciding which documents answered their question.",
+          "exTr": "Gözden geçirilmiş işlem ilgili kayıtlara daha hızlı bir yol sunuyordu, ancak kullanıcıların hangi belgelerin sorularını yanıtladığına karar vermek için hâlâ açık ölçütlere ihtiyacı vardı."
+        }
+      ]
+    },
+    {
+      "word": "quietly",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. sessizce",
+        "ex": "The nurse quietly closed the door so as not to wake the sleeping patient.",
+        "exTr": "Hemşire, uyuyan hastayı uyandırmamak için kapıyı sessizce kapattı."
+      },
+      "alternatives": [
+        {
+          "ex": "The observers worked quietly at the back of the room, recording the discussion without repeatedly interrupting participants to request explanations.",
+          "exTr": "Gözlemciler odanın arkasında sessizce çalışarak açıklama istemek için katılımcıları sürekli bölmeden tartışmayı kaydetti."
+        }
+      ]
+    },
+    {
+      "word": "quiz",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kısa sınav, test",
+        "ex": "At the end of each lecture, the professor gives students a short quiz on key concepts.",
+        "exTr": "Profesör, her dersin sonunda öğrencilere temel kavramlarla ilgili kısa bir sınav yapar."
+      },
+      "alternatives": [
+        {
+          "ex": "A brief quiz revealed that students remembered the terminology but still struggled to apply the distinctions when presented with unfamiliar examples.",
+          "exTr": "Kısa bir sınav, öğrencilerin terimleri hatırladığını ancak alışılmadık örneklerle karşılaştıklarında ayrımları uygulamakta hâlâ zorlandığını gösterdi."
+        }
+      ]
+    },
+    {
+      "word": "rabbit",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. tavşan",
+        "ex": "Local farmers built tall fences around their gardens to keep wild rabbit populations from eating the vegetables.",
+        "exTr": "Yerel çiftçiler, yabani tavşan popülasyonlarının sebzeleri yemesini önlemek için bahçelerinin etrafına yüksek çitler inşa etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The field diary recorded rabbit activity near the planted plots, allowing later damage reports to be compared with observations made before harvesting.",
+          "exTr": "Saha günlüğü ekili parsellerin yakınındaki tavşan faaliyetlerini kaydederek sonraki zarar raporlarının hasattan önce yapılan gözlemlerle karşılaştırılmasını sağladı."
+        }
+      ]
+    },
+    {
+      "word": "racial",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. ırksal, ırkla ilgili",
+        "ex": "The report examined persistent racial disparities in access to quality healthcare across the country.",
+        "exTr": "Rapor, ülke genelinde kaliteli sağlık hizmetine erişimde süregelen ırksal eşitsizlikleri inceledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The analysis examined racial inequality in access to services, while avoiding the assumption that members of any group shared identical circumstances or experiences.",
+          "exTr": "Analiz, herhangi bir grubun üyelerinin aynı koşulları veya deneyimleri paylaştığı varsayımından kaçınarak hizmetlere erişimde ırksal eşitsizliği inceledi."
+        }
+      ]
+    }
+  ],
+  "collocations": [
+    {
+      "word": "professionally",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "professionally trained",
+          "tr": "mesleki eğitim almış"
+        },
+        {
+          "en": "professionally qualified",
+          "tr": "mesleki yeterliliğe sahip"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "promoter",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "concert promoter",
+          "tr": "konser organizatörü"
+        },
+        {
+          "en": "festival promoter",
+          "tr": "festival organizatörü"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "protecting",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "protecting fragile surfaces",
+          "tr": "hassas yüzeyleri koruyan"
+        },
+        {
+          "en": "protecting valuable resources",
+          "tr": "değerli kaynakları koruyan"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "protector",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "screen protector",
+          "tr": "ekran koruyucusu"
+        },
+        {
+          "en": "hearing protector",
+          "tr": "işitme koruyucusu"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "pull-off",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a roadside pull-off",
+          "tr": "yol kenarında bir durma alanı"
+        },
+        {
+          "en": "a scenic pull-off",
+          "tr": "manzara seyretmek için yol kenarı durma alanı"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "put-on",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "an elaborate put-on",
+          "tr": "ayrıntılı hazırlanmış bir aldatmaca"
+        },
+        {
+          "en": "just a put-on",
+          "tr": "yalnızca bir numara"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "putt",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a short putt",
+          "tr": "kısa bir golf vuruşu"
+        },
+        {
+          "en": "sink a putt",
+          "tr": "kısa golf vuruşuyla topu deliğe sokmak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "pyramid",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "the base of a pyramid",
+          "tr": "bir piramidin tabanı"
+        },
+        {
+          "en": "a stepped pyramid",
+          "tr": "basamaklı bir piramit"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "queen",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "the reigning queen",
+          "tr": "hüküm süren kraliçe"
+        },
+        {
+          "en": "a queen's reign",
+          "tr": "bir kraliçenin saltanatı"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "quicker",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a quicker response",
+          "tr": "daha hızlı bir yanıt"
+        },
+        {
+          "en": "a quicker method",
+          "tr": "daha hızlı bir yöntem"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "quietly",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "speak quietly",
+          "tr": "alçak sesle konuşmak"
+        },
+        {
+          "en": "work quietly",
+          "tr": "sessizce çalışmak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "quiz",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a multiple-choice quiz",
+          "tr": "çoktan seçmeli kısa sınav"
+        },
+        {
+          "en": "take a quiz",
+          "tr": "kısa bir sınava girmek"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "rabbit",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a rabbit burrow",
+          "tr": "bir tavşan yuvası"
+        },
+        {
+          "en": "wild rabbit",
+          "tr": "yabani tavşan"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

@@ -76,7 +76,12 @@ for (katman = 1; katman <= 7; katman++) {
 }
 testAdlari = testAdlari.concat(Object.keys(pencere.TEST_MODAL || {}));
 // Parti kartlarındaki her farklı anlam kendi örneğini taşır.
-assert.strictEqual(cokAnlamli, 3386);
+// 08.09.2026: knowledgeable altındaki knowledgeably ayrı bir sıfat anlamı
+// değildir. Tam eski değer korumasıyla kaldırıldı; kartın kendisi korundu.
+assert.strictEqual(cokAnlamli, 3385);
+var knowledgeable = dizin.find(function (x) { return x.e === 'knowledgeable'; });
+assert.ok(knowledgeable, 'knowledgeable kartı korunmalı');
+assert.strictEqual(pencere['KELIME_K' + knowledgeable.k].knowledgeable.a.length, 1);
 assert.deepStrictEqual(kartAdlari.slice().sort(), dizinAdlari.slice().sort(),
   'kart katmanları ile dizin farklı');
 assert.deepStrictEqual(testAdlari.slice().sort(), dizinAdlari.slice().sort(),

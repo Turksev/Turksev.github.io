@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "collocations": [
+    {
+      "word": "common-law",
+      "expected": [{"en":"common-law countries","tr":"örf ve adet hukuku uygulayan ülkeler"},{"en":"a common-law marriage","tr":"nikahsız birliktelik"}],
+      "replacement": [{"en":"common-law countries","tr":"common law (İngiliz hukuk geleneği) uygulayan ülkeler"},{"en":"a common-law marriage","tr":"evlenme töreni olmadan, ilgili hukukun aradığı koşullarla tanınan evlilik"}],
+      "reason": "Common-law marriage herhangi bir nikâhsız birliktelikle özdeş değildir; tanınma koşulları ilgili hukuk sistemine bağlıdır.",
+      "sources": ["https://www.merriam-webster.com/dictionary/common-law", "https://www.texasbar.com/AM/Template.cfm?ContentID=46987&Template=%2FCM%2FHTMLDisplay.cfm"]
+    }
+  ],
+  "corrections": [
+    {
+      "word": "common-law",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. örf ve adet hukukuna dayalı, teamül hukuku ile ilgili",
+        "ex": "Several jurisdictions still recognize common-law marriage after a couple has lived together for a set period.",
+        "exTr": "Bazı hukuk sistemleri, bir çift belirli bir süre birlikte yaşadıktan sonra hâlâ teamül hukukuna dayalı evliliği tanıyor."
+      },
+      "replacement": {
+        "tr": "s. örf, genel ilkeler ve mahkeme içtihatlarıyla gelişen common law hukukuna ilişkin",
+        "ex": "The legal historian traced the development of common-law principles through successive judgments, noting where later courts departed from earlier reasoning.",
+        "exTr": "Hukuk tarihçisi, sonraki mahkemelerin önceki gerekçelerden nerelerde ayrıldığını belirterek içtihat hukuku ilkelerinin gelişimini birbirini izleyen kararlar üzerinden inceledi."
+      },
+      "reason": "Salt belirli bir süre birlikte yaşamayı otomatik evlilik koşulu gibi gösteren genelleme çıkarıldı. İçtihat boyutu da açıklamaya eklendi; yeni örnek genel hukuk tarihi bağlamındadır.",
+      "sources": ["https://www.merriam-webster.com/dictionary/common-law", "https://www.texasbar.com/AM/Template.cfm?ContentID=46987&Template=%2FCM%2FHTMLDisplay.cfm"]
+    },
+    {
+      "word": "canvas",
+      "sense_index": 1,
+      "expected": {
+        "tr": "f. (oy toplamak için) kapı kapı dolaşmak",
+        "ex": "Volunteers canvassed the neighborhood to gather signatures supporting the proposed community park.",
+        "exTr": "Gönüllüler, önerilen semt parkını desteklemek için imza toplamak amacıyla mahalleyi dolaştı."
+      },
+      "replacement": {
+        "tr": "i. tuval üzerine yapılmış resim, tablo",
+        "ex": "Several early canvases remained in the artist's family for decades before their donation allowed the museum to organise a retrospective exhibition.",
+        "exTr": "Sanatçının erken dönem tablolarından birkaçı, bağışlanmaları müzenin bir retrospektif sergi düzenlemesine olanak sağlayana kadar onlarca yıl ailesinin elinde kaldı."
+      },
+      "reason": "Canvas ismiyle canvass fiili karışmıştı. İkinci anlam, canvas sözcüğünün doğrulanmış tablo anlamı ve özgün bir örnekle düzeltildi; oy toplama anlamı canvas altında öğretilmez.",
+      "sources": ["https://dictionary.cambridge.org/dictionary/english/canvas", "https://dictionary.cambridge.org/dictionary/english/canvass"]
+    },
+    {
+      "word": "burn-up",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yanma oranı (nükleer yakıt terimi)",
+        "ex": "Nuclear engineers calculate the burn-up of reactor fuel to determine how efficiently the uranium is being used.",
+        "exTr": "Nükleer mühendisler, uranyumun ne kadar verimli kullanıldığını belirlemek için reaktör yakıtının yanma oranını hesaplar."
+      },
+      "replacement": {
+        "tr": "i. (nükleer yakıtın) yanma derecesi; birim yakıt kütlesinden elde edilen enerjiyle ölçülen kullanım düzeyi",
+        "ex": "The report expressed fuel burn-up in energy per unit mass, allowing readers to distinguish fuel utilisation from power output.",
+        "exTr": "Rapor, yakıtın yanma derecesini birim kütle başına enerji olarak ifade ederek okurların yakıt kullanım düzeyini güç çıkışından ayırt etmesini sağladı."
+      },
+      "reason": "Yanma oranı açıklaması zamana bağlı yanma hızıyla karışabilirdi; NRC'nin tanımına uygun olarak yanma derecesi ve enerji/kütle ayrımı netleştirildi.",
+      "sources": ["https://www.nrc.gov/reading-rm/doc-collections/fact-sheets/bg-high-burnup-spent-fuel.html"]
+    },
+    {
+      "word": "acre",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. akr (yaklaşık 4047 metrekarelik alan ölçüsü), dönüm",
+        "ex": "The estate covers nearly two thousand acres of farmland, most of which has been used for growing wheat since the nineteenth century.",
+        "exTr": "Çiftlik, büyük bölümü on dokuzuncu yüzyıldan bu yana buğday yetiştirmek için kullanılan yaklaşık iki bin akrlık tarım arazisini kaplıyor."
+      },
+      "replacement": {
+        "tr": "i. akr (yaklaşık 4047 metrekarelik alan ölçüsü)",
+        "ex": "The estate covers nearly two thousand acres of farmland, most of which has been used for growing wheat since the nineteenth century.",
+        "exTr": "Çiftlik, büyük bölümü on dokuzuncu yüzyıldan bu yana buğday yetiştirmek için kullanılan yaklaşık iki bin akrlık tarım arazisini kaplıyor."
+      },
+      "reason": "Alan biriminin açıklamasındaki yanıltıcı dönüm eşdeğerliği çıkarıldı; mevcut EN–TR örneği zaten akr kullanıyor ve korundu.",
+      "sources": ["https://www.nist.gov/pml/us-surveyfoot/revised-unit-conversion-factors"]
+    }
+  ]
+}

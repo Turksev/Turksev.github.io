@@ -1,0 +1,1123 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 2,
+    "input": "input-005.json"
+  },
+  "enrichments": [
+    {
+      "word": "bath",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. banyo, yıkanma",
+        "ex": "After the long flight, she wanted nothing more than a hot bath and a comfortable bed.",
+        "exTr": "Uzun uçuşun ardından sıcak bir banyodan ve rahat bir yataktan başka bir şey istemiyordu."
+      },
+      "alternatives": [
+        {
+          "ex": "The travel diary describes the difficulty of obtaining a hot bath during the journey, offering an unusually detailed account of ordinary domestic arrangements.",
+          "exTr": "Gezi günlüğü, yolculuk sırasında sıcak bir banyo yapmanın güçlüğünü anlatıyor ve sıradan ev içi düzenlemeleri alışılmadık ölçüde ayrıntılı aktarıyor."
+        }
+      ]
+    },
+    {
+      "word": "bathroom",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. banyo, tuvalet",
+        "ex": "The renovated apartment now includes a modern bathroom with energy-efficient fixtures throughout.",
+        "exTr": "Yenilenen daire, artık enerji verimli armatürlere sahip modern bir banyo içeriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The architect placed the bathroom near the entrance so that visitors using the ground floor would not need to climb the stairs.",
+          "exTr": "Mimar, zemin katı kullanan ziyaretçilerin merdiven çıkması gerekmemesi için banyoyu girişin yakınına yerleştirdi."
+        }
+      ]
+    },
+    {
+      "word": "battery",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. pil, batarya",
+        "ex": "Electric cars depend on lithium battery technology, which continues to improve in capacity and cost.",
+        "exTr": "Elektrikli arabalar, kapasite ve maliyet açısından gelişmeye devam eden lityum pil teknolojisine bağımlıdır."
+      },
+      "alternatives": [
+        {
+          "ex": "The recorder's battery could be replaced without losing saved files, an important feature for interviews conducted far from a reliable power supply.",
+          "exTr": "Kayıt cihazının pili, kaydedilmiş dosyalar kaybolmadan değiştirilebiliyordu; bu, güvenilir bir elektrik kaynağından uzakta yapılan görüşmeler için önemli bir özellikti."
+        }
+      ]
+    },
+    {
+      "word": "battlefield",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. savaş alanı, muharebe meydanı",
+        "ex": "Medical advances first developed on the battlefield later transformed emergency care in civilian hospitals.",
+        "exTr": "İlk olarak savaş alanında geliştirilen tıbbi ilerlemeler, daha sonra sivil hastanelerdeki acil bakımı dönüştürdü."
+      },
+      "alternatives": [
+        {
+          "ex": "The battlefield was mapped using both surviving earthworks and written accounts, neither of which could provide a complete picture on its own.",
+          "exTr": "Savaş alanı, tek başına hiçbiri tam bir tablo sunamayan, günümüze ulaşmış toprak tahkimatlar ve yazılı anlatımlar birlikte kullanılarak haritalandı."
+        }
+      ]
+    },
+    {
+      "word": "be allowed to",
+      "sense_index": 0,
+      "expected": {
+        "tr": "yapmasına izin verilmek",
+        "ex": "Only accredited researchers are allowed to handle the fragile manuscripts directly.",
+        "exTr": "Kırılgan el yazmalarına doğrudan dokunmasına yalnızca yetkilendirilmiş araştırmacılara izin verilir."
+      },
+      "alternatives": [
+        {
+          "ex": "Participants will be allowed to revise their responses after the discussion, provided that the original answers remain available for comparison.",
+          "exTr": "Özgün yanıtlar karşılaştırma için erişilebilir kaldığı sürece katılımcıların tartışmadan sonra yanıtlarını gözden geçirmesine izin verilecek."
+        }
+      ]
+    },
+    {
+      "word": "be capable of",
+      "sense_index": 0,
+      "expected": {
+        "tr": "-ebilme yeteneğine/kapasitesine sahip olmak; ardından isim veya V-ing almak",
+        "ex": "Some desert plants are capable of surviving for years with almost no rainfall.",
+        "exTr": "Bazı çöl bitkileri neredeyse hiç yağış olmadan yıllarca hayatta kalabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "A useful model should be capable of explaining unexpected observations, not merely reproducing the examples on which it was originally based.",
+          "exTr": "Yararlı bir model, yalnızca başlangıçta dayandığı örnekleri yeniden üretmekle kalmamalı, beklenmedik gözlemleri de açıklayabilmelidir."
+        }
+      ]
+    },
+    {
+      "word": "be compelled to",
+      "sense_index": 0,
+      "expected": {
+        "tr": "güçlü baskı veya zorlayıcı neden yüzünden yapmak zorunda kalmak",
+        "ex": "The court was compelled to dismiss the case because the evidence had been obtained unlawfully.",
+        "exTr": "Kanıt hukuka aykırı biçimde elde edildiği için mahkeme davayı düşürmek zorunda kaldı."
+      },
+      "alternatives": [
+        {
+          "ex": "Without replacement funding, the orchestra may be compelled to reduce its touring schedule despite strong demand from audiences outside the capital.",
+          "exTr": "Başkent dışındaki dinleyicilerin güçlü talebine rağmen orkestra, yerine geçecek finansman bulunmazsa turne programını azaltmak zorunda kalabilir."
+        }
+      ]
+    },
+    {
+      "word": "be forced to",
+      "sense_index": 0,
+      "expected": {
+        "tr": "yapmaya zorlanmak; seçeneği kalmamak",
+        "ex": "Several villages were forced to relocate when the reservoir flooded the lower valley.",
+        "exTr": "Baraj gölü aşağı vadiyi su altında bırakınca birkaç köy taşınmak zorunda kaldı."
+      },
+      "alternatives": [
+        {
+          "ex": "Small suppliers could be forced to abandon the contract if payment delays continue to exceed the period their reserves can cover.",
+          "exTr": "Ödeme gecikmeleri rezervlerinin karşılayabileceği süreyi aşmaya devam ederse küçük tedarikçiler sözleşmeden vazgeçmek zorunda kalabilir."
+        }
+      ]
+    },
+    {
+      "word": "be obliged to",
+      "sense_index": 0,
+      "expected": {
+        "tr": "yapmakla yükümlü/zorunda olmak; resmî veya ahlaki yükümlülük",
+        "ex": "Public bodies are obliged to give reasons when they refuse access to official records.",
+        "exTr": "Kamu kurumları resmî kayıtlara erişimi reddettiklerinde gerekçe göstermekle yükümlüdür."
+      },
+      "alternatives": [
+        {
+          "ex": "Members would be obliged to disclose any personal interest in a proposal before taking part in the committee's discussion of it.",
+          "exTr": "Üyeler, komitenin bir öneriye ilişkin görüşmesine katılmadan önce önerideki herhangi bir kişisel çıkarlarını açıklamakla yükümlü olacaktı."
+        }
+      ]
+    },
+    {
+      "word": "be prone to",
+      "sense_index": 0,
+      "expected": {
+        "tr": "-e yatkın/eğilimli olmak; çoğunlukla istenmeyen bir durum için",
+        "ex": "Shallow lakes are prone to rapid temperature changes during prolonged heat waves.",
+        "exTr": "Sığ göller uzun sıcak hava dalgalarında hızlı sıcaklık değişimlerine yatkındır."
+      },
+      "alternatives": [
+        {
+          "ex": "A system dependent on one supplier may be prone to disruption, even when that supplier has previously delivered every order on time.",
+          "exTr": "Tek bir tedarikçiye bağımlı bir sistem, o tedarikçi daha önce her siparişi zamanında teslim etmiş olsa bile aksamalara yatkın olabilir."
+        }
+      ]
+    },
+    {
+      "word": "be sure to",
+      "sense_index": 0,
+      "expected": {
+        "tr": "kesinlikle/mutlaka yapacak olmak; güçlü beklenti bildirmek",
+        "ex": "Any sudden reduction in river flow is sure to affect farms further downstream.",
+        "exTr": "Nehir akışındaki ani bir azalmanın aşağı kesimdeki çiftlikleri etkilemesi kesindir."
+      },
+      "alternatives": [
+        {
+          "ex": "Any decision to close the only public meeting room would be sure to provoke questions about where local groups could gather instead.",
+          "exTr": "Halka açık tek toplantı odasını kapatma kararı, yerel grupların bunun yerine nerede toplanabileceğine ilişkin soruları kesinlikle doğururdu."
+        }
+      ]
+    },
+    {
+      "word": "beach",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. plaj, kumsal",
+        "ex": "Volunteers cleaned tons of plastic waste from the beach before the start of tourist season.",
+        "exTr": "Gönüllüler, turizm sezonu başlamadan önce plajdan tonlarca plastik atığı temizledi."
+      },
+      "alternatives": [
+        {
+          "ex": "Access to the beach remained public under the redevelopment plan, although the location of the entrance changed considerably.",
+          "exTr": "Yeniden düzenleme planı kapsamında girişin yeri önemli ölçüde değişse de plaja erişim halka açık kaldı."
+        }
+      ]
+    },
+    {
+      "word": "bear",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. taşımak, katlanmak",
+        "ex": "Older buildings must be reinforced to bear the additional weight of modern equipment.",
+        "exTr": "Eski binaların, modern ekipmanın ek ağırlığını taşıyabilmesi için güçlendirilmesi gerekir."
+      },
+      "alternatives": [
+        {
+          "ex": "The partnership agreement specifies which organisation will bear the cost of repairs if equipment is damaged during a jointly managed event.",
+          "exTr": "Ortaklık anlaşması, ortaklaşa yönetilen bir etkinlik sırasında ekipman hasar görürse onarım maliyetini hangi kuruluşun üstleneceğini belirtiyor."
+        }
+      ]
+    },
+    {
+      "word": "beat-up",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. eski, yıpranmış, hırpalanmış",
+        "ex": "The mechanic still drives the same beat-up truck he bought during his college years.",
+        "exTr": "Tamirci, üniversite yıllarında aldığı aynı hırpalanmış kamyoneti hâlâ kullanıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The photographer kept the beat-up camera in the exhibition because its worn controls revealed how extensively it had been used.",
+          "exTr": "Fotoğrafçı, aşınmış kumandaları ne kadar yoğun kullanıldığını gösterdiği için yıpranmış kamerayı sergide tuttu."
+        }
+      ]
+    },
+    {
+      "word": "beautifully",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. güzel biçimde, güzelce",
+        "ex": "The old cathedral was beautifully restored using techniques from the original construction period.",
+        "exTr": "Eski katedral, orijinal inşa döneminden kalan tekniklerle güzel bir biçimde restore edildi."
+      },
+      "alternatives": [
+        {
+          "ex": "Although beautifully illustrated, the guide offered little help in distinguishing species whose identifying features were too small to appear clearly in its drawings.",
+          "exTr": "Güzel resimlenmiş olmasına rağmen rehber, ayırt edici özellikleri çizimlerde açıkça görünemeyecek kadar küçük olan türleri ayırmada çok az yardımcı oluyordu."
+        }
+      ]
+    },
+    {
+      "word": "become",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. -leşmek, olmak, haline gelmek",
+        "ex": "Urban farming has become an increasingly popular solution to food shortages in crowded cities.",
+        "exTr": "Kentsel tarım, kalabalık şehirlerdeki gıda kıtlığına giderek daha popüler bir çözüm haline geldi."
+      },
+      "alternatives": [
+        {
+          "ex": "A temporary arrangement can become difficult to reverse when organisations gradually adapt their staffing and budgets around its continued existence.",
+          "exTr": "Kuruluşlar personel düzenlerini ve bütçelerini varlığını sürdüreceği düşüncesine göre aşamalı olarak uyarladığında geçici bir düzenlemeden geri dönmek zorlaşabilir."
+        }
+      ]
+    },
+    {
+      "word": "bed-ground",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. (sürü için) geceleme alanı",
+        "ex": "Ranchers chose a sheltered valley as the bed-ground where cattle could rest safely overnight.",
+        "exTr": "Çiftçiler, sığırların gece boyunca güvenle dinlenebileceği geceleme alanı olarak korunaklı bir vadiyi seçti."
+      },
+      "alternatives": [
+        {
+          "ex": "The herder's map marked each bed-ground along the route, helping historians reconstruct where the flock stopped between seasonal pastures.",
+          "exTr": "Çobanın haritası güzergâh üzerindeki her geceleme alanını işaretliyordu ve tarihçilerin sürünün mevsimlik otlaklar arasında nerede durduğunu yeniden belirlemesine yardımcı oluyordu."
+        }
+      ],
+      "note": "Seyrek hayvancılık terimi; isim anlamı Merriam-Webster ile doğrulandı: https://www.merriam-webster.com/dictionary/bed-ground"
+    },
+    {
+      "word": "bee",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. arı",
+        "ex": "Without the humble bee, many crops would fail because their flowers depend on insect pollination.",
+        "exTr": "Mütevazı arı olmasaydı, çiçekleri böceklerle tozlaşmaya bağımlı olan birçok tarım ürünü yetişemezdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The class photographed a bee visiting several flowers, then compared the images to discuss which details could support identification.",
+          "exTr": "Sınıf, birkaç çiçeği ziyaret eden bir arıyı fotoğrafladı ve ardından hangi ayrıntıların tanımlamaya yardımcı olabileceğini tartışmak için görüntüleri karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "beetle",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. böcek, kınkanatlı böcek",
+        "ex": "Scientists discovered a rare beetle species living deep inside the tropical rainforest canopy.",
+        "exTr": "Bilim insanları, tropikal yağmur ormanı örtüsünün derinliklerinde yaşayan nadir bir böcek türü keşfetti."
+      },
+      "alternatives": [
+        {
+          "ex": "The beetle was returned to the place where it had been found after volunteers recorded its appearance and surrounding habitat.",
+          "exTr": "Gönüllüler görünüşünü ve çevresindeki yaşam alanını kaydettikten sonra kınkanatlı böcek bulunduğu yere geri bırakıldı."
+        }
+      ]
+    },
+    {
+      "word": "befriend",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. arkadaş olmak, dost olmak, dostça davranıp yardım etmek",
+        "ex": "Volunteers are trained to befriend isolated elderly residents, and regular visits have been shown to reduce both loneliness and hospital admissions.",
+        "exTr": "Gönüllüler, yalnız yaşayan yaşlı sakinlerle arkadaş olmak üzere eğitiliyor ve düzenli ziyaretlerin hem yalnızlığı hem de hastaneye yatışları azalttığı gösterildi."
+      },
+      "alternatives": [
+        {
+          "ex": "The programme pairs newcomers with volunteers who befriend them through shared activities rather than treating every meeting as a formal language lesson.",
+          "exTr": "Program, yeni gelenleri her buluşmayı resmî bir dil dersi saymak yerine ortak etkinliklerle onlarla arkadaşlık kuran gönüllülerle eşleştiriyor."
+        }
+      ]
+    },
+    {
+      "word": "beginning",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. başlangıç, başlama",
+        "ex": "The discovery of penicillin marked the beginning of the modern antibiotic era.",
+        "exTr": "Penisilinin keşfi, modern antibiyotik çağının başlangıcına işaret etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The opening of the workshop marked the beginning of a partnership that later extended to training, shared equipment and joint exhibitions.",
+          "exTr": "Atölyenin açılması, daha sonra eğitimi, ortak ekipmanı ve ortak sergileri kapsayacak şekilde genişleyen bir ortaklığın başlangıcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "behavior",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. davranış",
+        "ex": "Psychologists study animal behavior to better understand the biological roots of social interaction.",
+        "exTr": "Psikologlar, sosyal etkileşimin biyolojik köklerini daha iyi anlamak için hayvan davranışını inceler."
+      },
+      "alternatives": [
+        {
+          "ex": "The observers recorded behavior during ordinary breaks rather than relying entirely on what employees said they usually did outside formal meetings.",
+          "exTr": "Gözlemciler, çalışanların resmî toplantılar dışında genellikle ne yaptıklarına ilişkin sözlerine tamamen dayanmak yerine sıradan molalardaki davranışları kaydetti."
+        }
+      ]
+    },
+    {
+      "word": "behavioural",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. davranışsal",
+        "ex": "The clinic offers behavioural therapy for children struggling with anxiety and attention difficulties.",
+        "exTr": "Klinik, kaygı ve dikkat güçlüğü yaşayan çocuklar için davranışsal terapi sunuyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The behavioural changes reported by teachers were compared with classroom observations before the researchers considered possible explanations for the difference.",
+          "exTr": "Araştırmacılar farkın olası açıklamalarını ele almadan önce öğretmenlerin bildirdiği davranışsal değişimler sınıf gözlemleriyle karşılaştırıldı."
+        }
+      ]
+    },
+    {
+      "word": "belief",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. inanç, kanı",
+        "ex": "Contrary to popular belief, bats are not blind and can see quite well.",
+        "exTr": "Yaygın inanışın aksine, yarasalar kör değildir ve oldukça iyi görebilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The belief that technical expertise guarantees sound judgement overlooks the importance of understanding the social consequences of a decision.",
+          "exTr": "Teknik uzmanlığın sağlıklı muhakemeyi garanti ettiği inancı, bir kararın toplumsal sonuçlarını anlamanın önemini göz ardı ediyor."
+        }
+      ]
+    },
+    {
+      "word": "bell",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. çan, zil",
+        "ex": "The old church bell rang loudly across the village every Sunday morning.",
+        "exTr": "Eski kilise çanı, her pazar sabahı köyün her yerinde yüksek sesle çaldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The bell was removed from the tower for examination, allowing specialists to inspect cracks that could not be reached safely in place.",
+          "exTr": "Çan, uzmanların bulunduğu yerde güvenle erişilemeyen çatlakları inceleyebilmesi için kuleden indirildi."
+        }
+      ]
+    },
+    {
+      "word": "belongings",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. eşyalar, kişisel eşyalar",
+        "ex": "After the flood, volunteers helped families search through the debris for any salvageable belongings.",
+        "exTr": "Sel felaketinin ardından gönüllüler, kurtarılabilecek eşyalarını bulmaları için ailelere enkazı aramada yardım etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The temporary accommodation included secure storage for personal belongings, recognising that displaced residents needed more than a place to sleep.",
+          "exTr": "Geçici barınma yeri, yerinden edilen sakinlerin uyuyacak bir yerden fazlasına ihtiyaç duyduğunu dikkate alarak kişisel eşyalar için güvenli depolama alanı içeriyordu."
+        }
+      ]
+    },
+    {
+      "word": "belt",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kuşak, bölge",
+        "ex": "The equatorial belt receives more direct sunlight than regions closer to the poles.",
+        "exTr": "Ekvator kuşağı, kutuplara daha yakın bölgelere göre daha fazla doğrudan güneş ışığı alır."
+      },
+      "alternatives": [
+        {
+          "ex": "A narrow belt of woodland separates the housing estate from the industrial area, providing a visible boundary between the two developments.",
+          "exTr": "Dar bir ormanlık kuşak, konut yerleşimini sanayi alanından ayırarak iki yapılaşma bölgesi arasında görünür bir sınır oluşturuyor."
+        }
+      ]
+    },
+    {
+      "word": "beneath",
+      "sense_index": 0,
+      "expected": {
+        "tr": "e. altında, altına",
+        "ex": "Archaeologists discovered an ancient Roman settlement buried beneath the modern city center.",
+        "exTr": "Arkeologlar, modern şehir merkezinin altında gömülü antik bir Roma yerleşimi keşfetti."
+      },
+      "alternatives": [
+        {
+          "ex": "Beneath the later paint, conservators found traces of a decorative scheme that differed substantially from the building's present appearance.",
+          "exTr": "Koruma uzmanları, sonraki boyanın altında binanın bugünkü görünümünden önemli ölçüde farklı bir süsleme düzeninin izlerini buldu."
+        }
+      ]
+    },
+    {
+      "word": "benevolence",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. iyilikseverlik, hayırseverlik, yardımseverlik",
+        "ex": "Charitable foundations depend heavily on the benevolence of donors, whose contributions fund programmes that governments are often unwilling to support.",
+        "exTr": "Hayır kurumları büyük ölçüde bağışçıların iyilikseverliğine bağımlıdır; bu bağışçıların katkıları, hükümetlerin çoğu zaman desteklemeye isteksiz olduğu programları finanse eder."
+      },
+      "alternatives": [
+        {
+          "ex": "The reformers questioned a system dependent on private benevolence, arguing that access to essential services should not rely on individual generosity.",
+          "exTr": "Reformcular, temel hizmetlere erişimin bireysel cömertliğe dayanmaması gerektiğini savunarak özel hayırseverliğe bağımlı bir sistemi sorguladı."
+        }
+      ]
+    },
+    {
+      "word": "berlin",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. Berlin: Almanya'nın başkenti",
+        "ex": "Berlin became a major centre of European politics in the twentieth century.",
+        "exTr": "Berlin yirminci yüzyılda Avrupa siyasetinin önemli merkezlerinden biri hâline geldi."
+      },
+      "alternatives": [
+        {
+          "ex": "The novel follows a translator living in Berlin whose daily journeys reveal connections between neighbourhoods that official tourist maps keep separate.",
+          "exTr": "Roman, günlük yolculukları resmî turistik haritaların ayrı tuttuğu mahalleler arasındaki bağlantıları ortaya çıkaran, Berlin'de yaşayan bir çevirmeni izliyor."
+        }
+      ],
+      "note": "Mevcut küçük harfli başlık korunuyor; şehir özel adı örnekte doğru biçimde Berlin yazıldı."
+    },
+    {
+      "word": "best",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. en iyi",
+        "ex": "Critics agreed that the film's final act was easily the best part of the entire trilogy.",
+        "exTr": "Eleştirmenler, filmin son perdesinin tüm üçlemenin en iyi bölümü olduğu konusunda hemfikirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The best solution for a crowded urban site may be unsuitable elsewhere, where land is plentiful but maintenance resources are limited.",
+          "exTr": "Kalabalık bir kentsel alan için en iyi çözüm, arazinin bol fakat bakım kaynaklarının sınırlı olduğu başka bir yerde elverişsiz olabilir."
+        }
+      ]
+    },
+    {
+      "word": "best-selling",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. çok satan",
+        "ex": "Her latest novel quickly became the best-selling book in the country that year.",
+        "exTr": "Son romanı, o yıl ülkedeki en çok satan kitap haline hızla geldi."
+      },
+      "alternatives": [
+        {
+          "ex": "The best-selling biography brought renewed attention to the composer, although specialists disputed its account of how several works had been created.",
+          "exTr": "Çok satan biyografi besteciye ilgiyi yeniden canlandırdı; ancak uzmanlar bazı eserlerin nasıl yaratıldığına ilişkin anlatımına itiraz etti."
+        }
+      ]
+    },
+    {
+      "word": "beta-carotene",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. beta-karoten (vücutta A vitaminine dönüşen bitkisel pigment)",
+        "ex": "Carrots, spinach and sweet potatoes are rich in beta-carotene, which the body converts into the vitamin A needed for healthy vision.",
+        "exTr": "Havuç, ıspanak ve tatlı patates, vücudun sağlıklı görme için gerekli olan A vitaminine dönüştürdüğü beta-karoten bakımından zengindir."
+      },
+      "alternatives": [
+        {
+          "ex": "The students compared methods for extracting beta-carotene from plant samples, evaluating the procedures rather than making claims about dietary benefits.",
+          "exTr": "Öğrenciler, beslenmeye ilişkin yararlar hakkında iddialarda bulunmak yerine işlemleri değerlendirerek bitki örneklerinden beta-karoten çıkarma yöntemlerini karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "betrayal",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ihanet",
+        "ex": "The memoir describes the profound sense of betrayal she felt after discovering her partner's secret.",
+        "exTr": "Anı kitabı, partnerinin sırrını keşfettikten sonra hissettiği derin ihanet duygusunu anlatıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The play presents the disclosure as an act of betrayal, but allows the audience to understand why the informant considered silence unacceptable.",
+          "exTr": "Oyun, bilgilerin açığa vurulmasını bir ihanet eylemi olarak sunuyor; ancak seyircinin muhbirin sessiz kalmayı neden kabul edilemez bulduğunu anlamasına olanak tanıyor."
+        }
+      ]
+    },
+    {
+      "word": "better-looking",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. daha güzel görünümlü, daha yakışıklı/çekici",
+        "ex": "Reviewers agreed that the redesigned packaging was noticeably better-looking than the outdated original version.",
+        "exTr": "Eleştirmenler, yeniden tasarlanan ambalajın eski özgün sürümden belirgin biçimde daha çekici olduğu konusunda hemfikirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "A better-looking interface did not necessarily improve usability, since several frequently needed controls had become harder to locate after the redesign.",
+          "exTr": "Yeniden tasarımın ardından sık ihtiyaç duyulan bazı kumandaların bulunması zorlaştığından daha güzel görünen bir arayüz kullanılabilirliği mutlaka artırmadı."
+        }
+      ]
+    },
+    {
+      "word": "bewildering",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. şaşırtıcı, kafa karıştırıcı, akıl karıştıran",
+        "ex": "New students are often confronted with a bewildering array of course options, and many of them struggle to make an informed choice.",
+        "exTr": "Yeni öğrenciler çoğu zaman kafa karıştırıcı bir ders seçenekleri yığınıyla karşılaşır ve birçoğu bilinçli bir tercih yapmakta zorlanır."
+      },
+      "alternatives": [
+        {
+          "ex": "The bewildering variety of ticket categories made comparison difficult, especially when identical journeys were described using different combinations of discounts and restrictions.",
+          "exTr": "Bilet kategorilerinin kafa karıştırıcı çeşitliliği, özellikle aynı yolculuklar farklı indirim ve kısıtlama birleşimleriyle tanımlandığında karşılaştırmayı zorlaştırıyordu."
+        }
+      ]
+    },
+    {
+      "word": "bible",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. İncil, Kutsal Kitap",
+        "ex": "The museum displayed a rare handwritten Bible dating back to the fifteenth century.",
+        "exTr": "Müze, on beşinci yüzyıla uzanan nadir bir el yazması İncil sergiledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The translator compared several editions of the Bible to examine how choices of wording reflected different approaches to addressing readers.",
+          "exTr": "Çevirmen, sözcük seçimlerinin okurlara hitap etmeye yönelik farklı yaklaşımları nasıl yansıttığını incelemek için Kutsal Kitap'ın birkaç baskısını karşılaştırdı."
+        }
+      ],
+      "note": "Bible'ın tamamı İncil ile özdeşleştirilmedi; Kutsal Kitap karşılığı kullanıldı."
+    },
+    {
+      "word": "bid",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. teklif; f. teklif vermek",
+        "ex": "The construction company submitted the lowest bid for the new highway project.",
+        "exTr": "İnşaat şirketi, yeni otoyol projesi için en düşük teklifi sundu."
+      },
+      "alternatives": [
+        {
+          "ex": "The lowest bid was rejected because it omitted maintenance costs that the invitation had explicitly required every applicant to include.",
+          "exTr": "En düşük teklif, davetin her başvurandan açıkça dâhil etmesini istediği bakım maliyetlerini dışarıda bıraktığı için reddedildi."
+        }
+      ]
+    },
+    {
+      "word": "bike",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. bisiklet",
+        "ex": "Sales of electric bikes have risen sharply as fuel prices continue to climb across Europe.",
+        "exTr": "Avrupa genelinde yakıt fiyatları yükselmeye devam ederken elektrikli bisiklet satışları keskin biçimde arttı."
+      },
+      "alternatives": [
+        {
+          "ex": "A secure place to leave a bike may matter as much as the cycle route itself when commuters choose how to travel.",
+          "exTr": "İşe gidip gelenler nasıl yolculuk yapacaklarını seçerken bisikleti bırakabilecekleri güvenli bir yer, bisiklet güzergâhının kendisi kadar önemli olabilir."
+        }
+      ]
+    },
+    {
+      "word": "bilingual",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. iki dilli",
+        "ex": "Studies suggest that bilingual children often develop stronger problem-solving skills than their monolingual peers.",
+        "exTr": "Araştırmalar, iki dilli çocukların tek dilli akranlarına göre çoğu zaman daha güçlü problem çözme becerileri geliştirdiğini öne sürüyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The bilingual exhibition places both languages on equal terms rather than presenting one as the original and the other as a secondary aid.",
+          "exTr": "İki dilli sergi, bir dili özgün, diğerini ikincil bir yardımcı olarak sunmak yerine her iki dile eşit konum veriyor."
+        }
+      ]
+    },
+    {
+      "word": "billion",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s./i. milyar",
+        "ex": "The satellite mission cost taxpayers nearly two billion dollars to complete.",
+        "exTr": "Uydu görevi, vergi mükelleflerine yaklaşık iki milyar dolara mal oldu."
+      },
+      "alternatives": [
+        {
+          "ex": "The dataset contained more than a billion entries, making clear documentation essential for anyone attempting to understand how the records were organised.",
+          "exTr": "Veri kümesi bir milyardan fazla kayıt içeriyordu; bu nedenle kayıtların nasıl düzenlendiğini anlamaya çalışan herkes için açık belgeleme vazgeçilmezdi."
+        }
+      ]
+    },
+    {
+      "word": "bind",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. bağlamak, birleştirmek",
+        "ex": "Chemists discovered that this new compound can bind tightly to cancer cells without harming healthy tissue.",
+        "exTr": "Kimyagerler, bu yeni bileşiğin sağlıklı dokuya zarar vermeden kanser hücrelerine sıkıca bağlanabildiğini keşfetti."
+      },
+      "alternatives": [
+        {
+          "ex": "The conservator chose to bind the loose pages without trimming their edges, preserving marks that might help establish the manuscript's history.",
+          "exTr": "Koruma uzmanı, el yazmasının geçmişini belirlemeye yardımcı olabilecek izleri koruyarak dağınık sayfaları kenarlarını kesmeden ciltlemeyi seçti."
+        }
+      ]
+    },
+    {
+      "word": "biochemical",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. biyokimyasal",
+        "ex": "Sleep deprivation triggers biochemical changes in the brain that impair concentration long before a person becomes consciously aware of feeling tired.",
+        "exTr": "Uykusuzluk, kişi yorgun hissettiğinin bilincine varmadan çok önce beyinde dikkati bozan biyokimyasal değişikliklere yol açar."
+      },
+      "alternatives": [
+        {
+          "ex": "The course links biochemical diagrams to the experiments from which they were developed, showing students why some relationships are represented as provisional.",
+          "exTr": "Ders, bazı ilişkilerin neden henüz kesinleşmemiş olarak gösterildiğini öğrencilere açıklayarak biyokimyasal şemaları geliştirildikleri deneylerle ilişkilendiriyor."
+        }
+      ]
+    },
+    {
+      "word": "biographical",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. biyografik, yaşam öyküsüne ilişkin",
+        "ex": "The archive contains biographical records of several forgotten scientists whose contributions to early genetics have only recently been properly acknowledged.",
+        "exTr": "Arşiv, erken dönem genetiğe katkıları ancak son zamanlarda hakkıyla kabul edilen birkaç unutulmuş bilim insanına ait biyografik kayıtlar içeriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Biographical details can illuminate a writer's concerns, but they do not automatically explain every decision made in the construction of a fictional character.",
+          "exTr": "Biyografik ayrıntılar bir yazarın ilgi ve kaygılarına ışık tutabilir; ancak kurgusal bir karakter oluşturulurken alınan her kararı kendiliğinden açıklamaz."
+        }
+      ]
+    },
+    {
+      "word": "biologist",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. biyolog",
+        "ex": "A marine biologist spent ten years studying how coral reefs recover from bleaching.",
+        "exTr": "Bir deniz biyoloğu, mercan resiflerinin ağarmanın ardından nasıl toparlandığını incelemeye on yıl harcadı."
+      },
+      "alternatives": [
+        {
+          "ex": "The biologist asked volunteers to record unsuccessful searches as well as sightings, since absence of a record could otherwise be misleading.",
+          "exTr": "Biyolog, aksi hâlde kayıt yokluğu yanıltıcı olabileceği için gönüllülerden gözlemlerin yanı sıra sonuçsuz aramaları da kaydetmelerini istedi."
+        }
+      ]
+    },
+    {
+      "word": "biotechnology",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. biyoteknoloji",
+        "ex": "Advances in biotechnology have made it possible to develop crops that resist drought and disease.",
+        "exTr": "Kuraklığa ve hastalığa dayanıklı ürünler geliştirmek, biyoteknolojideki ilerlemeler sayesinde artık mümkün hale geldi."
+      },
+      "alternatives": [
+        {
+          "ex": "The biotechnology course includes discussions of ownership and public access, alongside practical instruction in methods used to investigate living systems.",
+          "exTr": "Biyoteknoloji dersi, canlı sistemleri araştırmada kullanılan yöntemlere ilişkin uygulamalı eğitimin yanı sıra mülkiyet ve kamusal erişim tartışmalarını da kapsıyor."
+        }
+      ]
+    },
+    {
+      "word": "birder",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kuş gözlemcisi",
+        "ex": "Amateur birders contribute valuable data to conservation science by recording the arrival dates of migratory species in their local wetlands.",
+        "exTr": "Amatör kuş gözlemcileri, göçmen türlerin yerel sulak alanlarına varış tarihlerini kaydederek koruma bilimine değerli veriler sağlıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "An experienced birder accompanied the school group, encouraging pupils to describe what they observed before suggesting possible names for the birds.",
+          "exTr": "Deneyimli bir kuş gözlemcisi okul grubuna eşlik ederek kuşların olası adlarını önermeden önce öğrencileri gözlemlediklerini betimlemeye teşvik etti."
+        }
+      ]
+    },
+    {
+      "word": "birthplace",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. doğum yeri",
+        "ex": "The small village is widely recognized as the birthplace of a famous nineteenth-century composer.",
+        "exTr": "Küçük köy, ünlü bir on dokuzuncu yüzyıl bestecisinin doğum yeri olarak geniş çapta tanınır."
+      },
+      "alternatives": [
+        {
+          "ex": "The composer's birthplace attracts visitors, although the house now standing on the site was built after the family had moved away.",
+          "exTr": "Bestecinin doğum yeri ziyaretçi çekiyor; ancak bugün orada bulunan ev aile taşındıktan sonra inşa edilmişti."
+        }
+      ]
+    },
+    {
+      "word": "bit-by-bit",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s./z. azar azar, parça parça, aşama aşama",
+        "ex": "The old house was renovated bit-by-bit over several years as the family's budget slowly allowed.",
+        "exTr": "Eski ev, ailenin bütçesi yavaş yavaş elverdikçe yıllar içinde azar azar yenilendi."
+      },
+      "alternatives": [
+        {
+          "ex": "A bit-by-bit reconstruction of the damaged mosaic allowed conservators to document uncertainties before committing to the position of each surviving fragment.",
+          "exTr": "Hasarlı mozaiğin parça parça yeniden oluşturulması, koruma uzmanlarının günümüze kalan her parçanın konumunu kesinleştirmeden önce belirsizlikleri belgelemesine olanak tanıdı."
+        }
+      ]
+    },
+    {
+      "word": "bizarre",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. tuhaf, acayip, garip",
+        "ex": "Marine biologists filmed a bizarre deep-sea creature that had never been recorded on camera before.",
+        "exTr": "Deniz biyologları, daha önce hiç kamerayla kaydedilmemiş tuhaf bir derin deniz canlısını filme çekti."
+      },
+      "alternatives": [
+        {
+          "ex": "What initially appeared to be a bizarre arrangement of rooms made sense once the building's successive changes of use were understood.",
+          "exTr": "Başlangıçta tuhaf bir oda düzeni gibi görünen yapı, binanın birbirini izleyen kullanım değişiklikleri anlaşılınca anlam kazandı."
+        }
+      ]
+    },
+    {
+      "word": "black-and-white",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. siyah beyaz",
+        "ex": "The museum displayed rare black-and-white photographs taken during the city's earliest years of industrialization.",
+        "exTr": "Müze, şehrin sanayileşmenin ilk yıllarında çekilmiş nadir siyah beyaz fotoğraflarını sergiledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The black-and-white images preserve details of the street layout, but provide little reliable evidence about the colours used on shop fronts.",
+          "exTr": "Siyah beyaz görüntüler sokak düzenine ilişkin ayrıntıları koruyor; ancak dükkân cephelerinde kullanılan renklere dair pek az güvenilir kanıt sunuyor."
+        }
+      ]
+    },
+    {
+      "word": "blackbird",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. karatavuk",
+        "ex": "Ornithologists have noticed that urban blackbirds sing at a higher pitch than their rural relatives in order to overcome traffic noise.",
+        "exTr": "Kuş bilimciler, kentte yaşayan karatavukların trafik gürültüsünü aşmak için kırsaldaki akrabalarına kıyasla daha tiz öttüğünü fark etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The volunteers recorded a blackbird near the station, noting the time and surrounding noise before adding the observation to their shared log.",
+          "exTr": "Gönüllüler, gözlemi ortak günlüklerine eklemeden önce saati ve çevredeki gürültüyü not ederek istasyon yakınında bir karatavuk kaydetti."
+        }
+      ]
+    },
+    {
+      "word": "blame",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. suçlamak, sorumlu tutmak",
+        "ex": "Economists blame rising interest rates for the sudden slowdown in housing construction.",
+        "exTr": "Ekonomistler, konut inşaatındaki ani yavaşlamanın sorumlusu olarak yükselen faiz oranlarını görüyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Managers should not blame individual workers for recurring errors without examining whether unclear instructions or incompatible systems contribute to the problem.",
+          "exTr": "Yöneticiler, belirsiz talimatların veya uyumsuz sistemlerin soruna katkıda bulunup bulunmadığını incelemeden tekrarlanan hatalar için tek tek çalışanları suçlamamalıdır."
+        }
+      ]
+    },
+    {
+      "word": "blast",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. patlama",
+        "ex": "A powerful blast destroyed several buildings near the old chemical factory yesterday morning.",
+        "exTr": "Dün sabah meydana gelen güçlü bir patlama, eski kimya fabrikası yakınındaki birkaç binayı yıktı."
+      },
+      "alternatives": [
+        {
+          "ex": "The blast damaged windows well beyond the immediate site, prompting investigators to map the distribution of debris before clearing the street.",
+          "exTr": "Patlama, olay yerinin oldukça ötesindeki pencerelere zarar verdi ve araştırmacıları caddeyi temizlemeden önce enkaz dağılımını haritalamaya yöneltti."
+        }
+      ]
+    },
+    {
+      "word": "bleed",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. kanamak",
+        "ex": "After the minor accident, the patient's wound continued to bleed for several minutes.",
+        "exTr": "Küçük kazadan sonra hastanın yarası birkaç dakika boyunca kanamaya devam etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The witness recalled seeing the worker's hand bleed, but could not determine from a distance how the injury had occurred.",
+          "exTr": "Tanık, işçinin elinin kanadığını gördüğünü hatırlıyordu; ancak yaralanmanın nasıl meydana geldiğini uzaktan belirleyemiyordu."
+        }
+      ]
+    },
+    {
+      "word": "blight",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. bitki hastalığı, afet",
+        "ex": "A fungal blight destroyed nearly half of the region's potato harvest within a single season.",
+        "exTr": "Mantar kaynaklı bir bitki hastalığı, bölgenin patates hasadının neredeyse yarısını tek bir sezonda yok etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The farm records mention blight without describing its symptoms, making it difficult to identify the disease from the written account alone.",
+          "exTr": "Çiftlik kayıtları belirtilerini açıklamadan bitki hastalığından söz ediyor; bu da hastalığın yalnızca yazılı anlatımdan tanımlanmasını zorlaştırıyor."
+        }
+      ]
+    },
+    {
+      "word": "blistery",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kabarcıklı, su toplamış",
+        "ex": "The infection begins with a mild fever and soon produces a blistery rash that spreads across the chest and back.",
+        "exTr": "Enfeksiyon hafif bir ateşle başlar ve kısa süre sonra göğüs ile sırta yayılan kabarcıklı bir döküntüye yol açar."
+      },
+      "alternatives": [
+        {
+          "ex": "The blistery paint was photographed before removal so that conservators could compare the damaged surface with layers uncovered beneath it.",
+          "exTr": "Koruma uzmanlarının hasarlı yüzeyi altında açığa çıkarılan tabakalarla karşılaştırabilmesi için kabarcıklı boya kaldırılmadan önce fotoğraflandı."
+        }
+      ],
+      "note": "Nadir blistery sıfatı boyadaki kabarcıklar için de geçerli: https://www.dictionary.com/browse/blistery"
+    },
+    {
+      "word": "block",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. engellemek, tıkamak",
+        "ex": "Fallen trees continued to block the mountain road for several days after the storm.",
+        "exTr": "Devrilen ağaçlar, fırtınadan sonra birkaç gün boyunca dağ yolunu tıkamaya devam etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The revised layout must not block access to the emergency exit, even when the hall contains its maximum permitted number of seats.",
+          "exTr": "Salon izin verilen en yüksek sayıda koltuk içerdiğinde bile yeni düzen acil çıkışa erişimi engellememelidir."
+        }
+      ]
+    },
+    {
+      "word": "blood",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kan",
+        "ex": "Doctors drew a small sample of blood to test for signs of iron deficiency.",
+        "exTr": "Doktorlar, demir eksikliği belirtilerini test etmek için küçük bir kan örneği aldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The training exercise focused on labelling blood samples accurately, since a recording error could undermine otherwise careful laboratory work.",
+          "exTr": "Bir kayıt hatası diğer yönlerden özenli laboratuvar çalışmasını boşa çıkarabileceği için eğitim alıştırması kan örneklerini doğru etiketlemeye odaklandı."
+        }
+      ]
+    },
+    {
+      "word": "bloodstream",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kan dolaşımı, kan akışı",
+        "ex": "The medication enters the bloodstream quickly, providing relief from pain within minutes.",
+        "exTr": "İlaç, kan dolaşımına hızla girerek birkaç dakika içinde ağrıyı hafifletir."
+      },
+      "alternatives": [
+        {
+          "ex": "The animation distinguishes movement through the bloodstream from movement between neighbouring cells, helping students follow the different pathways shown in the diagram.",
+          "exTr": "Animasyon, öğrencilerin şemada gösterilen farklı yolları izlemesine yardımcı olarak kan dolaşımı yoluyla hareketi komşu hücreler arasındaki hareketten ayırıyor."
+        }
+      ]
+    }
+  ],
+  "collocations": [
+    {
+      "word": "bathroom",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a shared bathroom",
+          "tr": "ortak kullanılan banyo"
+        },
+        {
+          "en": "bathroom facilities",
+          "tr": "banyo ve tuvalet olanakları"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "be compelled to",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "be compelled to resign",
+          "tr": "istifa etmek zorunda kalmak"
+        },
+        {
+          "en": "be compelled to reconsider",
+          "tr": "yeniden değerlendirmek zorunda kalmak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "be obliged to",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "be obliged to comply",
+          "tr": "uymakla yükümlü olmak"
+        },
+        {
+          "en": "be obliged to disclose information",
+          "tr": "bilgi açıklamak zorunda olmak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "beach",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a sandy beach",
+          "tr": "kumlu plaj"
+        },
+        {
+          "en": "beach erosion",
+          "tr": "kumsal erozyonu"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "beautifully",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "beautifully illustrated",
+          "tr": "güzel resimlenmiş"
+        },
+        {
+          "en": "beautifully crafted",
+          "tr": "ustalıkla ve güzel biçimde yapılmış"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "bed-ground",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a bed-ground for sheep",
+          "tr": "koyun sürüsünün geceleme alanı"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "beetle",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a beetle species",
+          "tr": "kınkanatlı böcek türü"
+        },
+        {
+          "en": "a dung beetle",
+          "tr": "bok böceği"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "bell",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a church bell",
+          "tr": "kilise çanı"
+        },
+        {
+          "en": "ring the bell",
+          "tr": "zili veya çanı çalmak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "berlin",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "the Berlin Wall",
+          "tr": "Berlin Duvarı"
+        },
+        {
+          "en": "central Berlin",
+          "tr": "Berlin'in merkezi"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "better-looking",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a better-looking design",
+          "tr": "daha güzel görünen tasarım"
+        },
+        {
+          "en": "a better-looking alternative",
+          "tr": "görünüşü daha güzel seçenek"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "bible",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a translation of the Bible",
+          "tr": "Kutsal Kitap çevirisi"
+        },
+        {
+          "en": "a passage from the Bible",
+          "tr": "Kutsal Kitap'tan bir bölüm"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "bike",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a folding bike",
+          "tr": "katlanır bisiklet"
+        },
+        {
+          "en": "a bike lane",
+          "tr": "bisiklet şeridi"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "bizarre",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a bizarre incident",
+          "tr": "tuhaf olay"
+        },
+        {
+          "en": "a bizarre coincidence",
+          "tr": "acayip tesadüf"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "bleed",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "bleed heavily",
+          "tr": "çok kanamak"
+        },
+        {
+          "en": "begin to bleed",
+          "tr": "kanamaya başlamak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

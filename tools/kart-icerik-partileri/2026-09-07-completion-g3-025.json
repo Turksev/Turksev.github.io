@@ -1,0 +1,973 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 3,
+    "input": "input-025.json"
+  },
+  "enrichments": [
+    {
+      "word": "inflate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. şişirmek, şişmek; yapay biçimde artırmak",
+        "ex": "Selective reporting can inflate estimates of a treatment's effectiveness by excluding unsuccessful trials.",
+        "exTr": "Seçici raporlama, başarısız deneyleri dışarıda bırakarak bir tedavinin etkililiğine ilişkin tahminleri yapay biçimde artırabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "Counting the same visitor on every return trip would inflate attendance figures, so the researchers distinguished individual visitors from total visits.",
+          "exTr": "Aynı ziyaretçiyi her gelişinde yeniden saymak katılım rakamlarını şişireceği için araştırmacılar tekil ziyaretçileri toplam ziyaret sayısından ayırdı."
+        }
+      ]
+    },
+    {
+      "word": "inflict",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. (acı/zarar) vermek, uygulamak",
+        "ex": "The storm managed to inflict serious damage on coastal homes within just a few hours.",
+        "exTr": "Fırtına, sadece birkaç saat içinde kıyı evlerine ciddi zarar vermeyi başardı."
+      },
+      "alternatives": [
+        {
+          "ex": "The essay considers the lasting harm that public accusations can inflict on people whose explanations receive far less attention than the original allegations.",
+          "exTr": "Deneme, açıklamaları ilk iddialardan çok daha az ilgi gören insanlara kamuya açık suçlamaların verebileceği kalıcı zararı ele alır."
+        }
+      ]
+    },
+    {
+      "word": "influenza",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. grip",
+        "ex": "Health officials urged elderly citizens to get vaccinated against influenza before the winter season.",
+        "exTr": "Sağlık yetkilileri, kış mevsimi başlamadan önce yaşlı vatandaşları gribe karşı aşı olmaya çağırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "Newspaper advertisements from an influenza outbreak offered the historian evidence of contemporary fears, but not reliable proof that the advertised remedies worked.",
+          "exTr": "Bir grip salgını dönemindeki gazete ilanları, tarihçiye dönemin korkularına ilişkin kanıt sundu; ancak tanıtılan çarelerin işe yaradığının güvenilir kanıtını sunmadı."
+        }
+      ]
+    },
+    {
+      "word": "information",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. bilgi",
+        "ex": "The internet gives students instant access to vast amounts of information on virtually any topic.",
+        "exTr": "İnternet, öğrencilere hemen her konuda muazzam miktarda bilgiye anında erişim sağlar."
+      },
+      "alternatives": [
+        {
+          "ex": "Before joining the project, volunteers received information about the tasks involved and could ask questions that the introductory leaflet had not answered.",
+          "exTr": "Gönüllüler, projeye katılmadan önce yapacakları işler hakkında bilgi aldı ve tanıtım broşürünün yanıtlamadığı soruları sorma imkânı buldu."
+        }
+      ]
+    },
+    {
+      "word": "infrared",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s./i. kızılötesi",
+        "ex": "Wildlife researchers use infrared cameras to track nocturnal animals without disturbing their natural behavior.",
+        "exTr": "Yaban hayatı araştırmacıları, gece hayvanlarını doğal davranışlarını bozmadan izlemek için kızılötesi kameralar kullanır."
+      },
+      "alternatives": [
+        {
+          "ex": "The building survey combined ordinary photographs with infrared images to investigate temperature differences around windows, doors and sections of the external walls.",
+          "exTr": "Bina araştırması, pencereler, kapılar ve dış duvar bölümleri çevresindeki sıcaklık farklarını incelemek için normal fotoğraflarla kızılötesi görüntüleri birleştirdi."
+        }
+      ]
+    },
+    {
+      "word": "ingenuity",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yaratıcılık, hüner",
+        "ex": "Engineers praised the team's ingenuity in designing a low-cost water filtration system for remote villages.",
+        "exTr": "Mühendisler, uzak köyler için düşük maliyetli bir su arıtma sistemi tasarlarken ekibin gösterdiği yaratıcılığı övdü."
+      },
+      "alternatives": [
+        {
+          "ex": "The puppeteer's ingenuity was evident in the simple mechanism that allowed a single performer to control several moving parts of the bird.",
+          "exTr": "Kuklacının yaratıcılığı, tek bir sanatçının kuşun birkaç hareketli parçasını kontrol etmesini sağlayan basit mekanizmada açıkça görülüyordu."
+        }
+      ]
+    },
+    {
+      "word": "inhabitant",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. belirli bir yerin sakini; orada yaşayan insan veya canlı",
+        "ex": "Every inhabitant of the island depends on rainwater collected during the brief wet season.",
+        "exTr": "Adanın her sakini kısa yağış mevsiminde toplanan yağmur suyuna bağımlıdır."
+      },
+      "alternatives": [
+        {
+          "ex": "Long-term inhabitants of the valley recalled paths that no longer appeared on maps, helping walkers reconstruct an older network of connections between villages.",
+          "exTr": "Vadide uzun zamandır yaşayan sakinler, artık haritalarda görünmeyen patikaları hatırlayarak yürüyüşçülerin köyler arasındaki eski bağlantı ağını yeniden belirlemesine yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "inherit",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. miras almak; kalıtsal olarak edinmek, devralmak",
+        "ex": "Children may inherit a genetic mutation without ever developing the disease associated with it.",
+        "exTr": "Çocuklar, ilişkili hastalığa hiç yakalanmadan genetik bir mutasyonu kalıtsal olarak edinebilir."
+      },
+      "alternatives": [
+        {
+          "ex": "When she inherited the family workshop, she also received notebooks documenting repairs that her grandfather had carried out over several decades.",
+          "exTr": "Aile atölyesi kendisine miras kaldığında, büyükbabasının onlarca yıl boyunca yaptığı onarımları belgeleyen defterleri de aldı."
+        }
+      ]
+    },
+    {
+      "word": "inhibit",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. engellemek, ket vurmak; baskılamak",
+        "ex": "High levels of stress can inhibit memory formation and reduce students' academic performance.",
+        "exTr": "Yüksek stres düzeyleri hafıza oluşumunu engelleyebilir ve öğrencilerin akademik başarısını düşürebilir."
+      },
+      "alternatives": [
+        {
+          "ex": "Fear of making mistakes appeared to inhibit discussion, so the tutor introduced exercises in which uncertain answers could be explored without assessment.",
+          "exTr": "Hata yapma korkusu tartışmayı engelliyor gibi göründüğünden öğretmen, kesin olmayan yanıtların not verilmeden ele alınabildiği alıştırmalar başlattı."
+        }
+      ]
+    },
+    {
+      "word": "initial",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. ilk, başlangıç",
+        "ex": "The initial results of the clinical trial appeared promising to the research team.",
+        "exTr": "Klinik denemenin ilk sonuçları, araştırma ekibine umut verici göründü."
+      },
+      "alternatives": [
+        {
+          "ex": "The initial design placed the entrance beside the car park, but feedback from pedestrians led the architect to reconsider the building's orientation.",
+          "exTr": "İlk tasarım girişi otoparkın yanına yerleştiriyordu; ancak yayalardan gelen geri bildirim, mimarın binanın yönünü yeniden düşünmesini sağladı."
+        }
+      ]
+    },
+    {
+      "word": "initiation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. başlatma, başlama",
+        "ex": "The initiation of the new environmental policy required approval from several government agencies.",
+        "exTr": "Yeni çevre politikasının başlatılması, birçok devlet kurumunun onayını gerektiriyordu."
+      },
+      "alternatives": [
+        {
+          "ex": "The initiation of regular water sampling required agreement on collection sites, responsibilities and the way unusual results would be communicated to residents.",
+          "exTr": "Düzenli su örneklemesinin başlatılması; toplama noktaları, sorumluluklar ve olağandışı sonuçların sakinlere nasıl iletileceği konusunda anlaşma gerektiriyordu."
+        }
+      ]
+    },
+    {
+      "word": "injection",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. (mecazi) katkı",
+        "ex": "The government announced a significant injection of funds to support struggling small businesses nationwide.",
+        "exTr": "Hükûmet, ülke genelinde zorlanan küçük işletmeleri desteklemek için önemli bir fon katkısı duyurdu."
+      },
+      "alternatives": [
+        {
+          "ex": "An injection of funding kept the theatre open for another season, giving its board time to develop a more sustainable source of income.",
+          "exTr": "Sağlanan mali kaynak, tiyatronun bir sezon daha açık kalmasını sağlayarak yönetim kuruluna daha sürdürülebilir bir gelir kaynağı geliştirme zamanı kazandırdı."
+        }
+      ]
+    },
+    {
+      "word": "injury",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yaralanma, zarar, hasar",
+        "ex": "Proper stretching before exercise can significantly reduce the risk of muscle injury.",
+        "exTr": "Egzersizden önce doğru germe hareketleri, kas yaralanması riskini önemli ölçüde azaltabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "Following an ankle injury, the dancer kept a diary about the practical difficulties of travelling to rehearsals even when she was not performing.",
+          "exTr": "Ayak bileğindeki yaralanmanın ardından dansçı, sahneye çıkmadığı zamanlarda bile provalara gidip gelmenin günlük güçlükleri hakkında bir günlük tuttu."
+        }
+      ]
+    },
+    {
+      "word": "innate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. doğuştan gelen, yaradılıştan",
+        "ex": "Humans appear to possess an innate capacity for language that develops rapidly during early childhood.",
+        "exTr": "İnsanlar, erken çocukluk döneminde hızla gelişen doğuştan bir dil kapasitesine sahip görünmektedir."
+      },
+      "alternatives": [
+        {
+          "ex": "The seminar questioned whether the observed preference was innate or learned, examining what kinds of evidence could distinguish these competing explanations.",
+          "exTr": "Seminer, gözlenen tercihin doğuştan mı geldiğini yoksa öğrenildiğini mi sorgulayarak bu rakip açıklamaları hangi kanıtların ayırt edebileceğini inceledi."
+        }
+      ]
+    },
+    {
+      "word": "innocent",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. masum, suçsuz; saf",
+        "ex": "After a lengthy trial, the jury concluded that the defendant was completely innocent.",
+        "exTr": "Uzun süren bir yargılamanın ardından jüri, sanığın tamamen masum olduğu sonucuna vardı."
+      },
+      "alternatives": [
+        {
+          "ex": "The novel's detective begins to doubt the obvious suspect when an apparently innocent remark reveals that another character knew the missing letter's contents.",
+          "exTr": "Romandaki dedektif, görünüşte masum bir söz başka bir karakterin kayıp mektubun içeriğini bildiğini açığa çıkarınca ilk akla gelen şüpheliden kuşkulanmaya başlar."
+        }
+      ]
+    },
+    {
+      "word": "innovative",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yenilikçi, yaratıcı",
+        "ex": "The company developed an innovative recycling method that converts plastic waste into building materials.",
+        "exTr": "Şirket, plastik atıkları yapı malzemesine dönüştüren yenilikçi bir geri dönüşüm yöntemi geliştirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "An innovative seating arrangement allowed audience members to view the performance from different angles without requiring the actors to change the stage layout.",
+          "exTr": "Yenilikçi bir oturma düzeni, oyuncuların sahne düzenini değiştirmesine gerek kalmadan seyircilerin gösteriyi farklı açılardan izlemesini sağladı."
+        }
+      ]
+    },
+    {
+      "word": "inquiry",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. soruşturma; sorgu, araştırma",
+        "ex": "Authorities launched a formal inquiry into the cause of the factory explosion that injured several workers.",
+        "exTr": "Yetkililer, birçok işçinin yaralanmasına yol açan fabrika patlamasının nedenine ilişkin resmi bir soruşturma başlattı."
+      },
+      "alternatives": [
+        {
+          "ex": "The inquiry examined why repeated complaints about the bridge had failed to trigger an inspection before a section was closed as unsafe.",
+          "exTr": "Soruşturma, köprüyle ilgili tekrarlanan şikâyetlerin, bir bölümü güvensiz bulunarak kapatılmadan önce neden denetim başlatmadığını inceledi."
+        }
+      ]
+    },
+    {
+      "word": "insecticide",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. böcek ilacı, insektisit",
+        "ex": "Farmers sprayed insecticide across the fields to protect the young crops from locust swarms.",
+        "exTr": "Çiftçiler, genç ürünleri çekirge sürülerinden korumak için tarlalara böcek ilacı püskürttü."
+      },
+      "alternatives": [
+        {
+          "ex": "The agricultural survey recorded insecticide use alongside crop type and field size, allowing researchers to compare management practices without assuming that all farms were alike.",
+          "exTr": "Tarım araştırması, ürün türü ve tarla büyüklüğüyle birlikte böcek ilacı kullanımını da kaydederek araştırmacıların tüm çiftlikleri aynı saymadan yönetim uygulamalarını karşılaştırmasını sağladı."
+        }
+      ]
+    },
+    {
+      "word": "insert",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. eklemek, yerleştirmek",
+        "ex": "Surgeons carefully insert a thin catheter into the blood vessel during the procedure.",
+        "exTr": "Cerrahlar, işlem sırasında ince bir kateteri damara dikkatle yerleştirir."
+      },
+      "alternatives": [
+        {
+          "ex": "The editor inserted a short explanation before the statistical table so that readers could understand why some categories had been combined.",
+          "exTr": "Editör, okurların bazı kategorilerin neden birleştirildiğini anlayabilmesi için istatistik tablosundan önce kısa bir açıklama ekledi."
+        }
+      ]
+    },
+    {
+      "word": "insight",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. içgörü, kavrayış, anlayış",
+        "ex": "Brain imaging studies provide valuable insight into how memories are formed and stored.",
+        "exTr": "Beyin görüntüleme çalışmaları, anıların nasıl oluştuğuna ve depolandığına dair değerli içgörüler sunar."
+      },
+      "alternatives": [
+        {
+          "ex": "Letters exchanged during the construction project offer insight into the negotiations behind decisions that official drawings present as straightforward technical choices.",
+          "exTr": "İnşaat projesi sırasında gönderilen mektuplar, resmî çizimlerin basit teknik tercihler gibi sunduğu kararların ardındaki müzakerelere ilişkin bir kavrayış sunar."
+        }
+      ]
+    },
+    {
+      "word": "insistence",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ısrar",
+        "ex": "The experiment was repeated at the editor's insistence.",
+        "exTr": "Deney editörün ısrarı üzerine tekrarlandı."
+      },
+      "alternatives": [
+        {
+          "ex": "At the residents' insistence, the planning meeting included time for questions about noise rather than focusing exclusively on the proposed building's appearance.",
+          "exTr": "Sakinlerin ısrarı üzerine planlama toplantısı, yalnızca önerilen binanın görünümüne odaklanmak yerine gürültü hakkındaki sorulara da zaman ayırdı."
+        }
+      ]
+    },
+    {
+      "word": "inspect",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. denetlemek, incelemek",
+        "ex": "Officials arrived unannounced to inspect the factory's compliance with safety regulations.",
+        "exTr": "Yetkililer, fabrikanın güvenlik yönetmeliklerine uyumunu denetlemek için habersiz geldi."
+      },
+      "alternatives": [
+        {
+          "ex": "Students were allowed to inspect the original maps under supervision, comparing pencil annotations with the cleaner versions reproduced in the published atlas.",
+          "exTr": "Öğrencilerin, kurşun kalem notlarını yayımlanmış atlastaki daha temiz versiyonlarla karşılaştırarak özgün haritaları gözetim altında incelemesine izin verildi."
+        }
+      ]
+    },
+    {
+      "word": "inspiration",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ilham",
+        "ex": "The architect drew inspiration from traditional Ottoman patterns when designing the new museum facade.",
+        "exTr": "Mimar, yeni müzenin cephesini tasarlarken geleneksel Osmanlı desenlerinden ilham aldı."
+      },
+      "alternatives": [
+        {
+          "ex": "For the composer, the irregular rhythm of machinery became a source of inspiration rather than simply background noise to be excluded from music.",
+          "exTr": "Besteci için makinelerin düzensiz ritmi, müzikten çıkarılması gereken bir arka plan gürültüsünden ziyade bir ilham kaynağına dönüştü."
+        }
+      ]
+    },
+    {
+      "word": "inspired",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. ilhamla yaratılmış, ilham alınarak yapılmış",
+        "ex": "The building's spiral staircase was inspired by the natural curve of a seashell.",
+        "exTr": "Binanın sarmal merdiveni, bir deniz kabuğunun doğal kıvrımından ilham alınarak tasarlandı."
+      },
+      "alternatives": [
+        {
+          "ex": "The collection features fabrics inspired by aerial views of farmland, translating boundaries between fields into patterns of intersecting lines and contrasting colours.",
+          "exTr": "Koleksiyon, tarlalar arasındaki sınırları kesişen çizgi ve karşıt renk desenlerine dönüştüren, tarım arazilerinin havadan görünüşlerinden esinlenmiş kumaşlar içerir."
+        }
+      ]
+    },
+    {
+      "word": "install",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. kurmak, yerleştirmek, monte etmek",
+        "ex": "Engineers plan to install solar panels on every rooftop in the new eco-friendly housing development.",
+        "exTr": "Mühendisler, yeni çevre dostu konut projesindeki her çatıya güneş paneli kurmayı planlıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Before installing the new display cases, the gallery tested whether their position would leave enough room for visitors using mobility aids.",
+          "exTr": "Galeri, yeni sergi vitrinlerini yerleştirmeden önce konumlarının hareket destek araçları kullanan ziyaretçilere yeterli alan bırakıp bırakmayacağını test etti."
+        }
+      ]
+    },
+    {
+      "word": "instant",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. anlık, ani; hazır (yiyecek/içecek)",
+        "ex": "The new app achieved instant popularity among teenagers within just a few days of its release.",
+        "exTr": "Yeni uygulama, piyasaya çıkışından yalnızca birkaç gün sonra gençler arasında anlık bir popülerlik kazandı."
+      },
+      "alternatives": [
+        {
+          "ex": "The online catalogue gave researchers instant access to descriptions of the collection, although viewing fragile objects still required an appointment with staff.",
+          "exTr": "Çevrim içi katalog araştırmacılara koleksiyonun tanımlarına anında erişim sağladı; ancak hassas nesneleri görmek hâlâ personelden randevu almayı gerektiriyordu."
+        }
+      ]
+    },
+    {
+      "word": "instantly",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. anında, hemen",
+        "ex": "The new diagnostic tool can instantly detect abnormalities in a patient's bloodwork.",
+        "exTr": "Yeni tanı aracı, bir hastanın kan tahlilindeki anormallikleri anında tespit edebiliyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The actor instantly recognised the melody from his childhood, but needed help from older relatives to remember the words of the song.",
+          "exTr": "Oyuncu, çocukluğundan kalan melodiyi anında tanıdı; ancak şarkının sözlerini hatırlamak için yaşça büyük akrabalarının yardımına ihtiyaç duydu."
+        }
+      ]
+    },
+    {
+      "word": "instinct",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. içgüdü, sezgi",
+        "ex": "Many animals rely on instinct rather than learned behavior to survive harsh winters.",
+        "exTr": "Birçok hayvan, sert kışlarda hayatta kalmak için öğrenilmiş davranıştan çok içgüdüye güvenir."
+      },
+      "alternatives": [
+        {
+          "ex": "Her first instinct was to reject the unusual proposal, yet a closer examination revealed that its central idea addressed a genuine problem.",
+          "exTr": "İlk sezgisi alışılmadık öneriyi reddetmekti; ancak daha yakından inceleyince önerinin temel fikrinin gerçek bir soruna karşılık geldiği ortaya çıktı."
+        }
+      ]
+    },
+    {
+      "word": "institutional",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kurumsal",
+        "ex": "The report criticized institutional barriers that prevented low-income families from accessing quality healthcare.",
+        "exTr": "Rapor, düşük gelirli ailelerin kaliteli sağlık hizmetine erişimini engelleyen kurumsal engelleri eleştirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The study traced institutional change through recruitment procedures, asking whether revised policies had altered everyday decisions or merely the language of official documents.",
+          "exTr": "Çalışma, yenilenen politikaların günlük kararları mı yoksa yalnızca resmî belgelerin dilini mi değiştirdiğini sorarak kurumsal değişimi işe alım süreçleri üzerinden izledi."
+        }
+      ]
+    },
+    {
+      "word": "instructional",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. eğitici, öğretici",
+        "ex": "The university uploaded a series of instructional videos to help students prepare for the exam.",
+        "exTr": "Üniversite, öğrencilerin sınava hazırlanmasına yardımcı olmak için bir dizi eğitici video yükledi."
+      },
+      "alternatives": [
+        {
+          "ex": "Each tool came with an instructional card showing its purpose and limitations, while more demanding tasks were introduced through supervised demonstrations.",
+          "exTr": "Her aletin yanında amacını ve sınırlılıklarını gösteren öğretici bir kart bulunuyordu; daha zor işler ise gözetimli gösterimlerle tanıtılıyordu."
+        }
+      ]
+    },
+    {
+      "word": "instrument",
+      "sense_index": 1,
+      "expected": {
+        "tr": "çalgı",
+        "ex": "Every child in the orchestra learned to play a different instrument before the age of ten.",
+        "exTr": "Orkestradaki her çocuk, on yaşına gelmeden farklı bir çalgı çalmayı öğrendi."
+      },
+      "alternatives": [
+        {
+          "ex": "Choosing an instrument for the school ensemble involved considering the student's interests as well as whether regular practice would be possible at home.",
+          "exTr": "Okul topluluğu için çalgı seçerken öğrencinin ilgi alanlarının yanı sıra evde düzenli çalışmanın mümkün olup olmayacağı da dikkate alındı."
+        }
+      ]
+    },
+    {
+      "word": "insult",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. hakaret",
+        "ex": "The comedian's joke was widely seen as an insult to the entire profession, sparking public backlash.",
+        "exTr": "Komedyenin şakası, tüm mesleğe yönelik bir hakaret olarak geniş çapta algılandı ve kamuoyunda tepkiye yol açtı."
+      },
+      "alternatives": [
+        {
+          "ex": "What the speaker intended as friendly teasing was received as an insult, revealing how differently the two colleagues understood their relationship.",
+          "exTr": "Konuşmacının dostça takılmak amacıyla söylediği söz hakaret olarak algılanarak iki meslektaşın ilişkilerini ne kadar farklı anladığını ortaya koydu."
+        }
+      ]
+    },
+    {
+      "word": "insurer",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sigorta hizmeti sunan şirket veya kuruluş; sigortacı",
+        "ex": "The insurer requested an independent assessment before agreeing to cover the cost of structural repairs.",
+        "exTr": "Sigortacı yapısal onarım masrafını karşılamayı kabul etmeden önce bağımsız bir değerlendirme istedi."
+      },
+      "alternatives": [
+        {
+          "ex": "After the roof was damaged, the homeowner sent photographs and repair estimates to the insurer, keeping copies of all correspondence about the claim.",
+          "exTr": "Çatı hasar gördükten sonra ev sahibi, talebiyle ilgili tüm yazışmaların kopyalarını saklayarak sigortacıya fotoğrafları ve tahmini onarım maliyetlerini gönderdi."
+        }
+      ]
+    },
+    {
+      "word": "integral",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. ayrılmaz, temel; bütünleyici",
+        "ex": "Renewable energy has become an integral part of national strategies to reduce carbon emissions.",
+        "exTr": "Yenilenebilir enerji, karbon emisyonlarını azaltmaya yönelik ulusal stratejilerin ayrılmaz bir parçası hâline geldi."
+      },
+      "alternatives": [
+        {
+          "ex": "Discussion of unsuccessful attempts became an integral part of the course, helping students understand how practical knowledge develops through revision rather than immediate success.",
+          "exTr": "Başarısız denemelerin tartışılması, uygulamalı bilginin hemen başarıya ulaşmak yerine gözden geçirmeyle nasıl geliştiğini anlamayı sağlayarak dersin ayrılmaz bir parçası oldu."
+        }
+      ]
+    },
+    {
+      "word": "integration",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. entegrasyon, bütünleşme",
+        "ex": "The economic integration of neighboring countries has boosted trade throughout the region significantly.",
+        "exTr": "Komşu ülkelerin ekonomik entegrasyonu, bölge genelinde ticareti önemli ölçüde artırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The integration of ticketing systems allowed passengers to change between buses and trains without buying a separate ticket for each part of the journey.",
+          "exTr": "Bilet sistemlerinin bütünleştirilmesi, yolcuların yolculuğun her aşaması için ayrı bilet almadan otobüsle tren arasında aktarma yapmasını sağladı."
+        }
+      ]
+    },
+    {
+      "word": "intelligence",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. zekâ",
+        "ex": "Artificial intelligence is transforming industries ranging from healthcare to transportation.",
+        "exTr": "Yapay zekâ, sağlıktan ulaşıma kadar birçok sektörü dönüştürüyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The psychology seminar examined competing definitions of intelligence and asked whether a single test could capture all the abilities those definitions include.",
+          "exTr": "Psikoloji semineri, zekâya ilişkin rakip tanımları inceledi ve tek bir testin bu tanımların içerdiği tüm yetenekleri ölçüp ölçemeyeceğini sordu."
+        }
+      ]
+    },
+    {
+      "word": "intended",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. amaçlanan, kastedilen, öngörülen",
+        "ex": "Beyond its intended therapeutic purpose, the medication produced several unexpected side effects.",
+        "exTr": "İlaç, amaçlanan tedavi edici etkisinin ötesinde çeşitli beklenmedik yan etkiler ortaya çıkardı."
+      },
+      "alternatives": [
+        {
+          "ex": "The poster failed to reach its intended audience because it was displayed mainly in buildings that young people rarely entered outside school hours.",
+          "exTr": "Afiş, çoğunlukla gençlerin okul saatleri dışında nadiren girdiği binalara asıldığı için hedeflenen kitleye ulaşamadı."
+        }
+      ]
+    },
+    {
+      "word": "intensity",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yoğunluk, şiddet",
+        "ex": "Climate models predict that the intensity of tropical storms will increase as oceans warm.",
+        "exTr": "İklim modelleri, okyanuslar ısındıkça tropikal fırtınaların şiddetinin artacağını öngörmektedir."
+      },
+      "alternatives": [
+        {
+          "ex": "Light intensity was measured at several points beneath the canopy to examine how conditions differed between the forest edge and its shaded interior.",
+          "exTr": "Orman kenarıyla gölgeli iç kesimler arasındaki koşulların nasıl farklılaştığını incelemek için ağaç örtüsünün altındaki birkaç noktada ışık şiddeti ölçüldü."
+        }
+      ]
+    },
+    {
+      "word": "intent",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. niyet, kasıt",
+        "ex": "Investigators could not determine the suspect's exact intent before the break-in occurred last night.",
+        "exTr": "Soruşturmacılar, dün gece gerçekleşen hırsızlıktan önce şüphelinin tam niyetini belirleyemedi."
+      },
+      "alternatives": [
+        {
+          "ex": "The author's intent cannot be inferred from the ending alone, since earlier drafts suggest that the final scene underwent several substantial revisions.",
+          "exTr": "Önceki taslaklar son sahnenin birkaç önemli değişiklik geçirdiğini gösterdiği için yazarın niyeti yalnızca eserin sonundan çıkarılamaz."
+        }
+      ]
+    },
+    {
+      "word": "intentionally",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. kasıtlı olarak, bilerek",
+        "ex": "The engineer explained that the safety switch was intentionally placed out of reach of children.",
+        "exTr": "Mühendis, güvenlik düğmesinin çocukların erişemeyeceği bir yere kasıtlı olarak yerleştirildiğini açıkladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The photographer intentionally left part of the frame empty, drawing attention to the distance between the isolated house and the surrounding settlement.",
+          "exTr": "Fotoğrafçı, yalnız evle çevresindeki yerleşim arasındaki mesafeye dikkat çekmek için kadrajın bir bölümünü bilerek boş bıraktı."
+        }
+      ]
+    },
+    {
+      "word": "interactional",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. etkileşimsel, etkileşime dayalı, karşılıklı iletişime ilişkin",
+        "ex": "Sociolinguists examine the interactional patterns of everyday conversation to understand how speakers signal politeness, disagreement and social distance to one another.",
+        "exTr": "Toplumdilbilimciler, konuşucuların birbirine nezaketi, anlaşmazlığı ve toplumsal mesafeyi nasıl ilettiğini anlamak için gündelik konuşmanın etkileşimsel örüntülerini inceler."
+      },
+      "alternatives": [
+        {
+          "ex": "The researcher examined the interactional role of pauses, comparing moments when silence invited another speaker to continue with those that signalled disagreement.",
+          "exTr": "Araştırmacı, sessizliğin başka bir konuşmacıyı devam etmeye davet ettiği anlarla anlaşmazlık işareti verdiği anları karşılaştırarak duraklamaların etkileşimsel rolünü inceledi."
+        }
+      ]
+    },
+    {
+      "word": "intercept",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. yolunu kesmek, ele geçirmek (yol/mesaj üzerinde)",
+        "ex": "Military radar systems are designed to intercept missiles long before they reach populated areas.",
+        "exTr": "Askeri radar sistemleri, füzeleri yerleşim alanlarına ulaşmadan çok önce yollarını kesmek üzere tasarlanmıştır."
+      },
+      "alternatives": [
+        {
+          "ex": "A defender intercepted the pass near the halfway line, turning a promising attack into an opportunity for the opposing team to advance.",
+          "exTr": "Bir savunmacı, orta çizgi yakınında pası keserek umut vadeden bir hücumu rakip takım için ilerleme fırsatına dönüştürdü."
+        }
+      ]
+    },
+    {
+      "word": "interdependent",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. birbirine bağlı, karşılıklı bağımlı",
+        "ex": "Ecosystems consist of interdependent species whose survival depends on one another, so the loss of a single population can destabilise the whole system.",
+        "exTr": "Ekosistemler, hayatta kalmaları birbirine bağlı olan türlerden oluşur; bu yüzden tek bir popülasyonun kaybı bütün sistemi sarsabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The workshop's cutting and assembly stages were interdependent, since delays in preparing components immediately affected what the next group could complete.",
+          "exTr": "Atölyenin kesim ve montaj aşamaları karşılıklı bağımlıydı; çünkü parçaların hazırlanmasındaki gecikmeler bir sonraki grubun tamamlayabileceklerini hemen etkiliyordu."
+        }
+      ]
+    },
+    {
+      "word": "interesting",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. ilginç, ilgi çekici",
+        "ex": "Researchers made an interesting discovery about how octopuses use tools to protect themselves.",
+        "exTr": "Araştırmacılar, ahtapotların kendilerini korumak için aletleri nasıl kullandığına dair ilginç bir keşif yaptı."
+      },
+      "alternatives": [
+        {
+          "ex": "An interesting difference emerged between the two translations: one preserved the narrator's hesitation, while the other made her statements sound much more confident.",
+          "exTr": "İki çeviri arasında ilginç bir fark ortaya çıktı: biri anlatıcının tereddüdünü korurken diğeri ifadelerini çok daha kendinden emin gösteriyordu."
+        }
+      ]
+    },
+    {
+      "word": "interfere",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. müdahale etmek, engel olmak, karışmak",
+        "ex": "Excessive noise pollution can interfere with the migratory patterns of whales in coastal waters.",
+        "exTr": "Aşırı gürültü kirliliği, kıyı sularındaki balinaların göç düzenlerine müdahale edebilir."
+      },
+      "alternatives": [
+        {
+          "ex": "Construction noise began to interfere with the recording sessions, forcing the language project to find a quieter room before inviting further participants.",
+          "exTr": "İnşaat gürültüsü kayıt oturumlarını aksatmaya başlayınca dil projesi, yeni katılımcılar davet etmeden önce daha sessiz bir oda bulmak zorunda kaldı."
+        }
+      ]
+    },
+    {
+      "word": "interlaced",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. iç içe geçmiş, birbirine örülmüş, dolanık",
+        "ex": "The manuscript is decorated with interlaced patterns of vines and birds, a style typical of early medieval monastic art in Ireland.",
+        "exTr": "El yazması, İrlanda'daki erken Orta Çağ manastır sanatına özgü bir üslup olan, iç içe geçmiş asma ve kuş desenleriyle süslenmiştir."
+      },
+      "alternatives": [
+        {
+          "ex": "The basket's interlaced strips were photographed from several angles so that students could understand its structure before attempting to reproduce the pattern.",
+          "exTr": "Öğrencilerin deseni yeniden yapmaya çalışmadan önce yapıyı anlayabilmesi için sepetin birbirine örülmüş şeritleri birkaç açıdan fotoğraflandı."
+        }
+      ]
+    },
+    {
+      "word": "internal",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. iç, dahili, içsel",
+        "ex": "Auditors reviewed the company's internal records to determine the source of the financial discrepancy.",
+        "exTr": "Denetçiler, mali tutarsızlığın kaynağını belirlemek için şirketin iç kayıtlarını inceledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The diagram separates internal components from the protective casing, making it easier to understand which parts must move during normal operation.",
+          "exTr": "Şema, iç bileşenleri koruyucu muhafazadan ayırarak normal çalışma sırasında hangi parçaların hareket etmesi gerektiğini anlamayı kolaylaştırır."
+        }
+      ]
+    },
+    {
+      "word": "internationally",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. uluslararası düzeyde",
+        "ex": "The research team's findings were internationally recognized as a major breakthrough in renewable energy.",
+        "exTr": "Araştırma ekibinin bulguları, yenilenebilir enerjide büyük bir atılım olarak uluslararası düzeyde tanındı."
+      },
+      "alternatives": [
+        {
+          "ex": "Although her ceramics were exhibited internationally, the artist continued to make them in the small coastal studio where she had first trained.",
+          "exTr": "Seramikleri uluslararası düzeyde sergilense de sanatçı onları ilk eğitimini aldığı küçük kıyı atölyesinde üretmeye devam etti."
+        }
+      ]
+    },
+    {
+      "word": "interpersonal",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kişilerarası",
+        "ex": "Strong interpersonal skills help employees collaborate effectively within diverse workplace teams.",
+        "exTr": "Güçlü kişilerarası beceriler, çalışanların farklı iş yeri ekipleri içinde etkili biçimde iş birliği yapmasına yardımcı olur."
+      },
+      "alternatives": [
+        {
+          "ex": "The training programme addressed interpersonal conflict through fictional workplace scenarios, allowing participants to compare responses without discussing private disputes involving their colleagues.",
+          "exTr": "Eğitim programı, kişilerarası çatışmayı kurgusal iş yeri senaryolarıyla ele alarak katılımcıların meslektaşlarıyla özel anlaşmazlıklarını tartışmadan farklı tepkileri karşılaştırmasını sağladı."
+        }
+      ]
+    },
+    {
+      "word": "interpretation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yorum, yorumlama",
+        "ex": "Different scholars offered conflicting interpretations of the ancient manuscript discovered in the cave.",
+        "exTr": "Farklı akademisyenler, mağarada bulunan antik el yazmasına ilişkin çelişen yorumlar ortaya koydu."
+      },
+      "alternatives": [
+        {
+          "ex": "A different interpretation of the survey emerged when the analyst separated responses from permanent residents and people who visited only during summer.",
+          "exTr": "Analist, sürekli yaşayan sakinlerle yalnızca yazın gelenlerin yanıtlarını ayırdığında anketin farklı bir yorumu ortaya çıktı."
+        }
+      ]
+    },
+    {
+      "word": "interrelation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. karşılıklı ilişki, birbiriyle bağlantı",
+        "ex": "The lecture explored the interrelation between economic inequality and public health, showing how each of these factors continually reinforces the other.",
+        "exTr": "Ders, ekonomik eşitsizlik ile halk sağlığı arasındaki karşılıklı ilişkiyi ele alarak bu etmenlerin her birinin diğerini sürekli nasıl pekiştirdiğini gösterdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The planning course explored the interrelation between housing location and transport provision, asking how changes in either could alter daily travel choices.",
+          "exTr": "Planlama dersi, konut konumu ile ulaşım hizmetleri arasındaki karşılıklı ilişkiyi ele alarak birindeki değişikliğin günlük yolculuk tercihlerini nasıl değiştirebileceğini sordu."
+        }
+      ]
+    },
+    {
+      "word": "intertwine",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. iç içe geçmek, birbirine dolanmak, birbirine bağlanmak",
+        "ex": "The history of coffee and the history of global trade are so closely intertwined that neither of them can be understood in isolation.",
+        "exTr": "Kahvenin tarihi ile küresel ticaretin tarihi öylesine iç içe geçmiştir ki ikisi de tek başına anlaşılamaz."
+      },
+      "alternatives": [
+        {
+          "ex": "In the novel, the lives of a railway engineer and a travelling musician intertwine through letters discovered years after their brief meeting.",
+          "exTr": "Romanda bir demir yolu mühendisiyle gezgin bir müzisyenin yaşamları, kısa karşılaşmalarından yıllar sonra bulunan mektuplar aracılığıyla iç içe geçer."
+        }
+      ]
+    },
+    {
+      "word": "intervention",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. müdahale",
+        "ex": "Early medical intervention significantly improves the chances of recovery for stroke patients.",
+        "exTr": "Erken tıbbi müdahale, felç hastalarının iyileşme şansını önemli ölçüde artırır."
+      },
+      "alternatives": [
+        {
+          "ex": "A timely intervention by the chair brought the discussion back to the budget after participants had begun debating unrelated questions about leadership.",
+          "exTr": "Katılımcılar liderlikle ilgili konu dışı soruları tartışmaya başlayınca başkanın zamanında müdahalesi görüşmeyi yeniden bütçeye yöneltti."
+        }
+      ]
+    },
+    {
+      "word": "intestinal",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. bağırsakla ilgili, bağırsak (hastalığı, florası vb.)",
+        "ex": "Recent studies suggest that intestinal bacteria influence not only digestion but also mood, immunity and the body's overall resistance to infection.",
+        "exTr": "Son çalışmalar, bağırsak bakterilerinin yalnızca sindirimi değil, ruh hâlini, bağışıklığı ve vücudun enfeksiyona karşı genel direncini de etkilediğini gösteriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The anatomy diagram shows the intestinal wall in cross-section, distinguishing its layers without suggesting that all sections of the digestive tract are identical.",
+          "exTr": "Anatomi şeması, sindirim kanalının bütün bölümlerinin aynı olduğunu ima etmeden bağırsak duvarını enine kesitte gösterip katmanlarını ayırt eder."
+        }
+      ]
+    },
+    {
+      "word": "intimate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. samimi, yakın, mahrem",
+        "ex": "The biographer gained an intimate understanding of the scientist's personal struggles and motivations.",
+        "exTr": "Biyografi yazarı, bilim insanının kişisel mücadeleleri ve motivasyonları hakkında yakın bir kavrayış kazandı."
+      },
+      "alternatives": [
+        {
+          "ex": "The letters offer an intimate portrait of family life, revealing small acts of affection that receive little attention in the writer's public memoirs.",
+          "exTr": "Mektuplar, yazarın yayımlanmış anılarında pek yer bulmayan küçük sevgi gösterilerini açığa çıkararak aile yaşamının samimi bir portresini sunar."
+        }
+      ]
+    },
+    {
+      "word": "intrigue",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. merakını uyandırmak, ilgisini çekmek",
+        "ex": "The ability of certain birds to navigate at night continues to intrigue researchers.",
+        "exTr": "Bazı kuşların gece yön bulma yeteneği araştırmacıların ilgisini çekmeye devam ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The unexplained gap in the diary intrigued the biographer, particularly because later letters repeatedly referred to an important journey during that period.",
+          "exTr": "Günlükteki açıklanamayan boşluk, özellikle sonraki mektuplar o dönemdeki önemli bir yolculuğa tekrar tekrar değindiği için biyografi yazarının merakını uyandırdı."
+        }
+      ]
+    },
+    {
+      "word": "introduce",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. başlatmak, yürürlüğe koymak",
+        "ex": "The government plans to introduce new regulations aimed at reducing plastic packaging.",
+        "exTr": "Hükümet, plastik ambalajı azaltmayı amaçlayan yeni düzenlemeleri yürürlüğe koymayı planlıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The library introduced a reservation system for study rooms after students complained that a few regular users were occupying them throughout the day.",
+          "exTr": "Öğrenciler, birkaç müdavimin çalışma odalarını gün boyunca işgal ettiğinden şikâyet edince kütüphane bu odalar için rezervasyon sistemi başlattı."
+        }
+      ]
+    },
+    {
+      "word": "intruder",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. davetsiz misafir, izinsiz giren kişi, saldırgan",
+        "ex": "The security system is designed to alert residents immediately when an intruder attempts to enter the building through a window or a back door.",
+        "exTr": "Güvenlik sistemi, bir davetsiz misafir binaya bir pencereden ya da arka kapıdan girmeye kalkıştığında sakinleri anında uyaracak şekilde tasarlanmıştır."
+      },
+      "alternatives": [
+        {
+          "ex": "The caretaker initially assumed the figure was an intruder, then recognised a contractor who had arrived early to repair the heating system.",
+          "exTr": "Görevli, gördüğü kişinin önce izinsiz giren biri olduğunu sandı; ardından ısıtma sistemini onarmak için erken gelmiş bir yüklenici olduğunu fark etti."
+        }
+      ]
+    },
+    {
+      "word": "intuitive",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. bilinçli akıl yürütmeden kolayca anlaşılabilen veya sezgiye dayanan; sezgisel",
+        "ex": "The redesigned interface is intuitive enough for first-time users to navigate without written instructions.",
+        "exTr": "Yeniden tasarlanan arayüz ilk kez kullananların yazılı talimat olmadan gezinebileceği kadar sezgiseldir."
+      },
+      "alternatives": [
+        {
+          "ex": "The physicist used a swinging pendulum to provide an intuitive explanation of periodic motion before introducing the equations needed for precise calculations.",
+          "exTr": "Fizikçi, kesin hesaplamalar için gerekli denklemleri tanıtmadan önce periyodik hareketi kolayca anlaşılabilir biçimde açıklamak için sallanan bir sarkaç kullandı."
+        }
+      ]
+    },
+    {
+      "word": "invader",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. istilacı, zorla giren veya bir bölgeyi ele geçiren kişi ya da tür",
+        "ex": "Without natural predators, the aquatic invader spread rapidly through rivers and displaced native species.",
+        "exTr": "Doğal avcıları olmadığı için sucul istilacı nehirlerde hızla yayıldı ve yerli türlerin yerini aldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The ecologists mapped the aquatic invader's distribution, comparing recently colonised ponds with sites where repeated surveys had not yet detected it.",
+          "exTr": "Ekologlar, yakın zamanda yerleştiği göletlerle tekrarlanan araştırmalarda henüz saptanmadığı alanları karşılaştırarak sucul istilacının dağılımını haritaladı."
+        }
+      ]
+    }
+  ],
+  "collocations": [
+    {
+      "word": "insurer",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a private insurer",
+          "tr": "özel sigorta şirketi"
+        },
+        {
+          "en": "notify the insurer",
+          "tr": "sigortacıya bildirmek"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "intentionally",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "intentionally misleading",
+          "tr": "kasıtlı olarak yanıltıcı"
+        },
+        {
+          "en": "intentionally omitted",
+          "tr": "bilerek çıkarılmış"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "intrigue",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "be intrigued by a question",
+          "tr": "bir sorunun merakını uyandırması"
+        },
+        {
+          "en": "intrigue the reader",
+          "tr": "okurun ilgisini çekmek"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "invader",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "an aquatic invader",
+          "tr": "sucul istilacı"
+        },
+        {
+          "en": "a foreign invader",
+          "tr": "yabancı istilacı"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

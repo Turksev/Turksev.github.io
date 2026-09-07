@@ -1,9 +1,18 @@
-# Kart içeriği — 7 Eylül 2026, ilk editoryal parti
+# Kart içeriği — 7–8 Eylül 2026, iki editoryal paket
 
 Bu paket **bütün kelimelerin dilsel denetiminin tamamlandığı anlamına gelmez**.
 Yapay zekâ destekli editoryal incelemedir; insan dil uzmanı onayı değildir.
 
-## Tamamlanan içerik
+## İkinci paket: tüm kelime kartlarında dönüşümlü örnek
+
+- Kalan 9.279 kelimeye birer özgün EN–TR alternatif eklendi. İlk 194 alternatifle toplam 9.473 alternatif vardır; 9.379 kelime kartının tamamı en az bir ek örneğe sahiptir.
+- 1.546 boş kart-altı kullanım alanına 3.059 EN–TR eşdizim veya doğal kullanım örüntüsü eklendi. Boş kullanım alanı kalmadı.
+- Kayıtlar donmuş eski anlamlara bağlandı; İngilizce/Türkçe birebir tekrar, yarım cümle, eksik çeviri ve hedef anlam indeksi denetlendi. Yeni 9.279 örnek 12–40 İngilizce sözcük aralığındadır.
+- Ajanların yazdığı 8.040 alternatif parti başına ikinci okundu; kökün son yedi partisindeki 420 alternatif ayrıca bağımsız ikinci okundu. Kökün kalan 819 örneği için bağımsız ikinci okuma iddiası yoktur.
+- Yanlış veya belirsiz ana anlamlar, çeviriler, sözcük türleri ve olgusal genellemeler ayrı eski-metin korumalı işlemlerle düzeltildi. Gerekçeler ve başvurulan kaynaklar JSON işlemlerinde kayıtlıdır.
+- `knowledgeable` altındaki ayrı türemiş `knowledgeably` zarfı yanlış son anlam olarak kaldırıldı; sıfat anlamı ve kartın yeni alternatifi korunur.
+
+## İlk paketin tarihsel kapsamı
 
 - 9.379 başlık, 12.894 ana EN–TR örnek çifti ve 15.968 eski kalıp yapısal olarak tarandı.
 - Mevcut eşdizimlerde en az 922 başlık / 2.539 kalıp anlam ve kullanım açısından okundu.
@@ -17,27 +26,32 @@ bulgusu olarak sunulmaz. Akademik/analitik çalışma bağlamları için özgün
 örneklerdir. Kaynak bağlantıları anlam/gramer ayrımını destekler; her yeni
 ifadenin korpustaki sıklığının doğrulandığı iddiasını taşımaz.
 
-## Açık kalan kapsam
+## Sınırlar ve seyrek kullanımlar
 
-- 1.546 başlıkta kalıp alanı hâlâ boş; yararlı akademik başlıklar da bu gruptadır.
-- `looking` bilerek boş: `look at` ve `look for` zaten ayrı öbek kartlarıdır;
-  önceki ayrımı bozacak öneri entegrasyon testinde çıkarıldı.
-- `yeah` günlük konuşma kaydıdır; sırf alanı doldurmak için akademik kalıp yazılmadı.
-- 9.279 kelimeye henüz ek örnek yazılmadı. Bu kelimelerin mevcut örnekleri korunur.
-- Yapısal tarama; doğruluk, doğallık, anlam/POS ve çeviri için tam editoryal
-  incelemenin yerine geçmez. Kalan anlamların tamamı tek tek incelenmiş değildir.
+- Her kartta alternatif vardır; her ayrı anlamda alternatif bulunduğu iddia edilmez. Ayrı 1.854 Öbekler kartı için yeni bir alternatif cümle havuzu bu paketin kapsamı değildir.
+- `looking` artık yalnız `looking closely/carefully` çekimli fiil örüntülerini içerir. `look at`, `look for` ve diğer bağımsız öbeklerin ayrımı korunur.
+- `yeah` gibi günlük sözcükler görüşme veya alıntı bağlamında kullanılır; günlük dil uyarısı korunur. Bunlar resmî akademik yazı üslubu veya yüksek sıklıklı YDS kalıbı diye sunulmaz.
+- Seyrek tarihî/teknik başlıklardaki bazı ekler güçlü istatistiksel eşdizim değil, anlamı gösteren doğal kullanım örüntüsüdür. `homo` gibi incitici sözcükler yalnız uyarılı metadil bağlamıyla ele alınmıştır.
+- Bütün eski ana örneklerin kesin hatasız olduğu, her ifadenin korpus sıklığının dış kaynakla doğrulandığı veya insan dil uzmanından onay aldığı iddia edilmez.
+- Yapısal testler doğruluk, doğallık, anlam/POS ve çeviri denetiminin yerine geçmez.
 
 ## Kalıcı üretim
 
 `tools/listeyi-aktar.py` bütün eski kaynakları birleştirdikten sonra
 `tools/kart_icerik.py` ile bu JSON partilerini uygular. Kaynak çalışma tablolarına
-yazılmaz. Kelime kimlikleri, puanlar, katmanlar ve öğrenme kayıtları değişmez.
+yazılmaz. Kart sayısı, öncelik puanları ve katmanlar korunur. `alexander →
+alexanders` ve `stone-face → stone face` başlık düzeltmeleri eski öğrenme
+anahtarlarını alias olarak korur; başlık değişimi ilerleme kaybına yol açmaz.
 
 Her düzeltme/esdizim tam eski değer koruması taşır. Anlam indeksiyle birlikte
 eski Türkçe anlam ve EN–TR çifti denetlenir; kaynak değişmişse üretim hata verir.
 Kalıp yamaları tam eski/yeni dizileri taşır. Alternatifler anlamın `exs` alanında
 EN–TR çiftleri olarak saklanır. Üretim atomiktir: koruma başarısızsa yarım yama
 uygulanmaz. Cümleler ve çevirileri birbirinden bağımsız seçilmez.
+
+Yanlış türev anlam kaldırılması yalnız son indekste, tam eski anlam/örnek
+ve anlam sayısı korumasıyla mümkündür. İlk veya tek anlam, alternatifli anlam,
+çakışan düzeltme ya da değişmiş kaynak reddedilir; kalan indeksler kaymaz.
 
 `causing` için `tools/tur-duzeltme.js` türü fiil olarak netleştirir. `rowing`
 çalışma örneği değiştirilmiştir; önceki metin JSON'daki `expected` içinde
@@ -55,3 +69,10 @@ Testler: `kart-acik-kalir-test.js`, `ornek-donusumu-test.js`,
 `kart-icerik-test.py`, `kart-icerik-yayin-test.js` ve mevcut kaynak/bütünlük
 testleri. VM davranış testleri gerçek tarayıcı görsel/erişilebilirlik denetimi
 olarak raporlanmaz.
+
+`kart-tam-kapsam-test.js` tüm 9.379 kartta ek örnek ve kullanım alanını,
+9.473 benzersiz alternatifin tam EN–TR eşleşmesini zorunlu kılar. Eksik ikinci
+paket CI'dan geçemez. `kart-tamamlama-baslik-test.js` anlam/başlık/POS
+düzeltmelerini ve `kart-baslik-yenileme-test.py` ilerleme alias/puan korumasını
+denetler. Gerçek Chromium, klavye ve axe erişilebilirlik kontrolleri ayrıca
+`tools/browser-qa.js` ile çalıştırılır.

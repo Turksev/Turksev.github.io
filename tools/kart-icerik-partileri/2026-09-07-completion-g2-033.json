@@ -1,0 +1,1107 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 2,
+    "input": "input-033.json"
+  },
+  "enrichments": [
+    {
+      "word": "one-quarter",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. dörtte bir, çeyrek",
+        "ex": "Surveys show that nearly one-quarter of the population relies on public transportation daily.",
+        "exTr": "Anketler, nüfusun neredeyse dörtte birinin günlük olarak toplu taşımaya bağımlı olduğunu gösteriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "One-quarter of the workshop was reserved for shared equipment, while the remaining space was divided into smaller areas for individual projects.",
+          "exTr": "Atölyenin dörtte biri ortak ekipmana ayrılırken kalan alan bireysel projeler için daha küçük bölümlere ayrıldı."
+        }
+      ]
+    },
+    {
+      "word": "one-spot",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. tek benekli taş/zar (domino veya zar üzerinde tek nokta)",
+        "ex": "During the game, drawing the one-spot forced the player to skip an entire turn.",
+        "exTr": "Oyun sırasında tek benekli taşı çekmek, oyuncuyu tüm bir sırayı atlamak zorunda bıraktı."
+      },
+      "alternatives": [
+        {
+          "ex": "After rolling a one-spot, the student recorded the result before the next throw, keeping a record that could later be compared with classmates' observations.",
+          "exTr": "Öğrenci zarla bir attıktan sonra bir sonraki atıştan önce sonucu kaydederek daha sonra sınıf arkadaşlarının gözlemleriyle karşılaştırılabilecek bir kayıt tuttu."
+        }
+      ],
+      "note": "Üst yüzünde tek nokta görünen zar anlamı; oyun kuralı uydurulmadı. Nadir oyun terimi için yararlı kullanım örüntüsü: https://www.vocabulary.com/dictionary/one-spot ."
+    },
+    {
+      "word": "one-time",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. tek seferlik",
+        "ex": "A one-time payment from the government helped thousands of families recover after the disaster.",
+        "exTr": "Hükümetten yapılan tek seferlik bir ödeme, felaketin ardından binlerce ailenin toparlanmasına yardımcı oldu."
+      },
+      "alternatives": [
+        {
+          "ex": "The grant covered a one-time purchase of equipment, leaving the organisation responsible for the continuing costs of storage, maintenance and replacement parts.",
+          "exTr": "Hibe tek seferlik ekipman alımını karşılıyor; süregelen depolama, bakım ve yedek parça maliyetlerinin sorumluluğunu kuruluşa bırakıyordu."
+        }
+      ]
+    },
+    {
+      "word": "one-woman",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. tek kadınlı, bir kişiye özgü (kadın için)",
+        "ex": "The actress delivered an impressive one-woman show that lasted nearly two hours without intermission.",
+        "exTr": "Aktris, ara vermeden neredeyse iki saat süren etkileyici bir tek kadınlı gösteri sundu."
+      },
+      "alternatives": [
+        {
+          "ex": "Her one-woman performance brought several generations of a family onto the stage through changes in voice, posture and the arrangement of simple props.",
+          "exTr": "Kadının tek başına sahnelediği gösteri, ses ve duruş değişiklikleriyle ve basit sahne eşyalarının düzenlenmesiyle bir ailenin birkaç kuşağını sahneye taşıdı."
+        }
+      ]
+    },
+    {
+      "word": "online",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. çevrimiçi",
+        "ex": "The university launched an online library accessible to students in forty countries.",
+        "exTr": "Üniversite, kırk ülkedeki öğrencilerin erişebildiği çevrimiçi bir kütüphane açtı."
+      },
+      "alternatives": [
+        {
+          "ex": "The online catalogue made searching easier, but users still needed clear descriptions to decide whether an item was relevant before requesting access.",
+          "exTr": "Çevrimiçi katalog aramayı kolaylaştırdı; ancak kullanıcıların erişim istemeden önce bir kaynağın konularıyla ilgili olup olmadığına karar vermek için hâlâ açık betimlemelere ihtiyacı vardı."
+        }
+      ]
+    },
+    {
+      "word": "ontological",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. ontolojik, varlıkbilimsel, varlığın doğasıyla ilgili",
+        "ex": "Philosophers continue to debate the ontological status of numbers, asking whether they exist independently of the human minds that conceive them.",
+        "exTr": "Filozoflar sayıların ontolojik konumunu tartışmayı sürdürüyor ve onları kavrayan insan zihinlerinden bağımsız olarak var olup olmadıklarını soruyorlar."
+      },
+      "alternatives": [
+        {
+          "ex": "The seminar examined the ontological status of fictional characters, asking in what sense we can discuss their properties without assuming they exist as people.",
+          "exTr": "Seminer, onların insan olarak var olduğunu varsaymadan özelliklerini hangi anlamda tartışabileceğimizi sorarak kurmaca karakterlerin ontolojik statüsünü inceledi."
+        }
+      ]
+    },
+    {
+      "word": "open",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. açmak, açılmak",
+        "ex": "Researchers hope the new grant will open opportunities for long-term climate monitoring.",
+        "exTr": "Araştırmacılar, yeni fonun uzun vadeli iklim izleme için fırsatlar açacağını umuyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The college decided to open the workshop to local residents after students demonstrated that shared use could fit around the existing teaching schedule.",
+          "exTr": "Öğrenciler ortak kullanımın mevcut ders programına uyabileceğini gösterince kolej atölyeyi yerel halka açmaya karar verdi."
+        }
+      ]
+    },
+    {
+      "word": "open-ended",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. açık uçlu",
+        "ex": "Researchers preferred open-ended questions because they allowed participants to express opinions in their own words.",
+        "exTr": "Araştırmacılar, katılımcıların görüşlerini kendi sözcükleriyle ifade etmesine olanak tanıdığı için açık uçlu soruları tercih etti."
+      },
+      "alternatives": [
+        {
+          "ex": "An open-ended task allowed students to propose different solutions, but the assessment criteria still required them to explain why their chosen approach was appropriate.",
+          "exTr": "Açık uçlu bir görev öğrencilerin farklı çözümler önermesine izin verdi; ancak değerlendirme ölçütleri yine de seçtikleri yaklaşımın neden uygun olduğunu açıklamalarını gerektiriyordu."
+        }
+      ]
+    },
+    {
+      "word": "open-source",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. açık kaynak(lı)",
+        "ex": "Developers around the world contribute code to open-source software projects free of charge.",
+        "exTr": "Dünyanın dört bir yanındaki geliştiriciler, açık kaynak yazılım projelerine ücretsiz olarak kod katkısında bulunur."
+      },
+      "alternatives": [
+        {
+          "ex": "The team selected an open-source tool so that it could examine the calculations directly and document any modifications needed for its particular dataset.",
+          "exTr": "Ekip hesaplamaları doğrudan inceleyebilmek ve kendi veri kümesi için gereken değişiklikleri belgeleyebilmek amacıyla açık kaynaklı bir araç seçti."
+        }
+      ]
+    },
+    {
+      "word": "openness",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. açıklık, dürüstlük, şeffaflık",
+        "ex": "The new manager's openness about the company's financial struggles earned the trust of many employees.",
+        "exTr": "Yeni yöneticinin şirketin mali sıkıntıları konusundaki açıklığı, birçok çalışanın güvenini kazandı."
+      },
+      "alternatives": [
+        {
+          "ex": "Her openness about the project's difficulties encouraged colleagues to raise concerns early, before small misunderstandings developed into disagreements about responsibility.",
+          "exTr": "Projenin güçlükleri konusunda açık davranması, küçük yanlış anlamalar sorumluluğa ilişkin anlaşmazlıklara dönüşmeden meslektaşlarını kaygılarını erkenden dile getirmeye teşvik etti."
+        }
+      ]
+    },
+    {
+      "word": "operating",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. işletme ile ilgili, faaliyete dair; çalışan, işler durumda",
+        "ex": "Rising fuel prices significantly increased the operating costs of airlines across the entire region.",
+        "exTr": "Yükselen yakıt fiyatları, bölgedeki havayollarının işletme maliyetlerini önemli ölçüde artırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The operating budget included routine maintenance but made no allowance for the additional staff needed when visitor numbers exceeded the original estimate.",
+          "exTr": "İşletme bütçesi rutin bakımı kapsıyordu; ancak ziyaretçi sayısı ilk tahmini aştığında gereken ek personel için pay ayırmıyordu."
+        }
+      ]
+    },
+    {
+      "word": "operations",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. işlemler, faaliyetler",
+        "ex": "The company suspended its overseas operations after new trade restrictions sharply increased shipping costs.",
+        "exTr": "Şirket, yeni ticaret kısıtlamaları nakliye maliyetlerini keskin biçimde artırınca yurt dışı faaliyetlerini durdurdu."
+      },
+      "alternatives": [
+        {
+          "ex": "The company moved its storage operations to a larger site while retaining the small city-centre office where customers collected samples and discussed orders.",
+          "exTr": "Şirket, müşterilerin numune aldığı ve siparişleri görüştüğü kent merkezindeki küçük ofisi korurken depolama faaliyetlerini daha büyük bir yere taşıdı."
+        }
+      ]
+    },
+    {
+      "word": "opinion",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. görüş, fikir",
+        "ex": "Public opinion regarding renewable energy has shifted considerably over the past two decades.",
+        "exTr": "Yenilenebilir enerjiye ilişkin kamuoyu görüşü, son yirmi yılda önemli ölçüde değişti."
+      },
+      "alternatives": [
+        {
+          "ex": "Public opinion appeared divided, but the consultation revealed broad agreement on the need to explain the proposal more clearly before making a final decision.",
+          "exTr": "Kamuoyu bölünmüş görünüyordu; ancak danışma süreci nihai karardan önce öneriyi daha açık anlatma gereği üzerinde geniş bir uzlaşma olduğunu ortaya koydu."
+        }
+      ]
+    },
+    {
+      "word": "oppose",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. karşı çıkmak, karşı olmak",
+        "ex": "Local residents strongly oppose plans to build a new highway through the forest.",
+        "exTr": "Yerel sakinler, ormanın içinden geçecek yeni bir otoyol yapılması planlarına şiddetle karşı çıkıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Several residents continued to oppose the relocation because the new site would require longer journeys for people who depended on public transport.",
+          "exTr": "Yeni yer toplu taşımaya bağımlı kişiler için daha uzun yolculuklar gerektireceğinden bazı sakinler taşınmaya karşı çıkmayı sürdürdü."
+        }
+      ]
+    },
+    {
+      "word": "opposition",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. muhalefet, karşı çıkma; (siyasette) muhalefet",
+        "ex": "Across the country, the proposed tax reform faced strong opposition from small business owners.",
+        "exTr": "Ülke genelinde, önerilen vergi reformu küçük işletme sahiplerinden güçlü bir muhalefetle karşılaştı."
+      },
+      "alternatives": [
+        {
+          "ex": "Opposition to the revised schedule weakened after organisers explained how the additional sessions would accommodate participants unable to attend during working hours.",
+          "exTr": "Düzenleyenler ek oturumların mesai saatlerinde katılamayanlara nasıl olanak sağlayacağını açıkladıktan sonra yeni programa yönelik karşı çıkış zayıfladı."
+        }
+      ]
+    },
+    {
+      "word": "oppression",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. baskı; zulüm",
+        "ex": "Historians documented decades of political oppression that forced thousands of citizens into exile abroad.",
+        "exTr": "Tarihçiler, binlerce vatandaşı yurt dışına sürgüne zorlayan onlarca yıllık siyasi baskıyı belgeledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The memoir describes oppression through everyday restrictions on movement and association, revealing how political control shaped routines that might otherwise seem private.",
+          "exTr": "Anılar, siyasi kontrolün başka türlü özel sayılabilecek rutinleri nasıl şekillendirdiğini göstererek baskıyı hareket ve bir araya gelme üzerindeki gündelik kısıtlamalar yoluyla anlatıyor."
+        }
+      ]
+    },
+    {
+      "word": "optical",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. optik, görmeyle ilgili",
+        "ex": "Fibre networks use optical signals to transmit data at nearly the speed of light.",
+        "exTr": "Fiber ağlar, verileri neredeyse ışık hızında iletmek için optik sinyaller kullanır."
+      },
+      "alternatives": [
+        {
+          "ex": "The optical equipment required careful alignment, since a small change in position could alter which part of the sample appeared in focus.",
+          "exTr": "Konumdaki küçük bir değişiklik örneğin hangi kısmının net göründüğünü değiştirebildiği için optik ekipmanın dikkatle hizalanması gerekiyordu."
+        }
+      ]
+    },
+    {
+      "word": "optimisation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. optimizasyon, en iyi hâle getirme, eniyileme",
+        "ex": "Route optimisation reduced fuel use and delivery times.",
+        "exTr": "Rota optimizasyonu yakıt kullanımını ve teslimat sürelerini azalttı."
+      },
+      "alternatives": [
+        {
+          "ex": "The optimisation exercise sought to reduce unused space in each container, while keeping the arrangement simple enough for workers to reproduce consistently.",
+          "exTr": "Eniyileme çalışması, düzeni çalışanların tutarlı biçimde tekrarlayabileceği kadar basit tutarken her kaptaki kullanılmayan alanı azaltmayı amaçladı."
+        }
+      ]
+    },
+    {
+      "word": "optimistic",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. iyimser, umutlu",
+        "ex": "Despite the setbacks, the research team remained optimistic about finding a cure.",
+        "exTr": "Aksiliklere rağmen, araştırma ekibi bir tedavi bulma konusunda iyimser kaldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The organisers remained optimistic about participation, although they acknowledged that interest expressed in a survey did not guarantee attendance at the event.",
+          "exTr": "Düzenleyenler, ankette dile getirilen ilginin etkinliğe katılımı garanti etmediğini kabul etseler de katılım konusunda iyimserliklerini korudu."
+        }
+      ]
+    },
+    {
+      "word": "option",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. seçenek, tercih",
+        "ex": "Solar power has become an increasingly affordable option for rural households without grid access.",
+        "exTr": "Güneş enerjisi, şebeke erişimi olmayan kırsal haneler için giderek daha uygun fiyatlı bir seçenek haline geldi."
+      },
+      "alternatives": [
+        {
+          "ex": "Keeping the old entrance was one option, but it would require a more complicated arrangement to provide access for visitors using wheelchairs.",
+          "exTr": "Eski girişi korumak bir seçenekti; ancak tekerlekli sandalye kullanan ziyaretçilerin erişimi için daha karmaşık bir düzenleme gerektirecekti."
+        }
+      ]
+    },
+    {
+      "word": "opus",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. eser, yapıt (özellikle müzikal)",
+        "ex": "Critics consider the composer's final opus to be a profound reflection of his personal struggles.",
+        "exTr": "Eleştirmenler, bestecinin son eserini kişisel mücadelelerinin derin bir yansıması olarak görüyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The composer's final opus drew together themes from earlier works, inviting listeners to hear familiar passages in a new and more restrained setting.",
+          "exTr": "Bestecinin son eseri önceki yapıtların temalarını bir araya getirerek dinleyicileri tanıdık bölümleri yeni ve daha ölçülü bir bağlamda duymaya davet etti."
+        }
+      ]
+    },
+    {
+      "word": "orange",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. turuncu",
+        "ex": "Researchers observed that the sunset sky turned a deep orange due to volcanic ash particles.",
+        "exTr": "Araştırmacılar, gün batımı gökyüzünün volkanik kül parçacıkları nedeniyle koyu turuncuya döndüğünü gözlemledi."
+      },
+      "alternatives": [
+        {
+          "ex": "Orange markers identified the temporary route, contrasting with the permanent signs that directed visitors toward an entrance closed during the renovation.",
+          "exTr": "Turuncu işaretler geçici güzergâhı gösteriyor, ziyaretçileri yenileme sırasında kapalı olan girişe yönlendiren kalıcı levhalardan ayrılıyordu."
+        }
+      ]
+    },
+    {
+      "word": "orchard",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. meyve bahçesi",
+        "ex": "Every autumn, the family invites neighbors to help pick apples in their small orchard.",
+        "exTr": "Her sonbaharda aile, küçük meyve bahçelerinde elma toplamaya yardım etmeleri için komşularını davet eder."
+      },
+      "alternatives": [
+        {
+          "ex": "The orchard was divided into numbered sections, allowing the growers to compare yields while keeping track of differences in planting date and maintenance.",
+          "exTr": "Meyve bahçesi numaralı bölümlere ayrılarak yetiştiricilerin dikim tarihi ve bakım farklılıklarını izlerken verimleri karşılaştırması sağlandı."
+        }
+      ]
+    },
+    {
+      "word": "orchestrate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. karmaşık bir işi planlayıp eşgüdümlemek; organize etmek",
+        "ex": "A regional agency helped orchestrate the evacuation of thousands of residents before the cyclone arrived.",
+        "exTr": "Bölgesel bir kurum kasırga gelmeden önce binlerce sakinin tahliyesini organize etmeye yardımcı oldu."
+      },
+      "alternatives": [
+        {
+          "ex": "A small coordination team helped orchestrate the move, ensuring that the removal of equipment did not interrupt activities still taking place in adjacent rooms.",
+          "exTr": "Küçük bir koordinasyon ekibi, ekipmanın çıkarılmasının bitişik odalarda süren faaliyetleri kesintiye uğratmamasını sağlayarak taşınmayı organize etmeye yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "ordered",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. düzenli, tertipli, düzen içinde",
+        "ex": "The archive's documents were kept in a carefully ordered system that made historical research much easier.",
+        "exTr": "Arşivin belgeleri, tarihsel araştırmayı çok daha kolay hâle getiren, özenle düzenlenmiş bir sistemde saklanıyordu."
+      },
+      "alternatives": [
+        {
+          "ex": "The carefully ordered sequence of images helped viewers follow the process, while accompanying notes explained where information about intermediate stages was missing.",
+          "exTr": "Özenle düzenlenmiş görüntü dizisi izleyicilerin süreci takip etmesine yardımcı olurken eşlik eden notlar ara aşamalar hakkındaki bilgilerin nerede eksik olduğunu açıklıyordu."
+        }
+      ]
+    },
+    {
+      "word": "ore",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. maden cevheri",
+        "ex": "Workers extracted iron ore from the mountain to supply the region's growing steel industry.",
+        "exTr": "İşçiler, bölgenin büyüyen çelik endüstrisine kaynak sağlamak için dağdan demir cevheri çıkardı."
+      },
+      "alternatives": [
+        {
+          "ex": "The ore samples were labelled by collection point before analysis, enabling the team to relate differences in composition to specific areas of the site.",
+          "exTr": "Cevher örnekleri analizden önce toplama noktalarına göre etiketlenerek ekibin bileşim farklılıklarını sahadaki belirli alanlarla ilişkilendirmesi sağlandı."
+        }
+      ]
+    },
+    {
+      "word": "organisation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. örgüt, kuruluş",
+        "ex": "A nonprofit organisation coordinated the distribution of emergency supplies after the earthquake.",
+        "exTr": "Kâr amacı gütmeyen bir örgüt, depremin ardından acil yardım malzemelerinin dağıtımını koordine etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The organisation relied on volunteers for much of its work, making clear instructions especially important when experienced members were unavailable.",
+          "exTr": "Kuruluş, işlerinin büyük bölümünde gönüllülere dayanıyordu; bu da deneyimli üyeler bulunmadığında açık talimatları özellikle önemli kılıyordu."
+        }
+      ]
+    },
+    {
+      "word": "organised",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. düzenli, örgütlenmiş",
+        "ex": "The volunteers formed an organised group to distribute supplies after the earthquake struck.",
+        "exTr": "Gönüllüler, deprem meydana geldikten sonra malzeme dağıtmak için örgütlenmiş bir grup oluşturdu."
+      },
+      "alternatives": [
+        {
+          "ex": "An organised system of shared notes allowed the group to continue its work even when the person leading a particular task was absent.",
+          "exTr": "Düzenli bir ortak not sistemi, belirli bir görevi yöneten kişi bulunmadığında bile grubun çalışmasını sürdürmesini sağladı."
+        }
+      ]
+    },
+    {
+      "word": "organizational",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. örgütsel, kurumsal",
+        "ex": "The merger required significant organizational changes across every department of the company.",
+        "exTr": "Birleşme, şirketin her departmanında önemli örgütsel değişiklikler gerektirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The review identified organizational barriers to cooperation, including incompatible schedules and uncertainty about who could authorise the sharing of equipment.",
+          "exTr": "İnceleme, uyumsuz programlar ve ekipmanın paylaşılmasına kimin izin verebileceği konusundaki belirsizlik dâhil, iş birliğinin önündeki kurumsal engelleri belirledi."
+        }
+      ]
+    },
+    {
+      "word": "organizer",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. bir etkinliği, grubu veya işi düzenleyen kişi; organizatör, düzenleyici",
+        "ex": "The organizer arranged accessible transport so that disabled participants could attend the conference independently.",
+        "exTr": "Organizatör engelli katılımcıların konferansa bağımsız biçimde gelebilmesi için erişilebilir ulaşım ayarladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The organizer asked speakers to submit their requirements early, so that access arrangements could be confirmed before participants booked their journeys.",
+          "exTr": "Düzenleyici, katılımcılar yolculuk rezervasyonlarını yapmadan önce erişim düzenlemelerinin kesinleştirilebilmesi için konuşmacılardan ihtiyaçlarını erkenden bildirmelerini istedi."
+        }
+      ]
+    },
+    {
+      "word": "orientation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yönelim",
+        "ex": "Researchers examined how a person's political orientation influences their trust in mainstream media.",
+        "exTr": "Araştırmacılar, bir kişinin siyasi yöneliminin ana akım medyaya duyduğu güveni nasıl etkilediğini inceledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The newspaper's political orientation was evident in the questions it prioritised, although individual contributors sometimes challenged the assumptions of its editorial line.",
+          "exTr": "Bazı yazarlar zaman zaman yayın çizgisinin varsayımlarına itiraz etse de gazetenin siyasi yönelimi öncelik verdiği sorularda belliydi."
+        }
+      ]
+    },
+    {
+      "word": "originally",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. başlangıçta, aslen",
+        "ex": "The vaccine was originally developed to treat a completely different viral infection.",
+        "exTr": "Aşı başlangıçta tamamen farklı bir viral enfeksiyonu tedavi etmek için geliştirilmişti."
+      },
+      "alternatives": [
+        {
+          "ex": "The room was originally intended for meetings, but its position beside the workshop eventually made it more useful as a shared preparation area.",
+          "exTr": "Oda başlangıçta toplantılar için düşünülmüştü; ancak atölyenin yanındaki konumu onu zamanla ortak hazırlık alanı olarak daha kullanışlı hâle getirdi."
+        }
+      ]
+    },
+    {
+      "word": "ornament",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. süs, süs eşyası, bezeme",
+        "ex": "Archaeologists recovered a bronze ornament from the burial site, suggesting that the community traded with distant regions long before written records began.",
+        "exTr": "Arkeologlar mezar alanından bir bronz süs eşyası çıkardı; bu, topluluğun yazılı kayıtlar başlamadan çok önce uzak bölgelerle ticaret yaptığına işaret ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "A small fastening on the ornament suggested that it had once been attached to clothing, rather than displayed as a separate object.",
+          "exTr": "Süs eşyasındaki küçük bir bağlantı parçası, bir zamanlar ayrı bir nesne olarak sergilenmek yerine giysiye takıldığını düşündürüyordu."
+        }
+      ]
+    },
+    {
+      "word": "ornithology",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ornitoloji, kuş bilimi",
+        "ex": "Advances in ornithology have shown that migratory birds navigate using a combination of magnetic cues, star patterns and learned landmarks.",
+        "exTr": "Kuş bilimindeki ilerlemeler, göçmen kuşların manyetik ipuçları, yıldız düzenleri ve öğrenilmiş yer işaretlerini birlikte kullanarak yön bulduğunu göstermiştir."
+      },
+      "alternatives": [
+        {
+          "ex": "The introductory course in ornithology combined field observation with careful record keeping, asking students to distinguish identification from assumptions about behaviour.",
+          "exTr": "Ornitolojiye giriş dersi, öğrencilerden teşhisi davranışa ilişkin varsayımlardan ayırmalarını isteyerek saha gözlemini dikkatli kayıt tutmayla birleştirdi."
+        }
+      ]
+    },
+    {
+      "word": "other",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. diğer, öbür, başka",
+        "ex": "Conservationists are studying this endangered species alongside several other animals native to the same forest.",
+        "exTr": "Doğa koruma uzmanları, bu nesli tükenmekte olan türü aynı ormana özgü diğer birkaç hayvanla birlikte inceliyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The first proposal addressed transport costs, while other suggestions focused on the time that small suppliers spent completing the required paperwork.",
+          "exTr": "İlk öneri taşıma maliyetlerini ele alırken diğer öneriler küçük tedarikçilerin gerekli evrakı tamamlamaya harcadığı zamana odaklandı."
+        }
+      ]
+    },
+    {
+      "word": "ought to",
+      "sense_index": 0,
+      "expected": {
+        "tr": "-meli/-malı; tavsiye, ahlaki yükümlülük veya beklenti bildirmek",
+        "ex": "Public institutions ought to explain clearly how automated decisions can be challenged.",
+        "exTr": "Kamu kurumları otomatik kararların nasıl itiraz edilebileceğini açıkça anlatmalıdır."
+      },
+      "alternatives": [
+        {
+          "ex": "Researchers ought to explain why certain observations were excluded, particularly when that decision changes how the remaining evidence supports their conclusion.",
+          "exTr": "Araştırmacılar, özellikle bu karar kalan kanıtların sonucu destekleme biçimini değiştiriyorsa, belirli gözlemleri neden dışarıda bıraktıklarını açıklamalıdır."
+        }
+      ]
+    },
+    {
+      "word": "out-of-pocket",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. cepten ödenen, kişinin kendi kesesinden karşıladığı",
+        "ex": "Patients in rural regions often face high out-of-pocket costs because many essential treatments are not covered by national insurance schemes.",
+        "exTr": "Kırsal bölgelerdeki hastalar, temel tedavilerin çoğu ulusal sigorta kapsamında olmadığı için sıklıkla yüksek cepten ödemelerle karşılaşıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The evaluation counted out-of-pocket travel expenses as well as registration fees, recognising that both could prevent volunteers from attending the training.",
+          "exTr": "Değerlendirme, her ikisinin de gönüllülerin eğitime katılmasını engelleyebileceğini kabul ederek kayıt ücretlerinin yanı sıra cepten ödenen yol giderlerini de hesaba kattı."
+        }
+      ]
+    },
+    {
+      "word": "out-of-town",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. şehir dışından, başka şehre ait",
+        "ex": "The festival attracted thousands of out-of-town visitors who booked every hotel room in the area.",
+        "exTr": "Festival, bölgedeki her otel odasını dolduran binlerce şehir dışından ziyaretçiyi kendine çekti."
+      },
+      "alternatives": [
+        {
+          "ex": "Out-of-town participants requested earlier confirmation of the schedule because changes made at short notice could affect both their accommodation and transport arrangements.",
+          "exTr": "Şehir dışından katılanlar, kısa süre kala yapılan değişikliklerin hem konaklama hem de ulaşım düzenlemelerini etkileyebileceği için programın daha erken kesinleşmesini istedi."
+        }
+      ]
+    },
+    {
+      "word": "outcome",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sonuç",
+        "ex": "The long-term outcome of the treatment depends largely on how early the disease is diagnosed.",
+        "exTr": "Tedavinin uzun vadeli sonucu, büyük ölçüde hastalığın ne kadar erken teşhis edildiğine bağlıdır."
+      },
+      "alternatives": [
+        {
+          "ex": "The outcome depended on how the question was framed, since a request for immediate action produced different responses from a discussion of long-term priorities.",
+          "exTr": "Acil eylem talebi uzun vadeli önceliklerin tartışılmasından farklı yanıtlar doğurduğu için sonuç sorunun nasıl çerçevelendiğine bağlıydı."
+        }
+      ]
+    },
+    {
+      "word": "outdoors",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. açık havada, dışarıda",
+        "ex": "Pediatricians increasingly recommend that children spend more time outdoors rather than in front of screens.",
+        "exTr": "Çocuk doktorları, çocukların ekranlar karşısında değil açık havada daha fazla zaman geçirmesini giderek daha çok öneriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The class worked outdoors when the weather permitted, using the surrounding buildings to test ideas about scale that had first been introduced through drawings.",
+          "exTr": "Sınıf hava elverdiğinde dışarıda çalışıyor, ilk kez çizimlerle tanıtılan ölçek fikirlerini sınamak için çevredeki binalardan yararlanıyordu."
+        }
+      ]
+    },
+    {
+      "word": "outgoing",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. girişken, dışa dönük, sosyal",
+        "ex": "Her outgoing personality made it easy for her to build friendships during the exchange program.",
+        "exTr": "Dışa dönük kişiliği, değişim programı sırasında arkadaşlıklar kurmasını kolaylaştırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "Her outgoing manner helped newcomers join the conversation, but she also made space for colleagues who preferred to reflect before expressing an opinion.",
+          "exTr": "Girişken tavrı yeni gelenlerin sohbete katılmasına yardımcı oluyordu; ancak görüş belirtmeden önce düşünmeyi tercih eden meslektaşlarına da alan tanıyordu."
+        }
+      ]
+    },
+    {
+      "word": "outline",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. ana hatlarıyla belirtmek, taslağını çizmek",
+        "ex": "The committee will outline its proposed reforms at next month's public hearing.",
+        "exTr": "Komite, önerdiği reformları önümüzdeki ayki kamuoyu duruşmasında ana hatlarıyla belirtecek."
+      },
+      "alternatives": [
+        {
+          "ex": "The engineer will outline the proposed changes before discussing individual components, allowing the team to understand how each alteration fits the overall design.",
+          "exTr": "Mühendis, ekibin her değişikliğin genel tasarıma nasıl uyduğunu anlayabilmesi için tek tek parçaları tartışmadan önce önerilen değişiklikleri ana hatlarıyla açıklayacak."
+        }
+      ]
+    },
+    {
+      "word": "outpatient",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ayakta tedavi gören hasta, poliklinik hastası",
+        "ex": "Hospitals now treat far more outpatients than inpatients, since most minor procedures no longer require an overnight stay.",
+        "exTr": "Hastaneler artık yatan hastalardan çok daha fazla ayakta hasta tedavi ediyor; çünkü küçük işlemlerin çoğu artık geceleme gerektirmiyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The outpatient described difficulty finding the correct reception desk, giving the design team practical information about signs that regular staff had considered clear.",
+          "exTr": "Poliklinik hastası doğru danışma masasını bulmakta zorlandığını anlatarak tasarım ekibine, sürekli personelin açık bulduğu levhalar hakkında pratik bilgi verdi."
+        }
+      ]
+    },
+    {
+      "word": "outside",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z./e. dışarıda, dışında",
+        "ex": "Children who spend more time outside tend to show lower levels of stress and anxiety.",
+        "exTr": "Dışarıda daha fazla vakit geçiren çocuklar, genellikle daha düşük düzeyde stres ve kaygı gösterir."
+      },
+      "alternatives": [
+        {
+          "ex": "Several families waited outside while the building was inspected, relying on updates from a volunteer who could explain the process in familiar language.",
+          "exTr": "Bina incelenirken birkaç aile dışarıda bekledi ve süreci bildikleri ifadelerle açıklayabilen bir gönüllünün verdiği bilgilere dayandı."
+        }
+      ]
+    },
+    {
+      "word": "outstanding",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. olağanüstü, üstün, göze çarpan, seçkin",
+        "ex": "Her outstanding contribution to molecular biology was recognised when she received the country's highest scientific award last year.",
+        "exTr": "Moleküler biyolojiye yaptığı olağanüstü katkı, geçen yıl ülkenin en yüksek bilim ödülünü almasıyla takdir edildi."
+      },
+      "alternatives": [
+        {
+          "ex": "Her outstanding skill as an interviewer lay in noticing small contradictions without making participants feel that every uncertainty undermined the value of their account.",
+          "exTr": "Görüşmeci olarak üstün becerisi, her belirsizliğin anlatılarının değerini azalttığını katılımcılara hissettirmeden küçük çelişkileri fark etmesinde yatıyordu."
+        }
+      ]
+    },
+    {
+      "word": "over",
+      "sense_index": 0,
+      "expected": {
+        "tr": "e. üzerinde, boyunca",
+        "ex": "The number of renewable energy projects has more than doubled over the past ten years.",
+        "exTr": "Yenilenebilir enerji projelerinin sayısı, son on yıl içinde iki kattan fazla arttı."
+      },
+      "alternatives": [
+        {
+          "ex": "Over the following months, the group revised its plans as new measurements revealed constraints that had not been apparent during the initial visit.",
+          "exTr": "Sonraki aylar boyunca yeni ölçümler ilk ziyarette belli olmayan kısıtları ortaya çıkardıkça grup planlarını değiştirdi."
+        }
+      ]
+    },
+    {
+      "word": "over-the-top",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. aşırıya kaçan, abartılı",
+        "ex": "Critics called the film's special effects over-the-top, overshadowing an otherwise compelling storyline.",
+        "exTr": "Eleştirmenler, filmin özel efektlerinin abartılı olduğunu ve aslında etkileyici olan hikâyeyi gölgede bıraktığını söyledi."
+      },
+      "alternatives": [
+        {
+          "ex": "Some viewers found the performance over-the-top, while others argued that its exaggeration made the character's attempts to impress his neighbours more convincing.",
+          "exTr": "Bazı izleyiciler performansı abartılı bulurken diğerleri bu abartının karakterin komşularını etkileme çabalarını daha inandırıcı kıldığını savundu."
+        }
+      ],
+      "note": "Gündelik ve değerlendirici ifade; sanat eleştirisi bağlamında kullanıldı."
+    },
+    {
+      "word": "overgrowth",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. aşırı büyüme, aşırı çoğalma, fazla üreme",
+        "ex": "Antibiotics can disturb the balance of gut flora and lead to the overgrowth of harmful bacteria in the intestines.",
+        "exTr": "Antibiyotikler bağırsak florasının dengesini bozarak bağırsaklarda zararlı bakterilerin aşırı çoğalmasına yol açabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "Vegetation overgrowth concealed the edge of the old path, requiring a careful survey before the maintenance team could determine its original width.",
+          "exTr": "Bitkilerin aşırı büyümesi eski patikanın kenarını gizlediği için bakım ekibinin özgün genişliğini belirleyebilmesinden önce dikkatli bir inceleme gerekiyordu."
+        }
+      ]
+    },
+    {
+      "word": "overload",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. aşırı yük, aşırı yüklenme, kapasite aşımı",
+        "ex": "Information overload makes it difficult for students to distinguish reliable academic sources from the vast amount of material available online.",
+        "exTr": "Bilgi bombardımanı, öğrencilerin çevrimiçi bulunan devasa malzeme yığını içinden güvenilir akademik kaynakları ayırt etmesini zorlaştırıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The new dashboard reduced information overload by grouping routine updates separately from warnings that required an immediate decision from the operator.",
+          "exTr": "Yeni gösterge paneli, rutin bilgileri operatörün hemen karar vermesini gerektiren uyarılardan ayrı gruplandırarak bilgi yükünü azalttı."
+        }
+      ]
+    },
+    {
+      "word": "overreaction",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. aşırı tepki, gereğinden fazla tepki",
+        "ex": "Critics argued that the ban was an overreaction to a problem that could have been managed through better public education.",
+        "exTr": "Eleştirmenler, yasağın daha iyi bir kamu eğitimiyle yönetilebilecek bir soruna verilmiş aşırı bir tepki olduğunu savundu."
+      },
+      "alternatives": [
+        {
+          "ex": "Critics described the suspension as an overreaction, arguing that the reported fault affected only a small part of the service rather than the entire system.",
+          "exTr": "Eleştirmenler, bildirilen arızanın bütün sistem yerine hizmetin yalnızca küçük bir bölümünü etkilediğini savunarak hizmetin durdurulmasını aşırı tepki olarak niteledi."
+        }
+      ]
+    },
+    {
+      "word": "oversight",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. denetim, gözetim (resmi/kurumsal)",
+        "ex": "Congress increased its oversight of the agency after several reports of financial mismanagement.",
+        "exTr": "Kongre, mali suistimalle ilgili birkaç rapordan sonra kurum üzerindeki denetimini artırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The funding agreement required independent oversight of major purchases, while leaving routine decisions to the staff responsible for running the project.",
+          "exTr": "Finansman anlaşması, rutin kararları projeyi yürüten personele bırakırken büyük satın almaların bağımsız denetimini gerektiriyordu."
+        }
+      ]
+    },
+    {
+      "word": "overview",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. genel bakış, özet",
+        "ex": "The report begins with a brief overview of recent developments in renewable energy technology worldwide.",
+        "exTr": "Rapor, dünya çapındaki yenilenebilir enerji teknolojisindeki son gelişmelere ilişkin kısa bir genel bakışla başlıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "A brief overview helped new members understand the project before they examined the detailed records of decisions made during its early stages.",
+          "exTr": "Kısa bir genel bakış, yeni üyelerin ilk aşamalarda alınan kararların ayrıntılı kayıtlarını incelemeden önce projeyi anlamasına yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "overwhelmed",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. bunalmış, altında ezilmiş, çok etkilenmiş",
+        "ex": "Hospital staff felt overwhelmed after the sudden surge of patients following the earthquake.",
+        "exTr": "Hastane personeli, depremin ardından yaşanan ani hasta artışından sonra kendini bunalmış hissetti."
+      },
+      "alternatives": [
+        {
+          "ex": "New volunteers felt overwhelmed by the volume of instructions, so the coordinator separated essential first-day tasks from information that could be introduced later.",
+          "exTr": "Yeni gönüllüler talimatların çokluğundan bunaldığı için koordinatör ilk günün temel görevlerini daha sonra verilebilecek bilgilerden ayırdı."
+        }
+      ]
+    },
+    {
+      "word": "owe",
+      "sense_index": 0,
+      "expected": {
+        "tr": "borçlu olmak",
+        "ex": "Many developing countries owe enormous sums of money to international financial institutions.",
+        "exTr": "Birçok gelişmekte olan ülke, uluslararası finans kuruluşlarına muazzam miktarda borçludur."
+      },
+      "alternatives": [
+        {
+          "ex": "The workshop continued to owe money to its suppliers even after sales recovered, limiting the funds available for replacing worn equipment.",
+          "exTr": "Satışlar toparlandıktan sonra bile atölye tedarikçilerine para borçlu olmaya devam ediyor ve bu durum aşınmış ekipmanın yenilenmesine ayrılabilecek kaynakları sınırlıyordu."
+        }
+      ]
+    },
+    {
+      "word": "owner",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sahip",
+        "ex": "The factory owner invested in cleaner technology to reduce harmful emissions.",
+        "exTr": "Fabrika sahibi, zararlı emisyonları azaltmak için daha temiz teknolojiye yatırım yaptı."
+      },
+      "alternatives": [
+        {
+          "ex": "The owner agreed to preserve the original shopfront, provided that the interior could be adapted to meet the practical needs of the new business.",
+          "exTr": "Sahibi, iç mekân yeni işletmenin pratik ihtiyaçlarına uyarlanabildiği sürece özgün dükkân cephesini korumayı kabul etti."
+        }
+      ]
+    },
+    {
+      "word": "oxide",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. oksit",
+        "ex": "Rust forms when iron reacts with oxygen in the air to produce iron oxide over time.",
+        "exTr": "Pas, demir havadaki oksijenle reaksiyona girip zamanla demir oksit oluşturduğunda meydana gelir."
+      },
+      "alternatives": [
+        {
+          "ex": "The analysis identified an oxide on the metal surface, but further work was needed to determine when it had formed and under what conditions.",
+          "exTr": "Analiz metal yüzeyinde bir oksit belirledi; ancak bunun ne zaman ve hangi koşullarda oluştuğunu saptamak için ek çalışma gerekiyordu."
+        }
+      ]
+    },
+    {
+      "word": "oyster",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. istiridye",
+        "ex": "The restaurant is famous for serving fresh oysters harvested daily from the nearby bay.",
+        "exTr": "Restoran, yakındaki körfezden her gün toplanan taze istiridyeleri sunmasıyla ünlüdür."
+      },
+      "alternatives": [
+        {
+          "ex": "The field survey recorded the size of each oyster before returning it to the sampling area, allowing later observations to use the same classification scheme.",
+          "exTr": "Saha araştırması, sonraki gözlemlerde aynı sınıflandırma düzeninin kullanılabilmesi için her istiridyeyi örnekleme alanına geri bırakmadan önce boyutunu kaydetti."
+        }
+      ]
+    },
+    {
+      "word": "pacific",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i./s. Pacific: Pasifik Okyanusu; Pasifik'e ait",
+        "ex": "The islands lie in the eastern Pacific Ocean.",
+        "exTr": "Adalar Pasifik Okyanusu'nun doğusunda yer alır."
+      },
+      "alternatives": [
+        {
+          "ex": "The exhibition connected several Pacific islands through accounts of travel and exchange, rather than presenting each community as isolated from its neighbours.",
+          "exTr": "Sergi, her topluluğu komşularından yalıtılmış göstermek yerine yolculuk ve alışveriş anlatılarıyla birkaç Pasifik adası arasında bağlantı kurdu."
+        }
+      ],
+      "note": "Birincil coğrafi anlamda Pacific büyük harflidir; barışçıl anlamındaki küçük harfli pacific ile karıştırılmadı."
+    },
+    {
+      "word": "package",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. paket",
+        "ex": "The government approved a financial package designed to support small businesses affected by the recession.",
+        "exTr": "Hükümet, durgunluktan etkilenen küçük işletmeleri desteklemek amacıyla mali bir paketi onayladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The package arrived without its outer label, so staff compared the contents with the order record before deciding which department should receive it.",
+          "exTr": "Paket dış etiketi olmadan geldiği için personel hangi bölüme verileceğine karar vermeden önce içindekileri sipariş kaydıyla karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "paella",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. paella (İspanyol pirinç yemeği)",
+        "ex": "Paella is traditionally cooked outdoors over an open fire in a wide, shallow pan so that the rice absorbs the stock evenly.",
+        "exTr": "Paella geleneksel olarak açık havada, açık ateş üzerinde geniş ve sığ bir tavada pişirilir; böylece pirinç et suyunu eşit biçimde emer."
+      },
+      "alternatives": [
+        {
+          "ex": "The family restaurant offered paella on weekends, requiring the kitchen to coordinate preparation with other dishes ordered by customers sharing the same table.",
+          "exTr": "Aile lokantası hafta sonları paella sunuyor, bu da mutfağın hazırlığı aynı masayı paylaşan müşterilerin sipariş ettiği diğer yemeklerle koordine etmesini gerektiriyordu."
+        }
+      ]
+    }
+  ],
+  "collocations": [
+    {
+      "word": "one-spot",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "roll a one-spot",
+          "tr": "zarda bir atmak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "one-time",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a one-time payment",
+          "tr": "tek seferlik ödeme"
+        },
+        {
+          "en": "a one-time fee",
+          "tr": "bir defaya mahsus ücret"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "one-woman",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a one-woman show",
+          "tr": "tek kadının sahnelediği gösteri"
+        },
+        {
+          "en": "a one-woman business",
+          "tr": "tek kadının yürüttüğü işletme"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "opus",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "an opus number",
+          "tr": "eser numarası"
+        },
+        {
+          "en": "a composer's final opus",
+          "tr": "bir bestecinin son eseri"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "orange",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "bright orange",
+          "tr": "parlak turuncu"
+        },
+        {
+          "en": "an orange glow",
+          "tr": "turuncu bir parıltı"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "orchard",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "an apple orchard",
+          "tr": "elma bahçesi"
+        },
+        {
+          "en": "plant an orchard",
+          "tr": "meyve bahçesi kurmak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "orchestrate",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "orchestrate a campaign",
+          "tr": "bir kampanyayı planlayıp koordine etmek"
+        },
+        {
+          "en": "orchestrate a response",
+          "tr": "bir karşılık veya müdahaleyi eş güdümlemek"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "organizer",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "an event organizer",
+          "tr": "etkinlik düzenleyicisi"
+        },
+        {
+          "en": "a conference organizer",
+          "tr": "konferans düzenleyicisi"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "out-of-town",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "out-of-town visitors",
+          "tr": "şehir dışından gelen ziyaretçiler"
+        },
+        {
+          "en": "out-of-town guests",
+          "tr": "şehir dışından gelen konuklar"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "over-the-top",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "an over-the-top performance",
+          "tr": "abartılı bir performans"
+        },
+        {
+          "en": "an over-the-top reaction",
+          "tr": "aşırıya kaçan bir tepki"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "oxide",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "iron oxide",
+          "tr": "demir oksit"
+        },
+        {
+          "en": "an oxide layer",
+          "tr": "oksit tabakası"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "oyster",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "an oyster shell",
+          "tr": "istiridye kabuğu"
+        },
+        {
+          "en": "an oyster bed",
+          "tr": "istiridye yatağı"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "pacific",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "the Pacific Ocean",
+          "tr": "Pasifik Okyanusu"
+        },
+        {
+          "en": "the Pacific coast",
+          "tr": "Pasifik kıyısı"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

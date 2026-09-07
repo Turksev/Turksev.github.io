@@ -26,7 +26,12 @@ var looking = pencere['KELIME_K' + dizin.k].looking;
 assert.ok(dizin && looking, 'looking kelime kartı bulunamadı');
 assert.strictEqual(dizin.y, 'fiil', 'looking kartı yalnız çekimli fiil olarak kalmalı');
 assert.strictEqual(looking.a.length, 1, 'looking kartında kalıp anlamları birikmemeli');
-assert.ok(!looking.kl, 'looking kartında bağımsız öbeklere ait kalıp satırları kalmamalı');
+// Yeni istek: eksik kullanım alanları da doldurulur. Bu kartta yalnız
+// çekimli fiil + zarf örüntüleri bulunabilir; aşağıdaki ayrı öbekler taşınmaz.
+assert.deepStrictEqual(JSON.parse(JSON.stringify(looking.kl)), [
+  {en: 'looking closely', tr: 'yakından bakarak'},
+  {en: 'looking carefully', tr: 'dikkatle bakarak'}
+], 'looking: çekimli fiil örüntüleri bağımsız look at/for vb. kartlarla karışmamalı');
 assert.ok(/look fiilinin -ing biçimi/.test(looking.a[0].tr),
   'looking kartı biçimbilgisel açıklamasını korumalı');
 

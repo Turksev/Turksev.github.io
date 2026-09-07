@@ -1,0 +1,988 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 1,
+    "input": "input-009.json"
+  },
+  "enrichments": [
+    {
+      "word": "co-ordinating",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. eşgüdüm sağlayan, koordine eden, düzenleyici",
+        "ex": "The agency plays a co-ordinating role, bringing together researchers from several universities who would otherwise work in isolation.",
+        "exTr": "Ajans, aksi hâlde birbirinden kopuk çalışacak olan çeşitli üniversitelerden araştırmacıları bir araya getirerek eşgüdüm sağlayıcı bir rol üstlenir."
+      },
+      "alternatives": [
+        {
+          "ex": "The co-ordinating committee sets shared deadlines but leaves participating institutions free to decide how they will organise their own teams.",
+          "exTr": "Eşgüdüm sağlayan komite ortak son tarihler belirliyor; ancak katılımcı kurumları kendi ekiplerini nasıl düzenleyeceklerine karar verme konusunda serbest bırakıyor."
+        }
+      ]
+    },
+    {
+      "word": "co-star",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. başrol ortağı",
+        "ex": "The actress reunited with her former co-star for a highly anticipated sequel.",
+        "exTr": "Aktris, çok beklenen bir devam filmi için eski başrol ortağıyla yeniden bir araya geldi."
+      },
+      "alternatives": [
+        {
+          "ex": "The interview examines how the actor and his co-star developed contrasting interpretations of their characters during the rehearsal process.",
+          "exTr": "Görüşme, oyuncunun ve başrol ortağının prova sürecinde karakterlerine ilişkin karşıt yorumları nasıl geliştirdiğini inceliyor."
+        }
+      ]
+    },
+    {
+      "word": "coach-and-four",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. dört atlı fayton/araba",
+        "ex": "Visitors to the historic estate can still tour the grounds aboard an authentic coach-and-four.",
+        "exTr": "Tarihi malikaneyi ziyaret edenler, araziyi hâlâ özgün bir dört atlı fayton ile gezebilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The travel diary describes a journey by coach-and-four, noting how road conditions affected both speed and the passengers' comfort.",
+          "exTr": "Seyahat günlüğü, yol koşullarının hem hızı hem de yolcuların rahatını nasıl etkilediğini belirterek dört atlı arabayla yapılan bir yolculuğu anlatıyor."
+        }
+      ]
+    },
+    {
+      "word": "coast",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sahil, kıyı",
+        "ex": "Millions of tourists visit the Mediterranean coast every summer despite rising temperatures.",
+        "exTr": "Yükselen sıcaklıklara rağmen milyonlarca turist her yaz Akdeniz kıyısını ziyaret ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Settlements along the coast developed different trading connections from inland towns, partly because access to shipping shaped their economic opportunities.",
+          "exTr": "Kıyı boyunca uzanan yerleşimler, deniz taşımacılığına erişimin ekonomik fırsatlarını şekillendirmesi nedeniyle kısmen iç kesimlerdeki kasabalardan farklı ticaret bağlantıları geliştirdi."
+        }
+      ]
+    },
+    {
+      "word": "coastline",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kıyı şeridi, sahil hattı",
+        "ex": "Rising sea levels are gradually eroding the coastline along several low-lying island nations.",
+        "exTr": "Yükselen deniz seviyeleri, alçak rakımlı birkaç ada ülkesi boyunca kıyı şeridini yavaş yavaş aşındırıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Comparing old maps with recent aerial images revealed sections of the coastline that had changed substantially since the harbour was built.",
+          "exTr": "Eski haritaların yakın tarihli hava görüntüleriyle karşılaştırılması, liman inşa edildiğinden beri önemli ölçüde değişmiş kıyı şeridi kesimlerini ortaya çıkardı."
+        }
+      ]
+    },
+    {
+      "word": "cocktail",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. karışım, bileşim",
+        "ex": "Soil fertility depends on a complex cocktail of minerals, bacteria and fungi that interact in ways researchers are only beginning to understand.",
+        "exTr": "Toprak verimliliği, araştırmacıların ancak yeni yeni anlamaya başladığı biçimlerde etkileşen karmaşık bir mineral, bakteri ve mantar karışımına bağlıdır."
+      },
+      "alternatives": [
+        {
+          "ex": "The drainage water contained a cocktail of substances whose combined effects could not be inferred from measurements of each substance alone.",
+          "exTr": "Drenaj suyu, ortak etkileri her bir maddenin ayrı ayrı ölçülmesinden çıkarılamayacak bir madde karışımı içeriyordu."
+        }
+      ]
+    },
+    {
+      "word": "cod",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. morina (balığı)",
+        "ex": "Stocks of cod in the North Atlantic collapsed in the 1990s, and decades of strict fishing limits have not fully restored them.",
+        "exTr": "Kuzey Atlantik'teki morina stokları 1990'larda çöktü ve onlarca yıl süren sıkı avlanma sınırlamaları bu stokları tam olarak eski hâline getiremedi."
+      },
+      "alternatives": [
+        {
+          "ex": "The fisheries survey recorded the size of each cod caught, providing information beyond the total weight landed by the boats.",
+          "exTr": "Balıkçılık araştırması, teknelerin karaya çıkardığı toplam ağırlığın ötesinde bilgi sağlamak için yakalanan her morinanın boyunu kaydetti."
+        }
+      ]
+    },
+    {
+      "word": "coexist",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. bir arada var olmak, birlikte bulunmak",
+        "ex": "Native wildlife can coexist with carefully managed tourism when sensitive habitats remain protected.",
+        "exTr": "Hassas yaşam alanları korunduğunda yerli yaban hayatı dikkatle yönetilen turizmle bir arada var olabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "Different teaching methods can coexist within the same programme when instructors agree on shared objectives and consistent standards of assessment.",
+          "exTr": "Eğitmenler ortak hedefler ve tutarlı değerlendirme standartları üzerinde anlaştığında aynı program içinde farklı öğretim yöntemleri bir arada bulunabilir."
+        }
+      ]
+    },
+    {
+      "word": "coffin",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. tabut",
+        "ex": "Archaeologists carefully lifted the wooden coffin from the burial chamber without damaging its fragile surface.",
+        "exTr": "Arkeologlar, kırılgan yüzeyine zarar vermeden ahşap tabutu mezar odasından dikkatle çıkardı."
+      },
+      "alternatives": [
+        {
+          "ex": "The painted coffin carried inscriptions that linked the burial to a family already mentioned in documents from a nearby settlement.",
+          "exTr": "Boyalı tabut, gömüyü yakın bir yerleşime ait belgelerde zaten adı geçen bir aileyle ilişkilendiren yazıtlar taşıyordu."
+        }
+      ]
+    },
+    {
+      "word": "cognitively",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. düşünme, öğrenme ve algılama süreçleri bakımından; bilişsel olarak",
+        "ex": "Children who receive adequate nutrition are better prepared cognitively to benefit from formal education.",
+        "exTr": "Yeterli beslenen çocuklar örgün eğitimden yararlanmak için bilişsel açıdan daha iyi hazırlanmıştır."
+      },
+      "alternatives": [
+        {
+          "ex": "The second task was more cognitively demanding because participants had to compare several possible explanations rather than recall a single fact.",
+          "exTr": "Katılımcıların tek bir bilgiyi hatırlamak yerine birkaç olası açıklamayı karşılaştırması gerektiği için ikinci görev bilişsel açıdan daha zorluydu."
+        }
+      ]
+    },
+    {
+      "word": "cohesion",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. bütünlük, kaynaşma, uyum",
+        "ex": "Team-building activities are often organized to strengthen cohesion among employees from different departments.",
+        "exTr": "Farklı departmanlardan çalışanlar arasındaki kaynaşmayı güçlendirmek için genellikle ekip kurma etkinlikleri düzenlenir."
+      },
+      "alternatives": [
+        {
+          "ex": "Shared public spaces may contribute to social cohesion, but their design must take account of residents with different ages and abilities.",
+          "exTr": "Ortak kamusal alanlar toplumsal kaynaşmaya katkıda bulunabilir; ancak tasarımlarında farklı yaşlara ve becerilere sahip sakinler dikkate alınmalıdır."
+        }
+      ]
+    },
+    {
+      "word": "coincide",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. aynı zamana rastlamak, çakışmak; örtüşmek",
+        "ex": "The museum's new exhibition was timed to coincide with the two-hundredth anniversary of the scientist's birth.",
+        "exTr": "Müzenin yeni sergisi, bilim insanının doğumunun iki yüzüncü yıl dönümüyle çakışacak şekilde zamanlandı."
+      },
+      "alternatives": [
+        {
+          "ex": "The busiest period in the factory tends to coincide with the harvest, making recruitment difficult in communities where both sectors need workers.",
+          "exTr": "Fabrikanın en yoğun dönemi genellikle hasatla çakışarak her iki sektörün de işçiye ihtiyaç duyduğu topluluklarda personel bulmayı güçleştiriyor."
+        }
+      ]
+    },
+    {
+      "word": "coincidentally",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. tesadüfen, rastlantısal olarak",
+        "ex": "Two independent research teams coincidentally published almost identical findings about ocean acidification that same month.",
+        "exTr": "İki bağımsız araştırma ekibi, aynı ay içinde okyanus asitlenmesi hakkında tesadüfen neredeyse aynı bulguları yayımladı."
+      },
+      "alternatives": [
+        {
+          "ex": "Coincidentally, the storm occurred during a scheduled equipment test, so the team had already installed instruments capable of recording its effects.",
+          "exTr": "Fırtına tesadüfen planlanmış bir ekipman testi sırasında meydana geldiğinden ekip, etkilerini kaydedebilecek aletleri zaten kurmuştu."
+        }
+      ]
+    },
+    {
+      "word": "cold",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. soğuk",
+        "ex": "Prolonged exposure to extreme cold can cause frostbite within a matter of minutes.",
+        "exTr": "Aşırı soğuğa uzun süre maruz kalmak, birkaç dakika içinde donmaya neden olabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The materials were tested in cold conditions to establish whether changes in temperature would affect their flexibility during outdoor use.",
+          "exTr": "Sıcaklık değişikliklerinin açık hava kullanımı sırasında esnekliklerini etkileyip etkilemeyeceğini belirlemek için malzemeler soğuk koşullarda test edildi."
+        }
+      ]
+    },
+    {
+      "word": "collaboration",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. işbirliği",
+        "ex": "International collaboration among researchers accelerated the development of the new vaccine considerably.",
+        "exTr": "Araştırmacılar arasındaki uluslararası işbirliği, yeni aşının geliştirilmesini büyük ölçüde hızlandırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The collaboration brought together practical knowledge from farmers and analytical expertise from researchers, improving the questions asked during the initial survey.",
+          "exTr": "İş birliği, çiftçilerin uygulamaya dayalı bilgisini araştırmacıların analitik uzmanlığıyla bir araya getirerek ilk araştırmada sorulan soruları iyileştirdi."
+        }
+      ]
+    },
+    {
+      "word": "collapse",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. çöküş",
+        "ex": "Engineers had warned for years that the aging bridge was at risk of collapse.",
+        "exTr": "Mühendisler, yıllardır eskiyen köprünün çökme riski taşıdığı konusunda uyarıda bulunmuştu."
+      },
+      "alternatives": [
+        {
+          "ex": "The collapse of the transport network disrupted food deliveries even in districts where farms had escaped direct damage from the storm.",
+          "exTr": "Ulaşım ağının çöküşü, çiftliklerin fırtınanın doğrudan zararından kurtulduğu bölgelerde bile gıda sevkiyatlarını aksattı."
+        }
+      ]
+    },
+    {
+      "word": "collected",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. toplanmış",
+        "ex": "The collected data revealed a surprising correlation between air pollution and respiratory illness.",
+        "exTr": "Toplanan veriler, hava kirliliği ile solunum hastalıkları arasında şaşırtıcı bir ilişki ortaya koydu."
+      },
+      "alternatives": [
+        {
+          "ex": "The collected samples were labelled with dates and locations before being sent to separate laboratories for independent analysis.",
+          "exTr": "Toplanan örnekler, bağımsız analiz için ayrı laboratuvarlara gönderilmeden önce tarih ve konum bilgileriyle etiketlendi."
+        }
+      ]
+    },
+    {
+      "word": "collective",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. ortak, kolektif, toplu",
+        "ex": "Reducing plastic pollution requires the collective effort of governments, businesses, and individual consumers.",
+        "exTr": "Plastik kirliliğini azaltmak; hükûmetlerin, işletmelerin ve bireysel tüketicilerin ortak çabasını gerektirir."
+      },
+      "alternatives": [
+        {
+          "ex": "The agreement treats maintenance as a collective responsibility rather than leaving each household to negotiate repairs independently.",
+          "exTr": "Anlaşma, her haneyi onarımları bağımsız olarak görüşmek durumunda bırakmak yerine bakımı ortak bir sorumluluk olarak ele alıyor."
+        }
+      ]
+    },
+    {
+      "word": "college",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yüksekokul, fakülte; (ABD) üniversite",
+        "ex": "Many first-generation students struggle financially during their first year of college.",
+        "exTr": "Ailesinde üniversiteye giden ilk kişi olan pek çok öğrenci, üniversitenin ilk yılında mali açıdan zorlanır."
+      },
+      "alternatives": [
+        {
+          "ex": "The college offers flexible entry routes for adults whose professional experience is extensive but whose formal qualifications are limited.",
+          "exTr": "Yüksekokul, mesleki deneyimi kapsamlı ancak resmî yeterlilikleri sınırlı olan yetişkinler için esnek kabul yolları sunuyor."
+        }
+      ]
+    },
+    {
+      "word": "colloquial",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. günlük konuşma diline ait, teklifsiz, senli benli",
+        "ex": "Learners often sound unnatural because textbooks rarely teach the colloquial expressions that native speakers use in ordinary everyday conversation.",
+        "exTr": "Dil öğrenenler çoğu zaman yapay konuşur; çünkü ders kitapları, ana dili konuşanların sıradan günlük sohbette kullandığı teklifsiz ifadeleri nadiren öğretir."
+      },
+      "alternatives": [
+        {
+          "ex": "The translation preserves the narrator's colloquial style while making the historical references understandable to readers unfamiliar with the original setting.",
+          "exTr": "Çeviri, anlatıcının gündelik konuşma üslubunu korurken tarihsel göndermeleri özgün ortama yabancı okuyucular için anlaşılır kılıyor."
+        }
+      ]
+    },
+    {
+      "word": "colonialism",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sömürgecilik, kolonyalizm",
+        "ex": "Historians continue to debate how deeply colonialism shaped the economic structures of newly independent states during the second half of the twentieth century.",
+        "exTr": "Tarihçiler, sömürgeciliğin yirminci yüzyılın ikinci yarısında yeni bağımsızlığını kazanmış devletlerin ekonomik yapılarını ne kadar derinden biçimlendirdiğini tartışmayı sürdürüyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The seminar examines colonialism through land records, asking how changes in ownership affected the livelihoods of communities already living in the territory.",
+          "exTr": "Seminer, mülkiyetteki değişikliklerin bölgede zaten yaşayan toplulukların geçim kaynaklarını nasıl etkilediğini sorgulayarak sömürgeciliği arazi kayıtları üzerinden inceliyor."
+        }
+      ]
+    },
+    {
+      "word": "colonization",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. kolonileşme, bir alana yerleşme (canlılar için)",
+        "ex": "Biologists documented the rapid colonization of the volcanic island by seabirds, insects and hardy plants within only a few decades.",
+        "exTr": "Biyologlar, volkanik adanın yalnızca birkaç on yıl içinde deniz kuşları, böcekler ve dayanıklı bitkiler tarafından hızla kolonileştirilmesini belgeledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The researchers monitored the colonization of newly exposed ground to see which plants appeared before a continuous cover of vegetation developed.",
+          "exTr": "Araştırmacılar, kesintisiz bir bitki örtüsü gelişmeden önce hangi bitkilerin ortaya çıktığını görmek için yeni açığa çıkan zeminin kolonileşmesini izledi."
+        }
+      ]
+    },
+    {
+      "word": "colossal",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. devasa, muazzam",
+        "ex": "Constructing the bridge required a colossal amount of steel, concrete, and skilled labor over several years.",
+        "exTr": "Köprünün inşası, birkaç yıl boyunca devasa miktarda çelik, beton ve nitelikli işçilik gerektirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "Moving the colossal stone blocks would have required careful coordination, although the surviving evidence does not establish exactly which techniques were used.",
+          "exTr": "Devasa taş blokları taşımak dikkatli koordinasyon gerektirmiş olmalıdır; ancak günümüze ulaşan kanıtlar tam olarak hangi tekniklerin kullanıldığını ortaya koymuyor."
+        }
+      ]
+    },
+    {
+      "word": "colours",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. renkler",
+        "ex": "Autumn leaves display brilliant colours as chlorophyll breaks down and other pigments become visible.",
+        "exTr": "Sonbahar yaprakları, klorofil parçalanıp diğer pigmentler görünür hale geldikçe göz alıcı renkler sergiler."
+      },
+      "alternatives": [
+        {
+          "ex": "Using different colours for measured and predicted values made the diagram easier to interpret without adding further numerical detail.",
+          "exTr": "Ölçülen ve öngörülen değerler için farklı renkler kullanmak, daha fazla sayısal ayrıntı eklemeden şemanın yorumlanmasını kolaylaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "combination",
+      "sense_index": 0,
+      "expected": {
+        "tr": "kombinasyon, birleşim",
+        "ex": "A combination of diet, exercise, and medication often works best for controlling diabetes.",
+        "exTr": "Diyet, egzersiz ve ilaç kombinasyonu, diyabetin kontrolünde çoğu zaman en iyi sonucu verir."
+      },
+      "alternatives": [
+        {
+          "ex": "A combination of interviews and direct observation gave the evaluators a fuller understanding of how the training programme operated in practice.",
+          "exTr": "Görüşmelerle doğrudan gözlemin birleşimi, değerlendiricilerin eğitim programının uygulamada nasıl işlediğini daha kapsamlı anlamasını sağladı."
+        }
+      ]
+    },
+    {
+      "word": "combustion",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yanma",
+        "ex": "Engineers are developing engines that produce fewer emissions during the combustion of fossil fuels.",
+        "exTr": "Mühendisler, fosil yakıtların yanması sırasında daha az emisyon üreten motorlar geliştiriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The experiment measured heat released during combustion while keeping the mass of fuel constant across the different trials.",
+          "exTr": "Deney, farklı denemelerde yakıt kütlesini sabit tutarak yanma sırasında açığa çıkan ısıyı ölçtü."
+        }
+      ]
+    },
+    {
+      "word": "comedy",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. komedi, güldürü",
+        "ex": "Ancient Greek comedy often mocked politicians and social customs of the period.",
+        "exTr": "Antik Yunan komedisi, genellikle dönemin politikacılarıyla ve toplumsal âdetleriyle alay ederdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The play uses comedy to expose the gap between the characters' claims of generosity and their reluctance to share material resources.",
+          "exTr": "Oyun, karakterlerin cömertlik iddialarıyla maddi kaynakları paylaşma konusundaki isteksizlikleri arasındaki uçurumu açığa çıkarmak için güldürüden yararlanıyor."
+        }
+      ]
+    },
+    {
+      "word": "comfortable",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. rahat, konforlu; (fark için) kolay, rahat",
+        "ex": "The incumbent candidate won the election by a comfortable margin of nearly twenty percent.",
+        "exTr": "Görevdeki aday, seçimi yaklaşık yüzde yirmilik rahat bir farkla kazandı."
+      },
+      "alternatives": [
+        {
+          "ex": "Students were more comfortable asking questions once the lecturer explained that uncertainty was an expected part of learning unfamiliar concepts.",
+          "exTr": "Öğretim görevlisi, belirsizliğin yeni kavramları öğrenmenin beklenen bir parçası olduğunu açıkladığında öğrenciler soru sormakta daha rahat oldu."
+        }
+      ]
+    },
+    {
+      "word": "coming",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. gelecek, yaklaşan",
+        "ex": "Farmers are preparing for the coming winter by storing extra grain and fuel supplies.",
+        "exTr": "Çiftçiler, fazladan tahıl ve yakıt stoklayarak yaklaşan kışa hazırlanıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Over the coming months, the project team will compare feedback from the pilot sites before deciding whether wider implementation is justified.",
+          "exTr": "Önümüzdeki aylarda proje ekibi, daha yaygın uygulamanın gerekçeli olup olmadığına karar vermeden önce pilot alanlardan gelen geri bildirimleri karşılaştıracak."
+        }
+      ]
+    },
+    {
+      "word": "commander",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. komutan",
+        "ex": "The commander ordered troops to withdraw from the area after receiving reports of an approaching storm.",
+        "exTr": "Komutan, yaklaşan bir fırtına raporları aldıktan sonra birliklere bölgeden çekilmelerini emretti."
+      },
+      "alternatives": [
+        {
+          "ex": "The commander recorded the reasons for withdrawing the unit, providing later historians with evidence about the limits of available supplies.",
+          "exTr": "Komutan, birliği geri çekme gerekçelerini kaydederek sonraki tarihçilere mevcut erzakın sınırlılıkları hakkında kanıt sağladı."
+        }
+      ]
+    },
+    {
+      "word": "commemorative",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. anma amaçlı, anma niteliğinde, hatıra (pul, madalya vb.)",
+        "ex": "The government issued a commemorative stamp to mark the centenary of the first successful heart transplant performed in the country.",
+        "exTr": "Hükûmet, ülkede gerçekleştirilen ilk başarılı kalp naklinin yüzüncü yılını anmak için hatıra pul çıkardı."
+      },
+      "alternatives": [
+        {
+          "ex": "A commemorative plaque identifies the former school building and explains its role in expanding access to education in the district.",
+          "exTr": "Bir anma levhası, eski okul binasını tanıtıyor ve ilçede eğitime erişimin genişlemesindeki rolünü açıklıyor."
+        }
+      ]
+    },
+    {
+      "word": "commentary",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yorum, açıklama, eleştiri yazısı",
+        "ex": "The professor's commentary on the historical document offered valuable insight into its political significance at the time.",
+        "exTr": "Profesörün tarihi belge üzerine yorumu, o dönemki siyasi önemine dair değerli bir bakış açısı sundu."
+      },
+      "alternatives": [
+        {
+          "ex": "The accompanying commentary explains why the editors retained conflicting accounts instead of presenting a single uninterrupted narrative of the event.",
+          "exTr": "Eşlik eden açıklama yazısı, editörlerin olaya ilişkin tek ve kesintisiz bir anlatı sunmak yerine çelişkili anlatımları neden koruduğunu açıklıyor."
+        }
+      ]
+    },
+    {
+      "word": "commercialised",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. ticarileştirilmiş, ticari hale getirilmiş",
+        "ex": "Critics complain that the festival has become so commercialised that its original religious meaning is now almost invisible beneath the advertising.",
+        "exTr": "Eleştirmenler, festivalin öylesine ticarileştiğinden yakınıyor ki özgün dinî anlamı artık reklamların altında neredeyse görünmez durumda."
+      },
+      "alternatives": [
+        {
+          "ex": "The newly commercialised technology emerged from university research, but adapting it for routine production required substantial additional testing.",
+          "exTr": "Yeni ticarileştirilmiş teknoloji üniversite araştırmasından doğdu; ancak düzenli üretime uyarlanması önemli ölçüde ek test gerektirdi."
+        }
+      ]
+    },
+    {
+      "word": "commit",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. taahhüt etmek",
+        "ex": "Several nations have agreed to commit additional funding toward renewable energy research.",
+        "exTr": "Birçok ulus, yenilenebilir enerji araştırmalarına ek finansman ayırmayı taahhüt etmeyi kabul etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The council was unwilling to commit further resources until the project managers explained how they would address the delays already encountered.",
+          "exTr": "Belediye meclisi, proje yöneticileri şimdiye kadar karşılaşılan gecikmeleri nasıl ele alacaklarını açıklayana kadar ek kaynak sağlamayı taahhüt etmeye isteksizdi."
+        }
+      ]
+    },
+    {
+      "word": "committee",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. komite, kurul",
+        "ex": "The committee will meet next week to discuss funding for the new research project.",
+        "exTr": "Komite, yeni araştırma projesinin finansmanını görüşmek üzere gelecek hafta toplanacak."
+      },
+      "alternatives": [
+        {
+          "ex": "The committee included teachers, parents and students so that the proposed timetable could be examined from several different perspectives.",
+          "exTr": "Önerilen ders programının farklı açılardan incelenebilmesi için komitede öğretmenler, veliler ve öğrenciler yer aldı."
+        }
+      ]
+    },
+    {
+      "word": "common-law",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. örf ve adet hukukuna dayalı, teamül hukuku ile ilgili",
+        "ex": "Several jurisdictions still recognize common-law marriage after a couple has lived together for a set period.",
+        "exTr": "Bazı hukuk sistemleri, bir çift belirli bir süre birlikte yaşadıktan sonra hâlâ teamül hukukuna dayalı evliliği tanıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The comparative course asks students to examine common-law reasoning alongside other legal traditions and explain the assumptions underlying each approach.",
+          "exTr": "Karşılaştırmalı ders, öğrencilerden teamül hukukuna dayalı akıl yürütmeyi diğer hukuk gelenekleriyle birlikte incelemelerini ve her yaklaşımın temelindeki varsayımları açıklamalarını istiyor."
+        }
+      ]
+    },
+    {
+      "word": "communal",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. ortak, toplumsal, topluluğa ait",
+        "ex": "Residents of the housing complex share a communal garden where they grow vegetables together.",
+        "exTr": "Konut kompleksinin sakinleri, birlikte sebze yetiştirdikleri ortak bir bahçeyi paylaşıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "A communal kitchen reduced the need for separate cooking facilities, but residents had to agree on cleaning schedules and shared expenses.",
+          "exTr": "Ortak bir mutfak, ayrı yemek pişirme alanlarına duyulan ihtiyacı azalttı; ancak sakinlerin temizlik programları ve ortak giderler üzerinde anlaşması gerekti."
+        }
+      ]
+    },
+    {
+      "word": "communications",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. iletişim (bilimi/sistemleri)",
+        "ex": "The university expanded its communications department to include new courses on digital media.",
+        "exTr": "Üniversite, dijital medya üzerine yeni dersler eklemek için iletişim bölümünü genişletti."
+      },
+      "alternatives": [
+        {
+          "ex": "Reliable communications between the field station and the laboratory were essential for resolving questions before the next round of samples was collected.",
+          "exTr": "Bir sonraki örnek toplama turundan önce soruların çözüme kavuşturulması için saha istasyonu ile laboratuvar arasında güvenilir iletişim gerekliydi."
+        }
+      ]
+    },
+    {
+      "word": "community",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. topluluk, toplum",
+        "ex": "The scientific community responded to the pandemic with unprecedented speed and cooperation.",
+        "exTr": "Bilim camiası, salgına eşi görülmemiş bir hız ve iş birliğiyle yanıt verdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The local community helped define the research questions, ensuring that the survey addressed concerns beyond those initially identified by outside experts.",
+          "exTr": "Yerel topluluk, araştırma sorularının belirlenmesine yardımcı olarak araştırmanın dışarıdan gelen uzmanların başlangıçta belirlediklerinin ötesindeki kaygıları da ele almasını sağladı."
+        }
+      ]
+    },
+    {
+      "word": "company",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. arkadaşlık, refakat",
+        "ex": "The elderly widow said she simply enjoyed the company of her neighbor during long winter evenings.",
+        "exTr": "Yaşlı dul kadın, uzun kış akşamlarında komşusunun arkadaşlığından hoşlandığını söyledi."
+      },
+      "alternatives": [
+        {
+          "ex": "Regular visits provided welcome company for residents who spent much of the week alone and had few opportunities for informal conversation.",
+          "exTr": "Düzenli ziyaretler, haftanın büyük bölümünü yalnız geçiren ve gündelik sohbet için az fırsatı olan sakinlere memnuniyet verici bir arkadaşlık sağladı."
+        }
+      ]
+    },
+    {
+      "word": "comparatively",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. nispeten, kıyasla, göreceli olarak",
+        "ex": "The region's economy grew at a comparatively slow pace relative to its neighboring countries.",
+        "exTr": "Bölgenin ekonomisi, komşu ülkelerine kıyasla nispeten yavaş bir hızda büyüdü."
+      },
+      "alternatives": [
+        {
+          "ex": "The technique is comparatively inexpensive when existing equipment can be reused, although the need for specialist training should not be overlooked.",
+          "exTr": "Mevcut ekipman yeniden kullanılabildiğinde teknik nispeten ucuzdur; ancak uzmanlık eğitimi ihtiyacı göz ardı edilmemelidir."
+        }
+      ]
+    },
+    {
+      "word": "comparison",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. karşılaştırma, kıyaslama",
+        "ex": "The report offers a detailed comparison between renewable and fossil fuel energy production costs.",
+        "exTr": "Rapor, yenilenebilir ve fosil yakıt enerji üretim maliyetleri arasında ayrıntılı bir karşılaştırma sunuyor."
+      },
+      "alternatives": [
+        {
+          "ex": "A fair comparison requires the two systems to perform the same task under conditions that differ only in the feature being investigated.",
+          "exTr": "Adil bir karşılaştırma, iki sistemin yalnızca araştırılan özellik bakımından farklılaşan koşullarda aynı görevi yerine getirmesini gerektirir."
+        }
+      ]
+    },
+    {
+      "word": "compatible",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. uyumlu",
+        "ex": "The new software is fully compatible with most operating systems currently in use.",
+        "exTr": "Yeni yazılım, hâlihazırda kullanılan çoğu işletim sistemiyle tamamen uyumludur."
+      },
+      "alternatives": [
+        {
+          "ex": "The proposed timetable is compatible with existing bus services, which should make the evening sessions accessible to students without private transport.",
+          "exTr": "Önerilen program mevcut otobüs seferleriyle uyumludur; bu da akşam oturumlarını özel ulaşım imkânı olmayan öğrenciler için erişilebilir kılmalıdır."
+        }
+      ]
+    },
+    {
+      "word": "compensate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. telafi etmek, dengelemek",
+        "ex": "The body often tries to compensate for the loss of one sense by sharpening another.",
+        "exTr": "Vücut, bir duyunun kaybını genellikle başka bir duyuyu keskinleştirerek telafi etmeye çalışır."
+      },
+      "alternatives": [
+        {
+          "ex": "Additional storage space may compensate for irregular deliveries, but it cannot resolve problems caused by consistently poor product quality.",
+          "exTr": "Ek depolama alanı düzensiz teslimatları telafi edebilir; ancak ürün kalitesinin sürekli düşük olmasından kaynaklanan sorunları çözemez."
+        }
+      ]
+    },
+    {
+      "word": "competence",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yeterlilik, yetkinlik, ehliyet",
+        "ex": "The new training program aims to improve teachers' competence in using digital tools.",
+        "exTr": "Yeni eğitim programı, öğretmenlerin dijital araçları kullanma konusundaki yetkinliğini artırmayı amaçlıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The assessment measures practical competence by asking trainees to diagnose a realistic equipment fault and explain the reasoning behind their decisions.",
+          "exTr": "Değerlendirme, kursiyerlerden gerçekçi bir ekipman arızasını teşhis etmelerini ve kararlarının dayandığı akıl yürütmeyi açıklamalarını isteyerek uygulamalı yetkinliği ölçüyor."
+        }
+      ]
+    },
+    {
+      "word": "competently",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. gerekli bilgi ve beceriyle; yetkin biçimde",
+        "ex": "The technician competently repaired the instrument and documented every change made to its calibration.",
+        "exTr": "Teknisyen cihazı yetkin biçimde onardı ve kalibrasyonunda yapılan her değişikliği belgeledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The new coordinator handled the competing requests competently, explaining priorities clearly and ensuring that no department was left without a response.",
+          "exTr": "Yeni koordinatör, öncelikleri açıkça açıklayıp hiçbir bölümün yanıtsız bırakılmamasını sağlayarak birbiriyle yarışan talepleri yetkin biçimde yönetti."
+        }
+      ]
+    },
+    {
+      "word": "competitively",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. rekabetçi biçimde; rekabet ederek",
+        "ex": "Domestic firms must price their products competitively in global markets.",
+        "exTr": "Yerli şirketler ürünlerini küresel pazarlarda rekabetçi biçimde fiyatlandırmalıdır."
+      },
+      "alternatives": [
+        {
+          "ex": "Small producers can sell competitively when they share transport costs, provided that cooperation does not compromise the quality customers expect.",
+          "exTr": "Küçük üreticiler, iş birliğinin müşterilerin beklediği kaliteyi düşürmemesi koşuluyla taşıma maliyetlerini paylaşarak rekabetçi biçimde satış yapabilir."
+        }
+      ]
+    },
+    {
+      "word": "compilation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. farklı kaynaklardan derlenmiş eser veya veri bütünü; derleme",
+        "ex": "The archive published a compilation of letters written by nurses during the epidemic.",
+        "exTr": "Arşiv, salgın sırasında hemşirelerce yazılan mektuplardan oluşan bir derleme yayımladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The compilation brings together descriptions of local plants from several languages, making previously scattered knowledge available to a wider readership.",
+          "exTr": "Derleme, yerel bitkilere ilişkin farklı dillerdeki betimlemeleri bir araya getirerek daha önce dağınık durumdaki bilgiyi daha geniş bir okuyucu kitlesine sunuyor."
+        }
+      ]
+    },
+    {
+      "word": "complaint",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. şikâyet",
+        "ex": "Residents filed a formal complaint after the factory continued releasing smoke late into the night.",
+        "exTr": "Fabrika, gece geç saatlere kadar duman salmayı sürdürünce sakinler resmi bir şikâyette bulundu."
+      },
+      "alternatives": [
+        {
+          "ex": "The complaint concerned the lack of clear information rather than the decision itself, prompting the office to revise its standard letters.",
+          "exTr": "Şikâyet, kararın kendisinden ziyade açık bilgi eksikliğiyle ilgiliydi; bu da büroyu standart yazılarını gözden geçirmeye yöneltti."
+        }
+      ]
+    },
+    {
+      "word": "complete",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. tamamlamak",
+        "ex": "Volunteers helped complete the wildlife survey ahead of schedule despite challenging weather conditions.",
+        "exTr": "Gönüllüler, zorlu hava koşullarına rağmen yaban hayatı sayımını planlanandan önce tamamlamaya yardımcı oldu."
+      },
+      "alternatives": [
+        {
+          "ex": "To complete the comparison, the students also needed information about maintenance costs, which had not appeared in the original specifications.",
+          "exTr": "Öğrencilerin karşılaştırmayı tamamlamak için ilk teknik özelliklerde yer almayan bakım maliyetleri hakkında da bilgiye ihtiyacı vardı."
+        }
+      ]
+    },
+    {
+      "word": "completion",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. tamamlama, tamamlanma, bitirme",
+        "ex": "Payment will follow the successful completion of an independent safety inspection covering every production stage.",
+        "exTr": "Ödeme, üretimin her aşamasını kapsayan bağımsız güvenlik denetiminin başarıyla tamamlanmasının ardından yapılacak."
+      },
+      "alternatives": [
+        {
+          "ex": "Successful completion of the course depends on a practical project as well as a written examination covering the underlying principles.",
+          "exTr": "Kursun başarıyla tamamlanması, temel ilkeleri kapsayan yazılı bir sınavın yanı sıra uygulamalı bir projeye de bağlıdır."
+        }
+      ]
+    },
+    {
+      "word": "compliance",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. uyum, (kurallara) uygunluk, riayet",
+        "ex": "The factory underwent a thorough audit to ensure compliance with new environmental safety regulations.",
+        "exTr": "Fabrika, yeni çevresel güvenlik düzenlemelerine uyumu sağlamak için kapsamlı bir denetimden geçirildi."
+      },
+      "alternatives": [
+        {
+          "ex": "The review checked compliance with the agreed data-handling procedures and recorded any departures that might affect the reliability of the analysis.",
+          "exTr": "İnceleme, üzerinde anlaşılmış veri işleme yöntemlerine uyumu kontrol etti ve analizin güvenilirliğini etkileyebilecek sapmaları kaydetti."
+        }
+      ]
+    },
+    {
+      "word": "complicated",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. karmaşık, karışık",
+        "ex": "The human immune system involves a complicated network of cells that fight infection.",
+        "exTr": "İnsan bağışıklık sistemi, enfeksiyonla savaşan karmaşık bir hücre ağı içerir."
+      },
+      "alternatives": [
+        {
+          "ex": "The procedure became unnecessarily complicated when each department added its own approval stage without removing steps that no longer served a purpose.",
+          "exTr": "Her bölüm artık bir amaca hizmet etmeyen adımları kaldırmadan kendi onay aşamasını ekleyince süreç gereksiz yere karmaşıklaştı."
+        }
+      ]
+    },
+    {
+      "word": "component",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. bileşen, unsur",
+        "ex": "Sleep is considered an essential component of both physical and mental recovery.",
+        "exTr": "Uyku, hem fiziksel hem de zihinsel iyileşmenin temel bir bileşeni olarak kabul edilir."
+      },
+      "alternatives": [
+        {
+          "ex": "Each component can be replaced separately, which reduces the amount of material discarded when only one part of the device fails.",
+          "exTr": "Her bileşen ayrı ayrı değiştirilebilir; bu da cihazın yalnızca bir parçası arızalandığında atılan malzeme miktarını azaltır."
+        }
+      ]
+    },
+    {
+      "word": "composer",
+      "sense_index": 0,
+      "expected": {
+        "tr": "besteci",
+        "ex": "Beethoven continued to work as a composer even after losing his hearing completely.",
+        "exTr": "Beethoven, işitme duyusunu tamamen kaybettikten sonra bile besteci olarak çalışmaya devam etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The composer revised the final movement after rehearsals revealed that its dense instrumentation obscured the melody she wanted listeners to follow.",
+          "exTr": "Besteci, provalar yoğun çalgı kullanımının dinleyicilerin izlemesini istediği ezgiyi örttüğünü ortaya koyunca son bölümü yeniden düzenledi."
+        }
+      ]
+    },
+    {
+      "word": "compost",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kompost, gübre",
+        "ex": "Gardeners mix rich compost into the soil each spring to improve its fertility naturally.",
+        "exTr": "Bahçıvanlar, verimliliğini doğal yoldan artırmak için her ilkbahar toprağa zengin kompost karıştırır."
+      },
+      "alternatives": [
+        {
+          "ex": "Plots receiving compost were compared with untreated plots to examine changes in soil structure over the course of the growing season.",
+          "exTr": "Yetiştirme mevsimi boyunca toprak yapısındaki değişiklikleri incelemek için kompost verilen parseller işlem uygulanmayan parsellerle karşılaştırıldı."
+        }
+      ]
+    },
+    {
+      "word": "comprehension",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kavrama, anlama; okuduğunu anlama",
+        "ex": "The exam includes a reading comprehension section designed to test analytical thinking under time pressure.",
+        "exTr": "Sınav, zaman baskısı altında analitik düşünmeyi ölçmek üzere tasarlanmış bir okuduğunu anlama bölümü içeriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The questions test comprehension by asking readers to infer the author's purpose rather than merely locate repeated words in the passage.",
+          "exTr": "Sorular, okuyuculardan metinde tekrarlanan sözcükleri bulmalarını istemekle yetinmeyip yazarın amacını çıkarsamalarını isteyerek anlamayı ölçüyor."
+        }
+      ]
+    },
+    {
+      "word": "comprise",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. oluşmak, kapsamak; oluşturmak",
+        "ex": "Coral reefs comprise thousands of tiny organisms living together in a single structure.",
+        "exTr": "Mercan resifleri, tek bir yapı içinde birlikte yaşayan binlerce küçük organizmadan oluşur."
+      },
+      "alternatives": [
+        {
+          "ex": "The final sample will comprise households from both urban and rural districts, with selection designed to reflect differences in population size.",
+          "exTr": "Son örneklem, seçim süreci nüfus büyüklüğündeki farklılıkları yansıtacak biçimde tasarlanarak hem kentsel hem de kırsal bölgelerden haneleri kapsayacak."
+        }
+      ]
+    },
+    {
+      "word": "compulsive",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. takıntılı, dürtüsel; denetlenmesi güç bir davranışa iten",
+        "ex": "Compulsive checking can disrupt daily life even when a person recognises that it is unnecessary.",
+        "exTr": "Takıntılı biçimde kontrol etme, kişi bunun gereksiz olduğunu bilse bile günlük yaşamı aksatabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The interview distinguished occasional habits from compulsive behaviour by exploring how strongly participants felt driven to repeat particular actions.",
+          "exTr": "Görüşme, katılımcıların belirli eylemleri tekrarlamaya ne kadar güçlü biçimde yöneldiklerini araştırarak ara sıra görülen alışkanlıkları denetlenmesi güç davranışlardan ayırdı."
+        }
+      ]
+    },
+    {
+      "word": "computation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. hesaplama, hesap",
+        "ex": "Weather forecasting requires an enormous amount of numerical computation, since each prediction depends on millions of atmospheric measurements.",
+        "exTr": "Hava tahmini, her öngörü milyonlarca atmosferik ölçüme dayandığı için muazzam miktarda sayısal hesaplama gerektirir."
+      },
+      "alternatives": [
+        {
+          "ex": "The simplified model reduces the amount of computation required, but its predictions must still be checked against observations from real conditions.",
+          "exTr": "Basitleştirilmiş model gerekli hesaplama miktarını azaltıyor; ancak öngörülerinin gerçek koşullardaki gözlemlerle yine de karşılaştırılması gerekiyor."
+        }
+      ]
+    }
+  ],
+  "collocations": [
+    {
+      "word": "coach-and-four",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "travel by coach-and-four",
+          "tr": "dört atlı arabayla seyahat etmek"
+        },
+        {
+          "en": "drive a coach-and-four",
+          "tr": "dört atlı araba sürmek"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "coincidentally",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "purely coincidentally",
+          "tr": "tamamen tesadüfen"
+        },
+        {
+          "en": "not coincidentally",
+          "tr": "tesadüf olmayacak şekilde"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "commander",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a senior commander",
+          "tr": "üst düzey bir komutan"
+        },
+        {
+          "en": "a military commander",
+          "tr": "askerî komutan"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "competently",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "perform competently",
+          "tr": "yetkin biçimde iş görmek"
+        },
+        {
+          "en": "handle a task competently",
+          "tr": "bir görevi yetkin biçimde yürütmek"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "compulsive",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "compulsive behaviour",
+          "tr": "denetlenmesi güç, zorlayıcı davranış"
+        },
+        {
+          "en": "compulsive checking",
+          "tr": "dürtüsel biçimde sürekli kontrol etme"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

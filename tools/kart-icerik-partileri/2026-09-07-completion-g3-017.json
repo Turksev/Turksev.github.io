@@ -1,0 +1,988 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 3,
+    "input": "input-017.json"
+  },
+  "enrichments": [
+    {
+      "word": "erosion",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. aşınma, erozyon",
+        "ex": "Heavy rainfall over the past decade has accelerated soil erosion in the region.",
+        "exTr": "Son on yıldaki yoğun yağışlar, bölgede toprak erozyonunu hızlandırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The survey compared erosion along frequently used paths with changes in nearby areas where visitors rarely walked, rather than assuming a single cause.",
+          "exTr": "Araştırma, tek bir neden varsaymak yerine sık kullanılan patikalardaki aşınmayı ziyaretçilerin nadiren yürüdüğü yakın alanlardaki değişimlerle karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "erroneously",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. yanlışlıkla, hatalı biçimde",
+        "ex": "The fossils were erroneously assigned to a younger period because the surrounding soil had been disturbed.",
+        "exTr": "Çevredeki toprak bozulmuş olduğu için fosiller yanlışlıkla daha yakın bir döneme tarihlendirildi."
+      },
+      "alternatives": [
+        {
+          "ex": "Several households were erroneously counted twice because the database treated abbreviated street names as different addresses from their fully written equivalents.",
+          "exTr": "Veri tabanı kısaltılmış sokak adlarını açık yazılmış karşılıklarından farklı adresler saydığı için birkaç hane yanlışlıkla iki kez sayıldı."
+        }
+      ]
+    },
+    {
+      "word": "eruption",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. patlama, püskürme",
+        "ex": "Scientists monitored the volcano closely after signs suggested an eruption was imminent.",
+        "exTr": "Bilim insanları, bir patlamanın yakın olduğuna dair işaretler belirdikten sonra yanardağı yakından izledi."
+      },
+      "alternatives": [
+        {
+          "ex": "Descriptions of the eruption appeared in diaries from several towns, allowing historians to compare how news travelled beyond the affected area.",
+          "exTr": "Püskürmeye ilişkin betimlemeler birkaç kasabada tutulan günlüklerde yer alıyordu; böylece tarihçiler haberin etkilenen alanın ötesine nasıl yayıldığını karşılaştırabildi."
+        }
+      ]
+    },
+    {
+      "word": "escalator",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yürüyen merdiven",
+        "ex": "Engineers redesigned the station's escalators after surveys showed that passengers spent more than four minutes waiting to reach the upper platform during rush hour.",
+        "exTr": "Mühendisler, yolcuların yoğun saatlerde üst perona ulaşmak için dört dakikadan fazla beklediğini gösteren anketlerin ardından istasyonun yürüyen merdivenlerini yeniden tasarladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The escalator carried visitors directly to the upper galleries, but a poorly placed sign made the alternative elevator difficult to locate.",
+          "exTr": "Yürüyen merdiven ziyaretçileri doğrudan üst galerilere taşıyordu; ancak kötü yerleştirilmiş bir levha alternatif asansörün bulunmasını zorlaştırıyordu."
+        }
+      ]
+    },
+    {
+      "word": "essay",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. deneme, kompozisyon",
+        "ex": "The student wrote an essay analyzing the economic causes of the nineteenth-century famine.",
+        "exTr": "Öğrenci, on dokuzuncu yüzyıldaki kıtlığın ekonomik nedenlerini inceleyen bir deneme yazdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The essay begins with a childhood memory, then develops a broader argument about how public spaces shape a person's sense of belonging.",
+          "exTr": "Deneme bir çocukluk anısıyla başlıyor, ardından kamusal alanların kişinin aidiyet duygusunu nasıl şekillendirdiğine ilişkin daha geniş bir görüş geliştiriyor."
+        }
+      ]
+    },
+    {
+      "word": "essentially",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. esasen, aslında, temelde",
+        "ex": "The two theories are essentially similar, though they use different mathematical approaches.",
+        "exTr": "İki teori, farklı matematiksel yaklaşımlar kullansa da esasen birbirine benzer."
+      },
+      "alternatives": [
+        {
+          "ex": "The disagreement was essentially about priorities: both groups wanted improvements, but one valued speed while the other wanted wider consultation.",
+          "exTr": "Anlaşmazlık temelde önceliklerle ilgiliydi: Her iki grup da iyileştirme istiyordu, ancak biri hıza önem verirken diğeri daha geniş katılımlı görüşmeler talep ediyordu."
+        }
+      ]
+    },
+    {
+      "word": "esteem",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. saygı, itibar",
+        "ex": "Public esteem for scientists increased significantly during the global health crisis.",
+        "exTr": "Halkın bilim insanlarına duyduğu saygı, küresel sağlık krizi sırasında önemli ölçüde arttı."
+      },
+      "alternatives": [
+        {
+          "ex": "The esteem in which residents held the librarian became clear when dozens volunteered to help move the collection into its new building.",
+          "exTr": "Onlarca kişi koleksiyonu yeni binasına taşımaya yardım etmek için gönüllü olunca sakinlerin kütüphaneciye duyduğu saygı ortaya çıktı."
+        }
+      ]
+    },
+    {
+      "word": "estimation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. tahmin, hesaplama; takdir, saygı",
+        "ex": "By the analyst's estimation, global demand for lithium will triple within the next fifteen years.",
+        "exTr": "Analistin tahminine göre lityuma yönelik küresel talep, önümüzdeki on beş yıl içinde üç katına çıkacak."
+      },
+      "alternatives": [
+        {
+          "ex": "Estimation was unavoidable because several records were missing, but the report clearly distinguished calculated values from figures taken directly from surviving documents.",
+          "exTr": "Bazı kayıtlar eksik olduğu için tahmin kaçınılmazdı; ancak rapor hesaplanan değerleri günümüze ulaşan belgelerden doğrudan alınan sayılardan açıkça ayırdı."
+        }
+      ]
+    },
+    {
+      "word": "ether",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. eter (kimyasal madde)",
+        "ex": "Before modern anesthesia was developed, surgeons commonly used ether to keep patients unconscious during operations.",
+        "exTr": "Modern anestezi geliştirilmeden önce cerrahlar, ameliyatlar sırasında hastaları bilinçsiz tutmak için genellikle eter kullanırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "A faded label identified the liquid as ether, prompting the cataloguer to seek specialist advice before including the bottle in the teaching collection.",
+          "exTr": "Solmuş bir etiket sıvının eter olduğunu belirtiyordu; bu nedenle katalog görevlisi şişeyi eğitim koleksiyonuna almadan önce uzman görüşüne başvurdu."
+        }
+      ]
+    },
+    {
+      "word": "ethics",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. etik, ahlak kuralları",
+        "ex": "Medical ethics require doctors to obtain informed consent before performing any surgical procedure.",
+        "exTr": "Tıp etiği, doktorların herhangi bir cerrahi işlem yapmadan önce bilgilendirilmiş onam almasını gerektirir."
+      },
+      "alternatives": [
+        {
+          "ex": "The debate about research ethics focused on whether participants could meaningfully agree to uses of their recordings that had not yet been proposed.",
+          "exTr": "Araştırma etiği tartışması, katılımcıların kayıtlarının henüz önerilmemiş kullanım biçimlerine anlamlı bir onay verip veremeyeceğine odaklandı."
+        }
+      ]
+    },
+    {
+      "word": "eucalyptus",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. okaliptüs (ağacı)",
+        "ex": "Koalas depend almost entirely on eucalyptus leaves for both food and hydration.",
+        "exTr": "Koalalar, hem beslenme hem de su ihtiyaçları için neredeyse tamamen okaliptüs yapraklarına bağımlıdır."
+      },
+      "alternatives": [
+        {
+          "ex": "The botanist compared the eucalyptus specimen with earlier drawings, noting differences in the shapes of leaves collected from the same tree.",
+          "exTr": "Botanikçi, aynı ağaçtan toplanan yaprakların biçimlerindeki farklılıklara dikkat ederek okaliptüs örneğini önceki çizimlerle karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "evade",
+      "sense_index": 1,
+      "expected": {
+        "tr": "f. (soruyu, sorumluluğu) geçiştirmek, savuşturmak, -den kaçınmak",
+        "ex": "The minister evaded every question about the budget cuts, repeating vague promises instead of explaining how the money would actually be spent.",
+        "exTr": "Bakan, paranın gerçekte nasıl harcanacağını açıklamak yerine belirsiz sözler tekrarlayarak bütçe kesintileriyle ilgili her soruyu geçiştirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The director could no longer evade questions about the missing equipment once the inventory showed exactly when each item had last been checked.",
+          "exTr": "Envanter her parçanın son olarak ne zaman kontrol edildiğini tam olarak gösterince müdür kayıp ekipmanla ilgili soruları artık geçiştiremedi."
+        }
+      ]
+    },
+    {
+      "word": "evaporation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. buharlaşma",
+        "ex": "Scientists measured the rate of evaporation from the lake's surface during the summer heatwave.",
+        "exTr": "Bilim insanları, yaz sıcak dalgası sırasında gölün yüzeyinden gerçekleşen buharlaşma oranını ölçtü."
+      },
+      "alternatives": [
+        {
+          "ex": "The class compared evaporation from wide and narrow containers, recording changes in water volume while keeping the surrounding conditions similar.",
+          "exTr": "Sınıf, çevre koşullarını benzer tutarken su hacmindeki değişimleri kaydederek geniş ve dar kaplardaki buharlaşmayı karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "evening",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. akşam",
+        "ex": "Air quality tends to worsen in the evening due to increased traffic and industrial emissions.",
+        "exTr": "Artan trafik ve endüstriyel emisyonlar nedeniyle hava kalitesi akşam saatlerinde kötüleşme eğilimindedir."
+      },
+      "alternatives": [
+        {
+          "ex": "An evening visit revealed a different use of the square, as market stalls gave way to informal conversations and children's games.",
+          "exTr": "Akşam yapılan bir ziyaret meydanın farklı kullanımını ortaya çıkardı; pazar tezgâhlarının yerini samimi sohbetler ve çocuk oyunları almıştı."
+        }
+      ]
+    },
+    {
+      "word": "eventual",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. nihai, sonunda gerçekleşecek",
+        "ex": "Analysts predicted the eventual collapse of the outdated telecommunications network within a decade.",
+        "exTr": "Analistler, eski telekomünikasyon ağının on yıl içinde nihai çöküşünü öngördü."
+      },
+      "alternatives": [
+        {
+          "ex": "The eventual agreement preserved the shared garden, although reaching it required both the residents and the developer to revise their initial proposals.",
+          "exTr": "Sonunda varılan anlaşma ortak bahçeyi korudu; ancak buna ulaşmak hem sakinlerin hem geliştiricinin ilk önerilerini değiştirmesini gerektirdi."
+        }
+      ]
+    },
+    {
+      "word": "ever-changing",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. sürekli değişen",
+        "ex": "Companies must adapt quickly to the ever-changing demands of the global technology market.",
+        "exTr": "Şirketler, küresel teknoloji pazarının sürekli değişen taleplerine hızla uyum sağlamak zorundadır."
+      },
+      "alternatives": [
+        {
+          "ex": "The photographer returned to the estuary each month to document its ever-changing channels, treating the landscape as a process rather than a fixed scene.",
+          "exTr": "Fotoğrafçı, manzarayı sabit bir görüntü değil bir süreç olarak ele alarak sürekli değişen kanalları belgelemek için her ay haliçe döndü."
+        }
+      ]
+    },
+    {
+      "word": "everyday",
+      "sense_index": 0,
+      "expected": {
+        "tr": "günlük, gündelik, sıradan",
+        "ex": "Smartphones have become an essential part of everyday life for billions of people.",
+        "exTr": "Akıllı telefonlar, milyarlarca insan için gündelik hayatın vazgeçilmez bir parçası hâline geldi."
+      },
+      "alternatives": [
+        {
+          "ex": "Everyday objects such as lunch boxes and bus tickets helped the exhibition explain working life without relying entirely on official employment records.",
+          "exTr": "Yemek kutuları ve otobüs biletleri gibi gündelik eşyalar, serginin tamamen resmî istihdam kayıtlarına dayanmadan çalışma hayatını anlatmasına yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "evident",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. açık, belirgin, ortada",
+        "ex": "The effects of soil erosion become most evident after several consecutive years of heavy rainfall.",
+        "exTr": "Toprak erozyonunun etkileri, birkaç yıl üst üste yaşanan şiddetli yağıştan sonra en belirgin hâle gelir."
+      },
+      "alternatives": [
+        {
+          "ex": "The need for clearer instructions became evident when three groups interpreted the same task differently and produced results that could not be compared.",
+          "exTr": "Üç grup aynı görevi farklı yorumlayıp karşılaştırılamayan sonuçlar üretince daha açık talimatlara duyulan ihtiyaç belirginleşti."
+        }
+      ]
+    },
+    {
+      "word": "evil-looking",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kötü görünümlü, uğursuz",
+        "ex": "An evil-looking storm cloud gathered ominously over the small fishing village at dusk.",
+        "exTr": "Alacakaranlıkta küçük balıkçı köyünün üzerinde uğursuz görünümlü bir fırtına bulutu toplandı."
+      },
+      "alternatives": [
+        {
+          "ex": "The stage designer gave the tower an evil-looking silhouette, although the audience later discovered that its mysterious occupant was harmless.",
+          "exTr": "Sahne tasarımcısı kuleye uğursuz görünümlü bir siluet verdi; ancak seyirciler daha sonra gizemli sakininin zararsız olduğunu öğrendi."
+        }
+      ]
+    },
+    {
+      "word": "evolutionary",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. evrimsel",
+        "ex": "Biologists study fossil records to understand the evolutionary history of early mammals.",
+        "exTr": "Biyologlar, erken memelilerin evrimsel tarihini anlamak için fosil kayıtlarını inceler."
+      },
+      "alternatives": [
+        {
+          "ex": "The lecture compared evolutionary explanations for similar traits, emphasising that resemblance alone does not establish how closely two species are related.",
+          "exTr": "Ders, benzerliğin tek başına iki türün ne kadar yakın akraba olduğunu göstermediğini vurgulayarak benzer özelliklere ilişkin evrimsel açıklamaları karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "ex-wife",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. eski eş, eski karı",
+        "ex": "He still sends birthday cards to his children through his ex-wife every year.",
+        "exTr": "Her yıl çocuklarına doğum günü kartlarını hâlâ eski eşi aracılığıyla gönderiyor."
+      },
+      "alternatives": [
+        {
+          "ex": "His ex-wife contributed photographs to the family history project, helping their children understand a period neither parent had discussed in much detail.",
+          "exTr": "Eski eşi, aile tarihi projesine fotoğraflarla katkıda bulunarak çocuklarının anne ve babalarının pek ayrıntılı anlatmadığı bir dönemi anlamasına yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "exactly",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. tam olarak, tamamen",
+        "ex": "Scientists still do not know exactly why humans need to dream.",
+        "exTr": "Bilim insanları, insanların neden rüya görmeye ihtiyaç duyduğunu hâlâ tam olarak bilmiyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The two measurements were taken exactly one month apart, but differences in weather made a simple comparison of the photographs misleading.",
+          "exTr": "İki ölçüm tam bir ay arayla yapılmıştı; ancak hava koşullarındaki farklılıklar fotoğrafların basitçe karşılaştırılmasını yanıltıcı kılıyordu."
+        }
+      ]
+    },
+    {
+      "word": "exaggerated",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. abartılı, abartılmış",
+        "ex": "Critics argued that media coverage often presents an exaggerated picture of the actual crime rate.",
+        "exTr": "Eleştirmenler, medya haberlerinin gerçek suç oranına dair çoğunlukla abartılı bir tablo sunduğunu savundu."
+      },
+      "alternatives": [
+        {
+          "ex": "The actor's exaggerated gestures worked well in the large hall, where subtle facial expressions would have been difficult for distant spectators to see.",
+          "exTr": "Oyuncunun abartılı jestleri, uzaktaki seyircilerin ince yüz ifadelerini görmesinin zor olduğu büyük salonda işe yaradı."
+        }
+      ]
+    },
+    {
+      "word": "examination",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. inceleme, muayene",
+        "ex": "A detailed examination of the fossils revealed that the species lived sixty million years ago.",
+        "exTr": "Fosillerin ayrıntılı incelenmesi, türün altmış milyon yıl önce yaşadığını ortaya koydu."
+      },
+      "alternatives": [
+        {
+          "ex": "Close examination of the stitching revealed that the sleeve had been replaced, changing the curator's understanding of how the garment was used.",
+          "exTr": "Dikişlerin yakından incelenmesi, kolun değiştirilmiş olduğunu ortaya çıkararak küratörün giysinin nasıl kullanıldığına ilişkin anlayışını değiştirdi."
+        }
+      ]
+    },
+    {
+      "word": "example",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. örnek",
+        "ex": "The peppered moth provides a classic example of natural selection observed within a human lifetime.",
+        "exTr": "Benekli güve, bir insan ömrü içinde gözlemlenen doğal seçilimin klasik bir örneğini sunar."
+      },
+      "alternatives": [
+        {
+          "ex": "The abandoned playground offers an example of how a technically completed project may fail when maintenance responsibilities are not clearly assigned.",
+          "exTr": "Terk edilmiş oyun alanı, bakım sorumlulukları açıkça belirlenmediğinde teknik olarak tamamlanmış bir projenin nasıl başarısız olabileceğine örnek oluşturuyor."
+        }
+      ]
+    },
+    {
+      "word": "exceed",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. aşmak, geçmek",
+        "ex": "Temperatures in the region are expected to exceed historical records this summer.",
+        "exTr": "Bölgedeki sıcaklıkların bu yaz tarihi rekorları aşması bekleniyor."
+      },
+      "alternatives": [
+        {
+          "ex": "If applications exceed the number of available places, the organisers will need a selection process that participants can understand and regard as fair.",
+          "exTr": "Başvurular mevcut kontenjanı aşarsa organizatörlerin katılımcıların anlayabileceği ve adil bulacağı bir seçim sürecine ihtiyacı olacak."
+        }
+      ]
+    },
+    {
+      "word": "excellent",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. mükemmel, çok iyi",
+        "ex": "The region's volcanic soil provides excellent conditions for growing coffee at high altitudes.",
+        "exTr": "Bölgenin volkanik toprağı, yüksek rakımlarda kahve yetiştirmek için mükemmel koşullar sunuyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The old timetable is an excellent source for studying connections between villages, provided it is not mistaken for proof that every service ran.",
+          "exTr": "Her seferin yapıldığının kanıtı sanılmaması koşuluyla eski sefer tarifesi, köyler arasındaki bağlantıları incelemek için çok iyi bir kaynaktır."
+        }
+      ]
+    },
+    {
+      "word": "exceptional",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. olağanüstü, istisnai",
+        "ex": "The young violinist displayed exceptional talent that impressed even the most experienced music critics.",
+        "exTr": "Genç kemancı, en deneyimli müzik eleştirmenlerini bile etkileyen olağanüstü bir yetenek sergiledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The collection's exceptional completeness allows researchers to follow changes in the workshop's output across years that other local records barely cover.",
+          "exTr": "Koleksiyonun olağanüstü bütünlüğü, araştırmacıların diğer yerel kayıtların pek kapsamadığı yıllar boyunca atölyenin üretimindeki değişimleri izlemesine olanak veriyor."
+        }
+      ]
+    },
+    {
+      "word": "excessive",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. aşırı, fazla",
+        "ex": "Doctors warn that excessive consumption of processed sugar contributes to obesity and heart disease.",
+        "exTr": "Doktorlar, işlenmiş şekerin aşırı tüketiminin obeziteye ve kalp hastalığına katkıda bulunduğu konusunda uyarıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Excessive detail obscured the report's main message, so the editor moved supporting calculations into an appendix without removing the evidence behind its conclusions.",
+          "exTr": "Aşırı ayrıntı raporun ana mesajını gizlediği için editör, sonuçların arkasındaki kanıtları çıkarmadan destekleyici hesaplamaları bir eke taşıdı."
+        }
+      ]
+    },
+    {
+      "word": "excite",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. heyecanlandırmak",
+        "ex": "The possibility of discovering life on other planets continues to excite scientists and the public alike.",
+        "exTr": "Diğer gezegenlerde yaşam keşfetme olasılığı, hem bilim insanlarını hem de halkı heyecanlandırmaya devam ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The possibility of finding a forgotten harbour began to excite the students once the old map matched features they could still recognise.",
+          "exTr": "Eski harita hâlâ tanıyabildikleri arazi özellikleriyle örtüşünce unutulmuş bir liman bulma olasılığı öğrencileri heyecanlandırmaya başladı."
+        }
+      ]
+    },
+    {
+      "word": "exciting",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. heyecan verici, ilgi çekici",
+        "ex": "Scientists announced an exciting discovery that could change our understanding of the solar system.",
+        "exTr": "Bilim insanları, güneş sistemini anlayışımızı değiştirebilecek heyecan verici bir keşif duyurdu."
+      },
+      "alternatives": [
+        {
+          "ex": "Working with original sound recordings was exciting for the class, especially when a voice described streets several students passed on their way home.",
+          "exTr": "Özgün ses kayıtlarıyla çalışmak sınıf için heyecan vericiydi; özellikle bir ses, bazı öğrencilerin eve giderken geçtiği sokakları anlattığında."
+        }
+      ]
+    },
+    {
+      "word": "exclusively",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. yalnızca, sadece, münhasıran",
+        "ex": "This scholarship program is funded exclusively by donations from former graduates of the university.",
+        "exTr": "Bu burs programı, yalnızca üniversitenin eski mezunlarının bağışlarıyla finanse edilmektedir."
+      },
+      "alternatives": [
+        {
+          "ex": "Because the questionnaire was distributed exclusively online, the researchers could not assume that its respondents represented residents with limited digital access.",
+          "exTr": "Anket yalnızca çevrim içi dağıtıldığı için araştırmacılar, yanıtlayanların dijital erişimi sınırlı sakinleri temsil ettiğini varsayamazdı."
+        }
+      ]
+    },
+    {
+      "word": "executed",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. (plan/iş için) uygulanmış, gerçekleştirilmiş",
+        "ex": "The museum's newly executed renovation plan preserved most of the building's original facade.",
+        "exTr": "Müzenin yeni uygulanan tadilat planı, binanın özgün cephesinin çoğunu korudu."
+      },
+      "alternatives": [
+        {
+          "ex": "The carefully executed repair left the original joints visible, allowing future observers to distinguish the historic structure from the newly added supports.",
+          "exTr": "Özenle gerçekleştirilmiş onarım özgün bağlantıları görünür bırakarak gelecekteki gözlemcilerin tarihî yapıyı yeni eklenen desteklerden ayırt etmesini sağladı."
+        }
+      ]
+    },
+    {
+      "word": "exemplary",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. örnek teşkil eden, örnek alınacak, kusursuz",
+        "ex": "The committee praised the young researcher for her exemplary conduct in the laboratory, noting that she had recorded every result with unusual honesty.",
+        "exTr": "Kurul, genç araştırmacıyı laboratuvardaki örnek davranışı nedeniyle övdü ve her sonucu alışılmadık bir dürüstlükle kaydettiğini belirtti."
+      },
+      "alternatives": [
+        {
+          "ex": "Her exemplary handling of the disagreement allowed both groups to revise their positions without feeling that their earlier concerns had been dismissed.",
+          "exTr": "Anlaşmazlığı örnek alınacak biçimde yönetmesi, her iki grubun da önceki kaygılarının göz ardı edildiğini hissetmeden tutumunu değiştirmesini sağladı."
+        }
+      ]
+    },
+    {
+      "word": "exercise",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. kullanmak, icra etmek (bir hakkı/yetkiyi)",
+        "ex": "The court exercised its authority to overturn the previous ruling on constitutional grounds.",
+        "exTr": "Mahkeme, anayasal gerekçelerle önceki kararı bozmak için yetkisini kullandı."
+      },
+      "alternatives": [
+        {
+          "ex": "Members could exercise their right to question the budget before voting, but several said the figures had arrived too late for careful study.",
+          "exTr": "Üyeler oylamadan önce bütçeyi sorgulama haklarını kullanabiliyordu; ancak bazıları rakamların dikkatli incelemeye imkân vermeyecek kadar geç ulaştığını söyledi."
+        }
+      ]
+    },
+    {
+      "word": "exhaust",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. tüketmek, bitirmek",
+        "ex": "Continuous overfishing has begun to exhaust fish populations along the northern coastline.",
+        "exTr": "Sürekli aşırı avlanma, kuzey kıyısı boyunca balık popülasyonlarını tüketmeye başladı."
+      },
+      "alternatives": [
+        {
+          "ex": "Replacing all the windows at once would exhaust the repair budget, leaving nothing for the roof problems that the survey had also identified.",
+          "exTr": "Tüm pencereleri bir kerede değiştirmek onarım bütçesini tüketir ve incelemede belirlenen çatı sorunları için hiçbir kaynak bırakmazdı."
+        }
+      ]
+    },
+    {
+      "word": "exhaustive",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kapsamlı, en ince ayrıntısına inen, eksiksiz",
+        "ex": "The team carried out an exhaustive review of every published trial before concluding that the drug offered no measurable benefit to older patients.",
+        "exTr": "Ekip, ilacın yaşlı hastalara ölçülebilir bir yarar sağlamadığı sonucuna varmadan önce yayımlanmış her denemeyi kapsayan ayrıntılı bir inceleme yaptı."
+      },
+      "alternatives": [
+        {
+          "ex": "An exhaustive search of the correspondence found no reference to the meeting, although the absence of a letter could not prove it never occurred.",
+          "exTr": "Yazışmaların eksiksiz taranmasında toplantıya ilişkin hiçbir gönderme bulunmadı; ancak bir mektubun yokluğu toplantının hiç gerçekleşmediğini kanıtlayamazdı."
+        }
+      ]
+    },
+    {
+      "word": "exhume",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. mezardan çıkarmak, gömülü olanı gün yüzüne çıkarmak",
+        "ex": "Researchers exhumed the remains of the medieval bishop in order to test whether the epidemic described in local chronicles was really the plague.",
+        "exTr": "Araştırmacılar, yerel kroniklerde anlatılan salgının gerçekten veba olup olmadığını sınamak için ortaçağ piskoposunun kalıntılarını mezardan çıkardı."
+      },
+      "alternatives": [
+        {
+          "ex": "The proposal to exhume the remains prompted discussion with descendants about the purpose of the study and the respectful handling of their ancestor.",
+          "exTr": "Kalıntıları mezardan çıkarma önerisi, soyundan gelenlerle çalışmanın amacı ve atalarının kalıntılarına saygılı davranılması konusunda görüşmeler yapılmasına yol açtı."
+        }
+      ]
+    },
+    {
+      "word": "existence",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. varlık, var oluş",
+        "ex": "Astronomers have found strong evidence for the existence of water beneath the surface of Mars.",
+        "exTr": "Gökbilimciler, Mars'ın yüzeyinin altında suyun varlığına ilişkin güçlü kanıtlar buldu."
+      },
+      "alternatives": [
+        {
+          "ex": "A series of invoices confirmed the existence of a workshop that had disappeared from local memory and was absent from the surviving street maps.",
+          "exTr": "Bir dizi fatura, yerel hafızadan silinmiş ve günümüze ulaşan sokak haritalarında bulunmayan bir atölyenin varlığını doğruladı."
+        }
+      ]
+    },
+    {
+      "word": "existing",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. mevcut, var olan",
+        "ex": "Rather than building new hospitals, the ministry decided to modernize existing facilities first.",
+        "exTr": "Bakanlık, yeni hastaneler inşa etmek yerine önce mevcut tesisleri modernleştirmeye karar verdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The proposal builds on existing walking routes, connecting them with short new sections instead of creating an entirely separate network.",
+          "exTr": "Öneri, tamamen ayrı bir ağ oluşturmak yerine mevcut yürüyüş güzergâhlarını kısa yeni bölümlerle birbirine bağlayarak bunlardan yararlanıyor."
+        }
+      ]
+    },
+    {
+      "word": "exorbitant",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. fahiş, aşırı yüksek, ölçüsüz",
+        "ex": "Patients in remote regions are often charged exorbitant prices for medicines that cost only a fraction of that amount in large cities.",
+        "exTr": "Uzak bölgelerdeki hastalardan, büyük şehirlerde bu tutarın ancak küçük bir kısmına mal olan ilaçlar için sıklıkla fahiş fiyatlar alınıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The exorbitant rent would have consumed most of the cooperative's income, so members continued searching for a smaller, more affordable workspace.",
+          "exTr": "Fahiş kira kooperatifin gelirinin çoğunu götüreceği için üyeler daha küçük ve daha uygun fiyatlı bir çalışma alanı aramayı sürdürdü."
+        }
+      ]
+    },
+    {
+      "word": "expanded",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. genişletilmiş, büyütülmüş",
+        "ex": "The hospital introduced an expanded vaccination program to reach underserved communities in rural areas.",
+        "exTr": "Hastane, kırsal bölgelerdeki hizmet alamayan toplulukları kapsamak için genişletilmiş bir aşı programı başlattı."
+      },
+      "alternatives": [
+        {
+          "ex": "The expanded edition includes interviews with former apprentices, offering perspectives that were missing from the original account of the factory's history.",
+          "exTr": "Genişletilmiş baskı eski çıraklarla yapılan görüşmeleri içererek fabrika tarihinin ilk anlatısında eksik kalan bakış açılarını sunuyor."
+        }
+      ]
+    },
+    {
+      "word": "expectancy",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. beklenti",
+        "ex": "The team's growing expectancy of victory motivated the players to train even harder.",
+        "exTr": "Takımın zafere yönelik artan beklentisi, oyuncuları daha da sıkı çalışmaya motive etti."
+      },
+      "alternatives": [
+        {
+          "ex": "An atmosphere of expectancy filled the hall as the young musicians took their seats and the conductor waited for the final conversations to fade.",
+          "exTr": "Genç müzisyenler yerlerine oturup orkestra şefi son konuşmaların dinmesini beklerken salonu heyecanlı bir bekleyiş havası sardı."
+        }
+      ]
+    },
+    {
+      "word": "expedition",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. keşif gezisi, sefer",
+        "ex": "The scientific expedition to Antarctica aimed to study the effects of melting ice sheets.",
+        "exTr": "Antarktika'ya düzenlenen bilimsel keşif gezisi, eriyen buz tabakalarının etkilerini incelemeyi amaçlıyordu."
+      },
+      "alternatives": [
+        {
+          "ex": "The expedition combined geological sampling with interviews in nearby settlements, recognising that residents could identify changes not visible during a short visit.",
+          "exTr": "Keşif gezisi, sakinlerin kısa bir ziyarette görünmeyen değişimleri belirleyebileceğini dikkate alarak jeolojik örneklemeyi yakın yerleşimlerdeki görüşmelerle birleştirdi."
+        }
+      ]
+    },
+    {
+      "word": "expense",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. masraf, gider; bedel",
+        "ex": "Many students take part-time jobs to cover the expense of housing and course materials.",
+        "exTr": "Birçok öğrenci, barınma ve ders materyali masraflarını karşılamak için yarı zamanlı işlerde çalışır."
+      },
+      "alternatives": [
+        {
+          "ex": "The expense of transporting the exhibition exceeded the cost of producing it, prompting the organisers to consider smaller displays in several locations.",
+          "exTr": "Sergiyi taşımanın masrafı hazırlama maliyetini aşınca organizatörler birkaç yerde daha küçük düzenlemeler yapmayı değerlendirdi."
+        }
+      ]
+    },
+    {
+      "word": "experienced",
+      "sense_index": 1,
+      "expected": {
+        "tr": "s. deneyimli, tecrübeli",
+        "ex": "Hospitals facing staff shortages often struggle to replace experienced nurses quickly.",
+        "exTr": "Personel eksikliğiyle karşı karşıya olan hastaneler, genellikle deneyimli hemşirelerin yerini hızla dolduramıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "An experienced interviewer knows when a pause gives someone time to remember and when a gentle question might help the conversation continue.",
+          "exTr": "Deneyimli bir görüşmeci, sessizliğin birine ne zaman hatırlama süresi verdiğini ve nazik bir sorunun sohbeti ne zaman sürdürmeye yardımcı olabileceğini bilir."
+        }
+      ]
+    },
+    {
+      "word": "experimental",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. deneysel",
+        "ex": "Doctors offered the experimental treatment only to patients who had exhausted all standard options.",
+        "exTr": "Doktorlar, deneysel tedaviyi yalnızca tüm standart seçenekleri tükenmiş hastalara sundu."
+      },
+      "alternatives": [
+        {
+          "ex": "The experimental design compared identical containers under different lighting conditions, making it possible to examine one factor without changing several others simultaneously.",
+          "exTr": "Deneysel tasarım özdeş kapları farklı aydınlatma koşullarında karşılaştırarak birkaç başka etkeni aynı anda değiştirmeden tek bir etkeni incelemeyi mümkün kıldı."
+        }
+      ]
+    },
+    {
+      "word": "expertise",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. uzmanlık, ihtisas",
+        "ex": "The project failed because the team lacked technical expertise in renewable energy systems.",
+        "exTr": "Proje, ekibin yenilenebilir enerji sistemleri konusunda teknik uzmanlıktan yoksun olması nedeniyle başarısız oldu."
+      },
+      "alternatives": [
+        {
+          "ex": "The project benefited from the carpenter's expertise when drawings failed to explain how the old wooden mechanism could move without damaging its frame.",
+          "exTr": "Çizimler eski ahşap mekanizmanın gövdesine zarar vermeden nasıl hareket edebildiğini açıklamakta yetersiz kalınca proje marangozun uzmanlığından yararlandı."
+        }
+      ]
+    },
+    {
+      "word": "explain",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. açıklamak",
+        "ex": "Geologists use plate tectonics theory to explain the formation of mountain ranges and earthquakes.",
+        "exTr": "Jeologlar, dağ sıralarının oluşumunu ve depremleri açıklamak için levha tektoniği teorisini kullanır."
+      },
+      "alternatives": [
+        {
+          "ex": "The report should explain why some responses were excluded, rather than leave readers to infer the selection process from the final tables.",
+          "exTr": "Rapor, seçim sürecini son tablolardan çıkarmayı okuyuculara bırakmak yerine bazı yanıtların neden dışlandığını açıklamalı."
+        }
+      ]
+    },
+    {
+      "word": "explicitly",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. açıkça, açık bir biçimde",
+        "ex": "The contract explicitly states that the company must provide written notice before any changes occur.",
+        "exTr": "Sözleşme, herhangi bir değişiklik olmadan önce şirketin yazılı bildirimde bulunması gerektiğini açıkça belirtiyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The invitation explicitly welcomed people without previous experience, helping to reassure residents who assumed the workshop was intended only for trained artists.",
+          "exTr": "Davetiye, deneyimi olmayan kişileri açıkça davet ederek atölyenin yalnızca eğitimli sanatçılara yönelik olduğunu düşünen sakinleri rahatlatmaya yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "exploitation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sömürü",
+        "ex": "International organizations continue to fight against the exploitation of child labor in factories.",
+        "exTr": "Uluslararası kuruluşlar, fabrikalarda çocuk işçi sömürüsüne karşı mücadeleyi sürdürüyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The interviews reveal how the exploitation of temporary workers could remain hidden when official records counted jobs but ignored unpaid hours.",
+          "exTr": "Görüşmeler, resmî kayıtlar işleri sayıp karşılığı ödenmeyen saatleri göz ardı ettiğinde geçici işçilerin sömürülmesinin nasıl gizli kalabildiğini ortaya koyuyor."
+        }
+      ]
+    },
+    {
+      "word": "exploratory",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. keşif veya araştırma amaçlı; ön inceleme niteliğinde",
+        "ex": "The team conducted an exploratory study before designing the larger clinical trial.",
+        "exTr": "Ekip, daha büyük klinik deneyi tasarlamadan önce keşif niteliğinde bir çalışma yürüttü."
+      },
+      "alternatives": [
+        {
+          "ex": "Exploratory interviews helped the team identify questions that mattered locally before committing resources to a large survey with fixed response categories.",
+          "exTr": "Ön araştırma görüşmeleri, ekibin sabit yanıt kategorileri olan büyük bir araştırmaya kaynak ayırmadan önce yerel açıdan önemli soruları belirlemesine yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "explosion",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. (mecazi) ani artış",
+        "ex": "The city experienced a population explosion after several major companies relocated their headquarters there.",
+        "exTr": "Birkaç büyük şirket merkezlerini oraya taşıdıktan sonra şehir bir nüfus patlaması yaşadı."
+      },
+      "alternatives": [
+        {
+          "ex": "An explosion of interest followed the online release of the photographs, with former residents contacting the archive to identify people and places.",
+          "exTr": "Fotoğrafların çevrim içi yayımlanmasının ardından büyük bir ilgi patlaması yaşandı; eski sakinler kişileri ve yerleri tanımlamak için arşivle iletişime geçti."
+        }
+      ]
+    },
+    {
+      "word": "exponentially",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. katlanarak, üstel biçimde",
+        "ex": "Global data usage has grown exponentially since smartphones became affordable for most households.",
+        "exTr": "Akıllı telefonlar çoğu hane için uygun fiyatlı hâle geldiğinden beri küresel veri kullanımı katlanarak arttı."
+      },
+      "alternatives": [
+        {
+          "ex": "If every additional switch has two independent settings, the number of possible combinations grows exponentially as more switches are included.",
+          "exTr": "Eklenen her anahtarın birbirinden bağımsız iki ayarı varsa daha fazla anahtar dâhil edildikçe olası birleşimlerin sayısı üstel olarak artar."
+        }
+      ]
+    },
+    {
+      "word": "exposed",
+      "sense_index": 0,
+      "expected": {
+        "tr": "maruz kalmış; açıkta, korumasız",
+        "ex": "Workers exposed to loud machinery for years often suffer permanent hearing loss.",
+        "exTr": "Yıllarca gürültülü makinelere maruz kalan işçiler, çoğu zaman kalıcı işitme kaybı yaşar."
+      },
+      "alternatives": [
+        {
+          "ex": "The exposed section of the wall showed several layers of paint, allowing the conservator to reconstruct changes hidden beneath the most recent surface.",
+          "exTr": "Duvarın açığa çıkarılmış kesiti birkaç boya katmanı göstererek koruma uzmanının en son yüzeyin altında gizlenen değişimleri yeniden ortaya koymasını sağladı."
+        }
+      ]
+    },
+    {
+      "word": "expressed",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. ifade edilmiş, dile getirilmiş; açıkça belirtilmiş",
+        "ex": "The committee acted only after the community's expressed concerns about air quality grew too loud to ignore.",
+        "exTr": "Komite, ancak toplumun hava kalitesine ilişkin dile getirdiği kaygılar göz ardı edilemeyecek kadar büyüyünce harekete geçti."
+      },
+      "alternatives": [
+        {
+          "ex": "The residents' expressed preference for a quiet garden did not match the proposal for a large outdoor performance space beside their homes.",
+          "exTr": "Sakinlerin dile getirdiği sessiz bir bahçe tercihi, evlerinin yanında büyük bir açık hava gösteri alanı oluşturma önerisiyle örtüşmüyordu."
+        }
+      ]
+    },
+    {
+      "word": "extend",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. uzatmak, genişletmek; uzanmak",
+        "ex": "The government decided to extend the deadline for tax returns because of the technical failures.",
+        "exTr": "Hükümet, teknik aksaklıklar nedeniyle vergi beyannamesi son tarihini uzatmaya karar verdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The cooperative hopes to extend its delivery service to nearby villages once it has enough members to cover the additional journeys.",
+          "exTr": "Kooperatif, ek yolculukları karşılayacak kadar üyesi olduğunda teslimat hizmetini yakın köylere genişletmeyi umuyor."
+        }
+      ]
+    },
+    {
+      "word": "extensive",
+      "sense_index": 0,
+      "expected": {
+        "tr": "kapsamlı, geniş çaplı",
+        "ex": "The earthquake caused extensive damage to buildings and roads across the entire region.",
+        "exTr": "Deprem, tüm bölgedeki binalarda ve yollarda geniş çaplı hasara yol açtı."
+      },
+      "alternatives": [
+        {
+          "ex": "Extensive notes accompanied the recordings, documenting interruptions and background noises that might otherwise be mistaken for part of the speaker's account.",
+          "exTr": "Kayıtlara, aksi hâlde konuşmacının anlatısının parçası sanılabilecek kesintileri ve arka plan seslerini belgeleyen kapsamlı notlar eşlik ediyordu."
+        }
+      ]
+    },
+    {
+      "word": "external",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. dış, harici",
+        "ex": "The committee hired external auditors to review the company's accounts for possible irregularities.",
+        "exTr": "Komite, şirket hesaplarını olası usulsüzlükler açısından incelemesi için dış denetçiler görevlendirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "An external reviewer examined the selection process, offering a perspective unaffected by the working relationships within the organisation.",
+          "exTr": "Kurum dışından bir değerlendirici, kuruluşun içindeki çalışma ilişkilerinden etkilenmeyen bir bakış açısı sunarak seçim sürecini inceledi."
+        }
+      ]
+    },
+    {
+      "word": "extinction",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yok olma, soyu tükenme",
+        "ex": "Conservationists are working to prevent the extinction of several endangered marine species.",
+        "exTr": "Doğa koruma uzmanları, nesli tükenmekte olan birçok deniz türünün yok olmasını önlemeye çalışıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The exhibition distinguishes local disappearance from extinction, asking visitors to consider the geographical scale of the evidence presented for each species.",
+          "exTr": "Sergi, ziyaretçilerden her tür için sunulan kanıtların coğrafi ölçeğini düşünmelerini isteyerek bir bölgede kaybolma ile soyun tükenmesini birbirinden ayırıyor."
+        }
+      ]
+    }
+  ],
+  "collocations": [
+    {
+      "word": "ether",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "diethyl ether",
+          "tr": "dietil eter"
+        },
+        {
+          "en": "ether vapour",
+          "tr": "eter buharı"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "eucalyptus",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a eucalyptus tree",
+          "tr": "okaliptüs ağacı"
+        },
+        {
+          "en": "eucalyptus leaves",
+          "tr": "okaliptüs yaprakları"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "evening",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "an evening class",
+          "tr": "akşam dersi"
+        },
+        {
+          "en": "early evening",
+          "tr": "akşamın erken saatleri"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "ever-changing",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "an ever-changing landscape",
+          "tr": "sürekli değişen bir manzara"
+        },
+        {
+          "en": "ever-changing circumstances",
+          "tr": "sürekli değişen koşullar"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "evil-looking",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "an evil-looking figure",
+          "tr": "uğursuz görünümlü bir figür"
+        },
+        {
+          "en": "an evil-looking creature",
+          "tr": "kötücül görünümlü bir yaratık"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

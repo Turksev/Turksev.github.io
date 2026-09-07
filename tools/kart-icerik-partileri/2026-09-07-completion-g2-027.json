@@ -1,0 +1,1064 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 2,
+    "input": "input-027.json"
+  },
+  "enrichments": [
+    {
+      "word": "largest",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. en büyük",
+        "ex": "The Pacific Ocean is by far the largest and deepest ocean on Earth.",
+        "exTr": "Pasifik Okyanusu, Dünya'daki açık ara en büyük ve en derin okyanustur."
+      },
+      "alternatives": [
+        {
+          "ex": "Although the largest supplier offered the lowest price, the purchasing team also considered smaller firms that could provide replacement parts more quickly.",
+          "exTr": "En büyük tedarikçi en düşük fiyatı sunsa da satın alma ekibi yedek parçaları daha hızlı sağlayabilecek küçük firmaları da değerlendirdi."
+        }
+      ]
+    },
+    {
+      "word": "last-minute",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. son dakika",
+        "ex": "Airport staff dealt calmly with a wave of last-minute passengers rushing to catch the flight.",
+        "exTr": "Havalimanı personeli, uçağı yakalamak için koşuşturan son dakika yolcularının akınıyla sakin bir şekilde başa çıktı."
+      },
+      "alternatives": [
+        {
+          "ex": "A last-minute change to the presentation removed the only diagram explaining the process, leaving the audience dependent on a lengthy verbal description.",
+          "exTr": "Sunumda yapılan son dakika değişikliği, süreci açıklayan tek şemayı kaldırarak dinleyicileri uzun bir sözlü betimlemeye bağımlı bıraktı."
+        }
+      ]
+    },
+    {
+      "word": "lately",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. son zamanlarda",
+        "ex": "Scientists have lately reported a noticeable increase in ocean surface temperatures worldwide.",
+        "exTr": "Bilim insanları son zamanlarda dünya genelinde okyanus yüzey sıcaklıklarında belirgin bir artış bildirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "Several customers have lately complained about inconsistent sizing, prompting the manufacturer to compare garments produced at different stages of the same production run.",
+          "exTr": "Son zamanlarda birkaç müşteri bedenlerdeki tutarsızlıktan şikâyet ederek üreticiyi aynı üretim serisinin farklı aşamalarında üretilen giysileri karşılaştırmaya yöneltti."
+        }
+      ]
+    },
+    {
+      "word": "latest",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. en son, en yeni",
+        "ex": "According to the latest report, global temperatures have risen faster than scientists previously predicted.",
+        "exTr": "En son rapora göre küresel sıcaklıklar, bilim insanlarının daha önce öngördüğünden daha hızlı yükseldi."
+      },
+      "alternatives": [
+        {
+          "ex": "The latest version of the application includes a clearer search function, but users still need training to interpret the results correctly.",
+          "exTr": "Uygulamanın en son sürümü daha anlaşılır bir arama işlevi içeriyor; ancak kullanıcıların sonuçları doğru yorumlamak için hâlâ eğitime ihtiyacı var."
+        }
+      ]
+    },
+    {
+      "word": "laughter",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kahkaha, gülüş",
+        "ex": "Researchers found that shared laughter can reduce stress hormones and strengthen social bonds between strangers.",
+        "exTr": "Araştırmacılar, paylaşılan kahkahanın stres hormonlarını azaltabildiğini ve yabancılar arasındaki sosyal bağları güçlendirebildiğini buldu."
+      },
+      "alternatives": [
+        {
+          "ex": "During the rehearsal, a burst of laughter interrupted the scene, revealing an unintended comic effect that the director decided to retain.",
+          "exTr": "Prova sırasında bir kahkaha patlaması sahneyi kesintiye uğratarak yönetmenin korumaya karar verdiği, amaçlanmamış bir komik etkiyi ortaya çıkardı."
+        }
+      ]
+    },
+    {
+      "word": "lawful",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yasal, meşru",
+        "ex": "The court ruled that the protest had been entirely lawful and posed no threat to public order.",
+        "exTr": "Mahkeme, protestonun tamamen yasal olduğuna ve kamu düzenine hiçbir tehdit oluşturmadığına karar verdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The committee asked whether the proposed use of personal records was lawful before considering the separate question of whether it was appropriate.",
+          "exTr": "Komite, kişisel kayıtların önerilen kullanımının uygun olup olmadığına ilişkin ayrı soruyu değerlendirmeden önce bunun yasal olup olmadığını sordu."
+        }
+      ]
+    },
+    {
+      "word": "layer",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. katman, tabaka",
+        "ex": "A thin layer of ozone in the upper atmosphere absorbs most harmful ultraviolet radiation.",
+        "exTr": "Üst atmosferdeki ince bir ozon tabakası, zararlı morötesi ışınımın çoğunu emer."
+      },
+      "alternatives": [
+        {
+          "ex": "Beneath the damaged surface, a thin layer of blue paint suggested that the door had once formed part of a different decorative scheme.",
+          "exTr": "Hasarlı yüzeyin altındaki ince bir mavi boya tabakası, kapının bir zamanlar farklı bir dekorasyon düzeninin parçası olduğunu düşündürüyordu."
+        }
+      ]
+    },
+    {
+      "word": "lead-free",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kurşunsuz (benzin, boya vb. için)",
+        "ex": "Most modern vehicles now run exclusively on lead-free gasoline to reduce harmful environmental pollution.",
+        "exTr": "Çoğu modern araç artık zararlı çevre kirliliğini azaltmak için yalnızca kurşunsuz benzinle çalışıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The factory tested a lead-free alternative to its usual material, assessing whether the change would require adjustments to existing production equipment.",
+          "exTr": "Fabrika, bu değişikliğin mevcut üretim ekipmanında ayarlamalar gerektirip gerektirmeyeceğini değerlendirerek alışılmış malzemesinin kurşunsuz bir alternatifini test etti."
+        }
+      ]
+    },
+    {
+      "word": "leaders",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. liderler, önderler",
+        "ex": "Business leaders met in the capital to discuss strategies for sustainable economic growth.",
+        "exTr": "İş dünyası liderleri, sürdürülebilir ekonomik büyüme stratejilerini görüşmek üzere başkentte bir araya geldi."
+      },
+      "alternatives": [
+        {
+          "ex": "Community leaders disagreed about the proposed market relocation, since traders and nearby residents expected different benefits from the new arrangement.",
+          "exTr": "Esnaf ile yakın çevrede yaşayanlar yeni düzenden farklı yararlar beklediği için toplum önderleri önerilen pazar taşınması konusunda anlaşamadı."
+        }
+      ]
+    },
+    {
+      "word": "leaf",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yaprak",
+        "ex": "Chlorophyll inside each leaf absorbs sunlight and converts it into chemical energy.",
+        "exTr": "Her yaprağın içindeki klorofil, güneş ışığını emer ve onu kimyasal enerjiye dönüştürür."
+      },
+      "alternatives": [
+        {
+          "ex": "Each leaf was photographed beside a scale before students compared its outline with the descriptions provided in the identification guide.",
+          "exTr": "Öğrenciler yaprağın dış hatlarını teşhis rehberindeki betimlemelerle karşılaştırmadan önce her yaprak bir ölçeğin yanında fotoğraflandı."
+        }
+      ]
+    },
+    {
+      "word": "lean",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. yaslanmak, eğilmek, dayanmak",
+        "ex": "Tired after the long hike, she leaned against the old stone wall to rest for a moment.",
+        "exTr": "Uzun yürüyüşten sonra yorulan kadın, biraz dinlenmek için eski taş duvara yaslandı."
+      },
+      "alternatives": [
+        {
+          "ex": "The narrow opening forced the inspector to lean sideways to see the pipe connection without removing the surrounding wooden panel.",
+          "exTr": "Dar açıklık, denetçiyi çevredeki ahşap paneli sökmeden boru bağlantısını görebilmek için yana eğilmeye zorladı."
+        }
+      ]
+    },
+    {
+      "word": "learn",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. öğrenmek",
+        "ex": "Children who learn a second language early often show improved cognitive flexibility later in life.",
+        "exTr": "Erken yaşta ikinci bir dil öğrenen çocuklar, ileride genellikle daha gelişmiş bilişsel esneklik gösterir."
+      },
+      "alternatives": [
+        {
+          "ex": "Apprentices learn to recognise faults by examining rejected components, not merely by watching the machine produce items that meet the required standard.",
+          "exTr": "Çıraklar kusurları tanımayı yalnızca makinenin gerekli standardı karşılayan ürünler üretmesini izleyerek değil, reddedilen parçaları inceleyerek öğrenir."
+        }
+      ]
+    },
+    {
+      "word": "learning",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. öğrenme",
+        "ex": "Online platforms have made lifelong learning more accessible to adults balancing work and family responsibilities.",
+        "exTr": "Çevrimiçi platformlar, iş ve aile sorumluluklarını dengeleyen yetişkinler için yaşam boyu öğrenmeyi daha erişilebilir hâle getirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The course treats learning as an active process in which students test their assumptions and revise explanations in response to unfamiliar evidence.",
+          "exTr": "Ders, öğrenmeyi öğrencilerin varsayımlarını sınadığı ve alışılmadık kanıtlar karşısında açıklamalarını yeniden değerlendirdiği etkin bir süreç olarak ele alıyor."
+        }
+      ]
+    },
+    {
+      "word": "leave",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. ayrılmak; bırakmak",
+        "ex": "Each year, thousands of graduates leave rural towns to seek employment in major cities.",
+        "exTr": "Her yıl binlerce mezun, büyük şehirlerde iş bulmak için kırsal kasabalardan ayrılıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Some families decided to leave the settlement after repeated transport difficulties made it increasingly hard to reach schools and reliable employment.",
+          "exTr": "Tekrarlanan ulaşım güçlükleri okullara ve düzenli işlere erişimi giderek zorlaştırınca bazı aileler yerleşimden ayrılmaya karar verdi."
+        }
+      ]
+    },
+    {
+      "word": "lecture",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ders, konferans",
+        "ex": "During the symposium, the visiting professor delivered a fascinating lecture on the origins of the universe.",
+        "exTr": "Sempozyum sırasında, konuk profesör evrenin kökenleri üzerine büyüleyici bir konferans verdi."
+      },
+      "alternatives": [
+        {
+          "ex": "Rather than present a complete theory in one lecture, the tutor introduced a problem that students would revisit throughout the term.",
+          "exTr": "Eğitmen, bütün bir kuramı tek derste sunmak yerine öğrencilerin dönem boyunca yeniden ele alacağı bir sorun ortaya koydu."
+        }
+      ]
+    },
+    {
+      "word": "left-brain",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. sol beyine ait, analitik düşünmeyle ilgili",
+        "ex": "The workshop challenges the popular myth that creativity and left-brain thinking cannot coexist in one person.",
+        "exTr": "Atölye, yaratıcılık ile sol beyine ait düşüncenin aynı kişide bir arada bulunamayacağına dair yaygın efsaneye meydan okuyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The imaging exercise asked students to compare left-brain activity with corresponding measurements from the right hemisphere during the same language task.",
+          "exTr": "Görüntüleme alıştırması, öğrencilerden aynı dil görevi sırasında sol beyindeki etkinliği sağ yarımküredeki karşılık gelen ölçümlerle karşılaştırmalarını istedi."
+        }
+      ],
+      "note": "Sol yarımküreye ilişkin fiziksel anlam kullanıldı; insanları analitik/yaratıcı diye iki sabit beyin tipine ayıran iddia kurulmadı."
+    },
+    {
+      "word": "leftover",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. artan, kalan",
+        "ex": "Instead of throwing away leftover vegetables, the chef turned them into a rich soup.",
+        "exTr": "Şef, artan sebzeleri çöpe atmak yerine onları zengin bir çorbaya dönüştürdü."
+      },
+      "alternatives": [
+        {
+          "ex": "Leftover timber from the first stage of construction was measured and sorted before the team decided whether it suited the remaining work.",
+          "exTr": "Ekip kalan işe uygun olup olmadığına karar vermeden önce inşaatın ilk aşamasından artan kereste ölçüldü ve tasnif edildi."
+        }
+      ]
+    },
+    {
+      "word": "legal",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yasal, hukuki",
+        "ex": "Companies operating across borders must comply with the legal requirements of every country involved.",
+        "exTr": "Sınır ötesi faaliyet gösteren şirketlerin, ilgili her ülkenin yasal gerekliliklerine uyması gerekir."
+      },
+      "alternatives": [
+        {
+          "ex": "The survey examined how small businesses obtained legal advice, distinguishing occasional consultations from continuing relationships with a particular specialist.",
+          "exTr": "Araştırma, ara sıra yapılan danışmaları belirli bir uzmanla sürdürülen ilişkilerden ayırarak küçük işletmelerin hukuki danışmanlığa nasıl eriştiğini inceledi."
+        }
+      ]
+    },
+    {
+      "word": "legendary",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. efsanevi; olağanüstü ün kazanmış",
+        "ex": "The physician achieved legendary status after developing a treatment that saved thousands of lives.",
+        "exTr": "Doktor, binlerce hayat kurtaran bir tedavi geliştirdikten sonra efsanevi bir üne kavuştu."
+      },
+      "alternatives": [
+        {
+          "ex": "Her legendary attention to detail attracted demanding clients, although former colleagues remembered her willingness to revise a design when practical problems emerged.",
+          "exTr": "Ayrıntılara gösterdiği efsanevi özen, yüksek beklentili müşterileri kendisine çekiyordu; eski meslektaşları ise pratik sorunlar ortaya çıktığında tasarımı değiştirmeye istekli oluşunu hatırlıyordu."
+        }
+      ]
+    },
+    {
+      "word": "legislation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yasama, mevzuat, kanun",
+        "ex": "Parliament passed new legislation requiring factories to reduce their carbon emissions significantly.",
+        "exTr": "Parlamento, fabrikaların karbon emisyonlarını önemli ölçüde azaltmasını zorunlu kılan yeni bir mevzuat kabul etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The report compared the aims of the proposed legislation with the resources available to the agencies expected to implement it.",
+          "exTr": "Rapor, önerilen mevzuatın amaçlarını onu uygulaması beklenen kurumların elindeki kaynaklarla karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "legitimacy",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. meşruiyet, geçerlilik",
+        "ex": "Opposition leaders questioned the legitimacy of an election held under such tightly controlled conditions.",
+        "exTr": "Muhalefet liderleri, bu denli sıkı kontrol altında tutulan koşullarda yapılan bir seçimin meşruiyetini sorguladı."
+      },
+      "alternatives": [
+        {
+          "ex": "Excluding experienced volunteers from the decision raised questions about the committee's legitimacy, even among members who supported its final recommendation.",
+          "exTr": "Deneyimli gönüllülerin karardan dışlanması, nihai öneriyi destekleyen üyeler arasında bile komitenin meşruiyetine ilişkin sorular doğurdu."
+        }
+      ]
+    },
+    {
+      "word": "legs",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. bacaklar",
+        "ex": "The marathon runner's legs grew increasingly tired during the final few kilometers.",
+        "exTr": "Maraton koşucusunun bacakları, son birkaç kilometrede giderek daha çok yoruldu."
+      },
+      "alternatives": [
+        {
+          "ex": "The seating trial recorded how comfortably participants could position their legs, taking account of both seat height and the space beneath the desk.",
+          "exTr": "Oturma denemesi, hem koltuk yüksekliğini hem de masanın altındaki alanı dikkate alarak katılımcıların bacaklarını ne kadar rahat yerleştirebildiğini kaydetti."
+        }
+      ]
+    },
+    {
+      "word": "lend",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. ödünç vermek",
+        "ex": "International organizations often lend funds to developing countries to support large-scale infrastructure projects.",
+        "exTr": "Uluslararası kuruluşlar, büyük ölçekli altyapı projelerini desteklemek için gelişmekte olan ülkelere sık sık fon ödünç verir."
+      },
+      "alternatives": [
+        {
+          "ex": "The cooperative agreed to lend equipment to new growers on condition that they returned it in time for the next scheduled booking.",
+          "exTr": "Kooperatif, bir sonraki planlı rezervasyona yetişecek şekilde geri getirmeleri şartıyla yeni yetiştiricilere ekipman ödünç vermeyi kabul etti."
+        }
+      ]
+    },
+    {
+      "word": "lengthy",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. uzun, uzun süren",
+        "ex": "After a lengthy investigation, researchers finally identified the source of the mysterious disease outbreak.",
+        "exTr": "Uzun süren bir soruşturmanın ardından araştırmacılar, gizemli hastalık salgınının kaynağını nihayet belirledi."
+      },
+      "alternatives": [
+        {
+          "ex": "After a lengthy discussion of possible routes, the team realised that it lacked reliable information about the condition of the northern bridge.",
+          "exTr": "Olası güzergâhlar üzerine uzun bir tartışmadan sonra ekip, kuzeydeki köprünün durumuna ilişkin güvenilir bilgiye sahip olmadığını fark etti."
+        }
+      ]
+    },
+    {
+      "word": "leper",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. cüzzamlı, lepra hastası",
+        "ex": "In earlier centuries, communities often forced every leper to live far outside the town.",
+        "exTr": "Önceki yüzyıllarda topluluklar, her cüzzamlıyı genellikle kasabanın çok dışında yaşamaya zorlardı."
+      },
+      "alternatives": [
+        {
+          "ex": "Letters from a former leper hospital describe patients organising lessons for one another, challenging portrayals that reduce their lives to isolation.",
+          "exTr": "Eski bir cüzzam hastanesinden gelen mektuplar, hastaların birbirleri için dersler düzenlediğini anlatarak hayatlarını yalnızca tecride indirgeyen tasvirlere karşı çıkıyor."
+        }
+      ],
+      "note": "Cambridge hasta anlamını old-fashioned/offensive olarak etiketler. Örnek ve kalıplar tarihsel kurum adlarını anlamak içindir; kişiyi güncel dilde leper diye etiketlemek önerilmez, person with leprosy tercih edilir. https://dictionary.cambridge.org/us/dictionary/english/leper"
+    },
+    {
+      "word": "lessen",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. azaltmak, hafifletmek",
+        "ex": "Regular exercise has been shown to lessen the risk of developing several chronic illnesses.",
+        "exTr": "Düzenli egzersizin, birçok kronik hastalığa yakalanma riskini azalttığı gösterilmiştir."
+      },
+      "alternatives": [
+        {
+          "ex": "Clearer instructions may lessen the need for individual assistance, although users should still have a way to report unexpected difficulties.",
+          "exTr": "Daha açık talimatlar bireysel yardım ihtiyacını azaltabilir; ancak kullanıcıların beklenmedik güçlükleri bildirebileceği bir yol yine de bulunmalıdır."
+        }
+      ]
+    },
+    {
+      "word": "let",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. izin vermek, bırakmak",
+        "ex": "Researchers let the samples sit undisturbed for several weeks before analyzing the results.",
+        "exTr": "Araştırmacılar, sonuçları analiz etmeden önce numunelerin haftalarca dokunulmadan durmasına izin verdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The instructor let each group choose its own materials, provided that the final model could withstand the same sequence of tests.",
+          "exTr": "Eğitmen, son model aynı testler dizisine dayanabildiği sürece her grubun kendi malzemelerini seçmesine izin verdi."
+        }
+      ]
+    },
+    {
+      "word": "letter-perfect",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kusursuz, harfiyen doğru",
+        "ex": "The young actor delivered a letter-perfect performance without missing a single line of dialogue.",
+        "exTr": "Genç oyuncu, tek bir diyalog satırını bile kaçırmadan harfiyen kusursuz bir performans sergiledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The copy was letter-perfect, yet the editor still checked whether the reproduced passage had been taken from the author's final manuscript.",
+          "exTr": "Kopya harfi harfine doğruydu; yine de editör, çoğaltılan bölümün yazarın son el yazması metninden alınıp alınmadığını kontrol etti."
+        }
+      ],
+      "note": "Correct to the smallest detail/verbatim anlamı doğrulandı: https://www.merriam-webster.com/dictionary/letter-perfect"
+    },
+    {
+      "word": "lettuce",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. marul",
+        "ex": "Farmers harvested fresh lettuce early in the morning to keep it crisp for the local market.",
+        "exTr": "Çiftçiler, yerel pazar için taze kalmasını sağlamak amacıyla marulü sabah erkenden hasat etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The growers marked each row of lettuce with its planting date so they could compare development without confusing plants of different ages.",
+          "exTr": "Yetiştiriciler, farklı yaştaki bitkileri karıştırmadan gelişimi karşılaştırabilmek için her marul sırasını dikim tarihiyle işaretledi."
+        }
+      ]
+    },
+    {
+      "word": "levy",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. vergi, harç",
+        "ex": "The new levy on imported fuel is expected to raise millions for public transport projects.",
+        "exTr": "İthal yakıta getirilen yeni verginin, toplu taşıma projeleri için milyonlar toplaması bekleniyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Supporters of the proposed levy argued that its revenue should be reserved for maintaining the facilities used by those who would pay it.",
+          "exTr": "Önerilen harcı destekleyenler, gelirinin bu harcı ödeyecek kişilerin kullandığı tesislerin bakımına ayrılması gerektiğini savundu."
+        }
+      ]
+    },
+    {
+      "word": "liable",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. sorumlu, yükümlü (hukuken)",
+        "ex": "Manufacturers can be held liable for injuries caused by defective products they sell.",
+        "exTr": "Üreticiler, sattıkları kusurlu ürünlerin neden olduğu yaralanmalardan sorumlu tutulabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The contract review focused on which party would be liable if equipment arrived damaged and the cause could not be established.",
+          "exTr": "Sözleşme incelemesi, ekipman hasarlı ulaşır ve nedeni belirlenemezse hangi tarafın sorumlu olacağına odaklandı."
+        }
+      ]
+    },
+    {
+      "word": "liberate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. özgürleştirmek, kurtarmak, serbest bırakmak",
+        "ex": "Technological change does not automatically liberate workers from routine tasks; it often reshapes those tasks rather than removing them altogether.",
+        "exTr": "Teknolojik değişim işçileri rutin görevlerden kendiliğinden kurtarmaz; çoğu zaman bu görevleri tümüyle ortadan kaldırmak yerine yeniden biçimlendirir."
+      },
+      "alternatives": [
+        {
+          "ex": "Automating repetitive calculations can liberate designers from routine work, but only if they can still inspect and understand the assumptions behind the output.",
+          "exTr": "Tekrarlanan hesaplamaları otomatikleştirmek, ancak çıktının ardındaki varsayımları hâlâ inceleyip anlayabiliyorlarsa tasarımcıları rutin işlerden kurtarabilir."
+        }
+      ]
+    },
+    {
+      "word": "licence",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. lisans, ruhsat, izin belgesi (Britanya İngilizcesi)",
+        "ex": "The pharmacy lost its licence after failing two consecutive safety inspections.",
+        "exTr": "Eczane, art arda iki güvenlik denetimini geçemediği için ruhsatını kaybetti."
+      },
+      "alternatives": [
+        {
+          "ex": "Applicants for the operating licence had to describe their proposed service clearly enough for reviewers to distinguish it from activities requiring separate permission.",
+          "exTr": "İşletme ruhsatına başvuranlar, önerdikleri hizmeti inceleyenlerin ayrı izin gerektiren faaliyetlerden ayırabileceği kadar açık betimlemek zorundaydı."
+        }
+      ]
+    },
+    {
+      "word": "lie-in",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. (İng.) sabah geç saate kadar yatakta kalma",
+        "ex": "After the exhausting conference, the delegates finally allowed themselves a lazy lie-in on Sunday morning.",
+        "exTr": "Yorucu konferansın ardından katılımcılar, pazar sabahı kendilerine tembelce geç saate kadar yatakta kalma izni verdi."
+      },
+      "alternatives": [
+        {
+          "ex": "Several participants said a weekend lie-in was impossible because caring responsibilities required them to maintain the same early routine every day.",
+          "exTr": "Birkaç katılımcı, bakım sorumlulukları her gün aynı erken kalkma düzenini sürdürmelerini gerektirdiği için hafta sonu yatakta geç saate kadar kalmanın mümkün olmadığını söyledi."
+        }
+      ],
+      "note": "Britanya İngilizcesinde gündelik bir yaşam düzeni ifadesidir; katılımcı deneyimi bağlamında kullanıldı."
+    },
+    {
+      "word": "life-giving",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. hayat veren, can veren",
+        "ex": "Farmers depend on the life-giving rains that arrive each spring to nourish their newly planted crops.",
+        "exTr": "Çiftçiler, yeni ekilen ürünlerini beslemek için her ilkbahar gelen hayat veren yağmurlara bağımlıdır."
+      },
+      "alternatives": [
+        {
+          "ex": "The poem presents the river as a life-giving presence, contrasting the cultivated fields along its banks with the barren ground beyond them.",
+          "exTr": "Şiir, nehir kıyılarındaki ekili tarlalar ile onların ötesindeki çorak zemini karşılaştırarak nehri hayat veren bir varlık olarak sunuyor."
+        }
+      ]
+    },
+    {
+      "word": "life-size",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. gerçek boyutlu, tam boy",
+        "ex": "The museum unveiled a life-size bronze statue commemorating the city's founding two centuries ago.",
+        "exTr": "Müze, şehrin iki yüzyıl önceki kuruluşunu anan gerçek boyutlu bronz bir heykeli sergiye çıkardı."
+      },
+      "alternatives": [
+        {
+          "ex": "A life-size model of the cockpit enabled the design team to assess visibility before committing to the more expensive working prototype.",
+          "exTr": "Kokpitin gerçek boyutlu bir modeli, tasarım ekibinin daha pahalı çalışan prototipe geçmeden önce görüş alanını değerlendirmesini sağladı."
+        }
+      ]
+    },
+    {
+      "word": "life-threatening",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. hayati tehlike oluşturan",
+        "ex": "Doctors warned that ignoring the infection could quickly develop into a life-threatening condition.",
+        "exTr": "Doktorlar, enfeksiyonun göz ardı edilmesi durumunda hızla hayati tehlike oluşturan bir duruma dönüşebileceği konusunda uyardı."
+      },
+      "alternatives": [
+        {
+          "ex": "The emergency exercise distinguished life-threatening situations from less urgent incidents, testing how clearly that distinction was communicated between teams.",
+          "exTr": "Acil durum tatbikatı, ekipler arasında bu ayrımın ne kadar açık aktarıldığını sınayarak hayati tehlike oluşturan durumları daha az acil olaylardan ayırdı."
+        }
+      ]
+    },
+    {
+      "word": "lifespan",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ömür, yaşam süresi",
+        "ex": "Improvements in medical care have significantly extended the average human lifespan over the past century.",
+        "exTr": "Tıbbi bakımdaki gelişmeler, son yüzyılda ortalama insan yaşam süresini önemli ölçüde uzattı."
+      },
+      "alternatives": [
+        {
+          "ex": "The purchasing decision considered the expected lifespan of the batteries, since a lower initial price did not necessarily mean lower replacement costs.",
+          "exTr": "Daha düşük ilk fiyat mutlaka daha düşük yenileme maliyetleri anlamına gelmediği için satın alma kararında pillerin beklenen ömrü dikkate alındı."
+        }
+      ]
+    },
+    {
+      "word": "lift",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. kaldırmak, yükseltmek",
+        "ex": "Engineers designed a powerful crane to lift heavy steel beams onto the bridge.",
+        "exTr": "Mühendisler, ağır çelik kirişleri köprüye kaldırmak için güçlü bir vinç tasarladı."
+      },
+      "alternatives": [
+        {
+          "ex": "Workers used a small platform to lift the crates to the loading bay, reducing the need to transfer individual boxes by hand.",
+          "exTr": "İşçiler, tek tek kutuları elle taşıma ihtiyacını azaltarak kasaları yükleme alanına kaldırmak için küçük bir platform kullandı."
+        }
+      ]
+    },
+    {
+      "word": "light-green",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. açık yeşil",
+        "ex": "The laboratory walls were painted a soft light-green color meant to reduce eye strain.",
+        "exTr": "Laboratuvar duvarları, göz yorgunluğunu azaltmayı amaçlayan yumuşak bir açık yeşil renge boyanmıştı."
+      },
+      "alternatives": [
+        {
+          "ex": "The light-green markings identified areas open to visitors, while a separate symbol indicated routes that were temporarily unavailable during building work.",
+          "exTr": "Açık yeşil işaretler ziyaretçilere açık alanları gösterirken ayrı bir simge inşaat çalışmaları sırasında geçici olarak kullanılamayan güzergâhları belirtiyordu."
+        }
+      ]
+    },
+    {
+      "word": "light-year",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ışık yılı",
+        "ex": "The newly discovered galaxy lies more than thirteen billion light-years away from our own solar system.",
+        "exTr": "Yeni keşfedilen galaksi, kendi güneş sistemimizden on üç milyar ışık yılından daha uzakta bulunuyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The exhibit explained the scale of a light-year through a series of comparisons, while warning that the diagram could not preserve realistic proportions.",
+          "exTr": "Sergi, şemanın gerçekçi oranları koruyamayacağı uyarısını yaparken bir dizi karşılaştırma yoluyla bir ışık yılının ölçeğini açıklıyordu."
+        }
+      ]
+    },
+    {
+      "word": "lighthouse",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. deniz feneri",
+        "ex": "Sailors relied on the old lighthouse to navigate safely past the rocky coastline at night.",
+        "exTr": "Denizciler, geceleri kayalık kıyı şeridini güvenle geçmek için eski deniz fenerine güveniyordu."
+      },
+      "alternatives": [
+        {
+          "ex": "After the lighthouse became automated, the empty keeper's house was adapted for visitors interested in the changing history of coastal navigation.",
+          "exTr": "Deniz feneri otomatikleştirildikten sonra boşalan bekçi evi, kıyı seyrüseferinin değişen tarihiyle ilgilenen ziyaretçiler için düzenlendi."
+        }
+      ]
+    },
+    {
+      "word": "like",
+      "sense_index": 0,
+      "expected": {
+        "tr": "e. gibi",
+        "ex": "Social scientists compare online communities to physical neighborhoods, noting that people often behave like neighbors.",
+        "exTr": "Sosyal bilimciler, çevrimiçi toplulukları fiziksel mahallelere benzetir ve insanların genellikle komşular gibi davrandığını belirtir."
+      },
+      "alternatives": [
+        {
+          "ex": "Like a physical queue, the online waiting system gave each request a position, although users could not see how quickly the line was moving.",
+          "exTr": "Çevrimiçi bekleme sistemi, fiziksel bir kuyruk gibi her talebe bir sıra verdi; ancak kullanıcılar sıranın ne kadar hızlı ilerlediğini göremiyordu."
+        }
+      ]
+    },
+    {
+      "word": "likewise",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. aynı şekilde, benzer biçimde; keza",
+        "ex": "Japan invested heavily in renewable energy, and South Korea likewise expanded its solar capacity.",
+        "exTr": "Japonya yenilenebilir enerjiye büyük yatırım yaptı; Güney Kore de benzer şekilde güneş enerjisi kapasitesini genişletti."
+      },
+      "alternatives": [
+        {
+          "ex": "The first team found the instructions ambiguous; the second team likewise requested clarification before attempting to assemble the unfamiliar components.",
+          "exTr": "İlk ekip talimatları belirsiz buldu; ikinci ekip de benzer biçimde alışık olmadığı parçaları birleştirmeye girişmeden önce açıklama istedi."
+        }
+      ]
+    },
+    {
+      "word": "lime",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. misket limonu",
+        "ex": "The recipe called for fresh lime juice to balance the sweetness of the coconut milk.",
+        "exTr": "Tarif, hindistancevizi sütünün tatlılığını dengelemek için taze misket limonu suyu gerektiriyordu."
+      },
+      "alternatives": [
+        {
+          "ex": "The tasting panel compared two sauces containing different amounts of lime, recording acidity separately from overall preference to avoid conflating the two judgments.",
+          "exTr": "Tadım grubu, farklı miktarlarda misket limonu içeren iki sosu karşılaştırarak iki değerlendirmeyi birbirine karıştırmamak için asitliği genel tercihten ayrı kaydetti."
+        }
+      ]
+    },
+    {
+      "word": "limitation",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. eksiklik, kusur",
+        "ex": "Fatigue and poor concentration are common limitations that affect workers during night shifts.",
+        "exTr": "Yorgunluk ve zayıf konsantrasyon, gece vardiyalarında çalışanları etkileyen yaygın eksikliklerdir."
+      },
+      "alternatives": [
+        {
+          "ex": "A significant limitation of the booking system was its inability to show whether adjacent rooms were available for the same period.",
+          "exTr": "Rezervasyon sisteminin önemli bir eksikliği, yan yana odaların aynı dönem için müsait olup olmadığını gösterememesiydi."
+        }
+      ]
+    },
+    {
+      "word": "line",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. çizgi, hat, sınır",
+        "ex": "A fine line separates healthy ambition from harmful perfectionism in competitive work environments.",
+        "exTr": "Rekabetçi iş ortamlarında sağlıklı hırs ile zararlı mükemmeliyetçilik arasında ince bir çizgi vardır."
+      },
+      "alternatives": [
+        {
+          "ex": "A dotted line on the drawing marked the proposed extension, allowing the builders to distinguish new walls from those already standing.",
+          "exTr": "Çizimdeki noktalı bir çizgi önerilen ek bölümü göstererek inşaatçıların yeni duvarları mevcut olanlardan ayırmasını sağlıyordu."
+        }
+      ]
+    },
+    {
+      "word": "linear",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. doğrusal, çizgisel",
+        "ex": "Economic growth rarely follows a strictly linear pattern, since unexpected crises frequently disrupt long-term projections.",
+        "exTr": "Beklenmedik krizler uzun vadeli tahminleri sık sık bozduğundan, ekonomik büyüme nadiren kesinlikle doğrusal bir örüntü izler."
+      },
+      "alternatives": [
+        {
+          "ex": "The analyst tested a linear model first, then examined whether its errors followed a pattern suggesting a more complex relationship between the variables.",
+          "exTr": "Analist önce doğrusal bir modeli sınadı, sonra modelin hatalarının değişkenler arasında daha karmaşık bir ilişki düşündüren bir örüntü izleyip izlemediğini inceledi."
+        }
+      ]
+    },
+    {
+      "word": "linguistic",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. dilsel, dilbilimsel",
+        "ex": "Researchers noted significant linguistic diversity among the indigenous communities living in that region.",
+        "exTr": "Araştırmacılar, o bölgede yaşayan yerli topluluklar arasında önemli bir dilsel çeşitlilik olduğunu belirtti."
+      },
+      "alternatives": [
+        {
+          "ex": "The study separated linguistic difficulty from unfamiliar subject matter by asking participants to discuss the same topic in two different languages.",
+          "exTr": "Çalışma, katılımcılardan aynı konuyu iki farklı dilde tartışmalarını isteyerek dilsel güçlüğü konuya yabancı olmaktan ayırdı."
+        }
+      ]
+    },
+    {
+      "word": "linked",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. bağlantılı, ilişkili",
+        "ex": "Several recent studies have found that poor sleep is closely linked to weakened immune function.",
+        "exTr": "Son dönemde yapılan birçok çalışma, kötü uykunun zayıflamış bağışıklık işleviyle yakından ilişkili olduğunu ortaya koydu."
+      },
+      "alternatives": [
+        {
+          "ex": "The two production schedules were closely linked because a delay in preparing the casing prevented the assembly team from completing its work.",
+          "exTr": "İki üretim programı birbiriyle yakından bağlantılıydı; çünkü kasanın hazırlanmasındaki gecikme montaj ekibinin işini tamamlamasını engelliyordu."
+        }
+      ]
+    },
+    {
+      "word": "lipid",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. lipit, yağ (biyolojik yağ molekülü)",
+        "ex": "The team analysed lipid levels in blood samples in order to determine whether the new drug reduced the risk of cardiovascular disease.",
+        "exTr": "Ekip, yeni ilacın kalp-damar hastalığı riskini azaltıp azaltmadığını belirlemek için kan örneklerindeki lipit düzeylerini analiz etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The laboratory compared lipid extracts from several seed samples, documenting the extraction procedure so that another team could repeat the analysis.",
+          "exTr": "Laboratuvar, başka bir ekibin analizi tekrarlayabilmesi için özütleme işlemini belgeleyerek birkaç tohum örneğinden alınan lipit özütlerini karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "listed",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. listelenmiş, listede yer alan",
+        "ex": "Several endangered species listed by the organization have shown early signs of population recovery.",
+        "exTr": "Kuruluş tarafından listelenen birkaç nesli tükenmekte olan tür, nüfusta erken toparlanma belirtileri gösterdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The listed components did not include replacement cables, so the technician checked whether these had been supplied under a separate order.",
+          "exTr": "Listelenmiş parçalar arasında yedek kablolar bulunmadığından teknisyen bunların ayrı bir sipariş kapsamında sağlanıp sağlanmadığını kontrol etti."
+        }
+      ]
+    },
+    {
+      "word": "listening",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. dinleme; dinleme becerisi",
+        "ex": "The exam's listening section requires candidates to answer questions based on a recorded lecture.",
+        "exTr": "Sınavın dinleme bölümü, adayların kayıtlı bir dersi dinleyerek soruları yanıtlamasını gerektiriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Effective listening during an interview involves noticing hesitation and changes of emphasis, not simply waiting for a turn to ask the next question.",
+          "exTr": "Görüşmede etkili dinleme, yalnızca sıradaki soruyu sorma sırasını beklemeyi değil, duraksamaları ve vurgu değişikliklerini fark etmeyi içerir."
+        }
+      ]
+    },
+    {
+      "word": "literacy",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. okuryazarlık",
+        "ex": "Government programs have significantly improved literacy rates among rural communities over the past decade.",
+        "exTr": "Hükümet programları, geçtiğimiz on yılda kırsal topluluklar arasındaki okuryazarlık oranlarını önemli ölçüde artırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The adult literacy course used letters, forms and workplace notices to connect reading practice with tasks that learners encountered outside the classroom.",
+          "exTr": "Yetişkin okuryazarlık kursu, okuma alıştırmalarını öğrencilerin sınıf dışında karşılaştığı görevlerle ilişkilendirmek için mektuplar, formlar ve iş yeri duyuruları kullandı."
+        }
+      ]
+    },
+    {
+      "word": "literary",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. edebi, yazınsal",
+        "ex": "The university awarded a prize for the most original literary work published that year.",
+        "exTr": "Üniversite, o yıl yayımlanan en özgün edebi esere bir ödül verdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The critic examined how a familiar literary convention could be adapted to represent experiences rarely discussed in the genre's earlier works.",
+          "exTr": "Eleştirmen, bilinen bir edebî geleneğin türün önceki eserlerinde nadiren ele alınan deneyimleri yansıtmak için nasıl uyarlanabileceğini inceledi."
+        }
+      ]
+    },
+    {
+      "word": "lithium",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. lityum",
+        "ex": "Manufacturers depend heavily on lithium to produce batteries for electric vehicles.",
+        "exTr": "Üreticiler, elektrikli araçlar için pil üretiminde büyük ölçüde lityuma bağımlı."
+      },
+      "alternatives": [
+        {
+          "ex": "The supply-chain study traced lithium from the purchasing records of battery manufacturers, noting where incomplete documentation limited confidence in the reported origins.",
+          "exTr": "Tedarik zinciri çalışması, eksik belgelerin bildirilen kökene duyulan güveni nerede sınırladığını belirterek pil üreticilerinin satın alma kayıtlarından lityumun izini sürdü."
+        }
+      ]
+    },
+    {
+      "word": "little",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. az",
+        "ex": "Despite decades of study, scientists still know remarkably little about deep ocean trenches.",
+        "exTr": "On yıllardır süren çalışmalara rağmen bilim insanları, derin okyanus çukurları hakkında hâlâ şaşırtıcı derecede az şey biliyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The new arrangement differed little from the previous one in appearance, yet it substantially changed who could approve purchases without further consultation.",
+          "exTr": "Yeni düzenleme görünüşte öncekinden pek az farklıydı; ancak ek danışmaya gerek olmadan satın almaları kimin onaylayabileceğini önemli ölçüde değiştiriyordu."
+        }
+      ]
+    },
+    {
+      "word": "live-and-die",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. küstüm otu (Mimosa pudica)",
+        "ex": "Botanists classified the live-and-die as a thorny subshrub whose delicate leaflets fold shut at the slightest touch.",
+        "exTr": "Botanikçiler, hassas ot türünü, en ufak dokunuşta yapraklarını kapatan dikenli bir çalı olarak sınıflandırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "Using a magnifying lens, the botany class examined a live-and-die plant and drew its leaflets before comparing observations with a labelled diagram.",
+          "exTr": "Botanik sınıfı, gözlemleri etiketli bir şemayla karşılaştırmadan önce bir büyüteçle küstüm otunu inceledi ve yaprakçıklarını çizdi."
+        }
+      ],
+      "note": "Nadir ortak bitki adı Mimosa pudica anlamında birincil botanik kaynakla doğrulandı. Kalıp türün betimleyici ad kullanımıdır: https://biotanz.landcareresearch.co.nz/scientific-names/19991777-073A-4EEF-8DC7-087F54E5E701 ; https://www.nparks.gov.sg/florafaunaweb/flora/2/2/2225 ."
+    },
+    {
+      "word": "lively",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. canlı, hareketli, enerjik",
+        "ex": "The market square becomes especially lively on Saturday mornings when local farmers sell their produce.",
+        "exTr": "Pazar meydanı, yerel çiftçilerin ürünlerini sattığı cumartesi sabahları özellikle canlı hale gelir."
+      },
+      "alternatives": [
+        {
+          "ex": "The speaker's claim prompted a lively debate in which students challenged both the examples she selected and the conclusions drawn from them.",
+          "exTr": "Konuşmacının iddiası, öğrencilerin hem onun seçtiği örneklere hem de bunlardan çıkarılan sonuçlara itiraz ettiği canlı bir tartışmayı başlattı."
+        }
+      ]
+    },
+    {
+      "word": "living",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. yaşamak; yaşayarak, yaşayan (live fiilinin -ing biçimi)",
+        "ex": "People living near busy roads may be exposed to higher noise levels.",
+        "exTr": "İşlek yolların yakınında yaşayan insanlar daha yüksek gürültü düzeylerine maruz kalabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "Families living above the shops described different noise problems from those reported by residents whose homes faced the quieter rear courtyard.",
+          "exTr": "Dükkânların üzerinde yaşayan aileler, evleri daha sessiz arka avluya bakan sakinlerin bildirdiklerinden farklı gürültü sorunları anlattı."
+        }
+      ]
+    }
+  ],
+  "collocations": [
+    {
+      "word": "lately",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "quite a lot lately",
+          "tr": "son zamanlarda oldukça sık"
+        },
+        {
+          "en": "not much lately",
+          "tr": "son zamanlarda pek fazla değil"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "legendary",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "achieve legendary status",
+          "tr": "efsanevi bir üne ulaşmak"
+        },
+        {
+          "en": "a legendary figure",
+          "tr": "efsanevi bir şahsiyet"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "legs",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "cross your legs",
+          "tr": "bacak bacak üstüne atmak"
+        },
+        {
+          "en": "stretch your legs",
+          "tr": "bacaklarını açmak; biraz yürüyüp hareket etmek"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "leper",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a leper hospital",
+          "tr": "cüzzam hastanesi (tarihsel adlandırma)"
+        },
+        {
+          "en": "a leper colony",
+          "tr": "cüzzamlı hastaların tecrit edildiği yerleşim (tarihsel adlandırma)"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "letter-perfect",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a letter-perfect copy",
+          "tr": "harfi harfine doğru bir kopya"
+        },
+        {
+          "en": "a letter-perfect performance",
+          "tr": "sözlerin eksiksiz ve hatasız aktarıldığı bir performans"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "lie-in",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "have a lie-in",
+          "tr": "sabah yatakta geç saate kadar kalmak"
+        },
+        {
+          "en": "a Sunday lie-in",
+          "tr": "pazar sabahı geç kalkma"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "light-green",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "light-green leaves",
+          "tr": "açık yeşil yapraklar"
+        },
+        {
+          "en": "a light-green shade",
+          "tr": "açık yeşil bir ton"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "lighthouse",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a lighthouse keeper",
+          "tr": "deniz feneri bekçisi"
+        },
+        {
+          "en": "a lighthouse beam",
+          "tr": "deniz fenerinin ışık huzmesi"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "lime",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "lime juice",
+          "tr": "misket limonu suyu"
+        },
+        {
+          "en": "a slice of lime",
+          "tr": "bir dilim misket limonu"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "live-and-die",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a live-and-die plant",
+          "tr": "bir küstüm otu bitkisi"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

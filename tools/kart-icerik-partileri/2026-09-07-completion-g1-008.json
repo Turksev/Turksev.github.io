@@ -1,0 +1,1094 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 1,
+    "input": "input-008.json"
+  },
+  "enrichments": [
+    {
+      "word": "changing",
+      "sense_index": 1,
+      "expected": {
+        "tr": "s. değişen, değişken",
+        "ex": "Farmers have had to adapt their planting schedules to a rapidly changing climate.",
+        "exTr": "Çiftçiler, hızla değişen bir iklime uyum sağlamak için ekim takvimlerini değiştirmek zorunda kaldı."
+      },
+      "alternatives": [
+        {
+          "ex": "A changing workforce presents new challenges for employers, especially when training programmes assume that all employees have similar educational backgrounds.",
+          "exTr": "Değişen bir iş gücü, özellikle eğitim programları bütün çalışanların benzer eğitim geçmişlerine sahip olduğunu varsaydığında işverenler için yeni güçlükler yaratır."
+        }
+      ]
+    },
+    {
+      "word": "chaos",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kaos, kargaşa",
+        "ex": "The sudden power outage plunged the entire stadium into complete chaos.",
+        "exTr": "Ani elektrik kesintisi, tüm stadyumu tam bir kaosa sürükledi."
+      },
+      "alternatives": [
+        {
+          "ex": "Conflicting instructions created chaos at the registration desk until organisers established a single procedure for handling late applications.",
+          "exTr": "Çelişkili talimatlar, organizatörler geç başvuruları ele almak için tek bir yöntem belirleyene kadar kayıt masasında kargaşa yarattı."
+        }
+      ]
+    },
+    {
+      "word": "character",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. karakter, özellik",
+        "ex": "Soil composition strongly influences the character of the wine produced in a region.",
+        "exTr": "Toprak bileşimi, bir bölgede üretilen şarabın karakterini güçlü biçimde etkiler."
+      },
+      "alternatives": [
+        {
+          "ex": "The proposed development would alter the character of the neighbourhood by replacing small workshops with large residential blocks.",
+          "exTr": "Önerilen yapılaşma, küçük atölyelerin yerine büyük konut blokları getirerek mahallenin niteliğini değiştirecektir."
+        }
+      ]
+    },
+    {
+      "word": "characteristic",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. özellik, nitelik",
+        "ex": "Scientists identified several genetic characteristics shared by nearly all long-lived tortoise species.",
+        "exTr": "Bilim insanları, neredeyse tüm uzun ömürlü kaplumbağa türlerinde ortak olan birkaç genetik özellik belirledi."
+      },
+      "alternatives": [
+        {
+          "ex": "One characteristic of the material is its ability to regain its original shape after repeated bending under moderate pressure.",
+          "exTr": "Malzemenin bir özelliği, orta düzeyde basınç altında defalarca büküldükten sonra başlangıçtaki biçimine dönebilmesidir."
+        }
+      ]
+    },
+    {
+      "word": "characterized",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. (bir özellikle) nitelendirilen, karakterize edilen",
+        "ex": "The disease is characterized by sudden fever, fatigue, and severe joint pain.",
+        "exTr": "Hastalık, ani ateş, yorgunluk ve şiddetli eklem ağrısıyla karakterize edilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The region has a climate characterized by long dry summers, which influences both crop selection and the design of water-storage systems.",
+          "exTr": "Bölgenin uzun ve kurak yazlarla karakterize edilen iklimi, hem ürün seçimini hem de su depolama sistemlerinin tasarımını etkiliyor."
+        }
+      ]
+    },
+    {
+      "word": "charisma",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. karizma",
+        "ex": "The candidate's natural charisma helped her connect with voters who felt ignored by other politicians.",
+        "exTr": "Adayın doğal karizması, diğer politikacılar tarafından göz ardı edildiğini hisseden seçmenlerle bağ kurmasına yardımcı oldu."
+      },
+      "alternatives": [
+        {
+          "ex": "Personal charisma helped the organiser attract volunteers, but sustaining their involvement required clear responsibilities and respect for their limited time.",
+          "exTr": "Kişisel karizma, organizatörün gönüllüleri çekmesine yardımcı oldu; ancak katılımlarını sürdürmek, açık sorumluluklar ve sınırlı zamanlarına saygı gerektirdi."
+        }
+      ]
+    },
+    {
+      "word": "charity",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. hayır kurumu, hayırseverlik, sadaka",
+        "ex": "The local charity distributed warm clothing to homeless residents throughout the harsh winter.",
+        "exTr": "Yerel hayır kurumu, sert kış boyunca evsiz sakinlere sıcak giysiler dağıttı."
+      },
+      "alternatives": [
+        {
+          "ex": "The charity publishes an annual breakdown of its spending so that donors can see how their contributions support different services.",
+          "exTr": "Hayır kurumu, bağışçıların katkılarının farklı hizmetleri nasıl desteklediğini görebilmesi için harcamalarının yıllık dökümünü yayımlıyor."
+        }
+      ]
+    },
+    {
+      "word": "chart",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. grafik, çizelge",
+        "ex": "Researchers used the chart to compare temperature changes across several decades.",
+        "exTr": "Araştırmacılar, birkaç on yıl boyunca sıcaklık değişimlerini karşılaştırmak için grafiği kullandı."
+      },
+      "alternatives": [
+        {
+          "ex": "The chart distinguishes recorded observations from estimated values, preventing readers from treating every point as an equally reliable measurement.",
+          "exTr": "Grafik, kaydedilmiş gözlemleri tahmini değerlerden ayırarak okuyucuların her noktayı aynı derecede güvenilir bir ölçüm olarak görmesini önlüyor."
+        }
+      ]
+    },
+    {
+      "word": "cheap",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. ucuz",
+        "ex": "The availability of cheap flights has made international travel accessible to millions of people.",
+        "exTr": "Ucuz uçuşların yaygınlaşması, uluslararası seyahati milyonlarca insan için erişilebilir kıldı."
+      },
+      "alternatives": [
+        {
+          "ex": "Cheap materials may reduce the initial cost of construction, but frequent repairs can make the building more expensive over its lifetime.",
+          "exTr": "Ucuz malzemeler ilk inşaat maliyetini azaltabilir; ancak sık onarımlar binayı kullanım ömrü boyunca daha pahalı hâle getirebilir."
+        }
+      ]
+    },
+    {
+      "word": "check-in",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. giriş işlemi, kayıt (havalimanı/otel)",
+        "ex": "Passengers are advised to complete online check-in at least two hours before their flight departs.",
+        "exTr": "Yolcuların, uçuşları kalkmadan en az iki saat önce çevrimiçi check-in işlemini tamamlaması tavsiye edilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The airport redesigned its check-in area after passenger surveys revealed that unclear signs were causing unnecessary queues.",
+          "exTr": "Havalimanı, yolcu anketlerinin anlaşılmaz levhaların gereksiz kuyruklara neden olduğunu ortaya koymasının ardından uçuşa kayıt alanını yeniden tasarladı."
+        }
+      ]
+    },
+    {
+      "word": "cheek",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yanak",
+        "ex": "The toddler proudly showed off the small scrape on her cheek from the playground fall.",
+        "exTr": "Küçük çocuk, oyun parkında düşmesinden kalan yanağındaki küçük sıyrığı gururla gösterdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The portrait's damaged surface obscured part of the sitter's cheek, making it difficult to determine the artist's original use of shading.",
+          "exTr": "Portrenin hasarlı yüzeyi, modelin yanağının bir bölümünü örterek sanatçının özgün gölgelendirme kullanımını belirlemeyi güçleştirdi."
+        }
+      ]
+    },
+    {
+      "word": "cheerful",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. neşeli, keyifli",
+        "ex": "Despite the difficult diagnosis, the child remained remarkably cheerful throughout the entire course of treatment.",
+        "exTr": "Zor teşhise rağmen çocuk, tedavinin tüm süreci boyunca dikkat çekici derecede neşeli kaldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The volunteers maintained a cheerful atmosphere during the long preparations, even when changes to the venue required them to reorganise their work.",
+          "exTr": "Gönüllüler, mekândaki değişiklikler çalışmalarını yeniden düzenlemelerini gerektirdiğinde bile uzun hazırlıklar boyunca neşeli bir ortamı korudu."
+        }
+      ]
+    },
+    {
+      "word": "chef",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. aşçıbaşı, şef (mutfakta)",
+        "ex": "The restaurant hired a famous chef to redesign its entire seasonal menu.",
+        "exTr": "Restoran, tüm mevsimlik menüsünü yeniden tasarlamak için ünlü bir şef işe aldı."
+      },
+      "alternatives": [
+        {
+          "ex": "Working with local growers, the chef developed a seasonal menu that could accommodate variations in the produce available each week.",
+          "exTr": "Yerel yetiştiricilerle çalışan aşçıbaşı, her hafta temin edilebilen ürünlerdeki değişikliklere uyum sağlayabilecek mevsimlik bir menü geliştirdi."
+        }
+      ]
+    },
+    {
+      "word": "chemistry",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kimya",
+        "ex": "Students who struggle with chemistry often benefit from visualizing molecules using three-dimensional models.",
+        "exTr": "Kimya dersinde zorlanan öğrenciler, molekülleri üç boyutlu modeller kullanarak görselleştirmekten genellikle fayda görür."
+      },
+      "alternatives": [
+        {
+          "ex": "A background in chemistry helped the conservation team understand why two cleaning agents affected the painted surface differently.",
+          "exTr": "Kimya bilgisi, koruma ekibinin iki temizlik maddesinin boyalı yüzeyi neden farklı biçimde etkilediğini anlamasına yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "cherry",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kiraz",
+        "ex": "Farmers in the valley harvest cherry crops each summer before exporting them across the region.",
+        "exTr": "Vadideki çiftçiler, bölgeye ihraç etmeden önce her yaz kiraz mahsulünü hasat eder."
+      },
+      "alternatives": [
+        {
+          "ex": "The cherry trees flowered at different times across the valley, providing a useful starting point for discussions of local growing conditions.",
+          "exTr": "Kiraz ağaçları vadinin farklı kesimlerinde farklı zamanlarda çiçek açarak yerel yetişme koşullarının tartışılması için yararlı bir başlangıç noktası sağladı."
+        }
+      ]
+    },
+    {
+      "word": "chestnut",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kestane; kestane ağacı",
+        "ex": "A fungal blight wiped out the American chestnut in the early twentieth century, transforming the composition of forests across the eastern United States.",
+        "exTr": "Mantar kaynaklı bir hastalık, yirminci yüzyılın başlarında Amerikan kestanesini yok ederek Amerika Birleşik Devletleri'nin doğusundaki ormanların bileşimini değiştirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The chestnut seedlings were planted in plots with different amounts of shade, and their growth was measured throughout the summer.",
+          "exTr": "Kestane fidanları, farklı miktarda gölge alan parsellere dikildi ve büyümeleri yaz boyunca ölçüldü."
+        }
+      ]
+    },
+    {
+      "word": "chief",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. başlıca, ana",
+        "ex": "Air pollution is the chief cause of respiratory illness in many industrial cities.",
+        "exTr": "Hava kirliliği, birçok sanayi kentinde solunum yolu hastalıklarının başlıca nedenidir."
+      },
+      "alternatives": [
+        {
+          "ex": "The chief difficulty was obtaining comparable records, since each district had collected information according to a different administrative system.",
+          "exTr": "Her bölge bilgileri farklı bir idari sisteme göre topladığı için başlıca güçlük karşılaştırılabilir kayıtlar elde etmekti."
+        }
+      ]
+    },
+    {
+      "word": "childcare",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. çocuk bakımı",
+        "ex": "The government announced new subsidies to make childcare more affordable for working parents.",
+        "exTr": "Hükümet, çalışan ebeveynler için çocuk bakımını daha uygun fiyatlı hale getirecek yeni destekler açıkladı."
+      },
+      "alternatives": [
+        {
+          "ex": "Access to affordable childcare influenced whether participants could attend the evening courses, regardless of their interest in further education.",
+          "exTr": "Uygun fiyatlı çocuk bakımına erişim, katılımcıların ileri eğitime duydukları ilgiden bağımsız olarak akşam kurslarına katılıp katılamayacağını etkiledi."
+        }
+      ]
+    },
+    {
+      "word": "chili",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. acı biber",
+        "ex": "The recipe calls for two dried chili peppers to give the sauce its distinctive heat.",
+        "exTr": "Tarif, sosa kendine özgü acılığını vermesi için iki kurutulmuş acı biber gerektiriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The agricultural trial compared chili varieties for their tolerance of dry conditions rather than judging them solely by flavour.",
+          "exTr": "Tarımsal deneme, acı biber çeşitlerini yalnızca lezzetlerine göre değerlendirmek yerine kurak koşullara dayanıklılıkları açısından karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "chilly",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. rahatsız edecek ölçüde serin veya soğuk",
+        "ex": "A chilly wind lowered the temperature rapidly after sunset and forced the team to leave.",
+        "exTr": "Serin bir rüzgâr gün batımından sonra sıcaklığı hızla düşürdü ve ekibi ayrılmaya zorladı."
+      },
+      "alternatives": [
+        {
+          "ex": "Several chilly mornings delayed outdoor work, although the afternoon temperatures were generally suitable for repairing the damaged roof.",
+          "exTr": "Öğleden sonraki sıcaklıklar hasarlı çatının onarılmasına genellikle uygun olsa da birkaç soğuk sabah açık havadaki işleri geciktirdi."
+        }
+      ]
+    },
+    {
+      "word": "chip",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yonga, parça, çip",
+        "ex": "Engineers embedded a tiny silicon chip capable of processing enormous amounts of data instantly.",
+        "exTr": "Mühendisler, muazzam miktarda veriyi anında işleyebilen minik bir silikon çip yerleştirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The prototype relies on a single chip to process sensor readings, reducing the space required for its electronic components.",
+          "exTr": "Prototip, sensör verilerini işlemek için tek bir çip kullanarak elektronik bileşenleri için gereken alanı azaltıyor."
+        }
+      ]
+    },
+    {
+      "word": "chlorine",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. klor",
+        "ex": "Municipal water treatment facilities add chlorine to eliminate harmful bacteria before distribution to homes.",
+        "exTr": "Belediye su arıtma tesisleri, evlere dağıtılmadan önce zararlı bakterileri yok etmek için klor ekler."
+      },
+      "alternatives": [
+        {
+          "ex": "The laboratory recorded chlorine concentrations at several sampling points to investigate whether measurements varied across the distribution network.",
+          "exTr": "Laboratuvar, ölçümlerin dağıtım ağı boyunca değişip değişmediğini araştırmak için birkaç örnekleme noktasındaki klor yoğunluklarını kaydetti."
+        }
+      ]
+    },
+    {
+      "word": "choice",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. seçim, tercih",
+        "ex": "Consumers today face an overwhelming choice of products in almost every market.",
+        "exTr": "Günümüzde tüketiciler, hemen her pazarda çok geniş bir ürün yelpazesiyle karşı karşıyadır."
+      },
+      "alternatives": [
+        {
+          "ex": "Giving learners a choice of project topics increased their responsibility for planning, although the assessment criteria remained the same.",
+          "exTr": "Öğrenenlere proje konusu seçme olanağı vermek planlama sorumluluklarını artırdı; ancak değerlendirme ölçütleri aynı kaldı."
+        }
+      ]
+    },
+    {
+      "word": "cholesterol",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kolesterol",
+        "ex": "Doctors recommend a balanced diet to keep cholesterol levels within a healthy range.",
+        "exTr": "Doktorlar, kolesterol düzeylerini sağlıklı bir aralıkta tutmak için dengeli bir beslenmeyi öneriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The researchers measured cholesterol in the stored samples using the same laboratory procedure to reduce variation caused by different testing methods.",
+          "exTr": "Araştırmacılar, farklı test yöntemlerinden kaynaklanan değişkenliği azaltmak için saklanan örneklerdeki kolesterolü aynı laboratuvar yöntemini kullanarak ölçtü."
+        }
+      ]
+    },
+    {
+      "word": "christian",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. Hristiyan, Hristiyanlığa ait",
+        "ex": "The museum preserves several early Christian manuscripts discovered near the ancient monastery.",
+        "exTr": "Müze, antik manastırın yakınında bulunan birkaç erken dönem Hristiyan el yazmasını koruyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The historian examines how Christian communities adapted their charitable activities as towns expanded and the needs of local residents changed.",
+          "exTr": "Tarihçi, kasabalar büyüyüp yerel sakinlerin ihtiyaçları değiştikçe Hristiyan toplulukların hayır faaliyetlerini nasıl uyarladığını inceliyor."
+        }
+      ],
+      "note": "Dinle ilgili sıfatta standart büyük harf Christian korundu."
+    },
+    {
+      "word": "chronically",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. kronik olarak, süreğen biçimde",
+        "ex": "Hospitals in the region remain chronically understaffed despite repeated promises of additional government funding.",
+        "exTr": "Bölgedeki hastaneler, ek devlet finansmanı sözlerine rağmen kronik olarak personel yetersizliği yaşamaya devam ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The service remained chronically underfunded, making long-term planning difficult even when individual projects received occasional donations.",
+          "exTr": "Tek tek projeler zaman zaman bağış alsa da hizmetin sürekli yetersiz finansmanla yürütülmesi uzun vadeli planlamayı güçleştirdi."
+        }
+      ]
+    },
+    {
+      "word": "chunky",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. iri parçalı, tıknaz",
+        "ex": "The recipe calls for chunky pieces of vegetable rather than a smooth, blended puree.",
+        "exTr": "Tarif, pürüzsüz bir püre yerine iri parçalı sebze parçaları gerektiriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Design students made the controls deliberately chunky so that users wearing thick gloves could adjust the equipment without difficulty.",
+          "exTr": "Tasarım öğrencileri, kalın eldiven giyen kullanıcıların ekipmanı güçlük çekmeden ayarlayabilmesi için kontrol parçalarını kasıtlı olarak iri yaptı."
+        }
+      ]
+    },
+    {
+      "word": "cigarette",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sigara",
+        "ex": "Public health campaigns have significantly reduced cigarette consumption among teenagers over the past decade.",
+        "exTr": "Halk sağlığı kampanyaları, son on yılda gençler arasındaki sigara tüketimini önemli ölçüde azalttı."
+      },
+      "alternatives": [
+        {
+          "ex": "The project examined cigarette advertisements from different decades to trace changes in the language used to address potential consumers.",
+          "exTr": "Proje, potansiyel tüketicilere hitap etmek için kullanılan dildeki değişiklikleri izlemek amacıyla farklı on yıllara ait sigara reklamlarını inceledi."
+        }
+      ]
+    },
+    {
+      "word": "cinematography",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sinematografi, film çekim sanatı, görüntü yönetimi",
+        "ex": "Critics praised the film less for its plot than for its striking cinematography, which captured the desert landscape in remarkable detail.",
+        "exTr": "Eleştirmenler filmi, konusundan çok, çöl manzarasını olağanüstü bir ayrıntıyla yakalayan çarpıcı görüntü yönetimi nedeniyle övdü."
+      },
+      "alternatives": [
+        {
+          "ex": "Through its cinematography, the film draws attention to the distance between the crowded industrial district and the quiet residential neighbourhoods beyond it.",
+          "exTr": "Film, görüntü yönetimi aracılığıyla kalabalık sanayi bölgesiyle onun ötesindeki sessiz konut mahalleleri arasındaki mesafeye dikkat çekiyor."
+        }
+      ]
+    },
+    {
+      "word": "circle",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. daire, çember; grup, çevre",
+        "ex": "She has a wide circle of friends who share her passion for classical music and painting.",
+        "exTr": "Klasik müziğe ve resme olan tutkusunu paylaşan geniş bir arkadaş çevresi var."
+      },
+      "alternatives": [
+        {
+          "ex": "A circle drawn around each sampling point indicates the area from which surrounding vegetation was included in the survey.",
+          "exTr": "Her örnekleme noktasının çevresine çizilen bir çember, çevredeki bitki örtüsünün hangi alandan araştırmaya dahil edildiğini gösteriyor."
+        }
+      ]
+    },
+    {
+      "word": "circular",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. dairesel, yuvarlak",
+        "ex": "Engineers designed the stadium with a circular structure so every seat had an equal view.",
+        "exTr": "Mühendisler, her koltuğun eşit bir görüş açısına sahip olması için stadyumu dairesel bir yapıyla tasarladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The circular arrangement of the workstations encouraged discussion, but it also required careful planning to keep movement through the room unobstructed.",
+          "exTr": "Çalışma masalarının dairesel yerleşimi tartışmayı teşvik etti; ancak odadaki hareketin engellenmemesi için dikkatli planlama da gerektirdi."
+        }
+      ]
+    },
+    {
+      "word": "circulation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. dolaşım (kan, hava, para)",
+        "ex": "Regular exercise improves blood circulation and reduces the risk of heart disease.",
+        "exTr": "Düzenli egzersiz, kan dolaşımını iyileştirir ve kalp hastalığı riskini azaltır."
+      },
+      "alternatives": [
+        {
+          "ex": "Opening gaps between the storage shelves improved air circulation and made conditions inside the room more consistent throughout the day.",
+          "exTr": "Depolama rafları arasında boşluklar bırakmak hava dolaşımını iyileştirdi ve odanın içindeki koşulları gün boyunca daha tutarlı hâle getirdi."
+        }
+      ]
+    },
+    {
+      "word": "circumstances",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. koşullar, durum, şartlar",
+        "ex": "Under certain circumstances, prolonged drought can dramatically reduce a region's agricultural output.",
+        "exTr": "Belirli koşullar altında, uzun süreli kuraklık bir bölgenin tarımsal üretimini önemli ölçüde azaltabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The funding rules permit extensions under exceptional circumstances, but applicants must explain why the original timetable could not reasonably be followed.",
+          "exTr": "Finansman kuralları istisnai koşullarda süre uzatımına izin veriyor; ancak başvuranlar ilk takvime uyulmasının neden makul biçimde mümkün olmadığını açıklamak zorunda."
+        }
+      ]
+    },
+    {
+      "word": "citizenry",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yurttaşlar, halk, vatandaşlar topluluğu",
+        "ex": "A well-informed citizenry is widely regarded as the strongest safeguard against the gradual erosion of democratic institutions in any society.",
+        "exTr": "İyi bilgilendirilmiş bir yurttaş topluluğu, herhangi bir toplumda demokratik kurumların yavaş yavaş aşınmasına karşı en güçlü güvence olarak görülür."
+      },
+      "alternatives": [
+        {
+          "ex": "The council invited the citizenry to examine alternative transport plans before committing public funds to a single proposal.",
+          "exTr": "Belediye meclisi, kamu kaynaklarını tek bir öneriye bağlamadan önce yurttaşları alternatif ulaşım planlarını incelemeye davet etti."
+        }
+      ]
+    },
+    {
+      "word": "city-born",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. şehir doğumlu, şehirde doğmuş",
+        "ex": "Several city-born students struggled at first to adapt to the slower pace of rural life.",
+        "exTr": "Şehirde doğmuş birkaç öğrenci, kırsal yaşamın daha yavaş temposuna uyum sağlamakta başlangıçta zorlandı."
+      },
+      "alternatives": [
+        {
+          "ex": "The study compared city-born and rural-born adults without assuming that birthplace alone determined their attitudes towards the natural environment.",
+          "exTr": "Çalışma, doğum yerinin tek başına doğal çevreye yönelik tutumları belirlediğini varsaymadan şehirde ve kırsalda doğmuş yetişkinleri karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "civil",
+      "sense_index": 1,
+      "expected": {
+        "tr": "s. nazik, kibar, saygılı",
+        "ex": "Despite their strong disagreement, both politicians remained civil throughout the entire televised debate.",
+        "exTr": "Güçlü anlaşmazlıklarına rağmen, her iki politikacı da televizyonda yayınlanan tartışma boyunca kibar kaldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The participants remained civil despite sharp disagreement over the budget, which enabled the meeting to end with several practical compromises.",
+          "exTr": "Katılımcılar, bütçe konusundaki keskin görüş ayrılığına rağmen saygılı kaldı; bu da toplantının birkaç uygulanabilir uzlaşmayla sonuçlanmasını sağladı."
+        }
+      ]
+    },
+    {
+      "word": "civilization",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. uygarlık, medeniyet",
+        "ex": "Archaeologists uncovered pottery that offers new clues about an ancient civilization long thought to be lost.",
+        "exTr": "Arkeologlar, uzun süredir kaybolduğu düşünülen antik bir uygarlık hakkında yeni ipuçları sunan çanak çömlek buldu."
+      },
+      "alternatives": [
+        {
+          "ex": "The exhibition presents the civilization through ordinary tools and household objects rather than focusing exclusively on palaces and monumental buildings.",
+          "exTr": "Sergi, yalnızca saraylara ve anıtsal yapılara odaklanmak yerine uygarlığı gündelik aletler ve ev eşyaları aracılığıyla sunuyor."
+        }
+      ]
+    },
+    {
+      "word": "clap",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. alkışlamak",
+        "ex": "The audience began to clap enthusiastically the moment the young violinist finished her performance.",
+        "exTr": "Genç kemancı performansını bitirir bitirmez seyirci coşkuyla alkışlamaya başladı."
+      },
+      "alternatives": [
+        {
+          "ex": "Instead of interrupting the demonstration to clap, the audience waited until the students had explained how their device worked.",
+          "exTr": "Dinleyiciler, alkışlamak için gösteriyi kesmek yerine öğrencilerin cihazlarının nasıl çalıştığını açıklamasını bekledi."
+        }
+      ]
+    },
+    {
+      "word": "clarity",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. netlik, açıklık",
+        "ex": "The professor's lecture was praised for its clarity and logical structure by most students.",
+        "exTr": "Profesörün dersi, netliği ve mantıksal yapısı nedeniyle çoğu öğrenci tarafından övüldü."
+      },
+      "alternatives": [
+        {
+          "ex": "Replacing several technical abbreviations with full explanations improved the clarity of the report without changing the substance of its findings.",
+          "exTr": "Birkaç teknik kısaltmanın yerine açık açıklamalar koymak, bulguların özünü değiştirmeden raporun anlaşılırlığını artırdı."
+        }
+      ]
+    },
+    {
+      "word": "classic",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. klasik eser",
+        "ex": "The novel is widely regarded as a classic of twentieth-century literature.",
+        "exTr": "Roman, yirminci yüzyıl edebiyatının bir klasiği olarak geniş çapta kabul görür."
+      },
+      "alternatives": [
+        {
+          "ex": "Although the book is now regarded as a classic, its early readers disagreed strongly about the value of its unconventional structure.",
+          "exTr": "Kitap bugün klasik bir eser olarak görülse de ilk okuyucuları alışılmadık yapısının değeri konusunda keskin biçimde ayrışmıştı."
+        }
+      ]
+    },
+    {
+      "word": "classified",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. gizli, sınıflandırılmış",
+        "ex": "The government refused to release classified documents related to the ongoing security investigation.",
+        "exTr": "Hükümet, devam eden güvenlik soruşturmasıyla ilgili gizli belgeleri açıklamayı reddetti."
+      },
+      "alternatives": [
+        {
+          "ex": "The historian relied on publicly available sources because several relevant reports remained classified and could not be examined directly.",
+          "exTr": "Tarihçi, ilgili raporlardan bazıları gizli kalıp doğrudan incelenemediği için kamuya açık kaynaklara dayandı."
+        }
+      ]
+    },
+    {
+      "word": "classroom",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sınıf, derslik",
+        "ex": "Modern classrooms increasingly incorporate digital tools to support interactive and personalized learning.",
+        "exTr": "Modern sınıflar, etkileşimli ve kişiselleştirilmiş öğrenmeyi desteklemek için giderek daha fazla dijital araç kullanıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Moving the tables changed how the classroom was used, creating space for small-group tasks without requiring expensive new equipment.",
+          "exTr": "Masaların yerini değiştirmek, pahalı yeni donanımlar gerektirmeden küçük grup görevleri için alan yaratarak dersliğin kullanım biçimini değiştirdi."
+        }
+      ]
+    },
+    {
+      "word": "claustrophobia",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. klostrofobi, kapalı yer korkusu",
+        "ex": "Patients with severe claustrophobia often struggle to remain still inside an MRI scanner, so hospitals increasingly offer wider and more open machines.",
+        "exTr": "Şiddetli klostrofobisi olan hastalar MR cihazının içinde hareketsiz kalmakta çoğu zaman zorlanır; bu yüzden hastaneler giderek daha geniş ve açık cihazlar sunmaktadır."
+      },
+      "alternatives": [
+        {
+          "ex": "The interview explored how claustrophobia affected the participant's choice of transport, while avoiding assumptions about other people with the same condition.",
+          "exTr": "Görüşme, aynı durumu yaşayan diğer insanlar hakkında varsayımda bulunmadan klostrofobinin katılımcının ulaşım tercihini nasıl etkilediğini araştırdı."
+        }
+      ]
+    },
+    {
+      "word": "clean",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. temiz",
+        "ex": "Access to clean drinking water remains limited in several rural regions of the country.",
+        "exTr": "Temiz içme suyuna erişim, ülkenin çeşitli kırsal bölgelerinde hâlâ sınırlı."
+      },
+      "alternatives": [
+        {
+          "ex": "The samples were transferred into clean containers immediately after collection to minimise contamination from dust and previously used equipment.",
+          "exTr": "Örnekler, tozdan ve daha önce kullanılmış ekipmandan kaynaklanan kirlenmeyi en aza indirmek için toplanır toplanmaz temiz kaplara aktarıldı."
+        }
+      ]
+    },
+    {
+      "word": "cleaner",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. daha temiz, daha az kirletici (clean'in karşılaştırma biçimi)",
+        "ex": "Electric buses can make urban air cleaner.",
+        "exTr": "Elektrikli otobüsler kent havasını daha temiz hâle getirebilir."
+      },
+      "alternatives": [
+        {
+          "ex": "Cleaner production methods may require substantial initial investment, so the cooperative compared possible savings over several years rather than a single season.",
+          "exTr": "Daha az kirletici üretim yöntemleri başlangıçta önemli yatırım gerektirebileceği için kooperatif olası tasarrufları tek bir sezon yerine birkaç yıl için karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "clear-thinking",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. açık düşünen, aklı başında",
+        "ex": "The crisis required clear-thinking leaders capable of making difficult decisions under enormous pressure.",
+        "exTr": "Kriz, muazzam baskı altında zor kararlar alabilen aklı başında liderler gerektiriyordu."
+      },
+      "alternatives": [
+        {
+          "ex": "A clear-thinking coordinator helped the group distinguish urgent repairs from improvements that could wait until additional funding became available.",
+          "exTr": "Aklı başında bir koordinatör, grubun acil onarımları ek finansman sağlanana kadar bekleyebilecek iyileştirmelerden ayırmasına yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "clerical",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. büro/kâtiplik ile ilgili, yazı işlerine dair",
+        "ex": "A clerical error in the shipping department delayed hundreds of orders during the busiest week of the year.",
+        "exTr": "Sevkiyat departmanındaki bir büro hatası, yılın en yoğun haftasında yüzlerce siparişi geciktirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "Automating repetitive clerical tasks freed staff to answer complex enquiries, but the new system still required regular checks for errors.",
+          "exTr": "Tekrarlanan büro işlerini otomatikleştirmek, personelin karmaşık soruları yanıtlamaya zaman ayırmasını sağladı; ancak yeni sistemin hatalara karşı düzenli olarak kontrol edilmesi hâlâ gerekiyordu."
+        }
+      ]
+    },
+    {
+      "word": "click",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. tıklamak",
+        "ex": "Visitors only need to click the highlighted button to download the full report.",
+        "exTr": "Ziyaretçilerin, tam raporu indirmek için yalnızca vurgulanan düğmeye tıklaması yeterlidir."
+      },
+      "alternatives": [
+        {
+          "ex": "Users can click any region on the map to compare its employment figures with those of neighbouring areas.",
+          "exTr": "Kullanıcılar, bir bölgenin istihdam verilerini komşu bölgelerinkilerle karşılaştırmak için haritada o bölgeye tıklayabilir."
+        }
+      ]
+    },
+    {
+      "word": "climate",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. (genel) ortam, hava",
+        "ex": "Shifting economic policies created an uncertain climate for small business owners across the region.",
+        "exTr": "Değişen ekonomik politikalar, bölgedeki küçük işletme sahipleri için belirsiz bir ortam yarattı."
+      },
+      "alternatives": [
+        {
+          "ex": "A climate of mutual trust made it easier for junior researchers to question established assumptions without fearing damage to their careers.",
+          "exTr": "Karşılıklı güven ortamı, genç araştırmacıların kariyerlerinin zarar görmesinden korkmadan yerleşik varsayımları sorgulamasını kolaylaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "climb",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. tırmanmak, çıkmak",
+        "ex": "Mountaineers must acclimatize gradually before attempting to climb peaks above five thousand meters.",
+        "exTr": "Dağcılar, beş bin metrenin üzerindeki zirvelere tırmanmayı denemeden önce kademeli olarak yüksekliğe alışmalıdır."
+      },
+      "alternatives": [
+        {
+          "ex": "The inspection team had to climb a narrow staircase before reaching the platform from which the damaged roof could be examined.",
+          "exTr": "Denetim ekibi, hasarlı çatının incelenebileceği platforma ulaşmadan önce dar bir merdiveni tırmanmak zorundaydı."
+        }
+      ]
+    },
+    {
+      "word": "clinical",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. klinik",
+        "ex": "The new drug is currently undergoing clinical trials to test its safety and effectiveness.",
+        "exTr": "Yeni ilaç, güvenliğini ve etkinliğini test etmek için şu anda klinik denemelerden geçiyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The review distinguishes laboratory findings from clinical evidence, noting that observations in isolated samples do not automatically describe what happens in patients.",
+          "exTr": "İnceleme, yalıtılmış örneklerdeki gözlemlerin hastalarda olanları kendiliğinden açıklamadığını belirterek laboratuvar bulgularını klinik kanıtlardan ayırıyor."
+        }
+      ]
+    },
+    {
+      "word": "clock",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. saat (duvar/masa)",
+        "ex": "The ancient water clock allowed early civilizations to measure time with surprising accuracy.",
+        "exTr": "Antik su saati, ilk uygarlıkların zamanı şaşırtıcı bir doğrulukla ölçmesini sağladı."
+      },
+      "alternatives": [
+        {
+          "ex": "A clock visible to every participant helped keep the discussion within its allotted time without repeated interruptions from the moderator.",
+          "exTr": "Bütün katılımcıların görebildiği bir saat, moderatörün sürekli araya girmesine gerek kalmadan tartışmanın ayrılan süre içinde kalmasına yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "close",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. kapatmak",
+        "ex": "The factory decided to close its oldest production line after years of declining demand.",
+        "exTr": "Fabrika, yıllarca süren talep düşüşünün ardından en eski üretim hattını kapatmaya karar verdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The operators agreed to close the facility temporarily while engineers investigated the source of unusual vibrations in the main equipment.",
+          "exTr": "İşletmeciler, mühendisler ana ekipmandaki olağan dışı titreşimlerin kaynağını araştırırken tesisi geçici olarak kapatmayı kabul etti."
+        }
+      ]
+    },
+    {
+      "word": "closed-circuit",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kapalı devre (özellikle güvenlik kamerası sistemleri için)",
+        "ex": "Shop owners installed closed-circuit cameras to monitor the store after several recent thefts.",
+        "exTr": "Dükkan sahipleri, son zamanlardaki birkaç hırsızlığın ardından mağazayı izlemek için kapalı devre kameralar kurdu."
+      },
+      "alternatives": [
+        {
+          "ex": "The laboratory's closed-circuit system lets students observe demonstrations from an adjoining room without crowding around sensitive equipment.",
+          "exTr": "Laboratuvarın kapalı devre sistemi, öğrencilerin hassas ekipmanın çevresinde kalabalık oluşturmadan gösterileri bitişik bir odadan izlemesine olanak tanıyor."
+        }
+      ]
+    },
+    {
+      "word": "closer",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. daha yakın",
+        "ex": "As the spacecraft moved closer to the planet's surface, its cameras captured increasingly detailed images.",
+        "exTr": "Uzay aracı gezegenin yüzeyine daha da yaklaştıkça kameraları giderek daha ayrıntılı görüntüler yakaladı."
+      },
+      "alternatives": [
+        {
+          "ex": "Placing the sensors closer to the soil surface produced more detailed measurements of conditions experienced by newly emerging seedlings.",
+          "exTr": "Sensörleri toprak yüzeyine daha yakın yerleştirmek, yeni çıkan fidelerin karşılaştığı koşulların daha ayrıntılı ölçülmesini sağladı."
+        }
+      ]
+    },
+    {
+      "word": "cloth",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kumaş, bez",
+        "ex": "Museum conservators handle the ancient ceremonial cloth with special gloves to prevent damage.",
+        "exTr": "Müze koruma uzmanları, hasar vermemek için antik törensel kumaşı özel eldivenlerle tutar."
+      },
+      "alternatives": [
+        {
+          "ex": "The cloth was tested under repeated tension to determine whether its woven structure could withstand the demands of outdoor use.",
+          "exTr": "Kumaş, dokuma yapısının açık hava kullanımının gereklerine dayanıp dayanamayacağını belirlemek için tekrarlanan gerilim altında test edildi."
+        }
+      ]
+    },
+    {
+      "word": "clothing",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. giysi, kıyafet",
+        "ex": "Archaeologists discovered fragments of woven clothing preserved in the region's dry desert climate.",
+        "exTr": "Arkeologlar, bölgenin kurak çöl ikliminde korunmuş dokuma giysi parçaları keşfetti."
+      },
+      "alternatives": [
+        {
+          "ex": "The survey asked consumers how often they repaired clothing, seeking to understand practical barriers to extending the life of garments.",
+          "exTr": "Anket, giysilerin ömrünü uzatmanın önündeki uygulamaya ilişkin engelleri anlamak amacıyla tüketicilere kıyafetlerini ne sıklıkta onardıklarını sordu."
+        }
+      ]
+    },
+    {
+      "word": "club",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kulüp, dernek",
+        "ex": "Students formed a science club to organize weekly experiments and lectures.",
+        "exTr": "Öğrenciler, haftalık deney ve konferanslar düzenlemek için bir bilim kulübü kurdu."
+      },
+      "alternatives": [
+        {
+          "ex": "The debating club invites speakers with contrasting views and asks members to evaluate arguments before deciding which position they support.",
+          "exTr": "Münazara kulübü, karşıt görüşlere sahip konuşmacıları davet ediyor ve üyelerinden hangi tutumu desteklediklerine karar vermeden önce savları değerlendirmelerini istiyor."
+        }
+      ]
+    },
+    {
+      "word": "clumsy",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. sakar; beceriksiz",
+        "ex": "Despite being a talented surgeon, he always seemed clumsy when performing simple tasks at home.",
+        "exTr": "Yetenekli bir cerrah olmasına rağmen, evde basit işleri yaparken hep sakar görünürdü."
+      },
+      "alternatives": [
+        {
+          "ex": "A clumsy attempt to simplify the instructions removed important qualifications and left users with a misleading impression of the procedure.",
+          "exTr": "Talimatları basitleştirmeye yönelik beceriksiz bir girişim, önemli sınırlayıcı açıklamaları kaldırdı ve kullanıcılarda yöntem hakkında yanıltıcı bir izlenim bıraktı."
+        }
+      ]
+    },
+    {
+      "word": "co-author",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. birlikte yazmak, ortak yazarlık yapmak",
+        "ex": "The two professors decided to co-author a paper on climate change adaptation strategies.",
+        "exTr": "İki profesör, iklim değişikliğine uyum stratejileri üzerine bir makaleyi birlikte yazmaya karar verdi."
+      },
+      "alternatives": [
+        {
+          "ex": "An economist and an ecologist agreed to co-author the report so that financial and environmental considerations would receive equal attention.",
+          "exTr": "Bir iktisatçı ile bir ekolog, mali ve çevresel hususlara eşit önem verilmesi için raporu birlikte yazmayı kabul etti."
+        }
+      ]
+    }
+  ],
+  "collocations": [
+    {
+      "word": "check-in",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a check-in desk",
+          "tr": "uçuşa kayıt bankosu"
+        },
+        {
+          "en": "online check-in",
+          "tr": "çevrim içi uçuşa kayıt"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "cheek",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "rosy cheeks",
+          "tr": "pembe yanaklar"
+        },
+        {
+          "en": "a tear rolling down a cheek",
+          "tr": "yanaktan süzülen bir gözyaşı"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "cheerful",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a cheerful mood",
+          "tr": "neşeli bir ruh hâli"
+        },
+        {
+          "en": "remain cheerful",
+          "tr": "neşeli kalmak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "cherry",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "cherry blossom",
+          "tr": "kiraz çiçeği"
+        },
+        {
+          "en": "a cherry orchard",
+          "tr": "kiraz bahçesi"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "chili",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "chili peppers",
+          "tr": "acı biberler"
+        },
+        {
+          "en": "chili powder",
+          "tr": "toz acı biber"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "chilly",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a chilly morning",
+          "tr": "soğuk bir sabah"
+        },
+        {
+          "en": "a chilly reception",
+          "tr": "soğuk bir karşılama"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "christian",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "Christian traditions",
+          "tr": "Hristiyan gelenekleri"
+        },
+        {
+          "en": "a Christian community",
+          "tr": "bir Hristiyan topluluğu"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "city-born",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "city-born residents",
+          "tr": "şehirde doğmuş sakinler"
+        },
+        {
+          "en": "a city-born generation",
+          "tr": "şehirde doğmuş bir kuşak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "cleaner",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "cleaner production",
+          "tr": "daha temiz üretim"
+        },
+        {
+          "en": "cleaner energy sources",
+          "tr": "daha az kirletici enerji kaynakları"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "clear-thinking",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a clear-thinking leader",
+          "tr": "açık düşünen bir lider"
+        },
+        {
+          "en": "a clear-thinking approach",
+          "tr": "açık ve sağlıklı düşünmeye dayanan bir yaklaşım"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "clumsy",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a clumsy attempt",
+          "tr": "beceriksizce bir girişim"
+        },
+        {
+          "en": "clumsy wording",
+          "tr": "beceriksizce kurulmuş ifadeler"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "co-author",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "co-author a report",
+          "tr": "bir raporu birlikte yazmak"
+        },
+        {
+          "en": "co-author an article",
+          "tr": "bir makaleyi birlikte yazmak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

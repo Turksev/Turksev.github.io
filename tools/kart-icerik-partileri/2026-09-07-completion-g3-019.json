@@ -1,0 +1,1124 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 3,
+    "input": "input-019.json"
+  },
+  "enrichments": [
+    {
+      "word": "financial",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. mali, finansal, parasal",
+        "ex": "The global financial crisis of 2008 forced many governments to rescue their largest banks.",
+        "exTr": "2008'deki küresel mali kriz, birçok hükümeti en büyük bankalarını kurtarmak zorunda bıraktı."
+      },
+      "alternatives": [
+        {
+          "ex": "The financial report separated routine operating costs from the expense of repairing the roof, making the cooperative's ordinary position easier to understand.",
+          "exTr": "Mali rapor olağan işletme giderlerini çatı onarımının masrafından ayırarak kooperatifin normal koşullardaki durumunu anlamayı kolaylaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "findings",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. bulgular, araştırma sonuçları",
+        "ex": "The researchers published their findings in a leading medical journal after two years of study.",
+        "exTr": "Araştırmacılar, iki yıllık çalışmanın ardından bulgularını önde gelen bir tıp dergisinde yayımladı."
+      },
+      "alternatives": [
+        {
+          "ex": "Before publishing the findings, the researchers invited participants to comment on whether the interpretation fairly reflected what they had described in interviews.",
+          "exTr": "Araştırmacılar bulguları yayımlamadan önce katılımcıları, yorumun görüşmelerde anlattıklarını adil biçimde yansıtıp yansıtmadığını değerlendirmeye davet etti."
+        }
+      ]
+    },
+    {
+      "word": "finger",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. parmak",
+        "ex": "The doctor asked the patient to move each finger to check for nerve damage.",
+        "exTr": "Doktor, sinir hasarını kontrol etmek için hastadan her parmağını hareket ettirmesini istedi."
+      },
+      "alternatives": [
+        {
+          "ex": "With one finger resting on the map, the guide traced the old route and explained why travellers had avoided the valley during winter.",
+          "exTr": "Rehber bir parmağını haritanın üzerinde gezdirerek eski güzergâhı izledi ve yolcuların kışın vadiden neden kaçındığını açıkladı."
+        }
+      ]
+    },
+    {
+      "word": "finish",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. bitirmek, tamamlamak",
+        "ex": "It took the construction crew nearly three years to finish building the suspension bridge across the strait.",
+        "exTr": "İnşaat ekibinin boğaz üzerindeki asma köprüyü bitirmesi neredeyse üç yıl sürdü."
+      },
+      "alternatives": [
+        {
+          "ex": "The students could not finish the model until they agreed on a scale that would accommodate both the harbour and the surrounding streets.",
+          "exTr": "Öğrenciler hem limanı hem çevresindeki sokakları kapsayacak bir ölçek üzerinde anlaşana kadar maketi tamamlayamadı."
+        }
+      ]
+    },
+    {
+      "word": "fire",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ateş, yangın",
+        "ex": "Emergency crews worked through the night to stop the fire from reaching nearby residential neighborhoods.",
+        "exTr": "Acil durum ekipleri, yangının yakındaki yerleşim bölgelerine ulaşmasını önlemek için gece boyunca çalıştı."
+      },
+      "alternatives": [
+        {
+          "ex": "The archive's account of the fire relied on photographs and personal letters because the building's own records had been destroyed.",
+          "exTr": "Binanın kendi kayıtları yok olduğu için arşivin yangın anlatısı fotoğraflara ve kişisel mektuplara dayanıyordu."
+        }
+      ]
+    },
+    {
+      "word": "fireman",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. itfaiyeci",
+        "ex": "The fireman rushed into the burning building to rescue a family trapped on the second floor.",
+        "exTr": "İtfaiyeci, ikinci katta mahsur kalan bir aileyi kurtarmak için yanan binaya koştu."
+      },
+      "alternatives": [
+        {
+          "ex": "A retired fireman helped the exhibition team identify unfamiliar equipment, explaining how communication at an incident had changed during his career.",
+          "exTr": "Emekli bir itfaiyeci, meslek hayatı boyunca olay yerindeki iletişimin nasıl değiştiğini anlatarak sergi ekibinin tanımadığı ekipmanı tanımlamasına yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "first",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. ilk, birinci",
+        "ex": "The first vaccine trial produced encouraging results among young, healthy volunteers.",
+        "exTr": "İlk aşı denemesi, genç ve sağlıklı gönüllüler arasında umut verici sonuçlar üretti."
+      },
+      "alternatives": [
+        {
+          "ex": "The first interview raised questions that the original plan had overlooked, prompting the researcher to reconsider how later conversations should begin.",
+          "exTr": "İlk görüşme, başlangıçtaki planın gözden kaçırdığı sorular ortaya çıkararak araştırmacıyı sonraki görüşmelerin nasıl başlaması gerektiğini yeniden düşünmeye yöneltti."
+        }
+      ]
+    },
+    {
+      "word": "first-come-first-served",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. ilk gelen ilk alır (kuralı ile işleyen)",
+        "ex": "Tickets for the exhibition are distributed on a strictly first-come-first-served basis at the entrance.",
+        "exTr": "Sergi biletleri, girişte kesinlikle ilk gelen ilk alır kuralına göre dağıtılıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "A first-come-first-served system appeared simple, but residents working early shifts questioned whether they had a fair chance of obtaining a place.",
+          "exTr": "İlk gelenin önce hizmet aldığı sistem basit görünüyordu; ancak erken vardiyada çalışan sakinler yer bulma konusunda adil bir şansları olup olmadığını sorguladı."
+        }
+      ]
+    },
+    {
+      "word": "firstly",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. ilk olarak, birincisi",
+        "ex": "The report addresses, firstly, the economic causes of the crisis and then its social effects.",
+        "exTr": "Rapor, ilk olarak krizin ekonomik nedenlerini, ardından toplumsal etkilerini ele almaktadır."
+      },
+      "alternatives": [
+        {
+          "ex": "Firstly, the team checked whether the records used the same units; only then did it compare the measurements collected at different sites.",
+          "exTr": "Ekip ilk olarak kayıtların aynı birimleri kullanıp kullanmadığını kontrol etti; ancak bundan sonra farklı alanlarda toplanan ölçümleri karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "fishing",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. balıkçılık, balık avlama",
+        "ex": "Overfishing has forced many coastal communities to find alternatives to traditional fishing for their livelihood.",
+        "exTr": "Aşırı avlanma, birçok kıyı topluluğunu geçimleri için geleneksel balıkçılığa alternatif aramaya zorladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The exhibition documents fishing as both an occupation and a family tradition, using recorded conversations alongside nets, photographs and household accounts.",
+          "exTr": "Sergi, ağlar, fotoğraflar ve hane hesaplarıyla birlikte kaydedilmiş konuşmalar kullanarak balıkçılığı hem meslek hem aile geleneği olarak belgeliyor."
+        }
+      ]
+    },
+    {
+      "word": "fitness",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. uygunluk, elverişlilik",
+        "ex": "The committee openly questioned his fitness for such a demanding leadership role.",
+        "exTr": "Komite, onun bu denli zorlu bir liderlik rolü için uygunluğunu açıkça sorguladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The committee assessed the building's fitness for public use by examining access, room sizes and the condition of its basic facilities.",
+          "exTr": "Komite, erişimi, oda büyüklüklerini ve temel olanakların durumunu inceleyerek binanın halkın kullanımına uygunluğunu değerlendirdi."
+        }
+      ]
+    },
+    {
+      "word": "five-year-old",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. beş yaşındaki, beş yaşında",
+        "ex": "The zoo's newest attraction is a playful five-year-old elephant recently transferred from another sanctuary.",
+        "exTr": "Hayvanat bahçesinin en yeni cazibe merkezi, başka bir barınaktan yakın zamanda getirilen oyuncu beş yaşındaki bir fildir."
+      },
+      "alternatives": [
+        {
+          "ex": "A five-year-old child recognised the bridge in an old photograph, surprising adults who had struggled to identify the altered landscape around it.",
+          "exTr": "Beş yaşındaki bir çocuk eski bir fotoğraftaki köprüyü tanıyarak çevresindeki değişmiş manzarayı tanımlamakta zorlanan yetişkinleri şaşırttı."
+        }
+      ]
+    },
+    {
+      "word": "flag",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. işaretlemek, dikkat çekmek",
+        "ex": "The software automatically flags suspicious transactions for further review by bank analysts.",
+        "exTr": "Yazılım, banka analistlerinin daha ayrıntılı incelemesi için şüpheli işlemleri otomatik olarak işaretliyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The librarian asked volunteers to flag uncertain dates rather than guess, so that unresolved cases could be checked against other sources later.",
+          "exTr": "Kütüphaneci, çözülemeyen kayıtların daha sonra başka kaynaklarla karşılaştırılabilmesi için gönüllülerden belirsiz tarihleri tahmin etmek yerine işaretlemelerini istedi."
+        }
+      ]
+    },
+    {
+      "word": "flare",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. alevlenmek, parlamak",
+        "ex": "Tensions began to flare between the two neighboring countries after the disputed border incident.",
+        "exTr": "Tartışmalı sınır olayının ardından, iki komşu ülke arasında gerginlikler alevlenmeye başladı."
+      },
+      "alternatives": [
+        {
+          "ex": "Tempers began to flare when speakers realised that the revised drawings had removed the shared garden without explaining why the change was necessary.",
+          "exTr": "Konuşmacılar, gözden geçirilmiş çizimlerde ortak bahçenin bu değişikliğin neden gerekli olduğu açıklanmadan kaldırıldığını fark edince öfke yükselmeye başladı."
+        }
+      ]
+    },
+    {
+      "word": "flat-out",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. apaçık, kesin",
+        "ex": "The spokesperson issued a flat-out denial of the corruption allegations during the press conference.",
+        "exTr": "Sözcü, basın toplantısında yolsuzluk iddialarına yönelik apaçık bir ret açıkladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The flat-out rejection of the proposal surprised residents, who had expected a discussion of possible changes rather than an immediate end to negotiations.",
+          "exTr": "Sakinler müzakerelerin hemen sona ermesini değil olası değişikliklerin tartışılmasını bekledikleri için önerinin kesin biçimde reddedilmesine şaşırdı."
+        }
+      ]
+    },
+    {
+      "word": "fleet",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. filo",
+        "ex": "The city plans to replace its entire fleet of buses with electric vehicles by 2030.",
+        "exTr": "Şehir, 2030 yılına kadar tüm otobüs filosunu elektrikli araçlarla değiştirmeyi planlıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The cooperative maintained a small fleet of delivery vans, sharing the vehicles among members whose busiest periods occurred at different times.",
+          "exTr": "Kooperatif, en yoğun dönemleri farklı zamanlara denk gelen üyeleri arasında paylaştırdığı küçük bir teslimat aracı filosuna sahipti."
+        }
+      ]
+    },
+    {
+      "word": "flexibility",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. esneklik",
+        "ex": "Remote work offers employees greater flexibility in balancing their professional and family responsibilities.",
+        "exTr": "Uzaktan çalışma, çalışanlara iş ve aile sorumluluklarını dengelemede daha fazla esneklik sunar."
+      },
+      "alternatives": [
+        {
+          "ex": "The course offered flexibility in choosing projects, while retaining common deadlines so that students could discuss their progress at the same meetings.",
+          "exTr": "Ders, öğrencilerin ilerlemelerini aynı toplantılarda tartışabilmeleri için ortak son tarihleri korurken proje seçiminde esneklik sunuyordu."
+        }
+      ]
+    },
+    {
+      "word": "flight",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. uçuş",
+        "ex": "Turbulence forced the pilot to reduce altitude during the final stage of the flight.",
+        "exTr": "Türbülans, pilotu uçuşun son aşamasında irtifayı düşürmeye zorladı."
+      },
+      "alternatives": [
+        {
+          "ex": "During the flight, the photographer recorded changes in the coastline, marking locations that the ground survey team would examine in greater detail.",
+          "exTr": "Fotoğrafçı uçuş sırasında kıyı şeridindeki değişimleri kaydederek kara araştırma ekibinin daha ayrıntılı inceleyeceği yerleri işaretledi."
+        }
+      ]
+    },
+    {
+      "word": "flood",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sel, taşkın",
+        "ex": "Heavy monsoon rains caused a devastating flood across several low-lying villages last month.",
+        "exTr": "Şiddetli muson yağmurları, geçen ay birkaç alçak rakımlı köyde yıkıcı bir sele yol açtı."
+      },
+      "alternatives": [
+        {
+          "ex": "Marks left by the flood helped residents explain which streets had become impassable and why some households were isolated longer than others.",
+          "exTr": "Taşkının bıraktığı izler, sakinlerin hangi sokakların geçilmez hâle geldiğini ve bazı hanelerin neden diğerlerinden daha uzun süre mahsur kaldığını anlatmasına yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "floral",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. çiçeklerle veya bitki örtüsüyle ilgili, çiçekli",
+        "ex": "The survey documented floral diversity in grasslands exposed to different grazing pressures.",
+        "exTr": "Araştırma, farklı otlatma baskılarına maruz kalan çayırlardaki bitki çeşitliliğini belgeledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The floral pattern on the cloth combined familiar garden flowers with shapes the researcher could not confidently associate with any particular plant.",
+          "exTr": "Kumaştaki çiçek deseni, tanıdık bahçe çiçeklerini araştırmacının belirli bir bitkiyle güvenle ilişkilendiremediği biçimlerle birleştiriyordu."
+        }
+      ]
+    },
+    {
+      "word": "flow",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. akış, akım",
+        "ex": "Engineers built a series of dams to control the flow of the river during heavy rainfall.",
+        "exTr": "Mühendisler, şiddetli yağış sırasında nehrin akışını kontrol etmek için bir dizi baraj inşa etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The diagram traced the flow of information between offices, revealing that several decisions depended on a single employee passing messages along.",
+          "exTr": "Şema, ofisler arasındaki bilgi akışını izleyerek bazı kararların tek bir çalışanın mesajları aktarmasına bağlı olduğunu ortaya koydu."
+        }
+      ]
+    },
+    {
+      "word": "fluctuate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. dalgalanmak, değişkenlik göstermek",
+        "ex": "Currency exchange rates can fluctuate sharply in response to unexpected political events.",
+        "exTr": "Döviz kurları, beklenmedik siyasi olaylara tepki olarak keskin biçimde dalgalanabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "Visitor numbers fluctuate throughout the week, so the museum records attendance daily rather than relying on one busy afternoon to estimate demand.",
+          "exTr": "Ziyaretçi sayıları hafta boyunca değiştiği için müze, talebi tahmin ederken tek bir yoğun öğleden sonraya dayanmak yerine katılımı her gün kaydediyor."
+        }
+      ]
+    },
+    {
+      "word": "fluent",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. akıcı (bir dilde)",
+        "ex": "After living in Spain for five years, she became remarkably fluent in the Spanish language.",
+        "exTr": "İspanya'da beş yıl yaşadıktan sonra, İspanyolca dilinde dikkat çekici derecede akıcı hale geldi."
+      },
+      "alternatives": [
+        {
+          "ex": "Although fluent in the language, she still asked residents to explain expressions associated with occupations that had largely disappeared from the town.",
+          "exTr": "Dili akıcı konuşmasına rağmen kasabada büyük ölçüde ortadan kalkmış mesleklerle ilgili ifadeleri sakinlerden açıklamalarını istedi."
+        }
+      ]
+    },
+    {
+      "word": "fluorescence",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. floresans, ışıldama, flüorışıma",
+        "ex": "Under ultraviolet light, certain minerals display a bright fluorescence that allows geologists to identify them without carrying out chemical tests.",
+        "exTr": "Mor ötesi ışık altında bazı mineraller parlak bir floresans sergiler; bu da jeologların kimyasal test yapmadan onları tanımlamasına olanak tanır."
+      },
+      "alternatives": [
+        {
+          "ex": "The laboratory photographs compared fluorescence in several prepared samples, with exposure settings recorded so that differences in brightness could be interpreted cautiously.",
+          "exTr": "Laboratuvar fotoğrafları hazırlanmış birkaç örnekteki floresansı karşılaştırıyordu; parlaklık farklarının ihtiyatla yorumlanabilmesi için pozlama ayarları da kaydedilmişti."
+        }
+      ]
+    },
+    {
+      "word": "flute",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. flüt",
+        "ex": "The young musician practiced the flute for hours before her first orchestra audition.",
+        "exTr": "Genç müzisyen, ilk orkestra seçmesinden önce saatlerce flüt çalıştı."
+      },
+      "alternatives": [
+        {
+          "ex": "A flute carried the opening melody while the other musicians waited, creating a quiet beginning that contrasted with the crowded scene on stage.",
+          "exTr": "Diğer müzisyenler beklerken açılış ezgisini bir flüt çalarak sahnedeki kalabalık görüntüyle karşıtlık oluşturan sakin bir başlangıç yarattı."
+        }
+      ]
+    },
+    {
+      "word": "fly-by",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. alçak irtifa geçiş uçuşu, tanıtım uçuşu",
+        "ex": "The air show ended with a dramatic fly-by that thrilled thousands of spectators below.",
+        "exTr": "Hava gösterisi, aşağıdaki binlerce izleyiciyi heyecanlandıran çarpıcı bir alçak geçiş uçuşuyla sona erdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The film crew recorded the fly-by from a fixed position, then compared the footage with drawings of the aircraft's distinctive silhouette.",
+          "exTr": "Film ekibi alçak geçiş uçuşunu sabit bir noktadan kaydetti, ardından görüntüleri uçağın kendine özgü siluetini gösteren çizimlerle karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "focal",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. odakla ilgili, merkezî",
+        "ex": "Access to water became the focal issue in negotiations between the two regions.",
+        "exTr": "Suya erişim iki bölge arasındaki görüşmelerde merkezî konu hâline geldi."
+      },
+      "alternatives": [
+        {
+          "ex": "The old fountain became the focal point of the redesigned square, helping visitors orient themselves without introducing a large new structure.",
+          "exTr": "Eski çeşme yeniden tasarlanan meydanın odak noktası oldu ve büyük yeni bir yapı eklenmeden ziyaretçilerin yönlerini bulmasına yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "focusing",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. odaklanma; (kamera) netleme",
+        "ex": "Better focusing of the telescope's lens revealed craters that had previously been invisible.",
+        "exTr": "Teleskobun merceğinin daha iyi odaklanması, daha önce görünmeyen kraterleri ortaya çıkardı."
+      },
+      "alternatives": [
+        {
+          "ex": "Accurate focusing was difficult while the boat moved, so the photographer reviewed several images before deciding which details could be reliably identified.",
+          "exTr": "Tekne hareket ederken doğru netleme yapmak zor olduğu için fotoğrafçı hangi ayrıntıların güvenle tanımlanabileceğine karar vermeden önce birkaç görüntüyü inceledi."
+        }
+      ]
+    },
+    {
+      "word": "fog",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sis",
+        "ex": "Thick fog delayed several flights at the airport early this morning, frustrating hundreds of travelers.",
+        "exTr": "Yoğun sis, bu sabah erken saatlerde havalimanında birçok uçuşu geciktirerek yüzlerce yolcuyu hayal kırıklığına uğrattı."
+      },
+      "alternatives": [
+        {
+          "ex": "Morning fog concealed the opposite bank, delaying the landscape survey until landmarks could be distinguished clearly enough to match them with the map.",
+          "exTr": "Sabah sisi karşı kıyıyı gizleyerek arazi işaretleri haritayla eşleştirilebilecek kadar net seçilene dek manzara incelemesini geciktirdi."
+        }
+      ]
+    },
+    {
+      "word": "folklore",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. halk bilimi, folklor",
+        "ex": "Researchers collected traditional folklore from elderly villagers before these oral stories disappeared entirely.",
+        "exTr": "Araştırmacılar, bu sözlü hikayeler tamamen kaybolmadan önce yaşlı köylülerden geleneksel folkloru derledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The project explored local folklore through stories attached to wells and crossroads, asking how different narrators changed familiar characters and events.",
+          "exTr": "Proje, farklı anlatıcıların tanıdık karakterleri ve olayları nasıl değiştirdiğini sorgulayarak kuyulara ve kavşaklara bağlanan öyküler üzerinden yerel folkloru araştırdı."
+        }
+      ]
+    },
+    {
+      "word": "follow-through",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sonuna kadar götürme, tamamlama (bir plan/niyeti)",
+        "ex": "Managers valued his follow-through on every project, ensuring that initial plans were always fully completed.",
+        "exTr": "Yöneticiler, ilk planların her zaman eksiksiz tamamlanmasını sağlayan onun her projedeki sonuna kadar götürme becerisine değer verdi."
+      },
+      "alternatives": [
+        {
+          "ex": "Enthusiasm at the first meeting was not matched by follow-through, leaving several promised repairs unfinished when the winter rains began.",
+          "exTr": "İlk toplantıdaki coşkuya işleri sonuna kadar götürme kararlılığı eşlik etmediği için kış yağmurları başladığında vaat edilen bazı onarımlar tamamlanmamıştı."
+        }
+      ]
+    },
+    {
+      "word": "followers",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. takipçiler, taraftarlar",
+        "ex": "The politician's social media followers increased sharply after her speech went viral online.",
+        "exTr": "Politikacının sosyal medya takipçileri, konuşması internette viral olduktan sonra hızla arttı."
+      },
+      "alternatives": [
+        {
+          "ex": "The historian compared the reformer's published ideas with letters from followers who interpreted those ideas differently in their own communities.",
+          "exTr": "Tarihçi, reformcunun yayımlanmış düşüncelerini bu düşünceleri kendi topluluklarında farklı yorumlayan taraftarlarının mektuplarıyla karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "fondness",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. düşkünlük, sevgi, hoşlanma",
+        "ex": "The composer's fondness for folk melodies is evident in almost every symphony he wrote during the final decade of his career.",
+        "exTr": "Bestecinin halk ezgilerine olan düşkünlüğü, kariyerinin son on yılında yazdığı hemen her senfonide açıkça görülür."
+      },
+      "alternatives": [
+        {
+          "ex": "Her fondness for the old market was evident in the attention she gave to its ordinary sounds rather than its most picturesque corners.",
+          "exTr": "Eski pazara duyduğu sevgi, en resmedilmeye değer köşeleri yerine sıradan seslerine gösterdiği dikkatte açıkça görülüyordu."
+        }
+      ]
+    },
+    {
+      "word": "fool",
+      "sense_index": 1,
+      "expected": {
+        "tr": "f. kandırmak, aldatmak, kafa bulmak",
+        "ex": "The con artist managed to fool several elderly investors with a fake charity scheme.",
+        "exTr": "Dolandırıcı, sahte bir hayır kurumu planıyla birkaç yaşlı yatırımcıyı kandırmayı başardı."
+      },
+      "alternatives": [
+        {
+          "ex": "The impressive cover could fool a casual reader, but the report's unsupported conclusions became obvious when its sources were examined closely.",
+          "exTr": "Etkileyici kapak dikkatsiz bir okuyucuyu kandırabilirdi; ancak kaynakları yakından incelendiğinde raporun dayanaksız sonuçları açıkça ortaya çıkıyordu."
+        }
+      ]
+    },
+    {
+      "word": "footage",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. (film/video) görüntü, çekim, kayıt",
+        "ex": "Researchers analysed hours of underwater footage in order to document how the behaviour of the coral reef fish changed after the storm.",
+        "exTr": "Araştırmacılar, mercan resifi balıklarının davranışlarının fırtınadan sonra nasıl değiştiğini belgelemek için saatlerce süren su altı görüntüsünü incelemiştir."
+      },
+      "alternatives": [
+        {
+          "ex": "Unedited footage showed the pauses and repeated attempts omitted from the final film, changing the students' impression of how smoothly the experiment proceeded.",
+          "exTr": "Kurgulanmamış görüntüler son filmden çıkarılan duraksamaları ve tekrarlanan denemeleri göstererek öğrencilerin deneyin ne kadar sorunsuz ilerlediğine ilişkin izlenimini değiştirdi."
+        }
+      ]
+    },
+    {
+      "word": "footnote",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. dipnot",
+        "ex": "The historian added a lengthy footnote explaining the origin of the disputed document.",
+        "exTr": "Tarihçi, tartışmalı belgenin kökenini açıklayan uzun bir dipnot ekledi."
+      },
+      "alternatives": [
+        {
+          "ex": "A brief footnote identified the source of the quotation, allowing readers to compare the translated passage with the author's original wording.",
+          "exTr": "Kısa bir dipnot alıntının kaynağını belirterek okuyucuların çevrilmiş bölümü yazarın özgün ifadesiyle karşılaştırmasına olanak verdi."
+        }
+      ]
+    },
+    {
+      "word": "for years to come",
+      "sense_index": 0,
+      "expected": {
+        "tr": "gelecek yıllar boyunca; daha uzun yıllar",
+        "ex": "The consequences of rapid biodiversity loss may be felt for years to come.",
+        "exTr": "Biyoçeşitliliğin hızla azalmasının sonuçları gelecek yıllar boyunca hissedilebilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The recorded interviews will remain available for years to come, provided that the archive maintains readable copies as its storage systems change.",
+          "exTr": "Arşiv, depolama sistemleri değişirken okunabilir kopyaları koruduğu sürece kaydedilmiş görüşmeler daha uzun yıllar erişilebilir kalacak."
+        }
+      ]
+    },
+    {
+      "word": "forbid",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. yasaklamak, men etmek",
+        "ex": "Company regulations strictly forbid employees from sharing confidential client information with outside parties.",
+        "exTr": "Şirket düzenlemeleri, çalışanların gizli müşteri bilgilerini dışarıdaki taraflarla paylaşmasını kesinlikle yasaklar."
+      },
+      "alternatives": [
+        {
+          "ex": "The organisers decided to forbid photography in the small interview room so that participants could speak without worrying about being recorded visually.",
+          "exTr": "Organizatörler, katılımcıların görüntülerinin kaydedileceğinden kaygı duymadan konuşabilmeleri için küçük görüşme odasında fotoğraf çekimini yasaklamaya karar verdi."
+        }
+      ]
+    },
+    {
+      "word": "force-land",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. mecburi iniş yapmak",
+        "ex": "The pilot was forced to force-land the small aircraft in an open field after engine failure.",
+        "exTr": "Pilot, motor arızasından sonra küçük uçakla açık bir tarlaya mecburi iniş yapmak zorunda kaldı."
+      },
+      "alternatives": [
+        {
+          "ex": "In the adventure novel, the pilot must force-land on an isolated plain, leaving the passengers dependent on the supplies already aboard.",
+          "exTr": "Macera romanında pilot ıssız bir düzlüğe mecburi iniş yapmak zorunda kalır; yolcular da uçakta zaten bulunan erzağa bağımlı hâle gelir."
+        }
+      ]
+    },
+    {
+      "word": "fore",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ön plan, ön saf (özellikle 'to the fore' kalıbında)",
+        "ex": "Concerns about data privacy have come to the fore as governments begin regulating how technology companies collect and store personal information.",
+        "exTr": "Hükümetler teknoloji şirketlerinin kişisel bilgileri nasıl toplayıp sakladığını düzenlemeye başlayınca, veri gizliliğine ilişkin kaygılar ön plana çıktı."
+      },
+      "alternatives": [
+        {
+          "ex": "Questions about maintenance came to the fore once residents realised that no organisation had agreed to look after the new planting areas.",
+          "exTr": "Sakinler yeni dikim alanlarıyla ilgilenmeyi hiçbir kuruluşun kabul etmediğini fark edince bakım konusundaki sorular ön plana çıktı."
+        }
+      ]
+    },
+    {
+      "word": "forehead",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. alın",
+        "ex": "Thermal cameras measure the temperature of the forehead, which allows staff to screen large numbers of travellers without any physical contact.",
+        "exTr": "Termal kameralar alın sıcaklığını ölçer; bu da görevlilerin çok sayıda yolcuyu hiçbir fiziksel temas olmadan taramasına olanak tanır."
+      },
+      "alternatives": [
+        {
+          "ex": "A deep line across the sitter's forehead gave the portrait a serious expression, although family letters described him as cheerful and sociable.",
+          "exTr": "Aile mektupları onu neşeli ve sosyal biri olarak anlatsa da resmedilen kişinin alnındaki derin çizgi portreye ciddi bir ifade veriyordu."
+        }
+      ]
+    },
+    {
+      "word": "foreigner",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yabancı (kişi)",
+        "ex": "The small mountain village rarely welcomed foreigners before the new highway was constructed.",
+        "exTr": "Küçük dağ köyü, yeni otoyol inşa edilmeden önce nadiren yabancıları ağırlardı."
+      },
+      "alternatives": [
+        {
+          "ex": "As a foreigner unfamiliar with local routines, the visitor initially misunderstood why the market emptied long before the shops closed.",
+          "exTr": "Yerel alışkanlıkları bilmeyen bir yabancı olarak ziyaretçi, pazarın dükkânlar kapanmadan çok önce neden boşaldığını başlangıçta yanlış anladı."
+        }
+      ]
+    },
+    {
+      "word": "forensics",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. adli tıp, adli bilimler",
+        "ex": "Investigators relied on forensics to identify the suspect from a single strand of hair found at the scene.",
+        "exTr": "Soruşturmacılar, olay yerinde bulunan tek bir saç telinden şüpheliyi tespit etmek için adli bilimlere başvurdu."
+      },
+      "alternatives": [
+        {
+          "ex": "The lecture on forensics distinguished what an analysis could establish from the broader account of events proposed by an investigator.",
+          "exTr": "Adli bilimler dersi, bir analizin ortaya koyabileceklerini soruşturmacının öne sürdüğü daha geniş olay anlatısından ayırdı."
+        }
+      ]
+    },
+    {
+      "word": "foreseeable",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. öngörülebilir, tahmin edilebilir",
+        "ex": "Despite recent advances in battery technology, electric aircraft are unlikely to replace conventional long-haul passenger jets in the foreseeable future.",
+        "exTr": "Pil teknolojisindeki son gelişmelere rağmen, elektrikli uçakların öngörülebilir gelecekte geleneksel uzun menzilli yolcu jetlerinin yerini alması olası değildir."
+      },
+      "alternatives": [
+        {
+          "ex": "The temporary reading room will remain in use for the foreseeable future because repairs to the main building have not yet been scheduled.",
+          "exTr": "Ana binanın onarımı henüz planlanmadığı için geçici okuma salonu öngörülebilir gelecekte kullanılmaya devam edecek."
+        }
+      ]
+    },
+    {
+      "word": "forethought",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. önceden düşünme, öngörü, tedbir",
+        "ex": "With a little forethought, engineers can design bridges that withstand the extreme weather conditions expected in the region over the coming century.",
+        "exTr": "Biraz öngörüyle mühendisler, bölgede önümüzdeki yüzyılda beklenen aşırı hava koşullarına dayanabilecek köprüler tasarlayabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "A little forethought about storage would have prevented the workshop from filling every accessible shelf with materials needed only once a year.",
+          "exTr": "Depolama konusunda biraz önceden düşünülmesi, atölyenin erişilebilir her rafı yalnızca yılda bir gereken malzemelerle doldurmasını önlerdi."
+        }
+      ]
+    },
+    {
+      "word": "forget",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. unutmak",
+        "ex": "People tend to forget specific details of an event even when they remember the general outline clearly.",
+        "exTr": "İnsanlar, bir olayın genel hatlarını net biçimde hatırlasalar bile belirli ayrıntılarını unutma eğilimindedir."
+      },
+      "alternatives": [
+        {
+          "ex": "Readers can easily forget the uncertainty behind an estimate when the final figure is presented without the qualifications discussed earlier in the report.",
+          "exTr": "Son rakam, raporun önceki bölümlerinde tartışılan çekinceler olmadan sunulduğunda okuyucular tahminin arkasındaki belirsizliği kolayca unutabilir."
+        }
+      ]
+    },
+    {
+      "word": "forgiveness",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. affetme, bağışlama",
+        "ex": "Psychologists note that forgiveness can significantly reduce stress and improve long-term emotional well-being.",
+        "exTr": "Psikologlar, affetmenin stresi önemli ölçüde azaltabileceğini ve uzun vadeli duygusal iyi oluşu artırabileceğini belirtiyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The novel presents forgiveness as a difficult conversation rather than a sudden change of heart, giving both characters space to express unresolved hurt.",
+          "exTr": "Roman, her iki karaktere de dinmemiş incinmişliklerini ifade etme alanı tanıyarak bağışlamayı ani bir duygu değişimi değil, zor bir konuşma olarak sunuyor."
+        }
+      ]
+    },
+    {
+      "word": "format",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. biçim, format",
+        "ex": "The publisher changed the format of the journal to make articles easier to read online.",
+        "exTr": "Yayıncı, makalelerin çevrimiçi okunmasını kolaylaştırmak için derginin biçimini değiştirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The revised format placed the question beside its explanation, saving participants from repeatedly turning pages to understand what information was required.",
+          "exTr": "Gözden geçirilmiş biçim soruyu açıklamasının yanına yerleştirerek katılımcıların hangi bilginin istendiğini anlamak için sürekli sayfa çevirmesini önledi."
+        }
+      ]
+    },
+    {
+      "word": "former",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. eski, önceki",
+        "ex": "The former director of the institute now advises the government on climate policy.",
+        "exTr": "Enstitünün eski direktörü, şimdi hükümete iklim politikası konusunda danışmanlık yapıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Former factory workers helped identify the sounds in the recording, distinguishing routine machinery from signals used to mark breaks and shift changes.",
+          "exTr": "Eski fabrika işçileri, olağan makine seslerini mola ve vardiya değişikliklerini bildiren işaretlerden ayırarak kayıttaki sesleri tanımlamaya yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "formulate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. formüle etmek, oluşturmak, dile getirmek",
+        "ex": "Scientists need reliable data before they can formulate an accurate hypothesis about the outbreak.",
+        "exTr": "Bilim insanları, salgınla ilgili doğru bir hipotez oluşturabilmek için güvenilir verilere ihtiyaç duyar."
+      },
+      "alternatives": [
+        {
+          "ex": "The preliminary interviews helped researchers formulate questions that reflected local concerns rather than simply reproduce the categories used in an earlier national survey.",
+          "exTr": "Ön görüşmeler, araştırmacıların önceki bir ulusal araştırmanın kategorilerini tekrar etmek yerine yerel kaygıları yansıtan sorular oluşturmasına yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "forth",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. ileri, öne; dışarı",
+        "ex": "The committee decided to bring forth new evidence before the final ruling was announced.",
+        "exTr": "Komite, nihai karar açıklanmadan önce yeni kanıtlar ortaya koymaya karar verdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The discussion brought forth several unexpected suggestions, including a shared workshop that would allow residents to repair equipment instead of replacing it.",
+          "exTr": "Tartışma, sakinlerin ekipmanı değiştirmek yerine onarmasına olanak verecek ortak bir atölye de dâhil olmak üzere birkaç beklenmedik öneri ortaya çıkardı."
+        }
+      ]
+    },
+    {
+      "word": "fortunately",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. neyse ki, iyi ki, çok şükür",
+        "ex": "The storm caused severe damage, but fortunately, no injuries were reported in the area.",
+        "exTr": "Fırtına ciddi hasara yol açtı, ama neyse ki bölgede herhangi bir yaralanma bildirilmedi."
+      },
+      "alternatives": [
+        {
+          "ex": "The original recording was damaged, but fortunately a duplicate had been kept separately and could be used to complete the interview transcript.",
+          "exTr": "Özgün kayıt hasar görmüştü; ancak neyse ki ayrı saklanan bir kopya vardı ve görüşme dökümünü tamamlamak için kullanılabildi."
+        }
+      ]
+    },
+    {
+      "word": "forum",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. forum, tartışma platformu; (tarih) meydan",
+        "ex": "The conference created an open forum where scientists could debate controversial findings freely.",
+        "exTr": "Konferans, bilim insanlarının tartışmalı bulguları özgürce tartışabileceği açık bir forum yarattı."
+      },
+      "alternatives": [
+        {
+          "ex": "The residents' forum gave people a place to compare experiences, revealing that several apparently isolated problems affected households across the neighbourhood.",
+          "exTr": "Sakinler forumu insanlara deneyimlerini karşılaştırabilecekleri bir ortam sunarak görünüşte tekil bazı sorunların mahalle genelindeki haneleri etkilediğini ortaya koydu."
+        }
+      ]
+    },
+    {
+      "word": "forward-moving",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. ileriye doğru hareket eden, ilerici",
+        "ex": "The committee praised the mayor's forward-moving policies for revitalizing the city's aging infrastructure.",
+        "exTr": "Komite, belediye başkanının şehrin eskiyen altyapısını canlandıran ileriye dönük politikalarını övdü."
+      },
+      "alternatives": [
+        {
+          "ex": "The forward-moving conveyor carried each sample past the camera, allowing the operator to compare images taken from a consistent position.",
+          "exTr": "İleri hareket eden taşıyıcı bant her örneği kameranın önünden geçirerek operatörün tutarlı bir konumdan çekilmiş görüntüleri karşılaştırmasını sağladı."
+        }
+      ]
+    },
+    {
+      "word": "foster",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. teşvik etmek, geliştirmek",
+        "ex": "Schools are increasingly designing group projects to foster teamwork among students.",
+        "exTr": "Okullar, öğrenciler arasında takım çalışmasını geliştirmek için giderek daha fazla grup projesi tasarlıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Sharing unfinished work can foster trust when participants know that criticism will focus on improving the idea rather than judging the person.",
+          "exTr": "Katılımcılar eleştirinin kişiyi yargılamak yerine fikri geliştirmeye odaklanacağını bildiğinde tamamlanmamış işleri paylaşmak güveni geliştirebilir."
+        }
+      ]
+    },
+    {
+      "word": "founder",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kurucu",
+        "ex": "The founder of the company started the business in her garage with only a small loan from her parents.",
+        "exTr": "Şirketin kurucusu, işini yalnızca ailesinden aldığı küçük bir kredi ile garajında başlattı."
+      },
+      "alternatives": [
+        {
+          "ex": "The library's founder insisted that the collection include practical manuals as well as literature, reflecting the varied interests of the surrounding community.",
+          "exTr": "Kütüphanenin kurucusu, çevredeki topluluğun çeşitli ilgi alanlarını yansıtmak için koleksiyonda edebiyatın yanı sıra uygulama kılavuzlarının da bulunmasında ısrar etti."
+        }
+      ]
+    },
+    {
+      "word": "four",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s./i. dört",
+        "ex": "The study followed the same group of patients for four consecutive years.",
+        "exTr": "Çalışma, aynı hasta grubunu art arda dört yıl boyunca izledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The questionnaire offered four possible answers but also left space for participants whose experiences did not fit any of the suggested categories.",
+          "exTr": "Anket dört olası yanıt sunarken deneyimleri önerilen kategorilerin hiçbirine uymayan katılımcılar için de boşluk bırakıyordu."
+        }
+      ]
+    },
+    {
+      "word": "four-spot",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. dörtlü (kart/domino/zar üzerinde dört işaretli taraf)",
+        "ex": "He discarded the four-spot early in the game, hoping to collect a stronger hand later.",
+        "exTr": "Oyunun başında daha sonra daha güçlü bir el toplamayı umarak dörtlüyü elinden çıkardı."
+      },
+      "alternatives": [
+        {
+          "ex": "The faded four-spot was identified by its surviving corner marks, allowing the conservator to place it correctly among the other playing cards.",
+          "exTr": "Solmuş dörtlü, kalan köşe işaretlerinden tanındı; böylece koruma uzmanı onu diğer oyun kartları arasına doğru biçimde yerleştirebildi."
+        }
+      ]
+    },
+    {
+      "word": "fourth",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. dördüncü",
+        "ex": "The team finished fourth in the world championship, achieving their best result in over a decade.",
+        "exTr": "Takım, on yıldan uzun süredir elde ettiği en iyi sonuçla dünya şampiyonasını dördüncü sırada tamamladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The fourth interview introduced a perspective absent from the previous three, showing why the team should not stop after finding repeated themes.",
+          "exTr": "Dördüncü görüşme önceki üçünde bulunmayan bir bakış açısı sunarak ekibin tekrarlanan temalar bulduktan sonra neden durmaması gerektiğini gösterdi."
+        }
+      ]
+    },
+    {
+      "word": "form-only",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. sadece şekli, göstermelik",
+        "ex": "Employees knew the safety inspection was largely form-only, since managers rarely enforced the stricter rules.",
+        "exTr": "Çalışanlar, yöneticilerin daha katı kuralları nadiren uyguladığı için güvenlik denetiminin büyük ölçüde göstermelik olduğunu biliyordu."
+      },
+      "alternatives": [
+        {
+          "ex": "The novel contrasts a form-only apology delivered before the council with the private letter in which the mayor finally accepts responsibility.",
+          "exTr": "Roman, belediye başkanının meclis önünde sunduğu göstermelik özür ile sonunda sorumluluğu kabul ettiği özel mektubu karşılaştırır."
+        }
+      ],
+      "note": "Seyrek kullanım; gündelik formal veya perfunctory kadar yaygın gösterilmemeli. Sıfat anlamı doğrulandı: https://www.vocabulary.com/dictionary/form-only ."
+    }
+  ],
+  "collocations": [
+    {
+      "word": "fireman",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a retired fireman",
+          "tr": "emekli bir itfaiyeci"
+        },
+        {
+          "en": "a volunteer fireman",
+          "tr": "gönüllü bir itfaiyeci"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "firstly",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "firstly and secondly",
+          "tr": "birincisi ve ikincisi"
+        },
+        {
+          "en": "firstly, consider",
+          "tr": "ilk olarak, göz önünde bulundurun"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "five-year-old",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a five-year-old child",
+          "tr": "beş yaşındaki bir çocuk"
+        },
+        {
+          "en": "a five-year-old tree",
+          "tr": "beş yaşındaki bir ağaç"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "floral",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a floral pattern",
+          "tr": "çiçek deseni"
+        },
+        {
+          "en": "a floral arrangement",
+          "tr": "çiçek düzenlemesi"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "focusing",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "manual focusing",
+          "tr": "elle netleme"
+        },
+        {
+          "en": "accurate focusing",
+          "tr": "doğru netleme"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "footnote",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "an explanatory footnote",
+          "tr": "açıklayıcı dipnot"
+        },
+        {
+          "en": "add a footnote",
+          "tr": "dipnot eklemek"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "for years to come",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "last for years to come",
+          "tr": "daha uzun yıllar sürmek"
+        },
+        {
+          "en": "benefit people for years to come",
+          "tr": "insanlara gelecek yıllar boyunca yarar sağlamak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "force-land",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "force-land an aircraft",
+          "tr": "bir uçağa mecburi iniş yaptırmak"
+        },
+        {
+          "en": "force-land in a field",
+          "tr": "bir tarlaya mecburi iniş yapmak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "foreigner",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a visiting foreigner",
+          "tr": "ziyarete gelen bir yabancı"
+        },
+        {
+          "en": "a foreigner living abroad",
+          "tr": "yurt dışında yaşayan bir yabancı"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "fortunately",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "fortunately for us",
+          "tr": "neyse ki bizim için"
+        },
+        {
+          "en": "fortunately enough",
+          "tr": "iyi ki, neyse ki"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "forward-moving",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a forward-moving vehicle",
+          "tr": "ileriye hareket eden bir araç"
+        },
+        {
+          "en": "a forward-moving conveyor",
+          "tr": "ileriye hareket eden taşıyıcı bant"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "four-spot",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a four-spot card",
+          "tr": "dörtlü oyun kartı"
+        },
+        {
+          "en": "draw a four-spot",
+          "tr": "dörtlü çekmek"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "fourth",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "the fourth quarter",
+          "tr": "dördüncü çeyrek"
+        },
+        {
+          "en": "the fourth edition",
+          "tr": "dördüncü baskı"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "form-only",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a form-only apology",
+          "tr": "göstermelik bir özür"
+        },
+        {
+          "en": "a form-only consultation",
+          "tr": "göstermelik bir istişare"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

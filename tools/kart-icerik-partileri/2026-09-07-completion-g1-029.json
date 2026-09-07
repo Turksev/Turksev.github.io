@@ -1,0 +1,1004 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 1,
+    "input": "input-029.json"
+  },
+  "enrichments": [
+    {
+      "word": "maneuver",
+      "sense_index": 1,
+      "expected": {
+        "tr": "f. manevra yapmak",
+        "ex": "The captain maneuvered the tanker slowly through the narrow channel despite the strong evening current.",
+        "exTr": "Kaptan, güçlü akşam akıntısına rağmen tankeri dar kanaldan yavaşça geçirerek manevra yaptı."
+      },
+      "alternatives": [
+        {
+          "ex": "The model helped the engineers determine whether a delivery vehicle could maneuver through the entrance without blocking the path used by pedestrians.",
+          "exTr": "Model, mühendislerin bir teslimat aracının yayaların kullandığı yolu kapatmadan girişte manevra yapıp yapamayacağını belirlemesine yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "manifestation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. tezahür, belirti, dışavurum",
+        "ex": "Frequent headaches can sometimes be an early manifestation of chronic stress rather than illness.",
+        "exTr": "Sık baş ağrıları, bazen hastalıktan çok kronik stresin erken bir belirtisi olabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The repeated complaints were a visible manifestation of deeper disagreement about who should decide how the shared building was used.",
+          "exTr": "Tekrarlanan şikâyetler, ortak binanın nasıl kullanılacağına kimin karar vermesi gerektiğine ilişkin daha derin bir anlaşmazlığın görünür dışavurumuydu."
+        }
+      ]
+    },
+    {
+      "word": "manipulation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. manipülasyon",
+        "ex": "Genetic manipulation of crops has allowed scientists to develop plants that are more resistant to drought.",
+        "exTr": "Mahsullerin genetik manipülasyonu, bilim insanlarının kuraklığa daha dayanıklı bitkiler geliştirmesine olanak tanıdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The review checked for manipulation of the results by comparing the published figures with the complete set of records retained after the experiment.",
+          "exTr": "İncelemede, yayımlanan değerler deneyden sonra saklanan kayıtların tamamıyla karşılaştırılarak sonuçlarda manipülasyon olup olmadığı kontrol edildi."
+        }
+      ]
+    },
+    {
+      "word": "manner",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. tarz, biçim, yol",
+        "ex": "The professor explained the complex theory in a clear and engaging manner.",
+        "exTr": "Profesör, karmaşık kuramı açık ve ilgi çekici bir biçimde anlattı."
+      },
+      "alternatives": [
+        {
+          "ex": "The report presented uncertainty in a consistent manner, distinguishing incomplete information from differences that arose because the measurements themselves lacked precision.",
+          "exTr": "Rapor, eksik bilgiyi ölçümlerin kendisinin hassas olmamasından doğan farklılıklardan ayırarak belirsizliği tutarlı bir biçimde sundu."
+        }
+      ]
+    },
+    {
+      "word": "manually",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. elle, otomatik olmayan biçimde",
+        "ex": "Staff manually checked the records after the scanning system produced inconsistent results.",
+        "exTr": "Personel, tarama sistemi tutarsız sonuçlar ürettikten sonra kayıtları elle kontrol etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The prototype could be adjusted manually, allowing users to explore several positions before the designers considered adding an automated mechanism.",
+          "exTr": "Prototip elle ayarlanabiliyordu; böylece tasarımcılar otomatik bir mekanizma eklemeyi düşünmeden önce kullanıcılar birkaç konumu deneyebildi."
+        }
+      ]
+    },
+    {
+      "word": "manufacturer",
+      "sense_index": 0,
+      "expected": {
+        "tr": "üretici, imalatçı",
+        "ex": "Every major car manufacturer is now investing heavily in electric vehicle technology.",
+        "exTr": "Artık her büyük otomobil üreticisi, elektrikli araç teknolojisine yoğun yatırım yapıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The manufacturer supplied drawings of the discontinued component, enabling the local workshop to assess whether a compatible replacement could be produced.",
+          "exTr": "Üretici, yerel atölyenin uyumlu bir yedek parça üretilip üretilemeyeceğini değerlendirebilmesi için üretimi durdurulan bileşenin çizimlerini sağladı."
+        }
+      ]
+    },
+    {
+      "word": "many",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. birçok, çok sayıda",
+        "ex": "Government agencies report that many coastal cities are investing in flood barriers against rising seas.",
+        "exTr": "Devlet kurumları, birçok kıyı kentinin yükselen deniz seviyelerine karşı sel bariyerlerine yatırım yaptığını bildiriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Many responses described difficulties with the timetable, but only a few explained which alternative hours would actually make attendance possible.",
+          "exTr": "Birçok yanıt zaman çizelgesindeki güçlükleri anlatıyordu; ancak yalnızca birkaçı hangi alternatif saatlerin katılımı gerçekten mümkün kılacağını açıklıyordu."
+        }
+      ]
+    },
+    {
+      "word": "marathon",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. maraton",
+        "ex": "Thousands of runners from different countries participated in the city's annual marathon.",
+        "exTr": "Farklı ülkelerden binlerce koşucu, şehrin yıllık maratonuna katıldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The planning team examined how the marathon route would affect ordinary bus services, especially for residents who were not attending the event.",
+          "exTr": "Planlama ekibi, özellikle etkinliğe katılmayan sakinler açısından maraton güzergâhının normal otobüs seferlerini nasıl etkileyeceğini inceledi."
+        }
+      ]
+    },
+    {
+      "word": "margin",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. kenar, kenar boşluğu",
+        "ex": "The professor asked students to leave a wide margin on each page for handwritten notes.",
+        "exTr": "Profesör, öğrencilerden el yazısıyla not almaları için her sayfada geniş bir kenar boşluğu bırakmalarını istedi."
+      },
+      "alternatives": [
+        {
+          "ex": "Notes in the margin revealed that the author had questioned an important date, even though the uncertainty disappeared from the final printed version.",
+          "exTr": "Son basılı sürümde belirsizlik kaybolmuş olsa da sayfa kenarındaki notlar yazarın önemli bir tarihi sorguladığını ortaya koydu."
+        }
+      ]
+    },
+    {
+      "word": "marital",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. evlilikle ilgili, evlilik-",
+        "ex": "The counselor specializes in resolving marital conflicts between couples who are considering separation.",
+        "exTr": "Danışman, ayrılmayı düşünen çiftler arasındaki evlilik anlaşmazlıklarını çözmede uzmanlaşmıştır."
+      },
+      "alternatives": [
+        {
+          "ex": "The questionnaire recorded marital status separately from household composition, since the researchers did not assume that these categories described the same relationships.",
+          "exTr": "Araştırmacılar bu kategorilerin aynı ilişkileri tanımladığını varsaymadığı için ankette medeni durum hane yapısından ayrı kaydedildi."
+        }
+      ]
+    },
+    {
+      "word": "markedly",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. belirgin şekilde, göze çarpan biçimde",
+        "ex": "Patient recovery times improved markedly after the hospital introduced the new physical therapy program.",
+        "exTr": "Hastane yeni fizik tedavi programını uygulamaya koyduktan sonra hasta iyileşme süreleri belirgin şekilde kısaldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The two accounts differed markedly in their description of the meeting, prompting the historian to examine notes written by less prominent participants.",
+          "exTr": "İki anlatı toplantıyı betimleme biçimleri bakımından belirgin biçimde farklıydı; bu da tarihçiyi daha az öne çıkan katılımcıların yazdığı notları incelemeye yöneltti."
+        }
+      ]
+    },
+    {
+      "word": "marketable",
+      "sense_index": 1,
+      "expected": {
+        "tr": "s. iş piyasasında talep gören",
+        "ex": "Training in data analysis gave the graduates a marketable skill that employers increasingly required.",
+        "exTr": "Veri analizi eğitimi, mezunlara işverenlerin giderek daha fazla aradığı, iş piyasasında talep gören bir beceri kazandırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The course aimed to develop marketable skills without neglecting broader abilities, such as explaining uncertainty and evaluating claims made by others.",
+          "exTr": "Kurs, belirsizliği açıklamak ve başkalarının öne sürdüğü iddiaları değerlendirmek gibi daha geniş yetenekleri ihmal etmeden iş piyasasında talep gören beceriler geliştirmeyi amaçladı."
+        }
+      ]
+    },
+    {
+      "word": "marriage",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. evlilik",
+        "ex": "Sociologists have studied how the average age of marriage has shifted across different generations.",
+        "exTr": "Sosyologlar, ortalama evlilik yaşının farklı nesiller arasında nasıl değiştiğini incelemiştir."
+      },
+      "alternatives": [
+        {
+          "ex": "The family records suggest that marriage influenced where the couple lived, but they do not explain how the decision was negotiated.",
+          "exTr": "Aile kayıtları evliliğin çiftin yaşadığı yeri etkilediğine işaret ediyor; ancak kararın nasıl müzakere edildiğini açıklamıyor."
+        }
+      ]
+    },
+    {
+      "word": "marry",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. evlenmek",
+        "ex": "Sociologists observed that people now tend to marry later in life than previous generations did.",
+        "exTr": "Sosyologlar, insanların artık önceki nesillere göre hayatlarının daha geç bir döneminde evlenme eğiliminde olduğunu gözlemledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The novel follows two characters who intend to marry but disagree about whether they should remain near their families or move elsewhere.",
+          "exTr": "Roman, evlenmeyi düşünen ancak ailelerinin yakınında mı kalmaları yoksa başka bir yere mi taşınmaları gerektiği konusunda anlaşamayan iki karakteri izliyor."
+        }
+      ]
+    },
+    {
+      "word": "martin",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kırlangıçgillerden bir kuş (ev/kum kırlangıcı)",
+        "ex": "Ornithologists tagged a migrating martin to track its route across two continents.",
+        "exTr": "Kuşbilimciler, iki kıta boyunca rotasını izlemek için göç eden bir kır kırlangıcını etiketledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The observers recorded the martin's arrival beside notes on local weather, leaving the interpretation of seasonal differences until more observations were available.",
+          "exTr": "Gözlemciler, mevsimsel farklılıkların yorumunu daha fazla gözlem elde edilene kadar erteleyerek kırlangıcın gelişini yerel hava durumuna ilişkin notların yanına kaydetti."
+        }
+      ]
+    },
+    {
+      "word": "masculine",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. erkeksi, erkeğe özgü",
+        "ex": "Deep voices and broad shoulders are often stereotyped as masculine physical traits.",
+        "exTr": "Kalın sesler ve geniş omuzlar genellikle erkeksi fiziksel özellikler olarak basmakalıplaştırılır."
+      },
+      "alternatives": [
+        {
+          "ex": "The film challenges a narrow masculine ideal by allowing its male characters to express uncertainty, ask for assistance, and change their minds.",
+          "exTr": "Film, erkek karakterlerinin belirsizliklerini dile getirmelerine, yardım istemelerine ve fikirlerini değiştirmelerine izin vererek dar bir erkeklik idealini sorguluyor."
+        }
+      ]
+    },
+    {
+      "word": "mass",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. kütle",
+        "ex": "The mass of a black hole can be estimated by observing the orbits of nearby stars.",
+        "exTr": "Bir kara deliğin kütlesi, yakındaki yıldızların yörüngeleri gözlemlenerek tahmin edilebilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The students measured the mass of each sample before comparing its volume, ensuring that the two quantities were recorded in appropriate units.",
+          "exTr": "Öğrenciler, iki büyüklüğün uygun birimlerle kaydedilmesini sağlayarak hacmini karşılaştırmadan önce her örneğin kütlesini ölçtü."
+        }
+      ]
+    },
+    {
+      "word": "masse",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. mase (bilardoda ıstakayı dikey tutarak yapılan vuruş)",
+        "ex": "The champion demonstrated a difficult masse shot, curving the cue ball sharply around the obstructing ball.",
+        "exTr": "Şampiyon, ıstaka topunu engelleyen topun etrafından keskin biçimde eğerek zor bir mase vuruşu sergiledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The recording of the masse allowed the students to trace the cue ball's curved path without relying on the spectators' rapid impressions.",
+          "exTr": "Mase vuruşunun kaydı, öğrencilerin seyircilerin anlık izlenimlerine dayanmadan beyaz topun kavisli yolunu izlemesine olanak sağladı."
+        }
+      ],
+      "note": "Bilardo anlamı Merriam-Webster massé maddesiyle doğrulandı. Aksanlı yaygın yazım massé; mevcut anahtar ve örnek yazımıyla uyumlu masse korundu. https://www.merriam-webster.com/dictionary/mass%C3%A9"
+    },
+    {
+      "word": "master",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. iyice öğrenmek, ustalaşmak",
+        "ex": "It took the young violinist nearly a decade to master such a difficult classical piece.",
+        "exTr": "Genç kemancının bu kadar zor bir klasik eseri ustalıkla çalmayı öğrenmesi neredeyse on yıl sürdü."
+      },
+      "alternatives": [
+        {
+          "ex": "Learners may master the calculation before they understand when it is appropriate, so the course also includes cases in which the method should not be used.",
+          "exTr": "Öğrenciler hesaplamada, onun ne zaman uygun olduğunu anlamadan önce ustalaşabilir; bu nedenle kurs yöntemin kullanılmaması gereken durumları da içerir."
+        }
+      ]
+    },
+    {
+      "word": "mat",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. paspas, minder, hasır",
+        "ex": "Athletes are required to land on a thick foam mat, which absorbs most of the impact and reduces the risk of serious injury.",
+        "exTr": "Sporcuların kalın bir sünger minderin üzerine inmesi gerekir; bu minder darbenin büyük kısmını emerek ciddi sakatlanma riskini azaltır."
+      },
+      "alternatives": [
+        {
+          "ex": "The workshop placed a protective mat beneath the equipment to compare how vibration changed when the machine stood on different surfaces.",
+          "exTr": "Atölye, makine farklı yüzeylerde durduğunda titreşimin nasıl değiştiğini karşılaştırmak için ekipmanın altına koruyucu bir minder yerleştirdi."
+        }
+      ]
+    },
+    {
+      "word": "matched",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. eşleşen, eşit, denk",
+        "ex": "The study compared carefully matched groups of patients across five hospitals.",
+        "exTr": "Çalışma, beş hastanedeki özenle eşleştirilmiş hasta gruplarını karşılaştırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The matched samples were similar in size and age, but the researchers still recorded differences in how each had been stored.",
+          "exTr": "Eşleştirilmiş örnekler boyut ve yaş bakımından benzerdi; ancak araştırmacılar yine de her birinin nasıl depolandığına ilişkin farklılıkları kaydetti."
+        }
+      ]
+    },
+    {
+      "word": "maternal",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. anneye ait, anaç, anne tarafından",
+        "ex": "Researchers found a strong link between maternal nutrition and infant birth weight.",
+        "exTr": "Araştırmacılar, anne beslenmesi ile bebeğin doğum ağırlığı arasında güçlü bir bağlantı buldu."
+      },
+      "alternatives": [
+        {
+          "ex": "Her maternal relatives preserved a different version of the family story, which she compared with the documents inherited from her father's side.",
+          "exTr": "Anne tarafından akrabaları aile öyküsünün farklı bir sürümünü korumuştu; o da bunu baba tarafından kalan belgelerle karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "mathematical",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. matematiksel",
+        "ex": "Engineers used a complex mathematical model to predict how the bridge would respond to earthquakes.",
+        "exTr": "Mühendisler, köprünün depremlere nasıl tepki vereceğini tahmin etmek için karmaşık bir matematiksel model kullandı."
+      },
+      "alternatives": [
+        {
+          "ex": "The mathematical model simplified the delivery network, but its assumptions were listed clearly so that readers could judge the relevance of the results.",
+          "exTr": "Matematiksel model teslimat ağını basitleştirdi; ancak okurların sonuçların konuya uygunluğunu değerlendirebilmesi için varsayımları açıkça listelendi."
+        }
+      ]
+    },
+    {
+      "word": "matriarch",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. aile reisi konumundaki yaşlı kadın, sürüyü yöneten dişi lider",
+        "ex": "In elephant herds, the oldest matriarch remembers the location of distant water sources, and the survival of the whole group may depend on her memory.",
+        "exTr": "Fil sürülerinde en yaşlı dişi lider uzak su kaynaklarının yerini hatırlar ve bütün grubun hayatta kalması onun belleğine bağlı olabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The family matriarch appears frequently in the correspondence, negotiating disagreements that official accounts attribute solely to the decisions of male relatives.",
+          "exTr": "Ailenin kadın büyüğü, resmî anlatıların yalnızca erkek akrabaların kararlarına bağladığı anlaşmazlıkları çözüme kavuşturmak için müzakere ederken yazışmalarda sık sık görülür."
+        }
+      ]
+    },
+    {
+      "word": "matter-of-course",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. doğal karşılanan, beklenen",
+        "ex": "In that culture, caring for elderly parents is treated as a matter-of-course family duty.",
+        "exTr": "O kültürde, yaşlı ebeveynlere bakmak doğal karşılanan bir aile görevi olarak kabul edilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The memoir questions a matter-of-course expectation that younger relatives would provide unpaid assistance whenever the family business required additional labour.",
+          "exTr": "Anı kitabı, aile işletmesi ne zaman ek iş gücüne ihtiyaç duysa genç akrabaların ücretsiz yardım sağlayacağı yönündeki doğal karşılanan beklentiyi sorguluyor."
+        }
+      ]
+    },
+    {
+      "word": "mature",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. olgun, yetişkin",
+        "ex": "Mature students often bring valuable work experience into the university classroom.",
+        "exTr": "Yetişkin öğrenciler, üniversite sınıfına çoğu zaman değerli iş deneyimi getirir."
+      },
+      "alternatives": [
+        {
+          "ex": "The project included mature students whose experience of employment raised questions that had rarely appeared in discussions among the younger participants.",
+          "exTr": "Proje, iş deneyimleri genç katılımcılar arasındaki tartışmalarda nadiren ortaya çıkan soruları gündeme getiren yetişkin öğrencileri de içeriyordu."
+        }
+      ]
+    },
+    {
+      "word": "maximize",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. en üst düzeye çıkarmak, azamileştirmek",
+        "ex": "Farmers use advanced irrigation techniques to maximize crop yields during dry seasons.",
+        "exTr": "Çiftçiler, kurak mevsimlerde ürün verimini en üst düzeye çıkarmak için gelişmiş sulama teknikleri kullanıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The organisers tried to maximize participation by offering several meeting times, while keeping the information provided at each session consistent.",
+          "exTr": "Organizatörler, her oturumda verilen bilgiyi tutarlı tutarken birkaç toplantı saati sunarak katılımı en üst düzeye çıkarmaya çalıştı."
+        }
+      ]
+    },
+    {
+      "word": "may not",
+      "sense_index": 0,
+      "expected": {
+        "tr": "olmayabilir; olumsuz olasılık bildirmek",
+        "ex": "The absence of visible damage may not mean that the internal structure is sound.",
+        "exTr": "Görünür hasarın olmaması iç yapının sağlam olduğu anlamına gelmeyebilir."
+      },
+      "alternatives": [
+        {
+          "ex": "A method that works well in a large organisation may not suit a small workshop with limited staff and irregular access to specialist equipment.",
+          "exTr": "Büyük bir kuruluşta iyi işleyen bir yöntem, sınırlı personeli olan ve özel ekipmana düzensiz erişebilen küçük bir atölyeye uygun olmayabilir."
+        }
+      ]
+    },
+    {
+      "word": "mayor",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. belediye başkanı",
+        "ex": "The newly elected mayor promised to improve public transportation across the city.",
+        "exTr": "Yeni seçilen belediye başkanı, şehir genelinde toplu taşımayı iyileştireceğine söz verdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The mayor asked the planning team to explain how the proposal would affect residents who relied on the existing pedestrian route.",
+          "exTr": "Belediye başkanı, planlama ekibinden önerinin mevcut yaya güzergâhına bağımlı sakinleri nasıl etkileyeceğini açıklamasını istedi."
+        }
+      ]
+    },
+    {
+      "word": "mean",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. anlamına gelmek",
+        "ex": "A rise in average temperature does not necessarily mean every region will experience drought.",
+        "exTr": "Ortalama sıcaklıktaki bir artış, her bölgenin kuraklık yaşayacağı anlamına gelmek zorunda değildir."
+      },
+      "alternatives": [
+        {
+          "ex": "A smaller sample does not automatically mean that a study is uninformative, but it can limit the range of conclusions the evidence supports.",
+          "exTr": "Daha küçük bir örneklem, çalışmanın kendiliğinden bilgi vermeyen bir çalışma olduğu anlamına gelmez; ancak kanıtların desteklediği sonuçların kapsamını sınırlayabilir."
+        }
+      ]
+    },
+    {
+      "word": "meaningfully",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. anlamlı biçimde, kayda değer ölçüde",
+        "ex": "Although the new regulation was widely praised, it did not meaningfully reduce the number of serious accidents recorded on urban roads.",
+        "exTr": "Yeni düzenleme geniş ölçüde övülse de, şehir içi yollarda kaydedilen ciddi kaza sayısını kayda değer ölçüde azaltmadı."
+      },
+      "alternatives": [
+        {
+          "ex": "The two surveys cannot be compared meaningfully until the analysts explain how differences in the questions affect the responses being counted.",
+          "exTr": "Analistler sorulardaki farklılıkların sayılan yanıtları nasıl etkilediğini açıklamadan iki anket anlamlı biçimde karşılaştırılamaz."
+        }
+      ]
+    },
+    {
+      "word": "meanwhile",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. bu arada, aynı zamanda",
+        "ex": "Scientists continued monitoring the volcano; meanwhile, local authorities prepared evacuation routes for nearby villages.",
+        "exTr": "Bilim insanları yanardağı izlemeye devam etti; bu arada yerel yetkililer yakındaki köyler için tahliye güzergâhları hazırladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The technicians tested the repaired equipment; meanwhile, the training coordinator revised the schedule to accommodate sessions postponed during the closure.",
+          "exTr": "Teknisyenler onarılmış ekipmanı test etti; bu arada eğitim koordinatörü kapanma sırasında ertelenen oturumlara yer açmak için programı yeniden düzenledi."
+        }
+      ]
+    },
+    {
+      "word": "measurement",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ölçüm, ölçme",
+        "ex": "Precise measurement of atmospheric carbon dioxide levels helps scientists track the progress of climate change.",
+        "exTr": "Atmosferdeki karbondioksit seviyelerinin hassas ölçümü, bilim insanlarının iklim değişikliğinin seyrini izlemesine yardımcı olur."
+      },
+      "alternatives": [
+        {
+          "ex": "A single measurement was insufficient to establish a trend, so the students repeated the observation under conditions recorded as consistently as possible.",
+          "exTr": "Bir eğilimi belirlemek için tek bir ölçüm yetersizdi; bu nedenle öğrenciler gözlemi mümkün olduğunca tutarlı biçimde kaydedilen koşullar altında tekrarladı."
+        }
+      ]
+    },
+    {
+      "word": "meat-eating",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. etobur, et yiyen",
+        "ex": "Fossil evidence suggests that this meat-eating dinosaur hunted in coordinated packs.",
+        "exTr": "Fosil kanıtları, bu etobur dinozorun koordineli sürüler hâlinde avlandığını göstermektedir."
+      },
+      "alternatives": [
+        {
+          "ex": "The exhibition compared the teeth of meat-eating animals with other specimens, asking visitors to explain which features might relate to different feeding habits.",
+          "exTr": "Sergi, ziyaretçilerden hangi özelliklerin farklı beslenme alışkanlıklarıyla ilişkili olabileceğini açıklamalarını isteyerek et yiyen hayvanların dişlerini diğer örneklerle karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "mechanically",
+      "sense_index": 1,
+      "expected": {
+        "tr": "z. düşünmeden, otomatik biçimde",
+        "ex": "Repeating a rule mechanically does not guarantee genuine understanding.",
+        "exTr": "Bir kuralı düşünmeden tekrarlamak gerçek anlamayı garanti etmez."
+      },
+      "alternatives": [
+        {
+          "ex": "The trainee filled in the checklist mechanically until an unexpected reading forced him to consider what each question was actually intended to establish.",
+          "exTr": "Beklenmedik bir değer onu her sorunun gerçekte neyi belirlemeyi amaçladığını düşünmeye zorlayana kadar kursiyer kontrol listesini düşünmeden dolduruyordu."
+        }
+      ]
+    },
+    {
+      "word": "medal",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. madalya",
+        "ex": "The young swimmer won a gold medal at her first international competition last summer.",
+        "exTr": "Genç yüzücü, geçen yaz katıldığı ilk uluslararası yarışmada altın madalya kazandı."
+      },
+      "alternatives": [
+        {
+          "ex": "The medal was displayed alongside the athlete's training notes, shifting attention from the final award to the years of preparation behind it.",
+          "exTr": "Madalya sporcunun antrenman notlarıyla birlikte sergilendi; böylece dikkat son ödülden onun arkasındaki yıllarca süren hazırlığa kaydırıldı."
+        }
+      ]
+    },
+    {
+      "word": "mediated",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. aracılık edilmiş, dolaylı",
+        "ex": "The peace agreement was a carefully mediated settlement between the two long-warring nations.",
+        "exTr": "Barış anlaşması, uzun süredir savaşan iki ulus arasında dikkatle aracılık edilmiş bir uzlaşmaydı."
+      },
+      "alternatives": [
+        {
+          "ex": "The mediated agreement allowed both groups to share the building while postponing the question of permanent ownership until further records could be examined.",
+          "exTr": "Arabuluculukla sağlanan anlaşma, kalıcı mülkiyet sorununu ek kayıtlar incelenene kadar ertelerken iki grubun da binayı paylaşmasına olanak sağladı."
+        }
+      ]
+    },
+    {
+      "word": "medical",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. tıbbi",
+        "ex": "Rural communities often lack access to specialized medical care available in larger cities.",
+        "exTr": "Kırsal topluluklar, büyük şehirlerde bulunan uzmanlaşmış tıbbi bakıma çoğu zaman erişemiyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The communication course asked medical students to explain a complex diagram without assuming that the audience already understood the specialised vocabulary.",
+          "exTr": "İletişim kursunda tıp öğrencilerinden, dinleyicilerin uzmanlık terimlerini zaten bildiğini varsaymadan karmaşık bir şemayı açıklamaları istendi."
+        }
+      ]
+    },
+    {
+      "word": "medicine",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. tıp",
+        "ex": "Modern medicine has extended average life expectancy by several decades since 1900.",
+        "exTr": "Modern tıp, 1900'den bu yana ortalama yaşam beklentisini onlarca yıl uzattı."
+      },
+      "alternatives": [
+        {
+          "ex": "The history of medicine course examined how patients' accounts could complement the institutional records that had dominated earlier studies of the hospital.",
+          "exTr": "Tıp tarihi dersinde, hasta anlatılarının hastaneyle ilgili önceki çalışmalara hâkim olan kurumsal kayıtları nasıl tamamlayabileceği incelendi."
+        }
+      ]
+    },
+    {
+      "word": "meditation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. meditasyon; derin düşünce",
+        "ex": "Many hospitals now recommend daily meditation to help patients manage chronic stress and anxiety.",
+        "exTr": "Birçok hastane artık kronik stres ve kaygıyı yönetmelerine yardımcı olmak için hastalara günlük meditasyon öneriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The final chapter becomes a meditation on memory, questioning why ordinary details sometimes remain clearer than events the writer once considered decisive.",
+          "exTr": "Son bölüm, sıradan ayrıntıların bazen yazarın bir zamanlar belirleyici saydığı olaylardan neden daha açık kaldığını sorgulayarak bellek üzerine derin bir düşünceye dönüşüyor."
+        }
+      ]
+    },
+    {
+      "word": "meet",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. karşılamak",
+        "ex": "Many cities struggle to meet the growing demand for affordable housing.",
+        "exTr": "Birçok şehir, uygun fiyatlı konuta yönelik artan talebi karşılamakta zorlanıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The proposed design could meet the storage requirement, but only if the team reduced the space originally allocated to individual workstations.",
+          "exTr": "Önerilen tasarım depolama gereksinimini karşılayabilirdi; ancak bunun için ekibin başlangıçta bireysel çalışma istasyonlarına ayırdığı alanı azaltması gerekiyordu."
+        }
+      ]
+    },
+    {
+      "word": "melatonin",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. melatonin, uyku hormonu",
+        "ex": "Exposure to bright screens late at night suppresses melatonin, the hormone that signals to the body that it is time to fall asleep.",
+        "exTr": "Gece geç saatlerde parlak ekranlara maruz kalmak, vücuda uyuma vaktinin geldiğini bildiren hormon olan melatonini baskılar."
+      },
+      "alternatives": [
+        {
+          "ex": "The report kept the timing of melatonin measurements separate from the timing of participants' recorded sleep, allowing readers to examine both sets of observations.",
+          "exTr": "Rapor, okurların iki gözlem kümesini de inceleyebilmesi için melatonin ölçümlerinin zamanını katılımcıların kaydedilen uyku zamanlarından ayrı tuttu."
+        }
+      ]
+    },
+    {
+      "word": "melting",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. erime",
+        "ex": "Scientists warn that the melting of polar ice caps could raise sea levels dramatically by 2100.",
+        "exTr": "Bilim insanları, kutup buzullarının erimesinin 2100 yılına kadar deniz seviyelerini çarpıcı biçimde yükseltebileceği konusunda uyarıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The classroom experiment recorded melting under several controlled conditions, with equal sample sizes used to make the resulting observations easier to compare.",
+          "exTr": "Sınıf deneyinde, ortaya çıkan gözlemlerin karşılaştırılmasını kolaylaştırmak için eşit örnek boyutları kullanılarak erime birkaç kontrollü koşul altında kaydedildi."
+        }
+      ]
+    },
+    {
+      "word": "membrane",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. zar, membran",
+        "ex": "Every living cell is enclosed by a membrane that regulates what substances enter and exit.",
+        "exTr": "Her canlı hücre, hangi maddelerin girip çıkacağını düzenleyen bir zarla çevrilidir."
+      },
+      "alternatives": [
+        {
+          "ex": "The diagram showed the membrane as a distinct boundary, while the accompanying model allowed students to explore movement between the regions on either side.",
+          "exTr": "Şema zarı belirgin bir sınır olarak gösterirken beraberindeki model öğrencilerin iki yanındaki bölgeler arasındaki hareketi incelemesine olanak sağladı."
+        }
+      ]
+    },
+    {
+      "word": "memorable",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. unutulmaz, akılda kalıcı",
+        "ex": "The scientist's first successful experiment became a memorable moment in the history of the laboratory.",
+        "exTr": "Bilim insanının ilk başarılı deneyi, laboratuvarın tarihinde unutulmaz bir an haline geldi."
+      },
+      "alternatives": [
+        {
+          "ex": "A memorable example can help introduce an argument, but it should not be mistaken for evidence that the same pattern occurs everywhere.",
+          "exTr": "Akılda kalıcı bir örnek bir savı sunmaya yardımcı olabilir; ancak aynı örüntünün her yerde görüldüğünün kanıtı sanılmamalıdır."
+        }
+      ]
+    },
+    {
+      "word": "men",
+      "sense_index": 0,
+      "expected": {
+        "tr": "erkekler; insanlar",
+        "ex": "Studies show that men are statistically more likely to develop heart disease at younger ages.",
+        "exTr": "Araştırmalar, erkeklerin istatistiksel olarak daha genç yaşlarda kalp hastalığına yakalanma olasılığının daha yüksek olduğunu gösteriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The interviews included men of different ages and occupations so that the study would not rely on a single narrow account of working life.",
+          "exTr": "Çalışmanın iş yaşamına ilişkin tek ve dar bir anlatıya dayanmaması için görüşmelere farklı yaş ve mesleklerden erkekler dâhil edildi."
+        }
+      ]
+    },
+    {
+      "word": "mental",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. zihinsel, ruhsal, akli",
+        "ex": "Untreated mental health conditions can significantly affect a person's academic and professional performance.",
+        "exTr": "Tedavi edilmeyen ruh sağlığı sorunları, bir kişinin akademik ve mesleki performansını önemli ölçüde etkileyebilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The designer asked users to describe their mental picture of the booking process before showing them the sequence built into the software.",
+          "exTr": "Tasarımcı, yazılıma yerleştirilmiş sırayı göstermeden önce kullanıcılardan rezervasyon sürecine ilişkin zihinsel tasarımlarını betimlemelerini istedi."
+        }
+      ]
+    },
+    {
+      "word": "mention",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. bahsetmek, değinmek",
+        "ex": "The report failed to mention several important side effects associated with the new medication.",
+        "exTr": "Rapor, yeni ilaçla ilişkili birkaç önemli yan etkiden bahsetmeyi ihmal etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The catalogue did not mention the repaired handle, leaving readers unable to distinguish the original workmanship from changes made during later restoration.",
+          "exTr": "Katalog onarılmış kulptan söz etmediği için okurlar özgün işçiliği sonraki restorasyonda yapılan değişikliklerden ayırt edemedi."
+        }
+      ]
+    },
+    {
+      "word": "merchant",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. tüccar, tacir",
+        "ex": "The old merchant had traveled along the silk route for more than thirty years.",
+        "exTr": "Yaşlı tüccar, otuz yıldan fazla bir süre ipek yolu boyunca seyahat etmişti."
+      },
+      "alternatives": [
+        {
+          "ex": "The merchant's account book recorded transport charges alongside sales, allowing the historian to reconstruct costs that the letters discussed only briefly.",
+          "exTr": "Tüccarın hesap defteri satışların yanında taşıma ücretlerini de kaydederek tarihçinin mektupların yalnızca kısaca değindiği maliyetleri yeniden belirlemesine olanak sağladı."
+        }
+      ]
+    },
+    {
+      "word": "merely",
+      "sense_index": 0,
+      "expected": {
+        "tr": "sadece, yalnızca",
+        "ex": "Some scientists argue that dreams are merely random signals produced by the sleeping brain.",
+        "exTr": "Bazı bilim insanları, rüyaların uyuyan beynin ürettiği yalnızca rastgele sinyaller olduğunu ileri sürüyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The workshop was not merely a place to repair equipment; it also provided a setting in which experienced workers could exchange practical knowledge.",
+          "exTr": "Atölye yalnızca ekipmanın onarıldığı bir yer değildi; deneyimli çalışanların pratik bilgi alışverişi yapabildiği bir ortam da sağlıyordu."
+        }
+      ]
+    },
+    {
+      "word": "meridian",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. meridyen; i. zirve, doruk nokta",
+        "ex": "Ships once relied on the prime meridian passing through Greenwich to calculate longitude accurately.",
+        "exTr": "Gemiler bir zamanlar, boylamı doğru hesaplamak için Greenwich'ten geçen başlangıç meridyenine güvenirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The cartography exercise asked students to identify the reference meridian before comparing longitude values copied from maps produced in different periods.",
+          "exTr": "Haritacılık alıştırmasında öğrencilerden, farklı dönemlerde üretilmiş haritalardan alınan boylam değerlerini karşılaştırmadan önce referans meridyenini belirlemeleri istendi."
+        }
+      ]
+    },
+    {
+      "word": "message",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. mesaj, ileti",
+        "ex": "Public health campaigns try to deliver a clear message about the dangers of smoking to teenagers.",
+        "exTr": "Halk sağlığı kampanyaları, sigaranın gençler için tehlikeleri hakkında net bir mesaj vermeye çalışır."
+      },
+      "alternatives": [
+        {
+          "ex": "The message reached regular members quickly, but the organisers later discovered that occasional users had not seen the announcement about the changed venue.",
+          "exTr": "Mesaj düzenli üyelere hızla ulaştı; ancak organizatörler daha sonra ara sıra gelen kullanıcıların değişen mekânla ilgili duyuruyu görmediğini fark etti."
+        }
+      ]
+    },
+    {
+      "word": "metabolic",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. metabolik, metabolizmayla ilgili",
+        "ex": "Regular exercise can help regulate metabolic processes that influence how the body stores fat.",
+        "exTr": "Düzenli egzersiz, vücudun yağı nasıl depoladığını etkileyen metabolik süreçleri düzenlemeye yardımcı olabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The review compared the metabolic measurements used in several studies, paying attention to differences in recording methods before discussing the reported results.",
+          "exTr": "İnceleme, bildirilen sonuçları tartışmadan önce kayıt yöntemlerindeki farklılıklara dikkat ederek birkaç çalışmada kullanılan metabolik ölçümleri karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "metal-looking",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. metal görünümlü, metalik görünüşlü",
+        "ex": "The designer used a metal-looking plastic coating to make the toy appear more realistic and durable.",
+        "exTr": "Tasarımcı, oyuncağın daha gerçekçi ve dayanıklı görünmesini sağlamak için metal görünümlü bir plastik kaplama kullandı."
+      },
+      "alternatives": [
+        {
+          "ex": "The metal-looking surface was tested with users to see whether its appearance created expectations about weight that the lightweight object did not meet.",
+          "exTr": "Metal görünümlü yüzey, görünümünün hafif nesnenin karşılamadığı ağırlık beklentileri yaratıp yaratmadığını görmek için kullanıcılarla test edildi."
+        }
+      ]
+    },
+    {
+      "word": "meteor",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. meteor, göktaşı",
+        "ex": "Astronomers recorded an unusually bright meteor streaking across the night sky over the desert.",
+        "exTr": "Gökbilimciler, çölün üzerindeki gece gökyüzünde parlayarak geçen alışılmadık derecede parlak bir meteoru kaydetti."
+      },
+      "alternatives": [
+        {
+          "ex": "The observers compared recordings of the meteor from different locations, checking whether the reported times referred to the same visible event.",
+          "exTr": "Gözlemciler, bildirilen zamanların aynı görünür olaya ilişkin olup olmadığını kontrol ederek meteorun farklı yerlerden alınmış kayıtlarını karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "methane",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. metan",
+        "ex": "Livestock farming produces significant amounts of methane, a powerful greenhouse gas.",
+        "exTr": "Hayvancılık, güçlü bir sera gazı olan metanın önemli miktarlarda üretilmesine yol açar."
+      },
+      "alternatives": [
+        {
+          "ex": "The field protocol required methane measurements to be recorded with location and time, so that observations from different sites could be compared systematically.",
+          "exTr": "Arazi protokolü, farklı alanlardan gelen gözlemlerin sistematik olarak karşılaştırılabilmesi için metan ölçümlerinin konum ve zamanla birlikte kaydedilmesini gerektiriyordu."
+        }
+      ]
+    },
+    {
+      "word": "methodology",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yöntembilim, metodoloji",
+        "ex": "The panel questioned the methodology used to collect data for the nationwide health survey.",
+        "exTr": "Jüri, ülke çapındaki sağlık araştırması için veri toplamada kullanılan metodolojiyi sorguladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The methodology explained why interviews were combined with direct observation, including the kinds of questions that neither approach could answer on its own.",
+          "exTr": "Metodoloji, her yaklaşımın tek başına yanıtlayamadığı soru türlerini de belirterek görüşmelerin neden doğrudan gözlemle birleştirildiğini açıkladı."
+        }
+      ]
+    },
+    {
+      "word": "metropolis",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. büyük şehir, metropol",
+        "ex": "Millions of commuters travel daily into the metropolis to work in its crowded financial district.",
+        "exTr": "Milyonlarca işçi, kalabalık finans bölgesinde çalışmak için her gün metropole seyahat ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The exhibition followed goods from small rural workshops to the metropolis, tracing the intermediaries who connected producers with distant customers.",
+          "exTr": "Sergi, üreticileri uzaktaki müşterilerle buluşturan aracıları izleyerek ürünlerin küçük kırsal atölyelerden metropole uzanan yolunu takip etti."
+        }
+      ]
+    },
+    {
+      "word": "micro",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. mikro, çok küçük ölçekli",
+        "ex": "Scientists used a micro camera to examine tissue samples without damaging the surrounding cells.",
+        "exTr": "Bilim insanları, çevredeki hücrelere zarar vermeden doku örneklerini incelemek için mikro bir kamera kullandı."
+      },
+      "alternatives": [
+        {
+          "ex": "The analysis connected micro changes in daily routines with wider organisational decisions, rather than treating small actions as unrelated to the institution's development.",
+          "exTr": "Analiz, küçük eylemleri kurumun gelişiminden bağımsız saymak yerine gündelik rutinlerdeki mikro değişiklikleri daha geniş kurumsal kararlarla ilişkilendirdi."
+        }
+      ]
+    },
+    {
+      "word": "microbial",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. mikrobiyal, mikroplarla ilgili",
+        "ex": "Scientists study microbial activity in soil to better understand nutrient cycling in ecosystems.",
+        "exTr": "Bilim insanları, ekosistemlerdeki besin döngüsünü daha iyi anlamak için topraktaki mikrobiyal etkinliği inceler."
+      },
+      "alternatives": [
+        {
+          "ex": "The laboratory compared microbial samples collected from several surfaces, recording the collection method before interpreting differences in the resulting observations.",
+          "exTr": "Laboratuvar, ortaya çıkan gözlemlerdeki farklılıkları yorumlamadan önce toplama yöntemini kaydederek birkaç yüzeyden alınan mikrobiyal örnekleri karşılaştırdı."
+        }
+      ]
+    }
+  ],
+  "collocations": [
+    {
+      "word": "martin",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a house martin",
+          "tr": "ev kırlangıcı"
+        },
+        {
+          "en": "a sand martin",
+          "tr": "kum kırlangıcı"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "masse",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a masse shot",
+          "tr": "mase vuruşu"
+        },
+        {
+          "en": "execute a masse",
+          "tr": "mase vuruşu yapmak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "mayor",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "the newly elected mayor",
+          "tr": "yeni seçilmiş belediye başkanı"
+        },
+        {
+          "en": "the mayor's office",
+          "tr": "belediye başkanlığı makamı"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "meat-eating",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "meat-eating animals",
+          "tr": "et yiyen hayvanlar"
+        },
+        {
+          "en": "a meat-eating species",
+          "tr": "etobur bir tür"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "metal-looking",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a metal-looking finish",
+          "tr": "metal görünümlü bir yüzey kaplaması"
+        },
+        {
+          "en": "a metal-looking surface",
+          "tr": "metal görünümlü bir yüzey"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "micro",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "the micro level",
+          "tr": "mikro düzey"
+        },
+        {
+          "en": "micro details",
+          "tr": "çok küçük ölçekli ayrıntılar"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

@@ -1,0 +1,988 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 2,
+    "input": "input-050.json"
+  },
+  "enrichments": [
+    {
+      "word": "update",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. güncellemek",
+        "ex": "The IT department updated all computers overnight to patch a critical security vulnerability.",
+        "exTr": "BT departmanı, kritik bir güvenlik açığını gidermek için tüm bilgisayarları gece boyunca güncelledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The team will update the habitat map after the next survey, retaining earlier versions so that changes in classification remain traceable.",
+          "exTr": "Ekip, sınıflandırmadaki değişimler izlenebilsin diye önceki sürümleri koruyarak bir sonraki araştırmadan sonra yaşam alanı haritasını güncelleyecek."
+        }
+      ]
+    },
+    {
+      "word": "uphold",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. desteklemek, onaylamak (özellikle bir kararı)",
+        "ex": "The Supreme Court decided to uphold the lower court's ruling on environmental regulations.",
+        "exTr": "Yüksek Mahkeme, alt mahkemenin çevre düzenlemeleriyle ilgili kararını onaylamaya karar verdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The review panel chose to uphold the original decision after examining the additional evidence submitted by applicants who had questioned the selection procedure.",
+          "exTr": "İnceleme kurulu, seçim sürecini sorgulayan başvuranların sunduğu ek kanıtları inceledikten sonra ilk kararı onamayı seçti."
+        }
+      ]
+    },
+    {
+      "word": "upper",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. üst, yukarı(daki)",
+        "ex": "Doctors recommended physical therapy to strengthen the muscles in her upper back and shoulders.",
+        "exTr": "Doktorlar, sırtının üst kısmındaki ve omuzlarındaki kasları güçlendirmek için fizik tedavi önerdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The upper branches received more light than those near the ground, a difference the researchers considered when comparing leaf growth across the tree.",
+          "exTr": "Üst dallar yere yakın dallardan daha fazla ışık aldı; araştırmacılar ağaç genelinde yaprak gelişimini karşılaştırırken bu farkı dikkate aldı."
+        }
+      ]
+    },
+    {
+      "word": "upside",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. olumlu yön, iyi taraf, avantaj",
+        "ex": "One clear upside of remote working is that employees save the considerable time they once spent commuting to distant offices.",
+        "exTr": "Uzaktan çalışmanın açık bir olumlu yönü, çalışanların bir zamanlar uzak ofislere gidip gelirken harcadıkları hatırı sayılır zamandan tasarruf etmeleridir."
+      },
+      "alternatives": [
+        {
+          "ex": "One upside of sharing equipment is that smaller teams can undertake projects beyond their individual budgets, provided that access is scheduled fairly.",
+          "exTr": "Erişim adil planlandığı sürece ekipman paylaşmanın olumlu bir yanı, küçük ekiplerin kendi bütçelerini aşan projeleri üstlenebilmesidir."
+        }
+      ]
+    },
+    {
+      "word": "urban",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kentsel, şehirle ilgili",
+        "ex": "Rapid urban growth has placed enormous pressure on water supplies in many developing countries.",
+        "exTr": "Hızlı kentsel büyüme, birçok gelişmekte olan ülkede su kaynakları üzerinde muazzam baskı oluşturdu."
+      },
+      "alternatives": [
+        {
+          "ex": "The study compared urban gardens of different sizes to explore how surrounding buildings and management practices influenced the habitats available to insects.",
+          "exTr": "Çalışma, çevredeki binaların ve bakım uygulamalarının böceklerin yararlanabildiği yaşam alanlarını nasıl etkilediğini araştırmak için farklı büyüklükte kent bahçelerini karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "urgency",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. aciliyet, ivedilik",
+        "ex": "The doctor's tone conveyed such urgency that the nurses rushed to prepare the operating room immediately.",
+        "exTr": "Doktorun ses tonu öyle bir aciliyet taşıyordu ki hemşireler ameliyathaneyi hazırlamak için hemen koştu."
+      },
+      "alternatives": [
+        {
+          "ex": "The urgency of the repair became clear when inspection revealed that further deterioration could interrupt services used by several neighbouring communities.",
+          "exTr": "İnceleme, daha fazla bozulmanın komşu toplulukların kullandığı hizmetleri kesintiye uğratabileceğini gösterince onarımın aciliyeti anlaşıldı."
+        }
+      ]
+    },
+    {
+      "word": "urine",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. idrar",
+        "ex": "Doctors often analyze a urine sample to check for early signs of kidney disease.",
+        "exTr": "Doktorlar, böbrek hastalığının erken belirtilerini kontrol etmek için genellikle bir idrar örneğini analiz eder."
+      },
+      "alternatives": [
+        {
+          "ex": "Each urine sample was labelled before analysis so that laboratory findings could be linked to the correct record without exposing participants' names.",
+          "exTr": "Laboratuvar bulguları katılımcıların isimleri açıklanmadan doğru kayıtla ilişkilendirilebilsin diye her idrar örneği analizden önce etiketlendi."
+        }
+      ]
+    },
+    {
+      "word": "usage",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kullanım; kullanım biçimi",
+        "ex": "Water usage in agriculture accounts for nearly seventy percent of global freshwater consumption.",
+        "exTr": "Tarımdaki su kullanımı, küresel tatlı su tüketiminin yaklaşık yüzde yetmişini oluşturur."
+      },
+      "alternatives": [
+        {
+          "ex": "The dictionary distinguishes historical usage from meanings common today, helping readers interpret older documents without assuming that familiar words have always meant the same thing.",
+          "exTr": "Sözlük, tanıdık sözcüklerin her zaman aynı anlama geldiği varsayılmadan eski belgelerin yorumlanmasına yardımcı olmak için tarihsel kullanımı bugün yaygın anlamlardan ayırıyor."
+        }
+      ]
+    },
+    {
+      "word": "used to",
+      "sense_index": 0,
+      "expected": {
+        "tr": "eskiden yapardı/olurdu; artık geçerli olmayan geçmiş alışkanlık veya durumu bildirmek",
+        "ex": "This coastal plain used to support extensive wetlands before the river was diverted.",
+        "exTr": "Nehir başka yöne çevrilmeden önce bu kıyı ovasında geniş sulak alanlar bulunurdu."
+      },
+      "alternatives": [
+        {
+          "ex": "The workshop used to depend on orders from a single factory, but it now serves a wider range of customers with different requirements.",
+          "exTr": "Atölye eskiden tek bir fabrikadan gelen siparişlere bağımlıydı; artık farklı gereksinimleri olan daha geniş bir müşteri grubuna hizmet veriyor."
+        }
+      ]
+    },
+    {
+      "word": "useless",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yararsız, işe yaramaz",
+        "ex": "Without a stable internet connection, the new online learning platform proved completely useless.",
+        "exTr": "Kararlı bir internet bağlantısı olmadan, yeni çevrimiçi öğrenme platformu tamamen yararsız oldu."
+      },
+      "alternatives": [
+        {
+          "ex": "A measurement is not necessarily useless because it contains uncertainty; its value depends on whether that uncertainty is understood and reported appropriately.",
+          "exTr": "Bir ölçüm belirsizlik içerdiği için mutlaka yararsız değildir; değeri, bu belirsizliğin anlaşılıp uygun biçimde bildirilmesine bağlıdır."
+        }
+      ]
+    },
+    {
+      "word": "usher",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. içeri yöneltmek",
+        "ex": "Security staff ushered the delegates into the main hall minutes before the opening speech began.",
+        "exTr": "Güvenlik görevlileri, açılış konuşması başlamadan dakikalar önce delegeleri ana salona yöneltti."
+      },
+      "alternatives": [
+        {
+          "ex": "Guides will usher visitors into the side gallery in small groups, allowing everyone to view the demonstration without crowding the working area.",
+          "exTr": "Rehberler, çalışma alanında kalabalık oluşturmadan herkesin gösterimi izleyebilmesi için ziyaretçileri küçük gruplar hâlinde yan galeriye yönlendirecek."
+        }
+      ]
+    },
+    {
+      "word": "usually",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. genellikle, çoğunlukla",
+        "ex": "Migratory birds usually return to the same breeding grounds year after year.",
+        "exTr": "Göçmen kuşlar, genellikle yıldan yıla aynı üreme alanlarına geri döner."
+      },
+      "alternatives": [
+        {
+          "ex": "The seed usually remains attached to the fruit until it dries, although the field notes record exceptions under particularly windy conditions.",
+          "exTr": "Saha notları özellikle rüzgârlı koşullarda istisnalar kaydetse de tohum genellikle meyve kuruyana kadar ona bağlı kalır."
+        }
+      ]
+    },
+    {
+      "word": "utility",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. fayda, yarar",
+        "ex": "Economists questioned the long-term utility of the subsidy for small rural farmers.",
+        "exTr": "Ekonomistler, teşvikin küçük kırsal çiftçiler için uzun vadeli faydasını sorguladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The utility of the model lies in comparing possible outcomes, not in providing a precise prediction that remains valid under every conceivable condition.",
+          "exTr": "Modelin yararı, düşünülebilecek her koşulda geçerli kesin bir tahmin sunmasında değil, olası sonuçları karşılaştırmasındadır."
+        }
+      ]
+    },
+    {
+      "word": "utter",
+      "sense_index": 1,
+      "expected": {
+        "tr": "s. tam, mutlak, bütünüyle",
+        "ex": "The sudden failure of every backup system caused utter confusion in the control room.",
+        "exTr": "Bütün yedek sistemlerin aniden çökmesi kontrol odasında tam bir kargaşaya yol açtı."
+      },
+      "alternatives": [
+        {
+          "ex": "The sudden reversal caused utter disbelief among members who had spent months preparing a proposal based on assurances that the funding was secure.",
+          "exTr": "Ani geri dönüş, finansmanın kesin olduğuna dair güvencelere dayanarak aylarca öneri hazırlayan üyelerde tam bir şaşkınlık yarattı."
+        }
+      ]
+    },
+    {
+      "word": "vacation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. tatil",
+        "ex": "Many employees postpone their vacation until the end of the fiscal year for tax reasons.",
+        "exTr": "Birçok çalışan, vergisel nedenlerle tatilini mali yılın sonuna kadar erteler."
+      },
+      "alternatives": [
+        {
+          "ex": "The questionnaire asked how households planned a vacation, distinguishing constraints imposed by school calendars from those arising from irregular working hours.",
+          "exTr": "Anket, okul takvimlerinin getirdiği kısıtlamaları düzensiz çalışma saatlerinden kaynaklananlardan ayırarak hanelerin tatili nasıl planladığını sordu."
+        }
+      ]
+    },
+    {
+      "word": "vacuum",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. boşluk, vakum (fizikte madde yokluğu)",
+        "ex": "Engineers must design equipment that can withstand the extreme conditions of a vacuum in outer space.",
+        "exTr": "Mühendisler, uzay boşluğunun aşırı koşullarına dayanabilecek ekipmanlar tasarlamalıdır."
+      },
+      "alternatives": [
+        {
+          "ex": "The experiment required a partial vacuum inside the chamber, and pressure readings were recorded to show how closely the apparatus maintained the intended conditions.",
+          "exTr": "Deney, bölmenin içinde kısmi vakum gerektiriyordu ve düzeneğin hedeflenen koşulları ne ölçüde koruduğunu göstermek için basınç ölçümleri kaydedildi."
+        }
+      ]
+    },
+    {
+      "word": "vagus",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. vagus siniri, onuncu kafa siniri",
+        "ex": "Stimulating the vagus nerve can slow the heart rate, which is why the technique is sometimes used to treat arrhythmias.",
+        "exTr": "Vagus sinirini uyarmak kalp atış hızını yavaşlatabilir; bu nedenle teknik zaman zaman ritim bozukluklarının tedavisinde kullanılır."
+      },
+      "alternatives": [
+        {
+          "ex": "The anatomy lesson located the vagus nerve on a diagram before discussing its connections, keeping structural description separate from claims about particular treatments.",
+          "exTr": "Anatomi dersinde, yapısal betimleme belirli tedavilere ilişkin iddialardan ayrı tutularak bağlantıları tartışılmadan önce vagus sinirinin yeri şemada gösterildi."
+        }
+      ]
+    },
+    {
+      "word": "valid",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. geçerli",
+        "ex": "The passport must remain valid for at least six months beyond the traveler's planned departure date.",
+        "exTr": "Pasaportun, yolcunun planlanan ayrılış tarihinden itibaren en az altı ay daha geçerli olması gerekir."
+      },
+      "alternatives": [
+        {
+          "ex": "The conclusion remains valid only if the assumptions specified at the beginning of the argument hold for the cases being considered.",
+          "exTr": "Sonuç, yalnızca savın başında belirtilen varsayımlar ele alınan vakalar için geçerli olduğunda geçerliliğini korur."
+        }
+      ]
+    },
+    {
+      "word": "valuable",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. değerli, kıymetli",
+        "ex": "Fossils discovered in the region provide valuable evidence about the climate of prehistoric Earth.",
+        "exTr": "Bölgede keşfedilen fosiller, tarih öncesi Dünya'nın iklimi hakkında değerli kanıtlar sunuyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Observations made by local volunteers proved valuable because they covered periods when the research team could not maintain a continuous presence in the area.",
+          "exTr": "Yerel gönüllülerin gözlemleri, araştırma ekibinin bölgede sürekli bulunamadığı dönemleri kapsadığı için değerli çıktı."
+        }
+      ]
+    },
+    {
+      "word": "valued",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. değerli, değer verilen",
+        "ex": "The company recognized its most valued employees with awards during the annual conference last November.",
+        "exTr": "Şirket, geçen kasım ayındaki yıllık konferansta en değerli çalışanlarını ödüllerle takdir etti."
+      },
+      "alternatives": [
+        {
+          "ex": "Access to reliable feedback was a highly valued feature of the programme, particularly among participants who had little opportunity to discuss their work elsewhere.",
+          "exTr": "Güvenilir geri bildirime erişim, özellikle çalışmalarını başka yerde tartışma olanağı az olan katılımcılar arasında programın çok değer verilen bir özelliğiydi."
+        }
+      ]
+    },
+    {
+      "word": "vampire",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. vampir",
+        "ex": "Folklorists trace many vampire legends back to medieval fears about disease and unexplained deaths in villages.",
+        "exTr": "Folklor araştırmacıları, birçok vampir efsanesini köylerdeki hastalık ve açıklanamayan ölümlere ilişkin ortaçağ korkularına dayandırır."
+      },
+      "alternatives": [
+        {
+          "ex": "The essay examines the vampire as a literary figure, comparing its role in different stories rather than assuming that every author draws on identical traditions.",
+          "exTr": "Deneme, her yazarın aynı geleneklerden yararlandığını varsaymak yerine farklı öykülerdeki rolünü karşılaştırarak vampiri edebî bir figür olarak inceliyor."
+        }
+      ]
+    },
+    {
+      "word": "vanish",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. kaybolmak, yok olmak",
+        "ex": "Within a few decades, several coastal villages could vanish entirely due to rising sea levels.",
+        "exTr": "Birkaç on yıl içinde, yükselen deniz seviyeleri nedeniyle bazı kıyı köyleri tamamen yok olabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "A familiar landmark can vanish from collective memory if later maps omit it and the people who remember its use are never interviewed.",
+          "exTr": "Sonraki haritalar bir yeri dışarıda bırakır ve kullanımını hatırlayan kişilerle hiç görüşülmezse tanıdık bir yer toplumsal bellekten silinebilir."
+        }
+      ]
+    },
+    {
+      "word": "vapour",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. buhar, buğu",
+        "ex": "Thin vapour rose slowly from the surface of the hot spring on cold mornings.",
+        "exTr": "Soğuk sabahlarda sıcak su kaynağının yüzeyinden ince bir buhar yavaşça yükseliyordu."
+      },
+      "alternatives": [
+        {
+          "ex": "The model estimates how water vapour moves through the material, allowing researchers to compare designs intended for use in different humidity conditions.",
+          "exTr": "Model, araştırmacıların farklı nem koşullarında kullanılması amaçlanan tasarımları karşılaştırmasına olanak tanıyarak su buharının malzeme içindeki hareketini tahmin ediyor."
+        }
+      ]
+    },
+    {
+      "word": "variably",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. değişken biçimde, farklı farklı, değişen oranlarda",
+        "ex": "The compound is variably absorbed by different tissues, which makes predicting its overall effect on the organism extremely difficult.",
+        "exTr": "Bileşik farklı dokularca değişken oranlarda emilir; bu da onun organizma üzerindeki genel etkisini öngörmeyi son derece güçleştirir."
+      },
+      "alternatives": [
+        {
+          "ex": "The term is variably defined across the studies, making direct comparison difficult unless the authors explain exactly which activities their categories include.",
+          "exTr": "Terim çalışmalar arasında farklı biçimlerde tanımlandığından yazarlar kategorilerinin tam olarak hangi faaliyetleri içerdiğini açıklamadıkça doğrudan karşılaştırma güçleşir."
+        }
+      ]
+    },
+    {
+      "word": "variation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. değişim, çeşitlenme, varyasyon",
+        "ex": "Scientists observed considerable variation in beak size among finches living on different islands.",
+        "exTr": "Bilim insanları, farklı adalarda yaşayan ispinozların gaga boyutunda belirgin bir çeşitlenme gözlemledi."
+      },
+      "alternatives": [
+        {
+          "ex": "Variation within each group was greater than the difference between their averages, a finding that challenged the initial emphasis on group membership.",
+          "exTr": "Her grubun içindeki değişkenlik, ortalamaları arasındaki farktan daha büyüktü; bu bulgu başlangıçta grup üyeliğine yapılan vurguyu sorgulattı."
+        }
+      ]
+    },
+    {
+      "word": "various",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. çeşitli, farklı",
+        "ex": "The museum displays artifacts from various civilizations that once flourished in Anatolia.",
+        "exTr": "Müze, bir zamanlar Anadolu'da serpilip gelişen çeşitli uygarlıklara ait eserler sergiliyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The report brings together various accounts of the redevelopment, giving space to residents, shopkeepers and planners whose priorities did not always coincide.",
+          "exTr": "Rapor, öncelikleri her zaman örtüşmeyen sakinlere, esnafa ve planlamacılara yer vererek yeniden geliştirmeye ilişkin çeşitli anlatımları bir araya getiriyor."
+        }
+      ]
+    },
+    {
+      "word": "varying",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. değişen, farklılık gösteren, çeşitli",
+        "ex": "Patients respond to the treatment with varying degrees of success, depending on age and health.",
+        "exTr": "Hastalar, yaş ve sağlık durumuna bağlı olarak tedaviye değişen derecelerde başarıyla yanıt veriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The specimens were photographed under varying light conditions to establish which surface features remained visible regardless of the direction of illumination.",
+          "exTr": "Aydınlatmanın yönünden bağımsız olarak hangi yüzey özelliklerinin görünür kaldığını belirlemek için numuneler farklı ışık koşullarında fotoğraflandı."
+        }
+      ]
+    },
+    {
+      "word": "vast",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. muazzam, geniş, uçsuz bucaksız",
+        "ex": "Astronomers estimate that our galaxy contains a vast number of undiscovered planets.",
+        "exTr": "Gökbilimciler, galaksimizin muazzam sayıda keşfedilmemiş gezegen barındırdığını tahmin ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The vast number of possible combinations made exhaustive testing impractical, so the engineers selected cases designed to expose different kinds of weakness.",
+          "exTr": "Olası birleşimlerin muazzam sayısı, hepsini sınamayı uygulanamaz kıldığından mühendisler farklı zayıflık türlerini ortaya çıkaracak durumları seçti."
+        }
+      ]
+    },
+    {
+      "word": "vault",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kasa dairesi, kasa (banka için)",
+        "ex": "Security guards patrol around the bank's underground vault, where valuable documents and gold reserves are stored.",
+        "exTr": "Güvenlik görevlileri, değerli belgelerin ve altın rezervlerinin saklandığı bankanın yeraltı kasa dairesinin etrafında devriye gezer."
+      },
+      "alternatives": [
+        {
+          "ex": "The bank's former vault now houses an exhibition about local commerce, with its heavy door retained as evidence of the building's earlier purpose.",
+          "exTr": "Bankanın eski kasa dairesi artık yerel ticaret hakkında bir sergiye ev sahipliği yapıyor; ağır kapısı binanın önceki amacının kanıtı olarak korunuyor."
+        }
+      ]
+    },
+    {
+      "word": "vegetable",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sebze",
+        "ex": "A diet rich in vegetable fiber has been linked to a lower risk of heart disease.",
+        "exTr": "Sebze lifi açısından zengin bir beslenme düzeni, kalp hastalığı riskinin düşmesiyle ilişkilendirilmiştir."
+      },
+      "alternatives": [
+        {
+          "ex": "The survey asked residents which vegetable varieties they grew, recording both household preferences and the practical limits imposed by the size of each garden.",
+          "exTr": "Araştırma, hem hane tercihlerini hem de bahçelerin büyüklüğünün getirdiği pratik sınırları kaydederek sakinlere hangi sebze çeşitlerini yetiştirdiklerini sordu."
+        }
+      ]
+    },
+    {
+      "word": "vegetation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. bitki örtüsü, bitki topluluğu",
+        "ex": "Dense vegetation covers most of the mountain slopes throughout the rainy season.",
+        "exTr": "Yağmurlu mevsim boyunca dağ yamaçlarının çoğunu yoğun bitki örtüsü kaplar."
+      },
+      "alternatives": [
+        {
+          "ex": "Changes in vegetation along the abandoned railway were recorded over several seasons, allowing ecologists to distinguish persistent patterns from short-lived differences.",
+          "exTr": "Ekologların kalıcı örüntüleri kısa süreli farklılıklardan ayırabilmesi için terk edilmiş demir yolu boyunca bitki örtüsündeki değişimler birkaç mevsim boyunca kaydedildi."
+        }
+      ]
+    },
+    {
+      "word": "velocity",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. hız, sürat",
+        "ex": "Engineers calculated the velocity of the falling object to test their theoretical model.",
+        "exTr": "Mühendisler, kuramsal modellerini test etmek için düşen cismin hızını hesapladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The diagram represents velocity with an arrow, indicating both the speed of the moving object and the direction in which it travels.",
+          "exTr": "Şema, hareketli cismin hem süratini hem de hareket yönünü göstermek için hızı bir okla temsil ediyor."
+        }
+      ]
+    },
+    {
+      "word": "ventilation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. havalandırma",
+        "ex": "Poor ventilation in the crowded workshop allowed dust and fumes to accumulate throughout the day.",
+        "exTr": "Kalabalık atölyedeki yetersiz havalandırma, toz ve dumanın gün boyunca birikmesine neden oldu."
+      },
+      "alternatives": [
+        {
+          "ex": "The renovation improved ventilation without removing the original windows, demonstrating how practical requirements could be addressed while retaining significant features of the building.",
+          "exTr": "Yenileme, özgün pencereleri kaldırmadan havalandırmayı iyileştirerek binanın önemli özelliklerini korurken pratik gereksinimlerin nasıl karşılanabileceğini gösterdi."
+        }
+      ]
+    },
+    {
+      "word": "verb",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. fiil, eylem",
+        "ex": "In English, the position of the verb typically remains fixed regardless of the sentence's emphasis.",
+        "exTr": "İngilizcede fiilin konumu, cümlenin vurgusundan bağımsız olarak genellikle sabit kalır."
+      },
+      "alternatives": [
+        {
+          "ex": "Changing the tense of a single verb can alter the relationship between events, even when the remaining words in the sentence stay unchanged.",
+          "exTr": "Cümledeki diğer sözcükler değişmese bile tek bir fiilin zamanını değiştirmek olaylar arasındaki ilişkiyi değiştirebilir."
+        }
+      ]
+    },
+    {
+      "word": "verification",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. doğrulama",
+        "ex": "Independent verification showed that the reported energy savings could be reproduced consistently.",
+        "exTr": "Bağımsız doğrulama, bildirilen enerji tasarrufunun tutarlı biçimde yeniden elde edilebildiğini gösterdi."
+      },
+      "alternatives": [
+        {
+          "ex": "Verification of the calculation required access to the original measurements, not merely a description of the result that the authors hoped to reproduce.",
+          "exTr": "Hesaplamanın doğrulanması, yalnızca yazarların yeniden elde etmeyi umduğu sonucun betimlenmesini değil, özgün ölçümlere erişimi gerektiriyordu."
+        }
+      ]
+    },
+    {
+      "word": "version",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sürüm, versiyon",
+        "ex": "Each culture seems to preserve its own version of the same ancient flood myth.",
+        "exTr": "Her kültür, aynı kadim tufan mitinin kendi versiyonunu korumuş gibi görünüyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The revised version includes objections raised during consultation, making the development of the proposal more visible than a text presenting only the final agreement.",
+          "exTr": "Gözden geçirilmiş sürüm, görüşmeler sırasında dile getirilen itirazları içererek önerinin gelişimini yalnızca nihai uzlaşmayı sunan bir metinden daha görünür kılıyor."
+        }
+      ]
+    },
+    {
+      "word": "very",
+      "sense_index": 1,
+      "expected": {
+        "tr": "s. tam, gerçek, aynı",
+        "ex": "The committee reached its decision at the very moment the final report was submitted.",
+        "exTr": "Komite, nihai rapor sunulduğu tam anda kararını verdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The very documents used to support the original interpretation later supplied evidence against it when researchers examined passages that had previously received little attention.",
+          "exTr": "Araştırmacılar daha önce az ilgi gören bölümleri incelediğinde, ilk yorumu desteklemek için kullanılan aynı belgeler daha sonra bu yoruma karşı kanıt sağladı."
+        }
+      ]
+    },
+    {
+      "word": "veteran",
+      "sense_index": 1,
+      "expected": {
+        "tr": "s. deneyimli, kıdemli",
+        "ex": "The veteran journalist covered five presidential elections during her long career at the newspaper.",
+        "exTr": "Kıdemli gazeteci, gazetedeki uzun kariyeri boyunca beş cumhurbaşkanlığı seçimini haberleştirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "A veteran engineer recognised signs of an earlier repair, encouraging the younger team to examine maintenance records before proposing changes to the structure.",
+          "exTr": "Deneyimli bir mühendis önceki bir onarımın izlerini tanıyarak genç ekibi yapıda değişiklik önermeden önce bakım kayıtlarını incelemeye teşvik etti."
+        }
+      ]
+    },
+    {
+      "word": "viable",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. uygulanabilir, gerçekleştirilebilir",
+        "ex": "Scientists are searching for a viable alternative to fossil fuels for transportation.",
+        "exTr": "Bilim insanları, ulaşım için fosil yakıtlara uygulanabilir bir alternatif arıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Sharing the facility appeared to be a viable option once the two organisations established that their busiest periods occurred at different times.",
+          "exTr": "İki kuruluş en yoğun dönemlerinin farklı zamanlara denk geldiğini belirledikten sonra tesisi paylaşmak uygulanabilir bir seçenek olarak göründü."
+        }
+      ]
+    },
+    {
+      "word": "vice",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kötü alışkanlık, ahlaki zaaf",
+        "ex": "Excessive gambling is often considered a vice that can severely damage a person's financial stability.",
+        "exTr": "Aşırı kumar, bir kişinin mali istikrarına ciddi zarar verebilecek bir kötü alışkanlık olarak sıklıkla görülür."
+      },
+      "alternatives": [
+        {
+          "ex": "The essay examines how a behaviour could be praised as a virtue in one setting yet condemned as a vice in another.",
+          "exTr": "Deneme, bir davranışın bir ortamda erdem olarak övülürken başka bir ortamda ahlaki zaaf olarak nasıl kınanabildiğini inceliyor."
+        }
+      ]
+    },
+    {
+      "word": "victimise",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. mağdur etmek, kurban etmek, haksızlığa uğratmak",
+        "ex": "Anti-bullying programmes work best when they teach bystanders how to intervene before aggressive pupils victimise their weaker classmates.",
+        "exTr": "Zorbalık karşıtı programlar, saldırgan öğrenciler daha güçsüz sınıf arkadaşlarını mağdur etmeden önce izleyenlere nasıl müdahale edeceklerini öğrettiklerinde en iyi sonucu verir."
+      },
+      "alternatives": [
+        {
+          "ex": "The review asked whether informal workplace practices could victimise employees who questioned decisions, even when written procedures appeared to protect open discussion.",
+          "exTr": "İnceleme, yazılı süreçler açık tartışmayı koruyor görünse bile gayriresmî iş yeri uygulamalarının kararları sorgulayan çalışanları mağdur edip edemeyeceğini sordu."
+        }
+      ]
+    },
+    {
+      "word": "victorious",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. galip, muzaffer",
+        "ex": "The underdog team emerged victorious after a dramatic final match in the tournament.",
+        "exTr": "Şampiyonluğa aday görülmeyen takım, turnuvadaki dramatik final maçının ardından galip geldi."
+      },
+      "alternatives": [
+        {
+          "ex": "The victorious candidate acknowledged that the narrow result reflected a divided electorate and promised to consult groups that had supported her opponents.",
+          "exTr": "Galip aday, küçük oy farkının bölünmüş bir seçmen kitlesini yansıttığını kabul etti ve rakiplerini destekleyen gruplarla görüşme sözü verdi."
+        }
+      ]
+    },
+    {
+      "word": "view",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. görmek, saymak, değerlendirmek",
+        "ex": "Many economists view rising automation as both a threat and an opportunity for labor markets.",
+        "exTr": "Birçok ekonomist, artan otomasyonu işgücü piyasaları için hem bir tehdit hem de bir fırsat olarak görüyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Researchers increasingly view the settlement as a changing network of activities rather than a fixed collection of buildings with permanently assigned functions.",
+          "exTr": "Araştırmacılar, yerleşimi kalıcı işlevler verilmiş sabit bir binalar topluluğu yerine giderek daha çok değişen bir faaliyet ağı olarak görüyor."
+        }
+      ]
+    },
+    {
+      "word": "viewpoint",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. bakış açısı, görüş noktası",
+        "ex": "The documentary presents multiple viewpoints on the controversial dam project without favoring any single side.",
+        "exTr": "Belgesel, tartışmalı baraj projesi hakkında herhangi bir tarafı kayırmadan birçok bakış açısı sunuyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Reading the correspondence from the apprentice's viewpoint reveals practical concerns that are largely absent from accounts centred on the workshop owner's achievements.",
+          "exTr": "Yazışmaları çırağın bakış açısından okumak, atölye sahibinin başarılarına odaklanan anlatımlarda büyük ölçüde bulunmayan pratik kaygıları ortaya çıkarıyor."
+        }
+      ]
+    },
+    {
+      "word": "vigilant",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. tetikte, uyanık, sürekli dikkatli",
+        "ex": "Health authorities urged doctors to remain vigilant for unusual symptoms, since early detection offers the only realistic chance of containing the outbreak.",
+        "exTr": "Salgını kontrol altına almanın tek gerçekçi yolu erken teşhis olduğundan, sağlık yetkilileri doktorları olağan dışı belirtilere karşı tetikte kalmaya çağırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "Editors must remain vigilant for changes introduced during transcription, since a seemingly harmless correction can remove evidence about the original writer's language.",
+          "exTr": "Görünüşte zararsız bir düzeltme asıl yazarın diline ilişkin kanıtları silebildiğinden editörler yazıya dökme sırasında yapılan değişikliklere karşı dikkatli kalmalıdır."
+        }
+      ]
+    },
+    {
+      "word": "villa",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. villa, köşk",
+        "ex": "The family rented a small villa near the coast for their summer vacation.",
+        "exTr": "Aile, yaz tatilleri için kıyıya yakın küçük bir villa kiraladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The restored villa opened as a local museum, with several rooms arranged to show how domestic space had changed across successive generations.",
+          "exTr": "Restore edilen villa, birkaç odası ev içi mekânın art arda gelen kuşaklar boyunca nasıl değiştiğini gösterecek biçimde düzenlenerek yerel müze olarak açıldı."
+        }
+      ]
+    },
+    {
+      "word": "vine",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. asma, sarmaşık",
+        "ex": "Farmers trained each grape vine along wooden frames to maximize sunlight exposure during summer.",
+        "exTr": "Çiftçiler, yaz boyunca güneş ışığından en iyi şekilde yararlanmak için her asmayı ahşap çerçevelere sardı."
+      },
+      "alternatives": [
+        {
+          "ex": "The gardener traced the vine's growth along the wall, recording which sections received direct sunlight and which remained shaded by nearby trees.",
+          "exTr": "Bahçıvan, hangi bölümlerin doğrudan güneş aldığını ve hangilerinin yakındaki ağaçların gölgesinde kaldığını kaydederek sarmaşığın duvar boyunca gelişimini izledi."
+        }
+      ]
+    },
+    {
+      "word": "violence",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. şiddet",
+        "ex": "Sociologists studied how economic hardship can contribute to rising violence within urban communities.",
+        "exTr": "Sosyologlar, ekonomik sıkıntının kentsel topluluklardaki artan şiddete nasıl katkıda bulunabileceğini inceledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The historian compared reports of violence with accounts of mediation, questioning narratives that portrayed the entire period as one of uninterrupted conflict.",
+          "exTr": "Tarihçi, bütün dönemi kesintisiz çatışma dönemi olarak gösteren anlatıları sorgulayarak şiddet bildirimlerini arabuluculuk anlatımlarıyla karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "violin",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. keman",
+        "ex": "Learning to play the violin at an early age appears to strengthen the neural connections associated with auditory processing.",
+        "exTr": "Erken yaşta keman çalmayı öğrenmenin, işitsel işlemeyle ilişkili sinirsel bağlantıları güçlendirdiği görülüyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The violin was examined before restoration so that changes made by earlier owners could be documented separately from features attributed to its original maker.",
+          "exTr": "Önceki sahiplerin yaptığı değişiklikler ilk yapımcısına atfedilen özelliklerden ayrı belgelenebilsin diye keman restorasyondan önce incelendi."
+        }
+      ]
+    },
+    {
+      "word": "virgin",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. bakir, el değmemiş, işlenmemiş (doğa/toprak için)",
+        "ex": "Conservationists are working to protect one of the last areas of virgin rainforest in the region.",
+        "exTr": "Doğa koruma uzmanları, bölgedeki son bakir yağmur ormanı alanlarından birini korumak için çalışıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Describing the forest as virgin overlooked evidence that local communities had managed parts of the landscape without clearing it for permanent cultivation.",
+          "exTr": "Ormanı el değmemiş olarak tanımlamak, yerel toplulukların alanın bazı bölümlerini sürekli tarıma açmadan yönettiğine ilişkin kanıtları göz ardı ediyordu."
+        }
+      ]
+    },
+    {
+      "word": "virtue",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. erdem; meziyet, üstünlük",
+        "ex": "Ancient philosophers often debated whether virtue could be taught or was simply an innate quality.",
+        "exTr": "Antik filozoflar, erdemin öğretilebilir mi yoksa doğuştan gelen bir nitelik mi olduğunu sık sık tartışırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The main virtue of the method is its transparency: readers can trace each conclusion back to observations rather than accept an unexplained overall score.",
+          "exTr": "Yöntemin başlıca üstünlüğü şeffaflığıdır: okurlar açıklanmamış bir genel puanı kabul etmek yerine her sonucun dayandığı gözlemleri izleyebilir."
+        }
+      ]
+    },
+    {
+      "word": "visibility",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. görünürlük, görülebilme derecesi",
+        "ex": "Dense smoke reduced visibility and forced drivers to slow down along the motorway.",
+        "exTr": "Yoğun duman görünürlüğü azalttı ve sürücüleri otoyolda yavaşlamaya zorladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The new lighting increased visibility near the entrance, but the design team also checked whether reflections made the information panels harder to read.",
+          "exTr": "Yeni aydınlatma giriş yakınında görünürlüğü artırdı; ancak tasarım ekibi yansımaların bilgi panolarını okumayı zorlaştırıp zorlaştırmadığını da kontrol etti."
+        }
+      ]
+    },
+    {
+      "word": "visit",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. ziyaret",
+        "ex": "A brief visit to the factory convinced investors that the new production line was highly efficient.",
+        "exTr": "Fabrikaya yapılan kısa bir ziyaret, yatırımcıları yeni üretim hattının son derece verimli olduğuna ikna etti."
+      },
+      "alternatives": [
+        {
+          "ex": "A second visit revealed changes in how the room was used, showing why a single observation could not capture the full range of activities.",
+          "exTr": "İkinci bir ziyaret, odanın kullanımındaki değişimleri ortaya çıkararak tek bir gözlemin etkinliklerin bütün çeşitliliğini neden yansıtamayacağını gösterdi."
+        }
+      ]
+    },
+    {
+      "word": "visual",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. görsel",
+        "ex": "Museums increasingly rely on visual displays to explain complex scientific concepts to visitors.",
+        "exTr": "Müzeler, karmaşık bilimsel kavramları ziyaretçilere anlatmak için giderek daha çok görsel sergilere başvuruyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Visual evidence was considered alongside written testimony, since photographs could clarify spatial arrangements while leaving the participants' intentions uncertain.",
+          "exTr": "Fotoğraflar katılımcıların niyetlerini belirsiz bırakırken mekânsal düzenlemeleri açıklığa kavuşturabildiğinden görsel kanıtlar yazılı tanıklıklarla birlikte değerlendirildi."
+        }
+      ]
+    },
+    {
+      "word": "vitality",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. canlılık, dinçlik, yaşam gücü",
+        "ex": "Economists argue that the vitality of a city depends less on its size than on the diversity of the industries it supports.",
+        "exTr": "İktisatçılar, bir şehrin canlılığının büyüklüğünden çok barındırdığı sektörlerin çeşitliliğine bağlı olduğunu ileri sürüyorlar."
+      },
+      "alternatives": [
+        {
+          "ex": "The district's cultural vitality depended partly on affordable rehearsal rooms where established performers and new groups could develop their work alongside one another.",
+          "exTr": "Bölgenin kültürel canlılığı kısmen tanınmış icracılarla yeni grupların yan yana çalışabildiği uygun fiyatlı prova odalarına bağlıydı."
+        }
+      ]
+    },
+    {
+      "word": "vivid",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. canlı, parlak (renk); çarpıcı",
+        "ex": "Survivors described the disaster in vivid detail, recalling colors and sounds decades after the event.",
+        "exTr": "Hayatta kalanlar, olaydan onlarca yıl sonra bile renkleri ve sesleri hatırlayarak felaketi çarpıcı ayrıntılarla anlattı."
+      },
+      "alternatives": [
+        {
+          "ex": "The account provides a vivid description of the marketplace, but its colourful detail must still be assessed against other evidence from the period.",
+          "exTr": "Anlatım pazar yerinin canlı bir betimlemesini sunuyor; ancak renkli ayrıntıları yine de döneme ait diğer kanıtlarla değerlendirilmelidir."
+        }
+      ]
+    },
+    {
+      "word": "vocational",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. mesleki",
+        "ex": "The community college expanded its vocational training programs to prepare students for skilled trade jobs.",
+        "exTr": "Meslek yüksekokulu, öğrencileri nitelikli zanaat işlerine hazırlamak için mesleki eğitim programlarını genişletti."
+      },
+      "alternatives": [
+        {
+          "ex": "The study followed graduates of vocational courses to examine how their training related to the tasks they actually performed in subsequent employment.",
+          "exTr": "Çalışma, aldıkları eğitimin daha sonraki işlerinde gerçekten yaptıkları görevlerle nasıl ilişkili olduğunu incelemek için mesleki kurs mezunlarını izledi."
+        }
+      ]
+    },
+    {
+      "word": "volcanic",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. volkanik",
+        "ex": "The island's fertile soil comes from centuries of volcanic ash settling across the region.",
+        "exTr": "Adanın verimli toprağı, yüzyıllar boyunca bölgeye yerleşen volkanik küllerden gelir."
+      },
+      "alternatives": [
+        {
+          "ex": "Layers of volcanic ash helped researchers compare the timing of changes at separate sites, provided that the deposits could be linked to the same eruption.",
+          "exTr": "Tortular aynı püskürmeyle ilişkilendirilebildiği sürece volkanik kül katmanları, araştırmacıların ayrı alanlardaki değişimlerin zamanlamasını karşılaştırmasına yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "volition",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. irade, kendi isteği",
+        "ex": "He left the company entirely of his own volition, without any pressure from management.",
+        "exTr": "Şirketten, yönetimden herhangi bir baskı olmaksızın tamamen kendi iradesiyle ayrıldı."
+      },
+      "alternatives": [
+        {
+          "ex": "Participants could leave the project of their own volition, and the information sheet explained how withdrawal would affect material they had already contributed.",
+          "exTr": "Katılımcılar projeden kendi istekleriyle ayrılabiliyordu ve bilgi formu, çekilmenin daha önce sundukları malzemeyi nasıl etkileyeceğini açıklıyordu."
+        }
+      ]
+    },
+    {
+      "word": "volume",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. hacim",
+        "ex": "Traffic engineers measured the volume of vehicles passing through the intersection during rush hour.",
+        "exTr": "Trafik mühendisleri, yoğun saatlerde kavşaktan geçen araç hacmini ölçtü."
+      },
+      "alternatives": [
+        {
+          "ex": "The volume of correspondence increased after the announcement, forcing the team to distinguish routine enquiries from requests that required a specialist response.",
+          "exTr": "Duyurudan sonra yazışma hacmi artınca ekip, olağan soruları uzman yanıtı gerektiren taleplerden ayırmak zorunda kaldı."
+        }
+      ]
+    }
+  ],
+  "collocations": [
+    {
+      "word": "urine",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a urine sample",
+          "tr": "idrar örneği"
+        },
+        {
+          "en": "a urine test",
+          "tr": "idrar testi"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "utter",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "utter a word",
+          "tr": "tek bir söz söylemek"
+        },
+        {
+          "en": "utter confusion",
+          "tr": "tam bir karmaşa"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "vampire",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a vampire legend",
+          "tr": "vampir efsanesi"
+        },
+        {
+          "en": "vampire fiction",
+          "tr": "vampir konulu kurmaca"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "villa",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a Roman villa",
+          "tr": "Roma dönemi villası"
+        },
+        {
+          "en": "a seaside villa",
+          "tr": "deniz kıyısında villa"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "vine",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a grape vine",
+          "tr": "üzüm asması"
+        },
+        {
+          "en": "a climbing vine",
+          "tr": "tırmanıcı sarmaşık"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

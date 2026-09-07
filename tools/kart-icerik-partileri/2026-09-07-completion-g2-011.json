@@ -1,0 +1,989 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 2,
+    "input": "input-011.json"
+  },
+  "enrichments": [
+    {
+      "word": "conversion",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. dönüşüm, dönüştürme",
+        "ex": "The old warehouse underwent a complete conversion into modern apartments last year.",
+        "exTr": "Eski depo, geçen yıl modern dairelere tam bir dönüşüm geçirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The conversion of the warehouse required careful planning because its deep interior had originally been designed for storage rather than daily occupation.",
+          "exTr": "Deponun dönüştürülmesi dikkatli planlama gerektiriyordu; çünkü derin iç mekânı başlangıçta günlük kullanım için değil depolama için tasarlanmıştı."
+        }
+      ]
+    },
+    {
+      "word": "convey",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. iletmek, aktarmak; (duygu/fikir) anlatmak",
+        "ex": "The ambassador's speech aimed to convey his country's support for the peace agreement.",
+        "exTr": "Büyükelçinin konuşması, ülkesinin barış anlaşmasına verdiği desteği iletmeyi amaçlıyordu."
+      },
+      "alternatives": [
+        {
+          "ex": "A photograph can convey the scale of the damage without explaining the sequence of decisions that led to it.",
+          "exTr": "Bir fotoğraf, hasara yol açan kararlar dizisini açıklamadan hasarın boyutunu aktarabilir."
+        }
+      ]
+    },
+    {
+      "word": "convinced",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. ikna olmuş, emin",
+        "ex": "Many economists remain convinced that automation will fundamentally reshape the global labor market.",
+        "exTr": "Birçok ekonomist, otomasyonun küresel iş gücü piyasasını temelden yeniden şekillendireceğine ikna olmuş durumda."
+      },
+      "alternatives": [
+        {
+          "ex": "The editor was convinced that the passage needed clarification, although she accepted that shortening it would remove essential qualifications.",
+          "exTr": "Editör, kısaltmanın temel sınırlayıcı açıklamaları çıkaracağını kabul etse de bölümün netleştirilmesi gerektiğine ikna olmuştu."
+        }
+      ]
+    },
+    {
+      "word": "cookery",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yemek pişirme sanatı, mutfak, aşçılık",
+        "ex": "Regional cookery in the Mediterranean relies heavily on olive oil, fresh vegetables and seafood, ingredients that were once dictated by local geography.",
+        "exTr": "Akdeniz'in yöresel mutfağı büyük ölçüde zeytinyağına, taze sebzelere ve deniz ürünlerine dayanır; bu malzemeleri bir zamanlar yerel coğrafya belirlerdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The collection of cookery books reveals changing assumptions about household equipment, available ingredients and the time readers could devote to preparing meals.",
+          "exTr": "Aşçılık kitapları koleksiyonu, ev ekipmanı, mevcut malzemeler ve okurların yemek hazırlamaya ayırabildiği zaman hakkındaki değişen varsayımları ortaya koyuyor."
+        }
+      ]
+    },
+    {
+      "word": "cool",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. soğumak, soğutmak",
+        "ex": "Engineers designed a new system that allows the engine to cool much faster than before.",
+        "exTr": "Mühendisler, motorun eskisinden çok daha hızlı soğumasını sağlayan yeni bir sistem tasarladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The technicians allowed the apparatus to cool before examining whether repeated expansion had affected the connections between its components.",
+          "exTr": "Teknisyenler, tekrarlanan genleşmenin parçalar arasındaki bağlantıları etkileyip etkilemediğini incelemeden önce düzeneğin soğumasını bekledi."
+        }
+      ]
+    },
+    {
+      "word": "cooling",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. soğutma",
+        "ex": "Engineers designed a new cooling system to prevent the server room from overheating during peak hours.",
+        "exTr": "Mühendisler, yoğun saatlerde sunucu odasının aşırı ısınmasını önlemek için yeni bir soğutma sistemi tasarladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The cooling system was evaluated under different workloads rather than tested only when the equipment was first switched on.",
+          "exTr": "Soğutma sistemi yalnızca ekipman ilk açıldığında test edilmek yerine farklı iş yükleri altında değerlendirildi."
+        }
+      ]
+    },
+    {
+      "word": "cooperative",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. iş birliğine dayalı, ortaklaşa",
+        "ex": "Successful teamwork often depends on a cooperative attitude among all members of the group.",
+        "exTr": "Başarılı takım çalışması, genellikle grubun tüm üyeleri arasındaki iş birliğine dayalı tutuma bağlıdır."
+      },
+      "alternatives": [
+        {
+          "ex": "A cooperative approach allowed the neighbouring workshops to share equipment without requiring them to merge their separate businesses.",
+          "exTr": "İş birliğine dayalı yaklaşım, komşu atölyelerin ayrı işletmelerini birleştirmesini gerektirmeden ekipman paylaşmasını sağladı."
+        }
+      ]
+    },
+    {
+      "word": "coordination",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. koordinasyon, eşgüdüm",
+        "ex": "Effective disaster response requires close coordination between local governments and international aid agencies.",
+        "exTr": "Etkili afet müdahalesi, yerel yönetimler ile uluslararası yardım kuruluşları arasında yakın koordinasyon gerektirir."
+      },
+      "alternatives": [
+        {
+          "ex": "Better coordination of delivery times reduced interruptions, especially where several suppliers needed access to the same narrow loading area.",
+          "exTr": "Teslimat saatlerinin daha iyi koordine edilmesi, özellikle birkaç tedarikçinin aynı dar yükleme alanına erişmesi gerektiği yerlerde kesintileri azalttı."
+        }
+      ]
+    },
+    {
+      "word": "coping",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. başa çıkma, üstesinden gelme",
+        "ex": "Therapists teach patients simple coping strategies to manage anxiety during stressful situations.",
+        "exTr": "Terapistler, hastalara stresli durumlarda kaygıyla başa çıkabilmeleri için basit stratejiler öğretir."
+      },
+      "alternatives": [
+        {
+          "ex": "The interviews explored everyday coping strategies without assuming that individuals could resolve difficulties created by insecure employment and housing.",
+          "exTr": "Görüşmeler, bireylerin güvencesiz istihdam ve konut koşullarının yarattığı güçlükleri çözebileceğini varsaymadan günlük başa çıkma stratejilerini araştırdı."
+        }
+      ]
+    },
+    {
+      "word": "coral",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. mercan",
+        "ex": "Rising sea temperatures have caused significant damage to coral reefs worldwide.",
+        "exTr": "Yükselen deniz sıcaklıkları, dünya genelinde mercan resiflerine ciddi zarar verdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The coral specimen was displayed beside drawings documenting its collection, allowing visitors to examine both its structure and the history of its acquisition.",
+          "exTr": "Mercan örneği, ziyaretçilerin hem yapısını hem edinilme geçmişini inceleyebilmesi için toplanmasını belgeleyen çizimlerin yanında sergilendi."
+        }
+      ]
+    },
+    {
+      "word": "core",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. çekirdek, öz, merkez",
+        "ex": "Geologists study samples from the Earth's core to understand how the magnetic field forms.",
+        "exTr": "Jeologlar, manyetik alanın nasıl oluştuğunu anlamak için Dünya'nın çekirdeğinden alınan örnekleri inceliyor."
+      },
+      "alternatives": [
+        {
+          "ex": "At the core of the disagreement lies a question about responsibility that changes to the timetable alone cannot resolve.",
+          "exTr": "Görüş ayrılığının özünde, yalnızca takvim değişiklikleriyle çözülemeyecek bir sorumluluk meselesi yatıyor."
+        }
+      ]
+    },
+    {
+      "word": "cornerstone",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. temel taşı (mecazi)",
+        "ex": "Free elections are widely regarded as the cornerstone of any functioning democratic society.",
+        "exTr": "Serbest seçimler, işleyen herhangi bir demokratik toplumun temel taşı olarak geniş çapta kabul edilir."
+      },
+      "alternatives": [
+        {
+          "ex": "Reliable record-keeping became the cornerstone of the partnership, enabling members to trace decisions even when the original participants were unavailable.",
+          "exTr": "Güvenilir kayıt tutma, ilk katılımcılar bulunmadığında bile üyelerin kararları izleyebilmesini sağlayarak ortaklığın temel taşına dönüştü."
+        }
+      ]
+    },
+    {
+      "word": "corporate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kurumsal, şirketlere ait",
+        "ex": "Large corporate mergers often raise concerns among regulators about reduced competition in the marketplace.",
+        "exTr": "Büyük kurumsal birleşmeler, genellikle düzenleyici kurumlarda piyasadaki rekabetin azalmasına dair kaygı uyandırır."
+      },
+      "alternatives": [
+        {
+          "ex": "The corporate archive includes internal discussions that differ markedly from the confident image presented in advertisements aimed at potential investors.",
+          "exTr": "Şirket arşivi, olası yatırımcılara yönelik reklamlarda sunulan kendinden emin görüntüden belirgin biçimde ayrılan kurum içi tartışmalar içeriyor."
+        }
+      ]
+    },
+    {
+      "word": "corpse",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ceset, ölü beden",
+        "ex": "Forensic scientists can estimate how long a corpse has lain undiscovered by examining the insects that have colonised the remains.",
+        "exTr": "Adli tıp uzmanları, kalıntıları istila eden böcekleri inceleyerek bir cesedin ne kadar süredir fark edilmeden yattığını tahmin edebilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The novel opens with the discovery of a corpse, but its central concern is the community's response rather than the mechanics of detection.",
+          "exTr": "Roman bir cesedin bulunmasıyla başlıyor; ancak temel meselesi suçun çözülme yöntemleri değil topluluğun verdiği tepki."
+        }
+      ]
+    },
+    {
+      "word": "correction",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. düzeltme, tashih",
+        "ex": "The newspaper published a correction after readers pointed out errors in the original article.",
+        "exTr": "Gazete, okurların ilk makaledeki hataları göstermesinin ardından bir düzeltme yayımladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The correction explains which figures were affected by the error and why the revised totals do not alter the report's main conclusion.",
+          "exTr": "Düzeltme, hatanın hangi rakamları etkilediğini ve yenilenen toplamların raporun temel sonucunu neden değiştirmediğini açıklıyor."
+        }
+      ]
+    },
+    {
+      "word": "correctness",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. doğruluk, gerçeğe veya kurala uygunluk",
+        "ex": "Scientific claims should be assessed for both logical consistency and factual correctness.",
+        "exTr": "Bilimsel iddialar hem mantıksal tutarlılık hem de olgusal doğruluk bakımından değerlendirilmelidir."
+      },
+      "alternatives": [
+        {
+          "ex": "Checking grammatical correctness is only part of editing; the argument must also remain understandable to readers unfamiliar with the subject.",
+          "exTr": "Dilbilgisel doğruluğu kontrol etmek düzenlemenin yalnızca bir parçasıdır; savın konuya yabancı okurlar için de anlaşılır kalması gerekir."
+        }
+      ]
+    },
+    {
+      "word": "correspond",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. karşılık gelmek, örtüşmek",
+        "ex": "The symptoms described by the patient correspond closely to those of vitamin D deficiency.",
+        "exTr": "Hastanın tarif ettiği belirtiler, D vitamini eksikliğinin belirtileriyle büyük ölçüde örtüşüyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The divisions on the map do not correspond exactly to the boundaries described in the surviving property agreements.",
+          "exTr": "Haritadaki bölünmeler, günümüze ulaşan mülkiyet anlaşmalarında betimlenen sınırlarla tam olarak örtüşmüyor."
+        }
+      ]
+    },
+    {
+      "word": "corresponding",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. karşılık gelen, ilgili, buna denk düşen",
+        "ex": "Each chapter in the textbook includes a corresponding set of practice questions at the end.",
+        "exTr": "Ders kitabındaki her bölüm, sonunda buna karşılık gelen bir dizi alıştırma sorusu içerir."
+      },
+      "alternatives": [
+        {
+          "ex": "Each photograph is linked to a corresponding field note, preserving observations that cannot be recovered from the image alone.",
+          "exTr": "Her fotoğraf, yalnızca görüntüden elde edilemeyecek gözlemleri koruyarak ona karşılık gelen bir saha notuyla ilişkilendiriliyor."
+        }
+      ]
+    },
+    {
+      "word": "corrupt",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yozlaşmış, rüşvetçi, ahlaken bozuk",
+        "ex": "Investigative journalists exposed several corrupt officials who had been accepting bribes for years.",
+        "exTr": "Araştırmacı gazeteciler, yıllardır rüşvet alan birkaç yozlaşmış yetkiliyi ifşa etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The play depicts a corrupt official whose apparent generosity depends on resources taken from people unable to challenge his authority.",
+          "exTr": "Oyun, görünürdeki cömertliği otoritesine karşı çıkamayan insanlardan alınan kaynaklara dayanan yozlaşmış bir görevliyi betimliyor."
+        }
+      ]
+    },
+    {
+      "word": "cortical",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. korteksle ilgili, beyin kabuğuna ait",
+        "ex": "Prolonged sleep deprivation reduces cortical activity in regions linked to attention, which explains why exhausted participants performed so poorly on the memory task.",
+        "exTr": "Uzun süreli uykusuzluk, dikkatle bağlantılı bölgelerdeki korteks etkinliğini azaltır; bu da yorgun katılımcıların hafıza görevinde neden bu kadar kötü performans gösterdiğini açıklar."
+      },
+      "alternatives": [
+        {
+          "ex": "The diagram labels cortical regions separately, allowing students to compare the terminology used in different accounts of the same anatomical structures.",
+          "exTr": "Şema, öğrencilerin aynı anatomik yapılara ilişkin farklı anlatımlardaki terminolojiyi karşılaştırabilmesi için beyin kabuğu bölgelerini ayrı etiketliyor."
+        }
+      ]
+    },
+    {
+      "word": "cosmos",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. evren, kozmos",
+        "ex": "Ancient astronomers believed the cosmos was arranged in perfect, unchanging circles around the Earth.",
+        "exTr": "Antik gökbilimciler, evrenin Dünya'nın çevresinde kusursuz ve değişmez dairelerle düzenlendiğine inanıyordu."
+      },
+      "alternatives": [
+        {
+          "ex": "The exhibition compares historical representations of the cosmos, asking how instruments and beliefs influenced what observers considered possible to know.",
+          "exTr": "Sergi, aletlerin ve inançların gözlemcilerin neleri bilinebilir saydığını nasıl etkilediğini sorarak evrenin tarihsel tasvirlerini karşılaştırıyor."
+        }
+      ]
+    },
+    {
+      "word": "cost-plus",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. maliyet artı kâr esaslı (sözleşme)",
+        "ex": "The government awarded a cost-plus contract to the construction firm rebuilding the damaged bridge.",
+        "exTr": "Hükümet, hasarlı köprüyü yeniden inşa eden yapı firmasına maliyet artı kâr esaslı bir sözleşme verdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The cost-plus agreement required detailed records of expenditure so that both parties could distinguish reimbursable costs from the contractor's additional fee.",
+          "exTr": "Maliyet artı kâr esaslı anlaşma, tarafların geri ödenecek maliyetleri yüklenicinin ek ücretinden ayırabilmesi için ayrıntılı harcama kayıtları gerektiriyordu."
+        }
+      ]
+    },
+    {
+      "word": "costs",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. maliyetler, masraflar",
+        "ex": "Hospital administrators are searching for ways to reduce costs without lowering the quality of care.",
+        "exTr": "Hastane yöneticileri, bakım kalitesini düşürmeden maliyetleri azaltmanın yollarını arıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The estimate includes storage costs as well as purchase prices, making differences between the two proposals more transparent.",
+          "exTr": "Tahmin, satın alma fiyatlarının yanı sıra depolama maliyetlerini de içererek iki öneri arasındaki farkları daha şeffaf hâle getiriyor."
+        }
+      ]
+    },
+    {
+      "word": "cough",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. öksürük",
+        "ex": "Doctors advised patients with a persistent cough to seek testing for possible respiratory infections.",
+        "exTr": "Doktorlar, sürekli öksürüğü olan hastalara olası solunum yolu enfeksiyonları için test yaptırmalarını önerdi."
+      },
+      "alternatives": [
+        {
+          "ex": "A cough interrupted the speaker's final sentence, leaving the recording incomplete at precisely the point the researchers wanted to examine.",
+          "exTr": "Bir öksürük konuşmacının son cümlesini bölerek kaydı tam da araştırmacıların incelemek istediği noktada eksik bıraktı."
+        }
+      ]
+    },
+    {
+      "word": "counsel",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. öğüt, tavsiye",
+        "ex": "The lawyer's counsel helped the young entrepreneur avoid several costly legal mistakes.",
+        "exTr": "Avukatın verdiği öğüt, genç girişimcinin birkaç maliyetli hukuki hatadan kaçınmasına yardımcı oldu."
+      },
+      "alternatives": [
+        {
+          "ex": "She sought the counsel of experienced colleagues before accepting a position whose responsibilities had not been clearly defined.",
+          "exTr": "Sorumlulukları açıkça tanımlanmamış bir görevi kabul etmeden önce deneyimli meslektaşlarının öğüdüne başvurdu."
+        }
+      ]
+    },
+    {
+      "word": "counter-evidence",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. karşı kanıt",
+        "ex": "The defense presented compelling counter-evidence that contradicted the prosecution's central claim.",
+        "exTr": "Savunma, iddia makamının temel savını çürüten ikna edici bir karşı kanıt sundu."
+      },
+      "alternatives": [
+        {
+          "ex": "The revised chapter considers counter-evidence that the original edition dismissed, explaining why it now deserves closer examination.",
+          "exTr": "Gözden geçirilmiş bölüm, ilk baskının reddettiği karşı kanıtları ele alarak artık neden daha yakından incelenmeyi hak ettiklerini açıklıyor."
+        }
+      ]
+    },
+    {
+      "word": "counterpart",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. muadil, benzeri, eşdeğeri",
+        "ex": "The minister met with her European counterpart to discuss joint strategies for reducing carbon emissions.",
+        "exTr": "Bakan, karbon emisyonlarını azaltmaya yönelik ortak stratejileri görüşmek için Avrupalı muadiliyle bir araya geldi."
+      },
+      "alternatives": [
+        {
+          "ex": "The regional office consulted its overseas counterpart to compare how similar applications were assessed under different administrative arrangements.",
+          "exTr": "Bölge ofisi, benzer başvuruların farklı idari düzenlemelerde nasıl değerlendirildiğini karşılaştırmak için yurt dışındaki muadiline danıştı."
+        }
+      ]
+    },
+    {
+      "word": "country",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ülke",
+        "ex": "Vaccination policies differ significantly from one country to another depending on available resources.",
+        "exTr": "Aşılama politikaları, mevcut kaynaklara bağlı olarak bir ülkeden diğerine önemli ölçüde farklılık gösterir."
+      },
+      "alternatives": [
+        {
+          "ex": "The catalogue follows the collection across several countries, documenting changes of ownership rather than assuming it remained in one place.",
+          "exTr": "Katalog, tek yerde kaldığını varsaymak yerine mülkiyet değişikliklerini belgeleyerek koleksiyonun birkaç ülkedeki izini sürüyor."
+        }
+      ]
+    },
+    {
+      "word": "countryside",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kırsal kesim, taşra",
+        "ex": "Many families moved from the crowded city to the quiet countryside during the pandemic.",
+        "exTr": "Pandemi sırasında birçok aile, kalabalık şehirden sakin kırsal kesime taşındı."
+      },
+      "alternatives": [
+        {
+          "ex": "The novel's account of the countryside includes workshops and transport links, challenging the image of rural life as entirely separate from industry.",
+          "exTr": "Romanın kırsal kesim anlatımı, köy yaşamının sanayiden bütünüyle ayrı olduğu görüntüsünü sorgulayarak atölyeleri ve ulaşım bağlantılarını da içeriyor."
+        }
+      ]
+    },
+    {
+      "word": "course",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. süreç, seyir",
+        "ex": "Over the course of history, epidemics have repeatedly changed the way societies organize public health.",
+        "exTr": "Tarih boyunca salgınlar, toplumların halk sağlığını örgütleme biçimini defalarca değiştirmiştir."
+      },
+      "alternatives": [
+        {
+          "ex": "During the course of the investigation, the team discovered that several apparently independent reports relied on the same original source.",
+          "exTr": "Araştırma süresince ekip, görünüşte bağımsız olan bazı raporların aynı özgün kaynağa dayandığını keşfetti."
+        }
+      ]
+    },
+    {
+      "word": "cover",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. kaplamak, örtmek",
+        "ex": "Forests cover nearly one third of the Earth's total land surface.",
+        "exTr": "Ormanlar, Dünya'nın toplam kara yüzeyinin neredeyse üçte birini kaplar."
+      },
+      "alternatives": [
+        {
+          "ex": "Temporary screens cover the unfinished walls, allowing the hall to remain in use while decorative work continues behind them.",
+          "exTr": "Geçici perdeler bitmemiş duvarları örtüyor ve arkalarında süsleme çalışması sürerken salonun kullanımda kalmasını sağlıyor."
+        }
+      ]
+    },
+    {
+      "word": "covered",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. örtülü, kaplı",
+        "ex": "The mountain peaks remained covered in snow throughout most of the year, even during summer months.",
+        "exTr": "Dağ zirveleri, yaz aylarında bile yılın büyük bölümünde kar kaplı kaldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The covered passage connects the classrooms to the workshop, giving students a sheltered route when outdoor conditions make the courtyard inconvenient.",
+          "exTr": "Üstü kapalı geçit sınıfları atölyeye bağlayarak dış koşullar avluyu elverişsiz kıldığında öğrencilere korunaklı bir güzergâh sağlıyor."
+        }
+      ]
+    },
+    {
+      "word": "crack",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. çatlak; f. çatlamak, kırılmak",
+        "ex": "Engineers discovered a small crack in the bridge's main support beam during the routine inspection.",
+        "exTr": "Mühendisler, rutin denetim sırasında köprünün ana taşıyıcı kirişinde küçük bir çatlak keşfetti."
+      },
+      "alternatives": [
+        {
+          "ex": "A crack visible in the recent photograph also appears in older images, suggesting that the damage predates the latest renovation.",
+          "exTr": "Yakın tarihli fotoğrafta görülen bir çatlak eski görüntülerde de yer alıyor ve bu durum hasarın son yenilemeden önce oluştuğunu düşündürüyor."
+        }
+      ]
+    },
+    {
+      "word": "cranberry",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kızılcık, turna yemişi",
+        "ex": "Families traditionally serve cranberry sauce alongside roasted turkey during the annual Thanksgiving holiday dinner.",
+        "exTr": "Aileler geleneksel olarak yıllık Şükran Günü akşam yemeğinde kızarmış hindinin yanında kızılcık sosu ikram eder."
+      },
+      "alternatives": [
+        {
+          "ex": "The cooperative compared cranberry packaging designed for local sales with containers intended to withstand longer journeys to distant markets.",
+          "exTr": "Kooperatif, yerel satışlar için tasarlanan turna yemişi ambalajlarını uzak pazarlara daha uzun yolculuklara dayanması amaçlanan kaplarla karşılaştırdı."
+        }
+      ],
+      "note": "Cranberry için turna yemişi karşılığı kullanıldı; farklı bitki olan kızılcıkla özdeşleştirilmedi."
+    },
+    {
+      "word": "crave",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. şiddetle arzulamak, canı çekmek",
+        "ex": "Pregnant women sometimes crave unusual food combinations during the early months of pregnancy.",
+        "exTr": "Hamile kadınların gebeliğin ilk aylarında bazen canı alışılmadık yiyecek kombinasyonları çeker."
+      },
+      "alternatives": [
+        {
+          "ex": "The character begins to crave recognition from the institution she once rejected, creating a tension that drives the final chapters.",
+          "exTr": "Karakter, bir zamanlar reddettiği kurumdan takdir görmeyi şiddetle arzulamaya başlayarak son bölümleri yönlendiren bir gerilim yaratıyor."
+        }
+      ]
+    },
+    {
+      "word": "cream",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. krema, kaymak",
+        "ex": "The chef topped the dessert with a thick layer of whipped cream before serving.",
+        "exTr": "Şef, servis etmeden önce tatlının üzerini kalın bir krema tabakasıyla kapladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The historical recipe measures cream by volume but leaves the size of the vessel unspecified, complicating attempts to reproduce the dish.",
+          "exTr": "Tarihsel tarif kremayı hacimle ölçüyor; ancak kabın büyüklüğünü belirtmeyerek yemeği yeniden yapma girişimlerini karmaşıklaştırıyor."
+        }
+      ]
+    },
+    {
+      "word": "creative",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yaratıcı",
+        "ex": "Teachers encouraged creative problem-solving rather than simple memorization during the science unit.",
+        "exTr": "Öğretmenler, fen ünitesi boyunca yalnızca ezber yerine yaratıcı problem çözmeyi teşvik etti."
+      },
+      "alternatives": [
+        {
+          "ex": "Creative solutions emerged when trainees were allowed to rearrange the materials rather than reproduce the instructor's example exactly.",
+          "exTr": "Kursiyerlerin eğitmenin örneğini aynen yeniden üretmek yerine malzemeleri yeniden düzenlemesine izin verildiğinde yaratıcı çözümler ortaya çıktı."
+        }
+      ]
+    },
+    {
+      "word": "creature",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yaratık, canlı",
+        "ex": "Marine biologists discovered a strange creature living near volcanic vents deep beneath the ocean surface.",
+        "exTr": "Deniz biyologları, okyanus yüzeyinin çok altında volkanik bacalar yakınında yaşayan garip bir yaratık keşfetti."
+      },
+      "alternatives": [
+        {
+          "ex": "The illustrated creature combines familiar features in an unfamiliar arrangement, inviting readers to question where observation ends and imagination begins.",
+          "exTr": "Resmedilen yaratık, gözlemin nerede bitip hayal gücünün nerede başladığını okurlara sorgulatarak tanıdık özellikleri yabancı bir düzende birleştiriyor."
+        }
+      ]
+    },
+    {
+      "word": "credit",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. övgü, itibar; f. atfetmek",
+        "ex": "The young researcher received full credit for discovering the new compound during her doctoral studies.",
+        "exTr": "Genç araştırmacı, doktora çalışmaları sırasında yeni bileşiği keşfettiği için tüm övgüyü aldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The editor gave credit to the volunteers whose careful transcription made documents accessible to researchers unable to read the original handwriting.",
+          "exTr": "Editör, özenli dökümleriyle belgeleri özgün el yazısını okuyamayan araştırmacılara erişilebilir kılan gönüllülere hak ettikleri takdiri gösterdi."
+        }
+      ]
+    },
+    {
+      "word": "creep",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. sinsice/yavaşça ilerlemek, sürünmek",
+        "ex": "Fog began to creep across the valley as the temperature dropped after sunset.",
+        "exTr": "Gün batımından sonra sıcaklık düşerken sis, vadinin üzerinde yavaşça ilerlemeye başladı."
+      },
+      "alternatives": [
+        {
+          "ex": "Moisture began to creep beneath the covering, leaving a stain that extended beyond the area visible during the initial inspection.",
+          "exTr": "Nem kaplamanın altına yavaşça ilerlemeye başlayarak ilk incelemede görülen alanın ötesine uzanan bir leke bıraktı."
+        }
+      ]
+    },
+    {
+      "word": "creole",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kreol dili (karma bir dilden doğup ana dile dönüşen dil)",
+        "ex": "A creole develops when a simplified contact language is acquired by children as their mother tongue and gradually gains a full grammatical system.",
+        "exTr": "Bir kreol dili, basitleştirilmiş bir temas dilinin çocuklarca ana dil olarak edinilmesi ve zamanla eksiksiz bir dil bilgisi kazanmasıyla ortaya çıkar."
+      },
+      "alternatives": [
+        {
+          "ex": "The radio programme includes interviews in a local creole, allowing speakers to discuss community issues without switching to the language of administration.",
+          "exTr": "Radyo programı, konuşmacıların yönetim diline geçmeden topluluk meselelerini tartışmasına olanak tanıyarak yerel bir kreol dilinde görüşmelere yer veriyor."
+        }
+      ]
+    },
+    {
+      "word": "crime",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. suç",
+        "ex": "Sociologists studied how poverty and crime rates are connected in urban neighborhoods.",
+        "exTr": "Sosyologlar, kentsel mahallelerde yoksulluk ile suç oranlarının nasıl bağlantılı olduğunu inceledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The article distinguishes reports of crime from convictions, warning that changes in recording practices can complicate comparisons across periods.",
+          "exTr": "Makale, kayıt uygulamalarındaki değişikliklerin dönemler arası karşılaştırmaları karmaşıklaştırabileceği uyarısında bulunarak suç bildirimlerini mahkûmiyetlerden ayırıyor."
+        }
+      ]
+    },
+    {
+      "word": "crisis",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kriz, bunalım",
+        "ex": "The government introduced emergency measures to address the growing economic crisis facing the country.",
+        "exTr": "Hükümet, ülkenin karşı karşıya olduğu büyüyen ekonomik krizi ele almak için acil önlemler getirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The funding crisis exposed the theatre's dependence on a single source of income, prompting discussion of a more resilient operating model.",
+          "exTr": "Finansman krizi, tiyatronun tek bir gelir kaynağına bağımlılığını ortaya çıkararak daha dayanıklı bir işletme modelinin tartışılmasına yol açtı."
+        }
+      ]
+    },
+    {
+      "word": "critical",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kritik, çok önemli",
+        "ex": "Access to clean water remains critical for preventing the spread of infectious diseases.",
+        "exTr": "Temiz suya erişim, bulaşıcı hastalıkların yayılmasını önlemek açısından kritik olmaya devam ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Access to the original recordings proved critical when researchers discovered that the published transcript had omitted several important qualifications.",
+          "exTr": "Araştırmacılar yayımlanmış dökümün birkaç önemli sınırlayıcı açıklamayı atladığını keşfedince özgün kayıtlara erişimin kritik önemi ortaya çıktı."
+        }
+      ]
+    },
+    {
+      "word": "criticism",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. eleştiri",
+        "ex": "The government's new economic policy faced widespread criticism from experts and the general public.",
+        "exTr": "Hükümetin yeni ekonomi politikası, uzmanlardan ve halktan yaygın eleştiri aldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The criticism focused on the selection of evidence rather than the author's writing style or the importance of the subject.",
+          "exTr": "Eleştiri, yazarın anlatım tarzına veya konunun önemine değil kanıt seçimine odaklandı."
+        }
+      ]
+    },
+    {
+      "word": "crocodile",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. timsah",
+        "ex": "A large crocodile lay motionless near the riverbank, waiting patiently for unsuspecting prey.",
+        "exTr": "Büyük bir timsah, habersiz bir avı sabırla bekleyerek nehir kıyısında hareketsiz yatıyordu."
+      },
+      "alternatives": [
+        {
+          "ex": "The museum displayed a crocodile skeleton beside photographs of the living animal, helping visitors relate its internal structure to its outward appearance.",
+          "exTr": "Müze, ziyaretçilerin iç yapıyı dış görünüşle ilişkilendirmesine yardımcı olarak yaşayan hayvanın fotoğraflarının yanında bir timsah iskeleti sergiledi."
+        }
+      ]
+    },
+    {
+      "word": "cross",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. karşıdan karşıya geçmek, kesişmek",
+        "ex": "Migrating birds cross vast oceans twice a year, guided partly by the Earth's magnetic field.",
+        "exTr": "Göçmen kuşlar, kısmen Dünya'nın manyetik alanıyla yönlenerek yılda iki kez geniş okyanusları geçer."
+      },
+      "alternatives": [
+        {
+          "ex": "Visitors must cross the courtyard to reach the archive, making the condition of the paving relevant to year-round access.",
+          "exTr": "Ziyaretçilerin arşive ulaşmak için avludan geçmesi gerektiğinden döşemenin durumu yıl boyu erişim açısından önem taşıyor."
+        }
+      ]
+    },
+    {
+      "word": "cross-cultural",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kültürlerarası, birden çok kültürü karşılaştıran veya kapsayan",
+        "ex": "The cross-cultural study compared how five societies define independence during childhood.",
+        "exTr": "Kültürlerarası çalışma, beş toplumun çocuklukta bağımsızlığı nasıl tanımladığını karşılaştırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The cross-cultural comparison uses interviews developed with local researchers, reducing reliance on categories imported unchanged from a single setting.",
+          "exTr": "Kültürlerarası karşılaştırma, tek bir ortamdan değiştirilmeden aktarılan kategorilere bağımlılığı azaltarak yerel araştırmacılarla geliştirilen görüşmeleri kullanıyor."
+        }
+      ]
+    },
+    {
+      "word": "cross-match",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. çapraz eşleştirme yapmak (kan/doku uyumu, tıpta)",
+        "ex": "Hospital technicians must cross-match donor blood with the recipient before any transfusion begins.",
+        "exTr": "Hastane teknisyenleri, herhangi bir kan nakli başlamadan önce donör kanını alıcıyla çapraz eşleştirmelidir."
+      },
+      "alternatives": [
+        {
+          "ex": "The training document explains how staff record the samples they cross-match, keeping the identification process distinct from the interpretation of results.",
+          "exTr": "Eğitim belgesi, kimlik belirleme sürecini sonuçların yorumlanmasından ayrı tutarak personelin çapraz eşleştirme yaptığı örnekleri nasıl kaydettiğini açıklıyor."
+        }
+      ]
+    },
+    {
+      "word": "cross-town",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. şehri baştan başa kat eden",
+        "ex": "Construction on the cross-town highway forced thousands of commuters to seek alternative routes each morning.",
+        "exTr": "Şehri baştan başa kat eden otoyoldaki inşaat çalışması, binlerce yolcuyu her sabah alternatif güzergâh aramaya zorladı."
+      },
+      "alternatives": [
+        {
+          "ex": "A cross-town bus service would connect the two campuses without requiring students to change vehicles in the crowded central district.",
+          "exTr": "Şehri bir uçtan diğerine geçen bir otobüs hizmeti, öğrencilerin kalabalık merkez bölgede araç değiştirmesini gerektirmeden iki yerleşkeyi bağlardı."
+        }
+      ]
+    },
+    {
+      "word": "crown",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. taç, hükümdarlık, krallık makamı",
+        "ex": "The crown, once worn only by reigning monarchs, is now displayed in a museum where thousands of visitors examine it every year.",
+        "exTr": "Bir zamanlar yalnızca tahttaki hükümdarların taktığı taç, artık her yıl binlerce ziyaretçinin incelediği bir müzede sergileniyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The crown was displayed with documents describing its alterations, challenging the assumption that ceremonial objects always survive unchanged across generations.",
+          "exTr": "Taç, törensel nesnelerin kuşaklar boyunca her zaman değişmeden kaldığı varsayımını sorgulayarak geçirdiği değişiklikleri anlatan belgelerle birlikte sergilendi."
+        }
+      ]
+    },
+    {
+      "word": "cruel",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. zalim, acımasız",
+        "ex": "History remembers the emperor as a cruel ruler who tolerated no opposition.",
+        "exTr": "Tarih, imparatoru hiçbir muhalefete tahammül etmeyen zalim bir hükümdar olarak hatırlıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The narrator condemns the punishment as cruel while questioning why observers accepted it as an ordinary part of institutional life.",
+          "exTr": "Anlatıcı cezayı acımasız bularak kınarken gözlemcilerin bunu kurum yaşamının sıradan bir parçası olarak neden kabul ettiğini sorguluyor."
+        }
+      ]
+    },
+    {
+      "word": "crusader",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. Haçlı, Haçlı seferlerine katılan asker",
+        "ex": "Medieval crusaders travelled thousands of miles to the Holy Land, often financing their long campaigns by mortgaging the estates they had left behind.",
+        "exTr": "Ortaçağ Haçlıları Kutsal Topraklara binlerce mil yol katetti ve uzun seferlerini çoğu zaman geride bıraktıkları toprakları ipotek ederek finanse etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The crusader's letter describes problems of supply and payment, providing a less heroic perspective than accounts written to celebrate the campaign.",
+          "exTr": "Haçlı askerinin mektubu, seferi yüceltmek için yazılmış anlatılardan daha az kahramansı bir bakış sunarak tedarik ve ödeme sorunlarını anlatıyor."
+        }
+      ]
+    },
+    {
+      "word": "crustacean",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kabuklu (deniz) canlısı, kabuklu hayvan",
+        "ex": "Crabs, lobsters and shrimps are crustaceans whose hard external skeletons must be shed periodically so that the animals inside can continue to grow.",
+        "exTr": "Yengeçler, ıstakozlar ve karidesler, içlerindeki hayvanların büyümeyi sürdürebilmesi için sert dış iskeletlerini belirli aralıklarla atması gereken kabuklu canlılardır."
+      },
+      "alternatives": [
+        {
+          "ex": "The crustacean was drawn from several angles so that students could compare structures concealed in a single photograph.",
+          "exTr": "Öğrencilerin tek bir fotoğrafta görünmeyen yapıları karşılaştırabilmesi için kabuklu hayvan birkaç açıdan çizildi."
+        }
+      ]
+    },
+    {
+      "word": "cub",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yavru (aslan, ayı, kurt gibi yırtıcıların yavrusu)",
+        "ex": "A lion cub depends entirely on the pride for food and protection during its first year, when it cannot yet hunt for itself.",
+        "exTr": "Bir aslan yavrusu, henüz kendi başına avlanamadığı ilk yılı boyunca besin ve korunma için tamamen sürüye bağımlıdır."
+      },
+      "alternatives": [
+        {
+          "ex": "The camera followed the cub at a distance, allowing observers to record its movements without entering the enclosure.",
+          "exTr": "Kamera yavruyu uzaktan takip ederek gözlemcilerin çevrili alana girmeden hareketlerini kaydetmesini sağladı."
+        }
+      ]
+    },
+    {
+      "word": "cuisine",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. mutfak, yemek kültürü",
+        "ex": "Regional cuisine often reflects the historical trade routes and agricultural resources of an area.",
+        "exTr": "Yöresel mutfak, genellikle bir bölgenin tarihi ticaret yollarını ve tarımsal kaynaklarını yansıtır."
+      },
+      "alternatives": [
+        {
+          "ex": "The exhibition presents cuisine as a changing practice shaped by migration, household resources and the availability of ingredients.",
+          "exTr": "Sergi, yemek kültürünü göç, ev kaynakları ve malzemelerin bulunabilirliğiyle şekillenen değişken bir uygulama olarak sunuyor."
+        }
+      ]
+    },
+    {
+      "word": "cultivate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. (toprağı) işlemek, ekip biçmek",
+        "ex": "Farmers in the valley have cultivated rice using the same terraces for many generations.",
+        "exTr": "Vadideki çiftçiler, nesiller boyunca aynı taraçaları kullanarak pirinç yetiştirmiştir."
+      },
+      "alternatives": [
+        {
+          "ex": "Families continued to cultivate the smaller terraces even after larger fields became available, preserving arrangements suited to their available labour.",
+          "exTr": "Aileler daha büyük tarlalar kullanıma açıldıktan sonra bile küçük terasları ekip biçmeyi sürdürerek mevcut iş güçlerine uygun düzenleri korudu."
+        }
+      ]
+    },
+    {
+      "word": "culturally",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. kültürel olarak",
+        "ex": "The region remains culturally diverse, blending traditions from several neighboring civilizations over centuries.",
+        "exTr": "Bölge, yüzyıllar boyunca birçok komşu medeniyetin geleneklerini harmanlayarak kültürel olarak çeşitli kalmaya devam ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "A culturally sensitive translation must consider the associations of an expression rather than rely entirely on its dictionary definition.",
+          "exTr": "Kültürel açıdan duyarlı bir çeviri, tamamen sözlük tanımına dayanmak yerine ifadenin çağrışımlarını dikkate almalıdır."
+        }
+      ]
+    },
+    {
+      "word": "cumulative",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. birikimli, kümülatif",
+        "ex": "The cumulative effect of small daily habits can lead to significant improvements in overall health.",
+        "exTr": "Küçük günlük alışkanlıkların kümülatif etkisi, genel sağlıkta önemli iyileşmelere yol açabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The cumulative cost of minor repairs exceeded the original estimate, although no individual item had appeared especially expensive.",
+          "exTr": "Tek tek hiçbir kalem özellikle pahalı görünmese de küçük onarımların birikimli maliyeti ilk tahmini aştı."
+        }
+      ]
+    },
+    {
+      "word": "cup",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. fincan, kupa",
+        "ex": "Archaeologists found a small ceramic cup buried among the ruins of the ancient settlement.",
+        "exTr": "Arkeologlar, eski yerleşimin kalıntıları arasında gömülü küçük bir seramik fincan buldu."
+      },
+      "alternatives": [
+        {
+          "ex": "The cup bears a maker's mark beneath its base, linking an otherwise ordinary household object to a documented workshop.",
+          "exTr": "Fincanın tabanının altında üretici işareti bulunuyor ve bu işaret sıradan bir ev eşyasını belgelenmiş bir atölyeyle ilişkilendiriyor."
+        }
+      ]
+    }
+  ],
+  "collocations": [
+    {
+      "word": "cosmos",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "the origins of the cosmos",
+          "tr": "evrenin kökenleri"
+        },
+        {
+          "en": "explore the cosmos",
+          "tr": "evreni araştırmak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "crocodile",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "crocodile habitat",
+          "tr": "timsahların yaşam alanı"
+        },
+        {
+          "en": "a crocodile's jaws",
+          "tr": "timsahın çeneleri"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "cross-match",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "cross-match blood samples",
+          "tr": "kan örneklerine çapraz uygunluk testi yapmak"
+        },
+        {
+          "en": "cross-match donor and recipient blood",
+          "tr": "verici ve alıcı kanını çapraz eşleştirmek"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "cross-town",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a cross-town route",
+          "tr": "şehri baştan başa geçen güzergâh"
+        },
+        {
+          "en": "a cross-town journey",
+          "tr": "şehrin bir ucundan diğerine yolculuk"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "cruel",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "cruel treatment",
+          "tr": "acımasız muamele"
+        },
+        {
+          "en": "a cruel punishment",
+          "tr": "zalimce ceza"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

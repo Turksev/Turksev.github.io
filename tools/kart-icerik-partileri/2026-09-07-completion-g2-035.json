@@ -1,0 +1,1051 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 2,
+    "input": "input-035.json"
+  },
+  "enrichments": [
+    {
+      "word": "petrol",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. benzin",
+        "ex": "Rising petrol prices forced many commuters to consider alternative modes of transportation.",
+        "exTr": "Artan benzin fiyatları, birçok işe gidip geleni alternatif ulaşım biçimlerini düşünmeye zorladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The transport survey asked households how much petrol they used for journeys that could not reasonably be made by public transport.",
+          "exTr": "Ulaşım anketi, hanelere toplu taşımayla makul biçimde yapılamayacak yolculuklar için ne kadar benzin kullandıklarını sordu."
+        }
+      ]
+    },
+    {
+      "word": "pharma",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ilaç sektörü, ilaç şirketleri",
+        "ex": "Critics argue that big pharma spends far more on marketing its products than on the basic research that generates genuinely new drugs.",
+        "exTr": "Eleştirmenler, ilaç devlerinin ürünlerinin pazarlamasına, gerçekten yeni ilaçlar üreten temel araştırmalara harcadıklarından çok daha fazlasını harcadığını öne sürüyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The conference brought together researchers from academia and pharma to discuss how unsuccessful experiments could be reported more transparently.",
+          "exTr": "Konferans, başarısız deneylerin nasıl daha şeffaf biçimde raporlanabileceğini tartışmak üzere akademi ve ilaç sektöründen araştırmacıları bir araya getirdi."
+        }
+      ]
+    },
+    {
+      "word": "pharmacological",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. farmakolojik",
+        "ex": "The clinical trial examined the pharmacological effects of the new drug on patients with chronic pain.",
+        "exTr": "Klinik deneme, yeni ilacın kronik ağrısı olan hastalar üzerindeki farmakolojik etkilerini inceledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The review separated pharmacological studies from investigations of service delivery, since the two groups addressed different questions about the proposed intervention.",
+          "exTr": "Derleme, iki grup önerilen müdahale hakkında farklı soruları ele aldığı için farmakolojik çalışmaları hizmet sunumuna ilişkin araştırmalardan ayırdı."
+        }
+      ]
+    },
+    {
+      "word": "phase",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. evre, aşama, safha",
+        "ex": "The clinical trial has now entered its final phase, involving over ten thousand volunteers.",
+        "exTr": "Klinik deney, on binden fazla gönüllüyü kapsayan son evresine girmiş bulunuyor."
+      },
+      "alternatives": [
+        {
+          "ex": "During the initial phase of the restoration, workers documented existing damage before deciding which sections of the roof required replacement.",
+          "exTr": "Restorasyonun ilk aşamasında çalışanlar, çatının hangi bölümlerinin değiştirilmesi gerektiğine karar vermeden önce mevcut hasarı belgeledi."
+        }
+      ]
+    },
+    {
+      "word": "phenomenon",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. olgu, fenomen",
+        "ex": "Researchers have struggled for decades to explain this rare atmospheric phenomenon in the Arctic.",
+        "exTr": "Araştırmacılar, Arktik'teki bu nadir atmosferik olguyu açıklamak için on yıllardır uğraşıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The apparent disappearance of the island was an optical phenomenon that observers described differently depending on their distance from the shore.",
+          "exTr": "Adanın görünürde kaybolması, gözlemcilerin kıyıya uzaklıklarına bağlı olarak farklı biçimlerde tarif ettiği optik bir olguydu."
+        }
+      ]
+    },
+    {
+      "word": "philosophy",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. felsefe; yaşam anlayışı",
+        "ex": "Ancient Greek philosophy laid the foundations of Western science and political thought.",
+        "exTr": "Antik Yunan felsefesi, Batı biliminin ve siyasal düşüncesinin temellerini attı."
+      },
+      "alternatives": [
+        {
+          "ex": "Her philosophy of education gives students considerable freedom but also requires them to explain the reasoning behind their choices.",
+          "exTr": "Onun eğitim felsefesi, öğrencilere önemli ölçüde özgürlük tanırken seçimlerinin arkasındaki gerekçeleri açıklamalarını da gerektiriyor."
+        }
+      ]
+    },
+    {
+      "word": "phone-in",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. telefonla katılım programı",
+        "ex": "The radio station hosts a weekly phone-in where listeners can ask local politicians direct questions.",
+        "exTr": "Radyo istasyonu, dinleyicilerin yerel politikacılara doğrudan soru sorabildiği haftalık bir telefonla katılım programı düzenliyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Several callers to the evening phone-in described transport difficulties that had received little attention in the council's written consultation.",
+          "exTr": "Akşamki telefonla katılım programını arayan birkaç kişi, belediye meclisinin yazılı görüş alma sürecinde pek ele alınmayan ulaşım güçlüklerini anlattı."
+        }
+      ]
+    },
+    {
+      "word": "phonology",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ses bilimi, fonoloji, ses dizgesi",
+        "ex": "Learners who master the grammar and vocabulary of a language may still struggle with its phonology, particularly with sounds absent from their mother tongue.",
+        "exTr": "Bir dilin dil bilgisini ve söz varlığını iyi öğrenen kişiler, özellikle ana dillerinde bulunmayan seslerde olmak üzere, o dilin ses bilgisinde yine de zorlanabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The course introduces phonology through recordings from several dialects, encouraging students to distinguish systematic sound patterns from individual differences in pronunciation.",
+          "exTr": "Ders, öğrencileri sistematik ses örüntülerini bireysel telaffuz farklılıklarından ayırmaya teşvik ederek çeşitli lehçelerden kayıtlarla fonolojiyi tanıtıyor."
+        }
+      ]
+    },
+    {
+      "word": "photograph",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. fotoğraf",
+        "ex": "The first photograph of Earth taken from space changed how humanity viewed its home planet.",
+        "exTr": "Uzaydan çekilen ilk Dünya fotoğrafı, insanlığın kendi gezegenine bakışını değiştirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "A photograph of the old harbour revealed a pedestrian bridge that was absent from the maps used in the redevelopment proposal.",
+          "exTr": "Eski limanın bir fotoğrafı, yeniden geliştirme önerisinde kullanılan haritalarda bulunmayan bir yaya köprüsünü ortaya çıkardı."
+        }
+      ]
+    },
+    {
+      "word": "photography",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. fotoğrafçılık",
+        "ex": "Aerial photography allows archaeologists to detect ancient settlements hidden beneath modern farmland.",
+        "exTr": "Hava fotoğrafçılığı, arkeologların modern tarım arazilerinin altında gizli antik yerleşimleri tespit etmesini sağlıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The exhibition explores how photography changed family remembrance, placing formal studio portraits beside informal images taken during ordinary activities.",
+          "exTr": "Sergi, resmi stüdyo portrelerini gündelik faaliyetler sırasında çekilmiş doğal görüntülerin yanına yerleştirerek fotoğrafçılığın aile hatıralarını nasıl değiştirdiğini inceliyor."
+        }
+      ]
+    },
+    {
+      "word": "physic",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. (eski kullanım) ilaç, müshil ilacı",
+        "ex": "Medieval healers often prescribed a bitter physic to relieve patients of severe stomach pain.",
+        "exTr": "Ortaçağ şifacıları, hastaları şiddetli mide ağrısından kurtarmak için genellikle acı bir müshil ilacı reçete ederdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The household ledger lists payments for physic beside purchases of food, offering historians evidence of how medicinal expenses entered everyday budgets.",
+          "exTr": "Hane hesap defteri, yiyecek alımlarının yanında ilaç ödemelerini sıralayarak tarihçilere ilaç giderlerinin gündelik bütçelerde nasıl yer aldığına ilişkin kanıt sunuyor."
+        }
+      ],
+      "note": "Archaic medicinal preparation sense, not medicine as a discipline. Historical expense context, no treatment advice. https://www.merriam-webster.com/dictionary/physic"
+    },
+    {
+      "word": "physician",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. doktor, hekim",
+        "ex": "Patients should consult a qualified physician before starting any new medication or diet program.",
+        "exTr": "Hastalar, yeni bir ilaca veya diyet programına başlamadan önce uzman bir hekime danışmalıdır."
+      },
+      "alternatives": [
+        {
+          "ex": "The physician helped redesign the appointment letter after patients explained which expressions had made the purpose of the visit unclear.",
+          "exTr": "Hekim, hastaların hangi ifadelerin ziyaretin amacını belirsizleştirdiğini açıklamasının ardından randevu mektubunun yeniden düzenlenmesine yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "physiological",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. fizyolojik",
+        "ex": "Extreme cold triggers several physiological responses that help the body conserve heat.",
+        "exTr": "Aşırı soğuk, vücudun ısıyı korumasına yardımcı olan çeşitli fizyolojik tepkileri tetikler."
+      },
+      "alternatives": [
+        {
+          "ex": "The experiment recorded physiological responses alongside participants' descriptions of discomfort, allowing the researchers to examine whether the two measures agreed.",
+          "exTr": "Deney, araştırmacıların iki ölçümün birbiriyle örtüşüp örtüşmediğini incelemesine olanak tanıyarak katılımcıların rahatsızlık tarifleriyle birlikte fizyolojik tepkilerini kaydetti."
+        }
+      ]
+    },
+    {
+      "word": "piano",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. piyano",
+        "ex": "She has practiced piano every afternoon since she was six years old.",
+        "exTr": "Altı yaşından beri her öğleden sonra piyano çalışıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The composer revised the piano part after hearing it in rehearsal, where several quiet passages were obscured by the larger ensemble.",
+          "exTr": "Besteci, birkaç hafif pasajın daha büyük topluluk tarafından bastırıldığı provada piyano partisini dinledikten sonra bu partiyi yeniden düzenledi."
+        }
+      ]
+    },
+    {
+      "word": "pick-off",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. (beyzbol) koşucuyu kaide dışında yakalayarak eleme",
+        "ex": "The shortstop's quick pick-off caught the runner well before he could return safely to first base.",
+        "exTr": "Kısa saha oyuncusunun hızlı hareketi, koşucuyu birinci kaideye güvenle dönemeden yakalayıp eledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The coach paused the recording before the pick-off, asking the players to identify the movements that had alerted the pitcher.",
+          "exTr": "Antrenör, koşucunun kaide dışında yakalanarak elenmesinden hemen önce kaydı durdurup oyunculardan atıcıyı uyaran hareketleri belirlemelerini istedi."
+        }
+      ],
+      "note": "Baseball sense; original video-analysis context. https://www.mlb.com/glossary/standard-stats/pickoff"
+    },
+    {
+      "word": "piece",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. parça",
+        "ex": "Each piece of evidence gathered at the scene helped investigators reconstruct the accident.",
+        "exTr": "Olay yerinde toplanan her bir kanıt parçası, soruşturmacıların kazayı yeniden kurgulamasına yardımcı oldu."
+      },
+      "alternatives": [
+        {
+          "ex": "The missing piece of the mosaic was reconstructed from an early drawing, though the replacement was marked so that visitors could recognise it.",
+          "exTr": "Mozaiğin eksik parçası eski bir çizimden yararlanılarak yeniden yapıldı; ancak ziyaretçilerin ayırt edebilmesi için yeni parça işaretlendi."
+        }
+      ]
+    },
+    {
+      "word": "pigeon",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. güvercin",
+        "ex": "Urban pigeons have adapted remarkably well to nesting on ledges of tall buildings.",
+        "exTr": "Kent güvercinleri, yüksek binaların çıkıntılarında yuva yapmaya son derece iyi uyum sağladı."
+      },
+      "alternatives": [
+        {
+          "ex": "A pigeon repeatedly entered the station through a broken window, prompting staff to examine the building rather than simply remove the bird.",
+          "exTr": "Bir güvercinin istasyona kırık bir pencereden tekrar tekrar girmesi, çalışanları yalnızca kuşu çıkarmak yerine binayı incelemeye yöneltti."
+        }
+      ]
+    },
+    {
+      "word": "pile",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. yığmak, istiflemek",
+        "ex": "Workers began to pile the sandbags along the riverbank before the storm arrived.",
+        "exTr": "İşçiler, fırtına gelmeden önce kum torbalarını nehir kıyısı boyunca yığmaya başladı."
+      },
+      "alternatives": [
+        {
+          "ex": "Volunteers were asked not to pile donated books near the exit, where they would obstruct access for people carrying boxes.",
+          "exTr": "Gönüllülerden, kutu taşıyanların geçişini engelleyecekleri için bağışlanan kitapları çıkışın yakınına yığmamaları istendi."
+        }
+      ]
+    },
+    {
+      "word": "pilot",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. deneme amaçlı uygulamak, test etmek",
+        "ex": "The hospital decided to pilot a new scheduling system before adopting it nationwide.",
+        "exTr": "Hastane, ülke genelinde uygulamadan önce yeni bir randevu sistemini deneme amaçlı test etmeye karar verdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The university will pilot evening laboratory sessions with one department, collecting feedback before deciding whether to extend the arrangement.",
+          "exTr": "Üniversite, uygulamayı genişletip genişletmeyeceğine karar vermeden önce geri bildirim toplayarak akşam laboratuvar oturumlarını bir bölümde deneme amaçlı uygulayacak."
+        }
+      ]
+    },
+    {
+      "word": "pink",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i./s. pembe",
+        "ex": "Marine researchers were surprised to find a rare pink dolphin near the river delta.",
+        "exTr": "Deniz araştırmacıları, nehir deltası yakınında nadir görülen pembe bir yunus bulunca şaşırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The faded pink fabric appeared almost grey under the gallery lights, illustrating why conservators document colour under carefully controlled conditions.",
+          "exTr": "Solmuş pembe kumaş, galeri ışıkları altında neredeyse gri görünerek koruma uzmanlarının rengi neden dikkatle kontrol edilen koşullarda belgelediğini gösterdi."
+        }
+      ]
+    },
+    {
+      "word": "pioneer",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. öncülük etmek",
+        "ex": "The surgeon continued to pioneer new techniques that significantly reduced recovery time for patients.",
+        "exTr": "Cerrah, hastalar için iyileşme süresini önemli ölçüde azaltan yeni tekniklere öncülük etmeye devam etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The cooperative helped pioneer a system in which small producers shared storage facilities while retaining control over their individual sales.",
+          "exTr": "Kooperatif, küçük üreticilerin kendi satışları üzerindeki denetimlerini korurken depolama tesislerini paylaştığı bir sisteme öncülük etti."
+        }
+      ]
+    },
+    {
+      "word": "piracy",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. korsanlık (deniz/telif hakkı)",
+        "ex": "The film industry loses billions of dollars annually due to widespread piracy of copyrighted content online.",
+        "exTr": "Film endüstrisi, çevrimiçi telif hakkı korumalı içeriklerin yaygın korsanlığı nedeniyle yıllık milyarlarca dolar kaybediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The maritime historian studied piracy through merchants' correspondence, paying particular attention to how rumours altered decisions about routes and insurance.",
+          "exTr": "Denizcilik tarihçisi, söylentilerin rota ve sigorta kararlarını nasıl değiştirdiğine özellikle dikkat ederek deniz korsanlığını tüccarların yazışmaları üzerinden inceledi."
+        }
+      ]
+    },
+    {
+      "word": "pity",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. acıma, merhamet, şefkat",
+        "ex": "Rather than offering genuine assistance, the visitors expressed a vague sense of pity that the villagers found both patronising and useless.",
+        "exTr": "Ziyaretçiler gerçek bir yardım sunmak yerine, köylülerin hem küçümseyici hem de yararsız buldukları belirsiz bir acıma duygusu dile getirdiler."
+      },
+      "alternatives": [
+        {
+          "ex": "The narrator feels pity for the defeated official but refuses to treat that sympathy as a reason to overlook his earlier decisions.",
+          "exTr": "Anlatıcı, yenilgiye uğramış yetkiliye acıyor; ancak bu duyguyu onun önceki kararlarını görmezden gelmek için bir gerekçe olarak kabul etmiyor."
+        }
+      ]
+    },
+    {
+      "word": "pixel",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. piksel, görüntü noktası",
+        "ex": "Each digital photograph consists of millions of pixels, and enlarging the image too far makes these individual squares clearly visible.",
+        "exTr": "Her dijital fotoğraf milyonlarca pikselden oluşur ve görüntüyü aşırı büyütmek bu tek tek kareleri açıkça görünür kılar."
+      },
+      "alternatives": [
+        {
+          "ex": "The technician traced the dark spot to a defective pixel rather than an object that had been present when the photograph was taken.",
+          "exTr": "Teknisyen, karanlık noktanın fotoğraf çekilirken orada bulunan bir nesneden değil, kusurlu bir pikselden kaynaklandığını belirledi."
+        }
+      ]
+    },
+    {
+      "word": "place-kick",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. yerden vuruşla gol/sayı yapmak",
+        "ex": "In the match's final minutes, the kicker place-kicked the ball to secure the winning points.",
+        "exTr": "Maçın son dakikalarında oyuncu, kazandıran sayıyı elde etmek için topu yerden vuruşla attı."
+      },
+      "alternatives": [
+        {
+          "ex": "During practice, the player tried to place-kick a goal from several angles while an assistant recorded where each attempt began.",
+          "exTr": "Oyuncu, antrenmanda çeşitli açılardan yerden vuruşla gol atmaya çalışırken bir yardımcı her denemenin nereden başladığını kaydetti."
+        }
+      ],
+      "note": "Sport-specific verb, original practice context. https://dictionary.cambridge.org/dictionary/english/place-kick ; https://www.collinsdictionary.com/dictionary/english/place-kick"
+    },
+    {
+      "word": "placement",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yerleştirme, konumlandırma",
+        "ex": "Careful placement of solar panels on the roof can significantly increase a building's energy efficiency.",
+        "exTr": "Güneş panellerinin çatıya dikkatli bir şekilde yerleştirilmesi, bir binanın enerji verimliliğini önemli ölçüde artırabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The placement of the information desk near the entrance reduced confusion, although visitors still needed clearer signs for the upper floors.",
+          "exTr": "Danışma masasının girişe yakın yerleştirilmesi karışıklığı azalttı; ancak ziyaretçilerin üst katlar için hâlâ daha açık işaretlere ihtiyacı vardı."
+        }
+      ]
+    },
+    {
+      "word": "plainly",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. açıkça, apaçık",
+        "ex": "The data plainly indicate that the policy failed.",
+        "exTr": "Veriler politikanın başarısız olduğunu açıkça gösteriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The instructions plainly state that applicants may submit supporting documents later, yet several readers understood the first deadline to include everything.",
+          "exTr": "Talimatlar, başvuranların destekleyici belgeleri daha sonra sunabileceğini açıkça belirtiyor; buna rağmen bazı okuyucular ilk son tarihin her şeyi kapsadığını düşündü."
+        }
+      ]
+    },
+    {
+      "word": "planet",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. gezegen",
+        "ex": "Astronomers have discovered thousands of planets orbiting stars beyond our solar system.",
+        "exTr": "Gökbilimciler, güneş sistemimizin ötesindeki yıldızların yörüngesinde dönen binlerce gezegen keşfetti."
+      },
+      "alternatives": [
+        {
+          "ex": "The proposed mission would observe the planet from several distances, helping the team choose suitable instruments before attempting a closer approach.",
+          "exTr": "Önerilen görev, gezegeni çeşitli uzaklıklardan gözlemleyerek ekibin daha yakından yaklaşmayı denemeden önce uygun araçları seçmesine yardımcı olacaktı."
+        }
+      ]
+    },
+    {
+      "word": "planner",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. planlamacı, plancı",
+        "ex": "The city hired an urban planner to redesign public transportation routes across the metropolitan area.",
+        "exTr": "Şehir, büyükşehir bölgesindeki toplu taşıma güzergahlarını yeniden tasarlamak için bir şehir plancısı işe aldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The planner revised the walking route after residents identified a steep section that had not been apparent from the map.",
+          "exTr": "Planlamacı, sakinlerin haritada belli olmayan dik bir bölümü belirtmesinin ardından yürüyüş güzergâhını değiştirdi."
+        }
+      ]
+    },
+    {
+      "word": "plant-eating",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. otçul, bitkiyle beslenen",
+        "ex": "Fossil evidence suggests that many plant-eating dinosaurs traveled together in large herds for protection.",
+        "exTr": "Fosil kanıtları, birçok otçul dinozorun korunmak için büyük sürüler halinde birlikte hareket ettiğini gösteriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The students compared the teeth of plant-eating animals with those of predators, noting differences without assuming that every species followed one simple pattern.",
+          "exTr": "Öğrenciler, her türün tek bir basit örüntüye uyduğunu varsaymadan farklılıkları kaydederek otçul hayvanların dişlerini yırtıcılarınkiyle karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "plasma",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. plazma (kanın sıvı kısmı)",
+        "ex": "Donated blood is separated into red cells, platelets, and plasma before being sent to hospitals.",
+        "exTr": "Bağışlanan kan, hastanelere gönderilmeden önce alyuvarlara, trombositlere ve plazmaya ayrılır."
+      },
+      "alternatives": [
+        {
+          "ex": "Each plasma sample received a code before analysis so that laboratory staff could work without seeing information that identified individual donors.",
+          "exTr": "Laboratuvar çalışanlarının tek tek bağışçıları tanımlayan bilgileri görmeden çalışabilmesi için her plazma örneğine analiz öncesinde bir kod verildi."
+        }
+      ]
+    },
+    {
+      "word": "plateau",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. plato, yayla, yüksek düzlük",
+        "ex": "The archaeological team excavated a series of burial mounds on the arid plateau overlooking the river valley for three consecutive summers.",
+        "exTr": "Arkeoloji ekibi, nehir vadisine bakan kurak platoda üç yaz üst üste bir dizi mezar tümülüsünü kazdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The road across the plateau appeared shorter on the map, but its exposed position led the expedition to choose a sheltered alternative.",
+          "exTr": "Platodan geçen yol haritada daha kısa görünüyordu; ancak açıkta kalan konumu, keşif ekibini korunaklı bir alternatifi seçmeye yöneltti."
+        }
+      ]
+    },
+    {
+      "word": "play",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. oynamak, rol oynamak",
+        "ex": "Wetlands play a vital role in filtering pollutants before they reach the ocean.",
+        "exTr": "Sulak alanlar, kirleticiler okyanusa ulaşmadan önce onları filtrelemede hayati bir rol oynar."
+      },
+      "alternatives": [
+        {
+          "ex": "Informal conversations can play an important role in an organisation, carrying practical knowledge that is rarely included in written procedures.",
+          "exTr": "Gayriresmî konuşmalar, yazılı prosedürlerde nadiren yer alan pratik bilgileri aktararak bir kuruluşta önemli rol oynayabilir."
+        }
+      ]
+    },
+    {
+      "word": "player",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. (mecazi) önemli aktör, taraf",
+        "ex": "The company has become a major player in the global renewable energy market over the past five years.",
+        "exTr": "Şirket, son beş yılda küresel yenilenebilir enerji pazarında önemli bir aktör hâline geldi."
+      },
+      "alternatives": [
+        {
+          "ex": "Although a small player in the publishing market, the independent press gained influence by translating writers overlooked by larger firms.",
+          "exTr": "Yayıncılık piyasasında küçük bir aktör olmasına rağmen bağımsız yayınevi, büyük firmaların göz ardı ettiği yazarları çevirerek nüfuz kazandı."
+        }
+      ]
+    },
+    {
+      "word": "playlist",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. çalma listesi",
+        "ex": "The radio station updates its playlist every week to include newly released songs.",
+        "exTr": "Radyo istasyonu, yeni çıkan şarkıları eklemek için çalma listesini her hafta günceller."
+      },
+      "alternatives": [
+        {
+          "ex": "The researcher asked participants to explain their playlist choices, using the discussion to explore connections between music, memory and daily routines.",
+          "exTr": "Araştırmacı, müzik, bellek ve gündelik alışkanlıklar arasındaki bağlantıları incelemek için görüşmeden yararlanarak katılımcılardan çalma listesi seçimlerini açıklamalarını istedi."
+        }
+      ]
+    },
+    {
+      "word": "pleasant",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. hoş, keyifli",
+        "ex": "Urban planners are redesigning the riverside area to create a more pleasant environment for pedestrians.",
+        "exTr": "Şehir plancıları, yayalar için daha hoş bir ortam yaratmak amacıyla nehir kıyısı bölgesini yeniden tasarlıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The courtyard provided a pleasant place to read, but its limited shade made it less suitable for events held around midday.",
+          "exTr": "Avlu okumak için hoş bir yer sunuyordu; ancak gölgesinin sınırlı olması onu öğle saatlerindeki etkinlikler için daha az uygun kılıyordu."
+        }
+      ]
+    },
+    {
+      "word": "plebeian",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. pleb, halktan kimse (Eski Roma'da soylu olmayan yurttaş)",
+        "ex": "In early Rome, the plebeians repeatedly withdrew from the city to force the patrician elite to grant them political rights.",
+        "exTr": "Erken dönem Roma'da plebler, patrici seçkinleri kendilerine siyasal haklar tanımaya zorlamak amacıyla kentten defalarca çekildi."
+      },
+      "alternatives": [
+        {
+          "ex": "The lesson asks students to consider how a plebeian in ancient Rome might have viewed a political dispute described mainly by elite writers.",
+          "exTr": "Ders, öğrencilerden antik Roma'daki bir plebin, çoğunlukla seçkin yazarlar tarafından anlatılmış bir siyasi anlaşmazlığı nasıl değerlendirmiş olabileceğini düşünmelerini istiyor."
+        }
+      ]
+    },
+    {
+      "word": "plot",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. olay örgüsü",
+        "ex": "The novel's plot revolves around a scientist who discovers a cure for a deadly disease.",
+        "exTr": "Romanın olay örgüsü, ölümcül bir hastalığın tedavisini keşfeden bir bilim insanı etrafında döner."
+      },
+      "alternatives": [
+        {
+          "ex": "The plot becomes harder to follow when the narrator begins presenting imagined conversations alongside events that other characters can confirm.",
+          "exTr": "Anlatıcı, diğer karakterlerin doğrulayabildiği olayların yanında hayal edilmiş konuşmaları da sunmaya başladığında olay örgüsünü takip etmek zorlaşıyor."
+        }
+      ]
+    },
+    {
+      "word": "plunge",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. aniden düşmek, dalmak",
+        "ex": "Stock prices began to plunge sharply after the company announced disappointing quarterly earnings results.",
+        "exTr": "Şirket, hayal kırıklığı yaratan üç aylık kazanç sonuçlarını açıkladıktan sonra hisse fiyatları keskin biçimde düşmeye başladı."
+      },
+      "alternatives": [
+        {
+          "ex": "Attendance began to plunge after the venue moved beyond the bus network, leading organisers to reconsider their assumptions about accessibility.",
+          "exTr": "Mekân otobüs ağının dışına taşındıktan sonra katılım hızla düşmeye başlayınca organizatörler erişilebilirlikle ilgili varsayımlarını yeniden değerlendirdi."
+        }
+      ]
+    },
+    {
+      "word": "pneumonia",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. zatürre, akciğer iltihabı",
+        "ex": "Elderly patients who develop pneumonia after surgery often require prolonged hospitalisation, which significantly increases both treatment costs and overall recovery time.",
+        "exTr": "Ameliyat sonrası zatürre geçiren yaşlı hastalar çoğu zaman uzun süreli hastane bakımına ihtiyaç duyar; bu da hem tedavi maliyetlerini hem de genel iyileşme süresini belirgin biçimde artırır."
+      },
+      "alternatives": [
+        {
+          "ex": "The hospital audit examined records of pneumonia admissions, noting where missing dates prevented staff from reconstructing the sequence of care.",
+          "exTr": "Hastane denetimi, eksik tarihlerin çalışanların bakım sürecinin sırasını yeniden belirlemesini nerelerde engellediğini kaydederek zatürre nedeniyle yatış kayıtlarını inceledi."
+        }
+      ]
+    },
+    {
+      "word": "poem",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. şiir",
+        "ex": "Historians discovered an ancient poem carved into stone tablets describing a forgotten agricultural festival.",
+        "exTr": "Tarihçiler, unutulmuş bir tarım festivalini anlatan, taş tabletlere kazınmış antik bir şiir keşfetti."
+      },
+      "alternatives": [
+        {
+          "ex": "The final line of the poem returns to an image from the opening stanza, but gives it a less hopeful meaning.",
+          "exTr": "Şiirin son dizesi, açılış kıtasındaki bir imgeye geri dönüyor; ancak ona daha az umut verici bir anlam kazandırıyor."
+        }
+      ]
+    },
+    {
+      "word": "poetry",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. şiir",
+        "ex": "Ancient poetry often preserved historical events and cultural values long before written prose became common.",
+        "exTr": "Antik şiir, yazılı düzyazı yaygınlaşmadan çok önce tarihi olayları ve kültürel değerleri sıklıkla koruyordu."
+      },
+      "alternatives": [
+        {
+          "ex": "The translator read the poetry aloud before revising it, testing whether the rhythm of the new version supported its emotional shifts.",
+          "exTr": "Çevirmen, yeni versiyonun ritminin duygusal geçişleri destekleyip desteklemediğini sınayarak şiirleri yeniden düzenlemeden önce sesli okudu."
+        }
+      ]
+    },
+    {
+      "word": "pointless",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. anlamsız, amaçsız, gereksiz",
+        "ex": "Arguing about minor details seemed pointless when the entire project faced a much larger problem.",
+        "exTr": "Tüm proje çok daha büyük bir sorunla karşı karşıyayken küçük ayrıntılar hakkında tartışmak anlamsız görünüyordu."
+      },
+      "alternatives": [
+        {
+          "ex": "Buying additional recording equipment would be pointless unless the archive also provided space and staff to preserve the material collected.",
+          "exTr": "Arşiv, toplanan malzemeyi korumak için yer ve personel de sağlamadığı sürece ek kayıt ekipmanı satın almak anlamsız olurdu."
+        }
+      ]
+    },
+    {
+      "word": "poisonous",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. zehirli",
+        "ex": "Hikers were warned to stay away from the poisonous plants growing along the trail.",
+        "exTr": "Doğa yürüyüşçüleri, patika boyunca yetişen zehirli bitkilerden uzak durmaları konusunda uyarıldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The guide distinguished poisonous plants from harmless lookalikes using labelled photographs, emphasising that visual similarity alone was not a reliable basis for identification.",
+          "exTr": "Rehber, tek başına görsel benzerliğin teşhis için güvenilir bir temel olmadığını vurgulayarak etiketli fotoğraflarla zehirli bitkileri zararsız benzerlerinden ayırdı."
+        }
+      ]
+    },
+    {
+      "word": "police",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. polis (teşkilatı)",
+        "ex": "The police arrived within minutes after neighbors reported hearing loud noises from the apartment.",
+        "exTr": "Komşuların daireden yüksek sesler duyduklarını bildirmesinin ardından polis dakikalar içinde geldi."
+      },
+      "alternatives": [
+        {
+          "ex": "The police asked witnesses to describe what they had directly observed, keeping those accounts separate from information heard from other people.",
+          "exTr": "Polis, tanıklardan doğrudan gözlemlediklerini anlatmalarını isteyerek bu anlatımları başkalarından duyulan bilgilerden ayrı tuttu."
+        }
+      ]
+    },
+    {
+      "word": "policy-making",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. politika belirleyen, karar alma ile ilgili",
+        "ex": "Only senior officials are usually included in the country's most important policy-making meetings.",
+        "exTr": "Genellikle yalnızca üst düzey yetkililer, ülkenin en önemli politika belirleme toplantılarına dahil edilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The policy-making committee invited local organisations to comment on the draft before its members agreed on priorities for the next year.",
+          "exTr": "Politika belirleyen komite, üyeleri gelecek yılın öncelikleri üzerinde anlaşmadan önce yerel kuruluşları taslak hakkında görüş bildirmeye davet etti."
+        }
+      ]
+    },
+    {
+      "word": "political",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. siyasi, politik",
+        "ex": "The referendum sparked intense political debate over the country's future relationship with its neighbors.",
+        "exTr": "Referandum, ülkenin komşularıyla gelecekteki ilişkisi konusunda yoğun siyasi tartışmalara yol açtı."
+      },
+      "alternatives": [
+        {
+          "ex": "The historian distinguishes political speeches from private correspondence, showing how the same leader adjusted his arguments for different audiences.",
+          "exTr": "Tarihçi, aynı liderin savlarını farklı dinleyici kitlelerine göre nasıl uyarladığını göstererek siyasi konuşmaları özel yazışmalardan ayırıyor."
+        }
+      ]
+    },
+    {
+      "word": "politics",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. siyaset, politika",
+        "ex": "Local politics often influence how communities respond to environmental regulations and public health initiatives.",
+        "exTr": "Yerel siyaset, toplulukların çevre düzenlemelerine ve halk sağlığı girişimlerine nasıl tepki verdiğini sıklıkla etkiler."
+      },
+      "alternatives": [
+        {
+          "ex": "The novel presents politics through disagreements within a family, linking public debates to choices about work, migration and education.",
+          "exTr": "Roman, kamusal tartışmaları iş, göç ve eğitimle ilgili seçimlere bağlayarak siyaseti bir aile içindeki anlaşmazlıklar üzerinden sunuyor."
+        }
+      ]
+    },
+    {
+      "word": "pollutant",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kirletici (madde)",
+        "ex": "Factories along the river have been ordered to reduce the amount of pollutant released into the water.",
+        "exTr": "Nehir boyunca sıralanan fabrikalara, suya salınan kirletici madde miktarını azaltmaları emredildi."
+      },
+      "alternatives": [
+        {
+          "ex": "The monitoring plan specified which pollutant each instrument could detect, preventing users from treating one reading as a complete assessment of water quality.",
+          "exTr": "İzleme planı, kullanıcıların tek bir ölçümü su kalitesinin eksiksiz değerlendirmesi saymasını önleyerek her cihazın hangi kirleticiyi tespit edebildiğini belirtti."
+        }
+      ]
+    },
+    {
+      "word": "pollution",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kirlilik, kirlenme",
+        "ex": "Air pollution causes millions of premature deaths worldwide every single year.",
+        "exTr": "Hava kirliliği, dünya genelinde her yıl milyonlarca erken ölüme neden oluyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Residents' complaints about pollution were mapped alongside inspection records to identify locations where concerns had not yet been investigated.",
+          "exTr": "Sakinlerin kirlilik şikâyetleri, kaygıların henüz araştırılmadığı yerleri belirlemek için denetim kayıtlarıyla birlikte haritaya işlendi."
+        }
+      ]
+    },
+    {
+      "word": "pond",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. gölet, küçük göl, havuz",
+        "ex": "Researchers monitored the small pond throughout the summer to determine how rising temperatures affected the breeding behaviour of local frog populations.",
+        "exTr": "Araştırmacılar, yükselen sıcaklıkların yerel kurbağa popülasyonlarının üreme davranışını nasıl etkilediğini belirlemek için küçük göleti yaz boyunca izlediler."
+      },
+      "alternatives": [
+        {
+          "ex": "The school pond became the focus of a drawing project in which pupils recorded the same view under different weather conditions.",
+          "exTr": "Okulun göleti, öğrencilerin aynı manzarayı farklı hava koşullarında kaydettiği bir çizim projesinin odağı oldu."
+        }
+      ]
+    },
+    {
+      "word": "poor",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. zayıf, kötü (kalite bakımından)",
+        "ex": "Industrial cities with poor air quality have seen rising rates of childhood asthma.",
+        "exTr": "Hava kalitesi zayıf olan sanayi kentlerinde çocuklarda görülen astım oranlarında artış yaşanıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Poor sound quality made several interviews difficult to transcribe, so the editor marked uncertain passages rather than silently guessing the missing words.",
+          "exTr": "Düşük ses kalitesi bazı görüşmeleri yazıya dökmeyi güçleştirdiği için editör, eksik sözcükleri belirtmeden tahmin etmek yerine belirsiz bölümleri işaretledi."
+        }
+      ]
+    },
+    {
+      "word": "pop-up",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. açılır pencere/uyarı (bilgisayar); geçici (pop-up) mağaza/etkinlik",
+        "ex": "A pop-up window appeared on the screen, asking users to confirm their subscription preferences.",
+        "exTr": "Ekranda, kullanıcılardan abonelik tercihlerini onaylamalarını isteyen bir açılır pencere belirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "Participants frequently closed the pop-up without reading it, suggesting that the warning's timing deserved as much attention as its wording.",
+          "exTr": "Katılımcılar açılır pencereyi sık sık okumadan kapatıyordu; bu da uyarının zamanlamasının, metni kadar dikkate alınması gerektiğini düşündürüyordu."
+        }
+      ]
+    },
+    {
+      "word": "popularity",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. popülerlik, rağbet",
+        "ex": "Streaming services have grown enormously in popularity since the early 2010s.",
+        "exTr": "Yayın akışı hizmetleri, 2010'ların başından bu yana popülerlik bakımından muazzam biçimde büyüdü."
+      },
+      "alternatives": [
+        {
+          "ex": "The popularity of the walking tour surprised its organisers, who had expected most visitors to prefer activities inside the museum.",
+          "exTr": "Yürüyüş turunun gördüğü rağbet, ziyaretçilerin çoğunun müze içindeki etkinlikleri tercih edeceğini bekleyen organizatörlerini şaşırttı."
+        }
+      ]
+    },
+    {
+      "word": "population",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. nüfus, popülasyon",
+        "ex": "Urban population growth has placed enormous strain on public transportation systems worldwide.",
+        "exTr": "Kentsel nüfus artışı, dünya genelinde toplu taşıma sistemleri üzerinde muazzam bir baskı oluşturdu."
+      },
+      "alternatives": [
+        {
+          "ex": "The census report explained how temporary residents were counted, since different definitions could produce different estimates of the island's population.",
+          "exTr": "Nüfus sayımı raporu, farklı tanımlar adanın nüfusuna ilişkin farklı tahminler üretebileceği için geçici sakinlerin nasıl sayıldığını açıkladı."
+        }
+      ]
+    },
+    {
+      "word": "portable",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. taşınabilir, portatif",
+        "ex": "Relief agencies distributed portable water filters to villages affected by the contaminated supply.",
+        "exTr": "Yardım kuruluşları, kirlenmiş su kaynağından etkilenen köylere taşınabilir su filtreleri dağıttı."
+      },
+      "alternatives": [
+        {
+          "ex": "A portable scanner allowed the team to examine documents in the village hall instead of transporting fragile originals to a distant office.",
+          "exTr": "Taşınabilir bir tarayıcı, ekibin hassas asılları uzaktaki bir ofise taşımak yerine belgeleri köy toplantı salonunda incelemesini sağladı."
+        }
+      ]
+    },
+    {
+      "word": "portrait",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. portre, resim",
+        "ex": "The museum recently acquired a striking portrait painted by a lesser-known Renaissance artist.",
+        "exTr": "Müze, yakın zamanda pek tanınmayan bir Rönesans sanatçısı tarafından yapılan çarpıcı bir portre satın aldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The portrait includes tools associated with the sitter's trade, inviting viewers to consider how occupation contributed to the image he wished to present.",
+          "exTr": "Portre, resmedilen kişinin mesleğiyle ilgili araçlar içererek izleyicileri mesleğinin sunmak istediği imaja nasıl katkıda bulunduğunu düşünmeye davet ediyor."
+        }
+      ]
+    },
+    {
+      "word": "portrayal",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. betimleme, tasvir; (oyunculukta) canlandırma",
+        "ex": "Critics praised the film's realistic portrayal of daily life in a nineteenth-century industrial city.",
+        "exTr": "Eleştirmenler, filmin on dokuzuncu yüzyıl bir sanayi kentindeki gündelik yaşamı gerçekçi biçimde tasvir etmesini övdü."
+      },
+      "alternatives": [
+        {
+          "ex": "The actor's portrayal of the headteacher avoids making her either entirely sympathetic or wholly unreasonable, preserving the tensions within the script.",
+          "exTr": "Oyuncunun okul müdürünü canlandırışı, onu ne bütünüyle sempati duyulan ne de tamamen mantıksız biri yaparak senaryodaki gerilimleri koruyor."
+        }
+      ]
+    },
+    {
+      "word": "position",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. konum, pozisyon",
+        "ex": "The company's strong position in the market allows it to influence prices across the industry.",
+        "exTr": "Şirketin pazardaki güçlü konumu, sektör genelinde fiyatları etkilemesine olanak tanıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The position of the microphone was changed after the rehearsal revealed that footsteps were louder than several passages of dialogue.",
+          "exTr": "Prova, ayak seslerinin bazı diyalog bölümlerinden daha yüksek olduğunu ortaya çıkardıktan sonra mikrofonun konumu değiştirildi."
+        }
+      ]
+    },
+    {
+      "word": "positivity",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. pozitiflik, olumlu tutum",
+        "ex": "The coach emphasized positivity throughout training, believing confidence was essential to the team's success.",
+        "exTr": "Antrenör, özgüvenin takımın başarısı için gerekli olduğuna inanarak antrenman boyunca pozitifliği vurguladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The manager's positivity encouraged the team, but members still wanted a practical explanation of how the remaining workload would be shared.",
+          "exTr": "Yöneticinin olumlu tutumu ekibi cesaretlendirdi; ancak üyeler kalan iş yükünün nasıl paylaşılacağına ilişkin somut bir açıklama da istiyordu."
+        }
+      ]
+    }
+  ],
+  "collocations": [
+    {
+      "word": "phone-in",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a radio phone-in",
+          "tr": "radyoda telefonla katılım programı"
+        },
+        {
+          "en": "host a phone-in",
+          "tr": "telefonla katılım programı sunmak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "physic",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a dose of physic",
+          "tr": "bir doz ilaç; eski kullanım"
+        },
+        {
+          "en": "take physic",
+          "tr": "ilaç almak; eski kullanım"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "pick-off",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a pick-off attempt",
+          "tr": "koşucuyu kaide dışında yakalayarak eleme girişimi"
+        },
+        {
+          "en": "a successful pick-off",
+          "tr": "koşucuyu kaide dışında yakalayarak başarıyla eleme"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "pigeon",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a flock of pigeons",
+          "tr": "bir güvercin sürüsü"
+        },
+        {
+          "en": "a racing pigeon",
+          "tr": "yarış güvercini"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "pink",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "pale pink",
+          "tr": "soluk pembe"
+        },
+        {
+          "en": "a pink tint",
+          "tr": "pembe bir ton"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "place-kick",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "place-kick a goal",
+          "tr": "yerden vuruşla gol atmak"
+        },
+        {
+          "en": "place-kick the ball",
+          "tr": "yere yerleştirilmiş topa vurmak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "plainly",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "plainly evident",
+          "tr": "apaçık ortada"
+        },
+        {
+          "en": "state something plainly",
+          "tr": "bir şeyi açıkça belirtmek"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "plant-eating",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "plant-eating animals",
+          "tr": "otçul hayvanlar"
+        },
+        {
+          "en": "plant-eating insects",
+          "tr": "bitkiyle beslenen böcekler"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "positivity",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a sense of positivity",
+          "tr": "olumluluk duygusu"
+        },
+        {
+          "en": "radiate positivity",
+          "tr": "çevresine olumlu enerji yaymak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

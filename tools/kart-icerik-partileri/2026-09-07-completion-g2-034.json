@@ -1,0 +1,1095 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 2,
+    "input": "input-034.json"
+  },
+  "enrichments": [
+    {
+      "word": "paid-up",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. ödemesi tamamlanmış, borcu bitmiş",
+        "ex": "Only paid-up members are allowed to vote at the annual general meeting of the association.",
+        "exTr": "Derneğin yıllık genel kurul toplantısında yalnızca aidatını ödemiş üyelerin oy kullanmasına izin verilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The association contacted its paid-up members before the vote, checking that the register reflected recent renewals as well as long-established subscriptions.",
+          "exTr": "Dernek, listenin uzun süredir devam eden üyeliklerin yanı sıra son yenilemeleri de yansıttığını kontrol ederek oylamadan önce aidatını ödemiş üyeleriyle iletişime geçti."
+        }
+      ]
+    },
+    {
+      "word": "painful",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. acı verici, ağrılı",
+        "ex": "Recovery from the surgery proved far more painful than the doctors had originally anticipated.",
+        "exTr": "Ameliyattan iyileşme süreci, doktorların başlangıçta öngördüğünden çok daha acı verici çıktı."
+      },
+      "alternatives": [
+        {
+          "ex": "Revisiting the correspondence was painful for the family, yet it helped clarify events that had previously been discussed only through incomplete memories.",
+          "exTr": "Yazışmaları yeniden incelemek aile için acı vericiydi; yine de daha önce yalnızca eksik anılar üzerinden konuşulan olayları açıklığa kavuşturmaya yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "paint",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. boyamak, resim yapmak",
+        "ex": "Workers will paint the office walls a soft blue color before the new employees arrive.",
+        "exTr": "İşçiler, yeni çalışanlar gelmeden önce ofis duvarlarını yumuşak bir mavi renge boyayacak."
+      },
+      "alternatives": [
+        {
+          "ex": "The residents agreed to paint the shared entrance together, but first asked a specialist to identify areas where damp had damaged the surface.",
+          "exTr": "Sakinler ortak girişi birlikte boyamayı kabul etti; ancak önce bir uzmandan rutubetin yüzeye zarar verdiği alanları belirlemesini istedi."
+        }
+      ]
+    },
+    {
+      "word": "painter",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ressam",
+        "ex": "The exhibition featured landscapes created by a painter who traveled extensively across Europe.",
+        "exTr": "Sergide, Avrupa'yı uzun süre gezen bir ressamın yarattığı manzara tabloları yer aldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The painter returned to the same street repeatedly, changing the viewpoint to explore how light altered the relationship between buildings and open space.",
+          "exTr": "Ressam, ışığın binalar ile açık alan arasındaki ilişkiyi nasıl değiştirdiğini araştırmak için bakış açısını değiştirerek aynı sokağa tekrar tekrar döndü."
+        }
+      ]
+    },
+    {
+      "word": "palace",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. saray",
+        "ex": "Tourists from around the world visit the ancient palace to admire its intricate architecture.",
+        "exTr": "Dünyanın dört bir yanından turistler, karmaşık mimarisine hayran olmak için antik sarayı ziyaret ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The palace accounts listed repairs alongside ceremonial expenses, revealing the practical work required to maintain a building associated mainly with royal display.",
+          "exTr": "Saray hesapları onarımları tören giderleriyle birlikte listeliyor ve çoğunlukla kraliyet gösterişiyle ilişkilendirilen bir binanın bakımında gereken pratik işleri ortaya koyuyordu."
+        }
+      ]
+    },
+    {
+      "word": "palatine",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. damağa veya damak bölgesine ait",
+        "ex": "The palatine tonsils help detect pathogens entering through the mouth and nose.",
+        "exTr": "Damak bademcikleri ağız ve burundan giren patojenlerin algılanmasına yardımcı olur."
+      },
+      "alternatives": [
+        {
+          "ex": "The anatomy illustration highlighted the palatine bones in a separate colour, helping students identify their position within the more complex structure of the skull.",
+          "exTr": "Anatomi resmi damak kemiklerini ayrı bir renkle vurgulayarak öğrencilerin kafatasının daha karmaşık yapısı içindeki konumlarını belirlemesine yardımcı oldu."
+        }
+      ],
+      "note": "Anatomik damak anlamı; soyluluk unvanı veya coğrafi anlamlar değil. https://www.merriam-webster.com/medical/palatine%20bone"
+    },
+    {
+      "word": "pan",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. tava",
+        "ex": "The chef heated olive oil in a large pan before adding the chopped vegetables.",
+        "exTr": "Şef, doğranmış sebzeleri eklemeden önce büyük bir tavada zeytinyağını ısıttı."
+      },
+      "alternatives": [
+        {
+          "ex": "The cook selected a wider pan so that the ingredients could be arranged in a single layer during the demonstration.",
+          "exTr": "Aşçı, gösterim sırasında malzemelerin tek kat hâlinde yerleştirilebilmesi için daha geniş bir tava seçti."
+        }
+      ]
+    },
+    {
+      "word": "panel",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. panel, kurul",
+        "ex": "A panel of leading scientists was invited to discuss the latest findings on climate change.",
+        "exTr": "Önde gelen bilim insanlarından oluşan bir kurul, iklim değişikliğiyle ilgili en son bulguları tartışmaya davet edildi."
+      },
+      "alternatives": [
+        {
+          "ex": "The panel included users as well as designers, ensuring that practical concerns could be discussed alongside technical questions about the proposed system.",
+          "exTr": "Kurulda tasarımcıların yanı sıra kullanıcılar da yer alıyordu; böylece önerilen sistemin teknik sorularıyla birlikte pratik kaygılar da tartışılabiliyordu."
+        }
+      ]
+    },
+    {
+      "word": "papers",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. (bilimsel) makale",
+        "ex": "Researchers must submit their papers to the journal before the upcoming conference deadline.",
+        "exTr": "Araştırmacılar, yaklaşan konferans son teslim tarihinden önce makalelerini dergiye göndermelidir."
+      },
+      "alternatives": [
+        {
+          "ex": "The review compared papers that used different definitions of participation, explaining why their conclusions could not be combined without examining the underlying methods.",
+          "exTr": "İnceleme, farklı katılım tanımları kullanan makaleleri karşılaştırarak temel yöntemler incelenmeden sonuçlarının neden birleştirilemeyeceğini açıkladı."
+        }
+      ]
+    },
+    {
+      "word": "par",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. eşit düzey, ortalama",
+        "ex": "The quality of local universities is now on a par with leading European institutions.",
+        "exTr": "Yerel üniversitelerin kalitesi artık önde gelen Avrupa kurumlarıyla aynı düzeyde."
+      },
+      "alternatives": [
+        {
+          "ex": "The repaired instrument performed on a par with the newer model, although its owner still faced greater uncertainty about obtaining replacement parts.",
+          "exTr": "Sahibi yedek parça temininde hâlâ daha fazla belirsizlik yaşasa da onarılan cihaz yeni modelle aynı düzeyde performans gösterdi."
+        }
+      ]
+    },
+    {
+      "word": "paradise",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. cennet, yeryüzü cenneti",
+        "ex": "For divers, the coral reefs of the region are a genuine paradise, hosting hundreds of fish species in astonishingly clear and shallow water.",
+        "exTr": "Dalgıçlar için bölgenin mercan resifleri, şaşırtıcı derecede berrak ve sığ suda yüzlerce balık türünü barındıran gerçek bir cennettir."
+      },
+      "alternatives": [
+        {
+          "ex": "The brochure portrayed the island as a paradise, but the documentary also explored the difficult working conditions behind its carefully maintained tourist image.",
+          "exTr": "Broşür adayı bir cennet olarak tasvir ediyordu; belgesel ise özenle korunan turistik imajın ardındaki güç çalışma koşullarını da araştırdı."
+        }
+      ]
+    },
+    {
+      "word": "paradoxically",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. çelişkili biçimde, paradoksal olarak, tuhaftır ki",
+        "ex": "Paradoxically, the more choices consumers are offered, the less satisfied they tend to feel with the decision they finally make.",
+        "exTr": "Tuhaftır ki, tüketicilere ne kadar çok seçenek sunulursa, sonunda verdikleri karardan o kadar az memnun oluyorlar."
+      },
+      "alternatives": [
+        {
+          "ex": "Paradoxically, the attempt to simplify the form made it harder to complete, because removing explanations left applicants uncertain about what each question required.",
+          "exTr": "Çelişkili biçimde formu basitleştirme girişimi onu doldurmayı zorlaştırdı; çünkü açıklamaların kaldırılması başvuranları her sorunun ne istediği konusunda belirsizlik içinde bıraktı."
+        }
+      ]
+    },
+    {
+      "word": "parameter",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. parametre, değişken, ölçüt",
+        "ex": "Engineers adjusted several key parameters in the simulation to better predict the bridge's structural behavior.",
+        "exTr": "Mühendisler, köprünün yapısal davranışını daha iyi tahmin edebilmek için simülasyondaki birkaç önemli parametreyi ayarladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The team changed one parameter at a time, making it easier to identify which adjustment was responsible for the observed difference in output.",
+          "exTr": "Ekip her seferinde tek bir parametreyi değiştirerek çıktıda gözlemlenen farkın hangi ayarlamadan kaynaklandığını belirlemeyi kolaylaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "parasitically",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. parazit biçimde, başka bir canlıdan beslenerek",
+        "ex": "The plant grows parasitically on nearby roots and cannot produce enough nutrients independently.",
+        "exTr": "Bitki yakındaki köklerde parazit biçimde büyür ve kendi başına yeterli besin üretemez."
+      },
+      "alternatives": [
+        {
+          "ex": "The researchers tested whether the organism lived parasitically on the host, rather than merely occupying the same area without drawing resources from it.",
+          "exTr": "Araştırmacılar, organizmanın konaktan kaynak almadan yalnızca aynı alanı paylaşmak yerine onun üzerinde parazit olarak yaşayıp yaşamadığını sınadı."
+        }
+      ]
+    },
+    {
+      "word": "parchment",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. parşömen (post/deri kağıt)",
+        "ex": "Historians carefully examined the ancient parchment for faint traces of the original handwritten text.",
+        "exTr": "Tarihçiler, özgün el yazısı metnin belli belirsiz izlerini bulmak için kadim parşömeni dikkatle inceledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The parchment had been reused, and traces of an earlier text remained visible beneath the writing that had first attracted the researcher's attention.",
+          "exTr": "Parşömen yeniden kullanılmıştı ve araştırmacının önce dikkatini çeken yazının altında daha eski bir metnin izleri görünür kalmıştı."
+        }
+      ]
+    },
+    {
+      "word": "parental",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. ebeveynlere ait, ebeveynsel",
+        "ex": "Researchers found a strong link between parental involvement and children's academic performance.",
+        "exTr": "Araştırmacılar, ebeveyn katılımı ile çocukların akademik başarısı arasında güçlü bir bağlantı buldu."
+      },
+      "alternatives": [
+        {
+          "ex": "The survey examined parental expectations about homework, distinguishing preferences expressed by families from the practices teachers believed those families followed.",
+          "exTr": "Araştırma, ailelerin dile getirdiği tercihleri öğretmenlerin ailelerce uygulandığını düşündüğü pratiklerden ayırarak ebeveynlerin ev ödevine ilişkin beklentilerini inceledi."
+        }
+      ]
+    },
+    {
+      "word": "parliament",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. parlamento, meclis",
+        "ex": "The new environmental law was approved by parliament after months of heated debate.",
+        "exTr": "Yeni çevre yasası, aylar süren şiddetli tartışmaların ardından parlamento tarafından onaylandı."
+      },
+      "alternatives": [
+        {
+          "ex": "The debate in parliament focused on how the proposal would be implemented, with members requesting clearer estimates of the resources required locally.",
+          "exTr": "Parlamentodaki tartışma önerinin nasıl uygulanacağına odaklandı ve üyeler yerelde gereken kaynaklara ilişkin daha açık tahminler istedi."
+        }
+      ]
+    },
+    {
+      "word": "parsley",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. maydanoz",
+        "ex": "The chef sprinkled freshly chopped parsley over the soup just before serving it to guests.",
+        "exTr": "Şef, misafirlere servis etmeden hemen önce çorbanın üzerine taze doğranmış maydanoz serpti."
+      },
+      "alternatives": [
+        {
+          "ex": "The growers labelled the parsley beds by sowing date, enabling trainees to compare the appearance of plants at different stages of development.",
+          "exTr": "Yetiştiriciler maydanoz tarhlarını ekim tarihine göre etiketleyerek kursiyerlerin farklı gelişim aşamalarındaki bitkilerin görünümünü karşılaştırmasını sağladı."
+        }
+      ]
+    },
+    {
+      "word": "part-time",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yarı zamanlı, kısmi süreli",
+        "ex": "Many university students take a part-time job to help cover their living expenses.",
+        "exTr": "Birçok üniversite öğrencisi, yaşam giderlerini karşılamaya yardımcı olmak için yarı zamanlı bir iş yapıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Her part-time position allowed her to continue studying, although irregular shifts sometimes conflicted with the practical sessions required by the course.",
+          "exTr": "Yarı zamanlı işi öğrenimini sürdürmesine olanak sağlıyordu; ancak düzensiz vardiyalar bazen dersin gerektirdiği uygulama oturumlarıyla çakışıyordu."
+        }
+      ]
+    },
+    {
+      "word": "participant",
+      "sense_index": 0,
+      "expected": {
+        "tr": "katılımcı",
+        "ex": "Each participant in the study was asked to keep a detailed sleep diary.",
+        "exTr": "Çalışmadaki her katılımcıdan ayrıntılı bir uyku günlüğü tutması istendi."
+      },
+      "alternatives": [
+        {
+          "ex": "Each participant received the same diagram, but the interviewer varied the order of the questions to explore whether earlier prompts influenced later explanations.",
+          "exTr": "Her katılımcıya aynı şema verildi; ancak görüşmeci önceki yönlendirmelerin sonraki açıklamaları etkileyip etkilemediğini araştırmak için soruların sırasını değiştirdi."
+        }
+      ]
+    },
+    {
+      "word": "particle",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. parçacık, tanecik",
+        "ex": "Physicists detected a subatomic particle that had never been observed in previous experiments.",
+        "exTr": "Fizikçiler, önceki deneylerde hiç gözlemlenmemiş bir atomaltı parçacık tespit etti."
+      },
+      "alternatives": [
+        {
+          "ex": "A particle trapped beneath the lens distorted part of the image, prompting the technician to check the equipment before interpreting the apparent irregularity.",
+          "exTr": "Merceğin altında sıkışan bir parçacık görüntünün bir kısmını bozarak teknisyeni görünürdeki düzensizliği yorumlamadan önce ekipmanı kontrol etmeye yöneltti."
+        }
+      ]
+    },
+    {
+      "word": "partition",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. bölmek, ayırmak",
+        "ex": "Engineers decided to partition the database to improve overall system performance and security.",
+        "exTr": "Mühendisler, genel sistem performansını ve güvenliğini artırmak için veritabanını bölmeye karar verdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The builders planned to partition the room without blocking its windows, preserving natural light in the areas intended for individual work.",
+          "exTr": "İnşaatçılar, bireysel çalışma için ayrılan alanlarda doğal ışığı koruyarak odayı pencereleri kapatmadan bölmeyi planladı."
+        }
+      ]
+    },
+    {
+      "word": "partnership",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ortaklık, işbirliği",
+        "ex": "The two universities formed a research partnership to study renewable energy storage.",
+        "exTr": "İki üniversite, yenilenebilir enerji depolamasını incelemek için bir araştırma ortaklığı kurdu."
+      },
+      "alternatives": [
+        {
+          "ex": "The partnership depended on a clear division of responsibilities, especially when one organisation supplied equipment and the other provided staff to operate it.",
+          "exTr": "Ortaklık, özellikle bir kuruluş ekipmanı sağlarken diğeri onu kullanacak personeli temin ettiğinde, sorumlulukların açıkça paylaşılmasına dayanıyordu."
+        }
+      ]
+    },
+    {
+      "word": "pass",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. geçmek (zaman, mekân)",
+        "ex": "Several years passed before the missing documents were finally discovered in the old archive.",
+        "exTr": "Kayıp belgeler nihayet eski arşivde bulunana kadar birkaç yıl geçti."
+      },
+      "alternatives": [
+        {
+          "ex": "Several weeks would pass before the samples reached the laboratory, so the team documented their condition carefully at the point of collection.",
+          "exTr": "Örnekler laboratuvara ulaşmadan önce birkaç hafta geçeceği için ekip toplandıkları anda durumlarını dikkatle belgeledi."
+        }
+      ]
+    },
+    {
+      "word": "passenger",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yolcu",
+        "ex": "Airlines introduced stricter safety measures after a passenger reported a mechanical issue mid-flight.",
+        "exTr": "Bir yolcu uçuş sırasında mekanik bir sorun bildirdikten sonra havayolları daha sıkı güvenlik önlemleri getirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The passenger asked whether the connecting train would wait for late arrivals, revealing a gap between information available to drivers and that provided on the platform.",
+          "exTr": "Yolcu aktarma treninin geciken yolcuları bekleyip beklemeyeceğini sorarak makinistlerin erişebildiği bilgi ile peronda verilen bilgi arasındaki boşluğu ortaya çıkardı."
+        }
+      ]
+    },
+    {
+      "word": "passive",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. pasif, edilgen",
+        "ex": "Students often struggle to identify the passive voice when reading complex academic texts.",
+        "exTr": "Öğrenciler, karmaşık akademik metinleri okurken edilgen çatıyı fark etmekte çoğu zaman zorlanır."
+      },
+      "alternatives": [
+        {
+          "ex": "The course encouraged students to move beyond a passive role, asking them to question the examples instead of simply copying the instructor's conclusions.",
+          "exTr": "Ders, öğrencilerden yalnızca eğitmenin sonuçlarını kopyalamak yerine örnekleri sorgulamalarını isteyerek onları pasif bir rolün ötesine geçmeye teşvik etti."
+        }
+      ]
+    },
+    {
+      "word": "past",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. geçmiş",
+        "ex": "Archaeological findings offer valuable clues about how ancient civilizations survived in the distant past.",
+        "exTr": "Arkeolojik bulgular, antik uygarlıkların çok eski geçmişte nasıl hayatta kaldığına dair değerli ipuçları sunar."
+      },
+      "alternatives": [
+        {
+          "ex": "The past appeared less orderly when the historian included unfinished plans and failed experiments alongside the achievements celebrated in official accounts.",
+          "exTr": "Tarihçi resmî anlatılarda övülen başarıların yanına tamamlanmamış planları ve başarısız denemeleri de eklediğinde geçmiş daha az düzenli görünüyordu."
+        }
+      ]
+    },
+    {
+      "word": "patch",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yama, küçük alan",
+        "ex": "Farmers noticed a dry patch of land where nothing seemed willing to grow.",
+        "exTr": "Çiftçiler, hiçbir şeyin yetişmek istemediği kuru bir toprak yaması fark etti."
+      },
+      "alternatives": [
+        {
+          "ex": "A patch of darker fabric suggested that the curtain had been repaired, but its position did not reveal when the alteration had occurred.",
+          "exTr": "Daha koyu bir kumaş yaması perdenin onarıldığını düşündürüyordu; ancak konumu değişikliğin ne zaman yapıldığını göstermiyordu."
+        }
+      ]
+    },
+    {
+      "word": "paternity",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. babalık, baba olma durumu",
+        "ex": "Countries that offer generous paternity leave report a more equal division of childcare between parents during the first year.",
+        "exTr": "Cömert babalık izni sunan ülkeler, ilk yıl boyunca ebeveynler arasında çocuk bakımının daha eşit paylaşıldığını bildiriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The workplace interviews explored attitudes toward paternity leave, asking whether employees felt able to discuss family responsibilities openly with their supervisors.",
+          "exTr": "İş yeri görüşmeleri, çalışanların aile sorumluluklarını amirleriyle açıkça konuşabildiklerini hissedip hissetmediğini sorarak babalık iznine yönelik tutumları araştırdı."
+        }
+      ]
+    },
+    {
+      "word": "pathway",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. (biyoloji) yolak",
+        "ex": "Scientists mapped the metabolic pathway that allows cells to convert sugar into usable energy.",
+        "exTr": "Bilim insanları, hücrelerin şekeri kullanılabilir enerjiye dönüştürmesini sağlayan metabolik yolağı haritalandırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The diagram separated the proposed metabolic pathway into stages, marking the reactions for which the team still lacked direct experimental evidence.",
+          "exTr": "Şema, ekibin henüz doğrudan deneysel kanıt bulamadığı tepkimeleri işaretleyerek önerilen metabolik yolağı aşamalara ayırdı."
+        }
+      ]
+    },
+    {
+      "word": "patriot",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. vatansever, yurtsever",
+        "ex": "The historian argues that many of those celebrated today as national patriots were regarded as dangerous rebels by their own contemporaries.",
+        "exTr": "Tarihçi, bugün ulusal vatanseverler olarak yüceltilen kişilerin çoğunun kendi çağdaşları tarafından tehlikeli isyancılar olarak görüldüğünü ileri sürüyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The biography portrays a patriot whose loyalty to his country did not prevent him from challenging decisions made by its political leaders.",
+          "exTr": "Biyografi, ülkesine bağlılığı siyasi liderlerin kararlarına itiraz etmesini engellemeyen bir yurtseveri betimliyor."
+        }
+      ]
+    },
+    {
+      "word": "patrol",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. devriye",
+        "ex": "A police patrol discovered the abandoned vehicle near the harbor early in the morning.",
+        "exTr": "Bir polis devriyesi, sabahın erken saatlerinde terk edilmiş aracı limanın yakınında buldu."
+      },
+      "alternatives": [
+        {
+          "ex": "The patrol reported damage to the riverside fence, allowing maintenance staff to identify the affected section before visitors arrived the next morning.",
+          "exTr": "Devriye nehir kenarındaki çitte hasar olduğunu bildirerek bakım personelinin ertesi sabah ziyaretçiler gelmeden etkilenen bölümü belirlemesini sağladı."
+        }
+      ]
+    },
+    {
+      "word": "pave",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. (yol) döşemek, kaplamak",
+        "ex": "The city plans to pave several rural roads to improve access to remote villages.",
+        "exTr": "Şehir, uzak köylere erişimi iyileştirmek için birkaç kırsal yolu kaplamayı planlıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The council decided to pave the path after consulting residents about materials that would suit both everyday use and the character of the surrounding buildings.",
+          "exTr": "Belediye meclisi, hem günlük kullanıma hem de çevredeki binaların karakterine uyacak malzemeler konusunda sakinlere danıştıktan sonra patikayı kaplamaya karar verdi."
+        }
+      ]
+    },
+    {
+      "word": "pay",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. (attention) göstermek, etmek",
+        "ex": "Employees who pay close attention to safety protocols are far less likely to suffer workplace injuries.",
+        "exTr": "Güvenlik protokollerine yakından dikkat eden çalışanların iş yerinde yaralanma olasılığı çok daha düşüktür."
+      },
+      "alternatives": [
+        {
+          "ex": "Readers should pay attention to the qualifications attached to the claim, since the headline alone suggests a certainty that the full report does not support.",
+          "exTr": "Başlık tek başına raporun tamamının desteklemediği bir kesinlik düşündürdüğü için okuyucular iddiaya eklenen sınırlamalara dikkat etmelidir."
+        }
+      ]
+    },
+    {
+      "word": "paying",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kazançlı, kâr getiren; ücretli",
+        "ex": "The consultancy eventually became a paying business after two difficult years without steady clients.",
+        "exTr": "Danışmanlık şirketi, düzenli müşterisi olmadan geçen iki zorlu yılın ardından sonunda kârlı bir işletmeye dönüştü."
+      },
+      "alternatives": [
+        {
+          "ex": "The workshop gradually became a paying concern after it secured regular orders, although the owners continued to limit spending on new equipment.",
+          "exTr": "Atölye düzenli siparişler aldıktan sonra giderek kâr getiren bir işletmeye dönüştü; ancak sahipleri yeni ekipmana yapılan harcamaları sınırlamayı sürdürdü."
+        }
+      ]
+    },
+    {
+      "word": "pea",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. bezelye",
+        "ex": "The children planted a row of pea seeds along the garden fence early in spring.",
+        "exTr": "Çocuklar, ilkbaharın başında bahçe çitinin boyunca bir sıra bezelye tohumu ekti."
+      },
+      "alternatives": [
+        {
+          "ex": "The class measured each pea plant at regular intervals, comparing growth without assuming that plants sown on the same day would develop identically.",
+          "exTr": "Sınıf, aynı gün ekilen bitkilerin aynı biçimde gelişeceğini varsaymadan büyümeyi karşılaştırarak her bezelye bitkisini düzenli aralıklarla ölçtü."
+        }
+      ]
+    },
+    {
+      "word": "peak",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. zirve, doruk",
+        "ex": "The climbers reached the peak shortly after sunrise on the fourth day.",
+        "exTr": "Tırmanıcılar, dördüncü gün gün doğumundan kısa süre sonra zirveye ulaştı."
+      },
+      "alternatives": [
+        {
+          "ex": "A brief peak in demand strained the booking system, even though the total number of applications remained within the programme's expected capacity.",
+          "exTr": "Toplam başvuru sayısı programın beklenen kapasitesi içinde kalsa da talepteki kısa süreli bir zirve rezervasyon sistemini zorladı."
+        }
+      ]
+    },
+    {
+      "word": "pearl",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. inci",
+        "ex": "Divers once risked their lives searching the ocean floor for a single natural pearl.",
+        "exTr": "Dalgıçlar bir zamanlar tek bir doğal inci bulmak için okyanus tabanında hayatlarını riske atardı."
+      },
+      "alternatives": [
+        {
+          "ex": "The pearl was examined beside the necklace's other components to determine whether its setting belonged to the original design or a later alteration.",
+          "exTr": "Yerleştirildiği yuvanın özgün tasarıma mı yoksa sonraki bir değişikliğe mi ait olduğunu belirlemek için inci kolyenin diğer parçalarının yanında incelendi."
+        }
+      ]
+    },
+    {
+      "word": "peccary",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. pekari (Amerika'ya özgü yaban domuzu)",
+        "ex": "Herds of peccary roam the dry forests of Central America, feeding mainly on roots, fallen fruit and hard-shelled seeds.",
+        "exTr": "Pekari sürüleri Orta Amerika'nın kurak ormanlarında dolaşır ve başlıca kökler, yere düşmüş meyveler ve sert kabuklu tohumlarla beslenir."
+      },
+      "alternatives": [
+        {
+          "ex": "The field camera recorded a peccary near the water source, allowing observers to compare its visits with those of other animals using the same area.",
+          "exTr": "Saha kamerası su kaynağı yakınında bir pekariyi kaydederek gözlemcilerin ziyaretlerini aynı alanı kullanan diğer hayvanlarınkilerle karşılaştırmasını sağladı."
+        }
+      ],
+      "note": "Pekari, domuzlara benzeyen ancak onlardan farklı ailede sınıflanan memelidir; mevcut anlamdaki yaban domuzu açıklaması sadeleştirilerek düzeltilmek üzere ayrıca işaretlendi. https://animals.sandiegozoo.org/animals/peccary"
+    },
+    {
+      "word": "peculiarly",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. belirli bir şeye özgü veya kendine has biçimde",
+        "ex": "The disease is peculiarly common in communities exposed to both mineral dust and chronic malnutrition.",
+        "exTr": "Hastalık, hem mineral tozuna hem kronik yetersiz beslenmeye maruz kalan topluluklarda kendine özgü biçimde yaygındır."
+      },
+      "alternatives": [
+        {
+          "ex": "The essay explores a peculiarly urban form of loneliness, asking how constant proximity to strangers can coexist with a lack of meaningful personal contact.",
+          "exTr": "Deneme, yabancılarla sürekli yakınlığın anlamlı kişisel temas eksikliğiyle nasıl bir arada bulunabildiğini sorarak kente özgü bir yalnızlık biçimini araştırıyor."
+        }
+      ]
+    },
+    {
+      "word": "pellet",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. topak, yuvarlak parçacık, pelet",
+        "ex": "Modern heating systems burn compressed wood pellets, which produce far less ash than traditional logs and can be stored easily.",
+        "exTr": "Modern ısıtma sistemleri sıkıştırılmış odun peletleri yakar; bunlar geleneksel odundan çok daha az kül üretir ve kolayca depolanabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "Each pellet was weighed before the compression test, so that differences in the results could be considered alongside variation in the starting material.",
+          "exTr": "Sonuçlardaki farklılıkların başlangıç malzemesindeki değişkenlikle birlikte değerlendirilebilmesi için her pelet sıkıştırma testinden önce tartıldı."
+        }
+      ]
+    },
+    {
+      "word": "pencil",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kalem, kurşun kalem",
+        "ex": "Exam supervisors reminded students to bring a pencil and an eraser to the testing center.",
+        "exTr": "Sınav gözetmenleri, öğrencilere sınav merkezine bir kalem ve silgi getirmelerini hatırlattı."
+      },
+      "alternatives": [
+        {
+          "ex": "She used a pencil to mark uncertain readings on the draft, keeping them distinct from corrections that had already been checked against the original.",
+          "exTr": "Taslakta kesin olmayan okumaları, özgün metinle karşılaştırılarak doğrulanmış düzeltmelerden ayrı tutmak için kurşun kalemle işaretledi."
+        }
+      ]
+    },
+    {
+      "word": "penguin",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. penguen",
+        "ex": "Researchers tagged several penguin colonies to monitor how climate change affects their breeding patterns.",
+        "exTr": "Araştırmacılar, iklim değişikliğinin üreme düzenlerini nasıl etkilediğini izlemek için birçok penguen kolonisini işaretledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The observers recorded when each penguin entered the water, comparing individuals rather than treating the movement of the whole group as a single event.",
+          "exTr": "Gözlemciler, grubun tamamının hareketini tek bir olay saymak yerine bireyleri karşılaştırarak her penguenin suya ne zaman girdiğini kaydetti."
+        }
+      ]
+    },
+    {
+      "word": "pension",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. emekli maaşı",
+        "ex": "After thirty years of service, she finally began receiving her monthly pension from the government.",
+        "exTr": "Otuz yıllık hizmetin ardından, sonunda devletten aylık emekli maaşını almaya başladı."
+      },
+      "alternatives": [
+        {
+          "ex": "Her pension provided a regular income, but she continued occasional work because unexpected household expenses were difficult to accommodate within a fixed budget.",
+          "exTr": "Emekli maaşı düzenli gelir sağlıyordu; ancak beklenmedik ev giderlerini sabit bir bütçeye sığdırmak güç olduğu için ara sıra çalışmayı sürdürdü."
+        }
+      ]
+    },
+    {
+      "word": "pepper",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. biber (baharat/sebze)",
+        "ex": "The chef added freshly ground pepper to the soup just before serving it to the guests.",
+        "exTr": "Şef, misafirlere sunmadan hemen önce çorbaya taze çekilmiş biber ekledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The tasting exercise varied the amount of pepper while keeping the other ingredients constant, asking participants to describe intensity separately from personal preference.",
+          "exTr": "Tadım alıştırması, diğer malzemeleri sabit tutarken karabiber miktarını değiştirdi ve katılımcılardan yoğunluğu kişisel tercihlerinden ayrı betimlemelerini istedi."
+        }
+      ]
+    },
+    {
+      "word": "percent",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yüzde",
+        "ex": "Nearly sixty percent of the survey participants reported improved sleep after reducing screen time.",
+        "exTr": "Anket katılımcılarının yaklaşık yüzde altmışı, ekran süresini azalttıktan sonra uykularının iyileştiğini bildirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "Only ten percent of the collection had been digitised, but that selection included the documents most frequently requested by visiting researchers.",
+          "exTr": "Koleksiyonun yalnızca yüzde onu dijitalleştirilmişti; ancak bu seçki ziyaretçi araştırmacıların en sık talep ettiği belgeleri içeriyordu."
+        }
+      ]
+    },
+    {
+      "word": "perceptual",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. algısal, algıya ilişkin",
+        "ex": "Infants develop remarkable perceptual abilities long before they can speak, distinguishing familiar faces and voices within the first few months.",
+        "exTr": "Bebekler konuşabilmelerinden çok önce dikkat çekici algısal yetenekler geliştirir; ilk birkaç ay içinde tanıdık yüzleri ve sesleri ayırt ederler."
+      },
+      "alternatives": [
+        {
+          "ex": "The experiment examined perceptual differences between two images, asking whether participants noticed a change before they were told which feature to inspect.",
+          "exTr": "Deney, katılımcılara hangi özelliği inceleyecekleri söylenmeden önce bir değişiklik fark edip etmediklerini sorarak iki görüntü arasındaki algısal farklılıkları inceledi."
+        }
+      ]
+    },
+    {
+      "word": "perfection",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. mükemmellik, kusursuzluk",
+        "ex": "The chef spent years trying to achieve perfection in every dish served at the restaurant.",
+        "exTr": "Şef, restoranda servis edilen her yemekte kusursuzluğa ulaşmaya çalışarak yıllarını harcadı."
+      },
+      "alternatives": [
+        {
+          "ex": "Pursuing perfection in the first draft delayed useful feedback, so the tutor encouraged students to share unfinished work while their ideas were still developing.",
+          "exTr": "İlk taslakta kusursuzluk aramak yararlı geri bildirimi geciktirdiği için eğitmen öğrencileri fikirleri hâlâ gelişirken tamamlanmamış çalışmalarını paylaşmaya teşvik etti."
+        }
+      ]
+    },
+    {
+      "word": "performance",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. performans, başarım",
+        "ex": "Students' academic performance improves when they get enough sleep and regular exercise.",
+        "exTr": "Öğrencilerin akademik performansı, yeterince uyuduklarında ve düzenli egzersiz yaptıklarında artar."
+      },
+      "alternatives": [
+        {
+          "ex": "The assessment compared performance on familiar and unfamiliar tasks, revealing differences that a single overall score would have concealed.",
+          "exTr": "Değerlendirme, tanıdık ve alışılmadık görevlerdeki performansı karşılaştırarak tek bir genel puanın gizleyeceği farklılıkları ortaya koydu."
+        }
+      ]
+    },
+    {
+      "word": "perfume",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. parfüm",
+        "ex": "The designer's latest perfume combines notes of jasmine, citrus, and sandalwood in equal measure.",
+        "exTr": "Tasarımcının en yeni parfümü, yasemin, narenciye ve sandal ağacı notalarını eşit ölçüde birleştiriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The advertising study presented the same perfume in differently designed packaging to explore how visual expectations influenced descriptions of its scent.",
+          "exTr": "Reklam araştırması, görsel beklentilerin kokunun betimlenmesini nasıl etkilediğini araştırmak için aynı parfümü farklı tasarlanmış ambalajlarda sundu."
+        }
+      ]
+    },
+    {
+      "word": "periodic",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. periyodik, dönemsel",
+        "ex": "Engineers recommend periodic inspections of bridges to detect structural weaknesses before they become dangerous.",
+        "exTr": "Mühendisler, tehlikeli hâle gelmeden önce yapısal zayıflıkları tespit etmek için köprülerin periyodik olarak denetlenmesini öneriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Periodic reviews of the equipment register helped the laboratory identify items that had been moved without a corresponding update to the shared records.",
+          "exTr": "Ekipman listesinin dönemsel incelemeleri, ortak kayıtlarda karşılık gelen güncelleme yapılmadan taşınan parçaları laboratuvarın belirlemesine yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "peripheral",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. ikincil, yan, çevresel",
+        "ex": "The committee decided that funding for the museum's café was a peripheral issue compared to conservation needs.",
+        "exTr": "Komite, müzenin kafeteryasına ayrılan fonun, koruma ihtiyaçlarına kıyasla ikincil bir konu olduğuna karar verdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The layout of the waiting area initially seemed peripheral to the project, until interviews showed that confusion there affected the entire service.",
+          "exTr": "Görüşmeler oradaki karışıklığın bütün hizmeti etkilediğini gösterene kadar bekleme alanının düzeni başlangıçta proje açısından ikincil görünüyordu."
+        }
+      ]
+    },
+    {
+      "word": "permanent",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kalıcı, daimi",
+        "ex": "Severe sunburn during childhood can cause permanent damage to the skin.",
+        "exTr": "Çocuklukta geçirilen şiddetli güneş yanığı, ciltte kalıcı hasara neden olabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The temporary display was not intended to become permanent, yet its popularity encouraged the museum to reconsider how the room would be used.",
+          "exTr": "Geçici sergilemenin kalıcı olması amaçlanmamıştı; yine de ilgi görmesi müzeyi odanın nasıl kullanılacağını yeniden düşünmeye teşvik etti."
+        }
+      ]
+    },
+    {
+      "word": "permission",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. izin, müsaade",
+        "ex": "Students must obtain written permission from a parent before joining the school trip.",
+        "exTr": "Öğrenciler, okul gezisine katılmadan önce bir ebeveynden yazılı izin almalıdır."
+      },
+      "alternatives": [
+        {
+          "ex": "The researcher obtained permission to reproduce the photograph, while noting that access to the remaining private correspondence would require a separate agreement.",
+          "exTr": "Araştırmacı fotoğrafı çoğaltma izni aldı; kalan özel yazışmalara erişimin ise ayrı bir anlaşma gerektireceğini belirtti."
+        }
+      ]
+    },
+    {
+      "word": "persecution",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. zulüm, baskı (özellikle ırk/din temelli)",
+        "ex": "Many refugees fled their homeland to escape religious persecution and seek asylum abroad.",
+        "exTr": "Birçok mülteci, dini zulümden kaçmak ve yurt dışında sığınma talep etmek için ülkesini terk etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The testimonies describe persecution through restrictions on work, worship and movement, showing how discrimination affected several aspects of everyday life simultaneously.",
+          "exTr": "Tanıklıklar, ayrımcılığın gündelik yaşamın birkaç yönünü aynı anda nasıl etkilediğini göstererek zulmü çalışma, ibadet ve hareket üzerindeki kısıtlamalarla anlatıyor."
+        }
+      ]
+    },
+    {
+      "word": "persistently",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. ısrarla, vazgeçmeden",
+        "ex": "The journalist persistently requested access to the public records.",
+        "exTr": "Gazeteci kamu kayıtlarına erişim talebini ısrarla yineledi."
+      },
+      "alternatives": [
+        {
+          "ex": "She persistently asked how the estimate had been calculated, refusing to accept a summary that omitted the assumptions on which it depended.",
+          "exTr": "Dayandığı varsayımları dışarıda bırakan bir özeti kabul etmeyerek tahminin nasıl hesaplandığını ısrarla sordu."
+        }
+      ]
+    },
+    {
+      "word": "personal",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kişisel, özel",
+        "ex": "Researchers must keep participants' personal information strictly confidential throughout the study.",
+        "exTr": "Araştırmacılar, çalışma boyunca katılımcıların kişisel bilgilerini kesinlikle gizli tutmalıdır."
+      },
+      "alternatives": [
+        {
+          "ex": "Personal recollections enriched the account, but the historian distinguished memories expressed with confidence from details supported by independent contemporary records.",
+          "exTr": "Kişisel hatıralar anlatıyı zenginleştirdi; ancak tarihçi güvenle aktarılan anıları dönemin bağımsız kayıtlarıyla desteklenen ayrıntılardan ayırdı."
+        }
+      ]
+    },
+    {
+      "word": "personally",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. şahsen, kişisel olarak",
+        "ex": "The manager personally reviewed every application before forwarding the shortlist to the board.",
+        "exTr": "Yönetici, kısa listeyi yönetim kuruluna iletmeden önce her başvuruyu şahsen inceledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The curator personally inspected the damaged frame before deciding whether the painting could remain on display while repairs were being arranged.",
+          "exTr": "Küratör, onarım düzenlenirken tablonun sergide kalıp kalamayacağına karar vermeden önce hasarlı çerçeveyi şahsen inceledi."
+        }
+      ]
+    },
+    {
+      "word": "persuade",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. ikna etmek, razı etmek",
+        "ex": "Health campaigns aim to persuade young people to avoid smoking and excessive sugar consumption.",
+        "exTr": "Sağlık kampanyaları, gençleri sigaradan ve aşırı şeker tüketiminden kaçınmaya ikna etmeyi amaçlar."
+      },
+      "alternatives": [
+        {
+          "ex": "The demonstration helped persuade sceptical staff to try the new procedure, because they could observe its practical advantages rather than rely on general promises.",
+          "exTr": "Genel vaatlere dayanmak yerine pratik yararlarını gözlemleyebildikleri için gösterim, kuşkucu personeli yeni işlemi denemeye ikna etmeye yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "pest",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. haşere, zararlı böcek",
+        "ex": "Museum conservators inspect storage rooms constantly, since a single pest such as a clothes moth can ruin centuries-old textiles.",
+        "exTr": "Müze koruma uzmanları depoları sürekli denetler; çünkü elbise güvesi gibi tek bir haşere, yüzyıllık dokumaları mahvedebilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The growers investigated whether the damaged leaves indicated a pest problem, comparing affected plants with nearby specimens that showed no visible harm.",
+          "exTr": "Yetiştiriciler, etkilenen bitkileri yakınlarındaki görünür zarar taşımayan örneklerle karşılaştırarak hasarlı yaprakların bir zararlı sorununa işaret edip etmediğini araştırdı."
+        }
+      ]
+    }
+  ],
+  "collocations": [
+    {
+      "word": "painter",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a landscape painter",
+          "tr": "manzara ressamı"
+        },
+        {
+          "en": "a portrait painter",
+          "tr": "portre ressamı"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "palace",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a royal palace",
+          "tr": "kraliyet sarayı"
+        },
+        {
+          "en": "the palace grounds",
+          "tr": "saray arazisi ve bahçeleri"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "palatine",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "the palatine bone",
+          "tr": "damak kemiği"
+        },
+        {
+          "en": "the palatine tonsils",
+          "tr": "damak bademcikleri"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "pan",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a frying pan",
+          "tr": "kızartma tavası"
+        },
+        {
+          "en": "a non-stick pan",
+          "tr": "yapışmaz tava"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "parasitically",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "live parasitically on a host",
+          "tr": "bir konakta parazit olarak yaşamak"
+        },
+        {
+          "en": "feed parasitically",
+          "tr": "parazit olarak beslenmek"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "parchment",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a sheet of parchment",
+          "tr": "bir parşömen yaprağı"
+        },
+        {
+          "en": "a parchment manuscript",
+          "tr": "parşömen el yazması"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "parsley",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "chopped parsley",
+          "tr": "doğranmış maydanoz"
+        },
+        {
+          "en": "a sprig of parsley",
+          "tr": "bir dal maydanoz"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "pearl",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a pearl necklace",
+          "tr": "inci kolye"
+        },
+        {
+          "en": "a cultured pearl",
+          "tr": "kültür incisi"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "peculiarly",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "peculiarly suited to",
+          "tr": "özellikle uygun olan"
+        },
+        {
+          "en": "peculiarly characteristic of",
+          "tr": "özellikle ... özelliğini taşıyan"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "penguin",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a penguin colony",
+          "tr": "penguen kolonisi"
+        },
+        {
+          "en": "a penguin chick",
+          "tr": "penguen yavrusu"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "pepper",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "freshly ground pepper",
+          "tr": "taze çekilmiş karabiber"
+        },
+        {
+          "en": "a red pepper",
+          "tr": "kırmızı biber"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "personally",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "take something personally",
+          "tr": "bir şeyi üzerine almak, kişisel algılamak"
+        },
+        {
+          "en": "personally responsible",
+          "tr": "şahsen sorumlu"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

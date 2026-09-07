@@ -1,0 +1,1081 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 2,
+    "input": "input-046.json"
+  },
+  "enrichments": [
+    {
+      "word": "sunshine",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. güneş ışığı",
+        "ex": "Farmers in the valley depend heavily on consistent sunshine to ripen their grape harvest each autumn.",
+        "exTr": "Vadideki çiftçiler, her sonbahar üzüm hasatlarını olgunlaştırmak için düzenli güneş ışığına büyük ölçüde bağımlıdır."
+      },
+      "alternatives": [
+        {
+          "ex": "The photographer returned when the sunshine reached the inner courtyard, hoping to record details that had remained hidden in the earlier images.",
+          "exTr": "Fotoğrafçı, önceki görüntülerde gizli kalan ayrıntıları kaydetmek umuduyla güneş ışığı iç avluya ulaştığında geri döndü."
+        }
+      ]
+    },
+    {
+      "word": "super-speed",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. süper hız, olağanüstü hız",
+        "ex": "The new processor promises super-speed performance that could transform how researchers analyze massive datasets.",
+        "exTr": "Yeni işlemci, araştırmacıların devasa veri kümelerini analiz etme biçimini dönüştürebilecek süper hızda bir performans vaat ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The comic gives its central character super-speed, then explores the practical difficulties of sharing ordinary spaces with people who move much more slowly.",
+          "exTr": "Çizgi roman başkişisine süper hız kazandırıyor, ardından çok daha yavaş hareket eden insanlarla sıradan mekânları paylaşmanın pratik güçlüklerini ele alıyor."
+        }
+      ],
+      "note": "Kurgu bağlamındaki olağanüstü hız; ölçülmüş teknik performans veya sık çıkan YDS terimi iddiası yok."
+    },
+    {
+      "word": "superficial",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yüzeysel",
+        "ex": "Critics argued that the report offered only a superficial analysis of the crisis's root causes.",
+        "exTr": "Eleştirmenler, raporun krizin kök nedenlerine yalnızca yüzeysel bir analiz sunduğunu savundu."
+      },
+      "alternatives": [
+        {
+          "ex": "A superficial resemblance between the objects initially suggested a common origin, but closer examination revealed substantial differences in materials and construction.",
+          "exTr": "Nesneler arasındaki yüzeysel benzerlik başlangıçta ortak bir kökene işaret etti; ancak daha yakından inceleme malzeme ve yapımda önemli farklar ortaya koydu."
+        }
+      ]
+    },
+    {
+      "word": "superior",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. üstün, daha iyi",
+        "ex": "In both strength and resistance to corrosion, the new alloy proved superior to steel.",
+        "exTr": "Yeni alaşım, hem dayanıklılık hem de korozyona direnç bakımından çelikten üstün çıktı."
+      },
+      "alternatives": [
+        {
+          "ex": "The revised method was superior to the earlier one in speed, although it required equipment that several participating laboratories did not possess.",
+          "exTr": "Yenilenen yöntem hız bakımından öncekinden üstündü; ancak katılımcı laboratuvarlardan birkaçında bulunmayan donanım gerektiriyordu."
+        }
+      ]
+    },
+    {
+      "word": "supermarket",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. süpermarket",
+        "ex": "Shelves at the local supermarket emptied quickly once the storm warning was broadcast citywide.",
+        "exTr": "Fırtına uyarısı şehir genelinde yayınlanır yayınlanmaz yerel süpermarketteki raflar hızla boşaldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The supermarket's relocation changed the routes residents used for daily shopping, particularly among those who depended on public transport.",
+          "exTr": "Süpermarketin taşınması, özellikle toplu taşımaya bağımlı olan sakinlerin günlük alışveriş için kullandıkları güzergâhları değiştirdi."
+        }
+      ]
+    },
+    {
+      "word": "superstitious",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. batıl inançlı",
+        "ex": "Even in modern societies, some sailors remain superstitious and avoid setting sail on certain days.",
+        "exTr": "Modern toplumlarda bile bazı denizciler batıl inançlı kalır ve belirli günlerde denize açılmaktan kaçınır."
+      },
+      "alternatives": [
+        {
+          "ex": "The biographer examined why contemporaries described the inventor as superstitious, distinguishing their judgements from practices documented in his own notebooks.",
+          "exTr": "Biyografi yazarı, çağdaşlarının yargılarını mucidin kendi defterlerinde belgelenen uygulamalardan ayırarak onu neden batıl inançlı diye tanımladıklarını inceledi."
+        }
+      ]
+    },
+    {
+      "word": "supervisor",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. denetçi, gözetmen, amir",
+        "ex": "The factory supervisor implemented stricter safety checks after two minor accidents occurred within the same month.",
+        "exTr": "Fabrika amiri, aynı ay içinde iki küçük kaza yaşandıktan sonra daha sıkı güvenlik denetimleri uyguladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The supervisor asked the new researchers to explain their recording decisions before approving a shared format for the field notes.",
+          "exTr": "Danışman, saha notları için ortak bir biçimi onaylamadan önce yeni araştırmacılardan kayıt tutma kararlarını açıklamalarını istedi."
+        }
+      ]
+    },
+    {
+      "word": "supply",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. arz, tedarik, kaynak",
+        "ex": "Prolonged drought has reduced the region's supply of fresh drinking water considerably.",
+        "exTr": "Uzun süren kuraklık, bölgenin temiz içme suyu tedarikini önemli ölçüde azalttı."
+      },
+      "alternatives": [
+        {
+          "ex": "An unreliable supply of replacement parts made routine maintenance difficult, even though the workshop had enough trained staff to carry out the repairs.",
+          "exTr": "Atölyede onarımları yapacak kadar eğitimli çalışan bulunmasına rağmen yedek parça tedarikinin güvenilir olmaması rutin bakımı güçleştiriyordu."
+        }
+      ]
+    },
+    {
+      "word": "supporter",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. destekçi, taraftar",
+        "ex": "A wealthy supporter donated funds to help the museum restore its collection of ancient manuscripts.",
+        "exTr": "Varlıklı bir destekçi, müzenin antik el yazmaları koleksiyonunu restore etmesine yardımcı olmak için bağışta bulundu."
+      },
+      "alternatives": [
+        {
+          "ex": "A long-standing supporter of the project questioned the revised plan, arguing that its new priorities no longer reflected the original agreement.",
+          "exTr": "Projenin uzun süredir destekçisi olan biri, yeni önceliklerinin ilk anlaşmayı artık yansıtmadığını savunarak yenilenmiş planı sorguladı."
+        }
+      ]
+    },
+    {
+      "word": "suppose",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. sanmak, varsaymak, farz etmek",
+        "ex": "Early astronomers used to suppose that the sun and planets revolved around the Earth.",
+        "exTr": "Eski gökbilimciler, güneşin ve gezegenlerin Dünya etrafında döndüğünü varsayardı."
+      },
+      "alternatives": [
+        {
+          "ex": "There is little reason to suppose that the missing pages contained only repetition, since the surviving section refers to evidence not presented elsewhere.",
+          "exTr": "Kalan bölüm başka yerde sunulmayan kanıtlara değindiğinden eksik sayfaların yalnızca tekrar içerdiğini varsaymak için pek az gerekçe vardır."
+        }
+      ]
+    },
+    {
+      "word": "suppress",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. bastırmak, engellemek, gizlemek",
+        "ex": "The government was accused of trying to suppress independent media coverage during the political crisis.",
+        "exTr": "Hükümet, siyasi kriz sırasında bağımsız medya haberlerini bastırmaya çalışmakla suçlandı."
+      },
+      "alternatives": [
+        {
+          "ex": "The editor refused to suppress the dissenting responses, believing that readers needed to see how the original interpretation had been challenged.",
+          "exTr": "Editör, okurların ilk yoruma nasıl karşı çıkıldığını görmesi gerektiğine inanarak muhalif yanıtları gizlemeyi reddetti."
+        }
+      ]
+    },
+    {
+      "word": "supremacy",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. üstünlük, egemenlik",
+        "ex": "Historians still debate which empire held naval supremacy in the region during that turbulent century.",
+        "exTr": "Tarihçiler, o çalkantılı yüzyılda hangi imparatorluğun bölgede deniz üstünlüğüne sahip olduğunu hâlâ tartışıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The chapter questions whether commercial supremacy necessarily brought political control, comparing cases in which economic influence and formal authority followed different paths.",
+          "exTr": "Bölüm, ekonomik etki ile resmî yetkinin farklı yollar izlediği durumları karşılaştırarak ticari üstünlüğün mutlaka siyasi kontrol getirip getirmediğini sorguluyor."
+        }
+      ]
+    },
+    {
+      "word": "sure-enough",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. gerçek, hakiki, sahiden öyle olan (vurgulu, informal)",
+        "ex": "To everyone's surprise, the faded parchment turned out to be a sure-enough treasure map after all.",
+        "exTr": "Herkesi şaşırtacak şekilde, solmuş parşömenin sonunda gerçek bir hazine haritası olduğu ortaya çıktı."
+      },
+      "alternatives": [
+        {
+          "ex": "The narrator calls the stranger a sure-enough hero, but the later chapters gradually expose how little evidence supports that enthusiastic judgement.",
+          "exTr": "Anlatıcı yabancıyı gerçek bir kahraman olarak adlandırıyor; ancak sonraki bölümler bu coşkulu yargıyı ne kadar az kanıtın desteklediğini giderek ortaya koyuyor."
+        }
+      ],
+      "note": "ABD gayriresmî/eski sıfat kullanımı, anlatıcı değerlendirmesi içinde öğretildi; sure enough zarfıyla karıştırılmadı. https://www.merriam-webster.com/dictionary/sure-enough"
+    },
+    {
+      "word": "surf",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. kıyıya vuran köpüklü dalgalar",
+        "ex": "From the cliff, they watched the powerful surf crash repeatedly against the rocky shoreline.",
+        "exTr": "Uçurumdan, güçlü dalgaların kayalık kıyı şeridine defalarca çarpışını izlediler."
+      },
+      "alternatives": [
+        {
+          "ex": "The sound of the surf obscured several words in the recording, requiring the researcher to mark those passages as uncertain in the transcript.",
+          "exTr": "Kıyıya vuran dalgaların sesi kayıttaki birkaç sözcüğü bastırdığı için araştırmacının dökümde bu bölümleri belirsiz olarak işaretlemesi gerekti."
+        }
+      ]
+    },
+    {
+      "word": "surfer",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sörfçü",
+        "ex": "Every winter, a well-known professional surfer travels to this coast to compete in the massive waves.",
+        "exTr": "Her kış, tanınmış profesyonel bir sörfçü, devasa dalgalarda yarışmak için bu kıyıya gelir."
+      },
+      "alternatives": [
+        {
+          "ex": "The interview with the surfer focused on how access to the beach had changed, rather than on competitive results or equipment preferences.",
+          "exTr": "Sörfçüyle yapılan görüşme yarışma sonuçları veya donanım tercihlerinden ziyade plaja erişimin nasıl değiştiğine odaklandı."
+        }
+      ]
+    },
+    {
+      "word": "surgical",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. cerrahi",
+        "ex": "Modern surgical techniques allow patients to recover much faster than they did decades ago.",
+        "exTr": "Modern cerrahi teknikler, hastaların onlarca yıl öncesine kıyasla çok daha hızlı iyileşmesini sağlıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The museum's surgical instruments were displayed with descriptions of their historical use, not as examples of procedures suitable for present-day practice.",
+          "exTr": "Müzenin cerrahi aletleri günümüzde uygulanabilecek işlemlerin örnekleri olarak değil, tarihsel kullanımlarını açıklayan metinlerle sergilendi."
+        }
+      ]
+    },
+    {
+      "word": "surplus",
+      "sense_index": 1,
+      "expected": {
+        "tr": "s. fazla, artan",
+        "ex": "The factory kept surplus machinery in a separate warehouse until it could be sold to smaller manufacturers.",
+        "exTr": "Fabrika, küçük üreticilere satılana kadar fazla makineleri ayrı bir depoda tuttu."
+      },
+      "alternatives": [
+        {
+          "ex": "Surplus copies of the catalogue were offered to schools, extending the exhibition's educational reach after the original display had closed.",
+          "exTr": "Kataloğun artan nüshaları okullara sunularak ilk sergi kapandıktan sonra da serginin eğitim açısından ulaştığı kitle genişletildi."
+        }
+      ]
+    },
+    {
+      "word": "surprisingly",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. şaşırtıcı biçimde",
+        "ex": "Despite limited funding, the small research team achieved surprisingly accurate results in their climate model.",
+        "exTr": "Kısıtlı finansmana rağmen, küçük araştırma ekibi iklim modelinde şaşırtıcı derecede doğru sonuçlar elde etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The two witnesses gave surprisingly different accounts of the same conversation, even though both agreed about when and where it had occurred.",
+          "exTr": "İki tanık konuşmanın ne zaman ve nerede gerçekleştiği konusunda anlaşsa da aynı konuşmayı şaşırtıcı derecede farklı anlattı."
+        }
+      ]
+    },
+    {
+      "word": "surrounded",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. çevrili, etrafı sarılmış",
+        "ex": "The research station remained surrounded by ice for nearly eight months of the year.",
+        "exTr": "Araştırma istasyonu, yılın neredeyse sekiz ayı boyunca buzlarla çevrili kaldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The old well was surrounded by later buildings, making its original relationship with the village square difficult to reconstruct from present-day views.",
+          "exTr": "Eski kuyunun çevresi sonraki binalarla sarılmıştı; bu da köy meydanıyla ilk ilişkisini bugünkü görünüşlerden yeniden belirlemeyi güçleştiriyordu."
+        }
+      ]
+    },
+    {
+      "word": "survey",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. anket, inceleme",
+        "ex": "A recent survey revealed that most teenagers spend over five hours online daily.",
+        "exTr": "Yakın tarihli bir anket, gençlerin çoğunun her gün beş saatten fazla zamanı çevrim içi geçirdiğini ortaya koydu."
+      },
+      "alternatives": [
+        {
+          "ex": "The survey included open questions so that residents could raise concerns the researchers had not anticipated when designing the initial categories.",
+          "exTr": "Anket, sakinlerin araştırmacıların ilk kategorileri tasarlarken öngörmediği kaygıları dile getirebilmesi için açık uçlu sorular içeriyordu."
+        }
+      ]
+    },
+    {
+      "word": "surviving",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. hayatta kalan, günümüze ulaşan",
+        "ex": "Historians studied the few surviving manuscripts that documented daily life in the medieval city.",
+        "exTr": "Tarihçiler, ortaçağ şehrindeki günlük yaşamı belgeleyen günümüze ulaşan az sayıdaki el yazmasını inceledi."
+      },
+      "alternatives": [
+        {
+          "ex": "Surviving fragments of the mural suggested a larger composition, but too little remained to identify all the figures with confidence.",
+          "exTr": "Duvar resminden günümüze ulaşan parçalar daha büyük bir kompozisyona işaret ediyordu; ancak bütün figürleri güvenle belirlemek için çok azı kalmıştı."
+        }
+      ]
+    },
+    {
+      "word": "susceptible",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yatkın, duyarlı; kolay etkilenen",
+        "ex": "Elderly people are particularly susceptible to infections because their immune systems weaken with age.",
+        "exTr": "Yaşlı insanlar, bağışıklık sistemleri yaşla birlikte zayıfladığı için enfeksiyonlara özellikle yatkındır."
+      },
+      "alternatives": [
+        {
+          "ex": "The paper was particularly susceptible to damage during handling, so the reading room provided a digital copy for ordinary consultation.",
+          "exTr": "Kâğıt, elle işlem sırasında zarar görmeye özellikle yatkın olduğundan okuma salonu sıradan incelemeler için dijital bir kopya sağladı."
+        }
+      ]
+    },
+    {
+      "word": "suspension",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. askıya alma, geçici uzaklaştırma",
+        "ex": "The student received a two-week suspension for repeatedly violating the school's dress code.",
+        "exTr": "Öğrenci, okulun kıyafet kurallarını tekrar tekrar ihlal ettiği için iki haftalık uzaklaştırma cezası aldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The temporary suspension of the service disrupted access to evening classes, especially for learners travelling from villages without alternative transport links.",
+          "exTr": "Hizmetin geçici olarak askıya alınması, özellikle başka ulaşım bağlantısı olmayan köylerden gelen öğrenenlerin akşam derslerine erişimini aksattı."
+        }
+      ]
+    },
+    {
+      "word": "suspiciously",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. şüpheyle, kuşkuyla",
+        "ex": "The guard eyed the unattended package suspiciously before calling the building's security team immediately.",
+        "exTr": "Güvenlik görevlisi, binanın güvenlik ekibini hemen aramadan önce sahipsiz pakete şüpheyle baktı."
+      },
+      "alternatives": [
+        {
+          "ex": "The collector looked suspiciously at the unusually low price, then asked for documentation showing how the object had reached the seller.",
+          "exTr": "Koleksiyoncu alışılmadık derecede düşük fiyata kuşkuyla baktı, ardından nesnenin satıcıya nasıl ulaştığını gösteren belgeler istedi."
+        }
+      ]
+    },
+    {
+      "word": "sustained",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. sürekli, sürdürülen, uzun süreli",
+        "ex": "Economists agree that sustained economic growth requires consistent investment in education and infrastructure.",
+        "exTr": "Ekonomistler, sürekli ekonomik büyümenin eğitim ve altyapıya istikrarlı yatırım gerektirdiği konusunda hemfikir."
+      },
+      "alternatives": [
+        {
+          "ex": "Sustained contact with participants helped the researchers understand changes that would have been difficult to interpret from a single interview.",
+          "exTr": "Katılımcılarla uzun süreli temas, araştırmacıların tek bir görüşmeden yorumlanması güç olacak değişiklikleri anlamasına yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "swap",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. değiş tokuş etmek, takas etmek",
+        "ex": "The two research teams agreed to swap data sets to validate each other's findings.",
+        "exTr": "İki araştırma ekibi, birbirlerinin bulgularını doğrulamak için veri kümelerini takas etmeyi kabul etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The learners were invited to swap their draft explanations and identify places where another reader might misunderstand the intended meaning.",
+          "exTr": "Öğrenenlerden taslak açıklamalarını değiş tokuş etmeleri ve başka bir okurun kastedilen anlamı yanlış anlayabileceği yerleri belirlemeleri istendi."
+        }
+      ]
+    },
+    {
+      "word": "sweat",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. ter",
+        "ex": "A thin layer of sweat covered the runner's forehead after the final sprint.",
+        "exTr": "Koşucunun alnını, son sprintin ardından ince bir ter tabakası kapladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The costume designer added visible traces of sweat to the fabric so that the character's physical effort would register clearly on camera.",
+          "exTr": "Kostüm tasarımcısı, karakterin fiziksel çabasının kamerada açıkça görülmesi için kumaşa görünür ter izleri ekledi."
+        }
+      ]
+    },
+    {
+      "word": "sweet-talk",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. tatlı dille ikna etmek",
+        "ex": "Salespeople sometimes try to sweet-talk customers into purchasing products they do not actually need.",
+        "exTr": "Satış elemanları bazen müşterileri gerçekte ihtiyaç duymadıkları ürünleri satın almaya tatlı dille ikna etmeye çalışır."
+      },
+      "alternatives": [
+        {
+          "ex": "The narrator tries to sweet-talk his neighbour into lending him a bicycle, although earlier promises have already made her reluctant to agree.",
+          "exTr": "Önceki vaatleri komşusunu zaten isteksiz hâle getirmiş olsa da anlatıcı onu bisikletini ödünç vermeye tatlı dille ikna etmeye çalışıyor."
+        }
+      ]
+    },
+    {
+      "word": "swell",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. şişmek, kabarmak; artmak",
+        "ex": "Rivers in the region tend to swell dramatically after several days of continuous heavy rain.",
+        "exTr": "Bölgedeki nehirler, birkaç gün süren sürekli şiddetli yağışın ardından genellikle çarpıcı biçimde kabarır."
+      },
+      "alternatives": [
+        {
+          "ex": "Reports of the discovery began to swell the number of visitors, putting pressure on a site that had previously received little public attention.",
+          "exTr": "Buluşa ilişkin haberler ziyaretçi sayısını artırmaya başlayarak daha önce kamuoyunun pek az ilgisini çekmiş alana baskı oluşturdu."
+        }
+      ]
+    },
+    {
+      "word": "swiftly",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. çabucak, hızla",
+        "ex": "Emergency crews responded swiftly to the wildfire, evacuating the nearby village within an hour.",
+        "exTr": "Acil durum ekipleri orman yangınına hızla müdahale ederek yakındaki köyü bir saat içinde tahliye etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The correction circulated swiftly among subscribers, but printed copies of the original report continued to present the mistaken date.",
+          "exTr": "Düzeltme aboneler arasında hızla yayıldı; ancak ilk raporun basılı nüshaları yanlış tarihi sunmaya devam etti."
+        }
+      ]
+    },
+    {
+      "word": "swing",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. salıncak, sallanma; ani değişim, dalgalanma",
+        "ex": "Economists observed a noticeable swing in consumer confidence after the government announced new tax policies.",
+        "exTr": "Ekonomistler, hükümet yeni vergi politikalarını duyurduktan sonra tüketici güveninde belirgin bir dalgalanma gözlemledi."
+      },
+      "alternatives": [
+        {
+          "ex": "A sudden swing in audience opinion followed the second speaker's account, illustrating how the order of information could influence the discussion.",
+          "exTr": "İkinci konuşmacının anlatımını dinleyicilerin görüşündeki ani değişim izledi; bu da bilgilerin sunuluş sırasının tartışmayı nasıl etkileyebileceğini gösterdi."
+        }
+      ]
+    },
+    {
+      "word": "syllabic",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. heceyle ilgili, hecesel, heceli",
+        "ex": "Japanese uses a syllabic writing system in which each character represents a whole syllable rather than a single consonant or vowel.",
+        "exTr": "Japonca, her karakterin tek bir ünsüz ya da ünlü yerine bütün bir heceyi temsil ettiği hecesel bir yazı sistemi kullanır."
+      },
+      "alternatives": [
+        {
+          "ex": "The lesson compared syllabic writing with alphabetic writing, asking students to consider what kind of spoken unit each symbol was intended to represent.",
+          "exTr": "Ders, öğrencilerden her simgenin ne tür bir konuşma birimini temsil etmeyi amaçladığını düşünmelerini isteyerek hecesel yazıyı alfabetik yazıyla karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "symbol",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sembol, simge",
+        "ex": "The dove has long served as a symbol of peace in many cultures.",
+        "exTr": "Güvercin, birçok kültürde uzun zamandır barışın simgesi olarak kullanılmaktadır."
+      },
+      "alternatives": [
+        {
+          "ex": "The same symbol carried different meanings on successive maps, so the researcher checked each legend before interpreting changes in land use.",
+          "exTr": "Aynı simge art arda gelen haritalarda farklı anlamlar taşıdığından araştırmacı arazi kullanımındaki değişiklikleri yorumlamadan önce her haritanın işaret açıklamalarını kontrol etti."
+        }
+      ]
+    },
+    {
+      "word": "symmetry",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. simetri",
+        "ex": "The architect admired the perfect symmetry of the ancient temple's columns and staircases.",
+        "exTr": "Mimar, antik tapınağın sütunlarındaki ve merdivenlerindeki kusursuz simetriye hayran kaldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The apparent symmetry of the facade disappeared when measurements revealed that the windows on one side had been widened during a later alteration.",
+          "exTr": "Ölçümler bir yandaki pencerelerin sonraki bir değişiklik sırasında genişletildiğini ortaya koyunca cephenin görünürdeki simetrisi ortadan kalktı."
+        }
+      ]
+    },
+    {
+      "word": "symphonic",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. senfoniye veya senfoni orkestrasına özgü; senfonik",
+        "ex": "The composer combined traditional folk melodies with symphonic structures written for a full orchestra.",
+        "exTr": "Besteci geleneksel halk ezgilerini tam bir orkestra için yazılmış senfonik yapılarla birleştirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The concert programme placed the symphonic work beside an earlier chamber piece, encouraging listeners to compare the composer's use of contrasting instrumental groups.",
+          "exTr": "Konser programı, dinleyicileri bestecinin farklı çalgı gruplarını kullanışını karşılaştırmaya yönelterek senfonik eseri daha eski bir oda müziği eserinin yanına koydu."
+        }
+      ]
+    },
+    {
+      "word": "synchronise",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. eşzamanlamak, senkronize etmek",
+        "ex": "The dancers spent weeks learning to synchronise their movements perfectly with the music's rhythm.",
+        "exTr": "Dansçılar, hareketlerini müziğin ritmiyle mükemmel biçimde eşzamanlamayı öğrenmek için haftalar harcadı."
+      },
+      "alternatives": [
+        {
+          "ex": "The team needed to synchronise the cameras before filming; otherwise the recordings could not reliably show the order in which events occurred.",
+          "exTr": "Ekibin çekimden önce kameraları eşzamanlaması gerekiyordu; aksi hâlde kayıtlar olayların gerçekleşme sırasını güvenilir biçimde gösteremeyecekti."
+        }
+      ]
+    },
+    {
+      "word": "synonym",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. eş anlamlı sözcük, anlamdaş",
+        "ex": "In this context, 'rapid' is a synonym for 'fast'.",
+        "exTr": "Bu bağlamda 'rapid', 'fast' sözcüğünün eş anlamlısıdır."
+      },
+      "alternatives": [
+        {
+          "ex": "The exercise demonstrated that a synonym suitable in one sentence might sound unnatural in another because meaning alone does not determine usage.",
+          "exTr": "Alıştırma, kullanımı yalnızca anlam belirlemediği için bir cümleye uygun eş anlamlı sözcüğün başka bir cümlede kulağa doğal gelmeyebileceğini gösterdi."
+        }
+      ]
+    },
+    {
+      "word": "syntax",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sözdizimi, cümle bilgisi",
+        "ex": "Linguists study how syntax varies across languages to understand universal grammatical structures.",
+        "exTr": "Dilbilimciler, evrensel dilbilgisi yapılarını anlamak için sözdiziminin diller arasında nasıl değiştiğini incelerler."
+      },
+      "alternatives": [
+        {
+          "ex": "Changes in syntax allowed the author to place different information first, altering the emphasis without introducing any new factual claim.",
+          "exTr": "Sözdizimindeki değişiklikler yazarın farklı bilgileri başa yerleştirmesine izin vererek yeni bir olgusal iddia eklemeden vurguyu değiştirdi."
+        }
+      ]
+    },
+    {
+      "word": "system",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sistem",
+        "ex": "The hospital installed a new ventilation system to reduce the spread of airborne infections.",
+        "exTr": "Hastane, havadan bulaşan enfeksiyonların yayılmasını azaltmak için yeni bir havalandırma sistemi kurdu."
+      },
+      "alternatives": [
+        {
+          "ex": "The numbering system worked well for new acquisitions but had to be adapted for older objects whose original labels were missing.",
+          "exTr": "Numaralandırma sistemi yeni edinilen nesneler için iyi çalışıyordu; ancak özgün etiketleri kayıp eski nesneler için uyarlanması gerekti."
+        }
+      ]
+    },
+    {
+      "word": "systemic",
+      "sense_index": 1,
+      "expected": {
+        "tr": "s. yapısal, sistemden kaynaklanan, kökleşmiş",
+        "ex": "The report argues that the crisis was systemic rather than accidental, because the same weaknesses appeared in every institution the auditors examined.",
+        "exTr": "Rapor, krizin tesadüfi değil yapısal olduğunu savunuyor; çünkü aynı zayıflıklar denetçilerin incelediği her kurumda ortaya çıkmıştı."
+      },
+      "alternatives": [
+        {
+          "ex": "Repeated delays across otherwise independent departments suggested a systemic problem, rather than a mistake attributable to a single member of staff.",
+          "exTr": "Birbirinden bağımsız çalışan bölümlerde tekrarlanan gecikmeler, tek bir çalışana yüklenebilecek hatadan ziyade sistemden kaynaklanan bir soruna işaret ediyordu."
+        }
+      ]
+    },
+    {
+      "word": "taboo",
+      "sense_index": 1,
+      "expected": {
+        "tr": "s. yasak sayılan",
+        "ex": "Discussing mental health remains a taboo subject in many workplaces despite growing public awareness.",
+        "exTr": "Artan kamuoyu farkındalığına rağmen, ruh sağlığını konuşmak birçok işyerinde hâlâ tabu bir konu olmaya devam ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "A topic treated as taboo in the published memoir was discussed openly in private letters, revealing a difference between public and personal narratives.",
+          "exTr": "Yayımlanmış anılarda tabu sayılan bir konu özel mektuplarda açıkça tartışılıyor, kamusal ve kişisel anlatılar arasındaki farkı ortaya koyuyordu."
+        }
+      ]
+    },
+    {
+      "word": "tactical",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. belirli bir hedefe ulaşmak için kullanılan yöntem veya kısa vadeli planla ilgili; taktiksel",
+        "ex": "The commander ordered a tactical withdrawal to protect civilians and avoid unnecessary losses.",
+        "exTr": "Komutan sivilleri korumak ve gereksiz kayıplardan kaçınmak için taktiksel geri çekilme emri verdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The captain made a tactical change after observing the opposing team's formation, moving a midfielder into a position with more defensive responsibility.",
+          "exTr": "Kaptan rakip takımın dizilişini gözlemledikten sonra bir orta saha oyuncusunu daha fazla savunma sorumluluğu olan bir konuma geçirerek taktiksel değişiklik yaptı."
+        }
+      ]
+    },
+    {
+      "word": "tadpole",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. iribaş, kurbağa yavrusu",
+        "ex": "As a tadpole gradually absorbs its tail and develops limbs, it undergoes one of the most striking metamorphoses observed anywhere among vertebrates.",
+        "exTr": "Bir iribaş kuyruğunu yavaş yavaş emip uzuvlar geliştirirken, omurgalılar arasında gözlemlenen en çarpıcı başkalaşımlardan birini geçirir."
+      },
+      "alternatives": [
+        {
+          "ex": "The worksheet asked learners to compare drawings of a tadpole at different stages, recording visible changes before attempting to explain them.",
+          "exTr": "Çalışma kâğıdı, öğrenenlerden farklı evrelerdeki bir iribaşın çizimlerini karşılaştırmalarını ve görünür değişiklikleri açıklamaya çalışmadan önce kaydetmelerini istedi."
+        }
+      ]
+    },
+    {
+      "word": "tailor",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. uyarlamak, ihtiyaca göre düzenlemek",
+        "ex": "The teacher tailored each lesson to match the individual needs of her students.",
+        "exTr": "Öğretmen, her dersi öğrencilerinin bireysel ihtiyaçlarına göre uyarladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The museum could tailor its introductory activities to different age groups without changing the central evidence presented in the exhibition.",
+          "exTr": "Müze, sergide sunulan temel kanıtları değiştirmeden giriş etkinliklerini farklı yaş gruplarına uyarlayabiliyordu."
+        }
+      ]
+    },
+    {
+      "word": "take-in",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. aldatmaca, kandırma, dolandırma",
+        "ex": "The investment scheme was a clever take-in that deceived thousands of inexperienced savers.",
+        "exTr": "Yatırım planı, binlerce deneyimsiz tasarruf sahibini aldatan kurnazca bir kandırmacaydı."
+      },
+      "alternatives": [
+        {
+          "ex": "The supposed discovery proved to be a take-in, but the historian remained interested in why so many early accounts had accepted it without question.",
+          "exTr": "Sözde buluşun bir aldatmaca olduğu ortaya çıktı; ancak tarihçi ilk anlatımların bu kadar çoğunun onu neden sorgulamadan kabul ettiğiyle ilgilenmeye devam etti."
+        }
+      ],
+      "note": "Seyrek isim kullanımı; take in deyimsel fiilinin başka anlamlarıyla karıştırılmadı. https://www.collinsdictionary.com/dictionary/english/take-in"
+    },
+    {
+      "word": "taking",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. almak; alarak; devralmak (take fiilinin -ing biçimi)",
+        "ex": "Taking all available evidence into account changed the final decision.",
+        "exTr": "Mevcut tüm kanıtları dikkate almak nihai kararı değiştirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "Taking the smaller road added time to the journey but allowed the researchers to visit settlements absent from the main transport survey.",
+          "exTr": "Daha küçük yolu kullanmak yolculuğa süre ekledi; ancak araştırmacıların ana ulaşım araştırmasında yer almayan yerleşimleri ziyaret etmesine olanak tanıdı."
+        }
+      ]
+    },
+    {
+      "word": "talented",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yetenekli",
+        "ex": "The scholarship program identifies talented students from low-income families and funds their education.",
+        "exTr": "Burs programı, düşük gelirli ailelerden yetenekli öğrencileri belirleyerek eğitimlerini finanse ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The workshop brought talented illustrators together with historians, enabling visual interpretations to be tested against evidence before the exhibition was prepared.",
+          "exTr": "Atölye yetenekli çizerleri tarihçilerle bir araya getirerek sergi hazırlanmadan önce görsel yorumların kanıtlarla sınanmasına olanak tanıdı."
+        }
+      ]
+    },
+    {
+      "word": "tall",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. uzun boylu, yüksek",
+        "ex": "The observatory stands on a tall ridge that rises well above the surrounding pine forest.",
+        "exTr": "Gözlemevi, çevresindeki çam ormanının epeyce üzerine yükselen yüksek bir sırtın üstünde durur."
+      },
+      "alternatives": [
+        {
+          "ex": "A tall cabinet concealed the doorway in the photograph, making the room appear to have fewer connections than the original plan showed.",
+          "exTr": "Fotoğrafta yüksek bir dolap kapıyı gizliyor ve odayı ilk planda gösterilenden daha az bağlantısı varmış gibi gösteriyordu."
+        }
+      ]
+    },
+    {
+      "word": "tangible",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. somut, elle tutulur",
+        "ex": "The negotiations finally produced tangible results after months of exchanging vague promises and proposals.",
+        "exTr": "Müzakereler, aylarca belirsiz vaatler ve öneriler alışverişinden sonra sonunda somut sonuçlar üretti."
+      },
+      "alternatives": [
+        {
+          "ex": "The repaired footbridge provided a tangible benefit for residents who had previously needed a long detour to reach the village centre.",
+          "exTr": "Onarılan yaya köprüsü, daha önce köy merkezine ulaşmak için uzun bir dolambaçlı yol izlemek zorunda kalan sakinlere somut fayda sağladı."
+        }
+      ]
+    },
+    {
+      "word": "tap",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. (kaynağı) kullanmak, yararlanmak",
+        "ex": "Engineers are exploring new ways to tap geothermal energy beneath the region's volcanic plains.",
+        "exTr": "Mühendisler, bölgenin volkanik ovalarının altındaki jeotermal enerjiden yararlanmanın yeni yollarını araştırıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The project sought to tap local knowledge by inviting residents to identify features that were missing or incorrectly named on the official map.",
+          "exTr": "Proje, sakinleri resmî haritada eksik veya yanlış adlandırılmış özellikleri belirlemeye davet ederek yerel bilgiden yararlanmayı amaçladı."
+        }
+      ]
+    },
+    {
+      "word": "target",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. hedef, amaç",
+        "ex": "The company set an ambitious target of reducing its emissions by half within a decade.",
+        "exTr": "Şirket, on yıl içinde emisyonlarını yarıya indirme gibi iddialı bir hedef belirledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The initial target was revised after the pilot study showed that each interview required considerably more preparation than the organisers had anticipated.",
+          "exTr": "Pilot çalışma her görüşmenin düzenleyicilerin öngördüğünden çok daha fazla hazırlık gerektirdiğini gösterince ilk hedef değiştirildi."
+        }
+      ]
+    },
+    {
+      "word": "tasty",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. lezzetli",
+        "ex": "Nutritionists insist that healthy meals can still be tasty and satisfying.",
+        "exTr": "Beslenme uzmanları, sağlıklı yemeklerin yine de lezzetli ve doyurucu olabileceğinde ısrar ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Participants described the sample as tasty but disagreed about its texture, demonstrating why a single overall rating could conceal important differences in preference.",
+          "exTr": "Katılımcılar numuneyi lezzetli buldu ancak dokusu konusunda anlaşamadı; bu da tek bir genel puanın tercihlerdeki önemli farkları neden gizleyebileceğini gösterdi."
+        }
+      ]
+    },
+    {
+      "word": "taunting",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. alaycı, iğneleyici, sataşan",
+        "ex": "The captain ignored the taunting remarks of the opposing supporters and concentrated instead on organising his defence for the final minutes of the match.",
+        "exTr": "Kaptan, rakip taraftarların alaycı sözlerini görmezden geldi ve bunun yerine maçın son dakikaları için savunmasını düzenlemeye odaklandı."
+      },
+      "alternatives": [
+        {
+          "ex": "The character's taunting questions made the exchange increasingly hostile, despite the narrator's earlier suggestion that the disagreement was merely playful.",
+          "exTr": "Anlatıcının daha önce anlaşmazlığın yalnızca şakalaşma olduğunu öne sürmesine rağmen karakterin iğneleyici soruları konuşmayı giderek düşmanca hâle getirdi."
+        }
+      ]
+    },
+    {
+      "word": "tax-free",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. vergisiz, vergiden muaf",
+        "ex": "Several countries offer tax-free savings accounts to encourage citizens to plan for retirement.",
+        "exTr": "Birçok ülke, vatandaşları emeklilik için planlama yapmaya teşvik etmek amacıyla vergisiz tasarruf hesapları sunuyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The leaflet described the payment as tax-free, but the accompanying explanation stressed that this description applied only under the specified conditions.",
+          "exTr": "Broşür ödemeyi vergiden muaf olarak tanımlıyordu; ancak ek açıklama bu tanımın yalnızca belirtilen koşullarda geçerli olduğunu vurguluyordu."
+        }
+      ]
+    },
+    {
+      "word": "taxi",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. taksi",
+        "ex": "She hailed a taxi outside the hotel to reach the airport before her early flight.",
+        "exTr": "Erken uçuşundan önce havalimanına ulaşmak için otelin dışında bir taksi çevirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The survey recorded whether visitors arrived by taxi, bus or private car, allowing access difficulties to be compared across different forms of transport.",
+          "exTr": "Anket ziyaretçilerin taksiyle, otobüsle veya özel araçla gelip gelmediğini kaydederek erişim güçlüklerinin farklı ulaşım biçimleri arasında karşılaştırılmasını sağladı."
+        }
+      ]
+    },
+    {
+      "word": "teach",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. öğretmek, ders vermek",
+        "ex": "Experienced instructors teach students how to analyze problems rather than memorize solutions.",
+        "exTr": "Deneyimli eğitmenler, öğrencilere çözümleri ezberlemek yerine sorunları analiz etmeyi öğretir."
+      },
+      "alternatives": [
+        {
+          "ex": "The course aimed to teach learners how to distinguish an observation from an inference before asking them to evaluate competing explanations.",
+          "exTr": "Ders, öğrenenlerden farklı açıklamaları değerlendirmelerini istemeden önce onlara gözlemi çıkarımdan ayırt etmeyi öğretmeyi amaçlıyordu."
+        }
+      ]
+    },
+    {
+      "word": "teaching",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. öğretim",
+        "ex": "The university invested heavily in improving the quality of teaching across all its science departments.",
+        "exTr": "Üniversite, tüm fen bölümlerinde öğretim kalitesini artırmaya büyük yatırım yaptı."
+      },
+      "alternatives": [
+        {
+          "ex": "The evaluation of teaching combined classroom observations with student feedback, recognising that examination results alone could not explain how learning had developed.",
+          "exTr": "Öğretimin değerlendirilmesinde, sınav sonuçlarının tek başına öğrenmenin nasıl geliştiğini açıklayamayacağı kabul edilerek sınıf gözlemleri öğrenci geri bildirimiyle birleştirildi."
+        }
+      ]
+    },
+    {
+      "word": "tease",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. takılmak, şakayla kızdırmak, dalga geçmek",
+        "ex": "Older siblings often tease younger children about small mistakes, though rarely with any real unkindness.",
+        "exTr": "Büyük kardeşler, gerçek bir kötü niyet taşımasa da küçük çocuklara ufak hatalarından dolayı sık sık takılır."
+      },
+      "alternatives": [
+        {
+          "ex": "The story shows one child trying to tease another about a mistake, while the teacher redirects their attention to completing the shared task.",
+          "exTr": "Öykü, bir çocuk diğerine hatası yüzünden takılmaya çalışırken öğretmenin dikkatlerini ortak görevi tamamlamaya yönelttiğini gösteriyor."
+        }
+      ]
+    },
+    {
+      "word": "technically",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. teknik olarak",
+        "ex": "The chemical is technically classified as safe, although prolonged exposure may still cause mild skin irritation.",
+        "exTr": "Kimyasal madde teknik olarak güvenli sınıfına girse de uzun süre maruz kalmak yine de hafif cilt tahrişine yol açabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The reconstruction was technically demanding because the surviving drawings showed the external shape but omitted several connections needed to make the model work.",
+          "exTr": "Yeniden yapım teknik olarak zorluydu; çünkü günümüze ulaşan çizimler dış biçimi gösteriyor ancak modeli çalıştırmak için gereken birkaç bağlantıyı içermiyordu."
+        }
+      ]
+    },
+    {
+      "word": "technologically",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. teknolojik açıdan",
+        "ex": "Developing countries are becoming technologically advanced at a much faster pace than expected.",
+        "exTr": "Gelişmekte olan ülkeler, beklenenden çok daha hızlı bir tempoda teknolojik açıdan ilerliyor."
+      },
+      "alternatives": [
+        {
+          "ex": "A technologically advanced display may still exclude visitors if its controls assume abilities or prior knowledge that not everyone possesses.",
+          "exTr": "Teknolojik açıdan gelişmiş bir sergileme düzeneği, kumandaları herkesin sahip olmadığı yetenek veya önbilgiyi varsayıyorsa yine de bazı ziyaretçileri dışlayabilir."
+        }
+      ]
+    }
+  ],
+  "collocations": [
+    {
+      "word": "super-speed",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "move at super-speed",
+          "tr": "olağanüstü hızla hareket etmek"
+        },
+        {
+          "en": "the power of super-speed",
+          "tr": "süper hız yeteneği"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "superstitious",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "superstitious beliefs",
+          "tr": "batıl inançlar"
+        },
+        {
+          "en": "a superstitious fear",
+          "tr": "batıl inanca dayalı korku"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "sure-enough",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a sure-enough hero",
+          "tr": "gerçek bir kahraman"
+        },
+        {
+          "en": "a sure-enough success",
+          "tr": "sahici bir başarı"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "surfer",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "an experienced surfer",
+          "tr": "deneyimli sörfçü"
+        },
+        {
+          "en": "a professional surfer",
+          "tr": "profesyonel sörfçü"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "suspiciously",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "look suspiciously at",
+          "tr": "birine veya bir şeye kuşkuyla bakmak"
+        },
+        {
+          "en": "regard something suspiciously",
+          "tr": "bir şeye kuşkuyla yaklaşmak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "symphonic",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a symphonic work",
+          "tr": "senfonik eser"
+        },
+        {
+          "en": "symphonic music",
+          "tr": "senfonik müzik"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "synonym",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a synonym for something",
+          "tr": "bir sözcüğün eş anlamlısı"
+        },
+        {
+          "en": "a near synonym",
+          "tr": "yakın anlamlı sözcük"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "tactical",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a tactical decision",
+          "tr": "taktiksel karar"
+        },
+        {
+          "en": "a tactical advantage",
+          "tr": "taktiksel üstünlük"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "take-in",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a clever take-in",
+          "tr": "ustaca bir aldatmaca"
+        },
+        {
+          "en": "a deliberate take-in",
+          "tr": "kasıtlı bir kandırmaca"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "tasty",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a tasty meal",
+          "tr": "lezzetli yemek"
+        },
+        {
+          "en": "a tasty snack",
+          "tr": "lezzetli atıştırmalık"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "tease",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "tease someone about something",
+          "tr": "birine bir şey konusunda takılmak"
+        },
+        {
+          "en": "tease playfully",
+          "tr": "şakayla takılmak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

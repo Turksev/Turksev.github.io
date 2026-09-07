@@ -1,0 +1,974 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 3,
+    "input": "input-018.json"
+  },
+  "enrichments": [
+    {
+      "word": "extra",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. ek, ilave",
+        "ex": "Passengers must pay an extra fee for luggage that exceeds the weight limit.",
+        "exTr": "Yolcular, ağırlık sınırını aşan bagajlar için ek ücret ödemek zorundadır."
+      },
+      "alternatives": [
+        {
+          "ex": "An extra column in the register recorded why appointments were cancelled, helping staff distinguish scheduling problems from changes requested by clients.",
+          "exTr": "Kayıt çizelgesindeki ek bir sütun randevuların neden iptal edildiğini göstererek personelin planlama sorunlarını müşterilerin istediği değişikliklerden ayırmasına yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "extracurricular",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. ders dışı, müfredat dışı",
+        "ex": "Admissions officers increasingly look at extracurricular activities, believing that sports clubs and volunteer work reveal qualities no examination score can capture.",
+        "exTr": "Kayıt görevlileri, spor kulüplerinin ve gönüllü çalışmaların hiçbir sınav puanının yansıtamayacağı nitelikleri ortaya koyduğuna inanarak ders dışı etkinliklere giderek daha çok bakıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The school scheduled extracurricular activities before the last bus left, so participation did not depend on parents being available to collect their children.",
+          "exTr": "Okul, katılımın velilerin çocuklarını almaya uygun olmasına bağlı kalmaması için ders dışı etkinlikleri son otobüsün kalkışından önce planladı."
+        }
+      ]
+    },
+    {
+      "word": "extravagant",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. müsrif, savurgan; aşırı gösterişli",
+        "ex": "The couple's extravagant wedding reportedly cost more than most families earn in a decade.",
+        "exTr": "Çiftin savurgan düğününün, çoğu ailenin on yılda kazandığından daha pahalıya mal olduğu bildirildi."
+      },
+      "alternatives": [
+        {
+          "ex": "The extravagant entrance impressed visitors, but its construction left the organisation with little money to furnish the practical workspaces behind it.",
+          "exTr": "Aşırı gösterişli giriş ziyaretçileri etkiledi, ancak inşası kuruluşun arkadaki işlevsel çalışma alanlarını döşemesi için çok az para bırakmıştı."
+        }
+      ]
+    },
+    {
+      "word": "extremely",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. son derece, aşırı derecede",
+        "ex": "Predicting earthquakes remains extremely difficult despite decades of intensive scientific research.",
+        "exTr": "Onlarca yıllık yoğun bilimsel araştırmaya rağmen depremleri öngörmek son derece zor olmaya devam ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The inscription was extremely faint, yet photographs taken from different angles revealed enough detail for the researcher to identify several letters.",
+          "exTr": "Yazıt son derece silikti; yine de farklı açılardan çekilen fotoğraflar araştırmacının birkaç harfi belirlemesine yetecek ayrıntıyı ortaya çıkardı."
+        }
+      ]
+    },
+    {
+      "word": "eye-opening",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. göz açıcı, şaşırtıcı",
+        "ex": "The documentary offered an eye-opening look at how plastic waste affects marine ecosystems.",
+        "exTr": "Belgesel, plastik atıkların deniz ekosistemlerini nasıl etkilediğine dair göz açıcı bir bakış sundu."
+      },
+      "alternatives": [
+        {
+          "ex": "Interviewing night workers was an eye-opening experience for planners who had previously assessed the neighbourhood only during ordinary daytime visits.",
+          "exTr": "Gece çalışanlarla görüşmek, mahalleyi daha önce yalnızca olağan gündüz ziyaretlerinde değerlendiren planlamacılar için ufuk açıcı bir deneyimdi."
+        }
+      ]
+    },
+    {
+      "word": "eyelid",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. göz kapağı",
+        "ex": "During deep sleep the eyes move rapidly beneath the closed eyelids, a phenomenon that researchers link to the vivid images we later recall as dreams.",
+        "exTr": "Derin uykuda gözler kapalı göz kapaklarının altında hızla hareket eder; araştırmacılar bu olguyu sonradan rüya olarak hatırladığımız canlı görüntülerle ilişkilendirir."
+      },
+      "alternatives": [
+        {
+          "ex": "The portrait captured a slight droop of the upper eyelid, a detail that helped relatives recognise the sitter despite the missing label.",
+          "exTr": "Portre üst göz kapağındaki hafif düşüklüğü yansıtmıştı; bu ayrıntı, etiketin eksikliğine rağmen yakınlarının resmedilen kişiyi tanımasına yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "eyewitness",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. görgü tanığı",
+        "ex": "Police collected statements from several eyewitnesses who saw the accident happen near the intersection.",
+        "exTr": "Polis, kazanın kavşak yakınında gerçekleştiğini gören birkaç görgü tanığından ifade aldı."
+      },
+      "alternatives": [
+        {
+          "ex": "An eyewitness described the bridge moments before its collapse, providing a perspective that photographs taken afterwards could not offer.",
+          "exTr": "Bir görgü tanığı köprüyü çökmesinden hemen önceki hâliyle anlatarak sonradan çekilen fotoğrafların sunamayacağı bir bakış açısı sağladı."
+        }
+      ]
+    },
+    {
+      "word": "face",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. karşı karşıya kalmak; yüzleşmek",
+        "ex": "Developing countries face enormous challenges in providing quality education for all children.",
+        "exTr": "Gelişmekte olan ülkeler, tüm çocuklara nitelikli eğitim sunma konusunda muazzam zorluklarla karşı karşıyadır."
+      },
+      "alternatives": [
+        {
+          "ex": "Small publishers face a difficult choice when rising printing costs force them to consider either higher prices or fewer copies.",
+          "exTr": "Artan baskı maliyetleri onları ya daha yüksek fiyatları ya da daha az kopyayı düşünmeye zorladığında küçük yayınevleri güç bir seçimle karşılaşır."
+        }
+      ]
+    },
+    {
+      "word": "face-to-face",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s./z. yüz yüze",
+        "ex": "Despite advances in video technology, many employers still prefer face-to-face interviews.",
+        "exTr": "Video teknolojisindeki gelişmelere rağmen, birçok işveren hâlâ yüz yüze mülakatları tercih ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "A face-to-face conversation resolved the misunderstanding that had persisted through several emails, partly because both speakers could ask for clarification immediately.",
+          "exTr": "Her iki konuşmacının da anında açıklama isteyebilmesi sayesinde yüz yüze bir görüşme, birkaç e-posta boyunca süren yanlış anlamayı giderdi."
+        }
+      ]
+    },
+    {
+      "word": "facial",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yüze ait",
+        "ex": "Doctors use facial expressions as one clue when assessing a patient's level of pain.",
+        "exTr": "Doktorlar, bir hastanın ağrı düzeyini değerlendirirken yüz ifadelerini bir ipucu olarak kullanır."
+      },
+      "alternatives": [
+        {
+          "ex": "The animator studied facial movements in slow motion to understand how a brief hesitation could be conveyed without any accompanying dialogue.",
+          "exTr": "Animatör, kısa bir tereddüdün hiç diyalog olmadan nasıl aktarılabileceğini anlamak için yüz hareketlerini ağır çekimde inceledi."
+        }
+      ]
+    },
+    {
+      "word": "facility",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. tesis",
+        "ex": "The city opened a new recycling facility capable of processing tons of plastic waste daily.",
+        "exTr": "Şehir, günde tonlarca plastik atığı işleyebilen yeni bir geri dönüşüm tesisi açtı."
+      },
+      "alternatives": [
+        {
+          "ex": "The shared storage facility allowed growers to wait before selling their produce instead of accepting whatever price was offered immediately after harvest.",
+          "exTr": "Ortak depolama tesisi, yetiştiricilerin hasattan hemen sonra teklif edilen herhangi bir fiyatı kabul etmek yerine ürünlerini satmadan önce beklemelerini sağladı."
+        }
+      ]
+    },
+    {
+      "word": "fact-finding",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. gerçekleri araştırmaya yönelik, bilgi toplama amaçlı",
+        "ex": "The committee organized a fact-finding mission to investigate the causes of the industrial accident.",
+        "exTr": "Komite, endüstriyel kazanın nedenlerini araştırmak için gerçekleri araştırmaya yönelik bir heyet oluşturdu."
+      },
+      "alternatives": [
+        {
+          "ex": "During the fact-finding visit, delegates spoke separately with managers and workers to avoid treating a single account as the complete picture.",
+          "exTr": "Bilgi toplama ziyareti sırasında delegeler, tek bir anlatıyı tablonun tamamı saymamak için yöneticiler ve işçilerle ayrı ayrı görüştü."
+        }
+      ]
+    },
+    {
+      "word": "factory",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. fabrika",
+        "ex": "The old textile factory was converted into apartments after production moved overseas in the 1990s.",
+        "exTr": "Eski tekstil fabrikası, üretim 1990'larda yurt dışına taşındıktan sonra dairelere dönüştürüldü."
+      },
+      "alternatives": [
+        {
+          "ex": "The factory's shift whistle once organised much of the town's daily life, determining when shops opened and families expected workers home.",
+          "exTr": "Fabrikanın vardiya düdüğü bir zamanlar dükkânların ne zaman açılacağını ve ailelerin çalışanları ne zaman eve bekleyeceğini belirleyerek kasabanın günlük yaşamının çoğunu düzenliyordu."
+        }
+      ]
+    },
+    {
+      "word": "fade",
+      "sense_index": 1,
+      "expected": {
+        "tr": "f. azalmak",
+        "ex": "As the years passed, the villagers' memories of the war gradually began to fade.",
+        "exTr": "Yıllar geçtikçe köylülerin savaşa dair anıları yavaş yavaş azalmaya başladı."
+      },
+      "alternatives": [
+        {
+          "ex": "Interest in the proposal began to fade when monthly meetings produced no visible decisions and participants stopped receiving updates about their suggestions.",
+          "exTr": "Aylık toplantılar görünür kararlar üretmeyip katılımcılar önerileri hakkında bilgi alamamaya başlayınca öneriye duyulan ilgi azalmaya başladı."
+        }
+      ]
+    },
+    {
+      "word": "failure",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. arıza, yetmezlik",
+        "ex": "Engine failure during the flight forced the pilot to make an emergency landing in a nearby field.",
+        "exTr": "Uçuş sırasında yaşanan motor arızası, pilotu yakındaki bir tarlaya acil iniş yapmaya zorladı."
+      },
+      "alternatives": [
+        {
+          "ex": "A sensor failure left a gap in the temperature record, which the report marked clearly instead of filling it with unexplained estimates.",
+          "exTr": "Bir sensör arızası sıcaklık kaydında boşluk bıraktı; rapor bu boşluğu açıklanmayan tahminlerle doldurmak yerine açıkça işaretledi."
+        }
+      ]
+    },
+    {
+      "word": "fair",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. adil",
+        "ex": "The committee promised a fair evaluation process for every scholarship applicant this year.",
+        "exTr": "Komite, bu yıl her burs başvurusu için adil bir değerlendirme süreci sözü verdi."
+      },
+      "alternatives": [
+        {
+          "ex": "A fair comparison of the two courses required information about attendance and starting ability, not simply the average scores on the final test.",
+          "exTr": "İki kursun adil biçimde karşılaştırılması, yalnızca son sınavın ortalama puanlarını değil, devam durumu ve başlangıç becerisine ilişkin bilgileri de gerektiriyordu."
+        }
+      ]
+    },
+    {
+      "word": "faith",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. inanç, güven; iman, din",
+        "ex": "Investors gradually lost faith in the startup after it missed several critical production deadlines.",
+        "exTr": "Yatırımcılar, şirket birkaç kritik üretim son tarihini kaçırınca girişime olan güvenlerini giderek yitirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "Her faith in the project survived the early setbacks because the team openly discussed mistakes and showed how its plans had changed.",
+          "exTr": "Ekip hataları açıkça tartışıp planlarının nasıl değiştiğini gösterdiği için projeye olan güveni ilk aksiliklere rağmen sürdü."
+        }
+      ]
+    },
+    {
+      "word": "fake",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. sahte",
+        "ex": "Border officials seized thousands of fake designer handbags at the airport last month.",
+        "exTr": "Sınır yetkilileri, geçen ay havalimanında binlerce sahte marka el çantasına el koydu."
+      },
+      "alternatives": [
+        {
+          "ex": "The fake signature looked convincing until the analyst compared it with letters written during the period when the painting was supposedly completed.",
+          "exTr": "Analist, tablonun tamamlandığı iddia edilen dönemde yazılmış mektuplarla karşılaştırana kadar sahte imza inandırıcı görünüyordu."
+        }
+      ]
+    },
+    {
+      "word": "fall-off",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. azalmak, düşmek, gerilemek (miktar/talep için)",
+        "ex": "Sales began to fall off significantly once the seasonal promotion ended in early autumn.",
+        "exTr": "Mevsimlik promosyon sonbahar başında sona erdikten sonra satışlar belirgin biçimde azalmaya başladı."
+      },
+      "alternatives": [
+        {
+          "ex": "Interest in the podcast began to fall off when new episodes appeared irregularly and listeners could no longer anticipate the next instalment.",
+          "exTr": "Yeni bölümler düzensiz yayımlanıp dinleyiciler sıradaki bölümün ne zaman geleceğini kestirememeye başlayınca podcaste duyulan ilgi azalmaya başladı."
+        }
+      ]
+    },
+    {
+      "word": "false",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yanlış, sahte, yalan",
+        "ex": "The witness later admitted that she had given a false statement to the police.",
+        "exTr": "Tanık daha sonra polise yanlış bir ifade verdiğini kabul etti."
+      },
+      "alternatives": [
+        {
+          "ex": "A false assumption about the map's scale led the students to underestimate the journey, even though their arithmetic was otherwise correct.",
+          "exTr": "Haritanın ölçeğine ilişkin yanlış bir varsayım, diğer hesapları doğru olsa da öğrencilerin yolculuğu olduğundan kısa tahmin etmesine yol açtı."
+        }
+      ]
+    },
+    {
+      "word": "familial",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. aileyle ilgili, ailevi; ailesel veya kalıtsal",
+        "ex": "The study found a familial pattern of heart disease that could not be explained by diet alone.",
+        "exTr": "Çalışma, yalnızca beslenmeyle açıklanamayan ailesel bir kalp hastalığı örüntüsü buldu."
+      },
+      "alternatives": [
+        {
+          "ex": "The study explored familial obligations through interviews with adults who divided their time between paid employment and caring for older relatives.",
+          "exTr": "Çalışma, zamanlarını ücretli iş ile yaşlı yakınlarına bakım arasında bölen yetişkinlerle görüşerek ailevi yükümlülükleri araştırdı."
+        }
+      ]
+    },
+    {
+      "word": "famine",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kıtlık (özellikle gıda)",
+        "ex": "Prolonged drought and crop failure led to a devastating famine across several regions of the country.",
+        "exTr": "Uzun süren kuraklık ve ürün kaybı, ülkenin birçok bölgesinde yıkıcı bir kıtlığa yol açtı."
+      },
+      "alternatives": [
+        {
+          "ex": "Accounts of the famine recorded not only shortages but also disputes over distribution, revealing differences hidden by figures for total food production.",
+          "exTr": "Kıtlık anlatıları yalnızca yokluğu değil dağıtım konusundaki anlaşmazlıkları da kaydederek toplam gıda üretimi rakamlarının gizlediği farklılıkları ortaya koydu."
+        }
+      ]
+    },
+    {
+      "word": "fan",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. hayran; yelpaze, vantilatör",
+        "ex": "The ceiling fan did little to relieve the heat in the crowded lecture hall.",
+        "exTr": "Tavan vantilatörü, kalabalık amfideki sıcaklığı gidermeye pek yaramadı."
+      },
+      "alternatives": [
+        {
+          "ex": "The small fan made a persistent rattling sound that the recording team noticed only when listening back to the quiet interview.",
+          "exTr": "Küçük vantilatör, kayıt ekibinin ancak sessiz görüşmeyi yeniden dinlerken fark ettiği sürekli bir tıkırtı çıkarıyordu."
+        }
+      ]
+    },
+    {
+      "word": "fantasy",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. hayal, fantezi",
+        "ex": "Psychologists argue that occasional fantasy about an ideal future helps adults endure the monotony of demanding office routines.",
+        "exTr": "Psikologlar, ideal bir gelecek üzerine ara sıra kurulan hayalin, yetişkinlerin zorlu ofis rutinlerinin tekdüzeliğine katlanmasına yardımcı olduğunu savunuyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The narrator's fantasy of a perfectly ordered city gradually becomes disturbing as the story reveals what happens to people who do not fit.",
+          "exTr": "Öykü, bu düzene uymayan insanlara ne olduğunu ortaya koydukça anlatıcının kusursuz düzenlenmiş kent hayali yavaş yavaş rahatsız edici hâle gelir."
+        }
+      ]
+    },
+    {
+      "word": "far-out",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. çok sıra dışı, alışılmadık (argo)",
+        "ex": "The professor proposed a far-out theory suggesting that time itself might flow backward occasionally.",
+        "exTr": "Profesör, zamanın kendisinin ara sıra geriye doğru akabileceğini öne süren çok sıra dışı bir teori ortaya attı."
+      },
+      "alternatives": [
+        {
+          "ex": "What initially sounded like a far-out stage design became workable once the students built a small model showing how the moving platforms would connect.",
+          "exTr": "Başta çok sıra dışı bir sahne tasarımı gibi gelen fikir, öğrenciler hareketli platformların nasıl bağlanacağını gösteren küçük bir model yapınca uygulanabilir hâle geldi."
+        }
+      ]
+    },
+    {
+      "word": "farm",
+      "sense_index": 1,
+      "expected": {
+        "tr": "f. çiftçilik yapmak, toprağı işlemek",
+        "ex": "His grandparents farmed this land for over forty years before selling it to a large agricultural company.",
+        "exTr": "Büyükanne ve büyükbabası, büyük bir tarım şirketine satmadan önce bu toprağı kırk yılı aşkın süre işledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The family continued to farm the smaller fields near the village while renting the more distant land to a neighbouring cooperative.",
+          "exTr": "Aile, daha uzaktaki araziyi komşu bir kooperatife kiralarken köyün yakınındaki küçük tarlaları işlemeye devam etti."
+        }
+      ]
+    },
+    {
+      "word": "farming",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. tarım, çiftçilik",
+        "ex": "Farming employs less than three per cent of the workforce in most rich countries.",
+        "exTr": "Zengin ülkelerin çoğunda tarım, işgücünün yüzde üçünden azını istihdam ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The exhibition examines farming through tools, seasonal calendars and household accounts, showing how agricultural work shaped relationships beyond the fields themselves.",
+          "exTr": "Sergi, tarımsal işlerin tarlaların ötesindeki ilişkileri nasıl şekillendirdiğini göstererek çiftçiliği aletler, mevsimlik takvimler ve hane hesapları üzerinden inceliyor."
+        }
+      ]
+    },
+    {
+      "word": "fascinated",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. büyülenmiş, hayran kalmış",
+        "ex": "Young visitors seemed fascinated by the dinosaur skeletons displayed at the natural history museum.",
+        "exTr": "Genç ziyaretçiler, doğa tarihi müzesinde sergilenen dinozor iskeletlerine hayran kalmış görünüyordu."
+      },
+      "alternatives": [
+        {
+          "ex": "Fascinated by the mechanism, the apprentice returned after work to sketch how its wooden parts transferred motion without using a metal chain.",
+          "exTr": "Mekanizmaya hayran kalan çırak, ahşap parçalarının metal zincir kullanmadan hareketi nasıl aktardığını çizmek için işten sonra geri döndü."
+        }
+      ]
+    },
+    {
+      "word": "fashion",
+      "sense_index": 1,
+      "expected": {
+        "tr": "f. biçimlendirmek, şekillendirmek",
+        "ex": "Early humans learned to fashion simple tools from stone and bone for hunting.",
+        "exTr": "İlk insanlar, avlanmak için taş ve kemikten basit aletler yapmayı öğrendi."
+      },
+      "alternatives": [
+        {
+          "ex": "The children learned to fashion simple containers from folded paper, then tested which designs could hold the greatest number of small stones.",
+          "exTr": "Çocuklar katlanmış kâğıttan basit kaplar yapmayı öğrendi, ardından hangi tasarımların en fazla küçük taşı taşıyabildiğini denedi."
+        }
+      ]
+    },
+    {
+      "word": "fast-growing",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. hızla büyüyen",
+        "ex": "Renewable energy remains one of the fast-growing sectors in the global economy today.",
+        "exTr": "Yenilenebilir enerji, günümüzde küresel ekonomideki hızla büyüyen sektörlerden biri olmaya devam ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The fast-growing suburb needed shared spaces as urgently as new roads, according to residents who found few places to meet their neighbours.",
+          "exTr": "Komşularıyla buluşacak pek az yer bulan sakinlere göre hızla büyüyen banliyönün ortak alanlara en az yeni yollar kadar acil ihtiyacı vardı."
+        }
+      ]
+    },
+    {
+      "word": "fastest",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. en hızlı",
+        "ex": "The direct train is the fastest way to travel between the two cities.",
+        "exTr": "Doğrudan tren, iki şehir arasında yolculuk etmenin en hızlı yoludur."
+      },
+      "alternatives": [
+        {
+          "ex": "The fastest method was not always the most suitable, particularly when it produced summaries that omitted the qualifications in participants' original answers.",
+          "exTr": "Özellikle katılımcıların özgün yanıtlarındaki çekinceleri atlayan özetler ürettiğinde en hızlı yöntem her zaman en uygun yöntem değildi."
+        }
+      ]
+    },
+    {
+      "word": "fatal",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. ölümcül",
+        "ex": "The disease can be fatal if left untreated for more than a few weeks.",
+        "exTr": "Hastalık, birkaç haftadan uzun süre tedavi edilmezse ölümcül olabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The documentary reconstructs the events preceding a fatal railway accident, distinguishing documented equipment faults from explanations proposed only after the investigation began.",
+          "exTr": "Belgesel, ölümle sonuçlanan bir demiryolu kazası öncesindeki olayları yeniden kurgulayarak belgelenmiş ekipman arızalarını ancak soruşturma başladıktan sonra öne sürülen açıklamalardan ayırıyor."
+        }
+      ]
+    },
+    {
+      "word": "fate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kader, yazgı",
+        "ex": "Historians debate whether the empire's fate was sealed long before the final invasion began.",
+        "exTr": "Tarihçiler, imparatorluğun kaderinin son istila başlamadan çok önce belirlenip belirlenmediğini tartışır."
+      },
+      "alternatives": [
+        {
+          "ex": "The fate of the abandoned cinema remained uncertain until residents formed a cooperative and presented a plan for reopening part of the building.",
+          "exTr": "Sakinler bir kooperatif kurup binanın bir bölümünü yeniden açma planı sunana kadar terk edilmiş sinemanın kaderi belirsiz kaldı."
+        }
+      ]
+    },
+    {
+      "word": "father-in-law",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kayınpeder (eşin babası)",
+        "ex": "Every Sunday, he visits his father-in-law to help repair small things around the old farmhouse.",
+        "exTr": "Her pazar, eski çiftlik evindeki küçük tamiratlara yardımcı olmak için kayınpederini ziyaret eder."
+      },
+      "alternatives": [
+        {
+          "ex": "Her father-in-law contributed his workshop notebooks to the exhibition, giving the younger members of the family a new understanding of his working life.",
+          "exTr": "Kayınpederi atölye defterlerini sergiye vererek ailenin genç üyelerinin onun çalışma hayatını farklı bir açıdan anlamasını sağladı."
+        }
+      ]
+    },
+    {
+      "word": "faulty",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. hatalı, kusurlu",
+        "ex": "A faulty valve allowed contaminated water to enter the building's main supply system.",
+        "exTr": "Kusurlu bir vana kirli suyun binanın ana besleme sistemine girmesine izin verdi."
+      },
+      "alternatives": [
+        {
+          "ex": "A faulty assumption about opening hours undermined the route plan, sending visitors to a building that closed before their scheduled arrival.",
+          "exTr": "Çalışma saatlerine ilişkin hatalı bir varsayım güzergâh planını işlemez hâle getirerek ziyaretçileri planlanan varışlarından önce kapanan bir binaya yönlendiriyordu."
+        }
+      ]
+    },
+    {
+      "word": "favorable",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. elverişli, olumlu, uygun",
+        "ex": "Mild temperatures and steady rainfall created favorable conditions for the region's wheat harvest this year.",
+        "exTr": "Ilıman sıcaklıklar ve düzenli yağış, bu yıl bölgenin buğday hasadı için elverişli koşullar yarattı."
+      },
+      "alternatives": [
+        {
+          "ex": "The proposal received favorable comments from residents once the designers explained how the revised entrance would preserve access to the shared courtyard.",
+          "exTr": "Tasarımcılar değiştirilmiş girişin ortak avluya erişimi nasıl koruyacağını açıklayınca öneri sakinlerden olumlu yorumlar aldı."
+        }
+      ]
+    },
+    {
+      "word": "favour",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. desteklemek, tercih etmek",
+        "ex": "Most economists favour policies that encourage investment in education and clean technology.",
+        "exTr": "Ekonomistlerin çoğu, eğitime ve temiz teknolojiye yatırımı teşvik eden politikaları destekliyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The survey appeared to favour households with reliable internet access because every invitation and reminder was sent through the same online platform.",
+          "exTr": "Her davet ve hatırlatma aynı çevrim içi platformdan gönderildiği için araştırma güvenilir internet erişimi olan haneleri kayırıyor gibi görünüyordu."
+        }
+      ]
+    },
+    {
+      "word": "favourite",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. en sevilen, gözde",
+        "ex": "The museum's new exhibit quickly became a favourite destination for local school groups.",
+        "exTr": "Müzenin yeni sergisi, kısa sürede yerel okul gruplarının gözde bir gezi noktası hâline geldi."
+      },
+      "alternatives": [
+        {
+          "ex": "Asked to describe a favourite place, many participants chose ordinary corners of the neighbourhood rather than its best-known monuments or parks.",
+          "exTr": "En sevdikleri bir yeri betimlemeleri istendiğinde birçok katılımcı mahallenin en tanınmış anıtları veya parkları yerine sıradan köşelerini seçti."
+        }
+      ]
+    },
+    {
+      "word": "fearful",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. korkan, endişeli",
+        "ex": "Many parents remain fearful about the long-term effects of excessive screen time on young children.",
+        "exTr": "Birçok ebeveyn, aşırı ekran süresinin küçük çocuklar üzerindeki uzun vadeli etkileri konusunda endişeli kalmaya devam ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Fearful of losing their only meeting place, residents requested a clear explanation of what would happen while the community hall was being repaired.",
+          "exTr": "Tek buluşma yerlerini kaybetmekten endişelenen sakinler, toplum merkezi onarılırken ne olacağına ilişkin açık bir açıklama istedi."
+        }
+      ]
+    },
+    {
+      "word": "feat",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. başarı, marifet, olağanüstü iş",
+        "ex": "Completing the marathon in under three hours was considered a remarkable feat for a first-time runner.",
+        "exTr": "Maratonu üç saatin altında tamamlamak, ilk kez koşan biri için dikkat çekici bir başarı sayıldı."
+      },
+      "alternatives": [
+        {
+          "ex": "Moving the entire library without closing its lending service was a remarkable feat of coordination for a team with so few members.",
+          "exTr": "Üyesi bu kadar az olan bir ekip için tüm kütüphaneyi ödünç verme hizmetini kapatmadan taşımak, dikkat çekici bir koordinasyon başarısıydı."
+        }
+      ]
+    },
+    {
+      "word": "federal",
+      "sense_index": 0,
+      "expected": {
+        "tr": "federal",
+        "ex": "Education policy in Germany is determined by the states rather than the federal government.",
+        "exTr": "Almanya'da eğitim politikası, federal hükümetten ziyade eyaletler tarafından belirlenir."
+      },
+      "alternatives": [
+        {
+          "ex": "The textbook compares federal arrangements by asking how authority over transport is divided between national institutions and the governments of individual states.",
+          "exTr": "Ders kitabı, ulaşım yetkisinin ulusal kurumlar ile eyalet hükümetleri arasında nasıl bölündüğünü sorgulayarak federal düzenlemeleri karşılaştırıyor."
+        }
+      ]
+    },
+    {
+      "word": "feedback",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. geri bildirim",
+        "ex": "Students who receive regular feedback from teachers tend to improve their writing skills more quickly.",
+        "exTr": "Öğretmenlerinden düzenli geri bildirim alan öğrenciler yazma becerilerini genellikle daha hızlı geliştirir."
+      },
+      "alternatives": [
+        {
+          "ex": "Feedback from the first workshop revealed that participants wanted more time to discuss mistakes, not simply additional demonstrations of the correct method.",
+          "exTr": "İlk atölyeden gelen geri bildirim, katılımcıların yalnızca doğru yöntemin daha fazla gösterilmesini değil, hataları tartışmak için daha çok zaman istediğini ortaya koydu."
+        }
+      ]
+    },
+    {
+      "word": "feeling",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. duygu, his",
+        "ex": "Many survivors reported a lingering feeling of anxiety long after the earthquake had ended.",
+        "exTr": "Birçok hayatta kalan, deprem sona erdikten çok sonra bile süregelen bir kaygı hissi bildirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "A feeling of shared ownership developed as residents saw their suggestions reflected in the final design of the neighbourhood garden.",
+          "exTr": "Sakinler önerilerinin mahalle bahçesinin son tasarımına yansıdığını gördükçe ortak sahiplenme duygusu gelişti."
+        }
+      ]
+    },
+    {
+      "word": "fellow",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. (akademik) burslu araştırmacı, üye",
+        "ex": "A visiting fellow at the institute presented her findings on ancient trade networks last week.",
+        "exTr": "Enstitüdeki misafir araştırmacı, geçen hafta antik ticaret ağlarına ilişkin bulgularını sundu."
+      },
+      "alternatives": [
+        {
+          "ex": "As a research fellow, she had access to the collection but also helped organise discussions that brought visiting scholars into contact with local students.",
+          "exTr": "Araştırmacı olarak koleksiyona erişimi vardı; ayrıca konuk bilim insanlarıyla yerel öğrencileri bir araya getiren tartışmaların düzenlenmesine yardım ediyordu."
+        }
+      ]
+    },
+    {
+      "word": "feminism",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. feminizm",
+        "ex": "Her doctoral thesis examines how feminism shaped literary criticism during the late twentieth century.",
+        "exTr": "Doktora tezi, feminizmin yirminci yüzyılın sonlarında edebiyat eleştirisini nasıl şekillendirdiğini inceliyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The reading group explored feminism through accounts of unpaid work, comparing arguments about household responsibilities across different generations and social settings.",
+          "exTr": "Okuma grubu, hane içi sorumluluklara ilişkin görüşleri farklı kuşaklar ve toplumsal ortamlar arasında karşılaştırarak feminizmi ücretsiz emek anlatıları üzerinden araştırdı."
+        }
+      ]
+    },
+    {
+      "word": "fend",
+      "sense_index": 1,
+      "expected": {
+        "tr": "f. kendi başının çaresine bakmak, geçimini kendi sağlamak (for oneself)",
+        "ex": "After the colony collapsed, the surviving settlers were left to fend for themselves in a harsh landscape they barely understood.",
+        "exTr": "Koloni çöktükten sonra hayatta kalan yerleşimciler, neredeyse hiç tanımadıkları zorlu bir coğrafyada kendi başlarının çaresine bakmak zorunda kaldı."
+      },
+      "alternatives": [
+        {
+          "ex": "When the shared kitchen closed for repairs, students had to fend for themselves using facilities that many had never needed before.",
+          "exTr": "Ortak mutfak onarım için kapanınca öğrenciler, birçoğunun daha önce hiç ihtiyaç duymadığı olanakları kullanarak başlarının çaresine bakmak zorunda kaldı."
+        }
+      ]
+    },
+    {
+      "word": "ferocious",
+      "sense_index": 1,
+      "expected": {
+        "tr": "s. şiddetli, amansız, sert",
+        "ex": "Competition among technology firms has become so ferocious that even well-established companies struggle to keep their most talented young engineers.",
+        "exTr": "Teknoloji firmaları arasındaki rekabet o kadar amansız hâle geldi ki köklü şirketler bile en yetenekli genç mühendislerini elde tutmakta zorlanıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The proposal met ferocious criticism at the first meeting, yet the debate became more constructive once residents saw the revised drawings.",
+          "exTr": "Öneri ilk toplantıda sert eleştirilerle karşılaştı; ancak sakinler gözden geçirilmiş çizimleri gördükten sonra tartışma daha yapıcı hâle geldi."
+        }
+      ]
+    },
+    {
+      "word": "fertile",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. verimli, bereketli",
+        "ex": "River valleys with fertile soil supported the world's earliest agricultural civilizations.",
+        "exTr": "Verimli topraklara sahip nehir vadileri, dünyanın en eski tarım uygarlıklarını besledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The fertile fields beside the river were highly valued, but farmers also considered how easily they could reach them during seasonal flooding.",
+          "exTr": "Nehir kenarındaki verimli tarlalar çok değerli görülüyordu; ancak çiftçiler mevsimlik taşkınlarda bunlara ne kadar kolay ulaşabileceklerini de dikkate alıyordu."
+        }
+      ]
+    },
+    {
+      "word": "festival",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. festival, şenlik",
+        "ex": "The annual harvest festival attracts thousands of visitors who come to celebrate the region's agricultural traditions.",
+        "exTr": "Yıllık hasat festivali, bölgenin tarımsal geleneklerini kutlamaya gelen binlerce ziyaretçiyi çekiyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The festival brought local performers together with visiting musicians, creating collaborations that continued after the temporary stages had been dismantled.",
+          "exTr": "Festival, yerel sanatçılarla konuk müzisyenleri bir araya getirerek geçici sahneler söküldükten sonra da süren ortak çalışmalar oluşturdu."
+        }
+      ]
+    },
+    {
+      "word": "fetal",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. cenine ait, fetal",
+        "ex": "Regular ultrasounds allow doctors to monitor fetal development throughout the pregnancy.",
+        "exTr": "Düzenli ultrasonlar, doktorların hamilelik boyunca fetal gelişimi izlemesine olanak tanır."
+      },
+      "alternatives": [
+        {
+          "ex": "The illustrator consulted an anatomy specialist to check the fetal diagrams before the educational materials were prepared for use in the classroom.",
+          "exTr": "Çizer, eğitim materyalleri sınıfta kullanılmak üzere hazırlanmadan önce cenin şemalarını kontrol ettirmek için bir anatomi uzmanına danıştı."
+        }
+      ]
+    },
+    {
+      "word": "feudal",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. feodal, derebeylik ile ilgili, derebeyliğe özgü",
+        "ex": "Under the feudal system, peasants worked land they did not own and paid heavy dues to the lord who protected them.",
+        "exTr": "Feodal düzende köylüler sahibi olmadıkları toprakları işler ve kendilerini koruyan derebeyine ağır vergiler öderdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The historian compared records of feudal obligations from neighbouring estates, finding that a single general description could not capture all local arrangements.",
+          "exTr": "Tarihçi, komşu malikânelerdeki feodal yükümlülük kayıtlarını karşılaştırarak tek bir genel betimlemenin bütün yerel düzenlemeleri yansıtamayacağını gördü."
+        }
+      ]
+    },
+    {
+      "word": "fewer",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. daha az (sayılabilir isimlerle)",
+        "ex": "Cities with reliable public transport report fewer traffic accidents and lower air pollution levels.",
+        "exTr": "Güvenilir toplu taşımaya sahip şehirlerde daha az trafik kazası ve daha düşük hava kirliliği görülür."
+      },
+      "alternatives": [
+        {
+          "ex": "Fewer people attended the second meeting, but those present represented a wider range of occupations than the much larger group at the first.",
+          "exTr": "İkinci toplantıya daha az kişi katıldı; ancak orada bulunanlar ilk toplantıdaki çok daha kalabalık gruptan daha çeşitli meslekleri temsil ediyordu."
+        }
+      ]
+    },
+    {
+      "word": "fiction",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kurgu, roman/hikâye türü, uydurma",
+        "ex": "The author blends historical fact with fiction to create a compelling narrative about war.",
+        "exTr": "Yazar, savaş hakkında sürükleyici bir anlatı oluşturmak için tarihsel gerçeği kurguyla harmanlıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The course examines fiction as a way of exploring experiences that official records describe only indirectly or leave almost entirely unmentioned.",
+          "exTr": "Ders, resmî kayıtların yalnızca dolaylı anlattığı veya neredeyse hiç söz etmediği deneyimleri araştırmanın bir yolu olarak kurmacayı inceliyor."
+        }
+      ]
+    },
+    {
+      "word": "field-test",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. saha testinden geçirmek",
+        "ex": "Engineers plan to field-test the new solar panels under extreme desert conditions next summer.",
+        "exTr": "Mühendisler, gelecek yaz yeni güneş panellerini aşırı çöl koşullarında saha testinden geçirmeyi planlıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The team will field-test the recording device with volunteers who work outdoors, checking whether its controls remain usable in gloves and poor light.",
+          "exTr": "Ekip, kumandalarının eldivenle ve yetersiz ışıkta kullanılabilirliğini kontrol ederek kayıt cihazını açık havada çalışan gönüllülerle saha testinden geçirecek."
+        }
+      ]
+    },
+    {
+      "word": "fiery",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. ateşli, alevli; öfkeli, şiddetli",
+        "ex": "The senator delivered a fiery speech that provoked strong reactions from both supporters and critics.",
+        "exTr": "Senatör, hem destekçilerinden hem de eleştirmenlerinden güçlü tepkiler uyandıran ateşli bir konuşma yaptı."
+      },
+      "alternatives": [
+        {
+          "ex": "The painting's fiery colours stood out against the muted gallery walls, drawing attention to a scene that might otherwise have appeared quite ordinary.",
+          "exTr": "Tablonun ateşi andıran canlı renkleri galerinin soluk duvarları önünde öne çıkarak aksi hâlde oldukça sıradan görünebilecek bir sahneye dikkat çekiyordu."
+        }
+      ]
+    },
+    {
+      "word": "fifty",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s./i. elli",
+        "ex": "More than fifty countries signed the international treaty aimed at reducing plastic ocean pollution.",
+        "exTr": "Elliden fazla ülke, plastik okyanus kirliliğini azaltmayı amaçlayan uluslararası anlaşmayı imzaladı."
+      },
+      "alternatives": [
+        {
+          "ex": "Fifty households returned the questionnaire, but the researcher checked their locations before claiming that the responses represented the whole district.",
+          "exTr": "Elli hane anketi geri gönderdi; ancak araştırmacı yanıtların bütün ilçeyi temsil ettiğini ileri sürmeden önce bu hanelerin konumlarını kontrol etti."
+        }
+      ]
+    },
+    {
+      "word": "fighting",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kavga, çatışma, mücadele",
+        "ex": "Heavy fighting near the border forced thousands of civilians to flee their homes.",
+        "exTr": "Sınır yakınındaki şiddetli çatışmalar, binlerce sivili evlerini terk etmeye zorladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The letters describe how fighting interrupted ordinary trade, leaving families uncertain about when supplies would arrive or relatives could safely return.",
+          "exTr": "Mektuplar, çatışmaların olağan ticareti nasıl aksattığını ve aileleri erzakın ne zaman geleceği veya yakınlarının ne zaman güvenle dönebileceği konusunda belirsizlikte bıraktığını anlatıyor."
+        }
+      ]
+    },
+    {
+      "word": "file-like",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. dosya benzeri, dosyaya benzeyen",
+        "ex": "The new software organizes data in a file-like structure that users find easy to navigate.",
+        "exTr": "Yeni yazılım, verileri kullanıcıların gezinmesi kolay olan dosya benzeri bir yapıda düzenliyor."
+      },
+      "alternatives": [
+        {
+          "ex": "A file-like object allowed the test to read data from memory without creating a separate document on the computer's disk.",
+          "exTr": "Dosya benzeri bir nesne, bilgisayarın diskinde ayrı bir belge oluşturmadan testin bellekteki verileri okumasını sağladı."
+        }
+      ],
+      "note": "Bilgisayar anlamı Python resmî sözlüğündeki file-like object kullanımıyla doğrulandı: https://docs.python.org/3/glossary.html#term-file-like-object"
+    },
+    {
+      "word": "filmmaking",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. film yapımı, film çekme sanatı ve süreci",
+        "ex": "After years in theatre, the director turned to filmmaking and produced several documentaries.",
+        "exTr": "Yönetmen tiyatroda geçirdiği yılların ardından film yapımına yöneldi ve birkaç belgesel çekti."
+      },
+      "alternatives": [
+        {
+          "ex": "The workshop approached filmmaking as a collaborative process, asking participants to rotate between recording sound, planning shots and interviewing contributors.",
+          "exTr": "Atölye, katılımcılardan ses kaydı, çekim planlama ve katkıda bulunanlarla görüşme görevlerini sırayla üstlenmelerini isteyerek film yapımını ortak bir süreç olarak ele aldı."
+        }
+      ]
+    },
+    {
+      "word": "final",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. son, nihai",
+        "ex": "Committee members debated for hours before reaching a final decision on the new environmental policy.",
+        "exTr": "Komite üyeleri, yeni çevre politikası konusunda nihai bir karara varmadan önce saatlerce tartıştı."
+      },
+      "alternatives": [
+        {
+          "ex": "The final version retained the residents' own words wherever possible, while adding brief explanations for readers unfamiliar with the neighbourhood's history.",
+          "exTr": "Son sürüm, mahallenin tarihini bilmeyen okuyucular için kısa açıklamalar eklerken mümkün olan yerlerde sakinlerin kendi sözlerini korudu."
+        }
+      ]
+    }
+  ],
+  "collocations": [
+    {
+      "word": "far-out",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a far-out idea",
+          "tr": "çok sıra dışı bir fikir"
+        },
+        {
+          "en": "a far-out design",
+          "tr": "çok alışılmadık bir tasarım"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "father-in-law",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a future father-in-law",
+          "tr": "müstakbel kayınpeder"
+        },
+        {
+          "en": "a former father-in-law",
+          "tr": "eski kayınpeder"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "fifty",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "fifty per cent",
+          "tr": "yüzde elli"
+        },
+        {
+          "en": "over fifty years",
+          "tr": "elli yılı aşkın süre"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "file-like",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a file-like object",
+          "tr": "dosya benzeri bir nesne"
+        },
+        {
+          "en": "a file-like interface",
+          "tr": "dosya benzeri bir arayüz"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

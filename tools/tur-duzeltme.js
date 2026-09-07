@@ -12,6 +12,23 @@
    ============================================================ */
 
 window.TUR_DUZELTME = {
+  "red-eye": "isim", // gece uçuşu; doğrulanmamış fiil öğretimi kaldırılır
+  "split-up": "isim", // karttaki anlam ayrılık/bölünmedir
+  "step-in": "isim, sıfat", // giyilecek nesne ve step-in shoes sıfat kullanımı
+  "through": "edat, sıfat, zarf", // through the forest anlamındaki edat atlanmıştı
+  "well-done": "sıfat, ünlem", // iyi pişmiş ve Well done! takdir ifadesi
+  "canvas": "isim", // canvas (tuval/tablo) ile canvass (oy/destek aramak) ayrımı
+  "face-lift": "isim, fiil", // ameliyat ismi ve mecazi yenilemek fiili
+  "used-car": "sıfat", // used-car dealer gibi ad öncesi bileşik niteleyici
+  "upside-down": "sıfat, zarf",
+  "vivid": "sıfat",
+  "x-ray": "isim, fiil",
+  "knowledgeable": "sıfat", // knowledgeably ayrı bir zarftır; yanlış son anlam kaldırılır
+  "crazy": "sıfat", // ikinci anlam kişi etiketi yerine crazy about örüntüsüdür
+  "trip-up": "fiil", // doğrulanmış trip up deyimsel fiili
+  "turn-off": "fiil, isim", // kapatmak fiili ve caydırıcı unsur ismi
+  "tusk": "isim", // karttaki anlam hayvanın uzun dişidir
+  "cross-section": "isim", // enine kesit; ad öbeği içinde niteleyici kullanılması sıfat yapmaz
   "do": "fiil",
   "may": "fiil",
   "might": "fiil",
@@ -48,7 +65,6 @@ window.TUR_DUZELTME = {
   "sister": "isim, sıfat",
   "chocolate": "isim, sıfat",
   "neanderthal": "isim, sıfat",
-  "turn-off": "isim",
   "throughout": "zarf, edat",
   "alongside": "edat, zarf",
   "licence": "isim",

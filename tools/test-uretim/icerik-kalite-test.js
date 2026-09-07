@@ -1,5 +1,6 @@
 'use strict';
 const assert=require('assert'),fs=require('fs'),path=require('path'),vm=require('vm');
+const {beklenenAnlamlar}=require('./kart-icerik-beklenen');
 const root=path.resolve(__dirname,'../..');
 const read=f=>fs.readFileSync(path.join(root,f),'utf8');
 const json=f=>JSON.parse(read(f));
@@ -38,7 +39,7 @@ run('tools/ornek-duzeltmeleri.js');run('tools/tur-duzeltme.js');run('data/kelime
 let cards={};for(let i=1;i<=7;i++){run('data/kelime-k'+i+'.js');Object.assign(cards,w['KELIME_K'+i]);}
 const qual=json('tools/icerik-kalite.json');
 assert.strictEqual(qual.kelimeler.length,11);
-for(const key of qual.kelimeler)assert.deepStrictEqual(plain(cards[key].a),plain(w.ORNEK_DUZELTMELERI[key]),'durable word '+key);
+for(const key of qual.kelimeler)assert.deepStrictEqual(plain(cards[key].a),beklenenAnlamlar(key,plain(w.ORNEK_DUZELTMELERI[key])),'durable word plus guarded editorial alternatives '+key);
 for(const [key,a]of Object.entries(qual.obekler))assert.deepStrictEqual(plain(w.OBEKLER.find(x=>x.f===key).a),a,'durable phrase '+key);
 for(const key of ['despite','albeit','within','underneath','though','without','until'])assert.strictEqual(w.KELIME_DIZIN.find(x=>x.e===key).y,w.TUR_DUZELTME[key],'POS '+key);
 assert.strictEqual(w.KELIME_DIZIN.find(x=>x.e==='off').t,'kapalı; -den uzakta; (kıyının) açığında');

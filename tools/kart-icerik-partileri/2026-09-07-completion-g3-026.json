@@ -1,0 +1,1094 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 3,
+    "input": "input-026.json"
+  },
+  "enrichments": [
+    {
+      "word": "invent",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. icat etmek, bulmak",
+        "ex": "A young engineer managed to invent a cheaper method of purifying water for rural communities.",
+        "exTr": "Genç bir mühendis, kırsal topluluklar için daha ucuz bir su arıtma yöntemi icat etmeyi başardı."
+      },
+      "alternatives": [
+        {
+          "ex": "Rather than invent a new fastening device, the engineering students adapted an existing mechanism to make the temporary exhibition easier to assemble.",
+          "exTr": "Mühendislik öğrencileri, yeni bir bağlantı düzeneği icat etmek yerine geçici serginin kurulumunu kolaylaştırmak için mevcut bir mekanizmayı uyarladı."
+        }
+      ]
+    },
+    {
+      "word": "inventor",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. mucit",
+        "ex": "Thomas Edison, the famous inventor, held more than a thousand patents during his lifetime.",
+        "exTr": "Ünlü mucit Thomas Edison, yaşamı boyunca binden fazla patente sahipti."
+      },
+      "alternatives": [
+        {
+          "ex": "The inventor's notebooks contained abandoned sketches as well as successful designs, revealing a process of experimentation that the finished machine alone could not show.",
+          "exTr": "Mucidin defterleri, başarılı tasarımların yanı sıra terk edilmiş eskizler de içererek tamamlanmış makinenin tek başına gösteremeyeceği bir deneme sürecini ortaya koyuyordu."
+        }
+      ]
+    },
+    {
+      "word": "invertebrate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i./s. omurgasız (hayvan)",
+        "ex": "Marine biologists estimate that invertebrates make up more than ninety percent of all animal species in the ocean.",
+        "exTr": "Deniz biyologları, omurgasızların okyanustaki tüm hayvan türlerinin yüzde doksanından fazlasını oluşturduğunu tahmin ediyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Students examined the invertebrates collected from the stream, recording visible features before consulting identification guides to distinguish the different groups.",
+          "exTr": "Öğrenciler, dereden toplanan omurgasızları inceleyip farklı grupları ayırt etmek üzere teşhis rehberlerine başvurmadan önce görünür özelliklerini kaydetti."
+        }
+      ]
+    },
+    {
+      "word": "investigating",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. araştırmak, incelemek, soruşturmak; araştıran/inceleyen",
+        "ex": "Scientists are investigating why the lake is shrinking.",
+        "exTr": "Bilim insanları gölün neden küçüldüğünü araştırıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The team is investigating how changes in delivery schedules affect shopkeepers, including those whose businesses open before regular public transport services begin.",
+          "exTr": "Ekip, düzenli toplu taşıma başlamadan önce iş yerlerini açanlar da dâhil, teslimat takvimindeki değişikliklerin esnafı nasıl etkilediğini araştırıyor."
+        }
+      ]
+    },
+    {
+      "word": "investigator",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. araştırmacı, soruşturmacı, müfettiş",
+        "ex": "The lead investigator spent months collecting evidence before presenting the case to prosecutors.",
+        "exTr": "Davayı savcılara sunmadan önce, başsoruşturmacı aylarını kanıt toplamakla geçirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "Each investigator followed the same interview guide, but could ask additional questions when a participant introduced an experience relevant to the study.",
+          "exTr": "Her araştırmacı aynı görüşme rehberini izliyor, ancak katılımcı çalışmayla ilgili bir deneyimden söz ettiğinde ek sorular sorabiliyordu."
+        }
+      ]
+    },
+    {
+      "word": "invisibility",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. görünmezlik, göze görünmeme, fark edilmezlik",
+        "ex": "The invisibility of unpaid domestic labour in official statistics has long prevented policymakers from recognising its true contribution to the economy.",
+        "exTr": "Ücretsiz ev içi emeğin resmî istatistiklerde görünmez oluşu, politika yapıcıların bu emeğin ekonomiye gerçek katkısını fark etmesini uzun süre engelledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The photographer challenges the social invisibility of night workers by portraying the people who maintain familiar places while most residents are asleep.",
+          "exTr": "Fotoğrafçı, sakinlerin çoğu uyurken tanıdık mekânların bakımını yapan insanları fotoğraflayarak gece çalışanların toplumsal görünmezliğine karşı çıkar."
+        }
+      ]
+    },
+    {
+      "word": "invite",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. davet etmek",
+        "ex": "The museum decided to invite local schoolchildren to a private viewing of the ancient artifacts.",
+        "exTr": "Müze, yerel okul çocuklarını antik eserlerin özel bir sergisine davet etmeye karar verdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The organisers invited former residents to annotate a neighbourhood map, adding memories of shops and meeting places that had disappeared during redevelopment.",
+          "exTr": "Düzenleyiciler, eski sakinleri bir mahalle haritasına notlar eklemeye davet ederek yenileme sırasında kaybolan dükkân ve buluşma yerlerine ilişkin anıları topladı."
+        }
+      ]
+    },
+    {
+      "word": "involved",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. dahil olan, ilgili",
+        "ex": "Every researcher involved in the study had to disclose any potential conflict of interest.",
+        "exTr": "Çalışmaya dahil olan her araştırmacı, olası bir çıkar çatışmasını açıklamak zorundaydı."
+      },
+      "alternatives": [
+        {
+          "ex": "Everyone involved in preparing the exhibition received credit, including the technicians whose work visitors would rarely notice when looking at the finished displays.",
+          "exTr": "Sergiyi hazırlamaya katılan herkesin, ziyaretçilerin tamamlanmış düzenlemelere bakarken işini nadiren fark edeceği teknisyenler de dâhil, katkısı belirtildi."
+        }
+      ]
+    },
+    {
+      "word": "iron",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. demir",
+        "ex": "A diet lacking iron can lead to anemia, causing fatigue and weakness in patients.",
+        "exTr": "Demirden yoksun bir beslenme düzeni anemiye yol açarak hastalarda yorgunluk ve halsizliğe neden olabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The conservator compared the iron fittings with surviving workshop records to determine whether they belonged to the original door or a later repair.",
+          "exTr": "Koruma uzmanı, demir aksamın özgün kapıya mı yoksa sonraki bir onarıma mı ait olduğunu belirlemek için bunları günümüze ulaşan atölye kayıtlarıyla karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "ironically",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. ironik biçimde, ne ilginçtir ki",
+        "ex": "Critics found it ironically fitting that the anti-corruption official was later charged with fraud.",
+        "exTr": "Eleştirmenler, yolsuzlukla mücadele yetkilisinin daha sonra dolandırıcılıkla suçlanmasını ironik biçimde uygun buldu."
+      },
+      "alternatives": [
+        {
+          "ex": "Ironically, the campaign to reduce unnecessary meetings required a series of lengthy meetings before anyone could agree on how the new procedure should work.",
+          "exTr": "Ne ironiktir ki gereksiz toplantıları azaltma girişimi, yeni yöntemin nasıl işleyeceği konusunda anlaşılabilmesi için bir dizi uzun toplantı gerektirdi."
+        }
+      ]
+    },
+    {
+      "word": "irrationally",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. akla veya mantığa aykırı biçimde; mantıksızca",
+        "ex": "Investors sometimes react irrationally to rumours even when reliable evidence points in the opposite direction.",
+        "exTr": "Yatırımcılar güvenilir kanıtlar tersini gösterse bile bazen söylentilere mantıksızca tepki verir."
+      },
+      "alternatives": [
+        {
+          "ex": "He feared the harmless mechanical model irrationally, even after its designer had explained that the apparent movement was produced by a simple spring.",
+          "exTr": "Tasarımcısı görünürdeki hareketin basit bir yaydan kaynaklandığını açıkladıktan sonra bile zararsız mekanik modelden mantıksızca korkuyordu."
+        }
+      ]
+    },
+    {
+      "word": "irrespective",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. bakılmaksızın",
+        "ex": "The scholarship is awarded to the top applicant, irrespective of nationality or background.",
+        "exTr": "Burs, uyruğa veya geçmişe bakılmaksızın en başarılı adaya verilir."
+      },
+      "alternatives": [
+        {
+          "ex": "All entries were assessed against the same published criteria, irrespective of whether the designer was a student or an established professional.",
+          "exTr": "Tasarımcının öğrenci ya da deneyimli bir profesyonel olmasına bakılmaksızın tüm çalışmalar yayımlanmış aynı ölçütlerle değerlendirildi."
+        }
+      ]
+    },
+    {
+      "word": "irrigate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. sulamak; su kanallarıyla su sağlamak",
+        "ex": "Farmers use stored rainwater to irrigate their fields.",
+        "exTr": "Çiftçiler tarlalarını sulamak için biriktirilmiş yağmur suyunu kullanır."
+      },
+      "alternatives": [
+        {
+          "ex": "The farm manager recorded how much water was used to irrigate each plot, comparing the figures with rainfall measurements collected during the growing season.",
+          "exTr": "Çiftlik yöneticisi, her parseli sulamak için kullanılan suyu kaydederek rakamları yetiştirme mevsiminde toplanan yağış ölçümleriyle karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "irritate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. tahriş etmek; rahatsız etmek, sinirlendirmek",
+        "ex": "Fine particles in polluted air can irritate the lungs and worsen existing respiratory conditions.",
+        "exTr": "Kirli havadaki ince parçacıklar akciğerleri tahriş edebilir ve mevcut solunum rahatsızlıklarını kötüleştirebilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The constant clicking of the loose window catch began to irritate the typist, who finally paused work to ask for a quieter desk.",
+          "exTr": "Gevşek pencere mandalının sürekli tıkırtısı daktilocuyu sinirlendirmeye başladı; sonunda işine ara verip daha sessiz bir masa istedi."
+        }
+      ]
+    },
+    {
+      "word": "island",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ada",
+        "ex": "Rising sea levels threaten to submerge several low-lying island nations within the next century.",
+        "exTr": "Yükselen deniz seviyeleri, önümüzdeki yüzyıl içinde birkaç alçak rakımlı ada ülkesini sular altında bırakma tehdidi oluşturuyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The island's ferry timetable shaped the school day, since teachers arriving from the mainland had to plan lessons around the final return crossing.",
+          "exTr": "Ana karadan gelen öğretmenler dersleri son dönüş seferine göre planlamak zorunda olduğundan adanın feribot tarifesi okul gününü şekillendiriyordu."
+        }
+      ]
+    },
+    {
+      "word": "isolation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. izolasyon, yalnızlık, yalıtılmışlık",
+        "ex": "Extended isolation during the lockdown had a measurable impact on people's mental health.",
+        "exTr": "Karantina sırasındaki uzun süreli yalnızlık, insanların ruh sağlığı üzerinde ölçülebilir bir etki yarattı."
+      },
+      "alternatives": [
+        {
+          "ex": "Geographical isolation did not mean complete cultural separation: letters and imported household objects showed that the mountain settlement maintained connections with distant towns.",
+          "exTr": "Coğrafi yalıtılmışlık tam bir kültürel ayrılık anlamına gelmiyordu; mektuplar ve dışarıdan getirilmiş ev eşyaları dağ yerleşiminin uzak kasabalarla bağlantısını koruduğunu gösteriyordu."
+        }
+      ]
+    },
+    {
+      "word": "it is necessary to",
+      "sense_index": 0,
+      "expected": {
+        "tr": "yapmak gereklidir; kişisiz ve resmî gereklilik bildirmek",
+        "ex": "It is necessary to control for age before comparing the performance of the two groups.",
+        "exTr": "İki grubun performansını karşılaştırmadan önce yaş değişkenini kontrol etmek gerekir."
+      },
+      "alternatives": [
+        {
+          "ex": "It is necessary to distinguish the date of a photograph from the date of the event it claims to depict before using it as evidence.",
+          "exTr": "Bir fotoğrafı kanıt olarak kullanmadan önce çekildiği tarihi, betimlediği ileri sürülen olayın tarihinden ayırmak gerekir."
+        }
+      ]
+    },
+    {
+      "word": "ivory",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. fildişi; fildişi rengi",
+        "ex": "The carving was made from ivory that traders had brought from distant regions.",
+        "exTr": "Oyma eser, tüccarların uzak bölgelerden getirdiği fildişinden yapılmıştı."
+      },
+      "alternatives": [
+        {
+          "ex": "The catalogue identified the small figurine as ivory, but the curator requested a materials assessment before accepting the description inherited from an earlier inventory.",
+          "exTr": "Katalog küçük heykelciği fildişi olarak tanımlıyordu; ancak küratör, önceki envanterden aktarılan bu tanımı kabul etmeden önce malzeme değerlendirmesi istedi."
+        }
+      ]
+    },
+    {
+      "word": "jacket",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. ceket, mont",
+        "ex": "She grabbed a warm jacket before heading outside into the cold evening air.",
+        "exTr": "Soğuk akşam havasına çıkmadan önce sıcak bir ceket kaptı."
+      },
+      "alternatives": [
+        {
+          "ex": "The costume designer added hidden pockets to the jacket so that the actor could carry props without altering the character's outward appearance.",
+          "exTr": "Kostüm tasarımcısı, oyuncunun karakterin dış görünüşünü değiştirmeden sahne aksesuarlarını taşıyabilmesi için cekete gizli cepler ekledi."
+        }
+      ]
+    },
+    {
+      "word": "jar",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kavanoz",
+        "ex": "She stored the homemade jam in a glass jar and kept it in the refrigerator.",
+        "exTr": "Ev yapımı reçeli cam bir kavanozda sakladı ve buzdolabında tuttu."
+      },
+      "alternatives": [
+        {
+          "ex": "A ceramic jar found beneath the floor contained seeds, prompting archaeologists to consider whether the room had once been used for storage.",
+          "exTr": "Döşemenin altında bulunan seramik bir kavanozun içinde tohumlar vardı; bu da arkeologları odanın bir zamanlar depolama amacıyla kullanılmış olabileceğini düşünmeye yöneltti."
+        }
+      ]
+    },
+    {
+      "word": "jazz",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. (jazz up) canlandırmak, hareketlendirmek, renk katmak",
+        "ex": "The designer decided to jazz up the museum's dull entrance with colorful murals.",
+        "exTr": "Tasarımcı, müzenin sıkıcı girişini renkli duvar resimleriyle canlandırmaya karar verdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The editor wanted to jazz up the newsletter with illustrations, provided that decorative elements did not make the practical information harder to find.",
+          "exTr": "Editör, süsleme ögelerinin gerekli bilgileri bulmayı zorlaştırmaması koşuluyla bültene çizimlerle renk katmak istiyordu."
+        }
+      ],
+      "note": "Mevcut anlam jazz up öbek fiiline bağlı tutuldu; jazz müzik türü anlamı eklenmedi."
+    },
+    {
+      "word": "jellyfish",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. denizanası",
+        "ex": "As Arctic waters continue to warm, marine biologists expect several species of jellyfish to expand their range far towards the North Pole.",
+        "exTr": "Arktik sular ısınmaya devam ettikçe, deniz biyologları birkaç denizanası türünün yayılım alanını Kuzey Kutbu'na doğru genişletmesini bekliyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The aquarium's education team used slow-motion footage of a jellyfish to help visitors observe movements that were difficult to follow in the crowded tank.",
+          "exTr": "Akvaryumun eğitim ekibi, ziyaretçilerin kalabalık tankta izlemesi güç hareketleri gözlemlemesine yardımcı olmak için bir denizanasının ağır çekim görüntülerini kullandı."
+        }
+      ]
+    },
+    {
+      "word": "jeopardize",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. tehlikeye atmak, riske sokmak",
+        "ex": "Skipping regular maintenance checks could seriously jeopardize the safety of the entire aircraft fleet.",
+        "exTr": "Düzenli bakım kontrollerini atlamak, tüm uçak filosunun güvenliğini ciddi biçimde tehlikeye atabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "Publishing the photographs without checking consent could jeopardize the trust that the research team had developed through months of careful work with participants.",
+          "exTr": "Fotoğrafları onamı kontrol etmeden yayımlamak, araştırma ekibinin katılımcılarla aylarca özenli çalışarak kurduğu güveni tehlikeye atabilirdi."
+        }
+      ]
+    },
+    {
+      "word": "jewel",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. mücevher, kıymetli taş",
+        "ex": "The crown was studded with jewels that had been collected from every corner of the empire.",
+        "exTr": "Taç, imparatorluğun her köşesinden toplanmış mücevherlerle süslenmişti."
+      },
+      "alternatives": [
+        {
+          "ex": "The jeweller examined the loose stones under different lighting conditions before deciding which jewels would suit the damaged necklace's remaining original settings.",
+          "exTr": "Kuyumcu, hangi değerli taşların hasarlı kolyenin kalan özgün yuvalarına uyacağına karar vermeden önce gevşek taşları farklı ışık koşullarında inceledi."
+        }
+      ]
+    },
+    {
+      "word": "join",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. katılmak",
+        "ex": "Thousands of volunteers joined the effort to clean up plastic waste along the coastline.",
+        "exTr": "Binlerce gönüllü, kıyı şeridindeki plastik atıkları temizleme çabasına katıldı."
+      },
+      "alternatives": [
+        {
+          "ex": "Several parents joined the school gardening group after discovering that its weekend sessions welcomed people with little experience of growing plants.",
+          "exTr": "Birkaç veli, hafta sonu çalışmalarının bitki yetiştirme deneyimi az olan kişilere de açık olduğunu öğrenince okulun bahçecilik grubuna katıldı."
+        }
+      ]
+    },
+    {
+      "word": "joint",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. ortak, müşterek",
+        "ex": "The two universities launched a joint research project to develop cheaper solar panels.",
+        "exTr": "İki üniversite, daha ucuz güneş panelleri geliştirmek için ortak bir araştırma projesi başlattı."
+      },
+      "alternatives": [
+        {
+          "ex": "A joint application from three small publishers secured a shared stand at the book fair, making participation possible without separate rental costs.",
+          "exTr": "Üç küçük yayınevinin ortak başvurusu, kitap fuarında ortak bir stant edinmelerini sağlayarak ayrı kira giderleri olmadan katılmalarını mümkün kıldı."
+        }
+      ]
+    },
+    {
+      "word": "journal",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. dergi (akademik)",
+        "ex": "Her findings on climate change were published in a leading scientific journal last year.",
+        "exTr": "İklim değişikliğine ilişkin bulguları geçen yıl önde gelen bir bilimsel dergide yayımlandı."
+      },
+      "alternatives": [
+        {
+          "ex": "The journal asked authors to explain their sampling decisions so that readers could judge how far the findings might apply beyond the study sites.",
+          "exTr": "Dergi, okurların bulguların araştırma alanları dışında ne ölçüde geçerli olabileceğini değerlendirebilmesi için yazarlardan örnekleme kararlarını açıklamalarını istedi."
+        }
+      ]
+    },
+    {
+      "word": "journey",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yolculuk",
+        "ex": "The migrating birds complete an extraordinary journey of thousands of miles every autumn.",
+        "exTr": "Göçmen kuşlar, her sonbaharda binlerce kilometrelik olağanüstü bir yolculuğu tamamlar."
+      },
+      "alternatives": [
+        {
+          "ex": "For commuters from the outer villages, the journey involved a bus transfer that added considerable waiting time despite the relatively short distance travelled.",
+          "exTr": "Çevre köylerden işe gidip gelenler için yolculuk, kat edilen mesafe görece kısa olsa da önemli bir bekleme süresi ekleyen otobüs aktarması içeriyordu."
+        }
+      ]
+    },
+    {
+      "word": "judge",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. yargılamak, değerlendirmek",
+        "ex": "Scientists caution against using a single experiment to judge the overall safety of a new drug.",
+        "exTr": "Bilim insanları, yeni bir ilacın genel güvenliğini değerlendirmek için tek bir deneye dayanılmaması gerektiği konusunda uyarıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "It would be premature to judge the exhibition by attendance alone, since interviews suggested that visitors differed greatly in what they gained from it.",
+          "exTr": "Görüşmeler ziyaretçilerin sergiden edindiklerinin çok farklı olduğunu gösterdiği için sergiyi yalnızca katılım sayısıyla değerlendirmek erken olurdu."
+        }
+      ]
+    },
+    {
+      "word": "judicial",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yargısal, mahkemelere veya yargı sistemine ilişkin",
+        "ex": "Political interference in the judicial process can weaken public confidence in the rule of law.",
+        "exTr": "Yargı sürecine siyasi müdahale, hukukun üstünlüğüne duyulan kamu güvenini zayıflatabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The history course compared judicial institutions across several periods, examining who could bring a complaint and how decisions were recorded for later reference.",
+          "exTr": "Tarih dersi, kimlerin şikâyette bulunabildiğini ve kararların ileride başvurulmak üzere nasıl kaydedildiğini inceleyerek farklı dönemlerin yargı kurumlarını karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "jump",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sıçrama, atlama; ani artış",
+        "ex": "Consumer prices saw a sudden jump after the government reduced fuel subsidies.",
+        "exTr": "Hükûmet yakıt sübvansiyonlarını azalttıktan sonra tüketici fiyatlarında ani bir sıçrama görüldü."
+      },
+      "alternatives": [
+        {
+          "ex": "The sudden jump in reported sales disappeared when the analyst corrected a spreadsheet error that had counted one unusually large order twice.",
+          "exTr": "Analist, olağandışı büyüklükteki bir siparişi iki kez sayan hesap tablosu hatasını düzelttiğinde bildirilen satışlardaki ani artış ortadan kalktı."
+        }
+      ]
+    },
+    {
+      "word": "junk",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. hurda, ıvır zıvır, döküntü",
+        "ex": "The garage was filled with old furniture, broken tools, and other useless junk.",
+        "exTr": "Garaj, eski mobilyalar, kırık aletler ve diğer işe yaramaz ıvır zıvırla doluydu."
+      },
+      "alternatives": [
+        {
+          "ex": "What looked like useless junk in the attic included spare components that enabled the repair club to restore an otherwise unusable sewing machine.",
+          "exTr": "Tavan arasında işe yaramaz hurda gibi görünenler arasında, onarım kulübünün başka türlü kullanılamayacak bir dikiş makinesini çalıştırmasını sağlayan yedek parçalar da vardı."
+        }
+      ]
+    },
+    {
+      "word": "just",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. sadece, yalnızca",
+        "ex": "The treatment remains effective for just a few hours after each dose.",
+        "exTr": "Tedavi her dozdan sonra yalnızca birkaç saat etkili kalır."
+      },
+      "alternatives": [
+        {
+          "ex": "The pilot study involved just twelve households, so the authors presented its results as a starting point rather than a representative picture of the district.",
+          "exTr": "Pilot çalışma yalnızca on iki haneyi kapsadığından yazarlar sonuçlarını bölgeyi temsil eden bir tablo olarak değil, başlangıç noktası olarak sundu."
+        }
+      ]
+    },
+    {
+      "word": "justification",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. gerekçe, haklı çıkarma, doğrulama",
+        "ex": "The board demanded a clear justification for the sudden increase in hospital administration costs.",
+        "exTr": "Yönetim kurulu, hastane yönetim maliyetlerindeki ani artış için açık bir gerekçe talep etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The proposal offered no convincing justification for excluding part-time students from a service financed through fees paid by everyone enrolled at the college.",
+          "exTr": "Öneri, okula kayıtlı herkesin ödediği ücretlerle finanse edilen bir hizmetten yarı zamanlı öğrencileri dışlamak için ikna edici bir gerekçe sunmuyordu."
+        }
+      ]
+    },
+    {
+      "word": "keenly",
+      "sense_index": 1,
+      "expected": {
+        "tr": "z. hevesle, büyük bir dikkatle, yakından",
+        "ex": "Investors are keenly watching the central bank, since even a small change in interest rates could affect markets worldwide.",
+        "exTr": "Faiz oranlarındaki küçük bir değişiklik bile dünya genelinde piyasaları etkileyebileceği için yatırımcılar merkez bankasını yakından izliyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The apprentices listened keenly as the experienced potter explained why two apparently similar pieces of clay responded differently to the same shaping technique.",
+          "exTr": "Deneyimli çömlekçi, görünüşte benzer iki kil parçasının aynı şekillendirme tekniğine neden farklı tepki verdiğini açıklarken çıraklar büyük bir dikkatle dinledi."
+        }
+      ]
+    },
+    {
+      "word": "keeping",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. uyum (in keeping with)",
+        "ex": "The museum's minimalist design is in keeping with the architectural style of the surrounding district.",
+        "exTr": "Müzenin sade tasarımı, çevredeki bölgenin mimari üslubuyla uyum içindedir."
+      },
+      "alternatives": [
+        {
+          "ex": "The proposed extension was in keeping with the original house, using similar proportions without copying decorative details that belonged to a different period.",
+          "exTr": "Önerilen ek yapı, başka bir döneme ait süsleme ayrıntılarını kopyalamadan benzer oranlar kullanarak özgün evle uyum sağlıyordu."
+        }
+      ]
+    },
+    {
+      "word": "key",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kilit, çok önemli",
+        "ex": "Vitamin D plays a key role in maintaining healthy bones and immune function.",
+        "exTr": "D vitamini, sağlıklı kemikleri ve bağışıklık işlevini korumada kilit bir rol oynar."
+      },
+      "alternatives": [
+        {
+          "ex": "A key question for the survey was whether residents preferred fewer direct services or more frequent journeys requiring a change of vehicle.",
+          "exTr": "Anketin kilit sorularından biri, sakinlerin daha az sayıda doğrudan seferi mi yoksa araç değiştirmeyi gerektiren daha sık yolculukları mı tercih ettiğiydi."
+        }
+      ]
+    },
+    {
+      "word": "kick-start",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. harekete geçirmek, canlandırmak, hızla başlatmak",
+        "ex": "The government introduced tax incentives to kick-start the construction sector, hoping that new projects would create thousands of jobs within a year.",
+        "exTr": "Hükûmet, yeni projelerin bir yıl içinde binlerce iş yaratacağını umarak inşaat sektörünü canlandırmak için vergi teşvikleri getirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "A donated printing press helped kick-start the community newspaper, allowing the volunteer editors to produce their first issue before securing regular financial support.",
+          "exTr": "Bağışlanan bir baskı makinesi, gönüllü editörlerin düzenli mali destek sağlamadan önce ilk sayıyı çıkarmasına olanak tanıyarak mahalle gazetesini hızla harekete geçirdi."
+        }
+      ]
+    },
+    {
+      "word": "kill",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. öldürmek",
+        "ex": "Untreated infections can kill within days if the bacteria reach the bloodstream.",
+        "exTr": "Tedavi edilmeyen enfeksiyonlar, bakteriler kan dolaşımına ulaşırsa birkaç gün içinde ölüme yol açabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The wildlife study investigated how many animals were killed on the road, distinguishing direct observations from estimates based on reports submitted by drivers.",
+          "exTr": "Yaban hayatı çalışması, doğrudan gözlemleri sürücülerin bildirimlerine dayalı tahminlerden ayırarak yolda kaç hayvanın öldüğünü araştırdı."
+        }
+      ]
+    },
+    {
+      "word": "killing",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. öldürme, cinayet",
+        "ex": "Investigators are still trying to determine the motive behind the killing of the elderly shopkeeper.",
+        "exTr": "Soruşturmacılar, yaşlı dükkân sahibinin öldürülmesinin ardındaki nedeni belirlemeye hâlâ çalışıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The historical account places the killing within a wider dispute over land, while acknowledging that surviving sources disagree about who was responsible.",
+          "exTr": "Tarihsel anlatı, günümüze ulaşan kaynakların fail konusunda uyuşmadığını kabul ederken öldürme olayını daha geniş bir arazi anlaşmazlığı içinde ele alır."
+        }
+      ]
+    },
+    {
+      "word": "kilometre",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kilometre",
+        "ex": "Race organizers measured the course carefully to ensure it was exactly one kilometre long.",
+        "exTr": "Yarış organizatörleri, parkurun tam olarak bir kilometre uzunluğunda olduğundan emin olmak için dikkatle ölçtü."
+      },
+      "alternatives": [
+        {
+          "ex": "The nearest bridge was more than a kilometre away, so the river divided households that appeared almost adjacent on a simple street map.",
+          "exTr": "En yakın köprü bir kilometreden daha uzakta olduğundan nehir, basit bir sokak haritasında neredeyse bitişik görünen haneleri birbirinden ayırıyordu."
+        }
+      ]
+    },
+    {
+      "word": "kindly",
+      "sense_index": 1,
+      "expected": {
+        "tr": "z. nazik veya iyiliksever biçimde",
+        "ex": "The nurse spoke kindly to the frightened child while preparing the medical equipment.",
+        "exTr": "Hemşire tıbbi ekipmanı hazırlarken korkmuş çocukla nazikçe konuştu."
+      },
+      "alternatives": [
+        {
+          "ex": "The librarian kindly explained how to search the catalogue, giving the new student time to practise rather than completing every step on her behalf.",
+          "exTr": "Kütüphaneci, her adımı onun yerine yapmak yerine yeni öğrenciye denemesi için zaman tanıyarak katalogda aramanın nasıl yapılacağını nazikçe açıkladı."
+        }
+      ]
+    },
+    {
+      "word": "kingdom",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. krallık",
+        "ex": "The ancient kingdom flourished for centuries before it was finally conquered by a rival empire.",
+        "exTr": "Kadim krallık, sonunda rakip bir imparatorluk tarafından fethedilmeden önce yüzyıllarca gelişti."
+      },
+      "alternatives": [
+        {
+          "ex": "The map shows the kingdom's changing borders, but accompanying letters reveal that trading relationships often extended beyond the boundaries claimed by its rulers.",
+          "exTr": "Harita krallığın değişen sınırlarını gösterir; ancak yanındaki mektuplar ticari ilişkilerin çoğu zaman hükümdarların ileri sürdüğü sınırları aştığını ortaya koyar."
+        }
+      ]
+    },
+    {
+      "word": "kitchen",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. mutfak",
+        "ex": "The restaurant renovated its kitchen to comply with new hygiene regulations introduced by the health department.",
+        "exTr": "Restoran, sağlık bakanlığının getirdiği yeni hijyen yönetmeliklerine uymak için mutfağını yeniledi."
+      },
+      "alternatives": [
+        {
+          "ex": "A shared kitchen gave the small food businesses access to equipment they could not afford individually, although booking times had to be carefully coordinated.",
+          "exTr": "Ortak bir mutfak, kullanım saatlerinin dikkatle düzenlenmesi gerekse de küçük gıda işletmelerine tek başlarına karşılayamadıkları ekipmana erişim sağladı."
+        }
+      ]
+    },
+    {
+      "word": "knife",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. bıçak",
+        "ex": "The chef sharpened his favorite knife before preparing the vegetables for the evening menu.",
+        "exTr": "Şef, akşam menüsü için sebzeleri hazırlamadan önce en sevdiği bıçağı biledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The archaeological report compared the knife with other household tools from the site, avoiding assumptions about its purpose based on appearance alone.",
+          "exTr": "Arkeoloji raporu, yalnızca görünüşe dayalı kullanım amacı varsayımlarından kaçınarak bıçağı alandaki diğer ev aletleriyle karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "knot",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. düğüm",
+        "ex": "Sailors must learn to tie a secure knot quickly, because a rope that slips in rough weather can endanger the entire crew.",
+        "exTr": "Denizciler sağlam bir düğümü hızla atmayı öğrenmek zorundadır; çünkü sert havada kayan bir halat bütün mürettebatı tehlikeye atabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "A tightly secured knot held the sample bags together, making it possible to lift them from the boat without losing their numbered labels.",
+          "exTr": "Sıkıca bağlanmış bir düğüm örnek torbalarını bir arada tutarak numaralı etiketlerini kaybetmeden tekneden kaldırılmalarını sağlıyordu."
+        }
+      ]
+    },
+    {
+      "word": "know-how",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. teknik bilgi, uzmanlık, beceri",
+        "ex": "Developing countries often lack the technical know-how required to build advanced manufacturing industries.",
+        "exTr": "Gelişmekte olan ülkeler, ileri imalat sanayileri kurmak için gereken teknik bilgiden çoğu zaman yoksundur."
+      },
+      "alternatives": [
+        {
+          "ex": "The partnership combined the university's testing facilities with the manufacturer's practical know-how, allowing problems in the prototype to be examined from different perspectives.",
+          "exTr": "Ortaklık, üniversitenin test olanaklarıyla üreticinin uygulamalı uzmanlığını birleştirerek prototipteki sorunların farklı açılardan incelenmesini sağladı."
+        }
+      ]
+    },
+    {
+      "word": "knowledge",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. bilgi",
+        "ex": "Indigenous communities possess extensive knowledge of local plants and their medicinal properties.",
+        "exTr": "Yerli topluluklar, yerel bitkiler ve bunların tıbbi özellikleri hakkında geniş bilgiye sahiptir."
+      },
+      "alternatives": [
+        {
+          "ex": "Her knowledge of local dialects helped the interview team recognise expressions that would otherwise have been misunderstood or omitted from the transcripts.",
+          "exTr": "Yerel ağızlar hakkındaki bilgisi, görüşme ekibinin aksi hâlde yanlış anlayacağı veya dökümlerden çıkaracağı ifadeleri tanımasına yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "koala",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. koala",
+        "ex": "A koala can sleep for up to twenty hours a day, mostly in eucalyptus trees.",
+        "exTr": "Bir koala, günde yirmi saate kadar, çoğunlukla okaliptüs ağaçlarında uyuyabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The field team recorded the location of each koala sighting alongside photographs of the surrounding trees to improve the accuracy of habitat maps.",
+          "exTr": "Saha ekibi, yaşam alanı haritalarının doğruluğunu artırmak için görülen her koalanın konumunu çevredeki ağaçların fotoğraflarıyla birlikte kaydetti."
+        }
+      ]
+    },
+    {
+      "word": "labor",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. emek, iş gücü",
+        "ex": "Automation has significantly reduced the amount of manual labor required in modern manufacturing plants.",
+        "exTr": "Otomasyon, modern üretim tesislerinde gereken el emeği miktarını önemli ölçüde azalttı."
+      },
+      "alternatives": [
+        {
+          "ex": "The economist included unpaid household labor in her analysis, questioning comparisons that treated time spent caring for relatives as economically irrelevant.",
+          "exTr": "Ekonomist, yakınların bakımına ayrılan zamanı ekonomik açıdan önemsiz sayan karşılaştırmaları sorgulayarak ücretsiz ev içi emeği analizine dâhil etti."
+        }
+      ]
+    },
+    {
+      "word": "labour",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. emek, iş gücü",
+        "ex": "Cheap labour attracted many multinational companies to set up factories in developing countries.",
+        "exTr": "Ucuz iş gücü, birçok çok uluslu şirketi gelişmekte olan ülkelerde fabrika kurmaya yöneltti."
+      },
+      "alternatives": [
+        {
+          "ex": "Harvesting the orchard required additional labour for only a few weeks, creating a staffing problem different from those faced by businesses operating throughout the year.",
+          "exTr": "Meyve bahçesindeki hasat yalnızca birkaç hafta ek iş gücü gerektirerek yıl boyunca çalışan işletmelerinkinden farklı bir personel sorunu yaratıyordu."
+        }
+      ]
+    },
+    {
+      "word": "lack",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. -den yoksun olmak",
+        "ex": "Many rural clinics still lack access to basic diagnostic equipment such as X-ray machines.",
+        "exTr": "Birçok kırsal klinik, röntgen cihazları gibi temel tanı ekipmanlarına erişimden hâlâ yoksundur."
+      },
+      "alternatives": [
+        {
+          "ex": "The proposal lacked a clear explanation of maintenance responsibilities, leaving residents uncertain about who would repair the shared equipment after installation.",
+          "exTr": "Öneride bakım sorumluluklarına ilişkin açık bir açıklama bulunmadığından sakinler, ortak ekipmanı kurulumdan sonra kimin onaracağından emin olamıyordu."
+        }
+      ]
+    },
+    {
+      "word": "lady",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. hanım, hanımefendi",
+        "ex": "The elderly lady donated her entire art collection to the national museum last month.",
+        "exTr": "Yaşlı hanımefendi geçen ay tüm sanat koleksiyonunu ulusal müzeye bağışladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The lady seated beside the window turned out to be the retired cartographer whose detailed drawings the visiting students had been studying all morning.",
+          "exTr": "Pencere yanında oturan hanımefendinin, ziyarete gelen öğrencilerin bütün sabah ayrıntılı çizimlerini incelediği emekli haritacı olduğu anlaşıldı."
+        }
+      ]
+    },
+    {
+      "word": "ladybug",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. uğur böceği",
+        "ex": "Farmers welcome the ladybug in their fields because it feeds on harmful aphids.",
+        "exTr": "Çiftçiler, zararlı yaprak bitleriyle beslendiği için tarlalarında uğur böceğini memnuniyetle karşılar."
+      },
+      "alternatives": [
+        {
+          "ex": "A ladybug resting on the classroom windowsill prompted students to compare its visible features with the insects illustrated in their field guide.",
+          "exTr": "Sınıfın pencere pervazında duran bir uğur böceği, öğrencileri onun görünür özelliklerini saha rehberlerindeki böceklerle karşılaştırmaya yöneltti."
+        }
+      ]
+    },
+    {
+      "word": "lake",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. göl",
+        "ex": "Pollution levels in the lake have dropped significantly since factories adopted stricter waste regulations.",
+        "exTr": "Fabrikalar daha sıkı atık düzenlemeleri benimsediğinden beri göldeki kirlilik seviyeleri önemli ölçüde düştü."
+      },
+      "alternatives": [
+        {
+          "ex": "The survey divided the lake into sampling zones, ensuring that observations from its sheltered bays were not treated as representative of the entire shoreline.",
+          "exTr": "Araştırma, korunaklı koylarındaki gözlemlerin bütün kıyı şeridini temsil eder sayılmamasını sağlamak için gölü örnekleme bölgelerine ayırdı."
+        }
+      ]
+    },
+    {
+      "word": "lance",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. mızrak, kargı",
+        "ex": "A knight's lance was designed to shatter on impact, absorbing energy that would otherwise have been transferred to the rider's arm.",
+        "exTr": "Şövalyenin mızrağı, aksi hâlde binicinin koluna aktarılacak olan enerjiyi soğurarak çarpma anında parçalanacak biçimde tasarlanmıştı."
+      },
+      "alternatives": [
+        {
+          "ex": "The illustrator consulted surviving armour and tournament records before drawing the rider's lance, aiming to distinguish ceremonial display from equipment used in combat.",
+          "exTr": "Çizer, törensel gösteriyi savaşta kullanılan ekipmandan ayırmak amacıyla binicinin mızrağını çizmeden önce günümüze ulaşan zırhlara ve turnuva kayıtlarına başvurdu."
+        }
+      ]
+    },
+    {
+      "word": "landmark",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. simge yapı, önemli nokta",
+        "ex": "The old lighthouse is a well-known landmark that helps sailors navigate safely into the harbor.",
+        "exTr": "Eski deniz feneri, denizcilerin limana güvenle yönelmesine yardımcı olan bilinen bir simge yapıdır."
+      },
+      "alternatives": [
+        {
+          "ex": "The water tower remained a useful landmark for walkers even after new apartment blocks obscured the church spire that had once dominated the skyline.",
+          "exTr": "Yeni apartmanlar bir zamanlar siluete hâkim olan kilise kulesini gizledikten sonra bile su kulesi yürüyüşçüler için yararlı bir yön bulma noktası olarak kaldı."
+        }
+      ]
+    },
+    {
+      "word": "language",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. dil, lisan",
+        "ex": "Nearly half of the world's languages may disappear entirely by the end of this century.",
+        "exTr": "Dünya dillerinin neredeyse yarısı, bu yüzyılın sonuna kadar tamamen yok olabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The language used in official letters differed sharply from everyday conversation, requiring students to learn conventions as well as unfamiliar vocabulary.",
+          "exTr": "Resmî mektuplarda kullanılan dil günlük konuşmadan belirgin biçimde farklıydı; bu da öğrencilerin yeni sözcüklerin yanında yazışma kurallarını da öğrenmesini gerektiriyordu."
+        }
+      ]
+    },
+    {
+      "word": "large",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. büyük, geniş",
+        "ex": "The study analyzed data from a large sample of hospitals across the country.",
+        "exTr": "Çalışma, ülke genelindeki hastanelerden oluşan büyük bir örneklemden elde edilen verileri inceledi."
+      },
+      "alternatives": [
+        {
+          "ex": "A large collection of responses does not guarantee a balanced survey if most participants have been recruited from the same narrow social network.",
+          "exTr": "Katılımcıların çoğu aynı dar sosyal çevreden seçilmişse çok sayıda yanıt elde edilmesi dengeli bir araştırmayı garanti etmez."
+        }
+      ]
+    },
+    {
+      "word": "larger",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. daha büyük, daha geniş",
+        "ex": "Cities with larger populations generally offer more job opportunities but also higher living costs.",
+        "exTr": "Daha büyük nüfuslu şehirler genellikle daha fazla iş imkânı sunar; ancak yaşam maliyetleri de daha yüksektir."
+      },
+      "alternatives": [
+        {
+          "ex": "The larger storage room could accommodate the collection, but moving it there would require additional shelving and better access for heavy crates.",
+          "exTr": "Daha büyük depo odası koleksiyonu alabilirdi; ancak oraya taşımak ek raflar ve ağır kasalar için daha uygun erişim gerektirecekti."
+        }
+      ]
+    }
+  ],
+  "collocations": [
+    {
+      "word": "investigating",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "investigating the cause",
+          "tr": "nedeni araştırmak"
+        },
+        {
+          "en": "an investigating officer",
+          "tr": "soruşturmayı yürüten görevli"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "ironically",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "ironically enough",
+          "tr": "işin ironik yanı"
+        },
+        {
+          "en": "smile ironically",
+          "tr": "ironik bir gülümsemeyle karşılık vermek"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "irrationally",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "behave irrationally",
+          "tr": "mantıksız davranmak"
+        },
+        {
+          "en": "react irrationally",
+          "tr": "mantıksızca tepki vermek"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "irritate",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "irritate the skin",
+          "tr": "cildi tahriş etmek"
+        },
+        {
+          "en": "irritate someone intensely",
+          "tr": "birini çok sinirlendirmek"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "jacket",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a waterproof jacket",
+          "tr": "su geçirmez mont"
+        },
+        {
+          "en": "a fitted jacket",
+          "tr": "vücuda oturan ceket"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "jazz",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "jazz up a presentation",
+          "tr": "bir sunumu canlandırmak"
+        },
+        {
+          "en": "jazz up a room",
+          "tr": "bir odaya renk katmak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "kilometre",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a square kilometre",
+          "tr": "bir kilometrekare"
+        },
+        {
+          "en": "kilometres per hour",
+          "tr": "saatte kilometre"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "kindly",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "speak kindly",
+          "tr": "nazikçe konuşmak"
+        },
+        {
+          "en": "a kindly gesture",
+          "tr": "iyiliksever bir jest"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "kitchen",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a shared kitchen",
+          "tr": "ortak mutfak"
+        },
+        {
+          "en": "kitchen equipment",
+          "tr": "mutfak ekipmanı"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "knife",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a sharp knife",
+          "tr": "keskin bıçak"
+        },
+        {
+          "en": "a knife blade",
+          "tr": "bıçak ağzı"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "koala",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "koala habitat",
+          "tr": "koala yaşam alanı"
+        },
+        {
+          "en": "a koala population",
+          "tr": "koala popülasyonu"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "ladybug",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a ladybug larva",
+          "tr": "uğur böceği larvası"
+        },
+        {
+          "en": "ladybug spots",
+          "tr": "uğur böceği benekleri"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

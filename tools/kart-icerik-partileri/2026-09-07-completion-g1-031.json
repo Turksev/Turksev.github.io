@@ -1,0 +1,1046 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 1,
+    "input": "input-031.json"
+  },
+  "enrichments": [
+    {
+      "word": "mugshot",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sabıka fotoğrafı, polis kayıt fotoğrafı",
+        "ex": "Police released the suspect's mugshot to the press, hoping that someone in the neighbourhood would recognise the man and come forward.",
+        "exTr": "Polis, mahalleden birinin adamı tanıyıp öne çıkacağı umuduyla şüphelinin sabıka fotoğrafını basına verdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The researcher distinguished the mugshot from a conviction record, noting that an image taken during police processing did not by itself establish guilt.",
+          "exTr": "Araştırmacı, polis işlemleri sırasında çekilmiş bir görüntünün tek başına suçluluğu göstermediğini belirterek polis kayıt fotoğrafını mahkûmiyet kaydından ayırdı."
+        }
+      ]
+    },
+    {
+      "word": "multimedia",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. çoklu ortam, multimedya; s. çoklu ortam içeren",
+        "ex": "Instructors increasingly rely on multimedia materials that combine text, animation and sound in order to accommodate different learning styles in large classes.",
+        "exTr": "Öğretim elemanları, kalabalık sınıflardaki farklı öğrenme stillerine karşılık verebilmek için metni, animasyonu ve sesi bir araya getiren çoklu ortam materyallerine giderek daha fazla başvuruyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The multimedia presentation paired spoken explanations with diagrams, while controls allowed viewers to pause and reconsider parts they found difficult.",
+          "exTr": "Çoklu ortam sunumu sözlü açıklamaları şemalarla eşleştirdi; denetim seçenekleri ise izleyicilerin duraklatıp zor buldukları bölümleri yeniden değerlendirmesine olanak sağladı."
+        }
+      ]
+    },
+    {
+      "word": "multiple-choice",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. çoktan seçmeli",
+        "ex": "Most sections of the exam consist of multiple-choice questions rather than open-ended essays.",
+        "exTr": "Sınavın çoğu bölümü, açık uçlu kompozisyon sorularından ziyade çoktan seçmeli sorulardan oluşur."
+      },
+      "alternatives": [
+        {
+          "ex": "The multiple-choice exercise asked learners to justify the rejected options, making it harder to succeed by recognising a familiar phrase alone.",
+          "exTr": "Çoktan seçmeli alıştırma, öğrencilerden eledikleri seçenekler için gerekçe sunmalarını isteyerek yalnızca tanıdık bir ifadeyi fark ederek başarılı olmayı güçleştirdi."
+        }
+      ]
+    },
+    {
+      "word": "mum",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. sessiz, ağzı sıkı",
+        "ex": "Witnesses agreed to stay mum about the details of the negotiation until the deal closed.",
+        "exTr": "Tanıklar, anlaşma kapanana kadar müzakerenin ayrıntıları hakkında sessiz kalmayı kabul etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The novelist keeps the witness mum about the missing letter until a later chapter reveals why speaking earlier would have endangered another character.",
+          "exTr": "Romancı, daha önce konuşmanın başka bir karakteri neden tehlikeye atacağını sonraki bir bölüm açıklayana kadar tanığı kayıp mektup konusunda sessiz tutuyor."
+        }
+      ]
+    },
+    {
+      "word": "mundane",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. sıradan, olağan, sıkıcı",
+        "ex": "Much of a scientist's working life consists of mundane tasks such as labelling samples and recording measurements rather than dramatic discoveries.",
+        "exTr": "Bir bilim insanının çalışma hayatının büyük bölümü, çarpıcı keşiflerden ziyade örnekleri etiketlemek ve ölçümleri kaydetmek gibi sıradan işlerden oluşur."
+      },
+      "alternatives": [
+        {
+          "ex": "The apparently mundane household purchases became useful evidence when the historian compared them with changes in the family's work and living arrangements.",
+          "exTr": "Tarihçi, onları ailenin iş ve yaşam düzenindeki değişikliklerle karşılaştırınca görünüşte sıradan ev alışverişleri yararlı kanıtlara dönüştü."
+        }
+      ]
+    },
+    {
+      "word": "murder",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. cinayet",
+        "ex": "Detectives spent months investigating the murder before finally identifying a credible suspect.",
+        "exTr": "Dedektifler, sonunda inandırıcı bir şüpheliyi belirlemeden önce cinayeti aylarca araştırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The novel treats the murder as a starting point for examining unreliable testimony, rather than presenting every witness's account as equally trustworthy.",
+          "exTr": "Roman, her tanığın anlatısını aynı ölçüde güvenilir sunmak yerine cinayeti güvenilmez tanıklığı incelemek için bir başlangıç noktası olarak ele alıyor."
+        }
+      ]
+    },
+    {
+      "word": "museum",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. müze",
+        "ex": "The natural history museum recently acquired a rare fossil discovered in a remote desert region.",
+        "exTr": "Doğa tarihi müzesi, kısa süre önce uzak bir çöl bölgesinde keşfedilen nadir bir fosili edindi."
+      },
+      "alternatives": [
+        {
+          "ex": "The museum invited former factory workers to comment on the display, revealing practical uses of the tools that the catalogue had overlooked.",
+          "exTr": "Müze, katalogda gözden kaçırılmış pratik araç kullanımlarını ortaya çıkararak eski fabrika işçilerini sergi hakkında yorum yapmaya davet etti."
+        }
+      ]
+    },
+    {
+      "word": "musical",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. müzikal, müzikle ilgili",
+        "ex": "Early exposure to musical training appears to enhance children's language development skills.",
+        "exTr": "Erken yaşta müzik eğitimine maruz kalmak, çocukların dil gelişimi becerilerini güçlendiriyor gibi görünüyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The musical examples were played at the same volume so that listeners could compare differences in rhythm without being distracted by changes in loudness.",
+          "exTr": "Dinleyicilerin ses yüksekliğindeki değişikliklerle dikkatleri dağılmadan ritim farklarını karşılaştırabilmesi için müzik örnekleri aynı ses düzeyinde çalındı."
+        }
+      ]
+    },
+    {
+      "word": "must",
+      "sense_index": 1,
+      "expected": {
+        "tr": "güçlü ve mantıksal çıkarım bildirmek: -miş olmalı",
+        "ex": "The settlement must have depended on the river, since no other permanent water source existed nearby.",
+        "exTr": "Yakında başka kalıcı su kaynağı bulunmadığına göre yerleşim nehre bağımlı olmuş olmalı."
+      },
+      "alternatives": [
+        {
+          "ex": "The writer must have seen the revised plan, since her letter describes a doorway that appeared only in the later version.",
+          "exTr": "Mektubu yalnızca sonraki sürümde yer alan bir kapıyı anlattığına göre yazar gözden geçirilmiş planı görmüş olmalı."
+        }
+      ]
+    },
+    {
+      "word": "mutant",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. mutasyona uğramış",
+        "ex": "The mutant strain reproduced more rapidly than the original strain under laboratory conditions.",
+        "exTr": "Mutant suş laboratuvar koşullarında özgün suştan daha hızlı çoğaldı."
+      },
+      "alternatives": [
+        {
+          "ex": "The mutant plants were labelled individually so that observations made during growth could be linked to the corresponding genetic records.",
+          "exTr": "Büyüme sırasında yapılan gözlemlerin ilgili genetik kayıtlarla eşleştirilebilmesi için mutasyona uğramış bitkiler ayrı ayrı etiketlendi."
+        }
+      ]
+    },
+    {
+      "word": "mutual",
+      "sense_index": 0,
+      "expected": {
+        "tr": "karşılıklı, ortak",
+        "ex": "Successful trade agreements depend on mutual trust between the participating countries.",
+        "exTr": "Başarılı ticaret anlaşmaları, katılımcı ülkeler arasındaki karşılıklı güvene dayanır."
+      },
+      "alternatives": [
+        {
+          "ex": "The agreement relied on mutual recognition of the two groups' needs, including their different schedules and access requirements for the shared rooms.",
+          "exTr": "Anlaşma, ortak odalar için farklı programları ve erişim gereksinimleri dâhil olmak üzere iki grubun ihtiyaçlarının karşılıklı olarak tanınmasına dayanıyordu."
+        }
+      ]
+    },
+    {
+      "word": "mysterious",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. gizemli, esrarengiz",
+        "ex": "Astronomers detected a mysterious radio signal originating from a distant, unidentified galaxy.",
+        "exTr": "Gökbilimciler, uzak ve tanımlanamayan bir gökadadan gelen gizemli bir radyo sinyali tespit etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The mysterious gap in the accounts became less puzzling when the researcher discovered that the workshop had temporarily used a different ledger.",
+          "exTr": "Araştırmacı atölyenin geçici olarak farklı bir defter kullandığını keşfedince hesaplardaki gizemli boşluk daha az şaşırtıcı hâle geldi."
+        }
+      ]
+    },
+    {
+      "word": "mythical",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. efsanevi, mitolojik; hayali",
+        "ex": "Ancient sailors often described sea monsters that later turned out to be entirely mythical creatures.",
+        "exTr": "Eski denizciler, sonradan tamamen efsanevi yaratıklar olduğu ortaya çıkan deniz canavarlarını sıkça anlatırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The exhibition placed mythical animals beside familiar species to explore how the artist combined observed features with imaginative additions.",
+          "exTr": "Sergi, sanatçının gözlemlenen özellikleri hayalî eklemelerle nasıl birleştirdiğini incelemek için mitolojik hayvanları tanıdık türlerin yanına yerleştirdi."
+        }
+      ]
+    },
+    {
+      "word": "nail",
+      "sense_index": 2,
+      "expected": {
+        "tr": "i. çivi",
+        "ex": "The carpenter used a small nail to fix the loose wooden panel back into place.",
+        "exTr": "Marangoz, gevşek ahşap paneli yerine sabitlemek için küçük bir çivi kullandı."
+      },
+      "alternatives": [
+        {
+          "ex": "The shape of the nail helped the conservator identify a later repair that was difficult to distinguish from the original wooden structure.",
+          "exTr": "Çivinin biçimi, koruma uzmanının özgün ahşap yapıdan ayırt edilmesi güç olan sonraki bir onarımı belirlemesine yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "name",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. isim, ad",
+        "ex": "Researchers still do not know the original name of the ancient city buried beneath the sand.",
+        "exTr": "Araştırmacılar, kumun altında gömülü antik şehrin orijinal adını hâlâ bilmiyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The same place appeared under a different name in the later records, requiring the historian to compare its neighbours and location before linking the entries.",
+          "exTr": "Aynı yer sonraki kayıtlarda farklı bir adla geçiyordu; bu nedenle tarihçinin kayıtları ilişkilendirmeden önce komşularını ve konumunu karşılaştırması gerekiyordu."
+        }
+      ]
+    },
+    {
+      "word": "names",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. isimler, adlar",
+        "ex": "Scientists give newly discovered species Latin names to avoid confusion across different languages.",
+        "exTr": "Bilim insanları, farklı dillerde karışıklığı önlemek için yeni keşfedilen türlere Latince adlar verir."
+      },
+      "alternatives": [
+        {
+          "ex": "The names were removed from the interview transcripts before review, while identification codes preserved the links needed for the research team's analysis.",
+          "exTr": "İncelemeden önce görüşme dökümlerinden isimler çıkarıldı; kimlik kodları ise araştırma ekibinin analizi için gereken bağlantıları korudu."
+        }
+      ]
+    },
+    {
+      "word": "narcissist",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. narsist, özsever, kendine hayran kişi",
+        "ex": "Psychologists warn that a narcissist may appear charming at first, but the constant need for admiration eventually damages even his closest relationships.",
+        "exTr": "Psikologlar, bir narsistin ilk başta çekici görünebileceği, ancak sürekli beğenilme ihtiyacının sonunda en yakın ilişkilerine bile zarar verdiği konusunda uyarıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The narrator calls his rival a narcissist, but the rival's letters make that judgement seem less certain and expose the narrator's own resentment.",
+          "exTr": "Anlatıcı rakibini narsist olarak nitelendirir; ancak rakibinin mektupları bu yargıyı daha az kesin gösterir ve anlatıcının kendi kırgınlığını açığa çıkarır."
+        }
+      ]
+    },
+    {
+      "word": "narrow",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. daralmak, daraltmak",
+        "ex": "The gap between rich and poor nations began to narrow slightly after the trade agreement.",
+        "exTr": "Zengin ve yoksul uluslar arasındaki fark, ticaret anlaşmasının ardından hafifçe daralmaya başladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The additional evidence helped narrow the possible dates, although it was still insufficient to identify the exact year when the extension was completed.",
+          "exTr": "Ek kanıtlar olası tarih aralığını daraltmaya yardımcı oldu; ancak ek yapının tamamlandığı yılı kesin olarak belirlemek için hâlâ yetersizdi."
+        }
+      ]
+    },
+    {
+      "word": "nasty",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kötü, iğrenç, nahoş",
+        "ex": "For days after the accident, the chemical spill left a nasty odor over the neighborhood.",
+        "exTr": "Kazadan günler sonrasına dek, kimyasal sızıntı mahallenin üzerinde iğrenç bir koku bıraktı."
+      },
+      "alternatives": [
+        {
+          "ex": "The unexpected repair bill was a nasty surprise for the organisers, who had assumed that the borrowed equipment was ready for immediate use.",
+          "exTr": "Ödünç alınan ekipmanın hemen kullanıma hazır olduğunu varsayan organizatörler için beklenmedik onarım faturası kötü bir sürpriz oldu."
+        }
+      ]
+    },
+    {
+      "word": "national",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. ulusal, milli",
+        "ex": "The government launched a national campaign to promote recycling in urban areas.",
+        "exTr": "Hükûmet, kentsel alanlarda geri dönüşümü teşvik etmek için ulusal bir kampanya başlattı."
+      },
+      "alternatives": [
+        {
+          "ex": "The national survey included a separate account of remote districts so that local difficulties would not disappear within the overall figures.",
+          "exTr": "Ulusal anket, yerel güçlüklerin genel rakamlar içinde kaybolmaması için uzak ilçelere ilişkin ayrı bir değerlendirme içerdi."
+        }
+      ]
+    },
+    {
+      "word": "nationality",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. vatandaşlık, milliyet",
+        "ex": "Applicants must provide proof of nationality before their visa request can be processed further.",
+        "exTr": "Başvuru sahiplerinin, vize talepleri daha fazla işleme alınmadan önce vatandaşlık kanıtı sunması gerekir."
+      },
+      "alternatives": [
+        {
+          "ex": "The study recorded nationality separately from language use, avoiding the assumption that citizenship alone could describe a participant's linguistic experience.",
+          "exTr": "Çalışma, vatandaşlığın tek başına bir katılımcının dil deneyimini tanımlayabileceği varsayımından kaçınarak vatandaşlığı dil kullanımından ayrı kaydetti."
+        }
+      ]
+    },
+    {
+      "word": "native",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yerli, doğuştan",
+        "ex": "Several native plant species have disappeared from the region due to urban expansion.",
+        "exTr": "Bölgede birkaç yerli bitki türü, kentsel yayılma nedeniyle yok oldu."
+      },
+      "alternatives": [
+        {
+          "ex": "The garden plan distinguished native plants from introduced species, while explaining which records had been used to establish their local status.",
+          "exTr": "Bahçe planı, yerel durumlarını belirlemek için hangi kayıtların kullanıldığını açıklayarak yerli bitkileri dışarıdan getirilmiş türlerden ayırdı."
+        }
+      ]
+    },
+    {
+      "word": "nature",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. yapı, nitelik, mahiyet",
+        "ex": "Understanding the nature of the disease was essential before doctors could develop an effective treatment.",
+        "exTr": "Doktorların etkili bir tedavi geliştirebilmesi için önce hastalığın niteliğini anlaması gerekiyordu."
+      },
+      "alternatives": [
+        {
+          "ex": "The nature of the disagreement became clearer when both teams explained what they considered adequate evidence for accepting the proposed change.",
+          "exTr": "İki ekip de önerilen değişikliği kabul etmek için neyi yeterli kanıt saydığını açıklayınca anlaşmazlığın niteliği daha açık hâle geldi."
+        }
+      ]
+    },
+    {
+      "word": "navigate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. yön bulmak, seyretmek; (mecazi) başarıyla yönetmek/atlatmak",
+        "ex": "The captain relied on satellite systems to navigate the ship safely through the narrow strait.",
+        "exTr": "Kaptan, gemiyi dar boğazdan güvenle yönlendirmek için uydu sistemlerine güvendi."
+      },
+      "alternatives": [
+        {
+          "ex": "The guide helped visitors navigate the unfamiliar building by connecting each sign with a visible landmark rather than relying on room numbers alone.",
+          "exTr": "Rehber, yalnızca oda numaralarına dayanmak yerine her işareti görünür bir konum işaretiyle ilişkilendirerek ziyaretçilerin tanımadıkları binada yollarını bulmasına yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "navigator",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yön bulucu, seyrüseferci; rotayı belirleyen kişi",
+        "ex": "The navigator adjusted the ship's course after detecting an unexpected current.",
+        "exTr": "Seyrüseferci, beklenmedik bir akıntı tespit ettikten sonra geminin rotasını değiştirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The navigator compared the chart with recent observations before advising the captain that the planned route might require revision.",
+          "exTr": "Seyrüseferci, planlanan güzergâhın değiştirilmesi gerekebileceğini kaptana bildirmeden önce deniz haritasını son gözlemlerle karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "near",
+      "sense_index": 0,
+      "expected": {
+        "tr": "e. yakınında",
+        "ex": "Many ancient cities were built near rivers to secure water for agriculture.",
+        "exTr": "Birçok antik kent, tarım için su sağlamak amacıyla nehirlerin yakınına kuruldu."
+      },
+      "alternatives": [
+        {
+          "ex": "The proposed workshop stood near the bus stop, but the access review also considered the steep path connecting the two locations.",
+          "exTr": "Önerilen atölye otobüs durağının yakınındaydı; ancak erişim incelemesinde iki yeri birbirine bağlayan dik yol da dikkate alındı."
+        }
+      ]
+    },
+    {
+      "word": "nearly",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. neredeyse, hemen hemen",
+        "ex": "The renovated library now occupies nearly twice the floor space of the original building.",
+        "exTr": "Yenilenen kütüphane, artık özgün binanın neredeyse iki katı taban alanını kaplıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Nearly all the labels matched the written register, but the few exceptions were checked carefully because they could affect the proposed dating.",
+          "exTr": "Etiketlerin neredeyse tamamı yazılı sicille eşleşiyordu; ancak az sayıdaki istisna önerilen tarihlendirmeyi etkileyebileceği için dikkatle kontrol edildi."
+        }
+      ]
+    },
+    {
+      "word": "necessarily",
+      "sense_index": 0,
+      "expected": {
+        "tr": "ille de, mutlaka; zorunlu olarak",
+        "ex": "Higher prices do not necessarily indicate better quality in consumer products.",
+        "exTr": "Daha yüksek fiyatlar, tüketici ürünlerinde ille de daha iyi kalite anlamına gelmez."
+      },
+      "alternatives": [
+        {
+          "ex": "A confident explanation is not necessarily a reliable one, particularly when the speaker does not acknowledge limitations in the available evidence.",
+          "exTr": "Özellikle konuşmacı mevcut kanıtların sınırlılıklarını kabul etmiyorsa kendinden emin bir açıklama mutlaka güvenilir değildir."
+        }
+      ]
+    },
+    {
+      "word": "necessity",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. gereklilik, zorunluluk, ihtiyaç",
+        "ex": "Access to clean drinking water is a basic necessity that remains scarce in several developing regions.",
+        "exTr": "Temiz içme suyuna erişim, birçok gelişmekte olan bölgede hâlâ kıt olan temel bir gerekliliktir."
+      },
+      "alternatives": [
+        {
+          "ex": "The necessity of keeping detailed records became obvious when the second team tried to reproduce measurements made several months earlier.",
+          "exTr": "İkinci ekip birkaç ay önce yapılan ölçümleri yeniden üretmeye çalışınca ayrıntılı kayıt tutmanın gerekliliği açıkça ortaya çıktı."
+        }
+      ]
+    },
+    {
+      "word": "need not",
+      "sense_index": 0,
+      "expected": {
+        "tr": "yapmasına gerek yok; zorunluluğun bulunmadığını bildirmek",
+        "ex": "The two measurements need not be identical to support the same general conclusion.",
+        "exTr": "Aynı genel sonucu desteklemek için iki ölçümün birebir aynı olması gerekmez."
+      },
+      "alternatives": [
+        {
+          "ex": "Participants need not disclose personal experiences to contribute to the discussion; they can instead comment on the hypothetical situations presented in the workshop.",
+          "exTr": "Katılımcıların tartışmaya katkıda bulunmak için kişisel deneyimlerini açıklamasına gerek yoktur; bunun yerine atölyede sunulan varsayımsal durumlar hakkında yorum yapabilirler."
+        }
+      ]
+    },
+    {
+      "word": "needle",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. iğne",
+        "ex": "The nurse gently inserted the needle to draw a small blood sample from the patient.",
+        "exTr": "Hemşire, hastadan küçük bir kan örneği almak için iğneyi nazikçe batırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The textile specialist compared the needle with the marks in the fabric to investigate whether the repair had been made using similar tools.",
+          "exTr": "Tekstil uzmanı, onarımın benzer araçlarla yapılıp yapılmadığını araştırmak için iğneyi kumaştaki izlerle karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "needs",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. ihtiyaç duyar; gerekir (need fiilinin üçüncü tekil biçimi)",
+        "ex": "The treatment needs to be tested on a larger group of patients.",
+        "exTr": "Tedavinin daha geniş bir hasta grubunda test edilmesi gerekir."
+      },
+      "alternatives": [
+        {
+          "ex": "The explanation needs to distinguish the original observation from later interpretation if readers are to evaluate the argument independently.",
+          "exTr": "Okurların savı bağımsız olarak değerlendirebilmesi için açıklamanın özgün gözlemi sonraki yorumdan ayırması gerekir."
+        }
+      ]
+    },
+    {
+      "word": "negative",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. olumsuz",
+        "ex": "Prolonged social isolation can have a negative impact on both mental and physical health.",
+        "exTr": "Uzun süreli sosyal izolasyon, hem ruhsal hem de bedensel sağlık üzerinde olumsuz bir etkiye sahip olabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The negative feedback concerned the registration process rather than the course content, suggesting that the organisers should investigate access before revising the lessons.",
+          "exTr": "Olumsuz geri bildirim ders içeriğiyle değil, kayıt süreciyle ilgiliydi; bu da organizatörlerin dersleri değiştirmeden önce erişimi incelemesi gerektiğine işaret ediyordu."
+        }
+      ]
+    },
+    {
+      "word": "neglect",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. ihmal etmek",
+        "ex": "Busy parents sometimes neglect their own health while focusing entirely on their children's needs.",
+        "exTr": "Yoğun tempoda çalışan ebeveynler, tamamen çocuklarının ihtiyaçlarına odaklanırken bazen kendi sağlıklarını ihmal eder."
+      },
+      "alternatives": [
+        {
+          "ex": "A study of the inventor alone may neglect the technicians whose repeated adjustments made the original design workable in ordinary production.",
+          "exTr": "Yalnızca mucide odaklanan bir çalışma, tekrarlı ayarlamalarıyla ilk tasarımı olağan üretimde işler hâle getiren teknisyenleri ihmal edebilir."
+        }
+      ]
+    },
+    {
+      "word": "negotiate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. müzakere etmek, pazarlık etmek",
+        "ex": "Diplomats from both nations met secretly for months to negotiate the terms of the ceasefire.",
+        "exTr": "Her iki ülkeden diplomatlar, ateşkesin şartlarını müzakere etmek için aylarca gizlice bir araya geldi."
+      },
+      "alternatives": [
+        {
+          "ex": "The two organisations had to negotiate a timetable that respected their different working hours while keeping shared equipment available to both.",
+          "exTr": "İki kuruluş, ortak ekipmanı her ikisinin de kullanımına açık tutarken farklı çalışma saatlerini gözeten bir zaman çizelgesini müzakere etmek zorundaydı."
+        }
+      ]
+    },
+    {
+      "word": "neighborhood",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. mahalle, semt, civar",
+        "ex": "Families in the neighborhood organized a cleanup event to remove litter from the park.",
+        "exTr": "Mahalledeki aileler, parktaki çöpleri temizlemek için bir temizlik etkinliği düzenledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The neighborhood survey asked where residents actually walked, revealing shortcuts that did not appear on the official map of public routes.",
+          "exTr": "Mahalle anketi sakinlerin gerçekte nerelerde yürüdüğünü sorarak resmî kamusal güzergâh haritasında görünmeyen kestirme yolları ortaya çıkardı."
+        }
+      ]
+    },
+    {
+      "word": "neither",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s./e. ikisi de değil, hiçbiri",
+        "ex": "According to the study, neither treatment proved effective enough to justify its cost.",
+        "exTr": "Araştırmaya göre, tedavilerin ikisi de maliyetini haklı çıkaracak kadar etkili çıkmadı."
+      },
+      "alternatives": [
+        {
+          "ex": "Neither explanation accounted for the missing records, so the historian continued searching rather than choosing the version that seemed more convenient.",
+          "exTr": "İki açıklamadan hiçbiri eksik kayıtları açıklamadığı için tarihçi daha uygun görünen anlatıyı seçmek yerine araştırmayı sürdürdü."
+        }
+      ]
+    },
+    {
+      "word": "nerve",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. cesaret",
+        "ex": "It took considerable nerve for the young intern to challenge the head surgeon's diagnosis during the meeting.",
+        "exTr": "Genç stajyerin toplantı sırasında baş cerrahın teşhisine itiraz etmesi hatırı sayılır bir cesaret gerektirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "It took nerve to question the established interpretation in front of its author, but the student supported the objection with carefully documented evidence.",
+          "exTr": "Yerleşik yorumu yazarının önünde sorgulamak cesaret gerektirdi; ancak öğrenci itirazını dikkatle belgelenmiş kanıtlarla destekledi."
+        }
+      ]
+    },
+    {
+      "word": "net",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. net, kesin",
+        "ex": "The company's net profit increased by twelve percent despite rising production costs last quarter.",
+        "exTr": "Şirketin net kârı, geçen çeyrekte artan üretim maliyetlerine rağmen yüzde on iki arttı."
+      },
+      "alternatives": [
+        {
+          "ex": "The net saving was smaller than the advertised reduction because the calculation also included new maintenance fees and additional staff training.",
+          "exTr": "Hesaplamaya yeni bakım ücretleri ve ek personel eğitimi de dâhil edildiği için net tasarruf reklamı yapılan azalmadan daha küçüktü."
+        }
+      ]
+    },
+    {
+      "word": "neurogenesis",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. nörogenez, yeni sinir hücresi oluşumu",
+        "ex": "Recent studies suggest that regular exercise may stimulate neurogenesis in certain regions of the adult brain.",
+        "exTr": "Son araştırmalar, düzenli egzersizin yetişkin beyninin belirli bölgelerinde nörogenezi teşvik edebileceğini öne sürüyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The review examined methods used to investigate neurogenesis, distinguishing evidence of newly formed cells from observations of changes in existing neural connections.",
+          "exTr": "İnceleme, yeni oluşmuş hücrelere ilişkin kanıtları mevcut sinir bağlantılarındaki değişikliklerin gözlemlerinden ayırarak nörogenezi araştırmak için kullanılan yöntemleri ele aldı."
+        }
+      ]
+    },
+    {
+      "word": "neurologist",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. nörolog, sinir hastalıkları uzmanı",
+        "ex": "A neurologist examined the patient's reflexes and ordered a brain scan to determine whether the sudden memory loss had a physical cause.",
+        "exTr": "Bir nörolog hastanın reflekslerini muayene etti ve ani hafıza kaybının fiziksel bir nedeni olup olmadığını belirlemek için beyin taraması istedi."
+      },
+      "alternatives": [
+        {
+          "ex": "The neurologist contributed to the communication workshop by explaining which parts of the technical vocabulary patients most often asked her to clarify.",
+          "exTr": "Nörolog, hastaların teknik terimlerin hangi bölümlerini açıklığa kavuşturmasını en sık istediğini anlatarak iletişim atölyesine katkıda bulundu."
+        }
+      ]
+    },
+    {
+      "word": "neuronal",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. nöronal, sinir hücrelerine veya nöronlara ilişkin",
+        "ex": "Prolonged oxygen deprivation can cause irreversible neuronal damage.",
+        "exTr": "Uzun süren oksijen yoksunluğu geri döndürülemez nöronal hasara yol açabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "The diagram simplified neuronal connections to show the proposed pathway, while the caption explained which details had been omitted for clarity.",
+          "exTr": "Şema, önerilen yolu göstermek için nöronal bağlantıları basitleştirdi; açıklama yazısı ise açıklık sağlamak amacıyla hangi ayrıntıların çıkarıldığını belirtti."
+        }
+      ]
+    },
+    {
+      "word": "neurotransmitter",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. nörotransmitter, sinir ileticisi",
+        "ex": "Dopamine is a neurotransmitter that carries signals between nerve cells and plays a central role in motivation, movement and the experience of reward.",
+        "exTr": "Dopamin, sinir hücreleri arasında sinyal taşıyan ve motivasyonda, harekette ve ödül deneyiminde merkezî bir rol oynayan bir sinir ileticisidir."
+      },
+      "alternatives": [
+        {
+          "ex": "The students traced the neurotransmitter through the simplified diagram and identified where the explanation shifted from a visible representation to an inferred process.",
+          "exTr": "Öğrenciler, basitleştirilmiş şemada nörotransmitterin yolunu izledi ve açıklamanın görünür bir gösterimden çıkarım yoluyla belirlenen bir sürece nerede geçtiğini belirledi."
+        }
+      ]
+    },
+    {
+      "word": "neutrally",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. tarafsız, yansız biçimde",
+        "ex": "The mediator described both proposals neutrally before inviting discussion.",
+        "exTr": "Arabulucu tartışmayı başlatmadan önce iki öneriyi de tarafsız biçimde açıkladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The interviewer restated the question neutrally after noticing that its original wording appeared to favour one response over the alternatives.",
+          "exTr": "Görüşmeci, ilk ifadesinin bir yanıtı diğerlerine göre öne çıkarıyor gibi göründüğünü fark edince soruyu tarafsız biçimde yeniden ifade etti."
+        }
+      ]
+    },
+    {
+      "word": "never-say-die",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. asla pes etmeyen, yılmaz",
+        "ex": "The rescue team's never-say-die attitude kept the search going long after most had given up hope.",
+        "exTr": "Kurtarma ekibinin asla pes etmeyen tavrı, çoğu kişi umudunu kestikten çok sonra bile aramayı sürdürdü."
+      },
+      "alternatives": [
+        {
+          "ex": "The team's never-say-die spirit sustained the project through repeated setbacks, but its eventual progress also depended on revising methods that had failed.",
+          "exTr": "Ekibin yılmaz ruhu projeyi tekrarlanan aksilikler boyunca ayakta tuttu; ancak sonunda ilerlemesi başarısız olmuş yöntemlerin değiştirilmesine de bağlıydı."
+        }
+      ]
+    },
+    {
+      "word": "newborn",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yeni doğmuş",
+        "ex": "Doctors closely monitor a newborn baby's weight during the first few weeks after birth.",
+        "exTr": "Doktorlar, doğumdan sonraki ilk birkaç hafta boyunca yenidoğan bir bebeğin kilosunu yakından izler."
+      },
+      "alternatives": [
+        {
+          "ex": "The family photograph includes a newborn child whose identity became clear only after the researcher compared dates in several separate household records.",
+          "exTr": "Aile fotoğrafında, kimliği ancak araştırmacı birkaç ayrı hane kaydındaki tarihleri karşılaştırdıktan sonra açıklığa kavuşan yeni doğmuş bir çocuk bulunuyor."
+        }
+      ]
+    },
+    {
+      "word": "newly",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. yeni, yakın zamanda, henüz",
+        "ex": "Scientists documented dozens of newly discovered species in the unexplored depths of the ocean.",
+        "exTr": "Bilim insanları, okyanusun keşfedilmemiş derinliklerinde yeni keşfedilen onlarca türü belgeledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The newly appointed coordinator reviewed the shared timetable before proposing changes, ensuring that existing commitments were understood rather than unintentionally displaced.",
+          "exTr": "Yeni atanan koordinatör değişiklik önermeden önce ortak zaman çizelgesini inceledi ve mevcut yükümlülüklerin istemeden yerinden edilmek yerine anlaşılmasını sağladı."
+        }
+      ]
+    },
+    {
+      "word": "news-letter",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. haber bülteni",
+        "ex": "The organization emails a monthly newsletter to keep members informed about upcoming events.",
+        "exTr": "Kurum, üyeleri yaklaşan etkinlikler hakkında bilgilendirmek için her ay bir haber bülteni gönderir."
+      },
+      "alternatives": [
+        {
+          "ex": "The newsletter invited readers to correct incomplete accounts of local events, turning a one-way announcement into a continuing exchange of information.",
+          "exTr": "Haber bülteni, tek yönlü bir duyuruyu sürekli bilgi alışverişine dönüştürerek okurları yerel olaylara ilişkin eksik anlatıları düzeltmeye davet etti."
+        }
+      ],
+      "note": "Güncel standart yazım newsletter; mevcut news-letter kart anahtarı korunmuştur."
+    },
+    {
+      "word": "newsletter",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. bülten, haber bülteni",
+        "ex": "Subscribers receive a monthly newsletter summarizing the latest research published by the institute.",
+        "exTr": "Aboneler, enstitü tarafından yayımlanan en son araştırmaları özetleyen aylık bir bülten alır."
+      },
+      "alternatives": [
+        {
+          "ex": "The newsletter explained why the repair schedule had changed, including practical constraints that the earlier announcement had left unclear.",
+          "exTr": "Bülten, önceki duyurunun belirsiz bıraktığı pratik kısıtları da belirterek onarım programının neden değiştiğini açıkladı."
+        }
+      ]
+    },
+    {
+      "word": "next",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. gelecek, bir sonraki",
+        "ex": "Engineers will test the next prototype under far harsher environmental conditions.",
+        "exTr": "Mühendisler, bir sonraki prototipi çok daha zorlu çevresel koşullar altında test edecek."
+      },
+      "alternatives": [
+        {
+          "ex": "The next stage will test whether the revised instructions work for people who have not taken part in the earlier design sessions.",
+          "exTr": "Bir sonraki aşama, gözden geçirilmiş talimatların önceki tasarım oturumlarına katılmamış kişiler için işe yarayıp yaramadığını sınayacak."
+        }
+      ]
+    },
+    {
+      "word": "nice",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. (ayrım için) ince, hassas",
+        "ex": "The researcher drew a nice distinction between correlation and causation in her published article.",
+        "exTr": "Araştırmacı, yayımlanan makalesinde korelasyon ile nedensellik arasında ince bir ayrım yaptı."
+      },
+      "alternatives": [
+        {
+          "ex": "The argument depends on a nice distinction between accepting a conclusion provisionally and treating it as beyond further question.",
+          "exTr": "Sav, bir sonucu geçici olarak kabul etmekle onu daha fazla sorgulanamaz saymak arasındaki ince bir ayrıma dayanıyor."
+        }
+      ]
+    },
+    {
+      "word": "nick",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. küçük çentik/kesik",
+        "ex": "The carpenter noticed a small nick in the wood and quickly sanded the surface smooth.",
+        "exTr": "Marangoz, tahtada küçük bir çentik fark etti ve yüzeyi hemen zımparalayarak düzeltti."
+      },
+      "alternatives": [
+        {
+          "ex": "A small nick on the rim helped the team match the photographed object with an earlier catalogue entry that used a different identification number.",
+          "exTr": "Kenardaki küçük bir çentik, ekibin fotoğraftaki nesneyi farklı bir kimlik numarası kullanan eski bir katalog kaydıyla eşleştirmesine yardımcı oldu."
+        }
+      ]
+    },
+    {
+      "word": "night-light",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. gece lambası",
+        "ex": "Parents often leave a small night-light on so their children do not feel afraid in the dark.",
+        "exTr": "Ebeveynler, çocukları karanlıkta korkmasın diye genellikle küçük bir gece lambası açık bırakır."
+      },
+      "alternatives": [
+        {
+          "ex": "The accommodation review tested whether the night-light made the unfamiliar corridor easier to navigate without disturbing occupants in the adjacent rooms.",
+          "exTr": "Konaklama incelemesinde, gece lambasının bitişik odalarda kalanları rahatsız etmeden tanınmayan koridorda yön bulmayı kolaylaştırıp kolaylaştırmadığı test edildi."
+        }
+      ]
+    },
+    {
+      "word": "nightingale",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. bülbül",
+        "ex": "Poets have long celebrated the nightingale for its haunting song that fills the night air.",
+        "exTr": "Şairler, geceyi dolduran hüzünlü ötüşü nedeniyle uzun zamandır bülbülü övmüştür."
+      },
+      "alternatives": [
+        {
+          "ex": "The observers compared recordings of the nightingale with notes on background noise, checking whether changes in the sound reflected the bird or its surroundings.",
+          "exTr": "Gözlemciler, sesteki değişikliklerin kuştan mı yoksa çevresinden mi kaynaklandığını kontrol ederek bülbül kayıtlarını arka plan gürültüsüyle ilgili notlarla karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "nitrogen",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. azot",
+        "ex": "Farmers often apply nitrogen fertilizer to boost crop yields during the growing season.",
+        "exTr": "Çiftçiler, yetiştirme sezonunda ürün verimini artırmak için genellikle azotlu gübre uygular."
+      },
+      "alternatives": [
+        {
+          "ex": "The soil analysis recorded nitrogen alongside other measured components, allowing the students to examine several possible explanations for differences between the plots.",
+          "exTr": "Toprak analizi, öğrencilerin parseller arasındaki farklılıkların birkaç olası açıklamasını incelemesine olanak sağlayarak azotu diğer ölçülen bileşenlerle birlikte kaydetti."
+        }
+      ]
+    },
+    {
+      "word": "no-count",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. değersiz, önemsiz",
+        "ex": "Locals dismissed him as a no-count drifter long before he became a respected town elder.",
+        "exTr": "Saygın bir kasaba büyüğü olmadan çok önce, yerel halk onu değersiz bir serseri olarak görüyordu."
+      },
+      "alternatives": [
+        {
+          "ex": "The narrator dismisses the proposal as a no-count scheme, but later events reveal that his judgement depended more on personal dislike than careful examination.",
+          "exTr": "Anlatıcı öneriyi değersiz bir tasarı olarak reddeder; ancak sonraki olaylar yargısının dikkatli incelemeden çok kişisel hoşnutsuzluğa dayandığını ortaya koyar."
+        }
+      ],
+      "note": "Seyrek ve gayriresmî kullanım; kurmaca anlatıcının değerlendirmesinde verilmiştir."
+    },
+    {
+      "word": "no-hit",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. (beyzbol) rakibine hiç vuruş yaptırmayan",
+        "ex": "The rookie pitcher earned national attention by throwing a rare no-hit game in his first season.",
+        "exTr": "Genç atıcı, rakibine hiç vuruş yaptırmadığı ender görülen bir maç çıkararak taraftarları ayağa kaldırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The documentary revisits the no-hit game through players' recollections, showing how differently they remembered the pressure of its final innings.",
+          "exTr": "Belgesel, son devrelerinin baskısını ne kadar farklı hatırladıklarını göstererek rakibin hiç geçerli vuruş yapamadığı maça oyuncuların anıları üzerinden yeniden dönüyor."
+        }
+      ]
+    },
+    {
+      "word": "noble",
+      "sense_index": 1,
+      "expected": {
+        "tr": "i. asilzade, soylu kişi",
+        "ex": "The young noble donated much of his inherited fortune to build schools for orphans.",
+        "exTr": "Genç asilzade, miras kalan servetinin büyük bir kısmını yetimler için okullar inşa etmeye bağışladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The noble appears as a generous patron in the official history, but private accounts reveal disputes over payments promised to local craftspeople.",
+          "exTr": "Soylu, resmî tarihte cömert bir destekçi olarak görünür; ancak özel kayıtlar yerel zanaatkârlara vaat edilen ödemelerle ilgili anlaşmazlıkları ortaya koyar."
+        }
+      ]
+    },
+    {
+      "word": "node",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. düğüm (ağ/bilgisayar)",
+        "ex": "Each node in the network transmits data to the next until it reaches its final destination.",
+        "exTr": "Ağdaki her düğüm, son noktaya ulaşana kadar verileri bir sonrakine iletir."
+      },
+      "alternatives": [
+        {
+          "ex": "The network diagram marked each node according to its function, allowing students to see which connections would be affected by a local failure.",
+          "exTr": "Ağ şeması her düğümü işlevine göre işaretleyerek öğrencilerin yerel bir arızadan hangi bağlantıların etkileneceğini görmesine olanak sağladı."
+        }
+      ]
+    },
+    {
+      "word": "nomadic",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. göçebe",
+        "ex": "Several tribes in the region still lead a nomadic lifestyle, moving with their herds each season.",
+        "exTr": "Bölgedeki bazı kabileler, her mevsim sürüleriyle birlikte yer değiştirerek hâlâ göçebe bir yaşam sürüyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The study compared nomadic households' seasonal routes without assuming that every family followed the same timetable or used the same stopping places.",
+          "exTr": "Çalışma, her ailenin aynı takvimi izlediğini veya aynı konaklama yerlerini kullandığını varsaymadan göçebe hanelerin mevsimsel güzergâhlarını karşılaştırdı."
+        }
+      ]
+    }
+  ],
+  "collocations": [
+    {
+      "word": "mum",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "keep mum",
+          "tr": "sessiz kalmak, ağzını sıkı tutmak"
+        },
+        {
+          "en": "remain mum about something",
+          "tr": "bir konuda sessizliğini korumak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "navigator",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "an experienced navigator",
+          "tr": "deneyimli bir seyrüseferci"
+        },
+        {
+          "en": "the ship's navigator",
+          "tr": "geminin seyrüsefercisi"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "neutrally",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "phrase neutrally",
+          "tr": "tarafsız biçimde ifade etmek"
+        },
+        {
+          "en": "respond neutrally",
+          "tr": "yansız biçimde yanıt vermek"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "news-letter",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a community newsletter",
+          "tr": "topluluk haber bülteni"
+        },
+        {
+          "en": "publish a newsletter",
+          "tr": "haber bülteni yayımlamak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "nick",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a small nick",
+          "tr": "küçük bir çentik"
+        },
+        {
+          "en": "a nick in the edge",
+          "tr": "kenardaki bir çentik"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "night-light",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a dim night-light",
+          "tr": "loş bir gece lambası"
+        },
+        {
+          "en": "leave a night-light on",
+          "tr": "gece lambasını açık bırakmak"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "nightingale",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a nightingale's song",
+          "tr": "bülbül ötüşü"
+        },
+        {
+          "en": "a singing nightingale",
+          "tr": "öten bir bülbül"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "no-count",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a no-count scheme",
+          "tr": "değersiz bir tasarı"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "no-hit",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a no-hit game",
+          "tr": "rakibin geçerli vuruş yapamadığı maç"
+        },
+        {
+          "en": "no-hit pitching",
+          "tr": "rakibe geçerli vuruş yaptırmayan atıcılık"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

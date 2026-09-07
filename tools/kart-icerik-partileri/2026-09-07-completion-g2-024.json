@@ -1,0 +1,973 @@
+{
+  "schema_version": 1,
+  "review": {
+    "date": "2026-09-07",
+    "scope": "Original YDS-style examples and missing usage patterns",
+    "group": 2,
+    "input": "input-024.json"
+  },
+  "enrichments": [
+    {
+      "word": "immediately",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. hemen, derhal",
+        "ex": "Doctors advised the patient to seek treatment immediately after the first symptoms appeared.",
+        "exTr": "Doktorlar, hastaya ilk belirtiler ortaya çıktıktan hemen sonra tedavi görmesini tavsiye etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The error was not immediately obvious because the totals remained plausible even though two categories had been accidentally exchanged.",
+          "exTr": "İki kategori yanlışlıkla yer değiştirse de toplamlar makul göründüğü için hata hemen fark edilmiyordu."
+        }
+      ]
+    },
+    {
+      "word": "immersion",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kendini kaptırma, (bir ortama) dalma, gömülme",
+        "ex": "Language teachers argue that complete immersion in a foreign culture accelerates fluency far more effectively than classroom instruction alone ever could.",
+        "exTr": "Dil öğretmenleri, yabancı bir kültüre tamamen dalmanın akıcılığı yalnızca sınıf içi öğretimden çok daha etkili biçimde hızlandırdığını savunuyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Her immersion in local theatre gave the researcher access to informal discussions that scheduled interviews rarely captured with the same depth.",
+          "exTr": "Yerel tiyatroya yoğun biçimde katılması, araştırmacının planlı görüşmelerin nadiren aynı derinlikte yakaladığı gayriresmî konuşmalara erişmesini sağladı."
+        }
+      ]
+    },
+    {
+      "word": "immigration",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. göç (ülkeye), göçmenlik",
+        "ex": "Government economists studied how immigration influenced the country's labor market over decades.",
+        "exTr": "Hükümet ekonomistleri, göçün onlarca yıl boyunca ülkenin işgücü piyasasını nasıl etkilediğini inceledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The exhibition approaches immigration through family objects, placing personal accounts beside the official categories used to record people's arrival.",
+          "exTr": "Sergi, kişisel anlatımları insanların gelişini kaydetmek için kullanılan resmî kategorilerin yanına koyarak göçü aile eşyaları üzerinden ele alıyor."
+        }
+      ]
+    },
+    {
+      "word": "immune",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. bağışık, muaf",
+        "ex": "Vaccinated individuals are largely immune to the virus that caused last winter's outbreak.",
+        "exTr": "Aşılanmış bireyler, geçen kışki salgına yol açan virüse karşı büyük ölçüde bağışıktır."
+      },
+      "alternatives": [
+        {
+          "ex": "No institution is immune to mistakes, which is why transparent correction procedures matter even when staff have considerable experience.",
+          "exTr": "Hiçbir kurum hatalardan muaf değildir; bu nedenle personel çok deneyimli olsa bile şeffaf düzeltme usulleri önemlidir."
+        }
+      ]
+    },
+    {
+      "word": "impact",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. etki; f. etkilemek",
+        "ex": "Economists are still assessing the long-term impact of the pandemic on global supply chains.",
+        "exTr": "Ekonomistler, salgının küresel tedarik zincirleri üzerindeki uzun vadeli etkisini hâlâ değerlendiriyor."
+      },
+      "alternatives": [
+        {
+          "ex": "To assess the impact of the new timetable, the college asked students which journeys had become easier and which still caused difficulties.",
+          "exTr": "Kolej yeni programın etkisini değerlendirmek için öğrencilere hangi yolculukların kolaylaştığını ve hangilerinin hâlâ güçlük yarattığını sordu."
+        }
+      ]
+    },
+    {
+      "word": "impart",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. aktarmak, kazandırmak",
+        "ex": "Good teachers impart not only knowledge but also curiosity and confidence to their students.",
+        "exTr": "İyi öğretmenler, öğrencilerine yalnızca bilgi değil, merak ve özgüven de aktarır."
+      },
+      "alternatives": [
+        {
+          "ex": "A short introduction can impart enough background knowledge for readers to follow an argument without explaining every aspect of the subject.",
+          "exTr": "Kısa bir giriş, konunun her yönünü açıklamadan okurların savı takip etmesine yetecek arka plan bilgisini aktarabilir."
+        }
+      ]
+    },
+    {
+      "word": "impatient",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. sabırsız",
+        "ex": "Commuters grew impatient as the delayed train remained motionless on the tracks for an hour.",
+        "exTr": "Banliyö yolcuları, gecikmeli tren bir saat boyunca raylarda hareketsiz kalınca sabırsız hale geldi."
+      },
+      "alternatives": [
+        {
+          "ex": "The impatient customer wanted an immediate estimate, but the technician insisted on examining the fault before promising a completion date.",
+          "exTr": "Sabırsız müşteri hemen bir tahmin istedi; ancak teknisyen bitiş tarihi vaat etmeden önce arızayı incelemekte ısrar etti."
+        }
+      ]
+    },
+    {
+      "word": "impediment",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. engel, mani, güçlük",
+        "ex": "The lack of reliable electricity remains the single greatest impediment to industrial development in many rural parts of the region.",
+        "exTr": "Güvenilir elektriğin bulunmaması, bölgenin birçok kırsal kesiminde sanayi gelişiminin önündeki en büyük engel olmayı sürdürmektedir."
+      },
+      "alternatives": [
+        {
+          "ex": "A missing catalogue was a serious impediment to research, even though the collection itself had survived with remarkably little damage.",
+          "exTr": "Koleksiyonun kendisi dikkate değer ölçüde az hasarla korunmuş olsa da eksik katalog araştırma için ciddi bir engeldi."
+        }
+      ]
+    },
+    {
+      "word": "impetus",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. itici güç, ivme, dürtü, hız kazandıran etken",
+        "ex": "The discovery of penicillin gave enormous impetus to pharmaceutical research, encouraging companies to invest heavily in the search for new antibiotics.",
+        "exTr": "Penisilinin keşfi ilaç araştırmalarına muazzam bir ivme kazandırdı ve şirketleri yeni antibiyotik arayışına büyük yatırımlar yapmaya yöneltti."
+      },
+      "alternatives": [
+        {
+          "ex": "The unexpected donation gave fresh impetus to the project, making it possible to revisit plans abandoned during an earlier shortage of funds.",
+          "exTr": "Beklenmedik bağış projeye yeni ivme kazandırarak önceki kaynak sıkıntısında bırakılan planlara yeniden dönülmesini mümkün kıldı."
+        }
+      ]
+    },
+    {
+      "word": "implementation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. uygulama, hayata geçirme",
+        "ex": "The city council delayed implementation of the new recycling policy until sufficient funding was secured.",
+        "exTr": "Belediye meclisi, yeterli finansman sağlanana kadar yeni geri dönüşüm politikasının uygulanmasını erteledi."
+      },
+      "alternatives": [
+        {
+          "ex": "During implementation, several departments discovered that the agreed procedure assumed access to equipment they did not yet possess.",
+          "exTr": "Uygulama sırasında bazı bölümler, kararlaştırılmış usulün henüz sahip olmadıkları ekipmana erişimleri olduğunu varsaydığını keşfetti."
+        }
+      ]
+    },
+    {
+      "word": "implication",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sonuç, etki",
+        "ex": "The discovery of water on Mars has significant implications for the search for life.",
+        "exTr": "Mars'ta su bulunması, yaşam arayışı açısından önemli sonuçlar doğurmaktadır."
+      },
+      "alternatives": [
+        {
+          "ex": "One practical implication of the change was that evening visitors would need a different entrance after the administrative offices closed.",
+          "exTr": "Değişikliğin pratik sonuçlarından biri, idari ofisler kapandıktan sonra akşam ziyaretçilerinin farklı bir girişe ihtiyaç duymasıydı."
+        }
+      ]
+    },
+    {
+      "word": "import",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. ithal etmek",
+        "ex": "The country began to import advanced medical equipment to modernize its hospitals.",
+        "exTr": "Ülke, hastanelerini modernleştirmek için gelişmiş tıbbi ekipman ithal etmeye başladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The workshop had to import a specialised component because local suppliers could provide similar parts but not the precise dimensions required.",
+          "exTr": "Yerel tedarikçiler benzer parçalar sağlayabilse de gereken tam ölçüleri karşılayamadığı için atölye özel bir parçayı ithal etmek zorunda kaldı."
+        }
+      ]
+    },
+    {
+      "word": "important-looking",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. önemli görünüşlü, gösterişli",
+        "ex": "A man in an important-looking uniform directed the crowd toward the emergency exits calmly.",
+        "exTr": "Kalabalığı acil çıkışlara yönlendiren adam, önemli görünüşlü bir üniforma giyiyordu."
+      },
+      "alternatives": [
+        {
+          "ex": "An important-looking visitor occupied the central chair, although the meeting later revealed that the quiet person beside him held the decision-making authority.",
+          "exTr": "Önemli görünen bir ziyaretçi ortadaki sandalyeye oturdu; ancak toplantı daha sonra karar yetkisinin yanındaki sessiz kişide olduğunu ortaya koydu."
+        }
+      ]
+    },
+    {
+      "word": "imposed",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. dayatılmış, zorla kabul ettirilmiş",
+        "ex": "Local businesses struggled under the newly imposed trade restrictions between the two countries.",
+        "exTr": "Yerel işletmeler, iki ülke arasında yeni dayatılan ticaret kısıtlamaları altında zorlandı."
+      },
+      "alternatives": [
+        {
+          "ex": "The externally imposed deadline left little opportunity for consultation, making residents doubtful about whether their comments could influence the final design.",
+          "exTr": "Dışarıdan dayatılan son tarih danışmaya pek fırsat bırakmayınca sakinler yorumlarının nihai tasarımı etkileyip etkileyemeyeceğinden kuşku duydu."
+        }
+      ]
+    },
+    {
+      "word": "impoverished",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yoksullaşmış, fakirleşmiş",
+        "ex": "The charity provides food and shelter to families living in impoverished rural communities.",
+        "exTr": "Hayır kurumu, yoksullaşmış kırsal topluluklarda yaşayan ailelere gıda ve barınak sağlıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The documentary portrays impoverished neighbourhoods through residents' accounts of work and cooperation, rather than reducing their lives to a catalogue of shortages.",
+          "exTr": "Belgesel, yaşamlarını yokluklar listesine indirgemek yerine yoksullaşmış mahalleleri sakinlerin çalışma ve iş birliği anlatımları üzerinden betimliyor."
+        }
+      ]
+    },
+    {
+      "word": "impressive",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. etkileyici",
+        "ex": "The research team achieved impressive results after only a few months of clinical testing.",
+        "exTr": "Araştırma ekibi, yalnızca birkaç aylık klinik testin ardından etkileyici sonuçlar elde etti."
+      },
+      "alternatives": [
+        {
+          "ex": "Although the presentation was impressive, the committee requested evidence that the proposed system would function reliably outside the carefully prepared demonstration.",
+          "exTr": "Sunum etkileyici olsa da komite önerilen sistemin özenle hazırlanmış gösterim dışında güvenilir çalışacağına ilişkin kanıt istedi."
+        }
+      ]
+    },
+    {
+      "word": "imprisonment",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. hapis, hapsetme, tutukluluk",
+        "ex": "The judge sentenced the offender to five years of imprisonment, noting that the severity of the crime left little room for leniency.",
+        "exTr": "Hâkim, suçun ağırlığının hoşgörüye pek yer bırakmadığını belirterek suçluyu beş yıl hapis cezasına çarptırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The letters written during imprisonment reveal how limited contact with relatives shaped the author's understanding of events beyond the prison walls.",
+          "exTr": "Hapis sırasında yazılan mektuplar, yakınlarla sınırlı iletişimin yazarın cezaevi duvarları dışındaki olayları kavrayışını nasıl şekillendirdiğini ortaya koyuyor."
+        }
+      ]
+    },
+    {
+      "word": "improve",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. iyileştirmek, geliştirmek; iyileşmek",
+        "ex": "Simple lifestyle changes can dramatically improve sleep quality and overall mental well-being.",
+        "exTr": "Basit yaşam tarzı değişiklikleri, uyku kalitesini ve genel ruhsal iyilik hâlini önemli ölçüde iyileştirebilir."
+      },
+      "alternatives": [
+        {
+          "ex": "Moving the reading desks closer to natural light could improve visibility without changing the materials or dimensions of the existing furniture.",
+          "exTr": "Okuma masalarını doğal ışığa yaklaştırmak mevcut mobilyanın malzemesini veya ölçülerini değiştirmeden görüşü iyileştirebilir."
+        }
+      ]
+    },
+    {
+      "word": "improving",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. iyileşen, gelişen",
+        "ex": "Hospital records showed an improving recovery rate among patients treated with the new therapy.",
+        "exTr": "Hastane kayıtları, yeni tedavi uygulanan hastalar arasında giderek yükselen bir iyileşme oranı gösterdi."
+      },
+      "alternatives": [
+        {
+          "ex": "Improving road conditions encouraged suppliers to resume regular deliveries, though several remote workshops still relied on less predictable arrangements.",
+          "exTr": "İyileşen yol koşulları tedarikçileri düzenli teslimatlara dönmeye teşvik etti; yine de bazı uzak atölyeler daha az öngörülebilir düzenlemelere dayanıyordu."
+        }
+      ]
+    },
+    {
+      "word": "in-between",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. arada kalan, ara, ikisinin ortasında olan",
+        "ex": "Adolescence is often described as an in-between stage in which young people are neither fully children nor yet genuinely independent adults.",
+        "exTr": "Ergenlik, gençlerin ne tam olarak çocuk ne de gerçekten bağımsız birer yetişkin olduğu, arada kalmış bir dönem olarak tanımlanır."
+      },
+      "alternatives": [
+        {
+          "ex": "The courtyard functions as an in-between space where visitors can pause before moving from the public street into the quieter interior.",
+          "exTr": "Avlu, ziyaretçilerin kamusal sokaktan daha sakin iç mekâna geçmeden önce duraklayabildiği bir ara alan işlevi görüyor."
+        }
+      ]
+    },
+    {
+      "word": "in-joke",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sadece belirli bir gruba özgü şaka",
+        "ex": "The comment made no sense to outsiders because it referenced an old in-joke among the team.",
+        "exTr": "Yorum, ekip içindeki eski bir özel şakaya gönderme yaptığı için dışarıdakiler için anlamsızdı."
+      },
+      "alternatives": [
+        {
+          "ex": "What sounded like an ordinary complaint was actually an in-joke, understood by colleagues who remembered the team's unsuccessful first exhibition.",
+          "exTr": "Sıradan bir şikâyet gibi duyulan söz aslında ekibin başarısız ilk sergisini hatırlayan meslektaşların anladığı, gruba özgü bir şakaydı."
+        }
+      ]
+    },
+    {
+      "word": "inability",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. yetersizlik, acizlik, yapamama",
+        "ex": "The report highlighted the government's inability to respond quickly to the flooding crisis.",
+        "exTr": "Rapor, hükümetin sel krizine hızlı yanıt verememesini vurguladı."
+      },
+      "alternatives": [
+        {
+          "ex": "Their inability to agree on basic definitions delayed the comparison, even after both teams had completed extensive and careful data collection.",
+          "exTr": "İki ekip de kapsamlı ve dikkatli veri toplamayı bitirdikten sonra bile temel tanımlarda anlaşamamaları karşılaştırmayı geciktirdi."
+        }
+      ]
+    },
+    {
+      "word": "inaccurately",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. yanlış biçimde, hatalı olarak, gerçeğe aykırı şekilde",
+        "ex": "Historical events are frequently reported inaccurately in popular media, which gradually distorts the way later generations come to understand the past.",
+        "exTr": "Tarihsel olaylar popüler medyada sıklıkla yanlış aktarılır ve bu durum sonraki kuşakların geçmişi anlama biçimini yavaş yavaş çarpıtır."
+      },
+      "alternatives": [
+        {
+          "ex": "The caption inaccurately described the building as abandoned, overlooking the small businesses that continued to occupy its less visible rear rooms.",
+          "exTr": "Açıklama, daha az görünen arka odalarını kullanmayı sürdüren küçük işletmeleri gözden kaçırarak binayı yanlış biçimde terk edilmiş diye tanımladı."
+        }
+      ]
+    },
+    {
+      "word": "inadequate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yetersiz",
+        "ex": "Critics argued that the emergency response plan was inadequate for a disaster of this scale.",
+        "exTr": "Eleştirmenler, acil durum müdahale planının bu ölçekte bir felaket için yetersiz olduğunu savundu."
+      },
+      "alternatives": [
+        {
+          "ex": "A single photograph was inadequate for reconstructing the staircase because it showed neither the upper landing nor the position of the first step.",
+          "exTr": "Üst sahanlığı veya ilk basamağın konumunu göstermediği için tek fotoğraf merdiveni yeniden oluşturmakta yetersizdi."
+        }
+      ]
+    },
+    {
+      "word": "inappropriate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. uygunsuz, yersiz",
+        "ex": "The teacher explained why certain jokes were considered inappropriate during the formal graduation ceremony.",
+        "exTr": "Öğretmen, resmi mezuniyet töreni sırasında belirli şakaların neden uygunsuz sayıldığını açıkladı."
+      },
+      "alternatives": [
+        {
+          "ex": "The joke seemed inappropriate in a formal interview, although the same remark might have passed unnoticed among the speaker's close friends.",
+          "exTr": "Aynı söz konuşmacının yakın arkadaşları arasında fark edilmeden geçebilecek olsa da resmî bir görüşmede şaka yersiz görünüyordu."
+        }
+      ]
+    },
+    {
+      "word": "inaugurate",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. açılışını yapmak, hizmete açmak, resmen başlatmak",
+        "ex": "The new high-speed railway line was officially inaugurated last spring, cutting the journey between the two capital cities almost in half.",
+        "exTr": "Yeni hızlı tren hattı geçen ilkbaharda resmen hizmete açıldı ve iki başkent arasındaki yolculuğu neredeyse yarı yarıya kısalttı."
+      },
+      "alternatives": [
+        {
+          "ex": "The centre planned to inaugurate its new programme with a public discussion about the skills local residents wanted to share and develop.",
+          "exTr": "Merkez yeni programını yerel sakinlerin paylaşmak ve geliştirmek istediği beceriler üzerine halka açık bir tartışmayla başlatmayı planladı."
+        }
+      ]
+    },
+    {
+      "word": "incapable",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. muktedir olmayan, yetersiz, aciz",
+        "ex": "The outdated printer is incapable of handling large print jobs efficiently.",
+        "exTr": "Eski model yazıcı, büyük baskı işlerini verimli biçimde gerçekleştirmekten aciz."
+      },
+      "alternatives": [
+        {
+          "ex": "The old mechanism was incapable of maintaining a constant speed, which limited its usefulness for experiments requiring precise comparisons over time.",
+          "exTr": "Eski mekanizma sabit hız koruyamıyordu; bu durum zaman içinde hassas karşılaştırma gerektiren deneylerde işe yararlılığını sınırlıyordu."
+        }
+      ]
+    },
+    {
+      "word": "incessant",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. aralıksız, durmak bilmeyen, hiç kesilmeyen",
+        "ex": "The incessant noise from the construction site made it almost impossible for the residents to concentrate on their work during the day.",
+        "exTr": "İnşaat alanından gelen aralıksız gürültü, sakinlerin gündüz saatlerinde işlerine yoğunlaşmasını neredeyse imkânsız hâle getirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "Incessant interruptions prevented the editors from checking the final proofs, so they reserved a quiet room for the remaining work.",
+          "exTr": "Aralıksız kesintiler editörlerin son provaları kontrol etmesini engellediği için kalan işe sessiz bir oda ayırdılar."
+        }
+      ]
+    },
+    {
+      "word": "incident",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. olay",
+        "ex": "Investigators are still trying to determine what caused the incident at the chemical processing plant.",
+        "exTr": "Araştırmacılar, kimyasal işleme tesisindeki olaya neyin sebep olduğunu hâlâ belirlemeye çalışıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "A minor incident during rehearsal exposed uncertainty about responsibility that the organisers had overlooked when assigning tasks to different teams.",
+          "exTr": "Provadaki küçük bir olay, düzenleyicilerin görevleri farklı ekiplere dağıtırken gözden kaçırdığı sorumluluk belirsizliğini ortaya çıkardı."
+        }
+      ]
+    },
+    {
+      "word": "incline",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. (yol vb.) eğim kazanmak, yükselmeye başlamak",
+        "ex": "Cyclists often struggle to maintain speed when the road begins to incline sharply.",
+        "exTr": "Bisikletçiler, yol dik biçimde yükselmeye başladığında genellikle hızlarını korumakta zorlanır."
+      },
+      "alternatives": [
+        {
+          "ex": "Where the path begins to incline, the map marks a longer alternative route intended for visitors who prefer to avoid the steepest section.",
+          "exTr": "Harita, yolun yükselmeye başladığı yerde en dik bölümden kaçınmak isteyen ziyaretçiler için daha uzun bir alternatif güzergâh gösteriyor."
+        }
+      ]
+    },
+    {
+      "word": "included",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. dahil edilmiş, eklenmiş, kapsanan",
+        "ex": "The museum tickets, along with a guided tour, are included in the total package price.",
+        "exTr": "Müze biletleri, rehberli bir turla birlikte, toplam paket fiyatına dahildir."
+      },
+      "alternatives": [
+        {
+          "ex": "The included diagrams explain the arrangement of the parts, but the accompanying notes are necessary to understand the order of assembly.",
+          "exTr": "Eklenmiş şemalar parçaların düzenini açıklıyor; ancak birleştirme sırasını anlamak için eşlik eden notlar gerekiyor."
+        }
+      ]
+    },
+    {
+      "word": "income",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. gelir",
+        "ex": "Households with lower income often have less access to fresh, nutritious food.",
+        "exTr": "Geliri daha düşük olan hane halkları, genellikle taze ve besleyici gıdaya daha az erişebilir."
+      },
+      "alternatives": [
+        {
+          "ex": "Irregular income made annual membership difficult for some residents, even when the total cost was lower than paying for each visit separately.",
+          "exTr": "Toplam maliyet her ziyareti ayrı ödemekten düşük olsa bile düzensiz gelir bazı sakinler için yıllık üyeliği zorlaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "incompetent",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. yetersiz, beceriksiz",
+        "ex": "The board fired the incompetent manager after months of missed deadlines and budget overruns.",
+        "exTr": "Yönetim kurulu, aylarca süren kaçırılan teslim tarihleri ve bütçe aşımlarının ardından yetersiz müdürü işten çıkardı."
+      },
+      "alternatives": [
+        {
+          "ex": "The supervisor appeared incompetent until the review revealed that essential decisions had been made elsewhere and never communicated to her team.",
+          "exTr": "İnceleme temel kararların başka yerde alınıp ekibine hiç iletilmediğini ortaya çıkarana kadar amir yetersiz görünüyordu."
+        }
+      ]
+    },
+    {
+      "word": "inconceivable",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. akıl almaz, düşünülemez",
+        "ex": "A century ago, instant global communication would have seemed utterly inconceivable to most people.",
+        "exTr": "Bir yüzyıl önce, anında küresel iletişim çoğu insana tamamen akıl almaz görünürdü."
+      },
+      "alternatives": [
+        {
+          "ex": "It seemed inconceivable that the two letters concerned the same event until the historian noticed that their authors used different calendars.",
+          "exTr": "Tarihçi yazarların farklı takvimler kullandığını fark edene kadar iki mektubun aynı olayla ilgili olması düşünülemez görünüyordu."
+        }
+      ]
+    },
+    {
+      "word": "inconsistent",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. tutarsız",
+        "ex": "The witness's statements were inconsistent with the evidence collected at the scene.",
+        "exTr": "Tanığın ifadeleri, olay yerinde toplanan kanıtlarla tutarsızdı."
+      },
+      "alternatives": [
+        {
+          "ex": "Inconsistent labels caused repeated errors, as identical objects were assigned to different categories depending on which volunteer had entered the record.",
+          "exTr": "Aynı nesneler kaydı giren gönüllüye göre farklı kategorilere ayrıldığından tutarsız etiketler tekrarlanan hatalara yol açtı."
+        }
+      ]
+    },
+    {
+      "word": "inconvenient",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. uygunsuz, elverişsiz",
+        "ex": "The road closure came at a particularly inconvenient time for commuters heading to work.",
+        "exTr": "Yol kapatması, işe giden banliyö yolcuları için özellikle uygunsuz bir zamanda gerçekleşti."
+      },
+      "alternatives": [
+        {
+          "ex": "The inconvenient location of the storeroom added several unnecessary journeys to each delivery, a problem overlooked in the original cost estimate.",
+          "exTr": "Deponun elverişsiz konumu her teslimata gereksiz birkaç yolculuk ekliyordu; bu sorun ilk maliyet tahmininde gözden kaçmıştı."
+        }
+      ]
+    },
+    {
+      "word": "incorporation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. dahil etme, bünyeye katma, birleştirme",
+        "ex": "The incorporation of local knowledge into conservation policies has significantly improved the survival rates of several endangered species in the region.",
+        "exTr": "Yerel bilginin koruma politikalarına dahil edilmesi, bölgedeki nesli tükenmekte olan birkaç türün hayatta kalma oranlarını belirgin biçimde artırdı."
+      },
+      "alternatives": [
+        {
+          "ex": "The incorporation of residents' sketches changed the proposed map, adding informal routes that had not appeared in the official survey.",
+          "exTr": "Sakinlerin çizimlerinin dâhil edilmesi, resmî araştırmada görünmeyen gayriresmî güzergâhları ekleyerek önerilen haritayı değiştirdi."
+        }
+      ]
+    },
+    {
+      "word": "increase",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. artmak, artırmak",
+        "ex": "Global demand for clean energy is expected to increase significantly over the next decade.",
+        "exTr": "Temiz enerjiye yönelik küresel talebin önümüzdeki on yıl içinde önemli ölçüde artması bekleniyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Extending the opening hours may increase attendance only if visitors can still find transport home after the evening sessions finish.",
+          "exTr": "Açılış saatlerini uzatmak, ancak ziyaretçiler akşam oturumları bittikten sonra eve ulaşım bulabiliyorsa katılımı artırabilir."
+        }
+      ]
+    },
+    {
+      "word": "increasingly",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. giderek, gitgide artarak",
+        "ex": "Employers are increasingly looking for candidates with strong digital skills.",
+        "exTr": "İşverenler, güçlü dijital becerilere sahip adayları giderek daha fazla arıyor."
+      },
+      "alternatives": [
+        {
+          "ex": "As the archive grew, researchers became increasingly reliant on a shared catalogue rather than the detailed memory of a single librarian.",
+          "exTr": "Arşiv büyüdükçe araştırmacılar tek bir kütüphanecinin ayrıntılı hafızasından çok ortak kataloğa giderek daha bağımlı hâle geldi."
+        }
+      ]
+    },
+    {
+      "word": "incubation",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. kuluçka dönemi, (hastalık) kuluçka süresi",
+        "ex": "The incubation period of the disease varies between five and fourteen days, which makes it difficult to identify the original source of infection.",
+        "exTr": "Hastalığın kuluçka süresi beş ile on dört gün arasında değişir; bu da enfeksiyonun asıl kaynağını belirlemeyi güçleştirir."
+      },
+      "alternatives": [
+        {
+          "ex": "The students compared records from the incubation period, checking which observations had been made daily and which were available only at longer intervals.",
+          "exTr": "Öğrenciler hangi gözlemlerin günlük, hangilerinin yalnızca daha uzun aralıklarla bulunduğunu kontrol ederek kuluçka dönemi kayıtlarını karşılaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "indeed",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. gerçekten, hakikaten",
+        "ex": "The data indeed confirm that vaccination rates strongly correlate with lower infection levels.",
+        "exTr": "Veriler, aşılama oranlarının düşük enfeksiyon düzeyleriyle güçlü biçimde ilişkili olduğunu gerçekten doğruluyor."
+      },
+      "alternatives": [
+        {
+          "ex": "The additional letter did indeed confirm the meeting, but it also revealed that the participants had understood its purpose quite differently.",
+          "exTr": "Ek mektup toplantıyı gerçekten doğruladı; ancak katılımcıların amacını oldukça farklı anladığını da ortaya koydu."
+        }
+      ]
+    },
+    {
+      "word": "independence",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. bağımsızlık",
+        "ex": "The colony gained its independence after a prolonged struggle involving diplomatic negotiation and armed resistance.",
+        "exTr": "Koloni, diplomatik müzakere ve silahlı direnişi içeren uzun bir mücadelenin ardından bağımsızlığını kazandı."
+      },
+      "alternatives": [
+        {
+          "ex": "The group's independence depended partly on securing several sources of support, rather than allowing one donor to determine its entire programme.",
+          "exTr": "Grubun bağımsızlığı kısmen tek bir bağışçının tüm programı belirlemesine izin vermek yerine birkaç destek kaynağı bulmasına bağlıydı."
+        }
+      ]
+    },
+    {
+      "word": "index",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. dizin, indeks, gösterge",
+        "ex": "Economists use the consumer price index to measure inflation across different sectors.",
+        "exTr": "Ekonomistler, farklı sektörlerdeki enflasyonu ölçmek için tüketici fiyat endeksini kullanır."
+      },
+      "alternatives": [
+        {
+          "ex": "An index of personal names made the collection easier to search without altering the order in which the original documents were stored.",
+          "exTr": "Kişi adları dizini, özgün belgelerin saklanma sırasını değiştirmeden koleksiyonda aramayı kolaylaştırdı."
+        }
+      ]
+    },
+    {
+      "word": "indicator",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. gösterge",
+        "ex": "Economists consider unemployment an important indicator of a country's overall economic health.",
+        "exTr": "Ekonomistler, işsizliği bir ülkenin genel ekonomik sağlığının önemli bir göstergesi olarak görür."
+      },
+      "alternatives": [
+        {
+          "ex": "Attendance alone was a poor indicator of engagement, since some participants contributed extensively online while rarely appearing at the centre.",
+          "exTr": "Bazı katılımcılar merkezde nadiren görünmelerine rağmen çevrim içi yoğun katkı sunduğundan devam sayısı tek başına zayıf bir katılım göstergesiydi."
+        }
+      ]
+    },
+    {
+      "word": "indifferently",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. kayıtsızca, ilgisiz biçimde",
+        "ex": "Managers responded indifferently to early warnings until the equipment failure disrupted production completely.",
+        "exTr": "Yöneticiler, ekipman arızası üretimi bütünüyle aksatana kadar erken uyarılara kayıtsızca karşılık verdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The receptionist responded indifferently to the visitor's concern, leaving a colleague to explain why the delayed appointment mattered so much.",
+          "exTr": "Resepsiyon görevlisi ziyaretçinin kaygısına kayıtsızca karşılık verdi; geciken randevunun neden bu kadar önemli olduğunu açıklamak bir meslektaşına kaldı."
+        }
+      ]
+    },
+    {
+      "word": "indirectly",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. dolaylı olarak",
+        "ex": "Rising fuel prices indirectly affected food costs by increasing the price of transportation.",
+        "exTr": "Yükselen yakıt fiyatları, ulaşım maliyetini artırarak gıda fiyatlarını dolaylı olarak etkiledi."
+      },
+      "alternatives": [
+        {
+          "ex": "The new timetable affected the workshop indirectly by changing when volunteers could arrive, even though its own opening hours remained unchanged.",
+          "exTr": "Kendi açılış saatleri değişmese de yeni program gönüllülerin geliş saatlerini değiştirerek atölyeyi dolaylı etkiledi."
+        }
+      ]
+    },
+    {
+      "word": "individualised",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kişiye özel, bireyselleştirilmiş, kişiselleştirilmiş",
+        "ex": "Modern language courses tend to favour an individualised approach in which the pace and the materials are adjusted to each learner's needs.",
+        "exTr": "Modern dil kursları, hızın ve materyallerin her öğrencinin ihtiyacına göre ayarlandığı, kişiye özel bir yaklaşımı tercih etme eğilimindedir."
+      },
+      "alternatives": [
+        {
+          "ex": "Individualised feedback identified the reasoning behind each error, giving students more useful guidance than a numerical score without explanation.",
+          "exTr": "Bireyselleştirilmiş geri bildirim her hatanın ardındaki akıl yürütmeyi belirleyerek öğrencilere açıklamasız sayısal puandan daha yararlı rehberlik sundu."
+        }
+      ]
+    },
+    {
+      "word": "individually",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. tek tek, ayrı ayrı, bireysel olarak",
+        "ex": "Teachers assessed each student individually to identify specific learning difficulties and strengths.",
+        "exTr": "Öğretmenler, belirli öğrenme güçlüklerini ve güçlü yönleri saptamak için her öğrenciyi tek tek değerlendirdi."
+      },
+      "alternatives": [
+        {
+          "ex": "The panels were numbered individually before removal so that the conservators could reconstruct their arrangement without relying on approximate visual matches.",
+          "exTr": "Koruma uzmanlarının yaklaşık görsel eşleştirmelere dayanmadan düzenlerini yeniden oluşturabilmesi için paneller sökülmeden önce tek tek numaralandırıldı."
+        }
+      ]
+    },
+    {
+      "word": "induce",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. neden olmak, yol açmak, sevk etmek",
+        "ex": "Certain medications can induce drowsiness, so patients are advised not to drive after taking them.",
+        "exTr": "Belirli ilaçlar uyku haline yol açabilir, bu yüzden hastalara bunları aldıktan sonra araç kullanmamaları önerilir."
+      },
+      "alternatives": [
+        {
+          "ex": "A leading question can induce respondents to adopt the interviewer's assumptions, making it difficult to distinguish their own views from suggestions introduced during discussion.",
+          "exTr": "Yönlendirici bir soru katılımcıları görüşmecinin varsayımlarını benimsemeye sevk ederek kendi görüşlerini konuşma sırasında sunulan telkinlerden ayırmayı zorlaştırabilir."
+        }
+      ]
+    },
+    {
+      "word": "indulge",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. kendini kaptırmak, tadını çıkarmak, düşkünlük göstermek",
+        "ex": "Many people indulge in comfort food when they feel stressed, even though they know such habits rarely improve their mood in the long run.",
+        "exTr": "Birçok insan stresli hissettiğinde, bu alışkanlıkların uzun vadede ruh hâlini pek düzeltmediğini bilse de kendini rahatlatıcı yiyeceklere kaptırır."
+      },
+      "alternatives": [
+        {
+          "ex": "The narrator allows herself to indulge in nostalgia briefly before acknowledging that her childhood home was less harmonious than memory suggests.",
+          "exTr": "Anlatıcı, çocukluk evinin hafızanın düşündürdüğünden daha az uyumlu olduğunu kabul etmeden önce kendisini kısa süre nostaljiye kaptırıyor."
+        }
+      ]
+    },
+    {
+      "word": "industrial",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. endüstriyel, sınai; sanayiyle ilgili",
+        "ex": "Rapid industrial development in the nineteenth century transformed both cities and working conditions across Europe.",
+        "exTr": "On dokuzuncu yüzyıldaki hızlı sanayi gelişimi, Avrupa genelinde hem şehirleri hem de çalışma koşullarını dönüştürdü."
+      },
+      "alternatives": [
+        {
+          "ex": "The industrial landscape included homes and gardens as well as workshops, a mixture that simplified planning maps tended to conceal.",
+          "exTr": "Sanayi manzarası atölyelerin yanı sıra evler ve bahçeler de içeriyordu; basitleştirilmiş planlama haritaları bu karışımı gizleme eğilimindeydi."
+        }
+      ]
+    },
+    {
+      "word": "industrialist",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. sanayici",
+        "ex": "The wealthy industrialist funded the construction of several public libraries across the region.",
+        "exTr": "Zengin sanayici, bölge genelinde birkaç halk kütüphanesinin inşasını finanse etti."
+      },
+      "alternatives": [
+        {
+          "ex": "The industrialist supported technical education while opposing proposals that would give apprentices greater influence over the organisation of their work.",
+          "exTr": "Sanayici teknik eğitimi desteklerken çıraklara işlerinin düzenlenmesi üzerinde daha fazla söz hakkı verecek önerilere karşı çıkıyordu."
+        }
+      ]
+    },
+    {
+      "word": "industrialized",
+      "sense_index": 0,
+      "expected": {
+        "tr": "f. sanayileşti",
+        "ex": "The region industrialized rapidly after the railway opened.",
+        "exTr": "Bölge, demir yolu açıldıktan sonra hızla sanayileşti."
+      },
+      "alternatives": [
+        {
+          "ex": "As the district industrialized, workshops replaced some gardens, though surviving maps show that domestic and commercial uses continued to overlap.",
+          "exTr": "Bölge sanayileştikçe bazı bahçelerin yerini atölyeler aldı; yine de günümüze kalan haritalar evsel ve ticari kullanımların iç içe sürmesini gösteriyor."
+        }
+      ]
+    },
+    {
+      "word": "ineffective",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. etkisiz, sonuç vermeyen",
+        "ex": "The new marketing campaign proved largely ineffective, failing to increase sales as expected.",
+        "exTr": "Yeni pazarlama kampanyası büyük ölçüde etkisiz çıktı ve beklenildiği gibi satışları artıramadı."
+      },
+      "alternatives": [
+        {
+          "ex": "The reminder proved ineffective because it reached staff after the deadline, not because its instructions were difficult to understand.",
+          "exTr": "Hatırlatma, talimatları zor anlaşıldığı için değil personele son tarihten sonra ulaştığı için etkisiz kaldı."
+        }
+      ]
+    },
+    {
+      "word": "inevitable",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. kaçınılmaz",
+        "ex": "Many economists now consider a global recession almost inevitable given current market conditions.",
+        "exTr": "Birçok ekonomist, mevcut piyasa koşulları göz önüne alındığında küresel bir durgunluğu artık neredeyse kaçınılmaz görüyor."
+      },
+      "alternatives": [
+        {
+          "ex": "Disagreement was not inevitable; several conflicting expectations could have been clarified if participants had discussed their priorities before drafting the proposal.",
+          "exTr": "Anlaşmazlık kaçınılmaz değildi; katılımcılar öneriyi hazırlamadan önce önceliklerini tartışsaydı çelişen bazı beklentiler açıklığa kavuşabilirdi."
+        }
+      ]
+    },
+    {
+      "word": "inexpensive",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. ucuz, uygun fiyatlı",
+        "ex": "Travelers can still find inexpensive accommodation in the old town if they book early.",
+        "exTr": "Erken rezervasyon yaptırırlarsa gezginler eski şehirde hâlâ uygun fiyatlı konaklama bulabilir."
+      },
+      "alternatives": [
+        {
+          "ex": "An inexpensive physical model exposed a design problem that had remained difficult to notice in the elaborate digital presentation.",
+          "exTr": "Ucuz bir fiziksel model, ayrıntılı dijital sunumda fark edilmesi güç kalan bir tasarım sorununu ortaya çıkardı."
+        }
+      ]
+    },
+    {
+      "word": "infant",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. bebek, süt çocuğu",
+        "ex": "Doctors recommend that every infant receive a series of vaccinations during the first year.",
+        "exTr": "Doktorlar, her bebeğin ilk yıl içinde bir dizi aşı olmasını önerir."
+      },
+      "alternatives": [
+        {
+          "ex": "Families travelling with an infant requested space for a pushchair when commenting on the proposed layout of the waiting area.",
+          "exTr": "Bebekle yolculuk eden aileler, bekleme alanının önerilen düzeni hakkında görüş bildirirken bebek arabasına yer istedi."
+        }
+      ]
+    },
+    {
+      "word": "infection",
+      "sense_index": 0,
+      "expected": {
+        "tr": "i. enfeksiyon, bulaşma",
+        "ex": "Doctors prescribed antibiotics quickly to prevent the infection from spreading to other tissues.",
+        "exTr": "Doktorlar, enfeksiyonun diğer dokulara yayılmasını önlemek için hızla antibiyotik reçete etti."
+      },
+      "alternatives": [
+        {
+          "ex": "Evidence of infection was recorded separately from the patient's own account, enabling the reviewers to distinguish observations from reported symptoms.",
+          "exTr": "Değerlendiricilerin gözlemleri bildirilen belirtilerden ayırabilmesi için enfeksiyon kanıtları hastanın kendi anlatımından ayrı kaydedildi."
+        }
+      ]
+    },
+    {
+      "word": "inferior",
+      "sense_index": 0,
+      "expected": {
+        "tr": "s. aşağı, düşük kaliteli, ikincil",
+        "ex": "Consumers quickly rejected the product once reviewers exposed its inferior build quality.",
+        "exTr": "İncelemeciler ürünün düşük kaliteli yapısını ortaya koyunca tüketiciler ürünü hızla reddetti."
+      },
+      "alternatives": [
+        {
+          "ex": "A cheaper material need not be inferior if its properties suit the intended use more closely than those of the expensive alternative.",
+          "exTr": "Özellikleri amaçlanan kullanıma pahalı alternatifinkilerden daha iyi uyuyorsa ucuz bir malzemenin kalitesi daha düşük olmak zorunda değildir."
+        }
+      ]
+    },
+    {
+      "word": "infinitely",
+      "sense_index": 0,
+      "expected": {
+        "tr": "z. sınırı veya sonu olmayacak biçimde; sonsuzca, ölçülemeyecek kadar",
+        "ex": "The possible arrangements increase infinitely when the sequence can continue without any fixed length.",
+        "exTr": "Dizi sabit bir uzunluk olmadan sürebildiğinde olası düzenlemeler sonsuzca artar."
+      },
+      "alternatives": [
+        {
+          "ex": "In the model, the line extends infinitely in both directions, although the diagram can display only a finite portion of it.",
+          "exTr": "Şema yalnızca sonlu bir bölümünü gösterebilse de modelde doğru her iki yönde sonsuza kadar uzanır."
+        }
+      ]
+    }
+  ],
+  "collocations": [
+    {
+      "word": "important-looking",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "an important-looking visitor",
+          "tr": "önemli görünen ziyaretçi"
+        },
+        {
+          "en": "an important-looking document",
+          "tr": "önemli görünen belge"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "in-joke",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "a running in-joke",
+          "tr": "grup içinde tekrarlanan özel şaka"
+        },
+        {
+          "en": "an in-joke among colleagues",
+          "tr": "meslektaşlar arasında anlaşılan özel şaka"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "indifferently",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "respond indifferently",
+          "tr": "ilgisizce karşılık vermek"
+        },
+        {
+          "en": "shrug indifferently",
+          "tr": "kayıtsızca omuz silkmek"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    },
+    {
+      "word": "infinitely",
+      "expected": [],
+      "replacement": [
+        {
+          "en": "infinitely many possibilities",
+          "tr": "sonsuz sayıda olasılık"
+        },
+        {
+          "en": "infinitely divisible",
+          "tr": "sonsuz biçimde bölünebilir"
+        }
+      ],
+      "reason": "Eksik kullanımı tamamlayan, başlığa özel özgün EN–TR eşdizimler."
+    }
+  ]
+}

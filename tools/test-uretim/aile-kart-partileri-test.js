@@ -4,6 +4,7 @@ var fs = require('fs');
 var path = require('path');
 var vm = require('vm');
 var assert = require('assert');
+var beklenenAnlamlar = require('./kart-icerik-beklenen').beklenenAnlamlar;
 
 var KOK = path.resolve(__dirname, '..', '..');
 var pencere = {};
@@ -111,12 +112,15 @@ dosyalar.forEach(function (ad) {
     var kart = kartlar.get(kelime);
     assert.ok(kart, kelime + ': tam kart yok');
     assert.strictEqual(kart.layer, beklenenKatman, kelime + ': kart dosyası katmanı');
-    assert.strictEqual(kart.card.a.length, kaynak.meanings.length, kelime + ': anlam sayısı');
-    kaynak.meanings.forEach(function (anlam, i) {
+    // Apply only explicit, full-old-value-guarded editorial operations to the
+    // source fixture; every resulting meaning field is still compared exactly.
+    var guncelAnlamlar = beklenenAnlamlar(kelime, kaynak.meanings);
+    assert.strictEqual(kart.card.a.length, guncelAnlamlar.length, kelime + ': anlam sayısı');
+    guncelAnlamlar.forEach(function (anlam, i) {
       assert.strictEqual(kart.card.a[i].tr, anlam.tr, kelime + ': anlam tr ' + i);
       assert.strictEqual(kart.card.a[i].ex, anlam.ex, kelime + ': anlam ex ' + i);
       assert.strictEqual(kart.card.a[i].exTr, anlam.exTr, kelime + ': anlam exTr ' + i);
-      if (kaynak.meanings.length > 1) {
+      if (guncelAnlamlar.length > 1) {
         var beklenenYildiz = i === 0 ? parti.policy.meaningStars.primary :
           parti.policy.meaningStars.secondary;
         assert.strictEqual(kart.card.a[i].yz, anlam.yz || beklenenYildiz,
