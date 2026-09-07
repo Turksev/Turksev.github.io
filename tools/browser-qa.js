@@ -62,7 +62,10 @@ async function main() {
     const sentence=page.locator('#liste .cum').first();
     await sentence.waitFor(); await sentence.focus(); await page.keyboard.press('Enter');
     assert.equal(await sentence.getAttribute('aria-expanded'),'true');
-    await page.keyboard.press('Space'); assert.equal(await sentence.getAttribute('aria-expanded'),'false');
+    await page.keyboard.press('Space');
+    assert.equal(await sentence.getAttribute('aria-expanded'),'true','An open sentence stays open after Space');
+    await sentence.click();
+    assert.equal(await sentence.getAttribute('aria-expanded'),'true','An open sentence stays open after another click');
     await page.goto(base+'/konular.html');
     assert.equal(await page.locator('.kat.acik').count(),1,'Initial topic expansion');
     await page.goto(base+'/ara.html?q=despite');
