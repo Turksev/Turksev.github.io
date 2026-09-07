@@ -46,7 +46,6 @@ jobs:
           python tools/test-uretim/cumle-kalite-test.py
           python tools/test-uretim/kart-icerik-test.py
           python tools/test-uretim/kart-baslik-yenileme-test.py
-          python tools/test-uretim/kart-baslik-yenileme-test.py
 
       - name: Deterministic generated files
         shell: bash
