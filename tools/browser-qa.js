@@ -38,7 +38,7 @@ async function main() {
     for (const theme of ['light','dark']) for (const width of [375,1280]) {
       await page.emulateMedia({colorScheme:theme});
       await page.setViewportSize({width,height:812});
-      for (const route of ['index.html','kelimeler.html','obekler.html','aileler.html','cumleler.html','baglaclar.html','gramer.html','konular.html','deneme.html','ayarlar.html','konu/T01.html','konu/E68.html']) {
+      for (const route of ['index.html','kelimeler.html','obekler.html','aileler.html','cumleler.html','baglaclar.html','gramer.html','konular.html','deneme.html','ayarlar.html','istatistik.html','konu/T01.html','konu/E68.html']) {
         await page.goto(base+'/'+route);
         await page.addScriptTag({path:require.resolve('axe-core/axe.min.js')});
         const result=await page.evaluate(async()=>{
@@ -55,6 +55,18 @@ async function main() {
             return r.width>0&&right>innerWidth+1;
           }).slice(0,8).map(el=>({tag:el.tagName,id:el.id,class:el.className,right:el.getBoundingClientRect().right,text:el.textContent.slice(0,100)}))}));
         if (layout.scroll>layout.viewport+1) visualFailures.push({theme,width,route,overflow:layout});
+        // Genis yazi tipli platformda (CI Linux) ya da yaziyi buyuten kullanicida
+        // tasma olmamali: 375 px'te kok yazi %25 buyutulerek de olculur. 07.09.2026'da
+        // gizli bir ::after baloncugu tam bu kosulda sayfayi yatay kaydirilabilir
+        // yapmisti ve dar yazi tipli Windows'ta gorunmuyordu.
+        if (width===375) {
+          const buyukYazi=await page.evaluate(()=>{
+            document.documentElement.style.fontSize='20px';
+            const olcum={viewport:innerWidth,scroll:document.documentElement.scrollWidth};
+            document.documentElement.style.fontSize='';
+            return olcum;});
+          if (buyukYazi.scroll>buyukYazi.viewport+1) visualFailures.push({theme,width,route,buyukYazi});
+        }
       }
     }
     assert.equal(visualFailures.length,0,'Visual regressions: '+JSON.stringify(visualFailures));
