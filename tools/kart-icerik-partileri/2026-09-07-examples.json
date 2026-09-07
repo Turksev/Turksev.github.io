@@ -1,0 +1,2183 @@
+{
+  "schema_version": 1,
+  "id": "yds-examples-20260907-priority-01",
+  "created": "2026-09-07",
+  "authorship": "Original educational examples authored for this project; no dictionary or examination example corpus copied.",
+  "target": "YDS-style B2/C1 analytical and academic register; fictional illustrative situations, not reported study findings.",
+  "sense_index_base": 0,
+  "guard_policy": "Require exact match of all expected fields against the baseline before applying replacements; apply enrichment to the same sense, including where a correction changes its label.",
+  "runtime_mapping": "Keep ex/exTr as the primary pair; append alternatives to exs as paired {ex,exTr} records. Never rotate across sense boundaries.",
+  "corrections": [
+    {
+      "word": "toast",
+      "sense_index": 1,
+      "replacement": {
+        "ex": "At the wedding reception, the best man raised his glass and offered a heartfelt toast to the couple.",
+        "exTr": "Düğün davetinde sağdıç, kadehini kaldırarak çiftin şerefine içten sözler söyledi."
+      },
+      "reason": "Best man gelinin babası değil sağdıçtır; raised his glass ayrıntısı da korunur.",
+      "sources": [
+        "https://dictionary.cambridge.org/us/dictionary/english/best-man?topic=relating-to-weddings"
+      ],
+      "expected": {
+        "tr": "i. kadeh kaldırma, şerefe; f. şerefine kadeh kaldırmak",
+        "ex": "At the wedding reception, the best man raised his glass and offered a heartfelt toast to the couple.",
+        "exTr": "Düğünde gelinin babası, çiftin şerefine içten bir kadeh kaldırdı."
+      }
+    },
+    {
+      "word": "moist",
+      "sense_index": 0,
+      "replacement": {
+        "ex": "Gardeners recommend keeping the soil moist but never waterlogged during the seedling's first few weeks.",
+        "exTr": "Bahçıvanlar, fidenin ilk birkaç haftasında toprağın nemli tutulmasını, ancak hiçbir zaman suya doygun bırakılmamasını önerir."
+      },
+      "reason": "Çoğul özne, geniş zaman ve fidenin ilk birkaç haftası ayrıntısı önceki çeviride kaybolmuştu.",
+      "expected": {
+        "tr": "s. nemli",
+        "ex": "Gardeners recommend keeping the soil moist but never waterlogged during the seedling's first few weeks.",
+        "exTr": "Bahçıvan, toprağı nemli tutmayı ama asla suya doymuş hâlde bırakmamayı öğütledi."
+      }
+    },
+    {
+      "word": "please",
+      "sense_index": 1,
+      "replacement": {
+        "ex": "\"Please remember to submit your application before the final deadline on Friday,\" the coordinator reminded everyone.",
+        "exTr": "Koordinatör herkese, \"Lütfen cuma günkü son teslim tarihinden önce başvurunuzu göndermeyi unutmayın,\" diye hatırlattı."
+      },
+      "reason": "Friday zaman bilgisi önceki çeviride eksikti.",
+      "expected": {
+        "tr": "z. lütfen",
+        "ex": "\"Please remember to submit your application before the final deadline on Friday,\" the coordinator reminded everyone.",
+        "exTr": "Koordinatör herkese, \"Lütfen son teslim tarihinden önce başvurunuzu göndermeyi unutmayın,\" diye hatırlattı."
+      }
+    },
+    {
+      "word": "authentic",
+      "sense_index": 0,
+      "replacement": {
+        "ex": "Experts confirmed that the manuscript was authentic.",
+        "exTr": "Uzmanlar el yazmasının sahte değil gerçek olduğunu doğruladı."
+      },
+      "reason": "Authentic burada yaratıcı/benzersiz anlamındaki özgün değil, sahte olmayan gerçek eseri belirtir.",
+      "sources": [
+        "https://www.oxfordlearnersdictionaries.com/definition/english/authentic"
+      ],
+      "expected": {
+        "tr": "özgün, hakiki, gerçek",
+        "ex": "Experts confirmed that the manuscript was authentic.",
+        "exTr": "Uzmanlar el yazmasının özgün olduğunu doğruladı."
+      }
+    },
+    {
+      "word": "causing",
+      "sense_index": 0,
+      "replacement": {
+        "ex": "Delays in replacing the damaged pipes are causing serious disruption to the town's water supply.",
+        "exTr": "Hasarlı boruların değiştirilmesindeki gecikmeler, kasabanın su temininde ciddi aksamalara yol açıyor.",
+        "tr": "f. neden olmak; neden olan, yol açan (cause fiilinin -ing biçimi)"
+      },
+      "reason": "Eski örnekte causing gerund öznedir; yalnız sıfat etiketiyle eşleşmez. Fiil biçimi açıklanıp bağlamlı şimdiki zaman örneği yazıldı.",
+      "expected": {
+        "tr": "s. neden olan, yol açan",
+        "ex": "Causing panic was never their intention.",
+        "exTr": "Panik yaratmak hiçbir zaman niyetleri değildi."
+      }
+    },
+    {
+      "word": "drift",
+      "sense_index": 1,
+      "replacement": {
+        "ex": "Despite the technical jargon, the drift of her argument was clear to everyone in the room.",
+        "exTr": "Teknik terimlere rağmen, savının ana fikri odadaki herkes için açıktı.",
+        "tr": "i. genel eğilim, gidişat; bir sözün veya savın ana fikri"
+      },
+      "reason": "Drift of her argument bu bağlamda eğilim değil savın ana fikridir; anlam etiketi ilgili kullanımı içerecek biçimde netleştirildi.",
+      "sources": [
+        "https://dictionary.cambridge.org/us/dictionary/english/drift"
+      ],
+      "expected": {
+        "tr": "i. genel eğilim, gidişat",
+        "ex": "Despite the technical jargon, the drift of her argument was clear to everyone in the room.",
+        "exTr": "Teknik terimlere rağmen, savının genel eğilimi odadaki herkes için açıktı."
+      }
+    },
+    {
+      "word": "conjunction",
+      "sense_index": 0,
+      "replacement": {
+        "ex": "The survey data should be interpreted in conjunction with the interviews, since neither source provides a complete account on its own.",
+        "exTr": "Hiçbir kaynak tek başına eksiksiz bir açıklama sunmadığından, anket verileri görüşmelerle birlikte yorumlanmalıdır."
+      },
+      "reason": "Kaynağı ve hangi aşı olduğu belirtilmeyen aşı-antiviral en yüksek etkinlik iddiası yerine aynı kalıbı gösteren araştırma yöntemi bağlamı yazıldı.",
+      "expected": {
+        "tr": "i. birleşme, bir arada olma, birlikte kullanım",
+        "ex": "The new vaccine proves most effective when it is administered in conjunction with a course of antiviral drugs prescribed by a specialist.",
+        "exTr": "Yeni aşı, en yüksek etkiyi bir uzmanın reçete ettiği antiviral ilaç kürüyle birlikte uygulandığında göstermektedir."
+      }
+    },
+    {
+      "word": "certainly",
+      "sense_index": 0,
+      "replacement": {
+        "ex": "The revised proposal is certainly more detailed than the original, although several questions about its implementation remain unanswered.",
+        "exTr": "Gözden geçirilmiş öneri ilk hâlinden kesinlikle daha ayrıntılıdır; ancak uygulanmasına ilişkin bazı sorular yanıtsız kalmaktadır."
+      },
+      "reason": "Birey ve hastalık ayrımı olmaksızın kesin sağlık sonucu bildiren örnek yerine açık bir metin karşılaştırması yazıldı.",
+      "expected": {
+        "tr": "z. kesinlikle, elbette",
+        "ex": "Regular exercise will certainly reduce the risk of developing several chronic diseases.",
+        "exTr": "Düzenli egzersiz, birçok kronik hastalığa yakalanma riskini kesinlikle azaltacaktır."
+      }
+    },
+    {
+      "word": "stainless",
+      "sense_index": 0,
+      "replacement": {
+        "ex": "The laboratory ordered stainless steel containers that could withstand repeated cleaning before being reused to store samples.",
+        "exTr": "Laboratuvar, örnekleri saklamak için yeniden kullanılmadan önce tekrar tekrar temizlenmeye dayanabilecek paslanmaz çelik kaplar sipariş etti."
+      },
+      "reason": "Paslanmaz çeliğin hiçbir zaman korozyona uğramayacağı şeklindeki koşulsuz genelleme kaldırıldı; belirli bir satın alma koşulu örneklendi.",
+      "expected": {
+        "tr": "s. paslanmaz; lekesiz",
+        "ex": "Surgical instruments are manufactured from stainless steel so that repeated sterilization at high temperatures never causes them to corrode.",
+        "exTr": "Cerrahi aletler, yüksek sıcaklıkta tekrarlanan sterilizasyonun asla paslanmalarına yol açmaması için paslanmaz çelikten üretilir."
+      }
+    },
+    {
+      "word": "rowing",
+      "sense_index": 0,
+      "replacement": {
+        "ex": "The museum's exhibition examines how rowing shaped river transport before engines became widely available.",
+        "exTr": "Müzenin sergisi, motorlar yaygınlaşmadan önce kürek çekmenin nehir taşımacılığını nasıl şekillendirdiğini inceliyor."
+      },
+      "reason": "Yunanların kürek çekmede hiç aşılamayan mükemmelliğe ulaştığı biçimindeki desteksiz üstünlük iddiası kaldırıldı.",
+      "expected": {
+        "tr": "i. kürek çekme; kürek sporu",
+        "ex": "The Greeks brought the art of rowing to a level of perfection that has never been surpassed.",
+        "exTr": "Yunanlar kürek çekme sanatını daha önce hiç aşılmamış bir mükemmellik düzeyine taşıdı."
+      }
+    },
+    {
+      "word": "precede",
+      "sense_index": 0,
+      "replacement": {
+        "ex": "A detailed assessment of local needs should precede any decision to build a new transport terminal.",
+        "exTr": "Yeni bir ulaşım terminali inşa etme yönündeki her karardan önce yerel ihtiyaçlar ayrıntılı olarak değerlendirilmelidir."
+      },
+      "reason": "Küçük sarsıntıların genellikle büyük depremden önce geldiği genellemesi yerine güvenli planlama bağlamı yazıldı.",
+      "expected": {
+        "tr": "f. önce gelmek, öncesinde olmak",
+        "ex": "A brief tremor often precedes a much larger earthquake, though not always predictably.",
+        "exTr": "Kısa bir sarsıntı genellikle daha büyük bir depremden önce gelir, ancak bu her zaman öngörülebilir değildir."
+      }
+    },
+    {
+      "word": "honey",
+      "sense_index": 0,
+      "replacement": {
+        "ex": "The cooperative sells honey in reusable glass jars and records the origin of each batch to improve traceability.",
+        "exTr": "Kooperatif, balı yeniden kullanılabilir cam kavanozlarda satıyor ve izlenebilirliği artırmak için her partinin kökenini kaydediyor."
+      },
+      "reason": "Arıların milyonlarca çiçek ziyaret etmesinden arıcının emek yoğunluğuna geçiş yapan temelsiz nedensellik kaldırıldı.",
+      "expected": {
+        "tr": "i. bal",
+        "ex": "Producing a single jar of honey requires bees to visit millions of flowers, which explains why beekeeping has always been labour-intensive.",
+        "exTr": "Tek bir kavanoz bal üretmek, arıların milyonlarca çiçeği ziyaret etmesini gerektirir; bu da arıcılığın neden her zaman yoğun emek istediğini açıklar."
+      }
+    },
+    {
+      "word": "lethal",
+      "sense_index": 0,
+      "replacement": {
+        "ex": "The safety report identified a potentially lethal fault in the ventilation system and recommended that the building be closed immediately.",
+        "exTr": "Güvenlik raporu, havalandırma sisteminde ölümcül olabilecek bir arıza saptadı ve binanın derhâl kapatılmasını önerdi."
+      },
+      "reason": "Several times its size ifadesinin venom/dose gibi uygun olmayan öncüle bağlanması giderildi; açık özne ve bağlam sağlandı.",
+      "expected": {
+        "tr": "s. öldürücü, ölümcül",
+        "ex": "Even a small dose of the venom can prove lethal to an animal several times its size.",
+        "exTr": "Zehirin küçük bir dozu bile, kendisinden birkaç kat büyük bir hayvan için ölümcül olabilir."
+      }
+    },
+    {
+      "word": "real",
+      "sense_index": 0,
+      "replacement": {
+        "ex": "The training programme combines virtual simulations with real laboratory work so that students can compare predictions with direct observations.",
+        "exTr": "Eğitim programı, öğrencilerin tahminleri doğrudan gözlemlerle karşılaştırabilmesi için sanal benzetimleri gerçek laboratuvar çalışmasıyla birleştiriyor."
+      },
+      "reason": "Sanal deneylerin gerçek çalışmayı asla ikame edemeyeceği koşulsuz eğitim iddiası yerine somut program tasarımı yazıldı.",
+      "expected": {
+        "tr": "s. gerçek, hakiki",
+        "ex": "Virtual experiments can never fully replace real laboratory work in science education.",
+        "exTr": "Sanal deneyler, fen eğitiminde gerçek laboratuvar çalışmasının yerini asla tam anlamıyla tutamaz."
+      }
+    },
+    {
+      "word": "practicality",
+      "sense_index": 0,
+      "replacement": {
+        "ex": "Before selecting a design, the engineers assessed its practicality by considering maintenance costs and the availability of replacement parts.",
+        "exTr": "Mühendisler bir tasarım seçmeden önce bakım maliyetlerini ve yedek parçaların bulunabilirliğini dikkate alarak tasarımın uygulanabilirliğini değerlendirdi."
+      },
+      "reason": "Ucuz üretilemeyen tasarımın tüketiciye hiçbir zaman ulaşamayacağı kesin genelleme yerine uygulanabilirliği gösteren ölçütler yazıldı.",
+      "expected": {
+        "tr": "i. kullanışlılık, pratiklik, uygulanabilirlik",
+        "ex": "Engineers must balance elegance with practicality, since a design that cannot be manufactured cheaply will never reach ordinary consumers.",
+        "exTr": "Mühendisler zarafetle kullanışlılığı dengelemek zorundadır; çünkü ucuza üretilemeyen bir tasarım sıradan tüketicilere hiçbir zaman ulaşmaz."
+      }
+    },
+    {
+      "word": "stare",
+      "sense_index": 1,
+      "replacement": {
+        "ex": "His cold stare made everyone in the waiting room uneasy, and the conversation soon fell silent.",
+        "exTr": "Onun soğuk ve dik bakışı, bekleme odasındaki herkesi tedirgin etti ve konuşmalar kısa sürede kesildi."
+      },
+      "reason": "Feel silent / sessiz hissetmek doğal değil; tedirgin olma ile sessizleşme ayrı sonuçlar olarak hem İngilizcede hem Türkçede netleştirildi.",
+      "expected": {
+        "tr": "i. dik bakış",
+        "ex": "His cold stare made everyone in the waiting room feel uneasy and silent.",
+        "exTr": "Onun soğuk dik bakışı, bekleme odasındaki herkesi tedirgin ve sessiz hissettirdi."
+      }
+    },
+    {
+      "word": "persist",
+      "sense_index": 0,
+      "replacement": {
+        "ex": "Disputes over the allocation of water may persist if communities are excluded from decisions about its use.",
+        "exTr": "Topluluklar suyun kullanımına ilişkin kararlara dâhil edilmezse suyun dağılımına ilişkin anlaşmazlıklar sürebilir."
+      },
+      "reason": "Belirti/hastalık ayrımı yapmadan bir haftalık bekleme eşiği sunan genel tıbbi yönlendirme yerine devam etme anlamını gösteren kaynak yönetimi bağlamı yazıldı.",
+      "expected": {
+        "tr": "f. devam etmek, sürmek",
+        "ex": "If the symptoms persist for more than a week, patients are advised to consult a specialist.",
+        "exTr": "Belirtiler bir haftadan uzun sürerse, hastaların bir uzmana başvurması tavsiye edilir."
+      }
+    }
+  ],
+  "enrichments": [
+    {
+      "word": "lead",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "A shortage of reliable transport can lead to delays in delivering essential supplies to isolated communities.",
+          "exTr": "Güvenilir ulaşım olanaklarının yetersizliği, temel ihtiyaç malzemelerinin yalıtılmış topluluklara ulaştırılmasında gecikmelere yol açabilir."
+        },
+        {
+          "ex": "If competing agencies fail to share information, even a well-funded programme may lead to overlapping responsibilities and wasted resources.",
+          "exTr": "Birbiriyle rekabet eden kurumlar bilgi paylaşmazsa, iyi finanse edilen bir program bile görevlerin çakışmasına ve kaynak israfına yol açabilir."
+        }
+      ],
+      "expected": {
+        "tr": "f. (lead to) yol açmak, neden olmak; yönetmek, öncülük etmek",
+        "ex": "Untreated infections can lead to serious complications.",
+        "exTr": "Tedavi edilmeyen enfeksiyonlar ciddi komplikasyonlara yol açabilir."
+      }
+    },
+    {
+      "word": "decline",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "Demand for the printed directory began to decline after the same information became freely available online.",
+          "exTr": "Aynı bilgiler internette ücretsiz olarak erişilebilir hâle geldikten sonra basılı rehbere yönelik talep azalmaya başladı."
+        },
+        {
+          "ex": "Unless maintenance improves, the quality of the irrigation network is likely to decline despite recent investment in new equipment.",
+          "exTr": "Bakım iyileştirilmezse, yeni ekipmana yapılan son yatırımlara rağmen sulama ağının kalitesi muhtemelen düşecektir."
+        }
+      ],
+      "expected": {
+        "tr": "f. azalmak, düşmek, gerilemek",
+        "ex": "Bee populations decline when suitable habitats disappear.",
+        "exTr": "Uygun yaşam alanları yok olduğunda arı nüfusları azalır."
+      }
+    },
+    {
+      "word": "finding",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "Finding a suitable site for the observatory involved comparing light pollution, transport links and weather records from several regions.",
+          "exTr": "Gözlemevi için uygun bir yer bulmak, birkaç bölgedeki ışık kirliliğinin, ulaşım bağlantılarının ve hava durumu kayıtlarının karşılaştırılmasını gerektirdi."
+        },
+        {
+          "ex": "The researchers had difficulty finding participants whose work schedules allowed them to attend all four interviews.",
+          "exTr": "Araştırmacılar, çalışma saatleri dört görüşmenin tamamına katılmaya uygun olan katılımcılar bulmakta güçlük çekti."
+        }
+      ],
+      "expected": {
+        "tr": "f. bulmak, bulma (find fiilinin -ing biçimi)",
+        "ex": "Finding reliable evidence can take several years.",
+        "exTr": "Güvenilir kanıt bulmak birkaç yıl sürebilir."
+      }
+    },
+    {
+      "word": "understood",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The relationship between the two variables was better understood once the researchers had accounted for differences in age.",
+          "exTr": "Araştırmacılar yaş farklılıklarını hesaba kattıktan sonra iki değişken arasındaki ilişki daha iyi anlaşıldı."
+        },
+        {
+          "ex": "Although the instructions had been translated into several languages, the interviewers checked whether each participant had understood the task.",
+          "exTr": "Yönergeler birkaç dile çevrilmiş olsa da görüşmeciler her katılımcının görevi anlayıp anlamadığını kontrol etti."
+        }
+      ],
+      "expected": {
+        "tr": "f. anladı; anlaşıldı/anlaşılmış (understand fiilinin geçmiş/V3 biçimi)",
+        "ex": "The mechanism is not yet fully understood.",
+        "exTr": "Mekanizma henüz tam olarak anlaşılmış değildir."
+      }
+    },
+    {
+      "word": "established",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The archive was established to preserve records that would otherwise have remained scattered across private collections.",
+          "exTr": "Arşiv, aksi takdirde özel koleksiyonlara dağılmış olarak kalacak kayıtları korumak amacıyla kuruldu."
+        },
+        {
+          "ex": "Before collecting the data, the team established a common procedure for recording observations at each field station.",
+          "exTr": "Ekip, verileri toplamadan önce her saha istasyonunda gözlemlerin kaydedilmesi için ortak bir yöntem oluşturdu."
+        }
+      ],
+      "expected": {
+        "tr": "f. kurdu/kuruldu; oluşturdu/yerleştirdi (establish fiilinin geçmiş/V3 biçimi)",
+        "ex": "The research centre was established in 1985.",
+        "exTr": "Araştırma merkezi 1985 yılında kuruldu."
+      }
+    },
+    {
+      "word": "failed",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The initial survey failed to capture seasonal differences because all the interviews were conducted during the summer.",
+          "exTr": "Bütün görüşmeler yaz aylarında yapıldığı için ilk anket mevsimsel farklılıkları ortaya koyamadı."
+        },
+        {
+          "ex": "Despite extensive publicity, the recruitment campaign failed to attract enough applicants with the required technical experience.",
+          "exTr": "Yoğun tanıtıma rağmen işe alım kampanyası, gerekli teknik deneyime sahip yeterli sayıda başvurucu çekmeyi başaramadı."
+        }
+      ],
+      "expected": {
+        "tr": "f. başaramadı, başarısız oldu (fail fiilinin geçmiş/ortaç biçimi)",
+        "ex": "She failed to reach the required score.",
+        "exTr": "Gerekli puana ulaşmayı başaramadı."
+      }
+    },
+    {
+      "word": "failed",
+      "sense_index": 1,
+      "alternatives": [
+        {
+          "ex": "When the cooling system failed, the technicians transferred the temperature-sensitive samples to another laboratory.",
+          "exTr": "Soğutma sistemi bozulduğunda teknisyenler, sıcaklığa duyarlı örnekleri başka bir laboratuvara taşıdı."
+        },
+        {
+          "ex": "The backup generator failed during the inspection, revealing a maintenance problem that had not appeared in earlier reports.",
+          "exTr": "Yedek jeneratör denetim sırasında çalışmadı ve önceki raporlarda görülmeyen bir bakım sorunu ortaya çıktı."
+        }
+      ],
+      "expected": {
+        "tr": "f. çalışmadı, bozuldu",
+        "ex": "The engine failed without warning.",
+        "exTr": "Motor hiçbir uyarı vermeden bozuldu."
+      }
+    },
+    {
+      "word": "heard",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "Residents first heard about the proposed road closure at a public meeting organised by the local council.",
+          "exTr": "Mahalle sakinleri, önerilen yol kapatma uygulamasından ilk kez belediye meclisinin düzenlediği halka açık toplantıda haberdar oldu."
+        },
+        {
+          "ex": "After the volunteers had heard the recording twice, they were asked to identify the main argument rather than recall individual words.",
+          "exTr": "Gönüllüler kaydı iki kez dinledikten sonra onlardan tek tek sözcükleri hatırlamak yerine ana savı belirlemeleri istendi."
+        }
+      ],
+      "expected": {
+        "tr": "f. duydu, işitti; haberini aldı (hear fiilinin geçmiş/ortaç biçimi)",
+        "ex": "We heard the news early this morning.",
+        "exTr": "Haberi bu sabah erken saatlerde duyduk."
+      }
+    },
+    {
+      "word": "grown",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "Demand for access to the digital archive has grown beyond what the university's existing servers can support.",
+          "exTr": "Dijital arşive erişim talebi, üniversitenin mevcut sunucularının karşılayabileceği düzeyin üzerine çıktı."
+        },
+        {
+          "ex": "By the time the second survey was completed, the settlement had grown into a small regional trading centre.",
+          "exTr": "İkinci araştırma tamamlandığında yerleşim büyüyerek küçük bir bölgesel ticaret merkezine dönüşmüştü."
+        }
+      ],
+      "expected": {
+        "tr": "f. büyümüş, artmış, gelişmiş; hâline gelmiş (grow fiilinin ortaç biçimi)",
+        "ex": "Public interest has grown rapidly this year.",
+        "exTr": "Halkın ilgisi bu yıl hızla arttı."
+      }
+    },
+    {
+      "word": "causing",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The committee investigated whether poorly coordinated deliveries were causing congestion around the entrance to the industrial estate.",
+          "exTr": "Komite, yetersiz koordine edilen teslimatların sanayi bölgesinin girişi çevresinde trafik sıkışıklığına neden olup olmadığını araştırdı."
+        },
+        {
+          "ex": "Several sensors stopped transmitting during the storm, causing gaps in the record that could not be filled from other sources.",
+          "exTr": "Fırtına sırasında birkaç sensör veri iletmeyi durdurdu ve kayıtta başka kaynaklardan doldurulamayan boşluklara yol açtı."
+        }
+      ],
+      "expected": {
+        "tr": "s. neden olan, yol açan",
+        "ex": "Causing panic was never their intention.",
+        "exTr": "Panik yaratmak hiçbir zaman niyetleri değildi."
+      }
+    },
+    {
+      "word": "lay",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The earliest settlement lay close to the river, where traders could load goods without crossing the surrounding hills.",
+          "exTr": "En eski yerleşim, tüccarların çevredeki tepeleri aşmadan mal yükleyebildiği nehrin yakınında bulunuyordu."
+        },
+        {
+          "ex": "For decades, the documents lay forgotten in a storeroom until a librarian recognised their importance to the town's history.",
+          "exTr": "Bir kütüphaneci belgelerin kasabanın tarihi açısından önemini fark edene kadar belgeler onlarca yıl bir depoda unutulmuş hâlde kaldı."
+        }
+      ],
+      "expected": {
+        "tr": "f. yatıyordu, bulunuyordu (lie fiilinin geçmiş biçimi)",
+        "ex": "The village lay beyond the northern hills.",
+        "exTr": "Köy kuzey tepelerinin ötesinde bulunuyordu."
+      }
+    },
+    {
+      "word": "pointed",
+      "sense_index": 1,
+      "alternatives": [
+        {
+          "ex": "The pattern of damage pointed to a fault in the drainage system rather than a weakness in the building materials.",
+          "exTr": "Hasarın dağılımı, yapı malzemelerindeki bir zayıflıktan çok drenaj sistemindeki bir arızaya işaret ediyordu."
+        },
+        {
+          "ex": "Although the interviews differed in detail, they all pointed to a need for clearer communication between departments.",
+          "exTr": "Görüşmeler ayrıntılarda farklılık gösterse de hepsi bölümler arasında daha açık iletişime duyulan ihtiyaca işaret ediyordu."
+        }
+      ],
+      "expected": {
+        "tr": "f. (pointed to) işaret etti, gösterdi",
+        "ex": "The evidence pointed to a different cause.",
+        "exTr": "Kanıtlar farklı bir nedene işaret etti."
+      }
+    },
+    {
+      "word": "reducing",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "Reducing the number of unnecessary journeys was one of the main objectives of the revised delivery schedule.",
+          "exTr": "Gereksiz yolculukların sayısını azaltmak, gözden geçirilmiş teslimat programının başlıca hedeflerinden biriydi."
+        },
+        {
+          "ex": "The library extended its online services, reducing the need for students to travel to campus simply to renew a loan.",
+          "exTr": "Kütüphane çevrim içi hizmetlerini genişleterek öğrencilerin yalnızca ödünç alma süresini uzatmak için kampüse gitme ihtiyacını azalttı."
+        }
+      ],
+      "expected": {
+        "tr": "f. azaltmak, düşürmek; azaltan/azaltarak (reduce fiilinin -ing biçimi)",
+        "ex": "The new filter is reducing harmful emissions.",
+        "exTr": "Yeni filtre zararlı salımları azaltıyor."
+      }
+    },
+    {
+      "word": "spent",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The research team spent several months checking the handwritten records before entering them into a searchable database.",
+          "exTr": "Araştırma ekibi, el yazısıyla tutulmuş kayıtları aranabilir bir veri tabanına aktarmadan önce bunları kontrol etmek için birkaç ay harcadı."
+        },
+        {
+          "ex": "Although the council spent more on road repairs, residents argued that insufficient attention had been paid to drainage.",
+          "exTr": "Belediye meclisi yol onarımlarına daha fazla para harcamış olsa da sakinler drenaja yeterince önem verilmediğini savundu."
+        }
+      ],
+      "expected": {
+        "tr": "f. harcadı; zaman geçirdi (spend fiilinin geçmiş/ortaç biçimi)",
+        "ex": "She spent two hours reviewing her notes.",
+        "exTr": "Notlarını gözden geçirmek için iki saat harcadı."
+      }
+    },
+    {
+      "word": "controlling",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "Controlling access to the archive became more difficult as the number of visiting researchers increased.",
+          "exTr": "Ziyaretçi araştırmacıların sayısı arttıkça arşive erişimi denetlemek daha zor hâle geldi."
+        },
+        {
+          "ex": "By controlling the temperature throughout the experiment, the team reduced one possible source of variation in the measurements.",
+          "exTr": "Ekip, deney boyunca sıcaklığı kontrol ederek ölçümlerdeki farklılığın olası kaynaklarından birini azalttı."
+        }
+      ],
+      "expected": {
+        "tr": "f. kontrol etmek; kontrol eden/denetleyen (control fiilinin -ing biçimi)",
+        "ex": "The software is controlling the room temperature.",
+        "exTr": "Yazılım oda sıcaklığını kontrol ediyor."
+      }
+    },
+    {
+      "word": "paid",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The foundation paid the initial cost of digitising the collection, while the university agreed to cover future maintenance.",
+          "exTr": "Vakıf, koleksiyonu dijitalleştirmenin ilk maliyetini ödedi; üniversite ise gelecekteki bakım giderlerini karşılamayı kabul etti."
+        },
+        {
+          "ex": "Participants were paid a fixed amount for each interview, regardless of whether their responses supported the researchers' expectations.",
+          "exTr": "Yanıtları araştırmacıların beklentilerini destekleyip desteklemediğine bakılmaksızın katılımcılara her görüşme için sabit bir miktar ödendi."
+        }
+      ],
+      "expected": {
+        "tr": "f. ödedi; pay fiilinin geçmiş/ortaç biçimi",
+        "ex": "They paid the bill before leaving.",
+        "exTr": "Ayrılmadan önce hesabı ödediler."
+      }
+    },
+    {
+      "word": "paid",
+      "sense_index": 1,
+      "alternatives": [
+        {
+          "ex": "The reviewers paid particular attention to how the authors had handled missing values in the survey data.",
+          "exTr": "Hakemler, yazarların anket verilerindeki eksik değerleri nasıl ele aldığına özellikle dikkat etti."
+        },
+        {
+          "ex": "Had planners paid closer attention to the flood records, they might have selected a different location for the warehouse.",
+          "exTr": "Planlamacılar sel kayıtlarına daha fazla dikkat etmiş olsaydı depo için farklı bir yer seçebilirdi."
+        }
+      ],
+      "expected": {
+        "tr": "f. (paid attention) dikkat etti",
+        "ex": "She paid attention to every detail.",
+        "exTr": "Her ayrıntıya dikkat etti."
+      }
+    },
+    {
+      "word": "showing",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The report includes a map showing which neighbourhoods have the least convenient access to public transport.",
+          "exTr": "Rapor, toplu taşımaya erişimin en zor olduğu mahalleleri gösteren bir harita içeriyor."
+        },
+        {
+          "ex": "Rather than showing only the average score, the authors presented the full distribution to make differences between participants visible.",
+          "exTr": "Yazarlar, yalnızca ortalama puanı göstermek yerine katılımcılar arasındaki farklılıkları görünür kılmak için dağılımın tamamını sundu."
+        }
+      ],
+      "expected": {
+        "tr": "f. göstermek; gösteren/ortaya koyan (show fiilinin -ing biçimi)",
+        "ex": "The chart is showing a steady decline.",
+        "exTr": "Grafik düzenli bir düşüş gösteriyor."
+      }
+    },
+    {
+      "word": "consecutive",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The monitoring station recorded unusually low rainfall for three consecutive months, prompting a review of the irrigation schedule.",
+          "exTr": "İzleme istasyonu, art arda üç ay boyunca olağandışı düşük yağış kaydetti; bunun üzerine sulama programı yeniden değerlendirildi."
+        },
+        {
+          "ex": "Only applicants who had completed two consecutive terms of study were eligible for the university's exchange programme.",
+          "exTr": "Üniversitenin değişim programına yalnızca art arda iki eğitim dönemini tamamlamış başvurucular katılabiliyordu."
+        }
+      ],
+      "expected": {
+        "tr": "ardışık, arka arkaya",
+        "ex": "It rained for five consecutive days.",
+        "exTr": "Beş gün üst üste yağmur yağdı."
+      }
+    },
+    {
+      "word": "authentic",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "Before accepting the donation, the museum asked independent specialists to determine whether the letters were authentic.",
+          "exTr": "Müze, bağışı kabul etmeden önce bağımsız uzmanlardan mektupların sahte değil gerçek olup olmadığını belirlemelerini istedi."
+        },
+        {
+          "ex": "An authentic record can still contain errors, so historians compare it with other sources rather than accepting every detail uncritically.",
+          "exTr": "Gerçek bir kayıt da hatalar içerebilir; bu nedenle tarihçiler her ayrıntıyı sorgulamadan kabul etmek yerine onu başka kaynaklarla karşılaştırır."
+        }
+      ],
+      "expected": {
+        "tr": "özgün, hakiki, gerçek",
+        "ex": "Experts confirmed that the manuscript was authentic.",
+        "exTr": "Uzmanlar el yazmasının özgün olduğunu doğruladı."
+      }
+    },
+    {
+      "word": "scarce",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "Because reliable historical records were scarce, the researchers combined archaeological evidence with accounts preserved in local oral traditions.",
+          "exTr": "Güvenilir tarihsel kayıtlar az bulunduğundan araştırmacılar, arkeolojik kanıtları yerel sözlü geleneklerde korunmuş anlatılarla birleştirdi."
+        },
+        {
+          "ex": "When skilled workers are scarce, expanding a training programme may be more useful than simply purchasing additional equipment.",
+          "exTr": "Nitelikli işgücü kıt olduğunda bir eğitim programını genişletmek, yalnızca ek ekipman satın almaktan daha yararlı olabilir."
+        }
+      ],
+      "expected": {
+        "tr": "kıt, az bulunur",
+        "ex": "Fresh water is scarce in the region.",
+        "exTr": "Bölgede tatlı su kıttır."
+      }
+    },
+    {
+      "word": "resolution",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "A lasting resolution of the dispute depended on whether both communities could agree on a fair system of water allocation.",
+          "exTr": "Anlaşmazlığın kalıcı biçimde çözüme kavuşması, her iki topluluğun adil bir su dağıtım sistemi üzerinde uzlaşıp uzlaşamayacağına bağlıydı."
+        },
+        {
+          "ex": "The mediator argued that a rapid resolution would be of little value if it left the underlying causes of the conflict untouched.",
+          "exTr": "Arabulucu, çatışmanın temel nedenlerine dokunmayan hızlı bir çözümün pek az değer taşıyacağını savundu."
+        }
+      ],
+      "expected": {
+        "tr": "i. çözüm, sonuca bağlanma; anlaşmaya varma",
+        "ex": "The dispute finally reached a peaceful resolution.",
+        "exTr": "Anlaşmazlık sonunda barışçıl bir çözüme ulaştı."
+      }
+    },
+    {
+      "word": "hamper",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "Incompatible file formats can hamper cooperation between research teams, even when they are willing to share their data.",
+          "exTr": "Araştırma ekipleri verilerini paylaşmaya istekli olsa bile birbiriyle uyumsuz dosya biçimleri aralarındaki iş birliğini zorlaştırabilir."
+        },
+        {
+          "ex": "The restoration project was hampered by a shortage of specialists familiar with the building's original construction techniques.",
+          "exTr": "Restorasyon projesi, binanın özgün yapım tekniklerini bilen uzmanların yetersizliği nedeniyle sekteye uğradı."
+        }
+      ],
+      "expected": {
+        "tr": "engellemek, zorlaştırmak, sekteye uğratmak",
+        "ex": "Rescue efforts were hampered by heavy snow.",
+        "exTr": "Kurtarma çalışmaları yoğun kar nedeniyle zorlaştı."
+      }
+    },
+    {
+      "word": "rectify",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The authors issued a revised table to rectify an error that had caused several observations to be counted twice.",
+          "exTr": "Yazarlar, bazı gözlemlerin iki kez sayılmasına yol açan bir hatayı düzeltmek için gözden geçirilmiş bir tablo yayımladı."
+        },
+        {
+          "ex": "Unless the discrepancy is rectified before the accounts are approved, the report may give a misleading impression of the project's costs.",
+          "exTr": "Hesaplar onaylanmadan önce tutarsızlık giderilmezse rapor, projenin maliyetleri hakkında yanıltıcı bir izlenim verebilir."
+        }
+      ],
+      "expected": {
+        "tr": "düzeltmek, gidermek",
+        "ex": "The error was rectified within hours.",
+        "exTr": "Hata saatler içinde giderildi."
+      }
+    },
+    {
+      "word": "autonomous",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "Although the institute receives public funding, it remains autonomous in deciding which research questions to pursue.",
+          "exTr": "Enstitü kamu kaynaklarıyla finanse edilse de hangi araştırma sorularını ele alacağına karar verme konusunda özerkliğini korur."
+        },
+        {
+          "ex": "The proposal would create an autonomous regional body responsible for coordinating transport services across municipal boundaries.",
+          "exTr": "Öneri, belediye sınırları arasında ulaşım hizmetlerini koordine etmekten sorumlu özerk bir bölgesel kuruluş oluşturulmasını öngörüyordu."
+        }
+      ],
+      "expected": {
+        "tr": "özerk, bağımsız",
+        "ex": "The region has been autonomous since 1994.",
+        "exTr": "Bölge 1994'ten beri özerktir."
+      }
+    },
+    {
+      "word": "exempt",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "Under the proposed scheme, small community organisations would be exempt from the annual registration fee.",
+          "exTr": "Önerilen düzenlemeye göre küçük toplum kuruluşları yıllık kayıt ücretinden muaf tutulacaktı."
+        },
+        {
+          "ex": "The committee agreed to exempt previously trained volunteers from the introductory course, provided that they passed a short assessment.",
+          "exTr": "Komite, kısa bir değerlendirmeyi geçmeleri koşuluyla daha önce eğitim almış gönüllüleri giriş dersinden muaf tutmayı kabul etti."
+        }
+      ],
+      "expected": {
+        "tr": "muaf, bağışık; muaf tutmak",
+        "ex": "Basic foodstuffs are exempt from the tax.",
+        "exTr": "Temel gıda maddeleri vergiden muaftır."
+      }
+    },
+    {
+      "word": "refined",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The researchers refined their model after discovering that the original version underestimated travel times in rural areas.",
+          "exTr": "Araştırmacılar, modelin ilk sürümünün kırsal bölgelerdeki yolculuk sürelerini olduğundan kısa tahmin ettiğini fark edince modellerini geliştirdi."
+        },
+        {
+          "ex": "Over several rounds of testing, the engineers refined the design until the instrument could be operated reliably in the field.",
+          "exTr": "Mühendisler, birkaç test turu boyunca tasarımı geliştirerek cihazın sahada güvenilir biçimde kullanılabilir hâle gelmesini sağladı."
+        }
+      ],
+      "expected": {
+        "tr": "f. refine fiilinin geçmiş/V3 biçimi: geliştirdi, inceltti; arıttı",
+        "ex": "Later studies refined the original theory.",
+        "exTr": "Daha sonraki çalışmalar özgün kuramı geliştirdi."
+      }
+    },
+    {
+      "word": "reluctantly",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The museum reluctantly postponed the exhibition after inspectors found that the proposed venue could not protect the most fragile objects.",
+          "exTr": "Denetçiler önerilen mekânın en kırılgan nesneleri koruyamayacağını belirleyince müze sergiyi istemeyerek erteledi."
+        },
+        {
+          "ex": "Although she preferred to collect more evidence, the project leader reluctantly accepted the deadline imposed by the funding agreement.",
+          "exTr": "Daha fazla kanıt toplamayı tercih etmesine rağmen proje yöneticisi, finansman anlaşmasının getirdiği son tarihi gönülsüzce kabul etti."
+        }
+      ],
+      "expected": {
+        "tr": "z. isteksizce, gönülsüzce",
+        "ex": "The committee reluctantly accepted the revised proposal.",
+        "exTr": "Komite gözden geçirilmiş öneriyi isteksizce kabul etti."
+      }
+    },
+    {
+      "word": "sparse",
+      "sense_index": 1,
+      "alternatives": [
+        {
+          "ex": "The evidence remains too sparse to support a detailed reconstruction of how the settlement was governed.",
+          "exTr": "Yerleşimin nasıl yönetildiğini ayrıntılı biçimde yeniden ortaya koymayı destekleyecek kanıtlar hâlâ çok yetersizdir."
+        },
+        {
+          "ex": "Because records of informal employment are sparse, the report treats its estimates as provisional rather than definitive.",
+          "exTr": "Kayıt dışı istihdama ilişkin kayıtlar yetersiz olduğundan rapor, tahminlerini kesin değil geçici sonuçlar olarak ele alıyor."
+        }
+      ],
+      "expected": {
+        "tr": "s. yetersiz, kıt",
+        "ex": "Historical evidence for the claim remains sparse.",
+        "exTr": "İddiaya ilişkin tarihsel kanıtlar yetersiz kalmaktadır."
+      }
+    },
+    {
+      "word": "conceptualise",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "How researchers conceptualise poverty influences both the questions they ask and the indicators they choose to measure.",
+          "exTr": "Araştırmacıların yoksulluğu nasıl kavramsallaştırdığı, hem sordukları soruları hem de ölçmek için seçtikleri göstergeleri etkiler."
+        },
+        {
+          "ex": "The authors conceptualise learning as a social process rather than the isolated acquisition of facts by individual students.",
+          "exTr": "Yazarlar öğrenmeyi, tek tek öğrencilerin birbirlerinden bağımsız olarak bilgi edinmesi değil, toplumsal bir süreç olarak kavramsallaştırıyor."
+        }
+      ],
+      "expected": {
+        "tr": "f. kavramsallaştırmak",
+        "ex": "Researchers conceptualise intelligence in several different ways.",
+        "exTr": "Araştırmacılar zekâyı birkaç farklı biçimde kavramsallaştırır."
+      }
+    },
+    {
+      "word": "evidence",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The committee requested additional evidence before accepting the claim that the new timetable had reduced average journey times.",
+          "exTr": "Komite, yeni tarifenin ortalama yolculuk sürelerini kısalttığı iddiasını kabul etmeden önce ek kanıt istedi."
+        },
+        {
+          "ex": "Although the two accounts differ in detail, neither provides convincing evidence that the documents were deliberately altered.",
+          "exTr": "İki anlatı ayrıntılarda farklılık gösterse de hiçbiri belgelerin kasıtlı olarak değiştirildiğine dair ikna edici kanıt sunmuyor."
+        }
+      ],
+      "expected": {
+        "tr": "i. kanıt, delil",
+        "ex": "Fossil evidence suggests that whales evolved from land-dwelling mammals millions of years ago.",
+        "exTr": "Fosil kanıtlar, balinaların milyonlarca yıl önce karada yaşayan memelilerden evrildiğini gösteriyor."
+      }
+    },
+    {
+      "word": "suggest",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The authors suggest comparing results from several regions before drawing conclusions about the effectiveness of the programme.",
+          "exTr": "Yazarlar, programın etkililiği hakkında sonuçlara varmadan önce birkaç bölgeden elde edilen sonuçların karşılaştırılmasını öneriyor."
+        },
+        {
+          "ex": "Differences between the two surveys suggest that respondents may interpret the same question differently depending on its context.",
+          "exTr": "İki anket arasındaki farklılıklar, katılımcıların aynı soruyu bağlamına göre farklı yorumlayabildiğini düşündürüyor."
+        }
+      ],
+      "expected": {
+        "tr": "f. öne sürmek; önermek; göstermek",
+        "ex": "Recent findings suggest that regular meditation may slow certain aspects of brain aging.",
+        "exTr": "Son bulgular, düzenli meditasyonun beyin yaşlanmasının bazı yönlerini yavaşlatabileceğini öne sürüyor."
+      }
+    },
+    {
+      "word": "establish",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The neighbouring universities agreed to establish a shared archive so that rare documents could be preserved under suitable conditions.",
+          "exTr": "Komşu üniversiteler, nadir belgelerin uygun koşullarda korunabilmesi için ortak bir arşiv kurmayı kabul etti."
+        },
+        {
+          "ex": "Rather than establish a separate committee for each district, the council proposed a single body with representatives from across the region.",
+          "exTr": "Belediye meclisi, her ilçe için ayrı bir komite kurmak yerine bölgenin tamamından temsilcilerin yer aldığı tek bir kurul önerdi."
+        }
+      ],
+      "expected": {
+        "tr": "f. kurmak",
+        "ex": "The university plans to establish a research center dedicated to renewable energy technologies.",
+        "exTr": "Üniversite, yenilenebilir enerji teknolojilerine adanmış bir araştırma merkezi kurmayı planlıyor."
+      }
+    },
+    {
+      "word": "establish",
+      "sense_index": 1,
+      "alternatives": [
+        {
+          "ex": "Further analysis is needed to establish whether the observed differences reflect a lasting trend or a temporary fluctuation.",
+          "exTr": "Gözlenen farklılıkların kalıcı bir eğilimi mi yoksa geçici bir dalgalanmayı mı yansıttığını saptamak için ek analiz gerekiyor."
+        },
+        {
+          "ex": "Using records from independent stations, the team was able to establish the approximate time at which the equipment stopped functioning.",
+          "exTr": "Ekip, bağımsız istasyonların kayıtlarını kullanarak ekipmanın çalışmayı bıraktığı yaklaşık zamanı belirleyebildi."
+        }
+      ],
+      "expected": {
+        "tr": "f. saptamak, ortaya koymak",
+        "ex": "The investigation managed to establish that the fire had started in the electrical wiring.",
+        "exTr": "Soruşturma, yangının elektrik tesisatından başladığını ortaya koymayı başardı."
+      }
+    },
+    {
+      "word": "indicate",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "A decline in reported complaints does not necessarily indicate that users are more satisfied with the service.",
+          "exTr": "Bildirilen şikâyetlerin azalması, kullanıcıların hizmetten daha memnun olduğunu mutlaka göstermez."
+        },
+        {
+          "ex": "The marks on the map indicate areas where further excavation would be required before construction could begin.",
+          "exTr": "Haritadaki işaretler, inşaata başlanabilmesi için ek kazı yapılması gereken alanları gösteriyor."
+        }
+      ],
+      "expected": {
+        "tr": "f. belirtmek, göstermek, işaret etmek",
+        "ex": "Recent studies indicate that air pollution may increase the risk of dementia.",
+        "exTr": "Son araştırmalar, hava kirliliğinin demans riskini artırabileceğini göstermektedir."
+      }
+    },
+    {
+      "word": "require",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "Interpreting the findings will require a better understanding of how participants were selected for the original survey.",
+          "exTr": "Bulguları yorumlamak, katılımcıların ilk anket için nasıl seçildiğinin daha iyi anlaşılmasını gerektirecektir."
+        },
+        {
+          "ex": "The archive's revised procedures require researchers to describe the material they intend to consult before requesting an appointment.",
+          "exTr": "Arşivin gözden geçirilmiş işlemleri, araştırmacıların randevu talep etmeden önce incelemek istedikleri materyali açıklamalarını gerektiriyor."
+        }
+      ],
+      "expected": {
+        "tr": "f. gerektirmek, talep etmek",
+        "ex": "Most graduate programs require applicants to submit standardized test scores and recommendation letters.",
+        "exTr": "Çoğu lisansüstü program, başvuru sahiplerinin standart test puanları ve referans mektupları sunmasını gerektirir."
+      }
+    },
+    {
+      "word": "provide",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The interviews provide a useful account of residents' experiences, but they cannot reveal how common those experiences are.",
+          "exTr": "Görüşmeler, sakinlerin deneyimlerine ilişkin yararlı bir anlatım sunuyor; ancak bu deneyimlerin ne kadar yaygın olduğunu ortaya koyamıyor."
+        },
+        {
+          "ex": "The project aims to provide rural schools with equipment that can be maintained locally without specialist assistance.",
+          "exTr": "Proje, kırsal okullara uzman yardımına ihtiyaç duyulmadan yerel olarak bakımı yapılabilecek ekipman sağlamayı amaçlıyor."
+        }
+      ],
+      "expected": {
+        "tr": "f. sağlamak, temin etmek",
+        "ex": "Forests provide essential habitats for countless species while also regulating the global climate.",
+        "exTr": "Ormanlar, küresel iklimi düzenlemenin yanı sıra sayısız tür için hayati yaşam alanları sağlar."
+      }
+    },
+    {
+      "word": "involve",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "Restoring the damaged manuscripts will involve testing several cleaning methods before any treatment is applied to the original pages.",
+          "exTr": "Hasarlı el yazmalarının onarılması, özgün sayfalara herhangi bir işlem uygulanmadan önce birkaç temizleme yönteminin denenmesini gerektirecek."
+        },
+        {
+          "ex": "The planners sought to involve local residents in decisions that would affect access to the waterfront.",
+          "exTr": "Planlamacılar, kıyıya erişimi etkileyecek kararlara yerel halkı dâhil etmeye çalıştı."
+        }
+      ],
+      "expected": {
+        "tr": "f. içermek, gerektirmek; dahil etmek",
+        "ex": "Successful conservation projects usually involve close cooperation between governments and local communities.",
+        "exTr": "Başarılı koruma projeleri, genellikle hükümetler ile yerel topluluklar arasında yakın iş birliği gerektirir."
+      }
+    },
+    {
+      "word": "contribute",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "Sharing unsuccessful results can contribute to scientific progress by helping other teams avoid repeating the same mistakes.",
+          "exTr": "Başarısız sonuçların paylaşılması, diğer ekiplerin aynı hataları tekrarlamaktan kaçınmasına yardımcı olarak bilimsel ilerlemeye katkıda bulunabilir."
+        },
+        {
+          "ex": "The report examines how inadequate transport links may contribute to differences in employment opportunities between neighbouring districts.",
+          "exTr": "Rapor, yetersiz ulaşım bağlantılarının komşu ilçeler arasındaki istihdam olanağı farklılıklarına nasıl katkıda bulunabileceğini inceliyor."
+        }
+      ],
+      "expected": {
+        "tr": "f. katkıda bulunmak",
+        "ex": "Deforestation and vehicle emissions both contribute significantly to rising carbon dioxide levels.",
+        "exTr": "Ormansızlaşma ve araç emisyonları, yükselen karbondioksit seviyelerine önemli ölçüde katkıda bulunuyor."
+      }
+    },
+    {
+      "word": "maintain",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "To maintain a consistent standard, the laboratory checks each instrument against the same reference sample before use.",
+          "exTr": "Laboratuvar, tutarlı bir standardı korumak için her cihazı kullanımdan önce aynı referans örnekle karşılaştırarak kontrol eder."
+        },
+        {
+          "ex": "The council struggled to maintain essential services after several major employers left the area and local revenue fell.",
+          "exTr": "Birkaç büyük işverenin bölgeden ayrılıp yerel gelirlerin düşmesinin ardından belediye meclisi temel hizmetleri sürdürmekte zorlandı."
+        }
+      ],
+      "expected": {
+        "tr": "f. sürdürmek, korumak",
+        "ex": "City workers must maintain the old bridge regularly to prevent structural damage over time.",
+        "exTr": "Şehir çalışanları, zamanla oluşabilecek yapısal hasarı önlemek için eski köprüyü düzenli aralıklarla iyi durumda korumalıdır."
+      }
+    },
+    {
+      "word": "maintain",
+      "sense_index": 1,
+      "alternatives": [
+        {
+          "ex": "The authors maintain that their interpretation is consistent with the evidence, despite acknowledging several gaps in the historical record.",
+          "exTr": "Yazarlar, tarihsel kayıtlarda bazı boşluklar olduğunu kabul etmelerine rağmen yorumlarının kanıtlarla tutarlı olduğunu savunuyor."
+        },
+        {
+          "ex": "Critics maintain that measuring attendance alone gives an incomplete picture of whether a training programme has been successful.",
+          "exTr": "Eleştirmenler, yalnızca katılımı ölçmenin bir eğitim programının başarılı olup olmadığına ilişkin eksik bir tablo sunduğunu savunuyor."
+        }
+      ],
+      "expected": {
+        "tr": "f. iddia etmek, savunmak",
+        "ex": "Despite criticism, the researchers maintain that their experimental results were both accurate and reproducible.",
+        "exTr": "Eleştirilere rağmen araştırmacılar, deneysel sonuçlarının hem doğru hem de tekrarlanabilir olduğunu iddia ediyor."
+      }
+    },
+    {
+      "word": "prevent",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The software checks for duplicate entries to prevent the same household from being counted more than once.",
+          "exTr": "Yazılım, aynı hanenin birden fazla kez sayılmasını önlemek için yinelenen kayıtları kontrol eder."
+        },
+        {
+          "ex": "Limited access to the original documents prevented the historian from verifying several details in the published account.",
+          "exTr": "Özgün belgelere erişimin sınırlı olması, tarihçinin yayımlanmış anlatıdaki bazı ayrıntıları doğrulamasını engelledi."
+        }
+      ],
+      "expected": {
+        "tr": "f. önlemek, engellemek",
+        "ex": "Regular handwashing remains one of the simplest ways to prevent the spread of infectious disease.",
+        "exTr": "Düzenli el yıkama, bulaşıcı hastalıkların yayılmasını önlemenin en basit yollarından biri olmaya devam ediyor."
+      }
+    },
+    {
+      "word": "assess",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The evaluation will assess whether the new service reaches the communities for which it was originally designed.",
+          "exTr": "Değerlendirme, yeni hizmetin başlangıçta hedeflediği topluluklara ulaşıp ulaşmadığını inceleyecek."
+        },
+        {
+          "ex": "Before extending the pilot scheme, the council asked an independent team to assess its costs and its effects on journey times.",
+          "exTr": "Belediye meclisi, pilot uygulamayı genişletmeden önce bağımsız bir ekipten uygulamanın maliyetlerini ve yolculuk süreleri üzerindeki etkilerini değerlendirmesini istedi."
+        }
+      ],
+      "expected": {
+        "tr": "f. değerlendirmek, tahmin etmek, belirlemek",
+        "ex": "Inspectors were sent to assess the damage caused by the flood before repairs could begin.",
+        "exTr": "Onarımlara başlanabilmesi için müfettişler, selin neden olduğu hasarı değerlendirmek üzere gönderildi."
+      }
+    },
+    {
+      "word": "ensure",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The researchers assigned anonymous codes to the recordings to ensure that names did not appear in the analysis files.",
+          "exTr": "Araştırmacılar, isimlerin analiz dosyalarında görünmemesini sağlamak için kayıtlara anonim kodlar atadı."
+        },
+        {
+          "ex": "Regular consultation is intended to ensure that changes to the programme reflect the needs of those who use it.",
+          "exTr": "Düzenli görüş alışverişinin amacı, programdaki değişikliklerin onu kullananların ihtiyaçlarını yansıtmasını sağlamaktır."
+        }
+      ],
+      "expected": {
+        "tr": "f. sağlamak, garanti etmek",
+        "ex": "Regulators introduced stricter guidelines to ensure the safety of newly approved pharmaceutical drugs.",
+        "exTr": "Düzenleyici kurumlar, yeni onaylanan ilaçların güvenliğini sağlamak için daha sıkı yönergeler getirdi."
+      }
+    },
+    {
+      "word": "determine",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The team compared accounts from several witnesses to determine where the first signs of damage had appeared.",
+          "exTr": "Ekip, hasarın ilk belirtilerinin nerede ortaya çıktığını belirlemek için birkaç tanığın anlatımını karşılaştırdı."
+        },
+        {
+          "ex": "Access to suitable storage may determine whether the museum can accept a large collection of fragile photographs.",
+          "exTr": "Uygun depolama olanaklarına erişim, müzenin hassas fotoğraflardan oluşan büyük bir koleksiyonu kabul edip edemeyeceğini belirleyebilir."
+        }
+      ],
+      "expected": {
+        "tr": "f. belirlemek, saptamak; karar vermek",
+        "ex": "Genetic factors largely determine a person's risk of developing certain chronic diseases.",
+        "exTr": "Genetik faktörler, bir kişinin belirli kronik hastalıklara yakalanma riskini büyük ölçüde belirler."
+      }
+    },
+    {
+      "word": "obtain",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The historians had to obtain permission from the owners before photographing the documents held in private collections.",
+          "exTr": "Tarihçiler, özel koleksiyonlardaki belgelerin fotoğrafını çekmeden önce sahiplerinden izin almak zorundaydı."
+        },
+        {
+          "ex": "It was difficult to obtain comparable figures because the two agencies classified part-time employment in different ways.",
+          "exTr": "İki kurum yarı zamanlı istihdamı farklı biçimlerde sınıflandırdığı için karşılaştırılabilir sayılar elde etmek zordu."
+        }
+      ],
+      "expected": {
+        "tr": "f. elde etmek, edinmek",
+        "ex": "Researchers must obtain written consent from participants before conducting any medical study.",
+        "exTr": "Araştırmacılar, herhangi bir tıbbi çalışma yürütmeden önce katılımcılardan yazılı onay almalıdır."
+      }
+    },
+    {
+      "word": "reveal",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "A comparison of successive maps may reveal changes in land use that are not mentioned in official reports.",
+          "exTr": "Birbirini izleyen haritaların karşılaştırılması, resmî raporlarda belirtilmeyen arazi kullanım değişikliklerini ortaya çıkarabilir."
+        },
+        {
+          "ex": "The interviews revealed that several participants had misunderstood the instructions, prompting the researchers to revise the questionnaire.",
+          "exTr": "Görüşmeler bazı katılımcıların yönergeleri yanlış anladığını ortaya koyunca araştırmacılar soru formunu gözden geçirdi."
+        }
+      ],
+      "expected": {
+        "tr": "f. ortaya çıkarmak, açığa vurmak",
+        "ex": "New satellite imagery has revealed the extent of deforestation across the Amazon basin.",
+        "exTr": "Yeni uydu görüntüleri, Amazon havzasındaki ormansızlaşmanın boyutunu ortaya koydu."
+      }
+    },
+    {
+      "word": "approach",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The study adopts a comparative approach to examining how different towns have responded to the loss of major industries.",
+          "exTr": "Çalışma, farklı kasabaların büyük sanayi işletmelerini kaybetmeye nasıl tepki verdiğini incelemek için karşılaştırmalı bir yaklaşım benimsiyor."
+        },
+        {
+          "ex": "An approach that works well in a large institution may need to be adapted before it can be used in a small community organisation.",
+          "exTr": "Büyük bir kurumda iyi işleyen bir yaklaşımın küçük bir toplum kuruluşunda kullanılabilmesi için uyarlanması gerekebilir."
+        }
+      ],
+      "expected": {
+        "tr": "i. yaklaşım",
+        "ex": "Researchers adopted a new approach to studying how memories form in the brain.",
+        "exTr": "Araştırmacılar, anıların beyinde nasıl oluştuğunu incelemek için yeni bir yaklaşım benimsedi."
+      }
+    },
+    {
+      "word": "account",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "Differences in access to training may account for part of the variation in performance between the two groups.",
+          "exTr": "Eğitime erişimdeki farklılıklar, iki grup arasındaki performans farkının bir bölümünü açıklayabilir."
+        },
+        {
+          "ex": "In the proposed budget, maintenance and staffing account for a larger share of total costs than the purchase of equipment.",
+          "exTr": "Önerilen bütçede bakım ve personel giderleri, toplam maliyetlerin ekipman alımından daha büyük bir bölümünü oluşturuyor."
+        }
+      ],
+      "expected": {
+        "tr": "f. (for) oluşturmak, açıklamak",
+        "ex": "Renewable sources now account for nearly a third of global electricity production.",
+        "exTr": "Yenilenebilir kaynaklar artık küresel elektrik üretiminin neredeyse üçte birini oluşturuyor."
+      }
+    },
+    {
+      "word": "issue",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The central issue is whether the benefits of the project will be shared fairly among the communities expected to fund it.",
+          "exTr": "Temel mesele, projenin yararlarının onu finanse etmesi beklenen topluluklar arasında adil biçimde paylaşılıp paylaşılmayacağıdır."
+        },
+        {
+          "ex": "By focusing on the cost of new equipment, the debate overlooked the more difficult issue of long-term maintenance.",
+          "exTr": "Tartışma, yeni ekipmanın maliyetine odaklanarak uzun vadeli bakım gibi daha zor bir meseleyi gözden kaçırdı."
+        }
+      ],
+      "expected": {
+        "tr": "i. sorun, mesele",
+        "ex": "Water scarcity has become a pressing issue for many rapidly growing cities worldwide.",
+        "exTr": "Su kıtlığı, dünya genelinde hızla büyüyen birçok kent için acil bir sorun hâline geldi."
+      }
+    },
+    {
+      "word": "range",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The proposed measures range from simple changes in opening hours to a complete redesign of the booking system.",
+          "exTr": "Önerilen önlemler, açılış saatlerindeki basit değişikliklerden rezervasyon sisteminin tamamen yeniden tasarlanmasına kadar uzanıyor."
+        },
+        {
+          "ex": "Depending on the condition of the documents, restoration times can range from a few days to several months.",
+          "exTr": "Belgelerin durumuna bağlı olarak onarım süreleri birkaç günden birkaç aya kadar değişebilir."
+        }
+      ],
+      "expected": {
+        "tr": "f. değişmek, uzanmak",
+        "ex": "Symptoms of the disorder range from mild fatigue to severe muscle weakness.",
+        "exTr": "Rahatsızlığın belirtileri, hafif yorgunluktan şiddetli kas güçsüzlüğüne kadar değişir."
+      }
+    },
+    {
+      "word": "significant",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The survey identified a significant gap between the services residents requested and those the council planned to provide.",
+          "exTr": "Anket, sakinlerin talep ettiği hizmetlerle belediye meclisinin sunmayı planladığı hizmetler arasında önemli bir fark belirledi."
+        },
+        {
+          "ex": "Although the difference was statistically significant, the authors questioned whether it was large enough to matter in practice.",
+          "exTr": "Fark istatistiksel olarak anlamlı olsa da yazarlar bunun uygulamada önem taşıyacak kadar büyük olup olmadığını sorguladı."
+        }
+      ],
+      "expected": {
+        "tr": "s. önemli, kayda değer; anlamlı",
+        "ex": "The study revealed a significant correlation between sleep quality and academic performance among university students.",
+        "exTr": "Çalışma, üniversite öğrencilerinde uyku kalitesi ile akademik başarı arasında önemli bir ilişki ortaya koydu."
+      }
+    },
+    {
+      "word": "sufficient",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "A large number of responses is not sufficient for a reliable survey if most respondents come from the same small group.",
+          "exTr": "Yanıt verenlerin çoğu aynı küçük gruptan geliyorsa çok sayıda yanıt alınması güvenilir bir anket için yeterli değildir."
+        },
+        {
+          "ex": "The grant provided sufficient funding to catalogue the collection, but not to restore the most seriously damaged items.",
+          "exTr": "Hibe, koleksiyonu kataloglamak için yeterli kaynak sağladı; ancak en ağır hasarlı parçaların onarılması için yeterli değildi."
+        }
+      ],
+      "expected": {
+        "tr": "s. yeterli",
+        "ex": "Researchers are not yet convinced that the evidence is sufficient to confirm the theory.",
+        "exTr": "Araştırmacılar, kanıtların teoriyi doğrulamaya yeterli olduğuna henüz ikna olmuş değil."
+      }
+    },
+    {
+      "word": "consistent",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The account given by the second witness was consistent with the sequence of events recorded by the monitoring system.",
+          "exTr": "İkinci tanığın anlatımı, izleme sisteminin kaydettiği olay sırasıyla tutarlıydı."
+        },
+        {
+          "ex": "Using consistent definitions across all departments made it easier to compare the results of successive surveys.",
+          "exTr": "Bütün bölümlerde tutarlı tanımlar kullanılması, birbirini izleyen anketlerin sonuçlarının karşılaştırılmasını kolaylaştırdı."
+        }
+      ],
+      "expected": {
+        "tr": "s. tutarlı, uyumlu; istikrarlı",
+        "ex": "Across all three independent laboratories, the results of the experiment remained remarkably consistent.",
+        "exTr": "Üç bağımsız laboratuvarın tamamında, deneyin sonuçları dikkat çekici derecede tutarlı kaldı."
+      }
+    },
+    {
+      "word": "available",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "Although the collection has been digitised, only a small proportion of the images is currently available to the public.",
+          "exTr": "Koleksiyon dijitalleştirilmiş olsa da görüntülerin yalnızca küçük bir bölümü şu anda halkın erişimine açıktır."
+        },
+        {
+          "ex": "The committee postponed its decision until more detailed information about the site's drainage became available.",
+          "exTr": "Komite, alanın drenajına ilişkin daha ayrıntılı bilgiler elde edilene kadar kararını erteledi."
+        }
+      ],
+      "expected": {
+        "tr": "s. mevcut, erişilebilir; müsait",
+        "ex": "Clean drinking water is still not available to millions of people in rural areas.",
+        "exTr": "Temiz içme suyu, kırsal bölgelerde yaşayan milyonlarca insan için hâlâ erişilebilir değil."
+      }
+    },
+    {
+      "word": "despite",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "Despite the availability of detailed maps, the expedition encountered several routes that had become impassable after recent storms.",
+          "exTr": "Ayrıntılı haritalar bulunmasına rağmen keşif ekibi, son fırtınalardan sonra geçilemez hâle gelen birkaç güzergâhla karşılaştı."
+        },
+        {
+          "ex": "The revised system remained difficult to use despite having been tested by experienced staff before its introduction.",
+          "exTr": "Gözden geçirilmiş sistem, kullanıma sunulmadan önce deneyimli personel tarafından test edilmiş olmasına rağmen kullanım açısından zor olmaya devam etti."
+        }
+      ],
+      "expected": {
+        "tr": "e. -e rağmen, karşın",
+        "ex": "The research team continued its fieldwork despite facing severe budget cuts and delays.",
+        "exTr": "Araştırma ekibi, ciddi bütçe kesintileri ve gecikmelerle karşılaşmasına rağmen saha çalışmasını sürdürdü."
+      }
+    },
+    {
+      "word": "whereas",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The first survey measured how often residents travelled, whereas the second examined why they chose particular forms of transport.",
+          "exTr": "İlk anket sakinlerin ne sıklıkla yolculuk ettiğini ölçerken ikincisi neden belirli ulaşım türlerini seçtiklerini inceledi."
+        },
+        {
+          "ex": "Whereas a summary presents the main findings, a full report should explain how those findings were obtained and what limitations remain.",
+          "exTr": "Bir özet temel bulguları sunarken tam bir rapor, bu bulguların nasıl elde edildiğini ve hangi sınırlılıkların sürdüğünü açıklamalıdır."
+        }
+      ],
+      "expected": {
+        "tr": "e. oysa, -e karşın, halbuki",
+        "ex": "Northern forests store carbon mainly in soil, whereas tropical forests hold most of it in biomass.",
+        "exTr": "Kuzey ormanları karbonu esas olarak toprakta depolarken, tropik ormanlar bunun çoğunu biyokütlede tutar."
+      }
+    },
+    {
+      "word": "although",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "Although the new catalogue made the collection easier to search, many entries still lacked information about the origin of individual objects.",
+          "exTr": "Yeni katalog koleksiyonda arama yapmayı kolaylaştırmış olsa da birçok kayıtta tek tek nesnelerin kökenine ilişkin bilgi hâlâ eksikti."
+        },
+        {
+          "ex": "The two teams reached similar conclusions, although they had collected their data using substantially different methods.",
+          "exTr": "İki ekip, verilerini büyük ölçüde farklı yöntemlerle toplamış olmasına rağmen benzer sonuçlara ulaştı."
+        }
+      ],
+      "expected": {
+        "tr": "e. -e rağmen, her ne kadar",
+        "ex": "Although the treatment showed promise in early trials, its long-term effects remain largely unknown.",
+        "exTr": "Tedavi erken denemelerde umut vaat etmiş olsa da uzun vadeli etkileri büyük ölçüde bilinmemektedir."
+      }
+    },
+    {
+      "word": "however",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The pilot programme attracted considerable interest; however, its organisers had not secured enough funding to continue it for another year.",
+          "exTr": "Pilot program büyük ilgi gördü; ancak düzenleyiciler programı bir yıl daha sürdürmek için yeterli finansman sağlayamamıştı."
+        },
+        {
+          "ex": "Most respondents supported the proposed changes. Their comments, however, revealed concerns about how the new system would work in practice.",
+          "exTr": "Yanıt verenlerin çoğu önerilen değişiklikleri destekledi. Ancak yorumları, yeni sistemin uygulamada nasıl işleyeceğine ilişkin kaygıları ortaya koydu."
+        }
+      ],
+      "expected": {
+        "tr": "z. ancak, bununla birlikte",
+        "ex": "The new drug reduced symptoms quickly; recovery time, however, varied significantly among patients.",
+        "exTr": "Yeni ilaç, belirtileri hızla azalttı; ancak iyileşme süresi hastalar arasında önemli ölçüde farklılık gösterdi."
+      }
+    },
+    {
+      "word": "therefore",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "Several measurements were taken with a faulty instrument; the affected results were therefore excluded from the final analysis.",
+          "exTr": "Bazı ölçümler arızalı bir cihazla yapıldığı için bu durumdan etkilenen sonuçlar nihai analizden çıkarıldı."
+        },
+        {
+          "ex": "The original records do not distinguish temporary workers from permanent staff; therefore, the employment figures must be interpreted with caution.",
+          "exTr": "Özgün kayıtlar geçici çalışanlarla kadrolu personeli ayırmıyor; bu nedenle istihdam sayıları ihtiyatla yorumlanmalıdır."
+        }
+      ],
+      "expected": {
+        "tr": "z. bu nedenle, dolayısıyla",
+        "ex": "The sample size was too small; therefore, the researchers could not draw reliable conclusions.",
+        "exTr": "Örneklem büyüklüğü çok küçüktü; bu nedenle araştırmacılar güvenilir sonuçlar çıkaramadı."
+      }
+    },
+    {
+      "word": "toast",
+      "sense_index": 1,
+      "alternatives": [
+        {
+          "ex": "At the anniversary dinner, the chair proposed a toast to the volunteers whose work had enabled the museum to remain open.",
+          "exTr": "Yıl dönümü yemeğinde başkan, çalışmaları sayesinde müzenin açık kalabildiği gönüllülerin şerefine kadeh kaldırılmasını önerdi."
+        }
+      ],
+      "expected": {
+        "tr": "i. kadeh kaldırma, şerefe; f. şerefine kadeh kaldırmak",
+        "ex": "At the wedding reception, the best man raised his glass and offered a heartfelt toast to the couple.",
+        "exTr": "Düğünde gelinin babası, çiftin şerefine içten bir kadeh kaldırdı."
+      }
+    },
+    {
+      "word": "moist",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The conservators monitored the display case carefully to ensure that the fragile documents were not exposed to excessively moist air.",
+          "exTr": "Konservatörler, hassas belgelerin aşırı nemli havaya maruz kalmamasını sağlamak için sergileme kutusunu dikkatle izledi."
+        }
+      ],
+      "expected": {
+        "tr": "s. nemli",
+        "ex": "Gardeners recommend keeping the soil moist but never waterlogged during the seedling's first few weeks.",
+        "exTr": "Bahçıvan, toprağı nemli tutmayı ama asla suya doymuş hâlde bırakmamayı öğütledi."
+      }
+    },
+    {
+      "word": "please",
+      "sense_index": 1,
+      "alternatives": [
+        {
+          "ex": "\"Please indicate whether you have used the service before,\" the interviewer said, pointing to the first section of the questionnaire.",
+          "exTr": "Görüşmeci, soru formunun ilk bölümünü işaret ederek \"Lütfen bu hizmeti daha önce kullanıp kullanmadığınızı belirtin,\" dedi."
+        }
+      ],
+      "expected": {
+        "tr": "z. lütfen",
+        "ex": "\"Please remember to submit your application before the final deadline on Friday,\" the coordinator reminded everyone.",
+        "exTr": "Koordinatör herkese, \"Lütfen son teslim tarihinden önce başvurunuzu göndermeyi unutmayın,\" diye hatırlattı."
+      }
+    },
+    {
+      "word": "drift",
+      "sense_index": 1,
+      "alternatives": [
+        {
+          "ex": "The gradual drift towards online services raised questions about how residents without internet access would obtain essential information.",
+          "exTr": "Çevrim içi hizmetlere doğru yaşanan kademeli yöneliş, internet erişimi olmayan sakinlerin temel bilgilere nasıl ulaşacağı konusunda sorular doğurdu."
+        }
+      ],
+      "expected": {
+        "tr": "i. genel eğilim, gidişat",
+        "ex": "Despite the technical jargon, the drift of her argument was clear to everyone in the room.",
+        "exTr": "Teknik terimlere rağmen, savının genel eğilimi odadaki herkes için açıktı."
+      }
+    },
+    {
+      "word": "conjunction",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The new exhibition was developed in conjunction with local schools, allowing pupils to contribute their own accounts of the neighbourhood's history.",
+          "exTr": "Yeni sergi yerel okullarla birlikte geliştirildi ve öğrencilerin mahallenin tarihine ilişkin kendi anlatılarıyla katkıda bulunmasına olanak tanıdı."
+        }
+      ],
+      "expected": {
+        "tr": "i. birleşme, bir arada olma, birlikte kullanım",
+        "ex": "The new vaccine proves most effective when it is administered in conjunction with a course of antiviral drugs prescribed by a specialist.",
+        "exTr": "Yeni aşı, en yüksek etkiyi bir uzmanın reçete ettiği antiviral ilaç kürüyle birlikte uygulandığında göstermektedir."
+      }
+    },
+    {
+      "word": "certainly",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "Digitising the archive will certainly change how researchers access its records, though the scale of that change is difficult to predict.",
+          "exTr": "Arşivin dijitalleştirilmesi, bu değişimin boyutunu öngörmek zor olsa da araştırmacıların kayıtlara erişme biçimini kesinlikle değiştirecektir."
+        }
+      ],
+      "expected": {
+        "tr": "z. kesinlikle, elbette",
+        "ex": "Regular exercise will certainly reduce the risk of developing several chronic diseases.",
+        "exTr": "Düzenli egzersiz, birçok kronik hastalığa yakalanma riskini kesinlikle azaltacaktır."
+      }
+    },
+    {
+      "word": "stainless",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "Before purchasing the stainless steel shelving, the archive checked whether its weight could be supported by the building's existing floors.",
+          "exTr": "Arşiv, paslanmaz çelik rafları satın almadan önce binanın mevcut döşemelerinin rafların ağırlığını taşıyıp taşıyamayacağını kontrol etti."
+        }
+      ],
+      "expected": {
+        "tr": "s. paslanmaz; lekesiz",
+        "ex": "Surgical instruments are manufactured from stainless steel so that repeated sterilization at high temperatures never causes them to corrode.",
+        "exTr": "Cerrahi aletler, yüksek sıcaklıkta tekrarlanan sterilizasyonun asla paslanmalarına yol açmaması için paslanmaz çelikten üretilir."
+      }
+    },
+    {
+      "word": "rowing",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The research project compares the coordination required in rowing with that observed in other activities performed by small teams.",
+          "exTr": "Araştırma projesi, kürek çekmede gereken koordinasyonu küçük ekiplerin gerçekleştirdiği diğer etkinliklerde gözlenen koordinasyonla karşılaştırıyor."
+        }
+      ],
+      "expected": {
+        "tr": "i. kürek çekme; kürek sporu",
+        "ex": "The Greeks brought the art of rowing to a level of perfection that has never been surpassed.",
+        "exTr": "Yunanlar kürek çekme sanatını daha önce hiç aşılmamış bir mükemmellik düzeyine taşıdı."
+      }
+    },
+    {
+      "word": "precede",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "Consultation with residents will precede the publication of the final plan, giving the council time to respond to local concerns.",
+          "exTr": "Nihai plan yayımlanmadan önce sakinlerle görüş alışverişinde bulunulacak; böylece belediye meclisinin yerel kaygılara yanıt vermek için zamanı olacak."
+        }
+      ],
+      "expected": {
+        "tr": "f. önce gelmek, öncesinde olmak",
+        "ex": "A brief tremor often precedes a much larger earthquake, though not always predictably.",
+        "exTr": "Kısa bir sarsıntı genellikle daha büyük bir depremden önce gelir, ancak bu her zaman öngörülebilir değildir."
+      }
+    },
+    {
+      "word": "honey",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The researchers compared labels on imported honey to examine how clearly producers described the geographical origin of their products.",
+          "exTr": "Araştırmacılar, üreticilerin ürünlerinin coğrafi kökenini ne kadar açık belirttiğini incelemek için ithal balların etiketlerini karşılaştırdı."
+        }
+      ],
+      "expected": {
+        "tr": "i. bal",
+        "ex": "Producing a single jar of honey requires bees to visit millions of flowers, which explains why beekeeping has always been labour-intensive.",
+        "exTr": "Tek bir kavanoz bal üretmek, arıların milyonlarca çiçeği ziyaret etmesini gerektirir; bu da arıcılığın neden her zaman yoğun emek istediğini açıklar."
+      }
+    },
+    {
+      "word": "lethal",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The simulation was designed to examine how workers respond to warnings about a potentially lethal hazard without exposing them to actual danger.",
+          "exTr": "Benzetim, çalışanları gerçek tehlikeye maruz bırakmadan onların ölümcül olabilecek bir tehlikeye ilişkin uyarılara nasıl tepki verdiğini incelemek amacıyla tasarlandı."
+        }
+      ],
+      "expected": {
+        "tr": "s. öldürücü, ölümcül",
+        "ex": "Even a small dose of the venom can prove lethal to an animal several times its size.",
+        "exTr": "Zehirin küçük bir dozu bile, kendisinden birkaç kat büyük bir hayvan için ölümcül olabilir."
+      }
+    },
+    {
+      "word": "real",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The designers tested the equipment in real working conditions rather than assuming that laboratory results would apply equally well in the field.",
+          "exTr": "Tasarımcılar, laboratuvar sonuçlarının sahada da aynı ölçüde geçerli olacağını varsaymak yerine ekipmanı gerçek çalışma koşullarında test etti."
+        }
+      ],
+      "expected": {
+        "tr": "s. gerçek, hakiki",
+        "ex": "Virtual experiments can never fully replace real laboratory work in science education.",
+        "exTr": "Sanal deneyler, fen eğitiminde gerçek laboratuvar çalışmasının yerini asla tam anlamıyla tutamaz."
+      }
+    },
+    {
+      "word": "practicality",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The proposal's apparent simplicity concealed questions about its practicality, particularly in districts with limited access to trained staff.",
+          "exTr": "Önerinin görünürdeki basitliği, özellikle eğitimli personele erişimin sınırlı olduğu ilçelerde uygulanabilirliğine ilişkin soruları gizliyordu."
+        }
+      ],
+      "expected": {
+        "tr": "i. kullanışlılık, pratiklik, uygulanabilirlik",
+        "ex": "Engineers must balance elegance with practicality, since a design that cannot be manufactured cheaply will never reach ordinary consumers.",
+        "exTr": "Mühendisler zarafetle kullanışlılığı dengelemek zorundadır; çünkü ucuza üretilemeyen bir tasarım sıradan tüketicilere hiçbir zaman ulaşmaz."
+      }
+    },
+    {
+      "word": "stare",
+      "sense_index": 1,
+      "alternatives": [
+        {
+          "ex": "The observer noted that a prolonged stare from the interviewer sometimes made participants hesitate before answering otherwise straightforward questions.",
+          "exTr": "Gözlemci, görüşmecinin uzun süre dik bakmasının katılımcıları normalde basit olan soruları yanıtlamadan önce bazen tereddüde düşürdüğünü kaydetti."
+        }
+      ],
+      "expected": {
+        "tr": "i. dik bakış",
+        "ex": "His cold stare made everyone in the waiting room feel uneasy and silent.",
+        "exTr": "Onun soğuk dik bakışı, bekleme odasındaki herkesi tedirgin ve sessiz hissettirdi."
+      }
+    },
+    {
+      "word": "infer",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "It is difficult to infer the preferences of an entire community from interviews with only its most active members.",
+          "exTr": "Yalnızca en etkin üyeleriyle yapılan görüşmelerden hareketle bir topluluğun tamamının tercihleri hakkında çıkarım yapmak zordur."
+        },
+        {
+          "ex": "From the distribution of imported pottery, archaeologists inferred that the settlement had maintained contact with several distant trading centres.",
+          "exTr": "Arkeologlar, ithal çanak çömleğin dağılımından yerleşimin uzaktaki birkaç ticaret merkeziyle bağlantısını sürdürdüğü sonucunu çıkardı."
+        }
+      ],
+      "expected": {
+        "tr": "f. çıkarım yapmak, sonuç çıkarmak",
+        "ex": "From the fossil record, scientists can infer how climate shaped early human migration.",
+        "exTr": "Bilim insanları, fosil kayıtlarından iklimin erken insan göçünü nasıl şekillendirdiğine dair çıkarım yapabilir."
+      }
+    },
+    {
+      "word": "imply",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "An increase in energy efficiency does not necessarily imply a reduction in total consumption if the equipment is used more frequently.",
+          "exTr": "Ekipman daha sık kullanılıyorsa enerji verimliliğindeki bir artış, toplam tüketimde mutlaka bir azalma olacağı anlamına gelmez."
+        },
+        {
+          "ex": "The report's cautious wording seems to imply that the authors were less confident than the headline suggests.",
+          "exTr": "Raporun ihtiyatlı ifadeleri, yazarların başlığın düşündürdüğünden daha az emin olduğunu ima ediyor gibi görünüyor."
+        }
+      ],
+      "expected": {
+        "tr": "f. ima etmek; gerektirmek, göstermek",
+        "ex": "A rising number of hospital admissions may imply that the new virus is spreading faster than expected.",
+        "exTr": "Artan hastane başvuru sayısı, yeni virüsün beklenenden daha hızlı yayıldığını gösteriyor olabilir."
+      }
+    },
+    {
+      "word": "plausible",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The explanation is plausible, but it cannot be accepted without evidence that rules out the main competing accounts.",
+          "exTr": "Açıklama akla yatkındır; ancak başlıca rakip açıklamaları dışlayan kanıtlar olmadan kabul edilemez."
+        },
+        {
+          "ex": "Variation in soil quality offers a plausible explanation for why neighbouring fields produced different yields under the same rainfall conditions.",
+          "exTr": "Toprak kalitesindeki farklılık, aynı yağış koşullarında komşu tarlaların neden farklı verimler sağladığına ilişkin akla yatkın bir açıklama sunuyor."
+        }
+      ],
+      "expected": {
+        "tr": "s. akla yatkın, inandırıcı, mantıklı görünen",
+        "ex": "Scientists proposed a plausible explanation for the sudden decline in the bee population.",
+        "exTr": "Bilim insanları, arı popülasyonundaki ani düşüşe akla yatkın bir açıklama önerdi."
+      }
+    },
+    {
+      "word": "mitigate",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The organisers introduced flexible arrival times to mitigate the disruption caused by repairs to the station's main entrance.",
+          "exTr": "Düzenleyiciler, istasyonun ana girişindeki onarımların neden olduğu aksaklığı azaltmak için esnek varış saatleri uygulamaya koydu."
+        },
+        {
+          "ex": "Restoring damaged wetlands is one of the measures the regional plan proposes to mitigate the effects of seasonal flooding.",
+          "exTr": "Zarar görmüş sulak alanların onarılması, bölgesel planın mevsimsel taşkınların etkilerini hafifletmek için önerdiği önlemlerden biridir."
+        }
+      ],
+      "expected": {
+        "tr": "f. hafifletmek, azaltmak, yatıştırmak",
+        "ex": "Governments are investing in flood barriers to mitigate the damage caused by rising river levels.",
+        "exTr": "Hükümetler, nehir seviyelerinin yükselmesinden kaynaklanan zararı azaltmak için taşkın bariyerlerine yatırım yapıyor."
+      }
+    },
+    {
+      "word": "substantial",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The revised estimate included a substantial increase in maintenance costs that had been overlooked in the original proposal.",
+          "exTr": "Gözden geçirilmiş tahmin, ilk öneride gözden kaçırılmış olan bakım maliyetlerindeki önemli bir artışı içeriyordu."
+        },
+        {
+          "ex": "Although the collection is incomplete, it contains a substantial amount of information about working conditions in the early factory system.",
+          "exTr": "Koleksiyon eksik olsa da erken dönem fabrika sistemindeki çalışma koşullarına ilişkin önemli miktarda bilgi içeriyor."
+        }
+      ],
+      "expected": {
+        "tr": "s. önemli, hatırı sayılır, esaslı",
+        "ex": "The study found a substantial difference in recovery rates between the two treatment groups.",
+        "exTr": "Çalışma, iki tedavi grubu arasında iyileşme oranlarında önemli bir fark olduğunu ortaya koydu."
+      }
+    },
+    {
+      "word": "constrain",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "A shortage of suitable storage space may constrain the museum's ability to accept further donations, however valuable they are.",
+          "exTr": "Uygun depolama alanının yetersizliği, ne kadar değerli olurlarsa olsunlar müzenin yeni bağışları kabul etme kapasitesini kısıtlayabilir."
+        },
+        {
+          "ex": "The investigators were constrained by the absence of records showing how the equipment had been maintained before the accident.",
+          "exTr": "Ekipmanın kazadan önce bakımının nasıl yapıldığını gösteren kayıtların yokluğu, araştırmacıların çalışmalarını sınırladı."
+        }
+      ],
+      "expected": {
+        "tr": "f. kısıtlamak, sınırlamak",
+        "ex": "Limited funding continues to constrain the scope of climate research in many universities.",
+        "exTr": "Kısıtlı finansman, birçok üniversitede iklim araştırmalarının kapsamını sınırlamaya devam ediyor."
+      }
+    },
+    {
+      "word": "attribute",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "It would be premature to attribute the improvement entirely to the new policy before considering changes in the local economy.",
+          "exTr": "Yerel ekonomideki değişiklikleri değerlendirmeden iyileşmeyi bütünüyle yeni politikaya bağlamak için henüz erkendir."
+        },
+        {
+          "ex": "The unusual pattern was initially attributed to measurement error, but repeated observations suggested that another explanation was needed.",
+          "exTr": "Olağandışı örüntü başlangıçta ölçüm hatasına bağlandı; ancak tekrarlanan gözlemler başka bir açıklamaya ihtiyaç olduğunu düşündürdü."
+        }
+      ],
+      "expected": {
+        "tr": "f. atfetmek, bağlamak",
+        "ex": "Historians attribute the empire's rapid decline to economic mismanagement and constant warfare.",
+        "exTr": "Tarihçiler, imparatorluğun hızlı çöküşünü ekonomik kötü yönetime ve bitmeyen savaşlara bağlıyor."
+      }
+    },
+    {
+      "word": "derive",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The researchers derived their estimates from household surveys rather than relying solely on figures supplied by employers.",
+          "exTr": "Araştırmacılar, yalnızca işverenlerin sağladığı sayılara dayanmak yerine tahminlerini hanehalkı anketlerinden elde etti."
+        },
+        {
+          "ex": "Much of the device's energy derives from a small solar panel, while a battery supplies power when sunlight is unavailable.",
+          "exTr": "Cihazın enerjisinin büyük bölümü küçük bir güneş panelinden elde edilirken güneş ışığı olmadığında güç bir bataryadan sağlanır."
+        }
+      ],
+      "expected": {
+        "tr": "f. elde etmek, türetmek, kaynaklanmak",
+        "ex": "Many modern medicines derive their active ingredients from compounds found in tropical plants.",
+        "exTr": "Pek çok modern ilaç, etken maddelerini tropikal bitkilerde bulunan bileşiklerden elde eder."
+      }
+    },
+    {
+      "word": "distinguish",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The questionnaire was revised to distinguish between people who could not access the service and those who chose not to use it.",
+          "exTr": "Soru formu, hizmete erişemeyen kişilerle onu kullanmamayı seçen kişileri ayırt etmek için yeniden düzenlendi."
+        },
+        {
+          "ex": "Without detailed records, it can be difficult to distinguish damage caused by poor maintenance from ordinary wear over time.",
+          "exTr": "Ayrıntılı kayıtlar olmadan yetersiz bakımın neden olduğu hasarı zamanla oluşan olağan aşınmadan ayırt etmek zor olabilir."
+        }
+      ],
+      "expected": {
+        "tr": "f. ayırt etmek, ayırmak, fark gözetmek",
+        "ex": "Young infants can distinguish their mother's voice from other voices within the first few days of life.",
+        "exTr": "Küçük bebekler, yaşamlarının ilk birkaç gününde annelerinin sesini diğer seslerden ayırt edebilir."
+      }
+    },
+    {
+      "word": "enhance",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "Publishing the methods alongside the results can enhance the value of a study by allowing others to assess its limitations.",
+          "exTr": "Yöntemlerin sonuçlarla birlikte yayımlanması, başkalarının çalışmanın sınırlılıklarını değerlendirmesine olanak tanıyarak çalışmanın değerini artırabilir."
+        },
+        {
+          "ex": "The restoration was intended to enhance public access to the building while preserving the features that gave it historical significance.",
+          "exTr": "Restorasyon, binaya tarihsel önem kazandıran özellikleri korurken halkın binaya erişimini iyileştirmeyi amaçlıyordu."
+        }
+      ],
+      "expected": {
+        "tr": "f. artırmak, geliştirmek, iyileştirmek",
+        "ex": "Regular exercise has been shown to enhance memory and cognitive function in older adults.",
+        "exTr": "Düzenli egzersizin, yaşlı yetişkinlerde bellek ve bilişsel işlevi geliştirdiği gösterilmiştir."
+      }
+    },
+    {
+      "word": "facilitate",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "A shared system of reference codes would facilitate the comparison of records held by different regional archives.",
+          "exTr": "Ortak bir referans kodu sistemi, farklı bölgesel arşivlerde tutulan kayıtların karşılaştırılmasını kolaylaştırırdı."
+        },
+        {
+          "ex": "The mediator arranged a series of informal meetings to facilitate discussion before the two sides began formal negotiations.",
+          "exTr": "Arabulucu, iki taraf resmî müzakerelere başlamadan önce görüş alışverişini kolaylaştırmak amacıyla bir dizi gayriresmî toplantı düzenledi."
+        }
+      ],
+      "expected": {
+        "tr": "f. kolaylaştırmak",
+        "ex": "New software tools can facilitate collaboration among researchers working in different countries.",
+        "exTr": "Yeni yazılım araçları, farklı ülkelerde çalışan araştırmacılar arasındaki iş birliğini kolaylaştırabilir."
+      }
+    },
+    {
+      "word": "sustain",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "Short-term grants helped launch the project, but a more stable source of income was needed to sustain it.",
+          "exTr": "Kısa süreli hibeler projenin başlatılmasına yardımcı oldu; ancak projeyi sürdürmek için daha istikrarlı bir gelir kaynağına ihtiyaç vardı."
+        },
+        {
+          "ex": "The farmer questioned whether the soil could sustain another season of intensive cultivation without a period of recovery.",
+          "exTr": "Çiftçi, toprağın bir toparlanma dönemi geçirmeden bir sezon daha yoğun tarımı destekleyip destekleyemeyeceğini sorguladı."
+        }
+      ],
+      "expected": {
+        "tr": "f. sürdürmek, devam ettirmek; desteklemek",
+        "ex": "Coral reefs sustain an extraordinary variety of marine life despite covering less than one percent of the ocean floor.",
+        "exTr": "Mercan resifleri, okyanus tabanının yüzde birinden azını kaplamalarına karşın olağanüstü çeşitlilikte deniz canlısını yaşatır."
+      }
+    },
+    {
+      "word": "undermine",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "Failing to explain how the figures were calculated could undermine confidence in an otherwise carefully prepared report.",
+          "exTr": "Sayıların nasıl hesaplandığının açıklanmaması, diğer yönleriyle özenle hazırlanmış bir rapora duyulan güveni zayıflatabilir."
+        },
+        {
+          "ex": "The spread of unverified claims undermined the campaign's efforts to encourage a careful assessment of competing energy technologies.",
+          "exTr": "Doğrulanmamış iddiaların yayılması, kampanyanın rakip enerji teknolojilerinin dikkatle değerlendirilmesini teşvik etme çabalarını baltaladı."
+        }
+      ],
+      "expected": {
+        "tr": "f. zayıflatmak, baltalamak",
+        "ex": "Corruption scandals can seriously undermine public trust in government institutions.",
+        "exTr": "Yolsuzluk skandalları, halkın devlet kurumlarına olan güvenini ciddi şekilde zayıflatabilir."
+      }
+    },
+    {
+      "word": "allocate",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The committee agreed to allocate more time to applications from districts that had received little support in previous years.",
+          "exTr": "Komite, önceki yıllarda az destek alan ilçelerden gelen başvurulara daha fazla zaman ayırmayı kabul etti."
+        },
+        {
+          "ex": "Before allocating funds to new buildings, the university assessed whether existing facilities could be adapted at a lower cost.",
+          "exTr": "Üniversite, yeni binalara kaynak ayırmadan önce mevcut tesislerin daha düşük bir maliyetle uyarlanıp uyarlanamayacağını değerlendirdi."
+        }
+      ],
+      "expected": {
+        "tr": "f. tahsis etmek, ayırmak",
+        "ex": "The city plans to allocate additional funds toward improving public transportation next year.",
+        "exTr": "Belediye, gelecek yıl toplu taşımayı iyileştirmek için ek kaynak ayırmayı planlıyor."
+      }
+    },
+    {
+      "word": "implement",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The agency plans to implement the revised procedure gradually so that unexpected problems can be identified before it is adopted nationwide.",
+          "exTr": "Kurum, ülke genelinde benimsenmeden önce beklenmedik sorunların belirlenebilmesi için gözden geçirilmiş yöntemi aşamalı olarak uygulamayı planlıyor."
+        },
+        {
+          "ex": "Even a well-designed policy may fail if the organisations expected to implement it lack adequate staff and training.",
+          "exTr": "Uygulaması beklenen kuruluşlar yeterli personele ve eğitime sahip değilse iyi tasarlanmış bir politika bile başarısız olabilir."
+        }
+      ],
+      "expected": {
+        "tr": "f. uygulamak, yürürlüğe koymak",
+        "ex": "The school decided to implement a new policy limiting phone use during class.",
+        "exTr": "Okul, ders sırasında telefon kullanımını sınırlayan yeni bir politikayı uygulamaya karar verdi."
+      }
+    },
+    {
+      "word": "justify",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The available evidence does not justify abandoning the programme, but it does support a closer examination of its costs.",
+          "exTr": "Mevcut kanıtlar programdan vazgeçilmesini haklı çıkarmıyor; ancak maliyetlerinin daha yakından incelenmesini destekliyor."
+        },
+        {
+          "ex": "The authors were asked to justify their decision to exclude participants who had completed only part of the questionnaire.",
+          "exTr": "Yazarlardan, soru formunun yalnızca bir bölümünü tamamlayan katılımcıları dışarıda bırakma kararlarını gerekçelendirmeleri istendi."
+        }
+      ],
+      "expected": {
+        "tr": "haklı çıkarmak, gerekçelendirmek",
+        "ex": "Officials struggled to justify the enormous cost of the new stadium to taxpayers.",
+        "exTr": "Yetkililer, yeni stadyumun muazzam maliyetini vergi mükelleflerine gerekçelendirmekte zorlandı."
+      }
+    },
+    {
+      "word": "demonstrate",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The pilot study demonstrated how the method could be adapted for use in small laboratories with limited equipment.",
+          "exTr": "Pilot çalışma, yöntemin sınırlı ekipmana sahip küçük laboratuvarlarda kullanılmak üzere nasıl uyarlanabileceğini gösterdi."
+        },
+        {
+          "ex": "A rise in attendance may demonstrate increased interest, but it does not establish that participants have acquired new skills.",
+          "exTr": "Katılımın artması ilginin yükseldiğini gösterebilir; ancak katılımcıların yeni beceriler edindiğini ortaya koymaz."
+        }
+      ],
+      "expected": {
+        "tr": "f. göstermek, kanıtlamak",
+        "ex": "The experiment was designed to demonstrate how temperature affects the speed of chemical reactions.",
+        "exTr": "Deney, sıcaklığın kimyasal reaksiyonların hızını nasıl etkilediğini göstermek amacıyla tasarlandı."
+      }
+    },
+    {
+      "word": "evaluate",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "To evaluate the scheme fairly, the reviewers compared its outcomes with those of similar projects operating under different funding arrangements.",
+          "exTr": "Değerlendirmeyi yapanlar, uygulamayı adil biçimde değerlendirmek için sonuçlarını farklı finansman düzenlemeleriyle yürütülen benzer projelerin sonuçlarıyla karşılaştırdı."
+        },
+        {
+          "ex": "The students were asked to evaluate the strength of each argument rather than select the position with which they already agreed.",
+          "exTr": "Öğrencilerden, zaten katıldıkları görüşü seçmek yerine her savın gücünü değerlendirmeleri istendi."
+        }
+      ],
+      "expected": {
+        "tr": "f. değerlendirmek, ölçmek",
+        "ex": "Teachers regularly evaluate student progress through assignments, projects, and classroom observations.",
+        "exTr": "Öğretmenler; ödevler, projeler ve sınıf içi gözlemler yoluyla öğrenci gelişimini düzenli olarak değerlendirir."
+      }
+    },
+    {
+      "word": "exclude",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "A survey conducted entirely online may exclude residents who have limited access to reliable internet connections.",
+          "exTr": "Tamamen çevrim içi yürütülen bir anket, güvenilir internet bağlantılarına erişimi sınırlı olan sakinleri dışarıda bırakabilir."
+        },
+        {
+          "ex": "Although the findings weaken the original hypothesis, they do not exclude the possibility that several processes were operating simultaneously.",
+          "exTr": "Bulgular ilk hipotezi zayıflatsa da aynı anda birkaç sürecin işliyor olma olasılığını dışlamıyor."
+        }
+      ],
+      "expected": {
+        "tr": "hariç tutmak, dışlamak",
+        "ex": "Researchers decided to exclude incomplete responses from the final analysis of the survey.",
+        "exTr": "Araştırmacılar, eksik yanıtları anketin nihai analizinden hariç tutmaya karar verdi."
+      }
+    },
+    {
+      "word": "retain",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The editors shortened the report but tried to retain the qualifications that were essential to interpreting its conclusions accurately.",
+          "exTr": "Editörler raporu kısalttı; ancak sonuçların doğru yorumlanması için gerekli olan sınırlayıcı açıklamaları korumaya çalıştı."
+        },
+        {
+          "ex": "The new packaging was designed to retain moisture during transport without making the fruit difficult to inspect for damage.",
+          "exTr": "Yeni ambalaj, meyvelerin hasar açısından incelenmesini zorlaştırmadan taşıma sırasında nemi korumak amacıyla tasarlandı."
+        }
+      ],
+      "expected": {
+        "tr": "f. muhafaza etmek, elde tutmak, korumak",
+        "ex": "Certain soil types retain moisture far longer than others, which benefits crops during dry spells.",
+        "exTr": "Belirli toprak türleri nemi diğerlerinden çok daha uzun süre muhafaza eder ve bu da kurak dönemlerde ürünlere fayda sağlar."
+      }
+    },
+    {
+      "word": "acknowledge",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The authors acknowledge that their sample was small, but argue that the interviews reveal issues deserving further investigation.",
+          "exTr": "Yazarlar örneklemlerinin küçük olduğunu kabul ediyor; ancak görüşmelerin daha fazla araştırılmayı hak eden meseleler ortaya çıkardığını savunuyor."
+        },
+        {
+          "ex": "It is important to acknowledge a mistake openly when that mistake has affected how the available resources were distributed.",
+          "exTr": "Bir hata mevcut kaynakların nasıl dağıtıldığını etkilemişse bu hatayı açıkça kabul etmek önemlidir."
+        }
+      ],
+      "expected": {
+        "tr": "f. kabul etmek, itiraf etmek; teyit etmek",
+        "ex": "Most experts now acknowledge that human activity is the primary cause of recent climate change.",
+        "exTr": "Uzmanların çoğu artık insan faaliyetlerinin yakın dönemdeki iklim değişikliğinin başlıca nedeni olduğunu kabul ediyor."
+      }
+    },
+    {
+      "word": "presume",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "We cannot presume that the absence of complaints means that residents are satisfied, particularly when reporting procedures are complicated.",
+          "exTr": "Özellikle bildirim işlemleri karmaşık olduğunda, şikâyet bulunmamasının sakinlerin memnun olduğu anlamına geldiğini varsayamayız."
+        },
+        {
+          "ex": "The initial analysis presumed that all participants had received the same instructions, an assumption later contradicted by the interview records.",
+          "exTr": "İlk analiz bütün katılımcıların aynı yönergeleri aldığını varsayıyordu; daha sonra görüşme kayıtları bu varsayımla çelişti."
+        }
+      ],
+      "expected": {
+        "tr": "f. varsaymak, farz etmek, zannetmek",
+        "ex": "Scientists presume that the ancient structure served a religious purpose based on its unusual design.",
+        "exTr": "Bilim insanları, olağandışı tasarımına dayanarak eski yapının dini bir amaca hizmet ettiğini varsayıyor."
+      }
+    },
+    {
+      "word": "encounter",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "Researchers who work with handwritten records often encounter abbreviations whose meaning depends on the period in which they were used.",
+          "exTr": "El yazısıyla tutulmuş kayıtlarla çalışan araştırmacılar, anlamı kullanıldıkları döneme bağlı olan kısaltmalarla sıkça karşılaşır."
+        },
+        {
+          "ex": "The project encountered unexpected resistance when residents learned that the proposed footpath would pass through a popular community garden.",
+          "exTr": "Sakinler önerilen yaya yolunun sevilen bir topluluk bahçesinden geçeceğini öğrenince proje beklenmedik bir dirençle karşılaştı."
+        }
+      ],
+      "expected": {
+        "tr": "f. karşılaşmak, rastlamak",
+        "ex": "Deep-sea explorers frequently encounter species that have never been documented by scientists before.",
+        "exTr": "Derin deniz kâşifleri, bilim insanları tarafından daha önce hiç belgelenmemiş türlerle sıkça karşılaşıyor."
+      }
+    },
+    {
+      "word": "undergo",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "Before being installed in the observatory, each instrument must undergo a series of tests specified in the purchase agreement.",
+          "exTr": "Gözlemevine kurulmadan önce her cihazın satın alma anlaşmasında belirtilen bir dizi testten geçmesi gerekiyor."
+        },
+        {
+          "ex": "The material underwent a series of structural changes as it was heated, although its overall mass remained nearly constant.",
+          "exTr": "Malzeme, toplam kütlesi neredeyse sabit kalmasına rağmen ısıtıldıkça bir dizi yapısal değişim geçirdi."
+        }
+      ],
+      "expected": {
+        "tr": "geçirmek, maruz kalmak; -den geçmek",
+        "ex": "Patients must undergo a series of tests before doctors can confirm the diagnosis.",
+        "exTr": "Doktorlar teşhisi doğrulamadan önce hastaların bir dizi testten geçmesi gerekir."
+      }
+    },
+    {
+      "word": "yield",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "Re-examining the neglected records may yield information that was unavailable to the historians who first studied the settlement.",
+          "exTr": "İhmal edilmiş kayıtların yeniden incelenmesi, yerleşimi ilk inceleyen tarihçilerin erişemediği bilgiler sağlayabilir."
+        },
+        {
+          "ex": "The experimental crop yielded less grain than expected, but it required considerably less water than the comparison variety.",
+          "exTr": "Deneme ürünü beklenenden daha az tahıl verdi; ancak karşılaştırılan çeşitten çok daha az su gerektirdi."
+        }
+      ],
+      "expected": {
+        "tr": "f. vermek, üretmek",
+        "ex": "Investors hope the new bonds will yield a steady return over the next decade.",
+        "exTr": "Yatırımcılar, yeni tahvillerin önümüzdeki on yıl boyunca istikrarlı bir getiri vermesini umuyor."
+      }
+    },
+    {
+      "word": "acquire",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The placement allows students to acquire practical experience while contributing to the cataloguing of material held by local museums.",
+          "exTr": "Staj, öğrencilerin yerel müzelerdeki materyalin kataloglanmasına katkıda bulunurken uygulamalı deneyim kazanmasına olanak tanıyor."
+        },
+        {
+          "ex": "The archive acquired the letters only after their owners had agreed on conditions governing future access and reproduction.",
+          "exTr": "Arşiv, mektupları ancak sahipleri gelecekteki erişimi ve çoğaltmayı düzenleyen koşullarda anlaştıktan sonra edindi."
+        }
+      ],
+      "expected": {
+        "tr": "f. edinmek, kazanmak, elde etmek",
+        "ex": "Children acquire language skills naturally through constant exposure and daily interaction.",
+        "exTr": "Çocuklar, sürekli maruz kalma ve günlük etkileşim yoluyla dil becerilerini doğal biçimde edinir."
+      }
+    },
+    {
+      "word": "emerge",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "A consistent pattern began to emerge when the team compared complaints received before and after the timetable changed.",
+          "exTr": "Ekip, tarife değişmeden önce ve sonra alınan şikâyetleri karşılaştırınca tutarlı bir örüntü ortaya çıkmaya başladı."
+        },
+        {
+          "ex": "The town began to emerge as a regional research centre after several universities established laboratories there.",
+          "exTr": "Birkaç üniversitenin orada laboratuvar kurmasının ardından kasaba, bölgesel bir araştırma merkezi olarak öne çıkmaya başladı."
+        }
+      ],
+      "expected": {
+        "tr": "f. ortaya çıkmak, belirmek",
+        "ex": "New evidence continues to emerge suggesting that ancient trade routes extended much farther than previously believed.",
+        "exTr": "Antik ticaret yollarının önceden düşünülenden çok daha uzağa uzandığını öne süren yeni kanıtlar ortaya çıkmaya devam ediyor."
+      }
+    },
+    {
+      "word": "persist",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "Differences in access to the service may persist unless the new opening hours take account of residents' working patterns.",
+          "exTr": "Yeni açılış saatleri sakinlerin çalışma düzenlerini dikkate almazsa hizmete erişimdeki farklılıklar sürebilir."
+        },
+        {
+          "ex": "The disagreement persisted even after both teams had checked their calculations, suggesting that the problem lay in their initial assumptions.",
+          "exTr": "Her iki ekip de hesaplamalarını kontrol ettikten sonra görüş ayrılığının sürmesi, sorunun başlangıçtaki varsayımlarda yattığını düşündürdü."
+        }
+      ],
+      "expected": {
+        "tr": "f. devam etmek, sürmek",
+        "ex": "If the symptoms persist for more than a week, patients are advised to consult a specialist.",
+        "exTr": "Belirtiler bir haftadan uzun sürerse, hastaların bir uzmana başvurması tavsiye edilir."
+      }
+    },
+    {
+      "word": "diminish",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The difference in temperature between the two surfaces began to diminish once both samples were moved into the same room.",
+          "exTr": "Her iki örnek de aynı odaya taşındıktan sonra iki yüzey arasındaki sıcaklık farkı azalmaya başladı."
+        },
+        {
+          "ex": "Acknowledging the limitations of a study need not diminish its value; it may instead help readers use its findings appropriately.",
+          "exTr": "Bir çalışmanın sınırlılıklarını kabul etmek onun değerini azaltmak zorunda değildir; aksine okurların bulguları uygun biçimde kullanmasına yardımcı olabilir."
+        }
+      ],
+      "expected": {
+        "tr": "f. azalmak, azaltmak, küçülmek",
+        "ex": "Overfishing has caused fish populations in the region to diminish dramatically over the past decade.",
+        "exTr": "Aşırı avlanma, bölgedeki balık popülasyonlarının son on yılda büyük ölçüde azalmasına neden oldu."
+      }
+    },
+    {
+      "word": "comprehensive",
+      "sense_index": 0,
+      "alternatives": [
+        {
+          "ex": "The review provides a comprehensive account of the project's finances, including costs that were omitted from earlier summaries.",
+          "exTr": "İnceleme, önceki özetlerde yer verilmeyen maliyetler de dâhil olmak üzere projenin mali durumuna ilişkin kapsamlı bir açıklama sunuyor."
+        },
+        {
+          "ex": "A comprehensive account of language development would consider social interaction as well as the learner's capacity to recognise recurring patterns.",
+          "exTr": "Dil gelişimine ilişkin kapsamlı bir açıklama, öğrencinin yinelenen örüntüleri tanıma kapasitesinin yanı sıra toplumsal etkileşimi de dikkate alırdı."
+        }
+      ],
+      "expected": {
+        "tr": "s. kapsamlı, ayrıntılı",
+        "ex": "The agency published a comprehensive report examining air pollution levels across major cities.",
+        "exTr": "Ajans, büyük şehirlerdeki hava kirliliği düzeylerini inceleyen kapsamlı bir rapor yayımladı."
+      }
+    }
+  ]
+}

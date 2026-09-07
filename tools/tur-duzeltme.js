@@ -60,5 +60,6 @@ window.TUR_DUZELTME = {
   "underneath": "edat, zarf",
   "though": "bağlaç, zarf",
   "without": "edat",
-  "until": "edat, bağlaç"
+  "until": "edat, bağlaç",
+  "causing": "fiil"
 };

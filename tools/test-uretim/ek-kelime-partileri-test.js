@@ -22,6 +22,7 @@ var fs = require('fs');
 var path = require('path');
 var vm = require('vm');
 var assert = require('assert');
+var beklenenKart = require('./kart-icerik-beklenen').beklenenKart;
 
 var KOK = path.resolve(__dirname, '..', '..');
 var pencere = {};
@@ -195,7 +196,7 @@ dosyalar.forEach(function (ad) {
     var beklenen = { a: kayit.a };
     if (kayit.es) beklenen.es = kayit.es;
     if (kayit.kl) beklenen.kl = kayit.kl;
-    assert.deepStrictEqual(kart.card, beklenen, en + ': kart içeriği (a/kl/es) partiyle farklı');
+    assert.deepStrictEqual(kart.card, beklenenKart(en, beklenen), en + ': kart içeriği (a/kl/es) parti + korumalı editoryal düzeltmeyle farklı');
   });
 
   var obekGrupSayisi = {};

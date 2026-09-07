@@ -40,7 +40,14 @@ assert.strictEqual(Motor.eskiIlerlemeKimligi('row /raʊ/'), 'row',
   'row aliası eski ilerlemeyi kanonik kimliğe taşımalı');
 assert.strictEqual(dizin.get('rowing').p, 9.8, 'rowing gerçek puanı yanlış');
 assert.strictEqual(dizin.get('rowing').k, 7, 'rowing son katmanda olmalı');
-assert.ok(/art of rowing/.test(rowing.a[0].ex), '2013 YDS rowing bağlamı korunmalı');
+// Puan ve ayrı kartın sınav provenansı korunur; çalışma örneği artık 2013
+// metnindeki koşulsuz tarihsel üstünlük iddiasını tekrarlamayan özgün örnektir.
+var rowingDuzeltme = require('../kart-icerik-partileri/2026-09-07-examples.json')
+  .corrections.find(function (r) { return r.word === 'rowing'; });
+assert.ok(rowingDuzeltme && /art of rowing/.test(rowingDuzeltme.expected.ex),
+  'önceki 2013 bağlamı korumalı düzeltme kaydında izlenebilir olmalı');
+assert.strictEqual(rowing.a[0].ex, rowingDuzeltme.replacement.ex, 'denetimli rowing örneği');
+assert.strictEqual(rowing.a[0].exTr, rowingDuzeltme.replacement.exTr, 'denetimli rowing çevirisi');
 
 assert.strictEqual(pencere.TEST_K5.row.b, 'row');
 assert.ok(!pencere.TEST_K5['row /raʊ/'], 'eski alias için ikinci bir test kaydı üretilmemeli');

@@ -32,6 +32,7 @@ _yds_site = next(p for p in _YdsPath(__file__).resolve().parents if (p / "sw.js"
 _yds_sys.path.insert(0, str(_yds_site / "tools"))
 from yds_paths import site_path, yds_path, scratch_path
 from icerik_kalite import son_kart_duzeltmeleri, son_obek_duzeltmeleri, ek_parti_turlerini_duzelt
+from kart_icerik import uygula as kart_icerigini_uygula
 import io
 import json
 import os
@@ -1502,6 +1503,9 @@ def birlestir(ek_partileri=None):
         print('    ESLESMEDI', satir)
 
     son_kart_duzeltmeleri(kelimeler, ek_ornekleri_oku())
+    icerik_sonuc = kart_icerigini_uygula(kelimeler)
+    kalipli = sum(bool(k.get('kalip')) for k in kelimeler.values())
+    print('  kart icerik denetimi:', icerik_sonuc)
 
     for en, k in kelimeler.items():
         k['katman'] = k.get('katman_zorla') or katman_bul(k['puan'])
@@ -1718,6 +1722,8 @@ def anlam_yaz(a):
         json.dumps(a['exTr'], ensure_ascii=False))
     if a.get('yz'):
         govde += ',yz:%d' % a['yz']
+    if a.get('exs'):
+        govde += ',exs:' + json.dumps(a['exs'], ensure_ascii=False, separators=(',', ':'))
     return govde + '}'
 
 
