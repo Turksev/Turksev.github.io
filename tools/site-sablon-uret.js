@@ -17,7 +17,7 @@ for (const file of fs.readdirSync(root).filter(x=>x.endsWith('.html'))) {
   if (s.includes('<footer')) s = s.replace(/(<footer\b[\s\S]*?)(\s*<\/div>\s*<\/footer>)/, '$1\n    '+links+'$2');
   if (!s.includes('name="referrer"')) s = s.replace('</head>','<meta name="referrer" content="strict-origin-when-cross-origin">\n</head>');
   if (!s.includes('http-equiv="Content-Security-Policy"')) s = s.replace('</head>', '<meta http-equiv="Content-Security-Policy" content="base-uri \'self\'; object-src \'none\'">\n</head>');
-  if (['durum.html','ara.html','ayarlar.html'].includes(file)) {
+  if (['durum.html','istatistik.html','ara.html','ayarlar.html'].includes(file)) {
     s = s.replace(/<meta name="robots"[^>]*>\s*/g,'');
     s = s.replace('</head>','<meta name="robots" content="noindex, follow">\n</head>');
   }

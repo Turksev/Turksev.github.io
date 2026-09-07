@@ -8,7 +8,7 @@ var releaseKok = JSON.parse(fs.readFileSync(path.join(kok, 'release-manifest.jso
 var sayfalar = [
   'index.html', 'durum.html', 'konular.html', 'kelimeler.html', 'aileler.html',
   'obekler.html', 'quiz.html', 'deneme.html', 'gramer.html', 'baglaclar.html', 'ara.html',
-  'cumleler.html'
+  'cumleler.html', 'istatistik.html'
 ];
 
 sayfalar.forEach(function (dosya) {

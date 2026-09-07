@@ -11,9 +11,10 @@ Yayında: <https://turksev.github.io>
 | --- | --- |
 | `index.html` | Ana sayfa: **YDS bölüm dağılımı tablosu** (80 sorunun hangi aralıkta hangi bölüm olduğu) ve ilerleme paneli — tekrar durumu, yanlış defteri, deneme geçmişi, kategori karnesi |
 | `durum.html` | Çalışılmış her şey tek listede (kelime, öbek, aile üyesi): üstte **sistemdeki toplam kayıt**, kutu sekmelerinde sayı ve bu toplama oranı ("hepsi" dahil), arama/süzme/sıralama |
-| `kelimeler.html` | 9.379 kelime ve yapı, 7 katman + **aralıklı tekrar (Leitner)**: bugünün destesi, kart modu, ipucu, sesli okuma |
+| `istatistik.html` | **Çalışma hızın ve ivmen**: günlük kart grafiği (7 günlük hareketli ortalama), 26 haftalık çalışma takvimi, haftalık ritim ve haftadan haftaya değişim, kutu birikimi ve seçili katmanlar için bitiş tahmini |
+| `kelimeler.html` | 9.379 kelime ve yapı, 7 katman + **aralıklı tekrar (Leitner)**: bugünün destesi, kart modu, ipucu, sesli okuma. Katman düğmesinin üzerine gelince o katmanın **puan aralığı** çıkar |
 | `obekler.html` | 1.854 kelime öbeği (590 deyimsel fiil, 339 edat kalıbı, 864 sabit, 61 geçiş ifadesi) — ayrı Leitner destesi |
-| `cumleler.html` | 8.071 sınav cümlesi ve Türkçe çevirisi (2013–2026, sınav + bölüm + soru no); liste ve kart modu, kutu (Leitner) ilerlemesi, yıl/bölüm filtresi |
+| `cumleler.html` | 8.065 sınav cümlesi ve Türkçe çevirisi (2013–2026, sınav + bölüm + soru no); liste ve kart modu, kutu (Leitner) ilerlemesi, yıl/bölüm filtresi |
 | `quiz.html` | Alıştırma soruları: 12 kategori, anında çözüm, yanlış defterinden çalışma |
 | `deneme.html` | **Süreli deneme sınavı**: üç sabit 80 soruluk form, geri sayım, soru ızgarası, işaretleme, yenileme sonrası oturum kurtarma, 100 üzerinden YDS puanı, kategori karnesi |
 | `gramer.html` | 10 başlıkta konu anlatımı, kural tabloları ve sınav tuzakları |
@@ -42,8 +43,8 @@ F: toplam frekans, P: akademik önsel (NGSL/NAWL/AWL üyeliği + Zipf).
 
 | Katman | Puan | Kelime | Dosya (gzip) |
 | --- | --- | --- | --- |
-| 1 · Temel | ≥ 40 | 921 | 169 K |
-| 2 · Çekirdek | 30–40 | 832 | 144 K |
+| 1 · Temel | ≥ 40 | 920 | 169 K |
+| 2 · Çekirdek | 30–40 | 833 | 144 K |
 | 3 · Orta | 25–30 | 739 | 128 K |
 | 4 · İleri | 17–25 | 1.885 | 306 K |
 | 5 · Geniş | 12–17 | 2.032 | 293 K |
@@ -54,6 +55,11 @@ Sayılar 6 Eylül 2026 puan güncellemesine göredir: puanlar güncel korpustan 
 kitapçık + 2023 transkriptleri, kitapçık şablon metinleri dışlanmış) yeniden hesaplandı
 (`tools/puan-guncellemesi.json`); katmanı sabit olmayan ~1.850 kelime katman değiştirdi,
 çoğu bir üst katmana. Geçiş listesi: `tools/puan-guncellemesi-rapor.md`.
+
+Katman düğmesinin üzerine gelince (ya da klavyeyle odaklanınca) o katmanın puan aralığı
+baloncukta çıkar. Aralıklar `assets/js/veri.js` içindeki `KATMAN_PUAN` tablosundan gelir ve
+`katman-puan-araligi-test.js` bu tabloyu üretimdeki `tools/listeyi-aktar.py → KATMANLAR`
+ile karşılaştırır; eşik bir tarafta değişip diğerinde unutulursa test kırmızı olur.
 
 6. katman 21.08.2026'da eşik 15 → 10'a indirilince geldi (`Calisma_Listesi_v4_site_tam.xlsx`);
 5. katmanı genişletmek yerine ayrı katman açıldı ki isteyen açsın, mevcut desteler değişmesin.
@@ -93,6 +99,7 @@ assets/
   js/esitleme-v2.js   Google girişi, işlemli Firestore eşitlemesi ve canlı dinleyici
   js/veri.js          kelime katmanlarını ve öbekleri istendiğinde yükler
   js/kelimeler.js     kelime sayfası
+  js/istatistik.js    istatistik sayfası: hız/ivme hesabı ve satır içi SVG grafikler
   js/obekler.js       öbek sayfası
   js/quiz.js          alıştırma soruları
   js/deneme-oturum.js denemenin sessionStorage içindeki doğrulanan geçici kurtarma kaydı
@@ -110,7 +117,7 @@ data/
   kelime-aliaslari.js eski başlıklardaki ilerlemeyi düzeltilmiş başlıklara taşır
   kelime-provenans.json denetlenen öğelerin sınav kimliği/sayfa/soru kaynakları
   obekler.js          1.854 kelime öbeği (anahtar = lemma; b = eski çekimli biçimler; sonda OBEK_TAKMA)
-  cumleler/<yıl>.js   8.071 sınav cümlesi + çevirisi, yıl dosyaları (e, t, s=sınav, b=bölüm, n=soru no, y=yıl)
+  cumleler/<yıl>.js   8.065 sınav cümlesi + çevirisi, yıl dosyaları (e, t, s=sınav, b=bölüm, n=soru no, y=yıl)
   cumleler-dizin.js   cümle sayıları ve filtre seçenekleri (yıl dosyaları yeniden eskiye yüklenir)
   kelime-bilgi.js     7.820 kelimenin sınav kullanım notu (ℹ; tembel yüklenir, 3,8 MB)
   sayilar.js          içerik sayaçları (üretilir)
@@ -329,7 +336,7 @@ Başlıktaki **⇅** düğmesiyle Google hesabına bir kez giriş yapılır; son
 - Veri, Firestore'un 1 MiB belge sınırına takılmaması için alan başına ayrılır:
   `kullanicilar/{uid}/alanlar/{anahtar}` içinde
   büyük `yds-leitner` ve `yds-test-yanlis` alanları dış `surum: 3` ve iç `k: 2` kısa
-  JSON taşır; diğer on alan dış `surum: 2` ve nesne JSON biçiminde kalır. Yerel
+  JSON taşır; diğer on bir alan dış `surum: 2` ve nesne JSON biçiminde kalır. Yerel
   `yds-esitleme-v2` zarfının sürümü 2'dir. Bir kelime çalışıldığında yalnız değişen alan
   okunup yazılır. Önceki sürümün `kullanicilar/{uid}` kök belgesi silinmez; ilk açılışta
   yeni alanlara kayıpsız birleştirilir ve eski açık sekmelerden gelebilecek son kayıtlar

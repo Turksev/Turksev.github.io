@@ -40,7 +40,7 @@ assert.ok(/request\.resource\.data\.surum\s*>=\s*resource\.data\.surum/.test(kur
 [
   'yds-leitner', 'yds-yanlis', 'yds-kategori', 'yds-gecmis', 'yds-konular',
   'yds-rekor', 'yds-yeni-sayac', 'yds-test-yanlis', 'yds-gunluk-yeni',
-  'yds-gunluk-tavan', 'yds-katmanlar', 'yds-eksen'
+  'yds-gunluk-tavan', 'yds-gunluk-kayit', 'yds-katmanlar', 'yds-eksen'
 ].forEach(function (alan) {
   assert.ok(kurallar.indexOf("alan == '" + alan + "'") >= 0,
     'izinli alan listesinde eksik: ' + alan);
@@ -77,4 +77,4 @@ assert.ok(/hasOnly\(\['silindi', 'zaman'\]\)/.test(kurallar));
 assert.ok(/request\.resource\.data\.silindi\s*==\s*true/.test(kurallar));
 assert.ok(/request\.resource\.data\.zaman\s+is\s+int/.test(kurallar));
 
-console.log('firestore-kurallar: sahiplik + silme işaretçisi + v2/v3 yükseltme kilidi + 12 alan belgesi başarılı');
+console.log('firestore-kurallar: sahiplik + silme işaretçisi + v2/v3 yükseltme kilidi + 13 alan belgesi başarılı');
