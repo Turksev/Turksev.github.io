@@ -22,7 +22,7 @@ async function main() {
   await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
   const base='http://127.0.0.1:'+server.address().port;
   const browser=await chromium.launch();
-  const context=await browser.newContext({serviceWorkers:'block'});
+  const context=await browser.newContext({serviceWorkers:'block',timezoneId:'Europe/Istanbul'});
   const errors=[];
   context.on('page',p=>p.on('pageerror',e=>errors.push(e.message)));
   const page=await context.newPage();
@@ -73,6 +73,7 @@ async function main() {
     // Yalniz izole test profilinde: bos durumdan kayitli gorunume gecis,
     // gercek depo olayi, donem/tarih secimi, salt okunur plan ve dolu grafikler.
     await page.setViewportSize({width:375,height:812});
+    await page.clock.setFixedTime(new Date('2026-09-08T09:00:00Z'));
     await page.goto(base+'/istatistik.html');
     assert.equal(await page.locator('#bosDurum').isVisible(),true);
     await page.evaluate(()=>{
@@ -84,6 +85,10 @@ async function main() {
     });
     await page.waitForFunction(()=>document.getElementById('bosDurum').hidden);
     await page.waitForSelector('#gunlukGrafik svg');
+    assert.equal(await page.locator('#gunSec').getAttribute('max'),'2026-09-08','Turkey local today, not previous UTC day');
+    assert.match(await page.locator('#donemTarih').innerText(),/8 Eyl$/);
+    assert.match(await page.locator('#haftalikOzet').innerText(),/aynı 2 gününde/,'Tuesday compares two elapsed weekdays');
+    assert.equal(await page.locator('#isiGrafik .today-cell').getAttribute('y'),'51.00','Tuesday row in calendar');
     assert.match(await page.locator('#birikimOzet').innerText(),/^30 \/ /,'Only actual word cards counted');
     const progressBefore=await page.evaluate(()=>Object.fromEntries(Object.keys(localStorage).sort().map(k=>[k,localStorage.getItem(k)])));
     for (const days of [7,90,30]) {
@@ -93,7 +98,7 @@ async function main() {
       assert.equal(await page.locator('#aralik button[data-gun="'+days+'"]').getAttribute('aria-pressed'),'true');
     }
     assert.equal(await page.locator('#hizDeger').innerText(),'12,8','Ayiklama is not answer speed');
-    const yesterday=await page.evaluate(()=>new Date((window.YDS.Ilerleme.bugun()-1)*86400000).toISOString().slice(0,10));
+    const yesterday='2026-09-07';
     await page.locator('#gunSec').fill(yesterday);
     await page.locator('#gunSec').dispatchEvent('change');
     assert.match(await page.locator('#gunDetay').innerText(),/11 yanıt/);
@@ -105,6 +110,35 @@ async function main() {
     assert.equal(await page.locator('#planHiz').getAttribute('aria-invalid'),'false');
     assert.match(await page.locator('#tahminMetin').innerText(),/Günde 25 yeni kelimeyle/);
     assert.deepEqual(await page.evaluate(()=>Object.fromEntries(Object.keys(localStorage).sort().map(k=>[k,localStorage.getItem(k)]))),progressBefore,'Stats controls never mutate saved progress or quota');
+    const latestTargets=[['gunlukGrafik','.today-bar'],['haftalikGrafik','.current-bar'],['isiGrafik','.today-cell']];
+    for(const width of [1920,1200,1024,375,320]){
+      await page.setViewportSize({width,height:812});
+      await page.waitForFunction(()=>{
+        const el=document.getElementById('haftalikGrafik');return el.querySelector('svg').viewBox.baseVal.width===Math.max(480,Math.round(el.clientWidth));
+      });
+      for(const [id,target] of latestTargets){
+        await page.waitForFunction(({id,target})=>{
+          const el=document.getElementById(id),point=el.querySelector(target).getBoundingClientRect(),box=el.getBoundingClientRect();
+          return point.left>=box.left-1&&point.right<=box.right+1;
+        },{id,target});
+      }
+    }
+    await page.locator('#gunlukGrafik').evaluate(el=>new Promise(resolve=>{el.addEventListener('scroll',resolve,{once:true});el.scrollLeft=0;}));
+    const oldSvg=await page.locator('#gunlukGrafik svg').elementHandle();
+    await page.evaluate(()=>window.dispatchEvent(new Event('focus')));
+    await page.waitForFunction(old=>!old.isConnected,oldSvg);await oldSvg.dispose();
+    assert.equal(await page.locator('#gunlukGrafik').evaluate(el=>el.scrollLeft),0,'Refresh preserves intentional history position');
+    for(const width of [1920,320]){
+      const beforeResize=await page.locator('#gunlukGrafik svg').elementHandle();
+      await page.setViewportSize({width,height:812});
+      await page.waitForFunction(old=>!old.isConnected,beforeResize);await beforeResize.dispose();
+      await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+      assert.equal(await page.locator('#gunlukGrafik').evaluate(el=>el.scrollLeft),0,'Wide/narrow resize preserves deliberate history browsing');
+    }
+    await page.locator('#aralik button[data-gun="7"]').click();
+    await page.waitForFunction(()=>{const e=document.getElementById('gunlukGrafik');return e.scrollWidth-e.clientWidth-e.scrollLeft<=3;});
+    await page.locator('#aralik button[data-gun="30"]').click();
+    await page.setViewportSize({width:375,height:812});
     for (const theme of ['light','dark']) {
       await page.emulateMedia({colorScheme:theme});
       await page.addScriptTag({path:require.resolve('axe-core/axe.min.js')});

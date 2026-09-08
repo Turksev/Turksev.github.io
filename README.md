@@ -11,7 +11,7 @@ Yayında: <https://turksev.github.io>
 | --- | --- |
 | `index.html` | Ana sayfa: **YDS bölüm dağılımı tablosu** (80 sorunun hangi aralıkta hangi bölüm olduğu) ve ilerleme paneli — tekrar durumu, yanlış defteri, deneme geçmişi, kategori karnesi |
 | `durum.html` | Çalışılmış her şey tek listede (kelime, öbek, aile üyesi): üstte **sistemdeki toplam kayıt**, kutu sekmelerinde sayı ve bu toplama oranı ("hepsi" dahil), arama/süzme/sıralama |
-| `istatistik.html` | **Çalışma hızın ve ivmen**: günlük kart grafiği (7 günlük hareketli ortalama), 26 haftalık çalışma takvimi, haftalık ritim ve haftadan haftaya değişim, kutu birikimi ve seçili katmanlar için bitiş tahmini |
+| `istatistik.html` | **Çalışma hızın ve ritmin**: 7/30/90 günlük dönem kıyası, günlük grafik ve veri tablosu, 26 haftalık takvim, haftalık tempo, kutu birikimi ve varsayımsal ilk tur planı. Ayıklama hız hesabına katılmaz |
 | `kelimeler.html` | 9.379 kelime ve yapı, 7 katman + **aralıklı tekrar (Leitner)**: bugünün destesi, kart modu, ipucu, sesli okuma. Katman düğmesinin üzerine gelince o katmanın **puan aralığı** çıkar |
 | `obekler.html` | 1.854 kelime öbeği (590 deyimsel fiil, 339 edat kalıbı, 864 sabit, 61 geçiş ifadesi) — ayrı Leitner destesi |
 | `cumleler.html` | 8.065 sınav cümlesi ve Türkçe çevirisi (2013–2026, sınav + bölüm + soru no); liste ve kart modu, kutu (Leitner) ilerlemesi, yıl/bölüm filtresi |
@@ -88,6 +88,7 @@ index.html  kelimeler.html  obekler.html  quiz.html  deneme.html
 gramer.html  konular.html  baglaclar.html  ara.html
 assets/
   css/style.css       tüm sayfaların ortak stili (açık/koyu tema)
+  css/istatistik.css  istatistik panelinin mobil, büyük yazı ve açık/koyu tema stilleri
   js/main.js          tema, gezinme, localStorage, iki aşamalı onay, service worker kaydı
   js/main.js içinde ayrıca alt bilgideki depo kullanım çubuğu (data/depo.js'i okur)
   js/cekim.js         çekim motoru (test şıkları için)
@@ -99,7 +100,8 @@ assets/
   js/esitleme-v2.js   Google girişi, işlemli Firestore eşitlemesi ve canlı dinleyici
   js/veri.js          kelime katmanlarını ve öbekleri istendiğinde yükler
   js/kelimeler.js     kelime sayfası
-  js/istatistik.js    istatistik sayfası: hız/ivme hesabı ve satır içi SVG grafikler
+  js/istatistik.js    salt okunur istatistik görünümü, son veriye açılan SVG grafikler
+  js/istatistik-hesap.js yerel takvim dönüşümü, hız/seri/dönem hesabı; depoya yazmaz
   js/obekler.js       öbek sayfası
   js/quiz.js          alıştırma soruları
   js/deneme-oturum.js denemenin sessionStorage içindeki doğrulanan geçici kurtarma kaydı
@@ -364,13 +366,45 @@ firebase deploy --only firestore:rules --project yds-hazirlik-d05ce
 ```
 
 Kurallar, oturum açmış kullanıcıya yalnız `kullanicilar/{kendi uid'si}` ağacını açar;
-eski kök zarfı ile 12 izinli alan belgesinin kimliğini, şemasını ve boyut üst sınırını
+eski kök zarfı ile 13 izinli alan belgesinin kimliğini, şemasını ve boyut üst sınırını
 doğrular. `apiKey` gizli değildir (tarayıcıya zaten iner); veriyi koruyan bu kurallardır.
 Statik regresyon:
 
 ```bash
 node tools/test-uretim/firestore-kurallar-test.js
 ```
+
+**Günlük kayıt izni:** `yds-gunluk-kayit` 7 Eylül 2026'da eklenmiştir. Bu alan
+canlı kuralların `gecerliAlanAdi` listesinde yoksa ilk günlük kaydın yazılması,
+aynı işlemdeki kelime ilerlemesini de engeller. GitHub Pages bu kuralları
+dağıtmaz. Yayından önce canlı kuralı yedekleyip yalnız gereken farkı doğrulayın;
+kuralları herkese açmayın, veriyi sıfırlamayın.
+
+Gerçek kuralların izole emülatör testi (Java 21, sabit sürümlü geliştirme bağımlılıkları):
+
+```bash
+pnpm test:rules
+```
+
+Bu komut yalnız `demo-yds-rules` projesini ve `127.0.0.1:8185` adresini kullanır;
+gerçek hesap ya da çalışma verisi gerekmez. Quality iş akışında zorunlu çalışır.
+Sahiplik, günlük alan create/update, ortak transaction, şema/boyut sınırları,
+sürüm düşürme, silme işaretçisi ve eski izin listesiyle atomik ret sınanır.
+
+### İstatistik günleri ve grafikler
+
+`Ilerleme.bugun()` anahtarı tarihsel olarak yerel gece yarısının UTC milisaniyesinden
+üretilir; doğrudan bir UTC takvim günü değildir. Kalıcı anahtarlar ve tekrar vadeleri
+değiştirilmez. `tarihGunu(date)` aynı eski kodlamayı korur; `gunTarihi(g)` yalnız
+benzersiz geri dönüşte yerel tarih verir. Model girişinde bu tarih takvim sıra
+numarasına çevrilir; tarih seçici, hafta başlangıcı ve ortalamalar aynı alanı kullanır.
+Eski DST geçişinde iki güne birden ait olan bir kayıt tahminle ayrıştırılmaz;
+belirsiz tarihler ölçülmüş sıfır gün sayılmaz. Bu cihazın saat dilimi esas alınır.
+
+`istatistik-saat-dilimi-test.js` gerçek ilerleme kodunu Türkiye, UTC, New York,
+Berlin, Kiritimati ve Londra saat dilimlerinde çalıştırır. Tarayıcı testi Türkiye'de
+8 Eylül 2026 Salı örneğini sabitler; 320–1920 px genişliklerde bugünün ve bu haftanın
+grafikte görünür kaldığını, geçmişe bilinçli kaydırmanın yenilemede korunmasını sınar.
 
 ## Sınav kaynağı ve provenans
 

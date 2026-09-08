@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<script data-yds-release>window.YDS_SURUM="057d3de7a464";window.YDS_VARLIK_KOKU="/releases/057d3de7a464/";</script>
+<script data-yds-release>window.YDS_SURUM="4566b4f68b94";window.YDS_VARLIK_KOKU="/releases/4566b4f68b94/";</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>İstatistik — YDS Hazırlık</title>
@@ -9,7 +9,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%233b5bdb'/><text y='68' x='50' text-anchor='middle' font-size='46' font-family='sans-serif' font-weight='bold' fill='white'>Y</text></svg>">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#3b5bdb">
-<link rel="apple-touch-icon" href="/releases/057d3de7a464/assets/img/icon-192.png">
+<link rel="apple-touch-icon" href="/releases/4566b4f68b94/assets/img/icon-192.png">
 <link rel="canonical" href="https://turksev.github.io/istatistik.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="YDS Hazırlık">
@@ -19,12 +19,12 @@
 <meta property="og:url" content="https://turksev.github.io/istatistik.html">
 <meta property="og:image" content="https://turksev.github.io/assets/img/icon-512.png">
 <meta name="twitter:card" content="summary">
-<link rel="stylesheet" href="/releases/057d3de7a464/assets/css/style.css">
-<link rel="stylesheet" href="/releases/057d3de7a464/assets/css/istatistik.css">
-<script src="/releases/057d3de7a464/assets/js/main.js"></script>
-<script src="/releases/057d3de7a464/data/kelime-aliaslari.js"></script>
-<script src="/releases/057d3de7a464/assets/js/esitleme-veri.js"></script>
-<script src="/releases/057d3de7a464/assets/js/esitleme-depo.js"></script>
+<link rel="stylesheet" href="/releases/4566b4f68b94/assets/css/style.css">
+<link rel="stylesheet" href="/releases/4566b4f68b94/assets/css/istatistik.css">
+<script src="/releases/4566b4f68b94/assets/js/main.js"></script>
+<script src="/releases/4566b4f68b94/data/kelime-aliaslari.js"></script>
+<script src="/releases/4566b4f68b94/assets/js/esitleme-veri.js"></script>
+<script src="/releases/4566b4f68b94/assets/js/esitleme-depo.js"></script>
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta http-equiv="Content-Security-Policy" content="base-uri 'self'; object-src 'none'">
 <meta name="robots" content="noindex, follow">
@@ -97,13 +97,14 @@
         <div class="stats-metrics" id="ozet"></div>
       </div>
       <div class="stats-insight" id="ritimOzet" role="status"></div>
+      <p id="takvimNot" class="stats-meta" hidden></p>
 
       <div class="stats-analysis">
         <section class="stats-panel stats-daily" aria-labelledby="gunlukBaslik">
           <div class="stats-panel-heading"><div><p class="stats-eyebrow">GÜNDEN GÜNE</p><h2 id="gunlukBaslik">Çalışma ritmin</h2></div><span id="gunlukOzet" class="stats-meta"></span></div>
           <div class="stats-legend"><span><i class="stats-dot"></i>Yanıt sayısı</span><span><i class="stats-line"></i>7 günlük ortalama</span></div>
           <div class="grafik-kutu" id="gunlukGrafik" tabindex="0" role="group" aria-label="Günlük yanıt grafiği; dar ekranda yatay kaydırılabilir"></div>
-          <p class="stats-meta" id="tahminNot" hidden>Kayıt başlangıcından önceki günler bilinmiyor; sıfır sayılmaz ve hız hesabına katılmaz.</p>
+          <p class="stats-meta" id="tahminNot" hidden>Ölçülmemiş veya tarihi kesin çözülemeyen günler sıfır sayılmaz ve hız hesabına katılmaz.</p>
           <div class="stats-day-picker"><label for="gunSec">Bir güne yakından bak</label><input type="date" id="gunSec"></div>
           <div id="gunDetay" class="stats-day-detail" aria-live="polite"></div>
           <details class="stats-details"><summary>Günlük verileri tablo olarak aç</summary><div class="stats-table-wrap" tabindex="0" role="region" aria-label="Seçili dönemin günlük kayıtları"><table><caption>Seçili dönemin kart çalışma kayıtları</caption><thead><tr><th scope="col">Tarih</th><th scope="col">Yanıt</th><th scope="col">Bildim</th><th scope="col">İlk kayıt</th><th scope="col">Ayıklama</th></tr></thead><tbody id="gunlukTablo"></tbody></table></div></details>
@@ -143,6 +144,7 @@
         <p>Hız, kayıt başlangıcından itibaren seçili döneme düşen takvim günlerine bölünür; boş günler ve henüz tamamlanmamış bugün dahildir. 7 günlük çizgi de başlangıçta yalnız eldeki günlerin ortalamasıdır. Eşit uzunluktaki önceki dönem de kapsanıyorsa değişim gösterilir. Eski kartların yalnız son çalışma tarihleri bilinir; bu izlerden hız veya kesin seri üretilmez.</p>
         <p>5. kutuya geçiş ayıklamayı da içerebilir; aynı kart daha sonra bu kutuya yeniden çıkabilir. Günlük toplamlar kart türüne göre ayrılmadığı için kelimeler için otomatik bitiş tarihi çıkarılmaz.</p>
         <p>Hesaplar bu tarayıcıdaki kayıtlarla yapılır. Eşitleme açıksa kayıtlar hesabına da kopyalanır. İki cihazda aynı gün çevrimdışı çalışıldıysa kayıtlar toplanmayabilir. Çalışma süresi ve saatlik hız kaydedilmiyor.</p>
+        <p>Tarihler bu cihazın yerel takvimine göre gösterilir; eski kayıt anahtarları değiştirilmez. Bazı eski yaz saati geçişlerinde iki gün aynı anahtara kaydedilmiş olabilir. Kesin tarihi ayrılamayan kayıtlar korunur ve belirsiz olarak belirtilir.</p>
       </div></details>
 
     </div>
@@ -158,13 +160,13 @@
   </div>
 </footer>
 
-<script src="/releases/057d3de7a464/data/kelime-dizin.js"></script>
-<script src="/releases/057d3de7a464/data/sayilar.js"></script>
-<script src="/releases/057d3de7a464/assets/js/ilerleme.js"></script>
-<script src="/releases/057d3de7a464/assets/js/veri.js"></script>
-<script src="/releases/057d3de7a464/assets/js/istatistik-hesap.js"></script>
-<script src="/releases/057d3de7a464/assets/js/istatistik.js"></script>
-<script src="/releases/057d3de7a464/assets/js/esitleme-ayar.js"></script>
-<script src="/releases/057d3de7a464/assets/js/esitleme-v2.js"></script>
+<script src="/releases/4566b4f68b94/data/kelime-dizin.js"></script>
+<script src="/releases/4566b4f68b94/data/sayilar.js"></script>
+<script src="/releases/4566b4f68b94/assets/js/ilerleme.js"></script>
+<script src="/releases/4566b4f68b94/assets/js/veri.js"></script>
+<script src="/releases/4566b4f68b94/assets/js/istatistik-hesap.js"></script>
+<script src="/releases/4566b4f68b94/assets/js/istatistik.js"></script>
+<script src="/releases/4566b4f68b94/assets/js/esitleme-ayar.js"></script>
+<script src="/releases/4566b4f68b94/assets/js/esitleme-v2.js"></script>
 </body>
 </html>

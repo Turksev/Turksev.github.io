@@ -29,6 +29,16 @@ jobs:
           pnpm install --frozen-lockfile --ignore-scripts
           pnpm exec playwright install --with-deps chromium
 
+      - uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3 # v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Real Firestore security rules (isolated demo emulator)
+        env:
+          CI: 'true'
+        run: pnpm test:rules
+
       - name: JavaScript syntax
         shell: bash
         run: |
