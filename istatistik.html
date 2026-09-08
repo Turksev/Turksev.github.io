@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<script data-yds-release>window.YDS_SURUM="3d753929c58c";window.YDS_VARLIK_KOKU="/releases/3d753929c58c/";</script>
+<script data-yds-release>window.YDS_SURUM="ed1f7e809291";window.YDS_VARLIK_KOKU="/releases/ed1f7e809291/";</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>İstatistik — YDS Hazırlık</title>
-<meta name="description" content="Çalışma hızın, haftalık ritmin ve ivmen: günlük kart sayısı, çalışma takvimi ve seçili katmanlar için bitiş tahmini.">
+<meta name="description" content="Kayıtlı çalışma hızın, günlük ve haftalık ritmin, çalışma takvimin, kelime birikimin ve seçili katmanlar için ilk tur planın.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%233b5bdb'/><text y='68' x='50' text-anchor='middle' font-size='46' font-family='sans-serif' font-weight='bold' fill='white'>Y</text></svg>">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#3b5bdb">
-<link rel="apple-touch-icon" href="/releases/3d753929c58c/assets/img/icon-192.png">
+<link rel="apple-touch-icon" href="/releases/ed1f7e809291/assets/img/icon-192.png">
 <link rel="canonical" href="https://turksev.github.io/istatistik.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="YDS Hazırlık">
@@ -19,11 +19,12 @@
 <meta property="og:url" content="https://turksev.github.io/istatistik.html">
 <meta property="og:image" content="https://turksev.github.io/assets/img/icon-512.png">
 <meta name="twitter:card" content="summary">
-<link rel="stylesheet" href="/releases/3d753929c58c/assets/css/style.css">
-<script src="/releases/3d753929c58c/assets/js/main.js"></script>
-<script src="/releases/3d753929c58c/data/kelime-aliaslari.js"></script>
-<script src="/releases/3d753929c58c/assets/js/esitleme-veri.js"></script>
-<script src="/releases/3d753929c58c/assets/js/esitleme-depo.js"></script>
+<link rel="stylesheet" href="/releases/ed1f7e809291/assets/css/style.css">
+<link rel="stylesheet" href="/releases/ed1f7e809291/assets/css/istatistik.css">
+<script src="/releases/ed1f7e809291/assets/js/main.js"></script>
+<script src="/releases/ed1f7e809291/data/kelime-aliaslari.js"></script>
+<script src="/releases/ed1f7e809291/assets/js/esitleme-veri.js"></script>
+<script src="/releases/ed1f7e809291/assets/js/esitleme-depo.js"></script>
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta http-equiv="Content-Security-Policy" content="base-uri 'self'; object-src 'none'">
 <meta name="robots" content="noindex, follow">
@@ -62,78 +63,87 @@
   </div>
 </header>
 
-<main id="icerik" tabindex="-1" class="section">
+<main id="icerik" tabindex="-1" class="section stats-page">
   <div class="wrap">
 
-    <h1>İstatistik</h1>
-    <p class="muted" style="max-width:70ch">
-      Ne kadar hızlı çalıştığın ve hızının artıp artmadığı. Bütün sayılar bu tarayıcıdaki
-      ilerlemenden hesaplanır; hiçbir yere gönderilmez. <b>Kart</b> derken kelime, öbek ve
-      cümle kartlarının hepsi sayılır.
-    </p>
+    <div class="stats-heading">
+      <div><p class="stats-eyebrow">ÇALIŞMA GÜNLÜĞÜN</p><h1>İstatistik</h1><p class="muted">Hızın, düzenin ve kelime birikimin.</p></div>
+      <div class="stats-period">
+        <div class="aralik-secim" id="aralik" role="group" aria-label="İstatistik dönemi">
+          <button type="button" data-gun="7" aria-pressed="false">7 gün</button>
+          <button type="button" data-gun="30" aria-pressed="true" class="acik">30 gün</button>
+          <button type="button" data-gun="90" aria-pressed="false">90 gün</button>
+        </div>
+        <span id="donemTarih" class="stats-meta"></span>
+      </div>
+    </div>
 
     <div class="empty" id="bosDurum" hidden>
-      <p>Henüz çalışma kaydın yok. Birkaç kart çalıştıktan sonra hızın burada görünmeye başlar.</p>
+      <h2>İlk kaydınla başlayacak.</h2>
+      <p>Günlük yanıt kaydın henüz yok. Önceki kelime birikimin varsa aşağıda korunur; hız için birkaç kart çalışman yeterli.</p>
       <p><a class="btn" href="kelimeler.html">Kelimelere başla</a></p>
     </div>
 
     <div id="icerikBloklari">
 
-      <div class="ist-serit" id="ozet"></div>
+      <div class="stats-overview">
+        <section class="stats-speed" aria-labelledby="hizBaslik">
+          <div class="stats-speed-top"><h2 id="hizBaslik">Günlük çalışma hızın</h2><span class="stats-pill" id="kayitKapsam"></span></div>
+          <p class="stats-speed-value"><b id="hizDeger">—</b> <span>yanıt / gün</span></p>
+          <p id="hizKiyas" class="stats-speed-compare"></p>
+          <div id="hizMini" aria-hidden="true"></div>
+          <p class="stats-speed-note">Tekrar yanıtları dahil; “zaten biliyorum” işaretlemeleri hariç.</p>
+        </section>
+        <div class="stats-metrics" id="ozet"></div>
+      </div>
+      <div class="stats-insight" id="ritimOzet" role="status"></div>
 
-      <div class="card" style="margin:20px 0">
-        <div class="q-head" style="margin-bottom:10px">
-          <b>Günlük çalışma</b>
-          <span class="small muted" id="gunlukOzet"></span>
-        </div>
-        <div class="aralik-secim" id="aralik" role="group" aria-label="Grafik aralığı">
-          <button class="btn ghost sm acik" type="button" data-gun="30" aria-pressed="true">30 gün</button>
-          <button class="btn ghost sm" type="button" data-gun="90" aria-pressed="false">90 gün</button>
-        </div>
-        <div class="grafik-kutu" id="gunlukGrafik" tabindex="0" role="group" aria-label="Günlük çalışma grafiği (dar ekranda yatay kaydırılır)"></div>
-        <p class="small muted" style="margin:8px 0 0">
-          Turuncu çizgi <b>7 günlük hareketli ortalama</b>: hızının eğilimi. Sütunların üstüne
-          gelince o günün tarihi ve kart sayısı çıkar.
-        </p>
-        <p class="small muted" id="tahminNot" hidden style="margin:6px 0 0">
-          Soluk sütunlar <b>tahminidir</b>: günlük sayaç 7 Eylül 2026'da eklendi, ondan öncesi için
-          elde yalnız her kartın son çalışıldığı gün var. Gerçek sayılar daha yüksekti.
-        </p>
+      <div class="stats-analysis">
+        <section class="stats-panel stats-daily" aria-labelledby="gunlukBaslik">
+          <div class="stats-panel-heading"><div><p class="stats-eyebrow">GÜNDEN GÜNE</p><h2 id="gunlukBaslik">Çalışma ritmin</h2></div><span id="gunlukOzet" class="stats-meta"></span></div>
+          <div class="stats-legend"><span><i class="stats-dot"></i>Yanıt sayısı</span><span><i class="stats-line"></i>7 günlük ortalama</span></div>
+          <div class="grafik-kutu" id="gunlukGrafik" tabindex="0" role="group" aria-label="Günlük yanıt grafiği; dar ekranda yatay kaydırılabilir"></div>
+          <p class="stats-meta" id="tahminNot" hidden>Kayıt başlangıcından önceki günler bilinmiyor; sıfır sayılmaz ve hız hesabına katılmaz.</p>
+          <div class="stats-day-picker"><label for="gunSec">Bir güne yakından bak</label><input type="date" id="gunSec"></div>
+          <div id="gunDetay" class="stats-day-detail" aria-live="polite"></div>
+          <details class="stats-details"><summary>Günlük verileri tablo olarak aç</summary><div class="stats-table-wrap" tabindex="0" role="region" aria-label="Seçili dönemin günlük kayıtları"><table><caption>Seçili dönemin kart çalışma kayıtları</caption><thead><tr><th scope="col">Tarih</th><th scope="col">Yanıt</th><th scope="col">Bildim</th><th scope="col">İlk kayıt</th><th scope="col">Ayıklama</th></tr></thead><tbody id="gunlukTablo"></tbody></table></div></details>
+        </section>
+
+        <section class="stats-panel stats-balance" aria-labelledby="dengeBaslik">
+          <p class="stats-eyebrow">SEÇİLİ DÖNEM</p><h2 id="dengeBaslik">Çalışmanın içinden</h2>
+          <div id="yanitDengesi"></div>
+          <dl class="stats-facts" id="donemAyrinti"></dl>
+          <p class="stats-meta">“İlk kayıt” ayıklanan yeni kartları da içerir. Bu sayılar birbirine eklenen ayrı parçalar değildir.</p>
+        </section>
       </div>
 
-      <div class="card" style="margin:20px 0">
-        <div class="q-head" style="margin-bottom:10px">
-          <b>Çalışma takvimi</b>
-          <span class="small muted" id="isiOzet"></span>
-        </div>
-        <div class="grafik-kutu dar" id="isiGrafik"></div>
-        <p class="small muted" style="margin:8px 0 0">
-          Son 26 hafta. Kutu ne kadar koyuysa o gün o kadar çok kart çalışılmış demektir.
-        </p>
-      </div>
+      <section class="stats-panel stats-calendar" aria-labelledby="takvimBaslik">
+        <div class="stats-panel-heading"><div><p class="stats-eyebrow">DÜZENLİLİK</p><h2 id="takvimBaslik">26 haftalık çalışma takvimi</h2></div><span id="isiOzet" class="stats-meta"></span></div>
+        <div class="grafik-kutu" id="isiGrafik" tabindex="0" role="group" aria-label="26 haftalık takvim; dar ekranda yatay kaydırılabilir"></div>
+        <div class="stats-calendar-key"><span>Günlük yanıt:</span><span class="heat-key s0">0</span><span class="heat-key s1">1–9</span><span class="heat-key s2">10–29</span><span class="heat-key s3">30–59</span><span class="heat-key s4">60+</span><span class="stats-meta">Boş çerçeve: ölçüm yok. Kesikli: eski çalışma izi. Nokta: ayıklama.</span></div>
+      </section>
 
-      <div class="card" style="margin:20px 0">
-        <div class="q-head" style="margin-bottom:10px">
-          <b>Haftalık ritim ve ivme</b>
-          <span class="small muted" id="haftalikOzet"></span>
-        </div>
-        <div class="grafik-kutu" id="haftalikGrafik" tabindex="0" role="group" aria-label="Haftalık ritim grafiği (dar ekranda yatay kaydırılır)"></div>
-        <p class="small muted" style="margin:8px 0 0">
-          Sütunların üstündeki ▲▼ bir önceki haftaya göre farkı gösterir. Son sütun içinde
-          bulunduğun hafta olduğu için henüz tamamlanmamıştır.
-        </p>
+      <div class="stats-bottom">
+        <section class="stats-panel" aria-labelledby="haftalikBaslik">
+          <p class="stats-eyebrow">DAHA GENİŞ BAK</p><h2 id="haftalikBaslik">Haftalık tempo</h2>
+          <p id="haftalikOzet" class="stats-meta"></p>
+          <div class="grafik-kutu" id="haftalikGrafik" tabindex="0" role="group" aria-label="12 haftalık yanıt grafiği; dar ekranda yatay kaydırılabilir"></div>
+          <p class="stats-meta">Kesikli son sütun: devam eden hafta. Karşılaştırma geçen haftanın aynı günlerine göre yapılır.</p>
+        </section>
+        <section class="stats-panel" aria-labelledby="birikimBaslik">
+          <p class="stats-eyebrow">KELİME HAVUZUN</p><h2 id="birikimBaslik">Öğrenme birikimi</h2>
+          <p id="birikimOzet" class="stats-meta"></p>
+          <div id="kutuGrafik" class="stats-progress"></div>
+          <div id="kutuEfsane" class="stats-boxes"></div>
+          <div class="stats-plan"><h3>Seçili katmanlar için ilk tur planı</h3><label for="planHiz">Planladığın yeni kelime / gün</label><input type="number" id="planHiz" min="1" max="1000" step="1" value="10" inputmode="numeric"><p id="tahminMetin" aria-live="polite"></p><p class="stats-meta">Varsayımsal plan; ölçülmüş bitiş tahmini değildir. Tekrar süresi hariçtir, öğrenmenin tamamlanacağı tarihi göstermez. Günlük çalışma ayarını değiştirmez.</p></div>
+        </section>
       </div>
-
-      <div class="card" style="margin:20px 0">
-        <div class="q-head" style="margin-bottom:10px">
-          <b>Öğrenme birikimi</b>
-          <span class="small muted" id="birikimOzet"></span>
-        </div>
-        <div class="grafik-kutu" id="kutuGrafik"></div>
-        <div class="efsaneler" id="kutuEfsane"></div>
-        <p class="small muted" id="ogrenmeHizi" style="margin:10px 0 0"></p>
-        <p class="small" id="tahminMetin" style="margin:6px 0 0"></p>
-      </div>
+      <details class="stats-details stats-method"><summary>Sayılar nasıl hesaplanıyor?</summary><div>
+        <p>Grafikler kelime, öbek ve cümle kartlarının günlük kayıtlarına dayanır. Bir karta tekrar yanıt vermek yeniden sayılır; bu sayı benzersiz kelime sayısı değildir. “Bildim” oranı ipucuyla verilen yanıtları içermez; sınav puanı değildir.</p>
+        <p>Hız, kayıt başlangıcından itibaren seçili döneme düşen takvim günlerine bölünür; boş günler ve henüz tamamlanmamış bugün dahildir. 7 günlük çizgi de başlangıçta yalnız eldeki günlerin ortalamasıdır. Eşit uzunluktaki önceki dönem de kapsanıyorsa değişim gösterilir. Eski kartların yalnız son çalışma tarihleri bilinir; bu izlerden hız veya kesin seri üretilmez.</p>
+        <p>5. kutuya geçiş ayıklamayı da içerebilir; aynı kart daha sonra bu kutuya yeniden çıkabilir. Günlük toplamlar kart türüne göre ayrılmadığı için kelimeler için otomatik bitiş tarihi çıkarılmaz.</p>
+        <p>Hesaplar bu tarayıcıdaki kayıtlarla yapılır. Eşitleme açıksa kayıtlar hesabına da kopyalanır. İki cihazda aynı gün çevrimdışı çalışıldıysa kayıtlar toplanmayabilir. Çalışma süresi ve saatlik hız kaydedilmiyor.</p>
+      </div></details>
 
     </div>
 
@@ -148,12 +158,13 @@
   </div>
 </footer>
 
-<script src="/releases/3d753929c58c/data/kelime-dizin.js"></script>
-<script src="/releases/3d753929c58c/data/sayilar.js"></script>
-<script src="/releases/3d753929c58c/assets/js/ilerleme.js"></script>
-<script src="/releases/3d753929c58c/assets/js/veri.js"></script>
-<script src="/releases/3d753929c58c/assets/js/istatistik.js"></script>
-<script src="/releases/3d753929c58c/assets/js/esitleme-ayar.js"></script>
-<script src="/releases/3d753929c58c/assets/js/esitleme-v2.js"></script>
+<script src="/releases/ed1f7e809291/data/kelime-dizin.js"></script>
+<script src="/releases/ed1f7e809291/data/sayilar.js"></script>
+<script src="/releases/ed1f7e809291/assets/js/ilerleme.js"></script>
+<script src="/releases/ed1f7e809291/assets/js/veri.js"></script>
+<script src="/releases/ed1f7e809291/assets/js/istatistik-hesap.js"></script>
+<script src="/releases/ed1f7e809291/assets/js/istatistik.js"></script>
+<script src="/releases/ed1f7e809291/assets/js/esitleme-ayar.js"></script>
+<script src="/releases/ed1f7e809291/assets/js/esitleme-v2.js"></script>
 </body>
 </html>

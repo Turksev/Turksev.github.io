@@ -70,22 +70,41 @@ async function main() {
       }
     }
     assert.equal(visualFailures.length,0,'Visual regressions: '+JSON.stringify(visualFailures));
-    // Istatistik sayfasi bos ilerlemeyle bos durum gosterir; grafik kodu ancak
-    // veri varken calisir. Tohumlanmis bir gunluk kayitla ikinci bir gecis yapip
-    // grafikleri de axe'tan gecirir, sonra depoyu temizleriz (07.09.2026: dar
-    // ekranda kaydirilabilir grafik kutusu odaklanamiyordu, bos sayfada gorunmuyordu).
+    // Yalniz izole test profilinde: bos durumdan kayitli gorunume gecis,
+    // gercek depo olayi, donem/tarih secimi, salt okunur plan ve dolu grafikler.
     await page.setViewportSize({width:375,height:812});
     await page.goto(base+'/istatistik.html');
+    assert.equal(await page.locator('#bosDurum').isVisible(),true);
     await page.evaluate(()=>{
-      const gun=Math.floor(new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate()).getTime()/86400000);
+      const gun=window.YDS.Ilerleme.bugun();
       const gunluk={},leitner={};
       for (let i=0;i<40;i++) gunluk[String(gun-i)]={t:10+(i%7),y:3,d:7,m:1,z:0};
-      for (let i=0;i<30;i++) leitner['qa-'+i]={k:(i%5)+1,g:gun+i,c:gun-i,m:0};
-      localStorage.setItem('yds-gunluk-kayit',JSON.stringify(gunluk));
-      localStorage.setItem('yds-leitner',JSON.stringify(leitner));
+      window.YDS.Veri.dizin.slice(0,30).forEach((item,i)=>{leitner[item.e]={k:(i%5)+1,g:gun+i,c:gun-i,m:0};});
+      window.YDS.Depo.paketYaz({'yds-gunluk-kayit':gunluk,'yds-leitner':leitner},'qa-fixture');
     });
-    await page.reload();
+    await page.waitForFunction(()=>document.getElementById('bosDurum').hidden);
     await page.waitForSelector('#gunlukGrafik svg');
+    assert.match(await page.locator('#birikimOzet').innerText(),/^30 \/ /,'Only actual word cards counted');
+    const progressBefore=await page.evaluate(()=>Object.fromEntries(Object.keys(localStorage).sort().map(k=>[k,localStorage.getItem(k)])));
+    for (const days of [7,90,30]) {
+      await page.locator('#aralik button[data-gun="'+days+'"]').click();
+      assert.equal(await page.locator('#gunlukTablo tr').count(),days);
+      assert.equal(await page.locator('#aralik button[aria-pressed="true"]').count(),1);
+      assert.equal(await page.locator('#aralik button[data-gun="'+days+'"]').getAttribute('aria-pressed'),'true');
+    }
+    assert.equal(await page.locator('#hizDeger').innerText(),'12,8','Ayiklama is not answer speed');
+    const yesterday=await page.evaluate(()=>new Date((window.YDS.Ilerleme.bugun()-1)*86400000).toISOString().slice(0,10));
+    await page.locator('#gunSec').fill(yesterday);
+    await page.locator('#gunSec').dispatchEvent('change');
+    assert.match(await page.locator('#gunDetay').innerText(),/11 yanıt/);
+    await page.getByText('Günlük verileri tablo olarak aç',{exact:true}).click();
+    assert.equal(await page.locator('#gunlukTablo').isVisible(),true);
+    await page.locator('#planHiz').fill('0');
+    assert.equal(await page.locator('#planHiz').getAttribute('aria-invalid'),'true');
+    await page.locator('#planHiz').fill('25');
+    assert.equal(await page.locator('#planHiz').getAttribute('aria-invalid'),'false');
+    assert.match(await page.locator('#tahminMetin').innerText(),/Günde 25 yeni kelimeyle/);
+    assert.deepEqual(await page.evaluate(()=>Object.fromEntries(Object.keys(localStorage).sort().map(k=>[k,localStorage.getItem(k)]))),progressBefore,'Stats controls never mutate saved progress or quota');
     for (const theme of ['light','dark']) {
       await page.emulateMedia({colorScheme:theme});
       await page.addScriptTag({path:require.resolve('axe-core/axe.min.js')});
@@ -97,6 +116,19 @@ async function main() {
       const tasma=await page.evaluate(()=>({viewport:innerWidth,scroll:document.documentElement.scrollWidth}));
       assert.ok(tasma.scroll<=tasma.viewport+1,'istatistik.html yatay tasma: '+JSON.stringify(tasma));
     }
+    for (const width of [320,375,1280]) {
+      await page.setViewportSize({width,height:812});
+      const enlarged=await page.evaluate(()=>{
+        document.documentElement.style.fontSize='32px';
+        const result={viewport:innerWidth,scroll:document.documentElement.scrollWidth};
+        document.documentElement.style.fontSize='';return result;
+      });
+      assert.ok(enlarged.scroll<=enlarged.viewport+1,'Stats 200% text reflow: '+JSON.stringify(enlarged));
+    }
+    await page.evaluate(()=>window.YDS.Depo.anahtarlariSil(['yds-gunluk-kayit'],'qa-clear'));
+    await page.waitForFunction(()=>!document.getElementById('bosDurum').hidden);
+    assert.equal(await page.locator('#hizDeger').innerText(),'—');
+    assert.match(await page.locator('#birikimOzet').innerText(),/^30 \/ /,'Clearing daily logs preserves word accumulation');
     await page.evaluate(()=>localStorage.clear());
     await page.emulateMedia({colorScheme:'light'});
     await page.setViewportSize({width:1280,height:812});
