@@ -116,19 +116,32 @@ async function main() {
       const tasma=await page.evaluate(()=>({viewport:innerWidth,scroll:document.documentElement.scrollWidth}));
       assert.ok(tasma.scroll<=tasma.viewport+1,'istatistik.html yatay tasma: '+JSON.stringify(tasma));
     }
-    for (const width of [320,375,1280]) {
+    for (const width of [320,375,1280]) for (const font of ['', 'monospace']) {
       await page.setViewportSize({width,height:812});
-      const enlarged=await page.evaluate(()=>{
+      const enlarged=await page.evaluate(font=>{
         document.documentElement.style.fontSize='32px';
-        const result={viewport:innerWidth,scroll:document.documentElement.scrollWidth};
-        document.documentElement.style.fontSize='';return result;
-      });
+        document.querySelector('main').style.fontFamily=font;
+        const result={font,viewport:innerWidth,scroll:document.documentElement.scrollWidth,
+          overflowing:Array.from(document.querySelectorAll('main *')).filter(el=>{
+            const r=el.getBoundingClientRect();let right=r.right;
+            for(let parent=el.parentElement;parent;parent=parent.parentElement)if(/^(auto|scroll|hidden|clip)$/.test(getComputedStyle(parent).overflowX))right=Math.min(right,parent.getBoundingClientRect().right);
+            return r.width>0&&right>innerWidth+1;
+          }).slice(0,8).map(el=>({tag:el.tagName,id:el.id,class:String(el.className),text:el.textContent.slice(0,70)}))};
+        document.documentElement.style.fontSize='';document.querySelector('main').style.fontFamily='';return result;
+      },font);
       assert.ok(enlarged.scroll<=enlarged.viewport+1,'Stats 200% text reflow: '+JSON.stringify(enlarged));
     }
     await page.evaluate(()=>window.YDS.Depo.anahtarlariSil(['yds-gunluk-kayit'],'qa-clear'));
     await page.waitForFunction(()=>!document.getElementById('bosDurum').hidden);
     assert.equal(await page.locator('#hizDeger').innerText(),'—');
     assert.match(await page.locator('#birikimOzet').innerText(),/^30 \/ /,'Clearing daily logs preserves word accumulation');
+    await page.setViewportSize({width:320,height:812});
+    const emptyEnlarged=await page.evaluate(()=>{
+      document.documentElement.style.fontSize='32px';document.querySelector('main').style.fontFamily='monospace';
+      const result={viewport:innerWidth,scroll:document.documentElement.scrollWidth};
+      document.documentElement.style.fontSize='';document.querySelector('main').style.fontFamily='';return result;
+    });
+    assert.ok(emptyEnlarged.scroll<=emptyEnlarged.viewport+1,'Stats empty state 200% wide-font reflow: '+JSON.stringify(emptyEnlarged));
     await page.evaluate(()=>localStorage.clear());
     await page.emulateMedia({colorScheme:'light'});
     await page.setViewportSize({width:1280,height:812});
