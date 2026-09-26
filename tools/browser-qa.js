@@ -90,7 +90,9 @@ async function main() {
     assert.match(await page.locator('#haftalikOzet').innerText(),/aynı 2 gününde/,'Tuesday compares two elapsed weekdays');
     assert.equal(await page.locator('#isiGrafik .today-cell').getAttribute('y'),'51.00','Tuesday row in calendar');
     assert.match(await page.locator('#birikimOzet').innerText(),/^30 \/ /,'Only actual word cards counted');
-    const progressBefore=await page.evaluate(()=>Object.fromEntries(Object.keys(localStorage).sort().map(k=>[k,localStorage.getItem(k)])));
+    // Usage has its own local telemetry namespace; all other saved progress and
+    // settings must remain byte-for-byte unchanged while browsing statistics.
+    const progressBefore=await page.evaluate(()=>Object.fromEntries(Object.keys(localStorage).filter(k=>!k.startsWith('yds-kullanim-v1:')).sort().map(k=>[k,localStorage.getItem(k)])));
     for (const days of [7,90,30]) {
       await page.locator('#aralik button[data-gun="'+days+'"]').click();
       assert.equal(await page.locator('#gunlukTablo tr').count(),days);
@@ -109,7 +111,7 @@ async function main() {
     await page.locator('#planHiz').fill('25');
     assert.equal(await page.locator('#planHiz').getAttribute('aria-invalid'),'false');
     assert.match(await page.locator('#tahminMetin').innerText(),/Günde 25 yeni kelimeyle/);
-    assert.deepEqual(await page.evaluate(()=>Object.fromEntries(Object.keys(localStorage).sort().map(k=>[k,localStorage.getItem(k)]))),progressBefore,'Stats controls never mutate saved progress or quota');
+    assert.deepEqual(await page.evaluate(()=>Object.fromEntries(Object.keys(localStorage).filter(k=>!k.startsWith('yds-kullanim-v1:')).sort().map(k=>[k,localStorage.getItem(k)]))),progressBefore,'Stats controls never mutate saved progress or quota');
     const latestTargets=[['gunlukGrafik','.today-bar'],['haftalikGrafik','.current-bar'],['isiGrafik','.today-cell']];
     for(const width of [1920,1200,1024,375,320]){
       await page.setViewportSize({width,height:812});

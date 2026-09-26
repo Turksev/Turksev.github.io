@@ -45,7 +45,8 @@ assert.equal(H.streak(H.create(legacy,{},now)).current,4,'Bugün boşken dünkü
 assert.equal(H.period(H.create({[now-1]:row(10)}, {},now),7).speed,5,'Kayıt başlangıcından sonraki boş gün paydaya dahil');
 
 // Actual controller runs against a minimal DOM, without reading/writing real user storage.
-const elements=new Map(), handlers={}, timeouts=new Map();let timer=0,today=now,log={},cards={},writes=0;
+const elements=new Map(), handlers={}, timeouts=new Map();let timer=0,today=now,log={},cards={},writes=0,usageData=null;
+const usageRanges=[];
 function element(id){if(!elements.has(id))elements.set(id,{innerHTML:'',textContent:'',value:'',hidden:false,attrs:{},events:{},
   setAttribute(k,v){this.attrs[k]=v;},getAttribute(k){return this.attrs[k];},addEventListener(k,fn){this.events[k]=fn;},
   classList:{toggle(){}},querySelectorAll(){return buttons;}});return elements.get(id);}
@@ -53,6 +54,8 @@ const buttons=[7,30,90].map(g=>{const e=element('button'+g);e.attrs['data-gun']=
 window.YDS.Depo={oku(){return [2,2,'2','bad'];},yaz(){writes++;throw Error('Statistics must not write');}};
 window.YDS.Veri={dizin:[{e:'alpha',k:2},{e:'beta',k:2},{e:'outside',k:1}]};
 window.YDS.Ilerleme={bugun:()=>today,gunlukKayitlar:()=>log,tumKayitlar:()=>cards,kutu:e=>e==='alpha'?5:0,gunlukHedef:()=>10};
+window.YDS.Kullanim={oku:()=>usageData,sifirla(){throw Error('Statistics must not reset usage');}};
+window.YDS.KullanimHesap={rapor(snapshot,range){usageRanges.push(range);return snapshot?snapshot[range]:{startedDay:null,pages:[],features:[],emptyPages:[],emptyFeatures:[],seconds:0,partial:false};}};
 window.YDS.kacar=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 window.addEventListener=(k,fn)=>{handlers[k]=fn;};window.setTimeout=fn=>{timeouts.set(++timer,fn);return timer;};
 window.clearTimeout=id=>timeouts.delete(id);window.setInterval=()=>0;
@@ -60,6 +63,9 @@ context.document={getElementById:element,hidden:false,addEventListener:(k,fn)=>{
 vm.runInContext(source('assets/js/istatistik.js'),context);
 const flush=()=>{for(const fn of timeouts.values())fn();timeouts.clear();};
 assert.equal(element('bosDurum').hidden,false);assert.equal(element('hizDeger').textContent,'—');
+assert.match(element('kullanimOzet').textContent,/henüz başlamadı/);
+assert.equal(element('kullanimBos').hidden,false);
+assert.match(element('kullanimBosSayfalar').textContent,/henüz ölçüm yok/);
 assert.match(element('tahminMetin').textContent,/1 kelimeye/,'Yinelenen seçili katman havuzu şişirmez');
 log={[now]:row(10,100)};handlers['yds-depo-degisti']({detail:{anahtarlar:['yds-gunluk-kayit']}});flush();
 assert.equal(element('hizDeger').textContent,'10,0');assert.equal(element('bosDurum').hidden,true);
@@ -73,4 +79,31 @@ element('planHiz').value='3';element('planHiz').events.input();assert.equal(elem
 log={};cards={};handlers['yds-depo-degisti']({detail:{anahtarlar:['yds-leitner','yds-gunluk-kayit']}});flush();
 assert.equal(element('bosDurum').hidden,false);assert.equal(element('hizDeger').textContent,'—');
 today++;handlers.focus();flush();assert.equal(element('gunSec').max,'2026-09-09');assert.equal(writes,0);
-console.log('İstatistik: doğru payda, ayıklama ayrımı, eksik geçmiş, eşit dönem, haftalık kıyas, plan, boş/dolu/silinen veri ve olayla yenileme geçti.');
+usageData=Object.fromEntries([7,30,90].map(range=>[range,{
+  startedDay:now-200,observedDays:2,seconds:range*60,partial:false,
+  pages:[{id:'kel',label:'Kelimeler',visits:range,seconds:range*60,days:2,lastDay:now},{id:'ara',label:'<img src=x>',visits:0,seconds:0,days:0,lastDay:now-190}],
+  features:[{id:'kart',label:'Kart çalışması',count:range*2,days:2,lastDay:now},{id:'ses',label:'Ses',count:0,days:0,lastDay:null}],
+  emptyPages:['ara'],emptyFeatures:['ses']
+}]));
+const usageBefore=JSON.stringify(usageData);
+handlers['yds:kullanim-degisti']();flush();
+assert.equal(element('kullanimBos').hidden,true);
+assert.match(element('kullanimOzet').textContent,/Son 7 günde 7,0 dakika/,'Mevcut dönem kullanım bölümünü de yönetir');
+assert.match(element('kullanimSayfalar').innerHTML,/data-page="kel"/);
+assert.match(element('kullanimSayfalar').innerHTML,/&lt;img src=x&gt;/,'Katalog etiketi HTML olarak işlenmez');
+assert.match(element('kullanimOzellikler').innerHTML,/<td>14<\/td>/);
+assert.match(element('kullanimBosSayfalar').textContent,/Bu dönemde kullanım kaydı olmayan/);
+assert.match(element('kullanimKapsam').textContent,/son kullanım ise eldeki tüm geçmişe/);
+assert.match(element('kullanimPaylar').innerHTML,/100,0%/);
+for(const index of [2,1]){
+  element('aralik').events.click.call(element('aralik'),{target:{closest:()=>buttons[index]}});
+  assert.equal(usageRanges.at(-1),Number(buttons[index].attrs['data-gun']));
+  assert.match(element('kullanimOzet').textContent,new RegExp('Son '+buttons[index].attrs['data-gun']+' günde'));
+}
+assert.equal(JSON.stringify(usageData),usageBefore,'Görünüm kullanım anlığını değiştirmez');
+usageData[30].partial=true;handlers['yds:kullanim-degisti']();flush();
+assert.match(element('kullanimKapsam').textContent,/toplamlar eksik olabilir/);
+usageData=null;handlers['yds:kullanim-degisti']();flush();
+assert.equal(element('kullanimBos').hidden,false);assert.equal(element('kullanimSayfalar').innerHTML,'');
+assert.equal(element('kullanimPaylar').innerHTML,'');assert.equal(writes,0);
+console.log('İstatistik: öğrenme hesapları, salt okunur kontroller, kullanım dönemi, eksik ölçüm, güvenli etiketler ve olayla yenileme geçti.');

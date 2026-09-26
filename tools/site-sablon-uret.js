@@ -9,6 +9,11 @@ const n = c.window.SAYILAR, tr = x => Number(x).toLocaleString('tr-TR');
 const links = '<nav class="footer-links" aria-label="Site ve veri bilgileri"><a href="yontem.html">Yöntem ve kaynaklar</a><a href="ayarlar.html">Gizlilik ve veri ayarları</a><a href="https://github.com/Turksev/Turksev.github.io/issues/new">Hata bildir</a></nav>';
 for (const file of fs.readdirSync(root).filter(x=>x.endsWith('.html'))) {
   const p = path.join(root,file); let s = fs.readFileSync(p,'utf8');
+  // Tek bağımsız izleyici çifti; kaynak ve önceki değişmez yayın yolları aynı kurala uyar.
+  s = s.replace(/<script\b[^>]*src="[^"]*assets\/js\/kullanim(?:-hesap)?\.js"[^>]*><\/script>\s*/g, '');
+  const usageAnchor = s.includes('assets/js/esitleme-depo.js') ? 'esitleme-depo' : 'main';
+  s = s.replace(new RegExp('(<script\\b[^>]*src="[^"]*assets/js/'+usageAnchor+'\\.js"[^>]*><\\/script>)'),
+    '$1\n<script src="assets/js/kullanim-hesap.js"></script>\n<script src="assets/js/kullanim.js"></script>');
   s = s.replace(/<script[^>]*src="[^"]*data\/depo\.js"[^>]*><\/script>\s*/g, '');
   s = s.replace('Önce yedi gün geri alınabilen yerel bir yedek oluşturulur;', 'Önce geri alınana veya yenisiyle değiştirilene kadar saklanan yerel bir yedek oluşturulur;');
   s = s.replace(/class="atla"/g,'class="skip-link"');

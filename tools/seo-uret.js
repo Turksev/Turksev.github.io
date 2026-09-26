@@ -204,6 +204,8 @@ function pageFor(topic, index, topics) {
     <nav class="footer-links" aria-label="Site ve veri bilgileri"><a href="../yontem.html">Yöntem ve kaynaklar</a><a href="../ayarlar.html">Gizlilik ve veri ayarları</a><a href="https://github.com/Turksev/Turksev.github.io/issues/new">Hata bildir</a></nav>
   </div>
 </footer>
+<script src="../assets/js/kullanim-hesap.js"></script>
+<script src="../assets/js/kullanim.js"></script>
 </body>
 </html>
 `;

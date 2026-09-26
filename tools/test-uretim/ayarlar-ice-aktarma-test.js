@@ -204,10 +204,47 @@ async function ana() {
   assert.ok(o3.paket()['yds-leitner'].yeni, 'önizleme sırasında eklenen ilerleme korunmalı');
 
   const reset = api.resetOzeti(baglamDegeri(o, tumAlanlar()));
-  ['Kelime ve öbek', 'Soru yanlış', 'Kategori', 'Deneme', 'Konu', 'Bağlam', 'En iyi', 'Bugün açılan'].forEach(function (ad) {
+  ['Kelime ve öbek', 'Soru yanlış', 'Kategori', 'Deneme', 'Konu', 'Bağlam', 'En iyi', 'Bugün açılan', 'Günlük çalışma sayaçları'].forEach(function (ad) {
     assert.ok(reset.indexOf(ad) !== -1, 'reset özeti alanı içermeli: ' + ad);
   });
   assert.ok(reset.indexOf('Korunacak 4 çalışma tercihi') !== -1);
+  assert.ok(reset.indexOf('Sıfırlanacak 9 ilerleme alanı') !== -1);
+  assert.ok(reset.indexOf('Kullanım kayıtları yedeğe girmez ve geri alınamaz') !== -1);
+
+  const silme = ortam(), onaylar = [];
+  let kullanimSilme = 0, ilerlemeSilme = 0, onay = false, ilerlemeBasarili = true, kullanimBasarili = true;
+  silme.paketAyarla(tumAlanlar());
+  const silmeOncesi = JSON.stringify(silme.paket());
+  silme.pencere.confirm = function (mesaj) { onaylar.push(mesaj); return onay; };
+  silme.pencere.YDS.Kullanim = { sifirla() { kullanimSilme++; return kullanimBasarili; } };
+  silme.pencere.YDS.Ilerleme.hepsiniSifirla = function () { ilerlemeSilme++; return ilerlemeBasarili; };
+  silme.elemanlar.kullanimSil.olaylar.click();
+  assert.strictEqual(kullanimSilme, 0, 'kullanım silme iptalinde hiçbir kayıt silinmez');
+  onay = true;
+  silme.elemanlar.kullanimSil.olaylar.click();
+  assert.strictEqual(kullanimSilme, 1);
+  assert.strictEqual(ilerlemeSilme, 0, 'yalnız kullanım silme ilerleme sıfırlamasını çağırmaz');
+  assert.strictEqual(silme.yazim(), 0, 'yalnız kullanım silme eşitleme paketine yazmaz');
+  assert.strictEqual(JSON.stringify(silme.paket()), silmeOncesi);
+  assert.match(onaylar.at(-1), /geri alınamaz/);
+  assert.match(silme.elemanlar.ayarDurum.textContent, /İlerleme ve çalışma tercihlerin korundu/);
+
+  onaylar.length = 0;
+  silme.elemanlar.yerelSil.olaylar.click();
+  assert.strictEqual(onaylar.length, 2, 'genel sıfırlama iki açık onayı korur');
+  assert.match(onaylar[0], /9 ilerleme alanı/);
+  assert.match(onaylar[0], /Kullanım kayıtları yedeğe girmez ve geri alınamaz/);
+  assert.doesNotMatch(onaylar[0], /7 gün/);
+  assert.match(onaylar[1], /Kullanım kayıtları yedekten geri gelmeyecek/);
+  assert.strictEqual(ilerlemeSilme, 1);
+  assert.strictEqual(kullanimSilme, 2, 'başarılı genel sıfırlama yerel kullanımı da siler');
+  ilerlemeBasarili = false;
+  silme.elemanlar.yerelSil.olaylar.click();
+  assert.strictEqual(kullanimSilme, 2, 'ilerleme sıfırlaması başarısızsa kullanım silinmez');
+  ilerlemeBasarili = true; kullanimBasarili = false;
+  silme.elemanlar.yerelSil.olaylar.click();
+  assert.match(silme.elemanlar.ayarDurum.textContent, /Kullanım kayıtları silinemedi/);
+  assert.strictEqual(silme.elemanlar.ayarDurum.className, 'status-kutu err', 'kısmi silme tüm veriler silinmiş gibi gösterilmez');
 
   console.log('ayarlar-ice-aktarma-test: OK');
 }

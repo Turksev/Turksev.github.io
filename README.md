@@ -5,6 +5,42 @@ tüm ilerleme ziyaretçinin kendi tarayıcısında (`localStorage`) saklanır.
 
 Yayında: <https://turksev.github.io>
 
+## Bu tarayıcıdaki kullanım istatistiği
+
+İstatistik sayfasında ortak 7/30/90 gün seçicisiyle sayfa ziyaretleri, tahmini aktif
+kullanım süresi ve sekiz temel eylemin sayısı/kullanıldığı günler gösterilir. 129 konu
+ünitesi hafif, bağımsız izleyiciyle tek "Konu üniteleri" grubunda ölçülür. Görünür
+sayfada son etkileşimin ardından en çok 90 saniye sayılır; bu bir öğrenme başarısı
+veya saatlik hız ölçüsü değildir. Aynı anda kullanılan birden fazla pencerenin
+süreleri toplanır; benzersiz çalışma süresi iddiası yoktur.
+
+Bu ilk sürüm yalnız yereldir: `yds-kullanim-v1:` önekli kayıtlar eşitleme beyaz
+listesine, Firestore'a ve ilerleme yedeğine girmez. Gün/kurulum/belge oturumu
+başına ayrı **fiziksel localStorage anahtarı** vardır; mutlak sayaçlar yalnız kendi
+yazıcısınca güncellenir. Tek ortak JSON nesnesinin son yazımda başka sekmenin
+katkısını silmesi böylece önlenir. Son kullanım özeti değişmez gün işaretlerinden
+hesaplanır; her kurulum/özellik ve kurulum/sayfa için en yeni işaret korunur.
+
+İlk görünür ziyaret erken, değişen kayıtlar dakikada bir ve görünürlük kaybında
+yazılır. Yenileme aynı ziyarettir; başka sayfadan normal veya BFCache dönüşü yeni
+ziyarettir. Donma/arka plan bekleyişi sayılmaz. Ani kapanışta son kaydedilmemiş
+aralık kaybolabilir; yazma hatası çalışmayı engellemez. Bilinen eksiklikler yalnız
+istatistik bölümünde belirtilir. Ayrıntı bugün ve önceki 180 gün tutulur; ilk ölçüm
+ve son kullanım özeti budamadan bağımsızdır. Yerel kullanım için 512 KiB bütçe
+vardır; bütçe dolarsa öğrenme verisi silinmez. Ayarlardaki ayrı silme düğmesi ve
+genel ilerleme sıfırlaması kullanım kayıtlarını siler; kullanım geri alınamaz.
+Sıfırlama dönemi değiştiği için açık eski sekmeler silinen sayaçları geri getiremez.
+
+İleride buluta geçiş, yalnız beyaz listeye anahtar eklemek değildir: kaynak
+kimliklerinin korunduğu, tekrar çalıştırılabilir bir içe alma ve kayıt bazında
+birleştirme gerekir. Bu sürüm Firestore kurallarını veya gönderim davranışını
+değiştirmez. Yeni eylemler `assets/js/kullanim-hesap.js` kataloğuna ve semantik
+işleyicilerine birlikte eklenmelidir; mevcut kimlikler yeni anlamlarla kullanılmaz.
+
+Kullanımın saf/lifecycle/altı saat dilimi testleri `pnpm test` içindedir. İzole
+Chromium'da iki sekme, yenileme, gezinme, konu sayfası, silme ve açık/koyu dar
+ekran denetimleri `pnpm test:usage` ile çalışır.
+
 ## Sayfalar
 
 | Dosya | İçerik |
