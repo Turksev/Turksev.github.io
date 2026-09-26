@@ -29,6 +29,7 @@ async function report(page,range=30) {
 }
 function visits(result,id) {return result.pages.find(row=>row.id===id)?.visits||0;}
 function uses(result,id) {return result.features.find(row=>row.id===id)?.count||0;}
+function seconds(result) {return result.pages.reduce((sum,row)=>sum+row.seconds,0);}
 async function totals(page) {
   const snapshot=await page.evaluate(()=>window.YDS.Kullanim.oku());
   const pages=new Map(),features=new Map();
@@ -64,13 +65,124 @@ async function main() {
   const browser=await chromium.launch();
   const errors=[];
   const contexts=[];
-  async function freshContext() {
-    const context=await browser.newContext({serviceWorkers:'block',timezoneId:'Europe/Istanbul'});
+  async function freshContext(options={}) {
+    const context=await browser.newContext({serviceWorkers:'block',timezoneId:'Europe/Istanbul',...options});
     context.on('page',page=>page.on('pageerror',error=>errors.push(error.message)));
     contexts.push(context);
     return context;
   }
   try {
+    // Real browser input must wake an idle collector. API olay() calls cannot
+    // prove the DOM listeners work, so this scenario never calls that method.
+    const inputContext=await freshContext({hasTouch:true});
+    const inputPage=await inputContext.newPage();
+    await inputPage.clock.install();
+    await inputPage.goto(base+'/konu/E01.html');await ready(inputPage);
+    await inputPage.evaluate(()=>{
+      window.__qaTrustedInputs={};
+      for(const type of ['pointerdown','pointermove','keydown','touchstart','scroll']) {
+        document.addEventListener(type,event=>{
+          if(event.isTrusted)window.__qaTrustedInputs[type]=(window.__qaTrustedInputs[type]||0)+1;
+        },{capture:true,passive:true});
+      }
+    });
+    const heading=await inputPage.locator('h1').boundingBox();
+    const point={x:heading.x+Math.min(20,heading.width/2),y:heading.y+heading.height/2};
+    await inputPage.mouse.move(point.x,point.y);
+    await inputPage.clock.runFor(100000);await checkpoint(inputPage);
+    const idleLimit=seconds(await totals(inputPage));
+    assert.ok(idleLimit>=89&&idleLimit<=91,'No input is capped at the 90-second idle boundary: '+idleLimit);
+    await inputPage.clock.runFor(15000);await checkpoint(inputPage);
+    assert.equal(seconds(await totals(inputPage)),idleLimit,'Idle time never accrues indefinitely');
+    const inputs=[
+      ['pointerdown',async()=>{await inputPage.mouse.down();await inputPage.mouse.up();}],
+      ['keydown',()=>inputPage.keyboard.press('Shift')],
+      ['touchstart',()=>inputPage.touchscreen.tap(point.x,point.y)],
+      ['pointermove',()=>inputPage.mouse.move(point.x+25,point.y+3)],
+      ['scroll',async()=>{await inputPage.mouse.wheel(0,400);await inputPage.waitForFunction(()=>window.scrollY>0);}]
+    ];
+    for(const [type,interact] of inputs) {
+      await inputPage.clock.runFor(100000);await checkpoint(inputPage);
+      const before=seconds(await totals(inputPage));
+      const received=await inputPage.evaluate(type=>window.__qaTrustedInputs[type]||0,type);
+      await interact();
+      await inputPage.clock.runFor(5000);await checkpoint(inputPage);
+      assert.ok(await inputPage.evaluate(({type,received})=>(window.__qaTrustedInputs[type]||0)>received,{type,received}),type+': trusted DOM event was received');
+      const delta=seconds(await totals(inputPage))-before;
+      assert.ok(delta>=4&&delta<=6,type+': idle input resumes only the following five seconds, got '+delta);
+    }
+
+    // Exercise actual product handlers using clicks and keyboard shortcuts.
+    const actionContext=await freshContext();
+    const actionPage=await actionContext.newPage();
+    await actionPage.goto(base+'/kelimeler.html');await ready(actionPage);
+    await actionPage.locator('#desteBasla').click();
+    await actionPage.locator('#kart').waitFor({state:'visible'});await checkpoint(actionPage);
+    assert.equal(uses(await totals(actionPage),'deste-baslat'),1,'Clicking a real deck button reaches the collector');
+    await actionPage.locator('#kart').focus();await actionPage.keyboard.press('2');await checkpoint(actionPage);
+    assert.equal(uses(await totals(actionPage),'kart-cevap'),1,'Real answer keyboard shortcut reaches the collector');
+    await actionPage.locator('#bildim').click();await checkpoint(actionPage);
+    assert.equal(uses(await totals(actionPage),'kart-cevap'),2,'Real answer button reaches the collector');
+    await actionPage.goto(base+'/quiz.html');await ready(actionPage);
+    await actionPage.locator('#basla').click();await checkpoint(actionPage);
+    assert.equal(uses(await totals(actionPage),'quiz-baslat'),1,'Real quiz start reaches the collector');
+    await actionPage.locator('#qText').focus();await actionPage.keyboard.press('1');
+    actionPage.once('dialog',dialog=>dialog.accept());
+    await actionPage.locator('#bitir').click();await checkpoint(actionPage);
+    assert.equal(uses(await totals(actionPage),'quiz-bitir'),1,'Answering and finishing the real quiz reaches the collector');
+
+    // Headless Chromium keeps pages visible; this deterministic visibility
+    // fixture tests a real exam timer expiring while the document reports hidden.
+    // Input, exam setup and submission still run through the production handlers.
+    const examContext=await freshContext();
+    const examPage=await examContext.newPage();
+    await examPage.addInitScript(()=>{
+      window.__qaHidden=false;
+      Object.defineProperty(document,'visibilityState',{get:()=>window.__qaHidden?'hidden':'visible'});
+      Object.defineProperty(document,'hidden',{get:()=>window.__qaHidden});
+    });
+    await examPage.clock.install();
+    await examPage.goto(base+'/deneme.html');await ready(examPage);
+    await examPage.locator('#adet').selectOption('20');await examPage.locator('#basla').click();
+    await examPage.evaluate(()=>{window.__qaHidden=true;document.dispatchEvent(new Event('visibilitychange'));});
+    const examBefore=seconds(await totals(examPage));
+    await examPage.clock.fastForward(45*60*1000+2000);
+    await examPage.locator('#sonuc').waitFor({state:'visible'});await checkpoint(examPage);
+    assert.equal(uses(await totals(examPage),'deneme-bitir'),1,'A real exam timer completion is saved while hidden');
+    assert.equal(seconds(await totals(examPage)),examBefore,'Hidden exam wait adds no active time');
+
+    // A usage checkpoint must not redraw learning charts or replace an unfinished
+    // native date edit. Backspace leaves one date segment genuinely incomplete.
+    const editingContext=await freshContext();
+    const editingPage=await editingContext.newPage();
+    await editingPage.clock.install();
+    await editingPage.goto(base+'/istatistik.html');await ready(editingPage);
+    await editingPage.clock.runFor(200);
+    const date=editingPage.locator('#gunSec');await date.focus();await date.press('Backspace');
+    const unfinishedDate=await date.inputValue();
+    assert.equal(unfinishedDate,'','Test setup: native date input has an incomplete segment');
+    const learningSvg=await editingPage.locator('#gunlukGrafik svg').elementHandle();
+    await editingPage.clock.runFor(61000);
+    assert.equal(await date.inputValue(),unfinishedDate,'Usage checkpoint preserves unfinished date typing');
+    assert.equal(await date.evaluate(element=>document.activeElement===element),true,'Usage checkpoint preserves date focus');
+    assert.equal(await learningSvg.evaluate(element=>element.isConnected),true,'Usage checkpoint does not redraw the learning graph');
+    await learningSvg.dispose();
+    await editingPage.locator('#kullanim details summary').click();
+    const selectedCell=editingPage.locator('#kullanimOzellikler tr[data-feature="ipucu"] td').first();
+    const selectedNode=await selectedCell.elementHandle();
+    await selectedCell.evaluate(element=>{
+      if(document.activeElement instanceof HTMLElement)document.activeElement.blur();
+      const selection=window.getSelection(),range=document.createRange();
+      range.selectNodeContents(element);selection.removeAllRanges();selection.addRange(range);
+    });
+    const selectedText=await editingPage.evaluate(()=>window.getSelection().toString());
+    await action(editingPage,'ipucu');await checkpoint(editingPage);await editingPage.clock.runFor(200);
+    assert.equal(await editingPage.evaluate(()=>window.getSelection().toString()),selectedText,'Usage updates preserve selected text');
+    assert.equal(await selectedNode.evaluate(element=>element.isConnected),true,'Selected usage cell is not replaced');
+    await editingPage.evaluate(()=>window.getSelection().removeAllRanges());await editingPage.clock.runFor(200);
+    assert.equal(await selectedCell.innerText(),'1','Deferred usage update appears after the selection clears');
+    await selectedNode.dispose();
+
     // A reload preserves the current visit, while actually leaving and returning
     // records a new visit. Repeated same-document lifecycle signals are harmless.
     const reloadContext=await freshContext();
@@ -204,7 +316,7 @@ async function main() {
       await axeAndLayout(settings,'Usage after reset '+theme+' 320px');
     }
     assert.deepEqual(errors,[],'Usage browser runtime errors');
-    console.log('Usage Browser QA passed: reload visits, two tabs, navigation flush, generated topic collector, period read-only state, light/dark narrow axe, isolated local reset.');
+    console.log('Usage Browser QA passed: real mouse/key/touch/scroll idle wake, real deck/answer/quiz actions, hidden exam completion, date edit preservation, reload visits, two tabs, navigation flush, topic collector, read-only periods, light/dark narrow axe, local reset.');
   } finally {
     for(const context of contexts) await context.close();
     await browser.close();await new Promise(resolve=>server.close(resolve));

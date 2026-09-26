@@ -12,6 +12,10 @@ if(!process.argv.includes('--child')){
     const rows=b.K.oku().records.sort((a,c)=>a.g-c.g);
     assert.equal(rows.length,2);assert.equal(rows[0].g,Date.UTC(y,m,d)/86400000);assert.equal(rows[1].g,rows[0].g+1);
     assert.equal(rows[0].s,10);assert.equal(rows[1].s,10);assert.equal(rows[0].a,1);assert.equal(rows[1].a,0);
+    const reloaded=browser({storage:b.storage,sessionStorage:b.sessionStorage,reload:true,now:new Date(y,m,d+1,0,0,10).getTime()});
+    assert.equal(reloaded.K.oku().records.reduce((n,r)=>n+r.a,0),2,'Next-day reload counts even after a midnight duration checkpoint');
+    const again=browser({storage:b.storage,sessionStorage:b.sessionStorage,reload:true,now:new Date(y,m,d+1,0,0,20).getTime()});
+    assert.equal(again.K.oku().records.reduce((n,r)=>n+r.a,0),2,'Another reload on that calendar day preserves the new visit');
   }
   const b=browser();
   for(const [y,m,d] of [[2026,2,8],[2026,10,1],[2026,2,29],[2026,9,25]]){

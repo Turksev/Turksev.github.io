@@ -135,7 +135,7 @@ async function main() {
       '<script src="/releases/abcdef123456/assets/js/kullanim.js"></script>\n</head><body></body></html>']
   ]);
   const key = file => path.relative(virtualRoot, file).split(path.sep).join('/');
-  const fakeFs = {readdirSync: () => ['fixture.html'], readFileSync: file => {
+  const fakeFs = {readdirSync: () => Array.from(files.keys()).filter(file => !file.includes('/') && file.endsWith('.html')), readFileSync: file => {
     assert.ok(files.has(key(file)), key(file)); return files.get(key(file));
   }, writeFileSync: (file, data) => files.set(key(file), data)};
   const generate = () => vm.runInNewContext(read('tools/site-sablon-uret.js'), {
@@ -148,9 +148,43 @@ async function main() {
   assert.equal((once.match(/kullanim\.js/g) || []).length, 1);
   assert.ok(once.indexOf('main.js') < once.indexOf('kullanim-hesap.js'));
   assert.ok(once.indexOf('kullanim-hesap.js') < once.indexOf('kullanim.js'));
+  // A new root page must acquire the pair without joining a maintained allowlist.
+  // This runs only against the in-memory filesystem; no generated site is edited.
+  files.set('sonradan-eklenen.html', '<html><head><script src="assets/js/main.js"></script>\n' +
+    '<script src="assets/js/esitleme-depo.js"></script>\n</head><body></body></html>');
+  generate();
+  const added=files.get('sonradan-eklenen.html');
+  generate();
+  assert.equal(files.get('sonradan-eklenen.html'),added,'new root page generation is idempotent');
+  assert.equal((added.match(/kullanim-hesap\.js/g)||[]).length,1,'new root page gets one calculator');
+  assert.equal((added.match(/kullanim\.js/g)||[]).length,1,'new root page gets one collector');
+  assert.ok(added.indexOf('esitleme-depo.js')<added.indexOf('kullanim-hesap.js'),'new root page preserves sync initialization order');
+  assert.ok(added.indexOf('kullanim-hesap.js')<added.indexOf('kullanim.js'),'new root page initializes the calculator first');
+
+  // Inspect every shipped HTML document dynamically, including future additions.
+  // Release copies are assets, not extra entry pages; root + konu are the routes.
+  const entryPages=fs.readdirSync(root).filter(file=>file.endsWith('.html')).concat(
+    fs.readdirSync(path.join(root,'konu')).filter(file=>file.endsWith('.html')).map(file=>'konu/'+file));
+  assert.ok(entryPages.length>=145,'the complete existing route inventory is covered');
+  const release=JSON.parse(read('release-manifest.json'));
+  for(const file of entryPages) {
+    const scripts=Array.from(read(file).matchAll(/<script\b[^>]*\bsrc=["']([^"']+)["'][^>]*>/g),match=>match[1]);
+    const calculator=scripts.filter(src=>/(?:^|\/)assets\/js\/kullanim-hesap\.js$/.test(src));
+    const collector=scripts.filter(src=>/(?:^|\/)assets\/js\/kullanim\.js$/.test(src));
+    assert.equal(calculator.length,1,file+': exactly one usage calculator');
+    assert.equal(collector.length,1,file+': exactly one usage collector');
+    assert.equal(calculator[0],release.kok+'assets/js/kullanim-hesap.js',file+': current calculator release');
+    assert.equal(collector[0],release.kok+'assets/js/kullanim.js',file+': current collector release');
+    const h=scripts.indexOf(calculator[0]),k=scripts.indexOf(collector[0]);
+    assert.ok(h<k,file+': calculator precedes collector');
+    for(const dependency of ['main','esitleme-depo']) {
+      const dependencyIndex=scripts.findIndex(src=>src.endsWith('/assets/js/'+dependency+'.js'));
+      if(dependencyIndex>=0)assert.ok(dependencyIndex<h,file+': '+dependency+' precedes usage initialization');
+    }
+  }
   assert.match(read('tools/seo-uret.js'), /<script src="\.\.\/assets\/js\/kullanim-hesap\.js"><\/script>\s*<script src="\.\.\/assets\/js\/kullanim\.js"><\/script>/);
   assert.match(read('sw.js'), /assets\/js\/kullanim-hesap\.js/);
   assert.match(read('sw.js'), /assets\/js\/kullanim\.js/);
-  console.log('Kullanım eylemleri, hata yalıtımı ve üretim zinciri geçti.');
+  console.log('Kullanım eylemleri, hata yalıtımı, '+entryPages.length+' HTML, yeni sayfa ve üretim zinciri geçti.');
 }
 main().catch(error => {console.error(error); process.exitCode = 1;});

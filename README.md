@@ -13,6 +13,10 @@ kullanım süresi ve sekiz temel eylemin sayısı/kullanıldığı günler göst
 sayfada son etkileşimin ardından en çok 90 saniye sayılır; bu bir öğrenme başarısı
 veya saatlik hız ölçüsü değildir. Aynı anda kullanılan birden fazla pencerenin
 süreleri toplanır; benzersiz çalışma süresi iddiası yoktur.
+"Çalışma kartını yanıtlama", Kelimeler/Öbekler/Cümleler çalışma destesindeki
+başarılı yanıt değerlendirmelerini sayar; liste yıldızları, aile durum işaretleri
+ve toplu işlemler bu eylemin kapsamında değildir. Arka planda tamamlanan deneme
+gibi temel eylemler de sayılır; görünürlük koşulu yalnız süre için geçerlidir.
 
 Bu ilk sürüm yalnız yereldir: `yds-kullanim-v1:` önekli kayıtlar eşitleme beyaz
 listesine, Firestore'a ve ilerleme yedeğine girmez. Gün/kurulum/belge oturumu
@@ -22,13 +26,30 @@ katkısını silmesi böylece önlenir. Son kullanım özeti değişmez gün iş
 hesaplanır; her kurulum/özellik ve kurulum/sayfa için en yeni işaret korunur.
 
 İlk görünür ziyaret erken, değişen kayıtlar dakikada bir ve görünürlük kaybında
-yazılır. Yenileme aynı ziyarettir; başka sayfadan normal veya BFCache dönüşü yeni
-ziyarettir. Donma/arka plan bekleyişi sayılmaz. Ani kapanışta son kaydedilmemiş
-aralık kaybolabilir; yazma hatası çalışmayı engellemez. Bilinen eksiklikler yalnız
-istatistik bölümünde belirtilir. Ayrıntı bugün ve önceki 180 gün tutulur; ilk ölçüm
-ve son kullanım özeti budamadan bağımsızdır. Yerel kullanım için 512 KiB bütçe
-vardır; bütçe dolarsa öğrenme verisi silinmez. Ayarlardaki ayrı silme düğmesi ve
-genel ilerleme sıfırlaması kullanım kayıtlarını siler; kullanım geri alınamaz.
+yazılır. Aynı takvim günündeki yenileme aynı ziyarettir; ertesi gün yenileme,
+başka sayfadan normal dönüş veya BFCache dönüşü yeni ziyarettir. Donma/arka plan
+bekleyişi sayılmaz. İlk depo taraması ilk çizim sonrasına bırakılır; her yazımda
+tüm özellikler tek envanteri paylaşır. Kullanım güncellemesi istatistik sayfasında
+yalnız kullanım bölümünü yeniler; tarih alanının, grafiklerin ve seçili metnin
+durumunu korur.
+
+Ayrıntı **en çok bugün ve önceki 180 gün** tutulur. Yerel kullanımın kayıt ve
+özetleri toplam 512 KiB yumuşak bütçeye tabidir; sınır yaklaşınca en eski tam günler
+kaldırılarak yeni kayıtlar için yer açılır. Monoton kesim işareti açık eski sekmelerin
+silinen günleri geri getirmesini önler. Seçili dönem kaldırılmış günleri de kapsıyorsa
+İstatistik ve Ayarlar kalan ayrıntının başlangıcını ve toplamların eksik
+olabileceğini belirtir.
+İlk ölçüm ve son kullanım özetleri budamadan bağımsızdır; öğrenme verisi silinmez.
+Tek bir günün kayıtları tek başına bütçeyi doldurursa veya tarayıcının gerçek
+localStorage kotası dolarsa yazım bekler; sonraki yazım/gün tekrar dener.
+
+Geçici yazma hatası İstatistik ve Ayarlar'da gösterilir. Bekleyen mutlak sayaçlar
+aynı belge açıkken yeniden yazılabildiğinde uyarı kalkar; başarısız denemeler yeni
+hata anahtarları üretmez. Ani kapanışta kaydedilmemiş süre/eylem kaybolabilir.
+Hata durumu bellektedir: başarısız yazımdan sonra belge kapanırsa sonraki açılış
+bu kaybı saptayamaz; eksiklik uyarısının bulunmaması eksiksiz ölçüm garantisi değildir.
+Yazma hatası çalışmayı engellemez. Ayarlardaki ayrı silme düğmesi ve genel ilerleme
+sıfırlaması kullanım kayıtlarını siler; kullanım geri alınamaz.
 Sıfırlama dönemi değiştiği için açık eski sekmeler silinen sayaçları geri getiremez.
 
 İleride buluta geçiş, yalnız beyaz listeye anahtar eklemek değildir: kaynak
@@ -37,9 +58,12 @@ birleştirme gerekir. Bu sürüm Firestore kurallarını veya gönderim davranı
 değiştirmez. Yeni eylemler `assets/js/kullanim-hesap.js` kataloğuna ve semantik
 işleyicilerine birlikte eklenmelidir; mevcut kimlikler yeni anlamlarla kullanılmaz.
 
-Kullanımın saf/lifecycle/altı saat dilimi testleri `pnpm test` içindedir. İzole
-Chromium'da iki sekme, yenileme, gezinme, konu sayfası, silme ve açık/koyu dar
-ekran denetimleri `pnpm test:usage` ile çalışır.
+Kullanımın saf/lifecycle/altı saat dilimi testleri, 190 gün boyunca günde 6/12/25
+ziyaretle kapasite denemeleri ve tüm HTML sayfalarının izleyici denetimi `pnpm test`
+içindedir. İzole Chromium'da gerçek mouse/klavye/touch/scroll, deste/yanıt/quiz
+işleyicileri, gizli deneme bitişi, yarım tarih girişi, metin seçimi, iki sekme,
+yenileme, gezinme, konu sayfası, silme ve açık/koyu dar ekran denetimleri
+`pnpm test:usage` ile çalışır.
 
 ## Sayfalar
 

@@ -29,6 +29,7 @@ function ortam() {
     createElement() { return eleman(); }
   };
   const pencere = {
+    olaylar: Object.create(null),
     YDS: {
       kacar: String,
       Ilerleme: { hepsiniSifirla() { return true; } },
@@ -40,7 +41,7 @@ function ortam() {
       setItem(k, v) { storage[k] = String(v); },
       getItem(k) { return Object.prototype.hasOwnProperty.call(storage, k) ? storage[k] : null; }
     },
-    addEventListener() {}, confirm() { return true; }, prompt() { return ''; }
+    addEventListener(tur, fn) { this.olaylar[tur] = fn; }, confirm() { return true; }, prompt() { return ''; }
   };
   pencere.window = pencere;
   pencere.YDS.EsitlemeDepo = {
@@ -245,6 +246,22 @@ async function ana() {
   silme.elemanlar.yerelSil.olaylar.click();
   assert.match(silme.elemanlar.ayarDurum.textContent, /Kullanım kayıtları silinemedi/);
   assert.strictEqual(silme.elemanlar.ayarDurum.className, 'status-kutu err', 'kısmi silme tüm veriler silinmiş gibi gösterilmez');
+
+  const kapsam = ortam();
+  const kullanimRaporu = { startedDay: 20000, seconds: 120, capacityLimited: true, retainedFromDay: Date.UTC(2026, 7, 29) / 86400000, partial: false };
+  kapsam.pencere.YDS.Kullanim = { oku() { return {}; }, sifirla() { return true; } };
+  kapsam.pencere.YDS.KullanimHesap = { rapor(snapshot, aralik) { assert.strictEqual(aralik, 30); return kullanimRaporu; } };
+  kapsam.pencere.olaylar['yds:kullanim-degisti']();
+  assert.match(kapsam.elemanlar.kullanimYerelOzet.textContent, /Son 30 günde 2 dakika/);
+  assert.match(kapsam.elemanlar.kullanimYerelOzet.textContent, /Depolama sınırı nedeniyle 29 Ağustos 2026 tarihinden önceki günlük ayrıntılar kaldırıldı/);
+  assert.doesNotMatch(kapsam.elemanlar.kullanimYerelOzet.textContent, /kaydedilemedi veya okunamadı/);
+  kullanimRaporu.partial = true;
+  kapsam.pencere.olaylar['yds:kullanim-degisti']();
+  assert.match(kapsam.elemanlar.kullanimYerelOzet.textContent, /Depolama sınırı/);
+  assert.match(kapsam.elemanlar.kullanimYerelOzet.textContent, /kaydedilemedi veya okunamadı/);
+  kullanimRaporu.partial = false; kullanimRaporu.capacityLimited = false;
+  kapsam.pencere.olaylar['yds:kullanim-degisti']();
+  assert.doesNotMatch(kapsam.elemanlar.kullanimYerelOzet.textContent, /Depolama sınırı|kaydedilemedi veya okunamadı/, 'etkilenmeyen dönem ve düzelmiş hata için uyarı kalmaz');
 
   console.log('ayarlar-ice-aktarma-test: OK');
 }

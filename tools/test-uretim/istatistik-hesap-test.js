@@ -45,21 +45,27 @@ assert.equal(H.streak(H.create(legacy,{},now)).current,4,'Bugün boşken dünkü
 assert.equal(H.period(H.create({[now-1]:row(10)}, {},now),7).speed,5,'Kayıt başlangıcından sonraki boş gün paydaya dahil');
 
 // Actual controller runs against a minimal DOM, without reading/writing real user storage.
-const elements=new Map(), handlers={}, timeouts=new Map();let timer=0,today=now,log={},cards={},writes=0,usageData=null;
+const elements=new Map(), handlers={}, timeouts=new Map();let timer=0,today=now,log={},cards={},writes=0,usageData=null,learningReads=0,selection=null;
 const usageRanges=[];
-function element(id){if(!elements.has(id))elements.set(id,{innerHTML:'',textContent:'',value:'',hidden:false,attrs:{},events:{},
+function element(id){if(!elements.has(id)){
+  const el={hidden:false,attrs:{},events:{},mutations:{innerHTML:0,textContent:0,value:0},
   setAttribute(k,v){this.attrs[k]=v;},getAttribute(k){return this.attrs[k];},addEventListener(k,fn){this.events[k]=fn;},
-  classList:{toggle(){}},querySelectorAll(){return buttons;}});return elements.get(id);}
+  contains(node){while(node){if(node===this)return true;node=node.parentNode;}return false;},
+  classList:{toggle(){}},querySelectorAll(){return buttons;}};
+  for(const key of ['innerHTML','textContent','value']){let value='';Object.defineProperty(el,key,{get(){return value;},set(next){value=next;this.mutations[key]++;}});}
+  elements.set(id,el);
+}return elements.get(id);}
 const buttons=[7,30,90].map(g=>{const e=element('button'+g);e.attrs['data-gun']=String(g);return e;});
 window.YDS.Depo={oku(){return [2,2,'2','bad'];},yaz(){writes++;throw Error('Statistics must not write');}};
 window.YDS.Veri={dizin:[{e:'alpha',k:2},{e:'beta',k:2},{e:'outside',k:1}]};
-window.YDS.Ilerleme={bugun:()=>today,gunlukKayitlar:()=>log,tumKayitlar:()=>cards,kutu:e=>e==='alpha'?5:0,gunlukHedef:()=>10};
+window.YDS.Ilerleme={bugun:()=>today,gunlukKayitlar(){learningReads++;return log;},tumKayitlar:()=>cards,kutu:e=>e==='alpha'?5:0,gunlukHedef:()=>10};
 window.YDS.Kullanim={oku:()=>usageData,sifirla(){throw Error('Statistics must not reset usage');}};
 window.YDS.KullanimHesap={rapor(snapshot,range){usageRanges.push(range);return snapshot?snapshot[range]:{startedDay:null,pages:[],features:[],emptyPages:[],emptyFeatures:[],seconds:0,partial:false};}};
 window.YDS.kacar=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 window.addEventListener=(k,fn)=>{handlers[k]=fn;};window.setTimeout=fn=>{timeouts.set(++timer,fn);return timer;};
 window.clearTimeout=id=>timeouts.delete(id);window.setInterval=()=>0;
-context.document={getElementById:element,hidden:false,addEventListener:(k,fn)=>{handlers[k]=fn;}};
+window.getSelection=()=>selection;
+context.document={getElementById:element,hidden:false,activeElement:null,addEventListener:(k,fn)=>{handlers[k]=fn;}};
 vm.runInContext(source('assets/js/istatistik.js'),context);
 const flush=()=>{for(const fn of timeouts.values())fn();timeouts.clear();};
 assert.equal(element('bosDurum').hidden,false);assert.equal(element('hizDeger').textContent,'—');
@@ -101,9 +107,59 @@ for(const index of [2,1]){
   assert.match(element('kullanimOzet').textContent,new RegExp('Son '+buttons[index].attrs['data-gun']+' günde'));
 }
 assert.equal(JSON.stringify(usageData),usageBefore,'Görünüm kullanım anlığını değiştirmez');
+
+// Collector checkpoints update only usage, leaving a partially entered date and live learning UI intact.
+const learningIds=['gunlukGrafik','isiGrafik','haftalikGrafik','ritimOzet','gunDetay','tahminMetin'];
+const mutations=ids=>Object.fromEntries(ids.map(id=>[id,{...element(id).mutations}]));
+const learningBefore=mutations(learningIds),readsBefore=learningReads;
+element('gunSec').value='2026-09-';context.document.activeElement=element('gunSec');
+const dateWrites=element('gunSec').mutations.value;
+usageData[30].seconds+=60;usageData[30].pages[0].seconds+=60;
+handlers['yds:kullanim-degisti']();handlers['yds:kullanim-degisti']();flush();
+assert.equal(learningReads,readsBefore,'Kullanım kaydı öğrenme modelini yeniden okumaz');
+assert.deepEqual(mutations(learningIds),learningBefore,'Grafikler ve aria-live öğrenme özetleri yeniden çizilmez');
+assert.equal(element('gunSec').value,'2026-09-','Yazılmakta olan tarih kullanım kaydında sıfırlanmaz');
+assert.equal(element('gunSec').mutations.value,dateWrites,'Tarih inputuna aynı değer bile tekrar yazılmaz');
+assert.equal(context.document.activeElement,element('gunSec'),'Tarih alanındaki odak korunur');
+assert.match(element('kullanimOzet').textContent,/31,0 dakika/);
+const usageIds=['kullanimOzet','kullanimKapsam','kullanimPaylar','kullanimSayfalar','kullanimOzellikler','kullanimBosSayfalar','kullanimBosOzellikler'];
+const unchanged=mutations(usageIds);
+handlers['yds:kullanim-degisti']();flush();
+assert.deepEqual(mutations(usageIds),unchanged,'Aynı kullanım verisi metin veya tablo düğümlerini tekrar yazmaz');
+
+// A changing report waits until a text selection or focused report descendant is released.
+selection={isCollapsed:false,rangeCount:1,getRangeAt(){return {intersectsNode:node=>node===element('kullanim')};}};
+usageData[30].seconds+=60;usageData[30].pages[0].seconds+=60;
+handlers['yds:kullanim-degisti']();flush();
+assert.deepEqual(mutations(usageIds),unchanged,'Kullanım içindeki seçili metin yenilemeyle kaldırılmaz');
+selection=null;handlers.selectionchange();flush();
+assert.match(element('kullanimOzet').textContent,/32,0 dakika/,'Seçim bırakıldığında bekleyen kullanım verisi gösterilir');
+const focused=element('usageFocusedChild');focused.parentNode=element('kullanimSayfalar');
+context.document.activeElement=focused;
+const focusedBefore=mutations(usageIds);
+usageData[30].seconds+=60;usageData[30].pages[0].seconds+=60;
+handlers['yds:kullanim-degisti']();flush();
+assert.deepEqual(mutations(usageIds),focusedBefore,'Odaktaki kullanım alt öğesi DOM değiştirilerek kaldırılmaz');
+assert.equal(context.document.activeElement,focused);
+context.document.activeElement=null;handlers.focusout();flush();
+assert.match(element('kullanimOzet').textContent,/33,0 dakika/,'Odak ayrılınca bekleyen kullanım güncellemesi uygulanır');
+log={[today]:row(11)};handlers['yds-depo-degisti']({detail:{anahtarlar:['yds-gunluk-kayit']}});flush();
+assert.ok(learningReads>readsBefore,'Gerçek ilerleme olayı öğrenme görünümünü yenilemeye devam eder');
+assert.ok(element('gunlukGrafik').mutations.innerHTML>learningBefore.gunlukGrafik.innerHTML);
+assert.equal(element('hizDeger').textContent,'11,0');
 usageData[30].partial=true;handlers['yds:kullanim-degisti']();flush();
 assert.match(element('kullanimKapsam').textContent,/toplamlar eksik olabilir/);
+usageData[30].partial=false;usageData[30].capacityLimited=true;usageData[30].retainedFromDay=now-10;
+handlers['yds:kullanim-degisti']();flush();
+assert.match(element('kullanimKapsam').textContent,/Depolama sınırı nedeniyle 29 Ağustos 2026 tarihinden önceki günlük ayrıntılar kaldırıldı/);
+assert.doesNotMatch(element('kullanimKapsam').textContent,/kaydedilemedi veya okunamadı/,'Kapasite budaması kayıt hatası gibi anlatılmaz');
+usageData[30].partial=true;handlers['yds:kullanim-degisti']();flush();
+assert.match(element('kullanimKapsam').textContent,/Depolama sınırı/);
+assert.match(element('kullanimKapsam').textContent,/kaydedilemedi veya okunamadı/,'Kapasite ve yazma hatası aynı anda varsa ikisi de açıklanır');
+usageData[30].partial=false;usageData[30].capacityLimited=false;
+handlers['yds:kullanim-degisti']();flush();
+assert.doesNotMatch(element('kullanimKapsam').textContent,/Depolama sınırı|kaydedilemedi veya okunamadı/,'Dönem etkilenmiyorsa veya hata düzelmişse eski uyarı kaldırılır');
 usageData=null;handlers['yds:kullanim-degisti']();flush();
 assert.equal(element('kullanimBos').hidden,false);assert.equal(element('kullanimSayfalar').innerHTML,'');
 assert.equal(element('kullanimPaylar').innerHTML,'');assert.equal(writes,0);
-console.log('İstatistik: öğrenme hesapları, salt okunur kontroller, kullanım dönemi, eksik ölçüm, güvenli etiketler ve olayla yenileme geçti.');
+console.log('İstatistik: öğrenme hesapları, ayrı kullanım yenilemesi, tarih/odak/seçim koruması, salt okunur kontroller ve eksik ölçüm geçti.');
