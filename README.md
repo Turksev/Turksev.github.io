@@ -64,6 +64,11 @@ günlük kaydın budama sınırının üstünde olduğu hâlde kaybolmasından a
 sayaçları geri yazmaz. Yasal budama önce kalıcı kesim işaretini yazdığı için silme
 sanılmaz. Silmeden önce hiç kayıt yazmamış sekmenin kaydedilmemiş sayaçları silmeden
 sonra yazılabilir.
+Güncel sürümün sıfırlama ve silme korumaları, eski kodla açık kalmış sekmelere
+uygulanmaz. Güncelleme onaylanan sekme yenilenir; diğer açık sekmeler eski betikle
+kalabilir. Eski sekmeler kapanana ya da yenilenene kadar kullanım toplamları eksilebilir
+veya eski kayıtlar yeniden görünebilir. Tarayıcı testleri servis çalışanını kapatır;
+etkin servis çalışanıyla eski ve yeni sürümün birlikte çalışması test edilmemiştir.
 
 İleride buluta geçiş, yalnız beyaz listeye anahtar eklemek değildir: kaynak
 kimliklerinin korunduğu, tekrar çalıştırılabilir bir içe alma ve kayıt bazında

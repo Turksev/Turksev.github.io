@@ -294,4 +294,24 @@ b16b.K.olay('ipucu');
 assert.equal(b16b.checkpoint(), true);
 assert.equal(b16b.report().features.find(r => r.id === 'ipucu').count, 1, 'Açıkça yazılmış ilk dönemi olan eski depo çalışır');
 
-console.log('Kullanım: geçici hatadan kurtulma, bekleyen veri koruması, açılış hatası sonrası benimseme, sıfırlama sırası, ilk kurulum-sıfırlama yarışı, dış silme ve budama ayrımı, yenileme ve ileri sürüm uyumu geçti.');
+// 17) Gece yeni kayıt yazmadan geçen sekme: açılışta depoyu okuyamadı, ilk başarılı yazımı
+//     gece yarısından sonra yalnız dünkü ziyaret satırıyla yaptı (bugünkü satır yok).
+//     Sonra depo dışarıdan silinir. Dünkü ziyaret geri yazılmamalı.
+const s17 = new Storage();
+const gece17 = new Date(2026, 8, 26, 23, 59).getTime();
+s17.blocked = true;
+const x17 = browser({storage: s17, now: gece17});
+s17.blocked = false;
+x17.advance(2 * 60 * 1000, 0);
+assert.equal(x17.checkpoint(), true);
+const dun17 = x17.H.gun(new Date(gece17)), dunAnahtari = k => k.startsWith('yds-kullanim-v1:r:ilk:' + dun17 + ':');
+assert.ok(Array.from(s17.map.keys()).some(dunAnahtari), 'Fixture: yalnız dünkü ziyaret satırı yazıldı');
+assert.equal(Array.from(s17.map.keys()).some(k => k.startsWith('yds-kullanim-v1:r:ilk:' + (dun17 + 1) + ':')), false,
+  'Fixture: bugünkü satır yok');
+s17.map.clear();
+x17.K.olay('kart-cevap');
+x17.checkpoint(); x17.checkpoint();
+assert.equal(Array.from(s17.map.keys()).some(dunAnahtari), false, 'Silinen dünkü ziyaret geri yazılmaz');
+assert.equal(x17.report(7).features.find(r => r.id === 'kart-cevap').count, 1, 'Silmeden sonraki eylem yazılır');
+
+console.log('Kullanım: geçici hatadan kurtulma, bekleyen veri koruması, açılış hatası sonrası benimseme, sıfırlama sırası, ilk kurulum-sıfırlama yarışı, dış silme (gece yeni kayıt yazmayan sekme dahil) ve budama ayrımı, yenileme ve ileri sürüm uyumu geçti.');
