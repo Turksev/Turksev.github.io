@@ -80,6 +80,9 @@ jobs:
       - name: Local usage, lifecycle and multi-tab regressions
         run: pnpm test:usage
 
+      - name: Dictionary panel, card safety and layout regressions
+        run: pnpm test:sozluk
+
       - name: Content, learning and sync tests
         shell: bash
         run: |

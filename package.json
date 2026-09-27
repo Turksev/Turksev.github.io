@@ -8,6 +8,7 @@
     "test": "node tools/test-uretim/tum-testler.js",
     "test:browser": "node tools/browser-qa.js",
     "test:usage": "node tools/kullanim-browser-qa.js",
+    "test:sozluk": "node tools/sozluk-browser-qa.js",
     "test:rules": "firebase emulators:exec --only firestore --project demo-yds-rules --config firebase.emulator.json \"node tools/firestore-emulator-test.cjs\"",
     "preview": "python -m http.server 8765 --bind 127.0.0.1"
   },

@@ -8,7 +8,7 @@ Yayında: <https://turksev.github.io>
 ## Bu tarayıcıdaki kullanım istatistiği
 
 İstatistik sayfasında ortak 7/30/90 gün seçicisiyle sayfa ziyaretleri, tahmini aktif
-kullanım süresi ve sekiz temel eylemin sayısı/kullanıldığı günler gösterilir. 129 konu
+kullanım süresi ve dokuz temel eylemin sayısı/kullanıldığı günler gösterilir. 129 konu
 ünitesi hafif, bağımsız izleyiciyle tek "Konu üniteleri" grubunda ölçülür. Görünür
 sayfada son etkileşimin ardından en çok 90 saniye sayılır; bu bir öğrenme başarısı
 veya saatlik hız ölçüsü değildir. Aynı anda kullanılan birden fazla pencerenin
@@ -64,6 +64,42 @@ içindedir. İzole Chromium'da gerçek mouse/klavye/touch/scroll, deste/yanıt/q
 işleyicileri, gizli deneme bitişi, yarım tarih girişi, metin seçimi, iki sekme,
 yenileme, gezinme, konu sayfası, silme ve açık/koyu dar ekran denetimleri
 `pnpm test:usage` ile çalışır.
+
+## Sözlük paneli
+
+Kelimeler, Öbekler ve Cümleler sayfalarında **📖 Sözlük** düğmesi (ya da `/` tuşu)
+çalışılan kartı ve destedeki yeri bozmadan bağımsız bir arama paneli açar.
+Eşleştirme kuralı arama sayfasıyla ortaktır (`assets/js/arama-ortak.js`); panel
+`assets/js/sozluk.js` içindedir ve ilerlemeye yazmaz.
+
+- **Yerleşim.** 900 px ve üstünde, ayrıca yan çevrilmiş kısa telefon ekranında panel
+  sağda sabit bir sütundur (ekranın yaklaşık dörtte biri, en az 320 px); sayfa içeriği
+  panel kadar daralır, kart altında kalmaz. Daralan sayfada üst menü taşmasın diye
+  panel açıkken 1360 px altında dar ekran menüsü kullanılır. Daha dar ekranda panel
+  alttan açılır; arama kutusu odaktayken ekran klavyesine göre yükselir (parmakla
+  yakınlaştırma klavye sayılmaz) ve "Büyüt" ile artırılabilir. Sonuçlar panelin içinde kayar.
+- **Veri.** Kelimeler sayfasında kelime dizini zaten yüklüdür. Öbekler ve Cümleler
+  sayfalarında dizin panel ilk açıldığında, öbekler ilk aramada, örnek cümleli tam
+  kayıt ise "Anlamlar ve örnekler" açıldığında indirilir.
+- **Klavye.** Odak paneldeyken tuşlar sayfaya ulaşmaz; arkadaki kart 1/2/3 ile
+  yanıtlanamaz. `Esc` paneli kapatır ve odağı paneli açan öğeye döndürür.
+- **Seçerek arama.** Karttaki, listedeki ya da paneldeki bir kelimeyi seçince çıkan
+  "Sözlükte ara" düğmesi o kelimeyi aratır.
+- **Dürüst ipucu.** Çevrilmemiş kelime/öbek kartının kendi başlığı panelde görünürse
+  (kelime ya da öbek satırı olarak) o kartın "Bildim" cevabı, ipucu düğmesinde olduğu
+  gibi ipucuyla sayılır. Kart yanıttan sonra yeniden gelirse ve anlamı hâlâ panelde
+  görünüyorsa kural yine uygulanır. Uyarı ekran okuyucuya da duyurulur.
+- **Karşılaştırma.** "Sabitle" ile en çok altı sonuç panelin üstünde kalır; benzer
+  kelimeler yan yana görülür. Sabitler yalnız o sekmede (`sessionStorage`) tutulur.
+- **Dış sözlük.** Tureng ve Cambridge düğmeleri arama kutusunun hemen altında durur;
+  sonuç listesi uzasa da kaydırmadan görünür ve yalnız tıklanınca yeni sekmede açılır.
+  Bu iki site başka bir sitenin içinde gösterilmeyi reddettiği için
+  (`X-Frame-Options: SAMEORIGIN`) sonuçları panelin içine getirilemez.
+- **Liste filtresi.** Sayfadaki "Listede ara" kutusu listeyi süzer. Günün destesi
+  çalışılırken gizlenir, çünkü ona yazmak desteyi dağıtırdı.
+
+Panel açılışı kullanım istatistiğinde "Sözlük panelini açma" eylemi olarak sayılır.
+Tarayıcı denetimi: `pnpm test:sozluk`.
 
 ## Sayfalar
 
