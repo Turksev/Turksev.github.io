@@ -143,7 +143,14 @@ async function main() {
       assert.equal(await links.nth(i).getAttribute('target'), '_blank');
       assert.equal(await links.nth(i).getAttribute('rel'), 'noopener noreferrer');
     }
-    assert.match(await links.nth(0).getAttribute('href'), new RegExp('^https://tureng\\.com/tr/turkce-ingilizce/' + word2 + '$'));
+    assert.match(await links.nth(0).getAttribute('href'), new RegExp('^https://translate\\.google\\.com/\\?sl=en&tl=tr&text=' + word2 + '&op=translate$'),
+      'Ad-free Google Translate comes first, English to Turkish');
+    assert.match(await links.nth(1).getAttribute('href'), new RegExp('^https://tureng\\.com/tr/turkce-ingilizce/' + word2 + '$'));
+    assert.equal(await page.locator('#sozlukDis a', {hasText: 'Cambridge'}).count(), 0, 'Cambridge link removed');
+    await page.locator('#sozlukAra').fill('kanıt');
+    await page.waitForFunction(() => /sl=tr&tl=en/.test(document.getElementById('sozlukGoogle').href));
+    await page.locator('#sozlukAra').fill(word2);
+    await page.locator('#sozlukSonuclar .sozluk-sonuc[data-anahtar="' + word2 + '"]').first().waitFor();
     // Çok sonuçlu aramada da dış sözlük satırı kaydırmadan görünür.
     await page.locator('#sozlukAra').fill('take');
     await page.waitForFunction(() => /take/.test(document.getElementById('sozlukDurum').textContent));
@@ -158,6 +165,10 @@ async function main() {
       await page.emulateMedia({colorScheme: theme});
       await axeAndLayout(page, 'Dictionary desktop ' + theme);
     }
+
+    // Sabitlenen kelimenin açık ayrıntısı sonuçları aşağı iter; ipucu adımı için kaldır.
+    await page.locator('#sozlukSabitler .sozluk-sonuc[data-anahtar="' + word + '"] [data-is="sabitle"]').click();
+    await page.waitForFunction(() => !document.querySelector('#sozlukSabitler .sozluk-sonuc'));
 
     // Kartın kendi kelimesi görünürse "Bildim" ipucuyla sayılır.
     await page.locator('#sozlukAra').fill(card);
@@ -179,6 +190,32 @@ async function main() {
     await page.keyboard.press('2');
     const clean = await today(page);
     assert.equal(clean.d, after.d + 1, 'Card shortcuts work again after closing the panel');
+
+    // Birden fazla karta bakılabilir: yeni bakış önceki kartın işaretini silmez.
+    const cardA = (await page.locator('#kartOn').innerText()).trim();
+    await page.keyboard.press('/');
+    await page.locator('#sozlukAra').fill(cardA);
+    await page.locator('#sozlukUyari').waitFor({state: 'visible'});
+    await page.locator('#sonraki').click();
+    const cardB = (await page.locator('#kartOn').innerText()).trim();
+    assert.notEqual(cardB, cardA);
+    await page.locator('#sozlukAra').fill(cardB);
+    await page.locator('#sozlukUyari').waitFor({state: 'visible'});
+    await page.locator('#onceki').click();
+    assert.equal((await page.locator('#kartOn').innerText()).trim(), cardA);
+    assert.match(await page.locator('#kartIpucu').innerText(), /sözlükte gördün/, 'First looked-up card keeps its mark');
+    const multi = await today(page);
+    await page.locator('#bildim').click();
+    const multiA = await today(page);
+    assert.equal(multiA.t, multi.t + 1);
+    assert.equal(multiA.d, multi.d, 'First looked-up card is hinted after looking up a second card');
+    assert.equal((await page.locator('#kartOn').innerText()).trim(), cardB, 'Deck continues with the second card');
+    await page.locator('#bildim').click();
+    const multiB = await today(page);
+    assert.equal(multiB.d, multi.d, 'Second looked-up card is hinted too');
+    await page.locator('#sozlukKapat').click();
+    await page.locator('#sozlukPanel').waitFor({state: 'hidden'});
+    await page.locator('#kart').focus();
 
     // "/" paneli açar; seçilen kelime "Sözlükte ara" ile aratılır.
     await page.keyboard.press('/');
@@ -285,8 +322,162 @@ async function main() {
       return result;
     });
     assert.ok(enlarged.scroll <= enlarged.viewport + 1, 'Sheet reflows at 200% text: ' + JSON.stringify(enlarged));
+    // Odaktaki "Büyüt" düğmesi yerleşim yan sütuna geçince gizlenir; odak panelde kalır.
+    await phone.locator('#sozlukBoy').focus();
+    const phoneBefore = await today(phone);
+    await phone.setViewportSize({width: 1280, height: 900});
+    await settled(phone);
+    assert.equal(await phone.evaluate(() => document.getElementById('sozlukPanel').contains(document.activeElement)), true,
+      'Focus stays in the panel when the focused size button disappears');
+    await phone.keyboard.press('2');
+    assert.deepEqual(await today(phone), phoneBefore, 'Key after the layout switch does not answer the card');
+    await phone.setViewportSize({width: 375, height: 740});
+    await settled(phone);
     await phone.locator('#sozlukKapat').click();
     assert.equal(await phone.evaluate(() => getComputedStyle(document.body).paddingBottom), '0px', 'Closing removes the sheet padding');
+
+    /* ---------- Geç gelen veri odaktaki bağlantıyı silmez, tuş karta gitmez ---------- */
+    const gated = await fresh({width: 1280, height: 900});
+    let releaseGate;
+    const gate = new Promise(resolve => { releaseGate = resolve; });
+    await gated.route(/\/data\/obekler\.js$/, async route => { await gate; await route.continue(); });
+    await startDeck(gated, base + '/kelimeler.html');
+    const gatedCard = (await gated.locator('#kartOn').innerText()).trim();
+    const gatedBefore = await today(gated);
+    await gated.keyboard.press('/');
+    await gated.locator('#sozlukAra').fill('evidence');
+    await gated.locator('#sozlukSonuclar .sozluk-sonuc[data-anahtar="evidence"]').first().waitFor();
+    await gated.locator('#sozlukGoogle').focus();
+    releaseGate();
+    await gated.waitForFunction(() => /öbek/.test(document.getElementById('sozlukDurum').textContent));
+    assert.equal(await gated.evaluate(() => document.activeElement && document.activeElement.id), 'sozlukGoogle',
+      'The focused external link survives the late re-render');
+    await gated.keyboard.press('2');
+    await gated.keyboard.press('ArrowRight');
+    assert.deepEqual(await today(gated), gatedBefore, 'A key after late data never answers the card');
+    assert.equal((await gated.locator('#kartOn').innerText()).trim(), gatedCard);
+
+    /* ---------- Görülmeyen sonuç ipucu sayılmaz; kaydırıp görünce sayılır ---------- */
+    const unseen = await fresh({width: 1280, height: 560});
+    await unseen.goto(base + '/kelimeler.html');
+    await unseen.waitForFunction(() => window.YDS && window.YDS.Sozluk &&
+      /\d/.test(document.getElementById('sayac').textContent) && !/yükleniyor/i.test(document.getElementById('sayac').textContent));
+    const hidden = await unseen.evaluate(() => {
+      const sade = window.YDS.sadelestir, havuz = window.KELIME_DIZIN.filter(d => d.k === 2);
+      const metin = havuz.map(d => sade(d.e + ' ' + d.t + ' ' + d.y));
+      const tek = havuz.filter(d => /^[a-z]{7,}$/.test(d.e) && metin.filter(m => m.indexOf(sade(d.e)) !== -1).length === 1);
+      return {kart: tek[0].e, sabit: tek.slice(1, 5).map(d => d.e)};
+    });
+    await unseen.locator('#ara').fill(hidden.kart);
+    await unseen.waitForFunction(w => document.querySelectorAll('#liste .word').length === 1, hidden.kart);
+    await unseen.locator('#mod').click();
+    await unseen.locator('#kart').waitFor({state: 'visible'});
+    await unseen.keyboard.press('/');
+    // Dört sabit, aranan kartın satırını panelin görünen alanının altına iter.
+    for (const w of hidden.sabit) {
+      await unseen.locator('#sozlukAra').fill(w);
+      const r = unseen.locator('#sozlukSonuclar .sozluk-sonuc[data-anahtar="' + w + '"]').first();
+      await r.waitFor();
+      await r.locator('[data-is="sabitle"]').click();
+      await unseen.locator('#sozlukSabitler .sozluk-sonuc[data-anahtar="' + w + '"]').waitFor();
+    }
+    await unseen.locator('#sozlukAra').fill(hidden.kart);
+    const hiddenRow = unseen.locator('#sozlukSonuclar .sozluk-sonuc[data-anahtar="' + hidden.kart + '"]').first();
+    await hiddenRow.waitFor();
+    await unseen.waitForTimeout(500);
+    const hiddenBox = await hiddenRow.locator('.sozluk-anlam').boundingBox();
+    assert.ok(hiddenBox.y > 560, 'Fixture keeps the answer below the fold: ' + hiddenBox.y);
+    assert.equal(await unseen.locator('#sozlukUyari').isVisible(), false, 'An answer below the fold is not counted as seen');
+    assert.doesNotMatch(await unseen.locator('#kartIpucu').innerText(), /sözlükte gördün/);
+    await hiddenRow.scrollIntoViewIfNeeded();
+    await unseen.locator('#sozlukUyari').waitFor({state: 'attached'});
+    await unseen.waitForFunction(() => !document.getElementById('sozlukUyari').hidden);
+    assert.match(await unseen.locator('#kartIpucu').innerText(), /sözlükte gördün/, 'Scrolling the answer into view counts it');
+
+    /* ---------- Küçük telefon, %200 yazı: arama ve sonuçlara erişilir ---------- */
+    const tiny = await fresh({width: 320, height: 568});
+    await startDeck(tiny, base + '/kelimeler.html');
+    await tiny.evaluate(() => { document.documentElement.style.fontSize = '32px'; });
+    await tiny.locator('#kartAlan [data-sozluk-ac]').click();
+    await tiny.locator('#sozlukPanel').waitFor({state: 'visible'});
+    await settled(tiny);
+    const tinyInput = await tiny.locator('#sozlukAra').boundingBox();
+    assert.ok(tinyInput.y >= 0 && tinyInput.y + tinyInput.height <= 568, 'Search box visible with large text: ' + JSON.stringify(tinyInput));
+    await tiny.locator('#sozlukAra').fill('evidence');
+    const tinyRow = tiny.locator('#sozlukSonuclar .sozluk-sonuc').first();
+    await tinyRow.waitFor();
+    const tinyStatus = await tiny.locator('#sozlukDurum').boundingBox(), tinyLinks = await tiny.locator('#sozlukDis').boundingBox();
+    assert.ok(tinyStatus.y + tinyStatus.height <= tinyLinks.y + 1, 'Status and external links do not overlap');
+    for (const size of ['normal', 'büyük']) {
+      if (size === 'büyük') { await tiny.locator('#sozlukBoy').click(); await settled(tiny); }
+      await tinyRow.scrollIntoViewIfNeeded();
+      const rowBox = await tinyRow.locator('.sozluk-anlam').boundingBox(), sheetBox = await tiny.locator('#sozlukPanel').boundingBox();
+      assert.ok(rowBox.y >= sheetBox.y - 1 && rowBox.y + rowBox.height <= 568 + 1,
+        'First result reachable inside the ' + size + ' sheet: ' + JSON.stringify({rowBox, sheetBox}));
+    }
+    const tinyLayout = await tiny.evaluate(() => ({viewport: innerWidth, scroll: document.documentElement.scrollWidth}));
+    assert.ok(tinyLayout.scroll <= tinyLayout.viewport + 1, 'No horizontal overflow at 200% text: ' + JSON.stringify(tinyLayout));
+    // Kaydırılmış panel yeniden açılınca başa döner: arama kutusu görünür.
+    await tiny.locator('#sozlukKapat').click();
+    await tiny.locator('#sozlukPanel').waitFor({state: 'hidden'});
+    await tiny.locator('#kartAlan [data-sozluk-ac]').click();
+    await tiny.locator('#sozlukPanel').waitFor({state: 'visible'});
+    await settled(tiny);
+    const reopened = await tiny.locator('#sozlukAra').boundingBox();
+    assert.ok(reopened.y >= 0 && reopened.y + reopened.height <= 568, 'Search box visible after reopening: ' + JSON.stringify(reopened));
+    await tiny.locator('#sozlukKapat').click();
+    await tiny.locator('#sozlukPanel').waitFor({state: 'hidden'});
+
+    /* ---------- Yatay telefon: kart ekrandaki yerini korur ---------- */
+    const land = await fresh({width: 640, height: 360});
+    await startDeck(land, base + '/kelimeler.html');
+    await land.evaluate(() => document.getElementById('kart').scrollIntoView({block: 'center'}));
+    const landBefore = (await land.locator('#kart').boundingBox()).y;
+    await land.keyboard.press('/');
+    await land.locator('#sozlukPanel').waitFor({state: 'visible'});
+    await settled(land);
+    assert.equal(await land.evaluate(() => document.documentElement.classList.contains('sozluk-yan')), true, 'Short landscape uses the side column');
+    const landOpen = (await land.locator('#kart').boundingBox()).y;
+    assert.ok(Math.abs(landOpen - landBefore) <= 5 && landOpen >= 0 && landOpen < 360,
+      'Card stays in place when the side panel opens: ' + landBefore + ' -> ' + landOpen);
+    await land.keyboard.press('Escape');
+    await land.locator('#sozlukPanel').waitFor({state: 'hidden'});
+    const landClosed = (await land.locator('#kart').boundingBox()).y;
+    assert.ok(Math.abs(landClosed - landBefore) <= 5, 'Card stays in place when the panel closes: ' + landBefore + ' -> ' + landClosed);
+    // Ekran döndürme panel açıkken: kart görünür kalır (iki yönde).
+    await land.keyboard.press('/');
+    await land.locator('#sozlukPanel').waitFor({state: 'visible'});
+    for (const [w, h] of [[360, 640], [640, 360], [390, 844], [844, 390]]) {
+      await land.setViewportSize({width: w, height: h});
+      await settled(land);
+      await land.waitForTimeout(150);
+      const box = await land.locator('#kart').boundingBox();
+      assert.ok(box.y + box.height > 0 && box.y < h, 'Card visible after rotating to ' + w + 'x' + h + ': ' + JSON.stringify(box));
+    }
+    await land.keyboard.press('Escape');
+
+    // Azaltılmış hareket ayarında da kart yerinde kalır.
+    const calm = await browser.newContext({serviceWorkers: 'block', timezoneId: 'Europe/Istanbul', viewport: {width: 640, height: 360}, reducedMotion: 'reduce'});
+    contexts.push(calm);
+    calm.on('page', p => p.on('pageerror', error => errors.push(error.message)));
+    const calmPage = await calm.newPage();
+    await startDeck(calmPage, base + '/kelimeler.html');
+    await calmPage.evaluate(() => document.getElementById('kart').scrollIntoView({block: 'center'}));
+    const calmBefore = (await calmPage.locator('#kart').boundingBox()).y;
+    await calmPage.keyboard.press('/');
+    await calmPage.locator('#sozlukPanel').waitFor({state: 'visible'});
+    await calmPage.waitForTimeout(200);
+    const calmOpen = (await calmPage.locator('#kart').boundingBox()).y;
+    assert.ok(Math.abs(calmOpen - calmBefore) <= 5, 'Reduced motion: card stays in place: ' + calmBefore + ' -> ' + calmOpen);
+
+    // Kart ekrandayken değil de sayfa başındayken açmak sayfayı kaydırmaz.
+    await land.setViewportSize({width: 640, height: 360});
+    await land.evaluate(() => window.scrollTo(0, 0));
+    await land.keyboard.press('/');
+    await land.locator('#sozlukPanel').waitFor({state: 'visible'});
+    await settled(land);
+    assert.equal(await land.evaluate(() => window.scrollY), 0, 'Opening with the card off-screen does not scroll the page');
+    await land.keyboard.press('Escape');
 
     /* ---------- Öbek destesi: aynı ipucu kuralı ---------- */
     const phrases = await fresh({width: 1280, height: 900});

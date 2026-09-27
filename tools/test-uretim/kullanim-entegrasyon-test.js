@@ -34,7 +34,7 @@ function fixture(file, extra = {}) {
     Il: {dogru: id => {grades.push(id); return true;}, yanlis: () => true, zatenBiliyorum: () => true, ipucuyla: () => true,
       sonucEkle: noop, kategoriKaydet: noop, yanlisCoz: noop, yanlisEkle: noop},
     Depo: {oku: () => null, yaz: () => true}, REKOR_ANAHTAR: 'fixture',
-    ILERLEME_TURU: 'fixture', sozlukKelime: null, sozlukOgesi: null, suzulmus: [{e: 'word', f: 'phrase'}], kartIndex: 0, ipucuAcik: false, desteModu: false,
+    ILERLEME_TURU: 'fixture', sozlukBakilan: {}, suzulmus: [{e: 'word', f: 'phrase'}], kartIndex: 0, ipucuAcik: false, desteModu: false,
     desteyiCiz: noop, kartGit: noop, kartCiz: noop, kimlik: () => 'sentence', ciz: noop,
     karistir: x => x, SAYFA_BOYU: 20, elAra: {}, elTip: {}, elDurum: {}, elTur: {}, elSinav: {}, elKartAlan: {scrollIntoView: noop},
     kategoriKarnesiCiz: noop, yanlisSecenegiGuncelle: noop, rekoruGoster: noop, soruyuGoster: noop,

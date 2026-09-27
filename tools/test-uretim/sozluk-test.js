@@ -59,7 +59,7 @@ function fonksiyon(dosya, ad) {
   const son = kaynak.indexOf('\n  }\n', bas);
   return kaynak.slice(bas, son + 4);
 }
-for (const [dosya, alan, degisken] of [['kelimeler.js', 'e', 'sozlukKelime'], ['obekler.js', 'f', 'sozlukOgesi']]) {
+for (const [dosya, alan] of [['kelimeler.js', 'e'], ['obekler.js', 'f']]) {
   const cagrilar = [];
   const baglam = vm.createContext({
     window: { YDS: { depolamaUyarisi: noop } },
@@ -72,26 +72,26 @@ for (const [dosya, alan, degisken] of [['kelimeler.js', 'e', 'sozlukKelime'], ['
     ILERLEME_TURU: 'test', ipucuAcik: false, desteModu: false, kartIndex: 0,
     suzulmus: [{ [alan]: 'alpha' }, { [alan]: 'beta' }],
     kullanimOlay: noop, desteyiCiz: noop, kartGit: noop, kartCiz: noop, desteBitti: noop, guncelleSayac: noop,
-    [degisken]: null
+    sozlukBakilan: {}
   });
+  const isaretler = () => JSON.stringify(Object.keys(baglam.sozlukBakilan).sort());
   vm.runInContext(fonksiyon(dosya, 'kartCevap'), baglam);
   vm.runInContext("kartCevap('dogru')", baglam);
   assert.deepEqual(cagrilar.pop(), ['dogru', 'alpha'], dosya + ': sözlüğe bakılmadıysa normal doğru');
-  baglam[degisken] = 'alpha';
+  baglam.sozlukBakilan = { alpha: true, beta: true };
   vm.runInContext("kartCevap('dogru')", baglam);
   assert.deepEqual(cagrilar.pop(), ['ipucuyla', 'alpha'], dosya + ': sözlükte görülen kart ipucuyla');
-  assert.equal(baglam[degisken], null, dosya + ': cevaptan sonra işaret temizlenir');
-  baglam[degisken] = 'beta';
+  assert.equal(isaretler(), '["beta"]', dosya + ': yalnız yanıtlanan kartın işareti kalkar, ikinci kartınki korunur');
   vm.runInContext("kartCevap('dogru')", baglam);
   assert.deepEqual(cagrilar.pop(), ['dogru', 'alpha'], dosya + ': başka kartın işareti bu kartı etkilemez');
-  assert.equal(baglam[degisken], 'beta', dosya + ': başka bir kartı yanıtlamak sözlükte bakılan kartın işaretini silmez');
-  baglam[degisken] = 'alpha';
+  assert.equal(isaretler(), '["beta"]', dosya + ': başka bir kartı yanıtlamak sözlükte bakılan kartın işaretini silmez');
+  baglam.sozlukBakilan = { alpha: true };
   vm.runInContext("kartCevap('yanlis')", baglam);
   assert.deepEqual(cagrilar.pop(), ['yanlis', 'alpha'], dosya + ': Bilemedim değişmez');
 
   const kaynak = oku('assets/js/' + dosya);
   assert.match(kaynak, /window\.YDS\.Sozluk\.kaynakBagla\(\{/, dosya + ': panel bağlantısı');
-  assert.match(kaynak, new RegExp('isaretli: function \\(anahtar\\) \\{ return ' + degisken + ' === anahtar; \\}'),
+  assert.match(kaynak, /isaretli: function \(anahtar\) \{ return !!sozlukBakilan\[anahtar\]; \}/,
     dosya + ': panel sayfanın işaretini okuyabilir');
   assert.match(fonksiyon(dosya, 'ciz'), /window\.YDS\.Sozluk\.denetle\(\)/, dosya + ': kart modundan çıkınca panel denetlenir');
   assert.match(kaynak, /if \(!kartModu \|\| elKartAlan\.hidden \|\| kartAcik \|\| ![od]\) return null;/,
