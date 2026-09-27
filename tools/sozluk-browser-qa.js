@@ -423,6 +423,24 @@ async function main() {
     await tinyRow.waitFor();
     const tinyStatus = await tiny.locator('#sozlukDurum').boundingBox(), tinyLinks = await tiny.locator('#sozlukDis').boundingBox();
     assert.ok(tinyStatus.y + tinyStatus.height <= tinyLinks.y + 1, 'Status and external links do not overlap');
+    // Tek parça kayan panelde bir sonucun düğmesine basmak kaydırmayı sıfırlamaz.
+    assert.equal(await tiny.evaluate(() => document.getElementById('sozlukPanel').classList.contains('sozluk-tek-kaydirma')), true,
+      'Large text uses whole-panel scrolling');
+    const pinButton = tinyRow.locator('[data-is="sabitle"]');
+    await pinButton.scrollIntoViewIfNeeded();
+    const scrollBefore = await tiny.evaluate(() => document.getElementById('sozlukPanel').scrollTop);
+    assert.ok(scrollBefore > 0, 'Panel scrolled to reach the button: ' + scrollBefore);
+    await pinButton.click();
+    await tiny.locator('#sozlukSabitler .sozluk-sonuc').first().waitFor();
+    await settled(tiny);
+    const afterPin = await tiny.evaluate(() => {
+      const p = document.getElementById('sozlukPanel');
+      return {tek: p.classList.contains('sozluk-tek-kaydirma'), top: p.scrollTop};
+    });
+    assert.equal(afterPin.tek, true, 'Pressing a result button keeps whole-panel scrolling');
+    assert.ok(afterPin.top > 0, 'Pressing a result button does not reset the panel scroll: ' + JSON.stringify(afterPin));
+    await tiny.locator('#sozlukSabitler [data-is="sabitle"]').first().click();
+    await tiny.waitForFunction(() => !document.querySelector('#sozlukSabitler .sozluk-sonuc'));
     for (const size of ['normal', 'büyük']) {
       if (size === 'büyük') { await tiny.locator('#sozlukBoy').click(); await settled(tiny); }
       await tinyRow.scrollIntoViewIfNeeded();
@@ -442,6 +460,133 @@ async function main() {
     assert.ok(reopened.y >= 0 && reopened.y + reopened.height <= 568, 'Search box visible after reopening: ' + JSON.stringify(reopened));
     await tiny.locator('#sozlukKapat').click();
     await tiny.locator('#sozlukPanel').waitFor({state: 'hidden'});
+
+    /* ---------- Seçim düğmesinde Esc odağı sayfaya düşürmez ---------- */
+    const sel = await fresh({width: 1280, height: 900});
+    await startDeck(sel, base + '/kelimeler.html');
+    const selCard = (await sel.locator('#kartOn').innerText()).trim();
+    const selBefore = await today(sel);
+    await sel.keyboard.press('/');
+    await sel.locator('#sozlukAra').fill('evidence');
+    await sel.locator('#sozlukSonuclar .sozluk-sonuc[data-anahtar="evidence"]').first().waitFor();
+    const selectIn = selector => sel.evaluate(s => {
+      const el = document.querySelector(s), r = document.createRange();
+      r.selectNodeContents(el);
+      const g = getSelection(); g.removeAllRanges(); g.addRange(r);
+    }, selector);
+    await selectIn('#sozlukSonuclar .sozluk-sonuc[data-anahtar="evidence"] .sozluk-anlam');
+    await sel.locator('.sozluk-secim').waitFor({state: 'visible'});
+    await sel.locator('.sozluk-secim').focus();
+    await sel.keyboard.press('Escape');
+    await sel.locator('.sozluk-secim').waitFor({state: 'hidden'});
+    assert.equal(await sel.evaluate(() => document.getElementById('sozlukPanel').contains(document.activeElement)), true,
+      'Escape on the selection button keeps focus in the open panel');
+    await sel.keyboard.press('2');
+    assert.deepEqual(await today(sel), selBefore, 'Key after Escape on the selection button does not answer the card');
+    assert.equal((await sel.locator('#kartOn').innerText()).trim(), selCard);
+    // Panel kapalıyken: odak karta döner, <body>'ye düşmez.
+    await sel.locator('#sozlukKapat').click();
+    await sel.locator('#sozlukPanel').waitFor({state: 'hidden'});
+    await selectIn('#kartOn');
+    await sel.locator('.sozluk-secim').waitFor({state: 'visible'});
+    await sel.locator('.sozluk-secim').focus();
+    await sel.keyboard.press('Escape');
+    await sel.locator('.sozluk-secim').waitFor({state: 'hidden'});
+    assert.equal(await sel.evaluate(() => document.activeElement && document.activeElement.id), 'kart',
+      'Escape with the panel closed returns focus to the card');
+
+    /* ---------- Kartsız liste: seçim düğmesi ekran dışında gizlenir, panel kapanınca
+       odak <main>'e değil görünen Sözlük düğmesine döner ---------- */
+    const list = await fresh({width: 1280, height: 900});
+    await list.goto(base + '/kelimeler.html');
+    await list.waitForFunction(() => window.YDS && window.YDS.Sozluk &&
+      document.querySelectorAll('article.word .en').length >= 10);
+    // Seçili satırın ekrandan çıkabilmesi için liste uzatılır.
+    for (let i = 0; i < 3 && await list.locator('#dahaFazla').isVisible(); i++) await list.locator('#dahaFazla').click();
+    const listWord = await list.evaluate(() => {
+      const el = document.querySelector('article.word .en'), r = document.createRange();
+      el.scrollIntoView({block: 'center', behavior: 'instant'});
+      r.selectNodeContents(el);
+      const g = getSelection(); g.removeAllRanges(); g.addRange(r);
+      return el.textContent.trim();
+    });
+    await list.locator('.sozluk-secim').waitFor({state: 'visible'});
+    await list.evaluate(() => window.scrollBy({top: 3000, behavior: 'instant'}));
+    assert.ok(await list.evaluate(() => document.querySelector('article.word .en').getBoundingClientRect().bottom < 0),
+      'Precondition: the selected word scrolled above the viewport');
+    await list.locator('.sozluk-secim').waitFor({state: 'hidden'});
+    assert.equal(await list.evaluate(() => getSelection().isCollapsed), false, 'Selection itself is kept while the button hides');
+    await list.evaluate(() => {
+      const el = document.querySelector('article.word .en');
+      el.scrollIntoView({block: 'center', behavior: 'instant'});
+    });
+    await list.locator('.sozluk-secim').waitFor({state: 'visible'});
+    await list.locator('.sozluk-secim').focus();
+    await list.keyboard.press('Enter');
+    await list.locator('#sozlukPanel').waitFor({state: 'visible'});
+    assert.equal(await list.locator('#sozlukAra').inputValue(), listWord, 'Selection button searches the selected word');
+    await list.keyboard.press('Escape');
+    await list.locator('#sozlukPanel').waitFor({state: 'hidden'});
+    assert.equal(await list.evaluate(() => {
+      const a = document.activeElement;
+      return !!a && a.hasAttribute('data-sozluk-ac') && a.getClientRects().length > 0;
+    }), true, 'Without a card, closing returns focus to a visible dictionary button, not <main>');
+
+    /* ---------- "Büyüt" ile görünür olan cevap ipucu sayılır ---------- */
+    const grow = await fresh({width: 390, height: 844});
+    await grow.goto(base + '/kelimeler.html');
+    await grow.waitForFunction(() => window.YDS && window.YDS.Sozluk &&
+      /\d/.test(document.getElementById('sayac').textContent) && !/yükleniyor/i.test(document.getElementById('sayac').textContent));
+    const growWords = await grow.evaluate(() => {
+      const sade = window.YDS.sadelestir, havuz = window.KELIME_DIZIN.filter(d => d.k === 2);
+      const metin = havuz.map(d => sade(d.e + ' ' + d.t + ' ' + d.y));
+      const tek = havuz.filter(d => /^[a-z]{7,}$/.test(d.e) && metin.filter(m => m.indexOf(sade(d.e)) !== -1).length === 1);
+      return {kart: tek[0].e, sabit: tek.slice(1, 7).map(d => d.e)};
+    });
+    await grow.locator('#ara').fill(growWords.kart);
+    await grow.waitForFunction(() => document.querySelectorAll('#liste .word').length === 1);
+    await grow.locator('#mod').click();
+    await grow.locator('#kartAlan [data-sozluk-ac]').click();
+    await grow.locator('#sozlukPanel').waitFor({state: 'visible'});
+    await settled(grow);
+    // Kartın satırı alt panelin görünen alanının hemen altına inene kadar sabitle.
+    let growBox = null;
+    const growRow = grow.locator('#sozlukSonuclar .sozluk-sonuc[data-anahtar="' + growWords.kart + '"] .sozluk-anlam').first();
+    for (const w of growWords.sabit) {
+      await grow.locator('#sozlukAra').fill(w);
+      const r = grow.locator('#sozlukSonuclar .sozluk-sonuc[data-anahtar="' + w + '"]').first();
+      await r.waitFor();
+      await r.locator('[data-is="sabitle"]').click();
+      await grow.locator('#sozlukSabitler .sozluk-sonuc[data-anahtar="' + w + '"]').waitFor();
+      await grow.locator('#sozlukAra').fill(growWords.kart);
+      await growRow.waitFor();
+      growBox = await growRow.boundingBox();
+      // Yazı tipi farklarına karşı pay: satır görünen alanın en az 30 px altında olmalı.
+      if (growBox.y > 874) break;
+    }
+    assert.ok(growBox.y > 874, 'Fixture keeps the answer clearly below the default sheet: ' + growBox.y);
+    await grow.waitForTimeout(300);
+    assert.equal(await grow.locator('#sozlukUyari').isHidden(), true, 'Answer below the fold is not yet counted');
+    await grow.locator('#sozlukBoy').click();
+    await settled(grow);
+    const grownBox = await growRow.boundingBox();
+    assert.ok(grownBox.y + grownBox.height <= 844, 'Enlarged sheet reveals the answer: ' + JSON.stringify(grownBox));
+    await grow.waitForFunction(() => !document.getElementById('sozlukUyari').hidden);
+    assert.match(await grow.locator('#kartIpucu').innerText(), /sözlükte gördün/, 'Answer revealed by "Büyüt" counts as seen');
+
+    /* ---------- Dikey telefon: ekran dışındaki karta kaydırılmaz ---------- */
+    const port = await fresh({width: 375, height: 740});
+    await startDeck(port, base + '/kelimeler.html');
+    await port.evaluate(() => {
+      const k = document.documentElement, e = k.style.scrollBehavior;
+      k.style.scrollBehavior = 'auto'; window.scrollTo(0, 0); k.style.scrollBehavior = e;
+    });
+    assert.equal(await port.evaluate(() => document.getElementById('kart').getBoundingClientRect().top > innerHeight), true,
+      'Fixture: card starts below the fold');
+    await port.keyboard.press('/');
+    await port.locator('#sozlukPanel').waitFor({state: 'visible'});
+    await settled(port);
+    assert.equal(await port.evaluate(() => window.scrollY), 0, 'Opening the sheet with the card off-screen does not scroll the page');
 
     /* ---------- Yatay telefon: kart ekrandaki yerini korur ---------- */
     const land = await fresh({width: 640, height: 360});

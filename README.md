@@ -51,6 +51,12 @@ bu kaybı saptayamaz; eksiklik uyarısının bulunmaması eksiksiz ölçüm gara
 Yazma hatası çalışmayı engellemez. Ayarlardaki ayrı silme düğmesi ve genel ilerleme
 sıfırlaması kullanım kayıtlarını siler; kullanım geri alınamaz.
 Sıfırlama dönemi değiştiği için açık eski sekmeler silinen sayaçları geri getiremez.
+Açılışta depoyu okuyamayan sekme, depo düzelince o arada tuttuğu kayıtları benimser;
+arada kullanım sıfırlandıysa bu kayıtları atar. Bunu anlamak için sıfırlama anının
+zaman damgası dönemden önce yazılır. Sınır: karşılaştırma sistem saatine dayanır;
+böyle bir sekme açıkken saat geri alınırsa sonraki bir sıfırlama kaçırılabilir.
+Depo tarayıcı ayarlarından dışarıdan silinirse açık sekmeler bunu dönem ya da
+kurulum kimliğinin değişmesinden anlar ve silinen sayaçları geri yazmaz.
 
 İleride buluta geçiş, yalnız beyaz listeye anahtar eklemek değildir: kaynak
 kimliklerinin korunduğu, tekrar çalıştırılabilir bir içe alma ve kayıt bazında

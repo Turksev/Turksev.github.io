@@ -315,8 +315,39 @@ async function main() {
       await settings.emulateMedia({colorScheme:theme});await settings.setViewportSize({width:320,height:812});
       await axeAndLayout(settings,'Usage after reset '+theme+' 320px');
     }
+    // Açılışta kullanım anahtarlarını okuyamayan sekme, başka sekmedeki sıfırlamadan
+    // sonra eski sayaçlarını geri yazmaz. Gerçek Chromium'da dönem değişikliği olayı,
+    // aynı anda yazılan diğer anahtarlardan önce görülebilir; sıralama bunu karşılar.
+    for(let round=0;round<2;round++) {
+      const raceContext=await freshContext();
+      const resetter=await raceContext.newPage();
+      await resetter.goto(base+'/ayarlar.html');await ready(resetter);await checkpoint(resetter);
+      const late=await raceContext.newPage();
+      await late.addInitScript(()=>{
+        window.__blok=true;
+        const P=Storage.prototype,orig={getItem:P.getItem,setItem:P.setItem,removeItem:P.removeItem};
+        for(const name of ['getItem','setItem','removeItem'])P[name]=function(key,...rest){
+          let local=false;try{local=this===window.localStorage;}catch(_){}
+          if(window.__blok&&local&&String(key).startsWith('yds-kullanim-v1:'))throw new DOMException('blocked (test)','SecurityError');
+          return orig[name].call(this,key,...rest);
+        };
+      });
+      await late.goto(base+'/istatistik.html');await ready(late);
+      await late.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>setTimeout(resolve,50)))));
+      await action(late,'ipucu',2);
+      assert.equal(await late.evaluate(()=>window.YDS.Kullanim.yaz()),false,'Blocked startup cannot write usage yet');
+      await late.evaluate(()=>{window.__blok=false;});
+      assert.equal(await resetter.evaluate(()=>window.YDS.Kullanim.sifirla()),true,'Other tab resets usage');
+      await resetter.waitForTimeout(400);
+      await late.evaluate(()=>window.YDS.Kullanim.yaz());
+      await resetter.waitForTimeout(200);
+      const afterRace=await totals(resetter);
+      assert.equal(uses(afterRace,'ipucu'),0,'Blocked-start tab does not restore pre-reset actions after a reset');
+      assert.equal(afterRace.pages.reduce((sum,row)=>sum+row.visits,0),0,'Blocked-start tab does not restore its pre-reset visit');
+      await raceContext.close();
+    }
     assert.deepEqual(errors,[],'Usage browser runtime errors');
-    console.log('Usage Browser QA passed: real mouse/key/touch/scroll idle wake, real deck/answer/quiz actions, hidden exam completion, date edit preservation, reload visits, two tabs, navigation flush, topic collector, read-only periods, light/dark narrow axe, local reset.');
+    console.log('Usage Browser QA passed: real mouse/key/touch/scroll idle wake, real deck/answer/quiz actions, hidden exam completion, date edit preservation, reload visits, two tabs, navigation flush, topic collector, read-only periods, light/dark narrow axe, local reset, reset versus blocked-start tab.');
   } finally {
     for(const context of contexts) await context.close();
     await browser.close();await new Promise(resolve=>server.close(resolve));
