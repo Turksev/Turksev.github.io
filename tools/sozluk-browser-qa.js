@@ -578,6 +578,12 @@ async function main() {
     const port = await fresh({width: 375, height: 740});
     await startDeck(port, base + '/kelimeler.html');
     await port.evaluate(() => {
+      // Kartın ekran altında başlaması yazı tipine bırakılmaz (Linux yazı tipleri daha
+      // sıkı, kart 740 px içine sığabiliyor): kartın önüne sabit boşluk konur.
+      const bosluk = document.createElement('div');
+      bosluk.style.height = '1200px';
+      const alan = document.getElementById('kartAlan');
+      alan.parentNode.insertBefore(bosluk, alan);
       const k = document.documentElement, e = k.style.scrollBehavior;
       k.style.scrollBehavior = 'auto'; window.scrollTo(0, 0); k.style.scrollBehavior = e;
     });
