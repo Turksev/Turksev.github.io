@@ -31,6 +31,21 @@ async function axeAndLayout(page, label) {
   const layout = await page.evaluate(() => ({viewport: innerWidth, scroll: document.documentElement.scrollWidth}));
   assert.ok(layout.scroll <= layout.viewport + 1, label + ': horizontal overflow ' + JSON.stringify(layout));
 }
+// Kartı ekranın ortasına anında getirir ve orada olduğunu doğrular. Site yumuşak
+// kaydırma kullanır; ölçüm kaydırma bitmeden alınırsa kart ekran dışında görünür.
+async function centerCard(page) {
+  await page.evaluate(() => {
+    const kok = document.documentElement, eski = kok.style.scrollBehavior;
+    kok.style.scrollBehavior = 'auto';
+    document.getElementById('kart').scrollIntoView({block: 'center'});
+    kok.style.scrollBehavior = eski;
+  });
+  await page.waitForFunction(() => {
+    const r = document.getElementById('kart').getBoundingClientRect();
+    return r.top >= 0 && r.top < innerHeight;
+  });
+  return (await page.locator('#kart').boundingBox()).y;
+}
 // Panel kayarak girer; konum ölçümünden önce giriş animasyonu bitmeli.
 const settled = page => page.waitForFunction(() => document.getAnimations().every(a => a.playState !== 'running'));
 const today = page => page.evaluate(() => {
@@ -431,8 +446,7 @@ async function main() {
     /* ---------- Yatay telefon: kart ekrandaki yerini korur ---------- */
     const land = await fresh({width: 640, height: 360});
     await startDeck(land, base + '/kelimeler.html');
-    await land.evaluate(() => document.getElementById('kart').scrollIntoView({block: 'center'}));
-    const landBefore = (await land.locator('#kart').boundingBox()).y;
+    const landBefore = await centerCard(land);
     await land.keyboard.press('/');
     await land.locator('#sozlukPanel').waitFor({state: 'visible'});
     await settled(land);
@@ -462,8 +476,7 @@ async function main() {
     calm.on('page', p => p.on('pageerror', error => errors.push(error.message)));
     const calmPage = await calm.newPage();
     await startDeck(calmPage, base + '/kelimeler.html');
-    await calmPage.evaluate(() => document.getElementById('kart').scrollIntoView({block: 'center'}));
-    const calmBefore = (await calmPage.locator('#kart').boundingBox()).y;
+    const calmBefore = await centerCard(calmPage);
     await calmPage.keyboard.press('/');
     await calmPage.locator('#sozlukPanel').waitFor({state: 'visible'});
     await calmPage.waitForTimeout(200);
