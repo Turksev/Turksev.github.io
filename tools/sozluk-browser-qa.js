@@ -618,13 +618,18 @@ async function main() {
     await band.keyboard.press('/');
     await band.locator('#sozlukPanel').waitFor({state: 'visible'});
     await settled(band);
+    // Önce A'ya bakılır (A işaretlenir); sonra B sabitlenir. Ters sırada A'nın satırı
+    // sabitlenmiş satırın altında ekran dışına düşebiliyor (Linux yazı tipleri).
+    await band.locator('#sozlukAra').fill(bandA);
+    await band.locator('#sozlukUyari').waitFor({state: 'visible'});
     await band.locator('#sozlukAra').fill(bandB);
     const bandRow = band.locator('#sozlukSonuclar .sozluk-sonuc[data-tur="kelime"][data-anahtar="' + bandB + '"]').first();
     await bandRow.waitFor();
     await bandRow.locator('[data-is="sabitle"]').click();
     await band.locator('#sozlukSabitler .sozluk-sonuc[data-anahtar="' + bandB + '"]').waitFor();
     await band.locator('#sozlukAra').fill(bandA);
-    await band.locator('#sozlukUyari').waitFor({state: 'visible'});
+    await band.locator('#sozlukSonuclar .sozluk-sonuc[data-anahtar="' + bandA + '"]').first().waitFor();
+    assert.equal(await band.locator('#sozlukUyari').isVisible(), true, 'Fixture: card A is marked');
     const bandFix = await band.evaluate(key => {
       const g = document.getElementById('sozlukGovde'), s = document.getElementById('sozlukSabitler');
       const u = document.getElementById('sozlukUyari').getBoundingClientRect();
