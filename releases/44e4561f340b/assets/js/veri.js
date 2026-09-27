@@ -1,0 +1,261 @@
+/* ============================================================
+   Veri katmanı — kelime dizini ve katman dosyalarının yüklenmesi
+
+   Dizin (data/kelime-dizin.js) her sayfada yüklüdür: dizindeki bütün kelimelerin
+   yazılışı, kısa anlamı, puanı, katmanı ve türü. Liste, arama, filtre
+   ve tekrar özeti yalnız bunu kullanır.
+
+   Örnek cümleler katman dosyalarındadır (data/kelime-k1..k7.js) ve
+   ancak o katmandan çalışılmak istendiğinde indirilir. Böylece kelime
+   sayfası 2,4 MB'ı bir kerede yüklemek zorunda kalmaz.
+   ============================================================ */
+
+(function () {
+  'use strict';
+
+  var KATMANLAR = [1, 2, 3, 4, 5, 6, 7];
+  var KATMAN_ADI = {
+    1: 'Temel', 2: 'Çekirdek', 3: 'Orta', 4: 'İleri', 5: 'Geniş', 6: 'Geniş+', 7: 'Aile üyeleri'
+  };
+  var KATMAN_ACIKLAMA = {
+    1: 'Sınavın her yerinde geçen çok temel kelimeler — büyük olasılıkla zaten biliyorsun.',
+    2: 'YDS çekirdeği. Buradan başlamak en verimlisi.',
+    3: 'Orta sıklıkta, sınavda düzenli çıkan kelimeler.',
+    4: 'Daha seyrek ama puan getiren ileri kelimeler.',
+    5: 'Uzun kuyruk. Çekirdeği bitirdiysen buraya geç.',
+    6: 'En seyrekler ve tamamlayıcı modal yapılar. 10 puanın altındaki modal kartlar da eksik kalmamaları için bu son puanlı gruptadır.',
+    7: 'Kelime ailelerini tamamlayan türevler. Sınav kanıtı zayıf ama türetme sorusu için değerli.'
+  };
+
+  /* Katmanların YDS öncelik puanı bantları: [alt sınır dahil, üst sınır hariç].
+     null = sınır yok. tools/listeyi-aktar.py içindeki KATMANLAR tablosuyla
+     birebir aynı olmak zorunda; katman-puan-araligi-test.js ikisini karşılaştırır. */
+  var KATMAN_PUAN = {
+    1: [40, null], 2: [30, 40], 3: [25, 30], 4: [17, 25], 5: [12, 17], 6: [10, 12], 7: [null, 10]
+  };
+
+  /* Katman seçicide fareyle üzerine gelince gösterilen kısa puan metni. */
+  function katmanPuanMetni(k) {
+    var bant = KATMAN_PUAN[k];
+    if (!bant) return '';
+    if (bant[1] == null) return bant[0] + ' puan ve üzeri';
+    if (bant[0] == null) return bant[1] + ' puanın altı';
+    // 6. katman puan bandının yanında sınav kanıtlı düşük puanlı ekleri de taşır.
+    return bant[0] + '–' + bant[1] + ' puan' + (k === 6 ? ' (+ sınav kanıtlı ekler)' : '');
+  }
+
+  var dizin = window.KELIME_DIZIN || [];
+  var yukluKatmanlar = {};        // {2: true, ...}
+  var yukleniyor = {};            // katman -> Promise (aynı anda iki kez indirme)
+  var kelimeKatmani = {};         // "abandon" -> 3
+
+  dizin.forEach(function (d) { kelimeKatmani[d.e] = d.k; });
+
+  /* ---------- katman yükleme ---------- */
+
+  function varlik(yol) { return window.YDS.varlikYolu ? window.YDS.varlikYolu(yol) : yol; }
+  function dosyaYolu(k) { return varlik('data/kelime-k' + k + '.js'); }
+  function testYolu(k) { return varlik('data/test-k' + k + '.js'); }
+
+  function katmanYukle(k) {
+    if (yukluKatmanlar[k]) return Promise.resolve(k);
+    if (yukleniyor[k]) return yukleniyor[k];
+
+    yukleniyor[k] = new Promise(function (coz, reddet) {
+      var s = document.createElement('script');
+      s.src = dosyaYolu(k);
+      s.async = true;
+      s.onload = function () {
+        yukluKatmanlar[k] = true;
+        delete yukleniyor[k];
+        coz(k);
+      };
+      s.onerror = function () {
+        delete yukleniyor[k];
+        reddet(new Error(k + '. katman yüklenemedi'));
+      };
+      document.head.appendChild(s);
+    });
+    return yukleniyor[k];
+  }
+
+  function katmanlariYukle(liste) {
+    return Promise.all((liste || []).map(katmanYukle));
+  }
+
+  /* ---------- günün testi cümleleri (data/test-k{n}.js) ---------- */
+
+  var testYukleniyor = {};
+  var modalTestYukleniyor = null;
+  function modalTestleriniYukle() {
+    if (window.TEST_MODAL) return Promise.resolve(window.TEST_MODAL);
+    if (modalTestYukleniyor) return modalTestYukleniyor;
+    modalTestYukleniyor = new Promise(function (coz) {
+      var s = document.createElement('script');
+      s.src = varlik('data/test-modal.js');
+      s.async = true;
+      s.onload = function () { coz(window.TEST_MODAL || {}); };
+      s.onerror = function () { window.TEST_MODAL = window.TEST_MODAL || {}; coz(window.TEST_MODAL); };
+      document.head.appendChild(s);
+    });
+    return modalTestYukleniyor;
+  }
+  function testYukle(k) {
+    if (window['TEST_K' + k]) return Promise.resolve(k);
+    if (testYukleniyor[k]) return testYukleniyor[k];
+    testYukleniyor[k] = new Promise(function (coz) {
+      var s = document.createElement('script');
+      s.src = testYolu(k);
+      s.async = true;
+      // Dosya yoksa (o katman için cümle üretilmediyse) sessizce geç: test o kelimeleri atlar.
+      s.onload = function () { delete testYukleniyor[k]; coz(k); };
+      s.onerror = function () { delete testYukleniyor[k]; window['TEST_K' + k] = window['TEST_K' + k] || {}; coz(k); };
+      document.head.appendChild(s);
+    });
+    return testYukleniyor[k];
+  }
+  function testleriYukle(liste) {
+    return Promise.all((liste || []).map(testYukle).concat([modalTestleriniYukle()]));
+  }
+
+  /* Öbeklerin günün testi cümleleri — tek dosya, gerekince indirilir. */
+  var obekTestYukleniyor = null;
+  function obekTestleriniYukle() {
+    if (window.TEST_OBEK) return Promise.resolve(window.TEST_OBEK);
+    if (obekTestYukleniyor) return obekTestYukleniyor;
+    obekTestYukleniyor = new Promise(function (coz) {
+      var s = document.createElement('script');
+      s.src = varlik('data/test-obek.js');
+      s.async = true;
+      s.onload = function () { coz(window.TEST_OBEK || {}); };
+      s.onerror = function () { window.TEST_OBEK = window.TEST_OBEK || {}; coz(window.TEST_OBEK); };
+      document.head.appendChild(s);
+    });
+    return obekTestYukleniyor;
+  }
+
+  function katmanYukluMu(k) { return !!yukluKatmanlar[k]; }
+
+  /* ---------- kayıt erişimi ---------- */
+
+  /* Tam kayıt: {a:[{tr,ex,exTr}], es?}. Katman yüklü değilse null döner. */
+  function kayit(en) {
+    var k = kelimeKatmani[en];
+    if (!k) return null;
+    var tablo = window['KELIME_K' + k];
+    return (tablo && tablo[en]) || null;
+  }
+
+  function katmani(en) { return kelimeKatmani[en] || 0; }
+
+  /* Dizin kaydı (kısa bilgi) — her zaman erişilebilir. */
+  var dizinHarita = {};
+  dizin.forEach(function (d) { dizinHarita[d.e] = d; });
+  function dizinKaydi(en) { return dizinHarita[en] || null; }
+
+  /* ---------- aynı anlama bağlı, dönüşümlü çalışma örnekleri ---------- */
+
+  // Bu küçük tercih yalnız cihazda tutulur; Leitner/sınav ilerlemesine ve
+  // bulut eşitlemesine dokunmaz. Depolama kapalı/doluysa bellekte devam eder.
+  var ORNEK_ANAHTAR = 'yds-ornek-sirasi-v1';
+  var ornekSirasi = Object.create(null);
+  var ornekSirasiOkundu = false;
+
+  function ornekHavuzu(anlam) {
+    var sonuc = [], gorulen = Object.create(null);
+    [anlam].concat(Array.isArray(anlam.exs) ? anlam.exs : []).forEach(function (a) {
+      if (!a || typeof a.ex !== 'string' || typeof a.exTr !== 'string' ||
+          !a.ex.trim() || !a.exTr.trim()) return;
+      var kimlik = a.ex.trim().toLowerCase();
+      if (gorulen[kimlik]) return;
+      gorulen[kimlik] = true;
+      sonuc.push({ ex: a.ex, exTr: a.exTr });
+    });
+    return sonuc;
+  }
+
+  function ornekleriSec(en, anlamlar) {
+    if (!ornekSirasiOkundu) {
+      ornekSirasiOkundu = true;
+      try {
+        var ham = window.localStorage.getItem(ORNEK_ANAHTAR);
+        var kayit = ham && ham.length <= 500000 ? JSON.parse(ham) : null;
+        if (kayit && typeof kayit === 'object' && !Array.isArray(kayit)) {
+          Object.keys(kayit).slice(-10000).forEach(function (k) {
+            if (Number.isSafeInteger(kayit[k]) && kayit[k] >= 0) ornekSirasi[k] = kayit[k];
+          });
+        }
+      } catch (e) { /* bozuk veri / özel gezinme: bellek yeterli */ }
+    }
+    var havuzlar = anlamlar.map(ornekHavuzu);
+    var sira = ornekSirasi[en] || 0;
+    var sonuc = havuzlar.map(function (havuz) {
+      if (!havuz.length) return { ex: '', exTr: '', sira: 0, toplam: 0 };
+      var i = sira % havuz.length;
+      return { ex: havuz[i].ex, exTr: havuz[i].exTr, sira: i + 1, toplam: havuz.length };
+    });
+    if (havuzlar.some(function (h) { return h.length > 1; })) {
+      // Anahtarı sona taşı: en son görülen 10.000 karttan fazlasını biriktirme.
+      delete ornekSirasi[en];
+      ornekSirasi[en] = sira < Number.MAX_SAFE_INTEGER ? sira + 1 : 0;
+      var anahtarlar = Object.keys(ornekSirasi);
+      if (anahtarlar.length > 10000) delete ornekSirasi[anahtarlar[0]];
+      try { window.localStorage.setItem(ORNEK_ANAHTAR, JSON.stringify(ornekSirasi)); }
+      catch (e) { /* tercih yazılamazsa kart/ilerleme işlemleri yine çalışır */ }
+    }
+    return sonuc;
+  }
+
+  /* ---------- öbekler ---------- */
+
+  var obekYukleniyor = null;
+
+  function obekleriYukle() {
+    if (window.OBEKLER) return Promise.resolve(window.OBEKLER);
+    if (obekYukleniyor) return obekYukleniyor;
+
+    obekYukleniyor = new Promise(function (coz, reddet) {
+      var s = document.createElement('script');
+      s.src = varlik('data/obekler.js');
+      s.async = true;
+      s.onload = function () {
+        // OBEK_TAKMA öbeklerle gelir: eski çekimli anahtarlardaki ilerlemeyi lemmaya taşı.
+        var I = window.YDS && window.YDS.Ilerleme;
+        if (I && I.obekTakmaGocu) I.obekTakmaGocu();
+        coz(window.OBEKLER || []);
+      };
+      s.onerror = function () { obekYukleniyor = null; reddet(new Error('Öbekler yüklenemedi')); };
+      document.head.appendChild(s);
+    });
+    return obekYukleniyor;
+  }
+
+  /* ---------- özet ---------- */
+
+  function katmanSayilari() {
+    var s = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0 };
+    dizin.forEach(function (d) { s[d.k]++; });
+    return s;
+  }
+
+  window.YDS.Veri = {
+    KATMANLAR: KATMANLAR,
+    KATMAN_ADI: KATMAN_ADI,
+    KATMAN_ACIKLAMA: KATMAN_ACIKLAMA,
+    KATMAN_PUAN: KATMAN_PUAN,
+    katmanPuanMetni: katmanPuanMetni,
+    dizin: dizin,
+    dizinKaydi: dizinKaydi,
+    ornekHavuzu: ornekHavuzu,
+    ornekleriSec: ornekleriSec,
+    kayit: kayit,
+    katmani: katmani,
+    katmanYukle: katmanYukle,
+    katmanlariYukle: katmanlariYukle,
+    katmanYukluMu: katmanYukluMu,
+    katmanSayilari: katmanSayilari,
+    obekleriYukle: obekleriYukle,
+    testleriYukle: testleriYukle,
+    obekTestleriniYukle: obekTestleriniYukle
+  };
+})();

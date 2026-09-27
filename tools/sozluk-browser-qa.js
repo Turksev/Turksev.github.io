@@ -542,6 +542,137 @@ async function main() {
       return !!a && a.hasAttribute('data-sozluk-ac') && a.getClientRects().length > 0;
     }), true, 'Without a card, closing returns focus to a visible dictionary button, not <main>');
 
+    /* ---------- Önceki kartın uyarısı yeni kartın cevabını örtmez: görünen cevap
+       sayılır, görünmeyen sayılmaz (1280×560) ---------- */
+    const stale = await fresh({width: 1280, height: 560});
+    await startDeck(stale, base + '/kelimeler.html');
+    const cardWord = () => stale.locator('#kartOn').innerText().then(t => t.trim());
+    const staleA = await cardWord();
+    await stale.locator('#sonraki').click(); const staleB = await cardWord();
+    await stale.locator('#sonraki').click(); const staleC = await cardWord();
+    await stale.locator('#onceki').click(); await stale.locator('#onceki').click();
+    assert.equal(await cardWord(), staleA);
+    assert.equal(new Set([staleA, staleB, staleC]).size, 3, 'Fixture: three different cards');
+    await stale.keyboard.press('/');
+    await stale.locator('#sozlukPanel').waitFor({state: 'visible'});
+    await settled(stale);
+    // Önce A'ya bakılır (A işaretlenir), sonra sıradaki iki kartın kelimesi sabitlenir.
+    await stale.locator('#sozlukAra').fill(staleA);
+    await stale.locator('#sozlukUyari').waitFor({state: 'visible'});
+    for (const w of [staleB, staleC]) {
+      await stale.locator('#sozlukAra').fill(w);
+      const r = stale.locator('#sozlukSonuclar .sozluk-sonuc[data-tur="kelime"][data-anahtar="' + w + '"]').first();
+      await r.waitFor();
+      await r.locator('[data-is="sabitle"]').click();
+      await stale.locator('#sozlukSabitler .sozluk-sonuc[data-anahtar="' + w + '"]').waitFor();
+    }
+    assert.equal(await stale.locator('#sozlukUyari').isVisible(), true, 'Card A stays marked while other words are looked up');
+    // B ve C yalnız sabitlerde kalsın: arama sonucu satırları ölçümü karıştırmasın.
+    await stale.locator('#sozlukAra').fill(staleA);
+    await stale.locator('#sozlukSonuclar .sozluk-sonuc[data-anahtar="' + staleA + '"]').first().waitFor();
+    assert.equal(await stale.locator('#sozlukSonuclar .sozluk-sonuc[data-anahtar="' + staleB + '"], #sozlukSonuclar .sozluk-sonuc[data-anahtar="' + staleC + '"]').count(), 0,
+      'Fixture: the next cards appear only as pinned rows');
+    assert.equal(await stale.evaluate(() => getComputedStyle(document.getElementById('sozlukUyari')).position), 'static',
+      'The warning stays in flow; it never overlays results');
+    // Kaydırma payı: sonuç alanı kısa kalmasın.
+    await stale.evaluate(() => { document.getElementById('sozlukSonuclar').style.paddingBottom = '900px'; });
+    const frames = page => page.evaluate(() => new Promise(r =>
+      requestAnimationFrame(() => requestAnimationFrame(() => requestAnimationFrame(() => setTimeout(r, 60))))));
+    const pinnedMeaning = '#sozlukSabitler .sozluk-sonuc[data-anahtar="KEY"] .sozluk-anlam';
+    // 1) B'nin anlamı, yapışık uyarının eskiden durduğu yerde: sonuç alanının hemen üstünde.
+    const shownB = await stale.evaluate(sel => {
+      const g = document.getElementById('sozlukGovde'), a = document.querySelector(sel);
+      g.scrollTop += a.getBoundingClientRect().top - g.getBoundingClientRect().top - 6;
+      const r = a.getBoundingClientRect(), top = document.elementFromPoint(r.left + Math.min(20, r.width / 2), r.top + r.height / 2);
+      return {covered: !!top && !a.contains(top), visible: r.top >= g.getBoundingClientRect().top - 1};
+    }, pinnedMeaning.replace('KEY', staleB));
+    assert.deepEqual(shownB, {covered: false, visible: true}, 'Fixture: the next card\'s answer is visible and uncovered');
+    await stale.locator('#sonraki').click();
+    await frames(stale);
+    assert.equal(await cardWord(), staleB);
+    assert.match(await stale.locator('#kartIpucu').innerText(), /sözlükte gördün/, 'A visible, uncovered answer of the new card counts');
+    // 2) C'nin anlamı sonuç alanının üstünden kaydırılıp çıkarılmış: görülmüyor.
+    const hiddenC = await stale.evaluate(sel => {
+      const g = document.getElementById('sozlukGovde'), a = document.querySelector(sel);
+      g.scrollTop += a.getBoundingClientRect().bottom - g.getBoundingClientRect().top + 4;
+      return a.getBoundingClientRect().bottom <= g.getBoundingClientRect().top;
+    }, pinnedMeaning.replace('KEY', staleC));
+    assert.equal(hiddenC, true, 'Fixture: the next card\'s answer is scrolled out of view');
+    const staleBefore = await today(stale);
+    await stale.locator('#sonraki').click();
+    await frames(stale);
+    assert.equal(await cardWord(), staleC);
+    assert.equal(await stale.locator('#sozlukUyari').isHidden(), true, 'The previous card\'s warning goes away');
+    assert.doesNotMatch(await stale.locator('#kartIpucu').innerText(), /sözlükte gördün/, 'An unseen answer is not counted after the switch');
+    await stale.locator('#bildim').click();
+    const staleAfter = await today(stale);
+    assert.deepEqual(staleAfter, {t: staleBefore.t + 1, d: staleBefore.d + 1}, 'Unseen answer: "Bildim" counts as a clean answer');
+    // 3) Önceki kartın uyarısı kalkınca sonuçlar yukarı kayar; alanın hemen altında kalan
+    //    yeni kartın anlamı ekrana girer. Çizildikten sonra ölçülür ve sayılır.
+    const band = await fresh({width: 1280, height: 560});
+    await startDeck(band, base + '/kelimeler.html');
+    const bandWord = () => band.locator('#kartOn').innerText().then(t => t.trim());
+    const bandA = await bandWord();
+    await band.locator('#sonraki').click(); const bandB = await bandWord();
+    await band.locator('#onceki').click();
+    await band.keyboard.press('/');
+    await band.locator('#sozlukPanel').waitFor({state: 'visible'});
+    await settled(band);
+    await band.locator('#sozlukAra').fill(bandB);
+    const bandRow = band.locator('#sozlukSonuclar .sozluk-sonuc[data-tur="kelime"][data-anahtar="' + bandB + '"]').first();
+    await bandRow.waitFor();
+    await bandRow.locator('[data-is="sabitle"]').click();
+    await band.locator('#sozlukSabitler .sozluk-sonuc[data-anahtar="' + bandB + '"]').waitFor();
+    await band.locator('#sozlukAra').fill(bandA);
+    await band.locator('#sozlukUyari').waitFor({state: 'visible'});
+    const bandFix = await band.evaluate(key => {
+      const g = document.getElementById('sozlukGovde'), s = document.getElementById('sozlukSabitler');
+      const u = document.getElementById('sozlukUyari').getBoundingClientRect();
+      const a = document.querySelector('#sozlukSabitler .sozluk-sonuc[data-anahtar="' + key + '"] .sozluk-anlam');
+      g.scrollTop = 0;
+      // Anlam, alanın alt kenarının 10 px altına gelsin (uyarının yüksekliğinden az).
+      s.style.paddingTop = Math.max(0, g.getBoundingClientRect().bottom + 10 - a.getBoundingClientRect().top) + 'px';
+      const r = a.getBoundingClientRect();
+      return {below: r.top - g.getBoundingClientRect().bottom, warning: u.height};
+    }, bandB);
+    assert.ok(bandFix.below > 0 && bandFix.below + 30 < bandFix.warning,
+      'Fixture: answer just below the fold, within the warning height ' + JSON.stringify(bandFix));
+    await band.locator('#sonraki').click();
+    assert.equal(await bandWord(), bandB);
+    await band.waitForFunction(() => /sözlükte gördün/.test(document.getElementById('kartIpucu').textContent), null, {timeout: 3000});
+
+    /* ---------- Panel içinde kırpılan seçimin düğmesi gizlenir, seçim geri gelince çıkar (375×740) ---------- */
+    const clip = await fresh({width: 375, height: 740});
+    await startDeck(clip, base + '/kelimeler.html');
+    await clip.keyboard.press('/');
+    await clip.locator('#sozlukPanel').waitFor({state: 'visible'});
+    await settled(clip);
+    await clip.locator('#sozlukAra').fill('evidence');
+    await clip.locator('#sozlukSonuclar .sozluk-sonuc[data-anahtar="evidence"]').first().waitFor();
+    await clip.evaluate(() => { document.getElementById('sozlukSonuclar').style.paddingBottom = '900px'; });
+    const clipSel = '#sozlukSonuclar .sozluk-sonuc[data-anahtar="evidence"] .sozluk-anlam';
+    await clip.evaluate(sel => {
+      const el = document.querySelector(sel), r = document.createRange();
+      r.selectNodeContents(el);
+      const g = getSelection(); g.removeAllRanges(); g.addRange(r);
+    }, clipSel);
+    await clip.locator('.sozluk-secim').waitFor({state: 'visible'});
+    const clipped = await clip.evaluate(sel => {
+      const el = document.querySelector(sel);
+      let s = el.parentElement;
+      while (s && !(s.scrollHeight > s.clientHeight + 1 && /(auto|scroll)/.test(getComputedStyle(s).overflowY))) s = s.parentElement;
+      const kaydir = el.getBoundingClientRect().bottom - s.getBoundingClientRect().top + 4;
+      s.scrollTop += kaydir;
+      const r = getSelection().getRangeAt(0).getBoundingClientRect();
+      return {scroller: s.id, hiddenInScroller: r.bottom <= s.getBoundingClientRect().top, insideWindow: r.top >= 0 && r.bottom <= innerHeight};
+    }, clipSel);
+    assert.equal(clipped.hiddenInScroller && clipped.insideWindow, true,
+      'Fixture: selection clipped by the panel but still inside the window ' + JSON.stringify(clipped));
+    await clip.locator('.sozluk-secim').waitFor({state: 'hidden'});
+    assert.equal(await clip.evaluate(() => getSelection().isCollapsed), false, 'The selection itself is kept');
+    await clip.evaluate(id => { document.getElementById(id).scrollTop = 0; }, clipped.scroller);
+    await clip.locator('.sozluk-secim').waitFor({state: 'visible'});
+
     /* ---------- "Büyüt" ile görünür olan cevap ipucu sayılır ---------- */
     const grow = await fresh({width: 390, height: 844});
     await grow.goto(base + '/kelimeler.html');

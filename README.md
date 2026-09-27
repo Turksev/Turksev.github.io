@@ -51,12 +51,19 @@ bu kaybı saptayamaz; eksiklik uyarısının bulunmaması eksiksiz ölçüm gara
 Yazma hatası çalışmayı engellemez. Ayarlardaki ayrı silme düğmesi ve genel ilerleme
 sıfırlaması kullanım kayıtlarını siler; kullanım geri alınamaz.
 Sıfırlama dönemi değiştiği için açık eski sekmeler silinen sayaçları geri getiremez.
+Dönem anahtarını yalnız kullanıcı sıfırlaması yazar; anahtar yoksa dönem örtük
+`ilk`tir. Açılış ve toparlanma bu anahtara hiç yazmaz, bu yüzden araya giren bir
+sıfırlamayı ezemez.
 Açılışta depoyu okuyamayan sekme, depo düzelince o arada tuttuğu kayıtları benimser;
 arada kullanım sıfırlandıysa bu kayıtları atar. Bunu anlamak için sıfırlama anının
-zaman damgası dönemden önce yazılır. Sınır: karşılaştırma sistem saatine dayanır;
-böyle bir sekme açıkken saat geri alınırsa sonraki bir sıfırlama kaçırılabilir.
-Depo tarayıcı ayarlarından dışarıdan silinirse açık sekmeler bunu dönem ya da
-kurulum kimliğinin değişmesinden anlar ve silinen sayaçları geri yazmaz.
+zaman damgası dönemden önce yazılır. Bu bir yaklaşımdır, kesin garanti değildir:
+karşılaştırma sistem saatine dayanır; böyle bir sekme açıkken saat geri alınırsa
+sonraki bir sıfırlama kaçırılabilir.
+Depo tarayıcı ayarlarından dışarıdan silinirse açık sekme bunu, kendi en son yazdığı
+günlük kaydın budama sınırının üstünde olduğu hâlde kaybolmasından anlar ve silinen
+sayaçları geri yazmaz. Yasal budama önce kalıcı kesim işaretini yazdığı için silme
+sanılmaz. Silmeden önce hiç kayıt yazmamış sekmenin kaydedilmemiş sayaçları silmeden
+sonra yazılabilir.
 
 İleride buluta geçiş, yalnız beyaz listeye anahtar eklemek değildir: kaynak
 kimliklerinin korunduğu, tekrar çalıştırılabilir bir içe alma ve kayıt bazında
@@ -95,11 +102,15 @@ Eşleştirme kuralı arama sayfasıyla ortaktır (`assets/js/arama-ortak.js`); p
   düşürmez; dış bağlantılar kalıcı öğelerdir. `Esc` paneli kapatır ve odağı paneli
   açan öğeye döndürür.
 - **Seçerek arama.** Karttaki, listedeki ya da paneldeki bir kelimeyi seçince çıkan
-  "Sözlükte ara" düğmesi o kelimeyi aratır.
+  "Sözlükte ara" düğmesi o kelimeyi aratır. Seçim pencereden ya da panelin sonuç
+  alanından kaydırılıp çıkınca düğme gizlenir, seçim geri gelince yeniden çıkar.
 - **Dürüst ipucu.** Çevrilmemiş kelime/öbek kartının kendi başlığı panelde gerçekten
-  ekranda göründüğünde (kelime ya da öbek satırı olarak; `IntersectionObserver` ile,
-  aşağıda kalan ve kaydırılıp bakılmamış satır sayılmaz) o kartın "Bildim" cevabı,
-  ipucu düğmesinde olduğu gibi ipucuyla sayılır. Her kart kendi işaretini taşır: bir
+  ekranda göründüğünde o kartın "Bildim" cevabı, ipucu düğmesinde olduğu gibi
+  ipucuyla sayılır. Ölçüm geometriktir: anlam satırının %60'ı ya da en az 24 px'i
+  pencere, panel ve sonuç alanının ortak görünür bölgesinde olmalı; aşağıda kalan ve
+  kaydırılıp bakılmamış satır sayılmaz. Uyarı sonuçların üstüne binmez (akış içinde
+  durur); önceki kartın uyarısı yeni kart gelince kalkar ve açığa çıkan satır ekrana
+  çizildikten sonra ölçülür. Her kart kendi işaretini taşır: bir
   karta bakıp başka karta geçmek ve ona da bakmak ilk kartın işaretini silmez; işaret
   yalnız o kart yanıtlanınca kalkar. Öbekler sayfasında öbek sonuçları önce gelir.
   Uyarı ekran okuyucuya da duyurulur. Kural cümle kartlarına uygulanmaz.

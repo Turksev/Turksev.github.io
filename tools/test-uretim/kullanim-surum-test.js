@@ -60,7 +60,7 @@ assert.ok(Array.from(onceki.map.keys()).some(k => k.startsWith('yds-kullanim-v1:
   'Kayıt depodaki dönem ve kurulumla yazılır');
 assert.equal(onceki.getItem('yds-kullanim-v1:epoch'), 'onceki-donem', 'Dönem değiştirilmez');
 
-// Depoda hiç dönem yoksa yeni bir kimlik yazılır; kayıtlar yine korunur.
+// Depoda hiç dönem yoksa dönem örtük 'ilk'tir ve anahtar yazılmaz; kurulum kimliği yazılır, kayıtlar korunur.
 const bos = new Storage();
 bos.blocked = true;
 const bosAcilis = browser({storage: bos});
@@ -68,7 +68,7 @@ bosAcilis.K.olay('kart-cevap');
 bos.blocked = false;
 assert.equal(bosAcilis.checkpoint(), true);
 assert.equal(bosAcilis.report().features.find(r => r.id === 'kart-cevap').count, 1);
-assert.ok(bos.getItem('yds-kullanim-v1:epoch'), 'Yeni dönem kimliği yazıldı');
+assert.equal(bos.getItem('yds-kullanim-v1:epoch'), null, 'Toparlanma dönem anahtarına yazmaz');
 assert.ok(bos.getItem('yds-kullanim-v1:kurulum'), 'Yeni kurulum kimliği yazıldı');
 
 const EPOCH = 'yds-kullanim-v1:epoch', INSTALL = 'yds-kullanim-v1:kurulum';
@@ -110,7 +110,7 @@ assert.equal(kismi(true), 0, 'Kısmi açılış + sıfırlama: eski eylem geri g
 assert.equal(kismi(false), 1, 'Kısmi açılış, sıfırlama yok: eylem korunur');
 
 // 7) Boş depoda iki sekme aynı anda toparlanır: A dönemi boş okur, yazmadan önce B
-//    kendi kaydını yazar. İkisi aynı 'ilk' dönemini kullandığı için B'nin kaydı silinmez.
+//    kendi kaydını yazar. İkisi de örtük 'ilk' dönemini kullandığı için B'nin kaydı silinmez.
 const s7 = new Storage();
 s7.blocked = true;
 const a7 = browser({storage: s7, now: t0}), b7 = browser({storage: s7, now: t0});
@@ -124,7 +124,7 @@ s7.getItem = k => {
 };
 assert.equal(a7.checkpoint(), true);
 a7.checkpoint(); b7.checkpoint();
-assert.equal(s7.getItem(EPOCH), 'ilk');
+assert.equal(s7.getItem(EPOCH), null, 'Toparlanan sekmeler dönem anahtarına yazmaz');
 assert.equal(a7.report().features.find(r => r.id === 'kart-cevap').count, 2, 'Yarışan iki sekmenin kayıtları birlikte kalır');
 
 // 8) Sıfırlanmış dönem varken yenileme açılışında depo okunamazsa ziyaret çift sayılmaz.
@@ -176,20 +176,18 @@ function yenilemeSifirlamaSonrasi(ilkDonem) {
 assert.equal(yenilemeSifirlamaSonrasi('D1'), 1, 'Sıfırlanmış dönemden sonra yenileme ziyareti sayılır');
 assert.equal(yenilemeSifirlamaSonrasi(null), 1, 'İlk dönemden sonra sıfırlanınca yenileme ziyareti sayılır');
 
-// 11) Açılışta dönem yazılamadıysa dönem bilinmiyor sayılır. Eski sürümdeki bir sekme
-//     silinmiş depoya rastgele dönem yazsa bile (sıfırlama yok) bu sekmenin kayıtları korunur.
+// 11) Açılış dönem anahtarına yazmaya çalışmaz: bu anahtara yazılamayan depoda da açılış
+//     başarılı sayılır ve kayıtlar eksiksiz yazılır.
 const s11 = new Storage();
 const yaz11 = s11.setItem.bind(s11);
-let donemYazilamaz = true;
-s11.setItem = (k, v) => { if (donemYazilamaz && k === EPOCH) throw Error('quota'); return yaz11(k, v); };
+s11.setItem = (k, v) => { if (k === EPOCH) throw Error('quota'); return yaz11(k, v); };
 const b11 = browser({storage: s11, now: t0});
 b11.K.olay('kart-cevap');
-donemYazilamaz = false;
-s11.setItem(EPOCH, 'eski-surum-donemi');
-assert.equal(b11.checkpoint(), true);
-assert.equal(b11.report().features.find(r => r.id === 'kart-cevap').count, 1, 'Yazılamayan açılış dönemi sıfırlama kanıtı sayılmaz');
+assert.equal(b11.checkpoint(), true, 'Dönem yazımı gerekmez');
+assert.equal(b11.K.oku().partial, false);
+assert.equal(b11.report().features.find(r => r.id === 'kart-cevap').count, 1);
 
-// 12) Depo dışarıdan silinir; başka sekme 'ilk' dönemini yeniden yazar. Aynı 'ilk'
+// 12) Depo dışarıdan silinir; yeni açılan sekme de örtük 'ilk' dönemindedir. Aynı 'ilk'
 //     döneminde kalan eski sekme silinmiş sayaçlarını geri yazmaz.
 const s12 = new Storage();
 const b12 = browser({storage: s12, now: t0});
@@ -197,7 +195,7 @@ b12.K.olay('ipucu');
 assert.equal(b12.checkpoint(), true);
 s12.map.clear();
 const a12 = browser({storage: s12, now: t0 + 1000});
-assert.equal(s12.getItem(EPOCH), 'ilk');
+assert.equal(s12.getItem(EPOCH), null, 'Yeni açılış dönem anahtarına yazmaz');
 // Eski sekme silmeden sonra yeni bir işlem yapar: yalnız bu yeni işlem yazılmalı.
 b12.K.olay('kart-cevap');
 b12.checkpoint(); b12.checkpoint();
@@ -212,4 +210,88 @@ b12b.K.olay('ipucu'); b12b.advance(1000);
 assert.equal(b12b.checkpoint(), true);
 assert.equal(b12b.report().features.find(r => r.id === 'ipucu').count, 2, 'Silme yoksa sayaçlar birikir');
 
-console.log('Kullanım: geçici hatadan kurtulma, bekleyen veri koruması, açılış hatası sonrası benimseme, sıfırlama sırası, yarış ve dış silme koruması, yenileme ve ileri sürüm uyumu geçti.');
+const SIF = 'yds-kullanim-v1:sifirlama', GUN = 24 * 3600 * 1000;
+
+// 13) Açılışta okuyamayan A toparlanırken dönemi ve damgayı boş okur; tam o anda B açılıp
+//     kullanımı sıfırlar. A dönem anahtarına yazıp B'nin sıfırlamasını ezmemeli.
+const s13 = new Storage();
+s13.blocked = true;
+const a13 = browser({storage: s13, now: t0});
+a13.K.olay('ipucu'); a13.advance(20000);
+s13.blocked = false;
+const oku13 = s13.getItem.bind(s13);
+let araya13 = true, b13 = null;
+s13.getItem = k => {
+  const v = oku13(k);
+  if (araya13 && k === SIF) {
+    araya13 = false;
+    b13 = browser({storage: s13, now: t0 + 1000, path: '/ayarlar.html'});
+    assert.equal(b13.K.sifirla(), true);
+  }
+  return v;
+};
+a13.checkpoint(); s13.getItem = oku13;
+assert.equal(araya13, false, 'Sıfırlama, A toparlanırken araya girdi');
+a13.checkpoint(); a13.checkpoint();
+assert.notEqual(s13.getItem(EPOCH), 'ilk', 'Toparlanan sekme yeni sıfırlama dönemini ezmez');
+assert.equal(b13.report().features.find(r => r.id === 'ipucu').count, 0, 'İlk kurulumla çakışan sıfırlamadan önceki eylem geri gelmez');
+
+// 14) İlk kurulumda kurulum kimliği yarışı + gece yarısı + gerçek kapasite budaması:
+//     dünkü kaydın budanması dış silme sanılıp yeni günün eylemi atılmamalı.
+const s14 = new Storage();
+const x14 = browser({storage: s14, now: t0});
+x14.K.olay('kart-cevap');
+assert.equal(x14.checkpoint(), true);
+s14.setItem(INSTALL, 'yarisan-kurulum');
+const dun14 = x14.H.gun(new Date(t0));
+x14.advance(GUN);
+x14.K.olay('ipucu');
+const dolgu = {};
+for (let j = 0; j < 45; j++) dolgu['gelecek-eylem-' + String(j).padStart(3, '0')] = 1;
+const donem14 = s14.getItem(EPOCH) || 'ilk';
+for (let i = 0; i < 260; i++) {
+  s14.setItem('yds-kullanim-v1:r:' + donem14 + ':' + dun14 + ':dolgu-' + i + ':oturum',
+    JSON.stringify({v: 1, g: dun14, p: 'kelimeler', a: 1, s: 1, f: dolgu}));
+}
+const y14 = browser({storage: s14, now: t0 + GUN});
+assert.equal(y14.checkpoint(), true);
+assert.ok(Array.from(s14.map.keys()).some(k => k.startsWith('yds-kullanim-v1:cutoff:')), 'Gerçek kapasite budaması çalıştı');
+assert.equal(Array.from(s14.map.keys()).some(k => k.startsWith('yds-kullanim-v1:r:' + donem14 + ':' + dun14 + ':')), false,
+  'Dünün bütün kayıtları budandı');
+assert.equal(x14.checkpoint(), true);
+assert.equal(y14.report().features.find(r => r.id === 'ipucu').count, 1, 'Budama dış silme sanılmaz; yeni günün eylemi korunur');
+
+// 15) Gece açık kalan sekmenin son kaydı dündür; depo dışarıdan silinir.
+//     Dünün sayaçları geri yazılmaz, silmeden sonraki eylem yazılır.
+const s15 = new Storage();
+const x15 = browser({storage: s15, now: t0});
+x15.K.olay('ipucu');
+assert.equal(x15.checkpoint(), true);
+x15.advance(GUN);
+s15.map.clear();
+x15.K.olay('kart-cevap');
+x15.checkpoint(); x15.checkpoint();
+const r15 = x15.report(7);
+assert.equal(r15.features.find(r => r.id === 'ipucu').count, 0, 'Silinen dünkü eylem geri yazılmaz');
+assert.equal(r15.features.find(r => r.id === 'kart-cevap').count, 1, 'Silmeden sonraki eylem yazılır');
+
+// 16) Açılış dönem anahtarına hiç yazmaz: yoksa örtük 'ilk'. Açıkça 'ilk' yazılmış eski
+//     depolar da aynı dönemdir; başka dönemin artıkları anahtar yokken de budanır.
+const s16 = new Storage();
+const b16 = browser({storage: s16, now: t0}), gun16 = b16.H.gun(new Date(t0));
+b16.K.olay('ipucu');
+assert.equal(b16.checkpoint(), true);
+assert.equal(s16.getItem(EPOCH), null, 'Açılış dönem anahtarına yazmaz');
+s16.setItem('yds-kullanim-v1:r:eski-donem:' + gun16 + ':k:o', JSON.stringify({v: 1, g: gun16, p: 'kelimeler', a: 1, s: 1, f: {}}));
+b16.K.olay('ipucu');
+assert.equal(b16.checkpoint(), true);
+assert.equal(s16.getItem('yds-kullanim-v1:r:eski-donem:' + gun16 + ':k:o'), null, 'Başka dönemin artığı budanır');
+assert.equal(b16.report().features.find(r => r.id === 'ipucu').count, 2);
+const s16b = new Storage();
+s16b.setItem(EPOCH, 'ilk');
+const b16b = browser({storage: s16b, now: t0});
+b16b.K.olay('ipucu');
+assert.equal(b16b.checkpoint(), true);
+assert.equal(b16b.report().features.find(r => r.id === 'ipucu').count, 1, 'Açıkça yazılmış ilk dönemi olan eski depo çalışır');
+
+console.log('Kullanım: geçici hatadan kurtulma, bekleyen veri koruması, açılış hatası sonrası benimseme, sıfırlama sırası, ilk kurulum-sıfırlama yarışı, dış silme ve budama ayrımı, yenileme ve ileri sürüm uyumu geçti.');
