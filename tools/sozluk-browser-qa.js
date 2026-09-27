@@ -48,6 +48,16 @@ async function centerCard(page) {
 }
 // Panel kayarak girer; konum ölçümünden önce giriş animasyonu bitmeli.
 const settled = page => page.waitForFunction(() => document.getAnimations().every(a => a.playState !== 'running'));
+// Yumuşak kaydırma bir Web Animation değildir: sayfa konumu art arda 10 karede
+// değişmeyene kadar bekler. Yavaş CI'da deste başlangıcının kaydırması sürebiliyor.
+const scrollStill = page => page.evaluate(() => new Promise(resolve => {
+  let last = -1, same = 0;
+  (function tick() {
+    const y = window.scrollY;
+    if (y === last) { if (++same >= 10) { resolve(y); return; } } else { same = 0; last = y; }
+    requestAnimationFrame(tick);
+  })();
+}));
 const today = page => page.evaluate(() => {
   const Il = window.YDS.Ilerleme, row = Il.gunlukKayitlar()[Il.bugun()] || {};
   return {t: row.t || 0, d: row.d || 0};
@@ -577,6 +587,8 @@ async function main() {
     /* ---------- Dikey telefon: ekran dışındaki karta kaydırılmaz ---------- */
     const port = await fresh({width: 375, height: 740});
     await startDeck(port, base + '/kelimeler.html');
+    // Deste başlangıcının karta yumuşak kaydırması bitsin; yoksa açılıştan sonra da sürer.
+    await scrollStill(port);
     await port.evaluate(() => {
       // Kartın ekran altında başlaması yazı tipine bırakılmaz (Linux yazı tipleri daha
       // sıkı, kart 740 px içine sığabiliyor): kartın önüne sabit boşluk konur.
@@ -587,12 +599,13 @@ async function main() {
       const k = document.documentElement, e = k.style.scrollBehavior;
       k.style.scrollBehavior = 'auto'; window.scrollTo(0, 0); k.style.scrollBehavior = e;
     });
+    assert.equal(await scrollStill(port), 0, 'Fixture: page rests at the top before opening');
     assert.equal(await port.evaluate(() => document.getElementById('kart').getBoundingClientRect().top > innerHeight), true,
       'Fixture: card starts below the fold');
     await port.keyboard.press('/');
     await port.locator('#sozlukPanel').waitFor({state: 'visible'});
     await settled(port);
-    assert.equal(await port.evaluate(() => window.scrollY), 0, 'Opening the sheet with the card off-screen does not scroll the page');
+    assert.equal(await scrollStill(port), 0, 'Opening the sheet with the card off-screen does not scroll the page');
 
     /* ---------- Yatay telefon: kart ekrandaki yerini korur ---------- */
     const land = await fresh({width: 640, height: 360});
