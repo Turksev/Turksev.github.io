@@ -41,4 +41,34 @@ assert.equal(rapor.features.some(r => r.id === 'gelecekteki-eylem'), false, 'Bil
 assert.equal(H.gecerli({v: 1, g: bugun, p: 'kelimeler', a: 1, s: 30, f: {'kart-cevap': -1}}), false);
 assert.equal(H.gecerli({v: 1, g: bugun, p: 'kelimeler', a: 1, s: 30, f: {'kart-cevap': 'x'}}), false);
 
-console.log('Kullanım: geçici hatadan kurtulma, bekleyen veri koruması ve ileri sürüm uyumu geçti.');
+// 4) Açılışta depo okunamazsa (daha önce sıfırlanmış dönem) o sırada tutulan kayıtlar
+//    depo düzelince silinmez; depodaki dönem ve kurulum benimsenir.
+const onceki = new Storage();
+onceki.setItem('yds-kullanim-v1:epoch', 'onceki-donem');
+onceki.setItem('yds-kullanim-v1:kurulum', 'kurulum-1');
+onceki.blocked = true;
+const acilis = browser({storage: onceki});
+acilis.K.olay('ipucu');
+acilis.advance(20000);
+onceki.blocked = false;
+assert.equal(acilis.checkpoint(), true, 'Depo düzelince kayıtlar yazılır');
+const acilisRaporu = acilis.report();
+assert.equal(acilisRaporu.features.find(r => r.id === 'ipucu').count, 1, 'Açılış hatası sırasındaki eylem kaybolmaz');
+assert.equal(acilisRaporu.pages.find(r => r.id === 'kelimeler').visits, 1, 'Açılış hatası sırasındaki ziyaret kaybolmaz');
+assert.equal(acilis.K.oku().partial, false);
+assert.ok(Array.from(onceki.map.keys()).some(k => k.startsWith('yds-kullanim-v1:r:onceki-donem:') && k.includes(':kurulum-1:')),
+  'Kayıt depodaki dönem ve kurulumla yazılır');
+assert.equal(onceki.getItem('yds-kullanim-v1:epoch'), 'onceki-donem', 'Dönem değiştirilmez');
+
+// Depoda hiç dönem yoksa yeni bir kimlik yazılır; kayıtlar yine korunur.
+const bos = new Storage();
+bos.blocked = true;
+const bosAcilis = browser({storage: bos});
+bosAcilis.K.olay('kart-cevap');
+bos.blocked = false;
+assert.equal(bosAcilis.checkpoint(), true);
+assert.equal(bosAcilis.report().features.find(r => r.id === 'kart-cevap').count, 1);
+assert.ok(bos.getItem('yds-kullanim-v1:epoch'), 'Yeni dönem kimliği yazıldı');
+assert.ok(bos.getItem('yds-kullanim-v1:kurulum'), 'Yeni kurulum kimliği yazıldı');
+
+console.log('Kullanım: geçici hatadan kurtulma, bekleyen veri koruması, açılış hatası sonrası benimseme ve ileri sürüm uyumu geçti.');

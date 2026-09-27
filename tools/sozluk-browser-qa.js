@@ -492,6 +492,15 @@ async function main() {
     assert.equal(await land.evaluate(() => window.scrollY), 0, 'Opening with the card off-screen does not scroll the page');
     await land.keyboard.press('Escape');
 
+    /* ---------- Öbek listesi: "Kartta çalış" kartı açar ---------- */
+    const phraseList = await fresh({width: 1280, height: 900});
+    await phraseList.goto(base + '/obekler.html');
+    await phraseList.waitForFunction(() => document.querySelector('#liste .word [data-ne="calis"]'));
+    const listPhrase = await phraseList.locator('#liste .word').first().getAttribute('data-f');
+    await phraseList.locator('#liste .word [data-ne="calis"]').first().click();
+    await phraseList.locator('#kart').waitFor({state: 'visible'});
+    assert.equal((await phraseList.locator('#kartOn').innerText()).trim(), listPhrase, '"Kartta çalış" opens that phrase as a card');
+
     /* ---------- Öbek destesi: aynı ipucu kuralı ---------- */
     const phrases = await fresh({width: 1280, height: 900});
     await startDeck(phrases, base + '/obekler.html');
