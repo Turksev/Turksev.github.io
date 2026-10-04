@@ -140,4 +140,40 @@ assert.strictEqual(leitnerKisa.k, 2);
 assert.strictEqual(j(M.bulutAlaniniCoz('yds-leitner', leitnerKisa)),
   j(sekmeA.alanlar['yds-leitner']));
 
-console.log('esitleme-veri: 15 senaryo başarılı');
+/* Aynı gün iki cihaz: günlük sayaçlar cihaz paylarıyla birleşir; "son yazan kazanır"
+   diğer cihazın çalışmasını siliyordu. Birleşim sıra bağımsız ve tekrar uygulanabilir. */
+var gunTaban = M.zarfaCevir({});
+var telefon = M.kayitlariYaz(gunTaban, 'yds-gunluk-kayit', { '20340': { t: 20, y: 3, d: 15, m: 0, z: 0, p: { tel: { t: 20, y: 3, d: 15, m: 0, z: 0 } } } }, meta(500, 'T'));
+var dizustu = M.kayitlariYaz(gunTaban, 'yds-gunluk-kayit', { '20340': { t: 10, y: 1, d: 8, m: 1, z: 0, p: { pc: { t: 10, y: 1, d: 8, m: 1, z: 0 } } } }, meta(600, 'P'));
+var gunBirlesik = M.paket(M.birlestir(telefon, dizustu))['yds-gunluk-kayit']['20340'];
+assert.deepStrictEqual(JSON.parse(JSON.stringify(gunBirlesik)),
+  { t: 30, y: 4, d: 23, m: 1, z: 0, p: { pc: { t: 10, y: 1, d: 8, m: 1, z: 0 }, tel: { t: 20, y: 3, d: 15, m: 0, z: 0 } } },
+  'aynı günde iki cihazın çalışması toplanır, daha yeni sürüm eskisini silmez');
+assert.strictEqual(j(M.birlestir(telefon, dizustu)), j(M.birlestir(dizustu, telefon)), 'sıra bağımsız');
+var gunTekrar = M.birlestir(M.birlestir(telefon, dizustu), telefon);
+assert.strictEqual(M.paket(gunTekrar)['yds-gunluk-kayit']['20340'].t, 30, 'yeniden eşitleme şişirmez');
+// Telefon çalışmaya devam eder: yalnız kendi payı büyür, dizüstünün payı korunur.
+var telefonDevam = M.kayitlariYaz(M.birlestir(telefon, dizustu), 'yds-gunluk-kayit',
+  { '20340': { t: 35, y: 4, d: 28, m: 1, z: 0, p: { tel: { t: 25, y: 3, d: 20, m: 0, z: 0 }, pc: { t: 10, y: 1, d: 8, m: 1, z: 0 } } } }, meta(700, 'T'));
+assert.strictEqual(M.paket(M.birlestir(telefonDevam, dizustu))['yds-gunluk-kayit']['20340'].t, 35);
+// Eski biçimli (paysız) kayıt '*' payı sayılır; iki taraf da eskiyse kayıt eski biçimde kalır.
+var eskiGun = M.kayitlariYaz(gunTaban, 'yds-gunluk-kayit', { '20340': { t: 5, y: 0, d: 5, m: 0, z: 0 } }, meta(400, 'E'));
+var karisik = M.paket(M.birlestir(eskiGun, telefon))['yds-gunluk-kayit']['20340'];
+assert.strictEqual(karisik.t, 25, 'eski kaydın toplamı ayrı pay olarak korunur');
+assert.deepStrictEqual(Object.keys(karisik.p).sort(), ['*', 'tel']);
+var eskiB = M.kayitlariYaz(gunTaban, 'yds-gunluk-kayit', { '20340': { t: 8, y: 2, d: 5, m: 0, z: 0 } }, meta(401, 'F'));
+var ikiEski = M.paket(M.birlestir(eskiGun, eskiB))['yds-gunluk-kayit']['20340'];
+assert.deepStrictEqual(JSON.parse(JSON.stringify(ikiEski)), { t: 8, y: 2, d: 5, m: 0, z: 0 }, 'iki eski kayıt alan alan en büyükle, paysız birleşir');
+// Bugün açılan yeni kart sayacı da cihaz paylıdır; ek pay en büyük olanla kalır.
+var sayacT = M.kayitlariYaz(gunTaban, 'yds-yeni-sayac', { $: { g: 20340, n: 15, ek: 0, p: { tel: { n: 15 } } } }, meta(800, 'T'));
+var sayacP = M.kayitlariYaz(gunTaban, 'yds-yeni-sayac', { $: { g: 20340, n: 5, ek: 10, p: { pc: { n: 5 } } } }, meta(900, 'P'));
+var sayacBirlesik = M.paket(M.birlestir(sayacT, sayacP))['yds-yeni-sayac'];
+assert.deepStrictEqual(JSON.parse(JSON.stringify(sayacBirlesik)), { g: 20340, n: 20, ek: 10, p: { pc: { n: 5 }, tel: { n: 15 } } },
+  'yeni kart sayacı cihazlar arasında toplanır, kota sıfırlanmaz');
+var sayacYarin = M.kayitlariYaz(gunTaban, 'yds-yeni-sayac', { $: { g: 20341, n: 1, ek: 0, p: { pc: { n: 1 } } } }, meta(950, 'P'));
+assert.strictEqual(M.paket(M.birlestir(sayacT, sayacYarin))['yds-yeni-sayac'].g, 20341, 'yeni gün eskisini geçersiz kılar');
+// Sıfırlama (silme işareti) sürüm kuralıyla yine kazanır.
+var silinmisGun = M.anahtariSil(M.birlestir(telefon, dizustu), 'yds-gunluk-kayit', meta(1000, 'P'));
+assert.strictEqual(M.paket(M.birlestir(silinmisGun, telefon))['yds-gunluk-kayit'], undefined, 'sıfırlanan günlük kayıt geri gelmez');
+
+console.log('esitleme-veri: 15 senaryo + cihaz paylı günlük sayaçlar başarılı');

@@ -455,6 +455,14 @@ Başlıktaki **⇅** düğmesiyle Google hesabına bir kez giriş yapılır; son
   `yds-esitleme-v2` zarfında her kayıt ayrı mantıksal sürüm taşır; silmeler de mezar taşı
   olarak saklanır. Böylece çevrimdışı kalan cihaz eski bir kaydı geri diriltemez ve iki
   cihazın farklı kelimelerde yaptığı çalışmalar birbirini ezmez.
+- Günlük çalışma sayaçları (`yds-gunluk-kayit`) ve bugün açılan yeni kart sayacı
+  (`yds-yeni-sayac`) cihaz payları taşır: gün kaydında `p = { cihaz: {...} }`, toplam
+  alanlar payların toplamıdır ve okuyucular yalnız toplamı görür. Her cihaz yalnız kendi
+  payını artırır; eşitleme payları cihaz başına "büyük olan" ile birleştirir. Aynı gün iki
+  cihazda yapılan çalışma böylece ne kaybolur ne yeniden sayılır; "son yazan kazanır" bu
+  iki alanda uygulanmaz. Cihaz kimliği `yds-cihaz-kimligi` altında yerel kalır. Pay bilgisi
+  olmayan eski kayıt `*` payı sayılır; iki eski kayıt alan alan en büyükle birleşir. Sınır:
+  eski sürümle açık kalmış bir sekme paysız toplam yazarsa o gün bir kez fazla sayılabilir.
 - Açılıştaki birleşim Firestore işlemi içinde eski kök belgeyi ve güncel alan belgelerini
   yeniden okuyarak yapılır. İlk birleşimden sonra belgeler canlı dinlenir; başka cihazın
   değişikliği açık sayfaya gelir.
@@ -779,3 +787,13 @@ python tools/sw-surum.py     # yayımlanan dosyaların özetini hesaplar, deği�
 CI'daki `tools/test-uretim/sw-surum-test.js` aynı özeti hesaplayıp `sw.js` ile karşılaştırır:
 dosya değişip betik çalıştırılmamışsa test kırmızıya döner. Node kurulu olmayan makinede
 testler `tools/test-uretim/node-testleri-tarayicida.html` ile başsız Edge'de koşulur.
+
+Çalışma zamanı dosyaları `releases/<özet>/` altında değişmez kopyalardır
+(`tools/release-uret.py`, `tools/release-bagla.js`). `release-manifest.json` güncel sürümü
+(`surum`) ve bir öncekini (`onceki`) tutar; `tools/release-buda.py` geri kalan sürüm
+klasörlerini siler, CI `--kontrol` ile yetim klasör kalmadığını doğrular (her sürüm ~20 MB
+ve GitHub Pages sınırı 1 GB). Bir önceki sürüm bir yayın daha diskte kalır: yayından hemen
+önce açılmış bir sayfa tembel verisini bulur; `sw.js` de bir önceki önbelleği tutar ve bu
+sürümün önbelleğinde olmayan dosyayı oradan verir (`tools/test-uretim/sw-onbellek-test.js`).
+Daha eski bir sürümle açık kalmış sayfa veri yükleyemezse `release-manifest.json`'u okuyup
+"Sayfayı yenile" uyarısı gösterir.

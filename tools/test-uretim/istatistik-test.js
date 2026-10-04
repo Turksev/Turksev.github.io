@@ -114,9 +114,9 @@ assert.deepStrictEqual(kopya(birlesik), { t: 30, y: 9, d: 20, m: 1, z: 4 },
 var tersine = M.paket(M.birlestir(eskiB, eskiA))['yds-gunluk-kayit']['20340'];
 assert.deepStrictEqual(kopya(tersine), kopya(birlesik), 'birleşme sıradan bağımsız olmalı');
 
-/* Sürümlü kayıtlarda motorun genel kuralı geçerlidir: son yazan kazanır.
-   İki cihazda aynı gün çevrimdışı çalışıldıysa sayılar toplanmaz; bu bilinçli
-   bir ödün, çünkü toplama her yeniden eşitlemede aynı çalışmayı yeniden sayardı. */
+/* Sürümlü kayıtlarda da "son yazan kazanır" uygulanmaz: o kural aynı gün başka
+   cihazda yapılan çalışmayı siliyordu. Pay bilgisi olmayan (eski biçim) iki kayıt
+   alan alan en büyükle, paysız birleşir; cihaz paylı birleşim esitleme-veri-test'te. */
 function surumlu(veri, meta) {
   return M.kayitlariYaz(M.zarfaCevir({}), 'yds-gunluk-kayit', veri, function () { return meta; });
 }
@@ -124,8 +124,8 @@ var sonYazan = M.paket(M.birlestir(
   surumlu({ '20341': { t: 30, y: 5, d: 20, m: 1, z: 0 } }, '100:aaa'),
   surumlu({ '20341': { t: 12, y: 9, d: 10, m: 0, z: 4 } }, '200:bbb')
 ))['yds-gunluk-kayit']['20341'];
-assert.deepStrictEqual(kopya(sonYazan), { t: 12, y: 9, d: 10, m: 0, z: 4 },
-  'sürümlü kayıtta son yazan kazanmalı');
+assert.deepStrictEqual(kopya(sonYazan), { t: 30, y: 9, d: 20, m: 1, z: 4 },
+  'sürümlü paysız kayıtlarda da son yazan diğer cihazın sayaçlarını silmez');
 
 /* ---------- 3) sayfa ile betik uyumu ---------- */
 

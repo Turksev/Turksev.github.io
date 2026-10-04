@@ -56,6 +56,7 @@ jobs:
           python tools/test-uretim/cumle-kalite-test.py
           python tools/test-uretim/kart-icerik-test.py
           python tools/test-uretim/kart-baslik-yenileme-test.py
+          python tools/test-uretim/release-buda-test.py
 
       - name: Deterministic generated files
         shell: bash
@@ -69,6 +70,7 @@ jobs:
           node tools/site-sablon-uret.js
           python tools/release-uret.py --write
           node tools/release-bagla.js
+          python tools/release-buda.py --kontrol
           python tools/sw-surum.py --kontrol
           git diff --exit-code -- data/sorular-ek.js data/deneme-formlari.js konu sitemap.xml '*.html' release-manifest.json sw.js
           # Üretilen fakat commit'e eklenmemiş release dosyaları da hata olmalı.

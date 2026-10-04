@@ -109,4 +109,54 @@ var okuma = Il.kategoriOzet().filter(function (x) { return x.kat === 'Okuma'; })
 assert.strictEqual(okuma.toplam, 1, 'aynı soru kategori kapsamını şişirmemeli');
 assert.strictEqual(okuma.dogru, 0, 'aynı sorunun son cevabı esas alınmalı');
 
-console.log('ilerleme-SRS: son kutu, tekrar önceliği, yanlış defteri ve farklı-soru özeti başarılı');
+// Günlük sayaçlar cihaz paylarıyla yazılır: toplam payların toplamı, pay bu cihaza ait.
+Il.dogru('pay-ilk-kelime', 'kelime');
+var gunAnahtari = String(Il.bugun());
+var hamGun = bellek.get('yds-gunluk-kayit')[gunAnahtari];
+assert.ok(hamGun && hamGun.p && hamGun.p.yerel, 'Depo cihaz kimliği vermiyorsa pay "yerel" adıyla yazılır');
+assert.strictEqual(hamGun.t, hamGun.p.yerel.t, 'tek cihazda toplam kendi payına eşittir');
+Depo.cihaz = 'ikinci';
+var oncekiT = hamGun.t;
+Il.dogru('pay-kelimesi', 'kelime');
+hamGun = bellek.get('yds-gunluk-kayit')[gunAnahtari];
+assert.strictEqual(hamGun.p.ikinci.t, 1, 'ikinci cihaz yalnız kendi payını artırır');
+assert.strictEqual(hamGun.p.yerel.t, oncekiT, 'diğer cihazın payı korunur');
+assert.strictEqual(hamGun.t, oncekiT + 1, 'toplam payların toplamıdır');
+assert.strictEqual(Il.gunlukKayitlar()[gunAnahtari].t, oncekiT + 1, 'okuyucular yalnız toplamı görür');
+assert.strictEqual(Il.gunlukKayitlar()[gunAnahtari].p, undefined);
+var hamSayac = bellek.get('yds-yeni-sayac');
+assert.ok(hamSayac.p && hamSayac.p.ikinci && hamSayac.p.ikinci.n >= 1, 'yeni kart sayacı da cihaz payı taşır');
+assert.strictEqual(hamSayac.n, Object.keys(hamSayac.p).reduce(function (n, c) { return n + hamSayac.p[c].n; }, 0));
+delete Depo.cihaz;
+
+/* "Birikmişi yay": yalnız vadesi geçmiş, mezun OLMAYAN kartlar dağıtılır. Mezunlar
+   (5. kutu) desteye girmediği için kontenjanı tüketmemeli; gerçek tekrarlar bugünde kalmalı. */
+(function () {
+  var bellek2 = new Map(), leitner = {}, adlar = [];
+  var gun = Il.bugun();
+  for (var i = 0; i < 50; i++) { leitner['mezun' + i] = { k: 5, g: gun - 60 - i, c: gun - 60 - i, m: 0 }; adlar.push('mezun' + i); }
+  for (var j = 0; j < 40; j++) { leitner['gecikmis' + j] = { k: 2, g: gun - 10 - (j % 5), c: gun - 13, m: 0 }; adlar.push('gecikmis' + j); }
+  bellek2.set('yds-leitner', leitner);
+  var Depo2 = {
+    oku: function (a, v) { return bellek2.has(a) ? kopya(bellek2.get(a)) : v; },
+    yaz: function (a, v) { bellek2.set(a, kopya(v)); return true; },
+    sil: function (a) { bellek2.delete(a); return true; },
+    anahtarlariSil: function (x) { x.forEach(function (a) { bellek2.delete(a); }); return true; }
+  };
+  var pencere2 = { YDS: { Depo: Depo2 }, addEventListener: function () {} };
+  var baglam2 = vm.createContext({
+    window: pencere2, Date: SahteDate, JSON: JSON, Object: Object, Array: Array,
+    Math: Math, String: String, Number: Number, parseInt: parseInt, console: console
+  });
+  vm.runInContext(fs.readFileSync(path.join(kok, 'assets/js/ilerleme.js'), 'utf8'), baglam2, { filename: 'assets/js/ilerleme.js' });
+  var Il2 = pencere2.YDS.Ilerleme;
+  var sonuc = Il2.birikmisiYay(adlar, 30, 'kelime');
+  assert.deepStrictEqual({ tasinan: sonuc.tasinan, gun: sonuc.gun }, { tasinan: 10, gun: 2 },
+    'yalnız 40 gecikmiş kart dağıtılır: 30 bugün, 10 yarın');
+  var yeni = bellek2.get('yds-leitner');
+  var bugunKalan = adlar.filter(function (ad) { return yeni[ad].k < 5 && yeni[ad].g <= gun; }).length;
+  assert.strictEqual(bugunKalan, 30, 'bugünün payı gerçek tekrarlarla dolu');
+  for (var m = 0; m < 50; m++) assert.strictEqual(yeni['mezun' + m].g, gun - 60 - m, 'mezun kartın tarihi değişmez');
+})();
+
+console.log('ilerleme-SRS: son kutu, tekrar önceliği, yanlış defteri, farklı-soru özeti, cihaz paylı sayaçlar ve birikmiş dağıtımı başarılı');

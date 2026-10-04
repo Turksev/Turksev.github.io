@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Create immutable runtime snapshots; no HTML edits, publishing or deletion.
+"""Create immutable runtime snapshots; no HTML edits or publishing.
+The manifest also lists the previous release (onceki) that release-buda.py keeps.
 
 Usage: python tools/release-uret.py --source . --output . --write
 Without --write, print a deterministic manifest preview only.
@@ -73,9 +74,28 @@ def manifest(source: Path) -> tuple[dict, list[tuple[Path, str, bytes]]]:
     return {'sema': 1, 'surum': release, 'kok': prefix, 'dosyalar': records,
             'temel': list(dict.fromkeys(required))}, payload
 
+def previous_releases(output: Path, current: str) -> list[str]:
+    """The release published just before this one. It stays on disk one more
+    cycle so a document opened before publishing still finds its lazy data;
+    sw.js keeps the matching previous cache for the same reason."""
+    old_file = output / 'release-manifest.json'
+    if not old_file.is_file():
+        return []
+    try:
+        old = json.loads(old_file.read_text(encoding='utf-8'))
+    except ValueError:
+        return []
+    chain = [old.get('surum')] + list(old.get('onceki') or [])
+    kept = []
+    for item in chain:
+        if isinstance(item, str) and re.fullmatch(r'[0-9a-f]{12}', item) and item != current and item not in kept:
+            kept.append(item)
+    return kept[:1]
+
 def create(source: Path, output: Path, write: bool = False) -> dict:
     source, output = source.resolve(), output.resolve()
     result, payload = manifest(source)
+    result['onceki'] = previous_releases(output, result['surum'])
     if not write:
         return result
     destination = output / 'releases' / result['surum']

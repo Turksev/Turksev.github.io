@@ -114,6 +114,35 @@ async function ana() {
   assert.strictEqual(api.yedegiDogrula(baglamDegeri(o, kesirliPuan))['yds-gecmis'][0].y, 1.25,
     'tam denemenin kesirli YDS puanı geçerli olmalı');
 
+  // Kategori adı ekranda gösterilir: HTML karakteri içeren yedek reddedilir, gerçek adlar geçer.
+  assert.throws(function () { api.yedegiDogrula(baglamDegeri(o, zarf({ 'yds-kategori': { '<img src=x onerror=alert(1)>': { d: 0, y: 3 } } }))); },
+    /kategori adı/, 'HTML içeren kategori adı reddedilir');
+  assert.throws(function () { api.yedegiDogrula(baglamDegeri(o, zarf({ 'yds-kategori': { 'Kelime"onmouseover="x': { d: 1, y: 0 } } }))); });
+  const gecerliKategoriler = api.yedegiDogrula(baglamDegeri(o, zarf({ 'yds-kategori': {
+    'Anlamı Bozan Cümle': { d: 1, y: 0 }, 'Cümle Tamamlama': { d: 2, y: 1 }, 'Dil Bilgisi': { d: 0, y: 1 }, 'Çeviri': { d: 3, y: 0 }, 'Preposition': { d: 1, y: 1 }
+  } })))['yds-kategori'];
+  assert.strictEqual(Object.keys(gecerliKategoriler).length, 5, 'soru bankasındaki Türkçe kategori adları geçerli');
+  assert.match(fs.readFileSync(path.join(KOK, 'assets/js/quiz.js'), 'utf8'), /kacar\(zayif\.kat\)/, 'quiz.js en zayıf kategori adını kaçışla yazar');
+  // Günlük sayaç ve yeni kart sayacı cihaz payları taşıyabilir; toplam paylardan hesaplanır.
+  const payli = api.yedegiDogrula(baglamDegeri(o, zarf({
+    'yds-gunluk-kayit': { '20340': { t: 1, y: 0, d: 0, m: 0, z: 0, p: { tel: { t: 20, y: 2 }, pc: { t: 10, d: 7 } } } },
+    'yds-yeni-sayac': { g: 20340, n: 1, p: { tel: { n: 4 }, pc: { n: 3 } } }
+  })));
+  assert.deepStrictEqual(JSON.parse(JSON.stringify(payli['yds-gunluk-kayit']['20340'])),
+    { t: 30, y: 2, d: 7, m: 0, z: 0, p: { tel: { t: 20, y: 2, d: 0, m: 0, z: 0 }, pc: { t: 10, y: 0, d: 7, m: 0, z: 0 } } });
+  assert.strictEqual(payli['yds-yeni-sayac'].n, 7, 'yeni kart sayacı payların toplamıdır');
+  assert.throws(function () { api.yedegiDogrula(baglamDegeri(o, zarf({ 'yds-gunluk-kayit': { '20340': { t: 1, p: { 'A B': { t: 1 } } } } }))); }, /cihaz payı/);
+  assert.throws(function () { api.yedegiDogrula(baglamDegeri(o, zarf({ 'yds-yeni-sayac': { g: 1, n: 1, p: { tel: { n: -1 } } } }))); });
+  // İçe aktarmada aynı günün kayıtları artık atılmaz, cihaz paylarıyla birleşir.
+  const gunBirlesimi = api.guvenliBirlestir(
+    baglamDegeri(o, { 'yds-gunluk-kayit': { '20340': { t: 20, y: 0, d: 20, m: 0, z: 0, p: { tel: { t: 20, y: 0, d: 20, m: 0, z: 0 } } } } }),
+    baglamDegeri(o, { 'yds-gunluk-kayit': { '20340': { t: 10, y: 1, d: 9, m: 0, z: 0, p: { pc: { t: 10, y: 1, d: 9, m: 0, z: 0 } } } } }));
+  assert.strictEqual(gunBirlesimi['yds-gunluk-kayit']['20340'].t, 30, 'yedekteki günün çalışması mevcut güne eklenir');
+  const sayacBirlesimi = api.guvenliBirlestir(
+    baglamDegeri(o, { 'yds-yeni-sayac': { g: 20340, n: 4, ek: 0, p: { tel: { n: 4 } } } }),
+    baglamDegeri(o, { 'yds-yeni-sayac': { g: 20340, n: 3, ek: 5, p: { pc: { n: 3 } } } }));
+  assert.deepStrictEqual(JSON.parse(JSON.stringify(sayacBirlesimi['yds-yeni-sayac'])), { g: 20340, n: 7, ek: 5, p: { pc: { n: 3 }, tel: { n: 4 } } });
+
   const bozuklar = [
     zarf({ 'yds-gunluk-yeni': { n: 20 } }),
     zarf({ 'yds-gunluk-tavan': 10000 }),
