@@ -38,8 +38,10 @@ async function main() {
     for (const theme of ['light','dark']) for (const width of [375,1280]) {
       await page.emulateMedia({colorScheme:theme});
       await page.setViewportSize({width,height:812});
-      for (const route of ['index.html','kelimeler.html','obekler.html','aileler.html','cumleler.html','baglaclar.html','gramer.html','konular.html','deneme.html','ayarlar.html','istatistik.html','konu/T01.html','konu/E68.html']) {
+      for (const route of ['index.html','ana-sayfa.html','kelimeler.html','obekler.html','aileler.html','cumleler.html','baglaclar.html','gramer.html','konular.html','deneme.html','ayarlar.html','istatistik.html','konu/T01.html','konu/E68.html']) {
         await page.goto(base+'/'+route);
+        // Giriş animasyonu (opacity) bitmeden ölçülen metin düşük kontrastlı görünür; sonsuz döngüler dekoratiftir.
+        await page.waitForFunction(()=>document.getAnimations().every(a=>a.playState!=='running'||a.effect.getTiming().iterations===Infinity));
         await page.addScriptTag({path:require.resolve('axe-core/axe.min.js')});
         const result=await page.evaluate(async()=>{
           const r=await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}});
@@ -206,15 +208,74 @@ async function main() {
     await page.locator('#oturumDevam').click();
     assert.equal(await page.locator('#qText').innerText(),question,'Resumed question');
     assert.equal(await page.locator('#qSecenekler [role=radio]').nth(1).getAttribute('aria-checked'),'true','Persisted answer after reload');
+    // ---------- Açılış sayfası: katman haritası, menü sırası, hareket azaltma, katman bağlantısı ----------
+    const acilis=await context.newPage();
+    acilis.on('pageerror',error=>errors.push('acilis: '+error.message));
+    await acilis.setViewportSize({width:1280,height:900});
+    await acilis.emulateMedia({colorScheme:'light'});
+    const sayacBekle=()=>acilis.waitForFunction(()=>Array.from(document.querySelectorAll('[data-sayac]')).every(b=>b.textContent===Number(b.dataset.sayac).toLocaleString('tr-TR')));
+    await acilis.goto(base+'/index.html');
+    await acilis.waitForFunction(()=>document.querySelectorAll('.kcard').length===7);
+    await sayacBekle();
+    assert.equal(await acilis.locator('a.brand').getAttribute('href'),'index.html','Brand opens the landing page');
+    assert.deepEqual(await acilis.locator('.site-nav > a').evaluateAll(as=>as.slice(0,2).map(a=>[a.textContent.trim(),a.getAttribute('href')])),
+      [['Ana sayfa','ana-sayfa.html'],['Durumum','durum.html']],'"Ana sayfa" tab sits left of "Durumum"');
+    assert.equal(await acilis.locator('.site-nav a[aria-current="page"]').count(),0,'No tab is current on the landing page');
+    assert.match(await acilis.locator('#acilisDeste').innerText(),/\(\d+ kart\)$/,'Empty state still offers today\'s deck');
+    assert.equal(await acilis.locator('#acilisStatik').isHidden(),true,'Static fallback list hides once cards render');
+    assert.deepEqual(await acilis.locator('.kcard.secili').evaluateAll(els=>els.map(e=>e.dataset.k)),['2'],'Default selection marks Çekirdek');
+    assert.equal(await acilis.locator('.kcard[data-k="1"] .r-yeni b').innerText(),'920','Empty state: every Temel word is new');
+    // Fixture: bazı kelimeler mezun/çalışılıyor/vadeli; öbek kaydı katmana sızmaz.
+    await acilis.evaluate(()=>{
+      const Il=window.YDS.Ilerleme,gun=Il.bugun(),U=window.KATMAN_UYELIK,leitner={};
+      U[2].slice(0,100).forEach(w=>{leitner[w]={k:5,g:gun+20,c:gun-3,m:0};});
+      U[2].slice(100,130).forEach(w=>{leitner[w]={k:2,g:gun-1,c:gun-4,m:0};});
+      U[3].slice(0,10).forEach(w=>{leitner[w]={k:3,g:gun+3,c:gun-1,m:0};});
+      leitner['as well']={k:3,g:gun-2,c:gun-5,m:0};
+      window.YDS.Depo.paketYaz({'yds-leitner':leitner,'yds-katmanlar':[2,3]},'qa-fixture');
+    });
+    await acilis.reload();
+    await acilis.waitForFunction(()=>document.querySelectorAll('.kcard').length===7&&document.getElementById('acilisKatmanlar').classList.contains('dolu'));
+    await sayacBekle();
+    assert.deepEqual(await acilis.locator('.kcard[data-k="2"] .krakam b').evaluateAll(bs=>bs.map(b=>b.textContent)),['100','30','703','30'],'Çekirdek: learned, studying, new, due today');
+    assert.deepEqual(await acilis.locator('.kcard.secili').evaluateAll(els=>els.map(e=>e.dataset.k)),['2','3'],'Selected layers come from yds-katmanlar');
+    assert.equal(await acilis.locator('.kcard[data-k="1"] .r-mezun b').innerText(),'0','Phrase record never counts toward a word layer');
+    // Halka geçişle dolar (1,1 s + gecikme): hedefe ulaşmasını bekle.
+    await acilis.waitForFunction(()=>{const el=document.querySelector('.kcard[data-k="2"] .halka-dolu');return Math.abs(parseFloat(getComputedStyle(el).strokeDashoffset)-parseFloat(el.style.getPropertyValue('--dolu')))<0.5;});
+    const halka=await acilis.locator('.kcard[data-k="2"] .halka-dolu').evaluate(el=>parseFloat(el.style.getPropertyValue('--dolu')));
+    assert.ok(halka>0&&halka<125,'Ring target reflects the learned share: '+halka);
+    assert.match(await acilis.locator('#acilisOzet').innerText(),/30 tekrar bekliyor/,'Summary counts due reviews of selected layers only');
+    // Hareket azaltma: sayaçlar ve halkalar anında son değerde.
+    await acilis.emulateMedia({reducedMotion:'reduce'});
+    await acilis.reload();
+    await acilis.waitForFunction(()=>document.querySelectorAll('.kcard').length===7);
+    assert.equal(await acilis.locator('.kcard[data-k="2"] .r-mezun b').innerText(),'100','Reduced motion: no count-up, final value at once');
+    assert.equal(await acilis.evaluate(()=>document.getElementById('acilisKatmanlar').classList.contains('dolu')),true);
+    assert.equal(await acilis.evaluate(()=>document.getAnimations().filter(a=>a.playState==='running'&&a.effect&&a.effect.getTiming().duration>50).length),0,'Reduced motion: nothing keeps animating');
+    await acilis.emulateMedia({reducedMotion:'no-preference'});
+    // Katman kartı: Kelimeler sayfasını o katman seçili açar.
+    await acilis.locator('.kcard[data-k="3"] a[href="kelimeler.html?katman=3"]').click();
+    await acilis.waitForURL(/kelimeler\.html\?katman=3$/);
+    await acilis.waitForFunction(()=>window.YDS&&window.YDS.Veri&&/\d/.test(document.getElementById('sayac').textContent)&&!/yükleniyor/i.test(document.getElementById('sayac').textContent));
+    assert.deepEqual(await acilis.locator('.katman.acik').evaluateAll(els=>els.map(e=>e.dataset.k)),['3'],'?katman=3 selects exactly that layer');
+    assert.deepEqual(await acilis.evaluate(()=>window.YDS.Depo.oku('yds-katmanlar')),[3],'Selection is stored like a layer button press');
+    // Ana sayfa sekmesi eski içeriği açar ve orada vurgulanır; dağılım tablosu dolu.
+    await acilis.goto(base+'/ana-sayfa.html');
+    await acilis.waitForFunction(()=>document.querySelectorAll('#ydsDagilim tbody tr').length===13);
+    assert.equal(await acilis.locator('.site-nav a[aria-current="page"]').innerText(),'Ana sayfa');
+    assert.equal(await acilis.locator('h1').innerText(),'YDS\'ye çalışmanın düzenli yolu');
+    assert.equal(await acilis.locator('#panel').isVisible(),true,'Progress panel shows for the fixture profile');
+    await acilis.close();
     // A fresh test page avoids interacting with the exam's real unload dialog.
     const notFound=await context.newPage();
     const response=await notFound.goto(base+'/missing/nested/route');
     assert.equal(response.status(),404);
-    assert.equal(await notFound.getByRole('link',{name:'Ana sayfa',exact:true}).getAttribute('href'),'/index.html');
+    assert.equal(await notFound.getByRole('link',{name:'Başa dön',exact:true}).getAttribute('href'),'/index.html');
+    assert.equal(await notFound.getByRole('link',{name:'Ana sayfa',exact:true}).getAttribute('href'),'/ana-sayfa.html');
     assert.ok(await notFound.locator('main').evaluate(el=>getComputedStyle(el).maxWidth==='640px'));
     assert.ok(await notFound.locator('body').evaluate(el=>getComputedStyle(el).fontFamily.includes('system-ui')),'Nested 404 stylesheet loaded');
     assert.deepEqual(errors,[],'browser runtime errors');
-    console.log('Browser QA passed: root routes, light/dark 375/1280px axe, keyboard, search, exam reload persistence, nested 404.');
+    console.log('Browser QA passed: root routes, light/dark 375/1280px axe, keyboard, search, exam reload persistence, landing layer map, nested 404.');
   } finally {await browser.close(); await new Promise(resolve=>server.close(resolve));}
 }
 main().catch(error=>{

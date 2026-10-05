@@ -1,7 +1,7 @@
 'use strict';
 const frame = document.getElementById('ornek');
 const output = document.getElementById('sonuc');
-const routes = ['index.html','kelimeler.html','obekler.html','aileler.html','cumleler.html','baglaclar.html','gramer.html','konular.html','quiz.html','deneme.html','ara.html','durum.html','ayarlar.html','yontem.html','konu/T01.html','konu/E68.html'];
+const routes = ['index.html','ana-sayfa.html','kelimeler.html','obekler.html','aileler.html','cumleler.html','baglaclar.html','gramer.html','konular.html','quiz.html','deneme.html','ara.html','durum.html','ayarlar.html','yontem.html','konu/T01.html','konu/E68.html'];
 const results = [];
 document.getElementById('baslat').onclick = async function () {
   this.disabled = true;

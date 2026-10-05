@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "engines": { "node": ">=22" },
   "scripts": {
-    "generate": "python tools/aile-cikar.py && node tools/deneme-bankasi-uret.js && node tools/cumle-dizin-uret.js && node tools/sayilar-uret.js && node tools/site-sablon-uret.js && node tools/seo-uret.js && python tools/release-uret.py --write && node tools/release-bagla.js && python tools/release-buda.py && python tools/depo-olcu.py && python tools/sw-surum.py",
+    "generate": "python tools/aile-cikar.py && node tools/deneme-bankasi-uret.js && node tools/cumle-dizin-uret.js && node tools/sayilar-uret.js && node tools/katman-uyelik-uret.js && node tools/site-sablon-uret.js && node tools/seo-uret.js && python tools/release-uret.py --write && node tools/release-bagla.js && python tools/release-buda.py && python tools/depo-olcu.py && python tools/sw-surum.py",
     "test": "node tools/test-uretim/tum-testler.js",
     "test:browser": "node tools/browser-qa.js",
     "test:usage": "node tools/kullanim-browser-qa.js",

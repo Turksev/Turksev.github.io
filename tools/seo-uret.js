@@ -157,7 +157,7 @@ function pageFor(topic, index, topics) {
 <main class="section" id="anaIcerik" tabindex="-1">
   <article class="wrap prose-wrap" style="max-width:860px">
     <nav aria-label="İçerik yolu" class="small muted">
-      <a href="../index.html">Ana sayfa</a> › <a href="../konular.html">Konu Haritası</a> › ${html(topic.k)}
+      <a href="../index.html">YDS Hazırlık</a> › <a href="../ana-sayfa.html">Ana sayfa</a> › <a href="../konular.html">Konu Haritası</a> › ${html(topic.k)}
     </nav>
     <p class="small muted" style="margin-top:24px">${html(topic.eksen)} · ${html(topic.kat)}</p>
     <h1>${html(topic.k)} · ${html(topic.ad)}</h1>
@@ -246,6 +246,7 @@ function updateTopicIndex(topics) {
 
 const STATIC_URLS = [
   ["/", "1.0"],
+  ["/ana-sayfa.html", "0.9"],
   ["/konular.html", "0.9"],
   ["/kelimeler.html", "0.9"],
   ["/aileler.html", "0.9"],

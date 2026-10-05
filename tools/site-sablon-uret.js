@@ -31,8 +31,14 @@ for (const file of fs.readdirSync(root).filter(x=>x.endsWith('.html'))) {
     s = s.replace(/<meta property="og:(title|description|url)"[^>]*>\s*/g,'');
     s = s.replace('</head>','<meta property="og:title" content="Sayfa bulunamadı — YDS Hazırlık">\n<meta property="og:description" content="Aradığınız sayfa bu adreste yok.">\n</head>');
   }
+  if (file === 'ana-sayfa.html') {
+    const map = {'st-kelime':n.kelime,'st-obek':n.obek,'st-soru':n.soru,'st-baglac':n.baglac,'st-konu':n.konu,'k-kelime':n.kelime,'k-obek':n.obek,'k-aile':n.aile};
+    for (const [id,val] of Object.entries(map)) s = s.replace(new RegExp('(id="'+id+'"[^>]*>)[^<]+'), '$1'+tr(val));
+  }
   if (file === 'index.html') {
-    const map = {'st-kelime':n.kelime,'st-obek':n.obek,'st-soru':n.soru,'st-baglac':n.baglac,'k-kelime':n.kelime,'k-obek':n.obek,'k-aile':n.aile};
+    // Açılış sayfasının JS'siz görünümü: toplam kelime ve katman başına kelime sayısı.
+    const map = {'ac-kelime':n.kelime};
+    for (const k of [1,2,3,4,5,6,7]) map['kt-'+k] = n.katman[k];
     for (const [id,val] of Object.entries(map)) s = s.replace(new RegExp('(id="'+id+'"[^>]*>)[^<]+'), '$1'+tr(val));
   }
   if (file === 'obekler.html') {

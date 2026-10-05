@@ -66,6 +66,7 @@ jobs:
           node tools/deneme-bankasi-uret.js
           node tools/seo-uret.js
           node tools/sayilar-uret.js --check
+          node tools/katman-uyelik-uret.js --check
           node tools/cumle-dizin-uret.js --check
           node tools/site-sablon-uret.js
           python tools/release-uret.py --write

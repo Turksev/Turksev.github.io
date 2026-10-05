@@ -136,7 +136,8 @@ Tarayıcı denetimi: `pnpm test:sozluk`.
 
 | Dosya | İçerik |
 | --- | --- |
-| `index.html` | Ana sayfa: **YDS bölüm dağılımı tablosu** (80 sorunun hangi aralıkta hangi bölüm olduğu) ve ilerleme paneli — tekrar durumu, yanlış defteri, deneme geçmişi, kategori karnesi |
+| `index.html` | Açılış sayfası: hareketli görsel karşılama, **yedi kelime katmanında ne var, ne kaldı** (halka ve çubuklarla öğrenilen/çalışılan/yeni, bugün vadesi gelen tekrar, sıradaki kelimeler), bugünün destesi ve hızlı bağlantılar. Katman kartı Kelimeler sayfasını `?katman=N` ile o katman seçili açar. Marka bağlantısı buraya gelir |
+| `ana-sayfa.html` | Ana sayfa (üst menüdeki **Ana sayfa** sekmesi): **YDS bölüm dağılımı tablosu** (80 sorunun hangi aralıkta hangi bölüm olduğu) ve ilerleme paneli — tekrar durumu, yanlış defteri, deneme geçmişi, kategori karnesi |
 | `durum.html` | Çalışılmış her şey tek listede (kelime, öbek, aile üyesi): üstte **sistemdeki toplam kayıt**, kutu sekmelerinde sayı ve bu toplama oranı ("hepsi" dahil), arama/süzme/sıralama |
 | `istatistik.html` | **Çalışma hızın ve ritmin**: 7/30/90 günlük dönem kıyası, günlük grafik ve veri tablosu, 26 haftalık takvim, haftalık tempo, kutu birikimi ve varsayımsal ilk tur planı. Ayıklama hız hesabına katılmaz |
 | `kelimeler.html` | 9.379 kelime ve yapı, 7 katman + **aralıklı tekrar (Leitner)**: bugünün destesi, kart modu, ipucu, sesli okuma. Katman düğmesinin üzerine gelince o katmanın **puan aralığı** çıkar |
@@ -211,7 +212,7 @@ olasılıkla zaten biliyorsundur, atlanabilir. Gerçek YDS kelimeleri 2. katmand
 ## Dosya düzeni
 
 ```
-index.html  kelimeler.html  obekler.html  quiz.html  deneme.html
+index.html  ana-sayfa.html  kelimeler.html  obekler.html  quiz.html  deneme.html
 gramer.html  konular.html  baglaclar.html  ara.html
 assets/
   css/style.css       tüm sayfaların ortak stili (açık/koyu tema)

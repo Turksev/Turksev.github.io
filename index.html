@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<script data-yds-release>window.YDS_SURUM="0004e9f6f507";window.YDS_VARLIK_KOKU="/releases/0004e9f6f507/";</script>
+<script data-yds-release>window.YDS_SURUM="5591d1507afc";window.YDS_VARLIK_KOKU="/releases/5591d1507afc/";</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>YDS Hazırlık — Kelime, Gramer ve Deneme Soruları</title>
-<meta name="description" content="YDS'ye hazırlananlar için ücretsiz kelime listesi, konu anlatımlı gramer notları ve çözümlü deneme soruları.">
+<meta name="description" content="YDS'ye hazırlananlar için ücretsiz kelime listesi, konu anlatımlı gramer notları ve çözümlü deneme soruları. Açılışta yedi kelime katmanında ne var, ne kaldı.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%233b5bdb'/><text y='68' x='50' text-anchor='middle' font-size='46' font-family='sans-serif' font-weight='bold' fill='white'>Y</text></svg>">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#3b5bdb">
-<link rel="apple-touch-icon" href="/releases/0004e9f6f507/assets/img/icon-192.png">
+<link rel="apple-touch-icon" href="/releases/5591d1507afc/assets/img/icon-192.png">
 <link rel="canonical" href="https://turksev.github.io/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="YDS Hazırlık">
@@ -34,23 +34,26 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/releases/0004e9f6f507/assets/css/style.css">
-<script src="/releases/0004e9f6f507/assets/js/main.js"></script>
-<script src="/releases/0004e9f6f507/data/kelime-aliaslari.js"></script>
-<script src="/releases/0004e9f6f507/assets/js/esitleme-veri.js"></script>
-<script src="/releases/0004e9f6f507/assets/js/esitleme-depo.js"></script>
-<script src="/releases/0004e9f6f507/assets/js/kullanim-hesap.js"></script>
-<script src="/releases/0004e9f6f507/assets/js/kullanim.js"></script>
+<link rel="stylesheet" href="/releases/5591d1507afc/assets/css/style.css">
+<link rel="stylesheet" href="/releases/5591d1507afc/assets/css/acilis.css">
+<script src="/releases/5591d1507afc/assets/js/main.js"></script>
+<script src="/releases/5591d1507afc/data/kelime-aliaslari.js"></script>
+<script src="/releases/5591d1507afc/assets/js/esitleme-veri.js"></script>
+<script src="/releases/5591d1507afc/assets/js/esitleme-depo.js"></script>
+<script src="/releases/5591d1507afc/assets/js/kullanim-hesap.js"></script>
+<script src="/releases/5591d1507afc/assets/js/kullanim.js"></script>
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta http-equiv="Content-Security-Policy" content="base-uri 'self'; object-src 'none'">
 </head>
 <body>
 
 <a class="skip-link" href="#icerik">İçeriğe geç</a>
+
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="index.html"><span class="dot">YDS</span> Hazırlık</a>
     <nav class="site-nav">
+      <a href="ana-sayfa.html">Ana sayfa</a>
       <a href="durum.html">Durumum</a>
       <a href="istatistik.html">İstatistik</a>
       <details class="nav-grup">
@@ -80,197 +83,74 @@
 
 <main id="icerik" tabindex="-1">
 
-  <section class="hero">
+  <section class="acilis-hero" aria-labelledby="acilisBaslik">
+    <div class="acilis-arka" aria-hidden="true">
+      <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
+      <div class="acilis-kelimeler" id="acilisKelimeler"></div>
+    </div>
     <div class="wrap">
-      <h1>YDS'ye çalışmanın düzenli yolu</h1>
-      <p class="lead">
-        Sınavda en çok çıkan kelimeler, konu konu gramer notları ve çözümlü deneme soruları
-        tek yerde. İlerlemen aynı tarayıcıda saklanır; eşitlemeyi açarsan cihazların arasında devam edebilirsin.
-      </p>
+      <p class="acilis-selam" id="acilisSelam">Hoş geldin.</p>
+      <h1 id="acilisBaslik">Kelime haritan</h1>
+      <p class="lead" id="acilisOzet">Yedi katmanda <b id="ac-kelime">9.379</b> kelime: hangisinde ne kaldı, ne öğrenildi, bugün ne bekliyor — hepsi burada.</p>
       <div class="hero-actions">
-        <a class="btn" href="kelimeler.html?calis=1" id="btnDeste">Bugünün destesini doğrudan aç</a>
-        <a class="btn ghost" href="deneme.html">Süreli deneme çöz</a>
+        <a class="btn" href="kelimeler.html?calis=1" id="acilisDeste">Bugünün destesini çalış</a>
+        <a class="btn ghost" href="durum.html">Durumum</a>
       </div>
-
-      <div class="stats">
-        <div class="stat"><div class="n" id="st-kelime">9.379</div><div class="l">Kelime</div></div>
-        <div class="stat"><div class="n" id="st-obek">1.854</div><div class="l">Öbek</div></div>
-        <div class="stat"><div class="n" id="st-soru">286</div><div class="l">Soru</div></div>
-        <div class="stat"><div class="n" id="st-baglac">155</div><div class="l">Bağlaç</div></div>
-        <div class="stat"><div class="n" id="st-konu">129</div><div class="l">Konu ünitesi</div></div>
-      </div>
+      <div class="stats acilis-sayaclar" id="acilisSayaclar"></div>
     </div>
   </section>
 
-  <!-- ---------- ilerleme paneli ---------- -->
-  <section class="section" id="panel" hidden>
+  <section class="section" aria-labelledby="katmanBaslik">
     <div class="wrap">
-      <h2>İlerlemen</h2>
-      <p class="small muted" style="margin:-6px 0 14px">
-        Günlük hızın, haftalık ritmin ve ivmen için <a href="istatistik.html">istatistik sayfasına</a> bak.
-      </p>
-      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
-
-        <div class="card">
-          <h3>Kelime tekrarı</h3>
-          <div class="stats" style="margin:0;padding:0;border:0;gap:20px">
-            <div class="stat"><div class="n" id="p-bugun">0</div><div class="l">bugün tekrar</div></div>
-            <div class="stat"><div class="n" id="p-ogrenilen">0</div><div class="l">öğrenilen</div></div>
-          </div>
-          <div class="progress" style="margin:14px 0 8px"><i id="p-bar"></i></div>
-          <p class="small muted" id="p-kelimeOzet" style="margin:0"></p>
-        </div>
-
-        <div class="card">
-          <h3>Yanlış defterin</h3>
-          <div class="n" id="p-yanlis" style="font-size:1.7rem;font-weight:800">0</div>
-          <p class="small muted" id="p-yanlisOzet">Henüz yanlışın yok.</p>
-          <a class="btn ghost sm" href="quiz.html" id="p-yanlisBtn" hidden>Yanlışlarımı çöz</a>
-        </div>
-
-        <div class="card">
-          <h3>Son denemeler</h3>
-          <div id="p-gecmis"><p class="small muted" style="margin:0">Henüz deneme çözmedin.</p></div>
-        </div>
-
-      </div>
-
-      <div id="p-karneAlan" hidden style="margin-top:16px">
-        <h3>Kategori karnen</h3>
-        <div class="card" id="p-karne"></div>
-      </div>
-
-      <p class="small muted" style="margin-top:18px">
-        <button class="btn ghost sm" type="button" id="p-sifirla">Tüm ilerlememi sıfırla</button>
-      <span id="geriAlKutu" hidden>
-        <br><b id="geriAlMetin"></b>
-        <button class="btn sm" type="button" id="geriAl" style="margin-left:8px">Geri al</button>
-      </span>
-      </p>
+      <h2 id="katmanBaslik">Katmanlarda ne var, ne kaldı?</h2>
+      <p class="muted acilis-aciklama">Halka öğrenilen payı, çubuk öğrenilen ve çalışılan kelimeleri gösterir. Bir katmanı doğrudan çalışabilir ya da listesini açabilirsin.</p>
+      <ul class="acilis-statik" id="acilisStatik">
+        <li>1 · Temel: <b id="kt-1">920</b> kelime</li>
+        <li>2 · Çekirdek: <b id="kt-2">833</b> kelime</li>
+        <li>3 · Orta: <b id="kt-3">739</b> kelime</li>
+        <li>4 · İleri: <b id="kt-4">1.885</b> kelime</li>
+        <li>5 · Geniş: <b id="kt-5">2.032</b> kelime</li>
+        <li>6 · Geniş+: <b id="kt-6">2.358</b> kelime</li>
+        <li>7 · Aile üyeleri: <b id="kt-7">612</b> kelime</li>
+      </ul>
+      <div class="katman-izgara" id="acilisKatmanlar"></div>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section acilis-hizli" aria-labelledby="hizliBaslik">
     <div class="wrap">
-      <h2>Nereden başlamak istersin?</h2>
+      <h2 id="hizliBaslik">Nereye gitmek istersin?</h2>
       <div class="grid">
-
+        <a class="card card-link" href="ana-sayfa.html">
+          <span class="ico" aria-hidden="true">🏠</span>
+          <b>Ana sayfa</b>
+          <p>İlerleme paneli, yanlış defteri, deneme geçmişi ve YDS soru dağılımı.</p>
+        </a>
         <a class="card card-link" href="konular.html">
           <span class="ico" aria-hidden="true">🗺️</span>
-          <h3>Konu Haritası</h3>
-          <p>İki eksende <b>129 ünite</b>: biri Türkçe–İngilizce çarpışma noktalarından, biri
-             İngilizce yapı omurgasından. Ne çalışacağını ve neyi bitirdiğini buradan izle.</p>
+          <b>Konu Haritası</b>
+          <p>129 ünitede konu anlatımı, çözüm yolu ve mini uygulama.</p>
         </a>
-
-        <a class="card card-link" href="kelimeler.html">
-          <span class="ico" aria-hidden="true">📚</span>
-          <h3>Kelime Listesi</h3>
-          <p>49 gerçek YDS/e-YDS sınavı temel alınarak puanlanmış <b id="k-kelime">9.379</b> kelime ve yapı,
-             yedi katman hâlinde. Aralıklı tekrarla çalışılır; her kelimenin örnek cümlesi var.</p>
-        </a>
-
-        <a class="card card-link" href="aileler.html">
-          <span class="ico" aria-hidden="true">🌳</span>
-          <h3>Kelime Aileleri</h3>
-          <p>Bir kökten türeyen kelimeler bir arada — <i>sufficient · sufficiently · insufficient</i>.
-             <b id="k-aile">1.328</b> aile; kelime sorularında doğru sözcük türünü seçmene yardımcı olur.</p>
-        </a>
-
         <a class="card card-link" href="obekler.html">
           <span class="ico" aria-hidden="true">🧩</span>
-          <h3>Kelime Öbekleri</h3>
-          <p><b id="k-obek">1.854</b> phrasal verb, edat kalıbı ve sabit ifade — <i>cope with</i>,
-             <i>stem from</i>, <i>put up with</i>… Kelimelerden ayrı bir deste olarak çalışılır.</p>
+          <b>Kelime Öbekleri</b>
+          <p>Phrasal verb, edat kalıbı ve sabit ifadeler; ayrı bir deste.</p>
         </a>
-
-        <a class="card card-link" href="quiz.html">
-          <span class="ico" aria-hidden="true">📝</span>
-          <h3>Alıştırma Soruları</h3>
-          <p>12 kategoride çözümlü soru: kelime, dil bilgisi, bağlaç, cloze, çeviri, cümle tamamlama,
-             restatement, okuma… Her cevaptan sonra anında çözüm.</p>
-        </a>
-
         <a class="card card-link" href="deneme.html">
           <span class="ico" aria-hidden="true">⏱️</span>
-          <h3>Süreli Deneme</h3>
-          <p>Gerçek sınav düzeni: geri sayım, soru arası gezinme, işaretleme ve sonunda 100 üzerinden puanla
-             kategori dağılımlı karne.</p>
+          <b>Süreli Deneme</b>
+          <p>Gerçek sınav düzeninde 80 soru, karne ve kategori dağılımı.</p>
         </a>
-
-        <a class="card card-link" href="gramer.html">
-          <span class="ico" aria-hidden="true">📖</span>
-          <h3>Hızlı Gramer Özeti</h3>
-          <p>Zamanlar, edilgen yapı, koşul cümleleri, isim ve sıfat cümlecikleri için hızlı başvuru özeti.
-             Ayrıntılı öğrenme ve ölçüm Konu Haritası'nda.</p>
+        <a class="card card-link" href="istatistik.html">
+          <span class="ico" aria-hidden="true">📈</span>
+          <b>İstatistik</b>
+          <p>Çalışma hızın, ritmin ve kutu birikimin.</p>
         </a>
-
-        <a class="card card-link" href="baglaclar.html">
-          <span class="ico" aria-hidden="true">🔗</span>
-          <h3>Bağlaçlar</h3>
-          <p>Anlam ilişkisine göre dizilmiş 155 bağlaç ve geçiş ifadesi. Her biri örnek cümlesiyle;
-             karıştırılan çiftler ayrı ayrı açıklanmış.</p>
+        <a class="card card-link" href="ara.html">
+          <span class="ico" aria-hidden="true">🔎</span>
+          <b>Arama</b>
+          <p>Kelime, öbek, bağlaç, soru ve konu — tek kutudan.</p>
         </a>
-
-      </div>
-      <p class="small muted" style="margin-top:18px">
-        Kelime havuzunda ana referans resmî sınav PDF arşividir.
-        <a href="/releases/0004e9f6f507/data/kaynak-manifest.json">49 PDF'nin sınav kimliği ve SHA-256 manifesti</a> ile
-        <a href="/releases/0004e9f6f507/data/kelime-provenans.json">denetlenen kelime başlıklarının öğe düzeyi kaynak kaydı</a>
-        soru metinlerini kopyalamadan yayımlanır.
-      </p>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap">
-      <h2>YDS Soru Dağılımı</h2>
-      <!-- Genişlik sınırı yok: masaüstünde tek satıra sığsın. Telefonda
-           doğal olarak sarar; nowrap yatay taşma yaratırdı. -->
-      <p class="muted dagilim-not">Sınav 80 sorudur, bölümler her yıl aynı sırayla gelir; deneme formları da bu dağılıma göre kurulur.</p>
-      <div class="tablo-kaydir">
-        <table class="veri-tablo" id="ydsDagilim">
-          <caption class="visually-hidden">YDS bölüm dağılımı: soru aralığı, bölüm, soru sayısı ve ne sorulduğu</caption>
-          <thead>
-            <tr><th scope="col">Soru</th><th scope="col">Bölüm</th><th scope="col">Adet</th><th scope="col">Ne sorulur</th></tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap">
-      <h2>Nasıl çalışmalı?</h2>
-      <!-- Üç adım kart ızgarasındaydı; dar pencerede sütunlar 240 piksele
-           sıkışıp metin iç içe görünüyordu. Tabloda her adım tam genişlik alır. -->
-      <div class="tablo-kaydir">
-        <table class="veri-tablo adim-tablo">
-          <caption class="visually-hidden">Çalışma düzeni: adım, ne zaman ve ne yapılacağı</caption>
-          <thead>
-            <tr><th scope="col">Adım</th><th scope="col">Sıklık</th><th scope="col">Ne yapılır</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1. Konuyu öğren ve ölç</th>
-              <td class="adim-sik">Ünite başına</td>
-              <td>Konu Haritası'ndan bir ünite aç, anlatımı çalış ve mini uygulamayı cevabı görmeden tamamla.
-                  Sistem tanı puanını yanıtlarından hesaplar; en az yedi gün sonra gecikmeli ölçümü yaparsın.</td>
-            </tr>
-            <tr>
-              <th scope="row">2. Desteyi bitir</th>
-              <td class="adim-sik">Her gün · 10 dk</td>
-              <td>Kelime sayfasında "Bugünü çalış"a bas. Doğru bildiğin kelime bir üst kutuya çıkıp
-                  seyrekleşir, bilemediğin yarın yine karşına gelir.</td>
-            </tr>
-            <tr>
-              <th scope="row">3. Tam deneme çöz</th>
-              <td class="adim-sik">Haftada bir · 180 dk</td>
-              <td>Deneme sayfasında 80 soruluk sabit formlardan birini çöz. Karnede en düşük kategoriyi gör ve
-                  o hafta onu çalış. 20/40 soruluk seçenekleri yalnız kısa karma çalışma olarak kullan.</td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     </div>
   </section>
@@ -285,140 +165,12 @@
   </div>
 </footer>
 
-<script src="/releases/0004e9f6f507/data/sayilar.js"></script>
-<script src="/releases/0004e9f6f507/data/yds-dagilim.js"></script>
-<script src="/releases/0004e9f6f507/assets/js/ilerleme.js"></script>
-<script src="/releases/0004e9f6f507/assets/js/veri.js"></script>
-<script>
-(function () {
-  'use strict';
-  var Il = window.YDS.Ilerleme;
-  var Veri = window.YDS.Veri;
-  var kacar = window.YDS.kacar;
-
-  /* YDS bölüm dağılımı. İlerleme panelinden ÖNCE çizilir: aşağıdaki
-     "if (!basladi) return" hiç çalışmamış ziyaretçide erken çıkıyor,
-     oysa dağılım tablosu herkese görünmeli. Soru numaraları sırayla
-     toplanır; bir bölümün sayısı değişirse aralıklar kendiliğinden kayar. */
-  (function dagilimiCiz() {
-    var tablo = document.getElementById('ydsDagilim');
-    var bolumler = window.YDS_DAGILIM;
-    if (!tablo || !bolumler || !bolumler.length) return;
-    var sira = 0;
-    var satirlar = bolumler.map(function (b) {
-      var bas = sira + 1;
-      sira += b.n;
-      var aralik = b.n === 1 ? String(bas) : bas + '–' + sira;
-      return '<tr><td class="dagilim-no">' + aralik + '</td>' +
-        '<th scope="row">' + kacar(b.ad) + '</th>' +
-        '<td class="dagilim-n">' + b.n + '</td>' +
-        '<td class="muted small">' + kacar(b.not) + '</td></tr>';
-    });
-    satirlar.push('<tr class="dagilim-toplam"><td></td><th scope="row">Toplam</th>' +
-      '<td class="dagilim-n">' + sira + '</td><td class="muted small">180 dakika</td></tr>');
-    tablo.tBodies[0].innerHTML = satirlar.join('');
-  })();
-
-  /* Ana sayfa kelime dizinini (698 KB) yüklemez; özet için toplam sayı
-     (sayilar.js) ve ilerleme kayıtları yeter (denetim B8, 5 Eylül 2026). */
-  function $(id) { return document.getElementById(id); }
-  function yaz(id, d) { var el = $(id); if (el) el.textContent = d; }
-
-  var sayilar = window.SAYILAR || { kelime: 0, obek: 0 };
-  var TOPLAM_KELIME = sayilar.kelime || 0;
-  var tr = function (n) { return n.toLocaleString('tr-TR'); };
-
-  yaz('st-kelime', tr(sayilar.kelime));
-  yaz('st-obek', tr(sayilar.obek));
-  yaz('st-soru', tr(sayilar.soru || 286));
-  yaz('st-baglac', sayilar.baglac || 155);
-  yaz('k-kelime', tr(sayilar.kelime));
-  yaz('k-obek', tr(sayilar.obek));
-  yaz('k-aile', tr(sayilar.aile || 1328));
-
-  if (!Il || typeof Il.leitnerOzetSayidan !== 'function') {
-    $('panel').hidden = true;
-    return;
-  }
-  var o = Il.leitnerOzetSayidan(TOPLAM_KELIME);
-  var defter = Il.yanlisDefter();
-  var karne = Il.kategoriOzet().filter(function (k) { return k.toplam > 0; });
-  var gecmis = Il.gecmis();
-
-  // Hiç çalışılmamışsa paneli hiç gösterme; boş kutularla karşılamanın anlamı yok.
-  var basladi = o.calisilan > 0 || defter.length > 0 || karne.length > 0 || gecmis.length > 0;
-  $('panel').hidden = !basladi;
-
-  $('btnDeste').textContent = o.bugun > 0
-    ? 'Bugünün destesini çalış (' + o.bugun + ' kart)'
-    : 'Kelimelere göz at';
-
-  if (!basladi) return;
-
-  /* kelime kutusu */
-  yaz('p-bugun', o.bugun);
-  yaz('p-ogrenilen', o.ogrenilen);
-  $('p-bar').style.width = (TOPLAM_KELIME ? o.ogrenilen / TOPLAM_KELIME * 100 : 0) + '%';
-  $('p-bar').parentNode.setAttribute('aria-valuenow', String(TOPLAM_KELIME ? Math.round(o.ogrenilen / TOPLAM_KELIME * 100) : 0));
-  $('p-bar').parentNode.setAttribute('aria-label', 'Öğrenilen kelimeler');
-  yaz('p-kelimeOzet',
-    (o.tekrar ? o.tekrar + ' tekrar' : 'tekrar yok') +
-    ' + ' + o.acilacakYeni + ' yeni (günlük hedef ' + o.hedef + ') · ' +
-    o.calisilan + '/' + TOPLAM_KELIME + ' kelimeye başlandı · zayıf: ' + (o.k1 + o.k2));
-
-  /* yanlış defteri */
-  yaz('p-yanlis', defter.length);
-  if (defter.length) {
-    var enCok = defter.slice().sort(function (a, b) { return (b.n || 1) - (a.n || 1); })[0];
-    yaz('p-yanlisOzet', 'En çok zorlandığın kategori: ' + enCok.kat +
-      ' · iki farklı günde doğru çözünce defterden düşer.');
-    $('p-yanlisBtn').hidden = false;
-  }
-
-  /* son denemeler */
-  var denemeler = gecmis.filter(function (g) { return g.m === 'deneme'; }).slice(-5).reverse();
-  if (denemeler.length) {
-    $('p-gecmis').innerHTML = denemeler.map(function (g) {
-      var t = new Date(g.t);
-      var puan = g.n ? Math.round(g.d / g.n * 10000) / 100 : (Number(g.y) || 0);
-      var puanYazisi = puan.toLocaleString('tr-TR', { maximumFractionDigits: 2 });
-      var renk = puan >= 75 ? 'var(--ok)' : (puan >= 50 ? 'var(--warn)' : 'var(--err)');
-      return '<div class="karne-satir">' +
-          '<span class="karne-ad small muted">' +
-            t.toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' }) + '</span>' +
-          '<span class="karne-cubuk"><i style="width:' + puan + '%;background:' + renk + '"></i></span>' +
-          '<span class="karne-sayi">' + puanYazisi + ' puan</span>' +
-        '</div>';
-    }).join('');
-  }
-
-  /* kategori karnesi */
-  if (karne.length) {
-    $('p-karneAlan').hidden = false;
-    $('p-karne').innerHTML = karne.map(function (k) {
-      var renk = k.yuzde >= 75 ? 'var(--ok)' : (k.yuzde >= 50 ? 'var(--warn)' : 'var(--err)');
-      return '<div class="karne-satir">' +
-          '<span class="karne-ad">' + kacar(k.kat) + '</span>' +
-          '<span class="karne-cubuk"><i style="width:' + k.yuzde + '%;background:' + renk + '"></i></span>' +
-          '<span class="karne-sayi">%' + k.yuzde + ' <span class="muted">(' + k.dogru + '/' + k.toplam + ')</span></span>' +
-        '</div>';
-    }).join('');
-  }
-
-  $('p-sifirla').addEventListener('click', function () {
-    var n = Object.keys(Il.tumKayitlar()).length;
-    if (!window.YDS.ikiKereSor(
-        'HER ŞEY silinecek: kelime ve öbek kutuların, yanlış defterin, kategori karnen, ' +
-        'deneme geçmişin ve konu takibin.', n)) return;
-    if (!Il.hepsiniSifirla()) { window.YDS.depolamaUyarisi(); return; }
-    location.reload();
-  });
-
-  window.YDS.geriAlKutusu(function () { location.reload(); });
-})();
-</script>
-
-<script src="/releases/0004e9f6f507/assets/js/esitleme-ayar.js"></script>
-<script src="/releases/0004e9f6f507/assets/js/esitleme-v2.js"></script>
+<script src="/releases/5591d1507afc/data/sayilar.js"></script>
+<script src="/releases/5591d1507afc/data/katman-uyelik.js"></script>
+<script src="/releases/5591d1507afc/assets/js/ilerleme.js"></script>
+<script src="/releases/5591d1507afc/assets/js/veri.js"></script>
+<script src="/releases/5591d1507afc/assets/js/acilis.js"></script>
+<script src="/releases/5591d1507afc/assets/js/esitleme-ayar.js"></script>
+<script src="/releases/5591d1507afc/assets/js/esitleme-v2.js"></script>
 </body>
 </html>
