@@ -244,7 +244,9 @@ async function main() {
     await acilis.waitForFunction(()=>{const el=document.querySelector('.kcard[data-k="2"] .halka-dolu');return Math.abs(parseFloat(getComputedStyle(el).strokeDashoffset)-parseFloat(el.style.getPropertyValue('--dolu')))<0.5;});
     const halka=await acilis.locator('.kcard[data-k="2"] .halka-dolu').evaluate(el=>parseFloat(el.style.getPropertyValue('--dolu')));
     assert.ok(halka>0&&halka<125,'Ring target reflects the learned share: '+halka);
-    assert.match(await acilis.locator('#acilisOzet').innerText(),/30 tekrar bekliyor/,'Summary counts due reviews of selected layers only');
+    assert.match(await acilis.locator('#acilisBaslik').innerText(),/^Bugün 30 tekrar bekliyor$/,'Headline counts due reviews of selected layers only');
+    assert.match(await acilis.locator('#acilisOzet').innerText(),/^9\.379 kelimenin 100’ü öğrenildi, 40’ı çalışılıyor; 9\.239 kelimeye henüz bakmadın\./,'Summary sentence with correct Turkish suffixes');
+    assert.deepEqual(await acilis.locator('#acilisGenel .iz li').evaluateAll(ls=>ls.map(l=>l.className)),['yeni','basladi aktif','basladi aktif','yeni','yeni','yeni','yeni'],'Seven-dot track reflects layer status and selection');
     // Hareket azaltma: sayaçlar ve halkalar anında son değerde.
     await acilis.emulateMedia({reducedMotion:'reduce'});
     await acilis.reload();

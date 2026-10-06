@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<script data-yds-release>window.YDS_SURUM="5591d1507afc";window.YDS_VARLIK_KOKU="/releases/5591d1507afc/";</script>
+<script data-yds-release>window.YDS_SURUM="f79678bde81f";window.YDS_VARLIK_KOKU="/releases/f79678bde81f/";</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>YDS Hazırlık — Kelime, Gramer ve Deneme Soruları</title>
@@ -9,7 +9,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%233b5bdb'/><text y='68' x='50' text-anchor='middle' font-size='46' font-family='sans-serif' font-weight='bold' fill='white'>Y</text></svg>">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#3b5bdb">
-<link rel="apple-touch-icon" href="/releases/5591d1507afc/assets/img/icon-192.png">
+<link rel="apple-touch-icon" href="/releases/f79678bde81f/assets/img/icon-192.png">
 <link rel="canonical" href="https://turksev.github.io/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="YDS Hazırlık">
@@ -34,14 +34,14 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/releases/5591d1507afc/assets/css/style.css">
-<link rel="stylesheet" href="/releases/5591d1507afc/assets/css/acilis.css">
-<script src="/releases/5591d1507afc/assets/js/main.js"></script>
-<script src="/releases/5591d1507afc/data/kelime-aliaslari.js"></script>
-<script src="/releases/5591d1507afc/assets/js/esitleme-veri.js"></script>
-<script src="/releases/5591d1507afc/assets/js/esitleme-depo.js"></script>
-<script src="/releases/5591d1507afc/assets/js/kullanim-hesap.js"></script>
-<script src="/releases/5591d1507afc/assets/js/kullanim.js"></script>
+<link rel="stylesheet" href="/releases/f79678bde81f/assets/css/style.css">
+<link rel="stylesheet" href="/releases/f79678bde81f/assets/css/acilis.css">
+<script src="/releases/f79678bde81f/assets/js/main.js"></script>
+<script src="/releases/f79678bde81f/data/kelime-aliaslari.js"></script>
+<script src="/releases/f79678bde81f/assets/js/esitleme-veri.js"></script>
+<script src="/releases/f79678bde81f/assets/js/esitleme-depo.js"></script>
+<script src="/releases/f79678bde81f/assets/js/kullanim-hesap.js"></script>
+<script src="/releases/f79678bde81f/assets/js/kullanim.js"></script>
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta http-equiv="Content-Security-Policy" content="base-uri 'self'; object-src 'none'">
 </head>
@@ -84,26 +84,30 @@
 <main id="icerik" tabindex="-1">
 
   <section class="acilis-hero" aria-labelledby="acilisBaslik">
-    <div class="acilis-arka" aria-hidden="true">
-      <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
-      <div class="acilis-kelimeler" id="acilisKelimeler"></div>
-    </div>
-    <div class="wrap">
-      <p class="acilis-selam" id="acilisSelam">Hoş geldin.</p>
-      <h1 id="acilisBaslik">Kelime haritan</h1>
-      <p class="lead" id="acilisOzet">Yedi katmanda <b id="ac-kelime">9.379</b> kelime: hangisinde ne kaldı, ne öğrenildi, bugün ne bekliyor — hepsi burada.</p>
-      <div class="hero-actions">
-        <a class="btn" href="kelimeler.html?calis=1" id="acilisDeste">Bugünün destesini çalış</a>
-        <a class="btn ghost" href="durum.html">Durumum</a>
+    <div class="acilis-arka" aria-hidden="true"><i class="blob b1"></i><i class="blob b2"></i></div>
+    <div class="wrap acilis-ic">
+      <div class="acilis-metin">
+        <p class="acilis-selam canli" style="--i:0" id="acilisSelam">Hoş geldin</p>
+        <h1 class="canli" style="--i:1" id="acilisBaslik">Kelime haritana hoş geldin</h1>
+        <p class="lead canli" style="--i:2" id="acilisOzet">Yedi katmanda <b id="ac-kelime">9.379</b> kelime: hangisinde ne kaldı, ne öğrenildi, bugün ne bekliyor; hepsi burada.</p>
+        <div class="hero-actions canli" style="--i:3">
+          <a class="btn" href="kelimeler.html?calis=1" id="acilisDeste">Bugünün destesini çalış</a>
+          <a class="btn ghost" href="durum.html">Durumum</a>
+        </div>
       </div>
-      <div class="stats acilis-sayaclar" id="acilisSayaclar"></div>
+      <aside class="genel card canli" style="--i:2" id="acilisGenel" aria-labelledby="genelBaslik">
+        <div class="genel-bas"><h2 id="genelBaslik">Genel ilerleme</h2></div>
+        <p class="muted small" style="margin:0">İlerleme tarayıcıda saklanır; çalışmaya başlayınca bu kart dolar.</p>
+      </aside>
     </div>
   </section>
 
   <section class="section" aria-labelledby="katmanBaslik">
     <div class="wrap">
-      <h2 id="katmanBaslik">Katmanlarda ne var, ne kaldı?</h2>
-      <p class="muted acilis-aciklama">Halka öğrenilen payı, çubuk öğrenilen ve çalışılan kelimeleri gösterir. Bir katmanı doğrudan çalışabilir ya da listesini açabilirsin.</p>
+      <div class="bolum-bas">
+        <h2 id="katmanBaslik">Katmanlarda ne var, ne kaldı?</h2>
+        <p>Halka öğrenilen payı, çubuk öğrenilen ve çalışılan kelimeleri, sarı rozet bugün vadesi gelen tekrarı gösterir.</p>
+      </div>
       <ul class="acilis-statik" id="acilisStatik">
         <li>1 · Temel: <b id="kt-1">920</b> kelime</li>
         <li>2 · Çekirdek: <b id="kt-2">833</b> kelime</li>
@@ -119,37 +123,37 @@
 
   <section class="section acilis-hizli" aria-labelledby="hizliBaslik">
     <div class="wrap">
-      <h2 id="hizliBaslik">Nereye gitmek istersin?</h2>
-      <div class="grid">
-        <a class="card card-link" href="ana-sayfa.html">
-          <span class="ico" aria-hidden="true">🏠</span>
-          <b>Ana sayfa</b>
+      <div class="bolum-bas"><h2 id="hizliBaslik">Nereye gitmek istersin?</h2></div>
+      <div class="hizli-izgara canli" style="--i:1">
+        <a class="card hizli" href="ana-sayfa.html">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></span>
+          <h3>Ana sayfa</h3>
           <p>İlerleme paneli, yanlış defteri, deneme geçmişi ve YDS soru dağılımı.</p>
         </a>
-        <a class="card card-link" href="konular.html">
-          <span class="ico" aria-hidden="true">🗺️</span>
-          <b>Konu Haritası</b>
+        <a class="card hizli" href="konular.html">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg></span>
+          <h3>Konu Haritası</h3>
           <p>129 ünitede konu anlatımı, çözüm yolu ve mini uygulama.</p>
         </a>
-        <a class="card card-link" href="obekler.html">
-          <span class="ico" aria-hidden="true">🧩</span>
-          <b>Kelime Öbekleri</b>
+        <a class="card hizli" href="obekler.html">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="8" height="7" rx="2"/><rect x="13" y="4" width="8" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/></svg></span>
+          <h3>Kelime Öbekleri</h3>
           <p>Phrasal verb, edat kalıbı ve sabit ifadeler; ayrı bir deste.</p>
         </a>
-        <a class="card card-link" href="deneme.html">
-          <span class="ico" aria-hidden="true">⏱️</span>
-          <b>Süreli Deneme</b>
+        <a class="card hizli" href="deneme.html">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6"/></svg></span>
+          <h3>Süreli Deneme</h3>
           <p>Gerçek sınav düzeninde 80 soru, karne ve kategori dağılımı.</p>
         </a>
-        <a class="card card-link" href="istatistik.html">
-          <span class="ico" aria-hidden="true">📈</span>
-          <b>İstatistik</b>
+        <a class="card hizli" href="istatistik.html">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span>
+          <h3>İstatistik</h3>
           <p>Çalışma hızın, ritmin ve kutu birikimin.</p>
         </a>
-        <a class="card card-link" href="ara.html">
-          <span class="ico" aria-hidden="true">🔎</span>
-          <b>Arama</b>
-          <p>Kelime, öbek, bağlaç, soru ve konu — tek kutudan.</p>
+        <a class="card hizli" href="ara.html">
+          <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></span>
+          <h3>Arama</h3>
+          <p>Kelime, öbek, bağlaç, soru ve konu; tek kutudan.</p>
         </a>
       </div>
     </div>
@@ -165,12 +169,12 @@
   </div>
 </footer>
 
-<script src="/releases/5591d1507afc/data/sayilar.js"></script>
-<script src="/releases/5591d1507afc/data/katman-uyelik.js"></script>
-<script src="/releases/5591d1507afc/assets/js/ilerleme.js"></script>
-<script src="/releases/5591d1507afc/assets/js/veri.js"></script>
-<script src="/releases/5591d1507afc/assets/js/acilis.js"></script>
-<script src="/releases/5591d1507afc/assets/js/esitleme-ayar.js"></script>
-<script src="/releases/5591d1507afc/assets/js/esitleme-v2.js"></script>
+<script src="/releases/f79678bde81f/data/sayilar.js"></script>
+<script src="/releases/f79678bde81f/data/katman-uyelik.js"></script>
+<script src="/releases/f79678bde81f/assets/js/ilerleme.js"></script>
+<script src="/releases/f79678bde81f/assets/js/veri.js"></script>
+<script src="/releases/f79678bde81f/assets/js/acilis.js"></script>
+<script src="/releases/f79678bde81f/assets/js/esitleme-ayar.js"></script>
+<script src="/releases/f79678bde81f/assets/js/esitleme-v2.js"></script>
 </body>
 </html>
