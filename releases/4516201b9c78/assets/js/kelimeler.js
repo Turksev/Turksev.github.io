@@ -32,7 +32,10 @@
   if (!Array.isArray(secili) || !secili.length) secili = [2];
   // Aile üyeleri 6'dan 7'ye taşındı (Geniş+ araya girdi); eski seçimi bir kez taşı.
   if (!Depo.oku('yds-katman7', false)) {
-    if (secili.indexOf(6) !== -1) { secili = secili.filter(function (k) { return k !== 6; }).concat([7]); Depo.yaz(KATMAN_ANAHTAR, secili); }
+    if (secili.indexOf(6) !== -1) {
+      secili = secili.filter(function (k) { return k !== 6; }).concat(secili.indexOf(7) === -1 ? [7] : []);
+      Depo.yaz(KATMAN_ANAHTAR, secili);
+    }
     Depo.yaz('yds-katman7', true);
   }
 
@@ -801,8 +804,19 @@
   // ve tercih olarak kaydedilir; katman düğmesine basmakla aynı etki.
   var gelenKatman = (new URLSearchParams(location.search).get('katman') || '').split(',')
     .map(function (x) { return parseInt(x, 10); })
-    .filter(function (k, i, a) { return k >= 1 && k <= 7 && a.indexOf(k) === i; });
+    .filter(function (k, i, a) { return k >= 1 && k <= 7 && a.indexOf(k) === i; })
+    .sort(function (a, b) { return a - b; });
   if (gelenKatman.length) secili = gelenKatman;
+  // Bu parametreler tek seferliktir: yenileme ya da geri/ileri, sonradan yapılan seçimi ezmesin
+  // ve desteyi yeniden başlatmasın.
+  if ((gelenKatman.length || dogrudanDeste) && window.history && window.history.replaceState) {
+    try {
+      var temiz = new URLSearchParams(location.search);
+      temiz.delete('katman'); temiz.delete('calis');
+      var kalan = temiz.toString();
+      window.history.replaceState(null, '', location.pathname + (kalan ? '?' + kalan : '') + location.hash);
+    } catch (e) {}
+  }
 
   var geriAlCiz = window.YDS.geriAlKutusu(function () { desteyiCiz(); filtrele(); });
 

@@ -797,12 +797,6 @@
   var gelenQ = new URLSearchParams(location.search).get('q');
   if (gelenQ) elAra.value = gelenQ;
   var dogrudanDeste = new URLSearchParams(location.search).get('calis') === '1';
-  // Açılış sayfasındaki katman kartından gelen ?katman=3 (ya da 3,4): o katmanlar seçilir
-  // ve tercih olarak kaydedilir; katman düğmesine basmakla aynı etki.
-  var gelenKatman = (new URLSearchParams(location.search).get('katman') || '').split(',')
-    .map(function (x) { return parseInt(x, 10); })
-    .filter(function (k, i, a) { return k >= 1 && k <= 7 && a.indexOf(k) === i; });
-  if (gelenKatman.length) secili = gelenKatman;
 
   var geriAlCiz = window.YDS.geriAlKutusu(function () { desteyiCiz(); filtrele(); });
 

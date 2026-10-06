@@ -41,10 +41,11 @@
   letter-spacing: .02em;
   text-transform: uppercase;
 }
-.acilis-hero h1 { margin-bottom: 14px; }
+.acilis-hero h1 { margin-bottom: 14px; text-wrap: balance; }
 .acilis-hero h1 b { color: var(--accent); font-variant-numeric: tabular-nums; }
 .acilis-hero .lead { max-width: 52ch; margin-bottom: 0; }
 .acilis-hero .lead b { color: var(--text); font-weight: 700; font-variant-numeric: tabular-nums; }
+.acilis-not { margin: 10px 0 0; color: var(--muted); font-size: .88rem; }
 .acilis-statik { margin: 0 0 16px; padding-left: 18px; color: var(--muted); }
 .acilis-statik[hidden] { display: none; }
 
@@ -56,7 +57,7 @@
 .genel-halka { width: 148px; height: 148px; }
 .genel-halka .halka { width: 100%; height: 100%; }
 .genel-halka .halka-yuzde { font-size: 11px; }
-.genel-halka .halka-etiket { font-size: 3.6px; font-weight: 600; fill: var(--muted); letter-spacing: .02em; }
+.genel-halka .halka-etiket { font-size: 4.4px; font-weight: 600; fill: var(--muted); letter-spacing: .02em; }
 .genel-liste { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; min-width: 0; }
 .genel-liste li { display: grid; grid-template-columns: 12px auto; column-gap: 10px; align-items: center; }
 .genel-liste li::before { content: ''; grid-row: 1 / span 2; width: 10px; height: 10px; border-radius: 3px; background: var(--surface-2); box-shadow: inset 0 0 0 1px var(--border); }
@@ -101,6 +102,7 @@
 .halka { width: 64px; height: 64px; flex: 0 0 64px; overflow: visible; }
 .halka circle { fill: none; stroke-width: 5; transform: rotate(-90deg); transform-origin: 50% 50%; }
 .halka-arka { stroke: var(--surface-2); }
+.halka.bos .halka-arka { stroke: var(--border); stroke-dasharray: 3 3; }
 .halka-dolu {
   stroke: var(--ok);
   stroke-linecap: round;
@@ -128,7 +130,7 @@
   gap: 6px;
   padding: 4px 11px;
   border-radius: 999px;
-  font-size: .78rem;
+  font-size: .82rem;
   font-weight: 700;
   line-height: 1.3;
   background: var(--warn-soft);
@@ -163,7 +165,8 @@
 }
 .kad { min-width: 0; }
 .kad h3 { margin: 0; font-size: 1.05rem; line-height: 1.25; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.ktoplam { display: block; color: var(--muted); font-size: .82rem; margin-top: 1px; }
+.ktoplam { display: block; color: var(--muted); font-size: .84rem; margin-top: 1px; }
+.kbos { margin: 0; color: var(--muted); font-size: .88rem; }
 .kcard-bas .pill { margin-left: auto; }
 .kcard-govde { display: flex; gap: 14px; align-items: center; }
 .kveri { flex: 1; min-width: 0; display: grid; gap: 10px; }
@@ -183,9 +186,9 @@
 .krakam .r-mezun::before { background: var(--ok); box-shadow: none; }
 .krakam .r-ogren::before { background: var(--accent); box-shadow: none; }
 .krakam .r-vade::before { background: var(--warn); box-shadow: none; }
-.kornek { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 0; font-size: .8rem; color: var(--muted); }
+.kornek { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 0; font-size: .84rem; color: var(--muted); }
 .kornek-etiket { margin-right: 2px; font-weight: 600; }
-.cip { font-size: .8rem; padding: 2px 9px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--border); color: var(--text); line-height: 1.4; }
+.cip { font-size: .84rem; padding: 2px 9px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--border); color: var(--text); line-height: 1.4; }
 .cip.daha { background: transparent; color: var(--muted); }
 .kcard-eylem { display: flex; flex-wrap: wrap; gap: 4px 18px; margin-top: auto; }
 .klink {
@@ -201,6 +204,8 @@
 .klink:hover { text-decoration: underline; }
 .klink svg { width: 16px; height: 16px; }
 .klink.ikincil { color: var(--muted); font-weight: 600; }
+/* İki sütun 656 px'te başlar: aile kartı o andan itibaren satırı kaplar, iç iki sütunu 900 px'te açılır. */
+@media (min-width: 656px) { .kcard.genis { grid-column: 1 / -1; } }
 @media (min-width: 900px) {
   .kcard.genis { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 10px 36px; align-items: center; }
   .kcard.genis .kcard-bas, .kcard.genis .kcard-govde { grid-column: 1; }
@@ -221,7 +226,6 @@
 @media (max-width: 860px) {
   .acilis-hero { padding: 40px 0 36px; }
   .acilis-ic { grid-template-columns: 1fr; gap: 28px; }
-  .genel-halka { width: 120px; height: 120px; }
 }
 @media (max-width: 480px) {
   .acilis-hero .btn { white-space: normal; }
@@ -235,12 +239,18 @@
   .halka-dolu { transition: stroke-dashoffset 1s cubic-bezier(.22, .61, .36, 1); transition-delay: calc(var(--i, 0) * 80ms + .22s); }
   .kcubuk i { transition: width .9s cubic-bezier(.22, .61, .36, 1); transition-delay: calc(var(--i, 0) * 80ms + .26s); }
   .iz li { animation: acilis-nokta .4s ease-out both; animation-delay: calc(var(--i, 0) * 90ms + .4s); }
-  .blob.b1 { animation: acilis-suzul 16s ease-in-out infinite alternate; }
-  .blob.b2 { animation: acilis-suzul 20s ease-in-out infinite alternate-reverse; }
   .kcard, .hizli { transition: transform .15s ease, border-color .15s ease; }
   .hizli:hover { transform: translateY(-2px); }
   .klink { transition: color .15s ease; }
 }
+@media (prefers-reduced-motion: no-preference) and (min-width: 721px) {
+  /* Sonlu (3 tur): kendiliğinden başlayan hareket bir dakika içinde durur. */
+  .blob.b1 { animation: acilis-suzul 16s ease-in-out 3 alternate; }
+  .blob.b2 { animation: acilis-suzul 20s ease-in-out 3 alternate-reverse; }
+}
+/* Yeniden çizim: giriş koreografisi tekrarlanmaz. */
+.sessiz .canli, .sessiz .iz li { animation: none; }
+.sessiz .halka-dolu, .sessiz .kcubuk i { transition: none; }
 @keyframes acilis-belir {
   from { opacity: 0; transform: translateY(14px); }
   to { opacity: 1; transform: none; }
