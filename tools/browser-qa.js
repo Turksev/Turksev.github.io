@@ -225,6 +225,8 @@ async function main() {
     assert.equal(await acilis.locator('#acilisStatik').isHidden(),true,'Static fallback list hides once cards render');
     assert.deepEqual(await acilis.locator('.kcard.secili').evaluateAll(els=>els.map(e=>e.dataset.k)),['2'],'Default selection marks Çekirdek');
     assert.equal(await acilis.locator('.kcard[data-k="1"] .r-yeni b').innerText(),'920','Empty state: every Temel word is new');
+    assert.equal(await acilis.locator('.kcard.baslanmadi').count(),7,'Empty state: every layer shows the compact untouched row');
+    assert.match(await acilis.locator('#acilisNot').innerText(),/^Deste: \d+ yeni · günlük hedefin \d+ yeni kelime$/,'Empty state deck note');
     // Fixture: bazı kelimeler mezun/çalışılıyor/vadeli; öbek kaydı katmana sızmaz.
     await acilis.evaluate(()=>{
       const Il=window.YDS.Ilerleme,gun=Il.bugun(),U=window.KATMAN_UYELIK,leitner={};
@@ -239,7 +241,8 @@ async function main() {
     await sayacBekle();
     assert.deepEqual(await acilis.locator('.kcard[data-k="2"] .krakam b').evaluateAll(bs=>bs.map(b=>b.textContent)),['100','30','703','30'],'Çekirdek: learned, studying, new, due today');
     assert.deepEqual(await acilis.locator('.kcard.secili').evaluateAll(els=>els.map(e=>e.dataset.k)),['2','3'],'Selected layers come from yds-katmanlar');
-    assert.equal(await acilis.locator('.kcard[data-k="1"] .r-mezun b').innerText(),'0','Phrase record never counts toward a word layer');
+    assert.equal(await acilis.locator('.kcard[data-k="1"].baslanmadi').count(),1,'Phrase record never counts toward a word layer: Temel stays untouched');
+    assert.match(await acilis.locator('#acilisNot').innerText(),/^Deste: 30 tekrar$/,'Deck note shows the capped deck');
     // Halka geçişle dolar (1,1 s + gecikme): hedefe ulaşmasını bekle.
     await acilis.waitForFunction(()=>{const el=document.querySelector('.kcard[data-k="2"] .halka-dolu');return Math.abs(parseFloat(getComputedStyle(el).strokeDashoffset)-parseFloat(el.style.getPropertyValue('--dolu')))<0.5;});
     const halka=await acilis.locator('.kcard[data-k="2"] .halka-dolu').evaluate(el=>parseFloat(el.style.getPropertyValue('--dolu')));

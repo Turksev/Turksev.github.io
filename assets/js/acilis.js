@@ -114,7 +114,7 @@
   /* Halka: r=20 → çevre 125.66; dolu yay --dolu ile CSS geçişiyle gelir. */
   function halkaSvg(oran, etiket) {
     var yuzde = Math.round(oran * 100);
-    return '<svg class="halka" viewBox="0 0 48 48" aria-hidden="true" focusable="false">' +
+    return '<svg class="halka' + (oran ? '' : ' bos') + '" viewBox="0 0 48 48" aria-hidden="true" focusable="false">' +
       '<circle class="halka-arka" cx="24" cy="24" r="20"></circle>' +
       '<circle class="halka-dolu" cx="24" cy="24" r="20" style="--dolu:' + (125.66 * (1 - oran)).toFixed(2) + '"></circle>' +
       '<text class="halka-yuzde" x="24" y="' + (etiket ? 22 : 24) + '" text-anchor="middle" dominant-baseline="central">%' + yuzde + '</text>' +
@@ -131,7 +131,8 @@
     var daha = Math.max(0, o.yeni - ornek.length);
     var aria = o.ad + ' katmanı: ' + sayi(o.toplam) + ' kelime, ' + sayi(o.mezun) + ' öğrenildi, ' +
       sayi(o.ogreniliyor) + ' çalışılıyor, ' + sayi(o.yeni) + ' yeni' + (o.tekrar ? ', bugün ' + sayi(o.tekrar) + ' tekrar' : '');
-    return '<article class="kcard card canli' + (o.secili ? ' secili' : '') + (o.k === 7 ? ' genis' : '') + '" style="--i:' + i + '" data-k="' + o.k + '" aria-labelledby="kcard-' + o.k + '">' +
+    var baslanmadi = o.mezun + o.ogreniliyor === 0;
+    return '<article class="kcard card canli' + (o.secili ? ' secili' : '') + (o.k === 7 ? ' genis' : '') + (baslanmadi ? ' baslanmadi' : '') + '" style="--i:' + i + '" data-k="' + o.k + '" aria-labelledby="kcard-' + o.k + '">' +
       '<div class="kcard-bas">' +
         '<span class="kno" aria-hidden="true">' + o.k + '</span>' +
         '<div class="kad"><h3 id="kcard-' + o.k + '">' + kacar(o.ad) + (o.secili ? ' <span class="badge accent">destende</span>' : '') + '</h3>' +
@@ -143,17 +144,20 @@
           '<div class="kcubuk" role="img" aria-label="' + kacar(aria) + '">' +
             '<i class="kc-mezun" style="--w:' + (mezunOran * 100).toFixed(2) + '%"></i>' +
             '<i class="kc-ogren" style="--w:' + (ogrenOran * 100).toFixed(2) + '%"></i></div>' +
-          '<ul class="krakam" aria-hidden="true">' +
-            '<li class="r-mezun">' + sayac(o.mezun) + ' öğrenildi</li>' +
-            '<li class="r-ogren">' + sayac(o.ogreniliyor) + ' çalışılıyor</li>' +
-            '<li class="r-yeni">' + sayac(o.yeni) + ' yeni</li>' +
-            (o.tekrar ? '<li class="r-vade">' + sayac(o.tekrar) + ' bugün tekrar</li>' : '') +
-          '</ul>' +
+          (baslanmadi
+            ? '<ul class="krakam" aria-hidden="true"><li class="r-yeni">' + sayac(o.yeni) + ' yeni · hiç çalışılmadı</li></ul>' +
+              '<p class="kbos">' + (o.secili ? 'Bugünün destesi buradan kurulur.' : 'Katmanı çalışmaya başlayınca burada ne kaldığını görürsün.') + '</p>'
+            : '<ul class="krakam" aria-hidden="true">' +
+              '<li class="r-mezun">' + sayac(o.mezun) + ' öğrenildi</li>' +
+              '<li class="r-ogren">' + sayac(o.ogreniliyor) + ' çalışılıyor</li>' +
+              '<li class="r-yeni">' + sayac(o.yeni) + ' yeni</li>' +
+              (o.tekrar ? '<li class="r-vade">' + sayac(o.tekrar) + ' bugün tekrar</li>' : '') +
+            '</ul>') +
         '</div>' +
       '</div>' +
       (ornek.length ? '<p class="kornek"><span class="kornek-etiket">Sırada:</span> ' +
         ornek.map(function (w) { return '<span class="cip" lang="en">' + kacar(w) + '</span>'; }).join('') +
-        (daha ? '<span class="cip daha">+' + sayi(daha) + '</span>' : '') + '</p>' : '') +
+        (daha ? '<span class="cip daha">+' + sayi(daha) + ' daha</span>' : '') + '</p>' : '') +
       '<div class="kcard-eylem">' +
         '<a class="klink" href="kelimeler.html?katman=' + o.k + '&amp;calis=1">Katmanı çalış ' + OK + '</a>' +
         '<a class="klink ikincil" href="kelimeler.html?katman=' + o.k + '">Listeyi aç</a></div>' +
@@ -172,15 +176,17 @@
     var hedefler = kok.querySelectorAll('[data-sayac]');
     if (!hareketli || !window.requestAnimationFrame) return;
     var sure = 900, baslangic = null;
-    Array.prototype.forEach.call(hedefler, function (el) { el.style.minWidth = el.textContent.length + 'ch'; el.textContent = '0'; });
+    hedefler = Array.prototype.filter.call(hedefler, function (el) { return Number(el.getAttribute('data-sayac')) >= 10; });
+    if (!hedefler.length) return;
+    hedefler.forEach(function (el) { el.style.minWidth = el.textContent.length + 'ch'; el.textContent = '0'; });
     function adim(t) {
       if (baslangic === null) baslangic = t;
       var p = Math.min(1, (t - baslangic) / sure), e = 1 - Math.pow(1 - p, 3);
-      Array.prototype.forEach.call(hedefler, function (el) {
+      hedefler.forEach(function (el) {
         el.textContent = sayi(Math.round(Number(el.getAttribute('data-sayac')) * e));
       });
       if (p < 1) window.requestAnimationFrame(adim);
-      else Array.prototype.forEach.call(hedefler, function (el) { el.style.minWidth = ''; });
+      else hedefler.forEach(function (el) { el.style.minWidth = ''; });
     }
     window.requestAnimationFrame(adim);
   }
@@ -219,6 +225,16 @@
         : sayac(toplamKelime) + ' kelimenin ' + sayac(toplamMezun) + iyelik(toplamMezun) + ' öğrenildi, ' +
           sayac(toplamOgren) + iyelik(toplamOgren) + ' çalışılıyor; ' + sayac(toplamYeni) + ' kelimeye henüz bakmadın.' +
           (bugun.acilacakYeni > 0 ? ' Bugün ' + sayi(bugun.acilacakYeni) + ' yeni kart açılacak.' : '');
+    }
+    var not = $('acilisNot');
+    if (not) {
+      var parcalar = [];
+      if (bugun.gosterilecekTekrar > 0) parcalar.push(sayi(bugun.gosterilecekTekrar) + ' tekrar');
+      if (bugun.acilacakYeni > 0) parcalar.push(sayi(bugun.acilacakYeni) + ' yeni');
+      not.hidden = !parcalar.length;
+      not.textContent = parcalar.length ? 'Deste: ' + parcalar.join(' + ') +
+        (bugun.bekleyen > 0 ? ' · ' + sayi(bugun.bekleyen) + ' tekrar yarına sarkıyor' : '') +
+        (basladi ? '' : ' · günlük hedefin ' + sayi(bugun.hedef) + ' yeni kelime') : '';
     }
     var deste = $('acilisDeste');
     if (deste) deste.textContent = bugun.bugun > 0 ? (basladi ? 'Bugünün destesini çalış (' + sayi(bugun.bugun) + ' kart)' : 'İlk desteyi çalış (' + sayi(bugun.bugun) + ' kart)') : 'Kelimelere göz at';
