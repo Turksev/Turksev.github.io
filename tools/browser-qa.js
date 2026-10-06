@@ -41,7 +41,7 @@ async function main() {
       for (const route of ['index.html','ana-sayfa.html','kelimeler.html','obekler.html','aileler.html','cumleler.html','baglaclar.html','gramer.html','konular.html','deneme.html','ayarlar.html','istatistik.html','konu/T01.html','konu/E68.html']) {
         await page.goto(base+'/'+route);
         // Giriş animasyonu (opacity) bitmeden ölçülen metin düşük kontrastlı görünür; sonsuz döngüler dekoratiftir.
-        await page.waitForFunction(()=>document.getAnimations().every(a=>a.playState!=='running'||a.effect.getTiming().iterations===Infinity));
+        await page.waitForFunction(()=>document.getAnimations().every(a=>{const t=a.effect.getTiming();return a.playState!=='running'||t.iterations===Infinity||t.duration>=5000;}));
         await page.addScriptTag({path:require.resolve('axe-core/axe.min.js')});
         const result=await page.evaluate(async()=>{
           const r=await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}});
