@@ -7,7 +7,8 @@ var L=[];function P(m){L.push(m);document.getElementById('log').textContent=L.jo
 localStorage.clear();
 var KOK='file:///C:/Users/Trk/Desktop/YDS/04_Github/';
 var SAYFALAR=[
- {s:'index.html','ana-sayfa.html',    t:function(d){return d.querySelectorAll('a[href]').length>=6;}},
+ {s:'index.html',    t:function(d){return d.querySelectorAll('a[href]').length>=6;}},
+ {s:'ana-sayfa.html',    t:function(d){return d.querySelectorAll('a[href]').length>=6;}},
  /* Liste parça parça çizilir (SAYFA_BOYU); sayıya bağlanma, "daha fazla" görünsün yeter. */
  {s:'kelimeler.html',t:function(d){var n=d.querySelectorAll('#liste .word').length;
     return n>0 && n<200 && d.querySelectorAll('#kutular .kutu').length===6 && !d.getElementById('dahaFazla').hidden;}},

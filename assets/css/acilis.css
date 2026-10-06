@@ -57,7 +57,7 @@
 .genel-halka { width: 148px; height: 148px; }
 .genel-halka .halka { width: 100%; height: 100%; }
 .genel-halka .halka-yuzde { font-size: 11px; }
-.genel-halka .halka-etiket { font-size: 3.6px; font-weight: 600; fill: var(--muted); letter-spacing: .02em; }
+.genel-halka .halka-etiket { font-size: 4.4px; font-weight: 600; fill: var(--muted); letter-spacing: .02em; }
 .genel-liste { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; min-width: 0; }
 .genel-liste li { display: grid; grid-template-columns: 12px auto; column-gap: 10px; align-items: center; }
 .genel-liste li::before { content: ''; grid-row: 1 / span 2; width: 10px; height: 10px; border-radius: 3px; background: var(--surface-2); box-shadow: inset 0 0 0 1px var(--border); }
@@ -204,6 +204,8 @@
 .klink:hover { text-decoration: underline; }
 .klink svg { width: 16px; height: 16px; }
 .klink.ikincil { color: var(--muted); font-weight: 600; }
+/* İki sütun 656 px'te başlar: aile kartı o andan itibaren satırı kaplar, iç iki sütunu 900 px'te açılır. */
+@media (min-width: 656px) { .kcard.genis { grid-column: 1 / -1; } }
 @media (min-width: 900px) {
   .kcard.genis { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 10px 36px; align-items: center; }
   .kcard.genis .kcard-bas, .kcard.genis .kcard-govde { grid-column: 1; }
@@ -224,7 +226,6 @@
 @media (max-width: 860px) {
   .acilis-hero { padding: 40px 0 36px; }
   .acilis-ic { grid-template-columns: 1fr; gap: 28px; }
-  .genel-halka { width: 120px; height: 120px; }
 }
 @media (max-width: 480px) {
   .acilis-hero .btn { white-space: normal; }
@@ -243,9 +244,13 @@
   .klink { transition: color .15s ease; }
 }
 @media (prefers-reduced-motion: no-preference) and (min-width: 721px) {
-  .blob.b1 { animation: acilis-suzul 16s ease-in-out infinite alternate; }
-  .blob.b2 { animation: acilis-suzul 20s ease-in-out infinite alternate-reverse; }
+  /* Sonlu (3 tur): kendiliğinden başlayan hareket bir dakika içinde durur. */
+  .blob.b1 { animation: acilis-suzul 16s ease-in-out 3 alternate; }
+  .blob.b2 { animation: acilis-suzul 20s ease-in-out 3 alternate-reverse; }
 }
+/* Yeniden çizim: giriş koreografisi tekrarlanmaz. */
+.sessiz .canli, .sessiz .iz li { animation: none; }
+.sessiz .halka-dolu, .sessiz .kcubuk i { transition: none; }
 @keyframes acilis-belir {
   from { opacity: 0; transform: translateY(14px); }
   to { opacity: 1; transform: none; }

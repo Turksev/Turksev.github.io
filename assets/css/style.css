@@ -178,6 +178,11 @@ code {
 }
 
 .site-nav a:hover { background: var(--surface-2); color: var(--text); }
+/* Onuncu sekme (Ana sayfa) dar masaüstünde de tek satırda kalsın. */
+@media (max-width: 1099px) {
+  .site-nav { gap: 2px; }
+  .site-nav a, .nav-grup > summary { padding: 7px 8px; font-size: .86rem; }
+}
 .site-nav a[aria-current="page"] { background: var(--accent-soft); color: var(--accent); }
 
 /* ---------- üst bardaki açılır gruplar ----------
@@ -1296,7 +1301,7 @@ mark {
   .toc { position: static; max-height: none; border: 1px solid var(--border); border-radius: 12px; padding: 12px; background: var(--surface); }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 860px) {
   .js .menu-toggle { display: inline-flex; margin-left: auto; }
   .js .site-nav { display: none; }
   .js .site-nav.acik { display: flex; }

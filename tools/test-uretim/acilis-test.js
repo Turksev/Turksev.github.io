@@ -58,8 +58,11 @@ k2.slice(70, 80).forEach(w => { leitner[w] = { k: 3, g: bugun + 5, c: bugun - 2,
 k4.slice(0, 5).forEach(w => { leitner[w] = { k: 1, g: bugun, c: bugun - 1, m: 0 }; });              // katman 4: 5 vadeli
 leitner['as well'] = { k: 3, g: bugun - 2, c: bugun - 5, m: 0 };                                     // öbek kaydı
 leitner['c:abc-1'] = { k: 1, g: bugun - 2, c: bugun - 3, m: 0 };                                     // cümle kaydı
-const cakisan = Object.keys(bos.Y.EsitlemeMotoru.CUMLE_ALIASES ? {} : {});
-void cakisan;
+// '@kelime:used to' kelime kaydıdır (1. katman); ham 'used to' öbek kaydıdır ve katmana sayılmaz.
+const cakisanOrtam = ortam({ 'yds-leitner': { '@kelime:used to': { k: 3, g: bugun + 2, c: bugun - 1, m: 0 }, 'used to': { k: 2, g: bugun - 1, c: bugun - 2, m: 0 } } });
+const c1 = cakisanOrtam.Y.Acilis.katmanOzeti().find(o => o.k === 1);
+esit([c1.ogreniliyor, c1.tekrar, c1.mezun], [1, 0, 0], 'çakışan başlık: yalnız kelime kaydı 1. katmana sayılır');
+assert.equal(cakisanOrtam.Y.Acilis.ornekler(1, 5).indexOf('used to'), -1, 'çalışılan çakışan kelime sırada gösterilmez');
 const dolu = ortam({ 'yds-leitner': leitner, 'yds-katmanlar': [2, 4], 'yds-katman7': true,
   'yds-gunluk-kayit': { [String(bugun - 1)]: { t: 12, y: 1, d: 10, m: 0, z: 0 }, [String(bugun - 2)]: { t: 8, y: 0, d: 7, m: 0, z: 0 }, [String(bugun - 4)]: { t: 3, y: 0, d: 3, m: 0, z: 0 } } });
 const ozet = dolu.Y.Acilis.katmanOzeti();
@@ -78,6 +81,8 @@ sirada.forEach(w => assert.equal(dolu.Y.Ilerleme.yeniMi(w, 'kelime'), true));
 
 // 3) Eski 6 seçimi, yds-katman7 bayrağı yokken 7 sayılır (kelimeler.js göçüyle aynı); bozuk değer varsayılana döner.
 esit(ortam({ 'yds-katmanlar': [2, 6] }).Y.Acilis.seciliKatmanlar(), [2, 7]);
+esit(ortam({ 'yds-katmanlar': [6, 7] }).Y.Acilis.seciliKatmanlar(), [7], 'eski 6 ile 7 birlikte: 7 bir kez');
+esit(ortam({ 'yds-katmanlar': [6, 7] }).Y.Acilis.bugunOzeti().yeni, bos.UYELIK[7].length, 'yinelenen katman desteyi iki kez saymaz');
 esit(ortam({ 'yds-katmanlar': [2, 6], 'yds-katman7': true }).Y.Acilis.seciliKatmanlar(), [2, 6]);
 esit(ortam({ 'yds-katmanlar': 'abc' }).Y.Acilis.seciliKatmanlar(), [2]);
 esit(ortam({ 'yds-katmanlar': [9, 0, 'x'] }).Y.Acilis.seciliKatmanlar(), [2]);
@@ -89,5 +94,11 @@ esit(ortam({ 'yds-leitner': hepsiMezun }).Y.Acilis.ornekler(7, 2), bos.UYELIK[7]
 
 // 5) Seri: bugün çalışıldıysa bugünden geriye sayılır.
 assert.equal(ortam({ 'yds-gunluk-kayit': { [String(bugun)]: { t: 1 }, [String(bugun - 1)]: { t: 4 }, [String(bugun - 2)]: { t: 0 } } }).Y.Acilis.seri(), 2);
+
+// 6) Sayıdan sonra iyelik eki: son okunan sayı sözcüğüne göre.
+const iy = bos.Y.Acilis.iyelik;
+esit([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 1000, 1482, 911, 6986, 2358, 612, 1000000].map(n => n + iy(n)),
+  ['0’ı', '1’i', '2’si', '3’ü', '4’ü', '5’i', '6’sı', '7’si', '8’i', '9’u', '10’u', '20’si', '30’u', '40’ı', '50’si', '60’ı', '70’i', '80’i', '90’ı', '100’ü', '1000’i', '1482’si', '911’i', '6986’sı', '2358’i', '612’si', '1000000’u'],
+  'iyelik ekleri');
 
 console.log('acilis: boş durum, katman kırılımı (öbek/cümle sızmaz), seçili katman destesi, seri ve sıradaki kelimeler geçti.');

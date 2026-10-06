@@ -250,6 +250,11 @@ async function main() {
     assert.match(await acilis.locator('#acilisBaslik').innerText(),/^Bugün 30 tekrar bekliyor$/,'Headline counts due reviews of selected layers only');
     assert.match(await acilis.locator('#acilisOzet').innerText(),/^9\.379 kelimenin 100’ü öğrenildi, 40’ı çalışılıyor; 9\.239 kelimeye henüz bakmadın\./,'Summary sentence with correct Turkish suffixes');
     assert.deepEqual(await acilis.locator('#acilisGenel .iz li').evaluateAll(ls=>ls.map(l=>l.className)),['yeni','basladi aktif','basladi aktif','yeni','yeni','yeni','yeni'],'Seven-dot track reflects layer status and selection');
+    // Yeniden çizim (tavan değişti): sayılar güncellenir, giriş koreografisi tekrarlanmaz.
+    await acilis.evaluate(()=>window.YDS.Depo.yaz('yds-gunluk-tavan',10));
+    await acilis.waitForFunction(()=>document.getElementById('icerik').classList.contains('sessiz')&&/\(10 kart\)$/.test(document.getElementById('acilisDeste').textContent));
+    assert.equal(await acilis.evaluate(()=>getComputedStyle(document.querySelector('.kcard')).animationName),'none','Re-render does not replay the entry animation');
+    assert.equal(await acilis.locator('.kcard[data-k="2"] .r-mezun b').innerText(),'100','Re-render keeps final numbers, no count-up');
     // Hareket azaltma: sayaçlar ve halkalar anında son değerde.
     await acilis.emulateMedia({reducedMotion:'reduce'});
     await acilis.reload();
@@ -260,10 +265,11 @@ async function main() {
     await acilis.emulateMedia({reducedMotion:'no-preference'});
     // Katman kartı: Kelimeler sayfasını o katman seçili açar.
     await acilis.locator('.kcard[data-k="3"] a[href="kelimeler.html?katman=3"]').click();
-    await acilis.waitForURL(/kelimeler\.html\?katman=3$/);
+    await acilis.waitForURL(/kelimeler\.html(\?.*)?$/);
     await acilis.waitForFunction(()=>window.YDS&&window.YDS.Veri&&/\d/.test(document.getElementById('sayac').textContent)&&!/yükleniyor/i.test(document.getElementById('sayac').textContent));
     assert.deepEqual(await acilis.locator('.katman.acik').evaluateAll(els=>els.map(e=>e.dataset.k)),['3'],'?katman=3 selects exactly that layer');
     assert.deepEqual(await acilis.evaluate(()=>window.YDS.Depo.oku('yds-katmanlar')),[3],'Selection is stored like a layer button press');
+    assert.equal(await acilis.evaluate(()=>location.search),'','One-shot ?katman= is removed from the URL so a reload keeps later choices');
     // Ana sayfa sekmesi eski içeriği açar ve orada vurgulanır; dağılım tablosu dolu.
     await acilis.goto(base+'/ana-sayfa.html');
     await acilis.waitForFunction(()=>document.querySelectorAll('#ydsDagilim tbody tr').length===13);
