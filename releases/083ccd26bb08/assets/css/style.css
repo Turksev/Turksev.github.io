@@ -172,12 +172,17 @@ code {
   color: var(--muted);
   text-decoration: none;
   font-weight: 600;
-  font-size: .93rem;
-  padding: 7px 12px;
+  font-size: .9rem;
+  padding: 7px 10px;
   border-radius: 9px;
 }
 
 .site-nav a:hover { background: var(--surface-2); color: var(--text); }
+/* Onuncu sekme (Ana sayfa) dar masaüstünde de tek satırda kalsın. */
+@media (max-width: 1099px) {
+  .site-nav { gap: 2px; }
+  .site-nav a, .nav-grup > summary { padding: 7px 8px; font-size: .86rem; }
+}
 .site-nav a[aria-current="page"] { background: var(--accent-soft); color: var(--accent); }
 
 /* ---------- üst bardaki açılır gruplar ----------
@@ -329,6 +334,7 @@ code {
    baş harfini gösterir. */
 .esit-dugme.acik { color: var(--ok); border-color: var(--ok); font-weight: 700; }
 .esit-dugme.hata { color: var(--warn); border-color: var(--warn); opacity: 1; }
+.esit-dugme.esitleniyor { border-style: dashed; cursor: progress; }
 
 .esit-uyari {
   position: fixed;
@@ -359,6 +365,7 @@ code {
   padding: 2px 4px;
 }
 .esit-uyari button:hover { color: var(--text); }
+.esit-uyari.bilgi { border-color: var(--ok); }
 
 /* ---------- kartlar ---------- */
 
@@ -1296,7 +1303,7 @@ mark {
   .toc { position: static; max-height: none; border: 1px solid var(--border); border-radius: 12px; padding: 12px; background: var(--surface); }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 860px) {
   .js .menu-toggle { display: inline-flex; margin-left: auto; }
   .js .site-nav { display: none; }
   .js .site-nav.acik { display: flex; }

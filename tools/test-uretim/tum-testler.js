@@ -3,8 +3,12 @@ const fs = require('node:fs'), path = require('node:path'), cp = require('node:c
 let failed = 0, total = 0;
 for (const file of fs.readdirSync(__dirname).filter(f=>f.endsWith('-test.js')).sort()) {
   total++;
-  const result = cp.spawnSync(process.execPath, [path.join(__dirname,file)], {encoding:'utf8'});
-  if (result.status !== 0) {failed++; console.error(file+'\n'+result.stdout+result.stderr);}
+  // Askıda kalan test paketi kilitlemesin; zaman aşımı da başarısızlıktır.
+  const result = cp.spawnSync(process.execPath, [path.join(__dirname,file)], {encoding:'utf8', timeout:300000});
+  if (result.status !== 0 || result.error || result.signal) {
+    failed++;
+    console.error(file+'\n'+(result.error ? String(result.error)+'\n' : '')+result.stdout+result.stderr);
+  }
   else console.log('OK '+file);
 }
 console.log(`${total-failed}/${total} test geçti`);

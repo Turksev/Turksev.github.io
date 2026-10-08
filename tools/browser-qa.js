@@ -18,6 +18,39 @@ const server = http.createServer((req,res)=>{
   res.writeHead(status,{'Content-Type':(mime[path.extname(file)]||'application/octet-stream')+'; charset=utf-8','Cache-Control':'no-store'});
   fs.createReadStream(file).pipe(res);
 });
+// Bulut eşitleme senaryosu için bellek içi sahte Firebase (compat API'nin sitenin kullandığı kadarı).
+const SAHTE_FIREBASE={
+  'firebase-app-compat.js':'window.firebase={apps:[],initializeApp:function(c){this.apps.push({options:c});return this.apps[0];}};',
+  'firebase-auth-compat.js':`(function(){
+    var kisi={uid:'qa-u1',email:'qa@example.com',displayName:'Test'},dinleyen=null;
+    var auth={currentUser:null,
+      onAuthStateChanged:function(fn){dinleyen=fn;setTimeout(function(){auth.currentUser=kisi;fn(kisi);},0);return function(){};},
+      getRedirectResult:function(){return Promise.resolve(null);},
+      signInWithPopup:function(){auth.currentUser=kisi;if(dinleyen)dinleyen(kisi);return Promise.resolve({user:kisi});},
+      signInWithRedirect:function(){return Promise.resolve();},
+      signOut:function(){window.__qaCikis=(window.__qaCikis||0)+1;auth.currentUser=null;if(dinleyen)dinleyen(null);return Promise.resolve();}};
+    window.firebase.auth=function(){return auth;};
+    window.firebase.auth.GoogleAuthProvider=function(){};
+  })();`,
+  'firebase-firestore-compat.js':`(function(){
+    var belgeler=new Map(),dinleyiciler=[],q=window.__qaBulut={islemler:[],akisOlu:false};
+    function foto(yol){var v=belgeler.get(yol);return {exists:!!v,data:function(){return v;},metadata:{fromCache:false}};}
+    function yaz(yol,v){belgeler.set(yol,v);if(q.akisOlu)return;
+      dinleyiciler.forEach(function(d){if(d.aktif&&d.yol===yol)d.fn(foto(yol));});}
+    function ref(yol){return {path:yol,
+      collection:function(ad){return {doc:function(id){return ref(yol+'/'+ad+'/'+id);}};},
+      onSnapshot:function(fn){var d={yol:yol,fn:fn,aktif:true};dinleyiciler.push(d);
+        setTimeout(function(){if(d.aktif&&!q.akisOlu)fn(foto(yol));},0);return function(){d.aktif=false;};}};}
+    var db={collection:function(ad){return {doc:function(id){return ref(ad+'/'+id);}};},
+      runTransaction:function(calistir){var kayit={okunan:[]},yazilan=[];q.islemler.push(kayit);
+        var islem={get:function(r){kayit.okunan.push(r.path);return Promise.resolve(foto(r.path));},
+          set:function(r,v){yazilan.push([r.path,v]);}};
+        return Promise.resolve(calistir(islem)).then(function(s){yazilan.forEach(function(y){yaz(y[0],y[1]);});return s;});}};
+    q.belge=function(yol){return belgeler.get(yol);};
+    q.yaz=yaz;
+    window.firebase.firestore=function(){return db;};
+  })();`
+};
 async function main() {
   await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
   const base='http://127.0.0.1:'+server.address().port;
@@ -277,6 +310,94 @@ async function main() {
     assert.equal(await acilis.locator('h1').innerText(),'YDS\'ye çalışmanın düzenli yolu');
     assert.equal(await acilis.locator('#panel').isVisible(),true,'Progress panel shows for the fixture profile');
     await acilis.close();
+    // ---------- Bulut eşitleme: girişli düğme eşitler, uzun aradan dönen sayfa kaçanı kendisi getirir ----------
+    // Sahte Firebase SDK yalnız bu yalıtılmış bağlamda yüklenir; gerçek hesaba ya da buluta dokunulmaz.
+    const esitBaglam=await browser.newContext({serviceWorkers:'block',timezoneId:'Europe/Istanbul'});
+    await esitBaglam.addInitScript(()=>{try{localStorage.setItem('yds-bulut-etkin','true');}catch(e){}});
+    await esitBaglam.route('https://www.gstatic.com/firebasejs/**',route=>{
+      const ad=route.request().url().split('/').pop();
+      route.fulfill({contentType:'text/javascript',body:SAHTE_FIREBASE[ad]||'throw new Error("beklenmeyen Firebase dosyası")'});
+    });
+    const esit=await esitBaglam.newPage();
+    esit.on('pageerror',error=>errors.push('esitleme: '+error.message));
+    let diyaloglar=0;
+    esit.on('dialog',dialog=>{diyaloglar++;dialog.dismiss();});
+    await esit.clock.install();
+    await esit.goto(base+'/ayarlar.html');
+    await esit.waitForFunction(()=>window.YDS.Esitleme&&window.YDS.Esitleme.oturumDurumu().hazir);
+    const esitDugme=esit.locator('.esit-dugme');
+    assert.equal(await esitDugme.innerText(),'T','Signed-in button shows the account initial');
+    assert.match(await esitDugme.getAttribute('title'),/Şimdi eşitlemek için tıkla/,'Tooltip explains that a click syncs now');
+    assert.equal(await esit.locator('#bulutDurum').innerText(),'Bağlı: qa@example.com','Settings shows the connected account');
+    // Öbür cihaz yazar; canlı akış sessizce ölmüş olduğundan kayıt kendiliğinden gelmez.
+    const uzaktanYaz=(id,k)=>esit.evaluate(([id,k])=>{
+      const M=window.YDS.EsitlemeMotoru,q=window.__qaBulut,yol='kullanicilar/qa-u1/alanlar/yds-leitner';
+      const eski=q.belge(yol),zarf={surum:2,alanlar:{}};
+      if (eski) zarf.alanlar['yds-leitner']=M.bulutAlaniniCoz('yds-leitner',JSON.parse(eski.json));
+      const kayitlar={};kayitlar[id]={k:k||4,g:50,c:40};
+      const yeni=M.kayitlariYaz(zarf,'yds-leitner',kayitlar,()=>(Date.now()+5)+':uzak');
+      q.yaz(yol,{surum:3,anahtar:'yds-leitner',zaman:Date.now(),json:M.bulutAlanJson('yds-leitner',yeni.alanlar['yds-leitner'])});
+    },[id,k]);
+    const yerelde=id=>esit.evaluate(id=>!!(window.YDS.EsitlemeDepo.paket()['yds-leitner']||{})[id],id);
+    await esit.evaluate(()=>{window.__qaBulut.akisOlu=true;});
+    await uzaktanYaz('evdeki');
+    await esit.clock.runFor(1000);
+    assert.equal(await yerelde('evdeki'),false,'Precondition: a dead stream delivers nothing');
+    const islemOnce=await esit.evaluate(()=>window.__qaBulut.islemler.length);
+    await esitDugme.click();
+    await esit.waitForFunction(()=>!!(window.YDS.EsitlemeDepo.paket()['yds-leitner']||{}).evdeki);
+    const esitBilgi=esit.locator('.esit-uyari.bilgi');
+    await esitBilgi.waitFor();
+    assert.match(await esitBilgi.locator('span').innerText(),/^Eşitlendi /,'Manual sync confirms');
+    assert.equal(await esitBilgi.getAttribute('role'),'status');
+    assert.equal(diyaloglar,0,'Clicking the signed-in button no longer asks to sign out');
+    assert.equal(await esit.evaluate(()=>window.__qaCikis||0),0,'Manual sync keeps the session');
+    assert.equal(await esit.evaluate(n=>window.__qaBulut.islemler.length-n,islemOnce),1,'One click, one full merge');
+    assert.equal(await esitDugme.evaluate(el=>el.classList.contains('esitleniyor')||el.hasAttribute('aria-busy')),false,'Busy state clears');
+    await esit.addScriptTag({path:require.resolve('axe-core/axe.min.js')});
+    assert.deepEqual(await esit.evaluate(async()=>(await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}})).violations.map(v=>v.id)),[],'Sync confirmation is accessible');
+    await esit.clock.runFor(3500);
+    await esitBilgi.waitFor({state:'detached'});
+    // Uzun süre gizli kalıp dönen sayfa, tıklama ya da yeniden yükleme olmadan kaçanı getirir.
+    await uzaktanYaz('donuste');
+    const gorunurluk=durum=>esit.evaluate(durum=>{
+      Object.defineProperty(document,'visibilityState',{configurable:true,get:()=>durum});
+      document.dispatchEvent(new Event('visibilitychange'));
+    },durum);
+    await esit.evaluate(()=>{window.__qaAyniSayfa=1;});
+    await gorunurluk('hidden');
+    await esit.clock.fastForward(6*60*1000);
+    await gorunurluk('visible');
+    await esit.waitForFunction(()=>!!(window.YDS.EsitlemeDepo.paket()['yds-leitner']||{}).donuste);
+    assert.equal(await esit.evaluate(()=>window.__qaAyniSayfa),1,'Wake catch-up applies without a reload');
+    assert.equal(diyaloglar,0);
+    // Yakalama sayfayı yeniden yüklemez; bulut değişikliğini dinlemeyen eski panel ve
+    // Durumum listesi de canlı gelen kaydı yerinde gösterir.
+    await esit.goto(base+'/ana-sayfa.html');
+    await esit.waitForFunction(()=>window.YDS.Esitleme&&window.YDS.Esitleme.oturumDurumu().hazir);
+    await esit.clock.runFor(1000);
+    const ogrenilen=Number(await esit.locator('#p-ogrenilen').innerText());
+    // page.clock performance.timeOrigin'i de sahteler; yenilenmeyi pencere işaretiyle sına.
+    await esit.evaluate(()=>{window.__qaAyniSayfa=1;});
+    await uzaktanYaz('panelKelimesi',5);
+    await esit.clock.runFor(500);
+    await esit.waitForFunction(n=>Number(document.getElementById('p-ogrenilen').textContent)===n+1,ogrenilen);
+    assert.equal(await esit.evaluate(()=>window.__qaAyniSayfa),1,'Panel updated in place, no reload');
+    await esit.goto(base+'/durum.html');
+    await esit.waitForFunction(()=>window.YDS.Esitleme&&window.YDS.Esitleme.oturumDurumu().hazir&&/çalışılan|çalışıldı/.test(document.getElementById('sayac').textContent));
+    const once=await esit.evaluate(()=>{const t=document.getElementById('sayac').textContent;const m=t.match(/toplam çalışılan (\d+)/)||t.match(/(\d+) kayıt çalışıldı/);return m?Number(m[1]):NaN;});
+    assert.ok(once>0,'Precondition: Durumum lists the synced records');
+    await uzaktanYaz('durumKelimesi',2);
+    await esit.clock.runFor(500);
+    await esit.waitForFunction(n=>{const t=document.getElementById('sayac').textContent;const m=t.match(/toplam çalışılan (\d+)/)||t.match(/(\d+) kayıt çalışıldı/);return m&&Number(m[1])===n+1;},once);
+    assert.equal(diyaloglar,0);
+    await esit.goto(base+'/ayarlar.html');
+    await esit.waitForFunction(()=>window.YDS.Esitleme&&window.YDS.Esitleme.oturumDurumu().hazir);
+    // Bağlantıyı kesmek Ayarlar'da kalır.
+    await esit.locator('#bulutCik').click();
+    await esit.waitForFunction(()=>document.querySelector('.esit-dugme').textContent==='⇅');
+    assert.equal(await esit.evaluate(()=>window.__qaCikis),1,'Settings still disconnects');
+    await esitBaglam.close();
     // A fresh test page avoids interacting with the exam's real unload dialog.
     const notFound=await context.newPage();
     const response=await notFound.goto(base+'/missing/nested/route');
@@ -286,7 +407,7 @@ async function main() {
     assert.ok(await notFound.locator('main').evaluate(el=>getComputedStyle(el).maxWidth==='640px'));
     assert.ok(await notFound.locator('body').evaluate(el=>getComputedStyle(el).fontFamily.includes('system-ui')),'Nested 404 stylesheet loaded');
     assert.deepEqual(errors,[],'browser runtime errors');
-    console.log('Browser QA passed: root routes, light/dark 375/1280px axe, keyboard, search, exam reload persistence, landing layer map, nested 404.');
+    console.log('Browser QA passed: root routes, light/dark 375/1280px axe, keyboard, search, exam reload persistence, landing layer map, cloud sync button and wake catch-up, nested 404.');
   } finally {await browser.close(); await new Promise(resolve=>server.close(resolve));}
 }
 main().catch(error=>{

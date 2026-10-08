@@ -444,13 +444,15 @@ dosya sayısı ve en büyük beş klasörü yazar (çubuğun üzerine gelince ay
 
 30.08.2026'da çubuk alt bilgide **her sayfada** görünür oldu (önce yalnız `localhost` ya da
 `?debug=depo` ile açılıyordu) ve oradaki *Yöntem ve kaynaklar · Gizlilik ve veriler ·
-Hata bildir* bağlantı üçlüsünün yerini aldı. `yontem.html` ve `ayarlar.html` sayfaları
-duruyor ama artık hiçbir yerden bağlantı verilmiyor; yalnız doğrudan adresle açılırlar.
+Hata bildir* bağlantı üçlüsünün yerini aldı. Üçlü daha sonra `footer-links` olarak geri
+geldi: `yontem.html` ve `ayarlar.html` her sayfanın alt bilgisinden açılır.
 
 ## Cihazlar arası eşitleme (Firebase)
 
 İlerleme localStorage'da yaşar; eşitleme açıksa bunun bir bulut kopyası da tutulur.
-Başlıktaki **⇅** düğmesiyle Google hesabına bir kez giriş yapılır; sonrası görünmezdir:
+Başlıktaki **⇅** düğmesiyle Google hesabına bir kez giriş yapılır; sonrası görünmezdir.
+Girişliyken düğme hesabın baş harfini gösterir; tıklamak hemen tam eşitleme yapar
+("Eşitlendi SS:DD" onayı). Bağlantıyı kesmek Ayarlar sayfasındadır.
 
 - Eski `yds-*` anahtarları uygulamanın okuma biçimi olarak korunur. Eşitlenen asıl
   `yds-esitleme-v2` zarfında her kayıt ayrı mantıksal sürüm taşır; silmeler de mezar taşı
@@ -467,10 +469,35 @@ Başlıktaki **⇅** düğmesiyle Google hesabına bir kez giriş yapılır; son
 - Açılıştaki birleşim Firestore işlemi içinde eski kök belgeyi ve güncel alan belgelerini
   yeniden okuyarak yapılır. İlk birleşimden sonra belgeler canlı dinlenir; başka cihazın
   değişikliği açık sayfaya gelir.
-  Yerel görünüm değişirse sayfa, servis çalışanıyla ortak tek koordinatörden bir kez yenilenir.
-- Sonraki her değişiklik 2,5 sn gecikmeyle buluta yazılır; sekme kapanırken hemen denenir.
+  Bulut yerelde olmayan bir şey getirdiyse sayfa, servis çalışanıyla ortak tek
+  koordinatörden bir kez yenilenir; kullanıcının bu sırada yaptığı değişiklik yenileme sebebi sayılmaz.
+- Sonraki her değişiklik 2,5 sn gecikmeyle buluta yazılır; değişiklikler kesintisiz sürse de
+  ilk bekleyen değişiklikten en geç 15 sn sonra. Sekme kapanırken de denenir ama bu son
+  istek çoğu zaman tamamlanamaz; kalan kuyruk o cihazda sitenin bir sonraki açılışındaki
+  tam birleşimle gider.
   Yerel geçiş öncesi görüntü `yds-esitleme-gecis-yedegi`, eski bulut belgesi de
   `yds-esitleme-bulut-gecis-yedegi` altında bir kez korunur.
+- Açık kalan sayfa kendini toparlar (`esitleme-dayaniklilik-test.js`):
+  - Sekmeye dönüşte (2 dk temas yoksa), pencere odağında (5 dk), geri/ileri önbellekten
+    dönüşte, ağ geri gelince, donmuş sekme çözülünce ve uykudan uyanınca (30 sn nabız, 2 dk
+    sıçrama) bütün alanlarla bir birleşim yapılır. Sonuç yeniden yükleme olmadan
+    `yds-depo-degisti` ile yerel depoya yazılır; açılış, Ana sayfa paneli, Durumum,
+    İstatistik ve Ayarlar bunu yerinde gösterir. Çalışma sayfaları (Kelimeler, Öbekler,
+    Cümleler, Aileler, Konular, Test, Deneme) açık desteyi yeniden yüklenene ya da sayfa
+    değişene kadar korur. Başarılı bir tam birleşimden sonraki 60 sn içinde yeni otomatik
+    tam birleşim başlamaz; çevrimdışıyken hiç denenmez.
+  - Firestore'un hata verip kapattığı dinleyiciler artan aralıklarla (15 sn → 5 dk, en
+    çok 6 kez) yeniden kurulur. Kopukluk sürerken başarılı gönderimler "alınamıyor"
+    uyarısını kapatmaz.
+  - Kimlik belirteci işlemden önce yenilenir (süresine 5 dk'dan az kaldıysa zorla).
+    Firestore 10.14.1, işlem içinde gelen `auth/...` hatasını tanımaz ve işlemi hiç
+    bitirmez (uykudan ya da belirtecin süresini aşan çevrimdışı bir aradan sonra); önceden
+    yenilemek ve işlem içindeki okumada gelen bu hatayı düz hataya çevirmek onu sıradan,
+    yeniden denenen bir hataya dönüştürür.
+  - 2 dakikadan uzun süren işlem takılmış sayılır, terk edilir ve bütün alanlarla yeniden
+    denenir (düğmeye basılırsa 10 sn sonra). Terk edilen işlemin geç sonucu yerel depoya
+    yine kayıpsız birleşir; eşitleme durumu ve arayüz onu yok sayar.
+  - Hata sonrası yeniden deneme 15 sn'den 5 dk'ya kadar katlanarak bekler.
 - Veri, Firestore'un 1 MiB belge sınırına takılmaması için alan başına ayrılır:
   `kullanicilar/{uid}/alanlar/{anahtar}` içinde
   büyük `yds-leitner` ve `yds-test-yanlis` alanları dış `surum: 3` ve iç `k: 2` kısa

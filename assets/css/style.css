@@ -334,6 +334,7 @@ code {
    baş harfini gösterir. */
 .esit-dugme.acik { color: var(--ok); border-color: var(--ok); font-weight: 700; }
 .esit-dugme.hata { color: var(--warn); border-color: var(--warn); opacity: 1; }
+.esit-dugme.esitleniyor { border-style: dashed; cursor: progress; }
 
 .esit-uyari {
   position: fixed;
@@ -364,6 +365,7 @@ code {
   padding: 2px 4px;
 }
 .esit-uyari button:hover { color: var(--text); }
+.esit-uyari.bilgi { border-color: var(--ok); }
 
 /* ---------- kartlar ---------- */
 

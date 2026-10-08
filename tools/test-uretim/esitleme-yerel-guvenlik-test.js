@@ -526,4 +526,78 @@ function leitnerAnligiDegismedi(ortam, bellek, onceki, mesaj) {
     'benzersiz tarihsel yedek reload sonrasında eksiksiz kalmalı');
 })();
 
-console.log('esitleme-yerel-guvenlik: 7 ana senaryo başarılı');
+/* 8) Öbür sekmenin yazımı bu sekmeye henüz ulaşmadıysa (storage olayı gelmedi
+      ya da bir okuma onu sessizce birleştirdi) bayat bellek kopyası, ilk kez
+      çalışılan kartın tam kopya yazımında öbür sekmenin kartını silmez; aynı
+      kart iki kez "yeni" sayılmaz, kutusu güncel kayıttan hesaplanır. */
+(function bayatBellekKopyasi() {
+  var bellek = new HamBellek({ 'yds-leitner': { ortak: { k: 2, g: 100, c: 90 } } });
+  var A = ortamKur(bellek);
+  var B = ortamKur(bellek);
+  assert.strictEqual(B.I.dogru('beta', 'kelime'), 1);
+  A.Depo.oku('yds-katmanlar', [2]);
+  assert.strictEqual(A.I.dogru('alfa', 'kelime'), 1);
+  var son = ortamKur(bellek);
+  assert.ok(son.I.kayit('beta', 'kelime'),
+    'öbür sekmenin yeni kartı bayat bellek kopyasının tam yazımıyla silindi');
+  assert.ok(son.I.kayit('alfa', 'kelime') && son.I.kayit('ortak', 'kelime'));
+  assert.strictEqual(son.I.bugunAcilanYeni(), 2, 'iki farklı yeni kart iki kez sayılmalı');
+
+  // Aynı kart iki sekmede: ikinci sekme onu yeni sanmaz, kutuyu güncel kayıttan yükseltir.
+  assert.strictEqual(B.I.dogru('gama', 'kelime'), 1);
+  assert.strictEqual(A.I.dogru('gama', 'kelime'), 2,
+    'bayat kopya kutuyu öbür sekmenin ilerlemesini görmeden hesapladı');
+  son = ortamKur(bellek);
+  assert.strictEqual(son.I.bugunAcilanYeni(), 3, 'aynı kart iki sekmede iki kez yeni sayıldı');
+  assert.ok(son.I.kayit('beta', 'kelime'), 'sonraki yazımlar da öbür sekmenin kartını korumalı');
+
+  // Test yanlışı yolu da (defter + Leitner + sayaç tek paket) bayat kopya yazmaz.
+  assert.strictEqual(B.I.dogru('delta', 'kelime'), 1);
+  A.I.testYanlis('epsilon', 'kelime');
+  son = ortamKur(bellek);
+  assert.ok(son.I.kayit('delta', 'kelime'), 'test yanlışı yazımı öbür sekmenin kartını sildi');
+
+  // Kart sonucunu hesaplayan her yol aynı korumayı taşır.
+  ['yanlis', 'zatenBiliyorum', 'ipucuyla'].forEach(function (yolAdi) {
+    var b = new HamBellek({ 'yds-leitner': { ortak: { k: 2, g: 100, c: 90 } } });
+    var a = ortamKur(b);
+    var bb = ortamKur(b);
+    assert.strictEqual(bb.I.dogru('beta', 'kelime'), 1);
+    a.Depo.oku('yds-katmanlar', [2]);
+    assert.notStrictEqual(a.I[yolAdi]('alfa', 'kelime'), false);
+    var sonuc = ortamKur(b);
+    assert.ok(sonuc.I.kayit('beta', 'kelime'),
+      yolAdi + ': bayat bellek kopyası öbür sekmenin yeni kartını sildi');
+    assert.strictEqual(sonuc.I.bugunAcilanYeni(), 2, yolAdi + ': yeni kart sayacı yanlış');
+  });
+
+  // Öbek anahtarı göçü (öbekler sonradan yüklendiğinde de çalışır) bayat kopyayı yazmaz.
+  (function () {
+    var b = new HamBellek({ 'yds-leitner': { 'looking at': { k: 2, g: 100, c: 90 } } });
+    var a = ortamKur(b);
+    var bb = ortamKur(b);
+    assert.strictEqual(bb.I.dogru('beta', 'kelime'), 1);
+    a.pencere.OBEK_TAKMA = { 'looking at': 'look at' };
+    a.I.obekTakmaGocu();
+    var paket = ortamKur(b).D.paket()['yds-leitner'];
+    assert.ok(paket.beta, 'öbek göçü öbür sekmenin yeni kartını sildi');
+    assert.ok(paket['look at'] && !paket['looking at'], 'öbek göçü yapılmadı');
+  })();
+
+  // Birikmiş tekrarları yaymak, öbür sekmenin ilerlettiği kartı eski kutuya döndürmez.
+  (function () {
+    var b = new HamBellek({ 'yds-leitner': {
+      a1: { k: 1, g: 1, c: 1 }, a2: { k: 1, g: 1, c: 1 },
+      a3: { k: 1, g: 1, c: 1 }, a4: { k: 1, g: 1, c: 1 }
+    } });
+    var a = ortamKur(b);
+    var bb = ortamKur(b);
+    assert.strictEqual(bb.I.dogru('a1', 'kelime'), 2);
+    a.Depo.oku('yds-katmanlar', [2]);
+    a.I.birikmisiYay(['a1', 'a2', 'a3', 'a4'], 1, 'kelime');
+    var a1 = ortamKur(b).I.kayit('a1', 'kelime');
+    assert.strictEqual(a1.k, 2, 'birikmişleri yaymak öbür sekmenin ilerlemesini geri aldı');
+  })();
+})();
+
+console.log('esitleme-yerel-guvenlik: 8 ana senaryo başarılı');

@@ -120,6 +120,7 @@
   function obekTakmaGocu() {
     var takma = window.OBEK_TAKMA;
     if (!takma) return 0;
+    leitneriTazele();
     var aday = null, tasinan = 0;
     Object.keys(takma).forEach(function (eski) {
       if (!leitner[eski]) return;
@@ -149,6 +150,10 @@
     return basarili;
   }
 
+  /* Başka sekmenin yazımı bu sekmeye olay olarak ulaşmadan (ya da bir okuma
+     onu sessizce birleştirdikten sonra) bellekteki kopya bayat kalabilir. Kart
+     sonucunu hesaplayan ve tam kopya yazan her işlem önce bunu çağırır; yoksa
+     öbür sekmenin yeni kartı silinir, aynı kart iki kez "yeni" sayılırdı. */
   function leitneriTazele() {
     var guncel = Depo.oku(K_LEITNER, {});
     leitner = (guncel && typeof guncel === 'object' && !Array.isArray(guncel)) ? guncel : {};
@@ -439,6 +444,7 @@
      düşüp ertesi gün tekrara gelmemesidir — 4.760 kelimeyi elden geçirirken
      yarın 4.760 tekrarlık çığ oluşmasın diye. */
   function zatenBiliyorum(en, tur) {
+    leitneriTazele();
     var ilk = yeniMi(en, tur);
     var onceki = kutu(en, tur);
     if (!kayitYaz(en,
@@ -456,6 +462,7 @@
 
   /* Doğru bilindi: bir üst kutuya çık, tekrarı ilerlet. */
   function dogru(en, tur) {
+    leitneriTazele();
     var ilk = yeniMi(en, tur);
     var onceki = kutu(en, tur);
     var k = Math.min(EN_UST_KUTU, onceki + 1);
@@ -469,6 +476,7 @@
   /* İpucuyla bilindi: terfi ettirme, aynı kutuda bırak ve yeniden zamanla.
      Hiç çalışılmamış bir kelime bu yolla en fazla 1. kutuya girer. */
   function ipucuyla(en, tur) {
+    leitneriTazele();
     var ilk = yeniMi(en, tur);
     var onceki = kutu(en, tur);
     var k = Math.max(1, onceki);
@@ -482,6 +490,7 @@
      Bir aydır bildiğin kelimeyi tek şaşırmada baştan başlatmak, tekrar yükünü
      katlıyordu; bir kutu geri düşmek hem cezayı hem yükü ölçülü tutar. */
   function yanlis(en, tur) {
+    leitneriTazele();
     var ilk = yeniMi(en, tur);
     var onceki = kutu(en, tur);
     var k = Math.max(1, onceki - 1);
@@ -499,6 +508,7 @@
      Döndürdüğü değer: {tasinan, gun}. */
 
   function birikmisiYay(adlar, gunlukPay, tur) {
+    leitneriTazele();
     var pay = Math.max(1, parseInt(gunlukPay, 10) || gunlukTavan());
     var b = bugun();
     var kapsam = Object.create(null);
@@ -821,6 +831,7 @@
     }
     // Wrong-answer notebook, SRS demotion and daily counter are one durable
     // operation. A quota failure cannot leave only half the learning result.
+    leitneriTazele();
     var aday = leitnerKopyasi(), ilk = !aday[en];
     aday[en] = { k: Math.max(1, ((aday[en] && aday[en].k) || 0) - 1),
       g: bugun() + 1, c: bugun(), m: 0 };

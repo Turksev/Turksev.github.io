@@ -29,6 +29,38 @@
   var Depo = window.YDS.Depo;
   var SDK_KOK = 'https://www.gstatic.com/firebasejs/10.14.1/';
   var GECIKME = 2500;
+  // Kesintisiz çalışmada (2,5 sn'den sık cevap) erteleme hiç bitmezdi; bekleyen
+  // değişiklik en geç bu süre içinde gönderilir. Sekme kapanırken başlayan son
+  // gönderim çoğu zaman tamamlanamadığından cihazda kalan kuyruk böyle sınırlanır.
+  var AZAMI_BEKLEME = 15000;
+  var YENIDEN_DENEME = 15000;
+  var EN_UZUN_BEKLEME = 5 * 60 * 1000;
+  // Sayfaya dönüldüğünde bulutla son doğrulanmış temas bundan eskiyse canlı
+  // dinleyiciye güvenilmez; tam birleşim yapılır (uyku, arka plan, ağ değişimi).
+  // Tam birleşim bütün alan belgelerini indirdiğinden eşik çok kısa tutulmaz.
+  var TAZELEME_ESIGI = 2 * 60 * 1000;
+  // Başarılı bir tam birleşimden sonra bu süre içinde gelen otomatik istekler
+  // (üst üste gelen dönüş olayları, gidip gelen ağ) yeni tam birleşim başlatmaz.
+  var OTOMATIK_ARALIK = 60 * 1000;
+  // Bu kadar sorunsuz çalışmış dinleyicinin hatası yeniden kurma beklemesini sıfırlar.
+  var SAGLIKLI_DINLEME = 10 * 60 * 1000;
+  // Kalıcı bir hata (ör. okuma izni) her 5 dakikada 15 okumalık yeniden kurma
+  // döngüsü yaratmasın: bu kadar denemeden sonra durulur; düğme ya da ağın
+  // geri gelmesi dinleyicileri yeniden kurar.
+  var DINLEME_EN_COK_DENEME = 6;
+  // Pencere odağı sekme dönüşünden çok daha sık değişir; eşiği daha uzun.
+  var ODAK_ESIGI = 5 * 60 * 1000;
+  // Nabız aralığı; iki nabız arası bundan uzunsa bilgisayar uyumuştur.
+  var NABIZ = 30 * 1000;
+  var UYKU_ESIGI = 2 * 60 * 1000;
+  // Bu süreyi aşan bulut işlemi takılmış sayılır; geç gelen sonucu yok sayılır.
+  var ISLEM_ZAMAN_ASIMI = 2 * 60 * 1000;
+  // Kimlik belirtecinin süresine bundan az kaldıysa işlemden önce yenilenir.
+  var BELIRTEC_PAYI = 5 * 60 * 1000;
+  // Düğmeye basıldığında bundan uzun süren işlem beklenmez, yerine yenisi başlar.
+  var ELLE_SABIR = 10 * 1000;
+  var KUYRUK_METNI = 'Bulut bağlantısı bozuldu; sayfayı yenile. İlerlemen bu cihazda korunuyor.';
+  var DUGME_IPUCU = 'Şimdi eşitlemek için tıkla. Bağlantıyı Ayarlar’dan kesebilirsin.';
   var BULUT_GECIS_YEDEGI = 'yds-esitleme-bulut-gecis-yedegi';
   var ETKIN_ANAHTARI = 'yds-bulut-etkin';
   var SILME_HAZIR = false;
@@ -52,8 +84,20 @@
   var ilkZamanlayici = null;
   var dinlemeyiBirak = null;
   var kirliAlanlar = Object.create(null);
+  var sonTemas = 0;          // son başarılı işlem ya da sunucudan gelen anlık görüntü
+  var ilkBekleyen = 0;       // gönderilmeyi bekleyen en eski değişikliğin zamanı
+  var hataSayisi = 0, ertelemeSonu = 0;
+  var islemNo = 0, islemBaslangici = 0, tamIslemde = false, hemen = false, takilmaSayisi = 0;
+  var tamIstendi = false;    // sıradaki gönderim bütün alanlarla birleşim yapsın
+  var kapatilanSorun = null; // kullanıcının × ile kapattığı dinleyici uyarısı
+  var dinlemeNesli = 0, dinlemeOnarici = null, dinlemeHataSayisi = 0, dinlemeBaslangici = 0;
+  var dinlemeVazgecildi = false, dinlemeSorunu = null, dinlemeSorunNesli = 0, dinlemeSonKod = '';
+  var sonSdkDenemesi = 0;
+  var tamBekleyenler = [];
+  var elleOnayBekliyor = false;   // elle eşitleme bitti ama onay bir uyarının arkasında kaldı
+  var sonTamEsitleme = 0, nabizNo = null, sonNabiz = 0;
   var dugme = null;
-  var uyari = null;
+  var uyari = null, bilgiZamanlayici = null;
   var altyaziEl = null, altyaziAsli = '';
 
   function kokBelgesi(kisi) {
@@ -99,14 +143,98 @@
   function zamanlayicilariDurdur() {
     if (zamanlayici) clearTimeout(zamanlayici);
     if (ilkZamanlayici) clearTimeout(ilkZamanlayici);
+    if (dinlemeOnarici) clearTimeout(dinlemeOnarici);
     zamanlayici = null;
     ilkZamanlayici = null;
+    dinlemeOnarici = null;
     if (dinlemeyiBirak) { dinlemeyiBirak(); dinlemeyiBirak = null; }
+    dinlemeNesli++;
+    islemNo++;
     hazir = false;
     birikti = false;
     gonderiliyor = false;
+    tamIslemde = false;
+    hemen = false;
+    tamIstendi = false;
     sonGonderilen = null;
+    ilkBekleyen = 0;
+    hataSayisi = 0;
+    ertelemeSonu = 0;
+    takilmaSayisi = 0;
+    dinlemeHataSayisi = 0;
+    dinlemeVazgecildi = false;
+    dinlemeSorunu = null;
+    kapatilanSorun = null;
+    elleOnayBekliyor = false;
     kirliAlanlar = Object.create(null);
+    tamBitti(false);
+  }
+
+  /* ---------- işlem sırası: geri çekilme, takılma bekçisi ---------- */
+
+  function bekleme(sayi) {
+    return Math.min(EN_UZUN_BEKLEME, YENIDEN_DENEME * Math.pow(2, Math.max(0, sayi - 1)));
+  }
+
+  function islemBaslat(tam) {
+    gonderiliyor = true;
+    tamIslemde = !!tam;
+    islemBaslangici = Date.now();
+    return ++islemNo;
+  }
+
+  // Terk edilmiş ya da başka oturuma ait işlemin geç sonucu durumu değiştirmez.
+  function islemGecerli(no, benimki) {
+    return no === islemNo && kullanici === benimki;
+  }
+
+  function basariIsle() {
+    sonTemas = Date.now();
+    hataSayisi = 0;
+    ertelemeSonu = 0;
+    takilmaSayisi = 0;
+  }
+
+  function hataIsle() {
+    hataSayisi++;
+    var ms = bekleme(hataSayisi);
+    ertelemeSonu = Date.now() + ms;
+    return ms;
+  }
+
+  // Sözü hiç sonuçlanmayan işlem (dondurulan sekme, sessizce kopan bağlantı)
+  // kuyruğu sonsuza dek kilitlemesin. Birleşim kayıpsız ve tekrarlanabilir
+  // olduğundan bütün alanlarla yeniden denemek güvenlidir.
+  function islemiBirak() {
+    islemNo++;
+    gonderiliyor = false;
+    tamIslemde = false;
+    alanlariIsaretle();
+  }
+
+  function takildiysaBirak() {
+    if (!gonderiliyor || Date.now() - islemBaslangici < ISLEM_ZAMAN_ASIMI) return false;
+    islemiBirak();
+    takilmaSayisi++;
+    // Kara delik bağlantıda her yeniden deneme yeni bir askıda işlem bırakır;
+    // geri çekilme bunların birikmesini sınırlar.
+    hataIsle();
+    // Yeniden deneme başarılı olursa uyarı hemen kapanır; takılma sürerse görünür
+    // kalır. Üst üste takılma Firestore kuyruğunun tıkandığını gösterir; onu
+    // yalnız sayfa yenilemek açar.
+    var metin = takilmaSayisi > 1
+      ? 'Bulut yanıt vermiyor; sayfayı yenilemek düzeltebilir. İlerlemen bu cihazda korunuyor.'
+      : 'Bulut yanıt vermiyor; yeniden deneniyor. İlerlemen bu cihazda korunuyor.';
+    durumuYaz(metin);
+    uyariGoster(metin, false);
+    durumBildir('hata', metin);
+    return true;
+  }
+
+  function tamBitti(basarili) {
+    var liste = tamBekleyenler;
+    tamBekleyenler = [];
+    liste.forEach(function (coz) { coz(basarili); });
   }
 
   function saat() {
@@ -129,7 +257,24 @@
     if (e.code === 'permission-denied' || e.code === 'firestore/permission-denied') {
       return 'bulut yazma izni reddedildi; ilerleme bu cihazda korunuyor. Tarayıcı verilerini silme; Ayarlar’dan ilerleme yedeğini indir. Bulut erişim kuralları kontrol edilmeli';
     }
+    if (e.code === 'auth/network-request-failed') {
+      return 'ağ bağlantısı hazır değil; Google oturumu doğrulanamadı';
+    }
+    if (e.code === 'resource-exhausted' || e.code === 'firestore/resource-exhausted') {
+      return 'ücretsiz bulut kotası doldu; kota sıfırlanınca kendiliğinden düzelir';
+    }
+    if (kuyrukBozukMu(e)) return 'bulut bağlantısı bozuldu';
     return String(e.code || e.message || e).slice(0, 120);
+  }
+
+  // Firestore'un iç kuyruğu çökerse sayfa içinde bir daha toparlanmaz.
+  function kuyrukBozukMu(e) {
+    return !!e && /AsyncQueue is already failed|INTERNAL ASSERTION FAILED/.test(String(e.message || ''));
+  }
+
+  // Bozuk kuyruk başka bir cümlenin içine gömülmez; tek başına ne yapılacağını söyler.
+  function hataMetni(onEk, e) {
+    return kuyrukBozukMu(e) ? KUYRUK_METNI : onEk + ' (' + hataKodu(e) + ')';
   }
 
   function bulutPaketi(foto) {
@@ -271,6 +416,30 @@
     });
   }
 
+  function belirtecHazirla(kisi) {
+    return Promise.resolve().then(function () {
+      if (!kisi || typeof kisi.getIdToken !== 'function') return;
+      if (typeof kisi.getIdTokenResult !== 'function') return kisi.getIdToken();
+      return kisi.getIdTokenResult().then(function (sonuc) {
+        // Süresine az kalmışsa şimdi yenile; işlemin ortasında dolmasın.
+        var bitis = Date.parse(sonuc && sonuc.expirationTime);
+        if (isFinite(bitis) && bitis - Date.now() < BELIRTEC_PAYI) return kisi.getIdToken(true);
+      });
+    });
+  }
+
+  // İşlem içindeki okumada gelen auth/... hatasını Firestore 10.14.1 tanımaz:
+  // yeniden deneme kararında iç doğrulama hatası atar ve işlemin sözü hiç
+  // sonuçlanmaz. Düz Error olarak iletmek işlemi hemen reddettirir.
+  function authHatasiniSar(e) {
+    if (e && e.name === 'FirebaseError' && /^auth\//.test(String(e.code || ''))) {
+      var duz = new Error(e.message || e.code);
+      duz.code = e.code;
+      throw duz;
+    }
+    throw e;
+  }
+
   /* Kök geçiş belgesiyle bütün alan belgelerini aynı işlemde oku. Firestore
      bunlardan biri başka cihazca değişirse işlemi yeni görüntülerle yeniden
      dener; alanlar ayrı belgelerde kaldığı için hiçbiri tek başına 1 MiB'ye
@@ -287,7 +456,11 @@
       return alanBelgesi(benimki, anahtar);
     });
 
-    return db.runTransaction(function (islem) {
+    // Kimlik belirteci işlemden önce yenilenir: süresi dolmuşken (uykudan sonra)
+    // işlem içinde yenileme ağ yüzünden düşerse Firestore 10.14.1 hatayı tanımaz
+    // ve işlemin sözü hiç sonuçlanmaz. Burada düşerse sıradan bir ret olur.
+    // Sözün içinde çağırmak, çökmüş kuyruğun eşzamanlı atışını da ret yapar.
+    return belirtecHazirla(benimki).then(function () { return db.runTransaction(function (islem) {
       // Yönetim işaretçisi de aynı işlemde okunur. Silme işlemi bu okuma ile
       // yarışırsa Firestore işlemi yeniden dener; işaretçi oluşmuşsa hiçbir
       // eski/açık istemci ilerlemeyi tekrar yazamaz.
@@ -295,12 +468,13 @@
         kokuOku ? [islem.get(kokRef)] : []).concat(alanRefleri.map(function (ref) {
         return islem.get(ref);
       }));
-      return Promise.all(okumalar).then(function (fotolar) {
+      return Promise.all(okumalar).catch(authHatasiniSar).then(function (fotolar) {
         if (fotolar[0] && fotolar[0].exists) throw hata('yds/bulut-silindi');
         var kokFoto = kokuOku ? fotolar[1] : null;
         var alanBaslangici = kokuOku ? 2 : 1;
         var eskiBulut = bulutPaketi(kokFoto);
-        var birlesmis = M.birlestir(EsitDepo.zarf(), bulutZarfi(kokFoto));
+        var yerel = EsitDepo.zarf();
+        var birlesmis = M.birlestir(yerel, bulutZarfi(kokFoto));
 
         hedefAlanlar.forEach(function (anahtar, i) {
           birlesmis = M.birlestir(birlesmis,
@@ -324,10 +498,14 @@
           zarf: birlesmis,
           json: M.kararliJson(birlesmis),
           eskiBulut: kokFoto && kokFoto.exists ? eskiBulut : null,
-          hedefAlanlar: hedefAlanlar.slice()
+          hedefAlanlar: hedefAlanlar.slice(),
+          // Açılış birleşimi yalnız bulut yerelde olmayan bir şey getirdiyse
+          // sayfayı yeniler; kullanıcının bu sırada yaptığı değişiklik sayılmaz.
+          bulutGetirdi: !!kokuOku &&
+            M.kararliJson(M.paket(birlesmis)) !== M.kararliJson(M.paket(yerel))
         };
       });
-    }).then(function (sonuc) {
+    }); }).then(function (sonuc) {
       if (kullanici !== benimki) return sonuc;
       if (sonuc.eskiBulut && Depo.oku(BULUT_GECIS_YEDEGI, null) === null) {
         // Kök belge yerinde kalır; bu yedek ayrıca kolay geri dönüş sağlar.
@@ -341,9 +519,52 @@
   function dinlemeyeBasla() {
     if (dinlemeyiBirak) dinlemeyiBirak();
     var benimki = kullanici;
+    var nesil = ++dinlemeNesli;
     var kapaticilar = [];
+    dinlemeBaslangici = Date.now();
+
+    // Yerine yenisi kurulmuş dinleyicinin geç gelen olayı hiçbir şeyi değiştirmez.
+    function gecerli() { return nesil === dinlemeNesli && kullanici === benimki; }
+
+    function temas(foto) {
+      if (foto && foto.metadata && foto.metadata.fromCache) return;
+      sonTemas = Date.now();
+      // Kopuştan sonra kurulan dinleyiciden sunucu görüntüsü geldi: sorun bitti.
+      if (dinlemeSorunu && nesil > dinlemeSorunNesli) {
+        dinlemeSorunu = null;
+        if (!hataSayisi && !takilmaSayisi) basariUyarisi();
+      }
+    }
+
+    // Firestore hata veren dinleyiciyi kalıcı olarak kapatır; yeniden kurulmazsa
+    // sayfa açık kaldıkça öbür cihazın değişiklikleri hiç gelmez. Gönderim ayrı
+    // tek seferlik isteklerle sürdüğü için uyarı yalnız almayı anlatır.
+    function dinlemeKoptu(e) {
+      if (!gecerli()) return;
+      sonGonderilen = null;
+      var izin = e && (e.code === 'permission-denied' || e.code === 'firestore/permission-denied');
+      dinlemeSonKod = izin ? 'okuma izni reddedildi' : hataKodu(e);
+      var metin = kuyrukBozukMu(e) ? KUYRUK_METNI
+        : 'Öbür cihazlardaki değişiklikler şu an alınamıyor; yeniden bağlanılıyor (' + dinlemeSonKod + ')';
+      dinlemeSorunu = metin;
+      dinlemeSorunNesli = nesil;
+      durumuYaz(metin);
+      uyariGoster(metin, false);
+      durumBildir('hata', metin);
+      dinlemeyiOnar();
+    }
+
+    function abone(ref, isleyici) {
+      try {
+        kapaticilar.push(ref.onSnapshot(isleyici, dinlemeKoptu));
+      } catch (e) {
+        // Çökmüş Firestore kuyruğu aboneliği eşzamanlı reddeder.
+        dinlemeKoptu(e);
+      }
+    }
 
     function dinlemeHatasi(e) {
+      if (!gecerli()) return;
       sonGonderilen = null;
       if (e && e.code === 'yds/bulut-silindi') {
         bulutSilindi = true;
@@ -359,7 +580,7 @@
     }
 
     function geleniUygula(gelen, anahtar, kokten) {
-      if (!hazir || kullanici !== benimki) return;
+      if (!hazir || !gecerli()) return;
       var once = EsitDepo.zarf();
       var birlesmis = M.birlestir(once, gelen);
       var onceJson = M.kararliJson(once);
@@ -389,71 +610,114 @@
       } else if (!kokten) {
         sonGonderilen = birlesmisJson;
       }
-      uyariyiKapat();
+      // Öbür cihazdan veri gelmesi bu cihazın gönderim sorununu çözmez.
+      if (hataSayisi || takilmaSayisi) return;
+      basariUyarisi();
       durumuYaz('Eşitlendi ' + saat());
       durumBildir('hazir', 'Eşitlendi ' + saat());
     }
 
     // Eski uygulama sürümünün kök belgeye yazdığı son değişiklikleri kaçırma.
-    kapaticilar.push(kokBelgesi(benimki).onSnapshot(function (foto) {
+    abone(kokBelgesi(benimki), function (foto) {
+      if (!gecerli()) return;
+      temas(foto);
       if (!foto || !foto.exists) return;
       geleniUygula(bulutZarfi(foto), null, true);
-    }, dinlemeHatasi));
+    });
 
     ALAN_ANAHTARLARI.forEach(function (anahtar) {
-      kapaticilar.push(alanBelgesi(benimki, anahtar).onSnapshot(function (foto) {
+      abone(alanBelgesi(benimki, anahtar), function (foto) {
+        if (!gecerli()) return;
+        temas(foto);
         if (!foto || !foto.exists) return;
         try {
           geleniUygula(bulutAlanZarfi(foto, anahtar), anahtar, false);
         } catch (e) {
           dinlemeHatasi(e);
         }
-      }, dinlemeHatasi));
+      });
     });
 
     // Başka bir açık cihaz bulut kopyasını silerse bu istemciyi de anında
     // durdur. Yerel paket olduğu gibi kalır; yalnızca yeniden yazma kapanır.
-    kapaticilar.push(yonetimBelgesi(benimki).onSnapshot(function (foto) {
-      if (!foto || !foto.exists || kullanici !== benimki) return;
+    abone(yonetimBelgesi(benimki), function (foto) {
+      if (!gecerli()) return;
+      temas(foto);
+      if (!foto || !foto.exists) return;
       bulutSilindi = true;
       zamanlayicilariDurdur();
       dugmeGuncelle();
       altyaziGuncelle();
       durumBildir('silindi', 'Bulut kopyası silindi; yerel ilerleme korunuyor.');
-    }, dinlemeHatasi));
+    });
 
     dinlemeyiBirak = function () {
-      kapaticilar.forEach(function (kapat) { if (typeof kapat === 'function') kapat(); });
+      kapaticilar.forEach(function (kapat) {
+        // Çökmüş Firestore kuyruğu aboneliği bırakırken de eşzamanlı atar;
+        // yutulmazsa çıkış ve yeniden kurma yarıda kalır.
+        try { if (typeof kapat === 'function') kapat(); } catch (e) { /* bozuk kuyruk */ }
+      });
       kapaticilar = [];
     };
+  }
+
+  // Kopan dinleyicileri artan aralıklarla yeniden kur; arada kaçan değişiklikler
+  // için ayrıca tam birleşim yap.
+  function dinlemeyiOnar() {
+    if (dinlemeOnarici) return;
+    // Uzun süre sağlıklı çalışmış dinleyicinin hatası yeni bir dizi başlatır;
+    // kurulur kurulmaz yinelenen hata ise beklemeyi büyütür (okuma döngüsü yok).
+    if (Date.now() - dinlemeBaslangici >= SAGLIKLI_DINLEME) dinlemeHataSayisi = 0;
+    if (dinlemeHataSayisi >= DINLEME_EN_COK_DENEME) {
+      dinlemeVazgecildi = true;
+      dinlemeSorunu = 'Öbür cihazlardaki değişiklikler alınamıyor (' + dinlemeSonKod +
+        '). Yeniden denemek için eşitleme düğmesine tıkla.';
+      durumuYaz(dinlemeSorunu);
+      uyariGoster(dinlemeSorunu, false);
+      durumBildir('hata', dinlemeSorunu);
+      return;
+    }
+    dinlemeHataSayisi++;
+    dinlemeOnarici = setTimeout(function () {
+      dinlemeOnarici = null;
+      if (!kullanici || !hazir || bulutSilindi || silmeYapiliyor) return;
+      dinlemeyeBasla();
+      tazele();
+    }, bekleme(dinlemeHataSayisi));
   }
 
   /* ---------- açılıştaki ilk geçiş/eşitleme ---------- */
 
   function ilkEsitle() {
-    if (!kullanici || gonderiliyor || bulutSilindi || silmeYapiliyor) return;
+    if (ilkZamanlayici) { clearTimeout(ilkZamanlayici); ilkZamanlayici = null; }
+    // Hazır sayfada açılış birleşimi yeniden koşarsa ekranı yenileyebilirdi.
+    if (!kullanici || hazir || gonderiliyor || bulutSilindi || silmeYapiliyor) return;
     var benimki = kullanici;
-    var once = M.kararliJson(EsitDepo.paket());
-    gonderiliyor = true;
+    var no = islemBaslat(true);
 
     bulutaBirlestir(ALAN_ANAHTARLARI, true).then(function (sonuc) {
-      if (kullanici !== benimki) return;
+      if (!islemGecerli(no, benimki)) return;
       sonGonderilen = sonuc.json;
       hazir = true;
       gonderiliyor = false;
+      tamIslemde = false;
+      basariIsle();
+      sonTamEsitleme = sonTemas;
       dinlemeyeBasla();
-      uyariyiKapat();
+      basariUyarisi();
       durumuYaz('Eşitlendi ' + saat());
+      tamBitti(true);
 
-      var yerelDegisti = M.kararliJson(EsitDepo.paket()) !== once;
-      if (yerelDegisti) {
+      if (sonuc.bulutGetirdi) {
         window.YDS.yenidenYukle('bulut-ilk-birlesim');
         return;
       }
+      durumBildir('hazir', 'Eşitlendi ' + saat());
       if (birikti || kirliAlanlariAl().length) { birikti = false; planla([]); }
     }).catch(function (e) {
-      if (kullanici !== benimki) return;
+      if (!islemGecerli(no, benimki)) return;
       gonderiliyor = false;
+      tamIslemde = false;
       if (e && e.code === 'yds/bulut-silindi') {
         bulutSilindi = true;
         zamanlayicilariDurdur();
@@ -462,57 +726,215 @@
         durumBildir('silindi', hataKodu(e));
         return;
       }
-      var metin = 'Bulut şu an ulaşılamıyor; ilerleme yerelde birikiyor (' + hataKodu(e) + ')';
+      var ms = hataIsle();
+      elleOnayBekliyor = false;
+      var metin = hataMetni('Buluta şu an ulaşılamıyor; ilerleme yerelde birikiyor', e);
       durumuYaz(metin);
       uyariGoster(metin, false);
       durumBildir('hata', metin);
-      if (ilkZamanlayici) clearTimeout(ilkZamanlayici);
-      ilkZamanlayici = setTimeout(ilkEsitle, 15000);
+      tamBitti(false);
+      ilkZamanlayici = setTimeout(ilkEsitle, ms);
     });
   }
 
   /* ---------- değişiklikleri buluta yazma ---------- */
 
+  function zamanla(ms) {
+    if (zamanlayici) clearTimeout(zamanlayici);
+    zamanlayici = setTimeout(gonder, Math.max(0, ms));
+  }
+
+  // Son değişiklikten 2,5 sn sonra gönder; değişiklikler kesintisiz sürse de
+  // ilk bekleyen değişiklikten en geç AZAMI_BEKLEME sonra. Hata sonrası geri
+  // çekilme süresi dolmadan yeni deneme yapılmaz.
+  function siradakiGecikme() {
+    var simdi = Date.now();
+    if (!ilkBekleyen) ilkBekleyen = simdi;
+    var ms = Math.min(GECIKME, ilkBekleyen + AZAMI_BEKLEME - simdi);
+    return Math.max(0, ms, ertelemeSonu - simdi);
+  }
+
   function planla(anahtarlar) {
     if (!kullanici || bulutSilindi || silmeYapiliyor) return;
     alanlariIsaretle(anahtarlar);
+    if (!ilkBekleyen) ilkBekleyen = Date.now();
+    if (takildiysaBirak() && !hazir) { ilkEsitle(); return; }
     if (!hazir || gonderiliyor) { birikti = true; return; }
-    if (zamanlayici) clearTimeout(zamanlayici);
-    zamanlayici = setTimeout(gonder, GECIKME);
+    zamanla(siradakiGecikme());
   }
 
   function gonder() {
     if (zamanlayici) { clearTimeout(zamanlayici); zamanlayici = null; }
     if (!kullanici || !hazir || bulutSilindi || silmeYapiliyor) return;
-    if (gonderiliyor) { birikti = true; return; }
-    var hedefAlanlar = kirliAlanlariAl();
-    if (!hedefAlanlar.length) return;
-    hedefAlanlar.forEach(function (anahtar) { delete kirliAlanlar[anahtar]; });
+    if (gonderiliyor && !takildiysaBirak()) { birikti = true; return; }
+    // Yakalama istenmişse bütün alanlar okunur. Hata olursa yalnız gerçekten
+    // bekleyen yerel değişiklikler kirli sayılır (uyarı metni doğru kalır);
+    // yakalamanın kendisi geri çekilme süresiyle yeniden denenir.
+    var kirli = kirliAlanlariAl();
+    var tam = tamIstendi || kirli.length === ALAN_ANAHTARLARI.length;
+    if (!tam && !kirli.length) return;
+    var hedefAlanlar = tam ? ALAN_ANAHTARLARI.slice() : kirli;
+    kirli.forEach(function (anahtar) { delete kirliAlanlar[anahtar]; });
+    tamIstendi = false;
+    ilkBekleyen = 0;
+    hemen = false;
 
     var benimki = kullanici;
-    gonderiliyor = true;
+    var no = islemBaslat(tam);
+    var basarili = false;
     bulutaBirlestir(hedefAlanlar, false).then(function (sonuc) {
-      if (kullanici !== benimki) return;
+      if (!islemGecerli(no, benimki)) return;
+      basarili = true;
       sonGonderilen = sonuc.json;
-      uyariyiKapat();
+      basariIsle();
+      if (tam) sonTamEsitleme = sonTemas;
+      basariUyarisi();
       durumuYaz('Eşitlendi ' + saat());
       durumBildir('hazir', 'Eşitlendi ' + saat());
     }).catch(function (e) {
-      if (kullanici !== benimki) return;
-      alanlariIsaretle(hedefAlanlar);
-      birikti = true;
-      var metin = 'Yazılamadı, yeniden denenecek (' + hataKodu(e) + ')';
+      if (!islemGecerli(no, benimki)) return;
+      // Bekleyen yerel değişiklik yokken otomatik yakalamanın ilk hatası (ör.
+      // uyanıştan hemen sonra ağ henüz gelmemişken) çubuk göstermez; yeniden
+      // deneme de başarısız olursa ya da kullanıcı istediyse gösterilir.
+      var sessiz = !kirli.length && !hataSayisi && !tamBekleyenler.length;
+      alanlariIsaretle(kirli);
+      if (kirli.length) birikti = true;
+      if (tam) tamIstendi = true;
+      hataIsle();
+      elleOnayBekliyor = false;
+      var metin = hataMetni(kirli.length ? 'Yazılamadı, yeniden denenecek'
+        : 'Bulutla eşitlenemedi; yeniden denenecek', e);
       durumuYaz(metin);
-      uyariGoster(metin, false);
+      if (!sessiz) uyariGoster(metin, false);
       durumBildir('hata', metin);
     }).then(function () {
-      if (kullanici !== benimki) return;
+      if (!islemGecerli(no, benimki)) return;
       gonderiliyor = false;
-      if (birikti) {
+      tamIslemde = false;
+      if (tam) tamBitti(basarili);
+      if (birikti || tamIstendi || kirliAlanlariAl().length) {
         birikti = false;
-        zamanlayici = setTimeout(gonder, 15000);
+        // Düğmeyle ya da ağın gelmesiyle istenen tam birleşim geri çekilmeyi beklemez.
+        var beklemeden = tamBekleyenler.length || hemen === 'elle' || hemen === 'zorla';
+        zamanla(hemen ? (beklemeden ? 0 : Math.max(0, ertelemeSonu - Date.now()))
+          : siradakiGecikme());
       }
     });
+  }
+
+  /* ---------- uyanınca yakalama: uyku, arka plan, ağ değişimi ---------- */
+
+  // Bütün alanlarla birleşim: buluttaki her yeniliği okur, yereldeki her farkı
+  // yazar. Sayfayı yeniden yüklemez; canlı dinleyici güncellemesi gibi
+  // 'yds-depo-degisti' ile ekrana yansır.
+  function tazele(tur) {
+    if (!kullanici || bulutSilindi || silmeYapiliyor) return;
+    takildiysaBirak();
+    if (!hazir) {
+      if (!gonderiliyor) ilkEsitle();
+      return;
+    }
+    if (gonderiliyor) {
+      // Uçuştaki tam birleşim zaten her şeyi kapsar; kısmi gönderimin ardından
+      // ise beklemeden tam birleşim yapılır.
+      if (!tamIslemde) { tamIstendi = true; hemen = tur || true; }
+      return;
+    }
+    tamIstendi = true;
+    gonder();
+  }
+
+  function cevrimdisi() {
+    return typeof navigator !== 'undefined' && navigator.onLine === false;
+  }
+
+  // Görünür sayfa bulutla bir süredir doğrulanmış temas kurmadıysa canlı
+  // dinleyiciye güvenme: bağlantı uyku/ağ değişiminde sessizce ölmüş olabilir.
+  //   olagan: sayfaya dönüş/odak; eşiğe ve hata sonrası geri çekilmeye uyar
+  //   zorla:  bfcache dönüşü, ağın gelmesi, donmadan çözülme, uyku sonrası
+  //   elle:   düğmeye tıklama; hiçbir sınıra takılmaz
+  function uyandir(tur, esik) {
+    if (!kullanici || bulutSilindi || silmeYapiliyor) return;
+    if (document.visibilityState === 'hidden') return;
+    var simdi = Date.now();
+    if (tur !== 'elle') {
+      // Çevrimdışıyken deneme yalnız uyarı üretir; ağ gelince 'online' tetikler.
+      if (cevrimdisi()) return;
+      if (simdi - sonTamEsitleme < OTOMATIK_ARALIK) {
+        // Az önce tam birleşim yapıldı; ağ geri geldiyse bekleyen gönderim
+        // geri çekilme süresini beklemeden denenir.
+        if (tur === 'zorla' && hazir && !gonderiliyor && (hataSayisi || kirliAlanlariAl().length)) gonder();
+        return;
+      }
+      if (tur === 'olagan' &&
+          (simdi < ertelemeSonu || simdi - sonTemas < (esik || TAZELEME_ESIGI))) return;
+    }
+    // Düğme, eski çıkış/giriş dolambacı gibi askıdaki işlemi beklemeden yenisini başlatır.
+    if (tur === 'elle' && gonderiliyor && simdi - islemBaslangici > ELLE_SABIR) islemiBirak();
+    // Kopan dinleyiciler düğmeyle hemen; onarımdan vazgeçildiyse (ör. kota dolduğu
+    // saatlerde) kullanıcı döndüğünde de bir kez daha kurulur.
+    if (hazir && dinlemeSorunu && (tur === 'elle' || dinlemeVazgecildi)) {
+      if (dinlemeOnarici) { clearTimeout(dinlemeOnarici); dinlemeOnarici = null; }
+      dinlemeVazgecildi = false;
+      dinlemeHataSayisi = 0;
+      dinlemeyeBasla();
+    }
+    tazele(tur);
+  }
+
+  // Uyuyan bilgisayarda zamanlayıcılar durur; uyanınca iki nabız arası uzar.
+  // Görünür sekmede uyanış başka hiçbir olay üretmeyebilir.
+  function nabiz() {
+    var simdi = Date.now();
+    var uyudu = sonNabiz && simdi - sonNabiz > UYKU_ESIGI;
+    sonNabiz = simdi;
+    if (!kullanici || bulutSilindi || silmeYapiliyor) return;
+    if (takildiysaBirak()) {
+      var ms = Math.max(0, ertelemeSonu - simdi);
+      if (hazir) zamanla(ms);
+      else {
+        if (ilkZamanlayici) clearTimeout(ilkZamanlayici);
+        ilkZamanlayici = setTimeout(ilkEsitle, ms);
+      }
+      return;
+    }
+    if (uyudu) uyandir('zorla');
+  }
+
+  function agGeldi() {
+    sdkYeniden();
+    if (!kullanici || bulutSilindi || silmeYapiliyor) return;
+    if (hataSayisi) {
+      // Geri çekilme ağ yokken anlamlıydı; ağ gelince sekme gizli olsa da hemen dene.
+      ertelemeSonu = 0;
+      if (!hazir) { if (!gonderiliyor) ilkEsitle(); }
+      else if (!gonderiliyor && (birikti || tamIstendi || kirliAlanlariAl().length)) zamanla(0);
+    }
+    // Sağlıklı, yakın zamanda temas etmiş sayfada her ağ dönüşü 14 belgelik okuma yapmasın.
+    if (!hazir || hataSayisi || gonderiliyor || dinlemeSorunu || kirliAlanlariAl().length ||
+        Date.now() - sonTemas >= TAZELEME_ESIGI) uyandir('zorla');
+  }
+
+  // Açılışta ağ yokken SDK yüklenemediyse eşitleme açık olduğu hâlde düğme ⇅
+  // kalıyordu; ağ gelince ya da sayfaya dönülünce yeniden denenir.
+  function sdkYeniden() {
+    if (auth || sdkSozu || cevrimdisi() || !onceEtkinMi()) return;
+    var simdi = Date.now();
+    if (simdi - sonSdkDenemesi < OTOMATIK_ARALIK) return;
+    sonSdkDenemesi = simdi;
+    // Kendiliğinden deneme kapatılmış uyarıyı geri getirmez; yalnız ipucunu günceller.
+    sdkYukle(true).catch(function () {});
+  }
+
+  function nabziBaslat() {
+    if (nabizNo || typeof setInterval !== 'function') return;
+    sonNabiz = Date.now();
+    nabizNo = setInterval(nabiz, NABIZ);
+  }
+
+  function nabziDurdur() {
+    if (nabizNo) clearInterval(nabizNo);
+    nabizNo = null;
   }
 
   window.addEventListener('yds-depo-degisti', function (e) {
@@ -523,7 +945,14 @@
   window.addEventListener('pagehide', gonder);
   document.addEventListener('visibilitychange', function () {
     if (document.visibilityState === 'hidden') gonder();
+    else { sdkYeniden(); uyandir('olagan'); }
   });
+  window.addEventListener('focus', function () { uyandir('olagan', ODAK_ESIGI); });
+  // Geri/ileri önbellekten dönen, dondurulup çözülen ya da ağı geri gelen
+  // sayfa eşiği beklemeden tam birleşim yapar.
+  window.addEventListener('pageshow', function (e) { if (e && e.persisted) uyandir('zorla'); });
+  window.addEventListener('online', agGeldi);
+  document.addEventListener('resume', function () { uyandir('zorla'); });
 
   /* ---------- arayüz: başlıktaki düğme + alt yazı ---------- */
 
@@ -553,7 +982,7 @@
       dugme.textContent = ad.charAt(0).toLocaleUpperCase('tr');
       dugme.classList.add('acik');
       dugme.classList.remove('hata');
-      dugme.title = 'Eşitleme açık: ' + (kullanici.email || '') + '\nÇıkmak için tıkla';
+      dugme.title = 'Eşitleme açık: ' + (kullanici.email || '') + '\n' + DUGME_IPUCU;
     } else {
       dugme.textContent = '⇅';
       dugme.classList.remove('acik');
@@ -564,10 +993,30 @@
 
   function durumuYaz(metin) {
     if (!dugme || !kullanici) return;
-    dugme.title = 'Eşitleme açık: ' + (kullanici.email || '') + '\n' + metin + '\nÇıkmak için tıkla';
+    dugme.title = 'Eşitleme açık: ' + (kullanici.email || '') + '\n' + metin + '\n' + DUGME_IPUCU;
+  }
+
+  // Başarılı gönderim uyarıyı kapatır; ama kopan dinleyiciler yeniden kurulup
+  // sunucudan ilk görüntü gelmediyse "alınamıyor" uyarısı açık kalır.
+  function basariUyarisi() {
+    if (dinlemeSorunu) {
+      // Kullanıcı aynı sorunun uyarısını kapattıysa her gönderimde yeniden açılmaz.
+      if (dinlemeSorunu !== kapatilanSorun) uyariGoster(dinlemeSorunu, false);
+      return;
+    }
+    kapatilanSorun = null;
+    // Elle eşitlemenin onayı, gönderimin buluttan dönen yankısıyla kapanmasın.
+    if (uyari && uyari.className === 'esit-uyari bilgi') return;
+    uyariyiKapat();
+    // Onay bir uyarının arkasında kaldıysa uyarı kalkınca gösterilir.
+    if (elleOnayBekliyor) {
+      elleOnayBekliyor = false;
+      bilgiGoster('Eşitlendi ' + saat());
+    }
   }
 
   function uyariyiKapat() {
+    if (bilgiZamanlayici) { clearTimeout(bilgiZamanlayici); bilgiZamanlayici = null; }
     if (uyari && uyari.parentNode) uyari.parentNode.removeChild(uyari);
     uyari = null;
     if (dugme) {
@@ -576,26 +1025,61 @@
     }
   }
 
+  function cubukYaz(metin, sinif) {
+    if (!document.body) return false;
+    if (!uyari) {
+      uyari = document.createElement('div');
+      uyari.setAttribute('role', 'status');
+      uyari.innerHTML = '<span></span><button type="button" aria-label="Uyarıyı kapat">×</button>';
+      uyari.querySelector('button').addEventListener('click', function () {
+        if (dinlemeSorunu && uyari && uyari.querySelector('span').textContent === dinlemeSorunu) {
+          kapatilanSorun = dinlemeSorunu;
+        }
+        uyariyiKapat();
+      });
+      document.body.appendChild(uyari);
+    }
+    uyari.className = sinif;
+    uyari.querySelector('span').textContent = metin;
+    uyari.querySelector('button').setAttribute('aria-label',
+      sinif === 'esit-uyari bilgi' ? 'Bildirimi kapat' : 'Uyarıyı kapat');
+    return true;
+  }
+
   function uyariGoster(metin, devreDisi) {
+    if (bilgiZamanlayici) { clearTimeout(bilgiZamanlayici); bilgiZamanlayici = null; }
     if (dugme) {
       dugme.classList.add('hata');
       if (devreDisi) dugme.disabled = true;
-      dugme.title = metin;
+      // Tıklamanın çözüm olduğu durumlarda hesap ve ipucu da görünsün.
+      dugme.title = kullanici
+        ? 'Eşitleme açık: ' + (kullanici.email || '') + '\n' + metin + '\n' + DUGME_IPUCU
+        : metin;
     }
-    if (!document.body) return;
-    if (!uyari) {
-      uyari = document.createElement('div');
-      uyari.className = 'esit-uyari';
-      uyari.setAttribute('role', 'status');
-      uyari.innerHTML = '<span></span><button type="button" aria-label="Uyarıyı kapat">×</button>';
-      uyari.querySelector('button').addEventListener('click', uyariyiKapat);
-      document.body.appendChild(uyari);
-    }
-    uyari.querySelector('span').textContent = metin;
+    cubukYaz(metin, 'esit-uyari');
+  }
+
+  // Elle eşitlemenin kısa onayı; açık bir uyarıyı ezmez, kendiliğinden kapanır.
+  function bilgiGoster(metin, sure) {
+    if (uyari && uyari.className !== 'esit-uyari bilgi') return false;
+    if (!cubukYaz(metin, 'esit-uyari bilgi')) return false;
+    if (bilgiZamanlayici) { clearTimeout(bilgiZamanlayici); bilgiZamanlayici = null; }
+    if (sure === 0) return true;
+    bilgiZamanlayici = setTimeout(function () {
+      bilgiZamanlayici = null;
+      if (uyari && uyari.className === 'esit-uyari bilgi') uyariyiKapat();
+    }, sure || 3000);
+    return true;
+  }
+
+  function sdkHataMetni() {
+    return cevrimdisi()
+      ? 'Bulut eşitleme çevrimdışı. İlerlemen bu cihazda korunuyor.'
+      : 'Bulut eşitleme kodu yüklenemedi. İlerlemen bu cihazda korunuyor.';
   }
 
   function cevirmdisiUyarisi() {
-    uyariGoster('Bulut eşitleme çevrimdışı. İlerlemen bu cihazda korunuyor.', false);
+    uyariGoster(sdkHataMetni(), false);
   }
 
   function altyaziGuncelle() {
@@ -675,6 +1159,7 @@
     if (!auth) {
       kullanici = null;
       bulutSilindi = false;
+      uyariyiKapat();
       dugmeGuncelle();
       altyaziGuncelle();
       durumBildir('kapali');
@@ -707,21 +1192,45 @@
       'Bulut eşitlemeyi güvenle yeniden açmak için atomik nesil protokolü gerekli.'));
   }
 
+  // Girişliyken düğme bağlantıyı kesmez, hemen tam birleşim yapar. Otomatik
+  // eşitleme takılırsa çıkış/giriş dolambacına gerek kalmaz; bağlantıyı kesmek
+  // Ayarlar sayfasında.
+  function simdiEsitle() {
+    return new Promise(function (coz) {
+      tamBekleyenler.push(coz);
+      uyandir('elle');
+      // Hiçbir tam birleşim başlamadıysa ya da istenmediyse (gizli sayfa, oturum yok) bekletme.
+      if (tamBekleyenler.length && (!gonderiliyor || (!tamIslemde && !tamIstendi))) tamBitti(false);
+    });
+  }
+
+  function elleEsitle() {
+    if (!dugme || dugme.classList.contains('esitleniyor')) return;
+    dugme.classList.add('esitleniyor');
+    dugme.setAttribute('aria-busy', 'true');
+    bilgiGoster('Eşitleniyor…', 0);
+    simdiEsitle().then(function (basarili) {
+      if (!dugme) return;
+      dugme.classList.remove('esitleniyor');
+      dugme.removeAttribute('aria-busy');
+      if (basarili) elleOnayBekliyor = !bilgiGoster('Eşitlendi ' + saat());
+      else if (uyari && uyari.className === 'esit-uyari bilgi') uyariyiKapat();
+    });
+  }
+
   function tiklandi() {
+    if (kullanici && !bulutSilindi) { elleEsitle(); return; }
     if (dugme) dugme.disabled = true;
     var islem;
     if (kullanici && bulutSilindi) {
       islem = window.confirm('Bulut eşitleme yeniden açılsın mı?\n\nBu cihazdaki ilerleme yeniden buluta kopyalanacaktır.')
         ? yenidenEtkinlestir() : Promise.resolve();
-    } else if (kullanici) {
-      var soru = 'Eşitleme kapatılsın mı?\n\nİlerlemen bu tarayıcıda aynen kalır; ' +
-        'yalnızca bulutla bağlantı kesilir.';
-      islem = window.confirm(soru) ? cikisYap() : Promise.resolve();
     } else {
       islem = girisYap();
     }
     Promise.resolve(islem).catch(function (e) {
-      uyariGoster('Bulut eşitleme açılamadı (' + hataKodu(e) + '). İlerlemen bu cihazda korunuyor.', false);
+      uyariGoster(kuyrukBozukMu(e) ? KUYRUK_METNI
+        : 'Bulut eşitleme açılamadı (' + hataKodu(e) + '). İlerlemen bu cihazda korunuyor.', false);
       durumBildir('hata', hataKodu(e));
     }).then(function () {
       if (dugme) dugme.disabled = false;
@@ -757,9 +1266,9 @@
     });
   }
 
-  function sdkYukle() {
+  function sdkYukle(sessiz) {
     if (sdkSozu) return sdkSozu;
-    if (dugme) {
+    if (dugme && !sessiz) {
       dugme.disabled = true;
       dugme.title = 'Bulut eşitlemeye bağlanıyor…';
     }
@@ -799,7 +1308,10 @@
           altyaziGuncelle();
           durumBildir('baglaniyor');
           ilkEsitle();
+          nabziBaslat();
         } else {
+          nabziDurdur();
+          uyariyiKapat();
           dugmeGuncelle();
           altyaziGuncelle();
           durumBildir(bulutSilindi ? 'silindi' : 'kapali');
@@ -811,7 +1323,8 @@
     }).catch(function (e) {
       sdkSozu = null;
       if (dugme) dugme.disabled = false;
-      cevirmdisiUyarisi();
+      if (!sessiz) cevirmdisiUyarisi();
+      else if (dugme) dugme.title = sdkHataMetni();
       durumBildir('hata', hataKodu(e));
       throw e;
     });
