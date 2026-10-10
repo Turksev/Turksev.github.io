@@ -71,7 +71,7 @@ async function main() {
     for (const theme of ['light','dark']) for (const width of [375,1280]) {
       await page.emulateMedia({colorScheme:theme});
       await page.setViewportSize({width,height:812});
-      for (const route of ['index.html','ana-sayfa.html','kelimeler.html','obekler.html','aileler.html','cumleler.html','baglaclar.html','gramer.html','konular.html','deneme.html','ayarlar.html','istatistik.html','konu/T01.html','konu/E68.html']) {
+      for (const route of ['index.html','ana-sayfa.html','oyunlar.html','kelimeler.html','obekler.html','aileler.html','cumleler.html','baglaclar.html','gramer.html','konular.html','deneme.html','ayarlar.html','istatistik.html','konu/T01.html','konu/E68.html']) {
         await page.goto(base+'/'+route);
         // Giriş animasyonu (opacity) bitmeden ölçülen metin düşük kontrastlı görünür; sonsuz döngüler dekoratiftir.
         await page.waitForFunction(()=>document.getAnimations().every(a=>{const t=a.effect.getTiming();return a.playState!=='running'||t.iterations===Infinity||t.duration>=5000;}));
@@ -251,9 +251,17 @@ async function main() {
     await acilis.waitForFunction(()=>document.querySelectorAll('.kcard').length===7);
     await sayacBekle();
     assert.equal(await acilis.locator('a.brand').getAttribute('href'),'index.html','Brand opens the landing page');
-    assert.deepEqual(await acilis.locator('.site-nav > a').evaluateAll(as=>as.slice(0,2).map(a=>[a.textContent.trim(),a.getAttribute('href')])),
-      [['Ana sayfa','ana-sayfa.html'],['Durumum','durum.html']],'"Ana sayfa" tab sits left of "Durumum"');
+    assert.deepEqual(await acilis.locator('.site-nav > a').evaluateAll(as=>as.slice(0,3).map(a=>[a.textContent.trim(),a.getAttribute('href')])),
+      [['Oyunlar','oyunlar.html'],['Ana sayfa','ana-sayfa.html'],['Durumum','durum.html']],'"Oyunlar" is the first tab, then "Ana sayfa" sits left of "Durumum"');
     assert.equal(await acilis.locator('.site-nav a[aria-current="page"]').count(),0,'No tab is current on the landing page');
+    // Konu sayfalarında menü düğmesi yoktur (main.js yüklenmez): dört bağlantı, menü düğmesi kırılımının
+    // (1059 px) altında da başlıkla aynı satırda kalmalı. Dört bağlantı ~500 px'e sığar; yazı tipinden bağımsızdır.
+    const konuBasligi=await context.newPage();
+    await konuBasligi.setViewportSize({width:1024,height:768});
+    await konuBasligi.goto(base+'/konu/T01.html');
+    const konuBaslikBoyu=(await konuBasligi.locator('.site-header').boundingBox()).height;
+    assert.ok(konuBaslikBoyu<80,'Topic page header stays on one row at 1024 px: '+konuBaslikBoyu);
+    await konuBasligi.close();
     assert.match(await acilis.locator('#acilisDeste').innerText(),/\(\d+ kart\)$/,'Empty state still offers today\'s deck');
     assert.equal(await acilis.locator('#acilisStatik').isHidden(),true,'Static fallback list hides once cards render');
     assert.deepEqual(await acilis.locator('.kcard.secili').evaluateAll(els=>els.map(e=>e.dataset.k)),['2'],'Default selection marks Çekirdek');

@@ -399,7 +399,32 @@
 
   /* ---------- kart ---------- */
 
+  /* Deste açıkken başka sayfada (Oyunlar) ya da başka sekmede yanıtlanan kart desteden
+     düşer: tekrar günü gelmemiş kelime burada yeniden sorulup aynı gün ikinci kez
+     yükselmesin. Bu sayfanın kendi cevabı kartı zaten desteden çıkarır. Deste boşaldıysa
+     true döner. */
+  function desteyiAyikla() {
+    if (!desteModu) return false;
+    // Bellekteki kopya bayat olabilir (geri/ileri önbelleğinden dönüşte depolama olayı
+    // gelmeyebilir): karar depodaki güncel kayıtlara göre verilir.
+    Il.tazele();
+    var kalan = [], yeniIndex = 0;
+    suzulmus.forEach(function (d, i) {
+      // Ekrandaki kart düşerse yerine ondan sonraki kalan kart gelir.
+      if (i === kartIndex) yeniIndex = kalan.length;
+      if (Il.yeniMi(d.e, ILERLEME_TURU) || Il.vadesiGeldiMi(d.e, ILERLEME_TURU)) kalan.push(d);
+    });
+    if (kalan.length === suzulmus.length) return false;
+    suzulmus = kalan;
+    kartIndex = yeniIndex < kalan.length ? yeniIndex : 0;
+    return !kalan.length;
+  }
+
   function kartCiz() {
+    var onceki = suzulmus.length;
+    if (desteyiAyikla()) { desteBitti(); return; }
+    // Kart düştüyse deste özeti ve sayaç da yeni sayıyı göstersin.
+    if (suzulmus.length !== onceki) { guncelleSayac(); desteyiCiz(); }
     var d = suzulmus[kartIndex];
     if (!d) return;
     var tam = Veri.kayit(d.e) || { a: [{ tr: d.t, ex: '', exTr: '' }] };
@@ -482,6 +507,16 @@
   function kartCevap(ne) {
     var d = suzulmus[kartIndex];
     if (!d) return;
+
+    // Deste açıkken kart, çizildikten sonra başka sayfada ya da sekmede yanıtlanmış olabilir
+    // (olay bu sayfaya ulaşmadıysa ekranda kalır): ikinci kez yazılmaz, sıradaki kart gelir.
+    if (desteModu) {
+      Il.tazele();
+      if (!Il.yeniMi(d.e, ILERLEME_TURU) && !Il.vadesiGeldiMi(d.e, ILERLEME_TURU)) {
+        kartCiz();
+        return;
+      }
+    }
 
     var sonuc;
     if (ne === 'zaten') sonuc = Il.zatenBiliyorum(d.e, ILERLEME_TURU);
@@ -646,6 +681,21 @@
   $('gunlukHedef').addEventListener('change', function () {
     Il.gunlukHedefAyarla(this.value);
     desteyiCiz();
+  });
+
+  /* Deste açıkken ilerleme başka yerde değişti (başka sekme, bulut ya da Oyunlar sayfasından
+     geri dönüş): yanıtlanmış kartlar düşsün, sayaç güncellensin. Deste kapalıyken liste
+     kullanıcının süzgecine göre durur; ona dokunulmaz. */
+  function desteyiTazele() {
+    if (desteModu && kartModu) kartCiz();
+  }
+  window.addEventListener('yds-depo-degisti', function (e) {
+    var d = e && e.detail;
+    if (!d || (d.kaynak !== 'bulut' && d.kaynak !== 'sekme')) return;
+    if (!d.anahtarlar || d.anahtarlar.indexOf('yds-leitner') !== -1) desteyiTazele();
+  });
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted) desteyiTazele();
   });
 
   /* Kutuya tıkla: yalnız o kutudaki kelimeler. Aynı kutuya yeniden basmak süzgeci kaldırır. */

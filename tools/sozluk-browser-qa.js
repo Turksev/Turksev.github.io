@@ -310,6 +310,13 @@ async function main() {
     assert.ok(headerOpen <= Math.max(headerClosed, 80), 'Header stays compact with the side panel: ' + headerClosed + ' -> ' + headerOpen);
     assert.equal(await narrow.locator('.menu-toggle').isVisible(), true, 'Menu button replaces the wrapped navigation');
     await axeAndLayout(narrow, 'Dictionary narrow desktop');
+    // 1024 px'te menü düğmesi panelsiz de görünür (kırılım 1059 px); panelin kendi
+    // kırılımını (html.sozluk-yan, 1413 px) ancak sınırın iki yanı sınar. Düğmenin
+    // görünürlüğü yalnız medya sorgusuna bağlıdır, yazı tipinden etkilenmez.
+    await narrow.setViewportSize({width: 1413, height: 700});
+    assert.equal(await narrow.locator('.menu-toggle').isVisible(), true, 'Side panel keeps the menu button up to 1413 px');
+    await narrow.setViewportSize({width: 1414, height: 700});
+    assert.equal(await narrow.locator('.menu-toggle').isVisible(), false, 'One-row navigation returns at 1414 px with the side panel');
 
     /* ---------- Telefon: alttan açılan panel ---------- */
     const phone = await fresh({width: 375, height: 740});

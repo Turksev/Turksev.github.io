@@ -86,6 +86,9 @@ jobs:
       - name: Dictionary panel, card safety and layout regressions
         run: pnpm test:sozluk
 
+      - name: Typing game, progress writes and layout regressions
+        run: pnpm test:oyunlar
+
       - name: Content, learning and sync tests
         shell: bash
         run: |

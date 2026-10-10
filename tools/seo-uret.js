@@ -247,6 +247,7 @@ function updateTopicIndex(topics) {
 const STATIC_URLS = [
   ["/", "1.0"],
   ["/ana-sayfa.html", "0.9"],
+  ["/oyunlar.html", "0.9"],
   ["/konular.html", "0.9"],
   ["/kelimeler.html", "0.9"],
   ["/aileler.html", "0.9"],

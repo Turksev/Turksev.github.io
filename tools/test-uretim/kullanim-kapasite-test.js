@@ -117,6 +117,6 @@ const deferredStore=new Storage(),frames=[],deferred=browser({storage:deferredSt
 assert.equal(deferredStore.enumerations,0,'Head startup must not scan localStorage');
 frames.shift()();assert.equal(deferredStore.enumerations,0,'First frame only schedules persistence');
 frames.shift()();assert.equal(deferredStore.enumerations,1);
-for(const id of ['deste-baslat','kart-cevap','quiz-baslat','quiz-bitir','deneme-bitir','ipucu','gunun-testi-baslat','gunun-testi-bitir'])deferred.K.olay(id);
+for(const id of ['deste-baslat','kart-cevap','quiz-baslat','quiz-bitir','deneme-bitir','ipucu','gunun-testi-baslat','gunun-testi-bitir','sozluk-ac','oyun-cevap','oyun-harf'])deferred.K.olay(id);
 const scans=deferredStore.enumerations;deferred.checkpoint();assert.equal(deferredStore.enumerations-scans,1,'All feature markers reuse the single inventory');
 console.log('Capacity and collector regressions: recovery, bounded failure, hidden reload, concurrent reset, oversized storage, startup and checkpoint scans passed.');

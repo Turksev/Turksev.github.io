@@ -8,7 +8,7 @@ Yayında: <https://turksev.github.io>
 ## Bu tarayıcıdaki kullanım istatistiği
 
 İstatistik sayfasında ortak 7/30/90 gün seçicisiyle sayfa ziyaretleri, tahmini aktif
-kullanım süresi ve dokuz temel eylemin sayısı/kullanıldığı günler gösterilir. 129 konu
+kullanım süresi ve on bir temel eylemin sayısı/kullanıldığı günler gösterilir. 129 konu
 ünitesi hafif, bağımsız izleyiciyle tek "Konu üniteleri" grubunda ölçülür. Görünür
 sayfada son etkileşimin ardından en çok 90 saniye sayılır; bu bir öğrenme başarısı
 veya saatlik hız ölçüsü değildir. Aynı anda kullanılan birden fazla pencerenin
@@ -17,6 +17,10 @@ süreleri toplanır; benzersiz çalışma süresi iddiası yoktur.
 başarılı yanıt değerlendirmelerini sayar; liste yıldızları, aile durum işaretleri
 ve toplu işlemler bu eylemin kapsamında değildir. Arka planda tamamlanan deneme
 gibi temel eylemler de sayılır; görünürlük koşulu yalnız süre için geçerlidir.
+Oyunlar sayfasının iki ayrı eylemi vardır ve kart eylemlerine karışmaz: "Yazma
+oyununda kelime yanıtlama" ilerlemeye yazılan her kelime sonucunu (bildin, ipuçlu,
+bilemedin) bir kez sayar; "Yazma oyununda harf açma" bir kelimede "Bir harf aç"
+düğmesinin yalnız ilk kullanımını sayar.
 
 Bu ilk sürüm yalnız yereldir: `yds-kullanim-v1:` önekli kayıtlar eşitleme beyaz
 listesine, Firestore'a ve ilerleme yedeğine girmez. Gün/kurulum/belge oturumu
@@ -93,7 +97,7 @@ Eşleştirme kuralı arama sayfasıyla ortaktır (`assets/js/arama-ortak.js`); p
 - **Yerleşim.** 900 px ve üstünde, ayrıca yan çevrilmiş kısa telefon ekranında panel
   sağda sabit bir sütundur (ekranın yaklaşık dörtte biri, en az 320 px); sayfa içeriği
   panel kadar daralır, kart altında kalmaz. Daralan sayfada üst menü taşmasın diye
-  panel açıkken 1360 px altında dar ekran menüsü kullanılır. Daha dar ekranda panel
+  panel açıkken 1414 px altında dar ekran menüsü kullanılır. Daha dar ekranda panel
   alttan açılır; arama kutusu odaktayken ekran klavyesine göre yükselir (parmakla
   yakınlaştırma klavye sayılmaz) ve "Büyüt" ile artırılabilir. Sonuçlar panelin içinde kayar;
   600 px'ten kısa ekranda (küçük telefon, büyük yazı, yatay telefon) panelin tamamı tek
@@ -137,6 +141,7 @@ Tarayıcı denetimi: `pnpm test:sozluk`.
 | Dosya | İçerik |
 | --- | --- |
 | `index.html` | Açılış sayfası: hareketli görsel karşılama, **yedi kelime katmanında ne var, ne kaldı** (halka ve çubuklarla öğrenilen/çalışılan/yeni, bugün vadesi gelen tekrar, sıradaki kelimeler), bugünün destesi ve hızlı bağlantılar. Katman kartı Kelimeler sayfasını `?katman=N` ile o katman seçili açar. Marka bağlantısı buraya gelir |
+| `oyunlar.html` | **Yazma oyunu** (üst menüdeki ilk sekme, **Oyunlar**): kelimenin Türkçe anlamları gösterilir, İngilizcesi harf harf yazılır. Açık gelen harf oranı kelimenin Leitner kutusu yükseldikçe azalır (%50'den harfsize); Kelimeler sayfasında seçili katmanlardan sorar ve aynı ilerlemeye yazar |
 | `ana-sayfa.html` | Ana sayfa (üst menüdeki **Ana sayfa** sekmesi): **YDS bölüm dağılımı tablosu** (80 sorunun hangi aralıkta hangi bölüm olduğu) ve ilerleme paneli — tekrar durumu, yanlış defteri, deneme geçmişi, kategori karnesi |
 | `durum.html` | Çalışılmış her şey tek listede (kelime, öbek, aile üyesi): üstte **sistemdeki toplam kayıt**, kutu sekmelerinde sayı ve bu toplama oranı ("hepsi" dahil), arama/süzme/sıralama |
 | `istatistik.html` | **Çalışma hızın ve ritmin**: 7/30/90 günlük dönem kıyası, günlük grafik ve veri tablosu, 26 haftalık takvim, haftalık tempo, kutu birikimi ve varsayımsal ilk tur planı. Ayıklama hız hesabına katılmaz |
@@ -212,11 +217,12 @@ olasılıkla zaten biliyorsundur, atlanabilir. Gerçek YDS kelimeleri 2. katmand
 ## Dosya düzeni
 
 ```
-index.html  ana-sayfa.html  kelimeler.html  obekler.html  quiz.html  deneme.html
-gramer.html  konular.html  baglaclar.html  ara.html
+index.html  ana-sayfa.html  oyunlar.html  kelimeler.html  obekler.html  quiz.html
+deneme.html  gramer.html  konular.html  baglaclar.html  ara.html
 assets/
   css/style.css       tüm sayfaların ortak stili (açık/koyu tema)
   css/istatistik.css  istatistik panelinin mobil, büyük yazı ve açık/koyu tema stilleri
+  css/oyunlar.css     yazma oyununun harf kutuları ve kart stili
   js/main.js          tema, gezinme, localStorage, iki aşamalı onay, service worker kaydı
   js/main.js içinde ayrıca alt bilgideki depo kullanım çubuğu (data/depo.js'i okur)
   js/cekim.js         çekim motoru (test şıkları için)
@@ -228,6 +234,8 @@ assets/
   js/esitleme-v2.js   Google girişi, işlemli Firestore eşitlemesi ve canlı dinleyici
   js/veri.js          kelime katmanlarını ve öbekleri istendiğinde yükler
   js/kelimeler.js     kelime sayfası
+  js/oyun-hesap.js    yazma oyununun saf kuralları: seviye, açık harf seçimi, sıra, tur durumu
+  js/oyunlar.js       oyunlar sayfası: katman seçimi, harf kutuları, sonucu ilerlemeye yazma
   js/istatistik.js    salt okunur istatistik görünümü, son veriye açılan SVG grafikler
   js/istatistik-hesap.js yerel takvim dönüşümü, hız/seri/dönem hesabı; depoya yazmaz
   js/obekler.js       öbek sayfası
@@ -427,6 +435,111 @@ yazdırılır, `dogrula.py` her kaydı denetler (tek boşluk, 15–36 kelime, ç
 tür-biçim tutarlılığı, kökün cümlede tekrar etmemesi, kart örneğine benzememe) ve geçenleri
 `data/test-k{n}.js` olarak yazar. Çekim motorunun Python karşılığı (`cekim.py`) ile JS
 sürümünün paritesi `parite.html` üzerinden sınanır; uçtan uca test `harness.html`.
+
+## Oyunlar (yazma oyunu)
+
+`oyunlar.html` kelimenin Türkçe anlamlarını tür kısaltması ve yıldızlarıyla gösterir
+(`i. bitki hastalığı, afet ★★★☆`); İngilizcesi altındaki harf kutularına yazılır. Harflerin
+bir kısmı açık gelir, kalanını sen yazarsın. Oyunun ayrı bir puanı ya da kaydı yoktur:
+**seviye, kelimenin Leitner kutusudur** ve sonuç Kelimeler sayfasındaki kartla aynı
+ilerlemeye (`yds-leitner`, tür `kelime`) yazılır. Kelimeler, Durumum ve İstatistik aynı kaydı
+görür; eşitleme açıksa öbür cihazlara da gider.
+
+| Kutu | Seviye | Açık gelen harf |
+| --- | --- | --- |
+| hiç çalışılmamış | 1 | %50 |
+| 1 | 2 | %40 |
+| 2 | 3 | %30 |
+| 3 | 4 | %20 |
+| 4 | 5 | %10 |
+| 5 (öğrenildi) | 6 | harf yok |
+
+Açık harf sayısı, harf sayısının bu yüzdesidir (buçuk yukarı yuvarlanır) ve en az bir harf
+hep sana kalır: altı harfli kelimede sırasıyla 3, 2, 2, 1, 1, 0. Tire ve boşluk her zaman
+görünür; yazılmaz, sayılmaz. Hangi harflerin açılacağı kelime, kutu ve gün numarasından
+türetilir: aynı gün sayfayı yenilemek başka harfleri açmaz. Kısa kelimede yüzde yarım harfe
+ulaşmıyorsa harf açılmaz (dört harfli kelime 5. seviyede harfsiz gelir); sayfa bunu "kısa
+kelime: harf yok" diye yazar.
+
+**Üç sonuç, üç deneme hakkı.**
+
+- **Bildin** — ilk denemede ve harf açtırmadan doğru yazarsan kelime bir üst kutuya çıkar
+  (karttaki "Bildim" ile aynı).
+- **İpuçlu** — "Bir harf aç" kullandıysan ya da ikinci/üçüncü denemede bildiysen kutu
+  değişmez (karttaki ipuçlu yanıtla aynı; hiç çalışılmamış kelime 1. kutuya girer).
+- **Bilemedin** — üçüncü deneme de yanlışsa ya da "Bilemedim, göster" dersen kelime bir
+  kutu düşer (1. kutunun altına inmez) ve yarın tekrar gelir.
+
+Yanlış denemede doğru yazdığın harfler yerinde kalır, yalnız kalan boşlukları yeniden
+yazarsın. Boşluklar dolmadan "Kontrol et" deneme harcamaz; "Bir harf aç" da harcamaz ama
+sonucu ipuçluya çevirir ve son boşlukta kullanılamaz. Aynı kısa anlamı ve türü taşıyan başka
+bir kelime yazarsan (*almost* yerine *nearly*) deneme harcanmaz, başka kelime istenir.
+
+**Öteki yazım doğru sayılır.** Kelimenin dizinde bulunan öteki yazımını yazarsan cevap
+kabul edilir ve kartın kendi yazımı gösterilir: `-ise/-ize` (*analyse* / *analyze*,
+*recognise* / *recognize*), `-re/-er` (*centre* / *center*, *litre* / *liter*) ve elle sayılan
+çiftler (*grey* / *gray*, *defence* / *defense*; liste `oyun-hesap.js` içinde
+`YAZIM_CIFTLERI`). Kural iki kısa anlamın aynı yazılmasına bağlı değildir; dizinde olmayan
+yazım (*surprize*) kabul edilmez.
+
+**Hangi kelimeler.** Kelimeler sayfasında seçili katmanlar (`yds-katmanlar`); seçim oyun
+sayfasından da değiştirilebilir ve iki sayfada ortaktır. Yalnız harf, tire ve boşluktan
+oluşan başlıklar sorulur: eğik çizgili, `+ V3`'lü, kesme işaretli kalıplar ve modal yapılar
+oyuna girmez. Türkçesi aynı yazılan kelimeler de (*protein*, *robot*, *internet*) girmez:
+anlam maskelenince ipucu kalmaz, kart bilgiyle çözülemezdi (9.379 kaydın 9.286'sı oynanır;
+katman kartındaki "oyunda N" sayısı bunu gösterir). Üç tur vardır; seçim saklanmaz, sayfa
+her açılışta "Sıradakiler" ile başlar:
+
+- **Sıradakiler** — önce vadesi gelmiş tekrarlar (1–4. kutu, en çok gecikmiş olan önce),
+  sonra hiç çalışılmamış kelimeler dizin sırasıyla.
+- **Yalnız yeni kelimeler** — hiç çalışılmamışlar, dizin sırasıyla.
+- **Öğrenilenler · harfsiz** — 5. kutudaki kelimeler, en uzun süredir çalışılmayan önce.
+  5. kutu desteye bir daha girmediği için harfsiz seviyenin kendi turu vardır; burada
+  bilemediğin kelime 4. kutuya düşer.
+
+Vadesi gelmemiş 1–4. kutu kelimeleri sorulmaz, yoksa erken terfi ederdi. Yanıtladığın kelime
+o gün hiçbir turda yeniden gelmez. Sıra her kelimede depodaki güncel kayıtlardan yeniden
+kurulur: başka sekmede ya da cihazda az önce yanıtlanan kelime burada sorulmaz. Aynı kural
+Kelimeler sayfasında da geçerlidir: açık duran deste, oyunda ya da başka sekmede yanıtlanan
+kartı desteden düşürür.
+
+**Eşitleme açıksa** kelime hemen gösterilir ve yazılabilir, ama açılıştaki bulut birleşimi
+bitene kadar cevap işlenmez: "Kontrol et" ve "Bilemedim, göster" o sırada "Eşitleniyor;
+bitince …" yazar ve birleşim bitince (bağlantı yavaşsa sayfa açılışından en çok 8 saniye
+sonra; bağlantı yoksa hemen) kendiliğinden sürer. Böylece başka cihazda ilerlemiş bir kelime burada eski kutusuyla
+yanıtlanıp buluttaki kaydın üzerine yazılmaz. Okuyup yazmak birleşimden uzun sürdüğü için
+bu bekleme çoğu zaman hiç görülmez.
+
+**Günlük yeni kelime sayacı ortaktır.** Hiç çalışılmamış bir kelimeyi oyunda yanıtlamak,
+sonucu ne olursa olsun, Kelimeler destesinin günlük yeni kelime sayacını (`yds-yeni-sayac`)
+bir artırır; o günkü destede açılacak yeni kart payı o kadar azalır. Sayfa sayacı ve günlük
+hedefi gösterir.
+
+**Anlam cevabı ele veriyorsa** o yer `•••` ile maskelenir; kelime bitince anlam maskesiz
+gösterilir. Gizlenenler:
+
+- başlığın kendisi (`problem → i. sorun, •••`; `absorb → f. emmek, soğurmak, •••e etmek`),
+- çok parçalı başlığın dört ve daha çok harfli parçası (`risk-free → s. •••siz, tehlikesiz`),
+- parantez içindeki kök ya da çekim (`tie → (be ••• to)`, `hostility → (çoğul: •••)`),
+- dil bilgisi notunun öznesi (`means → (••• fiilinin üçüncü tekil biçimi)`),
+- başlığın öteki yazımı (`organise → ••• etmek`).
+
+Türkçe karşılıklar (*stres*, *proje*, *sistem*) ipucunun kendisidir, açık kalır. Sözlük
+paneli bu sayfada yüklenmez.
+
+**Yerleşim ve erişilebilirlik.** Katman seçici oyunun altındadır ki kelime ve kutuları ilk
+ekranda görünsün; sıra satırındaki "Katmanları değiştir" bağlantısı oraya iner. Harfler,
+kutu satırını örten tek bir görünmez girdiye yazılır; odak hiçbir öğede değilken yazılan harf
+de oraya gider (sayfa açılınca kutulara tıklamadan yazmaya başlanır, biten kelimede Enter
+sonrakine geçer). Girdinin açıklaması maskeli anlamı ve
+harf düzenini kapsar; yeni kelimeye geçildiğinde aynı bilgi görünmeyen bir duyuru
+bölgesinden okunur (cevap hiçbir zaman bu metinlerde geçmez).
+
+Bir katman dosyası yüklenemezse (çevrimdışı) oyun dizindeki kısa anlamla sürer ve "Yeniden
+dene" düğmesi çıkar. Kelime o sırada başka bir sekmede ya da cihazda yanıtlandıysa sonuç
+yazılmaz. Kurallar `assets/js/oyun-hesap.js` içindedir (saf modül: sayfaya, depoya, saate ve
+rastgele sayıya dokunmaz); birim testi `tools/test-uretim/oyun-hesap-test.js`, tarayıcı
+denetimi `pnpm test:oyunlar` (`tools/oyunlar-browser-qa.js`).
 
 ## Depo kullanımı
 
@@ -746,16 +859,45 @@ geldiğidir: `cümle`, `isim`, `zarf`, `eş`, `ikili`. `dz` ise `çekirdek` ya d
 kopyala, yeni bir `id` ver, içindekiler listesine (`nav.toc`) bir satır ekle ve
 `assets/js/ara.js` içindeki `KONULAR` dizinine kaydını gir.
 
-**Üst menü** iki açılır grup içerir: *Gramer* (Konular, Hızlı Gramer, Bağlaçlar) ve
+**Üst menü** on bir öğe taşır: ilk sekme *Oyunlar*, ardından Ana sayfa, Durumum,
+İstatistik, *Gramer* grubu, Kelimeler, Aileler, Öbekler, Cümleler, *Sorular* grubu ve Ara.
+İki açılır grup vardır: *Gramer* (Konular, Hızlı Gramer, Bağlaçlar) ve
 *Sorular* (Alıştırma, Deneme). Her ikisi de `<details class="nav-grup">` ile kurulur, bu
 yüzden JS kapalıyken de tıklanınca açılır; `assets/js/main.js` yalnızca “aynı anda tek
 panel açık kalsın” ve “dışarı tıklayınca / Esc ile kapan” davranışını ekler. Açık sayfa
-bir grubun içindeyse grup başlığı `.nav-grup.etkin` ile vurgulanır. Menü blokları her
-sayfada birebir aynıdır; birini değiştirirken hepsini değiştir.
+bir grubun içindeyse grup başlığı `.nav-grup.etkin` ile vurgulanır. Menü blokları, menüsü
+olan 17 kök sayfada birebir aynıdır (`404.html` menüsüzdür); birini değiştirirken hepsini
+değiştir. Konu sayfalarının (`konu/*.html`) dört bağlantılı kısa menüsü
+`tools/seo-uret.js` şablonundan üretilir.
 
-**Yeni sayfa** eklersen: menüye tüm sayfalarda, `sw.js` içindeki `TEMEL_DOSYALAR`
-listesine ve `sitemap.xml`'e ekle; `sw.js` içindeki `SURUM` değerini artır ki eski
-önbellek temizlensin.
+On bir öğe üst bara ancak sıkı ölçülerle (2 px aralık, `.86rem` yazı) tek satırda sığar;
+bu ölçüler her genişlikte geçerlidir. 1060 px'ten dar ekranda menü düğmesine geçilir;
+sözlük paneli yanda açıkken sayfa daraldığı için bu sınır 1414 px'tir. İki kırılma noktası
+da `assets/css/style.css` içindedir (`max-width: 1059px` ve `html.sozluk-yan` için
+`max-width: 1413px`); menüye öğe ekler ya da etiket uzatırsan ikisini birlikte yeniden ölç.
+
+**Yeni sayfa** eklersen elle yapılacaklar şunlardır; gerisini üretim zinciri tamamlar:
+
+- Sayfayı düz `assets/...` ve `data/...` yollarıyla, özniteliksiz `<head>` etiketiyle yaz.
+  Kullanım betiklerini, alt bilgi bağlantılarını, `referrer`/CSP meta etiketlerini ve
+  sürümlü (`/releases/<özet>/`) yolları elle ekleme.
+- Menü satırını menüsü olan bütün kök sayfalara ekle.
+- `assets/js/kullanim-hesap.js` içindeki sayfa kataloğuna kimliğini yaz; yoksa ziyaretler
+  "Bulunamayan sayfa" sayılır ve `tools/test-uretim/kullanim-yol-test.js` kırılır. Sayfanın
+  kendi eylemi varsa aynı dosyadaki eylem kataloğuna da ekle.
+- `sw.js` içindeki `TEMEL_DOSYALAR` listesine sayfayı ve kendi betik/stil dosyalarını ekle
+  (`'./assets/js/x.js'` biçiminde; sürümlü yola zincir çevirir). Kök sayfanın listede
+  olmasını `tools/test-uretim/sw-surum-test.js` denetler.
+- Arama motorlarına açık bir sayfaysa `tools/seo-uret.js` içindeki `STATIC_URLS` listesine
+  ekle: `sitemap.xml` bu listeden üretilir, elle düzenlenmez. Kişisel ya da araç
+  sayfasıysa bunun yerine `tools/site-sablon-uret.js` içindeki `noindex` listesine yaz.
+- Elle tutulan test listelerine ekle: `tools/browser-qa.js` (erişilebilirlik/taşma rota
+  listesi ve menü sırası), `tools/test-uretim/statik-yayin-test.js`,
+  `tools/test-uretim/esitleme-entegrasyon-test.js`, `tools/qa/qa.js`,
+  `tools/test-uretim/sayfa-denetim.html`.
+
+Sonra `pnpm generate` çalıştır. `sw.js` içindeki `SURUM` ve `ICERIK_OZETI` elle
+değiştirilmez: `tools/sw-surum.py` içerik özeti değiştiyse sürümü kendisi artırır.
 
 ## Konu anlatımı kapsamı ve düzenli iş akışı
 

@@ -92,7 +92,8 @@ hesap.yollar.filter(function (y) { return /^[^/]+\.html$/.test(y) && y !== '404.
   .forEach(function (sayfa) {
     assert.ok(listede[sayfa], 'sw.js TEMEL_DOSYALAR: ' + sayfa + ' çevrimdışı listede değil');
   });
-['assets/js/cumleler.js', 'assets/js/kelime-bilgi.js'].forEach(function (d) {
+['assets/js/cumleler.js', 'assets/js/kelime-bilgi.js',
+  'assets/js/oyun-hesap.js', 'assets/js/oyunlar.js', 'assets/css/oyunlar.css'].forEach(function (d) {
   var release = JSON.parse(fs.readFileSync(path.join(kok,'release-manifest.json'),'utf8'));
   assert.ok(listede[release.kok.slice(1)+d], 'sw.js TEMEL_DOSYALAR: ' + d + ' listede değil');
 });

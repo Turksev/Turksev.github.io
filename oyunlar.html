@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<script data-yds-release>window.YDS_SURUM="88d38d254b21";window.YDS_VARLIK_KOKU="/releases/88d38d254b21/";</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oyunlar — YDS Hazırlık</title>
+<meta name="description" content="Anlamından İngilizce kelimeyi yazarak bul: kelime tekrar kutusunda yükseldikçe daha az harf açık gelir, son seviyede hiç harf yoktur.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%233b5bdb'/><text y='68' x='50' text-anchor='middle' font-size='46' font-family='sans-serif' font-weight='bold' fill='white'>Y</text></svg>">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#3b5bdb">
+<link rel="apple-touch-icon" href="/releases/88d38d254b21/assets/img/icon-192.png">
+<link rel="canonical" href="https://turksev.github.io/oyunlar.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="YDS Hazırlık">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:title" content="Oyunlar — YDS Hazırlık">
+<meta property="og:description" content="Anlamından İngilizce kelimeyi yazarak bul: kelime tekrar kutusunda yükseldikçe daha az harf açık gelir, son seviyede hiç harf yoktur.">
+<meta property="og:url" content="https://turksev.github.io/oyunlar.html">
+<meta property="og:image" content="https://turksev.github.io/assets/img/icon-512.png">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/releases/88d38d254b21/assets/css/style.css">
+<link rel="stylesheet" href="/releases/88d38d254b21/assets/css/oyunlar.css">
+<script src="/releases/88d38d254b21/assets/js/main.js"></script>
+<script src="/releases/88d38d254b21/data/kelime-aliaslari.js"></script>
+<script src="/releases/88d38d254b21/assets/js/esitleme-veri.js"></script>
+<script src="/releases/88d38d254b21/assets/js/esitleme-depo.js"></script>
+<script src="/releases/88d38d254b21/assets/js/kullanim-hesap.js"></script>
+<script src="/releases/88d38d254b21/assets/js/kullanim.js"></script>
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="base-uri 'self'; object-src 'none'">
+</head>
+<body>
+
+<a class="skip-link" href="#icerik">İçeriğe geç</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="dot">YDS</span> Hazırlık</a>
+    <nav class="site-nav">
+      <a href="oyunlar.html">Oyunlar</a>
+      <a href="ana-sayfa.html">Ana sayfa</a>
+      <a href="durum.html">Durumum</a>
+      <a href="istatistik.html">İstatistik</a>
+      <details class="nav-grup">
+        <summary>Gramer</summary>
+        <div class="nav-alt">
+          <a href="konular.html">Konular</a>
+          <a href="gramer.html">Hızlı Gramer</a>
+          <a href="baglaclar.html">Bağlaçlar</a>
+        </div>
+      </details>
+      <a href="kelimeler.html">Kelimeler</a>
+      <a href="aileler.html">Aileler</a>
+      <a href="obekler.html">Öbekler</a>
+      <a href="cumleler.html">Cümleler</a>
+      <details class="nav-grup">
+        <summary>Sorular</summary>
+        <div class="nav-alt">
+          <a href="quiz.html">Alıştırma</a>
+          <a href="deneme.html">Deneme</a>
+        </div>
+      </details>
+      <a href="ara.html">Ara</a>
+    </nav>
+    <button class="theme-toggle" type="button" title="Temayı değiştir">☾</button>
+  </div>
+</header>
+
+<main id="icerik" tabindex="-1" class="section">
+  <div class="wrap" style="max-width:820px">
+
+    <h1>Oyunlar</h1>
+    <p class="muted" style="max-width:68ch">
+      Anlamı verilen İngilizce kelimeyi yaz.
+      <span class="oyun-giris-ek">Kelime tekrar kutusunda yükseldikçe daha az harf açık gelir;
+      son seviyede hiç harf kalmaz.</span>
+    </p>
+
+    <section class="oyun" aria-labelledby="oyunBaslik">
+      <h2 id="oyunBaslik">Kelimeyi yaz</h2>
+
+      <div class="oyun-mod" role="group" aria-label="Hangi kelimeler sorulsun?">
+        <button class="btn ghost sm" type="button" data-mod="sira" aria-pressed="true">Sıradakiler</button>
+        <button class="btn ghost sm" type="button" data-mod="yeni" aria-pressed="false">Yalnız yeni kelimeler</button>
+        <button class="btn ghost sm" type="button" data-mod="ogrenilen" aria-pressed="false">Öğrenilenler · harfsiz</button>
+      </div>
+
+      <p class="small muted oyun-bilgi">
+        <span id="oyunSira">Yükleniyor…</span>
+        <a href="#katmanKart">Katmanları değiştir</a>
+      </p>
+      <!-- Ekran okuyucu duyurusu: yeni kelimenin anlamı ve harf düzeni, mod ya da katman
+           değişince sıra bilgisi. Görünen sıra satırı her kelimede değiştiği için canlı
+           bölge değildir; yoksa soru yerine o okunurdu. -->
+      <p class="visually-hidden" id="oyunDuyuru" role="status" aria-live="polite" aria-atomic="true"></p>
+
+      <!-- katman dosyası inmediyse: oyun dizindeki kısa anlamla sürer -->
+      <div class="tip oyun-yuk" id="oyunYuk" role="status" hidden>
+        <span id="oyunYukMetin"></span>
+        <button class="btn ghost sm" type="button" id="oyunYukDene">Yeniden dene</button>
+      </div>
+
+      <div class="card oyun-kart" id="oyunKart" hidden>
+        <div class="q-head">
+          <span class="badge accent" id="oyunSeviye">Seviye 1</span>
+          <span class="small muted" id="oyunKutu">—</span>
+        </div>
+
+        <div class="oyun-anlam" id="oyunAnlam"></div>
+
+        <form class="oyun-form" id="oyunForm" novalidate>
+          <label class="oyun-etiket" for="oyunGirdi">Eksik harfleri yaz</label>
+          <div class="harf-alan">
+            <div class="harfler" id="oyunHarfler" aria-hidden="true"></div>
+            <input class="harf-girdi" type="text" id="oyunGirdi" lang="en" inputmode="text"
+                   autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false"
+                   enterkeyhint="done" maxlength="0" aria-describedby="oyunAnlam oyunTarif">
+          </div>
+          <p class="visually-hidden" id="oyunTarif"></p>
+          <p class="oyun-durum" id="oyunDurum" role="status" aria-live="polite" aria-atomic="true"></p>
+          <div class="flash-nav">
+            <button class="btn ghost sm" type="button" id="oyunHarf">💡 Bir harf aç</button>
+            <button class="btn ghost sm" type="button" id="oyunPas" style="border-color:var(--err);color:var(--err)">✗ Bilemedim, göster</button>
+            <button class="btn sm" type="submit" id="oyunGonder">Kontrol et</button>
+          </div>
+        </form>
+
+        <!-- cevap verilince: kullanım kalıpları, örnek cümle, telaffuz -->
+        <div class="oyun-sonuc" id="oyunSonuc" hidden>
+          <div id="oyunOrnek"></div>
+          <button class="btn ghost sm" type="button" id="oyunDinle">🔊 Dinle</button>
+        </div>
+      </div>
+
+      <div class="empty" id="oyunBos" tabindex="-1" hidden></div>
+
+      <div class="oyun-ozet" id="oyunOzet">
+        <p class="oyun-sayim" id="oyunSayim">Bu oturum: ✓ 0 bildin · 💡 0 ipuçlu · ✗ 0 bilemedin</p>
+        <div id="oyunBilinenKutu" hidden>
+          <h3>Bilinenler</h3>
+          <ul class="oyun-cipler" id="oyunBilinen"></ul>
+        </div>
+        <div id="oyunTekrarKutu" hidden>
+          <h3>Tekrar gelecekler</h3>
+          <ul class="oyun-cipler" id="oyunTekrar"></ul>
+        </div>
+        <p class="small muted"><a href="durum.html">Bütün kelimelerinin kutuları Durumum sayfasında.</a></p>
+      </div>
+
+      <p class="small muted" id="oyunGunluk"></p>
+    </section>
+
+    <!-- katman seçici: oyunun altında durur ki kelime ve kutuları ilk ekranda görünsün -->
+    <div class="card oyun-katman" id="katmanKart">
+      <div class="q-head" style="margin-bottom:4px">
+        <b>Hangi katmanlardan?</b>
+        <span class="small muted" id="katmanBilgi">—</span>
+      </div>
+      <p class="small muted" style="margin:0 0 12px">Seçim Kelimeler sayfasıyla ortaktır.</p>
+      <div class="katmanlar" id="katmanlar"></div>
+    </div>
+
+    <details class="card oyun-nasil">
+      <summary>Nasıl oynanır?</summary>
+      <p>
+        Türkçe anlamı oku, İngilizce kelimenin eksik harflerini sırayla yaz; <b>Enter</b> ya da
+        “Kontrol et” ile denetlenir. Tire ve boşluk hazır gelir, onları yazmazsın. Anlamın içinde
+        kelimenin kendisi, kökü ya da öteki yazımı geçiyorsa cevap verilene kadar ••• olarak gizlenir.
+      </p>
+      <p>Kelimenin seviyesi, Kelimeler sayfasındaki tekrar kutusudur:</p>
+      <ul>
+        <li><b>Seviye 1</b> — hiç çalışılmamış kelime: harflerin %50'si açık</li>
+        <li><b>Seviye 2</b> — 1. kutu: %40'ı açık</li>
+        <li><b>Seviye 3</b> — 2. kutu: %30'u açık</li>
+        <li><b>Seviye 4</b> — 3. kutu: %20'si açık</li>
+        <li><b>Seviye 5</b> — 4. kutu: %10'u açık</li>
+        <li><b>Seviye 6</b> — 5. kutu (öğrenildi): hiç harf yok; “Öğrenilenler · harfsiz” turunda sorulur</li>
+      </ul>
+      <p>Yüzde yarım harften az tutuyorsa harf açılmaz: dört harfli bir kelime 5. seviyede harfsiz gelir.</p>
+      <p>Her kelimede <b>3 deneme hakkın</b> var; yanlış denemede doğru yazdığın harfler yerinde kalır.</p>
+      <ul>
+        <li>İlk denemede bilirsen kutu yükselir.</li>
+        <li>İpucu (“Bir harf aç”) kullanır ya da ikinci-üçüncü denemede bilirsen kutu aynı kalır (yeni kelime 1. kutuya girer).</li>
+        <li>Bilemezsen kelime bir kutu düşer, yarın tekrar gelir.</li>
+      </ul>
+      <p>
+        Bir kelimenin İngiliz ve Amerikan yazımı (analyse / analyze, centre / center, grey / gray)
+        aynı sayılır. Aynı anlama gelen başka bir kelime yazarsan deneme hakkın gitmez; aranan
+        kelimeyi yeniden denersin.
+      </p>
+      <p>
+        İlerleme Kelimeler ve Durumum sayfalarıyla aynıdır: burada verdiğin cevap oradaki kutuyu
+        değiştirir, tekrar günü gelmemiş kelime burada da sorulmaz. İlk kez yanıtladığın her
+        kelime, Kelimeler destesiyle ortak günlük yeni kelime sayacına yazılır. Eğik çizgili ya da
+        “+ V3” içeren kalıplar ve modal yapılar yazmaya uygun olmadığı için, Türkçesi aynı yazılan
+        kelimeler (protein, robot) de anlamı ipucu vermediği için oyunda yer almaz.
+      </p>
+    </details>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span data-yil>2026</span> YDS Hazırlık</span>
+    <span>İlerleme tarayıcıda saklanır; eşitleme açılırsa hesabına da kopyalanır.</span>
+    <nav class="footer-links" aria-label="Site ve veri bilgileri"><a href="yontem.html">Yöntem ve kaynaklar</a><a href="ayarlar.html">Gizlilik ve veri ayarları</a><a href="https://github.com/Turksev/Turksev.github.io/issues/new">Hata bildir</a></nav>
+  </div>
+</footer>
+
+<script src="/releases/88d38d254b21/data/kelime-dizin.js"></script>
+<script src="/releases/88d38d254b21/assets/js/ilerleme.js"></script>
+<script src="/releases/88d38d254b21/assets/js/veri.js"></script>
+<script src="/releases/88d38d254b21/assets/js/oyun-hesap.js"></script>
+<script src="/releases/88d38d254b21/assets/js/oyunlar.js"></script>
+<script src="/releases/88d38d254b21/assets/js/esitleme-ayar.js"></script>
+<script src="/releases/88d38d254b21/assets/js/esitleme-v2.js"></script>
+</body>
+</html>

@@ -287,4 +287,51 @@
       .then(function () { kayitlariKur(); filtrele(); })
       .catch(function () { /* anlamlar boş kalır, liste yine çalışır */ });
   }
+
+  // Bulut ya da başka sekme kayıtları değiştirirse liste yerinde yenilenir;
+  // bulut yakalaması sayfayı yeniden yüklemediği için açık kalan sayfa bayatlamaz.
+  // Kullanıcı listede gezinirken (odak ya da fare liste veya sekmelerdeyse)
+  // satırlar altından kaymasın, odak kaybolmasın diye yenileme bekletilir.
+  // Açılmış "daha fazla" sayfalaması korunur.
+  var tazeleZamanlayici = null, tazeleBekliyor = false;
+  var etkilesimAlanlari = [elListe, $('sekmeler')];
+
+  function etkilesimde() {
+    var aktif = document.activeElement;
+    return etkilesimAlanlari.some(function (el) {
+      return !!el && ((aktif && el.contains(aktif)) || (el.matches && el.matches(':hover')));
+    });
+  }
+
+  function arkaPlanTazele() {
+    tazeleZamanlayici = null;
+    if (etkilesimde()) { tazeleBekliyor = true; return; }
+    tazeleBekliyor = false;
+    var acik = gosterilen;
+    kayitlariKur();
+    filtrele();
+    if (acik > gosterilen) { gosterilen = acik; ciz(); }
+    // Sonradan gelen öbek kaydı anlamsız kalmasın.
+    if (!window.OBEKLER && obekGerekliMi()) {
+      Veri.obekleriYukle().then(function () { tazelePlanla(0); }).catch(function () {});
+    }
+  }
+
+  function tazelePlanla(ms) {
+    if (tazeleZamanlayici) clearTimeout(tazeleZamanlayici);
+    tazeleZamanlayici = setTimeout(arkaPlanTazele, ms);
+  }
+
+  window.addEventListener('yds-depo-degisti', function (e) {
+    var d = e && e.detail;
+    if (!d || (d.kaynak !== 'bulut' && d.kaynak !== 'sekme')) return;
+    if (d.anahtarlar && d.anahtarlar.indexOf('yds-leitner') === -1 &&
+        d.anahtarlar.indexOf('yds-test-yanlis') === -1) return;
+    tazelePlanla(150);
+  });
+  etkilesimAlanlari.forEach(function (el) {
+    if (!el) return;
+    el.addEventListener('focusout', function () { if (tazeleBekliyor) tazelePlanla(0); });
+    el.addEventListener('mouseleave', function () { if (tazeleBekliyor) tazelePlanla(0); });
+  });
 })();

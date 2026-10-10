@@ -931,6 +931,9 @@
     obekTakmaGocu: obekTakmaGocu,
     kayit: kayit,
     kutu: kutu,
+    // Bellekteki kopyayı depodan yeniler: başka sekmenin ya da sayfanın yazımı bu sayfaya
+    // olay olarak ulaşmamışsa (geri/ileri önbelleğinden dönüş) okuyan önce bunu çağırır.
+    tazele: leitneriTazele,
     tumKayitlar: tumKayitlar,
     vadesiGeldiMi: vadesiGeldiMi,
     yeniMi: yeniMi,

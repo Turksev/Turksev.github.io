@@ -1,0 +1,180 @@
+/* Oyunlar sayfası (oyunlar.html): anlamdan kelimeyi yazma oyunu.
+   Renkler yalnız style.css :root token'larından gelir; koyu tema için ayrı kural
+   gerekmez. Katman seçici (.katmanlar/.katman), kart, düğme, rozet ve çip
+   biçimleri style.css'tedir. */
+
+/* ---------- bölüm ve mod seçimi ---------- */
+
+.oyun { margin-top: 22px; }
+
+/* Sıra bilgisi ve katman bağlantısı tek satırda; dar ekranda bağlantı alta iner. */
+.oyun-bilgi { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 14px; margin: 0 0 12px; }
+
+/* Katman seçici oyunun altındadır: kelime ve kutuları ilk ekranda görünsün. */
+.oyun-katman { margin: 26px 0 0; scroll-margin-top: 84px; }
+
+.oyun-mod { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
+.oyun-mod .btn[aria-pressed="true"] {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.oyun-yuk { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: 0 0 14px; }
+
+/* ---------- kart ---------- */
+
+.oyun-kart { text-align: center; padding: 26px 20px 22px; }
+.oyun-kart .q-head { text-align: left; }
+/* .badge genelde nowrap; uzun seviye metni büyük yazıda sayfayı taşırmasın */
+.oyun-kart .badge { white-space: normal; }
+
+.oyun-anlam { font-size: 1.05rem; font-weight: 600; line-height: 1.6; overflow-wrap: anywhere; }
+.oyun-tur { font-weight: 400; margin-top: 4px; }
+.oyun-etiket { display: block; margin: 18px 0 8px; color: var(--muted); font-size: .88rem; font-weight: 600; }
+
+/* ---------- harf kutuları ----------
+   Gerçek girdi görünmezdir ve kutu satırının tamamını örter (dokununca klavye
+   açılır); odak halkası sarmalayıcıda, sıradaki kutuda ise ayrı bir vurgu var.
+
+   Kutular satır içi bloktur: satıra sığmayan kelime dengeli bölünür
+   (text-wrap), tireli ya da çok sözcüklü başlık önce ayraçtan kırılır (.parca).
+   --n bir satıra sığması istenen kutu sayısıdır; betik dar ekran (--nd) ve geniş
+   ekran (--ng) için ayrı ayrı yazar. Kutu eni .harfler'in enine göre (cqw)
+   hesaplanır; cqw bilmeyen tarayıcı sabit ene düşer. */
+
+.harf-alan { position: relative; padding: 8px 6px; border-radius: 14px; }
+.harf-alan:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.harfler {
+  --bosluk: 6px;
+  --n: var(--ng, 6);
+  --en: 2.25rem;
+  container-type: inline-size;
+  line-height: 0;
+  text-wrap: balance;
+}
+@supports (width: 1cqw) {
+  .harfler { --en: clamp(1.5rem, calc((100cqw - 1px) / var(--n) - var(--bosluk)), 2.5rem); }
+}
+
+.parca {
+  display: inline-block;
+  max-width: calc(var(--n) * (var(--en) + var(--bosluk)) + 1px);
+  vertical-align: top;
+}
+
+.harf {
+  display: inline-block;
+  box-sizing: border-box;
+  width: var(--en);
+  height: 2.75rem;
+  margin: calc(var(--bosluk) / 2);
+  border: 1px solid var(--border);
+  border-bottom: 3px solid var(--muted);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--accent);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: calc(2.75rem - 4px);
+  text-align: center;
+  vertical-align: top;
+  overflow: hidden;
+}
+.harf.sabit { background: var(--surface-2); color: var(--text); border-bottom-color: var(--border); }
+.harf.bulundu { background: var(--ok-soft); border-color: var(--ok); color: var(--ok); }
+.harf.ipucu { background: var(--warn-soft); border-color: var(--warn); color: var(--warn); }
+.harf.ayrac { width: .8rem; margin-left: 0; margin-right: 0; border: 0; background: none; color: var(--muted); }
+.harf-alan:focus-within .harf.simdi { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+
+.harfler.yanlis .harf.bos { background: var(--err-soft); border-color: var(--err); color: var(--err); }
+.harfler.dogru .harf:not(.ayrac) { background: var(--ok-soft); border-color: var(--ok); color: var(--ok); }
+/* cevap gösterildi: bulunamayan harfler */
+.harfler.acildi .harf.bos { background: var(--err-soft); border-color: var(--err); color: var(--err); }
+
+/* input.harf-girdi: style.css'teki input[type="text"] (0,1,1) kuralını ezmek için etiketli seçici */
+input.harf-girdi {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: inherit;
+  opacity: 0;
+  font-size: 16px;                 /* 16px altı: iOS odaklanınca sayfayı yakınlaştırır */
+  cursor: text;
+}
+
+/* İletiye yer ayrılır: gelince düğmeler imlecin altından kaymasın (dar ekranda iki satır). */
+.oyun-durum { min-height: 1.65em; margin: 12px 0 0; font-weight: 650; overflow-wrap: anywhere; }
+.oyun-durum.ok { color: var(--ok); }
+.oyun-durum.err { color: var(--err); }
+.oyun-durum.uyari { color: var(--warn); }
+
+.oyun-kart .flash-nav { margin-top: 10px; }
+
+/* ---------- cevaptan sonra ---------- */
+
+.oyun-sonuc { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--border); }
+.oyun-cumle { max-width: 62ch; margin: 0 auto 14px; text-align: left; overflow-wrap: anywhere; }
+.oyun-cumle p { margin: 0; }
+.oyun-cumle p + p { font-size: .93rem; }
+/* Uzun kalıp, dar ekranda büyük yazıyla karttan taşmasın (style.css'teki .kalip span sarmaz). */
+.oyun-sonuc .kalip span { max-width: 100%; min-width: 0; overflow-wrap: anywhere; }
+
+/* Sıra bitince odak buraya alınır (ekran okuyucu nedenini okusun); halka gerekmez. */
+#oyunBos:focus { outline: none; }
+
+/* ---------- oturum özeti ---------- */
+
+.oyun-ozet { margin-top: 22px; }
+.oyun-ozet h3 { font-size: 1rem; margin: 16px 0 8px; }
+.oyun-sayim { margin: 0 0 4px; font-weight: 650; }
+.oyun-cipler { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 6px; padding: 0; list-style: none; }
+.oyun-cipler .cip { overflow-wrap: anywhere; }
+.oyun-cipler .cip.yanlis { background: var(--err-soft); color: var(--err); border-color: transparent; }
+.oyun-ozet > p:last-child { margin: 14px 0 0; }
+
+/* ---------- nasıl oynanır ---------- */
+
+.oyun-nasil { margin-top: 26px; }
+.oyun-nasil summary { cursor: pointer; font-weight: 650; }
+.oyun-nasil[open] summary { margin-bottom: 12px; }
+.oyun-nasil ul { margin: 0 0 1em; padding-left: 1.3em; }
+.oyun-nasil > p:last-child { margin-bottom: 0; }
+
+/* ---------- dar ekran ---------- */
+
+@media (max-width: 640px) {
+  .harfler { --n: var(--nd, 6); }
+}
+
+@media (max-width: 480px) {
+  /* Telefonda kelime ve kutuları ilk ekrana sığsın: giriş cümlesinin açıklaması
+     ("Nasıl oynanır?" bölümünde de var) gizlenir, bölüm arası daralır. */
+  .oyun-giris-ek { display: none; }
+  .oyun { margin-top: 14px; }
+  .oyun-mod { gap: 6px; }
+  .oyun-mod .btn { padding: 6px 10px; }
+  .oyun-kart { padding: 22px 12px 18px; }
+  .oyun-durum { min-height: 3.3em; }
+  .harfler { --bosluk: 4px; }
+  .harf { font-size: 1.1rem; }
+  /* Asıl düğme kendi satırında, tam genişlikte */
+  .oyun-kart .flash-nav .btn[type="submit"] { flex: 1 1 100%; }
+}
+
+/* ---------- hareket ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .harfler.yanlis { animation: harf-salla .3s ease-in-out; }
+  /* Dolgu (fill) yok: anahtar kare yalnız %50'de, bitince kutu kendi hâline döner ve ayrı katmanda kalmaz. */
+  .harfler.dogru .harf { animation: harf-ziplat .3s ease-out; animation-delay: calc(var(--i, 0) * 30ms); }
+}
+@keyframes harf-salla { 20% { transform: translateX(-5px); } 60% { transform: translateX(5px); } }
+@keyframes harf-ziplat { 50% { transform: translateY(-4px); } }
