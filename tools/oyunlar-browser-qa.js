@@ -39,6 +39,8 @@ const BOSLUK = String.fromCharCode(160);
 // Açılıştaki bulut birleşimi sürerken bekletilen cevabın iletileri; bekleme bitmeden sayfa yeniden açılırsa
 // yeni açılışta gösterilen not.
 const BEKLE_KONTROL = 'Eşitleniyor; bitince kontrol edilecek.', BEKLE_PAS = 'Eşitleniyor; bitince cevap gösterilecek.';
+// "Bir harf aç" yazılanı açılan harfin önünde kestiğinde iletinin sonuna eklenen, yalnız ekran okuyucunun okuduğu metin.
+const KESILDI = ' Bu harften sonra yazdıkların silindi; buradan devam et.';
 const YARIM_BEKLEME_NOTU = 'Eşitleme sırasında sayfa yenilendi; az önce verdiğin cevap işlenmedi.';
 // Birleşim tam bekleyen kelimenin kaydını değiştirdiyse bekleme bittiğinde gösterilen ileti (cevap işlenmez).
 const KAYIT_DEGISTI_NOTU = 'Eşitleme bu kelimenin kaydını değiştirdi; cevabın işlenmedi.';
@@ -102,8 +104,10 @@ function sayfaIci() {
         return bos || el.textContent === c;
       });
     },
-    // Boş kutulara sırayla yazılacak harfler.
+    // Gizli kutuların harfleri, sırayla (kelimenin tamamı yazılır; bu yalnız gizli harfleri sayar ve seçer).
     eksik: w => T.hucreler().map((el, i) => (el.classList.contains('bos') ? w[i].toLowerCase() : '')).join(''),
+    // Gizli kutuların harf sırası (kelimenin harfleri içinde, ayraçlar sayılmadan): yazılanın o konumu gizli harfe düşer.
+    gizliSira: () => T.hucreler().filter(el => !el.classList.contains('ayrac')).map((el, i) => (el.classList.contains('bos') ? i : -1)).filter(i => i >= 0),
     gorunum: () => {
       const g = id => document.getElementById(id), girdi = g('oyunGirdi');
       return {
@@ -278,7 +282,7 @@ function sayfaIci() {
       Il().tazele();
       return yazildi;
     },
-    // Kelimenin verilen kutuda bugün açık gelen harf konumları, boşluk sayısı ve bir üst kutuda açık harf sayısı.
+    // Kelimenin verilen kutuda bugün açık gelen harf konumları, gizli harf sayısı (bos) ve bir üst kutuda açık harf sayısı.
     duzen: (w, kutu) => {
       const n = O().harfSayisi(w), acik = O().acikKonumlar(w, kutu, Il().bugun());
       return {acik, bos: n - acik.length, sonrakiAcik: O().acikSayisi(n, kutu + 1)};
@@ -387,7 +391,7 @@ const kutuBekle = (page, w, k) => bekleyerek(page, 'kutuBekle', JSON.stringify(w
   page.waitForFunction(([w, k]) => window.YDS.Ilerleme.kutu(w, 'kelime') === k, [w, k]));
 // Animasyon (kutu zıplaması, sallanma) bitmeden ölçüm alınmaz.
 const durgun = page => page.waitForFunction(() => document.getAnimations().every(a => a.playState !== 'running' || a.effect.getComputedTiming().iterations === Infinity));
-// Düzenek: sıranın başındaki, 0. kutuda istenenden az boşluk bırakan kelimeleri yarına erteler (oturum sayımına
+// Düzenek: sıranın başındaki, 0. kutuda istenenden az gizli harf bırakan kelimeleri yarına erteler (oturum sayımına
 // ve günlük hedef dışındaki hiçbir beklentiye dokunmaz); sonra sayfayı yeniler.
 async function enAzBosluk(page, adet) {
   const ertelenen = await page.evaluate(adet => {
@@ -402,9 +406,13 @@ async function enAzBosluk(page, adet) {
   if (ertelenen.length) { await page.reload(); await hazir(page); }
 }
 const odakla = async page => { await page.locator('.harf-alan').click(); assert.equal((await T(page, 'gorunum')).odak, 'oyunGirdi', 'Kutu satırına tıklamak gerçek girdiyi odaklar'); };
+// Yazılan: kelimenin bütün harfleri, baştan sona (açık harfler dahil; tire ve boşluk yazılmaz).
+const tam = w => w.toLowerCase().replace(/[^a-z]/g, '');
+// Kelimenin tamamı, verilen harf sıralarındaki harfler yanlış yazılmış olarak.
+const bozuk = (w, siralar) => [...tam(w)].map((c, i) => (siralar.includes(i) ? yanlisHarfler(c) : c)).join('');
 async function coz(page, w) {
   await page.locator('#oyunGirdi').focus();
-  await page.keyboard.type(await T(page, 'eksik', w));
+  await page.keyboard.type(tam(w));
   await page.keyboard.press('Enter');
 }
 // Sayfanın yüklediği oyunlar.js içindeki sayısal bir sabit (ör. ESITLEME_BEKLEME_MS); bulunamazsa null.
@@ -482,14 +490,14 @@ const duyuruOku = async page => {
 // (yazmayiPlanla); aynı sırayla kurulan bu bekleme ondan sonra biter.
 const yazimDurulsun = page => page.evaluate(() => new Promise(bitti => requestAnimationFrame(() => setTimeout(bitti, 0))));
 // Girdinin açıklamasının (#oyunTarif) cevaptan önce beklenen metni; modülden değil, ekrandaki kutulardan kurulur:
-// yazılacak kutu "boş", açık ya da kilitli harf kendisi, ayraç adıyla okunur. sizinti ve duyuruSizinti cevabı
+// gizli kutu "boş", açık ya da açılmış harf kendisi, ayraç adıyla okunur. sizinti ve duyuruSizinti cevabı
 // bitişik sözcük olarak arar; harf harf ("r, e, q, …") sayılan cevabı yalnız bu karşılaştırma görür.
 // g: gorunum çıktısı; tus: yönergedeki tuşun adı.
 const beklenenAciklama = (g, tus = 'Enter') => {
   const harfler = g.hucreler.filter(h => h.s !== 'ayrac'), bos = harfler.filter(h => h.s.startsWith('bos')).length;
   return harfler.length + ' harfli İngilizce kelime: ' +
     g.hucreler.map(h => (h.s === 'ayrac' ? (h.c === '-' ? 'tire' : 'sözcük arası') : (h.s.startsWith('bos') ? 'boş' : h.c))).join(', ') + '. ' +
-    (bos === 1 ? '1 eksik harfi yaz' : bos + ' eksik harfi sırayla yaz') + ', ' + tus + ' ile kontrol et.';
+    (bos < harfler.length ? 'Açık harfler dahil kelimenin tamamını baştan sona yaz' : 'Kelimenin tamamını yaz') + ', ' + tus + ' ile kontrol et.';
 };
 // kelimeBekle, durumBekle, duyuruBekle ve kutuBekle bununla sarılır: bekleme başarısız olursa çıplak
 // "page.waitForFunction: Timeout 15000ms exceeded." yerine neyin beklendiğini ve o an ekranda ne olduğunu
@@ -627,7 +635,7 @@ async function main() {
   const senaryo = (ad, govde) => senaryolar.push({ad, govde});
 
   /* ---------- 1) Boş profil ---------- */
-  senaryo('Boş profil: varsayılan katman, ilk kelime, seviye, açık harfler, anlam, axe', async () => {
+  senaryo('Boş profil: varsayılan katman, ilk kelime, seviye, açık harfler, etiket ve yönerge (kelimenin tamamı yazılır), imleç ilk harfte (açık olsa da), anlam, axe', async () => {
     const page = await yeniSayfa();
     await ac(page, base);
     const b = await page.evaluate(() => {
@@ -655,6 +663,8 @@ async function main() {
         duyuruBolgesi: ['role', 'aria-live', 'aria-atomic', 'class'].map(a => document.getElementById('oyunDuyuru').getAttribute(a)),
         canliBolgeIcinde: !!document.getElementById('oyunSira').closest('[role="status"], [aria-live]'),
         girdiAciklamasi: document.getElementById('oyunGirdi').getAttribute('aria-describedby'),
+        // Girdinin görünen etiketi; erişilebilir adı da odur (aşağıda rolüyle aranır).
+        etiket: document.querySelector('label[for="oyunGirdi"]').textContent,
         // Katman seçici kartın altında, kendi kimliğiyle; sıra satırındaki bağlantı ona götürür.
         kartOnce: !!(kart.compareDocumentPosition(document.getElementById('katmanKart')) & Node.DOCUMENT_POSITION_FOLLOWING),
         katmanKart: [document.getElementById('katmanKart').className, !!document.querySelector('#katmanKart #katmanBilgi'), !!document.querySelector('#katmanKart #katmanlar')],
@@ -672,6 +682,15 @@ async function main() {
     assert.equal(b.canliBolgeIcinde, false, 'Sıra satırı bir canlı bölgenin içinde de değil');
     assert.deepEqual(b.duyuruBolgesi, ['status', 'polite', 'true', 'visually-hidden'], 'Duyuru bölgesi görünmez ve kibar');
     assert.equal(b.girdiAciklamasi, 'oyunAnlam oyunTarif', 'Girdinin açıklaması: anlam ve harf düzeni');
+    assert.equal(b.etiket, 'Kelimeyi baştan sona yaz', 'Etiket kelimenin tamamını ister (yalnız eksik harfleri değil)');
+    assert.equal(await page.getByRole('textbox', {name: 'Kelimeyi baştan sona yaz', exact: true}).count(), 1, 'Girdinin erişilebilir adı etiketin metnidir');
+    // "Nasıl oynanır?" metni yeni kuralı anlatır; eski kuralın cümleleri kalmamıştır.
+    const nasil = (await page.locator('.oyun-nasil').evaluate(el => el.textContent)).replace(/\s+/g, ' ');
+    for (const parca of ['İngilizce kelimeyi baştan sona yaz', 'sırası gelince onları da yazarsın', 'Gizli harflerin hepsi doğruysa bu yazım hatası deneme hakkını götürmez', 'yazdıkların o harfe kadar silinir ve oradan devam edersin',
+      'doğru yazdığın gizli harfler açılır, kelimeyi yeniden baştan yazarsın']) {
+      assert.ok(nasil.includes(parca), '"Nasıl oynanır?" yeni kuralı anlatır: ' + JSON.stringify(parca));
+    }
+    for (const eski of ['eksik harflerini sırayla yaz', 'harfler yerinde kalır']) assert.ok(!nasil.includes(eski), '"Nasıl oynanır?" eski kuralı anlatmaz: ' + JSON.stringify(eski));
     assert.equal(b.kartOnce, true, 'Kelime kartı katman seçiciden önce gelir');
     assert.deepEqual(b.katmanKart, ['card oyun-katman', true, true]);
     assert.deepEqual(b.baglanti, [['Katmanları değiştir', '#katmanKart']], 'Sıra satırındaki bağlantı katman seçiciye götürür');
@@ -686,10 +705,17 @@ async function main() {
       if (acik.includes(i)) assert.equal(h.c, b.w[i], 'Açık kutu kendi harfini gösterir');
       else { assert.ok(h.s.includes('bos'), 'Kalan kutular boş: ' + h.s); assert.equal(h.c, '', 'Gizli harf kutuda yazmaz'); }
     });
-    assert.equal(g.hucreler.filter(h => h.s.includes('simdi')).length, 1, 'Sıradaki boşluk işaretli');
-    assert.equal(g.azami, String(b.harf - b.acikSayisi), 'maxlength boşluk sayısıdır');
+    // Kelimenin tamamı yazılır: imleç kelimenin ilk harfindedir (o harf açık gelmiş olsa da), girdi bütün harfleri alır.
+    const ilkKutu = g.hucreler.findIndex(h => h.s !== 'ayrac');
+    assert.deepEqual(g.hucreler.map((h, i) => (h.s.includes('simdi') ? i : -1)).filter(i => i >= 0), [ilkKutu], 'Sıradaki kutu işaretli: kelimenin ilk harfi, başka kutu değil');
+    assert.equal(g.hucreler[ilkKutu].s, (acik.includes(ilkKutu) ? 'sabit' : 'bos') + ' simdi', 'İmlecin durduğu kutu türünü korur (açık harf açık, gizli harf gizli)');
+    assert.equal(g.azami, String(b.w.length), 'maxlength başlığın uzunluğudur: açık harfler de yazılır');
     assert.equal(g.deger, '');
     assert.equal(g.tarif, b.tarif, 'Ekran okuyucu açıklaması modülden');
+    // Modülün metni ekrandaki kutulardan kurulan beklentiyle de aynıdır: açık harf kendisi, gizli harf "boş" okunur,
+    // yönerge açık harflerin de yazılacağını söyler.
+    assert.equal(g.tarif, beklenenAciklama(g), 'Açıklama ekrandaki kutuları ve yönergeyi okur');
+    assert.ok(g.tarif.endsWith('. Açık harfler dahil kelimenin tamamını baştan sona yaz, Enter ile kontrol et.'), 'Yönerge kelimenin tamamını ister: ' + g.tarif);
     assert.deepEqual(await T(page, 'sizinti', b.w, 'main'), [], 'Kartta ve <main> özniteliklerinde cevap yok');
     const anlam = await T(page, 'anlam', b.w, true, false);
     assert.equal(anlam.gorulen, anlam.beklenen, 'Anlamlar katman kaydıyla aynı (yıldızlarıyla)');
@@ -736,12 +762,29 @@ async function main() {
     assert.ok(yildizAnlam.yildiz >= 1, 'Yıldızlı anlamın yıldızları çizilir (' + yildizli.w + '): ' + yildizAnlam.gorulen);
     assert.equal(yildizAnlam.okunanYildiz, 0, 'Yıldızlar ekran okuyucudan gizli sarmalayıcının (aria-hidden) içinde (' + yildizli.w + '): ' + yildizAnlam.gorulen);
     assert.equal(yildizAnlam.gorulen, yildizAnlam.beklenen, 'Yıldızlı kelimenin anlamı katman kaydıyla aynı (' + yildizli.w + ')');
+    // İmleç açık harfte de durur. Bugünkü ilk kelimenin ilk harfi gizli gelmiş olabilir (açık harfler günün tohumuyla
+    // seçilir); denetim, ilk harfi açık gelen ilk kelimede yapılır, önündekiler yukarıdaki gibi yarına ertelenir.
+    const ilkAcik = await page.evaluate(() => {
+      const O = window.YDS.OyunHesap, Il = window.YDS.Ilerleme, sira = window.__oyun.sira('sira', 200);
+      const n = sira.findIndex(w => O.acikKonumlar(w, Il.kutu(w, 'kelime'), Il.bugun())[0] === 0);
+      if (n < 0) return null;
+      sira.slice(0, n).forEach(w => Il.yanlis(w, 'kelime'));
+      return {w: sira[n], ertelenen: n};
+    });
+    assert.ok(ilkAcik, 'Düzenek: sıranın ilk 200 kelimesinde ilk harfi açık gelen kelime yok');
+    if (ilkAcik.ertelenen) { await page.reload(); await hazir(page); }
+    await kelimeBekle(page, ilkAcik.w);
+    const imlec = (await T(page, 'gorunum')).hucreler;
+    assert.deepEqual(imlec[0], {c: ilkAcik.w[0], s: 'sabit simdi'}, 'İlk harfi açık gelen kelimede imleç o açık harftedir, harf kutusunda durur (' + ilkAcik.w + '): ' + JSON.stringify(imlec.map(h => h.s)));
+    assert.equal(imlec.filter(h => h.s.includes('simdi')).length, 1, 'Tek kutu işaretli (' + ilkAcik.w + ')');
     return 'ilk kelime ' + b.w.length + ' harf, ' + b.acikSayisi + ' açık; yıldız denetimi ' + yildizli.w +
-      (yildizli.ertelenen ? ' (önündeki ' + yildizli.ertelenen + ' yıldızsız kelime ertelendi)' : '') + '; usage betikleri ' + (b.kullanim ? 'var' : 'yok');
+      (yildizli.ertelenen ? ' (önündeki ' + yildizli.ertelenen + ' yıldızsız kelime ertelendi)' : '') +
+      '; imleç denetimi ' + ilkAcik.w + (ilkAcik.ertelenen ? ' (önündeki ' + ilkAcik.ertelenen + ' kelime ertelendi)' : '') +
+      '; usage betikleri ' + (b.kullanim ? 'var' : 'yok');
   });
 
   /* ---------- 2) Doğru cevap ---------- */
-  senaryo('Doğru harfler + Enter: Bildiniz, 1. kutu, oturum listesi, sonraki kelime, yenileme', async () => {
+  senaryo('Kelimenin tamamı + Enter: Bildiniz, 1. kutu, oturum listesi, sonraki kelime, yenileme; yalnız gizli harfleri yazmak eksik sayılır (deneme harcamaz), harfler baştan sırayla kutulara oturur, açık harfin üzerine yazılan başka harf işaretlenir', async () => {
     const page = await yeniSayfa();
     // Sayfa saati kurulur (gerçek saatle, akar durumda): cevaptan sonraki duyuru denetimi saati ilerletir.
     await page.clock.install();
@@ -753,13 +796,81 @@ async function main() {
     const acilisDuyurusu = await T(page, 'soru', w, true);
     await duyuruBekle(page, acilisDuyurusu);
     await odakla(page);
-    const e = await T(page, 'eksik', w);
+    const e = await T(page, 'eksik', w), acilis = await T(page, 'gorunum');
+    // Harf kutuları (ayraçsız), kelimenin harf sırasıyla; ilk açık harfin sırası.
+    const kutular = acilis.hucreler.map((h, i) => i).filter(i => acilis.hucreler[i].s !== 'ayrac');
+    const acikSira = kutular.findIndex(i => acilis.hucreler[i].s.startsWith('sabit'));
+    assert.ok(e.length >= 1 && acikSira >= 0, 'Düzenek: ilk kelimede hem gizli hem açık harf var (' + w + ')');
+    // Yazılan metne göre beklenen kutular, açılıştaki görünümden (modülden değil): harfler baştan sırayla oturur,
+    // açık harf atlanmaz. Yazılmış kutu "yazildi"; açık kutu kendi harfini aldıysa harfi kalır, başka harf aldıysa
+    // yazılanı gösterir ve "farkli" olur; gizli kutu yazılanı gösterir (hiç işaretlenmez); imleç sıradaki kutudadır.
+    const beklenenKutular = yazilan => {
+      let sira = 0;
+      return acilis.hucreler.map(h => {
+        if (h.s === 'ayrac') return h;
+        const taban = h.s.replace(' simdi', ''), acik = taban !== 'bos', y = yazilan[sira], imlec = sira++ === yazilan.length;
+        if (y === undefined) return {c: acik ? h.c : '', s: taban + (imlec ? ' simdi' : '')};
+        const farkli = acik && y !== h.c.toLowerCase();
+        return {c: acik && !farkli ? h.c : y, s: taban + ' yazildi' + (farkli ? ' farkli' : '')};
+      });
+    };
+    // Yalnız gizli harfler + Enter: kelimenin tamamı değildir. Deneme harcanmaz (aşağıda kelime yine "ilk denemede"
+    // bilinir), hata işareti konmaz, yazılan girdide kalır ve kelimenin başından sırayla kutulara oturmuş görünür.
     await page.keyboard.type(e);
+    await page.keyboard.press('Enter');
+    await durumBekle(page, 'Önce kelimenin tamamını yaz; açık harfleri de yaz.');
     let g = await T(page, 'gorunum');
-    assert.equal(g.deger, e);
-    assert.equal(g.hucreler.map(h => h.c).join(''), w.toLowerCase(), 'Yazılan harfler kutularda görünür');
+    assert.deepEqual([g.deger, g.gecersiz, g.azami], [e, null, String(w.length)], 'Eksik kelime: yazılan yerinde, hata işareti yok, maxlength başlığın uzunluğu');
+    assert.deepEqual(g.hucreler, beklenenKutular(e), 'Yalnız gizli harfler yazılınca harfler kelimenin BAŞINDAN oturur; açık kutuya düşen başka harf "farkli"');
+    assert.equal(await T(page, 'kayit', w), null, 'Eksik kelimeyle Enter ilerleme yazmaz');
+    // Silmek: ilk tuşta ileti kalkar; sonunda kutular açılıştaki hâline döner (açık harfler yerinde, imleç ilk harfte).
+    await page.keyboard.press('Backspace');
+    assert.equal((await T(page, 'gorunum')).durum, '', 'Eksik iletisi ilk tuşta silinir');
+    for (let i = 1; i < e.length; i++) await page.keyboard.press('Backspace');
+    g = await T(page, 'gorunum');
+    assert.equal(g.deger, '');
+    assert.deepEqual(g.hucreler, acilis.hucreler, 'Yazılan silinince kutular açılıştaki hâline döner');
+    // İlk açık harfe kadar doğru, açık harfin yerine başka harf: kutu yazılanı gösterir ve işaretlenir (harf zaten
+    // ekrandaydı, işaret bir şey ele vermez); silinince kendi harfi geri gelir ve imleç ona döner.
+    const acikKutu = kutular[acikSira], hatali = bozuk(w, [acikSira]).slice(0, acikSira + 1);
+    await page.keyboard.type(hatali);
+    g = await T(page, 'gorunum');
+    assert.deepEqual(g.hucreler[acikKutu], {c: yanlisHarfler(tam(w)[acikSira]), s: 'sabit yazildi farkli'}, 'Açık harfin üzerine yazılan başka harf kutuda görünür ve "farkli" olur');
+    assert.deepEqual(g.hucreler, beklenenKutular(hatali), 'Öteki kutular: önündekiler yazılmış, işaretsiz; sonrakiler dokunulmamış');
+    await page.keyboard.press('Backspace');
+    g = await T(page, 'gorunum');
+    assert.deepEqual(g.hucreler[acikKutu], {c: w[acikKutu], s: 'sabit simdi'}, 'Hatalı harf silinince açık kutu kendi harfine döner');
+    // Açık harfin kendisi: kutu "yazildi" olur, harfi kalır; imleç bir sonraki harfe geçer (açık harf atlanmadı, yazıldı).
+    await page.keyboard.type(tam(w)[acikSira]);
+    g = await T(page, 'gorunum');
+    assert.deepEqual(g.hucreler[acikKutu], {c: w[acikKutu], s: 'sabit yazildi'}, 'Açık harf yazılınca kutusu "yazildi" olur ve harfini korur');
+    assert.equal(g.deger, tam(w).slice(0, acikSira + 1), 'Açık harf de girdiye yazılır');
+    assert.deepEqual(g.hucreler, beklenenKutular(g.deger), 'İmleç açık harften sonraki kutuda');
+    // Kelimenin kalanı.
+    await page.keyboard.type(tam(w).slice(acikSira + 1));
+    g = await T(page, 'gorunum');
+    assert.equal(g.deger, tam(w), 'Girdinin değeri kelimenin bütün harfleri');
+    assert.equal(g.hucreler.map(h => h.c).join('').toLowerCase(), w.toLowerCase(), 'Yazılan harfler kutularda görünür');
+    kutular.forEach(i => assert.deepEqual(g.hucreler[i], acilis.hucreler[i].s.startsWith('sabit') ? {c: w[i], s: 'sabit yazildi'} : {c: w[i].toLowerCase(), s: 'bos yazildi'},
+      'Kelime bitince her harf kutusu yazılmış: açık harf kendi harfiyle, gizli harf yazılanla; imleç ve "farkli" yok (' + i + '. kutu)'));
+    // Yazılmış kutu, açık da gelse gizli de gelse aynı görünür (açık harfin gri zemini kalkar): zemin, harf rengi ve
+    // çerçeve tema değişkenlerinden okunan yazılmış kutu tonlarıdır.
+    const yazilmis = await page.evaluate(() => {
+      const olc = el => { const s = getComputedStyle(el); return [s.backgroundColor, s.color, s.borderTopColor, s.borderBottomColor].join(' | '); };
+      const ornek = document.createElement('span');
+      ornek.style.cssText = 'border:1px solid;background:var(--surface);color:var(--accent);border-color:var(--border);border-bottom-color:var(--muted)';
+      document.body.appendChild(ornek);
+      const r = {beklenen: olc(ornek), gorulen: [...document.querySelectorAll('#oyunHarfler .harf:not(.ayrac)')].map(el => el.className + ': ' + olc(el))};
+      ornek.remove();
+      return r;
+    });
+    assert.ok(yazilmis.gorulen.some(k => k.startsWith('harf sabit yazildi: ')), 'Düzenek: yazılmış açık kutu var');
+    assert.deepEqual(yazilmis.gorulen.filter(k => !k.endsWith(': ' + yazilmis.beklenen)), [],
+      'Yazılmış her kutu (açık gelen de) yazılmış kutu tonlarında: zemin --surface, harf --accent, çerçeve --border, alt çizgi --muted (' + yazilmis.beklenen + ')');
+    assert.equal(g.tarif, acilis.tarif, 'Yazılan harfler ekran okuyucu açıklamasına girmez');
     assert.equal(await T(page, 'kayit', w), null, 'Tuşa basmak ilerleme yazmaz');
     await page.keyboard.press('Enter');
+    // "Bildiniz": ilk deneme sayıldı; yukarıdaki eksik Enter deneme harcamadı.
     await durumBekle(page, 'Bildiniz! Kelime 1. kutuya çıktı; bir dahaki sefere harflerin %40\'ı açık gelecek.');
     await kutuBekle(page, w, 1);
     g = await T(page, 'gorunum');
@@ -788,6 +899,7 @@ async function main() {
     assert.equal(g.kutu, '1. kutu');
     assert.equal(g.gonder, 'Sonraki kelime →');
     assert.deepEqual([g.harfKapali, g.pasKapali], [true, true], 'Biten kelimede ipucu ve bırak düğmeleri kapalı');
+    assert.equal(g.azami, '0', 'Biten kelimede girdi harf almaz: maxlength 0');
     assert.equal(g.sonuc, true, 'Sonuç bölümü açıldı');
     assert.ok(g.ornek >= 1, 'Örnek cümle var');
     const anlam = await T(page, 'anlam', w, false, false);
@@ -840,33 +952,58 @@ async function main() {
   });
 
   /* ---------- 3) Yanlış deneme, sonra doğru: ipucuyla ---------- */
-  senaryo('Yanlış deneme: doğru harfler kilitlenir; sonra doğru = ipucuyla (d artmaz); kutusu değişen ya da günü dönen kelimenin yarım turu atılır', async () => {
+  senaryo('Yanlış deneme: doğru yazılan gizli harfler açılır, girdi boşalır, kelime yeniden baştan yazılır (yalnız kalan harfler eksik sayılır); sonra doğru = ipucuyla (d artmaz); kutusu değişen ya da günü dönen kelimenin yarım turu atılır; yalnız açık harfteki yazım hatası deneme harcamaz (hangi harfin ne olması gerektiği söylenir, yazılan o harfin önünde kesilir, oradan devam edilince ilk denemede doğru)', async () => {
     const page = await yeniSayfa();
     await ac(page, base);
     await enAzBosluk(page, 2);
     const [w] = await T(page, 'sira');
     await kelimeBekle(page, w);
     const once = await T(page, 'bugunku');
-    const e = await T(page, 'eksik', w);
-    assert.ok(e.length >= 2, 'Düzenek: en az iki boşluk gerekli (' + w + ', ' + e.length + ' boşluk)');
+    const e = await T(page, 'eksik', w), gizli = await T(page, 'gizliSira'), acilis = await T(page, 'gorunum');
+    assert.ok(e.length >= 2, 'Düzenek: en az iki gizli harf gerekli (' + w + ', ' + e.length + ' gizli harf)');
+    // Harf kutuları (ayraçsız), kelimenin harf sırasıyla; içlerinden gizli gelenler. Boş girdide imleç ilk harf kutusundadır.
+    const kutular = acilis.hucreler.map((h, i) => i).filter(i => acilis.hucreler[i].s !== 'ayrac');
+    const gizliKutular = kutular.filter(i => acilis.hucreler[i].s.startsWith('bos'));
+    const imlec = i => (i === kutular[0] ? ' simdi' : '');
     await odakla(page);
-    // Eksik harfle Enter: ileti çıkar, deneme harcanmaz (aşağıda kalan hak yine 2), hata işareti konmaz.
-    await page.keyboard.type(e[0]);
+    // Yarım kelimeyle Enter: ileti çıkar, deneme harcanmaz (aşağıda kalan hak yine 2), hata işareti konmaz.
+    await page.keyboard.type(tam(w)[0]);
     await page.keyboard.press('Enter');
-    await durumBekle(page, 'Önce bütün boşlukları doldur.');
-    assert.equal((await T(page, 'gorunum')).gecersiz, null, 'Eksik harfle Enter hata işareti koymaz');
-    await page.keyboard.type(yanlisHarfler(e.slice(1)));
-    await page.keyboard.press('Enter');
-    await durumBekle(page, 'Olmadı. Doğru harfler yerinde kaldı; kalan deneme hakkı: 2.');
+    await durumBekle(page, 'Önce kelimenin tamamını yaz; açık harfleri de yaz.');
+    assert.equal((await T(page, 'gorunum')).gecersiz, null, 'Yarım kelimeyle Enter hata işareti koymaz');
+    // Kelimenin kalanı: açık harfler ve ilk gizli harf doğru, öteki gizli harfler yanlış.
+    await page.keyboard.type(bozuk(w, gizli.slice(1)).slice(1));
+    // Gizli kutu yazılanı gösterir ama yanlış harfte de işaretlenmez: işaret hangi harfin tutmadığını söylerdi.
     let g = await T(page, 'gorunum');
-    const bosluklar = g.hucreler.map((h, i) => i).filter(i => !g.hucreler[i].s.includes('sabit'));
-    assert.equal(g.hucreler[bosluklar[0]].s, 'bulundu', 'Doğru yazılan harf kilitlendi');
-    assert.equal(g.hucreler[bosluklar[0]].c, w[bosluklar[0]]);
-    bosluklar.slice(1).forEach(i => { assert.match(g.hucreler[i].s, /^bos/); assert.equal(g.hucreler[i].c, '', 'Yanlış harf silindi'); });
-    assert.equal(g.deger, ''); assert.equal(g.azami, String(e.length - 1));
+    gizliKutular.slice(1).forEach(i => assert.deepEqual(g.hucreler[i], {c: yanlisHarfler(w[i].toLowerCase()), s: 'bos yazildi'}, 'Gizli kutu yazılan (yanlış) harfi gösterir, "farkli" olmaz'));
+    assert.equal(g.hucreler.filter(h => h.s.includes('farkli')).length, 0, 'Hiçbir kutu "farkli" değil (açık harfler doğru yazıldı)');
+    await page.keyboard.press('Enter');
+    await durumBekle(page, 'Olmadı. Doğru harfler açıldı; baştan yaz. 2 hakkın kaldı.');
+    g = await T(page, 'gorunum');
+    // Girdi boşaldı ve imleç başa döndü: kelime yeniden baştan yazılır, maxlength yine başlığın uzunluğudur.
+    assert.equal(g.deger, '', 'Yanlış denemede girdi boşalır'); assert.equal(g.azami, String(w.length), 'maxlength başlığın uzunluğu: açılan harf de yeniden yazılır');
+    assert.deepEqual(g.hucreler.map((h, i) => (h.s.includes('simdi') ? i : -1)).filter(i => i >= 0), [kutular[0]], 'İmleç kelimenin ilk harfine döndü');
+    assert.equal(g.hucreler[gizliKutular[0]].s, 'bulundu' + imlec(gizliKutular[0]), 'Doğru yazılan gizli harf açıldı');
+    assert.equal(g.hucreler[gizliKutular[0]].c, w[gizliKutular[0]]);
+    gizliKutular.slice(1).forEach(i => assert.deepEqual(g.hucreler[i], {c: '', s: 'bos'}, 'Yanlış yazılan gizli harf gizli kaldı, yazılan silindi'));
+    kutular.filter(i => !gizliKutular.includes(i)).forEach(i => assert.deepEqual(g.hucreler[i], {c: w[i], s: 'sabit' + imlec(i)}, 'Açık harf yerinde'));
     assert.equal(g.gecersiz, 'true'); assert.match(g.harfSinifi, /\byanlis\b/);
     assert.equal(g.odak, 'oyunGirdi');
     assert.equal(await T(page, 'kayit', w), null, 'Yanlış deneme ilerleme yazmaz');
+    // Yalnız kalan gizli harfleri yazmak yetmez. İlk tuşta hata işareti kalkar; harfler kalan gizli kutulara atlamaz,
+    // kelimenin başından oturur; Enter "eksik" der ve deneme harcamaz (mod değişiminden sonra kalan hak yine 2).
+    const kalan = await T(page, 'eksik', w);
+    assert.equal(kalan, e.slice(1), 'Düzenek: ilk gizli harf açıldı, ötekiler gizli');
+    await page.keyboard.type(kalan[0]);
+    g = await T(page, 'gorunum');
+    assert.equal(g.gecersiz, null, 'İlk tuşta hata işareti kalkar'); assert.doesNotMatch(g.harfSinifi, /yanlis/);
+    await page.keyboard.type(kalan.slice(1));
+    await page.keyboard.press('Enter');
+    await durumBekle(page, 'Önce kelimenin tamamını yaz; açık harfleri de yaz.');
+    g = await T(page, 'gorunum');
+    assert.deepEqual([g.deger, g.gecersiz, g.azami], [kalan, null, String(w.length)], 'Yalnız kalan gizli harfler eksik kelimedir: yazılan yerinde, hata işareti yok');
+    assert.deepEqual(kutular.map(i => g.hucreler[i].s.includes('yazildi')), kutular.map((i, n) => n < kalan.length), 'Yazılan harfler kelimenin başından sırayla oturur (kalan gizli kutulara atlamaz)');
+    assert.equal(await T(page, 'kayit', w), null, 'Eksik kelimeyle Enter ilerleme yazmaz');
     // Mod değişip dönünce deneme hakkı tazelenmez (öğrenilenler boş, kart gizlenir).
     await page.locator('.oyun-mod [data-mod="ogrenilen"]').click();
     await page.locator('#oyunBos').waitFor({state: 'visible'});
@@ -876,17 +1013,32 @@ async function main() {
     await kelimeBekle(page, w, false);
     await durumBekle(page, 'Kaldığın yerden devam: 2 deneme hakkın kaldı.');
     g = await T(page, 'gorunum');
-    assert.equal(g.hucreler[bosluklar[0]].s, 'bulundu', 'Kilitli harf mod değişiminde korunur');
-    // Mod değişiminin duyurusu sıra satırıyla başlar; kilitlenen harf açıklamada okunur, kalanı "boş".
+    assert.equal(g.hucreler[gizliKutular[0]].s, 'bulundu' + imlec(gizliKutular[0]), 'Açılan harf mod değişiminde korunur');
+    assert.deepEqual([g.deger, g.azami, g.gecersiz], ['', String(w.length), null], 'Dönüşte girdi boş, hata işareti yok: kelime yine baştan yazılır');
+    // Mod değişiminin duyurusu sıra satırıyla başlar; açılan harf açıklamada okunur, kalanı "boş".
+    assert.equal(g.tarif, beklenenAciklama(g), 'Yarım kelimenin açıklaması: açılan harf kendisi, gizli kalanlar "boş", yönerge kelimenin tamamını ister');
     await duyuruBekle(page, await T(page, 'soru', w, true));
     assert.ok(g.siraMetni.startsWith('Sırada ') && (await T(page, 'gorunum')).duyuru.startsWith(g.siraMetni + ' Yeni kelime: '), 'Mod değişince sıra satırı da okunur');
     assert.deepEqual(await T(page, 'duyuruSizinti', w), [], 'Yarım kelimenin duyurusunda cevap yok');
-    // Kalan harfler doğru: ipucuyla.
+    // Kelimenin tamamı, bu kez doğru (açılan harf de yeniden yazılır): ipucuyla.
     await page.locator('#oyunGirdi').focus();
-    await page.keyboard.type(e[1]);
+    // Yanlış denemede açılan (bulundu) harf de açık harftir: üzerine başka harf yazılınca kutu yazılanı gösterir ve
+    // "farkli" olur; öteki harfler doğruysa "Kontrol et" deneme harcamaz, o harfin düzeltilmesini ister.
+    const bulunduBozuk = bozuk(w, [gizli[0]]);
+    await page.keyboard.type(bulunduBozuk);
     g = await T(page, 'gorunum');
-    assert.equal(g.gecersiz, null, 'İlk tuşta hata işareti kalkar'); assert.doesNotMatch(g.harfSinifi, /yanlis/);
-    await page.keyboard.type(e.slice(2));
+    assert.deepEqual(g.hucreler[gizliKutular[0]], {c: yanlisHarfler(tam(w)[gizli[0]]), s: 'bulundu yazildi farkli'},
+      'Açılmış (bulundu) harfin üzerine yazılan başka harf kutuda görünür ve "farkli" olur');
+    await page.keyboard.press('Enter');
+    assert.equal(await durumOku(page, g.durum), (gizli[0] + 1) + '. harf yanlış, ' + w[gizliKutular[0]] + ' olmalı. O harften devam et.',
+      'Açılmış harfteki yazım hatası deneme harcamaz: hangi harf olduğu söylenir');
+    g = await T(page, 'gorunum');
+    assert.deepEqual([g.deger, g.gecersiz], [bulunduBozuk.slice(0, gizli[0]), null], 'Yazılan, yanlış yazılan harfin önünde kesildi; hata işareti yok');
+    assert.deepEqual(g.hucreler[gizliKutular[0]], {c: w[gizliKutular[0]], s: 'bulundu simdi'}, 'İmleç yanlış yazılan harfin kutusunda; kutu yine kendi harfini gösterir');
+    await page.keyboard.type(tam(w).slice(gizli[0]));
+    g = await T(page, 'gorunum');
+    assert.deepEqual(g.hucreler[gizliKutular[0]], {c: w[gizliKutular[0]], s: 'bulundu yazildi'}, 'Açılmış harf de yazılır: kutusu "yazildi" olur, harfi kalır');
+    assert.equal(g.deger, tam(w), 'Girdide kelimenin bütün harfleri');
     await page.keyboard.press('Enter');
     // İpucu kullanılmadı, ikinci denemede bilindi; hiç çalışılmamış kelime 1. kutuya girer.
     await durumBekle(page, 'Doğru, ama ilk denemede değil; kelime 1. kutuya girdi.');
@@ -905,9 +1057,10 @@ async function main() {
     await page.keyboard.press('Enter');
     const [w2] = await T(page, 'sira');
     await kelimeBekle(page, w2);
-    await page.keyboard.type(yanlisHarfler(await T(page, 'eksik', w2)));
+    // Kelimenin tamamı, gizli harflerin hepsi yanlış: hiçbir harf açılmaz.
+    await page.keyboard.type(bozuk(w2, await T(page, 'gizliSira')));
     await page.keyboard.press('Enter');
-    await durumBekle(page, 'Olmadı; kalan deneme hakkı: 2.');
+    await durumBekle(page, 'Olmadı; baştan yaz. 2 hakkın kaldı.');
     await page.locator('.oyun-mod [data-mod="ogrenilen"]').click();
     await page.locator('#oyunBos').waitFor({state: 'visible'});
     assert.equal(await T(page, 'kayitKoy', w2, 3), true, 'Düzenek: kelimenin kaydı 3. kutuya yazıldı');
@@ -919,7 +1072,8 @@ async function main() {
     assert.deepEqual([g.seviye, g.kutu, g.durum], [rozet(3, yeniDuzen), '3. kutu · tekrar zamanı', ''],
       'Kutusu arada değişen kelimenin yarım turu atılır: yeni seviye, "Kaldığın yerden devam" iletisi yok');
     assert.deepEqual(g.hucreler.map((h, i) => (h.s.includes('sabit') ? i : -1)).filter(i => i >= 0), yeniDuzen.acik, 'Açık harfler 3. kutunun harfleri');
-    assert.deepEqual([g.hucreler.filter(h => h.s === 'bulundu').length, g.azami, g.gecersiz], [0, String(yeniDuzen.bos), null], 'Yeni turda kilitli harf ve hata işareti yok');
+    assert.deepEqual([g.hucreler.filter(h => h.s.startsWith('bulundu')).length, g.hucreler.filter(h => h.s.startsWith('bos')).length, g.azami, g.gecersiz],
+      [0, yeniDuzen.bos, String(w2.length), null], 'Yeni turda açılmış harf ve hata işareti yok; gizli harf sayısı 3. kutunun düzeninde');
     // Deneme hakkı da tazelendi: kelime ilk denemede bilinmiş sayılır ve 4. kutuya çıkar.
     await coz(page, w2);
     assert.equal(await durumOku(page), 'Bildiniz! Kelime 4. kutuya çıktı; ' + (yeniDuzen.sonrakiAcik
@@ -935,9 +1089,9 @@ async function main() {
     await page.keyboard.press('Enter');
     const [w3] = await T(page, 'sira');
     await kelimeBekle(page, w3);
-    await page.keyboard.type(yanlisHarfler(await T(page, 'eksik', w3)));
+    await page.keyboard.type(bozuk(w3, await T(page, 'gizliSira')));
     await page.keyboard.press('Enter');
-    await durumBekle(page, 'Olmadı; kalan deneme hakkı: 2.');
+    await durumBekle(page, 'Olmadı; baştan yaz. 2 hakkın kaldı.');
     await page.locator('.oyun-mod [data-mod="ogrenilen"]').click();
     await page.locator('#oyunBos').waitFor({state: 'visible'});
     await page.clock.setFixedTime(new Date(Date.now() + 24 * 60 * 60 * 1000));
@@ -948,12 +1102,79 @@ async function main() {
     g = await T(page, 'gorunum');
     assert.deepEqual([g.seviye, g.durum], [rozet(0, yarinDuzen), ''], 'Gün dönünce yarım tur atılır: "Kaldığın yerden devam" iletisi yok');
     assert.equal(await T(page, 'uyuyor', w3, true), true, 'Ekrandaki kelime aynı; açık harfler yeni günün harfleri');
-    assert.deepEqual([g.azami, g.gecersiz], [String(yarinDuzen.bos), null], 'Yeni turda bütün boşluklar yeniden yazılır, hata işareti yok');
+    assert.deepEqual([g.hucreler.filter(h => h.s.startsWith('bos')).length, g.azami, g.gecersiz], [yarinDuzen.bos, String(w3.length), null],
+      'Yeni turda gizli harfler yeni günün düzeninde, hata işareti yok');
     await coz(page, w3);
     assert.equal(await durumOku(page), 'Bildiniz! Kelime 1. kutuya çıktı; ' + (yarinDuzen.sonrakiAcik
       ? 'bir dahaki sefere harflerin %40\'ı açık gelecek.' : 'bu kadar kısa kelimede bir dahaki sefere harf açılmayacak.'),
     'Yeni günün turunda ilk deneme "ilk denemede doğru" sayılır');
     await kutuBekle(page, w3, 1);
+    // Yalnız açık harfteki yazım hatası yanlış deneme DEĞİLDİR: harf zaten ekrandaydı. Gizli harflerin hepsi doğruyken
+    // "Kontrol et" deneme harcamaz, hiçbir harfi açmaz; kaçıncı harfin ne olması gerektiğini söyler ve yazılanı o harfin
+    // önünde keser (imleç hep sondadır: elle ancak oraya kadar silinerek düzeltilebilirdi). Oradan devam edilince kelime
+    // ilk denemede bilinmiş sayılır. En az iki gizli ve bir açık harfi olan kelimede bakılır ("Bir harf aç" açık
+    // kalsın); kısa kelimeler geçilir.
+    await page.keyboard.press('Enter');
+    let w4, e4;
+    for (let i = 0; i < 8; i++) {
+      [w4] = await T(page, 'sira');
+      await kelimeBekle(page, w4);
+      e4 = await T(page, 'eksik', w4);
+      if (e4.length >= 2 && e4.length < tam(w4).length) break;
+      await page.locator('#oyunPas').click();
+      await kutuBekle(page, w4, 1);
+      await page.locator('#oyunGonder').click();
+    }
+    assert.ok(e4.length >= 2 && e4.length < tam(w4).length, 'Düzenek: en az iki gizli ve bir açık harfli kelime bulunamadı');
+    const acilis4 = await T(page, 'gorunum'), once4 = await T(page, 'bugunku');
+    const kutular4 = acilis4.hucreler.map((h, i) => i).filter(i => acilis4.hucreler[i].s !== 'ayrac');
+    const acikSira = kutular4.findIndex(i => acilis4.hucreler[i].s.startsWith('sabit'));
+    assert.equal(acilis4.harfKapali, false, 'Düzenek: iki gizli harf varken "Bir harf aç" açık');
+    await page.locator('#oyunGirdi').focus();
+    const hatali = bozuk(w4, [acikSira]);
+    await page.keyboard.type(hatali);
+    g = await T(page, 'gorunum');
+    assert.deepEqual(g.hucreler[kutular4[acikSira]], {c: yanlisHarfler(tam(w4)[acikSira]), s: 'sabit yazildi farkli'}, 'Açık harfin üzerine yazılan başka harf kutuda görünür ve "farkli" olur');
+    assert.deepEqual(g.hucreler.map((h, i) => (h.s.includes('farkli') ? i : -1)).filter(i => i >= 0), [kutular4[acikSira]], 'Başka hiçbir kutu "farkli" değil');
+    await page.keyboard.press('Enter');
+    const DUZELT = (acikSira + 1) + '. harf yanlış, ' + w4[kutular4[acikSira]] + ' olmalı. O harften devam et.';
+    assert.equal(await durumOku(page), DUZELT, 'Yalnız açık harfteki yazım hatası: kaçıncı harfin ne olması gerektiği söylenir');
+    assert.equal(await T(page, 'durumSatiriSinifi'), 'oyun-durum uyari', 'Açık harfteki yazım hatasının iletisi uyarı rengindedir (hata rengi değil: deneme harcanmadı)');
+    assert.equal(await page.evaluate(() => { const b = document.querySelector('#oyunDurum b[lang="en"]'); return b ? b.textContent : null; }), w4[kutular4[acikSira]],
+      'Olması gereken harf iletide İngilizce olarak işaretli (<b lang="en">)');
+    let sonraki = await T(page, 'gorunum');
+    const kesik = hatali.slice(0, acikSira);
+    assert.deepEqual([sonraki.deger, sonraki.gecersiz, sonraki.harfKapali, sonraki.pasKapali, sonraki.gonder, sonraki.sonuc], [kesik, null, false, false, 'Kontrol et', false],
+      'Deneme harcanmadı: yazılan yanlış harfin önünde kesildi, hata işareti yok, "Bir harf aç" açık, tur sürüyor');
+    assert.doesNotMatch(sonraki.harfSinifi, /yanlis/);
+    // Kutular: kesilen yere kadar yazılmış, imleç yanlış yazılan açık harfin kutusunda (harf yine görünür), işaret kalktı;
+    // hiçbir gizli harf açılmadı.
+    assert.deepEqual(kutular4.map(i => sonraki.hucreler[i]), kutular4.map((i, n) => {
+      const taban = acilis4.hucreler[i].s.split(' ')[0], gizliMi = taban === 'bos';
+      if (n < acikSira) return {c: gizliMi ? tam(w4)[n] : w4[i], s: taban + ' yazildi'};
+      return {c: gizliMi ? '' : w4[i], s: taban + (n === acikSira ? ' simdi' : '')};
+    }), 'Kutular: yazılan kesildi, imleç yanlış yazılan harfte; hiçbir gizli harf açılmadı, "farkli" işareti kalktı');
+    assert.equal(sonraki.tarif, acilis4.tarif, 'Açıklama değişmedi');
+    assert.equal(await T(page, 'kayit', w4), null, 'İlerleme yazılmadı');
+    // Kelime artık eksik: yeniden Enter "eksik" der, yine hak harcanmaz.
+    await page.keyboard.press('Enter');
+    await durumBekle(page, 'Önce kelimenin tamamını yaz; açık harfleri de yaz.');
+    sonraki = await T(page, 'gorunum');
+    assert.deepEqual([sonraki.deger, sonraki.gonder, sonraki.sonuc, sonraki.gecersiz], [kesik, 'Kontrol et', false, null], 'Yinelenen Enter deneme harcamaz');
+    // O harften devam edilir (ilk tuşta ileti kalkar): ilk denemede bilindi.
+    await page.keyboard.type(tam(w4)[acikSira]);
+    g = await T(page, 'gorunum');
+    assert.deepEqual([g.durum, g.deger, g.hucreler.filter(h => h.s.includes('farkli')).length], ['', tam(w4).slice(0, acikSira + 1), 0], 'İlk tuşta ileti kalkar; harf doğru yazıldı');
+    await page.keyboard.type(tam(w4).slice(acikSira + 1));
+    await page.keyboard.press('Enter');
+    assert.match(await durumOku(page), /^Bildiniz! Kelime 1\. kutuya çıktı; /, 'Açık harfteki yazım hatası ilk deneme hakkını yemez: düzeltilen kelime ilk denemede bilinmiş sayılır');
+    await kutuBekle(page, w4, 1);
+    const sonra4 = await T(page, 'bugunku');
+    assert.deepEqual([sonra4.t, sonra4.d], [once4.t + 1, once4.d + 1], 'Cevap sayıldı ve "doğru" sayıldı');
+    g = await T(page, 'gorunum');
+    assert.match(g.harfSinifi, /\bdogru\b/);
+    const bildin = sayim => Number(sayim.match(/✓ (\d+) bildin/)[1]);
+    assert.equal(bildin(g.sayim), bildin(acilis4.sayim) + 1, 'Oturum sayımında bilinen bir arttı: ' + g.sayim);
   });
 
   /* ---------- 4) Üç yanlış ve "Bilemedim, göster" ---------- */
@@ -963,18 +1184,23 @@ async function main() {
     const [w, w2] = await T(page, 'sira');
     await kelimeBekle(page, w);
     const once = await T(page, 'bugunku'), bugun = await T(page, 'bugun');
-    const e = await T(page, 'eksik', w);
+    const e = await T(page, 'eksik', w), gizli = await T(page, 'gizliSira'), ilk = await T(page, 'gorunum');
+    assert.equal(ilk.azami, String(w.length), 'maxlength başlığın uzunluğudur (açık harfler de yazılır)');
     await odakla(page);
+    // Her denemede kelimenin tamamı yazılır, gizli harflerin hepsi yanlıştır; ikinci denemede açık harfler de yanlış yazılır.
+    const denemeler = [bozuk(w, gizli), yanlisHarfler(tam(w)), bozuk(w, gizli)];
     for (const kalan of [2, 1]) {
-      await page.keyboard.type(yanlisHarfler(e));
+      await page.keyboard.type(denemeler[2 - kalan]);
       await page.keyboard.press('Enter');
-      // Hiçbir harf tutmadı: "doğru harfler yerinde kaldı" denmez.
-      await durumBekle(page, 'Olmadı; kalan deneme hakkı: ' + kalan + '.');
+      // Hiçbir gizli harf tutmadı: "Doğru harfler açıldı" denmez.
+      await durumBekle(page, 'Olmadı; baştan yaz. ' + (kalan === 1 ? 'Son hakkın.' : kalan + ' hakkın kaldı.'));
       const ara = await T(page, 'gorunum');
-      assert.equal(ara.hucreler.filter(h => h.s === 'bulundu').length, 0, 'Hiçbir harf kilitlenmedi');
-      assert.equal(ara.azami, String(e.length), 'Boşluk sayısı aynı');
+      assert.equal(ara.hucreler.filter(h => h.s.startsWith('bulundu')).length, 0, 'Hiçbir gizli harf açılmadı');
+      assert.deepEqual([ara.deger, ara.azami], ['', ilk.azami], 'Yazılan silinir (kelime yeniden baştan yazılır), maxlength aynı');
+      // Açık harf doğru da yanlış da yazılsa açık, gizli harf gizli kalır; sıradaki kutu yine ilk kutudur.
+      assert.deepEqual(ara.hucreler, ilk.hucreler, 'Yanlış denemeden sonra kutular baştaki gibi: gizli harf sayısı aynı, açık harfler yerinde (' + (3 - kalan) + '. deneme)');
     }
-    await page.keyboard.type(yanlisHarfler(e));
+    await page.keyboard.type(denemeler[2]);
     await page.keyboard.press('Enter');
     await durumBekle(page, 'Cevap: ' + w + '. Kelime 1. kutuda; yarın tekrar gelecek.');
     await kutuBekle(page, w, 1);
@@ -982,21 +1208,26 @@ async function main() {
     assert.match(g.harfSinifi, /\bacildi\b/);
     assert.equal(g.hucreler.map(h => h.c).join(''), w, 'Kelime açıldı');
     assert.equal(g.hucreler.filter(h => h.s.startsWith('bos')).length, e.length, 'Bulunamayan harfler ayrı gösterilir');
+    assert.deepEqual(g.hucreler.map(h => h.s), ilk.hucreler.map(h => h.s.split(' ')[0]), 'Biten turda kutularda yazım işareti (yazildi, farkli, simdi) kalmaz');
     assert.deepEqual(await T(page, 'kayit', w), {k: 1, g: bugun + 1, c: bugun}, 'Il.yanlis kaydı: 1. kutu, yarın');
     assert.deepEqual(await T(page, 'bugunku'), {t: once.t + 1, d: once.d, y: once.y + 1});
     assert.equal(g.sonuc, true); assert.equal(g.gonder, 'Sonraki kelime →');
     assert.equal(await page.locator('#oyunDurum b[lang="en"]').innerText(), w, 'Cevap İngilizce olarak işaretli');
-    // Açılan kelimede bulunamayan kutular "boş" kalır: yazılanın yok sayılması yalnız burada sınanabilir.
+    // Açılan kelimede bulunamayan harflerin kutuları "bos" sınıfıyla kalır; biten turda yazılan burada da yok sayılır.
     await page.keyboard.type('abc');
     assert.equal((await T(page, 'gorunum')).deger, '', 'Açılan kelimede yazılan yok sayılır');
     await page.keyboard.press('Enter');
     await kelimeBekle(page, w2);
+    // Kelime yarım (baştan iki harf, ikisi de yanlış) yazılmışken "Bilemedim": yazılan silinir, kutular kelimeyi gösterir.
+    await page.keyboard.type(yanlisHarfler(tam(w2)).slice(0, 2));
     await page.locator('#oyunPas').click();
     await durumBekle(page, 'Cevap: ' + w2 + '. Kelime 1. kutuda; yarın tekrar gelecek.');
     await kutuBekle(page, w2, 1);
     g = await T(page, 'gorunum');
     assert.equal(g.odak, 'oyunGirdi', 'Düğmeden sonra odak girdiye döner');
     assert.match(g.harfSinifi, /\bacildi\b/);
+    assert.deepEqual([g.deger, g.hucreler.map(h => h.c).join('').split(BOSLUK).join(' ')], ['', w2], 'Yarım yazılan silinir, kutular kelimenin kendisini gösterir');
+    assert.deepEqual(g.hucreler.filter(h => /yazildi|farkli|simdi/.test(h.s)), [], 'Bırakılan kelimede de yazım işareti kalmaz');
     assert.deepEqual(await T(page, 'kayit', w2), {k: 1, g: bugun + 1, c: bugun});
     assert.deepEqual(await T(page, 'bugunku'), {t: once.t + 2, d: once.d, y: once.y + 2});
     assert.equal(g.sayim, 'Bu oturum: ✓ 0 bildin · 💡 0 ipuçlu · ✗ 2 bilemedin');
@@ -1004,47 +1235,95 @@ async function main() {
   });
 
   /* ---------- 5) Bir harf aç ---------- */
-  senaryo('"Bir harf aç": bir harf daha açılır, yazılanlar kalır, tek boşlukta kapanır, sonuç ipucuyla', async () => {
+  senaryo('"Bir harf aç": yazılanı eksik ya da yanlış olan ilk gizli harf açılır, yazılan onun önünde kesilir; gizli harflerin hepsi doğruysa ilki açılır, yazılan kalır; açılan harf de yazılır; tek gizli harf kalınca düğme kapanır, sonuç ipucuyla', async () => {
     const page = await yeniSayfa();
     await ac(page, base);
-    // En az üç boşluklu kelimeye gelene kadar geç (bugünkü ilk kelime zaten uygundur).
-    let w, e;
-    for (let i = 0; i < 8; i++) {
-      [w] = await T(page, 'sira');
-      await kelimeBekle(page, w);
-      e = await T(page, 'eksik', w);
-      if (e.length >= 3) break;
-      await page.locator('#oyunPas').click();
-      await kutuBekle(page, w, 1);
-      await page.locator('#oyunGonder').click();
-    }
-    assert.ok(e.length >= 3, 'Düzenek: üç boşluklu kelime bulunamadı');
+    // Dört açma durumu ve (g) adımı aynı kelimede sınanır: en az altı gizli harf gerekir (dördüncü açmadan sonra da
+    // ikisi kalmalı: (g) bir harf daha açar, düğme ancak o zaman kapanır).
+    await enAzBosluk(page, 6);
+    const [w] = await T(page, 'sira');
+    assert.ok(w, 'Düzenek: seçili katmanda altı gizli harfli kelime bulunamadı');
+    await kelimeBekle(page, w);
+    const e = await T(page, 'eksik', w), gizli = await T(page, 'gizliSira');
+    assert.ok(e.length >= 6, 'Düzenek: en az altı gizli harf gerekli (' + w + ', ' + e.length + ' gizli harf)');
     const once = await T(page, 'bugunku');
+    // yazi: yazılacak metin (kelimenin bütün harfleri); baslik: aynı harfler başlıktaki büyüklüğüyle. Harf kutuları
+    // (g.harf) ayraçsız dizilir: dizideki yer harf sırasıdır, yazılan metnin o sıradaki harfi o kutuya düşer.
+    const yazi = tam(w), baslik = [...w].filter(c => /[a-z]/i.test(c));
+    const bak = async () => { const g = await T(page, 'gorunum'); g.harf = g.hucreler.filter(h => h.s !== 'ayrac'); return g; };
+    const sil = async () => { for (let n = (await T(page, 'gorunum')).deger.length; n > 0; n--) await page.keyboard.press('Backspace'); };
+    // Her açmadan sonraki ortak denetim. acilan: o ana kadar açılan harf sıraları (sonuncusu şimdi açılan);
+    // kalanYazi: girdide kalması gereken metin; kesildi: yazılan kısaldı (ileti bunu ekran okuyucuya da söyler).
+    const acildi = async (acilan, kalanYazi, neden, yaziNedeni, kesildi) => {
+      const g = await bak(), s = acilan[acilan.length - 1], kalan = g.harf.filter(h => h.s.startsWith('bos')).length;
+      assert.deepEqual(g.harf.map((h, i) => (h.s.startsWith('ipucu') ? i : -1)).filter(i => i >= 0), [...acilan].sort((a, b) => a - b), neden);
+      assert.equal(g.deger, kalanYazi, yaziNedeni);
+      assert.equal(g.harf[s].c, baslik[s], 'Açılan kutu kendi harfini gösterir');
+      assert.equal(kalan, e.length - acilan.length, 'Her basışta bir gizli harf açılır');
+      assert.equal(g.azami, String(w.length), 'Harf açılınca maxlength değişmez: başlığın uzunluğu');
+      assert.equal(g.odak, 'oyunGirdi', 'Düğmeden sonra odak girdiye döner');
+      assert.equal(g.harfKapali, kalan < 2, 'Düğme yalnız ikiden az gizli harf kalınca kapanır (kalan gizli harf: ' + kalan + ')');
+      // Hiç çalışılmamış kelimede ipucu: doğru bilinirse kelime 1. kutuya girer.
+      await durumBekle(page, (s + 1) + '. harf açıldı: ' + baslik[s] + '. Doğru bilirsen kelime 1. kutuya girer.' + (kesildi ? KESILDI : ''));
+      // Ek yalnız ekran okuyucu içindir (görünmez); yazılan kesilmediyse hiç yoktur.
+      assert.equal(await page.evaluate(() => { const ek = document.querySelector('#oyunDurum .visually-hidden'); return ek ? ek.textContent : ''; }), kesildi ? KESILDI : '',
+        kesildi ? 'Yazılanın kesildiği, görünmeyen bir ekle söylenir' : 'Yazılan kesilmediyse iletide ek yok');
+      return g;
+    };
     await odakla(page);
-    // İlk boşluk doğru, ikinci yanlış yazılı: ikinci açılır, ilk yazılan kalır.
-    await page.keyboard.type(e[0] + yanlisHarfler(e[1]));
+    // (a) Hiçbir şey yazılmadan: ilk gizli harf açılır, girdi boş kalır.
     await page.locator('#oyunHarf').click();
-    let g = await T(page, 'gorunum');
-    const bosluk = g.hucreler.map((h, i) => i).filter(i => !g.hucreler[i].s.includes('sabit'));
-    assert.equal(g.hucreler[bosluk[1]].s, 'ipucu', 'Yanlış yazılan ilk boşluk açıldı');
-    assert.equal(g.hucreler[bosluk[1]].c, w[bosluk[1]]);
-    assert.equal(g.deger, e[0], 'Önce yazılan doğru harf yerinde');
-    assert.equal(g.hucreler[bosluk[0]].c, e[0]);
-    assert.equal(g.azami, String(e.length - 1));
-    assert.equal(g.odak, 'oyunGirdi');
-    assert.equal(g.harfKapali, e.length - 1 < 2);
-    // Hiç çalışılmamış kelimede ipucu: doğru bilinirse kelime 1. kutuya girer.
-    await durumBekle(page, harfSirasi(w, bosluk[1]) + '. harf açıldı: ' + w[bosluk[1]] + '. Doğru bilirsen kelime 1. kutuya girer.');
+    let g = await acildi([gizli[0]], '', 'Hiçbir şey yazılmadıysa ilk gizli harf açılır', 'Hiçbir şey yazılmadıysa girdi boş kalır');
+    assert.match(g.harf[0].s, / simdi$/, 'Sıradaki kutu yine ilk kutudur');
     assert.equal(await T(page, 'kayit', w), null, 'İpucu ilerleme yazmaz');
-    // Tek boşluk kalana kadar aç.
-    for (let kalan = e.length - 1; kalan > 1; kalan--) await page.locator('#oyunHarf').click();
-    g = await T(page, 'gorunum');
-    assert.equal(g.hucreler.filter(h => h.s.startsWith('bos')).length, 1);
-    assert.equal(g.harfKapali, true, 'Tek boşluk kalınca düğme kapalı');
-    assert.equal(g.azami, '1');
-    const sonHarf = (await T(page, 'eksik', w));
-    await page.locator('#oyunGirdi').fill('');
-    await page.keyboard.type(sonHarf);
+    // (f) Açılan harf de yazılır: o atlanıp geri kalan bütün harfler yazılırsa kelime eksik sayılır.
+    await page.keyboard.type(yazi.slice(0, gizli[0]) + yazi.slice(gizli[0] + 1));
+    await page.keyboard.press('Enter');
+    await durumBekle(page, 'Önce kelimenin tamamını yaz; açık harfleri de yaz.');
+    await sil();
+    // (b) Kelime baştan, sıradaki gizli harfe kadar doğru yazılır (arada açılan harf ve doğru yazılan bir gizli harf
+    // var): yazılmamış ilk gizli harf açılır, yazılan olduğu gibi kalır, sıradaki kutu açılan kutudur.
+    await page.keyboard.type(yazi.slice(0, gizli[2]));
+    assert.equal((await bak()).harf[gizli[0]].s, 'ipucu yazildi', 'Açılan harfin üzerine yazılınca kutusu yazılmış görünür');
+    await page.locator('#oyunHarf').click();
+    g = await acildi([gizli[0], gizli[2]], yazi.slice(0, gizli[2]),
+      'Doğru yazılan gizli harf atlanır, yazılmamış ilk gizli harf açılır', 'Açılan harfe kadar yazılan olduğu gibi kalır');
+    assert.equal(g.harf[gizli[2]].s, 'ipucu simdi', 'Sıradaki kutu açılan kutudur (açılan harf atlanmaz)');
+    assert.deepEqual([g.harf[gizli[1]].s, g.harf[gizli[1]].c], ['bos yazildi', yazi[gizli[1]]], 'Doğru yazılan gizli harf yerinde durur, gizli sayılmayı sürdürür');
+    // (f) Sıradaki tuş açılan kutuya düşer, bir sonrakine geçmez.
+    await page.keyboard.type(yazi[gizli[2]]);
+    g = await bak();
+    assert.deepEqual([g.deger, g.harf[gizli[2]].s, g.harf[gizli[2]].c], [yazi.slice(0, gizli[2] + 1), 'ipucu yazildi', baslik[gizli[2]]], 'Açılan harf yazılınca kendi kutusuna oturur');
+    assert.match(g.harf[gizli[2] + 1].s, / simdi$/, 'Sıra bir sonraki kutuya geçer');
+    // (c) + (e) Kelimenin tamamı yazılı; açık bir harfte (ilk açılan) yazım hatası var, ilk gizli harf doğru, ondan
+    // sonraki gizli harf yanlış: yanlış yazılan gizli harf açılır ve yazılan onun önünde kesilir; açık harfteki
+    // yazım hatası buna karışmaz, yerinde ve işaretli kalır.
+    await sil();
+    await page.keyboard.type(bozuk(w, [gizli[0], gizli[3]]));
+    await page.locator('#oyunHarf').click();
+    g = await acildi([gizli[0], gizli[2], gizli[3]], bozuk(w, [gizli[0]]).slice(0, gizli[3]),
+      'Yanlış yazılan ilk gizli harf açılır (açık harfteki yazım hatası ve doğru yazılan gizli harf atlanır)',
+      'Yazılan, açılan harfin önünde kesilir (ardına yazılanlar silinir); oraya kadar yazılan, açık harfteki yazım hatasıyla birlikte aynen kalır', true);
+    assert.equal(g.harf[gizli[3]].s, 'ipucu simdi', 'Açılan harften devam edilir');
+    assert.deepEqual(g.harf.slice(gizli[3] + 1).filter(h => h.s.includes('yazildi')), [], 'Açılan harften sonraki kutular yazılmamış görünür');
+    assert.deepEqual([g.harf[gizli[0]].s, g.harf[gizli[0]].c], ['ipucu yazildi farkli', yanlisHarfler(yazi[gizli[0]])], 'Açık harfteki yazım hatası kutusunda işaretli kalır');
+    // (d) Gizli harflerin hepsi doğru yazılmış (kelime baştan sona doğru yazılı): ilk gizli harf açılır, yazılan kalır.
+    await sil();
+    await page.keyboard.type(yazi);
+    await page.locator('#oyunHarf').click();
+    const acilan = [gizli[0], gizli[2], gizli[3], gizli[1]];
+    g = await acildi(acilan, yazi, 'Gizli harflerin hepsi doğru yazıldıysa ilk gizli harf açılır', 'Gizli harflerin hepsi doğruysa yazılan olduğu gibi kalır');
+    assert.equal(g.harf[gizli[1]].s, 'ipucu yazildi', 'Üzerine yazılmış harf açılınca da yazılmış görünür');
+    // (g) Tek gizli harf kalana kadar aç (yazılan yerinde durur); iki gizli harf varken açık olan düğme o zaman kapanır.
+    for (const s of gizli.slice(4, -1)) {
+      await page.locator('#oyunHarf').click();
+      acilan.push(s);
+      g = await acildi(acilan, yazi, 'Kelime doğru yazılıyken her basış sıradaki ilk gizli harfi açar', 'Yazılan yerinde kalır');
+    }
+    assert.equal(g.harf.filter(h => h.s.startsWith('bos')).length, 1);
+    assert.equal(g.harfKapali, true, 'Tek gizli harf kalınca düğme kapalı');
+    assert.deepEqual([g.deger, g.azami], [yazi, String(w.length)], 'Tek gizli harf kalınca da yazılan yerinde, maxlength başlığın uzunluğu');
+    // Kelime baştan sona yazılı (açılan harfler de): Enter ile kontrol edilir.
     await page.keyboard.press('Enter');
     await durumBekle(page, 'Doğru, ama ipucuyla; kelime 1. kutuya girdi.');
     await kutuBekle(page, w, 1);
@@ -1060,7 +1339,7 @@ async function main() {
   });
 
   /* ---------- 6) Seviyeler ve öğrenilenler modu ---------- */
-  senaryo('Seviyeler: kutu = seviye (%30, %20), vadesi gelen önce, ipucuyla kutu aynı kalır; kelime aynı kalan tur değişiminde yalnız sıra satırı duyurulur, yazılan harf ve odak kalır; öğrenilenler harfsiz, aynı gün yeniden sorulmaz', async () => {
+  senaryo('Seviyeler: kutu = seviye (%30, %20), vadesi gelen önce, ipucuyla kutu aynı kalır; kelime aynı kalan tur değişiminde yalnız sıra satırı duyurulur, yazılan harfler ve odak kalır; öğrenilenler harfsiz, aynı gün yeniden sorulmaz', async () => {
     const context = await yeni();
     const page = await context.newPage();
     await page.clock.setFixedTime(GUN(0));
@@ -1123,10 +1402,13 @@ async function main() {
     assert.equal(g.seviye, 'Seviye 1 · harflerin %50\'si açık');
     assert.equal(g.siraMetni, 'Sırada ' + (f.oynanan - 4) + ' kelime: 0 tekrar + ' + (f.oynanan - 4) + ' yeni. 2 kelime tekrar gününü bekliyor.');
     // Vadesi gelen kelime kalmadı: "Yalnız yeni kelimeler"e geçince de, geri dönünce de ilk kelime aynıdır. Soru
-    // yinelenmez ama yeni sıra satırı duyurulur (duyuru bölgesi tam olarak o satır olur); yazılmış harfe dokunulmaz.
-    const uzunSira = g.siraMetni, yazilanHarf = (await T(page, 'eksik', f.ilk))[0];
+    // yinelenmez ama yeni sıra satırı duyurulur (duyuru bölgesi tam olarak o satır olur); yazılmış harflere dokunulmaz.
+    // Kelime baştan yazılır: ilk gizli harfe kadar, o da dahil (en az iki harf).
+    const uzunSira = g.siraMetni, yazilanlar = tam(f.ilk).slice(0, Math.max(2, (await T(page, 'gizliSira'))[0] + 1));
     await page.locator('#oyunGirdi').focus();
-    await page.keyboard.type(yazilanHarf);
+    await page.keyboard.type(yazilanlar);
+    const yaziliKutular = (await T(page, 'gorunum')).hucreler;
+    assert.equal(yaziliKutular.filter(h => h.s.includes('yazildi')).length, yazilanlar.length, 'Düzenek: yazılan harfler kutulara baştan oturdu');
     for (const [mod, satir] of [['yeni', 'Sırada ' + (f.oynanan - 4) + ' yeni kelime.'], ['sira', uzunSira]]) {
       await page.locator('.oyun-mod [data-mod="' + mod + '"]').click();
       await duyuruBekle(page, satir);
@@ -1136,7 +1418,8 @@ async function main() {
       assert.equal(await page.evaluate(() => document.getElementById('oyunDuyuru').textContent), satir, 'Sıra satırı duyurulduktan sonra duyuru bölgesi değişmez: soru geriden gelip yerine geçmez (' + mod + ')');
       g = await T(page, 'gorunum');
       assert.deepEqual([await T(page, 'mod'), g.siraMetni], [mod, satir], 'Basılı tur düğmesi ve görünen sıra satırı duyurulanla aynı');
-      assert.equal(g.deger, yazilanHarf, 'Aynı kelime ekranda kaldıysa mod değişimi yazılan harfi silmez (' + mod + ')');
+      assert.equal(g.deger, yazilanlar, 'Aynı kelime ekranda kaldıysa mod değişimi yazılan harfleri silmez (' + mod + ')');
+      assert.deepEqual(g.hucreler, yaziliKutular, 'Kutular da yazıldığı gibi kalır: yazılmış kutular ve sıradaki kutu aynı (' + mod + ')');
       assert.equal(await page.evaluate(() => document.activeElement.getAttribute('data-mod')), mod, 'Aynı kelime ekranda kaldıysa odak basılan tur düğmesinde kalır, girdiye taşınmaz (' + mod + ')');
     }
     // Öğrenilenler: harfsiz.
@@ -1148,6 +1431,9 @@ async function main() {
     assert.equal(g.hucreler.filter(h => !h.s.startsWith('bos')).length, 0, 'Hiç açık harf yok');
     assert.equal(g.hucreler.map(h => h.c).join(''), '');
     assert.equal(g.azami, String(f.Z1.length));
+    // Hiç açık harf yok: açıklama "açık harfler dahil" demez.
+    assert.equal(g.tarif, beklenenAciklama(g), 'Harfsiz kartın açıklaması');
+    assert.ok(g.tarif.endsWith('. Kelimenin tamamını yaz, Enter ile kontrol et.'), 'Harfsiz kartta yönerge açık harften söz etmez: ' + g.tarif);
     assert.equal(g.siraMetni, 'Sırada 2 öğrenilmiş kelime; hepsi harfsiz sorulur.');
     assert.equal(await page.locator('.oyun-mod [data-mod="ogrenilen"]').getAttribute('aria-pressed'), 'true');
     // Bilemedim: 5. kutudan 4'e düşer.
@@ -1157,7 +1443,13 @@ async function main() {
     assert.deepEqual(await T(page, 'kayit', f.Z1), {k: 4, g: f.bugun + 8, c: f.bugun + 7});
     await page.keyboard.press('Enter');
     await kelimeBekle(page, f.Z2);
-    await page.keyboard.type(f.Z2);
+    // Son harfi eksik yazılan harfsiz kelimede ileti de açık harften söz etmez; yazılan yerinde kalır, deneme harcanmaz
+    // (ardından gelen "Bildiniz" ilk denemenin iletisidir).
+    await page.keyboard.type(f.Z2.slice(0, -1));
+    await page.keyboard.press('Enter');
+    await durumBekle(page, 'Önce kelimenin tamamını yaz.');
+    assert.equal((await T(page, 'gorunum')).deger, f.Z2.slice(0, -1), 'Eksik yazılan yerinde kalır');
+    await page.keyboard.type(f.Z2.slice(-1));
     await page.keyboard.press('Enter');
     await durumBekle(page, 'Bildiniz! Harfsiz de doğru; kelime öğrenilenlerde kalıyor.');
     await page.waitForFunction(([w, gun]) => window.__oyun.kayit(w).c === gun, [f.Z2, f.bugun + 7]);
@@ -1199,7 +1491,7 @@ async function main() {
   });
 
   /* ---------- 7) Yazım sadeleştirme, tireli ve çok sözcüklü başlık ---------- */
-  senaryo('Yazım: İ/I/ı, rakam, "/", boşluk, tire elenir; tireli, çok sözcüklü ve en uzun başlık yalnız harfle çözülür, dar ekrana sığar', async () => {
+  senaryo('Yazım: İ/I/ı tek "i" olur (açık "i" kutusunda farklı sayılmaz); rakam, "/", boşluk, tire elenir ve harfleri kaydırmaz, fazlası kesilir; açık büyük harf başlıktaki hâliyle kalır; tireli, çok sözcüklü ve en uzun başlık baştan sona yalnız harfle çözülür, dar ekrana sığar', async () => {
     const context = await yeni();
     const page = await context.newPage();
     await page.clock.setFixedTime(GUN(0));
@@ -1208,28 +1500,53 @@ async function main() {
       const Y = window.YDS, O = Y.OyunHesap, Il = Y.Ilerleme;
       const oynanan = Y.Veri.dizin.filter(d => O.oynanabilir(d));
       const yarin = Il.bugun() + 1;
-      // 1. kutuda yarın boş kalacak harfleri arasında "i" olan, en az üç boşluklu Çekirdek kelimesi.
-      const bosHarfler = w => { const acik = O.acikKonumlar(w, 1, yarin); return [...w].filter((c, i) => !acik.includes(i)).join(''); };
-      const I = oynanan.find(d => d.k === 2 && /^[a-z]+$/.test(d.e) && bosHarfler(d.e).length >= 3 && bosHarfler(d.e).includes('i')).e;
+      // 1. kutuda yarın gizli kalacak harfleri arasında da açık gelecek harfleri arasında da "i" olan, en az üç
+      // gizli harfli Çekirdek kelimesi.
+      const harfler = (w, acikMi) => { const acik = O.acikKonumlar(w, 1, yarin); return [...w].filter((c, i) => acik.includes(i) === acikMi).join(''); };
+      const I = oynanan.find(d => d.k === 2 && /^[a-z]+$/.test(d.e) && harfler(d.e, false).length >= 3 && harfler(d.e, false).includes('i') && harfler(d.e, true).includes('i')).e;
       const tireli = oynanan.find(d => d.k === 6 && d.e.includes('-'));
       const bosluklu = oynanan.find(d => d.e.includes(' '));
+      // Büyük harfle başlayan başlık (Celsius): büyük harfi 1. kutuda yarın açık gelen.
+      const buyuk = oynanan.find(d => /^[A-Z][a-z]+$/.test(d.e) && O.acikKonumlar(d.e, 1, yarin).includes(0));
+      if (!buyuk) return {eksik: true};
       // Seçilen katmanlardaki en uzun başlık (kutu satırı birkaç satıra bölünür).
-      const katmanlar = [...new Set([2, tireli.k, bosluklu.k])].sort();
-      const uzun = oynanan.filter(d => katmanlar.includes(d.k) && d.e !== tireli.e && d.e !== bosluklu.e)
+      const katmanlar = [...new Set([2, tireli.k, bosluklu.k, buyuk.k])].sort();
+      const uzun = oynanan.filter(d => katmanlar.includes(d.k) && d.e !== tireli.e && d.e !== bosluklu.e && d.e !== buyuk.e)
         .reduce((a, d) => (d.e.length > a.e.length ? d : a));
-      [I, tireli.e, bosluklu.e, uzun.e].forEach(w => Il.yanlis(w, 'kelime'));
+      [I, tireli.e, bosluklu.e, uzun.e, buyuk.e].forEach(w => Il.yanlis(w, 'kelime'));
       Y.Depo.yaz('yds-katmanlar', katmanlar);
-      return {I, tireli: tireli.e, bosluklu: bosluklu.e, uzun: uzun.e};
+      return {I, tireli: tireli.e, bosluklu: bosluklu.e, uzun: uzun.e, buyuk: buyuk.e};
     });
+    assert.equal(f.eksik, undefined, 'Düzenek: büyük harfle başlayan, büyük harfi 1. kutuda (yarının tohumuyla) açık gelen oynanabilir başlık bulunamadı (Celsius gibi)');
     await page.clock.setFixedTime(GUN(1));
     await page.reload(); await hazir(page);
-    const sira = await T(page, 'sira', 'sira', 4);
-    assert.deepEqual([...sira].sort(), [f.I, f.tireli, f.bosluklu, f.uzun].sort(), 'Düzenek: vadesi gelen dört kelime sıranın başında');
+    const sira = await T(page, 'sira', 'sira', 5);
+    assert.deepEqual([...sira].sort(), [f.I, f.tireli, f.bosluklu, f.uzun, f.buyuk].sort(), 'Düzenek: vadesi gelen beş kelime sıranın başında');
+    // Kelime baştan sona yazıldıktan sonra (Enter'dan önce): her harf kutusu yazılmış, hiçbiri "farklı" değil, sıradaki
+    // kutu kalmamış; kutularda başlık okunur (gizli harf yazıldığı gibi, açık harf başlıktaki büyüklüğüyle). Atılan bir
+    // karakter ya da ayraç kutusu harfleri kaydırsaydı açık kutular "farklı" olur, son kutular boş kalırdı.
+    // ilk: kelimenin dokunulmamış kutuları.
+    // Tireli ya da çok sözcüklü başlıkta her parça (ayracıyla birlikte) tek satırda durur: satır yalnız ayraçtan kırılır.
+    // Bir satıra sığmayacak kadar uzun parça (dar ekranda 10, geniş ekranda 18 kutudan uzun) bilerek bölünür; bu
+    // senaryonun başlıklarında öyle parça yoktur. Dönen: birden çok satıra yayılan parçaların metinleri.
+    const bolunenParcalar = () => page.evaluate(() => [...document.querySelectorAll('#oyunHarfler .parca')]
+      .filter(p => new Set([...p.querySelectorAll('.harf')].map(h => Math.round(h.getBoundingClientRect().top))).size > 1)
+      .map(p => p.querySelectorAll('.harf').length + ' kutu'));
+    const yerinde = (ilk, g, w) => {
+      assert.deepEqual(g.hucreler.map(h => h.s), ilk.map(h => (h.s === 'ayrac' ? 'ayrac' : h.s.split(' ')[0] + ' yazildi')),
+        JSON.stringify(w) + ': yazılan her harf sırayla bir harf kutusuna oturur, hiçbir açık kutu "farklı" olmaz');
+      assert.equal(g.hucreler.map(h => h.c).join('').split(BOSLUK).join(' '), w, JSON.stringify(w) + ': kutularda başlığın kendisi okunur');
+    };
+    // Ayraçtan sonraki açık harfinde yazım hatası denenen başlıklar (aşağıda).
+    const ayracSonrasi = [];
     for (const w of sira) {
       await kelimeBekle(page, w);
       let g = await T(page, 'gorunum');
+      const ilk = g.hucreler;
       assert.equal(g.seviye, 'Seviye 2 · harflerin %40\'ı açık');
-      // Dar ekranda kutular kartın içinde kalır, sayfa yatay kaymaz.
+      // Dar ekranda kutular kartın içinde kalır, sayfa yatay kaymaz. Tek parçalı uzun başlık satıra sığmazsa dengeli
+      // bölünür; çok parçalı başlıkta satır yalnız ayraçtan kırılır.
+      const cokParcali = /[- ]/.test(w);
       for (const en of [320, 375]) {
         await page.setViewportSize({width: en, height: 812});
         const sigma = await page.evaluate(() => {
@@ -1239,22 +1556,80 @@ async function main() {
           return {disarida, ekran: innerWidth, kaydirma: document.documentElement.scrollWidth};
         });
         assert.deepEqual([sigma.disarida, sigma.kaydirma <= sigma.ekran + 1], [0, true], w.length + ' karakterli başlık ' + en + ' px: ' + JSON.stringify(sigma));
+        if (cokParcali) assert.deepEqual(await bolunenParcalar(), [], JSON.stringify(w) + ' ' + en + ' px: hiçbir parça iki satıra bölünmez (imleç satırlar arasında gidip gelmesin)');
       }
       await page.setViewportSize({width: 1280, height: 900});
-      const e = await T(page, 'eksik', w);
-      assert.equal(g.azami, String(e.length), 'maxlength yalnız yazılacak harfleri sayar');
+      if (cokParcali) assert.deepEqual(await bolunenParcalar(), [], JSON.stringify(w) + ' 1280 px: hiçbir parça iki satıra bölünmez');
+      const e = await T(page, 'eksik', w), y = tam(w);
+      assert.ok(e.length < y.length, 'Düzenek: kelimede açık harf var');
+      // Tarayıcı sınırı sayfanın temizliğinden önce uygular: ayraçlar da sayılmasaydı tek parça gelen "well-being" son harfini yitirirdi.
+      assert.equal(g.azami, String(w.length), 'maxlength başlığın uzunluğudur: açık harfler de yazılır, ayraçlara da yer vardır');
       await page.locator('#oyunGirdi').focus();
       if (w === f.I) {
-        // Türkçe klavye harfleri tek "i" olur; rakam ve noktalama girmez; fazlası alınmaz.
+        // Rakam, noktalama, boşluk ve tire girmez.
         await page.keyboard.type('1/ -9.');
-        assert.equal((await T(page, 'gorunum')).deger, '');
-        await page.keyboard.type('Iıİ');
-        assert.equal((await T(page, 'gorunum')).deger, 'iii');
-        for (let i = 0; i < 3; i++) await page.keyboard.press('Backspace');
-        const gurultulu = [...e].map((c, i) => (c === 'i' ? 'İ' : c.toUpperCase()) + ['/', ' ', '3', '-'][i % 4]).join('');
+        assert.equal((await T(page, 'gorunum')).deger, '', 'Harf olmayan karakter girdiye girmez');
+        // Türkçe klavye harfleri (I, ı, İ) tek "i" olur: açık "i" kutusunun üzerine yazılınca kutu "farklı" sayılmaz
+        // (başka harf yazılınca sayılır). Gizli "i" kutusu yanlış harfte de "farklı" olmaz: işaret cevabı ele verirdi.
+        const acikI = ilk.findIndex(h => h.s.startsWith('sabit') && h.c === 'i'), gizliI = ilk.findIndex((h, i) => h.s.startsWith('bos') && w[i] === 'i');
+        for (const [konum, taban] of [[acikI, 'sabit'], [gizliI, 'bos']]) {
+          await page.keyboard.type(y.slice(0, konum));
+          for (const tus of ['I', 'ı', 'İ', 'q']) {
+            await page.keyboard.type(tus);
+            const harf = tus === 'q' ? 'q' : 'i', gi = await T(page, 'gorunum');
+            assert.deepEqual([gi.deger, gi.hucreler[konum]], [y.slice(0, konum) + harf, {c: harf, s: taban + ' yazildi' + (tus === 'q' && taban === 'sabit' ? ' farkli' : '')}],
+              (taban === 'sabit' ? 'Açık' : 'Gizli') + ' "i" kutusuna ' + JSON.stringify(tus) + ' yazıldı');
+            await page.keyboard.press('Backspace');
+          }
+          for (let i = 0; i < konum; i++) await page.keyboard.press('Backspace');
+        }
+        // Telefon klavyesi harfi bileşimle yazar: bileşim sürerken girdi değerine dokunulmaz ("İ" olduğu gibi durur),
+        // kutular yine sadeleşmiş hâli gösterir (açık "i" kutusu "farklı" olmaz); bileşim bitince değer de sadeleşir.
+        const klavye = await context.newCDPSession(page);
+        await page.keyboard.type(y.slice(0, acikI));
+        await klavye.send('Input.imeSetComposition', {text: 'İ', selectionStart: 1, selectionEnd: 1});
+        g = await T(page, 'gorunum');
+        assert.deepEqual([g.deger, g.hucreler[acikI]], [y.slice(0, acikI) + 'İ', {c: 'i', s: 'sabit yazildi'}], 'Bileşim sürerken açık "i" kutusuna "İ" yazıldı');
+        await klavye.send('Input.insertText', {text: 'İ'});
+        assert.equal((await T(page, 'gorunum')).deger, y.slice(0, acikI + 1), 'Bileşim bitince girdi değeri de sadeleşir');
+        for (let i = 0; i <= acikI; i++) await page.keyboard.press('Backspace');
+        // Kelimenin tamamı gürültüyle yazılır: araya giren "/", boşluk, rakam ve tire atılır; fazlası alınmaz.
+        const gurultulu = [...y].map((c, i) => (c === 'i' ? 'İ' : c.toUpperCase()) + ['/', ' ', '3', '-'][i % 4]).join('');
         await page.keyboard.type(gurultulu + 'zz');
         g = await T(page, 'gorunum');
-        assert.equal(g.deger, e, 'Girdi sadeleşti: ' + JSON.stringify(gurultulu) + ' → ' + JSON.stringify(g.deger));
+        assert.equal(g.deger, y, 'Girdi sadeleşti: ' + JSON.stringify(gurultulu) + ' → ' + JSON.stringify(g.deger));
+        // Tuşla yazılan fazlalığı tarayıcı maxlength ile durdurur; sınırı aşan bir değer başka yoldan gelirse (betik,
+        // bileşimle yazan klavye) sayfa kendisi keser.
+        await page.evaluate(v => { const girdi = document.getElementById('oyunGirdi'); girdi.value = v; girdi.dispatchEvent(new Event('input', {bubbles: true})); }, y + 'zz');
+        g = await T(page, 'gorunum');
+        assert.equal(g.deger, y, 'Kelimenin harf sayısını aşan harfler kesilir');
+      } else if (w === f.buyuk) {
+        // Açık büyük harf küçük de büyük de yazılsa "farklı" sayılmaz, kutuda başlıktaki büyüklüğüyle kalır.
+        for (const tus of [y[0], w[0]]) {
+          await page.keyboard.type(tus);
+          const gb = await T(page, 'gorunum');
+          assert.deepEqual([gb.deger, gb.hucreler[0]], [y[0], {c: w[0], s: 'sabit yazildi'}], 'Açık ' + JSON.stringify(w[0]) + ' kutusuna ' + JSON.stringify(tus) + ' yazıldı');
+          await page.keyboard.press('Backspace');
+        }
+        // Açık büyük harfin üzerine başka harf, kelimenin kalanı doğru: deneme harcanmaz; iletide harf başlıktaki
+        // büyüklüğüyle söylenir (Celsius → C).
+        await page.keyboard.type(bozuk(w, [0]));
+        await page.keyboard.press('Enter');
+        assert.equal(await durumOku(page), '1. harf yanlış, ' + w[0] + ' olmalı. O harften devam et.',
+          'Açık büyük harfteki yazım hatası: olması gereken harf başlıktaki büyüklüğüyle söylenir (' + w + ')');
+        for (let i = 0; i < y.length; i++) await page.keyboard.press('Backspace');
+        // Açık büyük harf küçük yazılıp SONRAKİ bir açık harfe başka harf yazılınca bildirilen o harftir: büyük harf
+        // küçük yazıldı diye "farklı" sayılmaz.
+        const baskaAcik = ilk.findIndex((h, i) => i > 0 && h.s.startsWith('sabit'));
+        assert.ok(baskaAcik > 0, 'Düzenek: büyük harfli başlıkta ikinci bir açık harf var (' + w + ')');
+        await page.keyboard.type(bozuk(w, [baskaAcik]));
+        await page.keyboard.press('Enter');
+        assert.equal(await durumOku(page), (baskaAcik + 1) + '. harf yanlış, ' + w[baskaAcik] + ' olmalı. O harften devam et.',
+          'Büyük harfli başlıkta sonraki açık harfteki yazım hatası: o harf bildirilir, küçük yazılan açık büyük harf değil (' + w + ')');
+        for (let i = 0; i < y.length; i++) await page.keyboard.press('Backspace');
+        await page.keyboard.type(y);
+        g = await T(page, 'gorunum');
+        assert.equal(g.deger, y);
       } else {
         const ayrac = w.includes('-') ? '-' : (w.includes(' ') ? ' ' : '');
         [...w].forEach((c, i) => {
@@ -1262,20 +1637,53 @@ async function main() {
           assert.equal(g.hucreler[i].s, 'ayrac', 'Ayraç sabit kutudur');
           assert.equal(g.hucreler[i].c, c === ' ' ? BOSLUK : '-');
         });
-        // Boşluk ayracı "sözcük arası" diye okunur: "boşluk", yazılacak hücrenin adı olan "boş" ile karışırdı.
+        // Boşluk ayracı "sözcük arası" diye okunur: "boşluk", gizli hücrenin adı olan "boş" ile karışırdı.
         if (ayrac) assert.ok(g.tarif.includes(ayrac === '-' ? ', tire, ' : ', sözcük arası, ') && !g.tarif.includes('boşluk'), 'Açıklama ayracı adıyla okur: ' + g.tarif);
         assert.doesNotMatch(e, /[- ]/);
-        // Ayraç yazılsa da yok sayılır.
-        await page.keyboard.type(e.slice(0, 1) + (ayrac || '-') + e.slice(1));
-        assert.equal((await T(page, 'gorunum')).deger, e);
+        // Yapıştırılan ya da klavyenin tek parça gönderdiği başlık (ayracıyla birlikte) son harfini yitirmez.
+        if (ayrac) {
+          await page.keyboard.insertText(w);
+          assert.equal((await T(page, 'gorunum')).deger, y, 'Tek parça gelen başlık: ayraç atılır, bütün harfler kalır (' + JSON.stringify(w) + ')');
+          for (let i = 0; i < y.length; i++) await page.keyboard.press('Backspace');
+          assert.equal((await T(page, 'gorunum')).deger, '');
+        }
+        // Başlık yazıldığı gibi, tiresi ve boşluğuyla yazılır (ayraçsız başlıkta araya tire sokulur): ayraç yok sayılır.
+        const yazilan = ayrac ? w : y.slice(0, 1) + '-' + y.slice(1);
+        await page.keyboard.type(yazilan);
+        g = await T(page, 'gorunum');
+        assert.equal(g.deger, y, 'Ayraç girdiye girmez: ' + JSON.stringify(yazilan) + ' → ' + JSON.stringify(g.deger));
+        if (ayrac) {
+          // maxlength ayraçlara da yer bırakır: harf sayısını aşan harfi tarayıcı durdurmaz, sayfa kendisi keser (kesmeseydi
+          // fazladan harf kutularda görünmeden girdide kalır, ilk Backspace yalnız onu silerdi).
+          await page.keyboard.type('z');
+          assert.equal((await T(page, 'gorunum')).deger, y, 'Ayraçlı başlıkta harf sayısını aşan harf girdiye girmez (' + JSON.stringify(w) + ')');
+          // Ayraçtan SONRAKİ açık harfte yazım hatası: iletideki harf sırası ayraçları saymaz, harf o kutunun harfidir.
+          const harfKutulari = ilk.map((h, i) => i).filter(i => ilk[i].s !== 'ayrac');
+          const sonraki = harfKutulari.findIndex(i => i > w.indexOf(ayrac) && ilk[i].s.startsWith('sabit'));
+          if (sonraki >= 0) {
+            for (let i = 0; i < y.length; i++) await page.keyboard.press('Backspace');
+            await page.keyboard.type(bozuk(w, [sonraki]));
+            await page.keyboard.press('Enter');
+            assert.equal(await durumOku(page), (sonraki + 1) + '. harf yanlış, ' + w[harfKutulari[sonraki]] + ' olmalı. O harften devam et.',
+              'Ayraçtan sonraki açık harfte yazım hatası: harf sırası ayraçları saymaz (' + JSON.stringify(w) + ')');
+            for (let i = 0; i < y.length; i++) await page.keyboard.press('Backspace');
+            await page.keyboard.type(y);
+            g = await T(page, 'gorunum');
+            ayracSonrasi.push(w);
+          }
+        }
       }
+      yerinde(ilk, g, w);
       await page.keyboard.press('Enter');
       await durumBekle(page, 'Bildiniz! Kelime 2. kutuya çıktı; bir dahaki sefere harflerin %30\'u açık gelecek.');
       await kutuBekle(page, w, 2);
       assert.equal((await T(page, 'gorunum')).hucreler.map(h => h.c).join('').split(BOSLUK).join(' '), w);
       await page.keyboard.press('Enter');
     }
-    return 'kelimeler: ' + f.I.length + ' harfli, tireli ' + f.tireli.length + ', boşluklu ' + f.bosluklu.length + ', en uzun ' + f.uzun.length + ' karakter';
+    assert.ok(ayracSonrasi.length, 'Düzenek: tireli ya da çok sözcüklü başlıklardan en az birinde ayraçtan SONRA açık gelen harf olmalı (iletideki harf sırası ayraçları saymaz)');
+    assert.ok(sira.filter(w => /[- ]/.test(w)).every(w => w.split(/[- ]/).every(p => p.length + 1 <= 10)),
+      'Düzenek: çok parçalı başlıkların her parçası (ayracıyla) dar ekranın bir satırına sığar; sığmayan parça bilerek bölünür, o zaman bolunenParcalar beklentisini daraltın');
+    return 'kelimeler: ' + f.I.length + ' harfli, tireli ' + f.tireli.length + ', boşluklu ' + f.bosluklu.length + ', en uzun ' + f.uzun.length + ' karakter, büyük harfli ' + f.buyuk;
   });
 
   /* ---------- 8) Katman seçimi ve inmeyen katman ---------- */
@@ -1307,17 +1715,21 @@ async function main() {
     await kelimeBekle(page, sayi.ilk3);
     assert.deepEqual(await depo(), [3]);
     assert.equal((await T(page, 'gorunum')).modlar[0], 'Sıradakiler (' + sayi.o3 + ')');
-    // Yüklü katmanlar arasında geçişte yarım kelime ve yazılan harf korunur.
+    // Yüklü katmanlar arasında geçişte yarım kelime ve yazılan harfler korunur (kelime baştan, ilk gizli harfine
+    // kadar yazılır: yazılanlar kutularında da durur).
     await katman(2).click();
     await kelimeBekle(page, w);
     await page.locator('#oyunGirdi').focus();
-    const e = await T(page, 'eksik', w);
-    await page.keyboard.type(e[0]);
+    const bas = tam(w).slice(0, (await T(page, 'gizliSira'))[0] + 1);
+    await page.keyboard.type(bas);
+    const yazili = (await T(page, 'gorunum')).hucreler;
+    assert.equal(yazili.filter(h => h.s.includes('yazildi')).length, bas.length, 'Düzenek: yazılan her harf bir kutuya oturdu');
     await katman(3).click();
     await page.waitForFunction(() => window.__oyun.secili().join() === '2');
     assert.deepEqual(await depo(), [2]);
     g = await T(page, 'gorunum');
-    assert.equal(g.deger, e[0], 'Aynı kelime sırada kaldıysa yazılan harf silinmez');
+    assert.equal(g.deger, bas, 'Aynı kelime sırada kaldıysa yazılan harfler silinmez');
+    assert.deepEqual(g.hucreler, yazili, 'Yazılan harfler kutularında da olduğu gibi kalır');
     assert.equal(await T(page, 'uyuyor', w, false), true);
     // İlk kelimenin sahibi olmayan (yüklü) katman kapandı: soru yinelenmez ama yeni sıra satırı duyurulur
     // (duyuru bölgesi tam olarak o satır olur).
@@ -1358,23 +1770,26 @@ async function main() {
     assert.equal(g.ornek + g.kalip, 0, 'Katman yokken örnek cümle çizilemez');
     await cevrimdisi.keyboard.press('Enter');
     await kelimeBekle(cevrimdisi, k2);
-    const e2 = await T(cevrimdisi, 'eksik', k2);
-    await cevrimdisi.keyboard.type(e2[0]);
+    // Kelimenin ilk harfi yazılır; kalanı katman indikten sonra.
+    const y2 = tam(k2);
+    await cevrimdisi.keyboard.type(y2[0]);
+    const yazili2 = (await T(cevrimdisi, 'gorunum')).hucreler;
     // Hâlâ çevrimdışı: uyarı kalır, yazılan silinmez.
     const dustu = cevrimdisi.waitForEvent('requestfailed', r => KATMAN_DOSYASI.test(r.url()));
     await cevrimdisi.locator('#oyunYukDene').click();
     await dustu;
     await cevrimdisi.evaluate(() => new Promise(r => setTimeout(r, 0)));
     g = await T(cevrimdisi, 'gorunum');
-    assert.ok(g.yukNotu, 'Başarısız yeniden denemede uyarı kalır'); assert.equal(g.deger, e2[0]);
+    assert.ok(g.yukNotu, 'Başarısız yeniden denemede uyarı kalır'); assert.equal(g.deger, y2[0]);
     engel = false;
     await cevrimdisi.locator('#oyunYukDene').click();
     await cevrimdisi.locator('#oyunYuk').waitFor({state: 'hidden'});
     anlam = await T(cevrimdisi, 'anlam', k2, true, false);
     assert.equal(anlam.gorulen, anlam.beklenen, 'Katman inince anlam ayrıntılı hâle gelir');
     g = await T(cevrimdisi, 'gorunum');
-    assert.equal(g.deger, e2[0], 'Yeniden deneme yazılanı silmez'); assert.equal(g.odak, 'oyunGirdi');
-    await cevrimdisi.keyboard.type(e2.slice(1));
+    assert.equal(g.deger, y2[0], 'Yeniden deneme yazılanı silmez'); assert.equal(g.odak, 'oyunGirdi');
+    assert.deepEqual(g.hucreler, yazili2, 'Yazılan harf kutusunda da kalır');
+    await cevrimdisi.keyboard.type(y2.slice(1));
     await cevrimdisi.keyboard.press('Enter');
     await kutuBekle(cevrimdisi, k2, 1);
     assert.ok((await T(cevrimdisi, 'gorunum')).ornek >= 1, 'Katman inince örnek cümle gelir');
@@ -1426,18 +1841,22 @@ async function main() {
     const [w, w2, w3] = await T(a, 'sira');
     await kelimeBekle(a, w);
     await a.locator('#oyunGirdi').focus();
-    const e = await T(a, 'eksik', w);
-    await a.keyboard.type(e[0]);
+    // Kelime baştan, ilk gizli harfine kadar yazılır (yarım kelime); kalanı öbür sekmenin cevabından sonra.
+    const y = tam(w), bas = y.slice(0, (await T(a, 'gizliSira'))[0] + 1);
+    await a.keyboard.type(bas);
+    const yazili = (await T(a, 'gorunum')).hucreler;
+    assert.equal(yazili.filter(h => h.s.includes('yazildi')).length, bas.length, 'Düzenek: yazılan her harf bir kutuya oturdu');
     const b = await context.newPage();
     await ac(b, base);
     assert.equal(await b.evaluate(k => window.YDS.Ilerleme.dogru(k, 'kelime'), w), 1, 'Öbür sekme kelimeyi yanıtladı');
     await a.bringToFront();
-    // Üzerinde çalışılan kelime yerinde kalır; girdi ve odak değişmez.
+    // Üzerinde çalışılan kelime yerinde kalır; girdi, yazılan harflerin kutuları ve odak değişmez.
     await a.waitForTimeout(400);
     let g = await T(a, 'gorunum');
-    assert.equal(g.deger, e[0]); assert.equal(g.odak, 'oyunGirdi');
+    assert.equal(g.deger, bas); assert.equal(g.odak, 'oyunGirdi');
+    assert.deepEqual(g.hucreler, yazili, 'Yazılan harfler kutularında durur');
     assert.equal(await T(a, 'uyuyor', w, false), true, 'Yarım kelime depolama olayıyla değişmez');
-    await a.keyboard.type(e.slice(1));
+    await a.keyboard.type(y.slice(bas.length));
     await a.keyboard.press('Enter');
     await durumBekle(a, BASKA_SEKME);
     await a.waitForTimeout(300);
@@ -1467,7 +1886,7 @@ async function main() {
     await b.evaluate(k => window.YDS.Ilerleme.dogru(k, 'kelime'), w3);
     await a.waitForTimeout(300);
     assert.equal(await T(a, 'kayit', w3), null, 'Düzenek: bu sekmenin bellekteki kopyası eski');
-    await a.keyboard.type(await T(a, 'eksik', w3));
+    await a.keyboard.type(tam(w3));
     await a.keyboard.press('Enter');
     await durumBekle(a, BASKA_SEKME);
     assert.equal(await a.evaluate(k => window.YDS.Depo.oku('yds-leitner', {})[window.YDS.Ilerleme.ilerlemeKimligi(k, 'kelime')].k, w3), 1,
@@ -1490,7 +1909,7 @@ async function main() {
       'Ekrandaki dokunulmamış kelime, kaydı başka sekmede değişince yeni seviyesiyle yeniden çizilir');
     assert.deepEqual(g.hucreler.map((h, i) => (h.s.includes('sabit') ? i : -1)).filter(i => i >= 0), duzen4.acik, 'Açık harfler 3. kutunun harfleri');
     assert.deepEqual([g.odak, g.deger, g.durum], ['oyunGirdi', '', ''], 'Yeniden çizim odağı ve girdiyi değiştirmez, ileti yazmaz');
-    await a.keyboard.type(await T(a, 'eksik', w4));
+    await a.keyboard.type(tam(w4));
     await a.keyboard.press('Enter');
     // Sonuç önce çizilir, yazım bir kare sonra yapılır; geri çevrilseydi durum satırı o zaman değişirdi.
     await durumOku(a);
@@ -1541,11 +1960,11 @@ async function main() {
     assert.deepEqual([...sira].sort(), [f.baslik, ...f.notlar.map(n => n.w)].sort(), 'Düzenek: vadesi gelen dört kelime sıranın başında');
     // Maske ve sızıntı denetimi yalnız dokunulmamış kartta değil, turun sonraki hâllerinde de yapılır (yanlış
     // deneme, kelimeden ayrılıp dönme, "Bir harf aç"). Bu hâller tek kelimede sınanır: "Bir harf aç" en az iki
-    // boşluk ister; öteki üç kelime eskisi gibi ilk denemede çözülür.
+    // gizli harf ister; öteki üç kelime eskisi gibi ilk denemede çözülür.
     const bugun = await T(page, 'bugun');
     let yarim = null;
     for (const w of sira) if (!yarim && (await T(page, 'duzen', w, 1)).bos >= 2) yarim = w;
-    assert.ok(yarim, 'Düzenek: dört kelimeden hiçbirinin 1. kutuda iki boşluğu yok (' + sira.join(', ') + ')');
+    assert.ok(yarim, 'Düzenek: dört kelimeden hiçbirinin 1. kutuda iki gizli harfi yok (' + sira.join(', ') + ')');
     const [yeniIlk] = await T(page, 'sira', 'yeni', 1);
     assert.ok(yeniIlk, 'Düzenek: "Yalnız yeni kelimeler" turunda kelime var');
     for (const w of sira) {
@@ -1574,16 +1993,16 @@ async function main() {
           const ara = await T(page, 'anlam', w, true, false);
           assert.equal(ara.gorulen, ara.beklenen, hal + ': anlam hâlâ maskeli');
           assert.deepEqual(await T(page, 'sizinti', w), [], hal + ': kartta cevap yok');
-          // Girdinin açıklaması yazılacak kutuları hâlâ "boş" diye okur. (Dönüşün duyurusu bu açıklamayla biter;
+          // Girdinin açıklaması gizli kutuları hâlâ "boş" diye okur. (Dönüşün duyurusu bu açıklamayla biter;
           // aşağıdaki duyuru eşitliği onu ekrandaki açıklamadan kurar, o yüzden açıklama burada ayrıca doğrulanır.)
           const gh = await T(page, 'gorunum');
-          assert.equal(gh.tarif, beklenenAciklama(gh), hal + ': açıklama yazılacak kutuların harfini söylemez ("boş" der)');
+          assert.equal(gh.tarif, beklenenAciklama(gh), hal + ': açıklama gizli kutuların harfini söylemez ("boş" der)');
         };
-        // 1) Yanlış deneme (hiçbir harf tutmaz).
+        // 1) Yanlış deneme: kelimenin tamamı yazılır, gizli harflerin hiçbiri tutmaz (açık harfler doğru yazılır).
         await page.locator('#oyunGirdi').focus();
-        await page.keyboard.type(yanlisHarfler(await T(page, 'eksik', w)));
+        await page.keyboard.type(bozuk(w, await T(page, 'gizliSira')));
         await page.keyboard.press('Enter');
-        await durumBekle(page, 'Olmadı; kalan deneme hakkı: 2.');
+        await durumBekle(page, 'Olmadı; baştan yaz. 2 hakkın kaldı.');
         await hala('Yanlış denemeden sonra');
         // 2) Kelime yarım bırakılır (öbür modda başka kelime gelir), sonra geri dönülür.
         await page.locator('.oyun-mod [data-mod="yeni"]').click();
@@ -1596,7 +2015,7 @@ async function main() {
         sonDuyuru = await duyuruOku(page);
         assert.deepEqual(await T(page, 'duyuruSizinti', w), [], 'Yarım kelimeye dönüşün duyurusunda cevap yok');
         assert.equal(sonDuyuru, await T(page, 'soru', w, true), 'Yarım kelimeye dönüş sıra satırı ve maskeli soruyla duyurulur');
-        // 3) "Bir harf aç": ilk boşluk açılır.
+        // 3) "Bir harf aç": girdi boşken ilk gizli harf açılır.
         const ilkBos = (await T(page, 'gorunum')).hucreler.findIndex(h => h.s.startsWith('bos'));
         await page.locator('#oyunHarf').click();
         await durumBekle(page, harfSirasi(w, ilkBos) + '. harf açıldı: ' + w[ilkBos] + '. Doğru bilirsen kelime aynı kutuda kalır.');
@@ -1626,7 +2045,7 @@ async function main() {
   });
 
   /* ---------- 11) Yalnız klavye ve durum durum erişilebilirlik ---------- */
-  senaryo('Klavye: Tab sırası üç düğmeye ulaşır, Enter gönderir; axe: yanlış, açılmış, doğru, boş sıra', async () => {
+  senaryo('Klavye: Tab sırası üç düğmeye ulaşır, Enter gönderir; axe ve harf karşıtlığı: yazarken (yazılmış kutular, açık harfin üzerine farklı harf), yanlış, açılmış, doğru, boş sıra', async () => {
     const page = await yeniSayfa();
     await ac(page, base);
     await enAzBosluk(page, 2);
@@ -1636,7 +2055,7 @@ async function main() {
     let adim = 0;
     while (await odak() !== 'oyunGirdi' && adim++ < 60) await page.keyboard.press('Tab');
     assert.equal(await odak(), 'oyunGirdi', 'Girdi Tab sırasında');
-    // Girdiden sonra düğmeler sırayla gelir (kapalı düğme atlanır: tek boşluklu kelimede "Bir harf aç").
+    // Girdiden sonra düğmeler sırayla gelir (kapalı düğme atlanır: tek gizli harfli kelimede "Bir harf aç").
     const dugmeSirasi = async () => {
       const beklenen = (await T(page, 'gorunum')).harfKapali ? ['oyunPas', 'oyunGonder'] : ['oyunHarf', 'oyunPas', 'oyunGonder'];
       const duraklar = [];
@@ -1644,20 +2063,48 @@ async function main() {
       assert.deepEqual(duraklar, beklenen, 'Girdiden sonra düğmeler sırayla');
       return beklenen.length;
     };
-    let e = await T(page, 'eksik', w);
-    assert.ok(e.length >= 2, 'Düzenek: ilk kelimede en az iki boşluk');
+    const e = await T(page, 'eksik', w);
+    assert.ok(e.length >= 2, 'Düzenek: ilk kelimede en az iki gizli harf');
     assert.equal(await dugmeSirasi(), 3, 'Üç düğme de Tab sırasında');
     for (let i = 0; i < 3; i++) await page.keyboard.press('Shift+Tab');
     assert.equal(await odak(), 'oyunGirdi');
     const cerceve = await page.evaluate(() => getComputedStyle(document.querySelector('.harf-alan')).outlineStyle);
     assert.notEqual(cerceve, 'none', 'Odak halkası sarmalayıcıda görünür');
-    // Yazarken (bir harf yazılı, odak girdide), sonra yanlış deneme.
-    await page.keyboard.type(yanlisHarfler(e[0]));
+    // Yazarken (son harf dışında kelime yazılı, odak girdide), sonra yanlış deneme. Gizli harflerin hepsi ve ilk açık
+    // harf yanlış yazılır: yazılmış kutunun ve "farklı" kutunun renkleri de ölçülür (harf kutuları aria-hidden olduğu
+    // için axe onlara bakmaz; karşıtlığı axeVeYerlesim kendisi ölçer).
+    const gizli = await T(page, 'gizliSira'), harfler = [...w].filter(c => c !== '-' && c !== ' ');
+    const ilkAcik = harfler.findIndex((c, i) => !gizli.includes(i)), son = harfler.length - 1;
+    assert.ok(ilkAcik >= 0 && ilkAcik < son, 'Düzenek: ilk kelimenin son harfinden önce açık harfi var');
+    const yanlisi = bozuk(w, [...gizli, ilkAcik]);
+    await page.keyboard.type(yanlisi.slice(0, -1));
+    assert.deepEqual((await T(page, 'gorunum')).hucreler.filter(h => h.s !== 'ayrac'), harfler.map((c, i) => {
+      if (i === son) return gizli.includes(i) ? {c: '', s: 'bos simdi'} : {c, s: 'sabit simdi'};
+      if (gizli.includes(i)) return {c: yanlisi[i], s: 'bos yazildi'};
+      return i === ilkAcik ? {c: yanlisi[i], s: 'sabit yazildi farkli'} : {c, s: 'sabit yazildi'};
+    }), 'Yazarken: yazılan kutular yazılmış; yalnız üzerine başka harf yazılan açık kutu "farklı" (yanlış yazılan gizli kutu değil); son kutu sırada');
+    // "Farklı" kutu yalnız renkle ayrılmaz: köşesinde çarpı (::after) vardır; başka hiçbir kutuda yoktur.
+    const carpilar = await page.evaluate(() => [...document.querySelectorAll('#oyunHarfler .harf:not(.ayrac)')].map(el => {
+      const s = getComputedStyle(el, '::after');
+      return s.content === 'none' || s.content === 'normal' ? '' : s.content + ' ' + s.position;
+    }));
+    assert.deepEqual(carpilar, harfler.map((c, i) => (i === ilkAcik ? '"×" absolute' : '')), '"Farklı" kutunun renk dışı işareti: köşede çarpı (yalnız o kutuda)');
+    // "Farklı" kutu hata tonlarındadır (zemin, harf, çerçeve); renkler tema değişkenlerinden okunur.
+    const farkliRenk = await page.evaluate(() => {
+      const olc = el => { const s = getComputedStyle(el); return [s.backgroundColor, s.color, s.borderTopColor, s.borderBottomColor].join(' | '); };
+      const ornek = document.createElement('span');
+      ornek.style.cssText = 'border:1px solid;background:var(--err-soft);color:var(--err);border-color:var(--err)';
+      document.body.appendChild(ornek);
+      const r = {beklenen: olc(ornek), gorulen: [...document.querySelectorAll('#oyunHarfler .harf.farkli')].map(olc)};
+      ornek.remove();
+      return r;
+    });
+    assert.deepEqual(farkliRenk.gorulen, [farkliRenk.beklenen], '"Farklı" kutu hata tonlarında: zemin --err-soft, harf ve çerçeve --err');
     await dortluDenetim(page, 'Yazarken');
     await page.locator('#oyunGirdi').focus();
-    await page.keyboard.type(yanlisHarfler(e.slice(1)));
+    await page.keyboard.type(yanlisi.slice(-1));
     await page.keyboard.press('Enter');
-    await durumBekle(page, 'Olmadı; kalan deneme hakkı: 2.');
+    await durumBekle(page, 'Olmadı; baştan yaz. 2 hakkın kaldı.');
     await dortluDenetim(page, 'Yanlış deneme');
     // Klavyeyle "Bilemedim, göster".
     await page.locator('#oyunGirdi').focus();
@@ -1673,8 +2120,7 @@ async function main() {
     await page.keyboard.press('Enter');
     [w] = await T(page, 'sira');
     await kelimeBekle(page, w);
-    e = await T(page, 'eksik', w);
-    await page.keyboard.type(e);
+    await page.keyboard.type(tam(w));
     await dugmeSirasi();
     assert.equal(await odak(), 'oyunGonder');
     await page.keyboard.press('Enter');
@@ -1726,7 +2172,7 @@ async function main() {
   });
 
   /* ---------- 13) Aynı anlamlı kelime ve yazım çeşidi ---------- */
-  senaryo('Öteki yazım (-ise/-ize, -re/-er) kısa anlamı farklı yazılmış olsa da kabul edilir; aynı anlamlı başka kelime (tek harf farklı olsa da) deneme harcamaz', async () => {
+  senaryo('Öteki yazım (-ise/-ize, -re/-er) kısa anlamı farklı yazılmış olsa da kabul edilir; aynı anlamlı başka kelime (tek harf farklı olsa da) deneme harcamaz; farklı harfi açık gelen kartta ikisi de açık harfin üzerine yazılır', async () => {
     const context = await yeni();
     const page = await context.newPage();
     await page.clock.setFixedTime(GUN(0));
@@ -1788,7 +2234,8 @@ async function main() {
         const g = await T(page, 'gorunum');
         assert.equal(g.deger, c.aday, 'Yazılan yerinde kalır');
         assert.equal(g.gecersiz, null); assert.doesNotMatch(g.harfSinifi, /yanlis/);
-        assert.equal(g.hucreler.filter(h => h.s.startsWith('bos')).length, w.length, 'Hiçbir harf kilitlenmedi');
+        assert.equal(g.hucreler.filter(h => h.s.startsWith('bos')).length, w.length, 'Hiçbir harf açılmadı');
+        assert.equal(g.hucreler.map(h => h.c).join(''), c.aday, 'Kutular da yazılanı göstermeyi sürdürür');
         assert.equal(g.gonder, 'Kontrol et', 'Kelime bitmedi');
         for (let i = 0; i < w.length; i++) await page.keyboard.press('Backspace');
         assert.equal((await T(page, 'gorunum')).durum, '', 'Geçici ileti ilk tuşta silinir');
@@ -1806,7 +2253,59 @@ async function main() {
     }
     await page.locator('#oyunBos').waitFor({state: 'visible'});
     assert.equal((await T(page, 'gorunum')).sayim, 'Bu oturum: ✓ 4 bildin · 💡 0 ipuçlu · ✗ 0 bilemedin', 'Dördü de ilk denemede doğru sayıldı');
-    return 'yazım ' + f.sz.kart + '/' + f.sz.aday + ', ' + f.re.kart + '/' + f.re.aday + '; eş anlam ' + f.tek.kart + '/' + f.tek.aday + ', ' + f.cok.kart + '/' + f.cok.aday;
+    // Farklı harfi AÇIK gelen kart: kelimenin tamamı yazıldığı için öteki yazım da, aynı anlamlı kelime de orada
+    // yazılabilir; harf açık harfin üzerine yazılır, kutu yazılanı gösterir ve işaretlenir (farkli). İki kart 1. kutuya
+    // (%40) alınır; açık harfler kelimeye, kutuya ve güne bağlı olduğundan farklı harfin ikisinde de açık geldiği ilk
+    // gün seçilir.
+    const acikta = await page.evaluate(ciftler => {
+      const O = window.YDS.OyunHesap, bugun = window.YDS.Ilerleme.bugun();
+      const fark = ciftler.map(c => [...c.kart].findIndex((h, i) => h !== c.aday[i]));
+      for (let n = 1; n <= 400; n++) if (ciftler.every((c, i) => O.acikKonumlar(c.kart, 1, bugun + n).includes(fark[i]))) return {n, fark};
+      return null;
+    }, [f.sz, f.tek]);
+    assert.ok(acikta, 'Düzenek: ' + f.sz.kart + ' ve ' + f.tek.kart + ' kartlarında farklı harfin 1. kutuda birlikte açık geldiği bir gün bulunamadı');
+    await page.clock.setFixedTime(GUN(1 + acikta.n));
+    for (const c of [f.sz, f.tek]) assert.equal(await T(page, 'kayitKoy', c.kart, 1), true, 'Düzenek: ' + c.kart + ' 1. kutuya yazıldı, vadesi bugün');
+    await page.reload(); await hazir(page);
+    const aciklar = await T(page, 'sira', 'sira', 2);
+    assert.deepEqual([...aciklar].sort(), [f.sz.kart, f.tek.kart].sort(), 'Düzenek: vadesi gelen iki kart sıranın başında');
+    const BILDINIZ_2 = 'Bildiniz! Kelime 2. kutuya çıktı; bir dahaki sefere harflerin %30\'u açık gelecek.';
+    for (const w of aciklar) {
+      await kelimeBekle(page, w);
+      const c = cifti(w), i = acikta.fark[c === f.sz ? 0 : 1], uzerine = {c: c.aday[i], s: 'sabit yazildi farkli'};
+      let g = await T(page, 'gorunum');
+      assert.ok(g.hucreler[i].c === w[i] && g.hucreler[i].s.startsWith('sabit'), 'Düzenek: ' + w + ' kartında farklı harf (' + w[i] + ') açık geldi: ' + JSON.stringify(g.hucreler[i]));
+      await page.locator('#oyunGirdi').focus();
+      await page.keyboard.type(c.aday);
+      g = await T(page, 'gorunum');
+      assert.equal(g.deger, c.aday, 'Açık harf de yazılır: girdi kelimenin bütün harflerini alır');
+      assert.deepEqual(g.hucreler[i], uzerine, 'Açık harfin üzerine yazılan başka harf kutuda görünür ve işaretlenir');
+      assert.equal(g.hucreler.filter(h => h.s.includes('farkli')).length, 1, 'Yalnız o kutu işaretlenir: ' + JSON.stringify(g.hucreler));
+      await page.keyboard.press('Enter');
+      if (c.bag === 'es') {
+        assert.equal(await durumOku(page), c.aday + ' kelimesi de bu anlama gelir ama aranan kelime o değil; başka bir kelime dene.',
+          'Açık harfin üzerine yazılan aynı anlamlı kelime de tanınır');
+        g = await T(page, 'gorunum');
+        assert.equal(g.deger, c.aday, 'Yazılan yerinde kalır');
+        assert.deepEqual(g.hucreler[i], uzerine, 'Kutu da yazılanı göstermeyi sürdürür');
+        assert.equal(g.gecersiz, null); assert.doesNotMatch(g.harfSinifi, /yanlis/);
+        assert.equal(g.hucreler.filter(h => h.s.startsWith('bulundu')).length, 0, 'Hiçbir gizli harf açılmadı');
+        for (let k = 0; k < w.length; k++) await page.keyboard.press('Backspace');
+        await page.keyboard.type(w);
+        await page.keyboard.press('Enter');
+        // Deneme harcanmadı: sonuç hâlâ "ilk denemede doğru".
+        assert.equal(await durumOku(page), BILDINIZ_2, 'Aynı anlamlı kelime açık harfli kartta da deneme harcamaz');
+      } else {
+        assert.equal(await durumOku(page), c.aday + ' yazımı da doğru; bu karttaki yazım ' + w + '. ' + BILDINIZ_2,
+          'Farklı harfi açık gelen kartta öteki yazım kabul edilir');
+        assert.equal((await T(page, 'gorunum')).hucreler.map(h => h.c).join(''), w, 'Kutular kartın kendi yazımını gösterir');
+      }
+      await kutuBekle(page, w, 2);
+      await page.keyboard.press('Enter');
+    }
+    assert.equal((await T(page, 'gorunum')).sayim, 'Bu oturum: ✓ 2 bildin · 💡 0 ipuçlu · ✗ 0 bilemedin', 'Açık harfli iki kart da ilk denemede doğru sayıldı');
+    return 'yazım ' + f.sz.kart + '/' + f.sz.aday + ', ' + f.re.kart + '/' + f.re.aday + '; eş anlam ' + f.tek.kart + '/' + f.tek.aday + ', ' + f.cok.kart + '/' + f.cok.aday +
+      '; farklı harfi açık: ' + f.sz.kart + ', ' + f.tek.kart + ' (' + acikta.n + ' gün sonra)';
   });
 
   /* ---------- 14) Yazım zamanı ---------- */
@@ -1836,7 +2335,7 @@ async function main() {
       const [w] = await T(page, 'sira');
       await kelimeBekle(page, w);
       await page.locator('#oyunGirdi').focus();
-      await page.keyboard.type(await T(page, 'eksik', w));
+      await page.keyboard.type(tam(w));
       await page.keyboard.press('Enter');
       return w;
     };
@@ -1855,7 +2354,7 @@ async function main() {
     // b) Cevap ve hemen ardından "sonraki": yazım o anda yapılır, bekleyen zamanlayıcı ikinci kez yazmaz.
     const [w2] = await T(page, 'sira');
     await kelimeBekle(page, w2);
-    await page.keyboard.type(await T(page, 'eksik', w2));
+    await page.keyboard.type(tam(w2));
     assert.equal(await page.evaluate(w => {
       const form = document.getElementById('oyunForm');
       form.requestSubmit(); form.requestSubmit();
@@ -2105,7 +2604,7 @@ async function main() {
   });
 
   /* ---------- 18) Kısa kelime ve öğrenilen kelimede ipucu ---------- */
-  senaryo('Kısa kelime 4. kutuda harfsiz gelir (rozet ve yükselme iletisi söyler); öğrenilen kelime ipuçlu bilinirse "Bilinenler"de kalır', async () => {
+  senaryo('Kısa kelime 4. kutuda harfsiz gelir (rozet ve yükselme iletisi söyler); girdinin açıklaması ve eksik yazım iletisi açık harf varken onu da yazdırır, harfsiz kelimede açık harften söz etmez; öğrenilen kelime ipuçlu bilinirse "Bilinenler"de kalır', async () => {
     const context = await yeni();
     const page = await context.newPage();
     await page.clock.setFixedTime(GUN(0));
@@ -2130,6 +2629,20 @@ async function main() {
     let g = await T(page, 'gorunum');
     assert.equal(g.seviye, 'Seviye 4 · harflerin %20\'si açık');
     assert.equal(g.hucreler.filter(h => h.s.includes('sabit')).length, 1);
+    // Bir harf açıkken de dört harfin dördü yazılır: girdi dört harf alır, açıklama açık harfi de yazdırır.
+    assert.equal(g.azami, String(f.kisa.length), 'maxlength başlığın uzunluğudur (gizli harf sayısı değil): açık harf de yazılır');
+    assert.equal(g.tarif, '4 harfli İngilizce kelime: ' + g.hucreler.map(h => (h.s.startsWith('bos') ? 'boş' : h.c)).join(', ') +
+      '. Açık harfler dahil kelimenin tamamını baştan sona yaz, Enter ile kontrol et.', 'Açık harf varken açıklama onu da yazdırır');
+    // Yalnız gizli üç harfi yazmak kelimeyi bitirmez: deneme harcanmaz, yazılan kalır, ileti açık harfi hatırlatır.
+    const gizliler = await T(page, 'eksik', f.kisa);
+    await page.locator('#oyunGirdi').focus();
+    await page.keyboard.type(gizliler);
+    await page.keyboard.press('Enter');
+    assert.equal(await durumOku(page), 'Önce kelimenin tamamını yaz; açık harfleri de yaz.');
+    g = await T(page, 'gorunum');
+    assert.deepEqual([g.deger, g.gecersiz, g.gonder], [gizliler, null, 'Kontrol et'], 'Eksik yazılan kelime yanlış sayılmaz, yazılan yerinde kalır');
+    for (let i = 0; i < gizliler.length; i++) await page.keyboard.press('Backspace');
+    // Deneme harcanmadı: sonuç "ilk denemede doğru".
     await coz(page, f.kisa);
     await durumBekle(page, 'Bildiniz! Kelime 4. kutuya çıktı; bu kadar kısa kelimede bir dahaki sefere harf açılmayacak.');
     await kutuBekle(page, f.kisa, 4);
@@ -2144,10 +2657,18 @@ async function main() {
     assert.equal(g.hucreler.filter(h => !h.s.startsWith('bos')).length, 0, 'Hiç açık harf yok');
     assert.equal(g.hucreler.map(h => h.c).join(''), '');
     assert.equal(g.azami, '4');
-    assert.equal(g.tarif, '4 harfli İngilizce kelime: boş, boş, boş, boş. 4 eksik harfi sırayla yaz, Enter ile kontrol et.');
+    assert.equal(g.tarif, '4 harfli İngilizce kelime: boş, boş, boş, boş. Kelimenin tamamını yaz, Enter ile kontrol et.', 'Açık harf yokken açıklama "açık harfler dahil" demez');
     assert.deepEqual(await T(page, 'sizinti', f.kisa), [], 'Kartta cevap yok');
     await dortluDenetim(page, 'Kısa kelime rozeti');
-    await coz(page, f.kisa);
+    // Harfsiz kelimede eksik yazım iletisi de açık harften söz etmez; deneme harcanmaz, kalan harf yazılıp bitirilir.
+    await page.locator('#oyunGirdi').focus();
+    await page.keyboard.type(f.kisa.slice(0, 3));
+    await page.keyboard.press('Enter');
+    assert.equal(await durumOku(page), 'Önce kelimenin tamamını yaz.');
+    g = await T(page, 'gorunum');
+    assert.deepEqual([g.deger, g.hucreler.map(h => h.s)], [f.kisa.slice(0, 3), ['bos yazildi', 'bos yazildi', 'bos yazildi', 'bos simdi']], 'Yazılan üç harf yerinde, sıra dördüncü kutuda');
+    await page.keyboard.type(f.kisa.slice(3));
+    await page.keyboard.press('Enter');
     await durumBekle(page, 'Bildiniz! Kelime öğrenildi (5. kutu). Bundan sonra “Öğrenilenler · harfsiz” turunda sorulur.');
     await kutuBekle(page, f.kisa, 5);
     // Öğrenilenler turu: bugün öğrenilen kelime sorulmaz; ötekiler dünden kalmadır.
@@ -2156,8 +2677,15 @@ async function main() {
     assert.deepEqual(sira, [f.Z1, f.Z2], 'Düzenek: iki öğrenilmiş kelime sırada');
     // İpucuyla bilinen öğrenilmiş kelime kutusunda kalır ve yarın tekrara gelmez: "Bilinenler"de, 💡 işaretiyle.
     await kelimeBekle(page, f.Z1);
+    const hepsiBos = [...f.Z1].map(() => 'boş');
+    assert.equal((await T(page, 'gorunum')).tarif, f.Z1.length + ' harfli İngilizce kelime: ' + hepsiBos.join(', ') + '. Kelimenin tamamını yaz, Enter ile kontrol et.');
     await page.locator('#oyunHarf').click();
     await durumBekle(page, '1. harf açıldı: ' + f.Z1[0] + '. Doğru bilirsen kelime aynı kutuda kalır.');
+    // Açılan harf de yazılır: harfsiz kelimenin açıklaması artık açık harfi sayar, sıra açılan kutudadır.
+    g = await T(page, 'gorunum');
+    assert.equal(g.tarif, f.Z1.length + ' harfli İngilizce kelime: ' + [f.Z1[0], ...hepsiBos.slice(1)].join(', ') +
+      '. Açık harfler dahil kelimenin tamamını baştan sona yaz, Enter ile kontrol et.', 'Harf açılınca açıklama açık harfi de yazdırır');
+    assert.deepEqual(g.hucreler[0], {c: f.Z1[0], s: 'ipucu simdi'}, 'Açılan ilk harf yazılmayı bekler');
     await coz(page, f.Z1);
     await durumBekle(page, 'Doğru, ama ipucuyla; kelime öğrenilenlerde kalıyor.');
     await page.waitForFunction(([w, gun]) => window.__oyun.kayit(w).c === gun, [f.Z1, f.bugun + 22]);
@@ -2173,7 +2701,7 @@ async function main() {
     await kelimeBekle(page, f.Z2);
     await page.keyboard.type(yanlisHarfler(f.Z2));
     await page.keyboard.press('Enter');
-    await durumBekle(page, 'Olmadı; kalan deneme hakkı: 2.');
+    await durumBekle(page, 'Olmadı; baştan yaz. 2 hakkın kaldı.');
     await page.keyboard.type(f.Z2);
     await page.keyboard.press('Enter');
     await durumBekle(page, 'Doğru, ama ilk denemede değil; kelime öğrenilenlerde kalıyor.');
@@ -2360,16 +2888,18 @@ async function main() {
     await duyuruBekle(a, await T(a, 'soru', w2, false));
     // Üzerinde çalışılan kelime dönüşte değişmez; sıra "Sonraki kelime"de yenilenir.
     await odakla(a);
-    const e = await T(a, 'eksik', w2);
-    await a.keyboard.type(e[0]);
+    const y = tam(w2);
+    await a.keyboard.type(y[0]);
     await b.evaluate(k => window.YDS.Ilerleme.dogru(k, 'kelime'), w3);
     await don(true);
     await a.waitForTimeout(400);
     g = await T(a, 'gorunum');
-    assert.equal(g.deger, e[0], 'Yazılan harf yerinde');
+    assert.equal(g.deger, y[0], 'Yazılan harf yerinde');
     assert.equal(g.odak, 'oyunGirdi');
     assert.equal(await T(a, 'uyuyor', w2, false), true, 'Yarım kelime dönüşte değişmez');
-    await a.keyboard.type(e.slice(1));
+    // Kelimenin kalanı da (açık harfler dahil) yazılır.
+    await a.keyboard.type(y.slice(1));
+    assert.equal((await T(a, 'gorunum')).deger, y, 'Kelimenin tamamı yazıldı');
     await a.keyboard.press('Enter');
     await durumBekle(a, BILDINIZ_1);
     await kutuBekle(a, w2, 1);
@@ -2438,14 +2968,16 @@ async function main() {
   });
 
   /* ---------- 23) Ctrl/Cmd+A ---------- */
-  senaryo('Ctrl/Cmd+A: tümünü seçip yazmak yazılanı değiştirir ve ilk denemede doğru sayılır; Tab ile dönüş ve çift tıklama yazılanı silmez', async () => {
+  senaryo('Ctrl/Cmd+A: tümünü seçip yazmak yazılan kelimenin tamamını (açık harflerin üzerine yazılanı da) değiştirir ve ilk denemede doğru sayılır; Tab ile dönüş ve çift tıklama yazılanı silmez', async () => {
     const page = await yeniSayfa();
     await ac(page, base);
     await enAzBosluk(page, 3);
     const [w] = await T(page, 'sira');
     await kelimeBekle(page, w);
-    const e = await T(page, 'eksik', w);
-    assert.ok(e.length >= 3, 'Düzenek: en az üç boşluk gerekli (' + w + ', ' + e.length + ' boşluk)');
+    // Yazılan kelimenin tamamıdır: açık harfler de yazılır. En az üç gizli harf bırakan kelime (0. kutuda) en az
+    // altı harflidir; açık harfi de vardır.
+    const y = tam(w), gizli = await T(page, 'gizliSira');
+    assert.ok(gizli.length >= 3 && gizli.length < y.length, 'Düzenek: en az üç gizli ve en az bir açık harf gerekli (' + w + ', ' + gizli.length + ' gizli, ' + (y.length - gizli.length) + ' açık harf)');
     const once = await T(page, 'bugunku');
     // Seçim: tarayıcının sıraya koyduğu select olayı da işlensin diye bir kare ve bir görev sonra okunur.
     const secim = () => page.evaluate(() => new Promise(coz => requestAnimationFrame(() => setTimeout(() => {
@@ -2453,33 +2985,40 @@ async function main() {
       coz([g.selectionStart, g.selectionEnd]);
     }, 0))));
     const deger = async () => (await T(page, 'gorunum')).deger;
+    // Harf kutularının sınıfları (ayraçlar hariç) ve kelime tam yazılmışken beklenen hâl: her kutu yazılmış; açık
+    // kutu, üzerine başka harf yazıldıysa işaretli (farkli). Gizli kutu hiç işaretlenmez.
+    const siniflar = g => g.hucreler.filter(h => h.s !== 'ayrac').map(h => h.s);
+    const tamYazili = farkli => [...y].map((c, i) => (gizli.includes(i) ? 'bos yazildi' : 'sabit yazildi' + (farkli ? ' farkli' : '')));
     await odakla(page);
     // Tab ile çıkıp dönünce tarayıcı alanın tamamını seçer; seçim sona toplanır, sonraki harf eklenir.
-    await page.keyboard.type(e.slice(0, 2));
+    await page.keyboard.type(y.slice(0, 2));
     await page.keyboard.press('Tab');
     assert.notEqual((await T(page, 'gorunum')).odak, 'oyunGirdi', 'Düzenek: Tab girdiden çıkardı');
     await page.keyboard.press('Shift+Tab');
     assert.equal((await T(page, 'gorunum')).odak, 'oyunGirdi');
     assert.deepEqual(await secim(), [2, 2], 'Tab ile dönüşte seçim sona toplanır');
-    await page.keyboard.type(e[2]);
-    assert.equal(await deger(), e.slice(0, 3), 'Tab ile dönüşten sonra yazılan harf öncekilere eklenir');
+    await page.keyboard.type(y[2]);
+    assert.equal(await deger(), y.slice(0, 3), 'Tab ile dönüşten sonra yazılan harf öncekilere eklenir');
     // Çift tıklama da seçim bırakmaz.
     await page.keyboard.press('Backspace');
     await page.locator('.harf-alan').dblclick();
     assert.deepEqual(await secim(), [2, 2], 'Çift tıklamada seçim sona toplanır');
-    await page.keyboard.type(e[2]);
-    assert.equal(await deger(), e.slice(0, 3), 'Çift tıklamadan sonra yazılan harf öncekilere eklenir');
+    await page.keyboard.type(y[2]);
+    assert.equal(await deger(), y.slice(0, 3), 'Çift tıklamadan sonra yazılan harf öncekilere eklenir');
     // Ctrl/Cmd+A: seçim korunur (select olayından sonra da); yazılan, öncekilerin yerine geçer.
     await page.keyboard.press('ControlOrMeta+A');
     assert.deepEqual(await secim(), [0, 3], 'Ctrl/Cmd+A seçimi korunur');
-    await page.keyboard.type(yanlisHarfler(e));
-    assert.equal(await deger(), yanlisHarfler(e), 'Boşluklar yanlış harflerle dolu');
-    await page.keyboard.press('ControlOrMeta+A');
-    assert.deepEqual(await secim(), [0, e.length]);
-    await page.keyboard.type(e);
+    await page.keyboard.type(yanlisHarfler(y));
     let g = await T(page, 'gorunum');
-    assert.equal(g.deger, e, 'Tümünü seçip yazmak yazılanı değiştirir');
+    assert.equal(g.deger, yanlisHarfler(y), 'Seçilen üç harfin yerine kelimenin tamamı (açık harflerin yeri dahil) yanlış harflerle yazıldı');
+    assert.deepEqual(siniflar(g), tamYazili(true), 'Yanlış harflerle yazılan kelime: her kutu yazılmış, açık kutuların hepsi işaretli');
+    await page.keyboard.press('ControlOrMeta+A');
+    assert.deepEqual(await secim(), [0, y.length], 'Ctrl/Cmd+A yazılan kelimenin tamamını seçer');
+    await page.keyboard.type(y);
+    g = await T(page, 'gorunum');
+    assert.equal(g.deger, y, 'Tümünü seçip yazmak yazılan kelimenin tamamını değiştirir');
     assert.equal(g.hucreler.map(h => h.c).join(''), w.toLowerCase(), 'Kutular yeni harfleri gösterir');
+    assert.deepEqual(siniflar(g), tamYazili(false), 'Yeniden yazılan kelime: her kutu yazılmış, açık kutularda işaret kalmadı');
     assert.equal(await T(page, 'kayit', w), null);
     // Hiç yanlış deneme yapılmadı: ilk denemede doğru, kutu yükselir.
     await page.keyboard.press('Enter');
@@ -2492,11 +3031,14 @@ async function main() {
   });
 
   /* ---------- 24) Açılıştaki bulut birleşimi sürerken ---------- */
-  senaryo('Eşitleme sürerken "Kontrol et" ve "Bilemedim" bekletilir; birleşim bitince ya da süre dolunca bir kez işlenir, sonra hiç bekletilmez; yazmak ve harf açmak beklemez; eşitleme kapalıyken bekleme yok, bilinmeyen ara durum da bekletir, gizli sekmede sonuç hemen yazılır, yarıda kalan bekleme yeni açılışta bir kez notla bildirilir; birleşimin kaydını değiştirdiği kelimenin cevabı işlenmez', async () => {
+  senaryo('Eşitleme sürerken "Kontrol et" ve "Bilemedim" bekletilir; birleşim bitince ya da süre dolunca bir kez işlenir, sonra hiç bekletilmez; yazmak, harf açmak ve tamamı yazılmamış kelimede "Kontrol et" beklemez; beklerken eksik kalan kelimenin (harf açma, silme) bekleyen kontrolü düşer; eşitleme kapalıyken bekleme yok, bilinmeyen ara durum da bekletir, gizli sekmede sonuç hemen yazılır, yarıda kalan bekleme yeni açılışta bir kez notla bildirilir; birleşimin kaydını değiştirdiği kelimenin cevabı işlenmez', async () => {
     // Beklemenin üst sınırı sayfa açılışından itibaren işler. Makinenin hızı sonucu değiştirmesin diye saat
     // baştan duraklatılır ve yalnız elle ilerletilir (page.clock; gerçek bekleme yok). Sınır sabit yazılmaz:
     // sayfanın yüklediği betikten okunur, (i) adımında davranışla ölçülür.
     let sinir = null;
+    // Kelime bitmeden basılan "Kontrol et"in olağan iletisi (kelimede açık harf varken). Bekletilen cevabın iletisi
+    // değildir: eksik kelime hiç bekletilmez.
+    const EKSIK_ACIK_HARFLI = 'Önce kelimenin tamamını yaz; açık harfleri de yaz.';
     const kapiliSayfa = async () => {
       const page = await yeniSayfa();
       await page.clock.install({time: GUN(0)});
@@ -2552,21 +3094,45 @@ async function main() {
       await T(page, 'esitleme', 'kapali');
       await T(page, 'esitleme', 'yukleniyor');
       await odakla(page);
-      const e = await T(page, 'eksik', w1);
-      // Boşluk eksikken Enter bekletilmez: olağan ileti.
-      await page.keyboard.type(e.slice(0, -1));
-      await page.keyboard.press('Enter');
-      await durumBekle(page, 'Önce bütün boşlukları doldur.');
-      await page.keyboard.type(e.slice(-1));
+      // Yazılan kelimenin tamamıdır (açık harfler dahil); gizli: harfi gizli kutu sayısı.
+      const y = tam(w1), gizli = (await T(page, 'gizliSira')).length;
+      assert.ok(gizli >= 1 && gizli < y.length, 'Düzenek: kelimenin hem gizli hem açık harfi var (' + w1 + ', ' + gizli + ' gizli, ' + (y.length - gizli) + ' açık harf)');
+      // Kelime bitmeden Enter bekletilmez: olağan ileti, o anda. Bekletmenin eşiği kelimenin harf sayısıdır, gizli
+      // harf sayısı değil: gizli kutu sayısı kadar harf yazılmışken de (açık harfler de yazılır), yalnız son harf
+      // eksikken de kelime eksiktir.
+      for (const adet of [...new Set([gizli, y.length - 1])]) {
+        const etiket = adet === gizli ? 'Gizli kutu sayısı kadar (' + adet + ') harf yazılmışken' : 'Yalnız son harf eksikken';
+        await page.keyboard.type(y.slice((await T(page, 'gorunum')).deger.length, adet));
+        assert.equal((await T(page, 'gorunum')).durum, '', 'Düzenek: durum satırı boş (yazmak geçici iletiyi siler)');
+        await page.keyboard.press('Enter');
+        assert.equal(await ilkIleti(page), EKSIK_ACIK_HARFLI, etiket + ' kelime eksiktir: Enter bekletilmez, olağan ileti hemen yazılır');
+        const g = await T(page, 'gorunum');
+        assert.deepEqual([g.deger, g.gonder, g.gecersiz, g.odak], [y.slice(0, adet), 'Kontrol et', null, 'oyunGirdi'], etiket + ': yazılan yerinde, deneme harcanmadı');
+        assert.equal(g.hucreler.filter(h => h.s.startsWith('bos')).length, gizli, etiket + ': hiçbir gizli harf açılmadı');
+      }
+      // Bileşim sürerken (telefon klavyesi) girdide henüz temizlenmemiş, harf olmayan bir karakter durabilir: bekletmenin
+      // eşiği ham uzunluk değil temizlenmiş harf sayısıdır; kelime yine eksiktir, Enter bekletilmez.
+      {
+        const klavye = await page.context().newCDPSession(page);
+        await klavye.send('Input.imeSetComposition', {text: '-', selectionStart: 1, selectionEnd: 1});
+        const gb = await T(page, 'gorunum');
+        assert.deepEqual([gb.deger, gb.durum], [y.slice(0, -1) + '-', ''], 'Düzenek: bileşim sürerken tire girdide duruyor, geçici ileti silindi');
+        await page.keyboard.press('Enter');
+        assert.equal(await ilkIleti(page), EKSIK_ACIK_HARFLI, 'Bileşimdeki harf olmayan karakter kelimeyi tamamlamaz: Enter bekletilmez');
+        await klavye.send('Input.imeSetComposition', {text: '', selectionStart: 0, selectionEnd: 0});
+        assert.equal((await T(page, 'gorunum')).deger, y.slice(0, -1), 'Düzenek: girdi temizlenmiş hâliyle kaldı');
+        await klavye.detach();
+      }
+      await page.keyboard.type(y.slice(-1));
       await page.keyboard.press('Enter');
       await durumBekle(page, BEKLE_KONTROL);
       const bekliyor = async etiket => {
         const g = await T(page, 'gorunum');
         assert.equal(g.durum, BEKLE_KONTROL, etiket);
         assert.equal(g.gonder, 'Kontrol et', etiket + ': kelime bitmedi');
-        assert.equal(g.deger, e, etiket + ': yazılan yerinde');
+        assert.equal(g.deger, y, etiket + ': yazılan yerinde');
         assert.equal(g.hucreler.map(h => h.c).join(''), w1.toLowerCase(), etiket + ': yazılan harfler kutularda');
-        assert.equal(g.hucreler.filter(h => h.s.startsWith('bos')).length, e.length, etiket + ': hiçbir harf kilitlenmedi');
+        assert.equal(g.hucreler.filter(h => h.s.startsWith('bos')).length, gizli, etiket + ': hiçbir gizli harf açılmadı (cevap işlenmedi)');
         assert.doesNotMatch(g.harfSinifi, /dogru|yanlis|acildi/, etiket);
         assert.deepEqual([g.sonuc, g.gecersiz, g.pasKapali, g.odak], [false, null, false, 'oyunGirdi'], etiket);
         assert.equal(await T(page, 'kayit', w1), null, etiket + ': ilerleme yazılmadı');
@@ -2582,8 +3148,8 @@ async function main() {
       await bekliyor('Ara durumlarda');
       // Yazmak bekletilmez; bekleyen cevap, birleşim bittiği andaki girdiyle işlenir.
       await page.keyboard.press('Backspace');
-      assert.equal((await T(page, 'gorunum')).deger, e.slice(0, -1), 'Beklerken yazılan düzeltilebilir');
-      await page.keyboard.type(e.slice(-1));
+      assert.equal((await T(page, 'gorunum')).deger, y.slice(0, -1), 'Beklerken yazılan düzeltilebilir');
+      await page.keyboard.type(y.slice(-1));
       await T(page, 'esitleme', 'hazir');
       await durumBekle(page, BILDINIZ_1);
       await ilerlet(page, 300);
@@ -2597,7 +3163,7 @@ async function main() {
       await page.keyboard.press('Enter');
       await kelimeBekle(page, w2);
       await T(page, 'esitleme', 'yukleniyor');
-      await page.keyboard.type(await T(page, 'eksik', w2));
+      await page.keyboard.type(tam(w2));
       await page.keyboard.press('Enter');
       await durumBekle(page, BILDINIZ_1);
       await ilerlet(page, 200);
@@ -2611,26 +3177,53 @@ async function main() {
       assert.deepEqual(await T(page, 'yazilan'), ['dogru:' + w1, 'dogru:' + w2, 'yanlis:' + w3]);
     }
 
+    // a2) Ayraçlı başlık: bekletmenin ve bekleyen kontrolün eşiği harf sayısıdır (tire sayılmaz). Tireli bir kelime
+    //     1. kutuya, vadesi bugüne yazılır ve sıranın başına gelir; tamamı yazılınca Enter bekletilir, birleşim bitince
+    //     bekleyen kontrol işlenir (kelime eksik sayılıp düşmez).
+    {
+      const page = await kapiliSayfa();
+      const tireli = await page.evaluate(() => {
+        const Y = window.YDS, d = Y.Veri.dizin.find(x => x.e.includes('-') && Y.OyunHesap.oynanabilir(x));
+        Y.Depo.yaz('yds-katmanlar', [d.k]);
+        return d.e;
+      });
+      assert.equal(await T(page, 'kayitKoy', tireli, 1), true, 'Düzenek: tireli kelime 1. kutuya yazıldı, vadesi bugün');
+      await yenile(page);
+      assert.equal((await T(page, 'sira', 'sira', 1))[0], tireli, 'Düzenek: tireli kelime sıranın başında');
+      await kelimeBekle(page, tireli);
+      await T(page, 'esitleme', 'yukleniyor');
+      await odakla(page);
+      await page.keyboard.type(tam(tireli));
+      await page.keyboard.press('Enter');
+      assert.equal(await ilkIleti(page), BEKLE_KONTROL, 'Tireli kelimenin tamamı yazılınca Enter bekletilir: eşik harf sayısıdır, tire sayılmaz (' + tireli + ')');
+      await T(page, 'esitleme', 'hazir');
+      assert.match((await T(page, 'gorunum')).durum, /^Bildiniz! Kelime 2\. kutuya çıktı; /, 'Birleşim bitince tireli kelimenin bekleyen kontrolü işlenir (eksik sayılıp düşmez)');
+      await ilerlet(page, 300);
+      await kutuBekle(page, tireli, 2);
+    }
+
     // b) "Bilemedim, göster" bekletilir, cevap açılmaz; "Bir harf aç" bekletilmez.
     {
       const page = await kapiliSayfa();
       const sira = await T(page, 'sira', 'sira', 40);
-      // En az iki boşluklu ilk kelimeye kadar geç (bugünkü ilk kelime zaten uygundur).
+      // En az iki gizli harfli ilk kelimeye kadar geç (bugünkü ilk kelime zaten uygundur).
       let w = null;
       for (const aday of sira) {
         await kelimeBekle(page, aday);
-        if ((await T(page, 'eksik', aday)).length >= 2) { w = aday; break; }
+        if ((await T(page, 'gizliSira')).length >= 2) { w = aday; break; }
         await page.locator('#oyunPas').click();
         await page.locator('#oyunGonder').click();
       }
-      assert.ok(w, 'Düzenek: en az iki boşluklu kelime bulunamadı');
+      assert.ok(w, 'Düzenek: en az iki gizli harfli kelime bulunamadı');
       const oncekiYazim = await T(page, 'yazilan');
       const once = await T(page, 'bugunku'), bugun = await T(page, 'bugun');
       await T(page, 'esitleme', 'yukleniyor');
       const ilkBos = (await T(page, 'gorunum')).hucreler.findIndex(h => h.s.startsWith('bos'));
       await page.locator('#oyunHarf').click();
       await durumBekle(page, harfSirasi(w, ilkBos) + '. harf açıldı: ' + w[ilkBos] + '. Doğru bilirsen kelime 1. kutuya girer.');
-      assert.equal((await T(page, 'gorunum')).hucreler[ilkBos].s, 'ipucu', 'Harf açma bekletilmez');
+      // Girdi boş: sıra işareti ("simdi") kelimenin ilk harf kutusundadır; açılan harf o kutuysa ikisini de taşır.
+      const acilanlar = (await T(page, 'gorunum')).hucreler;
+      assert.equal(acilanlar[ilkBos].s, 'ipucu' + (ilkBos === acilanlar.findIndex(h => h.s !== 'ayrac') ? ' simdi' : ''), 'Harf açma bekletilmez');
       await page.locator('#oyunPas').click();
       await durumBekle(page, BEKLE_PAS);
       await ilerlet(page, 300);
@@ -2772,22 +3365,23 @@ async function main() {
       const [w] = await T(page, 'sira');
       await kelimeBekle(page, w);
       await T(page, 'esitleme', 'yukleniyor');
-      const yanlis = yanlisHarfler(await T(page, 'eksik', w));
+      // Kelimenin tamamı, bütün harfleri yanlış: hiçbir gizli harf açılmaz, ileti yalnız kalan hakkı söyler.
+      const yanlis = yanlisHarfler(tam(w));
       await page.locator('#oyunGirdi').focus();
       await page.keyboard.type(yanlis);
       await page.keyboard.press('Enter');
       assert.equal(await ilkIleti(page), BEKLE_KONTROL, 'Düzenek: birleşim sürerken verilen cevap bekletildi');
       await T(page, 'esitleme', 'hazir');
       let g = await T(page, 'gorunum');
-      assert.deepEqual([g.durum, g.deger, g.gecersiz], ['Olmadı; kalan deneme hakkı: 2.', '', 'true'], 'Bekleyen yanlış cevap birleşim bitince işlenir: bir deneme harcandı');
+      assert.deepEqual([g.durum, g.deger, g.gecersiz], ['Olmadı; baştan yaz. 2 hakkın kaldı.', '', 'true'], 'Bekleyen yanlış cevap birleşim bitince işlenir: bir deneme harcandı');
       await page.keyboard.type(yanlis);
       await ilerlet(page, sinir + 500);
       g = await T(page, 'gorunum');
-      assert.deepEqual([g.durum, g.deger, g.gonder], ['Olmadı; kalan deneme hakkı: 2.', yanlis, 'Kontrol et'],
+      assert.deepEqual([g.durum, g.deger, g.gonder], ['Olmadı; baştan yaz. 2 hakkın kaldı.', yanlis, 'Kontrol et'],
         'Birleşimle işlenen cevap süre dolunca Enter\'sız ikinci kez işlenmez: ileti ve yazılan yerinde');
       // Harcanan deneme tek: kullanıcının Enter'ı ikinci denemedir.
       await page.keyboard.press('Enter');
-      await durumBekle(page, 'Olmadı; kalan deneme hakkı: 1.');
+      await durumBekle(page, 'Olmadı; baştan yaz. Son hakkın.');
       assert.deepEqual([await T(page, 'kayit', w), await T(page, 'yazilan')], [null, []], 'Yanlış denemeler ilerlemeye yazılmaz');
     }
 
@@ -2834,6 +3428,17 @@ async function main() {
         if (pas) await page.locator('#oyunPas').click(); else await coz(page, kelime);
         await durumBekle(page, pas ? BEKLE_PAS : BEKLE_KONTROL);
       };
+      // Kelime bitmeden basılan Enter bekletilmediği için iz de bırakmaz (gizli kutu sayısı kadar harf yazılmış
+      // olsa da): birleşim sürerken yeniden açılan sayfada not yok.
+      await kelimeBekle(page, w);
+      await T(page, 'esitleme', 'yukleniyor');
+      await page.locator('#oyunGirdi').focus();
+      await page.keyboard.type(tam(w).slice(0, (await T(page, 'gizliSira')).length));
+      await page.keyboard.press('Enter');
+      assert.equal(await ilkIleti(page), EKSIK_ACIK_HARFLI, 'Düzenek: gizli kutu sayısı kadar harfle basılan Enter olağan iletiyi verdi');
+      await yenile(page);
+      await kelimeBekle(page, w);
+      assert.deepEqual(await durumVeSinif(page), DURUM_BOS, 'Eksik kelimede basılan Enter bekletilmedi, iz bırakmadı: yeniden açılan sayfada not yok');
       // Bekleme sürerken yenileme: not, aynı kelime taze, hiçbir şey yazılmadı.
       await beklet(w);
       await yenile(page);
@@ -2943,6 +3548,92 @@ async function main() {
       assert.deepEqual([await T(page, 'leitnerDepoKaydi', w), await T(page, 'bugunku')], [{k: 4, g: bugun, c: bugun - 7}, once], 'Bırakılan beklemeler hiçbir şey yazmadı');
     }
 
+    // h3) Beklerken yazılan değişip kelime eksik kaldıysa söz verilen kontrol düşer: birleşim bitince kendiliğinden
+    //     "eksik" uyarısı çıkmaz, deneme harcanmaz. "Bir harf aç" yazılanı açılan harfin önünde keser; silmek de
+    //     kelimeyi eksik bırakır. (Yeniden tamamlanan kelime bekleyen kontrolle işlenir: a adımı.)
+    {
+      const izi = sayfa => sayfa.evaluate(() => sessionStorage.getItem('yds-oyun-ertelenen'));
+      const page = await kapiliSayfa();
+      const [w1] = await T(page, 'sira');
+      await kelimeBekle(page, w1);
+      const gizli = await T(page, 'gizliSira'), y = tam(w1);
+      assert.ok(gizli.length >= 2, 'Düzenek: ilk kelimede en az iki gizli harf (' + w1 + ')');
+      await T(page, 'esitleme', 'yukleniyor');
+      await odakla(page);
+      // İkinci gizli harf yanlış yazılır, Enter bekletilir; "Bir harf aç" o harfi açar ve yazılanı önünde keser.
+      await page.keyboard.type(bozuk(w1, [gizli[1]]));
+      await page.keyboard.press('Enter');
+      await durumBekle(page, BEKLE_KONTROL);
+      assert.notEqual(await izi(page), null, 'Düzenek: bekleyen cevabın izi yazıldı');
+      await page.locator('#oyunHarf').click();
+      const ACILDI = (gizli[1] + 1) + '. harf açıldı: ' + y[gizli[1]] + '. Doğru bilirsen kelime 1. kutuya girer.' + KESILDI;
+      await durumBekle(page, ACILDI);
+      assert.equal((await T(page, 'gorunum')).deger, y.slice(0, gizli[1]), 'Düzenek: harf açmak yazılanı açılan harfin önünde kesti');
+      // İz sözle birlikte yürür: kelime eksik kaldığı anda silinir (motor sayfayı şimdi yenilese "cevabın işlenmedi" denmez).
+      assert.equal(await izi(page), null, 'Kelime eksik kaldı: bekleyen kontrolün izi hemen silindi');
+      await T(page, 'esitleme', 'hazir');
+      await ilerlet(page, 300);
+      let g = await T(page, 'gorunum');
+      assert.deepEqual([g.durum, g.deger, g.gonder, g.gecersiz], [ACILDI, y.slice(0, gizli[1]), 'Kontrol et', null],
+        'Birleşim bitti, kelime eksik: bekleyen kontrol düştü ("eksik" uyarısı çıkmadı, harf açma iletisi yerinde, deneme harcanmadı)');
+      assert.doesNotMatch(g.harfSinifi, /yanlis/);
+      assert.equal(await izi(page), null, 'Bekleme izi silindi');
+      assert.deepEqual(await T(page, 'yazilan'), [], 'Hiçbir şey yazılmadı');
+      // Kalanı yazılır: artık bekletilmez; deneme harcanmamıştı, sonuç yalnız ipucu yüzünden "ipucuyla"dır.
+      await page.keyboard.type(y.slice(gizli[1]));
+      await page.keyboard.press('Enter');
+      await durumBekle(page, 'Doğru, ama ipucuyla; kelime 1. kutuya girdi.');
+      await ilerlet(page, 300);
+      await kutuBekle(page, w1, 1);
+      // Silme: tam kelime + Enter bekletilir, son harf silinir. Birleşim bitince bekleme iletisi kalkar, uyarı çıkmaz.
+      const page2 = await kapiliSayfa();
+      const [v] = await T(page2, 'sira');
+      await kelimeBekle(page2, v);
+      await T(page2, 'esitleme', 'yukleniyor');
+      await odakla(page2);
+      await page2.keyboard.type(tam(v));
+      await page2.keyboard.press('Enter');
+      await durumBekle(page2, BEKLE_KONTROL);
+      await page2.keyboard.press('Backspace');
+      assert.equal((await T(page2, 'gorunum')).durum, BEKLE_KONTROL, 'Düzenek: silmek bekleme iletisini kaldırmaz (kelime yeniden tamamlanırsa kontrol yapılacak)');
+      // İz: kelime eksikken yok, yeniden tamamlanınca geri gelir, yine eksilince yine silinir.
+      assert.equal(await izi(page2), null, 'Son harf silindi: bekleyen kontrolün izi silindi');
+      await page2.keyboard.type(tam(v).slice(-1));
+      assert.notEqual(await izi(page2), null, 'Kelime yeniden tamamlandı: iz geri yazıldı (kontrol yine bekliyor)');
+      await page2.keyboard.press('Backspace');
+      assert.equal(await izi(page2), null, 'Yeniden eksildi: iz yine silindi');
+      await T(page2, 'esitleme', 'hazir');
+      await ilerlet(page2, 300);
+      g = await T(page2, 'gorunum');
+      assert.deepEqual([g.durum, g.deger, g.gonder, g.gecersiz], ['', tam(v).slice(0, -1), 'Kontrol et', null],
+        'Birleşim bitti, kelime eksik: bekleme iletisi kalktı, "eksik" uyarısı çıkmadı, deneme harcanmadı');
+      assert.equal(await izi(page2), null, 'Bekleme izi silindi');
+      assert.deepEqual(await T(page2, 'yazilan'), [], 'Hiçbir şey yazılmadı');
+      await page2.keyboard.type(tam(v).slice(-1));
+      await page2.keyboard.press('Enter');
+      await durumBekle(page2, BILDINIZ_1);
+      // Kelime eksikken birleşim kelimenin kaydını da değiştirse söylenecek bir şey yoktur (işlenecek cevap kalmamıştı):
+      // "kaydını değiştirdi" notu çıkmaz, motorun yenilediği sayfada da "cevabın işlenmedi" denmez.
+      const page3 = await kapiliSayfa();
+      const [u] = await T(page3, 'sira');
+      await kelimeBekle(page3, u);
+      await T(page3, 'esitleme', 'yukleniyor');
+      await odakla(page3);
+      await page3.keyboard.type(tam(u));
+      await page3.keyboard.press('Enter');
+      await durumBekle(page3, BEKLE_KONTROL);
+      await page3.keyboard.press('Backspace');
+      assert.equal(await T(page3, 'kayitKoy', u, 3), true, 'Düzenek: birleşim kelimenin kaydını yazdı');
+      await T(page3, 'esitleme', 'hazir');
+      await ilerlet(page3, 300);
+      g = await T(page3, 'gorunum');
+      assert.deepEqual([await durumVeSinif(page3), g.deger, g.gonder], [DURUM_BOS, tam(u).slice(0, -1), 'Kontrol et'],
+        'Eksik kalan kelimede kayıt değişse de "kaydını değiştirdi" denmez: bekleme iletisi kalkar, yazılan yerinde');
+      assert.deepEqual([await izi(page3), await T(page3, 'yazilan')], [null, []], 'İz yok, hiçbir şey yazılmadı');
+      await yenile(page3);
+      assert.deepEqual(await durumVeSinif(page3), DURUM_BOS, 'Yeniden açılan sayfada "cevabın işlenmedi" notu yok');
+    }
+
     // i) Birleşim hiç bitmezse: üst sınır dolunca bekleyen cevap işlenir. Sınırdan hemen önce cevap hâlâ
     //    bekler; süre adım adım ilerletilip işlendiği an ölçülür ve betikteki değerle karşılaştırılır.
     const page = await kapiliSayfa();
@@ -2967,37 +3658,62 @@ async function main() {
     // Süre dolduktan sonra durum hâlâ "yukleniyor" olsa da bir daha bekletilmez.
     await page.keyboard.press('Enter');
     await kelimeBekle(page, w2);
-    await page.keyboard.type(await T(page, 'eksik', w2));
+    await page.keyboard.type(tam(w2));
     await page.keyboard.press('Enter');
     await durumBekle(page, BILDINIZ_1);
     return 'üst sınır ' + sinir + ' ms (ölçülen ' + gecen + ')';
   });
 
   /* ---------- 25) Odak hiçbir öğede değilken yazma ---------- */
-  senaryo('Odaksız yazma: sayfa açılır açılmaz yazılan harf girdiye gider, biten kelimede Enter sonrakine geçer; düğme odaktayken, rakamda ve değiştirici tuşla dokunulmaz; Shift ile yazılan büyük harf de girdiye gider', async () => {
+  senaryo('Odaksız yazma: sayfa açılır açılmaz yazılan harf girdiye gider ve kelimenin ilk kutusuna yazılır (kutu açık gelmiş olsa da), biten kelimede Enter sonrakine geçer; düğme odaktayken, rakamda ve değiştirici tuşla dokunulmaz; Shift ile yazılan büyük harf de girdiye gider', async () => {
     const page = await yeniSayfa({width: 1366, height: 768});
     await ac(page, base);
+    // Düzenek: açık harfler güne göre değişir. Sıra, ilk kutusu açık gelen bir kelimeyle başlasın (yazılan ilk harf
+    // o kutuya gitmeli), ardından ilk kutusu gizli gelen bir kelime gelsin: öndeki ve aradaki kelimeler yarına
+    // ertelenir (enAzBosluk gibi), sonra sayfa yenilenir. Yeni açılan sayfada odak yine gövdededir.
+    const ertelenen = await page.evaluate(() => {
+      const O = window.YDS.OyunHesap, Il = window.YDS.Ilerleme, sira = window.__oyun.sira('sira', 60);
+      const acikBaslar = w => O.acikKonumlar(w, 0, Il.bugun()).includes(0);
+      const i = sira.findIndex(acikBaslar), j = sira.findIndex((w, k) => k > i && !acikBaslar(w));
+      if (i < 0 || j < 0) return null;
+      const out = sira.filter((w, k) => k < j && k !== i);
+      out.forEach(w => Il.yanlis(w, 'kelime'));
+      return out;
+    });
+    assert.ok(ertelenen, 'Düzenek: sıranın ilk 60 kelimesinde ilk kutusu açık gelen bir kelime ve ardından ilk kutusu gizli gelen bir kelime bulunamadı');
+    if (ertelenen.length) { await page.reload(); await hazir(page); }
     const [w, w2] = await T(page, 'sira');
     await kelimeBekle(page, w);
-    const e = await T(page, 'eksik', w);
+    const y = tam(w);
     const kaydirma = () => page.evaluate(() => scrollY);
     const birak = () => page.evaluate(() => { document.activeElement.blur(); });
     // Yapay tuş: varsayılan işi (harfin yazılması) yoktur, yalnız dinleyicinin odağı taşıyıp taşımadığı görülür.
     const yapayTus = secenek => page.evaluate(s => { document.body.dispatchEvent(new KeyboardEvent('keydown', {bubbles: true, cancelable: true, ...s})); }, secenek);
+    // Harf kutuları (ayraçlar hariç): [taban sınıf ve ekleri, metin].
+    const kutular = g => g.hucreler.filter(h => h.s !== 'ayrac').map(h => [h.s, h.c]);
     let g = await T(page, 'gorunum');
     assert.deepEqual([g.odak, g.deger, await kaydirma()], ['BODY', '', 0], 'Düzenek: yeni açılan sayfada odak gövdede');
+    const taze = kutular(g);
+    assert.ok(taze[0][0].startsWith('sabit') && taze.some(k => k[0].startsWith('bos')), 'Düzenek: kelimenin ilk kutusu açık geldi, gizli harfi de var (' + w + ': ' + JSON.stringify(taze) + ')');
     // Bitmemiş kelimede odaksız Enter, rakam ve noktalama hiçbir şey yapmaz.
     await page.keyboard.press('Enter');
     await page.keyboard.press('5');
     await page.keyboard.press('.');
     g = await T(page, 'gorunum');
     assert.deepEqual([g.odak, g.deger, g.durum, g.gonder], ['BODY', '', '', 'Kontrol et'], 'Enter, rakam ve nokta odağı taşımaz');
-    // Tıklamadan yazılan harfler boşlukları doldurur.
-    await page.keyboard.type(e);
+    // Tıklamadan yazılan ilk harf kelimenin ilk kutusuna gider: kutu açık gelmiş olsa da atlanmaz, harf ilk gizli
+    // kutuya düşmez. Açık kutu kendi harfiyle yazılmış görünür, sıra ikinci kutuya geçer, gizli kutular boş kalır.
+    await page.keyboard.press(y[0]);
     g = await T(page, 'gorunum');
-    assert.deepEqual([g.odak, g.deger], ['oyunGirdi', e], 'İlk harf odağı girdiye taşır ve yazılır');
-    assert.equal(g.hucreler.map(h => h.c).join(''), w.toLowerCase());
+    assert.deepEqual([g.odak, g.deger], ['oyunGirdi', y[0]], 'İlk harf odağı girdiye taşır ve yazılır');
+    assert.deepEqual(kutular(g), taze.map(([s, c], i) => [s.split(' ')[0] + (i === 0 ? ' yazildi' : '') + (i === 1 ? ' simdi' : ''), c]),
+      'Odaksız yazılan ilk harf kelimenin ilk kutusunda (açık kutu atlanmaz); sıra ikinci kutuda, gizli kutular boş');
     assert.equal(await kaydirma(), 0, 'Odak taşınırken sayfa kaymaz');
+    // Kelimenin kalanı (açık harfler dahil) aynı yoldan yazılır.
+    await page.keyboard.type(y.slice(1));
+    g = await T(page, 'gorunum');
+    assert.deepEqual([g.odak, g.deger], ['oyunGirdi', y], 'Kelimenin tamamı girdiye yazıldı');
+    assert.equal(g.hucreler.map(h => h.c).join(''), w.toLowerCase());
     await page.keyboard.press('Enter');
     await durumBekle(page, BILDINIZ_1);
     await kutuBekle(page, w, 1);
@@ -3013,10 +3729,11 @@ async function main() {
     await kelimeBekle(page, w2);
     g = await T(page, 'gorunum');
     assert.deepEqual([g.odak, g.deger], ['oyunGirdi', ''], 'Odaksız Enter sonraki kelimeye geçer, odak girdide');
-    const e2 = await T(page, 'eksik', w2);
+    const y2 = tam(w2);
+    assert.ok(g.hucreler[0].s.startsWith('bos'), 'Düzenek: bu kelimenin ilk kutusu gizli (' + w2 + ': ' + JSON.stringify(kutular(g)) + ')');
     // Bir düğme odaktayken harf ona aittir: girdi boş kalır, odak yerinde.
     await page.locator('.oyun-mod [data-mod="yeni"]').focus();
-    await page.keyboard.press(e2[0]);
+    await page.keyboard.press(y2[0]);
     g = await T(page, 'gorunum');
     assert.equal(g.deger, '', 'Düğme odaktayken yazılan harf girdiye gitmez');
     assert.equal(await page.evaluate(() => document.activeElement.getAttribute('data-mod')), 'yeni', 'Odak düğmede kalır');
@@ -3040,10 +3757,10 @@ async function main() {
     // (küçük harfe çevrilir). Sonra girdi boşaltılır, odak bırakılır.
     g = await T(page, 'gorunum');
     assert.deepEqual([g.odak, g.deger], ['BODY', ''], 'Düzenek: odak gövdede, girdi boş');
-    await page.keyboard.press('Shift+' + e2[0].toUpperCase());
+    await page.keyboard.press('Shift+' + y2[0].toUpperCase());
     g = await T(page, 'gorunum');
-    assert.deepEqual([g.odak, g.deger], ['oyunGirdi', e2[0]], 'Odak yokken Shift ile yazılan büyük harf girdiye gider');
-    assert.equal(g.hucreler.find(h => h.s.startsWith('bos')).c, e2[0], 'Yazılan harf ilk boşlukta görünür');
+    assert.deepEqual([g.odak, g.deger], ['oyunGirdi', y2[0]], 'Odak yokken Shift ile yazılan büyük harf girdiye gider');
+    assert.deepEqual(kutular(g)[0], ['bos yazildi', y2[0]], 'Yazılan harf kelimenin ilk kutusunda (gizli kutu), küçük harfle görünür');
     await page.keyboard.press('Backspace');
     assert.equal((await T(page, 'gorunum')).deger, '', 'Düzenek: girdi yeniden boş');
     await birak();
@@ -3052,12 +3769,12 @@ async function main() {
     await page.evaluate(() => { document.getElementById('icerik').focus({preventScroll: true}); window.scrollTo({top: document.documentElement.scrollHeight, behavior: 'instant'}); });
     const asagi = await kaydirma();
     assert.ok(asagi > 0, 'Düzenek: sayfa aşağı kaydırıldı');
-    await yapayTus({key: e2[0]});
+    await yapayTus({key: y2[0]});
     assert.deepEqual([(await T(page, 'gorunum')).odak, await kaydirma()], ['oyunGirdi', asagi], 'Odak girdiye geçti, sayfa kaymadı');
     await page.evaluate(() => { document.getElementById('icerik').focus({preventScroll: true}); });
-    await page.keyboard.press(e2[0]);
+    await page.keyboard.press(y2[0]);
     g = await T(page, 'gorunum');
-    assert.deepEqual([g.odak, g.deger], ['oyunGirdi', e2[0]], '<main> odaktayken yazılan harf girdiye gider');
+    assert.deepEqual([g.odak, g.deger], ['oyunGirdi', y2[0]], '<main> odaktayken yazılan harf girdiye gider');
   });
 
   /* ---------- 26) Kelimeler destesi ---------- */
@@ -3798,75 +4515,140 @@ async function main() {
   });
 
   /* ---------- Dizinde olmayan yazım ---------- */
-  senaryo('Dizinde olmayan yazım: biçimi -re/-er ya da s/z kuralına uysa da başlık olmayan yazım kabul edilmez; yanlış deneme sayılır, hiçbir şey yazılmaz', async () => {
+  senaryo('Dizinde olmayan yazım: biçimi -re/-er ya da s/z kuralına uysa da başlık olmayan yazım kabul edilmez; ayrıldığı harf gizliyse yanlış deneme sayılır; açık gelip üzerine yazıldıysa (kutu "farkli" olur) deneme harcanmaz, yazılan o harfin önünde kesilir; kabul edilmeyen yazım hiçbir şey yazmaz', async () => {
     const context = await yeni();
     const page = await context.newPage();
     await page.clock.setFixedTime(GUN(0));
     await ac(page, base);
     const f = await page.evaluate(() => {
-      const Y = window.YDS, O = Y.OyunHesap, bul = {};
+      const Y = window.YDS, O = Y.OyunHesap, Il = Y.Ilerleme, bul = {};
       Y.Veri.dizin.forEach(d => { bul[O.sade(d.e)] = d; });
       const kurallar = {
         're': e => (/(re|er)$/.test(e) ? [e.slice(0, -2) + (e.endsWith('re') ? 'er' : 're')] : []),
         'sz': e => [...e].map((c, i) => (c === 's' || c === 'z' ? e.slice(0, i) + (c === 's' ? 'z' : 's') + e.slice(i + 1) : null)).filter(Boolean)
       };
-      // Her biçim kuralı için: kurala uyan (O.yazimCesidi) ama dizinde başlık olmayan bir yazımı bulunan ilk Çekirdek kelimesi.
-      const ciftler = [];
-      Object.keys(kurallar).forEach(kural => {
+      // Her biçim kuralı için iki Çekirdek kelimesi; ikisinin de kurala uyan (O.yazimCesidi) ama dizinde başlık olmayan bir yazımı var.
+      //   harfsiz: böyle ilk kelime. Öğrenilmiş sayılır: yarın harfsiz sorulur, yazımın ayrıldığı harfler gizlidir.
+      //   acik:    yazımın ayrıldığı harflerin hepsi yarın 1. kutuda AÇIK gelen ilk kelime. Bugün bir kez bilinir (1. kutu, vadesi yarın).
+      const yarin = Il.bugun() + 1, ciftler = [];
+      Object.keys(kurallar).forEach(kural => ['harfsiz', 'acik'].forEach(hal => {
         for (const d of window.__oyun.havuz([2])) {
           if (!/^[a-z]+$/.test(d.e) || ciftler.some(c => c.kart === d.e)) continue;
           const aday = kurallar[kural](d.e).find(x => O.yazimCesidi(d.e, x) && !Y.Veri.dizinKaydi(x) && !bul[x]);
-          if (aday) { ciftler.push({kural, kart: d.e, aday, bag: O.iliski(aday, d, x => bul[x] || null)}); break; }
+          if (!aday) continue;
+          const fark = [...d.e].map((h, i) => i).filter(i => aday[i] !== d.e[i]);
+          if (hal === 'acik' && !fark.every(i => O.acikKonumlar(d.e, 1, yarin).includes(i))) continue;
+          ciftler.push({kural, hal, kart: d.e, aday, fark, bag: O.iliski(aday, d, x => bul[x] || null)});
+          break;
         }
-      });
-      ciftler.forEach(c => Y.Ilerleme.zatenBiliyorum(c.kart, 'kelime'));
-      return ciftler;
+      }));
+      ciftler.forEach(c => (c.hal === 'acik' ? Il.dogru(c.kart, 'kelime') : Il.zatenBiliyorum(c.kart, 'kelime')));
+      return {ciftler, yarin, kutular: ciftler.map(c => Il.kutu(c.kart, 'kelime'))};
     });
-    assert.ok(f.length, 'Düzenek: Çekirdek katmanında, biçim kuralına (-re/-er ya da s/z) uyan ama dizinde başlık olmayan yazımı bulunan oynanabilir kelime kalmadı');
-    assert.deepEqual(f.map(c => c.bag), f.map(() => null), 'Modül (O.iliski) dizinde başlığı olmayan yazımı kartla ilişkili saymaz: ' + f.map(c => c.aday).join(', '));
+    const harfsiz = f.ciftler.filter(c => c.hal === 'harfsiz'), acik = f.ciftler.filter(c => c.hal === 'acik');
+    assert.ok(harfsiz.length, 'Düzenek: Çekirdek katmanında, biçim kuralına (-re/-er ya da s/z) uyan ama dizinde başlık olmayan yazımı bulunan oynanabilir kelime kalmadı');
+    assert.ok(acik.length, 'Düzenek: Çekirdek katmanında, dizinde başlık olmayan yazımının ayrıldığı harfler 1. kutuda (' + f.yarin + '. gün) açık gelen kelime yok; ' +
+      'açık harfli ayağı başka bir kutu ya da günle kurun');
+    assert.deepEqual(f.ciftler.map(c => c.bag), f.ciftler.map(() => null), 'Modül (O.iliski) dizinde başlığı olmayan yazımı kartla ilişkili saymaz: ' + f.ciftler.map(c => c.aday).join(', '));
+    assert.deepEqual(f.kutular, f.ciftler.map(c => (c.hal === 'acik' ? 1 : 5)), 'Düzenek: harfsiz kartlar öğrenildi (5. kutu), açık harfli kartlar 1. kutuda');
     await page.clock.setFixedTime(GUN(1));
     await page.reload(); await hazir(page);
-    await page.locator('.oyun-mod [data-mod="ogrenilen"]').click();
-    const sira = await T(page, 'sira', 'ogrenilen'), bugun = await T(page, 'bugun');
-    assert.deepEqual([...sira].sort(), f.map(c => c.kart).sort(), 'Düzenek: öğrenilmiş kelimeler sırada');
+    const bugun = await T(page, 'bugun');
+    assert.equal(bugun, f.yarin, 'Düzenek: gün döndü (açık harfler bu günün tohumuyla seçildi)');
     await T(page, 'yazimlariSay');
-    for (const w of sira) {
-      const c = f.find(x => x.kart === w);
+    const OLMADI = 'Olmadı. Doğru harfler açıldı; baştan yaz. 2 hakkın kaldı.';
+    // Ekrandaki kart: önce dizinde olmayan yazım yazılır (kabul edilmez), sonra kartın kendi yazımı. kutu: kartın kutusu.
+    const kartiOyna = async (w, kutu) => {
+      const c = f.ciftler.find(x => x.kart === w);
       await kelimeBekle(page, w);
       const once = {kayit: await T(page, 'kayit', w), gunluk: await T(page, 'bugunku'), yazilan: (await T(page, 'yazilan')).length};
-      // 5. kutuda harf açık gelmez: kartın yazımıyla aynı konumdaki harfler tutar, farklı olanlar tutmaz.
-      const tutan = [...w].map((h, i) => i).filter(i => c.aday[i] === w[i]);
+      // Kartın yazımıyla aynı konumdaki harfler tutar, farklı olanlar tutmaz. gizli: harfi gizli kutular (5. kutuda hepsi).
+      const tutan = [...w].map((h, i) => i).filter(i => c.aday[i] === w[i]), gizli = await T(page, 'gizliSira');
       assert.ok(tutan.length > 0 && tutan.length < w.length, 'Düzenek: ' + c.aday + ' yazımı ' + w + ' ile kısmen örtüşür');
+      assert.deepEqual(c.fark.filter(i => gizli.includes(i)), c.hal === 'acik' ? [] : c.fark,
+        'Düzenek: ' + w + ' kartında yazımın ayrıldığı harfler ' + (c.hal === 'acik' ? 'açık kutularda' : 'gizli') + ' (gizli kutular: ' + gizli.join(', ') + ')');
       await page.locator('#oyunGirdi').focus();
       await page.keyboard.type(c.aday);
-      await page.keyboard.press('Enter');
-      assert.equal(await durumOku(page), 'Olmadı. Doğru harfler yerinde kaldı; kalan deneme hakkı: 2.',
-        'Dizinde başlık olmayan yazım (' + c.aday + ') "yazımı da doğru" sayılmaz: yanlış denemedir');
+      // Kelimenin tamamı yazılır: öteki yazımın ayrılan harfi açık kutunun da üzerine yazılır. O kutu yazılanı gösterir ve
+      // "farkli" olur (harf zaten ekrandaydı); gizli kutuda tutmayan harf işaretlenmez (cevabı ele verirdi).
       let g = await T(page, 'gorunum');
-      assert.deepEqual([g.gonder, g.sonuc, g.gecersiz, g.deger], ['Kontrol et', false, 'true', ''], 'Kelime bitmedi: düğme, sonuç bölümü, hata işareti');
-      assert.deepEqual(g.hucreler.map((h, i) => (h.s === 'bulundu' ? i : -1)).filter(i => i >= 0), tutan, 'Yalnız kartın kendi yazımıyla tutan harfler kilitlendi');
-      assert.equal(g.azami, String(w.length - tutan.length), 'Tutmayan harfler yeniden yazılacak');
+      assert.equal(g.deger, c.aday, 'Öteki yazımın tamamı girdiye yazılır (açık harfler dahil)');
+      assert.deepEqual(g.hucreler, [...w].map((h, i) => ({c: c.aday[i], s: (gizli.includes(i) ? 'bos' : 'sabit') + ' yazildi' + (!gizli.includes(i) && c.aday[i] !== h ? ' farkli' : '')})),
+        'Yazarken her kutu yazılan harfi gösterir; yalnız üzerine başka harf yazılan açık kutu "farkli" olur (gizli kutu hiç olmaz)');
+      await page.keyboard.press('Enter');
+      if (c.hal === 'acik') {
+        // Ayrılan harfler açık kutularda, gizli harflerin hepsi doğru: dizinde olmayan yazım kabul edilmez ama yanlış deneme de
+        // sayılmaz (harf zaten ekrandaydı). Deneme harcanmaz, hiçbir harf açılmaz; ilk farklı harfin ne olması gerektiği söylenir
+        // ve yazılan o harfin önünde kesilir.
+        const DUZELT = (c.fark[0] + 1) + '. harf yanlış, ' + w[c.fark[0]] + ' olmalı. O harften devam et.';
+        assert.equal(await durumOku(page), DUZELT, 'Dizinde başlık olmayan yazım (' + c.aday + ') "yazımı da doğru" sayılmaz; ayrılan harf açık kutuda olduğu için düzeltilmesi istenir');
+        const sonra = await T(page, 'gorunum');
+        assert.deepEqual([sonra.gonder, sonra.sonuc, sonra.gecersiz, sonra.deger], ['Kontrol et', false, null, c.aday.slice(0, c.fark[0])],
+          'Kelime bitmedi, deneme harcanmadı: hata işareti yok, yazılan ayrılan ilk harfin önünde kesildi');
+        assert.deepEqual(sonra.hucreler, [...w].map((h, i) => {
+          const taban = gizli.includes(i) ? 'bos' : 'sabit';
+          if (i < c.fark[0]) return {c: h, s: taban + ' yazildi'};
+          return {c: taban === 'bos' ? '' : h, s: taban + (i === c.fark[0] ? ' simdi' : '')};
+        }), 'Kutular: yazılan kesildi, imleç ayrılan ilk açık harfte (harf kutuda görünür); hiçbir gizli harf açılmadı, "farkli" işareti kalktı');
+        await yazimDurulsun(page);
+        assert.deepEqual({kayit: await T(page, 'kayit', w), gunluk: await T(page, 'bugunku'), yazilan: (await T(page, 'yazilan')).length}, once,
+          'Kabul edilmeyen yazım ilerleme ve günlük sayaç yazmaz');
+        // O harften kartın kendi yazımıyla devam edilir: deneme harcanmadığı için ilk denemede doğrudur, kutu yükselir.
+        await page.keyboard.type(tam(w).slice(c.fark[0]));
+        await page.keyboard.press('Enter');
+        assert.match(await durumOku(page, DUZELT), new RegExp('^Bildiniz! Kelime ' + (kutu + 1) + '\\. kutuya çıktı; '),
+          'Açık harfin üzerine yazılan (kabul edilmeyen) yazım deneme harcamaz: kartın kendi yazımı ilk denemede doğru sayılır');
+        await page.waitForFunction(([w, gun]) => window.__oyun.kayit(w).c === gun, [w, bugun]);
+        assert.equal((await T(page, 'kayit', w)).k, kutu + 1);
+        await page.keyboard.press('Enter');
+        return;
+      }
+      assert.equal(await durumOku(page), OLMADI, 'Dizinde başlık olmayan yazım (' + c.aday + ') "yazımı da doğru" sayılmaz: ayrılan harf gizliyse yanlış denemedir');
+      g = await T(page, 'gorunum');
+      assert.deepEqual([g.gonder, g.sonuc, g.gecersiz, g.deger], ['Kontrol et', false, 'true', ''], 'Kelime bitmedi: düğme, sonuç bölümü, hata işareti; yazılan silindi');
+      // Harfsiz kartta yanlış deneme harf açtı: açılan (bulundu) harf de açık harftir ve yazılır; açıklama öbür biçime döner.
+      assert.ok(g.tarif.endsWith('. Açık harfler dahil kelimenin tamamını baştan sona yaz, Enter ile kontrol et.') && g.tarif === beklenenAciklama(g),
+        'Yanlış denemede harf açılan harfsiz kartın açıklaması açık harfleri de yazdırır: ' + g.tarif);
+      // Gizli harflerden yalnız kartın kendi yazımıyla tutanlar açıldı; tutmayan gizli kalır ve boş görünür. İmleç yine ilk kutudadır.
+      assert.deepEqual(g.hucreler, [...w].map((h, i) => {
+        const acildi = tutan.includes(i), s = !gizli.includes(i) ? 'sabit' : (acildi ? 'bulundu' : 'bos');
+        return {c: s === 'bos' ? '' : h, s: s + (i ? '' : ' simdi')};
+      }), 'Yanlış denemeden sonra: doğru yazılan gizli harfler açıldı, tutmayanlar gizli; açık harfler kendi harfiyle yerinde');
+      assert.equal(g.azami, String(w.length), 'Kelime yeniden baştan yazılacak: girdi yine kelimenin bütün harflerini alır');
       // Bir yanlış deneme ilerlemeye hiçbir şey yazmaz (bekleyen yazım olsaydı şimdiye yapılmış olurdu).
       await yazimDurulsun(page);
       assert.deepEqual({kayit: await T(page, 'kayit', w), gunluk: await T(page, 'bugunku'), yazilan: (await T(page, 'yazilan')).length}, once,
         'Kabul edilmeyen yazım ilerleme ve günlük sayaç yazmaz');
-      // Deneme harcandı: kartın kendi yazımı artık "ilk denemede doğru" değildir.
-      await page.keyboard.type(await T(page, 'eksik', w));
+      // Deneme harcandı: kartın kendi yazımı (baştan sona) artık "ilk denemede doğru" değildir.
+      await page.keyboard.type(tam(w));
       await page.keyboard.press('Enter');
-      assert.equal(await durumOku(page, 'Olmadı. Doğru harfler yerinde kaldı; kalan deneme hakkı: 2.'), 'Doğru, ama ilk denemede değil; kelime öğrenilenlerde kalıyor.',
-        'Dizinde olmayan yazım bir deneme harcar (aynı anlamlı kelime gibi bağışlanmaz)');
+      assert.equal(await durumOku(page, OLMADI), 'Doğru, ama ilk denemede değil; ' + (kutu >= 5 ? 'kelime öğrenilenlerde kalıyor.' : 'kelime ' + kutu + '. kutuda kalıyor.'),
+        'Ayrıldığı harf gizli olan dizin dışı yazım bir deneme harcar (aynı anlamlı kelime gibi bağışlanmaz)');
       await page.waitForFunction(([w, gun]) => window.__oyun.kayit(w).c === gun, [w, bugun]);
-      assert.equal((await T(page, 'kayit', w)).k, 5);
+      assert.equal((await T(page, 'kayit', w)).k, kutu);
       await page.keyboard.press('Enter');
-    }
+    };
+    // a) Harfsiz kartlar ("Öğrenilenler" turu): yazımın ayrıldığı harfler gizlidir.
+    await page.locator('.oyun-mod [data-mod="ogrenilen"]').click();
+    const sira = await T(page, 'sira', 'ogrenilen');
+    assert.deepEqual([...sira].sort(), harfsiz.map(c => c.kart).sort(), 'Düzenek: öğrenilmiş kelimeler sırada');
+    for (const w of sira) await kartiOyna(w, 5);
     await page.locator('#oyunBos').waitFor({state: 'visible'});
-    assert.deepEqual(await T(page, 'yazilan'), sira.map(w => 'ipucuyla:' + w), 'Her kelime bir kez, ikinci denemedeki doğru cevapla yazıldı');
-    assert.equal((await T(page, 'gorunum')).sayim, 'Bu oturum: ✓ 0 bildin · 💡 ' + sira.length + ' ipuçlu · ✗ 0 bilemedin');
-    return f.map(c => c.kart + ' kartında ' + c.aday + ' (' + c.kural + ')').join(', ');
+    // b) Açık harfli kartlar ("Sıradakiler" turu, 1. kutu): yazımın ayrıldığı harfler kutusunda açık durur; öteki yazım
+    //    onların üzerine yazılabilir. Dizinde başlık olmadığı için kabul edilmez; ama gizli harflerin hepsi doğru, fark
+    //    yalnız açık harfte olduğu için yanlış deneme de sayılmaz: düzeltilince kart ilk denemede bilinmiş olur.
+    await page.locator('.oyun-mod [data-mod="sira"]').click();
+    const acikSira = (await T(page, 'sira', 'sira')).slice(0, acik.length);
+    assert.deepEqual([...acikSira].sort(), acik.map(c => c.kart).sort(), 'Düzenek: açık harfli kartlar (1. kutu, vadesi bugün) sıranın başında');
+    for (const w of acikSira) await kartiOyna(w, 1);
+    assert.deepEqual(await T(page, 'yazilan'), [...sira.map(w => 'ipucuyla:' + w), ...acikSira.map(w => 'dogru:' + w)],
+      'Her kelime bir kez yazıldı: harfsiz kartlar ikinci denemedeki doğru cevapla, açık harfli kartlar ilk denemede');
+    assert.equal((await T(page, 'gorunum')).sayim, 'Bu oturum: ✓ ' + acikSira.length + ' bildin · 💡 ' + sira.length + ' ipuçlu · ✗ 0 bilemedin');
+    return f.ciftler.map(c => c.kart + ' kartında ' + c.aday + ' (' + c.kural + ', ' + (c.hal === 'acik' ? 'ayrılan harf açık' : 'harfsiz') + ')').join(', ');
   });
 
   /* ---------- "enter" kartı ---------- */
-  senaryo('"enter" kartı: tuşun adı cevabın kendisidir (re-enter kartında bir parçası); açıklama, duyuru ve girdinin açıklaması cevaptan önce onu içermez ("onay tuşu ile kontrol et")', async () => {
+  senaryo('"enter" kartı: tuşun adı cevabın kendisidir (re-enter kartında bir parçası); açıklama, duyuru ve girdinin açıklaması cevaptan önce onu içermez: açık harfli kartta da harfsiz kartta da "onay tuşu ile kontrol et"', async () => {
     // Kartlar: başlığı tuşun adı olan (enter) ve başlığının bir parçası tuşun adı olan (re-enter gibi) ilk kelime.
     const sonuclar = [];
     for (const tur of ['tam', 'parca']) sonuclar.push(await enterKarti(tur));
@@ -3894,10 +4676,14 @@ async function main() {
     const w = f.w;
     assert.equal((await T(page, 'sira', 'sira', 1))[0], w, 'Düzenek: vadesi gelen tek kelime sıranın başında');
     await kelimeBekle(page, w);
+    // Yönergenin iki biçimi: en az bir harf açıkken (açık harfler de yazılır) ve hiç açık harf yokken. İkisi de tuşun adını söylemez.
+    const YONERGE = {acikli: 'Açık harfler dahil kelimenin tamamını baştan sona yaz, onay tuşu ile kontrol et.', harfsiz: 'Kelimenin tamamını yaz, onay tuşu ile kontrol et.'};
     // Cevaptan önceki her hâlde: açıklama tuşun adını söylemez; kartta (sayfada baştan duran öznitelikler dahil),
-    // girdinin açıklamasında ve (soru yeniden duyurulduysa) duyuruda cevap yoktur. duyuru: beklenen duyuru metni ya da null.
-    const gizli = async (hal, duyuru) => {
+    // girdinin açıklamasında ve (soru yeniden duyurulduysa) duyuruda cevap yoktur. bicim: yönergenin beklenen biçimi;
+    // duyuru: beklenen duyuru metni ya da null. Gizli harf sayısını döndürür.
+    const gizli = async (hal, bicim, duyuru) => {
       const g = await T(page, 'gorunum'), bos = g.hucreler.filter(h => h.s.startsWith('bos')).length;
+      assert.ok(g.tarif.endsWith('. ' + YONERGE[bicim]), hal + ': açıklama "' + YONERGE[bicim] + '" yönergesiyle biter (tuşun adı, yani cevap geçmez): ' + g.tarif);
       assert.equal(g.tarif, beklenenAciklama(g, 'onay tuşu'), hal + ': açıklama tuşun adını (cevabı) söylemez');
       assert.deepEqual(await T(page, 'sizinti', w), [], hal + ': kartta cevap yok');
       assert.deepEqual(await T(page, 'oznitelikSizinti', w), [], hal + ': kartın özniteliklerinde (sayfada baştan duranlar dahil) cevap yok');
@@ -3909,25 +4695,51 @@ async function main() {
       }
       return bos;
     };
-    let bos = await gizli('Yeni kart', await T(page, 'soru', w, true));
-    assert.ok(bos >= 2, 'Düzenek: 1. kutuda en az iki boşluk (' + bos + ')');
+    const harf = tam(w).length;
+    let bos = await gizli('Yeni kart', 'acikli', await T(page, 'soru', w, true));
+    assert.ok(bos >= 2 && bos < harf, 'Düzenek: 1. kutuda en az iki gizli, en az bir açık harf (' + harf + ' harfin ' + bos + ' tanesi gizli)');
     // Moddan çıkıp dönünce soru yeniden duyurulur (aynı kelime, yeniden kurulan kart).
     await page.locator('.oyun-mod [data-mod="ogrenilen"]').click();
     await page.locator('#oyunBos').waitFor({state: 'visible'});
     await page.locator('.oyun-mod [data-mod="sira"]').click();
     await kelimeBekle(page, w);
-    await gizli('Moda dönünce', await T(page, 'soru', w, true));
-    // Tek boşluk kalana kadar harf açılır: açıklamanın öbür biçimi ("1 eksik harfi yaz, …").
-    for (; bos > 1; bos--) await page.locator('#oyunHarf').click();
-    assert.equal(await gizli('Tek boşluk kalınca', null), 1, 'Düzenek: tek boşluk kaldı');
+    await gizli('Moda dönünce', 'acikli', await T(page, 'soru', w, true));
+    // Tek gizli harf kalana kadar harf açılır: açılan harfler açıklamaya girer, yönerge yine tuşun adını söylemez.
+    // Her açmanın iletisi de doğrulanır: harf sırası ayraçları saymaz (re-enter kartında tireden sonraki harfler).
+    let sonAcma = (await T(page, 'gorunum')).durum;
+    for (; bos > 1; bos--) {
+      const ilkBos = (await T(page, 'gorunum')).hucreler.findIndex(h => h.s.startsWith('bos'));
+      await page.locator('#oyunHarf').click();
+      sonAcma = await durumOku(page, sonAcma);
+      assert.equal(sonAcma, harfSirasi(w, ilkBos) + '. harf açıldı: ' + w[ilkBos] + '. Doğru bilirsen kelime aynı kutuda kalır.', 'Açma iletisindeki harf sırası ayraçları saymaz (' + w + ')');
+    }
+    assert.equal(await gizli('Tek gizli harf kalınca', 'acikli', null), 1, 'Düzenek: tek gizli harf kaldı');
     await coz(page, w);
     await durumBekle(page, 'Doğru, ama ipucuyla; kelime 1. kutuda kalıyor.');
     // Özel durum yalnız bu karta aittir: sonraki kartta yönerge tuşun adını söyler.
     await page.keyboard.press('Enter');
     const [w2] = await T(page, 'sira', 'sira', 1);
     await kelimeBekle(page, w2);
-    const sonraki = (await T(page, 'gorunum')).tarif;
-    assert.ok(sonraki.endsWith(', Enter ile kontrol et.'), 'Başka kartta yönerge tuşun adını söyler: ' + sonraki);
+    const sonraki = await T(page, 'gorunum');
+    assert.ok(sonraki.tarif.endsWith(', Enter ile kontrol et.'), 'Başka kartta yönerge tuşun adını söyler: ' + sonraki.tarif);
+    assert.equal(sonraki.tarif, beklenenAciklama(sonraki), 'Başka kartta açıklamanın geri kalanı aynı kurala uyar (kutular, kelimenin tamamını yazdıran yönerge)');
+    // Açıklamanın öbür biçimi: hiç açık harf yokken yönerge açık harflerden söz etmez; tuşun adını yine söylemez.
+    // Kart öğrenilmiş (5. kutu) olarak yeniden kurulur: kaydı doğrudan yazılır, sayfa yenilenir, harfsiz turda sorulur.
+    assert.equal(await T(page, 'kayitKoy', w, 5), true, 'Düzenek: kelimenin kaydı 5. kutuya yazıldı');
+    await page.reload(); await hazir(page);
+    await page.locator('.oyun-mod [data-mod="ogrenilen"]').click();
+    await kelimeBekle(page, w);
+    bos = await gizli('Harfsiz kart', 'harfsiz', await T(page, 'soru', w, true));
+    assert.equal(bos, harf, 'Düzenek: 5. kutuda hiç açık harf yok');
+    // Harfsiz kartta eksik kelime iletisi açık harften söz etmez; harf sayısı ayraçları saymaz (re-enter: tire harf değildir).
+    await page.locator('#oyunGirdi').focus();
+    await page.keyboard.type(tam(w)[0]);
+    await page.keyboard.press('Enter');
+    assert.equal(await durumOku(page), 'Önce kelimenin tamamını yaz.', 'Harfsiz kartta eksik kelime iletisi açık harften söz etmez (' + w + ')');
+    await page.keyboard.press('Backspace');
+    // İlk harf açılınca açıklama öbür biçime döner ("Bir harf aç" ile açılan harf de açık harftir ve yazılır).
+    await page.locator('#oyunHarf').click();
+    assert.equal(await gizli('Harfsiz kartta bir harf açılınca', 'acikli', null), harf - 1, 'Düzenek: bir harf açıldı');
     return w + ' kartı (sonraki ' + w2 + ')';
   }
 

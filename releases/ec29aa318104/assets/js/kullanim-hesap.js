@@ -3,7 +3,7 @@
   'use strict';
   var Y = window.YDS = window.YDS || {}, DAY = 86400000;
   var pages = [
-    ['index','Açılış sayfası'],['ana-sayfa','Ana sayfa'],['kelimeler','Kelimeler'],['obekler','Öbekler'],['cumleler','Cümleler'],
+    ['index','Açılış sayfası'],['ana-sayfa','Ana sayfa'],['oyunlar','Oyunlar'],['kelimeler','Kelimeler'],['obekler','Öbekler'],['cumleler','Cümleler'],
     ['aileler','Kelime aileleri'],['quiz','Quiz'],['deneme','Deneme'],['gramer','Gramer'],
     ['baglaclar','Bağlaçlar'],['konular','Konu haritası'],['konu','Konu üniteleri'],
     ['ara','Arama'],['durum','Çalışma durumu'],['istatistik','İstatistik'],['ayarlar','Ayarlar'],
@@ -13,7 +13,8 @@
     ['deste-baslat','Deste başlatma'],['kart-cevap','Çalışma kartını yanıtlama'],['quiz-baslat','Quiz başlatma'],
     ['quiz-bitir','Quiz tamamlama'],['deneme-bitir','Deneme tamamlama'],['ipucu','İpucu kullanma'],
     ['gunun-testi-baslat','Günün testini başlatma'],['gunun-testi-bitir','Günün testini tamamlama'],
-    ['sozluk-ac','Sözlük panelini açma']
+    ['sozluk-ac','Sözlük panelini açma'],['oyun-cevap','Yazma oyununda kelime yanıtlama'],
+    ['oyun-harf','Yazma oyununda harf açma']
   ];
   function member(list, id) { return list.some(function (r) { return r[0] === id; }); }
   function integer(n) { return Number.isSafeInteger(n) && n >= 0; }

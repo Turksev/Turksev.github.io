@@ -178,11 +178,11 @@ code {
 }
 
 .site-nav a:hover { background: var(--surface-2); color: var(--text); }
-/* Onuncu sekme (Ana sayfa) dar masaüstünde de tek satırda kalsın. */
-@media (max-width: 1099px) {
-  .site-nav { gap: 2px; }
-  .site-nav a, .nav-grup > summary { padding: 7px 8px; font-size: .86rem; }
-}
+/* On birinci sekme (Oyunlar) ile üst bar ancak bu sıkı ölçülerle tek satıra
+   sığıyor; kural bu yüzden her genişlikte geçerli. Sığmadığı genişliklerde
+   aşağıdaki 1059 px kuralı menü düğmesine geçer. */
+.site-nav { gap: 2px; }
+.site-nav a, .nav-grup > summary { padding: 7px 8px; font-size: .86rem; }
 .site-nav a[aria-current="page"] { background: var(--accent-soft); color: var(--accent); }
 
 /* ---------- üst bardaki açılır gruplar ----------
@@ -1303,17 +1303,47 @@ mark {
   .toc { position: static; max-height: none; border: 1px solid var(--border); border-radius: 12px; padding: 12px; background: var(--surface); }
 }
 
-@media (max-width: 860px) {
+/* On bir sekme 1034 px'ten itibaren tek satıra sığıyor (Segoe UI ile ölçüldü);
+   kaydırma çubuğu ve daha geniş yazı tipleri için 25 px pay var. Sözlük paneli
+   yanda açıkken geçerli kopyası dosyanın sonunda (1413 px). */
+@media (max-width: 1059px) {
   .js .menu-toggle { display: inline-flex; margin-left: auto; }
   .js .site-nav { display: none; }
   .js .site-nav.acik { display: flex; }
-  .site-header .wrap { min-height: 56px; padding-top: 7px; padding-bottom: 7px; gap: 8px; }
-  .site-nav { margin-left: 0; width: 100%; order: 5; padding: 4px 0 7px; }
-  .site-nav a { flex: 1 1 130px; min-height: 44px; display: grid; place-items: center; padding: 8px; }
+  /* Kuralların hepsi .js ile sınırlı: menü düğmesi olmayan sayfalar (konu/*.html
+     main.js yüklemez) bu genişlikte dört bağlantıyla tek satırda kalır; onların
+     kırılımı aşağıdaki 860 px bloğudur. */
+  .js .site-header .wrap { min-height: 56px; padding-top: 7px; padding-bottom: 7px; gap: 8px; }
+  .js .site-nav { margin-left: 0; width: 100%; order: 5; padding: 4px 0 7px; }
+  .js .site-nav a { flex: 1 1 130px; min-height: 44px; display: grid; place-items: center; padding: 8px; }
   /* Dar ekranda panel yüzmez: başlığın hemen altında, menünün içinde
      tam genişlikte bir liste olarak açılır. Yan yana dizince son satırda
      boş hücre kalıyordu; alt alta liste hem düzgün hem de başlığın hangi
      bağlantıları kapsadığını daha net gösteriyor. */
+  .js .nav-grup { width: 100%; }
+  .js .nav-grup > summary { min-height: 44px; justify-content: center; }
+  .js .nav-alt {
+    position: static;
+    width: auto;
+    min-width: 0;
+    max-width: none;
+    gap: 2px;
+    margin-top: 4px;
+    padding: 4px;
+    background: var(--surface-2);
+    border-color: transparent;
+    box-shadow: none;
+  }
+  /* .site-nav a kuralındaki flex-basis dikey eksende yükseklik olurdu */
+  .js .nav-alt a { flex: 0 0 auto; }
+}
+
+/* Menü düğmesi olmayan sayfalar (konu/*.html) ve JavaScript'siz tarayıcı: menü
+   hep açıktır, yukarıdaki kuralların aynısı eski 860 px kırılımında uygulanır. */
+@media (max-width: 860px) {
+  .site-header .wrap { min-height: 56px; padding-top: 7px; padding-bottom: 7px; gap: 8px; }
+  .site-nav { margin-left: 0; width: 100%; order: 5; padding: 4px 0 7px; }
+  .site-nav a { flex: 1 1 130px; min-height: 44px; display: grid; place-items: center; padding: 8px; }
   .nav-grup { width: 100%; }
   .nav-grup > summary { min-height: 44px; justify-content: center; }
   .nav-alt {
@@ -1328,12 +1358,12 @@ mark {
     border-color: transparent;
     box-shadow: none;
   }
-  /* .site-nav a kuralındaki flex-basis dikey eksende yükseklik olurdu */
   .nav-alt a { flex: 0 0 auto; }
 }
 
 @media (max-width: 560px) {
-  .site-header .wrap { min-height: 56px; padding-top: 8px; padding-bottom: 8px; }
+  /* .js'li ikiz: 1059 px bloğundaki .js .site-header .wrap kuralını ezebilsin. */
+  .site-header .wrap, .js .site-header .wrap { min-height: 56px; padding-top: 8px; padding-bottom: 8px; }
   .site-nav a { font-size: .87rem; }
   .word { grid-template-columns: 1fr; }
   .word .act { flex-direction: row; align-items: center; }
@@ -1947,8 +1977,8 @@ html.sozluk-alt .esit-uyari { bottom: calc(var(--sozluk-yuk, 55vh) + var(--sozlu
 /* Telefonda menü açılınca alt panelin üstünde kalsın. */
 html.sozluk-alt .site-header:has(.site-nav.acik) { z-index: 61; }
 /* Panel sayfayı daraltınca geniş ekran menüsü üç satıra taşıyordu: dar ekran
-   menüsüne geç (720 px kurallarının aynısı). */
-@media (max-width: 1359px) {
+   menüsüne geç (1059 px kurallarının aynısı). */
+@media (max-width: 1413px) {
   html.js.sozluk-yan .menu-toggle { display: inline-flex; margin-left: auto; }
   html.js.sozluk-yan .site-nav { display: none; }
   html.js.sozluk-yan .site-nav.acik { display: flex; }

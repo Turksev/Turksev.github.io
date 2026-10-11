@@ -139,7 +139,7 @@ const TABLO = {
 for (const n of Object.keys(TABLO)) {
   esit([0, 1, 2, 3, 4, 5].map(k => O.acikSayisi(Number(n), k)), TABLO[n], n + ' harfli kelimede açık harf sayıları');
 }
-esit([0, 1, 2, 3, 4, 5].map(k => O.acikSayisi(1, k)), [0, 0, 0, 0, 0, 0], 'tek harfli kelimede harf açılmaz: en az bir harf yazılır');
+esit([0, 1, 2, 3, 4, 5].map(k => O.acikSayisi(1, k)), [0, 0, 0, 0, 0, 0], 'tek harfli kelimede harf açılmaz: en az bir harf gizli kalır');
 esit([0, 1, 2, 3, 4, 5].map(k => O.acikSayisi(0, k)), [0, 0, 0, 0, 0, 0]);
 esit([O.acikSayisi(20, 0), O.acikSayisi(20, 4), O.acikSayisi(17, 1), O.acikSayisi(-3, 0), O.acikSayisi(NaN, 0)], [10, 2, 7, 0, 0]);
 const BOZUK_KUTULAR = [-1, 0, 0.9, 1, 2.7, 4.999, 5, 6, 99, Infinity, -Infinity, NaN, undefined, null, '3', {}, true];
@@ -159,6 +159,9 @@ const harfKonumlari = e => [...e].map((c, i) => /[a-zA-Z]/.test(c) ? i : -1).fil
 const beklenenAdet = (n, k) => Math.min(n - 1, Math.round(n * [50, 40, 30, 20, 10, 0][k] / 100));
 const bosHarfler = t => t.hucreler.filter(h => h.tur === 'bos').map(h => h.c.toLowerCase()).join('');
 const baskaHarf = c => c === 'q' ? 'x' : 'q';
+// Kelimenin tamamı: yazılan budur (açık harfler dahil; tire ve boşluk yazılmaz).
+const tumHarfler = e => e.toLowerCase().replace(/[^a-z]/g, '');
+const degistir = (metin, i) => metin.slice(0, i) + baskaHarf(metin[i]) + metin.slice(i + 1);
 let denenenTur = 0;
 for (const d of OYNANAN) {
   const harfler = harfKonumlari(d.e), n = harfler.length;
@@ -185,15 +188,27 @@ for (const d of OYNANAN) {
     const liste = O.tarif(t).split(': ')[1].split('. ')[0].split(', ');
     assert.equal(liste.length, d.e.length, etiket + ': tarif her karakteri sayar');
     assert.equal(liste.filter(x => x === 'boş').length, n - acik.length, etiket + ': tarif boşlukların harfini vermez');
-    const dogru = bosHarfler(t);
+    const tam = tumHarfler(d.e);
+    assert.equal(tam.length, n, etiket);
     if (k === 0 || k === 5) {
-      // Yanlış ilk harf: yalnız o boşluk kalır, tek boşlukta harf açılmaz, sonra ipucuyla biter.
-      const y = O.turBaslat(d.e, k, G);
-      assert.equal(O.dene(y, baskaHarf(dogru[0]) + dogru.slice(1)).durum, 'yanlis', etiket);
-      esit([O.bosSayisi(y), y.deneme, O.harfAc(y, ''), y.ipucu], [1, 1, null, false], etiket + ': doğru harfler kilitlenir');
-      esit([O.dene(y, dogru[0]).durum, y.bitti], ['dogru', 'ipucuyla'], etiket);
+      // İlk gizli harf yanlış: yalnız o gizli kalır, tek gizli harfte harf açılmaz; kelime baştan yazılınca ipucuyla biter.
+      const y = O.turBaslat(d.e, k, G), ilkGizli = harfler.findIndex(konum => !acik.includes(konum));
+      assert.equal(O.dene(y, degistir(tam, ilkGizli)).durum, 'yanlis', etiket);
+      esit([O.bosSayisi(y), y.deneme, O.harfAc(y, ''), y.ipucu], [1, 1, null, false], etiket + ': doğru yazılan gizli harfler açılır');
+      if (n > 1) assert.equal(O.dene(y, tam[ilkGizli]).durum, 'eksik', etiket + ': yanlıştan sonra yalnız kalan harf yetmez');
+      esit([O.dene(y, tam).durum, y.bitti], ['dogru', 'ipucuyla'], etiket);
+      if (acik.length) {
+        // Yalnız açık harfin üzerine başka harf: yanlış deneme değildir, tur değişmez; düzeltilince ilk denemede doğru.
+        const ilkAcik = harfler.indexOf(acik[0]);
+        const z = O.turBaslat(d.e, k, G), zOnce = JSON.stringify(z), bozukTam = degistir(tam, ilkAcik);
+        esit(O.dene(z, bozukTam), { durum: 'farkli', kalan: 3, yazilan: tam.slice(0, ilkAcik), aday: [...d.e.toLowerCase()].map((c, i) => i === acik[0] ? baskaHarf(c) : c).join(''), konum: acik[0] }, etiket + ': açık harfteki yazım hatası (yazılan o harfin önünde kesilir)');
+        assert.equal(JSON.stringify(z), zOnce, etiket + ': açık harfteki yazım hatası turu değiştirmez');
+        esit([O.dene(z, tam).durum, z.bitti], ['dogru', 'dogru'], etiket + ': düzeltilince ilk denemede doğru');
+        // Yalnız gizli harfleri yazmak kelimeyi tamamlamaz.
+        assert.equal(O.dene(O.turBaslat(d.e, k, G), bosHarfler(t)).durum, 'eksik', etiket + ': yalnız gizli harfler yetmez');
+      }
     }
-    esit(O.dene(t, dogru), { durum: 'dogru', kalan: 3, yazilan: '', aday: d.e.toLowerCase() }, etiket + ': doğru harfler');
+    esit(O.dene(t, tam), { durum: 'dogru', kalan: 3, yazilan: '', aday: d.e.toLowerCase() }, etiket + ': kelimenin tamamı');
     esit([t.bitti, O.bosSayisi(t), O.hucreGorunumu(t, '').map(h => h.c).join('')], ['dogru', 0, d.e], etiket);
     denenenTur++;
   }
@@ -218,7 +233,7 @@ konumSayaci.forEach((s, i) => assert.ok(altilar.length > 1000 && s / altilar.len
   'altı harflilerde ' + i + '. konum oranı ' + (s / altilar.length).toFixed(3)));
 
 /* ---------- 5) tur durum makinesi (elle kurulan desenlerle) ---------- */
-// desen: '_' yazılacak harf, başka her şey açık harf ya da ayraç.
+// desen: '_' gizli harf, başka her şey açık harf ya da ayraç (ayraç dışında hepsi yazılır).
 function tur(kelime, desen, kutu) {
   assert.equal(desen.length, kelime.length);
   return {
@@ -235,91 +250,132 @@ const gercek = O.turBaslat('blight', 0, G);
 esit(gercek, tur('blight', gercek.hucreler.map(h => h.tur === 'bos' ? '_' : h.c).join('')), 'tur nesnesinin alanları');
 esit(O.turBaslat('blight', 7.5, G).kutu, 5, 'tur kutusu kırpılır');
 
-// Görünüm: yazılan harfler boşluklara sırayla oturur; sıradaki boşluk işaretlidir.
+// Görünüm: yazılan harfler kelimenin başından sırayla oturur (açık harfler dahil); sıradaki kutu işaretlidir.
 let t = tur('blight', 'b_i_h_');
-esit([gorunum(t, ''), gorunum(t, 'l'), gorunum(t, 'lg'), gorunum(t, 'lgt'), gorunum(t, 'LĞ-g t99zz')], ['b_i_h_', 'bli_h_', 'bligh_', 'blight', 'blight']);
-esit([isaret(t, '', 'simdi'), isaret(t, 'l', 'simdi'), isaret(t, 'lg', 'simdi'), isaret(t, 'lgt', 'simdi')], [[1], [3], [5], []]);
-esit(O.hucreGorunumu(t, 'x')[0], { c: 'b', tur: 'acik', bulundu: false, ipucu: false, simdi: false });
-esit(O.hucreGorunumu(t, 'x')[1], { c: 'x', tur: 'bos', bulundu: false, ipucu: false, simdi: false });
-esit(O.hucreGorunumu(t, 'x')[3], { c: '', tur: 'bos', bulundu: false, ipucu: false, simdi: true });
+esit([gorunum(t, ''), gorunum(t, 'b'), gorunum(t, 'bl'), gorunum(t, 'blig'), gorunum(t, 'blight'), gorunum(t, 'BLİ-g h t99zz')],
+  ['b_i_h_', 'b_i_h_', 'bli_h_', 'bligh_', 'blight', 'blight']);
+esit([isaret(t, '', 'simdi'), isaret(t, 'b', 'simdi'), isaret(t, 'bl', 'simdi'), isaret(t, 'bligh', 'simdi'), isaret(t, 'blight', 'simdi')], [[0], [1], [2], [5], []]);
+esit([isaret(t, '', 'yazildi'), isaret(t, 'bli', 'yazildi'), isaret(t, 'blightzz', 'yazildi')], [[], [0, 1, 2], [0, 1, 2, 3, 4, 5]]);
+esit(O.hucreGorunumu(t, 'bx')[0], { c: 'b', tur: 'acik', bulundu: false, ipucu: false, yazildi: true, farkli: false, simdi: false });
+esit(O.hucreGorunumu(t, 'bx')[1], { c: 'x', tur: 'bos', bulundu: false, ipucu: false, yazildi: true, farkli: false, simdi: false }, 'gizli hücrede yanlış harf işaretlenmez');
+esit(O.hucreGorunumu(t, 'bx')[2], { c: 'i', tur: 'acik', bulundu: false, ipucu: false, yazildi: false, farkli: false, simdi: true }, 'sırası gelmemiş açık harf kutusunda bekler');
+esit(O.hucreGorunumu(t, 'bx')[3], { c: '', tur: 'bos', bulundu: false, ipucu: false, yazildi: false, farkli: false, simdi: false });
+esit(O.hucreGorunumu(t, 'x')[0], { c: 'x', tur: 'acik', bulundu: false, ipucu: false, yazildi: true, farkli: true, simdi: false }, 'açık harfin üzerine başka harf: işaretli');
+// Yalnız gizli harfleri yazmak (önceki kural): harfler yine baştan oturur, açık harfle tutmayan kutular işaretlenir.
+esit([gorunum(t, 'lgt'), isaret(t, 'lgt', 'farkli'), isaret(t, 'lgt', 'simdi')], ['lgt_h_', [0, 2], [3]]);
+esit(isaret(t, 'blight', 'farkli'), [], 'doğru yazılan kelimede işaret yok');
 
 // İlk denemede doğru.
-esit(O.dene(t, 'lgt'), { durum: 'dogru', kalan: 3, yazilan: '', aday: 'blight' });
+esit(O.dene(t, 'blight'), { durum: 'dogru', kalan: 3, yazilan: '', aday: 'blight' });
 esit(durum(t), ['dogru', 0, false, null, 0]);
-esit([gorunum(t, ''), isaret(t, '', 'bulundu'), isaret(t, '', 'simdi')], ['blight', [1, 3, 5], []]);
+esit([gorunum(t, ''), isaret(t, '', 'bulundu'), isaret(t, '', 'simdi'), isaret(t, 'bl', 'yazildi')], ['blight', [1, 3, 5], [], []]);
 
 // Eksik harf: deneme harcanmaz, hiçbir şey değişmez; fazlası kırpılır.
 t = tur('blight', 'b_i_h_');
 let once = JSON.stringify(t);
-esit(O.dene(t, 'lg'), { durum: 'eksik', kalan: 3, yazilan: 'lg', aday: '' });
-esit(O.dene(t, ' L-g! '), { durum: 'eksik', kalan: 3, yazilan: 'lg', aday: '' });
+esit(O.dene(t, 'bligh'), { durum: 'eksik', kalan: 3, yazilan: 'bligh', aday: '' });
+esit(O.dene(t, 'lgt'), { durum: 'eksik', kalan: 3, yazilan: 'lgt', aday: '' }, 'yalnız gizli harfleri yazmak yetmez');
+esit(O.dene(t, ' B-l! i '), { durum: 'eksik', kalan: 3, yazilan: 'bli', aday: '' });
 esit(O.dene(t, ''), { durum: 'eksik', kalan: 3, yazilan: '', aday: '' });
 assert.equal(JSON.stringify(t), once, 'eksik denemede tur değişmez');
-esit(O.dene(t, 'LGTZZZ'), { durum: 'dogru', kalan: 3, yazilan: '', aday: 'blight' }, 'fazla harf boşluk sayısına kırpılır');
+esit(O.dene(t, 'BLIGHTZZZ'), { durum: 'dogru', kalan: 3, yazilan: '', aday: 'blight' }, 'fazla harf kelimenin harf sayısına kırpılır');
 assert.equal(t.bitti, 'dogru', 'eksik denemeler ilk deneme hakkını yemez');
 
-// Yanlış, sonra doğru: doğru harfler kilitlenir, yanlışlar silinir, sonuç ipucuyla.
+// Yanlış, sonra doğru: doğru yazılan gizli harfler açılır, yazılan silinir, kelime baştan yazılır; sonuç ipucuyla.
 t = tur('blight', 'b_i_h_');
-esit(O.dene(t, 'lxt'), { durum: 'yanlis', kalan: 2, yazilan: '', aday: 'blixht' });
+esit(O.dene(t, 'blixht'), { durum: 'yanlis', kalan: 2, yazilan: '', aday: 'blixht' });
 esit(durum(t), [null, 1, false, null, 1]);
 esit(t.hucreler.map(h => h.tur + (h.bulundu ? '+' : '')), ['acik', 'acik+', 'acik', 'bos', 'acik', 'acik+']);
-esit([gorunum(t, ''), isaret(t, '', 'bulundu'), isaret(t, '', 'simdi'), gorunum(t, 'q')], ['bli_ht', [1, 5], [3], 'bliqht']);
-esit(O.dene(t, 'g'), { durum: 'dogru', kalan: 2, yazilan: '', aday: 'blight' });
+esit([gorunum(t, ''), isaret(t, '', 'bulundu'), isaret(t, '', 'simdi'), gorunum(t, 'bliq')], ['bli_ht', [1, 5], [0], 'bliqht']);
+esit(O.dene(t, 'g'), { durum: 'eksik', kalan: 2, yazilan: 'g', aday: '' }, 'yanlıştan sonra yalnız kalan harf yetmez: kelime baştan yazılır');
+esit(O.dene(t, 'blight'), { durum: 'dogru', kalan: 2, yazilan: '', aday: 'blight' });
 esit(durum(t), ['ipucuyla', 1, false, null, 0]);
+
+// Gizli harflerin hepsi doğru, yalnız açık harfin üzerine başka harf: harf zaten ekrandaydı, yanlış deneme
+// sayılmaz. Deneme harcanmaz, hiçbir şey açılmaz; yazılan o harfin önünde kesilir (oradan devam edilir) ve
+// düzeltilecek açık hücrenin yeri döner.
+t = tur('blight', 'b_i_h_');
+once = JSON.stringify(t);
+esit(O.dene(t, 'xlight'), { durum: 'farkli', kalan: 3, yazilan: '', aday: 'xlight', konum: 0 });
+esit(O.dene(t, 'bligqt'), { durum: 'farkli', kalan: 3, yazilan: 'blig', aday: 'bligqt', konum: 4 }, 'yazılan, yanlış yazılan açık harfin önünde kesilir');
+esit(O.dene(t, 'blxgxt'), { durum: 'farkli', kalan: 3, yazilan: 'bl', aday: 'blxgxt', konum: 2 }, 'birden çok açık harf farklıysa ilki bildirilir');
+esit(O.dene(t, ' B-L x G x T zz'), { durum: 'farkli', kalan: 3, yazilan: 'bl', aday: 'blxgxt', konum: 2 }, 'girdi temizlenip kırpılır');
+assert.equal(JSON.stringify(t), once, 'açık harfteki yazım hatasında tur değişmez');
+esit([O.dene(t, 'blight').durum, t.bitti], ['dogru', 'dogru'], 'açık harfteki yazım hatası ilk deneme hakkını yemez');
+// Yüklem de çağrılır (yazılan başka bir başlık olabilir); ilişki bulmazsa sonuç yine 'farkli'.
+t = tur('blight', 'b_i_h_');
+esit([O.dene(t, 'xlight', () => null).durum, O.dene(t, 'xlight', () => 'es').durum, O.dene(t, 'xlight', () => 'yazim').durum, t.yazim], ['farkli', 'es', 'dogru', 'xlight']);
+// İkisi birden: açık harfte hata, gizli harfte hata → yanlış deneme; açık harf açık kalır.
+t = tur('blight', 'b_i_h_');
+esit([O.dene(t, 'xlixht'), gorunum(t, ''), isaret(t, '', 'bulundu')], [{ durum: 'yanlis', kalan: 2, yazilan: '', aday: 'xlixht' }, 'bli_ht', [1, 5]]);
+// Yanlış denemede açılan (bulundu) harf de açık harftir: üzerine başka harf yazılınca kutu yazılanı gösterir ve işaretlenir.
+esit([gorunum(t, 'bx'), isaret(t, 'bx', 'farkli'), isaret(t, 'bx', 'yazildi')], ['bxi_ht', [1], [0, 1]], 'açılan (bulundu) harfin üzerine başka harf: kutu yazılanı gösterir, işaretli');
+// Yanlış denemeden sonra açılan harf de açık harftir: üzerine başka harf yazmak ikinci deneme sayılmaz.
+esit([O.dene(t, 'bxight').durum, t.deneme, O.dene(t, 'blight').durum, t.bitti], ['farkli', 1, 'dogru', 'ipucuyla']);
+// Yanlış deneme her zaman en az bir gizli harf bırakır: bütün harfleri açık, bitmemiş tur oluşmaz.
+t = tur('blight', 'b_i_h_');
+esit([O.dene(t, 'blighx').durum, O.bosSayisi(t), O.dene(t, 'xlighx').durum, O.bosSayisi(t), O.dene(t, 'blighx').durum, t.bitti, O.bosSayisi(t)], ['yanlis', 1, 'yanlis', 1, 'bitti', 'yanlis', 1]);
 
 // Üç yanlış: kelime açılır; son denemede tutan harf yine bulunmuş sayılır.
 t = tur('blight', 'b_i_h_');
-esit(O.dene(t, 'xxx'), { durum: 'yanlis', kalan: 2, yazilan: '', aday: 'bxixhx' });
-esit(O.dene(t, 'qqq'), { durum: 'yanlis', kalan: 1, yazilan: '', aday: 'bqiqhq' });
+esit(O.dene(t, 'bxixhx'), { durum: 'yanlis', kalan: 2, yazilan: '', aday: 'bxixhx' });
+esit(O.dene(t, 'bqiqhq'), { durum: 'yanlis', kalan: 1, yazilan: '', aday: 'bqiqhq' });
 esit(durum(t), [null, 2, false, null, 3]);
-esit(O.dene(t, 'lxx'), { durum: 'bitti', kalan: 0, yazilan: '', aday: 'blixhx' });
+esit(O.dene(t, 'blixhx'), { durum: 'bitti', kalan: 0, yazilan: '', aday: 'blixhx' });
 esit(durum(t), ['yanlis', 3, false, null, 2]);
-esit([gorunum(t, ''), gorunum(t, 'zz'), isaret(t, '', 'bulundu'), isaret(t, '', 'simdi')], ['blight', 'blight', [1], []], 'biten turda her hücre kendi harfini gösterir');
+esit([gorunum(t, ''), gorunum(t, 'zz'), isaret(t, '', 'bulundu'), isaret(t, '', 'simdi'), isaret(t, 'zz', 'yazildi'), isaret(t, 'zz', 'farkli')],
+  ['blight', 'blight', [1], [], [], []], 'biten turda her hücre kendi harfini gösterir');
 esit(O.hucreGorunumu(t, '').map(h => h.tur), ['acik', 'acik', 'acik', 'bos', 'acik', 'bos'], 'bulunamayan harfler bos kalır');
 // Biten tur etkisizdir.
 once = JSON.stringify(t);
-esit(O.dene(t, 'gt'), { durum: 'bitti', kalan: 0, yazilan: '', aday: '' });
+esit(O.dene(t, 'blight'), { durum: 'bitti', kalan: 0, yazilan: '', aday: '' });
 esit([O.harfAc(t, ''), O.birak(t)], [null, 'yanlis']);
 assert.equal(JSON.stringify(t), once, 'biten tur değişmez');
 t = tur('blight', 'b_i_h_');
-O.dene(t, 'lgt');
+O.dene(t, 'blight');
 once = JSON.stringify(t);
-esit([O.dene(t, 'xxx').durum, O.harfAc(t, 'x'), O.birak(t), O.dene(t, 'xxx', () => true).durum], ['bitti', null, 'dogru', 'bitti']);
+esit([O.dene(t, 'xxxxxx').durum, O.harfAc(t, 'x'), O.birak(t), O.dene(t, 'xxxxxx', () => true).durum], ['bitti', null, 'dogru', 'bitti']);
 assert.equal(JSON.stringify(t), once, 'doğru biten tur sonradan yanlışa dönmez');
 
 // Bir harf aç.
 const ac = (y, desen) => { const x = tur('blight', desen || 'b_i_h_'); return [O.harfAc(x, y), x]; };
 let [s, x] = ac('');
-esit(s, { yazilan: '', konum: 1 }, 'hiç yazılmadıysa ilk boşluk açılır');
+esit(s, { yazilan: '', konum: 1 }, 'hiç yazılmadıysa ilk gizli harf açılır');
 esit(durum(x), [null, 0, true, null, 2]);
 esit(x.hucreler[1], { c: 'l', tur: 'acik', ipucu: true });
-esit([gorunum(x, ''), isaret(x, '', 'ipucu'), isaret(x, '', 'bulundu'), isaret(x, '', 'simdi')], ['bli_h_', [1], [], [3]]);
-esit(O.dene(x, 'g'), { durum: 'eksik', kalan: 3, yazilan: 'g', aday: '' }, 'harf açmak deneme harcamaz');
-esit([O.dene(x, 'gt').durum, x.bitti], ['dogru', 'ipucuyla'], 'ipucundan sonra doğru: ipucuyla');
-[s, x] = ac('l');
-esit(s, { yazilan: 'l', konum: 3 }, 'doğru yazılanlardan sonraki ilk eksik boşluk');
-[s, x] = ac('lxt');
-esit(s, { yazilan: 'lt', konum: 3 }, 'yanlış harfin boşluğu açılır, ondan sonra yazılan kalır');
-esit([gorunum(x, s.yazilan), O.dene(x, s.yazilan).durum, x.bitti], ['blight', 'dogru', 'ipucuyla']);
-[s, x] = ac('xgt');
-esit([s, gorunum(x, s.yazilan)], [{ yazilan: 'gt', konum: 1 }, 'blight']);
-[s, x] = ac('xg');
-esit([s, gorunum(x, s.yazilan)], [{ yazilan: 'g', konum: 1 }, 'bligh_']);
-[s, x] = ac('lgx');
-esit(s, { yazilan: 'lg', konum: 5 });
-[s, x] = ac('lgt');
-esit([s, x.ipucu, O.dene(x, s.yazilan).durum, x.bitti], [{ yazilan: 'gt', konum: 1 }, true, 'dogru', 'ipucuyla'], 'hepsi doğru yazılmışken istenirse ilk boşluk açılır ve ipucu sayılır');
-[s, x] = ac('XĞ-gtzzz');
-esit(s, { yazilan: 'gt', konum: 1 }, 'girdi temizlenip kırpılır');
+esit([gorunum(x, ''), isaret(x, '', 'ipucu'), isaret(x, '', 'bulundu'), isaret(x, '', 'simdi')], ['bli_h_', [1], [], [0]]);
+esit(O.dene(x, 'bligh'), { durum: 'eksik', kalan: 3, yazilan: 'bligh', aday: '' }, 'harf açmak deneme harcamaz');
+esit([O.dene(x, 'blight').durum, x.bitti], ['dogru', 'ipucuyla'], 'ipucundan sonra doğru: ipucuyla');
+[s, x] = ac('b');
+esit([s, isaret(x, s.yazilan, 'simdi')], [{ yazilan: 'b', konum: 1 }, [1]], 'sıra gizli harfteyse o açılır; yazılan kalır, açılan harften devam edilir');
+[s, x] = ac('bl');
+esit(s, { yazilan: 'bl', konum: 3 }, 'doğru yazılanlardan sonraki ilk gizli harf (aradaki açık harf henüz yazılmamış olabilir)');
+[s, x] = ac('blixht');
+esit(s, { yazilan: 'bli', konum: 3 }, 'yanlış yazılan gizli harf açılır; yazılan onun önünde kesilir');
+esit([gorunum(x, s.yazilan), isaret(x, s.yazilan, 'simdi'), O.dene(x, s.yazilan + 'ght').durum, x.bitti], ['bligh_', [3], 'dogru', 'ipucuyla']);
+[s, x] = ac('bxight');
+esit([s, gorunum(x, s.yazilan)], [{ yazilan: 'b', konum: 1 }, 'bli_h_']);
+[s, x] = ac('bxig');
+esit([s, gorunum(x, s.yazilan)], [{ yazilan: 'b', konum: 1 }, 'bli_h_']);
+[s, x] = ac('xl');
+esit([s, gorunum(x, s.yazilan), isaret(x, s.yazilan, 'farkli')], [{ yazilan: 'xl', konum: 3 }, 'xligh_', [0]], 'açık harfteki yazım hatası harf açmayı etkilemez, yerinde kalır');
+[s, x] = ac('blighx');
+esit(s, { yazilan: 'bligh', konum: 5 });
+[s, x] = ac('blight');
+esit([s, x.ipucu, O.dene(x, s.yazilan).durum, x.bitti], [{ yazilan: 'blight', konum: 1 }, true, 'dogru', 'ipucuyla'], 'hepsi doğru yazılmışken istenirse ilk gizli harf açılır, yazılan kalır ve ipucu sayılır');
+[s, x] = ac('xlight');
+esit(s, { yazilan: 'xlight', konum: 1 }, 'gizli harflerin hepsi doğru, hata açık harfte: yazılan yine kalır');
+[s, x] = ac('BXĞ-ightzzz');
+esit(s, { yazilan: 'b', konum: 1 }, 'girdi temizlenip kırpılır');
 [s, x] = ac('', 'bli_ht');
-esit([s, x.ipucu, JSON.stringify(x) === JSON.stringify(tur('blight', 'bli_ht'))], [null, false, true], 'tek boşluk kaldıysa harf açılmaz');
+esit([s, x.ipucu, JSON.stringify(x) === JSON.stringify(tur('blight', 'bli_ht'))], [null, false, true], 'tek gizli harf kaldıysa harf açılmaz');
 x = tur('blight', 'b_i_h_');
 esit([O.harfAc(x, ''), O.harfAc(x, ''), O.harfAc(x, ''), O.bosSayisi(x)], [{ yazilan: '', konum: 1 }, { yazilan: '', konum: 3 }, null, 1]);
-esit(O.dene(x, 'q'), { durum: 'yanlis', kalan: 2, yazilan: '', aday: 'blighq' }, 'ipucundan sonra yanlış deneme sayılır');
-esit([O.dene(x, 'q').durum, O.dene(x, 'q').durum, x.bitti], ['yanlis', 'bitti', 'yanlis']);
-// Yanlış denemeden sonra harf açma: kilitlenenler boşluk sayılmaz.
+esit(O.dene(x, 'blighq'), { durum: 'yanlis', kalan: 2, yazilan: '', aday: 'blighq' }, 'ipucundan sonra yanlış deneme sayılır');
+esit([O.dene(x, 'blighq').durum, O.dene(x, 'blighq').durum, x.bitti], ['yanlis', 'bitti', 'yanlis']);
+// Yanlış denemeden sonra harf açma: açılanlar gizli sayılmaz.
 x = tur('counter', '_______', 5);
-esit([O.dene(x, 'cxuxtxr').durum, gorunum(x, ''), O.harfAc(x, 'on'), gorunum(x, 'on')], ['yanlis', 'c_u_t_r', { yazilan: 'on', konum: 5 }, 'counter']);
+esit([O.dene(x, 'cxuxtxr').durum, gorunum(x, ''), O.harfAc(x, 'coun'), gorunum(x, 'coun'), isaret(x, 'coun', 'simdi')], ['yanlis', 'c_u_t_r', { yazilan: 'coun', konum: 5 }, 'counter', [4]]);
 
 // Bilemedim.
 t = tur('blight', 'b_i_h_');
@@ -329,51 +385,68 @@ esit([O.birak(t), durum(t), gorunum(t, 'l'), isaret(t, '', 'simdi')], ['yanlis',
 t = tur('Celsius', '_______', 5);
 esit([O.dene(t, 'CELSİUS'), gorunum(t, ''), t.bitti], [{ durum: 'dogru', kalan: 3, yazilan: '', aday: 'celsius' }, 'Celsius', 'dogru']);
 t = tur('Celsius', '_el_ius');
-esit([gorunum(t, ''), gorunum(t, 'cx'), O.dene(t, 'CX').durum, gorunum(t, ''), isaret(t, '', 'bulundu')], ['_el_ius', 'celxius', 'yanlis', 'Cel_ius', [0]]);
+esit([gorunum(t, ''), gorunum(t, 'celx'), O.dene(t, 'CELXİUS').durum, gorunum(t, ''), isaret(t, '', 'bulundu')], ['_el_ius', 'celxius', 'yanlis', 'Cel_ius', [0]]);
 esit([O.harfAc(tur('Celsius', '_el_ius'), 'C'), O.harfAc(tur('Celsius', '_el_ius'), 'ı')], [{ yazilan: 'c', konum: 3 }, { yazilan: '', konum: 0 }]);
+// Açık büyük harfin üzerine küçüğü yazılınca kutu başlıktaki büyüklüğüyle kalır; başka harf işaretlenir.
+t = tur('Celsius', 'C__sius');
+esit([gorunum(t, 'c'), isaret(t, 'c', 'farkli'), isaret(t, 'c', 'yazildi'), gorunum(t, 'x'), isaret(t, 'x', 'farkli')], ['C__sius', [], [0], 'x__sius', [0]]);
+esit([gorunum(t, 'CELSİ'), isaret(t, 'CELSİ', 'farkli'), isaret(t, 'CELSİ', 'simdi')], ['Celsius', [], [5]], 'Türkçe klavyeden gelen İ açık i harfiyle tutar');
+// Yalnız açık harfteki yazım hatası büyük harfli başlıkta da aynı sayılır: küçük yazılan gizli büyük harf hata değildir;
+// açık büyük harf doğru yazıldıysa bildirilen yer ondan sonraki farklı açık harftir.
+esit(O.dene(tur('Celsius', '_el_ius'), 'cxlsius'), { durum: 'farkli', kalan: 3, yazilan: 'c', aday: 'cxlsius', konum: 1 }, 'gizli büyük harf küçük yazılınca gizli harf hatası sayılmaz');
+esit(O.dene(tur('Celsius', 'C__sius'), 'celxius'), { durum: 'farkli', kalan: 3, yazilan: 'cel', aday: 'celxius', konum: 3 }, 'açık büyük harf küçük yazılınca farklı sayılmaz: bildirilen yer sonraki farklı açık harf');
 
 // Tire ve boşluk: sabit ayraç; yazılmaz, yazılırsa atılır.
 t = tur('well-being', '____-_____', 5);
 esit([gorunum(t, ''), gorunum(t, 'well'), isaret(t, 'well', 'simdi'), O.bosSayisi(t)], ['____-_____', 'well-_____', [5], 9]);
-esit(O.hucreGorunumu(t, '')[4], { c: '-', tur: 'ayrac', bulundu: false, ipucu: false, simdi: false });
+esit(O.hucreGorunumu(t, '')[4], { c: '-', tur: 'ayrac', bulundu: false, ipucu: false, yazildi: false, farkli: false, simdi: false });
 esit(O.dene(t, 'well-bein'), { durum: 'eksik', kalan: 3, yazilan: 'wellbein', aday: '' });
 esit(O.dene(t, 'well-being'), { durum: 'dogru', kalan: 3, yazilan: '', aday: 'well-being' });
 t = tur('hand down', 'h_nd _ow_');
-esit([gorunum(t, 'a'), O.harfAc(t, 'ax'), gorunum(t, 'a')], ['hand _ow_', { yazilan: 'a', konum: 5 }, 'hand dow_']);
-esit([O.dene(t, 'A N'), t.bitti], [{ durum: 'dogru', kalan: 3, yazilan: '', aday: 'hand down' }, 'ipucuyla']);
+esit([gorunum(t, 'ha'), isaret(t, 'hand', 'simdi'), O.harfAc(t, 'hand x'), gorunum(t, 'hand')], ['hand _ow_', [5], { yazilan: 'hand', konum: 5 }, 'hand dow_']);
+esit([O.dene(t, 'HAND DOWN'), t.bitti], [{ durum: 'dogru', kalan: 3, yazilan: '', aday: 'hand down' }, 'ipucuyla']);
+t = tur('hand down', 'h_nd _ow_');
+esit([O.dene(t, 'handdown').durum, t.bitti], ['dogru', 'dogru'], 'ayraç yazılmadan da kelime tamamdır');
 
-// Kısa kelimeler ve "en az bir harf yazılır".
+// Kısa kelimeler ve "en az bir harf gizli kalır".
 esit([0, 1, 2, 3, 4, 5].map(k => O.bosSayisi(O.turBaslat('go', k, G))), [1, 1, 1, 2, 2, 2]);
 esit([0, 1, 2, 3, 4, 5].map(k => O.bosSayisi(O.turBaslat('can', k, G))), [1, 2, 2, 2, 3, 3]);
 esit([0, 5].map(k => O.bosSayisi(O.turBaslat('a', k, G))), [1, 1], 'tek harfli başlıkta harf açılmaz');
 esit([O.harfAc(tur('go', 'g_'), ''), O.harfAc(tur('go', '__', 5), ''), O.harfAc(tur('go', '__', 5), 'g')], [null, { yazilan: '', konum: 0 }, { yazilan: 'g', konum: 1 }]);
 
 // Ekran okuyucu cümlesi.
+const TAM_YAZ = 'Açık harfler dahil kelimenin tamamını baştan sona yaz';
 t = tur('blight', 'b_i_h_');
-assert.equal(O.tarif(t, ''), '6 harfli İngilizce kelime: b, boş, i, boş, h, boş. 3 eksik harfi sırayla yaz, Enter ile kontrol et.');
+assert.equal(O.tarif(t, ''), '6 harfli İngilizce kelime: b, boş, i, boş, h, boş. ' + TAM_YAZ + ', Enter ile kontrol et.');
 assert.equal(O.tarif(t, 'lg'), O.tarif(t, ''), 'yazılan harfler tarife girmez');
-O.dene(t, 'lxx');
-assert.equal(O.tarif(t), '6 harfli İngilizce kelime: b, l, i, boş, h, boş. 2 eksik harfi sırayla yaz, Enter ile kontrol et.');
+O.dene(t, 'blixhx');
+assert.equal(O.tarif(t), '6 harfli İngilizce kelime: b, l, i, boş, h, boş. ' + TAM_YAZ + ', Enter ile kontrol et.');
+// Harfsiz kartta yanlış denemede açılan (bulundu) harf de açık harftir: yönerge "açık harfler dahil" biçimine döner.
+{
+  const hs = tur('blight', '______', 5);
+  O.dene(hs, 'blixhx');
+  assert.equal(O.tarif(hs), '6 harfli İngilizce kelime: b, l, i, boş, h, boş. ' + TAM_YAZ + ', Enter ile kontrol et.', 'harfsiz kartta yanlış denemede açılan harf de açık harftir');
+}
 O.harfAc(t, '');
-assert.equal(O.tarif(t), '6 harfli İngilizce kelime: b, l, i, g, h, boş. 1 eksik harfi yaz, Enter ile kontrol et.');
+assert.equal(O.tarif(t), '6 harfli İngilizce kelime: b, l, i, g, h, boş. ' + TAM_YAZ + ', Enter ile kontrol et.');
 O.birak(t);
 assert.equal(O.tarif(t), '6 harfli İngilizce kelime: b, l, i, g, h, t. Kelime tamamlandı; Enter ile sonraki kelimeye geç.');
-assert.equal(O.tarif(tur('well-being', 'w_ll-_e_ng')), '9 harfli İngilizce kelime: w, boş, l, l, tire, boş, e, boş, n, g. 3 eksik harfi sırayla yaz, Enter ile kontrol et.');
-assert.equal(O.tarif(tur('hand down', '____ ____', 5)), '8 harfli İngilizce kelime: boş, boş, boş, boş, sözcük arası, boş, boş, boş, boş. 8 eksik harfi sırayla yaz, Enter ile kontrol et.',
-  'ayraç "boşluk" diye okunmaz: "boş" ile karışır');
+assert.equal(O.tarif(tur('well-being', 'w_ll-_e_ng')), '9 harfli İngilizce kelime: w, boş, l, l, tire, boş, e, boş, n, g. ' + TAM_YAZ + ', Enter ile kontrol et.');
+assert.equal(O.tarif(tur('hand down', '____ ____', 5)), '8 harfli İngilizce kelime: boş, boş, boş, boş, sözcük arası, boş, boş, boş, boş. Kelimenin tamamını yaz, Enter ile kontrol et.',
+  'ayraç "boşluk" diye okunmaz: "boş" ile karışır; açık harf yoksa "açık harfler dahil" denmez');
 // "enter" kartında tuşun adı cevabın kendisidir: tur bitene kadar açıklamada geçmez.
 t = tur('enter', '___er');
-assert.equal(O.tarif(t), '5 harfli İngilizce kelime: boş, boş, boş, e, r. 3 eksik harfi sırayla yaz, onay tuşu ile kontrol et.');
+assert.equal(O.tarif(t), '5 harfli İngilizce kelime: boş, boş, boş, e, r. ' + TAM_YAZ + ', onay tuşu ile kontrol et.');
 for (const x of [tur('enter', '_____', 5), tur('Enter', 'E____'), tur('ENTER', '____R')]) {
   assert.ok(!/enter/i.test(O.tarif(x)), 'enter kartının açıklamasında cevap geçmez: ' + O.tarif(x));
 }
-O.dene(t, 'ent');
+O.dene(t, 'enter');
 assert.equal(O.tarif(t), '5 harfli İngilizce kelime: e, n, t, e, r. Kelime tamamlandı; Enter ile sonraki kelimeye geç.');
 // Tuşun adı başlığın bir parçasıysa da (re-enter) geçmez. Kural anlam maskesiyle aynıdır: "Enter" sözcüğü kartın
 // anlam metninde maskelenecek idiyse açıklamada da söylenmez. Tuş adını yalnız içinde taşıyan başlıklar etkilenmez.
 assert.ok(O.oynanabilir(dz('re-enter')), 're-enter oynanabilir bir başlık; örneği güncelle');
 assert.equal(O.tarif(tur('re-enter', 'r_-__t_r')),
-  '7 harfli İngilizce kelime: r, boş, tire, boş, boş, t, boş, r. 4 eksik harfi sırayla yaz, onay tuşu ile kontrol et.');
+  '7 harfli İngilizce kelime: r, boş, tire, boş, boş, t, boş, r. ' + TAM_YAZ + ', onay tuşu ile kontrol et.');
 for (const w of ['center', 'entertain', 'enters', 'entered', 'carpenter', 'enterprise']) {
   assert.ok(O.tarif(tur(w, '_'.repeat(w.length), 5)).endsWith(', Enter ile kontrol et.'), w + ' kartında yönerge tuşun adını söyler');
 }
@@ -474,29 +547,57 @@ t = O.turBaslat('analyse', 5, G);
 esit([O.dene(t, 'qqqqqqq', bag('analyse')).durum, O.dene(t, 'analyze', bag('analyse')).durum, t.bitti, t.yazim], ['yanlis', 'dogru', 'ipucuyla', 'analyze']);
 t = tur('analyse', '_______', 5);
 s = O.harfAc(t, '');
-esit([s, O.dene(t, 'nalyze', bag('analyse')).durum, t.bitti, t.yazim], [{ yazilan: '', konum: 0 }, 'dogru', 'ipucuyla', 'analyze']);
-// Yüklem verilmezse ya da ilişki bulmazsa öteki yazım düz yanlıştır: z dışındaki harfler kilitlenir.
+esit([s, O.dene(t, 'nalyze', bag('analyse')).durum, O.dene(t, 'analyze', bag('analyse')).durum, t.bitti, t.yazim], [{ yazilan: '', konum: 0 }, 'eksik', 'dogru', 'ipucuyla', 'analyze']);
+// Yüklem verilmezse ya da ilişki bulmazsa öteki yazım düz yanlıştır: z dışındaki harfler açılır, yazılan silinir.
 for (const yuklem of [undefined, null, () => false, () => null, () => '', 'analyze']) {
   t = O.turBaslat('analyse', 5, G);
   esit(O.dene(t, 'analyze', yuklem), { durum: 'yanlis', kalan: 2, yazilan: '', aday: 'analyze' }, 'yüklem: ' + yuklem);
   esit([durum(t), gorunum(t, '')], [[null, 1, false, null, 1], 'analy_e']);
 }
-// Farklı harfi açık gelen kartta öteki yazım kurulamaz; yüklem doğru cevapta ve eksikte çağrılmaz.
+// Yüklem doğru cevapta ve eksikte çağrılmaz.
 let cagri = [];
 const sayan = aday => { cagri.push(aday); return 'es'; };
 t = tur('analyse', '_____s_');
-esit([O.dene(t, 'analy', sayan).durum, O.dene(t, 'analye', sayan).durum, cagri], ['eksik', 'dogru', []]);
+esit([O.dene(t, 'analys', sayan).durum, O.dene(t, 'analyse', sayan).durum, cagri], ['eksik', 'dogru', []]);
+// Farklı harfi açık gelen kartta da öteki yazım yazılabilir: açık harfin üzerine yazılır (kutu işaretlenir), kontrol kabul eder.
+t = tur('analyse', '_____s_');
+esit(isaret(t, 'analyz', 'farkli'), [5]);
+esit([O.dene(t, 'analyze', bag('analyse')).durum, t.bitti, t.yazim, gorunum(t, '')], ['dogru', 'dogru', 'analyze', 'analyse']);
+// Aynı kartta dizinde olmayan yazım (yüklem ilişki bulmaz): fark yalnız açık harfte olduğu için yanlış deneme değil, 'farkli'.
+t = tur('surprise', '______s_');
+esit([O.dene(t, 'surprize', aday => O.iliski(aday, kd('surprise'), kucukBul)), t.deneme], [{ durum: 'farkli', kalan: 3, yazilan: 'surpri', aday: 'surprize', konum: 6 }, 0]);
+/* Öteki yazım + açık harfte yazım hatası birlikte: açık harf düzeltilince kabul edilen öteki yazım çıkıyorsa da deneme
+   harcanmaz (öteki yazım tek başına kabul, açık harf hatası tek başına bağışlanıyor; ikisi birlikte de öyle). centre
+   kartında t açıkken "cenqer": t düzeltilince "center". Yüklem yoksa "center" kabul edilmez: gizli harfler yanlıştır. */
+t = tur('centre', '___t__');
+once = JSON.stringify(t);
+esit(O.dene(t, 'cenqer', bag('centre')), { durum: 'farkli', kalan: 3, yazilan: 'cen', aday: 'cenqer', konum: 3 });
+assert.equal(JSON.stringify(t), once, 'tur değişmedi');
+esit([O.dene(t, 'center', bag('centre')).durum, t.bitti, t.yazim], ['dogru', 'dogru', 'center']);
+t = tur('centre', '___t__');
+esit([O.dene(t, 'cenqer').durum, t.deneme], ['yanlis', 1], 'yüklem yokken öteki yazımın harfleri yanlıştır');
+/* İki açık harf başka yazılmış, biri öteki yazımın harfi: bildirilen yer gerçek hatadır (tek başına düzeltilince kelimeyi
+   kabul edilir yapan harf), öteki yazımın harfi değil. Yazılan da onun önünde kesilir: "analyz" yerinde kalır. */
+t = tur('analyse', '_____se');
+esit(O.dene(t, 'analyzq', bag('analyse')), { durum: 'farkli', kalan: 3, yazilan: 'analyz', aday: 'analyzq', konum: 6 });
+esit([O.dene(t, 'analyze', bag('analyse')).durum, t.bitti, t.yazim], ['dogru', 'dogru', 'analyze']);
+t = tur('analyse', '_____se');
+esit(O.dene(t, 'analyzq'), { durum: 'farkli', kalan: 3, yazilan: 'analy', aday: 'analyzq', konum: 5 }, 'yüklem yokken ikisi de yazım hatasıdır: ilki bildirilir');
+// Yüklem düzeltilmiş adaylarla da çağrılır; "es" yanıtı düzeltilmiş adayı kabul ettirmez.
+cagri = [];
+t = tur('centre', '___t__');
+esit([O.dene(t, 'cenqer', aday => { cagri.push(aday); return aday === 'center' ? 'es' : null; }).durum, cagri, t.deneme], ['yanlis', ['cenqer', 'center'], 1]);
 // Son iki harfi yer değiştirmiş yazım (litre / liter) ve elle sayılan çift (grey / gray). İkisi de oyunda
 // sorulmaz (ipuçsuz); burada yalnız kural sınanır.
 t = tur('litre', 'li___');
-esit([O.dene(t, 'ter', bag('litre')), t.yazim, t.bitti, gorunum(t, '')], [{ durum: 'dogru', kalan: 3, yazilan: '', aday: 'liter' }, 'liter', 'dogru', 'litre']);
+esit([O.dene(t, 'liter', bag('litre')), t.yazim, t.bitti, gorunum(t, '')], [{ durum: 'dogru', kalan: 3, yazilan: '', aday: 'liter' }, 'liter', 'dogru', 'litre']);
 t = tur('grey', 'g__y');
-esit([O.dene(t, 'ra', bag('grey')), t.yazim, gorunum(t, '')], [{ durum: 'dogru', kalan: 3, yazilan: '', aday: 'gray' }, 'gray', 'grey']);
+esit([O.dene(t, 'gray', bag('grey')), t.yazim, gorunum(t, '')], [{ durum: 'dogru', kalan: 3, yazilan: '', aday: 'gray' }, 'gray', 'grey']);
 // Dizinde olmayan "yazım" kabul edilmez.
 t = tur('surprise', '________', 5);
 esit([O.dene(t, 'surprize', aday => O.iliski(aday, kd('surprise'), kucukBul)).durum, t.deneme, gorunum(t, '')], ['yanlis', 1, 'surpri_e']);
 
-// Aynı anlamlı başka kelime: hak harcanmaz, hiçbir şey kilitlenmez, girdi yerinde kalır.
+// Aynı anlamlı başka kelime: hak harcanmaz, hiçbir harf açılmaz, girdi yerinde kalır.
 t = O.turBaslat('almost', 5, G);
 once = JSON.stringify(t);
 esit(O.dene(t, 'Nearly', bag('almost')), { durum: 'es', kalan: 3, yazilan: 'nearly', aday: 'nearly' });
@@ -505,12 +606,14 @@ assert.equal(JSON.stringify(t), once, 'eş anlamlıda tur değişmez');
 esit([O.dene(t, 'almost', bag('almost')).durum, t.bitti], ['dogru', 'dogru'], 'eş anlamlı deneme ilk deneme hakkını yemez');
 t = O.turBaslat('almost', 5, G);
 esit([O.dene(t, 'nearly'), durum(t)], [{ durum: 'yanlis', kalan: 2, yazilan: '', aday: 'nearly' }, [null, 1, false, null, 6]], 'yüklem yokken eş anlamlı düz yanlıştır');
-// Açık harflerle kurulan aday yükleme gider; 'yazim' dışındaki her doğru değer eş anlamlı sayılır.
+// Yazılan aday (ayraçlarıyla) yükleme gider; 'yazim' dışındaki her doğru değer eş anlamlı sayılır.
 cagri = [];
 t = tur('litre', 'li___');
-esit([O.dene(t, 'ter', sayan), cagri, durum(t)], [{ durum: 'es', kalan: 3, yazilan: 'ter', aday: 'liter' }, ['liter'], [null, 0, false, null, 3]]);
+esit([O.dene(t, 'liter', sayan), cagri, durum(t)], [{ durum: 'es', kalan: 3, yazilan: 'liter', aday: 'liter' }, ['liter'], [null, 0, false, null, 3]]);
 t = tur('litre', 'li___');
-esit([O.dene(t, 'ter', () => true).durum, O.dene(t, 'ter', () => 'baska').durum, O.dene(t, 'ter', () => 'yazim').durum, t.yazim], ['es', 'es', 'dogru', 'liter']);
+esit([O.dene(t, 'liter', () => true).durum, O.dene(t, 'liter', () => 'baska').durum, O.dene(t, 'liter', () => 'yazim').durum, t.yazim], ['es', 'es', 'dogru', 'liter']);
+cagri = [];
+esit([O.dene(tur('hand down', 'h_nd _ow_'), 'handdowx', sayan).aday, cagri], ['hand dowx', ['hand dowx']], 'aday ayraçlarıyla kurulur');
 
 /* ---------- 7) anlam maskesi ---------- */
 const maske = (girdi, e, cikti, mesaj) => assert.equal(O.maskele(girdi, e), cikti, mesaj || e + ': ' + girdi);

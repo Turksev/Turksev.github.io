@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<script data-yds-release>window.YDS_SURUM="8ab744fb5c3b";window.YDS_VARLIK_KOKU="/releases/8ab744fb5c3b/";</script>
+<script data-yds-release>window.YDS_SURUM="ec29aa318104";window.YDS_VARLIK_KOKU="/releases/ec29aa318104/";</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Oyunlar — YDS Hazırlık</title>
@@ -9,7 +9,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%233b5bdb'/><text y='68' x='50' text-anchor='middle' font-size='46' font-family='sans-serif' font-weight='bold' fill='white'>Y</text></svg>">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#3b5bdb">
-<link rel="apple-touch-icon" href="/releases/8ab744fb5c3b/assets/img/icon-192.png">
+<link rel="apple-touch-icon" href="/releases/ec29aa318104/assets/img/icon-192.png">
 <link rel="canonical" href="https://turksev.github.io/oyunlar.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="YDS Hazırlık">
@@ -19,14 +19,14 @@
 <meta property="og:url" content="https://turksev.github.io/oyunlar.html">
 <meta property="og:image" content="https://turksev.github.io/assets/img/icon-512.png">
 <meta name="twitter:card" content="summary">
-<link rel="stylesheet" href="/releases/8ab744fb5c3b/assets/css/style.css">
-<link rel="stylesheet" href="/releases/8ab744fb5c3b/assets/css/oyunlar.css">
-<script src="/releases/8ab744fb5c3b/assets/js/main.js"></script>
-<script src="/releases/8ab744fb5c3b/data/kelime-aliaslari.js"></script>
-<script src="/releases/8ab744fb5c3b/assets/js/esitleme-veri.js"></script>
-<script src="/releases/8ab744fb5c3b/assets/js/esitleme-depo.js"></script>
-<script src="/releases/8ab744fb5c3b/assets/js/kullanim-hesap.js"></script>
-<script src="/releases/8ab744fb5c3b/assets/js/kullanim.js"></script>
+<link rel="stylesheet" href="/releases/ec29aa318104/assets/css/style.css">
+<link rel="stylesheet" href="/releases/ec29aa318104/assets/css/oyunlar.css">
+<script src="/releases/ec29aa318104/assets/js/main.js"></script>
+<script src="/releases/ec29aa318104/data/kelime-aliaslari.js"></script>
+<script src="/releases/ec29aa318104/assets/js/esitleme-veri.js"></script>
+<script src="/releases/ec29aa318104/assets/js/esitleme-depo.js"></script>
+<script src="/releases/ec29aa318104/assets/js/kullanim-hesap.js"></script>
+<script src="/releases/ec29aa318104/assets/js/kullanim.js"></script>
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta http-equiv="Content-Security-Policy" content="base-uri 'self'; object-src 'none'">
 </head>
@@ -109,7 +109,7 @@
         <div class="oyun-anlam" id="oyunAnlam"></div>
 
         <form class="oyun-form" id="oyunForm" novalidate>
-          <label class="oyun-etiket" for="oyunGirdi">Eksik harfleri yaz</label>
+          <label class="oyun-etiket" for="oyunGirdi">Kelimeyi baştan sona yaz</label>
           <div class="harf-alan">
             <div class="harfler" id="oyunHarfler" aria-hidden="true"></div>
             <input class="harf-girdi" type="text" id="oyunGirdi" lang="en" inputmode="text"
@@ -163,8 +163,13 @@
     <details class="card oyun-nasil">
       <summary>Nasıl oynanır?</summary>
       <p>
-        Türkçe anlamı oku, İngilizce kelimenin eksik harflerini sırayla yaz; <b>Enter</b> ya da
-        “Kontrol et” ile denetlenir. Tire ve boşluk hazır gelir, onları yazmazsın. Anlamın içinde
+        Türkçe anlamı oku, İngilizce kelimeyi baştan sona yaz; <b>Enter</b> ya da “Kontrol et” ile
+        denetlenir. Açık gelen harfler kutularında hazır durur; sırası gelince onları da yazarsın,
+        böylece elin kelimenin tamamına alışır. Açık harfin üzerine başka bir harf yazarsan kutu
+        kırmızıya döner ve köşesinde × belirir. Gizli harflerin hepsi doğruysa bu yazım hatası deneme
+        hakkını götürmez: “Kontrol et” hangi harfin yanlış olduğunu söyler, yazdıkların o harfe kadar
+        silinir ve oradan devam edersin. Gizli harflerden biri de yanlışsa deneme sayılır.
+        Tire ve boşluk hazır gelir; yazman gerekmez, yazarsan yok sayılır. Anlamın içinde
         kelimenin kendisi, kökü ya da öteki yazımı geçiyorsa cevap verilene kadar ••• olarak gizlenir.
       </p>
       <p>Kelimenin seviyesi, Kelimeler sayfasındaki tekrar kutusudur:</p>
@@ -177,7 +182,14 @@
         <li><b>Seviye 6</b> — 5. kutu (öğrenildi): hiç harf yok; “Öğrenilenler · harfsiz” turunda sorulur</li>
       </ul>
       <p>Yüzde yarım harften az tutuyorsa harf açılmaz: dört harfli bir kelime 5. seviyede harfsiz gelir.</p>
-      <p>Her kelimede <b>3 deneme hakkın</b> var; yanlış denemede doğru yazdığın harfler yerinde kalır.</p>
+      <p>
+        Her kelimede <b>3 deneme hakkın</b> var; yanlış denemede doğru yazdığın gizli harfler açılır,
+        kelimeyi yeniden baştan yazarsın. Kelimenin tamamını yazmadan “Kontrol et” dersen deneme
+        hakkın gitmez. “Bir harf aç”, henüz yazmadığın ya da yanlış yazdığın ilk gizli harfi açar;
+        o harften sonra yazdıkların silinir, kaldığın yerden devam edersin (açılan harfi de yazarsın).
+        Tek gizli harf kaldığında düğme kapanır. İmleç hep sondadır: önceki bir harfi değiştirmek
+        için oraya kadar geri silersin.
+      </p>
       <ul>
         <li>İlk denemede bilirsen kutu yükselir.</li>
         <li>İpucu (“Bir harf aç”) kullanır ya da ikinci-üçüncü denemede bilirsen kutu aynı kalır (yeni kelime 1. kutuya girer).</li>
@@ -185,7 +197,8 @@
       </ul>
       <p>
         Bir kelimenin İngiliz ve Amerikan yazımı (analyse / analyze, centre / center, grey / gray)
-        aynı sayılır. Aynı anlama gelen başka bir kelime yazarsan deneme hakkın gitmez; aranan
+        aynı sayılır; iki yazımı ayıran harf açık geldiyse öteki yazımı yazdığında kutu kırmızıya
+        döner ama cevap yine kabul edilir. Aynı anlama gelen başka bir kelime yazarsan deneme hakkın gitmez; aranan
         kelimeyi yeniden denersin.
       </p>
       <p>
@@ -208,12 +221,12 @@
   </div>
 </footer>
 
-<script src="/releases/8ab744fb5c3b/data/kelime-dizin.js"></script>
-<script src="/releases/8ab744fb5c3b/assets/js/ilerleme.js"></script>
-<script src="/releases/8ab744fb5c3b/assets/js/veri.js"></script>
-<script src="/releases/8ab744fb5c3b/assets/js/oyun-hesap.js"></script>
-<script src="/releases/8ab744fb5c3b/assets/js/oyunlar.js"></script>
-<script src="/releases/8ab744fb5c3b/assets/js/esitleme-ayar.js"></script>
-<script src="/releases/8ab744fb5c3b/assets/js/esitleme-v2.js"></script>
+<script src="/releases/ec29aa318104/data/kelime-dizin.js"></script>
+<script src="/releases/ec29aa318104/assets/js/ilerleme.js"></script>
+<script src="/releases/ec29aa318104/assets/js/veri.js"></script>
+<script src="/releases/ec29aa318104/assets/js/oyun-hesap.js"></script>
+<script src="/releases/ec29aa318104/assets/js/oyunlar.js"></script>
+<script src="/releases/ec29aa318104/assets/js/esitleme-ayar.js"></script>
+<script src="/releases/ec29aa318104/assets/js/esitleme-v2.js"></script>
 </body>
 </html>

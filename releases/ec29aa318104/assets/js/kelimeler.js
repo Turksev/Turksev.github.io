@@ -109,6 +109,8 @@
 
     return Veri.katmanlariYukle(secili).then(function () {
       havuz = DIZIN.filter(function (d) { return secili.indexOf(d.k) !== -1; });
+      // Açık deste eski havuzdan kurulmuştu: liste yeniden süzülünce deste sayılmaz.
+      desteModu = false;
       desteyiCiz();
       filtrele();
     }).catch(function (e) {
@@ -399,7 +401,32 @@
 
   /* ---------- kart ---------- */
 
+  /* Deste açıkken başka sayfada (Oyunlar) ya da başka sekmede yanıtlanan kart desteden
+     düşer: tekrar günü gelmemiş kelime burada yeniden sorulup aynı gün ikinci kez
+     yükselmesin. Bu sayfanın kendi cevabı kartı zaten desteden çıkarır. Deste boşaldıysa
+     true döner. */
+  function desteyiAyikla() {
+    if (!desteModu) return false;
+    // Bellekteki kopya bayat olabilir (geri/ileri önbelleğinden dönüşte depolama olayı
+    // gelmeyebilir): karar depodaki güncel kayıtlara göre verilir.
+    Il.tazele();
+    var kalan = [], yeniIndex = 0;
+    suzulmus.forEach(function (d, i) {
+      // Ekrandaki kart düşerse yerine ondan sonraki kalan kart gelir.
+      if (i === kartIndex) yeniIndex = kalan.length;
+      if (Il.yeniMi(d.e, ILERLEME_TURU) || Il.vadesiGeldiMi(d.e, ILERLEME_TURU)) kalan.push(d);
+    });
+    if (kalan.length === suzulmus.length) return false;
+    suzulmus = kalan;
+    kartIndex = yeniIndex < kalan.length ? yeniIndex : 0;
+    return !kalan.length;
+  }
+
   function kartCiz() {
+    var onceki = suzulmus.length;
+    if (desteyiAyikla()) { desteBitti(); return; }
+    // Kart düştüyse deste özeti ve sayaç da yeni sayıyı göstersin.
+    if (suzulmus.length !== onceki) { guncelleSayac(); desteyiCiz(); }
     var d = suzulmus[kartIndex];
     if (!d) return;
     var tam = Veri.kayit(d.e) || { a: [{ tr: d.t, ex: '', exTr: '' }] };
@@ -483,6 +510,16 @@
     var d = suzulmus[kartIndex];
     if (!d) return;
 
+    // Deste açıkken kart, çizildikten sonra başka sayfada ya da sekmede yanıtlanmış olabilir
+    // (olay bu sayfaya ulaşmadıysa ekranda kalır): ikinci kez yazılmaz, sıradaki kart gelir.
+    if (desteModu) {
+      Il.tazele();
+      if (!Il.yeniMi(d.e, ILERLEME_TURU) && !Il.vadesiGeldiMi(d.e, ILERLEME_TURU)) {
+        kartCiz();
+        return;
+      }
+    }
+
     var sonuc;
     if (ne === 'zaten') sonuc = Il.zatenBiliyorum(d.e, ILERLEME_TURU);
     else if (ne === 'yanlis') sonuc = Il.yanlis(d.e, ILERLEME_TURU);
@@ -502,7 +539,8 @@
       kartAcik = false;
       ipucuAcik = false;
       kartCiz();
-      guncelleSayac();
+      // kartCiz desteyi bitirmiş olabilir (kalan kartlar başka yerde yanıtlanmış): bitiş iletisi kalsın.
+      if (desteModu) guncelleSayac();
     } else {
       kartGit(1);
     }
@@ -514,7 +552,7 @@
     $('mod').textContent = 'Kart moduna geç';
     elDurum.value = '';
     filtrele();
-    elSayac.textContent = 'Bugünün destesi bitti. Yarın yeni tekrarlar açılacak.';
+    elSayac.textContent = DESTE_BITTI;
 
     // Deste bitince test daveti: bugün çalışılanlar yeterliyse göster.
     var davet = $('testDavet');
@@ -529,18 +567,27 @@
 
   /* ---------- ortak ---------- */
 
+  var DESTE_BITTI = 'Bugünün destesi bitti. Yarın yeni tekrarlar açılacak.';
+
+  // Sayaç role=status taşır: metin değişmediyse dokunulmaz (yeniden okunmasın).
+  var sayacMetni = null;   // liste sayacının son yazılan hâli
+  function sayacYaz(metin) {
+    sayacMetni = metin;
+    if (elSayac.textContent !== metin) elSayac.textContent = metin;
+  }
+
   function guncelleSayac() {
     var o = Il.leitnerOzet(havuz.map(function (x) { return { en: x.e }; }), ILERLEME_TURU);
     if (seciliKutu !== null) {
-      elSayac.textContent = suzulmus.length + ' kelime · ' +
+      sayacYaz(suzulmus.length + ' kelime · ' +
         (seciliKutu === 0 ? 'hiç çalışılmamışlar'
           : (seciliKutu === 5 ? 'öğrenilenler (5. kutu)' : seciliKutu + '. kutu')) +
-        ' · süzgeci kaldırmak için kutuya yeniden tıkla';
+        ' · süzgeci kaldırmak için kutuya yeniden tıkla');
       return;
     }
-    elSayac.textContent = suzulmus.length + ' kelime · seçili katmanlarda ' + havuz.length +
+    sayacYaz(suzulmus.length + ' kelime · seçili katmanlarda ' + havuz.length +
       ' · öğrenilen ' + o.ogrenilen + ' · bugün ' + o.gosterilecekTekrar +
-      ' tekrar + ' + o.acilacakYeni + ' yeni';
+      ' tekrar + ' + o.acilacakYeni + ' yeni');
   }
 
   function ciz() {
@@ -621,7 +668,10 @@
 
   $('desteBasla').addEventListener('click', function () {
     // Deste filtreden değil, doğrudan Ilerleme'den kurulur: tekrarı gelenlerin
-    // tamamı + günlük kotaya sığan yeni kelimeler.
+    // tamamı + günlük kotaya sığan yeni kelimeler. Bellekteki kopya bayat olabilir
+    // (bkz. desteyiAyikla): önce depodan tazelenir, deste özeti de aynı kayıtlarla çizilir.
+    Il.tazele();
+    desteyiCiz();
     var destelik = Il.destelik(havuz.map(function (d) { return { en: d.e }; }), ILERLEME_TURU);
     var kume = {};
     destelik.forEach(function (x) { kume[x.en] = true; });
@@ -646,6 +696,29 @@
   $('gunlukHedef').addEventListener('change', function () {
     Il.gunlukHedefAyarla(this.value);
     desteyiCiz();
+  });
+
+  /* İlerleme başka yerde değişti (başka sekme, bulut ya da Oyunlar sayfasından geri dönüş).
+     Deste açıksa yanıtlanmış kartlar düşer, sayaç güncellenir. Deste kapalıysa deste özeti
+     (kutular, "Bugünü çalış (N kart)") ile liste sayacının ilerlemeden gelen kısmı
+     ("öğrenilen … · bugün … tekrar + … yeni") yenilenir; liste kullanıcının süzgecine göre
+     durur, ona dokunulmaz. Geri/ileri önbelleğinden dönüşte olay gelmeyebilir: bellekteki
+     kopya önce depodan tazelenir. */
+  function desteyiTazele() {
+    Il.tazele();
+    if (desteModu && kartModu) { kartCiz(); return; }
+    desteyiCiz();
+    // Sayaç başka bir ileti gösteriyorsa (deste bitti, katman yükleniyor ya da yüklenemedi)
+    // onun yerine geçmez.
+    if (elSayac.textContent === sayacMetni) guncelleSayac();
+  }
+  window.addEventListener('yds-depo-degisti', function (e) {
+    var d = e && e.detail;
+    if (!d || (d.kaynak !== 'bulut' && d.kaynak !== 'sekme')) return;
+    if (!d.anahtarlar || d.anahtarlar.indexOf('yds-leitner') !== -1) desteyiTazele();
+  });
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted) desteyiTazele();
   });
 
   /* Kutuya tıkla: yalnız o kutudaki kelimeler. Aynı kutuya yeniden basmak süzgeci kaldırır. */
@@ -677,6 +750,9 @@
     var s = Il.birikmisiYay(havuz.map(function (d) { return d.e; }), Il.gunlukTavan(), ILERLEME_TURU);
     if (s.basarili === false) { window.YDS.depolamaUyarisi(); return; }
     desteyiCiz();
+    // Açık deste bugünün yeni vadesine göre yeniden kurulur: tarihi ileri alınan kartlar
+    // destede kalsaydı ekrandaki cevap yazılmadan düşerdi.
+    if (desteModu) $('desteBasla').click();
     $('bekleyenNot').innerHTML = s.tasinan
       ? '<b>' + s.tasinan + '</b> tekrar ileriki günlere yayıldı; yığın ' + s.gun + ' günde erir.'
       : 'Dağıtılacak birikmiş tekrar yoktu.';
@@ -760,6 +836,7 @@
         'Tüm kelime tekrar ilerlemen silinecek. Öbek ilerlemene dokunulmaz.', n)) return;
     if (!Il.yedekAl('kelime kutuları', n)) { window.YDS.depolamaUyarisi(); return; }
     if (!Il.listeyiSifirla(kelimeAdlari, ILERLEME_TURU)) { window.YDS.depolamaUyarisi(); return; }
+    desteModu = false;
     desteyiCiz();
     filtrele();
     if (geriAlCiz) geriAlCiz();
@@ -818,7 +895,7 @@
     } catch (e) {}
   }
 
-  var geriAlCiz = window.YDS.geriAlKutusu(function () { desteyiCiz(); filtrele(); });
+  var geriAlCiz = window.YDS.geriAlKutusu(function () { desteModu = false; desteyiCiz(); filtrele(); });
 
   /* Sözlük paneli: çevrilmemiş kartın kendi kelimesi panelde görünürse
      cevap ipucuyla sayılır. Panel yoksa sayfa aynen çalışır. */

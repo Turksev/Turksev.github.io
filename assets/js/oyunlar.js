@@ -2,7 +2,8 @@
    Oyunlar sayfası — anlamdan kelimeyi yazma oyunu
 
    Kelimenin seviyesi Leitner kutusudur (YDS.Ilerleme, tür 'kelime'): kutu
-   yükseldikçe daha az harf açık gelir. Kelimeler seçili katmanlardan
+   yükseldikçe daha az harf açık gelir. Kelimenin tamamı yazılır: açık harf
+   kutusunda hazır durur, sırası gelince o da yazılır. Kelimeler seçili katmanlardan
    ('yds-katmanlar', Kelimeler sayfasıyla ortak) gelir. Bütün kurallar
    YDS.OyunHesap'tadır (assets/js/oyun-hesap.js); bu dosya yalnız çizer,
    girdiyi toplar ve sonucu ilerlemeye yazar.
@@ -256,6 +257,7 @@
   /* ---------- çizim ---------- */
 
   var durumZamani = null, sonDurum = '';
+  var beklemeIletisi = false;   // durum satırında "Eşitleniyor; bitince …" duruyor (ertele yazar, sonraki her ileti siler)
 
   /* Durum satırı (role=status). Yeni ileti hemen yazılır: sonuç, ilerleme yazımını
      beklemeden görünmeli. Aynı ileti art arda gelirse ekran okuyucu yeniden okusun diye
@@ -263,6 +265,7 @@
   function durumYaz(html, sinif) {
     window.clearTimeout(durumZamani);
     gecici = false;
+    beklemeIletisi = false;
     elDurum.className = 'oyun-durum' + (sinif ? ' ' + sinif : '');
     if (html && html !== sonDurum) {
       sonDurum = html;
@@ -341,8 +344,10 @@
         parca = '';
         return;
       }
+      // yazildi: sırası gelmiş, üzerine yazılmış kutu; farkli: açık harfin üzerine başka harf yazıldı.
       var sinif = h.tur === 'bos' ? 'bos' : (h.bulundu ? 'bulundu' : (h.ipucu ? 'ipucu' : 'sabit'));
-      parca += '<span class="harf ' + sinif + (h.simdi ? ' simdi' : '') + '" style="--i:' + i + '">' +
+      parca += '<span class="harf ' + sinif + (h.yazildi ? ' yazildi' : '') + (h.farkli ? ' farkli' : '') +
+        (h.simdi ? ' simdi' : '') + '" style="--i:' + i + '">' +
         kacar(h.c) + '</span>';
     });
     elHarfler.innerHTML = html + '<span class="parca">' + parca + '</span>';
@@ -353,7 +358,9 @@
     var t = simdi.tur, bos = O.bosSayisi(t);
     harfleriCiz();
     $('oyunTarif').textContent = O.tarif(t);
-    girdi.setAttribute('maxlength', t.bitti ? '0' : String(bos));
+    // Ayraçlar da sayılır: tarayıcı sınırı temizlikten önce uygular; yapıştırılan ya da klavyenin
+    // tek parça gönderdiği "well-being" son harfini yitirmesin. Harf sayısına girdiIsle kırpar.
+    girdi.setAttribute('maxlength', t.bitti ? '0' : String(t.kelime.length));
     girdi.setAttribute('enterkeyhint', t.bitti ? 'next' : 'done');
     elHarf.disabled = !!t.bitti || bos < 2;
     elPas.disabled = !!t.bitti;
@@ -410,7 +417,9 @@
     girdi.removeAttribute('aria-invalid');
     elHarfler.className = 'harfler';
     // Kutu eni en uzun parçaya göre: satırlar dengeli bölünsün (11 harf → 6 + 5).
-    var enUzun = d.e.split(/[- ]/).reduce(function (m, p) { return Math.max(m, p.length); }, 1);
+    // Son olmayan parça ayracını da taşır (.parca): o da sayılmazsa en uzun parça iki satıra bölünürdü.
+    var parcalar = d.e.split(/[- ]/);
+    var enUzun = parcalar.reduce(function (m, p, i) { return Math.max(m, p.length + (i < parcalar.length - 1 ? 1 : 0)); }, 1);
     elHarfler.style.setProperty('--nd', String(dengeli(enUzun, DAR_SATIR)));
     elHarfler.style.setProperty('--ng', String(dengeli(enUzun, GENIS_SATIR)));
 
@@ -641,15 +650,21 @@
     yazmayiPlanla(bekleyen);
   }
 
+  // Kelimenin bütün harfleri yazılmış mı (açık harfler dahil)?
+  function tamYazili() {
+    var tam = O.harfSayisi(simdi.tur.kelime);
+    return O.temizle(girdi.value, tam).length >= tam;
+  }
+
   function kontrol() {
     var t = simdi.tur, once = O.bosSayisi(t);
-    // Boşluklar doluysa cevap işlenecek demektir; bulut birleşimi sürüyorsa bekletilir.
-    if (O.temizle(girdi.value, once).length >= once && ertele('kontrol')) return;
+    // Kelime tam yazıldıysa cevap işlenecek demektir; bulut birleşimi sürüyorsa bekletilir.
+    if (tamYazili() && ertele('kontrol')) return;
     var r = O.dene(t, girdi.value, adayBagi);
     girdi.value = r.yazilan;
     if (r.durum === 'eksik') {
       harfleriCiz();
-      durumYaz('Önce bütün boşlukları doldur.', '');
+      durumYaz('Önce kelimenin tamamını yaz' + (once < O.harfSayisi(t.kelime) ? '; açık harfleri de yaz.' : '.'), '');
       gecici = true;
       return;
     }
@@ -658,26 +673,40 @@
       gecici = true;
       return;
     }
+    if (r.durum === 'farkli') {
+      /* Tek hata açık harfin üzerine yazılan başka harf: deneme harcanmaz. Yazılan o harfin önünde
+         kesildi (imleç hep sondadır; elle ancak oraya kadar silinerek düzeltilebilirdi): imleç
+         yanlış yazılan harfin kutusunda, harf kutuda görünüyor. Kaçıncı harf olduğu söylenir
+         (ayraçlar sayılmaz). */
+      harfleriCiz();
+      durumYaz(O.harfSayisi(t.kelime.slice(0, r.konum + 1)) + '. harf yanlış, ' + ingilizce(t.hucreler[r.konum].c) +
+        ' olmalı. O harften devam et.', 'uyari');
+      gecici = true;
+      return;
+    }
     if (t.bitti) { bitir(); return; }
     elHarfler.classList.add('yanlis');
     girdi.setAttribute('aria-invalid', 'true');
     turCiz();
-    durumYaz('Olmadı' + (O.bosSayisi(t) < once ? '. Doğru harfler yerinde kaldı' : '') +
-      '; kalan deneme hakkı: ' + r.kalan + '.', 'err');
+    durumYaz('Olmadı' + (O.bosSayisi(t) < once ? '. Doğru harfler açıldı' : '') +
+      '; baştan yaz. ' + (r.kalan === 1 ? 'Son hakkın.' : r.kalan + ' hakkın kaldı.'), 'err');
   }
 
   function harfAc() {
-    var t = simdi.tur, ilk = !t.ipucu, r = O.harfAc(t, girdi.value);
+    var t = simdi.tur, ilk = !t.ipucu;
+    var onceki = O.temizle(girdi.value, O.harfSayisi(t.kelime)), r = O.harfAc(t, girdi.value);
     if (!r) return;
     if (ilk) kullanimOlay('oyun-harf');
     girdi.value = r.yazilan;
     girdi.removeAttribute('aria-invalid');
     elHarfler.classList.remove('yanlis');
     turCiz();
-    // Kaçıncı harf: ayraçlar sayılmaz.
+    iziEsle();
+    // Kaçıncı harf: ayraçlar sayılmaz. Yazılan kesildiyse kutuları görmeyene de söylenir (görünmeyen ek).
     var sira = O.harfSayisi(t.kelime.slice(0, r.konum + 1));
     durumYaz(sira + '. harf açıldı: ' + ingilizce(t.hucreler[r.konum].c) + '. Doğru bilirsen kelime ' +
-      (t.kutu ? 'aynı kutuda kalır.' : '1. kutuya girer.'), 'uyari');
+      (t.kutu ? 'aynı kutuda kalır.' : '1. kutuya girer.') + (r.yazilan.length < onceki.length
+      ? '<span class="visually-hidden"> Bu harften sonra yazdıkların silindi; buradan devam et.</span>' : ''), 'uyari');
   }
 
   // "Bilemedim, göster".
@@ -730,6 +759,15 @@
     if (izVar) izYaz(0);
   }
 
+  /* Bekleyen "Kontrol et"in izi sözle birlikte yürür: beklerken yazılan eksilirse söz düşmüştür
+     (iz silinir; sayfa o sırada yenilenirse "cevabın işlenmedi" denmez), kelime yeniden
+     tamamlanırsa geri yazılır. */
+  function iziEsle() {
+    if (ertelenen !== 'kontrol' || !simdi) return;
+    var tam = tamYazili();
+    if (tam !== izVar) izYaz(tam ? Date.now() : 0);
+  }
+
   function acilisNotu() {
     var iz = 0, gecen;
     try { iz = Number(window.sessionStorage.getItem(ERTELEME_IZI)) || 0; } catch (e) { /* not yok */ }
@@ -747,6 +785,7 @@
     ertelenen = islem;
     izYaz(Date.now());
     durumYaz('Eşitleniyor; bitince ' + (islem === 'pas' ? 'cevap gösterilecek.' : 'kontrol edilecek.'), '');
+    beklemeIletisi = true;
     return true;
   }
 
@@ -754,6 +793,15 @@
     if (esitlemeBitti) return;
     esitlemeBitti = true;
     var islem = ertelenen;
+    /* Beklerken yazılan değişip kelime eksik kaldıysa (son harf silindi; "Bir harf aç" yazılanı
+       açılan harfin önünde kesti) söz verilen kontrol düşer: kendiliğinden "eksik" uyarısı
+       çıkmaz, kaydın değiştiği de söylenmez (işlenecek cevap yoktu). Bekleme iletisi hâlâ
+       ekrandaysa kaldırılır; başka ileti (harf açıldı) kalır. */
+    if (islem === 'kontrol' && simdi && !simdi.tur.bitti && !tamYazili()) {
+      ertelemeyiBirak();
+      if (beklemeIletisi) durumYaz('', '');
+      return;
+    }
     if (islem && simdi && !simdi.tur.bitti && !ayniKayit(simdi.anlik, tazeKayit(simdi.d.e))) {
       /* Birleşim tam bu kelimenin kaydını değiştirdi: cevap eski seviyeyle verilmişti,
          işlenmez. Motor sayfayı birazdan yeniler; iz yerinde kalır ki yeni açılış bunu
@@ -827,12 +875,13 @@
       if (girdi.value !== '') girdi.value = '';
       return;
     }
-    var temiz = O.temizle(girdi.value, O.bosSayisi(simdi.tur));
+    var temiz = O.temizle(girdi.value, O.harfSayisi(simdi.tur.kelime));
     if (temiz !== girdi.value && !(e && e.isComposing)) girdi.value = temiz;
     elHarfler.classList.remove('yanlis');
     girdi.removeAttribute('aria-invalid');
     if (gecici) durumYaz('', '');
     harfleriCiz();
+    iziEsle();
   }
   girdi.addEventListener('input', girdiIsle);
   girdi.addEventListener('compositionend', function () { girdiIsle(null); });

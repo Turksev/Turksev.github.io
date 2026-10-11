@@ -141,7 +141,7 @@ Tarayıcı denetimi: `pnpm test:sozluk`.
 | Dosya | İçerik |
 | --- | --- |
 | `index.html` | Açılış sayfası: hareketli görsel karşılama, **yedi kelime katmanında ne var, ne kaldı** (halka ve çubuklarla öğrenilen/çalışılan/yeni, bugün vadesi gelen tekrar, sıradaki kelimeler), bugünün destesi ve hızlı bağlantılar. Katman kartı Kelimeler sayfasını `?katman=N` ile o katman seçili açar. Marka bağlantısı buraya gelir |
-| `oyunlar.html` | **Yazma oyunu** (üst menüdeki ilk sekme, **Oyunlar**): kelimenin Türkçe anlamları gösterilir, İngilizcesi harf harf yazılır. Açık gelen harf oranı kelimenin Leitner kutusu yükseldikçe azalır (%50'den harfsize); Kelimeler sayfasında seçili katmanlardan sorar ve aynı ilerlemeye yazar |
+| `oyunlar.html` | **Yazma oyunu** (üst menüdeki ilk sekme, **Oyunlar**): kelimenin Türkçe anlamları gösterilir, İngilizcesi baştan sona harf harf yazılır (açık gelen harfler dahil). Açık gelen harf oranı kelimenin Leitner kutusu yükseldikçe azalır (%50'den harfsize); Kelimeler sayfasında seçili katmanlardan sorar ve aynı ilerlemeye yazar |
 | `ana-sayfa.html` | Ana sayfa (üst menüdeki **Ana sayfa** sekmesi): **YDS bölüm dağılımı tablosu** (80 sorunun hangi aralıkta hangi bölüm olduğu) ve ilerleme paneli — tekrar durumu, yanlış defteri, deneme geçmişi, kategori karnesi |
 | `durum.html` | Çalışılmış her şey tek listede (kelime, öbek, aile üyesi): üstte **sistemdeki toplam kayıt**, kutu sekmelerinde sayı ve bu toplama oranı ("hepsi" dahil), arama/süzme/sıralama |
 | `istatistik.html` | **Çalışma hızın ve ritmin**: 7/30/90 günlük dönem kıyası, günlük grafik ve veri tablosu, 26 haftalık takvim, haftalık tempo, kutu birikimi ve varsayımsal ilk tur planı. Ayıklama hız hesabına katılmaz |
@@ -234,7 +234,7 @@ assets/
   js/esitleme-v2.js   Google girişi, işlemli Firestore eşitlemesi ve canlı dinleyici
   js/veri.js          kelime katmanlarını ve öbekleri istendiğinde yükler
   js/kelimeler.js     kelime sayfası
-  js/oyun-hesap.js    yazma oyununun saf kuralları: seviye, açık harf seçimi, sıra, tur durumu
+  js/oyun-hesap.js    yazma oyununun saf kuralları: seviye, açık harf seçimi, sıra, tur (kelime tam yazılır)
   js/oyunlar.js       oyunlar sayfası: katman seçimi, harf kutuları, sonucu ilerlemeye yazma
   js/istatistik.js    salt okunur istatistik görünümü, son veriye açılan SVG grafikler
   js/istatistik-hesap.js yerel takvim dönüşümü, hız/seri/dönem hesabı; depoya yazmaz
@@ -440,7 +440,11 @@ sürümünün paritesi `parite.html` üzerinden sınanır; uçtan uca test `harn
 
 `oyunlar.html` kelimenin Türkçe anlamlarını tür kısaltması ve yıldızlarıyla gösterir
 (`i. bitki hastalığı, afet ★★★☆`); İngilizcesi altındaki harf kutularına yazılır. Harflerin
-bir kısmı açık gelir, kalanını sen yazarsın. Oyunun ayrı bir puanı ya da kaydı yoktur:
+bir kısmı açık gelir, kalanı gizlidir; kelimenin tamamını baştan sona sen yazarsın: açık harf
+kutusunda bekler, sırası gelince onu da yazarsın (el kelimenin tamamına alışsın diye). Açık
+harfin üzerine başka bir harf yazarsan kutu hata rengiyle ve köşesindeki çarpıyla işaretlenir;
+gizli harfte böyle bir işaret yoktur, cevabı ele verirdi. İmleç hep sondadır: önceki bir harfi
+değiştirmek için oraya kadar geri silinir. Oyunun ayrı bir puanı ya da kaydı yoktur:
 **seviye, kelimenin Leitner kutusudur** ve sonuç Kelimeler sayfasındaki kartla aynı
 ilerlemeye (`yds-leitner`, tür `kelime`) yazılır. Kelimeler, Durumum ve İstatistik aynı kaydı
 görür; eşitleme açıksa öbür cihazlara da gider.
@@ -455,7 +459,7 @@ görür; eşitleme açıksa öbür cihazlara da gider.
 | 5 (öğrenildi) | 6 | harf yok |
 
 Açık harf sayısı, harf sayısının bu yüzdesidir (buçuk yukarı yuvarlanır) ve en az bir harf
-hep sana kalır: altı harfli kelimede sırasıyla 3, 2, 2, 1, 1, 0. Tire ve boşluk her zaman
+hep gizli kalır: altı harfli kelimede sırasıyla 3, 2, 2, 1, 1, 0. Tire ve boşluk her zaman
 görünür; yazılmaz, sayılmaz. Hangi harflerin açılacağı kelime, kutu ve gün numarasından
 türetilir: aynı gün sayfayı yenilemek başka harfleri açmaz. Kısa kelimede yüzde yarım harfe
 ulaşmıyorsa harf açılmaz (dört harfli kelime 5. seviyede harfsiz gelir); sayfa bunu "kısa
@@ -470,9 +474,19 @@ kelime: harf yok" diye yazar.
 - **Bilemedin** — üçüncü deneme de yanlışsa ya da "Bilemedim, göster" dersen kelime bir
   kutu düşer (1. kutunun altına inmez) ve yarın tekrar gelir.
 
-Yanlış denemede doğru yazdığın harfler yerinde kalır, yalnız kalan boşlukları yeniden
-yazarsın. Boşluklar dolmadan "Kontrol et" deneme harcamaz; "Bir harf aç" da harcamaz ama
-sonucu ipuçluya çevirir ve son boşlukta kullanılamaz. Aynı kısa anlamı ve türü taşıyan başka
+Yanlış deneme, en az bir gizli harfin yanlış yazıldığı denemedir: doğru yazdığın gizli harfler
+açılır ve açık kalır; yazdıkların silinir, kelimeyi yeniden baştan yazarsın (yalnız kalan harfi
+yazmak yetmez). Gizli harflerin hepsi doğruysa ve fark yalnız açık bir harfin üzerine yazdığın
+harfteyse deneme harcanmaz: harf zaten ekrandaydı. Kaçıncı harfin ne olması gerektiği söylenir
+("4. harf yanlış, i olmalı. O harften devam et."), yazdıkların o harfin önünde kesilir ve
+oradan devam edersin; düzeltilen kelime ilk denemede bilinmiş sayılır. Kural öteki yazımla
+birlikte de geçerlidir: açık harf düzeltilince kabul edilen öteki yazım çıkıyorsa (*centre*
+kartında t açıkken *cenqer*) deneme yine harcanmaz. Kelimenin tamamı yazılmadan "Kontrol et"
+de deneme harcamaz (yalnız gizli harfleri yazmak da eksik sayılır); "Bir harf aç" da harcamaz
+ama sonucu ipuçluya çevirir. "Bir harf aç", henüz yazmadığın ya da yanlış yazdığın ilk gizli harfi açar ve
+yazdıklarını o harfin önünde keser: açılan harften devam edersin, onu da yazarsın. Gizli
+harflerin hepsini doğru yazmışsan ilk gizli harf açılır, yazdıkların olduğu gibi kalır. İkiden
+az gizli harf kaldıysa düğme kullanılamaz. Aynı kısa anlamı ve türü taşıyan başka
 bir kelime yazarsan (*almost* yerine *nearly*) deneme harcanmaz, başka kelime istenir.
 
 **Öteki yazım doğru sayılır.** Kelimenin dizinde bulunan öteki yazımını yazarsan cevap
@@ -480,7 +494,12 @@ kabul edilir ve kartın kendi yazımı gösterilir: `-ise/-ize` (*analyse* / *an
 *recognise* / *recognize*), `-re/-er` (*centre* / *center*, *metre* / *meter*) ve elle sayılan
 çiftler (*grey* / *gray*, *defence* / *defense*; liste `oyun-hesap.js` içinde
 `YAZIM_CIFTLERI`). Kural iki kısa anlamın aynı yazılmasına bağlı değildir; dizinde olmayan
-yazım (*surprize*) kabul edilmez.
+yazım (*surprize*) kabul edilmez. İki yazımı ayıran harf açık gelmişse öteki yazım o harfin
+üzerine yazılır: kutu işaretlenir ama "Kontrol et" cevabı kabul eder.
+
+Girdinin `maxlength` değeri başlığın uzunluğudur (tire ve boşluk dahil): tarayıcı bu sınırı
+sayfanın temizliğinden önce uygular; yalnız harfler sayılsaydı yapıştırılan ya da klavyenin tek
+parça gönderdiği *well-being* son harfini yitirirdi. Harf sayısına sayfa kendisi kırpar.
 
 **Hangi kelimeler.** Kelimeler sayfasında seçili katmanlar (`yds-katmanlar`); seçim oyun
 sayfasından da değiştirilebilir ve iki sayfada ortaktır. Yalnız harf, tire ve boşluktan
@@ -510,7 +529,11 @@ havuzdan süzülür, "Bugünü çalış" ile deste yeniden açılır).
 **Eşitleme açıksa** kelime hemen gösterilir ve yazılabilir, ama açılıştaki bulut birleşimi
 bitene kadar cevap işlenmez: "Kontrol et" ve "Bilemedim, göster" o sırada "Eşitleniyor;
 bitince …" yazar ve birleşim bitince (bağlantı yavaşsa sayfa açılışından en çok 8 saniye
-sonra; bağlantı yoksa hemen) kendiliğinden sürer. Böylece başka cihazda ilerlemiş bir kelime burada eski kutusuyla
+sonra; bağlantı yoksa hemen) kendiliğinden sürer. "Kontrol et" yalnız kelimenin tamamı
+yazılmışken bekletilir; eksik kelimede hemen "Önce kelimenin tamamını yaz…" denir. Beklerken
+yazılan eksilirse (harf silindi ya da "Bir harf aç" yazılanı kesti) bekleyen kontrol düşer:
+deneme harcanmaz, bekleme iletisi silinir, kendiliğinden "eksik" uyarısı çıkmaz, sayfa o
+sırada yenilense "cevabın işlenmedi" de denmez. Böylece başka cihazda ilerlemiş bir kelime burada eski kutusuyla
 yanıtlanıp buluttaki kaydın üzerine yazılmaz. Okuyup yazmak birleşimden uzun sürdüğü için
 bu bekleme çoğu zaman hiç görülmez. Birleşim başka cihazdan kayıt getirirse sayfa yeniden
 yüklenir (site geneli davranış); bekletilen cevap o ana kadar işlenmediyse düşer ve yeni
@@ -542,9 +565,12 @@ paneli bu sayfada yüklenmez.
 **Yerleşim ve erişilebilirlik.** Katman seçici oyunun altındadır ki kelime ve kutuları ilk
 ekranda görünsün; sıra satırındaki "Katmanları değiştir" bağlantısı oraya iner. Telefonda
 (480 px ve altı) sayfanın üst boşluğu daralır, ara başlık görünmez, üç tur düğmesi tek satıra
-dizilir ve kart sıkışır: anlam ve harf kutuları 375×667 ekranda kaydırmadan görünür; sayfanın
-kendi yazı tipiyle 360×640 ekranda da (Çekirdek katmanın 823 kelimesinin hepsinde ölçüldü,
-en uzun kartta pay 6 px; daha geniş bir yazı tipinde en uzun kartlar taşabilir). Harfler,
+dizilir ve kart sıkışır: Çekirdek katmanında anlam ve harf kutuları 375×667 ekranda kaydırmadan
+görünür; sayfanın kendi yazı tipiyle 360×640 ekranda da (katmanın 823 kelimesinin hepsinde
+ölçüldü, en uzun kartta pay 6 px; daha geniş bir yazı tipinde en uzun kartlar, öteki
+katmanlarda *first-come-first-served* gibi en uzun başlıklar taşabilir). Tireli ya da çok
+sözcüklü başlıkta satır yalnız ayraçtan kırılır: parça ayracıyla birlikte tek satırda durur
+(kutu eni buna göre seçilir), imleç satırlar arasında gidip gelmez. Harfler,
 kutu satırını örten tek bir görünmez girdiye yazılır; odak hiçbir öğede değilken yazılan harf
 de oraya gider (sayfa açılınca kutulara tıklamadan yazmaya başlanır, biten kelimede Enter
 sonrakine geçer). Girdinin açıklaması maskeli anlamı ve
