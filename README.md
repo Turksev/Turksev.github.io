@@ -588,6 +588,40 @@ Girişliyken düğme hesabın baş harfini gösterir; tıklamak hemen tam eşitl
   `yds-esitleme-v2` zarfında her kayıt ayrı mantıksal sürüm taşır; silmeler de mezar taşı
   olarak saklanır. Böylece çevrimdışı kalan cihaz eski bir kaydı geri diriltemez ve iki
   cihazın farklı kelimelerde yaptığı çalışmalar birbirini ezmez.
+- **Aynı tarayıcıda birden çok sekme.** Zarf (localStorage anahtarı `yds-esitleme-yerel-v3`;
+  `yds-esitleme-v2` yalnız geçişte okunan eski yerel anahtardır) tek doğruluk kaynağıdır;
+  klasik `yds-*` anahtarları ondan üretilen aynadır ve zarfı olan profilde sürüm basmaz (tek
+  istisna: son-ayna kaydı olmayan v2 zarfından ilk geçiş açılışı). Bir klasik anahtar olayı
+  ya da sayfa açılışındaki uzlaştırma, zarfta sürümü ya da mezar taşı olan kaydı ve
+  sıfırlanmış alanı değiştirmez; yalnız zarfın hiç görmediği ya da geçişten beri sürümsüz
+  duran kayıtlar alınır, onlar da sürümsüz birleşir. Başka sekmenin yazımını yalnızca
+  öğrenen sekme kendisi yazmaz: durumu bellekte benimser, sayfaya `yds-depo-degisti` ile
+  bildirir; işlemi başlatan sekme bitirir, o kapandıysa bir sonraki yazım ya da sayfa
+  açılışı. Bir okumanın sessizce birleştirdiği alanlar da yerel olmayan ilk bildirimle
+  sayfaya duyurulur.
+  Neden: her sekme localStorage'ı kendi kopyasından okur ve öbür sekmenin işlemini yarım
+  görebilir. 11 Ekim 2026'ya kadar böyle bir sekme işlemi kendi eski durumundan
+  "tamamlıyor", yazan sekme de geri gelen klasik anahtarı "güncelleme öncesi sekmenin
+  düzenlemesi" sanıp taze sürümle içe alıyordu: iki sekme açıkken art arda verilen cevabın
+  terfisi geri alınabiliyor, taze sürüm aldığı için bulutta da kazanıyordu (9.000 kayıtlı
+  profilde 400–600 ms'de bir "Bildim" ile ölçüldü).
+  Sınırlar: (1) İki sekme aynı anda yazarken, yeni kaydı belleğinde tutan bütün sayfalar
+  öbür sekmenin olayını işlemeden kapanır ya da başka sayfaya geçerse o kayıt kaybolabilir
+  (localStorage'da "karşılaştır ve yaz" yoktur). (2) Aynı cihazın iki sekmesi birbirinin
+  yazımını görmeden cevap sayarsa günlük sayaç bir eksik kalır. (3) Zarf öncesi koddan
+  (28 Ağustos 2026 öncesi) açık kalmış bir sekme sürümlü kaydı ve sıfırlanmış alanı artık
+  değiştiremez; sürümsüz kayıtta eski birleşim kuralı geçerlidir. Aynı kural elle yazılan
+  klasik anahtar için de geçerlidir (geliştirici araçları; `tools/test-uretim/tavan-sayfa.html`
+  depoyu temizlemeden klasik anahtar yazar): zarfı olan profilde sürümlü kayıt değişmez,
+  anahtar bir sonraki olayda ya da sayfa açılışında zarftan yeniden yazılır; durum `Depo` ya
+  da `EsitlemeDepo.paketYaz` ile, ya da zarfsız profilde kurulmalıdır. (4) Yayından sonra eski
+  betikle açık kalan sekme yenilenene kadar eski davranışı sürdürür: yeni sürüm
+  bildirimindeki "Şimdi güncelle" yalnız basılan sekmeyi yeniler, öbür sekmeler de
+  yenilenmelidir.
+  Testler: `tools/test-uretim/yerel-zarf-regresyon-test.js` ve
+  `tools/test-uretim/iki-sekme-yarisi-test.js` (tarayıcı modeli `iki-sekme-modeli.js`:
+  işleyici süreci başına depo kopyası, tek yazım sırası, olayların ayrı görevlerde teslimi);
+  "Şimdi güncelle" düğmesi için `tools/test-uretim/surum-bildirimi-test.js`.
 - Günlük çalışma sayaçları (`yds-gunluk-kayit`) ve bugün açılan yeni kart sayacı
   (`yds-yeni-sayac`) cihaz payları taşır: gün kaydında `p = { cihaz: {...} }`, toplam
   alanlar payların toplamıdır ve okuyucular yalnız toplamı görür. Her cihaz yalnız kendi

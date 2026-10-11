@@ -254,9 +254,11 @@
 /* ============================================================
    Eşitleme deposu — localStorage ile saf veri motoru arasındaki köprü
 
-   Eski yds-* anahtarları uygulamanın okuma biçimi olarak korunur. Asıl
-   eşitleme zarfı tek localStorage yazımıyla güncellenir; diğer sekmeler bu
-   zarfı birleştirip klasik anahtarları otomatik olarak yeniler.
+   Eski yds-* anahtarları uygulamanın okuma biçimi olarak korunur; zarftan
+   üretilen aynadır. Bir yazım üç adımdır: işlemi açan zarf ("b" ile), değişen
+   klasik anahtarlar, işlemi kapatan zarf. Diğer sekmeler zarfı bellekte
+   birleştirip sayfaya bildirir; getirecek yenilikleri yoksa ne zarfı ne klasik
+   anahtarları yazarlar (bkz. kaydet).
    ============================================================ */
 
 (function () {
@@ -363,6 +365,14 @@
     return String(mantikSaat) + ':' + aktor;
   }
 
+  // Klasik anahtardan gelen veri geçiş verisi gibi sürümsüz (0) birleşir; son-yazan-
+  // kazanır alanlarında zarfta sürümü olan kaydı hiçbir zaman geçemez. İki sayaç alanı
+  // (yds-gunluk-kayit, yds-yeni-sayac) sürüme bakmadan cihaz payıyla birleşir: onları
+  // içe almanın dışında tutan yalnız surumlu() korumasıdır; kaldırılırsa dinleyen sekme
+  // sayaç aynasına zarf yazımıyla karşılık verir.
+  function surumsuzMeta() { return 0; }
+  function surumlu(kayit) { return !!kayit && M.metaKarsilastir(kayit.m, 0) > 0; }
+
   function hamPaket() {
     var paket = {};
     Object.keys(TIPLER).forEach(function (anahtar) {
@@ -405,7 +415,23 @@
   /* Eski sürümden açık kalmış bir sekme yalnız klasik yds-* anahtarlarını
      yazabilir. Son aynanın ham paketi, bir sonraki açılışta oldValue görevi
      görür: sadece gerçekten eklenen/değişen kayıtları yeni zarfa taşırız;
-     eski sekmenin eksik tam nesnesini silme komutu saymayız. */
+     eski sekmenin eksik tam nesnesini silme komutu saymayız.
+
+     Ayna tabanı varken klasik anahtar sürüm basamaz (bkz. depolamaDegisti):
+     diskteki ayna, güncel kodlu başka bir sekmenin geç kalmış, eski bir durumdan
+     yazdığı ayna da olabilir. (Taban yokken, yani son-ayna kaydı olmayan düz v2
+     zarfından ilk geçiş açılışında, aşağıdaki anlamsal yol hâlâ taze sürüm basar.)
+     Zarfta sürümü ya da silme işareti olan kayıt ve sıfırlanmış alan
+     zarftaki hâliyle kalır; yalnız zarfın hiç görmediği ya da geçişten beri
+     sürümsüz duran kayıtlar alınır, onlar da sürümsüz birleşir.
+
+     Sonuçları: aynadan kurtarılan kayıt, onu güncel bir sekme yazmış olsa da
+     sürümsüzdür; başka cihazdan gelen sürümlü kayıt, silme ya da sıfırlama, kart
+     yeniden yanıtlanana dek onu geçer. Zarfı güncellenmeden yalnız aynası yeni
+     kalan sürümlü kayıt (bütün sekmeler alışverişin ortasında kapandıysa) artık
+     aynadan geri gelmez. Klasik anahtarı elle yazmak (geliştirici araçları, eski
+     deneme sayfaları) sürümlü kaydı değiştirmez: durum Depo ya da
+     EsitlemeDepo.paketYaz ile, ya da zarfı olmayan bir profilde kurulmalıdır. */
   function baslangictaUzlastir(zarf, klasikPaket, aynaPaket) {
     var mevcutPaket = M.paket(zarf);
     var aday = zarf;
@@ -429,9 +455,12 @@
       if (duzAyarlar[anahtar]) {
         if (!kanitliFark || esitMi((aynaPaket || {})[anahtar], klasikPaket[anahtar]) ||
             esitMi(mevcutPaket[anahtar], klasikPaket[anahtar])) return;
+        // (Bu dört ayar son-yazan-kazanır alanıdır: motor da aynı sonucu verir; koruma
+        // okunurluk için.)
+        var ayarAlani = zarf.alanlar[anahtar] || {};
+        if (ayarAlani.r || surumlu(ayarAlani.i && ayarAlani.i.$)) return;
         var tek = { $: klasikPaket[anahtar] };
-        aday = M.kayitlariYaz(aday, anahtar, tek, yeniMeta);
-        mevcutPaket[anahtar] = kopyala(klasikPaket[anahtar]);
+        aday = M.kayitlariYaz(aday, anahtar, tek, surumsuzMeta);
         return;
       }
 
@@ -449,6 +478,8 @@
           // nesnesidir; yeni zarfın daha güncel sürümünü koru.
           if (tabanKayitlari[id] !== undefined &&
               esitMi(tabanKayitlari[id], klasikKayitlar[id])) return;
+          var zarfAlani = zarf.alanlar[anahtar] || {};
+          if (zarfAlani.r || surumlu(zarfAlani.i && zarfAlani.i[id])) return;
         } else {
           var alan = zarf.alanlar && zarf.alanlar[anahtar];
           var hamKayit = alan && alan.i && alan.i[id];
@@ -461,7 +492,7 @@
       });
 
       if (Object.keys(yazilacak).length) {
-        aday = M.kayitlariYaz(aday, anahtar, yazilacak, yeniMeta);
+        aday = M.kayitlariYaz(aday, anahtar, yazilacak, aynaPaket ? surumsuzMeta : yeniMeta);
       }
     });
     return aday;
@@ -639,6 +670,49 @@
     }));
   }
 
+  /* Bir okuma (guncelZarf), başka sekmenin yeni zarfını o sekmenin depolama olayı
+     işlenmeden birleştirebilir. Olay geldiğinde değişen alan kalmaz, sayfaya haber
+     gitmez ve sayfanın bellekteki kopyaları bayat kalırdı. Sessizce birleşen alanlar
+     borç yazılır; yerel olmayan ilk bildirim (o sekmenin olayı ya da bulut) onları da
+     taşır. */
+  var borcluAlanlar = Object.create(null);
+  // Motor bu iki alanı sürüme göre değil cihaz paylarıyla birleştirir: değer, sürüm
+  // aynı kalırken büyüyebilir.
+  var PAYLI_ALANLAR = { 'yds-gunluk-kayit': 1, 'yds-yeni-sayac': 1 };
+
+  // İki alan aynı yazımları mı taşıyor? Sürümlü kayıtta sürüm karşılaştırılır (değer
+  // değil; binlerce kartta ucuzdur), sürümsüz geçiş kaydında değer.
+  function alanAyni(anahtar, a, b) {
+    if (a === b) return true;
+    if (!a || !b) return false;
+    if (PAYLI_ALANLAR[anahtar]) return esitMi(a, b);
+    if (M.metaKarsilastir(a.r, b.r) !== 0) return false;
+    var ai = a.i || {}, bi = b.i || {}, ids = Object.keys(ai);
+    if (ids.length !== Object.keys(bi).length) return false;
+    for (var n = 0; n < ids.length; n++) {
+      var x = ai[ids[n]], y = bi[ids[n]];
+      if (!y || !x || M.metaKarsilastir(x.m, y.m) !== 0 || !!x.d !== !!y.d) return false;
+      if (M.metaKarsilastir(x.m, 0) <= 0 && !esitMi(x.v, y.v)) return false;
+    }
+    return true;
+  }
+
+  function borcYaz(onceki, sonraki) {
+    Object.keys(TIPLER).forEach(function (anahtar) {
+      if (!alanAyni(anahtar, onceki.alanlar[anahtar], sonraki.alanlar[anahtar])) borcluAlanlar[anahtar] = 1;
+    });
+  }
+
+  // Yerel olmayan bildirim, borçlu alanları da taşır ve borcu kapatır.
+  function borcuKat(anahtarlar, kaynak) {
+    if (kaynak !== 'sekme' && kaynak !== 'bulut') return anahtarlar;
+    var kume = Object.create(null);
+    anahtarlar.forEach(function (a) { kume[a] = 1; });
+    Object.keys(borcluAlanlar).forEach(function (a) { kume[a] = 1; });
+    borcluAlanlar = Object.create(null);
+    return Object.keys(kume);
+  }
+
   function aynala(paket, oncekiPaket, hepsiniDogrula) {
     var degisen = [];
     var basarili = true;
@@ -685,20 +759,45 @@
     // A storage event already persisted by another tab is not a new write.
     // Without this guard, each tab would emit pending+final records forever.
     var adayPaket = paketOku(aday);
+    // A local write that changes nothing (the caller handed back the unchanged
+    // in-memory state) is not a write either. Pages do this while loading
+    // (Kelimeler stores the layer selection it has just read); written from the
+    // state the page booted with, it could replace a newer envelope another tab
+    // had committed meanwhile.
     var yinelenebilir = kaynak === 'sekme' || kaynak === 'gecis' || kaynak === 'bulut' ||
-      (disk && disk.zarf === aday);
-    if (disk && yinelenebilir && esitMi(disk.zarf, aday) && esitMi(hamPaket(), adayPaket)) {
+      (disk && zarf === oncekiZarf);
+    var zarfTam = disk && yinelenebilir && esitMi(disk.zarf, aday);
+    var aynaTam = zarfTam && esitMi(hamPaket(), adayPaket);
+    // A tab that brings nothing new (another tab's storage event, or a cloud
+    // snapshot the disk envelope already contains) must not finish an open
+    // transaction: it only adopts the state in memory. It cannot tell whose
+    // transaction it is: normally another tab's, but its own, left open by a
+    // failed mirror or closing write, is treated the same and is retried only
+    // by the next real write (raw.b) or page load. Each tab reads localStorage
+    // through its own copy, which lags behind the writer: mirroring or closing
+    // from here overwrote the writer's next transaction with this tab's older
+    // state. Staying silent is safe because a storage event is never handled
+    // before this tab's copy holds that write (or a later write of its own to
+    // the same key). Read first-hand in Chromium's source (CachedStorageArea);
+    // for WebKit and Firefox known from summaries of their sources (2026-10-11);
+    // run in Chromium and Firefox. If it ever failed, a tab that knows better
+    // than the disk would stay silent until its next write.
+    var yalnizBenimse = zarfTam && (kaynak === 'sekme' || kaynak === 'bulut') &&
+      (!aynaTam || Object.prototype.hasOwnProperty.call(raw, 'b'));
+    if (aynaTam || yalnizBenimse) {
       durum = aday; zarfKalici = true; saatiGozle(durum);
-      if (Object.prototype.hasOwnProperty.call(raw, 'b')) {
-        if (!yerelYaz(durum)) return { basarili: true, aynaBasarili: false, degisti: false, anahtarlar: [] };
+      if (!yalnizBenimse) {
+        if (Object.prototype.hasOwnProperty.call(raw, 'b')) {
+          if (!yerelYaz(durum)) return { basarili: true, aynaBasarili: false, degisti: false, anahtarlar: [] };
+        }
+        sonAynaPaket = adayPaket;
+        bitenGocuTemizle(adayPaket, legacy);
       }
-      sonAynaPaket = adayPaket;
-      bitenGocuTemizle(adayPaket, legacy);
-      var degisen = Object.keys(TIPLER).filter(function (key) {
+      var degisen = borcuKat(Object.keys(TIPLER).filter(function (key) {
         return !esitMi(oncekiZarf.alanlar[key], aday.alanlar[key]);
-      });
+      }), kaynak);
       bildir(degisen, kaynak);
-      return { basarili: true, aynaBasarili: true, degisti: !!degisen.length, anahtarlar: degisen };
+      return { basarili: true, aynaBasarili: !!aynaTam, degisti: !!degisen.length, anahtarlar: degisen };
     }
 
     // Preserve the last fully mirrored state DURING the transaction. If the
@@ -708,7 +807,16 @@
     var taban = disk ? disk.ayna : sonAynaPaket || hamPaket();
     if (!yerelYaz(aday, taban)) return { basarili: false, degisti: false, anahtarlar: [] };
     durum = aday; zarfKalici = true; saatiGozle(durum);
-    var paket = adayPaket, aynaSonucu = aynala(paket, oncekiPaket, !!(raw && raw.b));
+    // Verify every key (the changed-keys shortcut skips a key whose packet value
+    // is identical or absent on both sides, so it never repairs the stale mirror
+    // of a plain number/string setting or of a reset field, and every later page
+    // load would rewrite the envelope):
+    //  - at page load ('gecis'), also when the load changes the envelope itself;
+    //  - when the envelope already equalled the candidate (zarfTam) and only the
+    //    mirror brought us here: off a page load, a local write that changes nothing;
+    //  - when the disk envelope carried an open transaction (raw.b).
+    var paket = adayPaket, aynaSonucu = aynala(paket, oncekiPaket,
+      kaynak === 'gecis' || !!zarfTam || !!(raw && raw.b));
     if (aynaSonucu.basarili) {
       if (yerelYaz(durum)) {
         sonAynaPaket = paket;
@@ -721,7 +829,7 @@
     Object.keys(TIPLER).forEach(function (a) {
       if (!esitMi(oncekiZarf.alanlar[a], durum.alanlar[a])) kume[a] = 1;
     });
-    var liste = Object.keys(kume);
+    var liste = borcuKat(Object.keys(kume), kaynak);
     bildir(liste, kaynak);
     return { basarili: true, aynaBasarili: aynaSonucu.basarili, degisti: !!liste.length, anahtarlar: liste };
   }
@@ -781,7 +889,7 @@
       try { durum = M.birlestir(durum, yerelCoz(legacy).zarf); }
       catch (hata) { bozukYerel = true; hataBildir(ESKI_ZARF_ANAHTARI); }
     }
-    if (onceki !== durum) saatiGozle(durum);
+    if (onceki !== durum) { saatiGozle(durum); borcYaz(onceki, durum); }
     return durum;
   }
 
@@ -895,6 +1003,12 @@
   Depo.anahtarlariSil = anahtarlariSil;
   Depo.cihaz = cihaz;
 
+  // Diskteki zarf (bu sekmenin gördüğü hâliyle) açık bir işlem taşıyor mu?
+  function acikIslemVar() {
+    var ham = yerelHamOku(ZARF_ANAHTARI);
+    return !!ham && Object.prototype.hasOwnProperty.call(ham, 'b');
+  }
+
   function depolamaDegisti(e) {
     if (!e || !e.key) return;
     if ((e.key === ZARF_ANAHTARI || e.key === ESKI_ZARF_ANAHTARI) && e.newValue) {
@@ -913,33 +1027,54 @@
     try { yeni = e.newValue === null ? undefined : JSON.parse(e.newValue); } catch (hata2) { return; }
     if (esitMi(beklenen[e.key], yeni)) return;
 
-    // Güncelleme öncesinden açık kalan eski bir sekmenin klasik anahtara
-    // yaptığı yazımı da kaybetmeden yeni zarfa taşı.
+    // Güncelleme öncesinden açık kalan eski bir sekmenin klasik anahtara yazdıklarından
+    // yalnız zarfın hiç görmediği ya da sürümsüz tuttuğu kayıtlar zarfa taşınır (aşağıdaki kural).
     var eski;
     try { eski = e.oldValue === null ? undefined : JSON.parse(e.oldValue); } catch (hata3) { eski = undefined; }
     if (yeni === undefined) {
       // Klasik anahtarı kaldıran eski sekmenin hangi yeni kayıtları hiç
       // görmediği bilinemez. Tüm alanı tombstone yapmak daha yeni sekmenin
-      // ilerlemesini silebilir; güvenli zarfı kaynak kabul edip aynayı geri kur.
-      aynala(beklenen, beklenen);
+      // ilerlemesini silebilir; güvenli zarfı kaynak kabul edip aynayı geri kur
+      // (başka sekmenin işlemi açıkken değil: bkz. aşağıdaki son satır).
+      if (!acikIslemVar()) aynala(beklenen, beklenen);
       return;
     }
 
-    // Klasik anahtari yazan sekme eski bir tam nesneyle calisiyor olabilir.
-    // oldValue -> newValue arasinda acikca eklenen/degisen kayitlari al; yeni
-    // nesnede bulunmayan kimlikleri silme sayma. Boylece bu sekmede sonradan
-    // eklenen kayitlar, eski sekmenin eksik anlik goruntusu yuzunden kaybolmaz.
+    // Klasik anahtarı yazan sekme eski bir tam nesneyle çalışıyor olabilir.
+    // oldValue -> newValue arasında açıkça eklenen/değişen kayıtlar adaydır; yeni
+    // nesnede bulunmayan kimlikler silme sayılmaz. Böylece bu sekmede sonradan
+    // eklenen kayıtlar, eski sekmenin eksik anlık görüntüsü yüzünden kaybolmaz.
+    //
+    // Klasik anahtar olayı sürüm basamaz. Olayı yazan, güncel kodlu bir sekme de
+    // olabilir ve aynası bu sekmenin çoktan aştığı bir durumdan gelebilir (iki
+    // sekme yarışı); farkı taze sürümle almak yeni cevabı geri alır, bulutta da
+    // kazandırırdı. Bu yüzden zarfta sürümü ya da silme işareti olan kayda ve
+    // sıfırlanmış alana dokunulmaz. Yalnız zarfın hiç görmediği ya da geçişten
+    // beri sürümsüz duran kayıtlar alınır; onlar da geçiş verisi gibi sürümsüz
+    // birleşir. Geri kalanında ayna zarftan yeniden kurulur.
     var eskiKayitlar = kayitHaritasi(e.key, eski);
     var yeniKayitlar = kayitHaritasi(e.key, yeni);
+    var alan = durum.alanlar[e.key] || {};
     var degisiklikler = Object.create(null);
-    Object.keys(yeniKayitlar).forEach(function (id) {
+    if (!alan.r) Object.keys(yeniKayitlar).forEach(function (id) {
+      if (surumlu(alan.i && alan.i[id])) return;
       if (eskiKayitlar[id] === undefined || !esitMi(eskiKayitlar[id], yeniKayitlar[id])) {
         degisiklikler[id] = yeniKayitlar[id];
       }
     });
+    var guncel = beklenen;
     if (Object.keys(degisiklikler).length) {
-      if (!kayitlariYaz(e.key, degisiklikler, 'sekme')) aynala(beklenen, beklenen);
-    } else aynala(beklenen, beklenen);
+      var aday = alaniDegistir(durum, e.key, function (tek) {
+        return M.kayitlariYaz(tek, e.key, degisiklikler, surumsuzMeta);
+      });
+      // İçe alma zarfı değiştirmediyse kaydet yazmadan döner; ayna yine zarftan kurulur.
+      if (kaydet(aday, 'sekme', [e.key]).basarili) guncel = paketOku(durum);
+    }
+    // Ayna zarftan yeniden kurulur (aynala yalnız farklı anahtarı yazar); ama bir
+    // işlem açıkken değil: işlemi açan sekme kendi değiştirdiği anahtarların aynasını
+    // birazdan yazar, buradan yazılan ayna onunkinin üstüne düşebilir. Öbür anahtarları
+    // o sekme aynı olayı işlerken, o kapandıysa bir sonraki sayfa açılışı onarır.
+    if (!acikIslemVar()) aynala(guncel, guncel);
   }
   window.addEventListener('storage', depolamaDegisti);
 

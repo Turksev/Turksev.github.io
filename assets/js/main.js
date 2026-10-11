@@ -277,6 +277,13 @@
         '<button class="btn ghost sm" type="button">Sonra</button>';
       var dugmeler = kutu.querySelectorAll('button');
       dugmeler[0].addEventListener('click', function () {
+        // Yeni sürüm başka bir sekmeden etkinleştirildiyse bekleyen çalışan kalmaz;
+        // bu sekme hâlâ eski betikleri çalıştırır: yalnız yenilenir.
+        if (!kayit.waiting) {
+          try { sessionStorage.removeItem('yds-sw-yenile'); } catch (e) {}
+          yenidenYukle('servis-calisani');
+          return;
+        }
         try { sessionStorage.setItem('yds-sw-yenile', '1'); } catch (e) {}
         kayit.waiting.postMessage({ type: 'YENI_SURUMU_ETKINLESTIR' });
       });
