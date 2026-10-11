@@ -477,7 +477,7 @@ bir kelime yazarsan (*almost* yerine *nearly*) deneme harcanmaz, başka kelime i
 
 **Öteki yazım doğru sayılır.** Kelimenin dizinde bulunan öteki yazımını yazarsan cevap
 kabul edilir ve kartın kendi yazımı gösterilir: `-ise/-ize` (*analyse* / *analyze*,
-*recognise* / *recognize*), `-re/-er` (*centre* / *center*, *litre* / *liter*) ve elle sayılan
+*recognise* / *recognize*), `-re/-er` (*centre* / *center*, *metre* / *meter*) ve elle sayılan
 çiftler (*grey* / *gray*, *defence* / *defense*; liste `oyun-hesap.js` içinde
 `YAZIM_CIFTLERI`). Kural iki kısa anlamın aynı yazılmasına bağlı değildir; dizinde olmayan
 yazım (*surprize*) kabul edilmez.
@@ -501,14 +501,25 @@ Vadesi gelmemiş 1–4. kutu kelimeleri sorulmaz, yoksa erken terfi ederdi. Yan�
 o gün hiçbir turda yeniden gelmez. Sıra her kelimede depodaki güncel kayıtlardan yeniden
 kurulur: başka sekmede ya da cihazda az önce yanıtlanan kelime burada sorulmaz. Aynı kural
 Kelimeler sayfasında da geçerlidir: açık duran deste, oyunda ya da başka sekmede yanıtlanan
-kartı desteden düşürür.
+kartı desteden düşürür; deste kapalıyken deste özeti (kutular, "Bugünü çalış (N kart)") ve
+liste sayacının "öğrenilen … · bugün … tekrar + … yeni" kısmı yenilenir ("Bugünü çalış" da
+özeti, desteyi kurduğu güncel kayıtlarla çizer). Deste açıkken birikmiş tekrarlar günlere dağıtılırsa deste bugünün yeni vadesine
+göre yeniden kurulur; katman değişimi, sıfırlama ve geri alma desteyi kapatır (liste yeni
+havuzdan süzülür, "Bugünü çalış" ile deste yeniden açılır).
 
 **Eşitleme açıksa** kelime hemen gösterilir ve yazılabilir, ama açılıştaki bulut birleşimi
 bitene kadar cevap işlenmez: "Kontrol et" ve "Bilemedim, göster" o sırada "Eşitleniyor;
 bitince …" yazar ve birleşim bitince (bağlantı yavaşsa sayfa açılışından en çok 8 saniye
 sonra; bağlantı yoksa hemen) kendiliğinden sürer. Böylece başka cihazda ilerlemiş bir kelime burada eski kutusuyla
 yanıtlanıp buluttaki kaydın üzerine yazılmaz. Okuyup yazmak birleşimden uzun sürdüğü için
-bu bekleme çoğu zaman hiç görülmez.
+bu bekleme çoğu zaman hiç görülmez. Birleşim başka cihazdan kayıt getirirse sayfa yeniden
+yüklenir (site geneli davranış); bekletilen cevap o ana kadar işlenmediyse düşer ve yeni
+açılışta "Eşitleme sırasında sayfa yenilendi; az önce verdiğin cevap işlenmedi" notu çıkar.
+Birleşim tam bekleyen kelimenin kaydını değiştirdiyse (kelime başka cihazda yanıtlanmış)
+cevap eski seviyeyle verilmiştir: bekleme bitince de işlenmez, sayfa bunu söyler.
+Sayfa, eşitleme motorunun durum adlarına bağlıdır (`kapali`, `yukleniyor`, `yuklendi`,
+`baglaniyor`, `hazir`, `hata`, `silindi`); sonuç bildiren dördü dışındaki her durum "sürüyor"
+sayılır ve `tools/test-uretim/oyun-esitleme-sozlesme-test.js` adların değişmediğini denetler.
 
 **Günlük yeni kelime sayacı ortaktır.** Hiç çalışılmamış bir kelimeyi oyunda yanıtlamak,
 sonucu ne olursa olsun, Kelimeler destesinin günlük yeni kelime sayacını (`yds-yeni-sayac`)
@@ -521,19 +532,25 @@ gösterilir. Gizlenenler:
 - başlığın kendisi (`problem → i. sorun, •••`; `absorb → f. emmek, soğurmak, •••e etmek`),
 - çok parçalı başlığın dört ve daha çok harfli parçası (`risk-free → s. •••siz, tehlikesiz`),
 - parantez içindeki kök ya da çekim (`tie → (be ••• to)`, `hostility → (çoğul: •••)`),
-- dil bilgisi notunun öznesi (`means → (••• fiilinin üçüncü tekil biçimi)`),
+- dil bilgisi notunun öznesi (`means → (••• fiilinin üçüncü tekil biçimi)`,
+  `came → (•••'un geçmiş biçimi)`),
 - başlığın öteki yazımı (`organise → ••• etmek`).
 
 Türkçe karşılıklar (*stres*, *proje*, *sistem*) ipucunun kendisidir, açık kalır. Sözlük
 paneli bu sayfada yüklenmez.
 
 **Yerleşim ve erişilebilirlik.** Katman seçici oyunun altındadır ki kelime ve kutuları ilk
-ekranda görünsün; sıra satırındaki "Katmanları değiştir" bağlantısı oraya iner. Harfler,
+ekranda görünsün; sıra satırındaki "Katmanları değiştir" bağlantısı oraya iner. Telefonda
+(480 px ve altı) sayfanın üst boşluğu daralır, ara başlık görünmez, üç tur düğmesi tek satıra
+dizilir ve kart sıkışır: anlam ve harf kutuları 375×667 ekranda kaydırmadan görünür; sayfanın
+kendi yazı tipiyle 360×640 ekranda da (Çekirdek katmanın 823 kelimesinin hepsinde ölçüldü,
+en uzun kartta pay 6 px; daha geniş bir yazı tipinde en uzun kartlar taşabilir). Harfler,
 kutu satırını örten tek bir görünmez girdiye yazılır; odak hiçbir öğede değilken yazılan harf
 de oraya gider (sayfa açılınca kutulara tıklamadan yazmaya başlanır, biten kelimede Enter
 sonrakine geçer). Girdinin açıklaması maskeli anlamı ve
 harf düzenini kapsar; yeni kelimeye geçildiğinde aynı bilgi görünmeyen bir duyuru
-bölgesinden okunur (cevap hiçbir zaman bu metinlerde geçmez).
+bölgesinden okunur, tur ya da katman değişince sıra bilgisi de (cevap hiçbir zaman bu
+metinlerde geçmez; *enter* ve *re-enter* kartlarında tuşun adı bile "onay tuşu" diye yazılır).
 
 Bir katman dosyası yüklenemezse (çevrimdışı) oyun dizindeki kısa anlamla sürer ve "Yeniden
 dene" düğmesi çıkar. Kelime o sırada başka bir sekmede ya da cihazda yanıtlandıysa sonuç

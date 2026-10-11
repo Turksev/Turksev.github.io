@@ -155,13 +155,26 @@ input.harf-girdi {
 }
 
 @media (max-width: 480px) {
-  /* Telefonda kelime ve kutuları ilk ekrana sığsın: giriş cümlesinin açıklaması
-     ("Nasıl oynanır?" bölümünde de var) gizlenir, bölüm arası daralır. */
+  /* Telefonda anlam ve harf kutuları ilk ekrana sığsın (375×667'de her yazı tipiyle,
+     360×640'ta sayfanın kendi yazı tipiyle; tekrar bekleyen profilde de): sayfanın üst
+     boşluğu daralır, giriş cümlesinin açıklaması ("Nasıl oynanır?" bölümünde de var) ve
+     ara başlık gizlenir, üç tur düğmesi tek satıra dizilir, kart sıkışır. */
+  main.section { padding-top: 14px; }
+  .oyun-anlam { line-height: 1.5; }
   .oyun-giris-ek { display: none; }
-  .oyun { margin-top: 14px; }
-  .oyun-mod { gap: 6px; }
-  .oyun-mod .btn { padding: 6px 10px; }
-  .oyun-kart { padding: 22px 12px 18px; }
+  /* Ara başlık görünmez ama bölümün adı olarak kalır (aria-labelledby). */
+  #oyunBaslik {
+    position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
+  .oyun { margin-top: 10px; }
+  .oyun-mod { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+  .oyun-mod .btn { padding: 6px 4px; font-size: .8rem; line-height: 1.25; white-space: normal; overflow-wrap: anywhere; }
+  /* Bağlantı kendi satırına inmez, sıra bilgisinin ardından akar. */
+  .oyun-bilgi { display: block; margin-bottom: 10px; }
+  .oyun-kart { padding: 14px 12px 18px; }
+  .oyun-kart .q-head { margin-bottom: 8px; }
+  .oyun-etiket { margin: 10px 0 6px; }
   .oyun-durum { min-height: 3.3em; }
   .harfler { --bosluk: 4px; }
   .harf { font-size: 1.1rem; }

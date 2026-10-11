@@ -3,8 +3,9 @@
 // kullanır; gerçek kullanıcı verisine, buluta veya yayındaki siteye dokunmaz. Depoyu olduğu
 // gibi sunar: sayfa düz assets/… yollarıyla da, /releases/<sürüm>/… yollarıyla da çalışır.
 // Beklenen kelimeler sabit yazılmaz; sayfanın kendi verisinden (YDS.Veri, YDS.OyunHesap,
-// YDS.Ilerleme) türetilir. Son senaryo Kelimeler sayfasını (kelimeler.html) da açar: oyunda
+// YDS.Ilerleme) türetilir. Deste senaryoları Kelimeler sayfasını (kelimeler.html) da açar: oyunda
 // yanıtlanan kartın oradaki desteden düşmesi bu oyunla ulaşılabilir olduğu için burada sınanır.
+// Bir senaryo gerçek eşitleme motorunu bellek içi sahte Firebase SDK'sıyla (tools/sahte-firebase.js) koşar.
 // Çalıştırma: node tools/oyunlar-browser-qa.js
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
@@ -35,6 +36,24 @@ const BILDINIZ_1 = 'Bildiniz! Kelime 1. kutuya çıktı; bir dahaki sefere harfl
 const yanlisHarfler = s => s.replace(/./g, c => (c === 'q' ? 'x' : 'q'));
 // Boşluk ayracı kutuda bölünmez boşlukla durur (kaynakta görünmez karakter olmasın diye kodla).
 const BOSLUK = String.fromCharCode(160);
+// Açılıştaki bulut birleşimi sürerken bekletilen cevabın iletileri; bekleme bitmeden sayfa yeniden açılırsa
+// yeni açılışta gösterilen not.
+const BEKLE_KONTROL = 'Eşitleniyor; bitince kontrol edilecek.', BEKLE_PAS = 'Eşitleniyor; bitince cevap gösterilecek.';
+const YARIM_BEKLEME_NOTU = 'Eşitleme sırasında sayfa yenilendi; az önce verdiğin cevap işlenmedi.';
+// Birleşim tam bekleyen kelimenin kaydını değiştirdiyse bekleme bittiğinde gösterilen ileti (cevap işlenmez).
+const KAYIT_DEGISTI_NOTU = 'Eşitleme bu kelimenin kaydını değiştirdi; cevabın işlenmedi.';
+// Bellek içi sahte Firebase SDK'sı (tools/sahte-firebase.js): gerçek eşitleme motoru onunla, yalıtılmış bağlamda koşar.
+const SAHTE_FIREBASE = require('./sahte-firebase');
+const BULUT_LEITNER_BELGESI = 'kullanicilar/qa-u1/alanlar/yds-leitner';
+// Kelimeler sayfasında deste bitince liste sayacının (#sayac, role=status) okuduğu ileti.
+const DESTE_BITTI = 'Bugünün destesi bitti. Yarın yeni tekrarlar açılacak.';
+// Kelimenin rozeti: hiç çalışılmamış (0. kutu) ve 3. kutu. duzen: __oyun.duzen çıktısı; açık harf çıkmayan kısa
+// kelimede rozet yüzde yerine "kısa kelime: harf yok" der.
+const ROZET = {0: 'Seviye 1 · harflerin %50\'si açık', 3: 'Seviye 4 · harflerin %20\'si açık'};
+const rozet = (kutu, duzen) => (duzen.acik.length ? ROZET[kutu] : 'Seviye ' + (kutu + 1) + ' · kısa kelime: harf yok');
+// Duyuru bölgesi 80 ms gecikmeyle yazılır (oyunlar.js duyur()); "cevaptan sonra yazılmadı" demeden önce sayfanın
+// saati bu kadar ilerletilir: daha geç (ör. 300 ms sonra) yazan bir kod da görülsün.
+const DUYURU_SONRASI_MS = 1000;
 
 /* Sayfa içi yardımcılar (her belgeye eklenir; YDS'e çağrı anında bakar). */
 function sayfaIci() {
@@ -173,7 +192,178 @@ function sayfaIci() {
       K.yaz();
       K.oku().records.filter(r => r.p === 'oyunlar').forEach(r => Object.keys(r.f).forEach(k => { toplam[k] = (toplam[k] || 0) + r.f[k]; }));
       return toplam;
-    }
+    },
+    // Durum satırının sınıfı (ileti türü: boş, ok, uyari, err).
+    durumSatiriSinifi: () => document.getElementById('oyunDurum').className,
+    // Kelimenin depodaki (bellekteki kopya değil) Leitner kaydı.
+    leitnerDepoKaydi: w => {
+      const r = (Y().Depo.oku('yds-leitner', {}) || {})[Il().ilerlemeKimligi(w, 'kelime')];
+      return r ? {k: r.k, g: r.g, c: r.c} : null;
+    },
+    // Sahte buluttaki Leitner belgesinden kelimenin kaydı: {v: değer, m: sürüm damgası "zaman:cihaz"}.
+    bulutLeitnerKaydi: (yol, w) => {
+      const belge = window.__qaBulut && window.__qaBulut.belge(yol);
+      if (!belge) return null;
+      const r = Y().EsitlemeMotoru.bulutAlaniniCoz('yds-leitner', JSON.parse(belge.json)).i[Il().ilerlemeKimligi(w, 'kelime')];
+      return r ? {v: r.v || null, m: r.m} : null;
+    },
+    // Kelimeler sayfasının (kelimeler.html) görünen durumu; yalnız DOM'dan okunur. suzgec: arama, tür
+    // ve durum alanları ekranda mı (deste açıkken gizlenir; olağan kart ve liste modunda görünür).
+    desteGor: () => {
+      const g = id => document.getElementById(id), gorunur = id => !!g(id) && g(id).getClientRects().length > 0;
+      return {
+        on: g('kartOn').textContent, kutu: g('kartKutu').textContent, sayac: g('kartSayac').textContent,
+        alan: !g('kartAlan').hidden, arka: !g('kartArka').hidden, liste: !g('liste').hidden, mod: g('mod').textContent,
+        durum: g('sayac').textContent, dugme: g('desteBasla').textContent, bilgi: g('desteBilgi').textContent,
+        kutular: [...document.querySelectorAll('#kutular .kutu b')].map(b => Number(b.textContent)),
+        not: g('bekleyenNot').hidden ? null : g('bekleyenNot').textContent, dagit: gorunur('yigiiniDagit'),
+        suzgec: ['ara', 'tip', 'durum'].map(gorunur), geriAl: gorunur('geriAl')
+      };
+    },
+    // Kelimeler'in havuzu: verilen katmanlardaki bütün kelimeler (oyun dışı olanlar da), dizin sırasıyla.
+    desteHavuz: katmanlar => Y().Veri.dizin.filter(d => katmanlar.includes(d.k)).map(d => d.e),
+    // Depodaki güncel kayıtlar, verilen kelimelerin sırasıyla ({k, g, c} ya da null). Bu sekmenin
+    // bellekteki ilerleme kopyasına dokunmaz: olayı ulaşmamış başka sayfa yazımını da gösterir.
+    desteDepo: kelimeler => {
+      const L = Y().Depo.oku('yds-leitner', {});
+      return kelimeler.map(w => { const r = L[Il().ilerlemeKimligi(w, 'kelime')]; return r ? {k: r.k, g: r.g, c: r.c} : null; });
+    },
+    // Depoya göre bugün tekrar vadesi gelmiş (1-4. kutu, günü gelmiş) kelimeler, dizin sırasıyla.
+    desteVadeliler: katmanlar => {
+      const b = Il().bugun(), ws = T.desteHavuz(katmanlar), kayit = T.desteDepo(ws);
+      return ws.filter((w, i) => !!kayit[i] && kayit[i].k < 5 && kayit[i].g <= b);
+    },
+    // "Birikmiş tekrarları günlere dağıt" (Il.birikmisiYay) vadesi geçmiş kayıtları en eski vade önce,
+    // eşitlikte deponun kayıt sırasıyla dizer ve ilk "tavan" kadarını bugünde bırakır. Verilen kelimelerden
+    // bugünde KALMAYACAK olanları döndürür. Yalnız düzenek seçimi içindir: sonuç dağıtımdan sonra depodan doğrulanır.
+    desteTasinacak: (kelimeler, tavan) => {
+      const L = Y().Depo.oku('yds-leitner', {}), b = Il().bugun();
+      const sirali = Object.keys(L).filter(id => L[id].k < 5 && L[id].g <= b).sort((x, y) => L[x].g - L[y].g);
+      const kalacak = new Set(sirali.slice(0, tavan));
+      return kelimeler.filter(w => !kalacak.has(Il().ilerlemeKimligi(w, 'kelime')));
+    },
+    // Deste özetinin beklenen hâli, bu sayfanın bellekteki ilerlemesinden (ilerlemeyi yazan sayfada
+    // çağrılır: onun kopyası günceldir). Kelimeler sayfasının çizdiği üç yer: bilgi satırı, kutular, düğme.
+    // Destede en az bir kart varken geçerlidir (boş destede düğmenin metni başkadır).
+    desteOzet: katmanlar => {
+      const ws = T.desteHavuz(katmanlar), o = Il().leitnerOzet(ws.map(w => ({en: w})), 'kelime');
+      return {bilgi: o.calisilan + '/' + ws.length + ' kelimeye başlandı · ' + o.ogrenilen + ' öğrenildi',
+        kutular: [o.k0, o.k1, o.k2, o.k3, o.k4, o.k5], dugme: 'Bugünü çalış (' + o.bugun + ' kart)',
+        // Liste sayacının (#sayac) ilerlemeden gelen sonu.
+        sayacSonu: ' · öğrenilen ' + o.ogrenilen + ' · bugün ' + o.gosterilecekTekrar + ' tekrar + ' + o.acilacakYeni + ' yeni'};
+    },
+    // Girdinin açıklaması (aria-describedby'ın gösterdiği öğeler) cevabı içeriyor mu? Her metin düğümüne
+    // duyuruSizinti ile aynı kural uygulanır: bütün sözcük ya da sayfanın kendi maskesinin gizleyeceği yer.
+    aciklamaSizinti: w => {
+      const kimlikler = (document.getElementById('oyunGirdi').getAttribute('aria-describedby') || '').split(/\s+/).filter(Boolean), bulunan = [];
+      const tam = new RegExp('(^|[^a-z])' + w.toLowerCase().replace(/[- ]/g, '[- ]?') + '($|[^a-z])');
+      if (!kimlikler.length) bulunan.push('aria-describedby boş');
+      kimlikler.forEach(kimlik => {
+        const el = document.getElementById(kimlik);
+        if (!el) { bulunan.push('açıklama öğesi yok: ' + kimlik); return; }
+        const yuru = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+        for (let d; (d = yuru.nextNode());) {
+          if (tam.test(d.data.toLowerCase())) bulunan.push(kimlik + ' sözcük: ' + d.data);
+          if (O().maskele(d.data, w) !== d.data) bulunan.push(kimlik + ' maske: ' + O().maskele(d.data, w));
+        }
+      });
+      return bulunan;
+    },
+    // Kelimenin kaydını depoya doğrudan yazar: başka sekmenin ya da cihazın yazımı gibi (sayfanın cevap
+    // yolundan geçmez). Kutu verilen, vadesi bugün; bu belgenin bellekteki kopyası da yenilenir.
+    kayitKoy: (w, kutu) => {
+      const kayit = {};
+      kayit[Il().ilerlemeKimligi(w, 'kelime')] = {k: kutu, g: Il().bugun(), c: Il().bugun() - 7, m: 0};
+      const yazildi = Y().Depo.kayitlariYaz('yds-leitner', kayit);
+      Il().tazele();
+      return yazildi;
+    },
+    // Kelimenin verilen kutuda bugün açık gelen harf konumları, boşluk sayısı ve bir üst kutuda açık harf sayısı.
+    duzen: (w, kutu) => {
+      const n = O().harfSayisi(w), acik = O().acikKonumlar(w, kutu, Il().bugun());
+      return {acik, bos: n - acik.length, sonrakiAcik: O().acikSayisi(n, kutu + 1)};
+    },
+    // Kartın öznitelik değerlerinde cevap tam sözcük olarak geçiyor mu? sizinti, oyunlar.html'de baştan duran
+    // öznitelikleri saymaz (başka kartlarda rastlantıyla tutarlar: class="q-head", enterkeyhint="done"); başlığı
+    // arayüz metninde geçebilen kartta (enter) onlar da aranır: sabit bir placeholder ya da title cevabı söylerdi.
+    oznitelikSizinti: w => {
+      const tam = new RegExp('(^|[^a-z])' + w.toLowerCase().replace(/[- ]/g, '[- ]?') + '($|[^a-z])');
+      return [...document.querySelectorAll('#oyunKart, #oyunKart *')].flatMap(el => [...el.attributes]
+        .filter(a => tam.test(a.value.toLowerCase())).map(a => (el.id || el.tagName.toLowerCase()) + ' ' + a.name + '=' + a.value));
+    },
+    // Öğe ekranın (görünüm alanının) tamamen dışında mı; sayfanın kaydırma konumu.
+    ekranDisi: kimlik => {
+      const r = document.getElementById(kimlik).getBoundingClientRect();
+      return {disarida: r.height > 0 && (r.top >= innerHeight || r.bottom <= 0), ust: Math.round(r.top), alt: Math.round(r.bottom), boy: innerHeight, kaydirma: scrollY};
+    },
+    // Bekleme yardımcılarının zaman aşımı iletisi için ekranın kısa özeti (bekleyerek). b beklenendir:
+    // {w, taze} | {durum} | {duyuru} | {w, kutu}. Boş kutu "_" ile gösterilir. Oyun kartı olmayan sayfada
+    // (kelimeler.html) yalnız adres ve sorulan kelimenin kutusu döner.
+    beklemeOzeti: b => {
+      const g = id => document.getElementById(id), yazi = id => JSON.stringify(g(id) ? g(id).textContent : null);
+      const ayrac = c => c === '-' || c === ' ', out = [];
+      if (b && b.w && 'kutu' in b) out.push(JSON.stringify(b.w) + ' şimdi ' + Il().kutu(b.w, 'kelime') + '. kutuda');
+      if (!g('oyunKart')) return out.concat('sayfa ' + location.pathname + ' (oyun kartı yok)').join(' | ');
+      if (b && b.w && b.taze) {
+        const kutu = Il().kutu(b.w, 'kelime'), acik = O().acikKonumlar(b.w, kutu, Il().bugun());
+        out.push('beklenen kutular ' + JSON.stringify([...b.w].map((c, i) => (ayrac(c) || acik.includes(i) ? c : '_')).join('')) + ' (' + kutu + '. kutu)');
+      }
+      out.push(g('oyunKart').hidden
+        ? 'kart gizli' + (g('oyunBos').hidden ? '' : ', boş durum ' + yazi('oyunBos'))
+        : 'kutular ' + JSON.stringify(T.hucreler().map(el => (el.classList.contains('ayrac') ? el.textContent.replace(String.fromCharCode(160), ' ') : el.textContent || '_')).join('')) +
+          ' (' + g('oyunSeviye').textContent + ' / ' + g('oyunKutu').textContent + ')');
+      out.push('#oyunDurum ' + yazi('oyunDurum'), '#oyunDuyuru ' + yazi('oyunDuyuru'), 'sıra ' + yazi('oyunSira'));
+      return out.join(' | ');
+    },
+    // Yerleşim ölçüleri (senaryo 16). Sorular yazı tipinden bağımsızdır: tur düğmeleri aynı satırda mı ve yazıları
+    // sığıyor mu, ara başlık yer tutuyor mu, giriş cümlesinin eki çiziliyor mu, sıra satırındaki bağlantı sıra
+    // bilgisinin son satırına sığdığı hâlde alta inmiş mi; oyundaki düğmelerin boyu, kelime kartının ve sıradan bir
+    // kartın (katman seçici) üst dolgusu.
+    yerlesimOlcusu: () => {
+      const q = s => document.querySelector(s), duz = s => s.replace(/\s+/g, ' ').trim();
+      const kutu = el => { const r = el.getBoundingClientRect(); return {ust: Math.round(r.top), alt: Math.round(r.bottom), sol: Math.round(r.left), sag: Math.round(r.right)}; };
+      const bolum = q('section.oyun'), baslik = q('#oyunBaslik'), mod = q('.oyun-mod'), ek = q('.oyun-giris-ek'), giris = ek.closest('p');
+      const bilgi = q('.oyun-bilgi'), bag = bilgi.querySelector('a'), stil = getComputedStyle(bilgi), b = baslik.getBoundingClientRect();
+      // Sıra bilgisinin satırları: metin aralığının kutuları (öge blok kutusu olsa da satır başına bir kutu verir).
+      const aralik = document.createRange();
+      aralik.selectNodeContents(q('#oyunSira'));
+      const satirlar = [...aralik.getClientRects()].filter(r => r.width > 0), son = satirlar[satirlar.length - 1];
+      // Bağlantının da kutusu değil yazısı ölçülür: bağlantı blok ya da ızgara ögesi yapılırsa kutusu paragraf kadar
+      // genişler, "son satıra sığar mı" sorusu hep "hayır" çıkar ve kural hiçbir şey söylemezdi.
+      const bagAralik = document.createRange();
+      bagAralik.selectNodeContents(bag);
+      const bagKutulari = [...bagAralik.getClientRects()].filter(r => r.width > 0), ilk = bagKutulari[0];
+      const sagKenar = bilgi.getBoundingClientRect().right - parseFloat(stil.paddingRight) - parseFloat(stil.borderRightWidth);
+      return {
+        // en: yerleşim genişliği. Telefon benzetiminde yatay taşan içerik sayfayı küçültür ve innerWidth'i büyütür;
+        // clientWidth değişmez. tasma: içeriğin o genişliği aşan kısmı.
+        en: document.documentElement.clientWidth, tasma: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+        // tasan: düğmenin yazısı (metin aralığının kutusu) düğmenin kutusundan dışarı çıkıyor.
+        dugmeler: [...mod.querySelectorAll('[data-mod]')].map(d => {
+          const r = d.getBoundingClientRect(), a = document.createRange();
+          a.selectNodeContents(d);
+          const m = a.getBoundingClientRect();
+          return Object.assign(kutu(d), {tasan: m.left < r.left - 0.5 || m.right > r.right + 0.5 || m.top < r.top - 0.5 || m.bottom > r.bottom + 0.5});
+        }),
+        // modaKadar: bölümün başı ile tur düğmeleri arasındaki yer; başlık yer tutmuyorsa sıfırdır.
+        baslik: {en: Math.round(b.width), boy: Math.round(b.height), yazi: parseFloat(getComputedStyle(baslik).fontSize), metin: duz(baslik.textContent),
+          bolumAdi: bolum.getAttribute('aria-labelledby'), modaKadar: Math.round(mod.getBoundingClientRect().top - bolum.getBoundingClientRect().top)},
+        // gorunen: çizilen metin (innerText display:none olanı saymaz); tam: kaynaktaki bütün cümle.
+        giris: {ekCizildi: ek.getClientRects().length > 0, gorunen: duz(giris.innerText), tam: duz(giris.textContent), ek: duz(ek.textContent)},
+        // sigar: bağlantı, sıra bilgisinin son satırının ardına bir harf boyu (1em) arayla bile sığıyor.
+        // Sıra bilgisi ya da bağlantı çizilmiyorsa (yazısının kutusu yoksa) null.
+        baglanti: ilk && son ? {satir: new Set(satirlar.map(r => Math.round(r.top))).size,
+          ayniSatir: Math.abs((ilk.top + ilk.bottom) - (son.top + son.bottom)) / 2 < son.height / 2,
+          sigar: son.right + parseFloat(stil.fontSize) + bagKutulari.reduce((t, r) => t + r.width, 0) <= sagKenar,
+          sonSatirSag: Math.round(son.right), bagUst: Math.round(ilk.top), sonSatirUst: Math.round(son.top), sagKenar: Math.round(sagKenar)} : null,
+        // Görünen düğmeler: cevaptan önce tur, kart ve katman düğmeleri; cevaptan sonra Dinle, katman inmeyince
+        // "Yeniden dene" de listeye girer.
+        dugmeBoylari: [...document.querySelectorAll('main button')].filter(d => d.getClientRects().length)
+          .map(d => [d.id || duz(d.textContent).slice(0, 24), Math.round(d.getBoundingClientRect().height * 10) / 10]),
+        kartDolgusu: parseFloat(getComputedStyle(q('#oyunKart')).paddingTop),
+        siradanKartDolgusu: parseFloat(getComputedStyle(q('#katmanKart')).paddingTop)
+      };
+    },
   };
 }
 
@@ -183,13 +373,18 @@ const hazir = page => page.waitForFunction(() => {
   return !!k && !!b && !!window.__oyun && (!k.hidden || !b.hidden) && !/yükleniyor/i.test(s.textContent);
 });
 const ac = async (page, base) => { await page.goto(base + '/oyunlar.html'); await hazir(page); };
-const kelimeBekle = (page, w, taze = true) => page.waitForFunction(([w, taze]) => window.__oyun.uyuyor(w, taze), [w, taze]);
-const durumBekle = (page, metin) => page.waitForFunction(m => document.getElementById('oyunDurum').textContent === m, metin);
+// Dört bekleme yardımcısı zaman aşımında neyi beklediğini ve ekranda ne olduğunu söyler (bekleyerek, aşağıda).
+const kelimeBekle = (page, w, taze = true) => bekleyerek(page, 'kelimeBekle', 'kelime ' + JSON.stringify(w) + (taze ? ' (dokunulmamış tur)' : ' (yarım ya da bitmiş tur da olur)'), {w, taze},
+  page.waitForFunction(([w, taze]) => window.__oyun.uyuyor(w, taze), [w, taze]));
+const durumBekle = (page, metin) => bekleyerek(page, 'durumBekle', '#oyunDurum ' + JSON.stringify(metin), {durum: metin},
+  page.waitForFunction(m => document.getElementById('oyunDurum').textContent === m, metin));
 // Duyuru bölgesi değişiklikten 80 ms sonra yazılır; beklenen metne ulaşması beklenir.
-const duyuruBekle = (page, metin) => page.waitForFunction(m => document.getElementById('oyunDuyuru').textContent === m, metin);
+const duyuruBekle = (page, metin) => bekleyerek(page, 'duyuruBekle', '#oyunDuyuru ' + JSON.stringify(metin), {duyuru: metin},
+  page.waitForFunction(m => document.getElementById('oyunDuyuru').textContent === m, metin));
 // "N. harf açıldı" iletisindeki sıra: ayraçlar sayılmaz.
 const harfSirasi = (w, konum) => w.slice(0, konum + 1).replace(/[^a-z]/gi, '').length;
-const kutuBekle = (page, w, k) => page.waitForFunction(([w, k]) => window.YDS.Ilerleme.kutu(w, 'kelime') === k, [w, k]);
+const kutuBekle = (page, w, k) => bekleyerek(page, 'kutuBekle', JSON.stringify(w) + ' kelimesinin ' + k + '. kutuya gelmesi', {w, kutu: k},
+  page.waitForFunction(([w, k]) => window.YDS.Ilerleme.kutu(w, 'kelime') === k, [w, k]));
 // Animasyon (kutu zıplaması, sallanma) bitmeden ölçüm alınmaz.
 const durgun = page => page.waitForFunction(() => document.getAnimations().every(a => a.playState !== 'running' || a.effect.getComputedTiming().iterations === Infinity));
 // Düzenek: sıranın başındaki, 0. kutuda istenenden az boşluk bırakan kelimeleri yarına erteler (oturum sayımına
@@ -211,6 +406,144 @@ async function coz(page, w) {
   await page.locator('#oyunGirdi').focus();
   await page.keyboard.type(await T(page, 'eksik', w));
   await page.keyboard.press('Enter');
+}
+// Sayfanın yüklediği oyunlar.js içindeki sayısal bir sabit (ör. ESITLEME_BEKLEME_MS); bulunamazsa null.
+const betikSabiti = (page, ad) => page.evaluate(async ad => {
+  const betik = document.querySelector('script[src*="assets/js/oyunlar.js"]');
+  const m = (await (await fetch(betik.src)).text()).match(new RegExp('\\b' + ad + '\\s*=\\s*(\\d+)'));
+  return m ? Number(m[1]) : null;
+}, ad);
+// Durum satırı: [ileti, sınıf]. Beklenen hâller: boş satır ve yarım bekleme notu.
+const durumVeSinif = async page => [(await T(page, 'gorunum')).durum, await T(page, 'durumSatiriSinifi')];
+const DURUM_BOS = ['', 'oyun-durum'], DURUM_NOTLU = [YARIM_BEKLEME_NOTU, 'oyun-durum uyari'];
+// Enter'dan sonra saat ilerletilmeden görünen ileti (durum satırı boşken çağrılır): beklenen metni
+// beklemek yerine ilk ileti okunur ki yanlış ileti zaman aşımıyla değil, kendi metniyle bildirilsin.
+const ilkIleti = async page => {
+  await page.waitForFunction(() => document.getElementById('oyunDurum').textContent !== '');
+  return (await T(page, 'gorunum')).durum;
+};
+// Sayfa dışında beklenen bir olay (ör. ağ isteği) hiç gelmezse senaryo asılı kalmasın: süre dolunca iletiyle reddeder.
+const sureli = (soz, ms, ileti) => {
+  let zamanlayici;
+  return Promise.race([soz, new Promise((coz, reddet) => { zamanlayici = setTimeout(() => reddet(new Error(ileti)), ms); })])
+    .finally(() => clearTimeout(zamanlayici));
+};
+// Kelimeler sayfası (kelimeler.html): deste özeti çizilene kadar beklenir. Sayfa T(page, 'desteGor') ile
+// yalnız DOM'dan okunur; düğme tıklamaları eşzamanlı işlendiği için tıklamadan sonra beklemeden bakılır.
+const kelimelerHazir = page => page.waitForFunction(() => !!window.__oyun && !!window.YDS && !!window.YDS.Ilerleme &&
+  /^Bugünü çalış \(\d+ kart\)$/.test(document.getElementById('desteBasla').textContent));
+const kelimelerAc = async (page, base) => { await page.goto(base + '/kelimeler.html'); await kelimelerHazir(page); };
+// Deste karışık sıradadır: kelimeler ekrandan okunur. adet kez "Sonraki" tam bir tur atar. Kart alanı
+// kapanmışsa (deste bitmiş ya da hiç açılmamışsa) tıklama beklenmez, ne görüldüğü söylenir.
+async function desteKart(page, neIcin) {
+  const g = await T(page, 'desteGor');
+  assert.ok(g.alan, neIcin + ': kart alanı açık olmalı (liste sayacı: "' + g.durum + '")');
+  return g;
+}
+async function desteDolas(page, adet) {
+  const out = [];
+  for (let i = 0; i < adet; i++) { out.push((await desteKart(page, 'Deste dolaşılırken, ' + (i + 1) + '. kartta')).on); await page.locator('#sonraki').click(); }
+  return out;
+}
+// İstenen kelime ekrana gelene kadar "Sonraki"ye basılır (en çok bir tur).
+async function desteKartaGit(page, w) {
+  const tur = Number((await desteKart(page, '"' + w + '" kartı aranırken')).sayac.split(' / ')[1]);
+  for (let i = 0; i < tur && (await desteKart(page, '"' + w + '" kartı aranırken')).on !== w; i++) await page.locator('#sonraki').click();
+  assert.equal((await T(page, 'desteGor')).on, w, 'Düzenek: "' + w + '" kartı destede, ekrana getirildi');
+}
+// Öbür sayfanın (yazan) kayıtları bu sayfanın (okuyan) deposunda görünene kadar beklenir. Olay beklenmez,
+// depo okunur: depolama olayı bastırılmış sayfada da çalışır. Yazılan kayıtları döndürür.
+async function desteDepoBekle(yazan, okuyan, kelimeler) {
+  const kayitlar = await T(yazan, 'desteDepo', kelimeler);
+  await okuyan.waitForFunction(([ws, beklenen]) => JSON.stringify(window.__oyun.desteDepo(ws)) === beklenen, [kelimeler, JSON.stringify(kayitlar)]);
+  return kayitlar;
+}
+const desteSirali = dizi => dizi.slice().sort();
+// Bir beklemenin süresi dolarsa "Timeout … exceeded" yerine neyin beklendiğini söyleyen hatayla düşer.
+const desteBeklenen = (bekleme, ileti) => bekleme.catch(h => assert.fail(ileti + ' (' + String(h && h.message).split('\n')[0] + ')'));
+// "Duyuru bölgesine bir şey yazılmadı" demeden önce: duyuru gecikmeli yazılır (duyur(), 80 ms), o yüzden sayfanın
+// saati ilerletilir ve o süre içinde vadesi gelen bütün zamanlayıcılar çalıştırılır (gerçek bekleme yok, makinenin
+// hızına bağlı değil). Sayfa saati kurulmuş olmalıdır: senaryo sayfayı açmadan önce page.clock.install ya da
+// setFixedTime çağırır; sonradan kurulan saat, daha önce kurulmuş zamanlayıcıları yönetmez.
+const duyuruDurulsun = page => page.clock.runFor(DUYURU_SONRASI_MS);
+// Durum satırına (öncekinden farklı) bir ileti yazılmasını bekler ve metni döndürür. Beklenen iletiyle
+// assert.equal ile karşılaştırılır: yanlış ileti zaman aşımı yerine iki metni gösteren bir hata verir.
+const durumOku = async (page, onceki = '') => {
+  await page.waitForFunction(o => { const m = document.getElementById('oyunDurum').textContent; return m !== '' && m !== o; }, onceki);
+  return page.evaluate(() => document.getElementById('oyunDurum').textContent);
+};
+// Duyuru bölgesine yazılan metni bekler ve döndürür. Bölge her değişiklikte önce boşaltıldığı için değişiklikten
+// sonra çağrılınca yeni duyuruyu verir; beklenen metinle assert.equal ile karşılaştırılır.
+const duyuruOku = async page => {
+  await page.waitForFunction(() => document.getElementById('oyunDuyuru').textContent !== '');
+  return page.evaluate(() => document.getElementById('oyunDuyuru').textContent);
+};
+// Bekleyen ilerleme yazımı varsa yapılmış olsun: sayfa yazımı bir kare + bir zamanlayıcı sonraya bırakır
+// (yazmayiPlanla); aynı sırayla kurulan bu bekleme ondan sonra biter.
+const yazimDurulsun = page => page.evaluate(() => new Promise(bitti => requestAnimationFrame(() => setTimeout(bitti, 0))));
+// Girdinin açıklamasının (#oyunTarif) cevaptan önce beklenen metni; modülden değil, ekrandaki kutulardan kurulur:
+// yazılacak kutu "boş", açık ya da kilitli harf kendisi, ayraç adıyla okunur. sizinti ve duyuruSizinti cevabı
+// bitişik sözcük olarak arar; harf harf ("r, e, q, …") sayılan cevabı yalnız bu karşılaştırma görür.
+// g: gorunum çıktısı; tus: yönergedeki tuşun adı.
+const beklenenAciklama = (g, tus = 'Enter') => {
+  const harfler = g.hucreler.filter(h => h.s !== 'ayrac'), bos = harfler.filter(h => h.s.startsWith('bos')).length;
+  return harfler.length + ' harfli İngilizce kelime: ' +
+    g.hucreler.map(h => (h.s === 'ayrac' ? (h.c === '-' ? 'tire' : 'sözcük arası') : (h.s.startsWith('bos') ? 'boş' : h.c))).join(', ') + '. ' +
+    (bos === 1 ? '1 eksik harfi yaz' : bos + ' eksik harfi sırayla yaz') + ', ' + tus + ' ile kontrol et.';
+};
+// kelimeBekle, durumBekle, duyuruBekle ve kutuBekle bununla sarılır: bekleme başarısız olursa çıplak
+// "page.waitForFunction: Timeout 15000ms exceeded." yerine neyin beklendiğini ve o an ekranda ne olduğunu
+// (durum satırı, duyuru, kutu düzeni) söyleyen bir hata atılır. Başarıda hiçbir şey değişmez: dönen değer
+// waitForFunction'ın kendi sonucudur, sayfaya ek soru gitmez. Asıl hata `cause` olarak, çağrı yeri yığında kalır.
+function bekleyerek(page, ad, ne, beklenen, soz) {
+  return soz.catch(async asil => {
+    let ekran, sure;
+    try {
+      // Sayfa kilitlendiyse özet de dönmez: iki saniyeden fazla beklenmez.
+      ekran = await Promise.race([
+        page.evaluate(b => (window.__oyun && window.__oyun.beklemeOzeti ? window.__oyun.beklemeOzeti(b) : 'sayfa ' + location.href + ' (sayfa içi yardımcılar yok)'), beklenen),
+        new Promise((_, ret) => { sure = setTimeout(() => ret(new Error('sayfa 2 sn içinde yanıt vermedi')), 2000); })
+      ]);
+    } catch (h) {
+      ekran = '(okunamadı: ' + String((h && h.message) || h).split('\n')[0] + ')';
+    } finally {
+      clearTimeout(sure);
+    }
+    const hata = new Error(ad + ': ' + ne + ' beklenirken ' + String((asil && asil.message) || asil).split('\n')[0] + '\n    ekranda: ' + ekran, {cause: asil});
+    if (asil && asil.name) hata.name = asil.name;
+    // Yığın: Playwright'ın çağrı anında aldığı çerçeveler (yardımcı, senaryo satırı) korunur.
+    hata.stack = hata.message + String((asil && asil.stack) || '').split('\n').filter(s => /^\s+at /.test(s)).map(s => '\n' + s).join('');
+    throw hata;
+  });
+}
+// Görünen alanı değiştirir ve sayfanın yeni genişlikte yerleştiğini bekler (ölçüm eski yerleşime denk gelmesin).
+// Yalnız innerWidth'e bakılmaz: telefon benzetiminde yatay taşan içerik onu büyütür (clientWidth değişmez).
+// Kaydırma çubuğu yer tutan (başlıklı) tarayıcıda ise clientWidth daha küçüktür, innerWidth tutar.
+async function boyutla(page, en, boy) {
+  await page.setViewportSize({width: en, height: boy});
+  await page.waitForFunction(en => document.documentElement.clientWidth === en || innerWidth === en, en);
+}
+// Sıra bilgisi satıra bölünmüş ve son satırında yer kalmışsa bağlantı o satırda durur; kendi satırına inmez.
+function bagKurali(o, etiket) {
+  assert.ok(o.baglanti, etiket + 'sıra bilgisi ve "Katmanları değiştir" bağlantısı çizilir');
+  assert.ok(o.baglanti.ayniSatir || !o.baglanti.sigar, etiket + '"Katmanları değiştir" sıra bilgisinin son satırına sığdığı hâlde kendi satırına inmiş: ' + JSON.stringify(o.baglanti));
+}
+// Senaryo 16: 480 px ve altındaki (telefon) yerleşimin yazı tipinden bağımsız kuralları. Ölçüleri döndürür.
+async function telefonYapisi(page, etiket) {
+  const o = await T(page, 'yerlesimOlcusu'), d = o.dugmeler, ustler = d.map(x => x.ust), kanit = parca => ': ' + JSON.stringify(parca);
+  assert.ok(o.tasma <= 1, etiket + 'yatay taşma yok' + kanit({en: o.en, tasma: o.tasma}));
+  assert.equal(d.length, 3, etiket + 'üç tur düğmesi var');
+  assert.ok(Math.max(...ustler) - Math.min(...ustler) <= 1, etiket + 'üç tur düğmesi tek satırda (üst kenarları aynı)' + kanit(d));
+  assert.ok(d[0].sol >= 0 && d[0].sag <= d[1].sol && d[1].sag <= d[2].sol && d[2].sag <= o.en, etiket + 'tur düğmeleri yan yana, üst üste binmeden, ekranın içinde' + kanit(d));
+  assert.deepEqual(d.map(x => x.tasan), [false, false, false], etiket + 'tur düğmelerinin yazısı düğmesine sığar' + kanit(d));
+  // Ara başlık görünmez ve yer tutmaz, ama silinmemiştir: bölümün adı odur, ekran okuyucu başlık olarak bulur.
+  assert.ok(o.baslik.en <= 1 && o.baslik.boy <= 1 && o.baslik.modaKadar <= 1, etiket + 'ara başlık yer tutmaz (tur düğmeleri bölümün başında)' + kanit(o.baslik));
+  assert.equal(await page.getByRole('heading', {name: o.baslik.metin, exact: true}).count(), 1, etiket + 'ara başlık ekran okuyucu için yerinde (görünmez, ama gizlenmemiş)' + kanit(o.baslik));
+  assert.equal(await page.getByRole('region', {name: o.baslik.metin, exact: true}).count(), 1, etiket + 'bölümün erişilebilir adı ara başlığın metni (aria-labelledby)' + kanit(o.baslik));
+  assert.equal(o.giris.ekCizildi, false, etiket + 'giriş cümlesinin eki (.oyun-giris-ek) çizilmez' + kanit(o.giris));
+  assert.ok(o.giris.gorunen && !o.giris.gorunen.includes(o.giris.ek), etiket + 'giriş cümlesinin ilk yarısı görünür, eki görünmez' + kanit(o.giris));
+  bagKurali(o, etiket);
+  return o;
 }
 
 async function axeVeYerlesim(page, etiket) {
@@ -267,7 +600,8 @@ async function dortluDenetim(page, etiket) {
 async function main() {
   await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
   const base = 'http://127.0.0.1:' + server.address().port;
-  const browser = await chromium.launch();
+  // Windows'ta boş bağlantı noktası Chromium'un yasak listesinden (6666, 6000, 10080…) gelebilir: izin ver.
+  const browser = await chromium.launch({args: ['--explicitly-allowed-ports=' + server.address().port]});
   const hatalar = [];          // pageerror ve yakalanmamış söz reddi: hiç olmamalı
   const basarisiz = [];
   let acikBaglamlar = [];
@@ -302,8 +636,6 @@ async function main() {
       const sayilar = Y.Veri.katmanSayilari();
       const kart = document.getElementById('oyunKart');
       const kimlikler = [...document.querySelectorAll('[id]')].map(e => e.id);
-      const oznitelikler = [];
-      document.querySelectorAll('main, main *').forEach(el => [...el.attributes].forEach(a => oznitelikler.push(a.value.toLowerCase())));
       return {
         w, oynanan: havuz.length, harf: O.harfSayisi(w),
         acikSayisi: O.acikSayisi(O.harfSayisi(w), 0), acik: O.acikKonumlar(w, 0, Il.bugun()),
@@ -313,8 +645,6 @@ async function main() {
         katmanlar: [...document.querySelectorAll('#katmanlar .katman')].map(x => [Number(x.dataset.k), x.querySelector('i').textContent, x.hasAttribute('title')]),
         beklenenKatmanlar: Y.Veri.KATMANLAR.filter(k => sayilar[k] > 0).map(k => [k, sayilar[k] + ' kelime', false]),
         secimToplami: sayilar[2],
-        kartHtml: kart.outerHTML.toLowerCase(),
-        oznitelikte: oznitelikler.filter(v => new RegExp('(^|[^a-z])' + w.toLowerCase() + '($|[^a-z])').test(v)),
         h1: document.querySelectorAll('h1').length,
         yinelenenKimlik: kimlikler.filter((k, i) => kimlikler.indexOf(k) !== i),
         gizliOdaklanabilir: document.querySelectorAll('[aria-hidden="true"] :is(a, button, input, select, textarea, [tabindex])').length,
@@ -364,7 +694,6 @@ async function main() {
     const anlam = await T(page, 'anlam', b.w, true, false);
     assert.equal(anlam.gorulen, anlam.beklenen, 'Anlamlar katman kaydıyla aynı (yıldızlarıyla)');
     assert.equal(anlam.tur, anlam.beklenenTur, 'Tür satırı dizinden');
-    assert.ok(anlam.yildiz >= 1, 'Düzenek: ilk kelimenin anlamında yıldız var');
     assert.equal(anlam.okunanYildiz, 0, 'Yıldızlar ekran okuyucudan gizli sarmalayıcının içinde');
     assert.deepEqual(g.modlar, ['Sıradakiler (' + b.oynanan + ')', 'Yalnız yeni kelimeler (' + b.oynanan + ')', 'Öğrenilenler · harfsiz (0)']);
     assert.equal(await T(page, 'mod'), 'sira');
@@ -388,16 +717,41 @@ async function main() {
     assert.equal(b.baslikliDugme, 0, 'Metinli düğmede title yok');
     assert.equal(await page.locator('.site-nav a[aria-current="page"]').innerText(), 'Oyunlar');
     await dortluDenetim(page, 'Yeni kelime');
-    return 'ilk kelime ' + b.w.length + ' harf, ' + b.acikSayisi + ' açık; usage betikleri ' + (b.kullanim ? 'var' : 'yok');
+    // Yıldızlar: ilk kelimenin yıldızlı anlamı olmayabilir (Çekirdek'in yarısında yok). Denetim, yıldızlı anlamı
+    // olan ilk kelimede yapılır; önündeki yıldızsız kelimeler yarına ertelenir. Boş profil beklentileri bozulmasın
+    // diye senaryonun sonundadır. Saat o an dondurulur: erteleme "yarın"a yazılır, yeniden yüklemeden önce gece yarısı
+    // geçerse ertelenen kelimelerin vadesi yeniden gelmiş olurdu.
+    await page.clock.setFixedTime(new Date());
+    const yildizli = await page.evaluate(() => {
+      const Y = window.YDS, havuz = window.__oyun.havuz(window.__oyun.secili());
+      const sira = havuz.findIndex(d => { const tam = Y.Veri.kayit(d.e); return !!tam && tam.a.some(a => Y.yildiz(a)); });
+      if (sira < 0) return null;
+      havuz.slice(0, sira).forEach(d => Y.Ilerleme.yanlis(d.e, 'kelime'));
+      return {w: havuz[sira].e, ertelenen: sira};
+    });
+    assert.ok(yildizli, 'Düzenek: seçili katmanda yıldızlı anlamı olan oynanabilir kelime kalmadı');
+    if (yildizli.ertelenen) { await page.reload(); await hazir(page); }
+    await kelimeBekle(page, yildizli.w);
+    const yildizAnlam = await T(page, 'anlam', yildizli.w, true, false);
+    assert.ok(yildizAnlam.yildiz >= 1, 'Yıldızlı anlamın yıldızları çizilir (' + yildizli.w + '): ' + yildizAnlam.gorulen);
+    assert.equal(yildizAnlam.okunanYildiz, 0, 'Yıldızlar ekran okuyucudan gizli sarmalayıcının (aria-hidden) içinde (' + yildizli.w + '): ' + yildizAnlam.gorulen);
+    assert.equal(yildizAnlam.gorulen, yildizAnlam.beklenen, 'Yıldızlı kelimenin anlamı katman kaydıyla aynı (' + yildizli.w + ')');
+    return 'ilk kelime ' + b.w.length + ' harf, ' + b.acikSayisi + ' açık; yıldız denetimi ' + yildizli.w +
+      (yildizli.ertelenen ? ' (önündeki ' + yildizli.ertelenen + ' yıldızsız kelime ertelendi)' : '') + '; usage betikleri ' + (b.kullanim ? 'var' : 'yok');
   });
 
   /* ---------- 2) Doğru cevap ---------- */
   senaryo('Doğru harfler + Enter: Bildiniz, 1. kutu, oturum listesi, sonraki kelime, yenileme', async () => {
     const page = await yeniSayfa();
+    // Sayfa saati kurulur (gerçek saatle, akar durumda): cevaptan sonraki duyuru denetimi saati ilerletir.
+    await page.clock.install();
     await ac(page, base);
     const [w, w2] = await T(page, 'sira');
     await kelimeBekle(page, w);
     const once = await T(page, 'bugunku');
+    // Açılış duyurusu yazıldıktan sonra cevap verilir: bölgenin cevaptan sonra da bu hâliyle kaldığı aşağıda görülür.
+    const acilisDuyurusu = await T(page, 'soru', w, true);
+    await duyuruBekle(page, acilisDuyurusu);
     await odakla(page);
     const e = await T(page, 'eksik', w);
     await page.keyboard.type(e);
@@ -439,7 +793,11 @@ async function main() {
     const anlam = await T(page, 'anlam', w, false, false);
     assert.equal(anlam.gorulen, anlam.beklenen, 'Cevaptan sonra anlam maskesiz');
     assert.equal(g.odak, 'oyunGirdi', 'Odak girdide kaldı');
+    // Sonuç duyuru bölgesine yazılmaz. Duyuru gecikmeli yazıldığı için önce sayfanın saati ilerletilir; sonra bölgede
+    // cevap aranır ve bölgenin açılıştaki soruyla durduğu görülür (sonuç iki kez okunmasın: onu yalnız durum satırı okur).
+    await duyuruDurulsun(page);
     assert.deepEqual(await T(page, 'duyuruSizinti', w), [], 'Cevap duyuru bölgesine yazılmaz (sonucu durum satırı okur)');
+    assert.equal((await T(page, 'gorunum')).duyuru, acilisDuyurusu, 'Cevaptan sonra duyuru bölgesi sorudaki hâliyle durur (sonuç oraya da yazılmaz)');
     // Dinle: cevaptan sonra görünür, kelimeyi İngilizce okutur, odağı girdiye geri verir.
     await page.evaluate(() => {
       window.__okunan = [];
@@ -482,7 +840,7 @@ async function main() {
   });
 
   /* ---------- 3) Yanlış deneme, sonra doğru: ipucuyla ---------- */
-  senaryo('Yanlış deneme: doğru harfler kilitlenir; sonra doğru = ipucuyla (d artmaz)', async () => {
+  senaryo('Yanlış deneme: doğru harfler kilitlenir; sonra doğru = ipucuyla (d artmaz); kutusu değişen ya da günü dönen kelimenin yarım turu atılır', async () => {
     const page = await yeniSayfa();
     await ac(page, base);
     await enAzBosluk(page, 2);
@@ -541,6 +899,61 @@ async function main() {
     assert.deepEqual(g.bilinen, []);
     assert.equal(g.tekrar.length, 1); assert.ok(g.tekrar[0].includes(w) && g.tekrar[0].includes('1. kutu'));
     assert.equal(g.sayim, 'Bu oturum: ✓ 0 bildin · 💡 1 ipuçlu · ✗ 0 bilemedin');
+    // Yarım tur, kelimenin kutusu arada değiştiyse atılır. Sıradaki kelimede bir yanlış deneme yapılır, moddan
+    // çıkılır, kayıt başka yerde 3. kutuya (vadesi bugün) alınır, geri dönülür: kelime yeni seviyesiyle ve tam
+    // deneme hakkıyla gelir; "Kaldığın yerden devam" denmez.
+    await page.keyboard.press('Enter');
+    const [w2] = await T(page, 'sira');
+    await kelimeBekle(page, w2);
+    await page.keyboard.type(yanlisHarfler(await T(page, 'eksik', w2)));
+    await page.keyboard.press('Enter');
+    await durumBekle(page, 'Olmadı; kalan deneme hakkı: 2.');
+    await page.locator('.oyun-mod [data-mod="ogrenilen"]').click();
+    await page.locator('#oyunBos').waitFor({state: 'visible'});
+    assert.equal(await T(page, 'kayitKoy', w2, 3), true, 'Düzenek: kelimenin kaydı 3. kutuya yazıldı');
+    await page.locator('.oyun-mod [data-mod="sira"]').click();
+    // Kart, kelime çizildikten sonra görünür olur (aynı görevde); beklenen seviye buna göre okunur.
+    await page.locator('#oyunKart').waitFor({state: 'visible'});
+    const yeniDuzen = await T(page, 'duzen', w2, 3), bugun = await T(page, 'bugun');
+    g = await T(page, 'gorunum');
+    assert.deepEqual([g.seviye, g.kutu, g.durum], [rozet(3, yeniDuzen), '3. kutu · tekrar zamanı', ''],
+      'Kutusu arada değişen kelimenin yarım turu atılır: yeni seviye, "Kaldığın yerden devam" iletisi yok');
+    assert.deepEqual(g.hucreler.map((h, i) => (h.s.includes('sabit') ? i : -1)).filter(i => i >= 0), yeniDuzen.acik, 'Açık harfler 3. kutunun harfleri');
+    assert.deepEqual([g.hucreler.filter(h => h.s === 'bulundu').length, g.azami, g.gecersiz], [0, String(yeniDuzen.bos), null], 'Yeni turda kilitli harf ve hata işareti yok');
+    // Deneme hakkı da tazelendi: kelime ilk denemede bilinmiş sayılır ve 4. kutuya çıkar.
+    await coz(page, w2);
+    assert.equal(await durumOku(page), 'Bildiniz! Kelime 4. kutuya çıktı; ' + (yeniDuzen.sonrakiAcik
+      ? 'bir dahaki sefere harflerin %10\'u açık gelecek.' : 'bu kadar kısa kelimede bir dahaki sefere harf açılmayacak.'),
+    'Yeni turun ilk denemesi "ilk denemede doğru" sayılır (eski turun yanlış denemesi taşınmaz)');
+    await kutuBekle(page, w2, 4);
+    assert.deepEqual(await T(page, 'kayit', w2), {k: 4, g: bugun + 15, c: bugun}, 'Il.dogru kaydı: 3. kutudan 4. kutuya, 15 gün sonra');
+    assert.equal((await T(page, 'gorunum')).sayim, 'Bu oturum: ✓ 1 bildin · 💡 1 ipuçlu · ✗ 0 bilemedin');
+    // Gün dönerse de yarım tur atılır (açık harfler günün tohumuyla seçilir): sıradaki kelimede bir yanlış deneme,
+    // moddan çıkış, saat bir gün ileri, dönüş → kelime yeni günün harfleriyle ve tam deneme hakkıyla gelir.
+    // Dönüş "Yalnız yeni kelimeler" moduna yapılır: enAzBosluk'un yarına ertelediği kısa kelimelerin vadesi yeni
+    // günde gelir ve "Sıradaki" modunda başa geçerler; kaydı olmayan bu kelime ise yeni kelimelerin ilkidir.
+    await page.keyboard.press('Enter');
+    const [w3] = await T(page, 'sira');
+    await kelimeBekle(page, w3);
+    await page.keyboard.type(yanlisHarfler(await T(page, 'eksik', w3)));
+    await page.keyboard.press('Enter');
+    await durumBekle(page, 'Olmadı; kalan deneme hakkı: 2.');
+    await page.locator('.oyun-mod [data-mod="ogrenilen"]').click();
+    await page.locator('#oyunBos').waitFor({state: 'visible'});
+    await page.clock.setFixedTime(new Date(Date.now() + 24 * 60 * 60 * 1000));
+    assert.equal(await T(page, 'bugun'), bugun + 1, 'Düzenek: sayfanın saati bir gün ileride');
+    await page.locator('.oyun-mod [data-mod="yeni"]').click();
+    await page.locator('#oyunKart').waitFor({state: 'visible'});
+    const yarinDuzen = await T(page, 'duzen', w3, 0);
+    g = await T(page, 'gorunum');
+    assert.deepEqual([g.seviye, g.durum], [rozet(0, yarinDuzen), ''], 'Gün dönünce yarım tur atılır: "Kaldığın yerden devam" iletisi yok');
+    assert.equal(await T(page, 'uyuyor', w3, true), true, 'Ekrandaki kelime aynı; açık harfler yeni günün harfleri');
+    assert.deepEqual([g.azami, g.gecersiz], [String(yarinDuzen.bos), null], 'Yeni turda bütün boşluklar yeniden yazılır, hata işareti yok');
+    await coz(page, w3);
+    assert.equal(await durumOku(page), 'Bildiniz! Kelime 1. kutuya çıktı; ' + (yarinDuzen.sonrakiAcik
+      ? 'bir dahaki sefere harflerin %40\'ı açık gelecek.' : 'bu kadar kısa kelimede bir dahaki sefere harf açılmayacak.'),
+    'Yeni günün turunda ilk deneme "ilk denemede doğru" sayılır');
+    await kutuBekle(page, w3, 1);
   });
 
   /* ---------- 4) Üç yanlış ve "Bilemedim, göster" ---------- */
@@ -647,7 +1060,7 @@ async function main() {
   });
 
   /* ---------- 6) Seviyeler ve öğrenilenler modu ---------- */
-  senaryo('Seviyeler: kutu = seviye (%30, %20), vadesi gelen önce, ipucuyla kutu aynı kalır; öğrenilenler harfsiz, aynı gün yeniden sorulmaz', async () => {
+  senaryo('Seviyeler: kutu = seviye (%30, %20), vadesi gelen önce, ipucuyla kutu aynı kalır; kelime aynı kalan tur değişiminde yalnız sıra satırı duyurulur, yazılan harf ve odak kalır; öğrenilenler harfsiz, aynı gün yeniden sorulmaz', async () => {
     const context = await yeni();
     const page = await context.newPage();
     await page.clock.setFixedTime(GUN(0));
@@ -709,6 +1122,23 @@ async function main() {
     g = await T(page, 'gorunum');
     assert.equal(g.seviye, 'Seviye 1 · harflerin %50\'si açık');
     assert.equal(g.siraMetni, 'Sırada ' + (f.oynanan - 4) + ' kelime: 0 tekrar + ' + (f.oynanan - 4) + ' yeni. 2 kelime tekrar gününü bekliyor.');
+    // Vadesi gelen kelime kalmadı: "Yalnız yeni kelimeler"e geçince de, geri dönünce de ilk kelime aynıdır. Soru
+    // yinelenmez ama yeni sıra satırı duyurulur (duyuru bölgesi tam olarak o satır olur); yazılmış harfe dokunulmaz.
+    const uzunSira = g.siraMetni, yazilanHarf = (await T(page, 'eksik', f.ilk))[0];
+    await page.locator('#oyunGirdi').focus();
+    await page.keyboard.type(yazilanHarf);
+    for (const [mod, satir] of [['yeni', 'Sırada ' + (f.oynanan - 4) + ' yeni kelime.'], ['sira', uzunSira]]) {
+      await page.locator('.oyun-mod [data-mod="' + mod + '"]').click();
+      await duyuruBekle(page, satir);
+      // Soru geriden gelip sıra satırının yerine geçmez: sayfa saati bir saniye ileri sürülür (beklemeden; bekleyen
+      // zamanlayıcılar o an çalışır), duyuru bölgesi aynı kalır.
+      await page.clock.runFor(1000);
+      assert.equal(await page.evaluate(() => document.getElementById('oyunDuyuru').textContent), satir, 'Sıra satırı duyurulduktan sonra duyuru bölgesi değişmez: soru geriden gelip yerine geçmez (' + mod + ')');
+      g = await T(page, 'gorunum');
+      assert.deepEqual([await T(page, 'mod'), g.siraMetni], [mod, satir], 'Basılı tur düğmesi ve görünen sıra satırı duyurulanla aynı');
+      assert.equal(g.deger, yazilanHarf, 'Aynı kelime ekranda kaldıysa mod değişimi yazılan harfi silmez (' + mod + ')');
+      assert.equal(await page.evaluate(() => document.activeElement.getAttribute('data-mod')), mod, 'Aynı kelime ekranda kaldıysa odak basılan tur düğmesinde kalır, girdiye taşınmaz (' + mod + ')');
+    }
     // Öğrenilenler: harfsiz.
     await page.locator('.oyun-mod [data-mod="ogrenilen"]').click();
     await kelimeBekle(page, f.Z1);
@@ -849,7 +1279,7 @@ async function main() {
   });
 
   /* ---------- 8) Katman seçimi ve inmeyen katman ---------- */
-  senaryo('Katman: seçim yds-katmanlar\'a yazılır, sıra yeniden kurulur, boş seçim hatasız; inmeyen katmanda oyun sürer', async () => {
+  senaryo('Katman: seçim yds-katmanlar\'a yazılır, sıra yeniden kurulur, boş seçim hatasız; yüklü katman kapanınca sıra satırı duyurulur; inmeyen katmanda oyun sürer', async () => {
     const page = await yeniSayfa();
     await ac(page, base);
     const sayi = await page.evaluate(() => {
@@ -889,6 +1319,10 @@ async function main() {
     g = await T(page, 'gorunum');
     assert.equal(g.deger, e[0], 'Aynı kelime sırada kaldıysa yazılan harf silinmez');
     assert.equal(await T(page, 'uyuyor', w, false), true);
+    // İlk kelimenin sahibi olmayan (yüklü) katman kapandı: soru yinelenmez ama yeni sıra satırı duyurulur
+    // (duyuru bölgesi tam olarak o satır olur).
+    assert.equal(g.siraMetni, 'Sırada ' + sayi.o2 + ' kelime: 0 tekrar + ' + sayi.o2 + ' yeni.', 'Kapanan katmanın kelimeleri sıradan çıktı');
+    await duyuruBekle(page, g.siraMetni);
     // Hiç katman yok: boş durum.
     await katman(2).click();
     await page.locator('#oyunBos').waitFor({state: 'visible'});
@@ -985,7 +1419,7 @@ async function main() {
   });
 
   /* ---------- 9) Başka sekme ---------- */
-  senaryo('Başka sekme: yanıtlanan kelime ikinci kez yazılmaz; dokunulmamış kelime ve katman seçimi yenilenir', async () => {
+  senaryo('Başka sekme: yanıtlanan kelime ikinci kez yazılmaz; dokunulmamış kelime ve katman seçimi yenilenir; kaydı değişen dokunulmamış kelime yeni seviyesiyle çizilir ve cevabı yazılır', async () => {
     const context = await yeni();
     const a = await context.newPage();
     await ac(a, base);
@@ -1039,10 +1473,37 @@ async function main() {
     assert.equal(await a.evaluate(k => window.YDS.Depo.oku('yds-leitner', {})[window.YDS.Ilerleme.ilerlemeKimligi(k, 'kelime')].k, w3), 1,
       'Kelime yine tek kez yükseltildi');
     assert.equal((await T(a, 'gorunum')).sayim, 'Bu oturum: ✓ 0 bildin · 💡 0 ipuçlu · ✗ 0 bilemedin');
+    // Ekrandaki dokunulmamış kelimenin kaydı öbür sekmede değişir (3. kutu, vadesi bugün) ve olay ulaşır: kelime
+    // sıranın başında kalır ama yeni seviyesiyle yeniden çizilir; cevabı da o taze kayıtla karşılaştırılıp yazılır,
+    // "başka sekmede yanıtlanmış" diye geri çevrilmez.
+    await a.keyboard.press('Enter');
+    // Sıradaki kelime öbür sekmenin belleğinden okunur (bu sekmeninki olaysız yazım yüzünden eski).
+    const [w4] = await T(b, 'sira', 'sira', 1, [2, 3]);
+    await kelimeBekle(a, w4);
+    await a.evaluate(() => { window.__depolamaOlayiYok = false; });
+    assert.equal(await T(b, 'kayitKoy', w4, 3), true, 'Düzenek: öbür sekme kaydı yazdı');
+    // Sıra satırı tekrarı gösterdiğinde kart da çizilmiştir (aynı görevde); seviye bundan sonra okunur.
+    await a.waitForFunction(() => /: 1 tekrar \+ /.test(document.getElementById('oyunSira').textContent));
+    const duzen4 = await T(a, 'duzen', w4, 3), bugun = await T(a, 'bugun');
+    g = await T(a, 'gorunum');
+    assert.deepEqual([g.seviye, g.kutu], [rozet(3, duzen4), '3. kutu · tekrar zamanı'],
+      'Ekrandaki dokunulmamış kelime, kaydı başka sekmede değişince yeni seviyesiyle yeniden çizilir');
+    assert.deepEqual(g.hucreler.map((h, i) => (h.s.includes('sabit') ? i : -1)).filter(i => i >= 0), duzen4.acik, 'Açık harfler 3. kutunun harfleri');
+    assert.deepEqual([g.odak, g.deger, g.durum], ['oyunGirdi', '', ''], 'Yeniden çizim odağı ve girdiyi değiştirmez, ileti yazmaz');
+    await a.keyboard.type(await T(a, 'eksik', w4));
+    await a.keyboard.press('Enter');
+    // Sonuç önce çizilir, yazım bir kare sonra yapılır; geri çevrilseydi durum satırı o zaman değişirdi.
+    await durumOku(a);
+    await yazimDurulsun(a);
+    assert.equal((await T(a, 'gorunum')).durum, 'Bildiniz! Kelime 4. kutuya çıktı; ' + (duzen4.sonrakiAcik
+      ? 'bir dahaki sefere harflerin %10\'u açık gelecek.' : 'bu kadar kısa kelimede bir dahaki sefere harf açılmayacak.'),
+    'Yeniden çizilen kelimenin cevabı kabul edilir ("başka sekmede yanıtlanmış" sayılmaz)');
+    assert.deepEqual(await T(a, 'kayit', w4), {k: 4, g: bugun + 15, c: bugun}, 'Cevap yazıldı: 4. kutu, 15 gün sonra');
+    assert.equal((await T(a, 'gorunum')).sayim, 'Bu oturum: ✓ 1 bildin · 💡 0 ipuçlu · ✗ 0 bilemedin');
   });
 
   /* ---------- 10) Anlam maskesi ---------- */
-  senaryo('Anlam maskesi: anlamda geçen başlık ve dil bilgisi notunun öznesi (düzensiz fiilin kökü de) cevaptan önce •••, sonra tam metin', async () => {
+  senaryo('Anlam maskesi: anlamda geçen başlık ve dil bilgisi notunun öznesi (düzensiz fiilin kökü de) cevaptan önce •••, sonra tam metin; yanlış deneme, yarım bırakıp dönme ve harf açmadan sonra da maskeli', async () => {
     const context = await yeni();
     const page = await context.newPage();
     await page.clock.setFixedTime(GUN(0));
@@ -1078,6 +1539,15 @@ async function main() {
     await page.reload(); await hazir(page);
     const sira = await T(page, 'sira', 'sira', 4);
     assert.deepEqual([...sira].sort(), [f.baslik, ...f.notlar.map(n => n.w)].sort(), 'Düzenek: vadesi gelen dört kelime sıranın başında');
+    // Maske ve sızıntı denetimi yalnız dokunulmamış kartta değil, turun sonraki hâllerinde de yapılır (yanlış
+    // deneme, kelimeden ayrılıp dönme, "Bir harf aç"). Bu hâller tek kelimede sınanır: "Bir harf aç" en az iki
+    // boşluk ister; öteki üç kelime eskisi gibi ilk denemede çözülür.
+    const bugun = await T(page, 'bugun');
+    let yarim = null;
+    for (const w of sira) if (!yarim && (await T(page, 'duzen', w, 1)).bos >= 2) yarim = w;
+    assert.ok(yarim, 'Düzenek: dört kelimeden hiçbirinin 1. kutuda iki boşluğu yok (' + sira.join(', ') + ')');
+    const [yeniIlk] = await T(page, 'sira', 'yeni', 1);
+    assert.ok(yeniIlk, 'Düzenek: "Yalnız yeni kelimeler" turunda kelime var');
     for (const w of sira) {
       const notlu = f.notlar.find(n => n.w === w);
       await kelimeBekle(page, w);
@@ -1097,18 +1567,62 @@ async function main() {
       await duyuruBekle(page, soru);
       assert.ok(soru.includes(' gizli sözcük '), 'Duyuruda maske sözle okunur: ' + soru);
       assert.deepEqual(await T(page, 'duyuruSizinti', w), [], 'Duyuruda cevap yok');
+      // Cevaptan önce duyuru bölgesine en son yazılan metin (yarım kelimede: moda dönüşün duyurusu).
+      let sonDuyuru = soru;
+      if (w === yarim) {
+        const hala = async hal => {
+          const ara = await T(page, 'anlam', w, true, false);
+          assert.equal(ara.gorulen, ara.beklenen, hal + ': anlam hâlâ maskeli');
+          assert.deepEqual(await T(page, 'sizinti', w), [], hal + ': kartta cevap yok');
+          // Girdinin açıklaması yazılacak kutuları hâlâ "boş" diye okur. (Dönüşün duyurusu bu açıklamayla biter;
+          // aşağıdaki duyuru eşitliği onu ekrandaki açıklamadan kurar, o yüzden açıklama burada ayrıca doğrulanır.)
+          const gh = await T(page, 'gorunum');
+          assert.equal(gh.tarif, beklenenAciklama(gh), hal + ': açıklama yazılacak kutuların harfini söylemez ("boş" der)');
+        };
+        // 1) Yanlış deneme (hiçbir harf tutmaz).
+        await page.locator('#oyunGirdi').focus();
+        await page.keyboard.type(yanlisHarfler(await T(page, 'eksik', w)));
+        await page.keyboard.press('Enter');
+        await durumBekle(page, 'Olmadı; kalan deneme hakkı: 2.');
+        await hala('Yanlış denemeden sonra');
+        // 2) Kelime yarım bırakılır (öbür modda başka kelime gelir), sonra geri dönülür.
+        await page.locator('.oyun-mod [data-mod="yeni"]').click();
+        await page.locator('.oyun-mod [data-mod="yeni"][aria-pressed="true"]').waitFor();
+        await kelimeBekle(page, yeniIlk);
+        await page.locator('.oyun-mod [data-mod="sira"]').click();
+        await kelimeBekle(page, w, false);
+        await durumBekle(page, 'Kaldığın yerden devam: 2 deneme hakkın kaldı.');
+        await hala('Yarım kelimeye dönünce');
+        sonDuyuru = await duyuruOku(page);
+        assert.deepEqual(await T(page, 'duyuruSizinti', w), [], 'Yarım kelimeye dönüşün duyurusunda cevap yok');
+        assert.equal(sonDuyuru, await T(page, 'soru', w, true), 'Yarım kelimeye dönüş sıra satırı ve maskeli soruyla duyurulur');
+        // 3) "Bir harf aç": ilk boşluk açılır.
+        const ilkBos = (await T(page, 'gorunum')).hucreler.findIndex(h => h.s.startsWith('bos'));
+        await page.locator('#oyunHarf').click();
+        await durumBekle(page, harfSirasi(w, ilkBos) + '. harf açıldı: ' + w[ilkBos] + '. Doğru bilirsen kelime aynı kutuda kalır.');
+        await hala('"Bir harf aç"tan sonra');
+      }
       await coz(page, w);
-      await kutuBekle(page, w, 2);
+      if (w === yarim) {
+        // Yanlış deneme ve ipucundan sonra bilinen kelime 2. kutuya çıkmaz: 1. kutuda kalır, yarın yeniden sorulur.
+        await durumBekle(page, 'Doğru, ama ipucuyla; kelime 1. kutuda kalıyor.');
+        await page.waitForFunction(([w, gun]) => window.__oyun.kayit(w).c === gun, [w, bugun]);
+        assert.deepEqual(await T(page, 'kayit', w), {k: 1, g: bugun + 1, c: bugun}, 'Il.ipucuyla kaydı: aynı kutu, yarın');
+      } else await kutuBekle(page, w, 2);
       anlam = await T(page, 'anlam', w, false, false);
       assert.equal(anlam.gorulen, anlam.beklenen, 'Cevaptan sonra tam metin');
       assert.equal(anlam.metin.includes('•••'), false);
       // Tam metinde maskelenen yer açık: başlığın kendisi ya da (çekimli başlıkta) notun kökü.
       if (notlu) assert.ok(anlam.metin.includes(notlu.not) && anlam.metin.includes(notlu.kok + ' fiilinin'), 'Tam metinde not öznesiyle okunur: ' + anlam.metin);
       else assert.ok(anlam.metin.toLowerCase().includes(w.toLowerCase()), 'Tam metinde başlık geçer');
+      // Duyuru gecikmeli yazıldığı için önce sayfanın saati ilerletilir; sonra bölgede cevap aranır ve bölgenin
+      // cevaptan önceki soruyla durduğu görülür.
+      await duyuruDurulsun(page);
       assert.deepEqual(await T(page, 'duyuruSizinti', w), [], 'Cevaptan sonra da duyuruya cevap yazılmaz');
+      assert.equal((await T(page, 'gorunum')).duyuru, sonDuyuru, 'Cevaptan sonra duyuru bölgesi sorudaki hâliyle durur (sonuç oraya da yazılmaz)');
       await page.keyboard.press('Enter');
     }
-    return 'başlık ' + f.baslik + ', notlar ' + f.notlar.map(n => n.tur + ' ' + n.w + ' (' + n.kok + ' fiilinin …)').join(', ');
+    return 'başlık ' + f.baslik + ', notlar ' + f.notlar.map(n => n.tur + ' ' + n.w + ' (' + n.kok + ' fiilinin …)').join(', ') + '; yarım hâller ' + yarim;
   });
 
   /* ---------- 11) Yalnız klavye ve durum durum erişilebilirlik ---------- */
@@ -1405,31 +1919,142 @@ async function main() {
   });
 
   /* ---------- 16) Yerleşim: kelime ilk ekranda ---------- */
-  senaryo('Yerleşim: kart katman seçiciden önce; 1366×768\'de harf kutuları, 375×667\'de anlam kaydırmadan ilk ekranda; bağlantı katman seçiciye götürür', async () => {
-    for (const [en, boy, kimlik, ad] of [[1366, 768, 'oyunHarfler', 'harf kutuları'], [375, 667, 'oyunAnlam', 'anlam']]) {
-      const page = await yeniSayfa({width: en, height: boy});
+  senaryo('Yerleşim: kart katman seçiciden önce; 1366×768\'de harf kutuları, telefonda (375×667, dokunmatik, tekrarı bekleyen profil) anlam ve harf kutuları kaydırmadan ilk ekranda; 375 ve 360 px\'te tur düğmeleri tek satırda, ara başlık ve giriş eki yer tutmaz, bağlantı sıra bilgisinin ardından akar (dar pencerede ince işaretçiyle de); dokunmatik ekranda her düğme (Dinle ve "Yeniden dene" de) en az 44 px; bağlantı katman seçiciye götürür', async () => {
+    const notlar = [], kartDolgusu = {};
+    let genis;
+    const olc = (page, kimlikler) => page.evaluate(kimlikler => {
+      const kutu = id => { const r = document.getElementById(id).getBoundingClientRect(); return {ust: Math.round(r.top), alt: Math.round(r.bottom), sol: Math.round(r.left), sag: Math.round(r.right)}; };
+      return {hedef: kimlikler.map(kutu), kart: kutu('oyunKart'), katman: kutu('katmanKart'), ekran: [innerWidth, innerHeight],
+        kaydirma: [scrollX, scrollY], odakGovdede: document.activeElement === document.body};
+    }, kimlikler);
+    const ilkEkranda = (y, i) => { const h = y.hedef[i]; return h.alt > h.ust && h.ust >= 0 && h.alt <= y.ekran[1] && h.sol >= 0 && h.sag <= y.ekran[0]; };
+    for (const [en, boy, hedefler] of [[1366, 768, [['oyunHarfler', 'harf kutuları']]], [375, 667, [['oyunAnlam', 'anlam'], ['oyunHarfler', 'harf kutuları']]]]) {
+      const telefon = en <= 480, etiket = en + '×' + boy + ': ';
+      // Telefon gerçek telefon gibi açılır: kaba işaretçide her düğme en az 44 px'tir, yerleşim ince işaretçidekinden uzundur.
+      const page = telefon ? await yeniSayfa({width: en, height: boy}, {hasTouch: true, isMobile: true}) : await yeniSayfa({width: en, height: boy});
+      // Saat sabit: ekilen profil "bugün"e göre yazılır; ekimle yeniden yükleme arasına gece yarısı girerse yarını
+      // bekleyen kelimelerin de vadesi gelmiş olur.
+      await page.clock.setFixedTime(GUN(0));
       await ac(page, base);
-      const [w] = await T(page, 'sira');
+      let [w] = await T(page, 'sira');
+      if (telefon) {
+        assert.equal(await page.evaluate(() => matchMedia('(pointer: coarse)').matches), true, 'Düzenek: telefon benzetiminde işaretçi kaba');
+        // Boş profilde ilk açılış: sayfa kaydırılmaz, odak alınmaz, anlam ilk ekrandadır.
+        await kelimeBekle(page, w);
+        await durgun(page);
+        const bos = await olc(page, ['oyunAnlam']);
+        assert.deepEqual(bos.ekran, [en, boy], etiket + 'boş profilde görünen alan istenen boyutta (telefonda yatay taşan içerik sayfayı küçültür, görünen alan büyür)');
+        assert.deepEqual(bos.kaydirma, [0, 0], etiket + 'boş profilde açılışta sayfa kaydırılmaz');
+        assert.equal(bos.odakGovdede, true, etiket + 'boş profilde açılışta odak alınmaz');
+        assert.ok(ilkEkranda(bos, 0), etiket + 'boş profilde anlam ilk ekranda, kaydırmadan: ' + JSON.stringify(bos));
+        // İlk günden sonraki olağan profil: vadesi gelmiş iki, tekrar gününü bekleyen üç kelime. Sıra satırı en uzun
+        // hâlini alır, ilk kelime "K. kutu · tekrar zamanı" rozetiyle gelir. Ekrana gelecek kelime ölçüyü yazı tipinden
+        // bağımsız kılacak biçimde seçilir: tek satır kutu (5-10 harf, ayraçsız), her biri tek satıra sığan iki anlam.
+        // Dizinin ilk sekiz kelimesi atlanır: vadesi gelen kelime, dizinde önünde duran yeni kelimelerden önce sorulur.
+        const tohum = await page.evaluate(() => {
+          const Y = window.YDS, Il = Y.Ilerleme, bugun = Il.bugun(), havuz = window.__oyun.havuz([2]), kayit = {};
+          const vadeli = havuz.slice(8).find(d => {
+            const tam = Y.Veri.kayit(d.e);
+            return /^[a-z]{5,10}$/.test(d.e) && d.y.length <= 24 && !!tam && tam.a.length === 2 && tam.a.every(a => a.tr.length <= 20);
+          });
+          const [vadeli2, ...bekleyen] = havuz.slice(8).filter(d => d !== vadeli).slice(0, 4);
+          if (!vadeli || bekleyen.length !== 3) return null;
+          kayit[Il.ilerlemeKimligi(vadeli.e, 'kelime')] = {k: 2, g: bugun - 2, c: bugun - 5, m: 0};
+          kayit[Il.ilerlemeKimligi(vadeli2.e, 'kelime')] = {k: 1, g: bugun, c: bugun - 1, m: 0};
+          bekleyen.forEach(d => { kayit[Il.ilerlemeKimligi(d.e, 'kelime')] = {k: 1, g: bugun + 1, c: bugun, m: 0}; });
+          return {w: vadeli.e, oynanan: havuz.length, yazildi: Y.Depo.kayitlariYaz('yds-leitner', kayit)};
+        });
+        assert.ok(tohum, 'Düzenek: Çekirdek katmanında 5-10 harfli, iki kısa anlamlı (en çok 20 karakter) kelime ya da yanına ekilecek dört kelime kalmadı');
+        assert.equal(tohum.yazildi, true, 'Düzenek: profil yazıldı');
+        await page.reload(); await hazir(page);
+        w = tohum.w;
+        const g = await T(page, 'gorunum');
+        assert.equal(g.siraMetni, 'Sırada ' + (tohum.oynanan - 3) + ' kelime: 2 tekrar + ' + (tohum.oynanan - 5) + ' yeni. 3 kelime tekrar gününü bekliyor.', 'Düzenek: sıra satırı en uzun hâlinde');
+        assert.equal(g.kutu, '2. kutu · tekrar zamanı', 'Düzenek: ilk kelime vadesi gelmiş kelime');
+      }
       await kelimeBekle(page, w);
       await durgun(page);
-      const y = await page.evaluate(kimlik => {
-        const kutu = id => { const r = document.getElementById(id).getBoundingClientRect(); return {ust: Math.round(r.top), alt: Math.round(r.bottom), sol: Math.round(r.left), sag: Math.round(r.right)}; };
-        return {hedef: kutu(kimlik), kart: kutu('oyunKart'), katman: kutu('katmanKart'), ekran: [innerWidth, innerHeight],
-          kaydirma: [scrollX, scrollY], odakGovdede: document.activeElement === document.body};
-      }, kimlik);
-      const etiket = en + '×' + boy + ': ';
+      const y = await olc(page, hedefler.map(h => h[0]));
+      assert.deepEqual(y.ekran, [en, boy], etiket + 'görünen alan istenen boyutta (telefonda yatay taşan içerik sayfayı küçültür, görünen alan büyür)');
       assert.deepEqual(y.kaydirma, [0, 0], etiket + 'açılışta sayfa kaydırılmaz');
       assert.equal(y.odakGovdede, true, etiket + 'açılışta odak alınmaz');
-      assert.ok(y.hedef.alt > y.hedef.ust && y.hedef.ust >= 0 && y.hedef.alt <= y.ekran[1] && y.hedef.sol >= 0 && y.hedef.sag <= y.ekran[0],
-        etiket + ad + ' ilk ekranda, kaydırmadan: ' + JSON.stringify(y));
+      if (telefon) {
+        // Yazı tipinden bağımsız kurallar, iki telefon genişliğinde. (360×640'ta harf satırı pikselle sınanmaz:
+        // geniş yazı tipinde oraya sığmaz.) Kaba işaretçide oyunun her düğmesi en az 44 px yüksektir: burada cevaptan
+        // önce görünenler (tur, kart, katman), senaryonun sonunda Dinle ve "Yeniden dene" ölçülür.
+        const ayirt = [];
+        for (const [e2, b2] of [[en, boy], [360, 640]]) {
+          await boyutla(page, e2, b2);
+          const o = await telefonYapisi(page, e2 + ' px: ');
+          assert.ok(o.dugmeBoylari.length >= 6, 'Düzenek: ' + e2 + ' px: tur, kart ve katman düğmeleri ölçüldü: ' + JSON.stringify(o.dugmeBoylari));
+          assert.deepEqual(o.dugmeBoylari.filter(d => d[1] < 44), [], e2 + ' px: dokunmatik ekranda cevaptan önce görünen her düğme (tur, kart, katman) en az 44 px yüksek: ' + JSON.stringify(o.dugmeBoylari));
+          if (o.baglanti.satir > 1 && o.baglanti.sigar) ayirt.push(e2);
+          if (e2 === en) { kartDolgusu[en] = o.kartDolgusu; kartDolgusu.siradan375 = o.siradanKartDolgusu; }
+        }
+        // Bağlantı kuralı ancak sıra bilgisi satıra bölünüp son satırında bağlantıya yer kaldığında bir şey söyler; bunun
+        // hangi genişlikte olduğu yazı tipine bağlıdır (geniş yazı tipinde 375 ve 360'ta bağlantı haklı olarak alt satıra
+        // iner). O iki genişlikte olmadıysa 480 px'e kadarki öteki telefon genişlikleri denenir.
+        for (const e2 of [390, 412, 430, 344, 320, 400, 420, 440, 460, 480]) {
+          if (ayirt.length) break;
+          await boyutla(page, e2, boy);
+          const o = await T(page, 'yerlesimOlcusu');
+          bagKurali(o, e2 + ' px: ');
+          if (o.baglanti.satir > 1 && o.baglanti.sigar) ayirt.push(e2);
+        }
+        assert.ok(ayirt.length, 'Düzenek: 320-480 px arasında sıra bilgisinin bölünüp son satırında bağlantıya yer kaldığı bir genişlik bulunamadı');
+        await boyutla(page, en, boy);
+        notlar.push('telefonda harf satırının altı ' + y.hedef[1].alt + '/' + boy + ' px (' + w + '); bağlantı kuralı ' + ayirt.join(' ve ') + ' px\'te ayırt edici');
+      } else {
+        // Geniş ekranda ara başlık görünür ve yer tutar, giriş cümlesi eksiksizdir.
+        const o = await T(page, 'yerlesimOlcusu');
+        assert.ok(o.baslik.boy >= o.baslik.yazi && o.baslik.en > o.baslik.yazi && o.baslik.modaKadar >= o.baslik.boy, etiket + 'ara başlık görünür ve yer tutar: ' + JSON.stringify(o.baslik));
+        assert.equal(await page.getByRole('heading', {name: o.baslik.metin, exact: true}).count(), 1, etiket + 'ara başlık başlık olarak yerinde');
+        assert.ok(o.giris.ekCizildi && o.giris.ek && o.giris.gorunen === o.giris.tam, etiket + 'giriş cümlesi eksiksiz görünür: ' + JSON.stringify(o.giris));
+        kartDolgusu[en] = o.kartDolgusu;
+      }
+      // İlk ekran: açılışta alınan ölçüyle (kaydırma 0). Telefonda harf satırının altı yazı tipine bağlıdır; seçilen
+      // kelime biçimiyle ölçülen: sayfanın yazı tipi 567, Tahoma 583, Verdana 606, Courier New 632 px (667'ye en az
+      // 35 px pay). Düzeltmeden önceki CSS ile aynı ölçü 704 px idi.
+      hedefler.forEach(([, ad], i) => assert.ok(ilkEkranda(y, i), etiket + ad + ' ilk ekranda, kaydırmadan: ' + JSON.stringify(y)));
       assert.ok(y.katman.ust >= y.kart.alt, etiket + 'katman seçici kartın altında: ' + JSON.stringify(y));
       // Sıra satırındaki bağlantı katman seçiciyi ekrana getirir.
-      await page.locator('.oyun-bilgi a[href="#katmanKart"]').click();
+      const baglanti = page.locator('.oyun-bilgi a[href="#katmanKart"]');
+      if (telefon) await baglanti.tap(); else await baglanti.click();
       await page.waitForFunction(() => {
         const r = document.querySelector('#katmanKart .katman').getBoundingClientRect();
         return location.hash === '#katmanKart' && r.top >= 0 && r.bottom <= innerHeight;
       });
+      if (telefon) {
+        // 44 px kuralı baştan görünmeyen düğmeleri de kapsar. Dinle cevaptan sonra çıkar: kelime çözülür
+        // (vadesi gelmiş 2. kutu kelimesi 3. kutuya çıkar), düğmeler yeniden ölçülür.
+        await coz(page, w);
+        await kutuBekle(page, w, 3);
+        const sonra = (await T(page, 'yerlesimOlcusu')).dugmeBoylari;
+        if (await page.evaluate(() => 'speechSynthesis' in window)) assert.ok(sonra.some(d => d[0] === 'oyunDinle'), 'Düzenek: cevaptan sonra Dinle düğmesi ölçüldü: ' + JSON.stringify(sonra));
+        else notlar.push('ses desteği yok, Dinle ölçülmedi');
+        assert.deepEqual(sonra.filter(d => d[1] < 44), [], en + ' px: dokunmatik ekranda cevaptan sonra görünen düğmeler (Dinle) de en az 44 px yüksek: ' + JSON.stringify(sonra));
+        // "Yeniden dene" yalnız katman dosyası inmeyince çıkar: dosya engellenir, sayfa yeniden açılır.
+        await page.route(KATMAN_DOSYASI, route => route.abort());
+        await page.reload(); await hazir(page);
+        await page.locator('#oyunYukDene').waitFor({state: 'visible'});
+        const inmeyince = (await T(page, 'yerlesimOlcusu')).dugmeBoylari;
+        assert.ok(inmeyince.some(d => d[0] === 'oyunYukDene'), 'Düzenek: katman inmeyince "Yeniden dene" düğmesi ölçüldü: ' + JSON.stringify(inmeyince));
+        assert.deepEqual(inmeyince.filter(d => d[1] < 44), [], en + ' px: dokunmatik ekranda katman inmeyince çıkan "Yeniden dene" de en az 44 px yüksek: ' + JSON.stringify(inmeyince));
+      } else genis = page;
     }
+    // Telefon kuralları işaretçi türüne değil genişliğe bağlıdır: daraltılmış masaüstü penceresinde (ince işaretçi)
+    // de geçerlidir. Geniş ekran ayağının sayfası daraltılır; dokunmatik telefon ayağından sonra bakılır ki bozulan
+    // kuralı önce o söylesin.
+    assert.equal(await genis.evaluate(() => matchMedia('(pointer: coarse)').matches), false, 'Düzenek: geniş ekran ayağında işaretçi ince');
+    await boyutla(genis, 375, 667);
+    await telefonYapisi(genis, '375 px, ince işaretçi: ');
+    // "Kart sıkışır", piksel değeri sabitlenmeden iki bağıntıyla: telefonda kelime kartının üst dolgusu geniş
+    // ekrandakinden küçüktür (kural silinirse fark edilir; düzeltmeden önceki dolgu da geniş ekrandakinden küçüktü,
+    // onu ikinci bağıntı ayırır) ve aynı sayfadaki sıradan bir kartınkini (katman seçici) aşmaz: geniş ekranda kelime
+    // kartı sıradan karttan ferahtır, telefonda bu fazlalıktan vazgeçer.
+    assert.ok(kartDolgusu[375] < kartDolgusu[1366], 'Kart telefonda geniş ekrandakinden sıkı (üst dolgu, px): ' + JSON.stringify(kartDolgusu));
+    assert.ok(kartDolgusu[375] <= kartDolgusu.siradan375, 'Kelime kartının üst dolgusu telefonda sıradan bir kartınkini (katman seçici) aşmaz (px): ' + JSON.stringify(kartDolgusu));
+    return notlar.join('; ');
   });
 
   /* ---------- 17) Anlamı ipucu vermeyen kelime ---------- */
@@ -1626,7 +2251,7 @@ async function main() {
   });
 
   /* ---------- 20) Dışarıdan değişiklikte odak ---------- */
-  senaryo('Dışarıdan değişiklik: kart odağın altından gizlenirse odak boş duruma, boş durum odaktayken kelime gelirse girdiye taşınır; odak başka yerdeyse dokunulmaz, değişiklik duyurulur', async () => {
+  senaryo('Dışarıdan değişiklik: kart odağın altından gizlenirse odak boş duruma, boş durum odaktayken kelime gelirse girdiye taşınır; odak başka yerdeyse dokunulmaz, değişiklik duyurulur; odak taşınırken sayfa kaymaz', async () => {
     const context = await yeni();
     const page = await context.newPage();
     await page.clock.setFixedTime(GUN(0));
@@ -1672,18 +2297,34 @@ async function main() {
     assert.equal(await modda(), 'ogrenilen', 'Boş durum odakta değilken girdi odak almaz');
     // b) Odak girdide, hiçbir şey yazılmamış: kart gizlenince odak boş duruma geçer (sayfanın başına düşmez).
     await odakla(page);
+    // Odak kullanıcı işlemi olmadan taşınırken sayfa kaymamalı. Ölçüm için ekran, kart ilk ekranın altında kalacak
+    // kadar kısaltılır ve sayfa baştan 30 px aşağıya alınır (odak girdide kalır): hedef ekranın 30 px altında başlar.
+    // Kaydırarak odaklayan bir focus() sayfayı aşağı çeker, sayfayı başa alan bir kaydırma da 30'u 0 yapar. Yerleşim
+    // değişikliği (kart ↔ boş durum) ekranın altında olur, konumu kendiliğinden oynatmaz. Yumuşak kaydırma kapatılır:
+    // ölçüm kaydırma canlandırmasının ortasına denk gelmesin.
+    await page.emulateMedia({reducedMotion: 'reduce'});
+    const kartUst = await page.evaluate(() => Math.floor(document.getElementById('oyunKart').getBoundingClientRect().top + scrollY));
+    await page.setViewportSize({width: 1280, height: Math.max(120, kartUst - 60)});
+    await page.evaluate(() => { window.scrollTo({top: 30, behavior: 'instant'}); });
+    let konum = await T(page, 'ekranDisi', 'oyunKart');
+    assert.deepEqual([konum.kaydirma, konum.disarida, (await T(page, 'gorunum')).odak], [30, true, 'oyunGirdi'],
+      'Düzenek: sayfa 30 px kaydırılmış, kart (odaktaki girdiyle) ekranın altında: ' + JSON.stringify(konum));
     await disaridan(f.Z3, 'bugun');
     await page.locator('#oyunBos').waitFor({state: 'visible'});
     g = await T(page, 'gorunum');
     assert.equal(g.kart, false);
     assert.equal(g.odak, 'oyunBos', 'Kart odağın altından gizlenince odak boş duruma taşınır');
-    // c) Boş durum odaktayken kelime gelir: odak girdiye geçer, girdi boştur.
+    konum = await T(page, 'ekranDisi', 'oyunBos');
+    assert.deepEqual([konum.kaydirma, konum.disarida], [30, true], 'Odak boş duruma taşınırken sayfa kaymaz (boş durum ekranın dışında kalır): ' + JSON.stringify(konum));
+    // c) Boş durum odaktayken kelime gelir: odak girdiye geçer, girdi boştur; sayfa yine kaymaz.
     await disaridan(f.Z4, 'dun');
     await kelimeBekle(page, f.Z4);
     g = await T(page, 'gorunum');
     assert.equal(g.bos, false);
     assert.equal(g.odak, 'oyunGirdi', 'Boş durum odaktayken gelen kelimede odak girdiye taşınır');
     assert.equal(g.deger, '');
+    konum = await T(page, 'ekranDisi', 'oyunKart');
+    assert.deepEqual([konum.kaydirma, konum.disarida], [30, true], 'Odak girdiye taşınırken sayfa kaymaz (kart ekranın dışında kalır): ' + JSON.stringify(konum));
     await page.keyboard.type(f.Z4);
     await page.keyboard.press('Enter');
     await durumBekle(page, 'Bildiniz! Harfsiz de doğru; kelime öğrenilenlerde kalıyor.');
@@ -1851,11 +2492,10 @@ async function main() {
   });
 
   /* ---------- 24) Açılıştaki bulut birleşimi sürerken ---------- */
-  senaryo('Eşitleme sürerken "Kontrol et" ve "Bilemedim" bekletilir; birleşim bitince ya da süre dolunca bir kez işlenir, sonra hiç bekletilmez; yazmak ve harf açmak beklemez', async () => {
-    const BEKLE_KONTROL = 'Eşitleniyor; bitince kontrol edilecek.', BEKLE_PAS = 'Eşitleniyor; bitince cevap gösterilecek.';
+  senaryo('Eşitleme sürerken "Kontrol et" ve "Bilemedim" bekletilir; birleşim bitince ya da süre dolunca bir kez işlenir, sonra hiç bekletilmez; yazmak ve harf açmak beklemez; eşitleme kapalıyken bekleme yok, bilinmeyen ara durum da bekletir, gizli sekmede sonuç hemen yazılır, yarıda kalan bekleme yeni açılışta bir kez notla bildirilir; birleşimin kaydını değiştirdiği kelimenin cevabı işlenmez', async () => {
     // Beklemenin üst sınırı sayfa açılışından itibaren işler. Makinenin hızı sonucu değiştirmesin diye saat
     // baştan duraklatılır ve yalnız elle ilerletilir (page.clock; gerçek bekleme yok). Sınır sabit yazılmaz:
-    // sayfanın yüklediği betikten okunur, (d) adımında davranışla ölçülür.
+    // sayfanın yüklediği betikten okunur, (i) adımında davranışla ölçülür.
     let sinir = null;
     const kapiliSayfa = async () => {
       const page = await yeniSayfa();
@@ -1877,6 +2517,31 @@ async function main() {
     };
     // Bekleyen zamanlayıcılar (sonucun bir kare sonraki yazımı, 60-150 ms'lik ertelemeler) çalışsın.
     const ilerlet = (page, ms) => page.clock.runFor(ms);
+    // Aynı sekmede yeniden açılan belge de durmuş saatle başlar; saati o ana dek ilerletilen süre kadar ileridedir.
+    // Açılış, kelime (ya da boş durum) göründüğünde ve motor ilk olayını ("kapali") bildirdiğinde tamamdır.
+    const acilisiBekle = async page => {
+      await hazir(page);
+      await page.waitForFunction(() => window.__esitlemeDurumlari.length > 0);
+    };
+    // Aşağıdaki adımlar buna dayanır; sayfa saati beklenen yerde değilse sebep ürün değil page.clock'tur.
+    const saat = page => page.evaluate(() => Date.now());
+    const SAAT_SURMUYOR = 'Düzenek: yeniden açılan belgenin saati kaldığı yerden sürmüyor (page.clock davranışı değişmiş olabilir)';
+    const yenile = async page => {
+      const once = await saat(page);
+      await page.reload();
+      await acilisiBekle(page);
+      assert.equal(await saat(page), once, SAAT_SURMUYOR);
+    };
+    // Sayfadan çıkılır, saat ilerletilir, oyun yeniden açılır: arada oyun belgesi yoktur, zamanlayıcıları çalışmaz
+    // (atılıp sonradan geri yüklenen sekme gibi).
+    const araVerVeAc = async (page, ms) => {
+      const once = await saat(page);
+      await page.goto('about:blank');
+      await ilerlet(page, ms);
+      await page.goto(base + '/oyunlar.html');
+      await acilisiBekle(page);
+      assert.equal(await saat(page), once + ms, SAAT_SURMUYOR);
+    };
 
     // a) Durum değişimiyle biten bekleme; açılıştaki "kapali" kapıyı bitirmez; bittikten sonra bekletilmez.
     {
@@ -2016,7 +2681,269 @@ async function main() {
       assert.deepEqual(await T(page, 'yazilan'), ['dogru:' + w]);
     }
 
-    // d) Birleşim hiç bitmezse: üst sınır dolunca bekleyen cevap işlenir. Sınırdan hemen önce cevap hâlâ
+    // d) Eşitleme kapalıyken (motorun tek olayı "kapali") hiçbir şey bekletilmez: saat durduğu için üst sınır
+    //    kurtaramaz, cevap o anda işlenmelidir. Kapı belirli durum adlarına da bağlı değildir: motorun
+    //    bilinmeyen bir ara durumu da "sürüyor" sayılır, bekleyen cevap "hazir" gelince işlenir.
+    {
+      const page = await kapiliSayfa();
+      const [w1, w2, w3] = await T(page, 'sira');
+      await kelimeBekle(page, w1);
+      assert.deepEqual(await durumVeSinif(page), DURUM_BOS, 'Olağan ilk açılışta durum satırı boş (yarım bekleme notu yok)');
+      await coz(page, w1);
+      assert.equal(await ilkIleti(page), BILDINIZ_1, 'Eşitleme kapalıyken (motor yalnız "kapali" bildirdi) cevap bekletilmeden işlenir');
+      await ilerlet(page, 200);
+      await kutuBekle(page, w1, 1);
+      await page.keyboard.press('Enter');
+      await kelimeBekle(page, w2);
+      await page.locator('#oyunPas').click();
+      assert.equal(await ilkIleti(page), 'Cevap: ' + w2 + '. Kelime 1. kutuda; yarın tekrar gelecek.', 'Eşitleme kapalıyken "Bilemedim, göster" bekletilmez');
+      await ilerlet(page, 200);
+      await kutuBekle(page, w2, 1);
+      await page.keyboard.press('Enter');
+      await kelimeBekle(page, w3);
+      // Buraya kadar hiçbir cevap bekletilmedi, bekleme de bitmiş sayılmadı; şimdi motor tanınmayan bir ara durum bildiriyor.
+      await T(page, 'esitleme', 'yeni-ara-durum');
+      await coz(page, w3);
+      assert.equal(await ilkIleti(page), BEKLE_KONTROL, 'Bilinmeyen ara durumda da cevap bekletilir (kapı durum adlarına bağlı değil)');
+      await T(page, 'esitleme', 'baska-ara-durum');
+      await ilerlet(page, 300);
+      assert.equal((await T(page, 'gorunum')).durum, BEKLE_KONTROL, 'Bilinmeyen bir durumdan ötekine geçiş beklemeyi bitirmez');
+      assert.equal(await T(page, 'kayit', w3), null, 'Bilinmeyen ara durumda ilerleme yazılmadı');
+      await T(page, 'esitleme', 'hazir');
+      assert.equal((await T(page, 'gorunum')).durum, BILDINIZ_1, 'Bilinmeyen ara durumda bekleyen cevap "hazir" gelince işlenir');
+      await ilerlet(page, 300);
+      await kutuBekle(page, w3, 1);
+      assert.deepEqual(await T(page, 'yazilan'), ['dogru:' + w1, 'yanlis:' + w2, 'dogru:' + w3], 'Her kelime bir kez yazıldı');
+    }
+
+    // e) Üst sınır ilk bekletmeden değil sayfa açılışından sayılır: açılıştan (sınır − 1 sn) sonra bekletilen
+    //    cevap 1 sn sonra işlenir. Üst sınırla işlenen cevap da izini siler: sonra yeniden açılan sayfada not yok.
+    {
+      const page = await kapiliSayfa();
+      const [w, w2] = await T(page, 'sira');
+      await kelimeBekle(page, w);
+      await T(page, 'esitleme', 'yukleniyor');
+      await ilerlet(page, sinir - 1000);
+      await coz(page, w);
+      assert.equal(await ilkIleti(page), BEKLE_KONTROL, 'Sınırdan 1 sn önce verilen cevap bekletilir');
+      await ilerlet(page, 900);
+      assert.equal((await T(page, 'gorunum')).durum, BEKLE_KONTROL, 'Açılıştan ' + (sinir - 100) + ' ms sonra cevap hâlâ bekliyor');
+      assert.deepEqual([await T(page, 'kayit', w), await T(page, 'yazilan')], [null, []], 'Beklerken ilerleme yazılmadı');
+      await ilerlet(page, 100);
+      assert.equal((await T(page, 'gorunum')).durum, BILDINIZ_1,
+        'Üst sınır sayfa açılışından sayılır: ' + (sinir - 1000) + '. ms\'de bekletilen cevap açılıştan ' + sinir + ' ms sonra işlenir (ilk bekletmeden ' + sinir + ' ms sonra değil)');
+      await ilerlet(page, 200);
+      await kutuBekle(page, w, 1);
+      assert.deepEqual(await T(page, 'yazilan'), ['dogru:' + w]);
+      // Yavaş bağlantıda sıra budur: üst sınır cevabı işler ve yazar, birleşim birkaç saniye sonra bitip sayfayı
+      // yeniler. Cevap kaydedildiği için "son cevabın işlenmedi" notu çıkmamalıdır.
+      await yenile(page);
+      await kelimeBekle(page, w2);
+      assert.deepEqual(await durumVeSinif(page), DURUM_BOS, 'Üst sınır dolunca işlenen cevaptan sonra yeniden açılan sayfada not yok');
+    }
+
+    // e2) Bekleme, o ana dek hiçbir cevap bekletilmemiş olsa da biter ve bir daha başlamaz: üst sınır dolduktan
+    //     sonra verilen ilk cevap, motor hâlâ "yukleniyor" dese de bekletilmez; bekleyen cevap yokken biten
+    //     birleşimden sonra gelen yeni bir "yukleniyor" da (motor SDK'yı yeniden dener) bekletmez.
+    {
+      const page = await kapiliSayfa();
+      const [w, w2] = await T(page, 'sira');
+      await kelimeBekle(page, w);
+      await T(page, 'esitleme', 'yukleniyor');
+      await ilerlet(page, sinir);
+      await coz(page, w);
+      assert.equal(await ilkIleti(page), BILDINIZ_1, 'Üst sınır dolduktan sonra verilen ilk cevap bekletilmez (o ana dek bekleyen cevap olmasa da bekleme biter)');
+      await ilerlet(page, 200);
+      await kutuBekle(page, w, 1);
+      // Yeni belgede bekleme baştan başlar; bu kez onu, bekleyen cevap yokken gelen "hata" bitirir.
+      await yenile(page);
+      await kelimeBekle(page, w2);
+      await T(page, 'esitleme', 'yukleniyor');
+      await T(page, 'esitleme', 'hata');
+      await T(page, 'esitleme', 'yukleniyor');
+      await coz(page, w2);
+      assert.equal(await ilkIleti(page), BILDINIZ_1, 'Bekleyen cevap yokken biten birleşimden sonra yeni bir "yukleniyor" cevabı bekletmez');
+    }
+
+    // f) Bekleyen YANLIŞ cevap birleşim bitince bir kez işlenir; sonra süre dolunca kendiliğinden ikinci kez
+    //    işlenmez: yeniden yazılan harfler yerinde kalır, deneme hakkı harcanmaz.
+    {
+      const page = await kapiliSayfa();
+      const [w] = await T(page, 'sira');
+      await kelimeBekle(page, w);
+      await T(page, 'esitleme', 'yukleniyor');
+      const yanlis = yanlisHarfler(await T(page, 'eksik', w));
+      await page.locator('#oyunGirdi').focus();
+      await page.keyboard.type(yanlis);
+      await page.keyboard.press('Enter');
+      assert.equal(await ilkIleti(page), BEKLE_KONTROL, 'Düzenek: birleşim sürerken verilen cevap bekletildi');
+      await T(page, 'esitleme', 'hazir');
+      let g = await T(page, 'gorunum');
+      assert.deepEqual([g.durum, g.deger, g.gecersiz], ['Olmadı; kalan deneme hakkı: 2.', '', 'true'], 'Bekleyen yanlış cevap birleşim bitince işlenir: bir deneme harcandı');
+      await page.keyboard.type(yanlis);
+      await ilerlet(page, sinir + 500);
+      g = await T(page, 'gorunum');
+      assert.deepEqual([g.durum, g.deger, g.gonder], ['Olmadı; kalan deneme hakkı: 2.', yanlis, 'Kontrol et'],
+        'Birleşimle işlenen cevap süre dolunca Enter\'sız ikinci kez işlenmez: ileti ve yazılan yerinde');
+      // Harcanan deneme tek: kullanıcının Enter'ı ikinci denemedir.
+      await page.keyboard.press('Enter');
+      await durumBekle(page, 'Olmadı; kalan deneme hakkı: 1.');
+      assert.deepEqual([await T(page, 'kayit', w), await T(page, 'yazilan')], [null, []], 'Yanlış denemeler ilerlemeye yazılmaz');
+    }
+
+    // g) Bekleme sekme gizliyken biterse (kullanıcı başka sekmeye geçti) sonuç işlendiği anda yazılır: gizli
+    //    sekmede kare zamanlayıcısı çalışmaz, sekme geri gelmeden atılırsa cevap kaybolurdu. Başsız tarayıcı
+    //    sayfayı hep görünür tuttuğu için 14. senaryodaki gibi benzetilir.
+    {
+      const page = await kapiliSayfa();
+      const [w] = await T(page, 'sira');
+      await kelimeBekle(page, w);
+      const once = await T(page, 'bugunku'), bugun = await T(page, 'bugun');
+      await T(page, 'esitleme', 'yukleniyor');
+      await coz(page, w);
+      assert.equal(await ilkIleti(page), BEKLE_KONTROL, 'Düzenek: birleşim sürerken verilen cevap bekletildi');
+      await page.evaluate(() => {
+        window.requestAnimationFrame = () => 0;
+        Object.defineProperty(document, 'visibilityState', {value: 'hidden', configurable: true});
+        document.dispatchEvent(new Event('visibilitychange'));
+      });
+      assert.deepEqual([(await T(page, 'gorunum')).durum, await T(page, 'yazilan')], [BEKLE_KONTROL, []], 'Sekme gizlenirken bekleyen cevap işlenmez');
+      await T(page, 'esitleme', 'hazir');
+      // Saat ilerletilmeden, sekme hâlâ gizliyken:
+      const g = await T(page, 'gorunum');
+      assert.deepEqual([g.durum, g.gonder], [BILDINIZ_1, 'Sonraki kelime →'], 'Gizli sekmede de bekleyen cevap birleşim bitince işlenir');
+      assert.deepEqual(await T(page, 'kayit', w), {k: 1, g: bugun + 1, c: bugun}, 'Gizli sekmede işlenen cevap kare beklemeden, o anda yazılır');
+      assert.deepEqual(await T(page, 'yazilan'), ['dogru:' + w], 'Bir kez, "doğru" olarak yazıldı');
+      assert.deepEqual([g.sayim, g.bilinen], ['Bu oturum: ✓ 1 bildin · 💡 0 ipuçlu · ✗ 0 bilemedin', [w + ' · 1. kutu']], 'Oturum sayımı da o anda güncellenir');
+      assert.deepEqual(await T(page, 'bugunku'), {t: once.t + 1, d: once.d + 1, y: once.y + 1}, 'Günlük sayaç da o anda yazıldı');
+    }
+
+    // h) Bekletilen cevap işlenemeden sayfa yeniden açılırsa (birleşim başka cihazdan kayıt getirince motor
+    //    sayfayı yeniler) söz verilen kontrol yapılmamıştır: yeni açılış bunu bir kez, notla bildirir.
+    //    Cevap işlendiyse, bekleme kelime değiştiği için düştüyse ya da iz ömrünü doldurduysa not yoktur.
+    {
+      const page = await kapiliSayfa();
+      const omur = await betikSabiti(page, 'ERTELEME_IZI_OMRU_MS');
+      assert.ok(omur >= 1000, 'Düzenek: oyunlar.js içindeki ERTELEME_IZI_OMRU_MS okunamadı ya da 1 sn\'den kısa (' + omur + ')');
+      const [w, w2] = await T(page, 'sira');
+      const once = await T(page, 'bugunku');
+      // Ekrandaki kelimeyi birleşim sürerken yanıtlar: cevap bekletilir.
+      const beklet = async (kelime, pas) => {
+        await kelimeBekle(page, kelime);
+        await T(page, 'esitleme', 'yukleniyor');
+        if (pas) await page.locator('#oyunPas').click(); else await coz(page, kelime);
+        await durumBekle(page, pas ? BEKLE_PAS : BEKLE_KONTROL);
+      };
+      // Bekleme sürerken yenileme: not, aynı kelime taze, hiçbir şey yazılmadı.
+      await beklet(w);
+      await yenile(page);
+      assert.deepEqual([await T(page, 'kayit', w), await T(page, 'bugunku')], [null, once], 'Yarıda kalan cevap sayfa kapanırken de işlenmedi: ilerlemeye ve günlük sayaca yazılmadı');
+      await kelimeBekle(page, w);
+      assert.deepEqual(await durumVeSinif(page), DURUM_NOTLU, 'Bekletilen cevap işlenmeden yeniden açılan sayfa bunu notla bildirir');
+      const g = await T(page, 'gorunum');
+      assert.deepEqual([g.deger, g.gonder, g.sonuc, g.gecersiz], ['', 'Kontrol et', false, null], 'Notla açılan kelime taze: yazılan yok, kelime bitmedi');
+      // Not bir kez gösterilir.
+      await yenile(page);
+      await kelimeBekle(page, w);
+      assert.deepEqual(await durumVeSinif(page), DURUM_BOS, 'İkinci yenilemede not yinelenmez');
+      // Bekleyen cevap işlendiyse (birleşim bitti) sonraki açılışta not yok.
+      await beklet(w);
+      await T(page, 'esitleme', 'hazir');
+      assert.equal((await T(page, 'gorunum')).durum, BILDINIZ_1, 'Düzenek: bekleyen cevap birleşim bitince işlendi');
+      await ilerlet(page, 300);
+      await kutuBekle(page, w, 1);
+      await yenile(page);
+      await kelimeBekle(page, w2);
+      assert.deepEqual(await durumVeSinif(page), DURUM_BOS, 'Bekletilen cevap işlendikten sonra yeniden açılan sayfada not yok');
+      // Motor sayfayı beklemenin üst sınırına 100 ms kala yenilese de iz hâlâ tazedir (iz üst sınırdan uzun yaşar).
+      await beklet(w2);
+      await ilerlet(page, sinir - 100);
+      assert.equal((await T(page, 'gorunum')).durum, BEKLE_KONTROL, 'Düzenek: üst sınıra 100 ms kala cevap hâlâ bekliyor');
+      await yenile(page);
+      await kelimeBekle(page, w2);
+      assert.deepEqual(await durumVeSinif(page), DURUM_NOTLU, 'Üst sınıra 100 ms kala yenilenen sayfa da notla açılır (iz, beklemenin üst sınırından uzun yaşar)');
+      // Not yalnız taze iz için gösterilir: sayfa ömründen 1 ms önce açılırsa var, tam ömründe açılırsa yok.
+      // (Bekletilen "Bilemedim, göster" de aynı izi bırakır.)
+      await beklet(w2, true);
+      await araVerVeAc(page, omur - 1);
+      await kelimeBekle(page, w2);
+      assert.deepEqual(await durumVeSinif(page), DURUM_NOTLU, 'Bekletmeden ' + (omur - 1) + ' ms sonra açılan sayfada not var ("Bilemedim" bekletilmişti)');
+      await beklet(w2);
+      await araVerVeAc(page, omur);
+      await kelimeBekle(page, w2);
+      assert.deepEqual(await durumVeSinif(page), DURUM_BOS, 'Bekletmeden ' + omur + ' ms sonra (izin ömrü doldu) açılan sayfada not yok');
+      // Kelime değişince düşen bekleme iz bırakmaz. Ertesi gün w'nin tekrar zamanı gelir: "Sıradakiler" w ile,
+      // "Yalnız yeni kelimeler" w2 ile başlar; mod değişimi ekrana başka kelime getirir.
+      await araVerVeAc(page, 24 * 60 * 60 * 1000);
+      assert.deepEqual([(await T(page, 'sira', 'sira'))[0], (await T(page, 'sira', 'yeni'))[0]], [w, w2], 'Düzenek: ertesi gün sıra tekrar kelimesiyle, "yalnız yeni" başka kelimeyle başlar');
+      await beklet(w);
+      await page.locator('.oyun-mod [data-mod="yeni"]').click();
+      await kelimeBekle(page, w2);
+      assert.deepEqual(await durumVeSinif(page), DURUM_BOS, 'Mod değişimi başka kelime getirdi: bekleme iletisi silindi');
+      await yenile(page);
+      await kelimeBekle(page, w);
+      assert.deepEqual(await durumVeSinif(page), DURUM_BOS, 'Kelime değiştiği için düşen beklemeden sonra yeniden açılan sayfada not yok');
+      assert.deepEqual([(await T(page, 'kayit', w) || {}).k, await T(page, 'kayit', w2)], [1, null], 'Düşen bekleme işlenmedi: w ilk günkü kutusunda, w2 kayıtsız');
+      // Bekletilen "Bilemedim, göster" de birleşim bitince işlenir ve izini siler.
+      await beklet(w, true);
+      await T(page, 'esitleme', 'hazir');
+      assert.equal((await T(page, 'gorunum')).gonder, 'Sonraki kelime →', 'Düzenek: bekleyen "Bilemedim" birleşim bitince işlendi, kelime bitti');
+      await ilerlet(page, 300);
+      await yenile(page);
+      await kelimeBekle(page, w2);
+      assert.deepEqual(await durumVeSinif(page), DURUM_BOS, 'Bekletilen "Bilemedim" işlendikten sonra yeniden açılan sayfada not yok');
+    }
+
+    // h2) Birleşim tam bekleyen kelimenin kaydını değiştirdiyse (kelime başka cihazda yanıtlanmış) cevap eski
+    //     seviyeyle verilmiştir: bekleme bitince işlenmez, sonuç iletisi bir an bile görünmez; motorun
+    //     yenilediği sayfa bunu notla bildirir. Yenileme gelmezse iz, ekrana başka kelime gelince silinir.
+    //     Ekran boş duruma düşerse bekleyen cevap da izi de bırakılır.
+    {
+      const page = await kapiliSayfa();
+      const [w, w2] = await T(page, 'sira');
+      const once = await T(page, 'bugunku'), bugun = await T(page, 'bugun');
+      const beklet = async () => {
+        await kelimeBekle(page, w);
+        await T(page, 'esitleme', 'yukleniyor');
+        await coz(page, w);
+        assert.equal(await ilkIleti(page), BEKLE_KONTROL, 'Düzenek: birleşim sürerken verilen cevap bekletildi');
+        return (await T(page, 'gorunum')).deger;
+      };
+      // Birleşim kelimenin kaydını getirir (3. kutu), ardından biter.
+      let yazili = await beklet();
+      assert.equal(await T(page, 'kayitKoy', w, 3), true, 'Düzenek: birleşim kelimenin kaydını yazdı');
+      await T(page, 'esitleme', 'hazir');
+      let g = await T(page, 'gorunum');
+      assert.deepEqual([await durumVeSinif(page), g.gonder, g.deger, g.sonuc], [[KAYIT_DEGISTI_NOTU, 'oyun-durum uyari'], 'Kontrol et', yazili, false],
+        'Birleşim bekleyen kelimenin kaydını değiştirdiyse cevap işlenmez: ileti bunu söyler, kelime bitmez, yazılan yerinde kalır');
+      await ilerlet(page, 300);
+      assert.deepEqual([await T(page, 'yazilan'), await T(page, 'leitnerDepoKaydi', w), await T(page, 'bugunku'), (await T(page, 'gorunum')).durum],
+        [[], {k: 3, g: bugun, c: bugun - 7}, once, KAYIT_DEGISTI_NOTU], 'İşlenmeyen cevap birleşimin getirdiği kaydın üzerine yazmaz; günlük sayaç ve ileti yerinde');
+      // Motor sayfayı yeniler: yeni açılış, verilen cevabın işlenmediğini söyler (kelime artık 3. kutuda, vadesi bugün).
+      await yenile(page);
+      await kelimeBekle(page, w);
+      assert.deepEqual(await durumVeSinif(page), DURUM_NOTLU, 'Kaydı birleşimle değiştiği için işlenmeyen cevaptan sonra yeniden açılan sayfa bunu notla bildirir');
+      // Yenileme gelmezse: ekrana başka kelime gelince iz silinir, sonraki açılışta not çıkmaz.
+      yazili = await beklet();
+      assert.equal(await T(page, 'kayitKoy', w, 4), true, 'Düzenek: birleşim kelimenin kaydını yeniden değiştirdi');
+      await T(page, 'esitleme', 'hazir');
+      assert.equal((await T(page, 'gorunum')).durum, KAYIT_DEGISTI_NOTU, 'Düzenek: cevap yine işlenmedi');
+      await page.locator('.oyun-mod [data-mod="yeni"]').click();
+      await kelimeBekle(page, w2);
+      await yenile(page);
+      await kelimeBekle(page, w);
+      assert.deepEqual(await durumVeSinif(page), DURUM_BOS, 'İşlenmeyen cevaptan sonra ekrana başka kelime geldiyse yeniden açılan sayfada not yok');
+      // Bekleme sürerken ekran boş duruma düşer ("Öğrenilenler"de kelime yok): bekleyen cevap ve izi bırakılır.
+      await beklet();
+      await page.locator('.oyun-mod [data-mod="ogrenilen"]').click();
+      await page.locator('#oyunBos').waitFor({state: 'visible'});
+      await yenile(page);
+      await kelimeBekle(page, w);
+      assert.deepEqual(await durumVeSinif(page), DURUM_BOS, 'Bekleme sürerken ekran boş duruma düştüyse yeniden açılan sayfada not yok');
+      assert.deepEqual([await T(page, 'leitnerDepoKaydi', w), await T(page, 'bugunku')], [{k: 4, g: bugun, c: bugun - 7}, once], 'Bırakılan beklemeler hiçbir şey yazmadı');
+    }
+
+    // i) Birleşim hiç bitmezse: üst sınır dolunca bekleyen cevap işlenir. Sınırdan hemen önce cevap hâlâ
     //    bekler; süre adım adım ilerletilip işlendiği an ölçülür ve betikteki değerle karşılaştırılır.
     const page = await kapiliSayfa();
     const [w, w2] = await T(page, 'sira');
@@ -2047,7 +2974,7 @@ async function main() {
   });
 
   /* ---------- 25) Odak hiçbir öğede değilken yazma ---------- */
-  senaryo('Odaksız yazma: sayfa açılır açılmaz yazılan harf girdiye gider, biten kelimede Enter sonrakine geçer; düğme odaktayken, rakamda ve değiştirici tuşla dokunulmaz', async () => {
+  senaryo('Odaksız yazma: sayfa açılır açılmaz yazılan harf girdiye gider, biten kelimede Enter sonrakine geçer; düğme odaktayken, rakamda ve değiştirici tuşla dokunulmaz; Shift ile yazılan büyük harf de girdiye gider', async () => {
     const page = await yeniSayfa({width: 1366, height: 768});
     await ac(page, base);
     const [w, w2] = await T(page, 'sira');
@@ -2109,6 +3036,17 @@ async function main() {
       assert.equal((await T(page, 'gorunum')).odak, 'oyunGirdi', key + ' odağı girdiye taşır');
       await birak();
     }
+    // Shift değiştirici sayılmaz, büyük harf de harftir: gerçek Shift+harf odağı girdiye taşır ve harf yazılır
+    // (küçük harfe çevrilir). Sonra girdi boşaltılır, odak bırakılır.
+    g = await T(page, 'gorunum');
+    assert.deepEqual([g.odak, g.deger], ['BODY', ''], 'Düzenek: odak gövdede, girdi boş');
+    await page.keyboard.press('Shift+' + e2[0].toUpperCase());
+    g = await T(page, 'gorunum');
+    assert.deepEqual([g.odak, g.deger], ['oyunGirdi', e2[0]], 'Odak yokken Shift ile yazılan büyük harf girdiye gider');
+    assert.equal(g.hucreler.find(h => h.s.startsWith('bos')).c, e2[0], 'Yazılan harf ilk boşlukta görünür');
+    await page.keyboard.press('Backspace');
+    assert.equal((await T(page, 'gorunum')).deger, '', 'Düzenek: girdi yeniden boş');
+    await birak();
     // <main> (atlama bağlantısının hedefi) odaktayken de yazılan harf girdiye gider; aşağı kaydırılmış
     // sayfada odak taşınırken sayfa kaymaz.
     await page.evaluate(() => { document.getElementById('icerik').focus({preventScroll: true}); window.scrollTo({top: document.documentElement.scrollHeight, behavior: 'instant'}); });
@@ -2186,11 +3124,11 @@ async function main() {
     assert.deepEqual(await dolas(n), deste, 'Kalan kartlar aynı sırada; oyunda yanıtlanan kelime yok');
 
     // Bundan sonrası için başka sekmenin yazımı sayfa içinden kurulur: ilerleme değişir, ardından 'sekme'
-    // kaynaklı olay gelir.
-    const disarida = (kelimeler, islem) => page.evaluate(([kelimeler, islem]) => {
+    // (ya da istenirse 'bulut': eşitlemenin indirdiği değişiklik) kaynaklı olay gelir.
+    const disarida = (kelimeler, islem, kaynak = 'sekme') => page.evaluate(([kelimeler, islem, kaynak]) => {
       kelimeler.forEach(w => window.YDS.Ilerleme[islem](w, 'kelime'));
-      window.dispatchEvent(new CustomEvent('yds-depo-degisti', {detail: {anahtarlar: ['yds-leitner'], kaynak: 'sekme'}}));
-    }, [kelimeler, islem]);
+      window.dispatchEvent(new CustomEvent('yds-depo-degisti', {detail: {anahtarlar: ['yds-leitner'], kaynak}}));
+    }, [kelimeler, islem, kaynak]);
     // b) Sonraki kartlardan biri başka yerde yanıtlanır: sayaç bir azalır, ekrandaki kart değişmez,
     //    deste dolaşılırken o kelime bir daha gelmez.
     const giden = deste[3];
@@ -2200,10 +3138,11 @@ async function main() {
     deste = deste.filter(w => w !== giden);
     assert.deepEqual(await dolas(n - 1), deste, 'Kalan kartlar aynı sırada; yanıtlanan kelime yok');
     // c) Ekrandaki karttan ÖNCEKİ bir kart düşer: ekrandaki kart aynı kalır, sırası bir geri kayar.
+    //    Değişiklik bu kez buluttan gelir (kaynak 'bulut'): deste onu da başka sekmeninki gibi işler.
     await page.locator('#sonraki').click(); await page.locator('#sonraki').click();
     await sayacBekle('3 / ' + (n - 1));
-    await disarida([deste[0]], 'yanlis');
-    await sayacBekle('2 / ' + (n - 2));
+    await disarida([deste[0]], 'yanlis', 'bulut');
+    await desteBeklenen(sayacBekle('2 / ' + (n - 2)), 'Buluttan gelen değişiklik (kaynak "bulut") de kartı desteden düşürür: sayaç 2 / ' + (n - 2) + ' olmalı');
     assert.equal((await kart()).on, deste[2], 'Önceki kart düşünce ekrandaki kart değişmez');
     deste = deste.slice(1);
     // d) Ekrandaki (çevrilmiş) kart düşer: yerine sıradaki gelir, cevabı kapalıdır.
@@ -2312,6 +3251,686 @@ async function main() {
     return (n + 1) + ' kartlı deste; oyunda yanıtlanan: ' + oyunda;
   });
 
+  /* ---------- Gerçek eşitleme motoruyla açılış birleşimi ---------- */
+  senaryo('Gerçek eşitleme motoru: SDK inerken verilen cevap birleşim işlemi bitene dek bekletilir; başka cihazın yazdığı kayıt birleşimden sonra yerelde de bulutta da olduğu gibi kalır, cevap işlenmez ve yeni açılışta notla bildirilir, sayfa bir kez yenilenir', async () => {
+    // Gerçek esitleme-v2.js, depodaki sahte Firebase SDK'sıyla koşar; saat gerçektir (motor ve sahte SDK
+    // zamanlayıcılarla çalışır). Bulutta sıranın ilk kelimesini başka bir cihaz ("telefon") 3. kutuya yazmıştır,
+    // yerel profil boştur. Kelime birleşimden önce işlenseydi boş ilerlemeyle hesaplanan cevap daha yeni
+    // damgayla telefonun kaydını ezerdi. Makineyle yarışılmaz: önce SDK isteği, sonra birleşim işlemi açık
+    // tutulur; her biri ancak "cevap hâlâ bekliyor, hiçbir şey yazılmadı" görüldükten sonra bırakılır.
+    const BIRLESIM_BITTI = '(birleşim işlemi bitti)';
+    const context = await yeni();
+    await context.addInitScript(birlesimBitti => {
+      if (!/\/oyunlar\.html$/.test(location.pathname)) return;
+      try { localStorage.setItem('yds-bulut-etkin', 'true'); } catch (e) { /* depo kapalıysa motor kapalı kalır */ }
+      // Birleşim kayıt getirince motor sayfayı yeniler. Yükleme sayısı ile her yüklemenin motor durumları,
+      // durum satırı iletileri ve ömrü oturum deposunda tutulur (yenilemeden sonra da okunabilsin).
+      const oku = () => { try { return JSON.parse(sessionStorage.getItem('__kapiIz')) || {}; } catch (e) { return {}; } };
+      const yaz = iz => sessionStorage.setItem('__kapiIz', JSON.stringify(iz));
+      const ilk = oku(), no = window.__kapiYukleme = (ilk.yukleme || 0) + 1;
+      ilk.yukleme = no;
+      // Motor sayfayı yenilerken oturum deposuna bir iz yazar (main.js, yenidenYukle): yüklemenin başındaki hâli.
+      ilk['yenilemeIzi' + no] = sessionStorage.getItem('yds-son-yeniden-yukleme');
+      yaz(ilk);
+      const ekle = (alan, deger) => { const iz = oku(); (iz[alan + no] = iz[alan + no] || []).push(deger); yaz(iz); };
+      window.addEventListener('yds-esitleme-durumu', olay => ekle('durumlar', olay.detail && olay.detail.durum));
+      // Sahte bulut, açılış birleşiminin işlemi bittiği anda durum dizisine bu işareti koyar (aşağıda, bulutEki).
+      window.__kapiBirlesimBitti = () => ekle('durumlar', birlesimBitti);
+      document.addEventListener('DOMContentLoaded', () => {
+        const el = document.getElementById('oyunDurum');
+        let son = '';
+        new MutationObserver(() => {
+          if (el.textContent === son) return;
+          son = el.textContent;
+          ekle('iletiler', son);
+        }).observe(el, {childList: true, characterData: true, subtree: true});
+      });
+      window.addEventListener('pagehide', () => { const iz = oku(); iz['omur' + no] = Math.round(performance.now()); yaz(iz); });
+    }, BIRLESIM_BITTI);
+    // Sahte bulut bellektedir, her belgeyle yeniden doğar. Gerçek bulut gibi kalıcı olsun diye her işlemden sonra
+    // oturum deposuna kopyalanır ve sonraki yüklemede oradan kurulur; ilk yüklemede telefonun kayıtları konur
+    // (belge biçimi tools/browser-qa.js'teki "uzaktanYaz" ile aynı). Sahte SDK betiğinin sonuna eklenir.
+    const bulutEki = tohum => '\n;(' + String(function (tohum, yol) {
+      var q = window.__qaBulut, M = window.YDS.EsitlemeMotoru, db = window.firebase.firestore(), asil = db.runTransaction;
+      var onceki = sessionStorage.getItem('__kapiBulut'), tutulacak = !onceki;
+      function sakla() {
+        var yollar = {}, belgeler = {};
+        yollar[yol] = 1;
+        q.islemler.forEach(function (i) { i.okunan.forEach(function (y) { yollar[y] = 1; }); });
+        Object.keys(yollar).forEach(function (y) { if (q.belge(y) !== undefined) belgeler[y] = q.belge(y); });
+        sessionStorage.setItem('__kapiBulut', JSON.stringify(belgeler));
+      }
+      // Gerçek Firestore işlemi ağ kadar sürer; sahtesi mikro görevde biter ve birleşimden önce açılan bir kapının
+      // yazdığı bayat cevap (yazım bir kare sonradır) birleşime yetişemez, hata görünmez kalırdı. İlk yüklemenin
+      // birleşim işlemi bu yüzden senaryo bırakana dek açık tutulur; bittiği an durum dizisine işaretlenir.
+      db.runTransaction = function (calistir) {
+        var kapak = Promise.resolve(), ilkBirlesim = tutulacak;
+        tutulacak = false;
+        if (ilkBirlesim) kapak = new Promise(function (coz) { window.__kapiBirlesimiBirak = coz; });
+        return kapak.then(function () { return asil.call(db, calistir); }).then(function (s) {
+          sakla();
+          if (ilkBirlesim) window.__kapiBirlesimBitti();
+          return s;
+        });
+      };
+      if (onceki) {
+        onceki = JSON.parse(onceki);
+        Object.keys(onceki).forEach(function (y) { q.yaz(y, onceki[y]); });
+        return;
+      }
+      var zarf = M.kayitlariYaz({surum: 2, alanlar: {}}, 'yds-leitner', tohum.kayitlar, function () { return tohum.damga; });
+      q.yaz(yol, {surum: 3, anahtar: 'yds-leitner', zaman: tohum.zaman, json: M.bulutAlanJson('yds-leitner', zarf.alanlar['yds-leitner'])});
+      sakla();
+    }) + ')(' + JSON.stringify(tohum) + ', ' + JSON.stringify(BULUT_LEITNER_BELGESI) + ');';
+    let tohum = null, birak, istendi;
+    const kapak = new Promise(coz => { birak = coz; }), ilkIstek = new Promise(coz => { istendi = coz; });
+    await context.route('https://www.gstatic.com/firebasejs/**', async route => {
+      const ad = route.request().url().split('/').pop();
+      istendi(ad);
+      await kapak;
+      await route.fulfill({contentType: 'text/javascript',
+        body: (SAHTE_FIREBASE[ad] || 'throw new Error("beklenmeyen Firebase dosyası")') + (ad === 'firebase-firestore-compat.js' ? bulutEki(tohum) : '')}).catch(() => {});
+    });
+    const page = await context.newPage();
+    // "load" olayı açık tutulan SDK isteğini beklerdi; sayfa, DOM hazır olunca kullanılır.
+    await page.goto(base + '/oyunlar.html', {waitUntil: 'domcontentloaded'});
+    await hazir(page);
+    assert.equal(await sureli(ilkIstek, 15000, 'Düzenek: eşitleme açıkken motor 15 sn içinde Firebase SDK\'sını istemedi'), 'firebase-app-compat.js',
+      'Düzenek: motor SDK\'yı indirmeye başladı, ilk dosyanın isteği açık bekliyor');
+    const sinir = await betikSabiti(page, 'ESITLEME_BEKLEME_MS');
+    assert.ok(sinir >= 3000, 'Düzenek: oyunlar.js içindeki ESITLEME_BEKLEME_MS okunamadı ya da 3 sn\'den kısa (' + sinir + ')');
+    const [w1, w2, w3] = await T(page, 'sira');
+    await kelimeBekle(page, w1);
+    // Telefon bir saat önce yazdı: ilk kelime 3. kutuda (iki gün önce çalışıldı, beş gün sonra sorulacak),
+    // sonraki iki kelime 1. kutuda.
+    tohum = await page.evaluate(kelimeler => {
+      const Il = window.YDS.Ilerleme, b = Il.bugun(), zaman = Date.now() - 60 * 60 * 1000, kayitlar = {};
+      kelimeler.forEach((w, i) => { kayitlar[Il.ilerlemeKimligi(w, 'kelime')] = i ? {k: 1, g: b + 1, c: b - 1} : {k: 3, g: b + 5, c: b - 2}; });
+      return {kayitlar, zaman, damga: zaman + ':telefon', ilk: {k: 3, g: b + 5, c: b - 2}};
+    }, [w1, w2, w3]);
+    await T(page, 'yazimlariSay');
+    await coz(page, w1);
+    const ileti = await ilkIleti(page);
+    const once = await page.evaluate(w => ({
+      gecen: Math.round(performance.now()), durumlar: window.__esitlemeDurumlari.slice(),
+      kayit: window.__oyun.leitnerDepoKaydi(w), yazilan: window.__oyun.yazilan(), bugunku: window.__oyun.bugunku()
+    }), w1);
+    // Bekleme sayfa açılışından sınır kadar sonra kendiliğinden biter; o kadar yavaş bir makinede senaryo bir şey söylemez.
+    assert.ok(once.gecen < sinir, 'Düzenek: sayfa açılışından cevaba ' + once.gecen + ' ms geçti, bekleme üst sınırı (' + sinir + ' ms) doldu; makine bu senaryo için fazla yavaş');
+    assert.equal(ileti, BEKLE_KONTROL, 'SDK inerken verilen cevap bekletilir (eski ilerlemeyle hemen işlenmez)');
+    assert.deepEqual([once.kayit, once.yazilan, once.bugunku], [null, [], {t: 0, d: 0, y: 0}], 'Beklerken ilerlemeye ve günlük sayaca hiçbir şey yazılmadı');
+    assert.deepEqual(once.durumlar, ['kapali', 'yukleniyor'], 'SDK inerken motor önce "kapali", sonra "yukleniyor" bildirmiştir');
+    // Beklenen an hiç gelmezse zaman aşımı, neyin beklendiğini söyleyen iletiyle bildirilir.
+    const bekle = (kosul, ileti) => page.waitForFunction(kosul).catch(h => { throw new Error(ileti + ' (' + String(h && h.message).split('\n')[0] + ')'); });
+    // SDK iner, oturum bağlanır, motor birleşim işlemini başlatır; işlem sahte bulutta açık bekler (gerçek
+    // Firestore'daki ağ gecikmesi). Kapı bu sırada da kapalıdır: cevap hâlâ bekler.
+    birak();
+    await bekle(() => !!window.__kapiBirlesimiBirak, 'SDK indi ama motor açılış birleşimini başlatmadı');
+    const arada = await page.evaluate(w => ({
+      gecen: Math.round(performance.now()), durumlar: window.__esitlemeDurumlari.slice(),
+      durum: document.getElementById('oyunDurum').textContent, kayit: window.__oyun.leitnerDepoKaydi(w), yazilan: window.__oyun.yazilan()
+    }), w1);
+    assert.ok(arada.gecen < sinir, 'Düzenek: sayfa açılışından birleşim işlemine ' + arada.gecen + ' ms geçti, bekleme üst sınırı (' + sinir + ' ms) doldu; makine bu senaryo için fazla yavaş');
+    assert.deepEqual([arada.durum, arada.kayit, arada.yazilan], [BEKLE_KONTROL, null, []],
+      'Oturum bağlandı, birleşim işlemi sürüyor: cevap hâlâ bekliyor, ilerlemeye yazılmadı (motorun o ana dek bildirdikleri: ' + arada.durumlar.join(', ') + ')');
+    // Kapı yine de erken açılmış olsaydı işlenen cevabın yazımı bir kare sonraya kurulmuş olurdu. Birleşim, gerçek
+    // Firestore'daki gibi o yazımdan sonra bitsin diye işlem bir kare daha tutulup bırakılır: aşağıdaki kayıt
+    // denetimleri erken açılan kapıyı kendi başlarına da yakalar.
+    await page.evaluate(() => new Promise(coz => requestAnimationFrame(() => setTimeout(() => { window.__kapiBirlesimiBirak(); coz(); }, 0))));
+    // Birleşim telefonun kayıtlarını getirir: motor sayfayı yeniler.
+    await bekle(() => window.__kapiYukleme >= 2, 'Birleşim buluttan kayıt getirdi ama sayfa yeniden yüklenmedi');
+    await hazir(page);
+    await page.waitForFunction(() => !!window.__qaBulut && window.YDS.Esitleme.oturumDurumu().hazir);
+    const son = await page.evaluate(([w, yol]) => ({
+      iz: JSON.parse(sessionStorage.getItem('__kapiIz')),
+      yerel: window.__oyun.leitnerDepoKaydi(w), bulut: window.__oyun.bulutLeitnerKaydi(yol, w), bugunku: window.__oyun.bugunku(),
+      kart: !document.getElementById('oyunKart').hidden, durum: document.getElementById('oyunDurum').textContent
+    }), [w1, BULUT_LEITNER_BELGESI]);
+    assert.ok(son.iz.omur1 < sinir, 'Düzenek: ilk yükleme ' + son.iz.omur1 + ' ms sürdü, bekleme üst sınırı (' + sinir + ' ms) doldu; makine bu senaryo için fazla yavaş');
+    assert.deepEqual(son.yerel, tohum.ilk, 'Başka cihazın yazdığı kayıt (3. kutu) yerelde korunur: birleşimden önce verilen cevap üzerine yazmadı');
+    assert.deepEqual(son.bulut, {v: tohum.ilk, m: tohum.damga}, 'Buluttaki kayıt başka cihazın yazdığı gibi kaldı (3. kutu, onun damgası)');
+    assert.deepEqual(son.bugunku, {t: 0, d: 0, y: 0}, 'Bekletilen cevap günlük sayaca da yazılmadı');
+    // İlk yüklemenin bütün durumları: "kapali", sonra "yukleniyor" ile başlayan kesintisiz bir "sürüyor" dizisi.
+    // Birleşim işlemi bitene dek bitiş anlamına gelen hiçbir durum (kapı o anda açılırdı) bildirilmez; işlem
+    // bittikten sonra yalnız "hazir" gelebilir (dinleyicinin ilk görüntüsü yenilemeden önce ulaşırsa).
+    const BITIS = ['kapali', 'hazir', 'hata', 'silindi'], ilkDurumlar = son.iz.durumlar1 || [], bitis = ilkDurumlar.indexOf(BIRLESIM_BITTI);
+    assert.ok(bitis > 0, 'Düzenek: ilk yüklemede birleşim işleminin bittiği an kaydedilmedi: ' + JSON.stringify(ilkDurumlar));
+    assert.deepEqual([ilkDurumlar.slice(0, 2), ilkDurumlar.slice(1, bitis).filter(d => BITIS.includes(d)), ilkDurumlar.slice(bitis + 1).filter(d => d !== 'hazir')], [['kapali', 'yukleniyor'], [], []],
+      'İlk yüklemede motor "kapali", "yukleniyor" ile başlar, birleşim işlemi bitene dek bitiş durumu bildirmez, sonra yalnız "hazir" bildirir: ' + JSON.stringify(ilkDurumlar));
+    // Birleşim tam bekleyen kelimenin kaydını değiştirdi: cevap, olaylar hangi sırayla gelirse gelsin işlenmez.
+    // "hazir" yenilemeden önce ulaşırsa ilk yükleme bunu kendi iletisiyle söyler (sonuç iletisi bir an bile
+    // görünmez); ulaşmazsa bekleme iletisi yenilemeye dek kalır. Her iki sırada yeni açılış notla bildirir.
+    const iletiler = son.iz.iletiler1 || [];
+    assert.deepEqual([iletiler[0], iletiler.filter(m => m !== BEKLE_KONTROL && m !== KAYIT_DEGISTI_NOTU)], [BEKLE_KONTROL, []],
+      'İlk yüklemede bekletilen cevap işlenmiş gibi gösterilmez (sonuç iletisi bir an bile görünmez): ' + JSON.stringify(iletiler));
+    assert.deepEqual([son.kart, son.durum], [true, YARIM_BEKLEME_NOTU],
+      'Bekletilen cevap işlenmedi: yeni açılış bunu notla bildirir (ilk yüklemenin iletileri: ' + JSON.stringify(iletiler) + ')');
+    const hazirOnce = iletiler.includes(KAYIT_DEGISTI_NOTU);
+    // Sayfa tam bir kez yenilenir: ikinci yüklemenin birleşimi yeni bir şey getirmez. Motor yenilemeyi istedikten
+    // 100 ms sonra yapar ve o anda oturum deposundaki yenileme izini yazar (main.js). İkinci yüklemenin birleşimi
+    // bittiğine göre (oturum hazır) yeni bir yenileme istenmişse zamanlayıcısı çoktan kuruludur ve sayfada şimdi
+    // kurulan daha uzun zamanlayıcıdan önce çalışır; bu yüzden sonuç makinenin hızına bağlı değildir.
+    assert.ok(son.iz.yenilemeIzi2, 'Düzenek: ikinci yükleme motorun yenileme iziyle (oturum deposunda "yds-son-yeniden-yukleme") başlamadı; izin adı değiştiyse aşağıdaki denetim güncellenmeli');
+    const sonra = await page.evaluate(() => new Promise(coz => setTimeout(() => coz({
+      yukleme: window.__kapiYukleme,
+      yeniYenileme: sessionStorage.getItem('yds-son-yeniden-yukleme') !== JSON.parse(sessionStorage.getItem('__kapiIz')).yenilemeIzi2
+    }), 150))).catch(() => ({yukleme: 'beklerken sayfa yeniden yüklendi', yeniYenileme: true}));
+    assert.deepEqual(sonra, {yukleme: 2, yeniYenileme: false}, 'Birleşim buluttan kayıt getirdi: sayfa tam bir kez yeniden yüklendi (ikinci yüklemede yeni yenileme istenmedi)');
+    return 'ilk kelime ' + w1 + '; bekletilen cevap işlenmedi, yeni açılışta not gösterildi (' +
+      (hazirOnce ? '"hazir" yenilemeden önce ulaştı' : 'yenileme "hazir"dan önce geldi') + '); ilk yükleme ' + son.iz.omur1 + ' ms';
+  });
+
+  /* ---------- Kelimeler destesi: tekrar kartları ---------- */
+  senaryo('Kelimeler destesi, tekrar kartlarıyla: vadesi gelen kart destededir (vadesi gelmeyen ve öğrenilen değildir), oyunda yanıtlanınca düşer, "Bildim" ile yazılır ve 2. kutuya çıkar; son cevap kalan kartları başka yerde yanıtlanmış bulursa (olay ulaşmadan) bitiş iletisi kalır', async () => {
+    const context = await yeni();
+    const oyun = await context.newPage();
+    await oyun.clock.setFixedTime(GUN(0));
+    await ac(oyun, base);
+    // Düzenek (0. gün): günlük yeni kart hedefi 5 (seçeneklerin en küçüğü: deste kısa olur). Oyunda sorulan
+    // Çekirdek kelimelerinden üçü bir kez bilindi (1. kutu, vadesi yarın), biri iki kez (2. kutu, vadesi
+    // üç gün sonra), biri öğrenildi (5. kutu).
+    const f = await oyun.evaluate(() => {
+      const Il = window.YDS.Ilerleme, ws = window.__oyun.havuz([2]).slice(0, 5).map(d => d.e);
+      Il.gunlukHedefAyarla(5);
+      ws.slice(0, 4).forEach(w => Il.dogru(w, 'kelime'));
+      Il.dogru(ws[3], 'kelime');
+      Il.zatenBiliyorum(ws[4], 'kelime');
+      return {vadeli: ws.slice(0, 3), erken: ws[3], ogrenilen: ws[4], hedef: Il.gunlukHedef(), tavan: Il.gunlukTavan(),
+        aralik: Il.ARALIK[2], kutular: ws.map(w => Il.kutu(w, 'kelime'))};
+    });
+    assert.deepEqual(f.kutular, [1, 1, 1, 2, 5], 'Düzenek: üç kelime 1. kutuda, biri 2. kutuda, biri öğrenildi');
+    await oyun.clock.setFixedTime(GUN(1));
+    const page = await context.newPage();
+    await kelimelerAc(page, base);
+    const bugun = await T(page, 'bugun');
+    await page.locator('#desteBasla').click();
+    let k = await T(page, 'desteGor');
+    const n = Number(k.sayac.split(' / ')[1]);
+    assert.ok(k.alan && k.sayac === '1 / ' + n, 'Düzenek: deste açıldı (' + k.sayac + ')');
+    // a) Destenin içeriği: vadesi gelen üç kelime var; vadesi gelmeyen ve öğrenilen yok.
+    let deste = await desteDolas(page, n);
+    assert.equal(new Set(deste).size, n, 'Düzenek: destede ' + n + ' ayrı kelime');
+    assert.deepEqual(f.vadeli.filter(w => !deste.includes(w)), [], 'Vadesi gelen kartlar destede (' + n + ' kartlı deste: ' + deste.join(', ') + ')');
+    assert.deepEqual([f.erken, f.ogrenilen].filter(w => deste.includes(w)), [], 'Vadesi gelmeyen (2. kutu) ve öğrenilen kelime destede yok');
+    assert.equal(n, 3 + Math.min(f.hedef, f.tavan - 3), 'Düzenek: deste üç tekrar ve günlük hedef kadar yeni karttan oluşur');
+    // b) Oyun (öbür sekme) vadesi gelen kelimelerden birini sorar; orada bilinir, 2. kutuya çıkar. Depolama
+    //    olayı kendiliğinden gelir: kart desteden düşer, kalanlar aynı sırada durur.
+    await oyun.reload(); await hazir(oyun);
+    const [oyunda] = await T(oyun, 'sira');
+    assert.ok(f.vadeli.includes(oyunda), 'Düzenek: oyunun 1. gündeki ilk kelimesi (' + oyunda + ') vadesi gelenlerden');
+    await kelimeBekle(oyun, oyunda);
+    await coz(oyun, oyunda);
+    await kutuBekle(oyun, oyunda, 2);
+    await page.bringToFront();
+    deste = deste.filter(w => w !== oyunda);
+    await desteBeklenen(page.waitForFunction(m => document.getElementById('kartSayac').textContent === m, '1 / ' + (n - 1)),
+      'Oyunda bilinen (2. kutuya çıkan) tekrar kartı desteden düşer: sayaç 1 / ' + (n - 1) + ' olmalı');
+    assert.deepEqual(await desteDolas(page, n - 1), deste, 'Oyunda yanıtlanan tekrar kartı desteden düştü; kalanlar aynı sırada');
+    // c) Ekrandaki tekrar kartı olağan yoldan yanıtlanır: yazılır, 2. kutuya çıkar, yeni kelime sayılmaz.
+    const [bildimKarti, sonKart] = f.vadeli.filter(w => w !== oyunda);
+    await desteKartaGit(page, bildimKarti);
+    assert.equal((await T(page, 'desteGor')).kutu, '1. kutu · tekrar zamanı', 'Düzenek: ekranda vadesi gelmiş bir tekrar kartı');
+    const gunlukOnce = await T(page, 'bugunku');
+    await page.locator('#bildim').click();
+    k = await T(page, 'desteGor');
+    deste = deste.filter(w => w !== bildimKarti);
+    assert.equal(k.sayac.split(' / ')[1], String(n - 2), 'Vadesi gelen kart "Bildim" ile yanıtlanır ve desteden çıkar (sayaç: ' + k.sayac + ')');
+    assert.deepEqual(await T(page, 'desteDepo', [bildimKarti]), [{k: 2, g: bugun + f.aralik, c: bugun}], 'Tekrar kartı 2. kutuya çıktı; sonraki tekrar ' + f.aralik + ' gün sonra');
+    const gunlukSonra = await T(page, 'bugunku');
+    assert.deepEqual([gunlukSonra.t, gunlukSonra.d, gunlukSonra.y], [gunlukOnce.t + 1, gunlukOnce.d + 1, gunlukOnce.y], 'Tekrar cevabı günlük sayaçlara yazıldı; yeni kelime sayılmadı');
+    // d) Son tekrar kartı ekrandayken destenin geri kalanı öbür sayfada yanıtlanır; depolama olayı bu sayfaya
+    //    ulaşmaz. Ekrandaki kartın cevabı yazılır, ardından gelen kart çizimi kalanların hepsini düşürür:
+    //    deste cevabın içinde biter ve bitiş iletisi yerinde kalır (liste sayacı üzerine yazılmaz).
+    await desteKartaGit(page, sonKart);
+    await page.evaluate(() => { window.__depolamaOlayiYok = true; });
+    const kalanlar = deste.filter(w => w !== sonKart);
+    await oyun.evaluate(ws => ws.forEach(w => window.YDS.Ilerleme.dogru(w, 'kelime')), kalanlar);
+    await desteDepoBekle(oyun, page, kalanlar);
+    k = await T(page, 'desteGor');
+    const bellekteGuncel = await page.evaluate(ws => ws.filter(w => window.YDS.Ilerleme.kutu(w, 'kelime') !== 0), kalanlar);
+    assert.deepEqual([k.on, k.sayac.split(' / ')[1], bellekteGuncel], [sonKart, String(n - 2), []],
+      'Düzenek: olay ulaşmadı; kart ve sayaç yerinde, öbür sayfada yanıtlanan ' + kalanlar.length + ' kart bellekteki kopyada hâlâ "hiç çalışılmadı"');
+    await page.locator('#bildim').click();
+    k = await T(page, 'desteGor');
+    assert.deepEqual(await T(page, 'desteDepo', [sonKart]), [{k: 2, g: bugun + f.aralik, c: bugun}], 'Ekrandaki son kartın cevabı yazılır (öbür kartların başka yerde yanıtlanması onu engellemez)');
+    assert.deepEqual([k.alan, k.liste, k.mod], [false, true, 'Kart moduna geç'], 'Son cevapla deste biter, liste görünümüne dönülür');
+    assert.equal(k.durum, DESTE_BITTI, 'Deste cevabın içinde boşalınca bitiş iletisi kalır (liste sayacı üzerine yazılmaz)');
+    // Bitiş iletisi dururken gelen dışarıdan değişiklik deste özetini yeniler ama liste sayacını iletinin yerine yazmaz.
+    await page.evaluate(() => { window.__depolamaOlayiYok = false; window.__oyun.depoDegisti(['yds-leitner'], 'sekme'); });
+    assert.equal((await T(page, 'desteGor')).durum, DESTE_BITTI, 'Bitiş iletisi dururken gelen dışarıdan değişiklik liste sayacını onun yerine yazmaz');
+    return n + ' kartlı deste (3 tekrar); oyunda yanıtlanan tekrar: ' + oyunda;
+  });
+
+  /* ---------- Kelimeler destesi: birikmiş tekrarları dağıtma ---------- */
+  senaryo('Kelimeler destesi açıkken "Birikmiş tekrarları günlere dağıt": sonuç notu görünür, deste bugünün vadesinden yeniden kurulur (sayaç tavanı gösterir), ekrandaki kartın cevabı yazılır', async () => {
+    const context = await yeni();
+    const page = await context.newPage();
+    const onaylar = [];
+    page.on('dialog', async d => { onaylar.push(d.type()); await d.accept(); });
+    await page.clock.setFixedTime(GUN(0));
+    await kelimelerAc(page, base);
+    // Düzenek (0. gün): günlük toplam kart tavanı en küçük seçenekte; tavandan 45 fazla Çekirdek kelimesi bir
+    // kez bilindi. İki gün sonra hepsinin vadesi geçmiştir; tavana sığmayan 45 tekrar "günlere dağıt"
+    // düğmesini getirir (düğme 40 ve üstünde çıkar).
+    const f = await page.evaluate(() => {
+      const Il = window.YDS.Ilerleme;
+      const tavan = Math.min(...[...document.getElementById('gunlukTavan').options].map(o => Number(o.value)));
+      Il.gunlukTavanAyarla(tavan);
+      const ws = window.__oyun.desteHavuz([2]).slice(0, tavan + 45);
+      ws.forEach(w => Il.dogru(w, 'kelime'));
+      return {tavan, adet: ws.length, aralik: Il.ARALIK[2]};
+    });
+    await page.clock.setFixedTime(GUN(2));
+    await page.reload(); await kelimelerHazir(page);
+    const bugun = await T(page, 'bugun');
+    let k = await T(page, 'desteGor');
+    assert.ok(k.dagit && k.dugme === 'Bugünü çalış (' + f.tavan + ' kart)',
+      'Düzenek: ' + f.adet + ' gecikmiş tekrar ve ' + f.tavan + ' kartlık tavanla "günlere dağıt" düğmesi görünür (' + k.dugme + '; ' + k.not + ')');
+    await page.locator('#desteBasla').click();
+    const eski = await desteDolas(page, f.tavan);
+    k = await T(page, 'desteGor');
+    assert.ok(k.alan && k.sayac === '1 / ' + f.tavan && new Set(eski).size === f.tavan, 'Düzenek: tavan kadar kartlı tekrar destesi açıldı (' + k.sayac + ')');
+    // Dağıtımın bugünde bırakmayacağı bir kart ekrana getirilir ve çevrilir: kullanıcı cevabına bakmıştır.
+    const [tasinacak] = await T(page, 'desteTasinacak', eski, f.tavan);
+    assert.ok(tasinacak, 'Düzenek: açık destede, dağıtımın ileri bir güne alacağı kart yok (dağıtımın sırası değişmiş olabilir)');
+    await desteKartaGit(page, tasinacak);
+    await page.locator('#kart').click();
+    assert.equal((await T(page, 'desteGor')).arka, true, 'Düzenek: kart çevrildi');
+    await page.locator('#yigiiniDagit').click();
+    assert.deepEqual(onaylar, ['confirm'], 'Düzenek: dağıtım bir kez onay sordu');
+    const vadeliler = await T(page, 'desteVadeliler', [2]);
+    assert.deepEqual([vadeliler.length, vadeliler.includes(tasinacak)], [f.tavan, false],
+      'Düzenek: dağıtım bugüne tavan kadar tekrar bıraktı, çevrilen kartı (' + tasinacak + ') ileri bir güne aldı');
+    k = await T(page, 'desteGor');
+    assert.equal(k.not, (f.adet - f.tavan) + ' tekrar ileriki günlere yayıldı; yığın ' + Math.ceil(f.adet / f.tavan) + ' günde erir.', 'Dağıtımdan sonra sonuç notu görünür');
+    assert.deepEqual([k.alan, Number(k.sayac.split(' / ')[1])], [true, f.tavan], 'Dağıtımdan sonra deste açık kalır; sayaç tavanı gösterir, eski desteden kalanı değil (' + k.sayac + ')');
+    // Ekrandaki kart "Bildim" ile yanıtlanır: cevap yazılır (deste yeniden kurulmasaydı ekranda, tarihi ileri
+    // alınmış eski kart kalır, cevabı sessizce atlanırdı).
+    const ekrandaki = k.on, [kayitOnce] = await T(page, 'desteDepo', [ekrandaki]), gunlukOnce = await T(page, 'bugunku');
+    assert.ok(kayitOnce, 'Dağıtımdan sonra ekrandaki kart (' + ekrandaki + ') daha önce çalışılmış bir tekrar kartıdır (hiç çalışılmamış kart değil)');
+    await page.locator('#bildim').click();
+    assert.equal((await T(page, 'bugunku')).t, gunlukOnce.t + 1, 'Dağıtımdan sonra ekrandaki kartın (' + ekrandaki + ') "Bildim" cevabı yazılır: günlük toplam bir artar');
+    assert.deepEqual(await T(page, 'desteDepo', [ekrandaki]), [{k: kayitOnce.k + 1, g: bugun + f.aralik, c: bugun}], 'Yanıtlanan kelime bir üst kutuya çıkar');
+    // Yeniden kurulan deste bugün vadesi gelen kartlardır: yanıtlanan kart ve kalanlar, depodaki bugünün
+    // vadelileriyle aynı kümedir; turda hiçbir kart düşmez.
+    k = await T(page, 'desteGor');
+    assert.equal(k.sayac, '1 / ' + (f.tavan - 1), 'Cevaptan sonra destede tavanın bir eksiği kadar kart kalır');
+    const kalan = await desteDolas(page, f.tavan - 1);
+    assert.deepEqual(desteSirali([ekrandaki, ...kalan]), desteSirali(vadeliler), 'Deste dağıtımdan sonra bugün vadesi gelen kartlardan kuruldu');
+    assert.equal((await T(page, 'desteGor')).sayac, '1 / ' + (f.tavan - 1), 'Tam turda hiçbir kart düşmedi');
+    return f.adet + ' gecikmiş tekrar, tavan ' + f.tavan + '; çevrilen kart: ' + tasinacak + ', yanıtlanan: ' + ekrandaki;
+  });
+
+  /* ---------- Kelimeler destesi: dağıtım, ekrandaki kart bugünde kalırken ---------- */
+  senaryo('Kelimeler destesi açıkken "Birikmiş tekrarları günlere dağıt", ekrandaki kart bugünde kalsa da: deste bugünün vadesinden yeniden kurulur (tavan kadar kart, hiçbiri düşmez); kartların hepsi yanıtlanınca deste biter', async () => {
+    const context = await yeni();
+    const page = await context.newPage();
+    page.on('dialog', async d => { await d.accept(); });
+    // Düzenek: bir Çekirdek kelimesi bir gün önce bilinir; vadesi hepsinden eskidir, eşit vadeliler hangi
+    // sırayla dizilirse dizilsin hem destenin hem dağıtımın ilk sırasındadır. Ertesi gün tavandan 45 fazla
+    // kelime daha bilinir. İki gün sonra hepsinin vadesi geçmiştir; "günlere dağıt" düğmesi görünür.
+    await page.clock.setFixedTime(GUN(-1));
+    await kelimelerAc(page, base);
+    const f = await page.evaluate(() => {
+      const Il = window.YDS.Ilerleme;
+      const tavan = Math.min(...[...document.getElementById('gunlukTavan').options].map(o => Number(o.value)));
+      Il.gunlukTavanAyarla(tavan);
+      const sonrakiler = window.__oyun.desteHavuz([2]).slice(0, tavan + 46), enEski = sonrakiler.pop();
+      Il.dogru(enEski, 'kelime');
+      return {tavan, enEski, sonrakiler};
+    });
+    await page.clock.setFixedTime(GUN(0));
+    await page.evaluate(ws => ws.forEach(w => window.YDS.Ilerleme.dogru(w, 'kelime')), f.sonrakiler);
+    await page.clock.setFixedTime(GUN(2));
+    await page.reload(); await kelimelerHazir(page);
+    let k = await T(page, 'desteGor');
+    assert.ok(k.dagit, 'Düzenek: ' + (f.sonrakiler.length + 1) + ' gecikmiş tekrar ve ' + f.tavan + ' kartlık tavanla "günlere dağıt" düğmesi görünür (' + k.dugme + '; ' + k.not + ')');
+    await page.locator('#desteBasla').click();
+    const eski = await desteDolas(page, f.tavan);
+    assert.ok(eski.includes(f.enEski), 'En çok gecikmiş tekrar (' + f.enEski + ') destededir: tavana sığmayan tekrarlardan önce en eski vadeliler alınır (deste: ' + eski.join(', ') + ')');
+    // Bugünde kalacak kart ekrandayken dağıtılır.
+    await desteKartaGit(page, f.enEski);
+    await page.locator('#yigiiniDagit').click();
+    const vadeliler = await T(page, 'desteVadeliler', [2]);
+    const ileriAlinan = eski.filter(w => !vadeliler.includes(w));
+    assert.deepEqual([vadeliler.length, vadeliler.includes(f.enEski), ileriAlinan.length > 0], [f.tavan, true, true],
+      'Düzenek: dağıtım bugüne tavan kadar tekrar bıraktı; ekrandaki kart (' + f.enEski + ') bugünde kaldı, eski destenin ' + ileriAlinan.length + ' kartı ileri bir güne alındı');
+    // Deste yeniden kurulmasaydı ileri alınan kartlar ilk çizimde düşer, deste sessizce kısalırdı.
+    const tur = await desteDolas(page, f.tavan);
+    assert.deepEqual([desteSirali(tur), (await T(page, 'desteGor')).sayac], [desteSirali(vadeliler), '1 / ' + f.tavan],
+      'Ekrandaki kart bugünde kalsa da deste bugünün vadesinden yeniden kurulur: tavan kadar kart, turda hiçbiri düşmez (tur: ' + tur.join(', ') + ')');
+    // Yeniden kurulan destenin bütün kartları olağan yoldan yanıtlanır: her cevap yazılır, son kartın
+    // cevabıyla deste biter.
+    const gunlukOnce = await T(page, 'bugunku');
+    for (let i = 0; i < f.tavan; i++) { await desteKart(page, 'Yeniden kurulan deste yanıtlanırken, ' + (i + 1) + '. kartta'); await page.locator('#bildim').click(); }
+    assert.equal((await T(page, 'bugunku')).t, gunlukOnce.t + f.tavan,'Yeniden kurulan destenin ' + f.tavan + ' kartının cevabı da yazılır (günlük toplam)');
+    k = await T(page, 'desteGor');
+    assert.deepEqual([k.alan, k.liste, k.mod, k.durum], [false, true, 'Kart moduna geç', DESTE_BITTI], 'Son kart olağan yoldan yanıtlanınca deste biter: bitiş iletisi görünür, liste görünümüne dönülür');
+    return (f.sonrakiler.length + 1) + ' gecikmiş tekrar, tavan ' + f.tavan + '; ekranda kalan kart: ' + f.enEski + ', eski desteden ileri alınan: ' + ileriAlinan.length;
+  });
+
+  /* ---------- Kelimeler destesi: katman değişimi, sıfırlama, geri alma ---------- */
+  senaryo('Kelimeler destesi açıkken katman değişimi, sıfırlama ve geri alma desteyi olağan kart moduna çözer: süzgeçler geri gelir, sayaç bütün havuzu gösterir, cevap kartı listeden çıkarmaz', async () => {
+    const context = await yeni();
+    const page = await context.newPage();
+    const onaylar = [];
+    page.on('dialog', async d => { onaylar.push(d.type()); await d.accept(); });
+    await page.clock.setFixedTime(GUN(0));
+    await kelimelerAc(page, base);
+    // Eklenecek katman: seçili olmayanların en az kelimelisi (indirmesi kısa sürer).
+    const ek = await page.evaluate(() => {
+      const V = window.YDS.Veri, s = V.katmanSayilari();
+      return V.KATMANLAR.filter(k => k !== 2 && s[k] > 0).sort((a, b) => s[a] - s[b])[0];
+    });
+    // Çözülen destenin yerine gelen liste: iki katmanın bütün kelimeleri.
+    const havuzBoyu = (await T(page, 'desteHavuz', [2, ek])).length;
+    const desteAc = async etiket => {
+      await page.locator('#desteBasla').click();
+      const g = await T(page, 'desteGor');
+      assert.deepEqual([g.alan, g.sayac.split(' / ')[0], g.suzgec], [true, '1', [false, false, false]], 'Düzenek: ' + etiket + ' deste açık, süzgeç alanları gizli');
+      return g;
+    };
+    // Deste çözüldü mü? Olağan kart modu: süzgeçler görünür, kart ve liste sayacı bütün havuzu gösterir.
+    // Yalnız DOM'a bakılır.
+    const cozuldu = async (sira, etiket) => {
+      const g = await T(page, 'desteGor');
+      assert.deepEqual(g.suzgec, [true, true, true], etiket + ': süzgeç alanları yeniden görünür (deste çözüldü)');
+      assert.deepEqual([g.alan, g.sayac], [true, sira + ' / ' + havuzBoyu], etiket + ': kart modu sürer, kart sayacı bütün havuzu gösterir');
+      assert.ok(g.durum.startsWith(havuzBoyu + ' kelime · seçili katmanlarda ' + havuzBoyu + ' · '), etiket + ': liste sayacı bütün havuzu gösterir: ' + g.durum);
+    };
+    // Olağan modda cevap sıradaki karta geçirir, listeyi kısaltmaz (deste modu kartı listeden çıkarırdı);
+    // yanıtlanan kart yerinde durur: "Önceki" ile ona dönülür.
+    const cevapKisaltmaz = async (sira, etiket) => {
+      const once = await T(page, 'desteGor');
+      assert.equal(once.kutu, 'hiç çalışılmadı', 'Düzenek: ' + etiket + ' ekrandaki kart (' + once.on + ') hiç çalışılmamış');
+      await page.locator('#bildim').click();
+      let g = await T(page, 'desteGor');
+      assert.ok(g.sayac === (sira + 1) + ' / ' + havuzBoyu && g.on !== once.on, etiket + ': cevap sıradaki karta geçirir, liste kısalmaz (sayaç ' + g.sayac + ', kart ' + g.on + ')');
+      await page.locator('#onceki').click();
+      g = await T(page, 'desteGor');
+      assert.deepEqual([g.sayac, g.on, g.kutu], [sira + ' / ' + havuzBoyu, once.on, '1. kutu'], etiket + ': yanıtlanan kart listede durur');
+      return once.on;
+    };
+    // a) Katman değişimi. Önce destede bir kart yanıtlanır: bugün yanıtlanmış bir kayıt olsun (deste modu
+    //    sürseydi o kelime yeni listeden ayıklanır, sayaç havuzdan bir eksik kalırdı). Yanıtlanan kart
+    //    destenin dizin sırasındaki son kelimesidir: çözülen listenin başındaki, sonraki adımlarda
+    //    yanıtlanacak kartlardan biri olmasın.
+    let k = await desteAc('ilk');
+    const n = Number(k.sayac.split(' / ')[1]);
+    assert.ok(n >= 3, 'Düzenek: destede en az üç kart var (' + k.sayac + ')');
+    const ilkCevap = (await T(page, 'desteHavuz', [2]))[n - 1];
+    await desteKartaGit(page, ilkCevap);
+    await page.locator('#bildim').click();
+    k = await T(page, 'desteGor');
+    assert.equal(k.sayac.split(' / ')[1], String(n - 1), 'Düzenek: destede bir kart yanıtlandı');
+    for (let i = Number(k.sayac.split(' / ')[0]); i > 1; i--) await page.locator('#onceki').click();
+    assert.equal((await T(page, 'desteGor')).sayac, '1 / ' + (n - 1), 'Düzenek: destenin ilk kartına dönüldü');
+    await page.locator('#katmanlar .katman[data-k="' + ek + '"]').click();
+    await desteBeklenen(page.waitForFunction(m => document.getElementById('sayac').textContent.includes(m), 'seçili katmanlarda ' + havuzBoyu + ' '),
+      'Düzenek: ' + ek + '. katman yüklendi, liste sayacı iki katmanın ' + havuzBoyu + ' kelimesini gösteriyor');
+    await cozuldu(1, 'Katman değişimi');
+    const ikinciCevap = await cevapKisaltmaz(1, 'Katman değişimi');
+    // b) Sıfırlama (iki aşamalı onay kabul edilir): yeniden açılan deste sürerken basılır.
+    await desteAc('sıfırlamadan önce');
+    await page.locator('#sifirla').click();
+    assert.deepEqual(onaylar, ['confirm', 'confirm'], 'Düzenek: sıfırlama iki kez onay sordu');
+    assert.deepEqual([await T(page, 'desteDepo', [ilkCevap, ikinciCevap]), (await T(page, 'desteGor')).geriAl], [[null, null], true], 'Düzenek: sıfırlama kayıtları sildi, "Geri al" göründü');
+    await cozuldu(1, 'Sıfırlama');
+    await cevapKisaltmaz(1, 'Sıfırlama');
+    // c) Geri alma: yeniden açılan deste sürerken "Geri al"a basılır; silinen kayıtlar geri gelir.
+    await desteAc('geri almadan önce');
+    await page.locator('#geriAl').click();
+    assert.deepEqual([(await T(page, 'desteDepo', [ilkCevap])).map(r => r && r.k), (await T(page, 'desteGor')).geriAl], [[1], false], 'Düzenek: geri alma silinen kaydı geri getirdi, kutusu kapandı');
+    await cozuldu(1, 'Geri alma');
+    await page.locator('#sonraki').click();
+    await cevapKisaltmaz(2, 'Geri alma');
+    return 'eklenen katman ' + ek + ', havuz ' + havuzBoyu + ' kelime; destede yanıtlanan: ' + ilkCevap;
+  });
+
+  /* ---------- Kelimeler: deste kapalıyken özet ve deste kurulumu ---------- */
+  senaryo('Kelimeler, deste kapalıyken: olay ulaşmasa da "Bugünü çalış" desteyi depodaki güncel kayıtlardan kurar; önbellekten dönüşte (pageshow, persisted) ve başka sekme olayında (liste modunda da olağan kart modunda da) deste özeti (bilgi satırı, kutular, düğme) ve liste sayacının ilerlemeden gelen sonu yenilenir; "Bugünü çalış" özeti de kurduğu kayıtlarla çizer', async () => {
+    const context = await yeni();
+    const page = await context.newPage();
+    await page.clock.setFixedTime(GUN(0));
+    await kelimelerAc(page, base);
+    // Düzenek (0. gün): toplam kart tavanı ve yeni kart hedefi en küçük seçeneklerinde; tavandan iki fazla
+    // Çekirdek kelimesi bir kez bilindi (ertesi gün hepsinin vadesi gelir, ikisi tavana sığmaz).
+    const f = await page.evaluate(() => {
+      const Il = window.YDS.Ilerleme, enKucuk = id => Math.min(...[...document.getElementById(id).options].map(o => Number(o.value)));
+      const tavan = enKucuk('gunlukTavan'), hedef = enKucuk('gunlukHedef');
+      Il.gunlukTavanAyarla(tavan); Il.gunlukHedefAyarla(hedef);
+      const havuz = window.__oyun.desteHavuz([2]), vadeli = havuz.slice(0, tavan + 2);
+      vadeli.forEach(w => Il.dogru(w, 'kelime'));
+      return {tavan, hedef, vadeli, yeni: havuz[tavan + 2], yeni2: havuz[tavan + 3]};
+    });
+    assert.ok(f.tavan >= 8 && f.hedef < f.tavan - 3, 'Düzenek: tavan (' + f.tavan + ') ve yeni kart hedefi (' + f.hedef + ') bu adımların sayılarına uygun');
+    await page.clock.setFixedTime(GUN(1));
+    await page.reload(); await kelimelerHazir(page);
+    const oyun = await context.newPage();
+    await ac(oyun, base);
+    await page.bringToFront();
+    // Deste özetinin üç yeri: ekrandaki hâli ve depodan beklenen hâli (ilerlemeyi yazan oyun sayfasından).
+    const ozet = g => ({bilgi: g.bilgi, kutular: g.kutular, dugme: g.dugme});
+    const beklenenOzet = async () => ozet(await T(oyun, 'desteOzet', [2]));
+    const beklenenSayacSonu = async () => (await T(oyun, 'desteOzet', [2])).sayacSonu;
+    const farkli = (a, b) => a.bilgi !== b.bilgi && String(a.kutular) !== String(b.kutular) && a.dugme !== b.dugme;
+    const oyundaBil = async kelimeler => {
+      await oyun.evaluate(ws => ws.forEach(w => window.YDS.Ilerleme.dogru(w, 'kelime')), kelimeler);
+      return beklenenOzet();
+    };
+    let k = await T(page, 'desteGor');
+    const ilkOzet = ozet(k);
+    assert.deepEqual([ilkOzet, k.liste, k.alan], [await beklenenOzet(), true, false], 'Düzenek: liste modu; özet ' + f.vadeli.length + ' tekrarı gösteriyor');
+    assert.equal(ilkOzet.dugme, 'Bugünü çalış (' + f.tavan + ' kart)', 'Düzenek: deste tavan kadar tekrar kartıyla dolu');
+    // a) Depolama olayı bu sayfaya ulaşmaz; oyun sayfası destenin ilk iki tekrarını yanıtlar. "Bugünü çalış"a
+    //    hiçbir olay gelmeden basılır: deste bellekteki bayat kopyadan değil depodan kurulur. Yanıtlananlar
+    //    girmez, tavana sığmayan iki tekrar yerlerini alır: deste yine tavan kadardır.
+    await page.evaluate(() => { window.__depolamaOlayiYok = true; });
+    const ilkIki = f.vadeli.slice(0, 2);
+    await oyundaBil(ilkIki);
+    await desteDepoBekle(oyun, page, ilkIki);
+    assert.deepEqual([await page.evaluate(ws => ws.map(w => window.YDS.Ilerleme.kutu(w, 'kelime')), ilkIki), ozet(await T(page, 'desteGor'))], [[1, 1], ilkOzet],
+      'Düzenek: olay ulaşmadı; bellekteki kopya ve ekrandaki özet eski');
+    await page.locator('#desteBasla').click();
+    k = await T(page, 'desteGor');
+    assert.deepEqual([k.alan, k.sayac], [true, '1 / ' + f.tavan],
+      'Olay gelmeden basılan "Bugünü çalış" desteyi depodan kurar: tavan kadar kart (bayat kopyadan kurulsa yanıtlananlar ayıklanır, deste eksik kalırdı)');
+    assert.ok(String(ilkOzet.kutular) !== String((await beklenenOzet()).kutular), 'Düzenek: öbür sayfadaki iki cevap kutu sayılarını değiştirdi');
+    assert.deepEqual(ozet(k), await beklenenOzet(), 'Olay gelmeden basılan "Bugünü çalış" deste özetini de desteyi kurduğu güncel kayıtlarla çizer (kutular bayat kalmaz)');
+    assert.deepEqual(desteSirali(await desteDolas(page, f.tavan)), desteSirali(f.vadeli.slice(2)), 'Destede öbür sayfada yanıtlanan iki kelime yok; tavana sığmayan iki tekrar desteye girdi');
+    // b) Listeye dönülür. Oyun sayfası kalan tekrarların dördü dışındakileri ve bir yeni kelimeyi yanıtlar;
+    //    olay yine ulaşmaz, özet eski kalır. Önbellekten dönüş (pageshow, persisted) özeti depodan yeniler.
+    await page.locator('#mod').click();
+    const dahaSonra = [...f.vadeli.slice(2, f.tavan - 2), f.yeni];
+    const beklenen = await oyundaBil(dahaSonra);
+    await desteDepoBekle(oyun, page, dahaSonra);
+    k = await T(page, 'desteGor');
+    assert.ok(k.liste && !k.alan && farkli(ozet(k), beklenen), 'Düzenek: liste modu; olay ulaşmadığı için özetin üç yeri de depodakinden farklı: ' + JSON.stringify([ozet(k), beklenen]));
+    const sayacSonu = await beklenenSayacSonu();
+    assert.ok(/ · öğrenilen \d+ · bugün \d+ tekrar \+ \d+ yeni$/.test(k.durum) && !k.durum.endsWith(sayacSonu),
+      'Düzenek: liste sayacı ilerleme özetiyle bitiyor ve olay ulaşmadığı için depodakinden farklı: ' + JSON.stringify([k.durum, sayacSonu]));
+    const sayacBasi = k.durum.slice(0, k.durum.indexOf(' · öğrenilen '));
+    await page.evaluate(() => { window.dispatchEvent(new PageTransitionEvent('pageshow', {persisted: true})); });
+    k = await T(page, 'desteGor');
+    assert.deepEqual(ozet(k), beklenen, 'Önbellekten dönüşte deste özeti (bilgi satırı, kutular, düğme) depodaki ilerlemeyi gösterir');
+    assert.equal(k.durum, sayacBasi + sayacSonu, 'Önbellekten dönüşte liste sayacının ilerlemeden gelen sonu da yenilenir; liste (kelime sayısı) yerinde kalır');
+    assert.ok(k.liste && !k.alan, 'Önbellekten dönüş liste modunu bozmaz');
+    // c) Özet yenilendikten sonra kurulan deste: boyu düğmedeki sayı kadardır, öbür sayfada yanıtlanan
+    //    kelimelerin hiçbiri yoktur, kalan dört tekrar içindedir.
+    await page.locator('#desteBasla').click();
+    k = await T(page, 'desteGor');
+    const boy = Number(k.sayac.split(' / ')[1]);
+    assert.equal('Bugünü çalış (' + boy + ' kart)', beklenen.dugme, 'Deste boyu düğmedeki sayıyla aynı (kart sayacı: ' + k.sayac + ')');
+    const deste = await desteDolas(page, boy);
+    assert.deepEqual(deste.filter(w => ilkIki.includes(w) || dahaSonra.includes(w)), [], 'Destede öbür sayfada yanıtlanan kelime yok');
+    assert.deepEqual(f.vadeli.slice(f.tavan - 2).filter(w => !deste.includes(w)), [], 'Kalan dört tekrar destede');
+    // d) Olaylar yeniden ulaşır. Liste modunda, başka sekmenin (oyunun) cevabı özeti kendiliğinden yeniler.
+    //    Oyun hiç çalışılmamış bir kelimeyi bilir: tek yazım özetin üç yerini de değiştirir (başlanan kelime
+    //    sayısı, kutular, kalan yeni kart kotası). Sayfada yalnız DOM beklenir: depo okunmaz.
+    await page.locator('#mod').click();
+    await page.evaluate(() => { window.__depolamaOlayiYok = false; });
+    const sonOzet = await oyundaBil([f.yeni2]);
+    assert.ok(farkli(sonOzet, beklenen), 'Düzenek: yeni cevap özetin üç yerini de değiştirir: ' + JSON.stringify([beklenen, sonOzet]));
+    await desteBeklenen(page.waitForFunction(m => document.getElementById('desteBasla').textContent === m, sonOzet.dugme),
+      'Liste modunda başka sekmenin cevabı deste özetini yeniler: düğme "' + sonOzet.dugme + '" olmalı');
+    k = await T(page, 'desteGor');
+    assert.deepEqual([ozet(k), k.liste], [sonOzet, true], 'Liste modunda başka sekmenin cevabı deste özetini (bilgi satırı, kutular, düğme) yeniler');
+    assert.ok(k.durum.endsWith(await beklenenSayacSonu()), 'Liste modunda başka sekmenin cevabı liste sayacının sonunu da yeniler: ' + JSON.stringify([k.durum, await beklenenSayacSonu()]));
+    // e) Olağan kart modunda da (deste kapalı: süzgeçler görünür) dışarıdan gelen değişiklik deste özetini
+    //    yeniler; kart modu ve süzgeçler yerinde kalır. Değişiklik sayfa içinden, tek adımda kurulur: kalan
+    //    tekrarlardan biri bilinir (sayfanın kendi yazımı özeti çizmez), ardından 'sekme' kaynaklı olay gelir.
+    await page.locator('#mod').click();
+    k = await T(page, 'desteGor');
+    assert.deepEqual([k.alan, k.suzgec, ozet(k)], [true, [true, true, true], sonOzet], 'Düzenek: olağan kart modu (deste kapalı), özet yerinde');
+    const e = await page.evaluate(([w, katmanlar]) => {
+      const T = window.__oyun, oz = g => ({bilgi: g.bilgi, kutular: g.kutular, dugme: g.dugme});
+      window.YDS.Ilerleme.dogru(w, 'kelime');
+      const olaydanOnce = oz(T.desteGor());
+      T.depoDegisti(['yds-leitner'], 'sekme');
+      return {olaydanOnce, beklenen: T.desteOzet(katmanlar), sonra: T.desteGor()};
+    }, [f.vadeli[f.tavan - 2], [2]]);
+    assert.ok(JSON.stringify(e.olaydanOnce) === JSON.stringify(sonOzet) && String(e.beklenen.kutular) !== String(sonOzet.kutular) && e.beklenen.dugme !== sonOzet.dugme,
+      'Düzenek: olay gelmeden özet eski; bilinen tekrar kutuları ve düğmedeki sayıyı değiştirir: ' + JSON.stringify([sonOzet, e.olaydanOnce, e.beklenen]));
+    assert.deepEqual([ozet(e.sonra), e.sonra.alan, e.sonra.suzgec], [ozet(e.beklenen), true, [true, true, true]],
+      'Olağan kart modunda (deste kapalı) dışarıdan gelen değişiklik deste özetini yeniler; kart modu ve süzgeçler yerinde kalır');
+    assert.ok(e.sonra.durum.endsWith(e.beklenen.sayacSonu), 'Olağan kart modunda dışarıdan gelen değişiklik sayacın sonunu da yeniler: ' + JSON.stringify([e.sonra.durum, e.beklenen.sayacSonu]));
+    return 'tavan ' + f.tavan + ', yeni kart hedefi ' + f.hedef + '; düğme sırayla: ' + [ilkOzet.dugme, beklenen.dugme, sonOzet.dugme, e.beklenen.dugme].join(' / ');
+  });
+
+  /* ---------- Dizinde olmayan yazım ---------- */
+  senaryo('Dizinde olmayan yazım: biçimi -re/-er ya da s/z kuralına uysa da başlık olmayan yazım kabul edilmez; yanlış deneme sayılır, hiçbir şey yazılmaz', async () => {
+    const context = await yeni();
+    const page = await context.newPage();
+    await page.clock.setFixedTime(GUN(0));
+    await ac(page, base);
+    const f = await page.evaluate(() => {
+      const Y = window.YDS, O = Y.OyunHesap, bul = {};
+      Y.Veri.dizin.forEach(d => { bul[O.sade(d.e)] = d; });
+      const kurallar = {
+        're': e => (/(re|er)$/.test(e) ? [e.slice(0, -2) + (e.endsWith('re') ? 'er' : 're')] : []),
+        'sz': e => [...e].map((c, i) => (c === 's' || c === 'z' ? e.slice(0, i) + (c === 's' ? 'z' : 's') + e.slice(i + 1) : null)).filter(Boolean)
+      };
+      // Her biçim kuralı için: kurala uyan (O.yazimCesidi) ama dizinde başlık olmayan bir yazımı bulunan ilk Çekirdek kelimesi.
+      const ciftler = [];
+      Object.keys(kurallar).forEach(kural => {
+        for (const d of window.__oyun.havuz([2])) {
+          if (!/^[a-z]+$/.test(d.e) || ciftler.some(c => c.kart === d.e)) continue;
+          const aday = kurallar[kural](d.e).find(x => O.yazimCesidi(d.e, x) && !Y.Veri.dizinKaydi(x) && !bul[x]);
+          if (aday) { ciftler.push({kural, kart: d.e, aday, bag: O.iliski(aday, d, x => bul[x] || null)}); break; }
+        }
+      });
+      ciftler.forEach(c => Y.Ilerleme.zatenBiliyorum(c.kart, 'kelime'));
+      return ciftler;
+    });
+    assert.ok(f.length, 'Düzenek: Çekirdek katmanında, biçim kuralına (-re/-er ya da s/z) uyan ama dizinde başlık olmayan yazımı bulunan oynanabilir kelime kalmadı');
+    assert.deepEqual(f.map(c => c.bag), f.map(() => null), 'Modül (O.iliski) dizinde başlığı olmayan yazımı kartla ilişkili saymaz: ' + f.map(c => c.aday).join(', '));
+    await page.clock.setFixedTime(GUN(1));
+    await page.reload(); await hazir(page);
+    await page.locator('.oyun-mod [data-mod="ogrenilen"]').click();
+    const sira = await T(page, 'sira', 'ogrenilen'), bugun = await T(page, 'bugun');
+    assert.deepEqual([...sira].sort(), f.map(c => c.kart).sort(), 'Düzenek: öğrenilmiş kelimeler sırada');
+    await T(page, 'yazimlariSay');
+    for (const w of sira) {
+      const c = f.find(x => x.kart === w);
+      await kelimeBekle(page, w);
+      const once = {kayit: await T(page, 'kayit', w), gunluk: await T(page, 'bugunku'), yazilan: (await T(page, 'yazilan')).length};
+      // 5. kutuda harf açık gelmez: kartın yazımıyla aynı konumdaki harfler tutar, farklı olanlar tutmaz.
+      const tutan = [...w].map((h, i) => i).filter(i => c.aday[i] === w[i]);
+      assert.ok(tutan.length > 0 && tutan.length < w.length, 'Düzenek: ' + c.aday + ' yazımı ' + w + ' ile kısmen örtüşür');
+      await page.locator('#oyunGirdi').focus();
+      await page.keyboard.type(c.aday);
+      await page.keyboard.press('Enter');
+      assert.equal(await durumOku(page), 'Olmadı. Doğru harfler yerinde kaldı; kalan deneme hakkı: 2.',
+        'Dizinde başlık olmayan yazım (' + c.aday + ') "yazımı da doğru" sayılmaz: yanlış denemedir');
+      let g = await T(page, 'gorunum');
+      assert.deepEqual([g.gonder, g.sonuc, g.gecersiz, g.deger], ['Kontrol et', false, 'true', ''], 'Kelime bitmedi: düğme, sonuç bölümü, hata işareti');
+      assert.deepEqual(g.hucreler.map((h, i) => (h.s === 'bulundu' ? i : -1)).filter(i => i >= 0), tutan, 'Yalnız kartın kendi yazımıyla tutan harfler kilitlendi');
+      assert.equal(g.azami, String(w.length - tutan.length), 'Tutmayan harfler yeniden yazılacak');
+      // Bir yanlış deneme ilerlemeye hiçbir şey yazmaz (bekleyen yazım olsaydı şimdiye yapılmış olurdu).
+      await yazimDurulsun(page);
+      assert.deepEqual({kayit: await T(page, 'kayit', w), gunluk: await T(page, 'bugunku'), yazilan: (await T(page, 'yazilan')).length}, once,
+        'Kabul edilmeyen yazım ilerleme ve günlük sayaç yazmaz');
+      // Deneme harcandı: kartın kendi yazımı artık "ilk denemede doğru" değildir.
+      await page.keyboard.type(await T(page, 'eksik', w));
+      await page.keyboard.press('Enter');
+      assert.equal(await durumOku(page, 'Olmadı. Doğru harfler yerinde kaldı; kalan deneme hakkı: 2.'), 'Doğru, ama ilk denemede değil; kelime öğrenilenlerde kalıyor.',
+        'Dizinde olmayan yazım bir deneme harcar (aynı anlamlı kelime gibi bağışlanmaz)');
+      await page.waitForFunction(([w, gun]) => window.__oyun.kayit(w).c === gun, [w, bugun]);
+      assert.equal((await T(page, 'kayit', w)).k, 5);
+      await page.keyboard.press('Enter');
+    }
+    await page.locator('#oyunBos').waitFor({state: 'visible'});
+    assert.deepEqual(await T(page, 'yazilan'), sira.map(w => 'ipucuyla:' + w), 'Her kelime bir kez, ikinci denemedeki doğru cevapla yazıldı');
+    assert.equal((await T(page, 'gorunum')).sayim, 'Bu oturum: ✓ 0 bildin · 💡 ' + sira.length + ' ipuçlu · ✗ 0 bilemedin');
+    return f.map(c => c.kart + ' kartında ' + c.aday + ' (' + c.kural + ')').join(', ');
+  });
+
+  /* ---------- "enter" kartı ---------- */
+  senaryo('"enter" kartı: tuşun adı cevabın kendisidir (re-enter kartında bir parçası); açıklama, duyuru ve girdinin açıklaması cevaptan önce onu içermez ("onay tuşu ile kontrol et")', async () => {
+    // Kartlar: başlığı tuşun adı olan (enter) ve başlığının bir parçası tuşun adı olan (re-enter gibi) ilk kelime.
+    const sonuclar = [];
+    for (const tur of ['tam', 'parca']) sonuclar.push(await enterKarti(tur));
+    return sonuclar.join('; ');
+  });
+  async function enterKarti(tur) {
+    const context = await yeni();
+    const page = await context.newPage();
+    await page.clock.setFixedTime(GUN(0));
+    await ac(page, base);
+    const f = await page.evaluate(tur => {
+      const Y = window.YDS, O = Y.OyunHesap, Il = Y.Ilerleme;
+      const d = Y.Veri.dizin.find(x => (tur === 'tam' ? x.e.toLowerCase() === 'enter' : /[- ]/.test(x.e) && x.e.toLowerCase().split(/[- ]/).includes('enter')) && O.oynanabilir(x));
+      if (!d) return {yok: true};
+      // Vadesi yarın gelen tek kelime olur: yarın sıranın başındadır. Katmanı seçili değilse seçilir.
+      Il.yanlis(d.e, 'kelime');
+      if (d.k !== 2) Y.Depo.yaz('yds-katmanlar', [d.k]);
+      return {w: d.e};
+    }, tur);
+    assert.equal(f.yok, undefined, 'Düzenek: ' + (tur === 'tam' ? '"enter"' : 'bir parçası "enter" olan çok parçalı başlık (re-enter gibi)') + ' artık oynanabilir değil. ' +
+      'Bu senaryo, başlığı sabit yönerge metnindeki tuş adını içeren kartı sınar; kelime kalktıysa senaryonun bu ayağını (ikisi de kalktıysa ' +
+      'oyun-hesap.js tarif() içindeki özel durumu da) kaldırın.');
+    await page.clock.setFixedTime(GUN(1));
+    await page.reload(); await hazir(page);
+    const w = f.w;
+    assert.equal((await T(page, 'sira', 'sira', 1))[0], w, 'Düzenek: vadesi gelen tek kelime sıranın başında');
+    await kelimeBekle(page, w);
+    // Cevaptan önceki her hâlde: açıklama tuşun adını söylemez; kartta (sayfada baştan duran öznitelikler dahil),
+    // girdinin açıklamasında ve (soru yeniden duyurulduysa) duyuruda cevap yoktur. duyuru: beklenen duyuru metni ya da null.
+    const gizli = async (hal, duyuru) => {
+      const g = await T(page, 'gorunum'), bos = g.hucreler.filter(h => h.s.startsWith('bos')).length;
+      assert.equal(g.tarif, beklenenAciklama(g, 'onay tuşu'), hal + ': açıklama tuşun adını (cevabı) söylemez');
+      assert.deepEqual(await T(page, 'sizinti', w), [], hal + ': kartta cevap yok');
+      assert.deepEqual(await T(page, 'oznitelikSizinti', w), [], hal + ': kartın özniteliklerinde (sayfada baştan duranlar dahil) cevap yok');
+      assert.deepEqual(await T(page, 'aciklamaSizinti', w), [], hal + ': girdinin açıklamasında (aria-describedby) cevap yok');
+      if (duyuru) {
+        const okunan = await duyuruOku(page);
+        assert.deepEqual(await T(page, 'duyuruSizinti', w), [], hal + ': duyuruda cevap yok');
+        assert.equal(okunan, duyuru, hal + ': duyuru sıra satırı, maskeli anlam, tür ve açıklamadan oluşur');
+      }
+      return bos;
+    };
+    let bos = await gizli('Yeni kart', await T(page, 'soru', w, true));
+    assert.ok(bos >= 2, 'Düzenek: 1. kutuda en az iki boşluk (' + bos + ')');
+    // Moddan çıkıp dönünce soru yeniden duyurulur (aynı kelime, yeniden kurulan kart).
+    await page.locator('.oyun-mod [data-mod="ogrenilen"]').click();
+    await page.locator('#oyunBos').waitFor({state: 'visible'});
+    await page.locator('.oyun-mod [data-mod="sira"]').click();
+    await kelimeBekle(page, w);
+    await gizli('Moda dönünce', await T(page, 'soru', w, true));
+    // Tek boşluk kalana kadar harf açılır: açıklamanın öbür biçimi ("1 eksik harfi yaz, …").
+    for (; bos > 1; bos--) await page.locator('#oyunHarf').click();
+    assert.equal(await gizli('Tek boşluk kalınca', null), 1, 'Düzenek: tek boşluk kaldı');
+    await coz(page, w);
+    await durumBekle(page, 'Doğru, ama ipucuyla; kelime 1. kutuda kalıyor.');
+    // Özel durum yalnız bu karta aittir: sonraki kartta yönerge tuşun adını söyler.
+    await page.keyboard.press('Enter');
+    const [w2] = await T(page, 'sira', 'sira', 1);
+    await kelimeBekle(page, w2);
+    const sonraki = (await T(page, 'gorunum')).tarif;
+    assert.ok(sonraki.endsWith(', Enter ile kontrol et.'), 'Başka kartta yönerge tuşun adını söyler: ' + sonraki);
+    return w + ' kartı (sonraki ' + w2 + ')';
+  }
+
   try {
     for (let i = 0; i < senaryolar.length; i++) {
       const {ad, govde} = senaryolar[i], no = String(i + 1).padStart(2, ' '), basla = Date.now(), onceki = hatalar.length;
@@ -2343,7 +3962,9 @@ async function main() {
   console.log('Oyunlar Browser QA passed: ' + senaryolar.length + ' senaryo — boş profil, cevap yolları (doğru, ipucuyla, bilemedim), seviyeler, ' +
     'yazım, katmanlar (inmeyen ve yavaş katman dahil), başka sekme, maske, klavye, depolama hatası, yazım çeşidi, yazım zamanı, ' +
     'yerleşim, ipucusuz ve kısa kelime, her kelimede taze sıra, dışarıdan değişiklikte odak ve duyurular, önbellekten dönüş, ' +
-    'Dinle (dokunmatik/masaüstü), Ctrl+A, eşitleme beklemesi, odaksız yazma, Kelimeler destesi; ' +
+    'Dinle (dokunmatik/masaüstü), Ctrl+A, eşitleme beklemesi (yapay olaylarla ve gerçek motorla), odaksız yazma, ' +
+    'Kelimeler destesi (tekrar kartları, yığını dağıtma, katman/sıfırlama/geri alma, deste kapalıyken özet), ' +
+    'dizinde olmayan yazım, "enter" kartı; ' +
     'axe ve taşma açık/koyu 375/1280, sayfa hatası yok.');
 }
 main().catch(error => {

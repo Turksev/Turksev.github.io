@@ -122,6 +122,13 @@ esit([O.ipucuKalir('i. sorun, problem', 'problem'), O.ipucuKalir('s./i. üç', '
   O.ipucuKalir('f. yazmak', 'write'), O.ipucuKalir('s. yüksek riskli', 'high-risk'), O.ipucuKalir('f. olmak', 'be')],
   [true, true, true, true, true, false]);
 esit([O.ipucuKalir('', 'x'), O.ipucuKalir(null, 'x'), O.ipucuKalir('anlam', ''), O.ipucuKalir('anlam', null)], [false, false, true, true]);
+// Türkçe harfli tür kısaltması ("ünl.", "bağ.", "ö.") ipucu değildir; başlıkla başlayan Türkçe harfli sözcük ve
+// yardımcı fiillerin dördü de değildir (hızlı yol ile maskeli yol aynı kararı verir).
+esit([O.ipucuKalir('ünl. bravo!', 'bravo'), O.ipucuKalir('bağ. and', 'and'), O.ipucuKalir('s./ö. feminist', 'feminist'), O.ipucuKalir('kıs. TV', 'tv'),
+  O.ipucuKalir('s. bombalı', 'bomb'), O.ipucuKalir('f. park yapmak', 'park'), O.ipucuKalir('f. park edilmek', 'park'), O.ipucuKalir('f. park olmak', 'park')],
+  [false, false, false, false, false, false, false, false], 'kısaltma, başlıkla başlayan sözcük ve yardımcı fiil ipucu değildir');
+esit([O.ipucuKalir('bağ. ve', 'and'), O.ipucuKalir('ünl. aferin!', 'bravo'), O.ipucuKalir('s. bombalı, patlayıcı', 'bomb'), O.ipucuKalir('f. park yeri aramak', 'park')],
+  [true, true, true, true], 'kısaltmadan sonra gelen karşılık ipucudur');
 
 /* ---------- 3) seviye tablosu ---------- */
 const TABLO = {
@@ -354,17 +361,43 @@ assert.equal(O.tarif(t), '6 harfli İngilizce kelime: b, l, i, g, h, t. Kelime t
 assert.equal(O.tarif(tur('well-being', 'w_ll-_e_ng')), '9 harfli İngilizce kelime: w, boş, l, l, tire, boş, e, boş, n, g. 3 eksik harfi sırayla yaz, Enter ile kontrol et.');
 assert.equal(O.tarif(tur('hand down', '____ ____', 5)), '8 harfli İngilizce kelime: boş, boş, boş, boş, sözcük arası, boş, boş, boş, boş. 8 eksik harfi sırayla yaz, Enter ile kontrol et.',
   'ayraç "boşluk" diye okunmaz: "boş" ile karışır');
+// "enter" kartında tuşun adı cevabın kendisidir: tur bitene kadar açıklamada geçmez.
+t = tur('enter', '___er');
+assert.equal(O.tarif(t), '5 harfli İngilizce kelime: boş, boş, boş, e, r. 3 eksik harfi sırayla yaz, onay tuşu ile kontrol et.');
+for (const x of [tur('enter', '_____', 5), tur('Enter', 'E____'), tur('ENTER', '____R')]) {
+  assert.ok(!/enter/i.test(O.tarif(x)), 'enter kartının açıklamasında cevap geçmez: ' + O.tarif(x));
+}
+O.dene(t, 'ent');
+assert.equal(O.tarif(t), '5 harfli İngilizce kelime: e, n, t, e, r. Kelime tamamlandı; Enter ile sonraki kelimeye geç.');
+// Tuşun adı başlığın bir parçasıysa da (re-enter) geçmez. Kural anlam maskesiyle aynıdır: "Enter" sözcüğü kartın
+// anlam metninde maskelenecek idiyse açıklamada da söylenmez. Tuş adını yalnız içinde taşıyan başlıklar etkilenmez.
+assert.ok(O.oynanabilir(dz('re-enter')), 're-enter oynanabilir bir başlık; örneği güncelle');
+assert.equal(O.tarif(tur('re-enter', 'r_-__t_r')),
+  '7 harfli İngilizce kelime: r, boş, tire, boş, boş, t, boş, r. 4 eksik harfi sırayla yaz, onay tuşu ile kontrol et.');
+for (const w of ['center', 'entertain', 'enters', 'entered', 'carpenter', 'enterprise']) {
+  assert.ok(O.tarif(tur(w, '_'.repeat(w.length), 5)).endsWith(', Enter ile kontrol et.'), w + ' kartında yönerge tuşun adını söyler');
+}
+// Gerçek dizin: yönergesi değişen kartlar tam olarak başlığı ya da başlığının bir parçası tuşun adı olanlardır.
+const onayTusuKartlari = DIZIN.filter(d => O.oynanabilir(d) && O.tarif(O.turBaslat(d.e, 0, G)).endsWith(', onay tuşu ile kontrol et.')).map(d => d.e).sort();
+esit(onayTusuKartlari, DIZIN.filter(d => O.oynanabilir(d) && d.e.toLowerCase().split(/[- ]/).includes('enter')).map(d => d.e).sort(),
+  '"onay tuşu" yönergesi yalnız başlığı ya da bir parçası "enter" olan kartlarda');
+assert.ok(onayTusuKartlari.includes('enter') && onayTusuKartlari.includes('re-enter'), 'enter ve re-enter kartları: ' + onayTusuKartlari.join(', '));
 
 /* ---------- 6) öteki yazım ve aynı anlamlı kelime ---------- */
 // Biçim kuralı.
 for (const [a, b] of [['analyse', 'analyze'], ['organisation', 'organization'], ['recognise', 'recognize'], ['realise', 'realize'],
-  ['centre', 'center'], ['litre', 'liter'], ['kilometre', 'kilometer'], ['theatre', 'theater'],
-  ['grey', 'gray'], ['defence', 'defense'], ['artefact', 'artifact'], ['practised', 'practiced'], ['licence', 'license'], ['mom', 'mum']]) {
+  ['centre', 'center'], ['litre', 'liter'], ['kilometre', 'kilometer'], ['theatre', 'theater'], ['metre', 'meter'], ['fibre', 'fiber'],
+  ['ionise', 'ionize'], ['analysed', 'analyzed'],                 // altı harf yeter; önceki harf y de olur
+  ['grey', 'gray'], ['defence', 'defense'], ['artefact', 'artifact'], ['practised', 'practiced'], ['practise', 'practice'],
+  ['licence', 'license'], ['mom', 'mum'], ['chile', 'chili']]) {
   esit([O.yazimCesidi(a, b), O.yazimCesidi(b, a), O.yazimCesidi(a.toUpperCase(), b)], [true, true, true], a + ' / ' + b + ' aynı kelimenin iki yazımı');
 }
 for (const [a, b] of [['analyse', 'analyse'], ['prise', 'prize'], ['raise', 'raize'], ['seal', 'zeal'], ['dose', 'doze'], ['close', 'cloze'],
   ['there', 'three'], ['acre', 'acer'], ['alter', 'later'], ['colour', 'color'], ['judgement', 'judgment'], ['dependant', 'dependent'],
-  ['ensure', 'insure'], ['lead', 'head'], ['clear', 'clean'], ['almost', 'nearly'], ['', ''], ['abc', '']]) {
+  ['ensure', 'insure'], ['lead', 'head'], ['clear', 'clean'], ['almost', 'nearly'], ['', ''], ['abc', ''],
+  // s/z yalnız i ya da y'den sonra; son iki harfin yer değişimi yalnız re/er; biçimi tutan ayrı kelimeler.
+  ['season', 'seazon'], ['plasma', 'plazma'], ['phrase', 'phraze'], ['closes', 'clozes'], ['quiet', 'quite'], ['angle', 'angel'],
+  ['tire', 'tier'], ['timber', 'timbre'], ['prised', 'prized'], ['prises', 'prizes'], ['prising', 'prizing']]) {
   esit([O.yazimCesidi(a, b), O.yazimCesidi(b, a)], [false, false], a + ' / ' + b + ' yazım çeşidi değil');
 }
 esit([O.yazimCesidi(null, 'x'), O.yazimCesidi(undefined, undefined), O.yazimCesidi('grey', null)], [false, false, false]);
@@ -381,6 +414,7 @@ esit([O.iliski('analyze', kd('analyse'), kucukBul), O.iliski('analyse', kd('anal
 esit([O.iliski('surprize', kd('surprise'), kucukBul), O.iliski('surprise', kd('surprise'), kucukBul)], [null, null], 'dizinde olmayan yazım ve kartın kendisi ilişki değil');
 esit([O.iliski('nearly', kd('almost'), kucukBul), O.iliski('almost', kd('nearly'), kucukBul), O.iliski('barely', kd('almost'), kucukBul)], ['es', 'es', null], 'aynı kısa anlam ve tür: eş anlamlı; tür farklıysa değil');
 esit([O.iliski('nearly', kd('almost')), O.iliski('nearly', kd('almost'), null), O.iliski('nearly', null, kucukBul), O.iliski('', kd('almost'), kucukBul)], [null, null, null, null]);
+esit([O.iliski('surprise', kd('analyse'), kucukBul), O.iliski('analyse', kd('surprise'), kucukBul)], [null, null], 'türü aynı, kısa anlamı farklı başlık eş anlamlı değildir');
 
 // Gerçek dizin: sayfanın kullandığı yüklemin aynısı.
 const GERCEK_DIZIN = new Map(DIZIN.map(d => [O.sade(d.e), d]));
@@ -389,22 +423,44 @@ const bag = e => { const d = dz(e); return aday => O.iliski(aday, d, gercekBul);
 // README'de adı geçen örnekler dizinde durmalı.
 assert.ok(dz('almost').t === dz('nearly').t && dz('almost').y === dz('nearly').y,
   'almost / nearly dizinde artık aynı kısa anlam ve türde değil; README ve bu testteki eş anlamlı örneğini başka bir çiftle değiştir');
-// İki yazımı da dizinde olan her -ise/-ize ve -re/-er çifti iki yönde kabul edilir.
-const ciftler = [];
+// Bu testte ve README'de adı geçen yazım örneklerinin iki yazımı da dizinde durmalı.
+for (const e of ['analyse', 'analyze', 'recognise', 'recognize', 'centre', 'center', 'metre', 'meter', 'litre', 'liter', 'grey', 'gray', 'defence', 'defense']) dz(e);
+/* Modülün aynı kelimenin iki yazımı saydığı bütün başlık çiftleri (dizinin tamamında, aynı uzunluktaki başlıklar
+   arasında): her biri iki yönde kabul edilir. İki ayrı kelime yanlışlıkla çift sayılmasın diye kısa anlamlarında
+   ortak bir sözcük aranır; dizine yeni giren bir kelime (timbre, kereste anlamındaki timber'ın yanına) burada durur. */
+const boyGruplari = new Map();
 for (const d of DIZIN) {
-  if (!O.oynanabilir(d)) continue;
   const a = O.sade(d.e);
-  for (const b of [a.replace(/([iy])s(e[sd]?|ation|ational|ing)$/, '$1z$2'), a.replace(/re$/, 'er')]) {
-    const o = b !== a && GERCEK_DIZIN.get(b);
-    if (o && O.oynanabilir(o)) ciftler.push([d, o]);
+  if (!boyGruplari.has(a.length)) boyGruplari.set(a.length, []);
+  boyGruplari.get(a.length).push([a, d]);
+}
+const ciftler = [];
+for (const grup of boyGruplari.values()) {
+  for (let i = 0; i < grup.length; i++) {
+    for (let j = i + 1; j < grup.length; j++) {
+      const a = grup[i][0], b = grup[j][0];
+      let fark = 0;
+      for (let k = 0; k < a.length && fark < 3; k++) if (a.charCodeAt(k) !== b.charCodeAt(k)) fark++;
+      if (fark >= 1 && fark <= 2 && O.yazimCesidi(a, b)) ciftler.push([grup[i][1], grup[j][1]]);
+    }
   }
 }
 assert.ok(ciftler.length >= 5, 'dizinde yazım çifti bulunamadı: ' + ciftler.length);
+const anlamSozleri = m => (String(m).toLowerCase().match(/[a-zçğıöşüâîû]{3,}/g) || []).filter(x => !['etmek', 'olmak', 'yapmak', 'edilmek'].includes(x));
 for (const [d, o] of ciftler) {
+  assert.ok(anlamSozleri(d.t).some(x => anlamSozleri(o.t).includes(x)),
+    d.e + ' / ' + o.e + ': oyun bu ikisini aynı kelimenin iki yazımı sayıyor ama kısa anlamlarında ortak sözcük yok (' +
+    JSON.stringify(d.t) + ', ' + JSON.stringify(o.t) + '). Aynı kelimeyse kısa anlamlardan birini ötekiyle uyumlu yaz; ' +
+    'ayrı kelimelerse çifti assets/js/oyun-hesap.js içindeki YAZIM_DEGIL listesine ekle.');
   for (const [kart, yazilan] of [[d, o], [o, d]]) {
     const x = O.turBaslat(kart.e, 5, G);
     esit([O.dene(x, yazilan.e, bag(kart.e)).durum, x.bitti, x.yazim], ['dogru', 'dogru', O.sade(yazilan.e)], kart.e + ' kartında ' + yazilan.e + ' yazımı kabul edilir');
   }
+}
+// README'deki örnek çiftler oyunda gerçekten sorulur (ikisi de oynanabilir) ve çift sayılır.
+for (const [a, b] of [['analyse', 'analyze'], ['recognise', 'recognize'], ['centre', 'center'], ['metre', 'meter'], ['grey', 'gray'], ['defence', 'defense']]) {
+  assert.ok(O.oynanabilir(dz(a)) && O.oynanabilir(dz(b)) && ciftler.some(c => (c[0].e === a && c[1].e === b) || (c[0].e === b && c[1].e === a)),
+    a + ' / ' + b + ' artık oyunda sorulan bir yazım çifti değil; README\'deki "Öteki yazım doğru sayılır" örneğini ve bu satırı güncelle');
 }
 
 // Öteki yazım: doğru sayılır, hücreler kartın yazımını gösterir.
@@ -430,7 +486,8 @@ let cagri = [];
 const sayan = aday => { cagri.push(aday); return 'es'; };
 t = tur('analyse', '_____s_');
 esit([O.dene(t, 'analy', sayan).durum, O.dene(t, 'analye', sayan).durum, cagri], ['eksik', 'dogru', []]);
-// Son iki harfi yer değiştirmiş yazım (litre / liter) ve elle sayılan çift (grey / gray).
+// Son iki harfi yer değiştirmiş yazım (litre / liter) ve elle sayılan çift (grey / gray). İkisi de oyunda
+// sorulmaz (ipuçsuz); burada yalnız kural sınanır.
 t = tur('litre', 'li___');
 esit([O.dene(t, 'ter', bag('litre')), t.yazim, t.bitti, gorunum(t, '')], [{ durum: 'dogru', kalan: 3, yazilan: '', aday: 'liter' }, 'liter', 'dogru', 'litre']);
 t = tur('grey', 'g__y');
@@ -484,6 +541,7 @@ maske('s. risksiz, tehlikesiz', 'risk-free', 's. •••siz, tehlikesiz');
 maske('s. yüksek riskli', 'high-risk', 's. yüksek •••li');
 maske('f. çift sıra park etmek', 'double-park', 'f. çift sıra ••• etmek');
 maske('s. çevrim içi; on numara', 'on-line', 's. çevrim içi; on numara', 'dörtten kısa parça maskelenmez');
+maske('i. (kriket) atıcının yanındaki off tarafı mevkii', 'mid-off', 'i. (kriket) atıcının yanındaki off tarafı mevkii', 'üç harfli parça maskelenmez');
 maske('i. yürüme mesafesi', 'walking distance', 'i. yürüme mesafesi');
 // C: parantez içindeki kök, çekim ya da bileşik.
 maske('i. (thanks) teşekkür', 'thank', 'i. (•••) teşekkür');
@@ -496,6 +554,11 @@ maske('i. kuru ot, saman (hayvan yemi)', 'hay', 'i. kuru ot, saman (hayvan yemi)
 maske('i. huş ağacı (bir ağaç türü)', 'birch', 'i. huş ağacı (bir ağaç türü)', 'parantezdeki kısa Türkçe sözcük maskelenmez');
 maske('i. poliçe (sigorta)', 'policy', 'i. poliçe (sigorta)');
 maske('i. playwright, oyun yazarı', 'wright', 'i. playwright, oyun yazarı', 'parantez dışında yalnız sözcük başı');
+// C'nin her satırı tek başına: başlığın öneki (dört harfe kadar kısa) ve e/y'si düşen gövde; sınırın ötesi açık kalır.
+maske('i. (make) baştan yaratma', 'makeover', 'i. (•••) baştan yaratma');
+maske('f. (make) yapıyor', 'making', 'f. (•••) yapıyor');
+maske('s. (plan) gezegenlerle ilgili', 'planetary', 's. (plan) gezegenlerle ilgili', 'başlık beş harf uzunsa kök sayılmaz');
+maske('i. (cast) maliyet', 'cost', 'i. (cast) maliyet', 'tek harf farkı dört harfli sözcükte kök sayılmaz');
 // D: dil bilgisi notunun öznesi, parantez içinde ya da dışında.
 maske('f. anlamına gelir, demektir (mean fiilinin üçüncü tekil biçimi)', 'means', 'f. anlamına gelir, demektir (••• fiilinin üçüncü tekil biçimi)');
 maske('f. look fiilinin -ing biçimi; bakıyor, bakmakta', 'looking', 'f. ••• fiilinin -ing biçimi; bakıyor, bakmakta');
@@ -515,13 +578,27 @@ maske('f. buldu (find fiilinin geçmiş biçimi)', 'found', 'f. buldu (•••
 maske('i. fareler (mouse sözcüğünün çoğulu)', 'mice', 'i. fareler (••• sözcüğünün çoğulu)');
 maske('f. yükseldi, arttı; rise fiilinin geçmiş biçimi', 'rose', 'f. yükseldi, arttı; ••• fiilinin geçmiş biçimi');
 maske('f. (seek fiilinin geçmişi) aradı', 'sought', 'f. (••• fiilinin geçmişi) aradı');
+// Kalıbın her sözcüğü, C kuralının yakalayamayacağı bir özneyle.
+maske('s. daha kötü (bad sıfatının karşılaştırma biçimi)', 'worse', 's. daha kötü (••• sıfatının karşılaştırma biçimi)');
+maske('i. adamlar (man isminin çoğulu)', 'men', 'i. adamlar (••• isminin çoğulu)');
+maske('z. iyi (good kelimesinin zarf biçimi)', 'well', 'z. iyi (••• kelimesinin zarf biçimi)');
+maske('z. daha kötü (badly zarfının karşılaştırma biçimi)', 'worse', 'z. daha kötü (••• zarfının karşılaştırma biçimi)');
+maske("i. fareler (mouse'un çoğulu)", 'mice', "i. fareler (•••'un çoğulu)");
+maske("i. fareler (mouse'un çoğul biçimi)", 'mice', "i. fareler (•••'un çoğul biçimi)");
+maske("s. en iyi (good'un üstünlük biçimi)", 'best', "s. en iyi (•••'un üstünlük biçimi)");
+maske("f. (come'un geçmiş biçimi) geldi", 'came', "f. (•••'un geçmiş biçimi) geldi");
+maske("(find'ın geçmişi) buldu", 'found', "(•••'ın geçmişi) buldu");
+maske("f. gönderdi (send'in geçmiş hâli)", 'sent', "f. gönderdi (•••'in geçmiş hâli)");
+maske("f. düştü; fall'ın geçmiş zamanı", 'fell', "f. düştü; •••'ın geçmiş zamanı");
 // Not kalıbı yoksa ilgisiz İngilizce sözcük açık kalır.
+maske("i. Roma'nın geçmişteki gücü", 'power', "i. Roma'nın geçmişteki gücü", 'kalıp sözcüğün başı değil tamamıdır');
 maske('f. gitti (go)', 'went', 'f. gitti (go)');
 maske('f. fiilinin; fiil', 'verb', 'f. fiilinin; fiil', 'kalıbın kendisi özne değildir');
 // E: başlığın öteki yazımı; yakın yazılı Türkçe karşılık ipucudur, açık kalır.
 maske('f. düzenlemek, organize etmek, örgütlemek', 'organise', 'f. düzenlemek, ••• etmek, örgütlemek');
 maske('i. litre', 'liter', 'i. •••');
 maske('i. gri', 'grey', 'i. gri');
+maske('i. plazma (kanın sıvı kısmı)', 'plasma', 'i. plazma (kanın sıvı kısmı)', 's/z yalnız i ya da y\'den sonra öteki yazımdır');
 maske('i. sistem, düzen', 'system', 'i. sistem, düzen');
 maske('i. stres, gerilim, baskı', 'stress', 'i. stres, gerilim, baskı');
 maske('i. proje', 'project', 'i. proje');

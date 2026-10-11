@@ -5,6 +5,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const http = require('node:http');
 const {chromium} = require('playwright');
+const SAHTE_FIREBASE = require('./sahte-firebase');
 const root = path.resolve(__dirname,'..');
 const mime = {'.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json','.webmanifest':'application/manifest+json','.png':'image/png','.svg':'image/svg+xml'};
 const server = http.createServer((req,res)=>{
@@ -18,43 +19,11 @@ const server = http.createServer((req,res)=>{
   res.writeHead(status,{'Content-Type':(mime[path.extname(file)]||'application/octet-stream')+'; charset=utf-8','Cache-Control':'no-store'});
   fs.createReadStream(file).pipe(res);
 });
-// Bulut eşitleme senaryosu için bellek içi sahte Firebase (compat API'nin sitenin kullandığı kadarı).
-const SAHTE_FIREBASE={
-  'firebase-app-compat.js':'window.firebase={apps:[],initializeApp:function(c){this.apps.push({options:c});return this.apps[0];}};',
-  'firebase-auth-compat.js':`(function(){
-    var kisi={uid:'qa-u1',email:'qa@example.com',displayName:'Test'},dinleyen=null;
-    var auth={currentUser:null,
-      onAuthStateChanged:function(fn){dinleyen=fn;setTimeout(function(){auth.currentUser=kisi;fn(kisi);},0);return function(){};},
-      getRedirectResult:function(){return Promise.resolve(null);},
-      signInWithPopup:function(){auth.currentUser=kisi;if(dinleyen)dinleyen(kisi);return Promise.resolve({user:kisi});},
-      signInWithRedirect:function(){return Promise.resolve();},
-      signOut:function(){window.__qaCikis=(window.__qaCikis||0)+1;auth.currentUser=null;if(dinleyen)dinleyen(null);return Promise.resolve();}};
-    window.firebase.auth=function(){return auth;};
-    window.firebase.auth.GoogleAuthProvider=function(){};
-  })();`,
-  'firebase-firestore-compat.js':`(function(){
-    var belgeler=new Map(),dinleyiciler=[],q=window.__qaBulut={islemler:[],akisOlu:false};
-    function foto(yol){var v=belgeler.get(yol);return {exists:!!v,data:function(){return v;},metadata:{fromCache:false}};}
-    function yaz(yol,v){belgeler.set(yol,v);if(q.akisOlu)return;
-      dinleyiciler.forEach(function(d){if(d.aktif&&d.yol===yol)d.fn(foto(yol));});}
-    function ref(yol){return {path:yol,
-      collection:function(ad){return {doc:function(id){return ref(yol+'/'+ad+'/'+id);}};},
-      onSnapshot:function(fn){var d={yol:yol,fn:fn,aktif:true};dinleyiciler.push(d);
-        setTimeout(function(){if(d.aktif&&!q.akisOlu)fn(foto(yol));},0);return function(){d.aktif=false;};}};}
-    var db={collection:function(ad){return {doc:function(id){return ref(ad+'/'+id);}};},
-      runTransaction:function(calistir){var kayit={okunan:[]},yazilan=[];q.islemler.push(kayit);
-        var islem={get:function(r){kayit.okunan.push(r.path);return Promise.resolve(foto(r.path));},
-          set:function(r,v){yazilan.push([r.path,v]);}};
-        return Promise.resolve(calistir(islem)).then(function(s){yazilan.forEach(function(y){yaz(y[0],y[1]);});return s;});}};
-    q.belge=function(yol){return belgeler.get(yol);};
-    q.yaz=yaz;
-    window.firebase.firestore=function(){return db;};
-  })();`
-};
 async function main() {
   await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
   const base='http://127.0.0.1:'+server.address().port;
-  const browser=await chromium.launch();
+  // Windows'ta boş bağlantı noktası Chromium'un yasak listesinden (6666, 6000, 10080…) gelebilir: izin ver.
+  const browser=await chromium.launch({args:['--explicitly-allowed-ports='+server.address().port]});
   const context=await browser.newContext({serviceWorkers:'block',timezoneId:'Europe/Istanbul'});
   const errors=[];
   context.on('page',p=>p.on('pageerror',e=>errors.push(e.message)));
@@ -262,6 +231,15 @@ async function main() {
     const konuBaslikBoyu=(await konuBasligi.locator('.site-header').boundingBox()).height;
     assert.ok(konuBaslikBoyu<80,'Topic page header stays on one row at 1024 px: '+konuBaslikBoyu);
     await konuBasligi.close();
+    // Kök sayfalarda (on bir sekme) menü düğmesi 1059 px'e kadar görünür, 1060 px'te açık menü döner (README "Üst menü").
+    // Yalnız ortam sorgusuna bakar; yazı tipinden bağımsızdır. Sözlük panelli kırılım sozluk-browser-qa.js'te.
+    const menuKirilimi=await context.newPage();
+    await menuKirilimi.setViewportSize({width:1059,height:768});
+    await menuKirilimi.goto(base+'/durum.html');
+    assert.deepEqual([await menuKirilimi.locator('.menu-toggle').isVisible(),await menuKirilimi.locator('.site-nav').isVisible()],[true,false],'Menu button replaces the inline navigation up to 1059 px');
+    await menuKirilimi.setViewportSize({width:1060,height:768});
+    assert.deepEqual([await menuKirilimi.locator('.menu-toggle').isVisible(),await menuKirilimi.locator('.site-nav').isVisible()],[false,true],'Inline navigation returns at 1060 px');
+    await menuKirilimi.close();
     assert.match(await acilis.locator('#acilisDeste').innerText(),/\(\d+ kart\)$/,'Empty state still offers today\'s deck');
     assert.equal(await acilis.locator('#acilisStatik').isHidden(),true,'Static fallback list hides once cards render');
     assert.deepEqual(await acilis.locator('.kcard.secili').evaluateAll(els=>els.map(e=>e.dataset.k)),['2'],'Default selection marks Çekirdek');

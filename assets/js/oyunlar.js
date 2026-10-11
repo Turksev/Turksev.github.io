@@ -30,6 +30,10 @@
   var KATMAN_ANAHTAR = 'yds-katmanlar';
   var LEITNER_ANAHTAR = 'yds-leitner';
   var ESITLEME_BEKLEME_MS = 8000;   // bulut birleşimi bu kadar sürede bitmezse cevap yine de işlenir
+  // Motorun birleşimi bitirdiğini (ya da hiç başlatmadığını) bildiren durumlar; ötekiler "sürüyor".
+  var ESITLEME_SONUCLARI = ['kapali', 'hazir', 'hata', 'silindi'];
+  var ERTELEME_IZI = 'yds-oyun-ertelenen';   // sessionStorage: bekletilen cevabın zamanı
+  var ERTELEME_IZI_OMRU_MS = 20000;
 
   var $ = function (id) { return document.getElementById(id); };
   var elSira = $('oyunSira'), elKart = $('oyunKart'), elBos = $('oyunBos'), elDuyuru = $('oyunDuyuru');
@@ -400,7 +404,7 @@
     var tur = yarim[d.e];
     if (!tur || tur.kutu !== kutu || tur.gun !== gun) tur = yarim[d.e] = O.turBaslat(d.e, kutu, gun);
     simdi = { d: d, tur: tur, anlik: anlik, ornekler: null };
-    ertelenen = null;
+    ertelemeyiBirak();
 
     if (girdi.value !== '') girdi.value = '';
     girdi.removeAttribute('aria-invalid');
@@ -429,7 +433,7 @@
     var d = kuyruk[0];
     if (!d) {
       var karttaydi = !elKart.hidden && elKart.contains(odaktaki);
-      simdi = null;
+      kelimesiz();
       elKart.hidden = true;
       elBos.textContent = bosMetni() + (not ? ' ' + not.metin : '');
       elBos.hidden = false;
@@ -451,6 +455,14 @@
     if (odak) girdi.focus();
     else if (bostaydi) odakla(girdi);
     if (!ayni) duyur((siraIle ? siraMetni() + ' ' : '') + soruMetni());
+    // Kelime aynı kaldıysa soru yinelenmez; mod ya da katman değişiminin sıra bilgisi yine okunur.
+    else if (siraIle) duyur(siraMetni());
+  }
+
+  // Ekranda kelime kalmadı (boş sıra ya da katman iniyor): bekletilen cevap da bırakılır.
+  function kelimesiz() {
+    simdi = null;
+    ertelemeyiBirak();
   }
 
   // Kullanıcı işlemi olmadan taşınan odak sayfayı kaydırmasın.
@@ -476,7 +488,7 @@
     if (sessiz) {
       bayat = true;
     } else {
-      simdi = null;
+      kelimesiz();
       elKart.hidden = true;
       elBos.hidden = true;
       elSira.textContent = 'Katmanlar yükleniyor…';
@@ -600,8 +612,10 @@
 
   /* Önce sonuç çizilir, yazım bir kare sonraya kalır: yoğun kullanıcıda bir ilerleme
      yazımı 40-250 ms sürer ve "Bildiniz" o kadar geç görünürdü. Sonraki kelime, mod ve
-     katman değişimi ile sayfa gizlenirken bekleyen yazım hemen yapılır. */
+     katman değişimi ile sayfa gizlenirken bekleyen yazım hemen yapılır. Sekme zaten
+     gizliyse (bekletilen cevap arka planda işlendi) kare gelmez: yazım beklemez. */
   function yazmayiPlanla(is) {
+    if (document.visibilityState === 'hidden') { kaydet(); return; }
     var yaz = function () { if (bekleyen === is) kaydet(); };
     var sonra = function () { window.setTimeout(yaz, 0); };
     if (window.requestAnimationFrame) window.requestAnimationFrame(sonra);
@@ -690,16 +704,48 @@
      bağlantı yoksa eşitleme hemen hata verir ve bekleme o an biter.
      Okuyup yazmak birleşimden uzun sürdüğü için bekleme çoğu zaman hiç görülmez.
      Eşitleme betiği bu dosyadan sonra yüklenir; durumu olaylarından izlenir. */
-  var esitlemeDurumu = '', esitlemeBitti = false, ertelenen = null;
+  var esitlemeDurumu = '', esitlemeBitti = false, ertelenen = null, izVar = false;
 
+  /* Motor (esitleme-v2.js) sırayla kapali → yukleniyor → yuklendi → baglaniyor → hazir
+     (ya da hata / silindi) bildirir. Sonuç bildiren dört ad dışındaki her durum "sürüyor"
+     sayılır: motora yeni bir ara durum eklenirse kapı kendiliğinden kapanmaz (üst sınır
+     yine 8 saniyedir). Adlar: tools/test-uretim/oyun-esitleme-sozlesme-test.js. */
   function esitlemeSuruyor() {
-    return esitlemeDurumu === 'yukleniyor' || esitlemeDurumu === 'yuklendi' || esitlemeDurumu === 'baglaniyor';
+    return esitlemeDurumu !== '' && ESITLEME_SONUCLARI.indexOf(esitlemeDurumu) === -1;
+  }
+
+  /* Bekletilen cevap işlenemeden sayfa yeniden yüklenebilir: birleşim başka cihazdan kayıt
+     getirdiyse motor sayfayı yeniler. Söz verilen kontrol yapılmadığı için yeni açılışta
+     bir not gösterilir. İz yalnız bu sekmededir ve kısa ömürlüdür. */
+  function izYaz(zaman) {
+    izVar = !!zaman;
+    try {
+      if (zaman) window.sessionStorage.setItem(ERTELEME_IZI, String(zaman));
+      else window.sessionStorage.removeItem(ERTELEME_IZI);
+    } catch (e) { /* oturum deposu kapalıysa not gösterilmez */ }
+  }
+
+  function ertelemeyiBirak() {
+    ertelenen = null;
+    if (izVar) izYaz(0);
+  }
+
+  function acilisNotu() {
+    var iz = 0, gecen;
+    try { iz = Number(window.sessionStorage.getItem(ERTELEME_IZI)) || 0; } catch (e) { /* not yok */ }
+    if (!iz) return null;
+    izYaz(0);
+    gecen = Date.now() - iz;
+    if (!(gecen >= 0 && gecen < ERTELEME_IZI_OMRU_MS)) return null;
+    // Ekrandaki kelime o kelime olmayabilir (birleşim sırayı değiştirdiyse): "yeniden yaz" denmez.
+    return { metin: 'Eşitleme sırasında sayfa yenilendi; az önce verdiğin cevap işlenmedi.', sinif: 'uyari' };
   }
 
   // İşlem şimdi yapılamıyorsa hatırlanır ve true döner.
   function ertele(islem) {
     if (esitlemeBitti || !esitlemeSuruyor()) return false;
     ertelenen = islem;
+    izYaz(Date.now());
     durumYaz('Eşitleniyor; bitince ' + (islem === 'pas' ? 'cevap gösterilecek.' : 'kontrol edilecek.'), '');
     return true;
   }
@@ -708,7 +754,16 @@
     if (esitlemeBitti) return;
     esitlemeBitti = true;
     var islem = ertelenen;
-    ertelenen = null;
+    if (islem && simdi && !simdi.tur.bitti && !ayniKayit(simdi.anlik, tazeKayit(simdi.d.e))) {
+      /* Birleşim tam bu kelimenin kaydını değiştirdi: cevap eski seviyeyle verilmişti,
+         işlenmez. Motor sayfayı birazdan yeniler; iz yerinde kalır ki yeni açılış bunu
+         söylesin (yenilenmezse sıradaki kelimede silinir). */
+      ertelenen = null;
+      bayat = true;
+      durumYaz('Eşitleme bu kelimenin kaydını değiştirdi; cevabın işlenmedi.', 'uyari');
+      return;
+    }
+    ertelemeyiBirak();
     if (!islem || !simdi || simdi.tur.bitti) return;
     if (islem === 'pas') pasGec(); else kontrol();
   }
@@ -889,5 +944,5 @@
   /* ---------- başlat ---------- */
 
   gunlukCiz();
-  yukleVeKur(false, null);
+  yukleVeKur(false, acilisNotu());
 })();

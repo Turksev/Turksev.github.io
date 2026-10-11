@@ -17,10 +17,15 @@
   // İki yazımı da dizinde bulunan, -ise/-ize ve -re/-er kurallarına girmeyen çiftler.
   var YAZIM_CIFTLERI = ['grey/gray', 'defence/defense', 'artefact/artifact', 'practised/practiced',
     'practise/practice', 'licence/license', 'mom/mum', 'chile/chili'];
+  // Biçim kuralına uyan ama ayrı kelime olan çiftler (kereste / tını, kanırtmak / değer vermek).
+  var YAZIM_DEGIL = ['timber/timbre', 'prised/prized', 'prises/prizes', 'prising/prizing'];
   // Maskeden sonra tek başına kalırsa ipucu sayılmayan yardımcı fiiller ("••• etmek").
   var ZAYIF_IPUCU = ['etmek', 'olmak', 'yapmak', 'edilmek'];
-  // Anlamdaki İngilizce sözcüğü dil bilgisi notunun öznesi yapan devam: "mean fiilinin …", "taxi'nin çoğulu".
-  var NOT_SONRASI = /^(?:'[a-zçğıöşü]+)?\s+(?:fiilinin|sözcüğünün|kelimesinin|sıfatının|isminin|zarfının)(?![a-zçğıöşü])|^'[a-zçğıöşü]+\s+(?:çoğulu|çoğul|karşılaştırma|üstünlük)(?![a-zçğıöşü])/;
+  // Anlamdaki İngilizce sözcüğü dil bilgisi notunun öznesi yapan devam: "mean fiilinin …",
+  // "taxi'nin çoğulu", "come'un geçmiş biçimi", "find'ın geçmişi".
+  var NOT_SONRASI = /^\s+(?:fiilinin|sözcüğünün|kelimesinin|sıfatının|isminin|zarfının)(?![a-zçğıöşü])|^'[a-zçğıöşü]+\s+(?:çoğulu|çoğul|karşılaştırma|üstünlük|geçmişi|geçmiş)(?![a-zçğıöşü])/;
+  // Anlamın başındaki tür kısaltması: "i.", "s./i.", "ünl.", "bağ./z.".
+  var TUR_ONEKI = /^[a-zçğıöşü]{1,3}\.(?:\/[a-zçğıöşü]{1,3}\.)*\s*/;
 
   /* ---------- yazım ---------- */
 
@@ -51,8 +56,13 @@
        -ise/-ize, -yse/-yze  tek harf (s ↔ z), önceki harf i ya da y, en az 6 harf
        -re/-er               son iki harf yer değiştirmiş, en az 5 harf
        YAZIM_CIFTLERI        elle sayılan çiftler (grey/gray …)
+     Biçim kuralına uyan ayrı kelimeler YAZIM_DEGIL'dedir (timber / timbre).
      "surprize" gibi var olmayan yazımı elemek çağıranın işidir (bkz. iliski). */
   function yazimCesidi(a, b) { return ayniYazim(sade(a), sade(b)); }
+
+  function ciftVar(liste, a, b) {
+    return liste.indexOf(a + '/' + b) !== -1 || liste.indexOf(b + '/' + a) !== -1;
+  }
 
   // İkisi de küçük harfli; anlam maskesi her sözcük için çağırdığından sade'siz.
   function ayniYazim(a, b) {
@@ -68,14 +78,14 @@
       i = fark[0];
       ikili = a.charAt(i) + b.charAt(i);
       once = a.charAt(i - 1);
-      if ((ikili === 'sz' || ikili === 'zs') && a.length >= 6 && (once === 'i' || once === 'y')) return true;
+      if ((ikili === 'sz' || ikili === 'zs') && a.length >= 6 && (once === 'i' || once === 'y')) return !ciftVar(YAZIM_DEGIL, a, b);
     }
     if (fark.length === 2 && a.length >= 5 && fark[0] === a.length - 2) {
       sa = a.slice(-2);
       sb = b.slice(-2);
-      if ((sa === 're' && sb === 'er') || (sa === 'er' && sb === 're')) return true;
+      if ((sa === 're' && sb === 'er') || (sa === 'er' && sb === 're')) return !ciftVar(YAZIM_DEGIL, a, b);
     }
-    return YAZIM_CIFTLERI.indexOf(a + '/' + b) !== -1 || YAZIM_CIFTLERI.indexOf(b + '/' + a) !== -1;
+    return ciftVar(YAZIM_CIFTLERI, a, b);
   }
 
   /* Yazılan aday (küçük harf), d kartıyla ilişkili mi? bul(aday): dizinde o yazımla bir
@@ -394,10 +404,11 @@
      ipucu sayılmaz. */
   function ipucuKalir(metin, kelime) {
     var alt = kucuk(String(metin == null ? '' : metin)), aranan = kucuk(String(kelime == null ? '' : kelime));
-    var soz = alt.match(/[a-zçğıöşüâîû]+/g) || [], on = aranan.split(/[- ]/), i, j, p, acik;
+    var soz = alt.replace(TUR_ONEKI, '').match(/[a-zçğıöşüâîû]+/g) || [], on = aranan.split(/[- ]/), i, j, p, acik;
     /* Hızlı yol (bütün dizin her açılışta süzülür): Türkçe harf taşıyan ve başlıkla ya da
        bir parçasıyla başlamayan sözcüğü hiçbir kural gizlemez (A ve B sözcük başı arar,
-       C-E yalnız a-z sözcüklere bakar); böyle bir sözcük varsa maskelemeye gerek yok. */
+       C-E yalnız a-z sözcüklere bakar); böyle bir sözcük varsa maskelemeye gerek yok.
+       Tür kısaltması ("ünl.", "bağ.") burada da ipucu sayılmaz. */
     on.push(aranan.replace(/[- ]/g, ''));
     for (i = 0; i < soz.length; i++) {
       if (asciiMi(soz[i])) continue;
@@ -405,7 +416,7 @@
       for (j = 0; j < on.length; j++) if (on[j] && soz[i].indexOf(on[j]) === 0) acik = false;
       if (acik) return true;
     }
-    var s = kucuk(maskele(metin, kelime)).replace(/^[a-zçğıöşü]{1,3}\.(?:\/[a-zçğıöşü]{1,3}\.)*\s*/, '');
+    var s = kucuk(maskele(metin, kelime)).replace(TUR_ONEKI, '');
     var parca = s.split(MASKE);
     for (i = 0; i < parca.length; i++) {
       p = parca[i];
@@ -421,7 +432,8 @@
   }
 
   /* Girdinin açıklaması (aria-describedby). Yazılan harfler katılmaz: metin her tuşta
-     değişmesin. Tur bitene kadar boş hücrelerin harfi geçmez. */
+     değişmesin. Tur bitene kadar boş hücrelerin harfi geçmez; tuşun adı cevabı ele
+     veriyorsa (enter, re-enter: anlam metninde maskelenecek yerde) o da geçmez. */
   function tarif(tur) {
     var bos = bosSayisi(tur);
     var bas = harfSayisi(tur.kelime) + ' harfli İngilizce kelime: ' + tur.hucreler.map(function (h) {
@@ -430,7 +442,8 @@
       return h.tur === 'bos' && !tur.bitti ? 'boş' : h.c;
     }).join(', ') + '. ';
     if (tur.bitti) return bas + 'Kelime tamamlandı; Enter ile sonraki kelimeye geç.';
-    return bas + (bos === 1 ? '1 eksik harfi yaz' : bos + ' eksik harfi sırayla yaz') + ', Enter ile kontrol et.';
+    return bas + (bos === 1 ? '1 eksik harfi yaz' : bos + ' eksik harfi sırayla yaz') + ', ' +
+      (maskele('Enter', tur.kelime) !== 'Enter' ? 'onay tuşu' : 'Enter') + ' ile kontrol et.';
   }
 
   /* ---------- soru sırası ---------- */

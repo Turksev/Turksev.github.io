@@ -86,7 +86,8 @@ async function otherWords(page) {
 async function main() {
   await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
   const base = 'http://127.0.0.1:' + server.address().port;
-  const browser = await chromium.launch();
+  // Windows'ta boş bağlantı noktası Chromium'un yasak listesinden (6666, 6000, 10080…) gelebilir: izin ver.
+  const browser = await chromium.launch({args: ['--explicitly-allowed-ports=' + server.address().port]});
   const errors = [];
   const contexts = [];
   async function fresh(viewport) {
