@@ -458,7 +458,12 @@
     destelik.forEach(function (x) { kume[x.en] = true; });
 
     elAra.value = ''; elTur.value = ''; elSinav.value = ''; elDurum.value = '';
-    suzulmus = karistir(TUM.filter(function (o) { return kume[o.f]; }));
+    // Sıra: önce yeni öbekler, sonra tekrarlar (kelimelerle aynı kural, 17 Ekim 2026);
+    // her blok kendi içinde karışık.
+    var secilen = TUM.filter(function (o) { return kume[o.f]; });
+    var yeniler = secilen.filter(function (o) { return Il.yeniMi(o.f, ILERLEME_TURU); });
+    var tekrarlar = secilen.filter(function (o) { return !Il.yeniMi(o.f, ILERLEME_TURU); });
+    suzulmus = karistir(yeniler).concat(karistir(tekrarlar));
     if (suzulmus.length) kullanimOlay('deste-baslat');
 
     desteModu = true;

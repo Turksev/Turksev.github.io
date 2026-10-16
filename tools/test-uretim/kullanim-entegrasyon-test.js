@@ -32,7 +32,8 @@ function fixture(file, extra = {}) {
   const context = {
     $, window: {YDS: {Kullanim: {olay: id => events.push(id)}, hareket: () => 'auto', depolamaUyarisi: () => warnings.push(true)}, scrollTo: noop},
     Il: {dogru: id => {grades.push(id); return true;}, yanlis: () => true, zatenBiliyorum: () => true, ipucuyla: () => true,
-      sonucEkle: noop, kategoriKaydet: noop, yanlisCoz: noop, yanlisEkle: noop, tazele: noop},
+      sonucEkle: noop, kategoriKaydet: noop, yanlisCoz: noop, yanlisEkle: noop, tazele: noop,
+      yeniMi: () => true, sonaAtildiMi: () => false},
     Depo: {oku: () => null, yaz: () => true}, REKOR_ANAHTAR: 'fixture',
     ILERLEME_TURU: 'fixture', sozlukBakilan: {}, suzulmus: [{e: 'word', f: 'phrase'}], kartIndex: 0, ipucuAcik: false, desteModu: false,
     desteyiCiz: noop, kartGit: noop, kartCiz: noop, kimlik: () => 'sentence', ciz: noop,

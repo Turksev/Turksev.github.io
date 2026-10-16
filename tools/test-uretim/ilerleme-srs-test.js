@@ -88,11 +88,53 @@ gunIlerle(1);
 Il.gunlukTavanAyarla(2);
 var havuz = ['r1', 'r2', 'r3', 'yeni'].map(function (en) { return { en: en }; });
 var deste = Il.destelik(havuz, 'kelime');
-assert.strictEqual(deste.length, 2);
-assert.ok(deste.every(function (x) { return /^r/.test(x.en); }), 'tekrar borcu varken yeni kart öne geçmemeli');
+assert.deepStrictEqual(kopya(deste.map(function (x) { return x.en; })), ['yeni', 'r1'],
+  'deste yeni kelimeyle başlar; tekrarlar kalan yeri en çok gecikenden doldurur (17 Ekim 2026)');
+var ozet = Il.leitnerOzet(havuz, 'kelime');
+assert.deepStrictEqual([ozet.acilacakYeni, ozet.gosterilecekTekrar, ozet.bekleyen, ozet.bugun], [1, 1, 2, 2]);
+assert.strictEqual(Il.bekleyenTekrar(havuz, 'kelime'), 2);
 Il.gunlukTavanAyarla(4);
 deste = Il.destelik(havuz, 'kelime');
-assert.deepStrictEqual(deste.map(function (x) { return x.en; }).sort(), ['r1', 'r2', 'r3', 'yeni']);
+assert.deepStrictEqual(kopya(deste.map(function (x) { return x.en; })), ['yeni', 'r1', 'r2', 'r3']);
+
+/* Sona atma: işaretli kelime grubunun sonuna gider; yeni sayılır, vadesi gelmez, yeni sayacını
+   artırmaz; ilk cevabıyla 1. kutuya girer ve işaret kalır; "geri al" kaldırır. */
+assert.strictEqual(Il.sonaAtildiMi('sona1', 'kelime'), false);
+var acilanOnce = Il.bugunAcilanYeni();
+assert.strictEqual(Il.sonaAt('sona1', 'kelime'), true);
+assert.strictEqual(Il.sonaAtildiMi('sona1', 'kelime'), true);
+assert.strictEqual(Il.yeniMi('sona1', 'kelime'), true, 'sona atılan çalışılmamış kelime yeni kalır');
+assert.strictEqual(Il.kutu('sona1', 'kelime'), 0);
+assert.strictEqual(Il.vadesiGeldiMi('sona1', 'kelime'), false);
+assert.strictEqual(Il.kayit('sona1', 'kelime').s, 1);
+assert.strictEqual(Il.tumKayitlar().sona1, undefined, 'çalışılmamış sona atılan kayıt çalışılmış sayılmaz');
+assert.strictEqual(Il.bugunAcilanYeni(), acilanOnce, 'sona atmak yeni kart sayacını artırmaz');
+Il.gunlukTavanAyarla(9999);
+var sonaHavuz = [{ en: 'sona1' }, { en: 'taze' }, { en: 'r1' }];
+assert.deepStrictEqual(kopya(Il.destelik(sonaHavuz, 'kelime').map(function (x) { return x.en; })), ['taze', 'sona1', 'r1'],
+  'sona atılan yeni, yenilerin sonunda; tekrarlar ondan sonra');
+assert.strictEqual(Il.leitnerOzet(sonaHavuz, 'kelime').sonaAtilan, 1);
+Il.gunlukTavanAyarla(1);
+assert.deepStrictEqual(kopya(Il.destelik(sonaHavuz, 'kelime').map(function (x) { return x.en; })), ['taze'],
+  'yer kalmayınca sona atılan desteye girmez');
+assert.strictEqual(Il.dogru('sona1', 'kelime'), 1);
+assert.strictEqual(Il.bugunAcilanYeni(), acilanOnce + 1, 'ilk cevap yeni açılış sayılır');
+assert.strictEqual(Il.sonaAtildiMi('sona1', 'kelime'), true, 'işaret cevapla kalkmaz');
+assert.strictEqual(Il.kayit('sona1', 'kelime').k, 1);
+assert.ok(Il.tumKayitlar().sona1, 'çalışıldıktan sonra kayıt çalışılmışlar arasında');
+Il.dogru('taze', 'kelime');
+gunIlerle(1);
+Il.gunlukTavanAyarla(9999);
+assert.deepStrictEqual(kopya(Il.destelik([{ en: 'sona1' }, { en: 'taze' }], 'kelime').map(function (x) { return x.en; })), ['taze', 'sona1'],
+  'sona atılan tekrar, tekrarların sonunda');
+assert.strictEqual(Il.sonaAtmayiGeriAl('sona1', 'kelime'), true);
+assert.strictEqual(Il.sonaAtildiMi('sona1', 'kelime'), false);
+assert.strictEqual(Il.kayit('sona1', 'kelime').s, undefined);
+assert.strictEqual(Il.kayit('sona1', 'kelime').k, 1, 'geri alma kutuyu değiştirmez');
+Il.sonaAt('sona2', 'kelime');
+assert.strictEqual(Il.sonaAtmayiGeriAl('sona2', 'kelime'), true);
+assert.strictEqual(Il.kayit('sona2', 'kelime'), null, 'çalışılmamış kelimede geri alma kaydı tamamen siler');
+Il.gunlukTavanAyarla(4);
 
 var soru = { kat: 'Kelime', soru: 'Aynı soru' };
 Il.yanlisEkle(soru);

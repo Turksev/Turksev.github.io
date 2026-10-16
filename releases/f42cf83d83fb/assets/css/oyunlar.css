@@ -87,6 +87,18 @@
 .harf.bulundu { background: var(--ok-soft); border-color: var(--ok); color: var(--ok); }
 .harf.ipucu { background: var(--warn-soft); border-color: var(--warn); color: var(--warn); }
 .harf.ayrac { width: .8rem; margin-left: 0; margin-right: 0; border: 0; background: none; color: var(--muted); }
+/* Kelimenin tamamı yazılır: açık harf (sabit / bulundu / ipucu) sırası gelene kadar kendi
+   renginde bekler; üzerine yazılınca yazılmış kutuya döner. Üzerine kutudakinden başka harf
+   yazıldıysa (farkli) hata renginde ve köşesinde çarpı (renk tek işaret olmasın; dalgalı alt
+   çizgi tek harfte okunmuyor, g/j/p/q/y kuyruğuna karışıyordu): harf zaten ekrandaydı, bir
+   şey ele vermez. */
+.harf.yazildi { background: var(--surface); border-color: var(--border); border-bottom-color: var(--muted); color: var(--accent); }
+.harf.farkli { position: relative; background: var(--err-soft); border-color: var(--err); color: var(--err); }
+.harf.farkli::after {
+  content: "\00d7";
+  position: absolute; top: 1px; right: 3px;
+  font-family: system-ui, sans-serif; font-size: .7rem; line-height: 1;
+}
 .harf-alan:focus-within .harf.simdi { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
 
 .harfler.yanlis .harf.bos { background: var(--err-soft); border-color: var(--err); color: var(--err); }

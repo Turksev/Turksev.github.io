@@ -151,6 +151,8 @@ async function ana() {
     zarf({ 'yds-rekor': { yuzde: 90, dogru: 8, toplam: 10 } }),
     zarf({ 'yds-gecmis': [{ t: 1, d: 1, n: 2, y: 80 }] }),
     zarf({ 'yds-leitner': { x: { k: 6, g: 2 } } }),
+    zarf({ 'yds-leitner': { x: { k: 0, g: 0 } } }),
+    zarf({ 'yds-leitner': { x: { k: 1, g: 2, s: 0 } } }),
     zarf({ 'yds-test-yanlis': { x: { n: 1, t: 2, fazladan: 1 } } }),
     zarf({ 'yds-konular': { T01: { d: 1, t: 101 } } }),
     zarf({ 'yds-kategori': { Kelime: { d: -1, y: 0 } } }),
@@ -159,6 +161,10 @@ async function ana() {
   ];
   bozuklar.forEach(function (b) {
     assert.throws(function () { api.yedegiDogrula(baglamDegeri(o, b)); });
+  });
+  // Sona atılmış kayıtlar (ilerleme.js sonaAt): çalışılmamış k: 0 + s: 1 ve çalışılmış s: 1 geçerlidir.
+  assert.doesNotThrow(function () {
+    api.yedegiDogrula(baglamDegeri(o, zarf({ 'yds-leitner': { x: { k: 0, g: 0, c: 20340, m: 0, s: 1 }, y: { k: 2, g: 20350, c: 20347, s: 1 } } })));
   });
   const protoHam = '{"tur":"yds-ilerleme-yedegi","sema":1,"olusturuldu":"2026-08-29T12:00:00.000Z","uygulamaSurumu":"yds-v142","veri":{"yds-leitner":{"__proto__":{"k":1,"g":2}}}}';
   o.baglam.__protoHam = protoHam;

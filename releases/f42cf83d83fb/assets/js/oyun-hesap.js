@@ -114,7 +114,7 @@
     return String(kelime == null ? '' : kelime).replace(/[^a-z]/gi, '').length;
   }
 
-  /* Yarım yukarı yuvarlanır (tam sayı aritmetiği); en az bir harf hep yazılır. */
+  /* Yarım yukarı yuvarlanır (tam sayı aritmetiği); en az bir harf hep gizli kalır. */
   function acikSayisi(n, kutu) {
     n = Math.max(0, Math.floor(Number(n) || 0));
     var acik = Math.floor((n * yuzde(kutu) + 50) / 100);
@@ -164,7 +164,9 @@
        kutu      kelime gösterildiği andaki kutu, 0..5
        gun       açık harflerin tohumundaki gün numarası
        hucreler  her karakter için {c, tur}; c başlığın kendi karakteri, tur:
-                 'ayrac' (tire/boşluk; yazılmaz), 'acik' (görünür), 'bos' (yazılacak).
+                 'ayrac' (tire/boşluk; yazılmaz), 'acik' (harfi kutusunda görünür),
+                 'bos' (harfi gizli). Kelimenin tamamı baştan sona yazılır: açık harf
+                 yalnız kutusunda hazır durur, o da yazılır.
                  Sonradan açılan hücrede bulundu:true (kullanıcı doğru yazdı) ya da
                  ipucu:true ("Bir harf aç") bulunur. Tur bittiğinde 'bos' kalanlar
                  kullanıcının bulamadığı harflerdir.
@@ -184,25 +186,39 @@
       deneme: 0, ipucu: false, bitti: null, yazim: null };
   }
 
-  // Yazılacak hücrelerin başlık içindeki konumları, sırayla.
-  function bosKonumlar(tur) {
+  // Harf hücrelerinin (ayraç olmayanların) başlık içindeki konumları: yazılan harfler bunlara sırayla oturur.
+  function harfKonumlar(tur) {
     var out = [], i;
-    for (i = 0; i < tur.hucreler.length; i++) if (tur.hucreler[i].tur === 'bos') out.push(i);
+    for (i = 0; i < tur.hucreler.length; i++) if (tur.hucreler[i].tur !== 'ayrac') out.push(i);
     return out;
   }
-  function bosSayisi(tur) { return bosKonumlar(tur).length; }
+  // Harfi gizli hücre sayısı.
+  function bosSayisi(tur) {
+    var n = 0, i;
+    for (i = 0; i < tur.hucreler.length; i++) if (tur.hucreler[i].tur === 'bos') n++;
+    return n;
+  }
 
-  /* Çizim için hücreler: {c, tur, bulundu, ipucu, simdi}. Boş hücrede c yazılan
-     harftir (yoksa ''), simdi sıradaki boşluktur. Tur bittiyse her hücre kendi harfini gösterir. */
+  /* Çizim için hücreler: {c, tur, bulundu, ipucu, yazildi, farkli, simdi}. yazilan: kelimenin
+     harfleri, baştan sırayla (açık harfler dahil). Tur sürerken sırası gelmiş harf hücresi
+     yazılanı gösterir (yazildi); sırası gelmemiş açık hücre kendi harfini, gizli hücre ''
+     gösterir. farkli: açık hücreye kutudakinden başka harf yazıldı (harf zaten ekrandaydı,
+     işaret bir şey ele vermez; gizli hücrede hiç işaretlenmez). Açık hücreye kendi harfi
+     yazıldıysa başlıktaki büyüklüğüyle kalır. simdi sıradaki hücredir. Tur bittiyse her
+     hücre kendi harfini gösterir. */
   function hucreGorunumu(tur, yazilan) {
-    var y = temizle(yazilan, bosSayisi(tur)), sira = 0;
+    var y = temizle(yazilan, harfKonumlar(tur).length), sira = 0;
     return tur.hucreler.map(function (h) {
-      var g = { c: h.c, tur: h.tur, bulundu: !!h.bulundu, ipucu: !!h.ipucu, simdi: false };
-      if (h.tur === 'bos' && !tur.bitti) {
-        g.c = y.charAt(sira);
-        g.simdi = sira === y.length;
-        sira++;
-      }
+      var g = { c: h.c, tur: h.tur, bulundu: !!h.bulundu, ipucu: !!h.ipucu,
+        yazildi: false, farkli: false, simdi: false };
+      if (h.tur === 'ayrac' || tur.bitti) return g;
+      g.simdi = sira === y.length;
+      if (sira < y.length) {
+        g.yazildi = true;
+        if (h.tur === 'bos') g.c = y.charAt(sira);
+        else if (y.charAt(sira) !== sade(h.c)) { g.c = y.charAt(sira); g.farkli = true; }
+      } else if (h.tur === 'bos') g.c = '';
+      sira++;
       return g;
     });
   }
@@ -211,20 +227,38 @@
     return { durum: durum, kalan: Math.max(0, DENEME_HAKKI - tur.deneme), yazilan: yazilan, aday: aday };
   }
 
-  /* "Kontrol et". yazilan: boşlukların harfleri, sırayla. bag(aday): yanlış adayın bu
-     kartla ilişkisi (isteğe bağlı; aday küçük harflidir): 'yazim' aynı kelimenin öteki
-     yazımıdır ve doğru sayılır, başka her doğru değer aynı anlamlı başka kelimedir.
-     durum: 'eksik' (deneme harcanmaz) | 'dogru' (tur.bitti 'dogru' ya da 'ipucuyla';
-     öteki yazım kabul edildiyse tur.yazim dolu) | 'es' (aynı anlamlı başka kelime;
-     hiçbir şey değişmez) | 'yanlis' (doğru harfler kilitlenir) | 'bitti' (hak bitti
-     ya da tur zaten bitmişti). */
+  /* "Kontrol et". yazilan: kelimenin harfleri, baştan sırayla (açık harfler dahil; tire
+     ve boşluk yazılmaz). bag(aday): yanlış adayın bu kartla ilişkisi (isteğe bağlı; aday
+     küçük harflidir): 'yazim' aynı kelimenin öteki yazımıdır ve doğru sayılır, başka her
+     doğru değer aynı anlamlı başka kelimedir.
+     durum: 'eksik' (kelime bitmedi; deneme harcanmaz) | 'dogru' (tur.bitti 'dogru' ya da
+     'ipucuyla'; öteki yazım kabul edildiyse tur.yazim dolu) | 'es' (aynı anlamlı başka
+     kelime; hiçbir şey değişmez) | 'farkli' (tek hata açık harfin üzerine yazılan başka
+     harf: harf zaten ekrandaydı, yazım kayması bilgi hatası sayılmaz. Açık harf(ler)
+     kartın harfiyle düzeltilince kelime doğru, ya da kabul edilen öteki yazım, çıkıyorsa
+     deneme harcanmaz, tur değişmez; yazılan o harfin önünde kesilir, oradan devam edilir.
+     konum: düzeltilecek açık hücrenin başlıktaki yeri; tek başına düzeltilince kelimeyi
+     doğru yapan ilk hücre, yoksa başka yazılan ilk açık hücre) | 'yanlis' (en az bir
+     gizli harf yanlış: doğru yazılan gizli harfler açılır; yazılan silinir, kelime baştan
+     yazılır) | 'bitti' (hak bitti ya da tur zaten bitmişti). */
   function dene(tur, yazilan, bag) {
     if (tur.bitti) return cevap(tur, 'bitti', '', '');
-    var bos = bosKonumlar(tur), h = tur.hucreler, y = temizle(yazilan, bos.length);
-    if (y.length < bos.length) return cevap(tur, 'eksik', y, '');
+    var harf = harfKonumlar(tur), h = tur.hucreler, y = temizle(yazilan, harf.length);
+    if (y.length < harf.length) return cevap(tur, 'eksik', y, '');
 
-    var hedef = sade(tur.kelime), aday = '', sira = 0, yazim = null, baglanti, i;
-    for (i = 0; i < h.length; i++) aday += h[i].tur === 'bos' ? y.charAt(sira++) : sade(h[i].c);
+    var hedef = sade(tur.kelime), yazim = null, farklar = [], duzelen = -1, baglanti, i, hucre, sonuc;
+    // Yazılan harflerden adayı ayraçlarıyla kurar; duzelt'teki harf sıralarına kartın kendi harfi konur.
+    function kur(duzelt) {
+      var out = '', sira = 0, j;
+      for (j = 0; j < h.length; j++) {
+        if (h[j].tur === 'ayrac') { out += sade(h[j].c); continue; }
+        out += duzelt && duzelt.indexOf(sira) !== -1 ? sade(h[j].c) : y.charAt(sira);
+        sira++;
+      }
+      return out;
+    }
+    function kabul(a) { return a === hedef || (typeof bag === 'function' && bag(a) === 'yazim'); }
+    var aday = kur(null);
 
     if (aday !== hedef && typeof bag === 'function') {
       baglanti = bag(aday);
@@ -232,34 +266,57 @@
       else if (baglanti) return cevap(tur, 'es', y, aday);
     }
     if (aday === hedef || yazim) {
-      for (i = 0; i < bos.length; i++) { h[bos[i]].tur = 'acik'; h[bos[i]].bulundu = true; }
+      for (i = 0; i < harf.length; i++) {
+        hucre = h[harf[i]];
+        if (hucre.tur === 'bos') { hucre.tur = 'acik'; hucre.bulundu = true; }
+      }
       tur.yazim = yazim;
       tur.bitti = tur.deneme === 0 && !tur.ipucu ? 'dogru' : 'ipucuyla';
       return cevap(tur, 'dogru', '', aday);
     }
 
+    /* Açık harfin üzerine başka harf yazılmışsa: önce tek tek (hangisi düzeltilince kelime
+       doğru çıkıyorsa o bildirilir: "analyse" kartında s de e de açıkken yazılan "analyzq"
+       için e), sonra hepsi birden düzeltilerek bakılır. Gizli harflerden biri de yanlışsa
+       hiçbiri tutmaz ve deneme sayılır. */
+    for (i = 0; i < harf.length; i++) {
+      hucre = h[harf[i]];
+      if (hucre.tur !== 'bos' && y.charAt(i) !== sade(hucre.c)) farklar.push(i);
+    }
+    for (i = 0; i < farklar.length && duzelen < 0; i++) if (kabul(kur([farklar[i]]))) duzelen = farklar[i];
+    if (duzelen < 0 && farklar.length > 1 && kabul(kur(farklar))) duzelen = farklar[0];
+    if (duzelen >= 0) {
+      sonuc = cevap(tur, 'farkli', y.slice(0, duzelen), aday);
+      sonuc.konum = harf[duzelen];
+      return sonuc;
+    }
+
     tur.deneme++;
-    for (i = 0; i < bos.length; i++) {
-      if (y.charAt(i) === sade(h[bos[i]].c)) { h[bos[i]].tur = 'acik'; h[bos[i]].bulundu = true; }
+    for (i = 0; i < harf.length; i++) {
+      hucre = h[harf[i]];
+      if (hucre.tur === 'bos' && y.charAt(i) === sade(hucre.c)) { hucre.tur = 'acik'; hucre.bulundu = true; }
     }
     if (tur.deneme >= DENEME_HAKKI) { tur.bitti = 'yanlis'; return cevap(tur, 'bitti', '', aday); }
     return cevap(tur, 'yanlis', '', aday);
   }
 
-  /* "Bir harf aç": yazılanı eksik ya da yanlış olan ilk boşluk açılır; ondan sonra
-     yazılanlar yerinde kalır. Hepsi doğru yazılmışsa ilk boşluk açılır. Deneme
-     harcamaz, ipucu sayılır. Tek boşluk kaldıysa ya da tur bittiyse null. */
+  /* "Bir harf aç": gizli harflerden yazılanı eksik ya da yanlış olan ilki açılır; yazılan
+     o harfin önünde kesilir (açılan harften devam edilir). Gizli harflerin hepsi doğru
+     yazılmışsa ilki açılır, yazılan olduğu gibi kalır ("açılacak harf yok" denseydi düğme
+     deneme harcamadan cevabı doğrulardı). Deneme harcamaz, ipucu sayılır.
+     Tek gizli harf kaldıysa ya da tur bittiyse null. konum: açılan hücrenin başlıktaki yeri. */
   function harfAc(tur, yazilan) {
     if (tur.bitti) return null;
-    var bos = bosKonumlar(tur), i;
-    if (bos.length < 2) return null;
-    var y = temizle(yazilan, bos.length);
-    for (i = 0; i < bos.length; i++) if (y.charAt(i) !== sade(tur.hucreler[bos[i]].c)) break;
-    if (i === bos.length) i = 0;
-    tur.hucreler[bos[i]].tur = 'acik';
-    tur.hucreler[bos[i]].ipucu = true;
+    var harf = harfKonumlar(tur), gizli = [], i;
+    for (i = 0; i < harf.length; i++) if (tur.hucreler[harf[i]].tur === 'bos') gizli.push(i);
+    if (gizli.length < 2) return null;
+    var y = temizle(yazilan, harf.length);
+    for (i = 0; i < gizli.length; i++) if (y.charAt(gizli[i]) !== sade(tur.hucreler[harf[gizli[i]]].c)) break;
+    var tamam = i === gizli.length, sira = gizli[tamam ? 0 : i], hucre = tur.hucreler[harf[sira]];
+    hucre.tur = 'acik';
+    hucre.ipucu = true;
     tur.ipucu = true;
-    return { yazilan: y.slice(0, i) + y.slice(i + 1), konum: bos[i] };
+    return { yazilan: tamam ? y : y.slice(0, sira), konum: harf[sira] };
   }
 
   // "Bilemedim, göster".
@@ -432,17 +489,19 @@
   }
 
   /* Girdinin açıklaması (aria-describedby). Yazılan harfler katılmaz: metin her tuşta
-     değişmesin. Tur bitene kadar boş hücrelerin harfi geçmez; tuşun adı cevabı ele
+     değişmesin. Tur bitene kadar gizli hücrelerin harfi geçmez; tuşun adı cevabı ele
      veriyorsa (enter, re-enter: anlam metninde maskelenecek yerde) o da geçmez. */
   function tarif(tur) {
-    var bos = bosSayisi(tur);
+    var acik = false;
     var bas = harfSayisi(tur.kelime) + ' harfli İngilizce kelime: ' + tur.hucreler.map(function (h) {
-      // "boşluk" denmez: yazılacak hücrenin adı olan "boş" ile karışır.
+      // "boşluk" denmez: gizli hücrenin adı olan "boş" ile karışır.
       if (h.tur === 'ayrac') return h.c === '-' ? 'tire' : (h.c === ' ' ? 'sözcük arası' : h.c);
-      return h.tur === 'bos' && !tur.bitti ? 'boş' : h.c;
+      if (h.tur === 'bos' && !tur.bitti) return 'boş';
+      acik = true;
+      return h.c;
     }).join(', ') + '. ';
     if (tur.bitti) return bas + 'Kelime tamamlandı; Enter ile sonraki kelimeye geç.';
-    return bas + (bos === 1 ? '1 eksik harfi yaz' : bos + ' eksik harfi sırayla yaz') + ', ' +
+    return bas + (acik ? 'Açık harfler dahil kelimenin tamamını baştan sona yaz' : 'Kelimenin tamamını yaz') + ', ' +
       (maskele('Enter', tur.kelime) !== 'Enter' ? 'onay tuşu' : 'Enter') + ' ile kontrol et.';
   }
 
@@ -450,18 +509,25 @@
 
   function sayiMi(x) { return typeof x === 'number' && isFinite(x); }
 
-  /* Kelimenin bugünkü grubu. bak = {kayit: function (kelime, dizinKaydi) → null | {k, g, c},
+  /* Kelimenin bugünkü grubu. bak = {kayit: function (kelime, dizinKaydi) → null | {k, g, c, s},
      bugun: gün numarası}. Kayıt bozuk olabilir (içe aktarma): kutu kırpılır ve 0 çıkarsa
      kelime yeni sayılır; 1-4. kutuda vadesi okunamayan kayıt vadesi gelmiş, 5. kutuda
-     son çalışma günü okunamayan kayıt en eski sayılır.
-       yeni      hiç çalışılmadı
+     son çalışma günü okunamayan kayıt en eski sayılır. s: 1 "sona atıldı" demektir
+     (ilerleme.js sonaAt): grup değişmez, kelime grubunun sonuna gider (sona: true).
+       yeni      hiç çalışılmadı (sona atılmış k: 0 kayıt da buraya)
        tekrar    1-4. kutu, vadesi geldi (g <= bugün)
        bekleyen  1-4. kutu, vadesi gelmedi: sorulmaz, yoksa erken yükselirdi
        ogrenilen 5. kutu, bugün çalışılmadı (c < bugün)
        bugunku   5. kutu, bugün çalışıldı: bugün yeniden sorulmaz */
   function grupla(d, bak) {
     var r = bak && typeof bak.kayit === 'function' ? bak.kayit(d.e, d) : null;
-    var k = r ? kutuDuzelt(r.k) : 0, bugun = bak ? bak.bugun : NaN;
+    var g = gruplaKayit(r, bak ? bak.bugun : NaN);
+    g.sona = !!(r && r.s);
+    return g;
+  }
+
+  function gruplaKayit(r, bugun) {
+    var k = r ? kutuDuzelt(r.k) : 0;
     if (!k) return { grup: 'yeni', olcu: 0 };
     if (k >= 5) {
       if (!sayiMi(r.c)) return { grup: 'ogrenilen', olcu: -Infinity };
@@ -471,9 +537,11 @@
     return { grup: r.g <= bugun ? 'tekrar' : 'bekleyen', olcu: r.g };
   }
 
-  // Ölçüye göre artan; eşitlikte havuz sırası korunur (sort kararlılığına güvenilmez).
+  // Sona atılanlar en sona; sonra ölçüye göre artan; eşitlikte havuz sırası korunur
+  // (sort kararlılığına güvenilmez).
   function sirala(liste) {
     return liste.sort(function (a, b) {
+      if (!a.sona !== !b.sona) return a.sona ? 1 : -1;
       return a.olcu < b.olcu ? -1 : (a.olcu > b.olcu ? 1 : a.i - b.i);
     }).map(function (x) { return x.d; });
   }
@@ -481,19 +549,20 @@
   /* Sorulacak kelimeler (yeni dizi). havuz dizin sırasındadır ve yeniden sıralanmaz.
        'sira'      vadesi gelenler (en çok geciken önce), sonra yeni kelimeler
        'yeni'      yalnız yeni kelimeler
-       'ogrenilen' 5. kutudakiler, en uzun süredir çalışılmayan önce */
+       'ogrenilen' 5. kutudakiler, en uzun süredir çalışılmayan önce
+     Sona atılanlar (kayıtta s: 1) her grubun sonundadır. */
   function sira(havuz, mod, bak) {
     var tekrar = [], yeni = [], ogrenilen = [], i, g;
     havuz = havuz || [];
     for (i = 0; i < havuz.length; i++) {
       g = grupla(havuz[i], bak);
-      if (g.grup === 'yeni') yeni.push(havuz[i]);
-      else if (g.grup === 'tekrar') tekrar.push({ d: havuz[i], olcu: g.olcu, i: i });
-      else if (g.grup === 'ogrenilen') ogrenilen.push({ d: havuz[i], olcu: g.olcu, i: i });
+      if (g.grup === 'yeni') yeni.push({ d: havuz[i], olcu: 0, i: i, sona: g.sona });
+      else if (g.grup === 'tekrar') tekrar.push({ d: havuz[i], olcu: g.olcu, i: i, sona: g.sona });
+      else if (g.grup === 'ogrenilen') ogrenilen.push({ d: havuz[i], olcu: g.olcu, i: i, sona: g.sona });
     }
-    if (mod === 'yeni') return yeni;
+    if (mod === 'yeni') return sirala(yeni);
     if (mod === 'ogrenilen') return sirala(ogrenilen);
-    return sirala(tekrar).concat(yeni);
+    return sirala(tekrar).concat(sirala(yeni));
   }
 
   /* Mod düğmeleri ve bilgi satırı için sayılar. ogrenilenToplam 5. kutunun tamamıdır;

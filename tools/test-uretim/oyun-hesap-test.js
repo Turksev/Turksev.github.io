@@ -834,6 +834,20 @@ const bosBak = { kayit: () => null, bugun: G };
 const tumSira = O.sira(OYNANAN, 'sira', bosBak);
 assert.ok(tumSira.length === OYNANAN.length && tumSira.every((d, i) => d === OYNANAN[i]), 'yeni kelimeler dizin sırasında');
 esit([O.sira(OYNANAN, 'ogrenilen', bosBak).length, O.sayilar(OYNANAN, bosBak).yeni], [0, OYNANAN.length]);
+// Sona atılanlar (ilerleme.js sonaAt: kayıtta s: 1) kendi gruplarının sonuna gider; hiç
+// çalışılmamış sona atılan (k: 0 kayıt) yenilerin sonunda. Sayılar değişmez.
+const SONA_KAYITLAR = {
+  a: { k: 0, g: 0, c: G, s: 1 },           // hiç çalışılmamış, sona atılmış
+  b: { k: 1, g: G - 3, c: G - 4, s: 1 },   // vadesi geçmiş, sona atılmış
+  c: { k: 2, g: G, c: G - 3 },             // vadesi bugün
+  e: { k: 4, g: G - 10, c: G - 25, s: 1 }  // en çok geciken ama sona atılmış
+};
+const bakSona = { kayit: e => SONA_KAYITLAR[e] || null, bugun: G };
+const havuzSona = 'abcde'.split('').map(e => ({ e, t: e + ' anlamı', p: 1, k: 2, y: 'isim' }));
+assert.equal(adlar(O.sira(havuzSona, 'sira', bakSona)), 'ceb' + 'da',
+  'sona atılan tekrarlar tekrarların sonunda (kendi aralarında en çok geciken önce), sona atılan yeni yenilerin sonunda');
+assert.equal(adlar(O.sira(havuzSona, 'yeni', bakSona)), 'da');
+esit(O.sayilar(havuzSona, bakSona), { tekrar: 3, yeni: 2, ogrenilen: 0, ogrenilenToplam: 0, bekleyen: 0, toplam: 5 });
 
 /* ---------- 9) gerçek Ilerleme: her sonuç kelimeyi o gün bütün modlardan çıkarır ---------- */
 const bugunTarih = new Date(2026, 9, 10, 12).getTime();

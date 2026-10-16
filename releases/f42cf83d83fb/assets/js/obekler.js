@@ -36,7 +36,8 @@
   var desteModu = false;
   var ipucuAcik = false;
   // Çevrilmeden önce anlamı sözlük panelinde görülen ve henüz yanıtlanmamış
-  // kartlar: "Bildim" ipucuyla sayılır. Her kart ayrı tutulur.
+  // kartlar: "Bildim" ipucuyla sayılır. Cümle ipucusu (💡) sayılmaz (kelimeler.js ile
+  // aynı kural). Her kart ayrı tutulur.
   var sozlukBakilan = Object.create(null);
 
   var $ = function (id) { return document.getElementById(id); };
@@ -263,8 +264,7 @@
     $('kartIpucu').textContent = sozlukBakilan[o.f]
       ? 'Anlamını sözlükte gördün — "Bildim" dersen öbek aynı kutuda kalır.'
       : kartAcik
-        ? (ipucuAcik ? 'İpucu kullandın — "Bildim" dersen öbek aynı kutuda kalır.'
-                     : 'Bildin mi? Aşağıdan işaretle.')
+        ? 'Bildin mi? Aşağıdan işaretle.'
         : 'Çevirmek için karta tıkla · istersen cevabı görmeden işaretle';
 
     $('bildim').disabled = false;
@@ -292,7 +292,7 @@
     var sonuc;
     if (ne === 'zaten') sonuc = Il.zatenBiliyorum(o.f, ILERLEME_TURU);
     else if (ne === 'yanlis') sonuc = Il.yanlis(o.f, ILERLEME_TURU);
-    else if (ipucuAcik || sozlukBakilan[o.f]) sonuc = Il.ipucuyla(o.f, ILERLEME_TURU);
+    else if (sozlukBakilan[o.f]) sonuc = Il.ipucuyla(o.f, ILERLEME_TURU);
     else sonuc = Il.dogru(o.f, ILERLEME_TURU);
     if (sonuc === false) { window.YDS.depolamaUyarisi(); return; }
     // Yalnız bu kartın işareti kalkar; sözlükte bakılmış başka kartlar işaretini korur.
@@ -458,7 +458,12 @@
     destelik.forEach(function (x) { kume[x.en] = true; });
 
     elAra.value = ''; elTur.value = ''; elSinav.value = ''; elDurum.value = '';
-    suzulmus = karistir(TUM.filter(function (o) { return kume[o.f]; }));
+    // Sıra: önce yeni öbekler, sonra tekrarlar (kelimelerle aynı kural, 17 Ekim 2026);
+    // her blok kendi içinde karışık.
+    var secilen = TUM.filter(function (o) { return kume[o.f]; });
+    var yeniler = secilen.filter(function (o) { return Il.yeniMi(o.f, ILERLEME_TURU); });
+    var tekrarlar = secilen.filter(function (o) { return !Il.yeniMi(o.f, ILERLEME_TURU); });
+    suzulmus = karistir(yeniler).concat(karistir(tekrarlar));
     if (suzulmus.length) kullanimOlay('deste-baslat');
 
     desteModu = true;

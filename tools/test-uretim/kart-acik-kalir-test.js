@@ -85,11 +85,16 @@ function context(store) {
     return event;
   }
   let failProgress = false, selected = false, warnings = 0, grades = [];
+  const deferred = new Set();
   const Il = new Proxy({
     gunlukHedef: () => 20, gunlukTavan: () => 100,
     leitnerOzet: () => ({calisilan: 0, ogrenilen: 0, bekleyen: 0, bugun: 2, yeni: 2, hedef: 20}),
     dogru: id => grade('dogru', id), yanlis: id => grade('yanlis', id),
-    zatenBiliyorum: id => grade('zaten', id), ipucuyla: id => grade('ipucuyla', id)
+    zatenBiliyorum: id => grade('zaten', id), ipucuyla: id => grade('ipucuyla', id),
+    yeniMi: () => true,
+    sonaAt: id => {if (failProgress) return false; deferred.add(id); return true;},
+    sonaAtmayiGeriAl: id => {deferred.delete(id); return true;},
+    sonaAtildiMi: id => deferred.has(id)
   }, {get: (o, k) => k in o ? o[k] : () => 0});
   function grade(kind, id) {grades.push({kind, id}); return !failProgress;}
   ctx = {
@@ -109,12 +114,12 @@ function context(store) {
   };
   ctx.window = ctx; vm.createContext(ctx);
   vm.runInContext(source('veri.js'), ctx, {filename: 'veri.js'});
-  for (const id of ['mod', 'ipucuBtn', 'bilgiBtn', 'seslendir', 'onceki', 'sonraki', 'bildim', 'bilmedim', 'zatenBiliyorum']) node(id, 'BUTTON');
+  for (const id of ['mod', 'ipucuBtn', 'bilgiBtn', 'sonaAt', 'seslendir', 'onceki', 'sonraki', 'bildim', 'bilmedim', 'zatenBiliyorum']) node(id, 'BUTTON');
   for (const id of ['ara']) node(id, 'INPUT');
   for (const id of ['tip', 'durum', 'bolum', 'yil']) node(id, 'SELECT');
   node('kart').setAttribute('role', 'button');
   node('ipucuAlan').parentElement = node('kart');
-  return {ctx, node, dispatch, documentListeners,
+  return {ctx, node, dispatch, documentListeners, deferred,
     selected(v) {selected = v;}, failProgress(v) {failProgress = v;},
     warnings: () => warnings, grades,
     key(key, target = node('kart'), opts = {}) {target.focus(); return dispatch('keydown', target, {key, ...opts});}
@@ -131,7 +136,7 @@ function page(kind, entries) {
     js = js.slice(0, js.indexOf(marker)) + '\n})();';
   } else js = js.replace(/    hepsiniYukle\(\);/g, '    /* skipped initial network in test */');
   const hook = kind === 'kelimeler'
-    ? 'window.__test={seed:function(xs){havuz=xs;suzulmus=xs;kartModu=true;desteModu=false;kartIndex=0;kartAcik=false;ipucuAcik=false;kartOrnekKelime=null;kartCiz();},redraw:kartCiz,refresh:filtrele,grade:kartCevap,state:function(){return {open:kartAcik,hint:ipucuAcik,index:kartIndex,examples:kartOrnekleri};}};'
+    ? 'window.__test={seed:function(xs){havuz=xs;suzulmus=xs;kartModu=true;desteModu=false;kartIndex=0;kartAcik=false;ipucuAcik=false;kartOrnekKelime=null;kartCiz();},deck:function(){desteModu=true;},redraw:kartCiz,refresh:filtrele,grade:kartCevap,state:function(){return {open:kartAcik,hint:ipucuAcik,index:kartIndex,examples:kartOrnekleri};}};'
     : 'window.__test={seed:function(xs){HEPSI=xs;suzulmus=xs;kartModu=true;kartIndex=0;kartAcik=false;kartCiz();},redraw:kartCiz,refresh:function(){suz(true);},grade:kartCevap,state:function(){return {open:kartAcik,index:kartIndex};}};';
   js = js.replace(/\}\)\(\);\s*$/, hook + '\n})();');
   vm.runInContext(js, h.ctx, {filename: kind + '.js'});
@@ -190,6 +195,24 @@ for (const kind of ['kelimeler', 'cumleler']) {
     assert.equal(h.state().index, 0); h.key('2', h.node('kart'), {repeat: true}); assert.equal(h.grades.length, 0);
   });
 }
+test('word: "Sona at" marks the word and relabels the button; outside a deck the card stays, the same button undoes it', () => {
+  const h = page('kelimeler');
+  assert.equal(h.node('sonaAt').textContent, '⏭ Sona at');
+  h.node('sonaAt').click();
+  assert.ok(h.deferred.has(word.e)); assert.equal(h.state().index, 0); assert.equal(h.node('kartOn').textContent, word.e);
+  assert.equal(h.node('sonaAt').textContent, '↩ Sona atıldı · geri al'); assert.equal(h.node('sonaAt').getAttribute('aria-pressed'), 'true');
+  assert.ok(h.node('kartKutu').innerHTML.includes('sona atıldı'));
+  h.key('4'); assert.ok(!h.deferred.has(word.e)); assert.equal(h.node('sonaAt').textContent, '⏭ Sona at');
+  assert.equal(h.grades.length, 0, 'sona at bir cevap değildir');
+});
+test('word: "Sona at" in an open deck drops the card from today\'s deck and shows the next one; a failed write changes nothing', () => {
+  const h = page('kelimeler'); h.api.deck();
+  h.failProgress(true); h.node('sonaAt').click();
+  assert.equal(h.warnings(), 1); assert.ok(!h.deferred.has(word.e)); assert.equal(h.node('kartOn').textContent, word.e);
+  h.failProgress(false); h.node('sonaAt').click();
+  assert.ok(h.deferred.has(word.e)); assert.equal(h.node('kartOn').textContent, second.e); assert.equal(h.state().index, 0);
+  assert.equal(h.node('sonaAt').textContent, '⏭ Sona at', 'yeni kartın işareti yok');
+});
 test('word: hint/answer pair and rotation stay stable until explicit one-card navigation', () => {
   const h = page('kelimeler', [word]); const first = h.state().examples;
   h.node('ipucuBtn').click(); const hint = h.node('ipucuAlan').innerHTML;

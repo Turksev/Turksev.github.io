@@ -50,8 +50,9 @@
   var kartOrnekKelime = null;
   var kartOrnekleri = [];
   // Çevrilmeden önce anlamı sözlük panelinde görülen ve henüz yanıtlanmamış
-  // kartlar. "Bildim" bu kartlarda ipucuyla sayılır; ipucu düğmesiyle aynı
-  // dürüstlük kuralı (sozluk.js). Her kart ayrı tutulur, yeni bakış öncekini silmez.
+  // kartlar. "Bildim" bu kartlarda ipucuyla sayılır (sozluk.js): anlamı görmek cevabı
+  // görmektir. Cümle ipucusu (💡) sayılmaz: kelimeyi boşluk bırakır, yalnız bağlam verir;
+  // anlamı yine kullanıcı hatırlar. Her kart ayrı tutulur, yeni bakış öncekini silmez.
   var sozlukBakilan = Object.create(null);
 
   var $ = function (id) { return document.getElementById(id); };
@@ -184,6 +185,7 @@
           ' tanesi açılıyor, hepsi ' + Math.ceil(o.yeni / o.hedef) + ' günde biter.';
       }
     }
+    if (o.sonaAtilan) metin += ' Sona attığın <b>' + o.sonaAtilan + '</b> kelime başka kelime kalmayınca gelir.';
     $('desteAciklama').innerHTML = metin;
   }
 
@@ -244,6 +246,7 @@
       if (dr === 'yeni' && kutu !== 0) return false;
       if (dr === 'ogrenilen' && kutu < 5) return false;    // mezun olanlar
       if (dr === 'zayif' && !(kutu === 1 || kutu === 2)) return false;
+      if (dr === 'sona' && !Il.sonaAtildiMi(d.e, ILERLEME_TURU)) return false;
       if (q && !esles(d, q)) return false;
       return true;
     });
@@ -286,11 +289,13 @@
 
   function kutuRozeti(en) {
     var k = Il.kutu(en, ILERLEME_TURU);
-    if (k === 0) return '<span class="badge">yeni</span>';
+    var sona = Il.sonaAtildiMi(en, ILERLEME_TURU)
+      ? '<span class="badge" title="Sona atıldı: başka kelime kalmayınca desteye girer">⏭ sona atıldı</span>' : '';
+    if (k === 0) return '<span class="badge">yeni</span>' + sona;
     if (Il.mezunMu(en, ILERLEME_TURU)) return '<span class="badge ok" title="Öğrenildi — çalışma destesine yeniden gelmez">öğrenildi ✓</span>';
     var gun = Il.kalanGun(en, ILERLEME_TURU);
     var sinif = k >= 4 ? 'badge ok' : (k <= 2 ? 'badge warn' : 'badge');
-    return '<span class="' + sinif + '">' + k + '. kutu · ' + (gun === 0 ? 'bugün' : gun + ' gün') + '</span>';
+    return '<span class="' + sinif + '">' + k + '. kutu · ' + (gun === 0 ? 'bugün' : gun + ' gün') + '</span>' + sona;
   }
 
   /* Kullanım kalıpları: kelimenin anlamı değil, nasıl kullanıldığı.
@@ -440,9 +445,18 @@
     }
 
     $('kartOn').textContent = d.e;
+    var sonaAtildi = Il.sonaAtildiMi(d.e, ILERLEME_TURU);
     $('kartKutu').innerHTML = KUTU_ADI[Il.kutu(d.e, ILERLEME_TURU)] +
       (Il.mezunMu(d.e, ILERLEME_TURU) ? ' · öğrenildi, yeniden sorulmaz'
-                       : (Il.vadesiGeldiMi(d.e, ILERLEME_TURU) ? ' · tekrar zamanı' : ''));
+                       : (Il.vadesiGeldiMi(d.e, ILERLEME_TURU) ? ' · tekrar zamanı' : '')) +
+      (sonaAtildi ? ' · sona atıldı' : '');
+    // "Sona at" düğmesi aynı zamanda geri alır; öğrenilmiş kelimede anlamı yok.
+    $('sonaAt').hidden = Il.mezunMu(d.e, ILERLEME_TURU);
+    $('sonaAt').textContent = sonaAtildi ? '↩ Sona atıldı · geri al' : '⏭ Sona at';
+    $('sonaAt').setAttribute('aria-pressed', sonaAtildi ? 'true' : 'false');
+    $('sonaAt').title = sonaAtildi
+      ? 'İşareti kaldır: kelime olağan sırasına döner'
+      : 'Bu kelimeyi şimdi öğrenmek istemiyorum: başka kelime kalmayınca gelsin';
 
     $('kartTr').innerHTML = tam.a.map(function (a) {
       return kacar(a.tr) + yildiz(a);
@@ -471,8 +485,7 @@
     $('kartIpucu').textContent = sozlukBakilan[d.e]
       ? 'Anlamını sözlükte gördün — "Bildim" dersen kelime aynı kutuda kalır.'
       : kartAcik
-        ? (ipucuAcik ? 'İpucu kullandın — "Bildim" dersen kelime aynı kutuda kalır.'
-                     : 'Bildin mi? Aşağıdan işaretle.')
+        ? 'Bildin mi? Aşağıdan işaretle.'
         : 'Cevabı açmak için karta tıkla · istersen cevabı görmeden işaretle';
 
     // Kullanıcı cevabı zihninden verdiyse kartı çevirmek zorunda değildir.
@@ -523,7 +536,7 @@
     var sonuc;
     if (ne === 'zaten') sonuc = Il.zatenBiliyorum(d.e, ILERLEME_TURU);
     else if (ne === 'yanlis') sonuc = Il.yanlis(d.e, ILERLEME_TURU);
-    else if (ipucuAcik || sozlukBakilan[d.e]) sonuc = Il.ipucuyla(d.e, ILERLEME_TURU);
+    else if (sozlukBakilan[d.e]) sonuc = Il.ipucuyla(d.e, ILERLEME_TURU);
     else sonuc = Il.dogru(d.e, ILERLEME_TURU);
     if (sonuc === false) { window.YDS.depolamaUyarisi(); return; }
     // Yalnız bu kartın işareti kalkar; sözlükte bakılmış başka kartlar işaretini korur.
@@ -544,6 +557,30 @@
     } else {
       kartGit(1);
     }
+  }
+
+  /* "Sona at": kelimeyi şimdilik öğrenmek istemiyorum (Il.sonaAt, kalıcı işaret). Açık destede
+     kart o günün destesinden düşer; kelime başka yeni/tekrar kelime kalmayınca yeniden gelir.
+     Aynı düğme işareti geri alır. */
+  function sonaAtDegistir() {
+    var d = suzulmus[kartIndex];
+    if (!d) return;
+    var atildi = Il.sonaAtildiMi(d.e, ILERLEME_TURU);
+    var sonuc = atildi ? Il.sonaAtmayiGeriAl(d.e, ILERLEME_TURU) : Il.sonaAt(d.e, ILERLEME_TURU);
+    if (sonuc === false) { window.YDS.depolamaUyarisi(); return; }
+    desteyiCiz();
+    if (desteModu && !atildi) {
+      suzulmus.splice(kartIndex, 1);
+      if (!suzulmus.length) { desteBitti(); return; }
+      if (kartIndex >= suzulmus.length) kartIndex = 0;
+      kartOrnekKelime = null;
+      kartAcik = false;
+      ipucuAcik = false;
+      kartCiz();
+      if (desteModu) guncelleSayac();
+      return;
+    }
+    kartCiz();
   }
 
   function desteBitti() {
@@ -667,8 +704,8 @@
   });
 
   $('desteBasla').addEventListener('click', function () {
-    // Deste filtreden değil, doğrudan Ilerleme'den kurulur: tekrarı gelenlerin
-    // tamamı + günlük kotaya sığan yeni kelimeler. Bellekteki kopya bayat olabilir
+    // Deste filtreden değil, doğrudan Ilerleme'den kurulur: günlük hedef kadar yeni kelime +
+    // kalan yere tekrarı gelenler (Il.destelik). Bellekteki kopya bayat olabilir
     // (bkz. desteyiAyikla): önce depodan tazelenir, deste özeti de aynı kayıtlarla çizilir.
     Il.tazele();
     desteyiCiz();
@@ -677,7 +714,15 @@
     destelik.forEach(function (x) { kume[x.en] = true; });
 
     elAra.value = ''; elTip.value = ''; elDurum.value = '';
-    suzulmus = karistir(havuz.filter(function (d) { return kume[d.e]; }));
+    // Sıra: önce yeni kelimeler, sonra tekrarlar (17 Ekim 2026 kararı); her blok kendi içinde
+    // karışık, sona atılanlar bloğun sonunda.
+    var secilen = havuz.filter(function (d) { return kume[d.e]; });
+    var blok = function (d) {
+      return (Il.yeniMi(d.e, ILERLEME_TURU) ? 0 : 2) + (Il.sonaAtildiMi(d.e, ILERLEME_TURU) ? 1 : 0);
+    };
+    suzulmus = [0, 1, 2, 3].reduce(function (toplam, b) {
+      return toplam.concat(karistir(secilen.filter(function (d) { return blok(d) === b; })));
+    }, []);
     if (suzulmus.length) kullanimOlay('deste-baslat');
 
     desteModu = true;
@@ -817,6 +862,7 @@
   $('bildim').addEventListener('click', function () { kartCevap('dogru'); });
   $('bilmedim').addEventListener('click', function () { kartCevap('yanlis'); });
   $('zatenBiliyorum').addEventListener('click', function () { kartCevap('zaten'); });
+  $('sonaAt').addEventListener('click', function (e) { e.stopPropagation(); sonaAtDegistir(); });
   $('seslendir').addEventListener('click', function (e) {
     e.stopPropagation();
     var d = suzulmus[kartIndex];
@@ -862,6 +908,7 @@
     else if (e.key === '1') { e.preventDefault(); kartCevap('yanlis'); }
     else if (e.key === '2') { e.preventDefault(); kartCevap('dogru'); }
     else if (e.key === '3') { e.preventDefault(); kartCevap('zaten'); }
+    else if (e.key === '4') { e.preventDefault(); sonaAtDegistir(); }
     else if (e.key.toLowerCase() === 's') {
       e.preventDefault();
       var d = suzulmus[kartIndex];

@@ -308,10 +308,23 @@ bildiğin kelimeyi tek şaşırmada baştan başlatmak tekrar yükünü katlıyo
 destesine ve günün kelime testine yeniden girmez.
 
 **Günlük toplam kart tavanı.** Kelime sayfasındaki "Bugün toplam kart" seçicisi destenin
-boyunu sınırlar (`yds-gunluk-tavan`, varsayılan 30). Sıra şu: önce vadesi gelmiş tekrarlar
-**en çok gecikmiş olandan başlayarak** kapasiteyi doldurur; yalnız kalan yere günlük hedef
-kadar yeni kart eklenir. Böylece tekrar borcu varken yeni kartlar otomatik azalır. Sığmayan varsa deste
-kutusunda "N tekrar bugünkü sınıra sığmadı" notu çıkar.
+boyunu sınırlar (`yds-gunluk-tavan`, varsayılan 30). Sıra şu (17 Ekim 2026 kararı): deste
+**günlük hedef kadar yeni kelimeyle başlar** (`yds-gunluk-yeni`, varsayılan 20); kalan yeri
+vadesi gelmiş tekrarlar **en çok gecikmiş olandan başlayarak** doldurur. Sığmayan tekrar sıradaki
+günlere kalır ve deste kutusunda "N tekrar bugünkü sınıra sığmadı" notu çıkar; ikisini de
+istiyorsan tavanı yükselt. Kart modunda deste önce yeni blok, sonra tekrar bloğu olarak gelir
+(Öbekler de aynı); her blok kendi içinde karışıktır. Eski kural tekrarları öne alıp yeni kartı
+sıkıştırıyordu: tekrar borcu tavanı aşan gün hiç yeni kelime açılmıyordu.
+
+**Sona at.** Kelime kartındaki "⏭ Sona at" düğmesi (kısayol `4`) kelimeyi şimdilik öğrenmek
+istemediğini söyler: Leitner kaydına `s: 1` işareti konur; hiç çalışılmamış kelimeye `k: 0`'lık
+bir kayıt açılır (yeni sayılmaya devam eder, vadesi gelmez, günlük yeni sayacını artırmaz, Durum
+sayfasında çalışılmış görünmez). Deste ve oyunun sırası işaretli kelimeleri kendi gruplarının
+sonuna koyar: başka yeni ya da tekrar kelime kaldığı sürece gelmezler. Açık destede kart o günün
+destesinden düşer. İşaret cevaplarla kalkmaz; aynı düğme ("Sona atıldı · geri al") kaldırır,
+liste süzgecindeki "Sona attıklarım" seçeneği işaretlileri gösterir. Eşitlemeye ayrı alan
+gerekmez: işaret `yds-leitner` kaydının içinde taşınır (yedek doğrulaması `s` alanını ve
+yalnız `s: 1` ile gelen `k: 0`'ı kabul eder).
 
 **Birikmiş yığını dağıtma.** Eski kurgudan (her "Bilemedim" 1. kutuya atıyordu, tekrara tavan
 yoktu) yüzlerce gecikmiş tekrar kalmış olabilir. Bekleyen 40'ı geçince çıkan

@@ -509,18 +509,25 @@
 
   function sayiMi(x) { return typeof x === 'number' && isFinite(x); }
 
-  /* Kelimenin bugünkü grubu. bak = {kayit: function (kelime, dizinKaydi) → null | {k, g, c},
+  /* Kelimenin bugünkü grubu. bak = {kayit: function (kelime, dizinKaydi) → null | {k, g, c, s},
      bugun: gün numarası}. Kayıt bozuk olabilir (içe aktarma): kutu kırpılır ve 0 çıkarsa
      kelime yeni sayılır; 1-4. kutuda vadesi okunamayan kayıt vadesi gelmiş, 5. kutuda
-     son çalışma günü okunamayan kayıt en eski sayılır.
-       yeni      hiç çalışılmadı
+     son çalışma günü okunamayan kayıt en eski sayılır. s: 1 "sona atıldı" demektir
+     (ilerleme.js sonaAt): grup değişmez, kelime grubunun sonuna gider (sona: true).
+       yeni      hiç çalışılmadı (sona atılmış k: 0 kayıt da buraya)
        tekrar    1-4. kutu, vadesi geldi (g <= bugün)
        bekleyen  1-4. kutu, vadesi gelmedi: sorulmaz, yoksa erken yükselirdi
        ogrenilen 5. kutu, bugün çalışılmadı (c < bugün)
        bugunku   5. kutu, bugün çalışıldı: bugün yeniden sorulmaz */
   function grupla(d, bak) {
     var r = bak && typeof bak.kayit === 'function' ? bak.kayit(d.e, d) : null;
-    var k = r ? kutuDuzelt(r.k) : 0, bugun = bak ? bak.bugun : NaN;
+    var g = gruplaKayit(r, bak ? bak.bugun : NaN);
+    g.sona = !!(r && r.s);
+    return g;
+  }
+
+  function gruplaKayit(r, bugun) {
+    var k = r ? kutuDuzelt(r.k) : 0;
     if (!k) return { grup: 'yeni', olcu: 0 };
     if (k >= 5) {
       if (!sayiMi(r.c)) return { grup: 'ogrenilen', olcu: -Infinity };
@@ -530,9 +537,11 @@
     return { grup: r.g <= bugun ? 'tekrar' : 'bekleyen', olcu: r.g };
   }
 
-  // Ölçüye göre artan; eşitlikte havuz sırası korunur (sort kararlılığına güvenilmez).
+  // Sona atılanlar en sona; sonra ölçüye göre artan; eşitlikte havuz sırası korunur
+  // (sort kararlılığına güvenilmez).
   function sirala(liste) {
     return liste.sort(function (a, b) {
+      if (!a.sona !== !b.sona) return a.sona ? 1 : -1;
       return a.olcu < b.olcu ? -1 : (a.olcu > b.olcu ? 1 : a.i - b.i);
     }).map(function (x) { return x.d; });
   }
@@ -540,19 +549,20 @@
   /* Sorulacak kelimeler (yeni dizi). havuz dizin sırasındadır ve yeniden sıralanmaz.
        'sira'      vadesi gelenler (en çok geciken önce), sonra yeni kelimeler
        'yeni'      yalnız yeni kelimeler
-       'ogrenilen' 5. kutudakiler, en uzun süredir çalışılmayan önce */
+       'ogrenilen' 5. kutudakiler, en uzun süredir çalışılmayan önce
+     Sona atılanlar (kayıtta s: 1) her grubun sonundadır. */
   function sira(havuz, mod, bak) {
     var tekrar = [], yeni = [], ogrenilen = [], i, g;
     havuz = havuz || [];
     for (i = 0; i < havuz.length; i++) {
       g = grupla(havuz[i], bak);
-      if (g.grup === 'yeni') yeni.push(havuz[i]);
-      else if (g.grup === 'tekrar') tekrar.push({ d: havuz[i], olcu: g.olcu, i: i });
-      else if (g.grup === 'ogrenilen') ogrenilen.push({ d: havuz[i], olcu: g.olcu, i: i });
+      if (g.grup === 'yeni') yeni.push({ d: havuz[i], olcu: 0, i: i, sona: g.sona });
+      else if (g.grup === 'tekrar') tekrar.push({ d: havuz[i], olcu: g.olcu, i: i, sona: g.sona });
+      else if (g.grup === 'ogrenilen') ogrenilen.push({ d: havuz[i], olcu: g.olcu, i: i, sona: g.sona });
     }
-    if (mod === 'yeni') return yeni;
+    if (mod === 'yeni') return sirala(yeni);
     if (mod === 'ogrenilen') return sirala(ogrenilen);
-    return sirala(tekrar).concat(yeni);
+    return sirala(tekrar).concat(sirala(yeni));
   }
 
   /* Mod düğmeleri ve bilgi satırı için sayılar. ogrenilenToplam 5. kutunun tamamıdır;

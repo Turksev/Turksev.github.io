@@ -441,6 +441,22 @@ const sureli = (soz, ms, ileti) => {
 const kelimelerHazir = page => page.waitForFunction(() => !!window.__oyun && !!window.YDS && !!window.YDS.Ilerleme &&
   /^Bugünü çalış \(\d+ kart\)$/.test(document.getElementById('desteBasla').textContent));
 const kelimelerAc = async (page, base) => { await page.goto(base + '/kelimeler.html'); await kelimelerHazir(page); };
+// Deste önce günlük hedef kadar yeni kelimeyle başlar (17 Ekim 2026). Yalnız tekrar destesini sınayan
+// senaryolar günün yeni kotasını başka kelimelerle doldurur: hedef en küçük seçeneğe çekilir, o kadar hiç
+// çalışılmamış kelime (havuzun 60. kelimesinden itibaren; senaryo kümeleri daha öndedir) bugün bilinir.
+// Bunlar yarın vadeli olur; bugünün destesi yalnız tekrarlardan kurulur. Özet yeniden yüklemeyle tazelenir.
+const yeniKotasiniDoldur = async (page, katman) => {
+  const d = await page.evaluate(k => {
+    const Il = window.YDS.Ilerleme;
+    Il.gunlukHedefAyarla(Math.min(...[...document.getElementById('gunlukHedef').options].map(o => Number(o.value))));
+    const ws = window.__oyun.desteHavuz([k]).slice(60).filter(w => Il.yeniMi(w, 'kelime')).slice(0, Il.yeniKotasiKalan());
+    ws.forEach(w => Il.dogru(w, 'kelime'));
+    return {ws, kota: Il.yeniKotasiKalan()};
+  }, katman);
+  assert.equal(d.kota, 0, 'Düzenek: günün yeni kotası dolduruldu (' + d.ws.length + ' kelime)');
+  await page.reload(); await kelimelerHazir(page);
+  return d.ws;
+};
 // Deste karışık sıradadır: kelimeler ekrandan okunur. adet kez "Sonraki" tam bir tur atar. Kart alanı
 // kapanmışsa (deste bitmiş ya da hiç açılmamışsa) tıklama beklenmez, ne görüldüğü söylenir.
 async function desteKart(page, neIcin) {
@@ -4239,6 +4255,7 @@ async function main() {
     });
     await page.clock.setFixedTime(GUN(2));
     await page.reload(); await kelimelerHazir(page);
+    await yeniKotasiniDoldur(page, 2);
     const bugun = await T(page, 'bugun');
     let k = await T(page, 'desteGor');
     assert.ok(k.dagit && k.dugme === 'Bugünü çalış (' + f.tavan + ' kart)',
@@ -4300,6 +4317,7 @@ async function main() {
     await page.evaluate(ws => ws.forEach(w => window.YDS.Ilerleme.dogru(w, 'kelime')), f.sonrakiler);
     await page.clock.setFixedTime(GUN(2));
     await page.reload(); await kelimelerHazir(page);
+    await yeniKotasiniDoldur(page, 2);
     let k = await T(page, 'desteGor');
     assert.ok(k.dagit, 'Düzenek: ' + (f.sonrakiler.length + 1) + ' gecikmiş tekrar ve ' + f.tavan + ' kartlık tavanla "günlere dağıt" düğmesi görünür (' + k.dugme + '; ' + k.not + ')');
     await page.locator('#desteBasla').click();
@@ -4441,7 +4459,8 @@ async function main() {
     assert.equal(ilkOzet.dugme, 'Bugünü çalış (' + f.tavan + ' kart)', 'Düzenek: deste tavan kadar tekrar kartıyla dolu');
     // a) Depolama olayı bu sayfaya ulaşmaz; oyun sayfası destenin ilk iki tekrarını yanıtlar. "Bugünü çalış"a
     //    hiçbir olay gelmeden basılır: deste bellekteki bayat kopyadan değil depodan kurulur. Yanıtlananlar
-    //    girmez, tavana sığmayan iki tekrar yerlerini alır: deste yine tavan kadardır.
+    //    girmez; deste yine tavan kadardır: günlük hedef kadar yeni kelime + kalan yere sıradaki tekrarlar
+    //    (17 Ekim 2026 kuralı: önce yeni, sonra tekrar).
     await page.evaluate(() => { window.__depolamaOlayiYok = true; });
     const ilkIki = f.vadeli.slice(0, 2);
     await oyundaBil(ilkIki);
@@ -4454,7 +4473,13 @@ async function main() {
       'Olay gelmeden basılan "Bugünü çalış" desteyi depodan kurar: tavan kadar kart (bayat kopyadan kurulsa yanıtlananlar ayıklanır, deste eksik kalırdı)');
     assert.ok(String(ilkOzet.kutular) !== String((await beklenenOzet()).kutular), 'Düzenek: öbür sayfadaki iki cevap kutu sayılarını değiştirdi');
     assert.deepEqual(ozet(k), await beklenenOzet(), 'Olay gelmeden basılan "Bugünü çalış" deste özetini de desteyi kurduğu güncel kayıtlarla çizer (kutular bayat kalmaz)');
-    assert.deepEqual(desteSirali(await desteDolas(page, f.tavan)), desteSirali(f.vadeli.slice(2)), 'Destede öbür sayfada yanıtlanan iki kelime yok; tavana sığmayan iki tekrar desteye girdi');
+    const desteA = await desteDolas(page, f.tavan);
+    const tekrarYeri = f.tavan - f.hedef;
+    assert.deepEqual(desteSirali(desteA.filter(w => f.vadeli.includes(w))), desteSirali(f.vadeli.slice(2, 2 + tekrarYeri)),
+      'Destede öbür sayfada yanıtlanan iki kelime yok; tekrar yeri (' + tekrarYeri + ') sıradaki vadelilerle (eşit vadede dizin sırası) dolar');
+    const yeniBlok = desteA.filter(w => !f.vadeli.includes(w));
+    assert.deepEqual([yeniBlok.length, await T(page, 'desteDepo', yeniBlok)], [f.hedef, yeniBlok.map(() => null)],
+      'Destenin kalanı günlük hedef kadar hiç çalışılmamış kelime');
     // b) Listeye dönülür. Oyun sayfası kalan tekrarların dördü dışındakileri ve bir yeni kelimeyi yanıtlar;
     //    olay yine ulaşmaz, özet eski kalır. Önbellekten dönüş (pageshow, persisted) özeti depodan yeniler.
     await page.locator('#mod').click();

@@ -260,10 +260,13 @@
   }
 
   function leitnerKaydi(v, ad) {
-    alanlariDogrula(v, ['k', 'g', 'c', 'm'], ['k', 'g'], ad);
-    var r = { k: tamSayi(v.k, 1, 5, ad + ' kutusu'), g: tamSayi(v.g, 0, 10000000, ad + ' tekrar günü') };
+    alanlariDogrula(v, ['k', 'g', 'c', 'm', 's'], ['k', 'g'], ad);
+    // k: 0 yalnız "sona atılmış, hiç çalışılmamış" kayıtta (s: 1) geçerlidir (ilerleme.js sonaAt).
+    var r = { k: tamSayi(v.k, 0, 5, ad + ' kutusu'), g: tamSayi(v.g, 0, 10000000, ad + ' tekrar günü') };
     if (kendi(v, 'c')) r.c = tamSayi(v.c, 0, 10000000, ad + ' çalışma günü');
     if (kendi(v, 'm')) r.m = tamSayi(v.m, 0, 1000, ad + ' bakım aşaması');
+    if (kendi(v, 's')) r.s = tamSayi(v.s, 1, 1, ad + ' sona atma işareti');
+    if (r.k === 0 && r.s !== 1) throw new Error(ad + ' kutusu 0 yalnız sona atılmış kayıtta olabilir.');
     return r;
   }
 

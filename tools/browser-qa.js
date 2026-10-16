@@ -261,7 +261,8 @@ async function main() {
     assert.deepEqual(await acilis.locator('.kcard[data-k="2"] .krakam b').evaluateAll(bs=>bs.map(b=>b.textContent)),['100','30','703','30'],'Çekirdek: learned, studying, new, due today');
     assert.deepEqual(await acilis.locator('.kcard.secili').evaluateAll(els=>els.map(e=>e.dataset.k)),['2','3'],'Selected layers come from yds-katmanlar');
     assert.equal(await acilis.locator('.kcard[data-k="1"].baslanmadi').count(),1,'Phrase record never counts toward a word layer: Temel stays untouched');
-    assert.match(await acilis.locator('#acilisNot').innerText(),/^Deste: 30 tekrar$/,'Deck note shows the capped deck');
+    // Deste önce günlük hedef kadar yeni kelimeyle başlar (17 Ekim 2026); 30 vadeli tekrarın 10'u kalan yere sığar.
+    assert.match(await acilis.locator('#acilisNot').innerText(),/^Deste: 10 tekrar \+ 20 yeni · 20 tekrar yarına sarkıyor$/,'Deck note shows the capped deck: new words first, the rest of the reviews wait');
     // Halka geçişle dolar (1,1 s + gecikme): hedefe ulaşmasını bekle.
     await acilis.waitForFunction(()=>{const el=document.querySelector('.kcard[data-k="2"] .halka-dolu');return Math.abs(parseFloat(getComputedStyle(el).strokeDashoffset)-parseFloat(el.style.getPropertyValue('--dolu')))<0.5;});
     const halka=await acilis.locator('.kcard[data-k="2"] .halka-dolu').evaluate(el=>parseFloat(el.style.getPropertyValue('--dolu')));
