@@ -200,15 +200,16 @@ test('word: hint/answer pair and rotation stay stable until explicit one-card na
   assert.notEqual(h.state().examples[0].ex, first[0].ex);
   const secondVisit = h.snapshot(); h.api.redraw(); assert.deepEqual(h.snapshot(), secondVisit);
 });
-test('word: same-card refresh retains hint-use grading penalty', () => {
+test('word: same-card refresh keeps the sentence hint; "Bildim" after it is a full "dogru" (the hint only gives context)', () => {
   const h = page('kelimeler'); h.node('ipucuBtn').click(); const before = h.snapshot();
   h.api.refresh(); assert.deepEqual(h.snapshot(), before);
-  h.node('bildim').click(); assert.equal(h.grades[0].kind, 'ipucuyla');
+  h.node('kart').click(); assert.equal(h.node('kartIpucu').textContent, 'Bildin mi? Aşağıdan işaretle.');
+  h.node('bildim').click(); assert.equal(h.grades[0].kind, 'dogru');
 });
 test('word: failed hinted grade does not rotate, clear hint, or reveal answer', () => {
   const h = page('kelimeler', [word]); h.node('ipucuBtn').click(); const before = h.snapshot();
   h.failProgress(true); h.node('bildim').click(); assert.deepEqual(h.snapshot(), before);
-  assert.equal(h.grades[0].kind, 'ipucuyla'); assert.equal(h.warnings(), 1);
+  assert.equal(h.grades[0].kind, 'dogru'); assert.equal(h.warnings(), 1);
 });
 test('word: full meaning-specific cycles preserve EN/TR pairing and source immutability', () => {
   const h = context(); const input = clone(meanings), original = clone(input);

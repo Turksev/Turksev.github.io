@@ -50,8 +50,9 @@
   var kartOrnekKelime = null;
   var kartOrnekleri = [];
   // Çevrilmeden önce anlamı sözlük panelinde görülen ve henüz yanıtlanmamış
-  // kartlar. "Bildim" bu kartlarda ipucuyla sayılır; ipucu düğmesiyle aynı
-  // dürüstlük kuralı (sozluk.js). Her kart ayrı tutulur, yeni bakış öncekini silmez.
+  // kartlar. "Bildim" bu kartlarda ipucuyla sayılır (sozluk.js): anlamı görmek cevabı
+  // görmektir. Cümle ipucusu (💡) sayılmaz: kelimeyi boşluk bırakır, yalnız bağlam verir;
+  // anlamı yine kullanıcı hatırlar. Her kart ayrı tutulur, yeni bakış öncekini silmez.
   var sozlukBakilan = Object.create(null);
 
   var $ = function (id) { return document.getElementById(id); };
@@ -471,8 +472,7 @@
     $('kartIpucu').textContent = sozlukBakilan[d.e]
       ? 'Anlamını sözlükte gördün — "Bildim" dersen kelime aynı kutuda kalır.'
       : kartAcik
-        ? (ipucuAcik ? 'İpucu kullandın — "Bildim" dersen kelime aynı kutuda kalır.'
-                     : 'Bildin mi? Aşağıdan işaretle.')
+        ? 'Bildin mi? Aşağıdan işaretle.'
         : 'Cevabı açmak için karta tıkla · istersen cevabı görmeden işaretle';
 
     // Kullanıcı cevabı zihninden verdiyse kartı çevirmek zorunda değildir.
@@ -523,7 +523,7 @@
     var sonuc;
     if (ne === 'zaten') sonuc = Il.zatenBiliyorum(d.e, ILERLEME_TURU);
     else if (ne === 'yanlis') sonuc = Il.yanlis(d.e, ILERLEME_TURU);
-    else if (ipucuAcik || sozlukBakilan[d.e]) sonuc = Il.ipucuyla(d.e, ILERLEME_TURU);
+    else if (sozlukBakilan[d.e]) sonuc = Il.ipucuyla(d.e, ILERLEME_TURU);
     else sonuc = Il.dogru(d.e, ILERLEME_TURU);
     if (sonuc === false) { window.YDS.depolamaUyarisi(); return; }
     // Yalnız bu kartın işareti kalkar; sözlükte bakılmış başka kartlar işaretini korur.

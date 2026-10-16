@@ -114,8 +114,9 @@ Eşleştirme kuralı arama sayfasıyla ortaktır (`assets/js/arama-ortak.js`); p
   "Sözlükte ara" düğmesi o kelimeyi aratır. Seçim pencereden ya da panelin sonuç
   alanından kaydırılıp çıkınca düğme gizlenir, seçim geri gelince yeniden çıkar.
 - **Dürüst ipucu.** Çevrilmemiş kelime/öbek kartının kendi başlığı panelde gerçekten
-  ekranda göründüğünde o kartın "Bildim" cevabı, ipucu düğmesinde olduğu gibi
-  ipucuyla sayılır. Ölçüm geometriktir: anlam satırının %60'ı ya da en az 24 px'i
+  ekranda göründüğünde o kartın "Bildim" cevabı ipucuyla sayılır: anlamı görmek cevabı
+  görmektir. (Karttaki 💡 "cümlede gör" düğmesi sayılmaz: kelimeyi boşluk bırakıp yalnız
+  bağlam verir, anlamı yine kullanıcı hatırlar; "Bildim" olağan terfidir.) Ölçüm geometriktir: anlam satırının %60'ı ya da en az 24 px'i
   pencere, panel ve sonuç alanının ortak görünür bölgesinde olmalı; aşağıda kalan ve
   kaydırılıp bakılmamış satır sayılmaz. Uyarı sonuçların üstüne binmez (akış içinde
   durur); önceki kartın uyarısı yeni kart gelince kalkar ve açığa çıkan satır ekrana
@@ -470,7 +471,8 @@ kelime: harf yok" diye yazar.
 - **Bildin** — ilk denemede ve harf açtırmadan doğru yazarsan kelime bir üst kutuya çıkar
   (karttaki "Bildim" ile aynı).
 - **İpuçlu** — "Bir harf aç" kullandıysan ya da ikinci/üçüncü denemede bildiysen kutu
-  değişmez (karttaki ipuçlu yanıtla aynı; hiç çalışılmamış kelime 1. kutuya girer).
+  değişmez (kartta anlamı sözlükte görülmüş yanıtla aynı; hiç çalışılmamış kelime 1.
+  kutuya girer).
 - **Bilemedin** — üçüncü deneme de yanlışsa ya da "Bilemedim, göster" dersen kelime bir
   kutu düşer (1. kutunun altına inmez) ve yarın tekrar gelir.
 
