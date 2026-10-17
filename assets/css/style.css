@@ -671,7 +671,8 @@ input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible
   margin: 0 0 12px; padding: 0 0 10px;
   border-top: 0; border-bottom: 1px dashed var(--border);
 }
-.kalip span { display: inline-flex; align-items: baseline; gap: 6px; font-size: .9rem; }
+.kalip span { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 6px; font-size: .9rem; max-width: 100%; min-width: 0; }
+.kalip b, .kalip i { min-width: 0; overflow-wrap: anywhere; }
 .kalip b { font-weight: 650; color: var(--accent); }
 .kalip i { font-style: normal; color: var(--muted); font-size: .86rem; }
 .kalip b::before { content: "▸ "; color: var(--muted); font-weight: 400; }

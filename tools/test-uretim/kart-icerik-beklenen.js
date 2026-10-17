@@ -2,6 +2,8 @@
 // Test-side interpretation of explicit editorial exceptions. Legacy source
 // comparisons stay exact; no field is globally ignored to accommodate changes.
 const fs = require('node:fs'), path = require('node:path'), assert = require('node:assert/strict');
+const {readCollection, expectedPhrases} = require('../kalip-anlam-kaynagi');
+const usage = readCollection();
 const folder = path.resolve(__dirname, '../kart-icerik-partileri');
 const batches = fs.existsSync(folder) ? fs.readdirSync(folder).filter(f => f.endsWith('.json')).sort()
   .map(f => JSON.parse(fs.readFileSync(path.join(folder, f), 'utf8'))) : [];
@@ -37,6 +39,7 @@ function beklenenKart(word, record, includeCollocations = true) {
     assert.ok(!result.a[row.sense_index].exs?.length, word + ': preserve alternatives');
     result.a.pop();
   }
+  if (includeCollocations) result.kl = plain(expectedPhrases(word, result, usage.rows));
   return result;
 }
 // Some older source fixtures contain meanings only. Still compare every
@@ -45,4 +48,4 @@ function beklenenKart(word, record, includeCollocations = true) {
 function beklenenAnlamlar(word, meanings) {
   return beklenenKart(word, {a: meanings}, false).a;
 }
-module.exports = {batches, beklenenKart, beklenenAnlamlar};
+module.exports = {batches, beklenenKart, beklenenAnlamlar, usage};

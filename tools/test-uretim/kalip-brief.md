@@ -1,66 +1,36 @@
-# Görev: kelimeler için kullanım kalıpları yazmak
+# Kelime kartlarında kullanım kalıpları
 
-YDS hazırlık sitesinde her kelime kartının altında, o kelimenin **tipik kullanım
-kalıpları** gösterilecek. Amaç: öğrenci kelimenin anlamını değil, **nasıl kullanıldığını**
-öğrensin — hangi edatı alır, hangi sözcüklerle birlikte gelir.
+Her kelimenin altında doğal İngilizce kullanımlar ve bunların tam Türkçe karşılıkları bulunur. Amaç, öğrencinin bildiği tek anlamı her bağlama zorlamasını önlemek ve sözcüğü kullanıldığı yapıyla birlikte öğretmektir.
 
-Örnek:
+## İçerik ilkeleri
 
-```
-comply  →  comply with the rules — kurallara uymak
-           comply with regulations — düzenlemelere uymak
-           fail to comply — uymamak, uyum sağlamamak
-```
+- Kelime başına sabit sayı, asgari doldurma hedefi veya üst sınır yoktur. Basit bir sözcüğe bir örnek yeterken çok anlamlı bir fiil daha fazla örnek gerektirebilir.
+- Karttaki her ayrı anlamı uygun bir kullanımla göster. Aynı anlam satırı birden fazla yaygın kullanım içeriyorsa gerekli ayrımı da yap. Yeni bir kullanım geçerliyse kartta ayrı anlam satırı bulunmaması onu dışlamaz.
+- Gerçekten varsa karakteristik edatları ve anlam farklarını göster: `depend on`, `provide someone with something`, `provide something for someone`. Her sözcüğe yapay bir edat ekleme.
+- Önemli dilbilgisel tamamlayıcıları örnekle: `decide to leave`, `avoid making mistakes`, `establish that the claim is true`, `establish whether the plan works`.
+- Anlamı değiştiren yapıları ayrı ver: `remember to call` ile `remember calling` gibi.
+- Kısa, somut ve anlaşılır ifadeler kullan. Kalıbın anlaşılması gerekiyorsa kısa bir cümle kullanılabilir; iki-beş sözcük sınırı yoktur. Çevrilmemiş boşluklardan kaçın.
+- Genel şema gerçekten öğreticiyse `someone/something` kullanılabilir. Somut örneğin daha açık olduğu yerde onu tercih et. Türkçede yüklemi, nesneyi, olumsuzluğu ve zamanı eksiksiz karşıla.
+- Somut isimleri atlama: `a herd of deer`, `a kilo of rice` gibi doğal kullanımlar ver. Aynı anlamı gereksiz benzer örneklerle çoğaltma.
+- İsim, fiil, sıfat ve çekimli biçimleri doğru ayır. Seyrek, teknik, eski veya argo bir kullanım gerekiyorsa Türkçe karşılıkta kısa bir kayıt belirt.
+- Emin olunmayan anlamı örnekle örtmeye çalışma. Birincil sözlükten kontrol et; eski kaynakta hata varsa ayrı ve açık bir düzeltme kaydıyla çöz.
+- Türkçe karakterleri koru; UTF-8 ve düz metin kullan. Yinelenen İngilizce ifadeleri kaldır.
 
-Türk öğrencinin en sık hatası, Türkçe fiilin istediği eki İngilizceye taşımaktır:
-"kurallara uymak" dendiği için *comply to* denir; doğrusu **comply with**'tir. Bu yüzden
-edat gerektiren kalıplar en değerlisidir.
+## Örnek
 
-## Girdi
-JSON dizisi: `{e: kelime, y: tür(ler), t: kısa anlam, anlamlar: [tam anlamlar]}`
+| İngilizce | Türkçe |
+| --- | --- |
+| establish a company | şirket kurmak |
+| establish a system | sistem oluşturmak |
+| establish the cause | nedeni saptamak |
+| establish the facts | gerçekleri ortaya koymak |
+| establish that the claim is true | iddianın doğru olduğunu ortaya koymak |
+| establish whether the plan works | planın işe yarayıp yaramadığını belirlemek |
 
-## Çıktı — yalnız JSON dizisi, başka hiçbir şey yazma
-```
-[{"e":"comply","k":[
-   {"en":"comply with the rules","tr":"kurallara uymak"},
-   {"en":"comply with regulations","tr":"düzenlemelere uymak"},
-   {"en":"fail to comply","tr":"uymamak"}]},
- {"e":"tiger","k":[]}, ...]
-```
+## Kalıcı kaynak ve doğrulama
 
-## Hangi kelimeye kalıp yazılır
-**Yaz** — kullanımı öğrenilmesi gereken kelimeler:
-- Edat isteyen fiil / sıfat / isim: *comply with, depend on, capable of, aware of,
-  responsible for, an increase in, access to, insist on*
-- Güçlü eşdizim (birlikte kullanılan sözcükler): *conduct research, pose a threat,
-  meet a deadline, draw a conclusion, take measures, raise awareness*
-- Kalıplaşmış yapı: *be likely to, on the grounds that, in terms of, no sooner … than*
+Güncel tüm-kelime koleksiyonu `tools/kalip-anlam-partileri/manifest.json` dosyasındaki paketlerdir. Her satır hedef kelimeyi, önceki kalıpları, beklenen anlamları, yeni EN/TR çiftlerini ve her çiftin kapsadığı anlam indekslerini taşır. İndeksler sıfırdan başlar; `[]`, kartın anlam satırlarında ayrıca bulunmayan yararlı bir kullanımı gösterir.
 
-**Yazma** (boş dizi `[]` döndür) — kalıbı olmayan somut kelimeler:
-*tiger, table, yellow, kitchen, seven, Monday* gibi. Zorlama; uydurma kalıp yazma.
-Bir kelime için tek gerçek kalıp varsa yalnız onu yaz; ikiyi doldurmak için şişirme.
+`tools/kalip_anlamlari.py`, koleksiyonu eski kaynakların ve `kart_icerik` düzeltmelerinin ardından uygular. `node tools/kalip-anlam-uygula.js --write`, mevcut üretilmiş kartlardaki kalıpları bu kaynaktan yeniler; `--check` yalnız doğrular. Gardlardan biri değiştiyse işlem durur; başka anlama sessizce kalıp bağlanmaz. Güncel koleksiyon tüm kelimeleri kapsamalıdır.
 
-## Kurallar
-1. Kelime başına **en çok 3**, tercihen 2 kalıp. Gerçekten kullanılan, doğal kalıplar.
-2. Kalıp **kısa** olsun: 2–5 kelime. Cümle değil, kalıbın kendisi.
-   İyi: `pose a serious threat` · Kötü: `The new policy poses a serious threat to…`
-3. Hedef kelime kalıpta **mutlaka geçsin**, sözlük biçiminde ya da doğal çekimiyle.
-4. Nesne yerine `sth` (something) / `sb` (somebody) kullan: `provide sb with sth`,
-   `deprive sb of sth`. Türkçesinde "bir şey / birine" de.
-5. `tr` alanı kısa ve doğal Türkçe olsun: `comply with the rules — kurallara uymak`.
-6. Çok anlamlı kelimede en çok sorulan anlamın kalıplarını ver; iki anlam da güçlüyse
-   ikisinden birer kalıp yaz.
-7. Edat kalıplarını öne al: bir kelimenin hem edat kalıbı hem eşdizimi varsa önce edat.
-8. Büyük harfle başlatma (özel ad değilse).
-9. **Tırnak ve kesme işareti** düz ASCII olsun (' ve "), tire yerine normal tire.
-   Bu kural YALNIZ noktalama içindir.
-10. **Türkçe metinler tam Türkçe yazılacak: ç ğ ı İ ö ş ü harfleri kullanılacak.**
-   Doğru: `bir şeye uymak`, `düzenlemelere uymak`, `anlayışımızı ilerletmek`
-   Yanlış: `bir seye uymak`, `duzenlemelere uymak`, `anlayisimizi ilerletmek`
-   Diakritiksiz Türkçe kabul edilmez; dosya UTF-8 yazılır.
-
-## Yapma
-- Hiçbir kelimeyi atlama: kalıbı yoksa bile `{"e":"…","k":[]}` yaz. Çıktı dizisinin
-  uzunluğu girdiyle aynı olmalı.
-- Uydurma ya da nadir kalıp yazma; emin değilsen boş bırak.
-- JSON dışında açıklama, markdown, kod bloğu işareti yazma.
+`kalip-paketle.py`, `kalip-dogrula.py` ve `tools/kaliplar.js` eski kaynak aktarımının parçalarıdır. Eski gardları korumak için geçmiş kaynak olarak tutulurlar; nihai kullanıcı içeriğini son koleksiyon belirler. Eski dosyada değişiklik tek başına yayına yansımaz. Kalıp sayısı hiçbir aşamada üçle sınırlandırılmamalıdır.

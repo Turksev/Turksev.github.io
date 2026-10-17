@@ -77,16 +77,14 @@ for ad in sorted(os.listdir(GIRDI)):
             continue
 
         sorun, temiz = [], []
-        if len(kaliplar) > 3:
-            sorun.append('%d kalıp (en çok 3)' % len(kaliplar))
-        for kl in kaliplar[:3]:
+        for kl in kaliplar:
             en = (kl.get('en') or '').strip()
             tr = (kl.get('tr') or '').strip()
             n = len(re.findall(r'\S+', en))
             if not en or not tr:
                 sorun.append('boş alan')
                 continue
-            if n < 2 or n > 6:
+            if n < 2:
                 sorun.append('"%s" %d kelime' % (en, n))
                 continue
             # hedef kelime kalıpta geçmeli (çekimli olabilir)

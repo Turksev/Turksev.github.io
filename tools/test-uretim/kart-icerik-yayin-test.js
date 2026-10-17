@@ -1,6 +1,6 @@
 'use strict';
 const assert = require('node:assert/strict'), fs = require('node:fs'), path = require('node:path'), vm = require('node:vm');
-const {batches} = require('./kart-icerik-beklenen');
+const {batches, usage} = require('./kart-icerik-beklenen');
 const root = path.resolve(__dirname, '../..'), w = {}, context = vm.createContext({window: w});
 for (let k = 1; k <= 7; k++) vm.runInContext(fs.readFileSync(path.join(root, 'data/kelime-k' + k + '.js'), 'utf8'), context);
 const cards = Object.assign({}, ...Array.from({length: 7}, (_, i) => w['KELIME_K' + (i + 1)]));
@@ -21,7 +21,10 @@ for (const batch of batches) {
         assert.ok(!card.a.some(sense => sense.ex === row.expected.ex && sense.tr === row.expected.tr), key + ': invalid derived sense removed');
         expectedCounts.removed_senses++;
       } else if (category === 'collocations') {
-        assert.deepEqual(plain(card.kl), row.replacement, key + ': exact reviewed collocations');
+        const finalUsage = usage.rows.get(row.word);
+        assert.ok(finalUsage, key + ': final usage layer');
+        assert.deepEqual(finalUsage.expected, row.replacement, key + ': original editorial result remains guarded');
+        assert.deepEqual(plain(card.kl), finalUsage.replacement, key + ': exact final reviewed collocations');
         expectedCounts.collocations++;
       } else {
         const sense = card.a[row.sense_index]; assert.ok(sense, key + ': missing sense');

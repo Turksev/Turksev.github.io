@@ -55,6 +55,7 @@ jobs:
           python tools/release-helper-test.py
           python tools/test-uretim/cumle-kalite-test.py
           python tools/test-uretim/kart-icerik-test.py
+          python tools/test-uretim/kalip-anlam-test.py
           python tools/test-uretim/kart-baslik-yenileme-test.py
           python tools/test-uretim/release-buda-test.py
 
@@ -63,6 +64,7 @@ jobs:
         run: |
           set -euo pipefail
           python tools/aile-cikar.py --check
+          node tools/kalip-anlam-uygula.js --check
           node tools/deneme-bankasi-uret.js
           node tools/seo-uret.js
           node tools/sayilar-uret.js --check
@@ -85,6 +87,9 @@ jobs:
 
       - name: Dictionary panel, card safety and layout regressions
         run: pnpm test:sozluk
+
+      - name: Bilingual phrase coverage and narrow-screen layout
+        run: node tools/kalip-browser-qa.js
 
       - name: Typing game, progress writes and layout regressions
         run: pnpm test:oyunlar
