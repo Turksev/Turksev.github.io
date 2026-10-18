@@ -23,7 +23,7 @@ async function main(){
   page.on('pageerror',e=>errors.push(e.message));
   const largest=[...rows.values()].sort((a,b)=>b.replacement.length-a.replacement.length)[0].word;
   const longest=[...rows.values()].sort((a,b)=>Math.max(...b.replacement.map(p=>p.tr.length))-Math.max(...a.replacement.map(p=>p.tr.length)))[0].word;
-  const words=[...new Set(['establish','remember','provide',largest,longest])];
+  const words=[...new Set(['establish','remember','provide','soap','turn-over','readership',largest,longest])];
   try{
     for(const width of [320,390,1280]){
       await page.setViewportSize({width,height:900});
@@ -41,20 +41,32 @@ async function main(){
           assert.deepEqual(overflow,[],word+': phrases fit '+width+'px at '+scale+'px font');
         }
         await page.evaluate(()=>{document.documentElement.style.fontSize='';});
-        if(word==='establish'){
+        if(['establish','soap','turn-over',largest,longest].includes(word)){
           await card.locator('[data-ne="calis"]').click();
           await page.locator('#kart').click();
           await page.locator('#kartOrnek .kalip b').first().waitFor();
-          assert.deepEqual(await page.locator('#kartOrnek .kalip b').allTextContents(),expected.map(p=>p.en),'Study card retains all establish uses');
+          assert.deepEqual(await page.locator('#kartOrnek .kalip > span').evaluateAll(els=>els.map(el=>({en:el.querySelector('b').textContent,tr:el.querySelector('i').textContent}))),expected,word+': study card retains every bilingual use');
+          for(const scale of [16,20]){
+           await page.evaluate(size=>{document.documentElement.style.fontSize=size+'px';},scale);
+           const clipped=await page.locator('#kartOrnek .kalip').evaluate(el=>{
+            const card=el.closest('.flash'),bounds=card.getBoundingClientRect();
+            return Array.from(el.querySelectorAll('span,b,i')).filter(n=>{
+              const r=n.getBoundingClientRect();
+              return r.left < -1 || r.right > innerWidth+1 || r.bottom > bounds.bottom+1 || n.scrollWidth>n.clientWidth+1;
+            }).map(n=>n.textContent);
+           });
+           assert.deepEqual(clipped,[],word+': study phrases fit '+width+'px at '+scale+'px font');
+          }
+          await page.evaluate(()=>{document.documentElement.style.fontSize='';});
           if(process.env.YDS_QA_SCREENSHOTS){
             fs.mkdirSync(process.env.YDS_QA_SCREENSHOTS,{recursive:true});
-            await page.locator('#kartAlan').screenshot({path:path.join(process.env.YDS_QA_SCREENSHOTS,'establish-'+width+'.png')});
+            await page.locator('#kartAlan').screenshot({path:path.join(process.env.YDS_QA_SCREENSHOTS,word+'-'+width+'.png')});
           }
         }
       }
     }
     assert.deepEqual(errors,[],'No runtime errors');
-    console.log('Usage cards: all pairs, all establish uses, variable counts and long translations fit 320/390/1280px with enlarged text');
+    console.log('Usage cards: bilingual list/study uses, variable counts and long translations fit 320/390/1280px with enlarged text');
   }finally{await context.close();await browser.close();server.close();}
 }
 main().catch(error=>{console.error(error);server.close();process.exitCode=1;});
