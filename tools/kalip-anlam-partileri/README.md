@@ -2,7 +2,7 @@
 
 Bu koleksiyon 9.379 kelimenin tamamını kapsar. İlk 2026-10-18 turunda, mevcut kayıtlı anlamlar ve yapılar temelinde 4.638 kartın kalıpları değişti; toplam 19.832 kullanım 25.005 kullanıma çıktı. Bu ilk tur, değişmeyen bütün kelimelerin bağımsız sözlüklerle karşılaştırıldığı anlamına gelmiyordu.
 
-İkinci turda kalan 4.741 kelimenin tamamı, mevcut Türkçe anlamlarla sınırlanmadan bağımsız sözlük anlamları, örnekler, edatlar ve fiil yapılarıyla karşılaştırıldı. Her kelimenin karar ve kaynak kaydı, değişmeden korunanlar da dâhil, [sözlük denetiminde](../kalip-sozluk-denetimi/README.md) bulunur. Güncel sayımlar bu denetimin `manifest.json` dosyasındadır. Kalıp sayısı sözcüğün ihtiyacına göre belirlenir; sabit alt veya üst sınır yoktur.
+İkinci turda kalan 4.741 kelimenin tamamı, mevcut Türkçe anlamlarla sınırlanmadan bağımsız sözlük anlamları, örnekler, edatlar ve fiil yapılarıyla karşılaştırıldı. Her kelimenin karar ve kaynak kaydı, değişmeden korunanlar da dâhil, [4.741 kelimelik sözlük denetiminde](../kalip-sozluk-denetimi/README.md) bulunur. Ardından ilk güncellenen 4.638 kelime de [aynı kapsamda sözlüklerle karşılaştırıldı](../kalip-sozluk-ilk-tur-denetimi/README.md). Böylece 9.379 kelimenin tamamı incelendi ve toplam 45.833 kullanım çiftine ulaşıldı. Güncel sayımlar `kalip-sozluk-ilk-tur-denetimi/manifest.json` dosyasındadır. Kalıp sayısı sözcüğün ihtiyacına göre belirlenir; sabit alt veya üst sınır yoktur.
 
 `manifest.json` yüklenecek 94 paketi, kelime sayısını ve kalıp dışındaki kart verisinin SHA-256 özetini bildirir. `inceleme-ozeti.json` ilk turun sayımını ve ayrıca kontrol edilen sözlük maddelerini kaydeder; tarihsel kayıt olarak korunur. Sözlük karşılaştırmasının sonraki sayımları ve kaynakları ayrı denetim paketindedir. Örnekler site için hazırlanır; bütün koleksiyonun derlem sıklığıyla doğrulandığı iddia edilmez.
 
@@ -29,6 +29,7 @@ python tools/test-uretim/kalip-anlam-test.py
 node tools/test-uretim/kalip-gecis-test.js
 node tools/test-uretim/kalip-anlam-test.js
 node tools/test-uretim/kalip-sozluk-test.js
+node tools/test-uretim/kalip-sozluk-ilk-tur-test.js
 ```
 
 Sonraki bir kalıp düzeltmesinde eski `replacement` listesini `previous_replacement` olarak saklayıp yeni listeyi ve kapsam indekslerini yaz. Kaynak anlamları değişirse gardı ve kalıp eşleştirmesini birlikte yeniden incele. Kalıp dışı özet, yalnız doğrulanmış kaynak değişikliklerinden sonra yenilenmelidir.

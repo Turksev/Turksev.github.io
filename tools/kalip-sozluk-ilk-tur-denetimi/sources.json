@@ -1,0 +1,99 @@
+{
+  "sources": {
+    "oewn": {
+      "source_id": "oewn",
+      "source_name": "Open English WordNet",
+      "publisher": "Open English WordNet Community",
+      "source_type": "lexical_network",
+      "homepage_url": "https://en-word.net/",
+      "upstream_source_id": "pwn",
+      "source_lineage_id": "lineage-princeton-oewn",
+      "license_name": "CC BY 4.0 AND LicenseRef-Princeton-WordNet",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "license_evidence_url": "https://raw.githubusercontent.com/globalwordnet/english-wordnet/main/LICENSE.md",
+      "license_checked_at": "2026-08-08",
+      "redistribution_status": "allowed",
+      "commercial_use_status": "allowed",
+      "derivative_use_status": "allowed",
+      "attribution_required": 1,
+      "attribution_text": "Open English WordNet Community and Princeton University WordNet; changes made by this pipeline are documented.",
+      "terms_notes": null,
+      "ingestion_decision": "approved_core",
+      "decision_reason": "Sürümlü, yapılandırılmış, açık ve yüksek kaliteli ortak isim/fiil/sıfat/zarf omurgası."
+    },
+    "verbnet": {
+      "source_id": "verbnet",
+      "source_name": "VerbNet",
+      "publisher": "University of Colorado Boulder",
+      "source_type": "verb_lexicon_frames",
+      "homepage_url": "https://verbs.colorado.edu/verbnet/",
+      "upstream_source_id": null,
+      "source_lineage_id": "lineage-verbnet",
+      "license_name": "LicenseRef-VerbNet-Permissive",
+      "license_url": "https://uvi.colorado.edu/nlp_applications",
+      "license_evidence_url": "https://uvi.colorado.edu/nlp_applications",
+      "license_checked_at": "2026-08-08",
+      "redistribution_status": "allowed",
+      "commercial_use_status": "allowed",
+      "derivative_use_status": "allowed",
+      "attribution_required": 1,
+      "attribution_text": "VerbNet, University of Colorado Boulder; copyright and disclaimer notices preserved.",
+      "terms_notes": null,
+      "ingestion_decision": "approved_core",
+      "decision_reason": "Fiil sınıfları, sözdizimsel frame'ler ve governed preposition pattern kanıtı."
+    },
+    "gcide": {
+      "source_id": "gcide",
+      "source_name": "GNU Collaborative International Dictionary of English",
+      "publisher": "GNU Project / GCIDE contributors",
+      "source_type": "dictionary",
+      "homepage_url": "https://gcide.gnu.org.ua/",
+      "upstream_source_id": null,
+      "source_lineage_id": "lineage-gcide-webster-wordnet",
+      "license_name": "GPL-3.0-or-later",
+      "license_url": "https://www.gnu.org/licenses/gpl-3.0.html",
+      "license_evidence_url": "https://gcide.gnu.org.ua/license",
+      "license_checked_at": "2026-08-08",
+      "redistribution_status": "conditional",
+      "commercial_use_status": "allowed",
+      "derivative_use_status": "share_alike",
+      "attribution_required": 1,
+      "attribution_text": "GCIDE 0.54 and its bundled Webster/WordNet source notices; GPL source availability retained.",
+      "terms_notes": null,
+      "ingestion_decision": "approved_separate_license_layer",
+      "decision_reason": "Simple function-word POS and fixed-expression coverage; legacy/archaic labels preserved."
+    }
+  },
+  "verified_files": [
+    {
+      "source_file_id": "2bbfe1c3-ecc2-5688-ae84-d1d9e64fba5f",
+      "snapshot_id": "gcide-0-54",
+      "relative_path": "data/raw/gcide/gcide-0-54/gcide-0.54.tar.xz",
+      "original_filename": "gcide-0.54.tar.xz",
+      "file_format": "tar.xz",
+      "file_size_bytes": 14803080,
+      "sha256": "22416f6f36175b160dc388b7547512514d464473cf7d7c898d738efb26c51d42",
+      "retrieved_at": "2026-08-08T11:24:52Z"
+    },
+    {
+      "source_file_id": "227a2901-b31e-5cf2-bc72-5ef432ddef85",
+      "snapshot_id": "oewn-2025-core",
+      "relative_path": "data/raw/oewn/oewn-2025-core/english-wordnet-2025.xml.gz",
+      "original_filename": "english-wordnet-2025.xml.gz",
+      "file_format": "xml.gz",
+      "file_size_bytes": 11363503,
+      "sha256": "9ca6d1dcb75f822fdd66617f7d9da48142ace38dd544d6ad5e2feca1674ad3fe",
+      "retrieved_at": "2026-08-08T11:24:25Z"
+    },
+    {
+      "source_file_id": "25be015c-4e72-559d-92b4-5abbd9fc7a60",
+      "snapshot_id": "verbnet-3-4-frozen-2026-08-08",
+      "relative_path": "data/raw/verbnet/verbnet-3-4-frozen-2026-08-08/verbnet-master-2026-08-08.zip",
+      "original_filename": "verbnet-master-2026-08-08.zip",
+      "file_format": "zip",
+      "file_size_bytes": 1529554,
+      "sha256": "2c7c32785aa13238f9bc8ba11ccf040e6e89421f30c9e530d9b25eed07badc3b",
+      "retrieved_at": "2026-08-08T11:24:46Z"
+    }
+  ]
+}

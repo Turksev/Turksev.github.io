@@ -1,5 +1,7 @@
 # Kalan 4.741 kelimenin sözlük karşılaştırması
 
+Bu belge bu turun tarihsel sonuçlarını korur. İlk güncellenen 4.638 kelimenin sonraki karşılaştırması da [ayrı denetim paketinde](../kalip-sozluk-ilk-tur-denetimi/README.md) tamamlanmıştır. Güncel site toplamı 45.833 kullanım çiftidir; bu paketteki 4.741 kayıt sonraki turda değiştirilmemiştir.
+
 Bu incelemenin hedefi, ilk kalıp güncellemesinde değişmeden kalan **4.741 kelime**dir. Hedef listesi yayımlanmış `758487f5dec692e6676984d8cf0900eeeca21e64` sürümünden, yeni incelemeye başlamadan önce sabitlendi. İlk turda değişen 4.638 kelime bu turun hedefi değildir.
 
 Sonuç: **2.662 kelime değişti; 2.079 kelimenin kalıpları inceleme sonrasında korundu. 4.503 yeni EN/TR çifti eklendi ve 303 mevcut çift düzeltildi.** Hedef gruptaki kullanım sayısı 9.849'dan 14.352'ye, bütün sitedeki kullanım sayısı 25.005'ten **29.508**'e çıktı. 677 kelimede yerel sözlük karşılaştırmasına ek web doğrulaması yapıldı.

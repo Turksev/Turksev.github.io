@@ -16,9 +16,25 @@ assert.equal(new Set(audit.target_words).size, 4741);
 assert.equal(audit.unchanged_non_target_words, 4638);
 assert.equal(audit.protected_sha256, manifest.protected_sha256);
 const targets = new Set(audit.target_words);
-const retained = Object.fromEntries([...rows].filter(([word]) => !targets.has(word)));
+let retained = Object.fromEntries([...rows].filter(([word]) => !targets.has(word)));
+// The complementary review may now change these words. Its recorded baseline
+// must still reproduce the exact 4,638 rows preserved by this earlier review.
+const nextDirectory = path.join(__dirname, '..', 'kalip-sozluk-ilk-tur-denetimi');
+if (fs.existsSync(path.join(nextDirectory, 'manifest.json'))) {
+  const next = JSON.parse(fs.readFileSync(path.join(nextDirectory, 'manifest.json'), 'utf8'));
+  assert.equal(next.prior_review, 'kalip-sozluk-denetimi');
+  const previous = [];
+  for (const name of next.batches) {
+    assert.match(name, /^review-\d{3}\.json$/);
+    const batch = JSON.parse(fs.readFileSync(path.join(nextDirectory, name), 'utf8'));
+    previous.push(...batch.words.map(item => [item.word, item.before_canonical]));
+  }
+  assert.deepEqual(previous.map(([word]) => word).sort(), Object.keys(retained).sort(),
+    'The next review covers exactly the prior complementary group');
+  retained = Object.fromEntries(previous);
+}
 assert.equal(crypto.createHash('sha256').update(JSON.stringify(canonical(retained))).digest('hex'),
-  audit.non_target_sha256, 'All 4,638 non-target editorial records are unchanged');
+  audit.non_target_sha256, 'All 4,638 records match their preserved historical baseline');
 const seen = [];
 let changed = 0, additions = 0, revisions = 0, before = 0, after = 0, web = 0;
 for (const file of audit.batches) {
@@ -71,6 +87,6 @@ assert.deepEqual(audit.stats, {
   reviewed_words:seen.length, changed_words:changed, unchanged_words:seen.length-changed,
   new_pairs:additions, revised_pairs:revisions, before_pairs:before, after_pairs:after,
   web_checked_words:web,
-  total_site_pairs:[...rows.values()].reduce((total,row) => total+row.replacement.length,0)
+  total_site_pairs:after+Object.values(retained).reduce((total,row) => total+row.replacement.length,0)
 });
 console.log('4,741-word dictionary review: exact inventory, provenance, changes and canonical output passed');

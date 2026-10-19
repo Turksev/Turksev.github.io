@@ -53,7 +53,8 @@ assert.match(card('tolerance').a[1].tr, /aynı dozun etkisinin azalması/);
 assert.equal(index.get('trip-up').y, 'fiil');
 assert.match(card('trip-up').a[0].tr, /^f\./);
 assert.ok(card('trip-up').kl.every(row => !/a minor trip-up/.test(row.en)));
-assert.ok(card('turned').kl.every(row => !/turned out to be/.test(row.en)));
+// Dictionary-reviewed usages may extend beyond the card's original meaning rows.
+assert.ok(card('turned').kl.some(row => /turned out to be/.test(row.en) && /ortaya/.test(row.tr)));
 assert.ok(card('uncharacteristic').kl.every(row => !/yakışmayan/.test(row.tr)));
 // Source objects must not silently override an earlier editorial POS correction.
 const posSource = fs.readFileSync(path.join(root, 'tools/tur-duzeltme.js'), 'utf8');
