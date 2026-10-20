@@ -49,6 +49,7 @@
   var ipucuAcik = false;
   var kartOrnekKelime = null;
   var kartOrnekleri = [];
+  var kartDigerKelime = null, kartDigerHtml = '';
   // Çevrilmeden önce anlamı sözlük panelinde görülen ve henüz yanıtlanmamış
   // kartlar. "Bildim" bu kartlarda ipucuyla sayılır (sozluk.js): anlamı görmek cevabı
   // görmektir. Cümle ipucusu (💡) sayılmaz: kelimeyi boşluk bırakır, yalnız bağlam verir;
@@ -302,8 +303,10 @@
      "comply" için: comply with the rules — kurallara uymak.
      Örnek cümlelerin ÜSTÜNDE, ortalanmış bir şerit olarak durur ("üst"
      sınıfı); arama kartındaki başlıklı bölümde ise sola yaslı kalır. */
-  function kaliplar(tam) {
+  function kaliplar(tam, word, part) {
     if (!tam || !tam.kl || !tam.kl.length) return '';
+    if (window.YDS.KalipSunum) return window.YDS.KalipSunum.html(word, tam.kl, { centered: true, part: part });
+    if (part === 'secondary') return '';
     return '<div class="kalip ust">' + tam.kl.map(function (k) {
       return '<span><b lang="en">' + kacar(k.en) + '</b><i>' + kacar(k.tr) + '</i></span>';
     }).join('') + '</div>';
@@ -351,7 +354,7 @@
           '<button class="star" type="button" data-ne="ses" title="Telaffuzu dinle" aria-label="' +
             kacar(d.e) + ' kelimesinin telaffuzunu dinle">🔊</button>' +
         '</div>' +
-        kaliplar(tam) +
+        kaliplar(tam, d.e) +
         anlamlar +
         olumsuzSatiri(d.e) +
       '</article>';
@@ -462,13 +465,21 @@
       return kacar(a.tr) + yildiz(a);
     }).join('<br>') +
       '<div class="muted small" style="font-weight:400;margin-top:4px">' + kacar(d.y) + '</div>';
-    $('kartOrnek').innerHTML = kaliplar(tam) +
+    $('kartOrnek').innerHTML = kaliplar(tam, d.e, 'primary') +
       kartOrnekleri.filter(function (a) { return a.ex; }).map(function (a) {
         return (a.toplam > 1 ? '<span class="muted small">Çalışma örneği ' + a.sira + ' / ' + a.toplam + '</span><br>' : '') +
-          '<span lang="en">' + kacar(a.ex) + '</span><br><span style="opacity:.8">' +
+          '<span lang="en">' + kacar(a.ex) + '</span><br><span>' +
           kacar(a.exTr) + '</span>';
       }).join('<br><br>') + olumsuzSatiri(d.e);
 
+    // Açılır bölüm, cevabı açan role=button öğesinin dışında durur.
+    // Aynı kart yeniden çizilirse açık/kapalı hali ve klavye odağı korunur.
+    var diger = kaliplar(tam, d.e, 'secondary');
+    if (kartDigerKelime !== d.e || kartDigerHtml !== diger) {
+      $('kartDiger').innerHTML = diger;
+      kartDigerKelime = d.e; kartDigerHtml = diger;
+    }
+    $('kartDiger').hidden = !kartAcik || !diger;
     $('kartArka').hidden = !kartAcik;
     $('kartSayac').textContent = (kartIndex + 1) + ' / ' + suzulmus.length;
     $('seslendir').hidden = !sesDestegi;
@@ -894,6 +905,7 @@
     if (e.ctrlKey || e.metaKey || e.altKey) return;
     if (document.activeElement && document.activeElement.isContentEditable) return;
     if (document.activeElement && /INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName)) return;
+    if (document.activeElement && document.activeElement.closest('.kalip-diger')) return;
 
     if (e.key === 'ArrowRight') { e.preventDefault(); kartGit(1); }
     else if (e.key === 'ArrowLeft') { e.preventDefault(); kartGit(-1); }

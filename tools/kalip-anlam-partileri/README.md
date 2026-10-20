@@ -35,3 +35,7 @@ node tools/test-uretim/kalip-sozluk-ilk-tur-test.js
 Sonraki bir kalıp düzeltmesinde eski `replacement` listesini `previous_replacement` olarak saklayıp yeni listeyi ve kapsam indekslerini yaz. Kaynak anlamları değişirse gardı ve kalıp eşleştirmesini birlikte yeniden incele. Kalıp dışı özet, yalnız doğrulanmış kaynak değişikliklerinden sonra yenilenmelidir.
 
 Bu inceleme sırasında sekiz eski anlam/biçim hatası ayrıca `kart-icerik-partileri/2026-10-18-kalip-kaynak-duzeltmeleri.json` içinde açık gardlarla düzeltildi. Diğer anlamlar, örnekler, alternatif örnekler ve ilerleme anahtarları korundu. `first-come-first-serve` başlığına ilişkin olası birleştirme bu çalışmada yapılmadı; kalıpta standart `first-come, first-served` yazımı gösterilir.
+
+## Görünüm önceliği
+
+Kalıp metinlerinden ayrı tutulan [sunum kararları](../kalip-sunum/README.md), temel anlamları ve önemli yapıları açık, ikincil kullanımları **Diğer kullanımlar** içinde gösterir. Hiçbir çift silinmez ve sabit sayı sınırı uygulanmaz. Kalıp metni veya sırası değiştiğinde ilgili sunum kararlarını ve içerik özetlerini de gözden geçir; üretici eski kararı sessizce yeni içeriğe uygulamaz.

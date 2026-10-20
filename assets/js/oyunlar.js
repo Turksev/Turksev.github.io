@@ -388,7 +388,7 @@
       // Örnek seçimi sırayı ilerletir (yan etki): biten kelime başına bir kez.
       if (!simdi.ornekler) simdi.ornekler = Veri.ornekleriSec(d.e, tam.a);
       if (tam.kl && tam.kl.length) {
-        html += '<div class="kalip ust">' + tam.kl.map(function (k) {
+        html += window.YDS.KalipSunum ? window.YDS.KalipSunum.html(d.e, tam.kl, { centered: true }) : '<div class="kalip ust">' + tam.kl.map(function (k) {
           return '<span><b lang="en">' + kacar(k.en) + '</b><i>' + kacar(k.tr) + '</i></span>';
         }).join('') + '</div>';
       }

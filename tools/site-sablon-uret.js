@@ -9,6 +9,12 @@ const n = c.window.SAYILAR, tr = x => Number(x).toLocaleString('tr-TR');
 const links = '<nav class="footer-links" aria-label="Site ve veri bilgileri"><a href="yontem.html">Yöntem ve kaynaklar</a><a href="ayarlar.html">Gizlilik ve veri ayarları</a><a href="https://github.com/Turksev/Turksev.github.io/issues/new">Hata bildir</a></nav>';
 for (const file of fs.readdirSync(root).filter(x=>x.endsWith('.html'))) {
   const p = path.join(root,file); let s = fs.readFileSync(p,'utf8');
+  // Kalıpların gösterildiği her yüz aynı içerik önceliklerini kullanır.
+  s = s.replace(/<script\b[^>]*src="[^"]*(?:data\/kalip-sunum|assets\/js\/kalip-sunum)\.js"[^>]*><\/script>\s*/g, '');
+  if (/assets\/js\/(?:sozluk|oyunlar|ara)\.js/.test(s)) {
+    s = s.replace(/(<script\b[^>]*src="[^"]*assets\/js\/(?:arama-ortak|sozluk|oyunlar|ara)\.js"[^>]*><\/script>)/,
+      '<script src="data/kalip-sunum.js"></script>\n<script src="assets/js/kalip-sunum.js"></script>\n$1');
+  }
   // Tek bağımsız izleyici çifti; kaynak ve önceki değişmez yayın yolları aynı kurala uyar.
   s = s.replace(/<script\b[^>]*src="[^"]*assets\/js\/kullanim(?:-hesap)?\.js"[^>]*><\/script>\s*/g, '');
   const usageAnchor = s.includes('assets/js/esitleme-depo.js') ? 'esitleme-depo' : 'main';
