@@ -76,4 +76,12 @@ async function main() {
     console.log('Oyunlar yükleme QA: ' + passed + ' senaryo geçti.');
   } finally { await browser.close(); await new Promise(resolve => server.close(resolve)); }
 }
-main().catch(e => { console.error(e); process.exitCode = 1; server.close(); });
+main().catch(error => {
+  console.error(error);
+  if (process.env.GITHUB_ACTIONS) {
+    // Yalıtılmış senaryo hatasını GitHub kontrol sonucunda görünür kıl.
+    const detail = String(error.stack || error).replace(/%/g, '%25').replace(/\r/g, '%0D').replace(/\n/g, '%0A');
+    console.error('::error title=Oyunlar Yukleme Browser QA::' + detail);
+  }
+  process.exitCode = 1; server.close();
+});

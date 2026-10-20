@@ -196,4 +196,12 @@ async function main() {
     await new Promise(resolve => server.close(resolve));
   }
 }
-main().catch(error => { console.error(error); process.exitCode = 1; server.close(); });
+main().catch(error => {
+  console.error(error);
+  if (process.env.GITHUB_ACTIONS) {
+    // Yalıtılmış senaryo hatasını GitHub kontrol sonucunda görünür kıl.
+    const detail = String(error.stack || error).replace(/%/g, '%25').replace(/\r/g, '%0D').replace(/\n/g, '%0A');
+    console.error('::error title=Oyunlar Kenar Browser QA::' + detail);
+  }
+  process.exitCode = 1; server.close();
+});
