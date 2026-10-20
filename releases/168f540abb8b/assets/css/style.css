@@ -151,7 +151,9 @@ code {
 }
 
 .brand .dot {
-  width: 26px; height: 26px;
+  min-width: 1.625rem; width: auto; height: 1.625rem;
+  padding: 0 .0625rem;
+  flex-shrink: 0;
   display: grid; place-items: center;
   border-radius: 8px;
   background: var(--accent);

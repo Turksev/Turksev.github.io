@@ -31,6 +31,7 @@
   var KATMAN_ANAHTAR = 'yds-katmanlar';
   var LEITNER_ANAHTAR = 'yds-leitner';
   var ESITLEME_BEKLEME_MS = 8000;   // bulut birleşimi bu kadar sürede bitmezse cevap yine de işlenir
+  var KATMAN_BEKLEME_MS = 8000;     // ayrıntılar gecikirse dizindeki kısa anlamla oynamaya devam et
   // Motorun birleşimi bitirdiğini (ya da hiç başlatmadığını) bildiren durumlar; ötekiler "sürüyor".
   var ESITLEME_SONUCLARI = ['kapali', 'hazir', 'hata', 'silindi'];
   var ERTELEME_IZI = 'yds-oyun-ertelenen';   // sessionStorage: bekletilen cevabın zamanı
@@ -67,7 +68,8 @@
   var simdi = null;          // ekrandaki kelime: {d, tur, anlik, ornekler}
   // Bitmemiş turlar: mod ya da katman değiştirip geri dönmek deneme hakkını tazelemesin.
   var yarim = Object.create(null);
-  // Bu sayfa ömründe sorulan kelimeler; sıra yeniden kurulsa da geri gelmez.
+  // Aynı gün ve aynı ilerleme kaydında sorulan kelimeler yeniden gelmez.
+  // Yeni gün, sıfırlama ya da dışarıdan değişmiş kayıt yeni bir çalışma açabilir.
   var soruldu = Object.create(null);
   var bekleyen = null;       // ekrana yazılmış ama ilerlemeye henüz yazılmamış sonuç
   var bayat = false;         // başka sekme ya da bulut ilerlemeyi değiştirdi: sıra yeniden kurulmalı
@@ -138,7 +140,20 @@
 
   // Tek katman; hata yutulur (sonuç: indi mi). Oyun katmansız da dizindeki kısa anlamla sürer.
   function katmanDene(k) {
-    return Veri.katmanYukle(k).then(function () { return true; }, function () { return false; });
+    return new Promise(function (coz) {
+      var gecikti = false;
+      var zaman = window.setTimeout(function () { gecikti = true; coz(false); }, KATMAN_BEKLEME_MS);
+      Veri.katmanYukle(k).then(function () {
+        window.clearTimeout(zaman);
+        if (!gecikti) { coz(true); return; }
+        // İstek arka planda sürer. Geç gelen veri yalnız ayrıntıları yeniler;
+        // başlayan turu, yazılmış harfleri ve ilerleme kaydını değiştirmez.
+        if (secili.indexOf(k) !== -1) katmanAyrintilariniTazele();
+      }, function () {
+        window.clearTimeout(zaman);
+        if (!gecikti) coz(false);
+      });
+    });
   }
 
   function yukNotuCiz() {
@@ -191,6 +206,10 @@
      sorulmaz, gün dönünce yeni günün sırası gelir. */
   function kuyrukKur() {
     var b = bakis();
+    Object.keys(soruldu).forEach(function (e) {
+      var iz = soruldu[e];
+      if (iz.gun !== b.bugun || !ayniKayit(iz.kayit, kayitOzeti(b.kayit(e)))) delete soruldu[e];
+    });
     havuzKur();
     sayim = O.sayilar(havuz, b);
     var liste = {
@@ -324,6 +343,8 @@
       return kacar(bitti ? a.tr : O.maskele(a.tr, d.e)) + (y ? '<span aria-hidden="true">' + y + '</span>' : '');
     }).join('<br>') +
       '<div class="oyun-tur muted small">' + kacar(d.y) + '</div>';
+    // Başka katman geç gelince aynı ayrıntıları yeniden çizip açık kalıpları kapatma.
+    simdi.ayrinti = Veri.kayit(d.e);
   }
 
   // Sorunun sesli hâli: maskeli anlamlar, tür ve harf düzeni. Cevap içinde geçmez.
@@ -453,9 +474,9 @@
     }
     var bostaydi = !elBos.hidden && odaktaki === elBos;
     elBos.hidden = true;
-    // Aynı kelime, yarım ve kaydı değişmemişse olduğu gibi kalır (yazılan harfler de);
+    // Aynı günün kelimesi, yarım ve kaydı değişmemişse olduğu gibi kalır (yazılan harfler de);
     // yalnız anlam yeniden çizilir: katmanı bu arada inmiş olabilir.
-    var ayni = simdi && !elKart.hidden && simdi.d === d && !simdi.tur.bitti &&
+    var ayni = simdi && !elKart.hidden && simdi.d === d && !simdi.tur.bitti && simdi.tur.gun === sonBakis.bugun &&
       ayniKayit(simdi.anlik, kayitOzeti(sonBakis.kayit(d.e)));
     if (ayni) anlamCiz();
     else kelimeKur(d);
@@ -612,6 +633,9 @@
       return not;
     }
 
+    // İşaret, cevaptan önceki kaydı değil kalıcılaşan sonucu izlesin: başka yerde
+    // sıfırlanan ya da değiştirilen uygun kart bu oturumda da yeniden açılabilir.
+    soruldu[d.e] = { gun: Il.bugun(), kayit: tazeKayit(d.e) };
     kullanimOlay('oyun-cevap');
     oturum[is.sonuc]++;
     ozeteEkle(d, is.sonuc, kutu);
@@ -635,7 +659,7 @@
     var s = simdi, t = s.tur, d = s.d;
     var kutu = O.sonKutu(t.kutu, t.bitti);
     delete yarim[d.e];
-    soruldu[d.e] = true;
+    soruldu[d.e] = { gun: Il.bugun(), kayit: s.anlik };
 
     if (girdi.value !== '') girdi.value = '';
     girdi.removeAttribute('aria-invalid');
@@ -930,20 +954,32 @@
     try { girdi.focus({ preventScroll: true }); } catch (e) { girdi.focus(); }
   });
 
+  // Yeniden deneme ya da geç tamamlanan indirme: sıra ve yazılan cevap aynı
+  // kalır, yalnız ayrıntılar yenilenir. Gizlenen uyarıdaki odak görünür karşılığına
+  // taşınır; indirme sürerken başka yere geçen kullanıcının odağı alınmaz.
+  function katmanAyrintilariniTazele() {
+    var odakUyaridaydi = elYuk.contains(document.activeElement);
+    yukNotuCiz();
+    if (simdi && !elKart.hidden) {
+      // Başka eksik katmanlar olsa da bu kartın yeni ayrıntıları kullanılabilir.
+      // Aynı kayıt zaten çizildiyse sonuçtaki details ve klavye odağı yerinde kalır.
+      if (simdi.ayrinti !== Veri.kayit(simdi.d.e)) {
+        anlamCiz();
+        if (simdi.tur.bitti) sonucCiz();
+      }
+      if (odakUyaridaydi && elYuk.hidden) girdi.focus();
+    } else if (odakUyaridaydi && elYuk.hidden && !elBos.hidden) {
+      elBos.focus();
+    }
+  }
+
   var yukDeneniyor = false;
   elYukDene.addEventListener('click', function () {
     if (yukDeneniyor) return;
     yukDeneniyor = true;
     Promise.all(eksikKatmanlar().map(katmanDene)).then(function () {
       yukDeneniyor = false;
-      yukNotuCiz();
-      if (!elYuk.hidden) return;
-      // Sıra aynı kalır; yalnız ekrandaki kelimenin anlamı ayrıntılı hâle gelir.
-      if (simdi && !elKart.hidden) {
-        anlamCiz();
-        if (simdi.tur.bitti) sonucCiz();
-        girdi.focus();
-      }
+      katmanAyrintilariniTazele();
     }).catch(function () { yukDeneniyor = false; });
   });
 

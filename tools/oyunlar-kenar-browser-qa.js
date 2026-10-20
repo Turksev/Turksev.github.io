@@ -137,7 +137,7 @@ async function main() {
       await f.context.close();
     });
 
-    await dene('320 px ve %200 metinde açık/koyu logo, sonuç, Diğer kullanımlar ve klavye aç/kapa', async () => {
+    await dene('320 px ve %200 metinde varsayılan/Arial/Verdana açık-koyu logo, sonuç, Diğer kullanımlar ve klavye aç/kapa', async () => {
       const {context, page} = await yeni();
       await page.goto(base + '/oyunlar.html');
       await page.locator('#oyunKart').waitFor({state: 'visible'});
@@ -152,8 +152,13 @@ async function main() {
       await page.locator('#oyunKart').waitFor({state: 'visible'});
       await page.locator('#oyunPas').click();
       assert.ok((await page.locator('#oyunDurum').innerText()).startsWith('Cevap: take.'));
-      for (const theme of ['light', 'dark']) {
-        await page.evaluate(theme => { document.documentElement.style.fontSize = '200%'; document.documentElement.dataset.theme = theme; }, theme);
+      for (const font of ['', 'Arial', 'Verdana']) for (const theme of ['light', 'dark']) {
+        await page.evaluate(({font, theme}) => {
+          document.documentElement.style.fontSize = '200%';
+          document.documentElement.dataset.theme = theme;
+          document.body.style.fontFamily = font;
+        }, {font, theme});
+        const etiket = (font || 'varsayılan') + ' / ' + theme;
         const logo = await page.locator('.brand').evaluate(brand => {
           const dot = brand.querySelector('.dot'), logoMetni = document.createRange(), adMetni = document.createRange();
           logoMetni.selectNodeContents(dot);
@@ -162,15 +167,15 @@ async function main() {
           return {dot: r(dot), logo: r(logoMetni), ad: r(adMetni)};
         });
         assert.ok(logo.logo.left >= logo.dot.left - 1 && logo.logo.right <= logo.dot.right + 1,
-          theme + ': YDS yazısı logo kutusuna sığmalı: ' + JSON.stringify(logo));
+          etiket + ': YDS yazısı logo kutusuna sığmalı: ' + JSON.stringify(logo));
         assert.ok(logo.logo.right <= logo.ad.left,
-          theme + ': YDS ile Hazırlık metni çakışmamalı: ' + JSON.stringify(logo));
+          etiket + ': YDS ile Hazırlık metni çakışmamalı: ' + JSON.stringify(logo));
         assert.ok(logo.logo.top >= logo.dot.top - 1 && logo.logo.bottom <= logo.dot.bottom + 1,
-          theme + ': YDS yazısı logo kutusuna dikey olarak sığmalı: ' + JSON.stringify(logo));
+          etiket + ': YDS yazısı logo kutusuna dikey olarak sığmalı: ' + JSON.stringify(logo));
         if (process.env.YDS_OYUN_KENAR_EKRAN_DIR) {
           fs.mkdirSync(process.env.YDS_OYUN_KENAR_EKRAN_DIR, {recursive: true});
           await page.evaluate(() => window.scrollTo({top: 0, behavior: 'instant'}));
-          await page.screenshot({path: path.join(process.env.YDS_OYUN_KENAR_EKRAN_DIR, 'header-fixed-320-200-' + theme + '.png')});
+          await page.screenshot({path: path.join(process.env.YDS_OYUN_KENAR_EKRAN_DIR, 'header-flex-320-200-' + (font || 'default').toLowerCase() + '-' + theme + '.png')});
         }
         const summary = page.locator('#oyunSonuc details summary');
         await summary.focus();
