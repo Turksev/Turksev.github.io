@@ -1506,6 +1506,86 @@ async function main() {
     assert.equal((await T(page, 'gorunum')).kutu, '2. kutu · tekrar zamanı');
   });
 
+  /* ---------- 6b) Açık sayfada yeni gün ve değişmiş kayıt ---------- */
+  senaryo('Açık sayfada gün dönüşü ve başka sekmede sıfırlama: tamamlanan öğrenilmiş kart yeni gün yeniden gelir; sıfırlanan veya yeniden vadesi gelen kayıt oturum filtresine takılmaz', async () => {
+    const context = await yeni(), page = await context.newPage();
+    await page.clock.setFixedTime(GUN(0));
+    await ac(page, base);
+    const [w] = await T(page, 'sira');
+    assert.equal(await T(page, 'kayitKoy', w, 5), true, 'Düzenek: ilk kart öğrenildi');
+    await page.reload(); await hazir(page);
+    await page.locator('.oyun-mod [data-mod="ogrenilen"]').click();
+    await kelimeBekle(page, w);
+    await coz(page, w);
+    await durumBekle(page, 'Bildiniz! Harfsiz de doğru; kelime öğrenilenlerde kalıyor.');
+    const ilkGun = await T(page, 'bugun');
+    await page.waitForFunction(([w, gun]) => window.__oyun.kayit(w).c === gun, [w, ilkGun]);
+    await page.locator('#oyunGonder').click();
+    await page.locator('#oyunBos').waitFor({state: 'visible'});
+    // Gün aynıyken mod değiştirerek yeniden sorulamaz.
+    await page.locator('.oyun-mod [data-mod="sira"]').click();
+    await page.locator('.oyun-mod [data-mod="ogrenilen"]').click();
+    await page.locator('#oyunBos').waitFor({state: 'visible'});
+    // Reload yok: önceki cevabın oturum işareti hâlâ bu belgededir.
+    await page.clock.setFixedTime(GUN(1));
+    await page.locator('.oyun-mod [data-mod="sira"]').click();
+    await page.locator('.oyun-mod [data-mod="ogrenilen"]').click();
+    assert.deepEqual(await T(page, 'sira', 'ogrenilen'), [w], 'Yeni günün uygun öğrenilmiş kartı');
+    await kelimeBekle(page, w);
+    assert.equal((await T(page, 'gorunum')).siraMetni, 'Sırada 1 öğrenilmiş kelime; hepsi harfsiz sorulur.');
+    await coz(page, w);
+    await page.waitForFunction(([w, gun]) => window.__oyun.kayit(w).c === gun, [w, ilkGun + 1]);
+    assert.deepEqual(await T(page, 'bugunku'), {t: 1, d: 1, y: 0}, 'Yeni günün cevabı yalnız bir kez sayıldı');
+    await page.locator('#oyunGonder').click();
+    await page.locator('#oyunBos').waitFor({state: 'visible'});
+    // Başka sekmeden sıfırlama: aynı gün bu oturumda tamamlanmış kart yeniden yenidir.
+    const other = await context.newPage();
+    await other.clock.setFixedTime(GUN(1));
+    await ac(other, base);
+    assert.equal(await other.evaluate(w => window.YDS.Ilerleme.sifirlaKelime(w, 'kelime'), w), true);
+    await page.waitForFunction(w => window.__oyun.kayit(w) === null, w);
+    await page.locator('.oyun-mod [data-mod="yeni"]').click();
+    await kelimeBekle(page, w);
+    assert.equal((await T(page, 'gorunum')).kutu, 'hiç çalışılmadı', 'Sıfırlanan kart yenilemesiz açılır');
+    await coz(page, w); await kutuBekle(page, w, 1);
+    await page.locator('#oyunGonder').click();
+    // Yalnız silme değil: aynı gün farklı bir kutuda tekrar vadesi verilen kayıt da oynanabilir.
+    assert.equal(await T(other, 'kayitKoy', w, 3), true);
+    await page.waitForFunction(w => window.__oyun.kayit(w).k === 3, w);
+    await page.locator('.oyun-mod [data-mod="sira"]').click();
+    await kelimeBekle(page, w);
+    assert.equal((await T(page, 'gorunum')).kutu, '3. kutu · tekrar zamanı');
+    await coz(page, w); await kutuBekle(page, w, 4);
+    assert.deepEqual(await T(page, 'bugunku'), {t: 3, d: 3, y: 1}, 'Üç doğru cevap ve sıfırlama sonrası bir yeni açılış sayıldı; önceki yazımlar yinelenmedi');
+  });
+
+  /* ---------- 6c) Kart değişmeden yeni gün ---------- */
+  senaryo('Aynı kartta gün dönüşü: mod değişiminde eski yanlış deneme ve harf düzeni sıfırlanır, yeni günün ilk doğru cevabı ipuçlu sayılmaz', async () => {
+    const page = await yeniSayfa();
+    await page.clock.setFixedTime(GUN(0));
+    await ac(page, base); await enAzBosluk(page, 2);
+    const [w] = await T(page, 'sira');
+    await kelimeBekle(page, w);
+    await page.locator('#oyunGirdi').fill(bozuk(w, await T(page, 'gizliSira')));
+    await page.locator('#oyunGonder').click();
+    await durumBekle(page, 'Olmadı; baştan yaz. 2 hakkın kaldı.');
+    // Aynı günün aynı kartı: mod geçişi hak kazandırmaz.
+    await page.locator('.oyun-mod [data-mod="yeni"]').click();
+    assert.equal((await T(page, 'gorunum')).durum, 'Olmadı; baştan yaz. 2 hakkın kaldı.');
+    await page.locator('.oyun-mod [data-mod="sira"]').click();
+    await page.clock.setFixedTime(GUN(1));
+    // Boş moda geçilmez, simdi temizlenmez: iki sıranın başı aynı karttır.
+    await page.locator('.oyun-mod [data-mod="yeni"]').click();
+    await kelimeBekle(page, w);
+    const g = await T(page, 'gorunum');
+    assert.deepEqual([g.durum, g.deger, g.gecersiz], ['', '', null], 'Yeni günün tam hakkı ve temiz girdisi');
+    const once = await T(page, 'bugunku');
+    await coz(page, w); await kutuBekle(page, w, 1);
+    assert.match((await T(page, 'gorunum')).durum, /^Bildiniz!/, 'Dünkü yanlış yeni günün ilk doğru cevabını ipuçlu yapmaz');
+    const sonra = await T(page, 'bugunku');
+    assert.deepEqual([sonra.t - once.t, sonra.d - once.d, sonra.y - once.y], [1, 1, 1], 'Yeni günün ilk doğru cevabı doğru sayılır; kart ilk kez açılır');
+  });
+
   /* ---------- 7) Yazım sadeleştirme, tireli ve çok sözcüklü başlık ---------- */
   senaryo('Yazım: İ/I/ı tek "i" olur (açık "i" kutusunda farklı sayılmaz); rakam, "/", boşluk, tire elenir ve harfleri kaydırmaz, fazlası kesilir; açık büyük harf başlıktaki hâliyle kalır; tireli, çok sözcüklü ve en uzun başlık baştan sona yalnız harfle çözülür, dar ekrana sığar', async () => {
     const context = await yeni();

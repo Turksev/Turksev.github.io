@@ -285,7 +285,7 @@
               '<p class="small muted" style="margin:6px 0 0">Örnek cümleler yükleniyor…</p>');
 
     if (tam && tam.kl && tam.kl.length) {
-      govde += bolum('Kullanım kalıpları', '<div class="kalip">' + tam.kl.map(function (k) {
+      govde += bolum('Kullanım kalıpları', window.YDS.KalipSunum ? window.YDS.KalipSunum.html(en, tam.kl) : '<div class="kalip">' + tam.kl.map(function (k) {
         return '<span><b>' + kacar(k.en) + '</b><i>' + kacar(k.tr) + '</i></span>';
       }).join('') + '</div>');
     }

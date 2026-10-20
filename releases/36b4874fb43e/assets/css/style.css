@@ -151,7 +151,8 @@ code {
 }
 
 .brand .dot {
-  width: 26px; height: 26px;
+  width: 1.625rem; height: 1.625rem;
+  flex-shrink: 0;
   display: grid; place-items: center;
   border-radius: 8px;
   background: var(--accent);
@@ -676,6 +677,25 @@ input:focus-visible, select:focus-visible, button:focus-visible, a:focus-visible
 .kalip b { font-weight: 650; color: var(--accent); }
 .kalip i { font-style: normal; color: var(--muted); font-size: .86rem; }
 .kalip b::before { content: "▸ "; color: var(--muted); font-weight: 400; }
+
+.kalip-diger {
+  min-width: 0; max-width: 100%; margin: 8px 0 14px;
+  border: 1px solid var(--border); border-radius: 10px;
+  background: var(--surface); text-align: left;
+}
+.kalip-diger > summary {
+  cursor: pointer; padding: 10px 12px; min-height: 44px;
+  color: var(--text); font-size: .9rem; font-weight: 600;
+  overflow-wrap: anywhere;
+}
+.kalip-diger > summary:hover { background: var(--surface-2); border-radius: 10px; }
+.kalip-diger > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 10px; }
+.kalip-adet { color: var(--muted); font-weight: 400; }
+.kalip-diger > .kalip { margin: 0; padding: 10px 12px 14px; border-bottom: 0; border-top: 1px dashed var(--border); }
+.kalip-diger > .sozluk-kalip { margin: 0 12px 12px; padding-top: 8px; }
+.word > .kalip, .word > .kalip-diger { grid-column: 1 / -1; width: 100%; }
+#kartDiger { width: 100%; }
+#kartDiger .kalip-diger { margin-top: 10px; }
 
 /* Kutular tıklanabilir süzgeç: seçili olan vurgulanır */
 button.kutu { cursor: pointer; font: inherit; color: inherit; }

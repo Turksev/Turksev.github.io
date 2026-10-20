@@ -509,10 +509,11 @@
     }
     var h = anlamlarHtml(tam.a);
     if (tam.kl && tam.kl.length) {
-      h += '<p class="sozluk-alt-baslik">Kullanım kalıpları</p><ul class="sozluk-kalip">' +
+      h += '<p class="sozluk-alt-baslik">Kullanım kalıpları</p>' +
+        (window.YDS.KalipSunum ? window.YDS.KalipSunum.html(anahtar, tam.kl, { list: true }) : '<ul class="sozluk-kalip">' +
         tam.kl.map(function (k) {
           return '<li><b lang="en">' + kacar(k.en) + '</b> ' + kacar(k.tr) + '</li>';
-        }).join('') + '</ul>';
+        }).join('') + '</ul>');
     }
     if (tam.es) h += '<p class="sozluk-alt-baslik">Yakın anlamlılar</p><p class="sozluk-es" lang="en">' + kacar(tam.es) + '</p>';
     return h;
