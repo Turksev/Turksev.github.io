@@ -6,7 +6,11 @@
   if (!H || !K || !bank || !Array.isArray(bank.sorular) || !bank.sorular.length) { $('kalipYukHata').hidden = false; return; }
   var map = Object.create(null); bank.sorular.forEach(function (s) { map[s.id] = s; });
   var tur = null, kayitHatasi = !K.geriYukle(bank), oturumHatasi = false;
-  function odak(el) { el.focus(); }
+  function odak(el) {
+    try { el.focus({preventScroll:true}); } catch (e) { el.focus(); }
+    // Gizlenen formun yüksekliği ve font ölçüleri değişse de yeni hedef ekranda kalsın.
+    el.scrollIntoView({block:'center',behavior:'instant'});
+  }
   function temiz(el) { while (el.firstChild) el.removeChild(el.firstChild); return el; }
   function node(tag, text, cls) { var el = document.createElement(tag); el.textContent = text; if (cls) el.className = cls; return el; }
   function uyari() {

@@ -425,12 +425,15 @@ async function main() {
       });
     }
 
-    await dene('320/390/1280 px × açık/koyu × normal/%200 metin: ayar, soru, sonuç ve kaynaklar', async () => {
+    await dene('320/390/1280 px × açık/koyu × normal/%200 metin ve 320/%200 Arial/Verdana: ayar, soru, sonuç ve kaynaklar', async () => {
       const {context,page}=await yeni();
-      for(const width of [320,390,1280]) for(const theme of ['light','dark']) for(const scale of [100,200]) {
-        const label=width+' '+theme+' '+scale+'%';
+      for(const width of [320,390,1280]) for(const theme of ['light','dark']) for(const scale of [100,200])
+      for(const font of (width===320 && scale===200 ? ['','Arial','Verdana'] : [''])) {
+        const label=width+' '+theme+' '+scale+'% '+(font || 'varsayılan');
         await page.setViewportSize({width,height:844});
-        await page.evaluate(({theme,scale})=>{document.documentElement.dataset.theme=theme;document.documentElement.style.fontSize=scale+'%';},{theme,scale});
+        await page.evaluate(({theme,scale,font})=>{
+          document.documentElement.dataset.theme=theme;document.documentElement.style.fontSize=scale+'%';document.body.style.fontFamily=font;
+        },{theme,scale,font});
         await durum(page,label+' ayar',true);
         await baslat(page,'yapi','hepsi','remember');
         await odakGorunur(page,'kalipSoruBaslik',label+' başlat');
@@ -441,7 +444,7 @@ async function main() {
         await durum(page,label+' cevap',true);
         if(process.env.YDS_KALIP_EKRAN_DIR) {
           fs.mkdirSync(process.env.YDS_KALIP_EKRAN_DIR,{recursive:true});
-          await page.screenshot({path:path.join(process.env.YDS_KALIP_EKRAN_DIR,'kalip-'+width+'-'+theme+'-'+scale+'.png'),fullPage:true});
+          await page.screenshot({path:path.join(process.env.YDS_KALIP_EKRAN_DIR,'kalip-'+width+'-'+theme+'-'+scale+'-'+(font || 'default').toLowerCase()+'.png'),fullPage:true});
         }
         await page.locator('#kalipSonraki').click();
         await odakGorunur(page,'kalipSoruBaslik',label+' sonraki soru');
