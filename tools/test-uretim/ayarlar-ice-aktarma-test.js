@@ -271,9 +271,10 @@ async function ana() {
   assert.match(onaylar[0], /9 ilerleme alanı/);
   assert.match(onaylar[0], /Kullanım kayıtları yedeğe girmez ve geri alınamaz/);
   assert.doesNotMatch(onaylar[0], /7 gün/);
-  assert.match(onaylar[1], /Kullanım kayıtları yedekten geri gelmeyecek/);
+  assert.match(onaylar[1], /Kullanım ve kalıp kayıtları yedekten geri gelmeyecek/);
   assert.strictEqual(ilerlemeSilme, 1);
   assert.strictEqual(kullanimSilme, 2, 'başarılı genel sıfırlama yerel kullanımı da siler');
+  assert.match(silme.elemanlar.ayarDurum.textContent, /Kalıp kayıtları silinemedi/, 'kalıp modülü yüklenmediyse başarı bildirilmez');
   ilerlemeBasarili = false;
   silme.elemanlar.yerelSil.olaylar.click();
   assert.strictEqual(kullanimSilme, 2, 'ilerleme sıfırlaması başarısızsa kullanım silinmez');
@@ -281,6 +282,13 @@ async function ana() {
   silme.elemanlar.yerelSil.olaylar.click();
   assert.match(silme.elemanlar.ayarDurum.textContent, /Kullanım kayıtları silinemedi/);
   assert.strictEqual(silme.elemanlar.ayarDurum.className, 'status-kutu err', 'kısmi silme tüm veriler silinmiş gibi gösterilmez');
+  let kalipSilme = 0;
+  kullanimBasarili = true;
+  silme.pencere.YDS.KalipCalismaKayit = { sifirla() { kalipSilme++; return true; } };
+  silme.elemanlar.yerelSil.olaylar.click();
+  assert.strictEqual(kalipSilme, 1);
+  assert.match(silme.elemanlar.ayarDurum.textContent, /Kalıp çalışma kayıtları da sıfırlandı/);
+  assert.strictEqual(silme.elemanlar.ayarDurum.className, 'status-kutu ok');
 
   const kapsam = ortam();
   const kullanimRaporu = { startedDay: 20000, seconds: 120, capacityLimited: true, retainedFromDay: Date.UTC(2026, 7, 29) / 86400000, partial: false };

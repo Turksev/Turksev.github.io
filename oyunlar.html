@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<script data-yds-release>window.YDS_SURUM="168f540abb8b";window.YDS_VARLIK_KOKU="/releases/168f540abb8b/";</script>
+<script data-yds-release>window.YDS_SURUM="29488a0f7ebb";window.YDS_VARLIK_KOKU="/releases/29488a0f7ebb/";</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Oyunlar — YDS Hazırlık</title>
-<meta name="description" content="Anlamından İngilizce kelimeyi yazarak bul: kelime tekrar kutusunda yükseldikçe daha az harf açık gelir, son seviyede hiç harf yoktur.">
+<meta name="description" content="Kelimeyi yazarak çalış; kalıplarda bağlama göre anlam seç, edat tamamla ve cümle yapılarını karşılaştır. Açıklamalar ve yanlışlarını yeniden çalışma.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%233b5bdb'/><text y='68' x='50' text-anchor='middle' font-size='46' font-family='sans-serif' font-weight='bold' fill='white'>Y</text></svg>">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#3b5bdb">
-<link rel="apple-touch-icon" href="/releases/168f540abb8b/assets/img/icon-192.png">
+<link rel="apple-touch-icon" href="/releases/29488a0f7ebb/assets/img/icon-192.png">
 <link rel="canonical" href="https://turksev.github.io/oyunlar.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="YDS Hazırlık">
 <meta property="og:locale" content="tr_TR">
 <meta property="og:title" content="Oyunlar — YDS Hazırlık">
-<meta property="og:description" content="Anlamından İngilizce kelimeyi yazarak bul: kelime tekrar kutusunda yükseldikçe daha az harf açık gelir, son seviyede hiç harf yoktur.">
+<meta property="og:description" content="Kelimeyi yazarak çalış; kalıplarda bağlama göre anlam seç, edat tamamla ve cümle yapılarını karşılaştır. Açıklamalar ve yanlışlarını yeniden çalışma.">
 <meta property="og:url" content="https://turksev.github.io/oyunlar.html">
 <meta property="og:image" content="https://turksev.github.io/assets/img/icon-512.png">
 <meta name="twitter:card" content="summary">
-<link rel="stylesheet" href="/releases/168f540abb8b/assets/css/style.css">
-<link rel="stylesheet" href="/releases/168f540abb8b/assets/css/oyunlar.css">
-<script src="/releases/168f540abb8b/assets/js/main.js"></script>
-<script src="/releases/168f540abb8b/data/kelime-aliaslari.js"></script>
-<script src="/releases/168f540abb8b/assets/js/esitleme-veri.js"></script>
-<script src="/releases/168f540abb8b/assets/js/esitleme-depo.js"></script>
-<script src="/releases/168f540abb8b/assets/js/kullanim-hesap.js"></script>
-<script src="/releases/168f540abb8b/assets/js/kullanim.js"></script>
+<link rel="stylesheet" href="/releases/29488a0f7ebb/assets/css/style.css">
+<link rel="stylesheet" href="/releases/29488a0f7ebb/assets/css/oyunlar.css">
+<link rel="stylesheet" href="/releases/29488a0f7ebb/assets/css/kalip-calisma.css">
+<script src="/releases/29488a0f7ebb/assets/js/main.js"></script>
+<script src="/releases/29488a0f7ebb/data/kelime-aliaslari.js"></script>
+<script src="/releases/29488a0f7ebb/assets/js/esitleme-veri.js"></script>
+<script src="/releases/29488a0f7ebb/assets/js/esitleme-depo.js"></script>
+<script src="/releases/29488a0f7ebb/assets/js/kullanim-hesap.js"></script>
+<script src="/releases/29488a0f7ebb/assets/js/kullanim.js"></script>
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta http-equiv="Content-Security-Policy" content="base-uri 'self'; object-src 'none'">
 </head>
@@ -70,6 +71,11 @@
   <div class="wrap" style="max-width:820px">
 
     <h1>Oyunlar</h1>
+    <div class="oyun-secici" role="group" aria-label="Çalışma türü">
+      <button type="button" class="btn ghost sm" id="yazmaAc" aria-pressed="true" aria-controls="yazmaPaneli">Kelimeyi yaz</button>
+      <button type="button" class="btn ghost sm" id="kalipAc" aria-pressed="false" aria-controls="kalipPaneli">Kalıp çalışması</button>
+    </div>
+    <div id="yazmaPaneli">
     <p class="muted" style="max-width:68ch">
       Anlamı verilen İngilizce kelimeyi yaz.
       <span class="oyun-giris-ek">Kelime tekrar kutusunda yükseldikçe daha az harf açık gelir;
@@ -214,26 +220,76 @@
         kelimeler (protein, robot) de anlamı ipucu vermediği için oyunda yer almaz.
       </p>
     </details>
-
+    </div>
+    <section id="kalipPaneli" aria-labelledby="kalip" hidden>
+      <h2 id="kalip">Kalıp çalışması</h2>
+      <p class="muted">Bağlamdaki anlamı seç, eksik edatı tamamla veya cümle yapılarını karşılaştır. Her cevapta nedenini ve Türkçe karşılığını gör.</p>
+      <p id="kalipYuk" class="tip" role="status">Alıştırmalar yükleniyor…</p>
+      <div id="kalipYukHata" class="tip" role="alert" hidden>Alıştırmalar yüklenemedi. <button type="button" class="btn ghost sm" onclick="location.reload()">Yeniden yükle</button></div>
+      <p id="kalipKayitUyari" class="tip" role="status" hidden></p>
+      <div id="kalipHazir" hidden>
+        <p id="kalipIlerleme" class="small muted"></p>
+        <form id="kalipAyar" class="card kalip-ayar">
+          <div class="kalip-kontroller">
+            <label>Alıştırma türü<select id="kalipTur"><option value="karma">Karışık</option><option value="anlam">Anlam seçme</option><option value="edat">Edat tamamlama</option><option value="yapi">Yapıları karşılaştırma</option></select></label>
+            <label>Çalışılacak sorular<select id="kalipKapsam"><option value="hepsi">Tüm sorular</option><option value="tekrar">Tekrar gerekenler</option></select></label>
+            <label>Tur uzunluğu<select id="kalipAdet"><option value="5">5 soru</option><option value="10" selected>10 soru</option><option value="20">20 soru</option><option value="hepsi">Seçimdeki tüm sorular</option></select></label>
+            <label class="kalip-arama">Kelimeyle daralt <span class="muted">(isteğe bağlı)</span><input type="search" id="kalipAra" placeholder="Örn. establish, remember" autocomplete="off"></label>
+          </div>
+          <p id="kalipHavuz" class="small muted" role="status"></p>
+          <button class="btn" type="submit" id="kalipBaslat">Çalışmaya başla</button>
+        </form>
+        <section id="kalipTurAlani" class="card kalip-soru" aria-labelledby="kalipSoruBaslik" hidden>
+          <div class="q-head"><span id="kalipSayac" class="small muted"></span><span id="kalipRozet" class="badge accent"></span></div>
+          <h3 id="kalipSoruBaslik" tabindex="-1"></h3>
+          <p id="kalipCumle" class="kalip-baglam" lang="en"></p>
+          <form id="kalipCevapForm">
+            <fieldset id="kalipSecenekler"><legend id="kalipSoru"></legend><div id="kalipSiklar"></div></fieldset>
+            <p id="kalipSecUyari" role="status" class="small" hidden>Önce bir seçenek seç.</p>
+            <div class="kalip-eylemler"><button type="submit" class="btn" id="kalipKontrol">Cevabı kontrol et</button><button type="button" class="btn ghost" id="kalipGoster">Bilemedim, göster</button></div>
+          </form>
+          <div id="kalipCozum" hidden>
+            <p id="kalipSonuc" class="kalip-sonuc" role="status" tabindex="-1"></p>
+            <p id="kalipTamCumle" lang="en" class="kalip-baglam"></p><p id="kalipCeviri"></p><p id="kalipAciklama"></p>
+            <div id="kalipDogruKalip" class="kalip"></div>
+            <div id="kalipKarsilastirma"></div>
+            <details class="kalip-kaynak"><summary>Kaynak ve kelime</summary><div id="kalipKaynaklar"></div></details>
+            <button type="button" class="btn" id="kalipSonraki">Sonraki soru</button>
+          </div>
+          <button type="button" class="btn ghost sm kalip-don" id="kalipAraVer">Ara ver / çalışma seçimine dön</button>
+        </section>
+        <section id="kalipBitis" class="card" aria-labelledby="kalipBitisBaslik" hidden>
+          <h3 id="kalipBitisBaslik" tabindex="-1">Tur tamamlandı</h3><p id="kalipBitisOzet"></p><div id="kalipBitisTurler"></div>
+          <div class="kalip-eylemler"><button type="button" class="btn" id="kalipYanlisTekrar">Bu turdaki yanlışları çalış</button><button type="button" class="btn ghost" id="kalipYeniTur">Yeni çalışma seç</button></div>
+        </section>
+        <button type="button" class="btn ghost sm" id="kalipDevam" hidden>Yarım çalışmaya devam et</button>
+        <details class="kalip-bilgi"><summary>Bu çalışma nasıl ilerler?</summary><p>Sorular ve seçenekler her turda karışır. Cevabı gördükten sonra açıklamayı incele ve sonraki soruya geç. Son cevabın yanlış olduğu sorular “Tekrar gerekenler” seçimine girer; doğru çözdüğünde bu listeden çıkar.</p><p>Kalıp sonuçların bu tarayıcıda saklanır. Kelime tekrar kutularından ayrı tutulur; bulut eşitlemesine ve ilerleme yedeğine dahil değildir. Açık bir turu aynı sekmede yenilediğinde kaldığın yerden sürdürebilirsin.</p><button type="button" class="btn ghost sm" id="kalipSifirla">Kalıp çalışma kayıtlarını sıfırla</button></details>
+      </div>
+    </section>
   </div>
 </main>
 
 <footer class="site-footer">
   <div class="wrap">
     <span>© <span data-yil>2026</span> YDS Hazırlık</span>
-    <span>İlerleme tarayıcıda saklanır; eşitleme açılırsa hesabına da kopyalanır.</span>
+    <span>Kelime ilerlemesi eşitlenebilir; kalıp sonuçları yalnız bu tarayıcıda saklanır.</span>
     <nav class="footer-links" aria-label="Site ve veri bilgileri"><a href="yontem.html">Yöntem ve kaynaklar</a><a href="ayarlar.html">Gizlilik ve veri ayarları</a><a href="https://github.com/Turksev/Turksev.github.io/issues/new">Hata bildir</a></nav>
   </div>
 </footer>
 
-<script src="/releases/168f540abb8b/data/kelime-dizin.js"></script>
-<script src="/releases/168f540abb8b/assets/js/ilerleme.js"></script>
-<script src="/releases/168f540abb8b/assets/js/veri.js"></script>
-<script src="/releases/168f540abb8b/assets/js/oyun-hesap.js"></script>
-<script src="/releases/168f540abb8b/data/kalip-sunum.js"></script>
-<script src="/releases/168f540abb8b/assets/js/kalip-sunum.js"></script>
-<script src="/releases/168f540abb8b/assets/js/oyunlar.js" onerror="document.getElementById('oyunSira').textContent='Oyun yüklenemedi.';document.getElementById('oyunBaslatHatasi').hidden=false;"></script>
-<script src="/releases/168f540abb8b/assets/js/esitleme-ayar.js"></script>
-<script src="/releases/168f540abb8b/assets/js/esitleme-v2.js"></script>
+<script src="/releases/29488a0f7ebb/data/kelime-dizin.js"></script>
+<script src="/releases/29488a0f7ebb/assets/js/oyun-secici.js"></script>
+<script src="/releases/29488a0f7ebb/assets/js/ilerleme.js"></script>
+<script src="/releases/29488a0f7ebb/assets/js/veri.js"></script>
+<script src="/releases/29488a0f7ebb/assets/js/oyun-hesap.js"></script>
+<script src="/releases/29488a0f7ebb/data/kalip-sunum.js"></script>
+<script src="/releases/29488a0f7ebb/assets/js/kalip-sunum.js"></script>
+<script src="/releases/29488a0f7ebb/assets/js/oyunlar.js" onerror="document.getElementById('oyunSira').textContent='Oyun yüklenemedi.';document.getElementById('oyunBaslatHatasi').hidden=false;"></script>
+<script src="/releases/29488a0f7ebb/assets/js/kalip-calisma-hesap.js"></script>
+<script src="/releases/29488a0f7ebb/assets/js/kalip-calisma-kayit.js"></script>
+<script src="/releases/29488a0f7ebb/data/kalip-calisma.js"></script>
+<script src="/releases/29488a0f7ebb/assets/js/kalip-calisma.js" onerror="document.getElementById('kalipYuk').hidden=true;document.getElementById('kalipYukHata').hidden=false;"></script>
+<script src="/releases/29488a0f7ebb/assets/js/esitleme-ayar.js"></script>
+<script src="/releases/29488a0f7ebb/assets/js/esitleme-v2.js"></script>
 </body>
 </html>

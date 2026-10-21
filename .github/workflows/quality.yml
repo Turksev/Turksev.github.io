@@ -66,6 +66,7 @@ jobs:
           python tools/aile-cikar.py --check
           node tools/kalip-anlam-uygula.js --check
           node tools/kalip-sunum-uret.js --check
+          node tools/kalip-calisma-uret.js --check
           node tools/deneme-bankasi-uret.js
           node tools/seo-uret.js
           node tools/sayilar-uret.js --check
@@ -94,6 +95,9 @@ jobs:
 
       - name: Typing game, progress writes and layout regressions
         run: pnpm test:oyunlar
+
+      - name: Phrase practice, local records and keyboard regressions
+        run: pnpm test:kalip
 
       - name: Content, learning and sync tests
         shell: bash

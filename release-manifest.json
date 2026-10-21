@@ -1,7 +1,7 @@
 {
   "sema": 1,
-  "surum": "168f540abb8b",
-  "kok": "/releases/168f540abb8b/",
+  "surum": "29488a0f7ebb",
+  "kok": "/releases/29488a0f7ebb/",
   "dosyalar": [
     {
       "yol": "assets/css/acilis.css",
@@ -12,6 +12,11 @@
       "yol": "assets/css/istatistik.css",
       "sha256": "32b6aadf83c96b42fef7dd1fdef75195953c3c6fb31f3d9c168d88bbbbbedd43",
       "bayt": 12257
+    },
+    {
+      "yol": "assets/css/kalip-calisma.css",
+      "sha256": "5d8d0fc49ba6163dabed004842d280e51b402051175aa8260a1ed1d187a313b2",
+      "bayt": 2489
     },
     {
       "yol": "assets/css/oyunlar.css",
@@ -60,8 +65,8 @@
     },
     {
       "yol": "assets/js/ayarlar.js",
-      "sha256": "b1bbecaa9dd42bdf8c13dba52730f554e9c1adf5d180376613dd447eb49e4865",
-      "bayt": 36001
+      "sha256": "099fbcac4d8946166cfb41698ecb1bd0989dd6efbcaef788eeac3b5980fd1b8a",
+      "bayt": 36442
     },
     {
       "yol": "assets/js/baglaclar.js",
@@ -134,6 +139,21 @@
       "bayt": 20842
     },
     {
+      "yol": "assets/js/kalip-calisma-hesap.js",
+      "sha256": "6ab48efbe067ae3ef0eeadc187f54b020de090db48badfc776c665a656fc24ee",
+      "bayt": 3156
+    },
+    {
+      "yol": "assets/js/kalip-calisma-kayit.js",
+      "sha256": "ac67ab4b553a086315d032063ff707075ca2c75eaa9a88948bffd20197120f5b",
+      "bayt": 3785
+    },
+    {
+      "yol": "assets/js/kalip-calisma.js",
+      "sha256": "1b1166fcc8fe85dce646bf2839ac4bf4457d027f10c355686fd4d6852924e673",
+      "bayt": 9798
+    },
+    {
       "yol": "assets/js/kalip-sunum.js",
       "sha256": "82206d78c500910da74a40452906b7da5849952155f456f375da08c1822f9e57",
       "bayt": 2858
@@ -179,9 +199,14 @@
       "bayt": 28940
     },
     {
+      "yol": "assets/js/oyun-secici.js",
+      "sha256": "5101eb89eee280b1c6430d0fc241bfd302fa88d763980e576031c12d273349a9",
+      "bayt": 1018
+    },
+    {
       "yol": "assets/js/oyunlar.js",
-      "sha256": "cab0708286389938ec537fcb3f28fb67dfcb60aa28499564a6a38d400298f77e",
-      "bayt": 45917
+      "sha256": "406037f0e76c00f2f8455cffad6d447b9bc9c4498f97b046c6a27f18a8c5cd5b",
+      "bayt": 46022
     },
     {
       "yol": "assets/js/quiz.js",
@@ -297,6 +322,11 @@
       "yol": "data/deneme-formlari.js",
       "sha256": "97f0b3f6b5f7ef94373cf24e1f39db48744914f78253965908fb58a8e72b8a9d",
       "bayt": 7414
+    },
+    {
+      "yol": "data/kalip-calisma.js",
+      "sha256": "ef20b5947b302044ac90cee79aaf1f53b36e3ab2dfe7b6a0a66109b930b710d1",
+      "bayt": 134838
     },
     {
       "yol": "data/kalip-sunum.js",
@@ -470,8 +500,14 @@
     }
   ],
   "temel": [
-    "/releases/168f540abb8b/data/kalip-sunum.js",
-    "/releases/168f540abb8b/assets/js/kalip-sunum.js",
+    "/releases/29488a0f7ebb/assets/css/kalip-calisma.css",
+    "/releases/29488a0f7ebb/assets/js/oyun-secici.js",
+    "/releases/29488a0f7ebb/assets/js/kalip-calisma-hesap.js",
+    "/releases/29488a0f7ebb/assets/js/kalip-calisma-kayit.js",
+    "/releases/29488a0f7ebb/assets/js/kalip-calisma.js",
+    "/releases/29488a0f7ebb/data/kalip-calisma.js",
+    "/releases/29488a0f7ebb/data/kalip-sunum.js",
+    "/releases/29488a0f7ebb/assets/js/kalip-sunum.js",
     "./",
     "./index.html",
     "./ana-sayfa.html",
@@ -490,65 +526,65 @@
     "./cumleler.html",
     "./istatistik.html",
     "./oyunlar.html",
-    "/releases/168f540abb8b/assets/css/style.css",
-    "/releases/168f540abb8b/assets/css/istatistik.css",
-    "/releases/168f540abb8b/assets/css/acilis.css",
-    "/releases/168f540abb8b/assets/css/oyunlar.css",
-    "/releases/168f540abb8b/assets/js/main.js",
-    "/releases/168f540abb8b/assets/js/kullanim-hesap.js",
-    "/releases/168f540abb8b/assets/js/kullanim.js",
-    "/releases/168f540abb8b/assets/js/arama-ortak.js",
-    "/releases/168f540abb8b/assets/js/sozluk.js",
-    "/releases/168f540abb8b/assets/js/acilis.js",
-    "/releases/168f540abb8b/data/kelime-aliaslari.js",
-    "/releases/168f540abb8b/data/kaynak-manifest.json",
-    "/releases/168f540abb8b/data/kelime-provenans.json",
-    "/releases/168f540abb8b/assets/js/esitleme-ayar.js",
-    "/releases/168f540abb8b/assets/js/esitleme-veri.js",
-    "/releases/168f540abb8b/assets/js/esitleme-depo.js",
-    "/releases/168f540abb8b/assets/js/esitleme-v2.js",
-    "/releases/168f540abb8b/assets/js/cekim.js",
-    "/releases/168f540abb8b/assets/js/gunun-testi.js",
-    "/releases/168f540abb8b/assets/js/ilerleme.js",
-    "/releases/168f540abb8b/assets/js/veri.js",
-    "/releases/168f540abb8b/assets/js/durum.js",
-    "/releases/168f540abb8b/assets/js/istatistik.js",
-    "/releases/168f540abb8b/assets/js/istatistik-hesap.js",
-    "/releases/168f540abb8b/assets/js/konular.js",
-    "/releases/168f540abb8b/assets/js/kelimeler.js",
-    "/releases/168f540abb8b/assets/js/oyun-hesap.js",
-    "/releases/168f540abb8b/assets/js/oyunlar.js",
-    "/releases/168f540abb8b/assets/js/aileler.js",
-    "/releases/168f540abb8b/assets/js/obekler.js",
-    "/releases/168f540abb8b/assets/js/quiz.js",
-    "/releases/168f540abb8b/assets/js/deneme-oturum.js",
-    "/releases/168f540abb8b/assets/js/deneme.js",
-    "/releases/168f540abb8b/assets/js/soru-konu.js",
-    "/releases/168f540abb8b/assets/js/baglaclar.js",
-    "/releases/168f540abb8b/assets/js/ara.js",
-    "/releases/168f540abb8b/assets/js/ayarlar.js",
-    "/releases/168f540abb8b/assets/js/cumleler.js",
-    "/releases/168f540abb8b/assets/js/kelime-bilgi.js",
-    "/releases/168f540abb8b/data/kelime-dizin.js",
-    "/releases/168f540abb8b/data/aileler.js",
-    "/releases/168f540abb8b/data/konular.js",
-    "/releases/168f540abb8b/data/konu-metinleri.js",
-    "/releases/168f540abb8b/data/konu-metinleri-t-ek.js",
-    "/releases/168f540abb8b/data/konu-metinleri-e1-ek.js",
-    "/releases/168f540abb8b/data/konu-metinleri-e2-ek.js",
-    "/releases/168f540abb8b/data/olumsuzlar.js",
-    "/releases/168f540abb8b/data/sayilar.js",
-    "/releases/168f540abb8b/data/katman-uyelik.js",
-    "/releases/168f540abb8b/data/yds-dagilim.js",
-    "/releases/168f540abb8b/data/sorular.js",
-    "/releases/168f540abb8b/data/sorular-ek.js",
-    "/releases/168f540abb8b/data/deneme-formlari.js",
-    "/releases/168f540abb8b/data/baglaclar.js",
+    "/releases/29488a0f7ebb/assets/css/style.css",
+    "/releases/29488a0f7ebb/assets/css/istatistik.css",
+    "/releases/29488a0f7ebb/assets/css/acilis.css",
+    "/releases/29488a0f7ebb/assets/css/oyunlar.css",
+    "/releases/29488a0f7ebb/assets/js/main.js",
+    "/releases/29488a0f7ebb/assets/js/kullanim-hesap.js",
+    "/releases/29488a0f7ebb/assets/js/kullanim.js",
+    "/releases/29488a0f7ebb/assets/js/arama-ortak.js",
+    "/releases/29488a0f7ebb/assets/js/sozluk.js",
+    "/releases/29488a0f7ebb/assets/js/acilis.js",
+    "/releases/29488a0f7ebb/data/kelime-aliaslari.js",
+    "/releases/29488a0f7ebb/data/kaynak-manifest.json",
+    "/releases/29488a0f7ebb/data/kelime-provenans.json",
+    "/releases/29488a0f7ebb/assets/js/esitleme-ayar.js",
+    "/releases/29488a0f7ebb/assets/js/esitleme-veri.js",
+    "/releases/29488a0f7ebb/assets/js/esitleme-depo.js",
+    "/releases/29488a0f7ebb/assets/js/esitleme-v2.js",
+    "/releases/29488a0f7ebb/assets/js/cekim.js",
+    "/releases/29488a0f7ebb/assets/js/gunun-testi.js",
+    "/releases/29488a0f7ebb/assets/js/ilerleme.js",
+    "/releases/29488a0f7ebb/assets/js/veri.js",
+    "/releases/29488a0f7ebb/assets/js/durum.js",
+    "/releases/29488a0f7ebb/assets/js/istatistik.js",
+    "/releases/29488a0f7ebb/assets/js/istatistik-hesap.js",
+    "/releases/29488a0f7ebb/assets/js/konular.js",
+    "/releases/29488a0f7ebb/assets/js/kelimeler.js",
+    "/releases/29488a0f7ebb/assets/js/oyun-hesap.js",
+    "/releases/29488a0f7ebb/assets/js/oyunlar.js",
+    "/releases/29488a0f7ebb/assets/js/aileler.js",
+    "/releases/29488a0f7ebb/assets/js/obekler.js",
+    "/releases/29488a0f7ebb/assets/js/quiz.js",
+    "/releases/29488a0f7ebb/assets/js/deneme-oturum.js",
+    "/releases/29488a0f7ebb/assets/js/deneme.js",
+    "/releases/29488a0f7ebb/assets/js/soru-konu.js",
+    "/releases/29488a0f7ebb/assets/js/baglaclar.js",
+    "/releases/29488a0f7ebb/assets/js/ara.js",
+    "/releases/29488a0f7ebb/assets/js/ayarlar.js",
+    "/releases/29488a0f7ebb/assets/js/cumleler.js",
+    "/releases/29488a0f7ebb/assets/js/kelime-bilgi.js",
+    "/releases/29488a0f7ebb/data/kelime-dizin.js",
+    "/releases/29488a0f7ebb/data/aileler.js",
+    "/releases/29488a0f7ebb/data/konular.js",
+    "/releases/29488a0f7ebb/data/konu-metinleri.js",
+    "/releases/29488a0f7ebb/data/konu-metinleri-t-ek.js",
+    "/releases/29488a0f7ebb/data/konu-metinleri-e1-ek.js",
+    "/releases/29488a0f7ebb/data/konu-metinleri-e2-ek.js",
+    "/releases/29488a0f7ebb/data/olumsuzlar.js",
+    "/releases/29488a0f7ebb/data/sayilar.js",
+    "/releases/29488a0f7ebb/data/katman-uyelik.js",
+    "/releases/29488a0f7ebb/data/yds-dagilim.js",
+    "/releases/29488a0f7ebb/data/sorular.js",
+    "/releases/29488a0f7ebb/data/sorular-ek.js",
+    "/releases/29488a0f7ebb/data/deneme-formlari.js",
+    "/releases/29488a0f7ebb/data/baglaclar.js",
     "./manifest.webmanifest",
-    "/releases/168f540abb8b/assets/img/icon-192.png",
-    "/releases/168f540abb8b/assets/img/icon-512.png"
+    "/releases/29488a0f7ebb/assets/img/icon-192.png",
+    "/releases/29488a0f7ebb/assets/img/icon-512.png"
   ],
   "onceki": [
-    "36b4874fb43e"
+    "168f540abb8b"
   ]
 }

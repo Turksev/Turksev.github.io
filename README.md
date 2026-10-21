@@ -142,7 +142,7 @@ Tarayıcı denetimi: `pnpm test:sozluk`.
 | Dosya | İçerik |
 | --- | --- |
 | `index.html` | Açılış sayfası: hareketli görsel karşılama, **yedi kelime katmanında ne var, ne kaldı** (halka ve çubuklarla öğrenilen/çalışılan/yeni, bugün vadesi gelen tekrar, sıradaki kelimeler), bugünün destesi ve hızlı bağlantılar. Katman kartı Kelimeler sayfasını `?katman=N` ile o katman seçili açar. Marka bağlantısı buraya gelir |
-| `oyunlar.html` | **Yazma oyunu** (üst menüdeki ilk sekme, **Oyunlar**): kelimenin Türkçe anlamları gösterilir, İngilizcesi baştan sona harf harf yazılır (açık gelen harfler dahil). Açık gelen harf oranı kelimenin Leitner kutusu yükseldikçe azalır (%50'den harfsize); Kelimeler sayfasında seçili katmanlardan sorar ve aynı ilerlemeye yazar |
+| `oyunlar.html` | **Oyunlar**: Kelimeyi yaz bölümünde Türkçe anlamdan İngilizce yazım çalışılır ve ortak Leitner ilerlemesine yazılır. Ayrı Kalıp çalışması bölümünde anlam, edat ve cümle yapıları Türkçe açıklamalı sorularla çalışılır; sonuçları yalnız bu tarayıcıda tutulur. |
 | `ana-sayfa.html` | Ana sayfa (üst menüdeki **Ana sayfa** sekmesi): **YDS bölüm dağılımı tablosu** (80 sorunun hangi aralıkta hangi bölüm olduğu) ve ilerleme paneli — tekrar durumu, yanlış defteri, deneme geçmişi, kategori karnesi |
 | `durum.html` | Çalışılmış her şey tek listede (kelime, öbek, aile üyesi): üstte **sistemdeki toplam kayıt**, kutu sekmelerinde sayı ve bu toplama oranı ("hepsi" dahil), arama/süzme/sıralama |
 | `istatistik.html` | **Çalışma hızın ve ritmin**: 7/30/90 günlük dönem kıyası, günlük grafik ve veri tablosu, 26 haftalık takvim, haftalık tempo, kutu birikimi ve varsayımsal ilk tur planı. Ayıklama hız hesabına katılmaz |
@@ -450,7 +450,28 @@ tür-biçim tutarlılığı, kökün cümlede tekrar etmemesi, kart örneğine b
 `data/test-k{n}.js` olarak yazar. Çekim motorunun Python karşılığı (`cekim.py`) ile JS
 sürümünün paritesi `parite.html` üzerinden sınanır; uçtan uca test `harness.html`.
 
-## Oyunlar (yazma oyunu)
+## Oyunlar
+
+Sayfanın üstündeki **Kelimeyi yaz / Kalıp çalışması** seçimi iki ayrı çalışmayı açar.
+`oyunlar.html#kalip` doğrudan kalıp çalışmasına gider. İlk havuz, 108 kelime için
+50 anlam seçme, 60 edat tamamlama ve 50 cümle yapısı karşılaştırma sorusu içerir.
+Sorular özgün bağlamlarla hazırlanmıştır; cevap ekranında tam İngilizce cümle,
+Türkçe karşılığı, açıklama, mevcut kelime kartındaki kalıp ve sözlük kaynakları bulunur.
+Bu seçilmiş havuz, sitedeki bütün kelimelerin alıştırmaya dönüştürüldüğü anlamına gelmez.
+
+Tür, kelime ve tekrar gereksinimine göre süzülen havuzdan 5, 10, 20 veya tüm sorularla
+tur açılır. Yanlışlar ve cevabı gösterilen sorular yeniden çalışılabilir. Bir sonraki doğru
+cevap soruyu tekrar listesinden çıkarır. Tur ve şık sırası aynı sekmede yenilemede korunur.
+Kalıp sonuçları yalnız bu tarayıcıdadır; kelime Leitner kutularını etkilemez, bulut
+eşitlemesine ve mevcut yedek dosyasına dahil edilmez. Kendi sıfırlama düğmesi yalnız kalıp
+kayıtlarını siler; Ayarlar'daki genel sıfırlama kalıp kayıtlarını ve açık turu da temizler.
+
+Kaynaklar `tools/kalip-calisma/` altında; `tools/kalip-calisma-uret.js` tek doğru boşluk,
+kimlik, kaynak ve mevcut EN/TR kalıp eşleşmesini doğrulayıp `data/kalip-calisma.js` üretir.
+İçerik değiştiğinde eski tur geçersizleşir; değişen soruların eski sonuçları sayılmaz.
+Tarayıcı denetimi `pnpm test:kalip`; tur ve saklama kuralları genel birim test paketindedir.
+
+### Kelimeyi yaz
 
 `oyunlar.html` kelimenin Türkçe anlamlarını tür kısaltması ve yıldızlarıyla gösterir
 (`i. bitki hastalığı, afet ★★★☆`); İngilizcesi altındaki harf kutularına yazılır. Harflerin

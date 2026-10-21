@@ -672,9 +672,9 @@
     var api = esitApi();
     var s = api && api.oturumDurumu ? api.oturumDurumu() : {};
     if (s && s.bagli) ek = '\n\nBulut eşitleme bağlı: sıfırlama diğer cihazlara da yansıyabilir.';
-    if (!window.confirm(resetOzeti(EsitDepo.paket()) +
+    if (!window.confirm(resetOzeti(EsitDepo.paket()) + '\n\nBu tarayıcıdaki kalıp çalışma sonuçları ve açık kalıp turu da silinecek; bunlar yedeğe dahil değildir.' +
       '\n\nÖnce ilerleme için yerel yedek oluşturulacak; bu yedek geri alınana veya yenisiyle değiştirilene kadar saklanacak.' + ek + '\n\nDevam edilsin mi?')) return false;
-    return window.confirm('SON ONAY\n\nYukarıdaki dokuz ilerleme alanı ve yerel kullanım kayıtları silinecek. Dört çalışma tercihin korunacak. Kullanım kayıtları yedekten geri gelmeyecek. Devam edilsin mi?');
+    return window.confirm('SON ONAY\n\nYukarıdaki dokuz ilerleme alanı, yerel kullanım kayıtları ve kalıp çalışma kayıtları silinecek. Dört çalışma tercihin korunacak. Kullanım ve kalıp kayıtları yedekten geri gelmeyecek. Devam edilsin mi?');
   }
 
   function esitApi() { return Y.Esitleme || null; }
@@ -742,10 +742,12 @@
     if (!resetOnayi()) return;
     if (!Il.hepsiniSifirla()) { Y.depolamaUyarisi(); return; }
     var kullanimSilindi = kullanimSil();
+    var kalipSilindi = !!(Y.KalipCalismaKayit && Y.KalipCalismaKayit.sifirla());
     ozetCiz();
     if (geriAlCiz) geriAlCiz();
     durum('Dokuz yerel ilerleme alanı sıfırlandı; dört çalışma tercihi korundu. İlerleme yedeği geri alınana veya yeni bir yedekle değiştirilene kadar kullanılabilir. ' +
-      (kullanimSilindi ? 'Kullanım kayıtları da silindi; bu kayıtlar geri alınamaz.' : 'Kullanım kayıtları silinemedi. Ayrı kullanım silme düğmesiyle yeniden deneyebilirsin.'), kullanimSilindi ? 'ok' : 'err');
+      (kullanimSilindi ? 'Kullanım kayıtları da silindi; bu kayıtlar geri alınamaz.' : 'Kullanım kayıtları silinemedi. Ayrı kullanım silme düğmesiyle yeniden deneyebilirsin.') +
+      (kalipSilindi ? ' Kalıp çalışma kayıtları da sıfırlandı.' : ' Kalıp kayıtları silinemedi; Oyunlar içindeki sıfırlama düğmesiyle yeniden deneyebilirsin.'), kullanimSilindi && kalipSilindi ? 'ok' : 'err');
   });
 
   $('kullanimSil').addEventListener('click', function () {

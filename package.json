@@ -2,16 +2,25 @@
   "name": "yds-hazirlik-quality",
   "private": true,
   "version": "1.0.0",
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
-    "generate": "node tools/kalip-anlam-uygula.js --write && node tools/kalip-sunum-uret.js --write && python tools/aile-cikar.py && node tools/deneme-bankasi-uret.js && node tools/cumle-dizin-uret.js && node tools/sayilar-uret.js && node tools/katman-uyelik-uret.js && node tools/site-sablon-uret.js && node tools/seo-uret.js && python tools/release-uret.py --write && node tools/release-bagla.js && python tools/release-buda.py && python tools/depo-olcu.py && python tools/sw-surum.py",
+    "generate": "node tools/kalip-anlam-uygula.js --write && node tools/kalip-sunum-uret.js --write && node tools/kalip-calisma-uret.js --write && python tools/aile-cikar.py && node tools/deneme-bankasi-uret.js && node tools/cumle-dizin-uret.js && node tools/sayilar-uret.js && node tools/katman-uyelik-uret.js && node tools/site-sablon-uret.js && node tools/seo-uret.js && python tools/release-uret.py --write && node tools/release-bagla.js && python tools/release-buda.py && python tools/depo-olcu.py && python tools/sw-surum.py",
     "test": "node tools/test-uretim/tum-testler.js",
     "test:browser": "node tools/browser-qa.js",
     "test:usage": "node tools/kullanim-browser-qa.js",
     "test:sozluk": "node tools/sozluk-browser-qa.js",
     "test:oyunlar": "node tools/oyunlar-browser-qa.js && node tools/oyunlar-kenar-browser-qa.js && node tools/oyunlar-yukleme-browser-qa.js && node tools/oyunlar-gec-sonuc-browser-qa.js",
     "test:rules": "firebase emulators:exec --only firestore --project demo-yds-rules --config firebase.emulator.json \"node tools/firestore-emulator-test.cjs\"",
-    "preview": "python -m http.server 8765 --bind 127.0.0.1"
+    "preview": "python -m http.server 8765 --bind 127.0.0.1",
+    "test:kalip": "node tools/kalip-calisma-browser-qa.js"
   },
-  "devDependencies": { "playwright": "1.62.1", "axe-core": "4.10.3", "@firebase/rules-unit-testing": "5.0.2", "firebase": "12.18.0", "firebase-tools": "15.29.0" }
+  "devDependencies": {
+    "playwright": "1.62.1",
+    "axe-core": "4.10.3",
+    "@firebase/rules-unit-testing": "5.0.2",
+    "firebase": "12.18.0",
+    "firebase-tools": "15.29.0"
+  }
 }

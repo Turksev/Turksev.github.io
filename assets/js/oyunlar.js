@@ -924,6 +924,7 @@
      sonraki kelimeye geçer. Bir düğme, bağlantı ya da başka bir alan odaktaysa dokunulmaz.
      Kısayol değildir: tuşun kendi işi (harfin yazılması) girdide sürer. */
   document.addEventListener('keydown', function (e) {
+    if (document.getElementById('yazmaPaneli') && document.getElementById('yazmaPaneli').hidden) return;
     if (e.defaultPrevented || e.ctrlKey || e.metaKey || e.altKey) return;
     var odaktaki = document.activeElement;
     if (odaktaki && odaktaki !== document.body && odaktaki !== document.documentElement && odaktaki.id !== 'icerik') return;
