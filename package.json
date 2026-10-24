@@ -14,7 +14,8 @@
     "test:oyunlar": "node tools/oyunlar-browser-qa.js && node tools/oyunlar-kenar-browser-qa.js && node tools/oyunlar-yukleme-browser-qa.js && node tools/oyunlar-gec-sonuc-browser-qa.js",
     "test:rules": "firebase emulators:exec --only firestore --project demo-yds-rules --config firebase.emulator.json \"node tools/firestore-emulator-test.cjs\"",
     "preview": "python -m http.server 8765 --bind 127.0.0.1",
-    "test:kalip": "node tools/kalip-calisma-browser-qa.js"
+    "test:kalip": "node tools/kalip-calisma-browser-qa.js",
+    "test:istatistik": "node tools/istatistik-gecmis-browser-qa.js"
   },
   "devDependencies": {
     "playwright": "1.62.1",

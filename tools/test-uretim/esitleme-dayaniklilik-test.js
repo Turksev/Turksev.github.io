@@ -444,6 +444,10 @@ function ortamKur(secenek) {
     aktifDinleyici: function () {
       return dinleyiciler.filter(function (d) { return d.aktif; }).length;
     },
+    beklenenDinleyici: function () {
+      // Her kayıtlı alanın yanında kök belge ve yönetim işareti dinlenir.
+      return Object.keys(M().TIPLER).length + 2;
+    },
     gorunurluk: function (durum) {
       belge.visibilityState = durum;
       yay(belgeOlay, 'visibilitychange');
@@ -602,7 +606,7 @@ async function dinleyiciOnarimi() {
   var o = await acilis();
   var n = o.bulut.islemSayisi;
   var aktif = o.aktifDinleyici();
-  assert.strictEqual(aktif, 15, 'kök + 13 alan + yönetim dinleyicisi kurulmadı');
+  assert.strictEqual(aktif, o.beklenenDinleyici(), 'kök + kayıtlı alanlar + yönetim dinleyicisi kurulmadı');
   o.bulut.dinleyiciHatasi('/alanlar/yds-leitner', { code: 'internal', message: 'internal' });
   await o.ilerlet(0);
   assert.strictEqual(o.aktifDinleyici(), aktif - 1);
@@ -785,7 +789,7 @@ async function eszamanliAtis() {
   assert.strictEqual(o.sonrakiZamanlayici(), 30000, 'yinelenen dinleme hatası beklemeyi büyütmedi');
   o.bulut.abonelikAtsin = false;
   await o.ilerlet(30000);
-  assert.strictEqual(o.aktifDinleyici(), 15, 'kuyruk düzelince dinleyiciler kurulmadı');
+  assert.strictEqual(o.aktifDinleyici(), o.beklenenDinleyici(), 'kuyruk düzelince dinleyiciler kurulmadı');
   // Bozuk kuyrukta aboneliği bırakmak da atar: Ayarlar'dan çıkış yine tamamlanır.
   o.bulut.abonelikAtsin = true;
   await o.api().cikisYap();
@@ -801,7 +805,7 @@ async function kaliciDinlemeHatasi() {
   o.bulut.dinlemeReddet = true;
   o.bulut.dinleyiciHatasi('/alanlar/yds-leitner', { code: 'permission-denied' });
   await o.ilerlet(60 * DAKIKA);
-  var kurulus = (o.bulut.abonelikSayisi - once) / 15;
+  var kurulus = (o.bulut.abonelikSayisi - once) / o.beklenenDinleyici();
   assert.strictEqual(kurulus, 6, 'kalıcı hatada yeniden kurma sınırsız sürdü: ' + kurulus);
   assert.strictEqual(o.sonrakiZamanlayici(), Infinity, 'vazgeçilen onarım için zamanlayıcı kaldı');
   assert.ok(o.uyari() && /okuma izni reddedildi/.test(o.uyari().yazi.textContent),
@@ -812,7 +816,7 @@ async function kaliciDinlemeHatasi() {
   o.bulut.dinlemeReddet = false;
   o.dugme().olaylar.click();
   await o.ilerlet(0);
-  assert.strictEqual(o.aktifDinleyici(), 15, 'düğme vazgeçilmiş dinleyicileri yeniden kurmadı');
+  assert.strictEqual(o.aktifDinleyici(), o.beklenenDinleyici(), 'düğme vazgeçilmiş dinleyicileri yeniden kurmadı');
   assert.strictEqual(o.uyari() && o.uyari().className, 'esit-uyari bilgi',
     'dinleyiciler kurulunca kalıcı uyarı kapanmadı');
 
@@ -826,7 +830,7 @@ async function kaliciDinlemeHatasi() {
   await o.ilerlet(3 * DAKIKA);
   o.gorunurluk('visible');
   await o.ilerlet(0);
-  assert.strictEqual(o.aktifDinleyici(), 15, 'sayfaya dönüş vazgeçilmiş dinleyicileri kurmadı');
+  assert.strictEqual(o.aktifDinleyici(), o.beklenenDinleyici(), 'sayfaya dönüş vazgeçilmiş dinleyicileri kurmadı');
   o.kapat();
 }
 
@@ -986,7 +990,7 @@ async function ilkTakilma() {
   o.uzaktanYaz({ evden: kayit(3) });
   await o.ilerlet(3 * DAKIKA);
   assert.strictEqual(o.durum().hazir, true, 'takılan ilk eşitleme kendiliğinden yeniden başlamadı');
-  assert.strictEqual(o.aktifDinleyici(), 15, 'takılan açılıştan sonra dinleyiciler kurulmadı');
+  assert.strictEqual(o.aktifDinleyici(), o.beklenenDinleyici(), 'takılan açılıştan sonra dinleyiciler kurulmadı');
   assert.ok(o.bulutLeitner().acilista, 'takılan açılış sırasında yapılan çalışma gitmedi');
   assert.deepStrictEqual(o.yenidenYukleme, ['bulut-ilk-birlesim'],
     'buluttaki kayıt gelince ekran yenilenmedi');
@@ -994,7 +998,7 @@ async function ilkTakilma() {
   o.bulut.asililar.shift()();
   await o.ilerlet(0);
   assert.deepStrictEqual(o.yenidenYukleme, ['bulut-ilk-birlesim'], 'geç biten açılış yeniden yükletti');
-  assert.strictEqual(o.aktifDinleyici(), 15);
+  assert.strictEqual(o.aktifDinleyici(), o.beklenenDinleyici());
   o.kapat();
 }
 
@@ -1015,11 +1019,11 @@ async function elleKesme() {
   // Dinleyici onarımı geri çekilme beklerken düğme onu hemen kurar.
   o.bulut.dinleyiciHatasi('/alanlar/yds-leitner', { code: 'internal' });
   await o.ilerlet(0);
-  assert.strictEqual(o.aktifDinleyici(), 14);
+  assert.strictEqual(o.aktifDinleyici(), o.beklenenDinleyici() - 1);
   await o.ilerlet(3000);
   o.dugme().olaylar.click();
   await o.ilerlet(0);
-  assert.strictEqual(o.aktifDinleyici(), 15, 'düğme kopan dinleyiciyi beklemeden kurmadı');
+  assert.strictEqual(o.aktifDinleyici(), o.beklenenDinleyici(), 'düğme kopan dinleyiciyi beklemeden kurmadı');
   o.bulut.asililar.length = 0;
   o.kapat();
 }
@@ -1062,7 +1066,7 @@ async function gecSonucUcusta() {
   a.bulut.asililar.shift()();
   await a.ilerlet(0);
   assert.strictEqual(a.durum().hazir, true);
-  assert.strictEqual(a.bulut.abonelikSayisi, abone + 15);
+  assert.strictEqual(a.bulut.abonelikSayisi, abone + a.beklenenDinleyici());
   a.kapat();
 }
 
@@ -1096,7 +1100,7 @@ async function onbellekGoruntusu() {
   o.bulut.dinleyiciHatasi('/alanlar/yds-leitner', { code: 'internal' });
   o.bulut.onbellekten = true;
   await o.ilerlet(15000);
-  assert.strictEqual(o.aktifDinleyici(), 15, 'önkoşul: dinleyiciler yeniden kuruldu');
+  assert.strictEqual(o.aktifDinleyici(), o.beklenenDinleyici(), 'önkoşul: dinleyiciler yeniden kuruldu');
   assert.ok(o.uyari() && /alınamıyor/.test(o.uyari().yazi.textContent),
     'önbellek görüntüsü kopuk dinleyici uyarısını kapattı');
   await o.ilerlet(3 * DAKIKA);
@@ -1121,7 +1125,7 @@ async function seyrekDinlemeHatasi() {
     await o.ilerlet(30 * DAKIKA);
     o.bulut.dinleyiciHatasi('/alanlar/yds-leitner', { code: 'internal' });
     await o.ilerlet(20000);
-    assert.strictEqual(o.aktifDinleyici(), 15, (i + 1) + '. seyrek hatadan sonra dinleyiciler kurulmadı');
+    assert.strictEqual(o.aktifDinleyici(), o.beklenenDinleyici(), (i + 1) + '. seyrek hatadan sonra dinleyiciler kurulmadı');
   }
   o.bulut.dinleyiciHatasi('/alanlar/yds-leitner', { code: 'internal' });
   await o.ilerlet(0);
@@ -1147,7 +1151,7 @@ async function gecGoruntuOnayi() {
   o.bulut.ilkGoruntuGec = true;
   o.dugme().olaylar.click();
   await o.ilerlet(0);
-  assert.strictEqual(o.aktifDinleyici(), 15);
+  assert.strictEqual(o.aktifDinleyici(), o.beklenenDinleyici());
   assert.ok(o.uyari() && o.uyari().className === 'esit-uyari bilgi' && /^Eşitlendi /.test(o.uyari().yazi.textContent),
     'ilk görüntü geç gelince elle eşitleme onayı kayboldu ya da uyarı kapanmadı');
   o.kapat();
@@ -1238,7 +1242,7 @@ async function ilkHata() {
   await o.ilerlet(0);
   assert.strictEqual(o.bulut.islemSayisi, n + 1, 'ağ geri gelince ilk eşitleme beklemeden denenmedi');
   assert.strictEqual(o.durum().hazir, true);
-  assert.strictEqual(o.aktifDinleyici(), 15);
+  assert.strictEqual(o.aktifDinleyici(), o.beklenenDinleyici());
   assert.strictEqual(o.uyari(), null);
   o.kapat();
 }

@@ -31,6 +31,8 @@ service cloud.firestore {
         || alan == 'yds-gunluk-yeni'
         || alan == 'yds-gunluk-tavan'
         || alan == 'yds-gunluk-kayit'
+        || alan == 'yds-gunluk-sonuc'
+        || alan.matches('yds-kart-gecmisi-([0-9]|1[0-5])')
         || alan == 'yds-katmanlar'
         || alan == 'yds-eksen';
     }

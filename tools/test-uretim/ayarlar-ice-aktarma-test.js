@@ -244,7 +244,9 @@ async function ana() {
     assert.ok(reset.indexOf(ad) !== -1, 'reset özeti alanı içermeli: ' + ad);
   });
   assert.ok(reset.indexOf('Korunacak 4 çalışma tercihi') !== -1);
-  assert.ok(reset.indexOf('Sıfırlanacak 9 ilerleme alanı') !== -1);
+  assert.ok(reset.indexOf('Sıfırlanacak 26 ilerleme alanı') !== -1);
+  assert.ok(reset.indexOf('Kart çalışma geçmişi') !== -1);
+  assert.ok(reset.indexOf('Bildim ve Bilemedim günlük ölçümleri') !== -1);
   assert.ok(reset.indexOf('Kullanım kayıtları yedeğe girmez ve geri alınamaz') !== -1);
 
   const silme = ortam(), onaylar = [];
@@ -268,7 +270,7 @@ async function ana() {
   onaylar.length = 0;
   silme.elemanlar.yerelSil.olaylar.click();
   assert.strictEqual(onaylar.length, 2, 'genel sıfırlama iki açık onayı korur');
-  assert.match(onaylar[0], /9 ilerleme alanı/);
+  assert.match(onaylar[0], /26 ilerleme alanı/);
   assert.match(onaylar[0], /Kullanım kayıtları yedeğe girmez ve geri alınamaz/);
   assert.doesNotMatch(onaylar[0], /7 gün/);
   assert.match(onaylar[1], /Kullanım ve kalıp kayıtları yedekten geri gelmeyecek/);

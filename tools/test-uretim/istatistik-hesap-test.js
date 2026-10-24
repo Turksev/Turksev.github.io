@@ -9,7 +9,7 @@ for(const file of ['assets/css/istatistik.css','assets/js/istatistik-hesap.js','
 const window={YDS:{}}, context=vm.createContext({window,Date,console});
 vm.runInContext(source('assets/js/istatistik-hesap.js'),context);
 const H=window.YDS.IstatistikHesap, now=Date.UTC(2026,8,8)/86400000;
-const row=(t,z=0)=>({t,y:0,d:t,m:0,z});
+const row=(t,z=0)=>({t,y:0,d:t,m:0,z,n:t,b:t});
 const traces=Object.fromEntries(Array.from({length:500},(_,i)=>['old'+i,{c:now-1}]));
 let m=H.create({[now]:row(10,100)},traces,now),p=H.period(m,7);
 assert.equal(p.speed,10,'Ayıklama ve eski izler hızı şişiremez');
@@ -28,7 +28,7 @@ assert.equal(H.average(m,now-6,7),80/7,'Grafiğin ilk günü görünümden önce
 assert.equal(H.average(m,now,7),20);
 m=H.create({[now-13]:row(0),[now]:row(7)}, {},now);p=H.period(m,7);
 assert.equal(p.speed,1);assert.equal(p.delta,1);assert.equal(p.percent,null,'Sıfır tabandan sonsuz yüzde yok');
-m=H.create({[now]:{t:2,d:3,y:8,z:4,m:3}}, {},now);p=H.period(m,7);
+m=H.create({[now]:{t:2,d:3,y:8,z:4,m:3,n:2,b:3}}, {},now);p=H.period(m,7);
 assert.equal(p.accuracy,null);assert.equal(p.inconsistent,true,'Tutarsız veri sahte bir orana dönüşmez');
 m=H.create({oops:row(50),[now+1]:row(500),'-1':row(10),[now]:row(4),[now-1]:null}, {},now);
 assert.equal(Object.keys(m.days).length,1);assert.equal(H.period(m,7).speed,4);
@@ -162,4 +162,12 @@ assert.doesNotMatch(element('kullanimKapsam').textContent,/Depolama sınırı|ka
 usageData=null;handlers['yds:kullanim-degisti']();flush();
 assert.equal(element('kullanimBos').hidden,false);assert.equal(element('kullanimSayfalar').innerHTML,'');
 assert.equal(element('kullanimPaylar').innerHTML,'');assert.equal(writes,0);
+// Yeni günlük sonuçlar bağımsız eşitlenebilir; eski günlük belgeyi beklememeli.
+const beforeOutcomeOnly=learningReads;
+log={[today]:{t:20,y:0,d:12,m:0,z:0,n:20,b:12}};
+handlers['yds-depo-degisti']({detail:{anahtarlar:['yds-gunluk-sonuc']}});flush();
+assert.equal(learningReads,beforeOutcomeOnly+1,'Yalnız yeni sonuç alanı değişince öğrenme modeli yenilenir');
+assert.match(element('yanitDengesi').innerHTML,/12 “Bildim” \/ 20/,'Güncel pay ve payda ekrana gelir');
+assert.match(element('yanitDengesi').innerHTML,/60,0%/,'Yeni Bildim oranı başka bir olay beklemez');
+assert.equal(writes,0,'Sonuç alanının yenilenmesi de salt okunurdur');
 console.log('İstatistik: öğrenme hesapları, ayrı kullanım yenilemesi, tarih/odak/seçim koruması, salt okunur kontroller ve eksik ölçüm geçti.');

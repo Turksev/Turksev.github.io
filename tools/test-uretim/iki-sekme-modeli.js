@@ -81,6 +81,9 @@
    "<clock>:<actor>", and every random id a tab draws is registered as that tab's. A stamp is legitimate
    when it was minted during the setup, or during a user action for a record that action writes; a cloud
    merge brings foreign stamps and mints none. Everything else a tab stamps is an echo taken for an edit.
+   An answer may touch only its card, today's counters, the new-card scalar and its exact history row/shard.
+   New history and daily outcome records merge under their greatest legitimate stamp; they are not LWW.
+   Their counts and retained events are also checked against the performed answers independently of that merge.
    Hard classes (SERT; any of them fails the test):
      yanki-damga        a tab minted a stamp on a last-writer-wins field without a user action (while
                         handling a storage event, or while loading)
@@ -92,7 +95,7 @@
      kayip              ... and what it holds is an older legitimate record, or nothing (a lost update)
      damga-kalici       the value is right but does not sit under the stamp of the newest legitimate write
                         (an echo stamp, or an older or stampless copy of the same value)
-     uyusmazlik         disk envelope, classic keys and a tab's EsitlemeDepo.paket() disagree, or the disk
+     uyusmazlik         disk envelope, decoded classic keys and a tab's EsitlemeDepo.paket() disagree, or the disk
                         envelope still has an open transaction
      bellek             a tab's in-memory Ilerleme copy (what the page shows) differs from disk
      yakinsama          the exchange did not settle within the bounds;      hata   an exception
@@ -155,7 +158,7 @@ class Tarayici {
     this.damgalar = [];                 // every fresh stamp, in order: {sekme, gorevTuru, alan, id, m, kayit, mesru, sinif}
     this.gorulenDamga = new Set();
     this.aktorSekme = Object.create(null);   // actor id -> name of the tab that drew it
-    this.mesru = Object.create(null);   // field -> id -> newest legitimate record {m, v|d}
+    this.mesru = Object.create(null);   // field -> id -> legitimate LWW record or merged outcome/history record
     this.kurulumda = true;              // during the setup everything minted is legitimate
     this.M = betikler.M; this.L = betikler.L;
   }
@@ -173,6 +176,14 @@ class Tarayici {
   }
   mesruYaz(alan, id, kayit) {
     const a = this.mesru[alan] || (this.mesru[alan] = Object.create(null));
+    const old = a[id], history = this.M.kartGecmisiAlanMi(alan);
+    if (old && !old.d && !kayit.d && (history || alan === 'yds-gunluk-sonuc')) {
+      const newer = this.M.metaKarsilastir(kayit.m, old.m) > 0 ? kayit : old;
+      const value = history ? this.M.kartGecmisiKaydiBirlestir(old.v, kayit.v) : this.M.gunlukSonucBirlestir(old.v, kayit.v);
+      if (history) value.u = duz(newer.v.u);
+      a[id] = {m:newer.m,v:duz(value)};
+      return;
+    }
     if (!a[id] || this.M.metaKarsilastir(kayit.m, a[id].m) > 0) a[id] = duz(kayit);
   }
   /* Called for every envelope a tab writes: finds stamps of that tab's actor that were never seen before
@@ -194,7 +205,7 @@ class Tarayici {
         const g = sekme.gorev || {tur: '?', no: 0};
         let mesru = false, sinif = null;
         if (this.kurulumda) mesru = true;
-        else if (g.tur === 'kullanici') { mesru = amacMi(g.islem, alan, id); if (!mesru) sinif = 'yabanci-damga'; }
+        else if (g.tur === 'kullanici') { mesru = amacMi(g.islem, alan, id, sekme); if (!mesru) sinif = 'yabanci-damga'; }
         else sinif = SAYAC_ALANLARI[alan] ? 'yanki-damga-sayac' : 'yanki-damga';
         const d = {sekme: sekme.ad, gorevTuru: g.tur, gorev: g.no, alan, id, m, kayit: duz(kayit), mesru, sinif, adim: this.adim};
         this.damgalar.push(d);
@@ -210,9 +221,15 @@ class Tarayici {
 }
 
 /* Which records may a user action stamp? Everything else a tab stamps is an echo. */
-function amacMi(o, alan, id) {
+function amacMi(o, alan, id, sekme) {
   if (!o) return false;
-  if (o.tur === 'terfi' || o.tur === 'dusur' || o.tur === 'yeni') return (alan === 'yds-leitner' && id === o.id) || !!SAYAC_ALANLARI[alan];
+  if (o.tur === 'terfi' || o.tur === 'dusur' || o.tur === 'yeni') {
+    const card = 'kelime:' + o.id;
+    return (alan === 'yds-leitner' && id === o.id) ||
+      ((alan === 'yds-gunluk-kayit' || alan === 'yds-gunluk-sonuc') && id === String(sekme.I.bugun())) ||
+      (alan === 'yds-yeni-sayac' && id === '$') ||
+      (alan === sekme.t.M.kartGecmisiAlani(card) && id === card);
+  }
   if (o.tur === 'yay') return alan === 'yds-leitner' && HAVUZ.concat(YENILER).includes(id);
   if (o.tur === 'ayar') return alan === 'yds-gunluk-yeni' && id === '$';
   if (o.tur === 'kurulum') return true;
@@ -428,7 +445,7 @@ function kos(betikler, gecmis, secenek = {}) {
   if (!MODLAR.includes(mod)) throw new Error('iki-sekme-modeli: mod ' + mod);
   const t = new Tarayici(betikler, {mod, iz: secenek.iz});
   const azamiAdim = secenek.azamiAdim || 6000, azamiOlay = secenek.azamiOlay || 400;
-  const sonuc = {ihlal: [], program: [], gecmis, mod, atlanan: 0, cevap: 0};
+  const sonuc = {ihlal: [], program: [], gecmis, mod, atlanan: 0, cevap: 0, yanitlar: []};
   const k = kurulumAl(betikler);
   t.G = new Map(k.G);
   Object.keys(k.mesru).forEach(alan => { t.mesru[alan] = Object.assign(Object.create(null), duz(k.mesru[alan])); });
@@ -512,6 +529,7 @@ function kos(betikler, gecmis, secenek = {}) {
         r = s.E.uygula(zarf, 'bulut').basarili;
       }
       if (r === false) throw new Error('user action failed: ' + islemMetni(o));
+      if (o.tur === 'terfi' || o.tur === 'dusur' || o.tur === 'yeni') sonuc.yanitlar.push({card:'kelime:'+o.id,result:o.tur==='dusur'?'bilemedim':'bildim'});
     }, islemMetni(o), o);
     aninda();
   };
@@ -622,7 +640,8 @@ function denetle(t, sekmeler, sonuc, yarim, k) {
   if (c.b) sonuc.ihlal.push({tur: 'uyusmazlik', metin: 'disk envelope still carries an open transaction (b) at quiescence'});
   const paket = duz(M.paket(c.zarf));
   for (const anahtar of Object.keys(M.TIPLER)) {
-    const ham = t.G.has(anahtar) ? JSON.parse(t.G.get(anahtar)) : undefined;
+    let ham = t.G.has(anahtar) ? JSON.parse(t.G.get(anahtar)) : undefined;
+    if ((anahtar === 'yds-gunluk-sonuc' || M.kartGecmisiAlanMi(anahtar)) && ham && ham.__ydsKisaAyna === 1) ham = duz(t.L.paketCoz(ham.p)[anahtar]);
     if (!es(ham, paket[anahtar])) sonuc.ihlal.push({tur: 'uyusmazlik', metin: 'classic key ' + anahtar + ' on disk differs from the disk envelope: ' + farkMetni(ham, paket[anahtar])});
   }
   const L = paket['yds-leitner'] || {};
@@ -657,6 +676,23 @@ function denetle(t, sekmeler, sonuc, yarim, k) {
   const gunluk = (paket['yds-gunluk-kayit'] || {})[String(k.bugun)];
   const sayilan = gunluk && typeof gunluk.t === 'number' ? gunluk.t : 0;
   if (sayilan < sonuc.cevap) sonuc.ihlal.push({tur: 'sayac-eksik', metin: "today's answer counter (yds-gunluk-kayit t) is " + sayilan + ' after ' + sonuc.cevap + ' answers'});
+  // New per-page counts and immutable events must preserve every actual answer,
+  // independently of the record-merge oracle above. These short histories never prune.
+  const assessed = (paket['yds-gunluk-sonuc'] || {})[String(k.bugun)] || {n:0,b:0};
+  const known = sonuc.yanitlar.filter(a => a.result === 'bildim').length;
+  if (assessed.n !== sonuc.yanitlar.length || assessed.b !== known) sonuc.ihlal.push({tur:'kayip',metin:'new outcome counts differ from actual answers: '+JSON.stringify({actual:{n:assessed.n,b:assessed.b},expected:{n:sonuc.yanitlar.length,b:known}})});
+  const expectedCards = new Map();
+  sonuc.yanitlar.forEach(a => { const rows = expectedCards.get(a.card) || []; rows.push(a.result); expectedCards.set(a.card,rows); });
+  for (const [card, answers] of expectedCards) {
+    const row = (paket[M.kartGecmisiAlani(card)] || {})[card];
+    const expected = {known:answers.filter(a => a === 'bildim').length,unknown:answers.filter(a => a === 'bilemedim').length,total:answers.length};
+    const counts = row && Object.values(row.p).reduce((out,p) => ({known:out.known+p[0],unknown:out.unknown+p[1],total:out.total+p[4]}),{known:0,unknown:0,total:0});
+    const events = row && row.e.map(s => M.kartGecmisiOlayCoz(s));
+    if (!es(counts,expected) || !events || events.length !== answers.length || events.some(e => !e) ||
+        events.filter(e => e.result === 'bildim').length !== expected.known || events.filter(e => e.result === 'bilemedim').length !== expected.unknown) {
+      sonuc.ihlal.push({tur:'kayip',metin:'history differs from actual answers for '+card+': '+JSON.stringify({counts,events:events&&events.length,expected})});
+    }
+  }
 }
 
 function farkMetni(a, b) {

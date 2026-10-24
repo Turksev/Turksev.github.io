@@ -624,8 +624,8 @@
       return not;
     }
 
-    var kutu = is.sonuc === 'dogru' ? Il.dogru(d.e, ILERLEME_TURU)
-      : (is.sonuc === 'ipucuyla' ? Il.ipucuyla(d.e, ILERLEME_TURU) : Il.yanlis(d.e, ILERLEME_TURU));
+    var kutu = is.sonuc === 'dogru' ? Il.dogru(d.e, ILERLEME_TURU, 'oyun')
+      : (is.sonuc === 'ipucuyla' ? Il.ipucuyla(d.e, ILERLEME_TURU, 'oyun') : Il.yanlis(d.e, ILERLEME_TURU, 'oyun'));
     if (kutu === false) {
       window.YDS.depolamaUyarisi();
       not = { metin: 'İlerleme kaydedilemedi; bu kelime sayılmadı.', sinif: 'err' };

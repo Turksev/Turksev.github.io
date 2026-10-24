@@ -87,6 +87,9 @@ jobs:
       - name: Local usage, lifecycle and multi-tab regressions
         run: pnpm test:usage
 
+      - name: Word history, hinted success and recall statistics
+        run: pnpm test:istatistik
+
       - name: Dictionary panel, card safety and layout regressions
         run: pnpm test:sozluk
 

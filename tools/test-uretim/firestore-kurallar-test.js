@@ -3,6 +3,7 @@
 var fs = require('fs');
 var path = require('path');
 var assert = require('assert');
+var vm = require('vm');
 
 var kok = path.resolve(__dirname, '..', '..');
 var kurallar = fs.readFileSync(path.join(kok, 'firestore.rules'), 'utf8');
@@ -40,10 +41,39 @@ assert.ok(/request\.resource\.data\.surum\s*>=\s*resource\.data\.surum/.test(kur
 [
   'yds-leitner', 'yds-yanlis', 'yds-kategori', 'yds-gecmis', 'yds-konular',
   'yds-rekor', 'yds-yeni-sayac', 'yds-test-yanlis', 'yds-gunluk-yeni',
-  'yds-gunluk-tavan', 'yds-gunluk-kayit', 'yds-katmanlar', 'yds-eksen'
+  'yds-gunluk-tavan', 'yds-gunluk-kayit', 'yds-gunluk-sonuc', 'yds-katmanlar', 'yds-eksen'
 ].forEach(function (alan) {
   assert.ok(kurallar.indexOf("alan == '" + alan + "'") >= 0,
     'izinli alan listesinde eksik: ' + alan);
+});
+
+// Exercise the actual allow-list expressions against both the runtime keys and
+// near misses. The history shards must not widen the rule to arbitrary names.
+var izinGovdesi = kurallar.match(/function\s+gecerliAlanAdi\(alan\)\s*\{([\s\S]*?)\n\s*\}/)[1];
+var acikAdlar = Array.from(izinGovdesi.matchAll(/alan\s*==\s*'([^']+)'/g), function (m) { return m[1]; });
+var adDesenleri = Array.from(izinGovdesi.matchAll(/alan\.matches\('([^']+)'\)/g), function (m) {
+  // Firestore matches() matches the entire string; preserve that semantics.
+  return new RegExp('^(?:' + m[1] + ')(?![\\s\\S])');
+});
+function alanAdiIzinli(alan) {
+  return acikAdlar.indexOf(alan) !== -1 || adDesenleri.some(function (re) { return re.test(alan); });
+}
+var tarihceAlanlari = Array.from({ length: 16 }, function (_, i) { return 'yds-kart-gecmisi-' + i; });
+var window = { YDS: {} };
+vm.runInNewContext(fs.readFileSync(path.join(kok, 'assets/js/esitleme-veri.js'), 'utf8'), { window: window, console: console });
+var istemciAlanlari = Object.keys(window.YDS.EsitlemeMotoru.TIPLER);
+assert.deepStrictEqual(istemciAlanlari.filter(function (a) { return a.indexOf('yds-kart-gecmisi-') === 0; }).sort(),
+  tarihceAlanlari.slice().sort(), 'istemci tam 16 tarihçe parçasını eşitlemeye kaydetmeli');
+istemciAlanlari.forEach(function (alan) {
+  assert.ok(alanAdiIzinli(alan), 'istemcinin eşitlediği alan kurallarda reddediliyor: ' + alan);
+});
+[
+  'yds-kart-gecmisi', 'yds-kart-gecmisi-', 'yds-kart-gecmisi--1',
+  'yds-kart-gecmisi-00', 'yds-kart-gecmisi-01', 'yds-kart-gecmisi-16',
+  'yds-kart-gecmisi-99', 'yds-kart-gecmisi-1x', 'xyds-kart-gecmisi-1',
+  'yds-kart-gecmisi-1-extra', 'yds-kart-gecmisi-1\n', 'yds-unknown'
+].forEach(function (alan) {
+  assert.strictEqual(alanAdiIzinli(alan), false, 'beklenmeyen tarihçe adı izin listesine sızıyor: ' + JSON.stringify(alan));
 });
 assert.ok(/request\.resource\.data\.json\.size\(\)\s*<\s*921600/.test(kurallar),
   'alan JSON güvenlik sınırı eksik');
@@ -67,6 +97,12 @@ assert.strictEqual(alanSurumKarari(3, 2, 'yds-leitner', false), false,
   'eski v2 istemci mevcut v3 alanı ezebiliyor');
 assert.strictEqual(alanSurumKarari(null, 3, 'yds-kategori', true), false,
   'sıkıştırılmayan alan dış sürüm 3 ile oluşturulabiliyor');
+tarihceAlanlari.concat(['yds-gunluk-sonuc']).forEach(function (alan) {
+  assert.strictEqual(alanSurumKarari(null, 2, alan, true), true,
+    'tarihçe alanı standart dış sürüm 2 ile oluşturulamıyor: ' + alan);
+  assert.strictEqual(alanSurumKarari(null, 3, alan, true), false,
+    'tarihçe alanı Leitner sıkıştırma sürümüne yanlışlıkla açılmış: ' + alan);
+});
 
 assert.ok(/match\s+\/yonetim\/\{belge\}/.test(kurallar),
   'silme yönetim belgesi yolu eksik');
@@ -77,4 +113,4 @@ assert.ok(/hasOnly\(\['silindi', 'zaman'\]\)/.test(kurallar));
 assert.ok(/request\.resource\.data\.silindi\s*==\s*true/.test(kurallar));
 assert.ok(/request\.resource\.data\.zaman\s+is\s+int/.test(kurallar));
 
-console.log('firestore-kurallar: sahiplik + silme işaretçisi + v2/v3 yükseltme kilidi + 13 alan belgesi başarılı');
+console.log('firestore-kurallar: sahiplik + silme işaretçisi + v2/v3 yükseltme kilidi + 14 alan ve 16 tarihçe parçası başarılı');

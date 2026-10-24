@@ -727,7 +727,7 @@ Girişliyken düğme hesabın baş harfini gösterir; tıklamak hemen tam eşitl
 - Veri, Firestore'un 1 MiB belge sınırına takılmaması için alan başına ayrılır:
   `kullanicilar/{uid}/alanlar/{anahtar}` içinde
   büyük `yds-leitner` ve `yds-test-yanlis` alanları dış `surum: 3` ve iç `k: 2` kısa
-  JSON taşır; diğer on bir alan dış `surum: 2` ve nesne JSON biçiminde kalır. Yerel
+  JSON taşır; diğer alanlar dış `surum: 2` ve nesne JSON biçiminde kalır. Yerel
   `yds-esitleme-v2` zarfının sürümü 2'dir. Bir kelime çalışıldığında yalnız değişen alan
   okunup yazılır. Önceki sürümün `kullanicilar/{uid}` kök belgesi silinmez; ilk açılışta
   yeni alanlara kayıpsız birleştirilir ve eski açık sekmelerden gelebilecek son kayıtlar
@@ -755,7 +755,7 @@ firebase deploy --only firestore:rules --project yds-hazirlik-d05ce
 ```
 
 Kurallar, oturum açmış kullanıcıya yalnız `kullanicilar/{kendi uid'si}` ağacını açar;
-eski kök zarfı ile 13 izinli alan belgesinin kimliğini, şemasını ve boyut üst sınırını
+eski kök zarfı ile 14 temel alan ve 16 kelime geçmişi alanının kimliğini, şemasını ve boyut üst sınırını
 doğrular. `apiKey` gizli değildir (tarayıcıya zaten iner); veriyi koruyan bu kurallardır.
 Statik regresyon:
 
@@ -779,6 +779,46 @@ Bu komut yalnız `demo-yds-rules` projesini ve `127.0.0.1:8185` adresini kullan�
 gerçek hesap ya da çalışma verisi gerekmez. Quality iş akışında zorunlu çalışır.
 Sahiplik, günlük alan create/update, ortak transaction, şema/boyut sınırları,
 sürüm düşürme, silme işaretçisi ve eski izin listesiyle atomik ret sınanır.
+
+### Kelime geçmişi ve hatırlama istatistikleri
+
+İpucuyla bilinen cevaplar da istatistikte “Bildim” sayılır; kutu yükselme ve tekrar
+aralıkları değişmez. 5. kutu normal tekrar destesine alınmaz. Eski günlük `d`
+sayacında ipuçlu doğrular ayrılmadığı için geçmişi yeniden sınıflandırmak mümkün
+değildir. Yeni cevaplarda `n` değerlendirilen cevap sayısını, `b` ipucuyla bilinenler
+dahil “Bildim” sayısını taşır. Yeni oran `b/n` üzerinden hesaplanır; eski `t-n`
+cevapları kapsam notunda ayrıca gösterilir. Günlük çalışma grafikleri korunur.
+Yeni `n/b` sayaçları `yds-gunluk-sonuc` alanında tutulup okuma sırasında eski günlük
+kayıtlarla birleştirilir; eski sürümün açık kaldığı sekme bu sayaçları silemez.
+
+Kart, yazma oyunu, Günün testi ve Durum sayfasındaki değerlendirmeler; tarih,
+sonuç, önceki/sonraki kutu ve biliniyorsa önceki gerçek cevap zamanı ile kaydedilir.
+Günün testindeki doğru cevap kutuyu yükseltmez. Ayrıntılı istatistikler yalnız
+mevcut sözlük kelimelerini kapsar; öbek/cümle kimlikleri karışmaz. İlk karşılaşma,
+ayıklama ve sıfırlama hatırlama örneği değildir. Planlanan vadeden gerçek çalışma
+zamanı türetilmez. Yanıt süresi ölçülmez ve kişisel unutma eğrisi tahmin edilmez.
+
+`Ilerleme.kartGecmisi()` ayrıntılı olayları ve birikimli kelime sayaçlarını salt
+okunur verir. `yds-kart-gecmisi-0` … `yds-kart-gecmisi-15` alanları kimliğe göre
+bölünür; normal eşitleme, dışa/içe aktarma ve sıfırlama kapsamındadır. Ayrıntılar
+kelime başına son 20 olay ve alan başına en yeni 1.250 olayla sınırlıdır. Birikimli
+düşüş sayıları ayrıntılar budandığında korunur; arayüz eldeki/tüm kayıt sayısını ve
+eksik kapsamı açıkça belirtir. Seçili dönemin hatırlama oranı yalnız eldeki,
+önceki gerçek cevap zamanı bilinen olaylardan hesaplanır. Kelime sıfırlaması bir
+işlem olarak görünür; tüm ilerlemeyi temizleme tarihçeyi de temizler.
+
+Yeni tarihçe ve başarı alanlarının yerel aynaları kayıpsız sıkıştırılır; bulut
+belgeleri mevcut v2 JSON sözleşmesini korur. Dışa aktarılan yedek boşluksuz JSON'dur,
+içe aktarma dosya sınırı 16 MiB'dir. Yerel depolama sınırı yükseltilmez. Cevap, kutu
+ve tarihçe aynı ilerleme zarfında birlikte kalıcılaşır; ilk zarf yazımı başarısızsa
+durum değişmez. Tam sıfırlama öncesi yedek ve açıkça
+istenen geri yükleme geçmişi de kapsar; eski çevrimdışı kopya silinen dönemi geri
+getirmez.
+
+Yeni alan izni canlı Firestore'a dağıtılmadan bu istemci sürümü yayımlanmaz.
+`tools/istatistik-gecmis-browser-qa.js` gerçek cevap API'leriyle ipuçlu başarıyı,
+kutudan düşmeyi, test sonuçlarını, 5. kutuyu, geçmiş aramasını, eski veriyi ve
+320–1280 px açık/koyu ekranları izole profilde sınar (`pnpm test:istatistik`).
 
 ### İstatistik günleri ve grafikler
 

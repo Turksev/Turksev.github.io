@@ -2,9 +2,9 @@
 (function () {
   'use strict';
   var YDS = window.YDS = window.YDS || {};
-  var DAY = 86400000, FIELDS = ['t', 'y', 'd', 'm', 'z'];
+  var DAY = 86400000, FIELDS = ['t', 'y', 'd', 'm', 'z', 'n', 'b'];
   function number(n) { return Number.isSafeInteger(n) && n >= 0 ? n : 0; }
-  function empty() { return {t:0,y:0,d:0,m:0,z:0}; }
+  function empty() { return {t:0,y:0,d:0,m:0,z:0,n:0,b:0}; }
   function weekday(g) { return (new Date(g * DAY).getUTCDay() + 6) % 7; }
   function calendarDay(d) { return Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())/DAY; }
   function create(raw, cards, today, calendar) {
@@ -75,14 +75,15 @@
       var row = day(m,g);
       if (row.t + row.z > 0) active++;
       if (row.t > 0) answerDays++;
-      if (row.d > row.t) inconsistent = true;
+      // Yeni n/b ayrı ölçülür; eski cihaz sayaçlarının eksikliği bu oranı bozmaz.
+      if (row.b > row.n) inconsistent = true;
       if (row.t && (!best || row.t > best.t)) best = {g:g,t:row.t};
     }
     var speed = days ? total.t/days : null;
     var delta = complete ? speed - previous.t/length : null;
     return {start:start,length:length,total:total,observed:days,active:active,answerDays:answerDays,best:best,speed:speed,
       previous:previous,delta:delta,percent:complete && previous.t>0 ? (total.t-previous.t)/previous.t*100:null,
-      accuracy:total.t && !inconsistent ? total.d/total.t*100:null,inconsistent:inconsistent,
+      accuracy:total.n && !inconsistent ? total.b/total.n*100:null,inconsistent:inconsistent,legacy:Math.max(0,total.t-total.n),
       activeSpeed:answerDays ? total.t/answerDays:null};
   }
   function streak(m) {
@@ -107,5 +108,67 @@
     if (!Number.isInteger(pace) || pace<1 || pace>1000) return null;
     return Math.ceil(Math.max(0,remaining)/pace);
   }
-  YDS.IstatistikHesap={create:create,day:day,known:known,calendarDay:calendarDay,sum:sum,observed:observed,average:average,period:period,streak:streak,weeks:weeks,weekday:weekday,plan:plan};
+  // Ayrıntılı olaylardan yalnız mevcut sözlük kelimeleri. Günlük toplamlar,
+  // vade tarihi ve eski son-çalışma izi geçmiş olay üretmek için kullanılmaz.
+  function history(raw, dictionary, today, decodeIdentity) {
+    raw=raw||{};
+    var catalog=Object.create(null), words=Object.create(null), seen=Object.create(null), events=[], partial=!!raw.partial;
+    (dictionary||[]).forEach(function(item){if(item && typeof item.e==='string')catalog[item.e]=true;});
+    function name(row) {
+      if(!row || row.kind!=='kelime' || typeof row.card!=='string')return null;
+      var decoded;try{decoded=decodeIdentity?decodeIdentity(row.card):{ad:row.card};}catch(error){partial=true;return null;}
+      if(decoded&&decoded.tur&&decoded.tur!=='kelime')return null;
+      var word=decoded&&decoded.ad;
+      return typeof word==='string' && catalog[word]?word:null;
+    }
+    function stamp(value){return Number.isSafeInteger(value)&&value>=0&&Number.isFinite(new Date(value).getTime());}
+    function box(value){return Number.isInteger(value)&&value>=0&&value<=5;}
+    function ensure(word){if(!words[word])words[word]={word:word,events:[],total:0,drops:0,pruned:0,firstAt:null,lastAt:null,aggregate:false};return words[word];}
+    (Array.isArray(raw.cards)?raw.cards:[]).forEach(function(row){
+      var word=name(row);if(!word)return;
+      if(![row.total,row.drops,row.pruned].every(function(v){return Number.isSafeInteger(v)&&v>=0;}) || row.drops>row.total || row.pruned>row.total){partial=true;return;}
+      if(stamp(row.lastAt)&&calendarDay(new Date(row.lastAt))>today){partial=true;return;}
+      var w=ensure(word);w.aggregate=true;w.total+=row.total;w.drops+=row.drops;w.pruned+=row.pruned;
+      if(stamp(row.firstAt))w.firstAt=w.firstAt===null?row.firstAt:Math.min(w.firstAt,row.firstAt);
+      if(stamp(row.lastAt))w.lastAt=w.lastAt===null?row.lastAt:Math.max(w.lastAt,row.lastAt);
+    });
+    (Array.isArray(raw.events)?raw.events:[]).forEach(function(row){
+      var word=name(row);if(!word)return;
+      if(typeof row.id!=='string'||!row.id||!stamp(row.at)||!box(row.from)||!box(row.to)||['bildim','bilemedim','zaten','sifirla'].indexOf(row.result)===-1){partial=true;return;}
+      if(seen[row.id])return;seen[row.id]=true;
+      var day=calendarDay(new Date(row.at));if(day>today)return;
+      var previous=stamp(row.previousAt)&&row.previousAt<=row.at?row.previousAt:null;
+      if(row.previousAt!==null && row.previousAt!==undefined && previous===null)partial=true;
+      var recall=(row.result==='bildim'||row.result==='bilemedim') && previous!==null;
+      var e={id:row.id,word:word,card:row.card,at:row.at,day:day,result:row.result,from:row.from,to:row.to,
+        previousAt:previous,elapsedDays:previous===null?null:Math.floor((row.at-previous)/DAY),recall:recall,
+        drop:row.result==='bilemedim'&&row.to<row.from,source:row.source};
+      var w=ensure(word);events.push(e);w.events.push(e);
+      if(!w.aggregate){w.total++;if(e.drop)w.drops++;}
+      w.firstAt=w.firstAt===null?row.at:Math.min(w.firstAt,row.at);w.lastAt=w.lastAt===null?row.at:Math.max(w.lastAt,row.at);
+    });
+    function order(a,b){return a.at-b.at||a.id.localeCompare(b.id);}
+    events.sort(order);
+    var first=null,pruned=0;
+    Object.keys(words).forEach(function(word){var w=words[word];w.events.sort(order);pruned+=w.pruned;
+      if(w.firstAt!==null)first=first===null?w.firstAt:Math.min(first,w.firstAt);});
+    return {available:raw.available===true,partial:partial,truncated:!!raw.truncated||pruned>0,
+      events:events,words:words,firstAt:first,pruned:pruned,perCardLimit:number(raw.perCardLimit),today:today};
+  }
+  function recallPeriod(model,length) {
+    if([7,30,90].indexOf(length)===-1)length=30;
+    var start=model.today-length+1, all=model.events.filter(function(e){return e.day>=start&&e.day<=model.today;}),
+      samples=all.filter(function(e){return e.recall;}), groups=Object.create(null), known=0,drops=all.filter(function(e){return e.drop;}).length;
+    samples.forEach(function(e){
+      var key=String(e.elapsedDays),g=groups[key]||(groups[key]={days:e.elapsedDays,known:0,unknown:0,total:0});
+      g.total++;if(e.result==='bildim'){known++;g.known++;}else g.unknown++;
+    });
+    return {start:start,total:samples.length,known:known,unknown:samples.length-known,drops:drops,events:all.length,
+      excluded:all.length-samples.length,words:new Set(samples.map(function(e){return e.word;})).size,
+      accuracy:samples.length?known/samples.length*100:null,
+      intervals:Object.keys(groups).map(function(key){var g=groups[key];g.accuracy=g.known/g.total*100;return g;}).sort(function(a,b){return a.days-b.days;}),
+      repeatedDrops:Object.keys(model.words).map(function(word){return model.words[word];}).filter(function(w){return w.drops>=2;})
+        .sort(function(a,b){return b.drops-a.drops||(b.lastAt||0)-(a.lastAt||0)||a.word.localeCompare(b.word);})};
+  }
+  YDS.IstatistikHesap={create:create,day:day,known:known,calendarDay:calendarDay,sum:sum,observed:observed,average:average,period:period,streak:streak,weeks:weeks,weekday:weekday,plan:plan,history:history,recallPeriod:recallPeriod};
 })();

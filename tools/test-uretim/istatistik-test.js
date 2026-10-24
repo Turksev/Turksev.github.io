@@ -41,29 +41,29 @@ var Il = pencere.YDS.Ilerleme;
 function gunIlerle(n) { simdi += n * 86400000; }
 // kopya(): vm bağlamındaki nesnelerin prototipi test alanınınkinden farklı,
 // deepStrictEqual prototipi de karşılaştırıyor.
-function bugunku() { return kopya(Il.gunlukKayitlar()[String(Il.bugun())]) || { t: 0, y: 0, d: 0, m: 0, z: 0 }; }
+function bugunku() { return kopya(Il.gunlukKayitlar()[String(Il.bugun())]) || { t: 0, y: 0, d: 0, m: 0, z: 0, n: 0, b: 0 }; }
 
 assert.deepStrictEqual(kopya(Il.gunlukKayitlar()), {}, 'boş depoda günlük kayıt boş olmalı');
 
 Il.dogru('alpha', 'kelime');
-assert.deepStrictEqual(bugunku(), { t: 1, y: 1, d: 1, m: 0, z: 0 },
+assert.deepStrictEqual(bugunku(), { t: 1, y: 1, d: 1, m: 0, z: 0, n: 1, b: 1 },
   'ilk kez doğru bilinen kart: cevap + yeni + doğru sayılmalı');
 
 Il.yanlis('beta', 'kelime');
-assert.deepStrictEqual(bugunku(), { t: 2, y: 2, d: 1, m: 0, z: 0 },
+assert.deepStrictEqual(bugunku(), { t: 2, y: 2, d: 1, m: 0, z: 0, n: 2, b: 1 },
   'yanlış cevap doğru sayacını artırmamalı');
 
 Il.ipucuyla('gama', 'kelime');
-assert.deepStrictEqual(bugunku(), { t: 3, y: 3, d: 1, m: 0, z: 0 },
-  'ipucuyla bilinen kart doğru sayılmamalı');
+assert.deepStrictEqual(bugunku(), { t: 3, y: 3, d: 2, m: 0, z: 0, n: 3, b: 2 },
+  'ipucuyla bilinen kart yeni ölçümde Bildim sayılmalı');
 
 Il.zatenBiliyorum('delta', 'kelime');
-assert.deepStrictEqual(bugunku(), { t: 3, y: 4, d: 1, m: 1, z: 1 },
+assert.deepStrictEqual(bugunku(), { t: 3, y: 4, d: 2, m: 1, z: 1, n: 3, b: 2 },
   '"zaten biliyorum" çalışma hacmine (t) değil ayıklamaya (z) yazılmalı');
 
 // Aynı kart ikinci kez: yeni sayacı artmaz (m, delta'nın ayıklanmasından kalır).
 Il.dogru('alpha', 'kelime');
-assert.deepStrictEqual(bugunku(), { t: 4, y: 4, d: 2, m: 1, z: 1 },
+assert.deepStrictEqual(bugunku(), { t: 4, y: 4, d: 3, m: 1, z: 1, n: 4, b: 3 },
   'ikinci kez çalışılan kart yeni sayılmamalı');
 
 // 5. kutuya çıkış mezuniyet olarak bir kez sayılır.
@@ -83,9 +83,12 @@ gunler.forEach(function (g) { assert.ok(/^\d+$/.test(g), 'gün kimliği sayı de
 // Bozuk kayıtlar okurken elenir; sayfa yine çalışır.
 bellek.set('yds-gunluk-kayit', { '20000': { t: 3, y: 1, d: 2, m: 0, z: 0 },
   'abc': { t: 5 }, '20001': null, '20002': { t: -2, y: 'x' } });
+bellek.delete('yds-gunluk-sonuc');
 var temiz = kopya(Il.gunlukKayitlar());
 assert.deepStrictEqual(Object.keys(temiz).sort(), ['20000', '20002'], 'geçersiz gün kimlikleri elenmeli');
-assert.deepStrictEqual(temiz['20002'], { t: 0, y: 0, d: 0, m: 0, z: 0 }, 'geçersiz sayaçlar sıfırlanmalı');
+assert.deepStrictEqual(temiz['20002'], { t: 0, y: 0, d: 0, m: 0, z: 0, n: 0, b: 0 }, 'geçersiz sayaçlar sıfırlanmalı');
+assert.deepStrictEqual(temiz['20000'], { t: 3, y: 1, d: 2, m: 0, z: 0, n: 0, b: 0 },
+  'eski doğru sayısından yeni ipucu dahil Bildim sayısı türetilmemeli');
 
 // Sıfırlama kapsamı: istatistik de yedeklenip silinmeli.
 bellek.set('yds-gunluk-kayit', { '20000': { t: 3, y: 1, d: 2, m: 0, z: 0 } });

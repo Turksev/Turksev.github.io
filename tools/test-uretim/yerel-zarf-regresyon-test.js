@@ -106,7 +106,14 @@ function world(seed={}){
   open(){const t={writes:0,notes:[],closed:false,dieAt:0};act(t,()=>Object.assign(t,environment(s)));t.w.addEventListener('yds-depo-degisti',e=>t.notes.push(plain(e.detail)));tabs.push(t);return t;},
   kill(t,n){t.dieAt=n;},
   flush(){let delivered=0;while(queue.length){assert.ok(delivered++<100,'cross-tab events must converge, never ping-pong');const [t,key,old,value]=queue.shift();if(!t.closed)act(t,()=>t.event(key,old,value));}return delivered;},
-  disk(){const raw=s.get(NEW),zarf=codec.coz(raw.z),mirror={};Object.keys(M.TIPLER).forEach(key=>{if(s.data.has(key))mirror[key]=s.get(key);});
+  disk(){const raw=s.get(NEW),zarf=codec.coz(raw.z),mirror={};Object.keys(M.TIPLER).forEach(key=>{
+    if(!s.data.has(key))return;
+    const value=s.get(key);
+    // Only the new history/outcome mirrors use the lossless short wrapper.
+    // Compare their full decoded packet with the envelope, not compressed bytes.
+    mirror[key]=(key==='yds-gunluk-sonuc'||M.kartGecmisiAlanMi(key))&&value&&value.__ydsKisaAyna===1
+      ?codec.paketCoz(value.p)[key]:value;
+   });
    return {open:Object.prototype.hasOwnProperty.call(raw,'b'),mirrored:M.kararliJson(M.paket(zarf))===M.kararliJson(mirror),rec:(key,id)=>plain(zarf.alanlar[key].i[id])};}};
 }
 // Rule 1: a classic-key storage event never mints a stamp. Its writer may be another CURRENT tab whose mirror
@@ -225,11 +232,12 @@ function world(seed={}){
  [[2,'write'],[2,'load'],[3,'write'],[3,'load']].forEach(([step,repair])=>{       // A dies before its 2nd write (the mirror) or its 3rd (the closing envelope)
   const {w,A,B}=start(),at=' (writer closed at write '+step+', repaired by '+repair+')';
   w.kill(A,step);assert.throws(()=>w.act(A,()=>A.I.dogru('p')),/tab closed/);
-  const stamp=w.disk().rec(LE,'p').m,wrote=B.writes,told=B.notes.length,heard=()=>B.notes.slice(told).filter(n=>n.kaynak!=='yerel');
+  const stamp=w.disk().rec(LE,'p').m,wrote=B.writes,told=B.notes.length,heard=()=>B.notes.slice(told).filter(n=>n.kaynak==='sekme'||n.kaynak==='bulut');
   assert.deepStrictEqual([w.disk().open,w.s.get(LE).p.k,B.I.kutu('p')],[true,step===2?1:2,1]);
   w.flush();
   assert.strictEqual(B.writes,wrote,'a tab that only learned of a transaction must not write'+at);
-  assert.deepStrictEqual(heard(),[{anahtarlar:[LE],kaynak:'sekme'}],'the learner tells the page'+at);
+  assert.deepStrictEqual(heard(),[{anahtarlar:[LE,DAILY,'yds-gunluk-sonuc',M.kartGecmisiAlani('kelime:p')],kaynak:'sekme'}],
+    'the learner tells the page once about every atomically changed answer field, including the touched history shard'+at);
   assert.strictEqual(B.I.kutu('p'),2,'the learner adopted the transaction in memory'+at);
   assert.deepStrictEqual([w.disk().open,w.s.get(LE).p.k],[true,step===2?1:2],'the dead writer\'s transaction is left as it is'+at);
   if(repair==='write')w.act(B,()=>assert.strictEqual(B.I.dogru('q'),2));else w.open();
@@ -269,7 +277,7 @@ function world(seed={}){
   w.act(A,()=>assert.strictEqual(A.I.dogru('p'),2));                                      // A's storage events are queued, not yet handled by B
   assert.strictEqual(B.I.kutu('p'),1);assert.strictEqual(B.D.oku(LE).p.k,2);               // B's read merges A's envelope silently
   return {w,A,B,from:B.notes.length};};
- const owed=(B,from)=>B.notes.slice(from).filter(n=>n.kaynak!=='yerel'&&n.anahtarlar.includes(LE));
+ const owed=(B,from)=>B.notes.slice(from).filter(n=>(n.kaynak==='sekme'||n.kaynak==='bulut')&&n.anahtarlar.includes(LE));
  let {w,A,B,from}=start();w.flush();
  assert.strictEqual(B.I.kutu('p'),2,'a field merged silently by a read must reach the page');
  assert.deepStrictEqual(owed(B,from).map(n=>[n.kaynak,n.anahtarlar.includes(DAILY)]),[['sekme',true]],'silently merged fields are announced with the next sekme notification, exactly once');

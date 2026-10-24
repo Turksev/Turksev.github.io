@@ -24,9 +24,86 @@
     'yds-gunluk-yeni': 'tek',
     'yds-gunluk-tavan': 'tek',
     'yds-gunluk-kayit': 'nesne',
+    'yds-gunluk-sonuc': 'nesne',
     'yds-katmanlar': 'tek',
     'yds-eksen': 'tek'
   };
+  var KART_GECMISI_ALANLARI = [];
+  for (var tarihceParca = 0; tarihceParca < 16; tarihceParca++) {
+    var tarihceAnahtar = 'yds-kart-gecmisi-' + tarihceParca;
+    KART_GECMISI_ALANLARI.push(tarihceAnahtar); TIPLER[tarihceAnahtar] = 'nesne';
+  }
+
+  // Immutable, compact answer events and per-page writer counters. Detail is
+  // bounded independently of counters: 20 events/card and 1,250 events/shard.
+  // The timestamp is encoded in the unique ID, never inferred from a due date.
+  function kartGecmisiAlanMi(key) { return KART_GECMISI_ALANLARI.indexOf(key) !== -1; }
+  function donemliAlanMi(key) { return kartGecmisiAlanMi(key)||key==='yds-gunluk-sonuc'; }
+  function kartGecmisiAlani(id) {
+    var h=2166136261;for(var i=0;i<id.length;i++){h^=id.charCodeAt(i);h=Math.imul(h,16777619);}
+    return KART_GECMISI_ALANLARI[(h>>>0)%16];
+  }
+  function tarihceZamani(t) { return Number.isSafeInteger(t)&&t>0&&t<=8640000000000000; }
+  function kartGecmisiOlayCoz(s) {
+    if (typeof s !== 'string') return null;
+    var a = s.split('|'), id = a[0], t = parseInt(id.split('-')[0], 36);
+    if (a.length !== 8 || !/^[a-z0-9]+-[a-z0-9]{6,24}$/.test(id) || !tarihceZamani(t) || a.slice(1).some(function(x){return !/^[a-z0-9]*$/.test(x);})) return null;
+    var n = a.slice(1).map(function (x) { return x === '' ? null : parseInt(x, 36); });
+    if (n.some(function (x, i) { return (i !== 4 && i !== 5 && x === null) || (x !== null && (!Number.isSafeInteger(x) || x < 0)); }) ||
+        n[0] > 10000000 || n[1] > 3 || n[2] > 5 || n[3] > 5 || n[6] > 3 ||
+        (n[4] !== null && n[4] > t) || (n[5] !== null && n[5] > 10000000)) return null;
+    return {id:id,at:t,day:n[0],result:['bildim','bilemedim','zaten','sifirla'][n[1]],
+      from:n[2],to:n[3],previousAt:n[4],dueDay:n[5],source:['kart','oyun','gunun-testi','durum'][n[6]]};
+  }
+  function kartGecmisiOlayKodla(e) {
+    return [e.id,e.day,['bildim','bilemedim','zaten','sifirla'].indexOf(e.result),e.from,e.to,e.previousAt,e.dueDay,
+      Math.max(0,['kart','oyun','gunun-testi','durum'].indexOf(e.source))].map(function (x,i) {
+      return i === 0 ? x : (x === null ? '' : x.toString(36));
+    }).join('|');
+  }
+  function tarihceSirasi(a,b) {
+    var ta = parseInt(a.split('-')[0],36), tb = parseInt(b.split('-')[0],36);
+    return ta - tb || (a < b ? -1 : a > b ? 1 : 0);
+  }
+  function kartGecmisiKaydiGecerli(r) {
+    if (!r || r.v !== 1 || !Number.isInteger(r.k) || r.k < 0 || r.k > 2 || !r.p || typeof r.p !== 'object' || Array.isArray(r.p) ||
+        !tarihceZamani(r.f) || !Array.isArray(r.u) || r.u.length !== 2 ||
+        typeof r.u[0] !== 'string' || !/^[a-z0-9]+-[a-z0-9]{6,24}$/.test(r.u[0]) ||
+        !Number.isInteger(r.u[1]) || r.u[1] < 0 || r.u[1] > 3 || !Array.isArray(r.e) || r.e.length > 20) return false;
+    if(!tarihceZamani(parseInt(r.u[0].split('-')[0],36))||parseInt(r.u[0].split('-')[0],36)<r.f)return false;
+    if (!(r.q===0 || (typeof r.q==='string' && /^\d+:[a-z0-9]+$/.test(r.q) && r.q.length<=80)) ||
+        Object.keys(r).some(function(k){return ['v','k','p','f','u','e','q'].indexOf(k)===-1;})) return false;
+    if (Object.keys(r.p).some(function(c){var p=r.p[c];return !/^[a-z0-9*]{1,24}$/.test(c) || !Array.isArray(p) || p.length!==5 ||
+      p.some(function(n){return !Number.isSafeInteger(n)||n<0;}) || p[0]+p[1]+p[2]>p[4] || p[3]>p[1];})) return false;
+    var ids = Object.create(null);
+    return r.e.every(function(s){var e=kartGecmisiOlayCoz(s);if(!e||ids[e.id])return false;ids[e.id]=true;return true;});
+  }
+  function kartGecmisiKaydiBirlestir(a,b) {
+    if (!kartGecmisiKaydiGecerli(a)) return kopyala(b);
+    if (!kartGecmisiKaydiGecerli(b)) return kopyala(a);
+    if(metaKarsilastir(a.q,b.q)!==0)return kopyala(metaKarsilastir(a.q,b.q)>0?a:b);
+    var r={v:1,q:a.q,k:a.k,p:Object.create(null),f:Math.min(a.f,b.f),u:tarihceSirasi(a.u[0],b.u[0])>=0?a.u.slice():b.u.slice(),e:[]};
+    Object.keys(a.p).concat(Object.keys(b.p)).sort().forEach(function(c){
+      if(r.p[c])return;r.p[c]=[];
+      for(var i=0;i<5;i++)r.p[c][i]=Math.max(a.p[c]?a.p[c][i]:0,b.p[c]?b.p[c][i]:0);
+      // Valid writers are unique per page. Preserve a valid lower bound even
+      // for an imported fork that reused one actor with conflicting counters.
+      r.p[c][4]=Math.max(r.p[c][4],r.p[c][0]+r.p[c][1]+r.p[c][2]);
+    });
+    var es=Object.create(null);
+    a.e.concat(b.e).forEach(function(s){var id=s.split('|')[0];if(!es[id]||s>es[id])es[id]=s;});
+    r.e=Object.keys(es).sort(tarihceSirasi).slice(-20).map(function(id){return es[id];});
+    return r;
+  }
+  function kartGecmisiBuda(map) {
+    var all=[];
+    Object.keys(map||{}).forEach(function(card){var r=map[card];if(kartGecmisiKaydiGecerli(r))r.e.forEach(function(s){all.push(s.split('|')[0]);});});
+    if(all.length<=1250)return map;
+    all.sort(tarihceSirasi);var keep=Object.create(null);
+    all.slice(-1250).forEach(function(id){keep[id]=true;});
+    Object.keys(map).forEach(function(card){var r=map[card];if(kartGecmisiKaydiGecerli(r))r.e=r.e.filter(function(s){return keep[s.split('|')[0]];});});
+    return map;
+  }
 
   /* Üretim verisinde düzeltilen eski kelime başlıkları. Görünen kanonik başlık
      öbekle aynıysa yalnız KELİME kartı ayrı bir iç kimlik kullanır. Eski tireli
@@ -289,6 +366,11 @@
     var p = paylariBirlestir(paylar(a, GUNLUK_ALANLAR), paylar(b, GUNLUK_ALANLAR), GUNLUK_ALANLAR);
     return paylariTopla(p, GUNLUK_ALANLAR, payliMi(a) || payliMi(b));
   }
+  function gunlukSonucBirlestir(a,b) {
+    if(metaKarsilastir(a&&a.q,b&&b.q)!==0)return kopyala(metaKarsilastir(a&&a.q,b&&b.q)>0?a:b);
+    var p=paylariBirlestir(paylar(a,['n','b']),paylar(b,['n','b']),['n','b']);
+    var r=paylariTopla(p,['n','b'],true);r.q=a&&a.q||b&&b.q||0;return r;
+  }
   function yeniSayacBirlestir(a, b) {
     var ga = sayacDegeri(a && a.g), gb = sayacDegeri(b && b.g);
     if (ga !== gb) return kopyala(ga > gb ? a : b);
@@ -305,6 +387,15 @@
   function kaydiSec(anahtar, x, y) {
     if (!x) return kopyala(y);
     if (!y) return kopyala(x);
+    if(anahtar==='yds-gunluk-sonuc'&&!x.d&&!y.d)return {m:metaKarsilastir(x.m,y.m)>=0?x.m:y.m,v:gunlukSonucBirlestir(x.v,y.v)};
+    if (kartGecmisiAlanMi(anahtar) && !x.d && !y.d) {
+      var merged=kartGecmisiKaydiBirlestir(x.v,y.v),order=metaKarsilastir(x.m,y.m);
+      // Latest actual observation follows the logical write clock even when a
+      // device's wall clock moves backwards. Its negative interval is omitted.
+      if(order&&kartGecmisiKaydiGecerli(x.v)&&kartGecmisiKaydiGecerli(y.v)&&metaKarsilastir(x.v.q,y.v.q)===0)
+        merged.u=(order>0?x.v.u:y.v.u).slice();
+      return {m:order>=0?x.m:y.m,v:merged};
+    }
     // Sayaç kayıtları sürüm sırasına değil cihaz paylarına göre birleşir; silme işareti
     // (sıfırlama) yine sürüm kuralıyla ele alınır.
     if ((anahtar === 'yds-gunluk-kayit' || anahtar === 'yds-yeni-sayac') && !x.d && !y.d) {
@@ -329,6 +420,11 @@
       var yeniId = kayitKimliginiNormallestir(anahtar, id);
       sonuc.i[yeniId] = kaydiSec(anahtar, sonuc.i[yeniId], alan.i[id]);
     });
+    if (kartGecmisiAlanMi(anahtar)) {
+      var map=Object.create(null);
+      Object.keys(sonuc.i).forEach(function(id){if(!sonuc.i[id].d)map[id]=sonuc.i[id].v;});
+      kartGecmisiBuda(map);
+    }
     return sonuc;
   }
 
@@ -490,11 +586,16 @@
     Object.keys(a.i || {}).concat(Object.keys(b.i || {})).forEach(function (id) { ids[id] = 1; });
     Object.keys(ids).forEach(function (id) {
       var x = (a.i || {})[id], y = (b.i || {})[id];
+      // A post-reset history record must not absorb pre-reset counters/events.
+      if (donemliAlanMi(anahtar) && sonuc.r) {
+        if(x && (metaKarsilastir(x.m,sonuc.r)<=0 || (!x.d && metaKarsilastir(x.v&&x.v.q,sonuc.r)<0)))x=null;
+        if(y && (metaKarsilastir(y.m,sonuc.r)<=0 || (!y.d && metaKarsilastir(y.v&&y.v.q,sonuc.r)<0)))y=null;
+      }
       var secilen = kaydiSec(anahtar, x, y);
       if (!secilen || (sonuc.r && metaKarsilastir(secilen.m, sonuc.r) <= 0)) return;
       sonuc.i[id] = secilen;
     });
-    return sonuc;
+    return kartGecmisiAlanMi(anahtar) ? alaniNormallestir(anahtar,sonuc) : sonuc;
   }
 
   function birlestir(a, b) {
@@ -529,7 +630,8 @@
     var aktif = Object.create(null);
     Object.keys(alan.i || {}).forEach(function (id) {
       var r = alan.i[id];
-      if (!r || r.d || (alan.r && metaKarsilastir(r.m, alan.r) <= 0)) return;
+      if (!r || r.d || (alan.r && (metaKarsilastir(r.m, alan.r) <= 0 ||
+          (donemliAlanMi(anahtar) && metaKarsilastir(r.v&&r.v.q,alan.r)<0)))) return;
       aktif[id] = kopyala(r.v);
     });
     var ids = Object.keys(aktif);
@@ -592,6 +694,15 @@
     cumleTakmaCoz: cumleTakmaCoz,
     BULUT_KODLAMA_SURUMU: BULUT_KODLAMA_SURUMU,
     TIPLER: TIPLER,
+    KART_GECMISI_ALANLARI: KART_GECMISI_ALANLARI.slice(),
+    kartGecmisiAlanMi: kartGecmisiAlanMi,
+    kartGecmisiAlani: kartGecmisiAlani,
+    kartGecmisiOlayCoz: kartGecmisiOlayCoz,
+    kartGecmisiOlayKodla: kartGecmisiOlayKodla,
+    kartGecmisiKaydiGecerli: kartGecmisiKaydiGecerli,
+    kartGecmisiKaydiBirlestir: kartGecmisiKaydiBirlestir,
+    kartGecmisiBuda: kartGecmisiBuda,
+    gunlukSonucBirlestir: gunlukSonucBirlestir,
     kelimeKimligi: kelimeKimligi,
     kelimeIlerlemeKimligi: kelimeIlerlemeKimligi,
     eskiIlerlemeKimligi: eskiIlerlemeKimligi,

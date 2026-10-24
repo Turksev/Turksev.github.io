@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<script data-yds-release>window.YDS_SURUM="9bcab6827099";window.YDS_VARLIK_KOKU="/releases/9bcab6827099/";</script>
+<script data-yds-release>window.YDS_SURUM="f43f7dd853f7";window.YDS_VARLIK_KOKU="/releases/f43f7dd853f7/";</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>İstatistik — YDS Hazırlık</title>
@@ -9,7 +9,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%233b5bdb'/><text y='68' x='50' text-anchor='middle' font-size='46' font-family='sans-serif' font-weight='bold' fill='white'>Y</text></svg>">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#3b5bdb">
-<link rel="apple-touch-icon" href="/releases/9bcab6827099/assets/img/icon-192.png">
+<link rel="apple-touch-icon" href="/releases/f43f7dd853f7/assets/img/icon-192.png">
 <link rel="canonical" href="https://turksev.github.io/istatistik.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="YDS Hazırlık">
@@ -19,14 +19,14 @@
 <meta property="og:url" content="https://turksev.github.io/istatistik.html">
 <meta property="og:image" content="https://turksev.github.io/assets/img/icon-512.png">
 <meta name="twitter:card" content="summary">
-<link rel="stylesheet" href="/releases/9bcab6827099/assets/css/style.css">
-<link rel="stylesheet" href="/releases/9bcab6827099/assets/css/istatistik.css">
-<script src="/releases/9bcab6827099/assets/js/main.js"></script>
-<script src="/releases/9bcab6827099/data/kelime-aliaslari.js"></script>
-<script src="/releases/9bcab6827099/assets/js/esitleme-veri.js"></script>
-<script src="/releases/9bcab6827099/assets/js/esitleme-depo.js"></script>
-<script src="/releases/9bcab6827099/assets/js/kullanim-hesap.js"></script>
-<script src="/releases/9bcab6827099/assets/js/kullanim.js"></script>
+<link rel="stylesheet" href="/releases/f43f7dd853f7/assets/css/style.css">
+<link rel="stylesheet" href="/releases/f43f7dd853f7/assets/css/istatistik.css">
+<script src="/releases/f43f7dd853f7/assets/js/main.js"></script>
+<script src="/releases/f43f7dd853f7/data/kelime-aliaslari.js"></script>
+<script src="/releases/f43f7dd853f7/assets/js/esitleme-veri.js"></script>
+<script src="/releases/f43f7dd853f7/assets/js/esitleme-depo.js"></script>
+<script src="/releases/f43f7dd853f7/assets/js/kullanim-hesap.js"></script>
+<script src="/releases/f43f7dd853f7/assets/js/kullanim.js"></script>
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta http-equiv="Content-Security-Policy" content="base-uri 'self'; object-src 'none'">
 <meta name="robots" content="noindex, follow">
@@ -111,7 +111,7 @@
           <p class="stats-meta" id="tahminNot" hidden>Ölçülmemiş veya tarihi kesin çözülemeyen günler sıfır sayılmaz ve hız hesabına katılmaz.</p>
           <div class="stats-day-picker"><label for="gunSec">Bir güne yakından bak</label><input type="date" id="gunSec"></div>
           <div id="gunDetay" class="stats-day-detail" aria-live="polite"></div>
-          <details class="stats-details"><summary>Günlük verileri tablo olarak aç</summary><div class="stats-table-wrap" tabindex="0" role="region" aria-label="Seçili dönemin günlük kayıtları"><table><caption>Seçili dönemin kart çalışma kayıtları</caption><thead><tr><th scope="col">Tarih</th><th scope="col">Yanıt</th><th scope="col">Bildim</th><th scope="col">İlk kayıt</th><th scope="col">Ayıklama</th></tr></thead><tbody id="gunlukTablo"></tbody></table></div></details>
+          <details class="stats-details"><summary>Günlük verileri tablo olarak aç</summary><div class="stats-table-wrap" tabindex="0" role="region" aria-label="Seçili dönemin günlük kayıtları"><table><caption>Seçili dönemin kart çalışma kayıtları; Bildim sütununun paydası yeni kuralla ölçülen yanıtlardır</caption><thead><tr><th scope="col">Tarih</th><th scope="col">Yanıt</th><th scope="col">Bildim / ölçülen</th><th scope="col">İlk kayıt</th><th scope="col">Ayıklama</th></tr></thead><tbody id="gunlukTablo"></tbody></table></div></details>
         </section>
 
         <section class="stats-panel stats-balance" aria-labelledby="dengeBaslik">
@@ -143,6 +143,37 @@
           <div class="stats-plan"><h3>Seçili katmanlar için ilk tur planı</h3><label for="planHiz">Planladığın yeni kelime / gün</label><input type="number" id="planHiz" min="1" max="1000" step="1" value="10" inputmode="numeric"><p id="tahminMetin" aria-live="polite"></p><p class="stats-meta">Varsayımsal plan; ölçülmüş bitiş tahmini değildir. Tekrar süresi hariçtir, öğrenmenin tamamlanacağı tarihi göstermez. Günlük çalışma ayarını değiştirmez.</p></div>
         </section>
       </div>
+      <section id="kelimeTekrar" class="stats-panel stats-recall" aria-labelledby="tekrarBaslik">
+        <div class="stats-panel-heading"><div><p class="stats-eyebrow">KELİME KELİME</p><h2 id="tekrarBaslik">Kelime tekrarların</h2></div><span id="tekrarDonem" class="stats-meta"></span></div>
+        <p class="stats-meta">Yalnız sözlükteki kelimeler. İpucuyla bilinenler de “Bildim” sayılır; ilk karşılaşma, “zaten biliyorum” ve sıfırlama tekrar hesabına katılmaz.</p>
+        <p id="tekrarKapsam" class="stats-recall-note"></p>
+        <div id="tekrarOzet" class="stats-recall-metrics"></div>
+        <div class="stats-recall-grid">
+          <section aria-labelledby="aralikBaslik">
+            <h3 id="aralikBaslik">Kaç gün sonra hatırladın?</h3>
+            <p class="stats-meta">Planlanan vade yerine önceki çalışmadan gerçekten geçen gün kullanılır. Sonuçlar kayıtlı tekrarlarına aittir; bir unutma eğrisi veya sonraki tekrarın tahmini değildir.</p>
+            <p id="tekrarAralikBos" class="stats-meta"></p>
+            <div id="tekrarAralikKutu" class="stats-table-wrap" tabindex="0" role="region" aria-label="Gerçek tekrar aralığına göre sonuçlar" hidden><table><caption>Seçili dönemde, aralığı bilinen kelime tekrarları</caption><thead><tr><th scope="col">Geçen gün</th><th scope="col">Bildim</th><th scope="col">Bilemedim</th><th scope="col">Bildim / tekrar</th></tr></thead><tbody id="tekrarAraliklar"></tbody></table></div>
+          </section>
+          <section aria-labelledby="dusmeBaslik">
+            <h3 id="dusmeBaslik">Birden fazla kutu düşüşü</h3>
+            <p class="stats-meta">Ayrıntılı kayıtlar başladığından beri en az iki kez daha alt kutuya inen kelimeler; seçili dönemle sınırlı değildir. Kelimeyi seçerek eldeki geçmişini açabilirsin.</p>
+            <p id="tekrarDusmeBos" class="stats-meta"></p>
+            <ul id="tekrarDusmeler" class="stats-drop-list"></ul>
+          </section>
+        </div>
+        <section class="stats-word-history" aria-labelledby="kelimeGecmisBaslik">
+          <h3 id="kelimeGecmisBaslik" tabindex="-1">Bir kelimenin geçmişi</h3>
+          <form id="tekrarKelimeForm" class="stats-word-search">
+            <label for="tekrarKelimeAra">İngilizce kelime<input type="search" id="tekrarKelimeAra" list="tekrarKelimeOnerileri" placeholder="Örn. establish" autocomplete="off" aria-describedby="tekrarKelimeNot"></label>
+            <datalist id="tekrarKelimeOnerileri"></datalist>
+            <button type="submit" class="btn">Geçmişi göster</button>
+          </form>
+          <p id="tekrarKelimeNot" class="stats-meta">Kelime geçmişi seçili dönemle sınırlı değildir; elde tutulan bütün ayrıntıları gösterir. Dar ekranda tablonun devamı için yatay kaydırabilirsin.</p>
+          <p id="tekrarKelimeDurum" role="status" class="stats-meta"></p>
+          <div id="tekrarGecmisKutu" class="stats-table-wrap" tabindex="0" role="region" aria-label="Seçilen kelimenin kayıtlı geçmişi" hidden><table><caption id="tekrarGecmisAciklama">Kelime geçmişi</caption><thead><tr><th scope="col">Tarih</th><th scope="col">Sonuç / işlem</th><th scope="col">Kutu değişimi</th><th scope="col">Önceki çalışmadan sonra</th></tr></thead><tbody id="tekrarGecmis"></tbody></table></div>
+        </section>
+      </section>
       <section id="kullanim" class="stats-panel stats-usage" aria-labelledby="kullanimBaslik">
         <div class="stats-panel-heading"><div><p class="stats-eyebrow">SİTEYİ NASIL KULLANIYORSUN?</p><h2 id="kullanimBaslik">Kullanımın</h2></div><span class="stats-meta">Yalnız bu tarayıcı</span></div>
         <p id="kullanimOzet" class="stats-usage-summary"></p>
@@ -155,7 +186,8 @@
         <p class="stats-meta stats-usage-note">Aktif süre yaklaşık bir kullanım ölçüsüdür; öğrenme başarısı veya sınav puanı değildir. Görünür sayfada son 90 saniye içinde etkileşim olduğunda süre sayılır. Uzun süre etkileşmeden okumak eksik ölçülebilir. Günlük ayrıntılar en çok bugün ve önceki 180 gün için tutulur; boyut sınırında eski günler kaldırılır, son kullanım özeti korunur. Kullanım kayıtları buluta gönderilmez ve ilerleme yedeğine girmez. <a href="ayarlar.html#kullanim-ayar-baslik">Kullanım kayıtlarını sil</a></p>
       </section>
       <details class="stats-details stats-method"><summary>Sayılar nasıl hesaplanıyor?</summary><div>
-        <p>Grafikler kelime, öbek ve cümle kartlarının günlük kayıtlarına dayanır. Bir karta tekrar yanıt vermek yeniden sayılır; bu sayı benzersiz kelime sayısı değildir. “Bildim” oranı ipucuyla verilen yanıtları içermez: çevirmeden önce sözlük panelinde anlamına bakılan kartın yanıtı ile oyunda harf açtırılan ya da ilk denemede bilinmeyen yanıt ipucuyla sayılır; karttaki “cümlede gör” ipucu sayılmaz. Bu oran sınav puanı değildir.</p>
+        <p>Günlük grafikler kelime, öbek ve cümle kartlarının kayıtlarına dayanır. Bir karta tekrar yanıt vermek yeniden sayılır; bu sayı benzersiz kelime sayısı değildir. Yeni kayıtlarda ipucuyla bilinenler de “Bildim” sayılır. Eski günlük kayıtlarda ipucuyla bilinen ve yanlış yanıtlar ayrıştırılamaz; bu yanıtlar yeni Bildim oranına katılmaz, eski toplam yanıt sayısı korunur. Bu oran sınav puanı değildir.</p>
+        <p>“Kelime tekrarların” bölümü yalnız mevcut sözlük kelimelerinin ayrıntılı olaylarını kullanır. İlk karşılaşmalar, “zaten biliyorum”, sıfırlama ve önceki gerçek çalışma zamanı bilinmeyen yanıtlar tekrar oranına girmez. Gerçek aralık, iki çalışma zamanının farkından hesaplanır; planlanan vade kullanılmaz. 24 saatten kısa tekrarlar ayrı satırda gösterilir. Elde tutulan olayların sayısı paydada görünür; az sayıdaki gözlem genel bir öğrenme veya unutma eğrisine dönüştürülmez. Kutu düşüşü listesi birikimli sayıları, kelime geçmişi ise elde tutulan olay ayrıntılarını gösterir.</p>
         <p>Hız, kayıt başlangıcından itibaren seçili döneme düşen takvim günlerine bölünür; boş günler ve henüz tamamlanmamış bugün dahildir. 7 günlük çizgi de başlangıçta yalnız eldeki günlerin ortalamasıdır. Eşit uzunluktaki önceki dönem de kapsanıyorsa değişim gösterilir. Eski kartların yalnız son çalışma tarihleri bilinir; bu izlerden hız veya kesin seri üretilmez.</p>
         <p>5. kutuya geçiş ayıklamayı da içerebilir; aynı kart daha sonra bu kutuya yeniden çıkabilir. Günlük toplamlar kart türüne göre ayrılmadığı için kelimeler için otomatik bitiş tarihi çıkarılmaz.</p>
         <p>Öğrenme hesapları bu tarayıcıdaki ilerleme kayıtlarıyla yapılır. Eşitleme açıksa bu kayıtlar hesabına da kopyalanır. İki cihazda aynı gün çevrimdışı çalışıldıysa ilerleme kayıtları toplanmayabilir. Sayfa ziyaretleri, özellik eylemleri ve tahmini aktif süre ayrı kullanım kayıtlarında, yalnız bu tarayıcıda tutulur. Saatlik öğrenme hızı hesaplanmaz. Bu sayfanın kontrolleri öğrenme ilerlemeni veya çalışma tercihlerini değiştirmez.</p>
@@ -175,13 +207,13 @@
   </div>
 </footer>
 
-<script src="/releases/9bcab6827099/data/kelime-dizin.js"></script>
-<script src="/releases/9bcab6827099/data/sayilar.js"></script>
-<script src="/releases/9bcab6827099/assets/js/ilerleme.js"></script>
-<script src="/releases/9bcab6827099/assets/js/veri.js"></script>
-<script src="/releases/9bcab6827099/assets/js/istatistik-hesap.js"></script>
-<script src="/releases/9bcab6827099/assets/js/istatistik.js"></script>
-<script src="/releases/9bcab6827099/assets/js/esitleme-ayar.js"></script>
-<script src="/releases/9bcab6827099/assets/js/esitleme-v2.js"></script>
+<script src="/releases/f43f7dd853f7/data/kelime-dizin.js"></script>
+<script src="/releases/f43f7dd853f7/data/sayilar.js"></script>
+<script src="/releases/f43f7dd853f7/assets/js/ilerleme.js"></script>
+<script src="/releases/f43f7dd853f7/assets/js/veri.js"></script>
+<script src="/releases/f43f7dd853f7/assets/js/istatistik-hesap.js"></script>
+<script src="/releases/f43f7dd853f7/assets/js/istatistik.js"></script>
+<script src="/releases/f43f7dd853f7/assets/js/esitleme-ayar.js"></script>
+<script src="/releases/f43f7dd853f7/assets/js/esitleme-v2.js"></script>
 </body>
 </html>

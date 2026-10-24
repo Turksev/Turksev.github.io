@@ -60,7 +60,7 @@ const scrollStill = page => page.evaluate(() => new Promise(resolve => {
 }));
 const today = page => page.evaluate(() => {
   const Il = window.YDS.Ilerleme, row = Il.gunlukKayitlar()[Il.bugun()] || {};
-  return {t: row.t || 0, d: row.d || 0};
+  return {t: row.t || 0, d: row.d || 0, n: row.n || 0, b: row.b || 0};
 });
 const nonUsageStorage = page => page.evaluate(() => Object.fromEntries(Object.keys(localStorage)
   .filter(k => !k.startsWith('yds-kullanim-v1:')).sort().map(k => [k, localStorage.getItem(k)])));
@@ -205,10 +205,15 @@ async function main() {
     assert.equal(await page.evaluate(() => document.documentElement.classList.contains('sozluk-yan')), false);
     assert.equal(await page.evaluate(() => document.activeElement && document.activeElement.hasAttribute('data-sozluk-ac')), true,
       'Escape returns focus to the opener');
+    const hintedBox = await page.evaluate(w => window.YDS.Ilerleme.kutu(w, 'kelime'), card);
     await page.locator('#bildim').click();
     let after = await today(page);
     assert.equal(after.t, before.t + 1, 'Answer recorded');
-    assert.equal(after.d, before.d, 'Looked-up card counts as hinted, not as a clean "Bildim"');
+    assert.equal(after.d, before.d + 1, 'Looked-up success counts as Bildim');
+    assert.equal(after.b, before.b + 1, 'Hinted success increments the new Bildim counter');
+    assert.equal(after.n, before.n + 1, 'Hinted success increments assessed answers');
+    assert.equal(await page.evaluate(w => window.YDS.Ilerleme.kutu(w, 'kelime'), card), Math.max(1, hintedBox),
+      'Counting hinted success preserves the existing same-box rule');
     assert.notEqual((await page.locator('#kartOn').innerText()).trim(), card, 'Deck moved to the next card');
 
     // Panel kapalıyken kısayollar yine çalışır ve temiz cevap doğru sayılır.
@@ -234,11 +239,11 @@ async function main() {
     await page.locator('#bildim').click();
     const multiA = await today(page);
     assert.equal(multiA.t, multi.t + 1);
-    assert.equal(multiA.d, multi.d, 'First looked-up card is hinted after looking up a second card');
+    assert.equal(multiA.d, multi.d + 1, 'First looked-up card counts as Bildim');
     assert.equal((await page.locator('#kartOn').innerText()).trim(), cardB, 'Deck continues with the second card');
     await page.locator('#bildim').click();
     const multiB = await today(page);
-    assert.equal(multiB.d, multi.d, 'Second looked-up card is hinted too');
+    assert.equal(multiB.d, multi.d + 2, 'Both looked-up successes count as Bildim');
     await page.locator('#sozlukKapat').click();
     await page.locator('#sozlukPanel').waitFor({state: 'hidden'});
     await page.locator('#kart').focus();
@@ -289,11 +294,14 @@ async function main() {
     await page.locator('#sozlukAra').fill(single);
     await page.locator('#sozlukUyari').waitFor({state: 'visible'});
     const once = await today(page);
+    const singleBox = await page.evaluate(w => window.YDS.Ilerleme.kutu(w, 'kelime'), single);
     await page.locator('#bildim').click();
     await page.locator('#bildim').click();
     const twice = await today(page);
     assert.equal(twice.t, once.t + 2, 'Both answers recorded');
-    assert.equal(twice.d, once.d, 'A card that comes back while its meaning is still shown stays hinted');
+    assert.equal(twice.d, once.d + 2, 'Both hinted successes count as Bildim');
+    assert.equal(await page.evaluate(w => window.YDS.Ilerleme.kutu(w, 'kelime'), single), Math.max(1, singleBox),
+      'Repeated hinted successes preserve the existing same-box rule');
     assert.match(await page.locator('#kartIpucu').innerText(), /sözlükte gördün/);
     await page.locator('#mod').click();
     assert.equal(await page.locator('#sozlukUyari').isVisible(), false, 'Leaving card mode clears the panel warning');
@@ -614,7 +622,8 @@ async function main() {
     assert.doesNotMatch(await stale.locator('#kartIpucu').innerText(), /sözlükte gördün/, 'An unseen answer is not counted after the switch');
     await stale.locator('#bildim').click();
     const staleAfter = await today(stale);
-    assert.deepEqual(staleAfter, {t: staleBefore.t + 1, d: staleBefore.d + 1}, 'Unseen answer: "Bildim" counts as a clean answer');
+    assert.deepEqual(staleAfter, {t: staleBefore.t + 1, d: staleBefore.d + 1, n: staleBefore.n + 1, b: staleBefore.b + 1},
+      'Unseen answer: Bildim increments assessed and known answers');
     // 3) Önceki kartın uyarısı kalkınca sonuçlar yukarı kayar; alanın hemen altında kalan
     //    yeni kartın anlamı ekrana girer. Çizildikten sonra ölçülür ve sayılır.
     const band = await fresh({width: 1280, height: 560});
@@ -822,7 +831,7 @@ async function main() {
     await phrases.locator('#bildim').click();
     const phraseAfter = await today(phrases);
     assert.equal(phraseAfter.t, phraseBefore.t + 1);
-    assert.equal(phraseAfter.d, phraseBefore.d, 'Looked-up phrase card counts as hinted');
+    assert.equal(phraseAfter.d, phraseBefore.d + 1, 'Looked-up phrase success counts as Bildim');
 
     /* ---------- Cümleler: dizin ve katman isteğe bağlı yüklenir ---------- */
     const sentences = await fresh({width: 1280, height: 900});

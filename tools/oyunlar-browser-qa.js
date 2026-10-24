@@ -968,7 +968,7 @@ async function main() {
   });
 
   /* ---------- 3) Yanlış deneme, sonra doğru: ipucuyla ---------- */
-  senaryo('Yanlış deneme: doğru yazılan gizli harfler açılır, girdi boşalır, kelime yeniden baştan yazılır (yalnız kalan harfler eksik sayılır); sonra doğru = ipucuyla (d artmaz); kutusu değişen ya da günü dönen kelimenin yarım turu atılır; yalnız açık harfteki yazım hatası deneme harcamaz (hangi harfin ne olması gerektiği söylenir, yazılan o harfin önünde kesilir, oradan devam edilince ilk denemede doğru)', async () => {
+  senaryo('Yanlış deneme: doğru yazılan gizli harfler açılır, girdi boşalır, kelime yeniden baştan yazılır (yalnız kalan harfler eksik sayılır); sonra doğru = ipucuyla (Bildim sayılır, kutu yükselmez); kutusu değişen ya da günü dönen kelimenin yarım turu atılır; yalnız açık harfteki yazım hatası deneme harcamaz (hangi harfin ne olması gerektiği söylenir, yazılan o harfin önünde kesilir, oradan devam edilince ilk denemede doğru)', async () => {
     const page = await yeniSayfa();
     await ac(page, base);
     await enAzBosluk(page, 2);
@@ -1061,7 +1061,10 @@ async function main() {
     await kutuBekle(page, w, 1);
     const sonra = await T(page, 'bugunku');
     assert.equal(sonra.t, once.t + 1, 'Cevap sayıldı');
-    assert.equal(sonra.d, once.d, 'İkinci denemede bilinen kelime "doğru" sayılmaz');
+    assert.equal(sonra.d, once.d + 1, 'İkinci denemede bilinen kelime Bildim istatistiğine bir kez eklenir');
+    const ipucluGun = await T(page, 'bugun');
+    assert.deepEqual(await T(page, 'kayit', w), {k: 1, g: ipucluGun + 1, c: ipucluGun},
+      'İkinci denemede bilinen yeni kelime 1. kutuda kalır ve yarın tekrar edilir');
     g = await T(page, 'gorunum');
     assert.match(g.harfSinifi, /\bdogru\b/);
     assert.deepEqual(g.bilinen, []);
@@ -1344,7 +1347,10 @@ async function main() {
     await durumBekle(page, 'Doğru, ama ipucuyla; kelime 1. kutuya girdi.');
     await kutuBekle(page, w, 1);
     const sonra = await T(page, 'bugunku');
-    assert.deepEqual([sonra.t, sonra.d], [once.t + 1, once.d], 'İpucuyla bilinen kelime "doğru" sayılmaz');
+    assert.deepEqual([sonra.t, sonra.d], [once.t + 1, once.d + 1], 'İpucuyla bilinen kelime cevap ve Bildim istatistiğine bir kez eklenir');
+    const ipucluGun = await T(page, 'bugun');
+    assert.deepEqual(await T(page, 'kayit', w), {k: 1, g: ipucluGun + 1, c: ipucluGun},
+      'Harf ipucuyla bilinen yeni kelime 1. kutuda kalır ve yarın tekrar edilir');
     g = await T(page, 'gorunum');
     assert.match(g.sayim, /💡 1 ipuçlu/);
     // 1. kutuya giren ipuçlu kelime yarın tekrar gelir: "Tekrar gelecekler"de, 💡 işaretiyle.

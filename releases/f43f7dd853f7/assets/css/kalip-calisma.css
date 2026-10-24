@@ -8,6 +8,8 @@
 .kalip-arama { grid-column:1/-1; }
 .kalip-baglam { font-size:1.15rem; line-height:1.75; overflow-wrap:anywhere; padding:12px 16px; background:var(--surface-2); border-radius:10px; }
 .kalip-soru h3 { margin:10px 0; }
+.kalip-soru .q-head { flex-wrap:wrap; }
+.kalip-soru .badge { white-space:normal; max-width:100%; overflow-wrap:anywhere; }
 .kalip-soru fieldset { border:0; padding:0; margin:18px 0; min-width:0; }
 .kalip-soru legend { font-weight:600; margin-bottom:12px; }
 .kalip-sik { display:flex; gap:12px; align-items:flex-start; padding:12px 14px; margin:8px 0; border:1px solid var(--border); border-radius:10px; cursor:pointer; min-height:46px; overflow-wrap:anywhere; }
