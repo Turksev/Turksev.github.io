@@ -64,7 +64,7 @@
 
 <main id="icerik" tabindex="-1" class="section">
   <div class="wrap prose-wrap">
-    <p class="badge accent">Son yöntem denetimi: 29 Ağustos 2026</p>
+    <p class="small muted">Öğrenme sistemi açıklaması güncellendi: <time datetime="2026-10-24">24 Ekim 2026</time></p>
     <h1>Yöntem ve kaynaklar</h1>
     <p class="lead">Sitedeki sayıların ne anlama geldiğini, çalışma sisteminin hangi kararı neden verdiğini ve yayımlanan içeriğin kaynağını burada açıkça görebilirsin.</p>
 
@@ -82,13 +82,79 @@
 
     <section class="card method-card" aria-labelledby="tekrar-yontemi">
       <h2 id="tekrar-yontemi">Aralıklı tekrar nasıl çalışır?</h2>
+      <p>Sistem beş kutulu aralıklı tekrar kullanır. Hiç çalışılmamış kelime yenidir. Her <b>“Bildim”</b> cevabı kelimeyi bir üst kutuya taşır; ulaştığı kutu sonraki tekrar aralığını belirler:</p>
+      <ul>
+        <li><b>1. kutu:</b> 1 gün sonra.</li>
+        <li><b>2. kutu:</b> 3 gün sonra.</li>
+        <li><b>3. kutu:</b> 7 gün sonra.</li>
+        <li><b>4. kutu:</b> 15 gün sonra.</li>
+        <li><b>5. kutu:</b> tamamlandı; yeni bir otomatik tekrar tarihi verilmez.</li>
+      </ul>
+      <div class="tip"><b>5. kutuda biriktir, hazır olduğunda yeniden başla.</b> Bu kutudaki kelimeler normal çalışma destesine ve Günün testine yeniden gelmez. Bütün kelimeleri burada toplayabilir, ardından kendi isteğinle kelime ilerlemeni sıfırlayıp baştan çalışabilirsin. Sistem kendiliğinden yeni bir tur başlatmaz.</div>
+      <p>Aralıklar cevap verdiğin günden hesaplanır. Gün hesabı cihazının yerel tarihine göredir; “yarın” tam 24 saat beklemek anlamına gelmez. Tekrarı kaçırırsan kelime bekler; yalnız zaman geçtiği için kutusu düşmez.</p>
+      <p>Baştan başlamak için <a href="kelimeler.html#sifirla">“Kelime ilerlememi sıfırla”</a> düğmesini kullanabilirsin. Bu işlem, seçili katmanlarla sınırlı olmadan bütün kelimelerin tekrar ilerlemesini sıfırlar; öbek ilerlemesini korur. İşlemden önce onay ve yedek alınır.</p>
+      <details>
+        <summary>Öğrenilmiş bir kelimeyi kendim çalışmak istersem?</summary>
+        <p>Kelimeyi listeden elle açabilir veya Oyunlar’da <b>“Öğrenilenler · harfsiz”</b> turunu özellikle seçebilirsin. Bunlar otomatik tekrar değildir. Bu çalışmalarda yanlış olarak değerlendirdiğin kelime 4. kutuya düşer ve ertesi gün normal tekrara döner.</p>
+      </details>
+    </section>
+
+    <section class="card method-card" aria-labelledby="cevaplarin-etkisi">
+      <h2 id="cevaplarin-etkisi">Cevabım kutuyu nasıl değiştirir?</h2>
+      <ul>
+        <li><b>Bildim:</b> bir kutu yükselir ve yukarıdaki aralık uygulanır.</li>
+        <li><b>Bilemedim:</b> bir kutu düşer; hangi kutuya düşerse düşsün ertesi gün gelir. En düşük kutu 1’dir.</li>
+        <li><b>Zaten biliyorum:</b> doğrudan 5. kutuya geçer ve normal tekrar sona erer.</li>
+        <li><b>Yalnız kartı açmak veya sonraki karta geçmek:</b> kutuyu ve tekrar tarihini değiştirmez. Değerlendirme düğmesine basman gerekir.</li>
+      </ul>
+      <p>Örneğin 3. kutudaki <b>protected</b> için “Bildim” dersen 4. kutuya çıkar ve 15 gün sonra gelir; “Bilemedim” dersen 2. kutuya düşer ve yarın gelir. Günlük destede cevapladığın kelime o desteden çıkar; yanlış olsa da aynı gün otomatik olarak tekrar sorulmaz.</p>
+      <details>
+        <summary>Cevabı veya ipucunu görmek sonucu etkiler mi?</summary>
+        <p>Kartı çevirmek ya da “İpucu: cümlede gör” seçeneğini açmak, “Bildim” ile yükselmeyi engellemez. Cevabı görmeden önce gerçekten hatırlayıp hatırlamadığını kendin değerlendirirsin.</p>
+        <p>Kartı çevirmeden önce aynı kelimenin anlamını sözlük panelinde açarsan “Bildim” cevabı ipuçlu sayılır: kelime aynı kutuda kalır, o kutunun normal aralığıyla yeniden planlanır. Yeni kelime bu durumda 1. kutuya girer.</p>
+      </details>
+    </section>
+
+    <section class="card method-card" aria-labelledby="deste-secimi">
+      <h2 id="deste-secimi">Bugünün kelimeleri nasıl seçilir?</h2>
       <ol>
-        <li>Yeni kart doğru bilindiğinde tekrar aralığı sırasıyla 1, 3, 7 ve 15 güne uzar; ardından 5. kutuda tamamlanır.</li>
-        <li>Bilemediğin kart yeniden açılır ve ertesi gün tekrar gelir; bağlam testindeki yanlış da kartı bir kutu geriye alır.</li>
-        <li>Beşinci kutu “öğrenildi” durumudur; kart ilerleme sıfırlanana kadar yeniden sorulmaz.</li>
-        <li>Günün kapasitesini önce vadesi gelmiş tekrarlar doldurur. Yer kalırsa yeni kart açılır; böylece tekrar borcu büyürken sistem yeni kelime yüklemez.</li>
+        <li>Yalnız <b>seçtiğin katmanlardaki</b> kelimeler alınır. Yeni kelimeler, havuzdaki YDS öncelik sırasından seçilir.</li>
+        <li>Önce günlük yeni kart hedefin kadar yeni kelimeye yer ayrılır. Varsayılan hedef <b>20 yeni karttır</b>; bugün başladıkların kotadan düşer. Yeni kart sayacı kelime, öbek ve cümle çalışmalarında ortaktır.</li>
+        <li>Toplam deste sınırından kalan yer, <b>tekrar tarihi gelmiş</b> kelimelerle doldurulur. En çok gecikmiş tekrarlar önce seçilir. Varsayılan deste sınırı <b>30 karttır</b>.</li>
+        <li>Çalışırken önce yeni kelimeler, ardından tekrarlar gösterilir. Seçilmiş kartların sırası her grubun içinde karıştırılır.</li>
       </ol>
-      <p class="small muted">“Zaten biliyorum”, yan anlamları ve örnekleri kontrol ettikten sonra da seçilebilir; kartı doğrudan 5. kutuya taşır. Normal değerlendirmede önce İngilizce yüzü görür, cevabı zihninden üretir, sonra anlamı açarsın.</p>
+      <p><b>Örnek:</b> 20 yeni / 30 toplam ayarında, yeterli kelime ve kullanılmamış yeni kotası varsa ilk deste 20 yeni + 10 tekrar olur. Sığmayan tekrarlar bekler. “Deste ayarları”ndan bu sayıları değiştirebilirsin.</p>
+      <p><b>Toplam sınır, açılan destenin boyudur:</b> gün boyunca cevaplayabileceğin kartlara kesin bir kilit koymaz. Desteyi yeniden başlatırsan kalan tekrarlar yeni desteye alınabilir. “Devam et” bugünkü yeni kart kotasını ve deste kapasitesini artırır; kalıcı hedefini değiştirmez.</p>
+      <details>
+        <summary>Sona atma ve birikmiş tekrarları dağıtma</summary>
+        <p><b>“Sona at”</b>, kelimeyi silmeden kendi grubunun sonuna taşır. İşaret, sen “geri al” diyene kadar kalır; cevap vermek işareti kaldırmaz.</p>
+        <p><b>“Birikmiş tekrarları günlere dağıt”</b> seçeneği, bekleyen tekrarların tarihlerini toplam kart sınırına göre ileriki günlere yayar. Kutular ve öğrenme kayıtları silinmez. Bu işlem sen seçip onayladığında yapılır.</p>
+      </details>
+    </section>
+
+    <section class="card method-card" aria-labelledby="oyun-test-yontemi">
+      <h2 id="oyun-test-yontemi">Oyunlar ve Günün testi aynı şekilde mi çalışır?</h2>
+      <details>
+        <summary>Kelimeyi yaz oyunu</summary>
+        <p>Kelime kartlarıyla aynı kutu ve tekrar kaydını kullanır. “Sıradakiler” turunda önce vadesi gelmiş tekrarlar, sonra yeni kelimeler gelir. Vadesi gelmemiş kelimeler sorulmaz. Ana destenin yeni kart ve toplam kart sınırları oyunu durdurmaz; oyunda başladığın yeni kelimeler ortak yeni kart sayacına eklenir.</p>
+        <p>İlk denemede ek ipucusuz doğru cevap bir kutu yükseltir. Ek harf açtıktan veya yanlış denemeden sonra doğru bulursan aynı kutuda kalırsın. Başlangıçta hazır gösterilen harfler ek ipucu sayılmaz. Üç yanlış deneme veya “Bilemedim, göster” bir kutu düşürür ve tekrarı yarına alır.</p>
+        <p>“Yalnız yeni kelimeler” ve “Öğrenilenler · harfsiz” turları ayrıca seçilebilir. Öğrenilenler turu 5. kutudaki kelimeleri en uzun süredir çalışılmayandan başlayarak sorar; bugün cevaplanan kelime tekrar gelmez.</p>
+      </details>
+      <details>
+        <summary>Günün testi</summary>
+        <p>Bugün çalıştığın, 1–4. kutulardaki uygun kelimeleri cümle içinde sorar. Doğru cevap kutuyu yükseltmez. Yanlış cevap bir kutu düşürür, tekrarı yarına alır ve kelimeyi test yanlışları defterine ekler. Defterden çıkması için iki ayrı günde doğru cevap gerekir.</p>
+      </details>
+      <details>
+        <summary>Kalıp çalışması</summary>
+        <p>Anlam seçme, edat tamamlama ve yapı karşılaştırma soruları ayrı takip edilir. Soru türü, kelime araması, tüm sorular / tekrar gerekenler ve tur uzunluğu seçimlerine göre sorular karıştırılır. Yanlış veya “Bilemedim, göster” cevabı soruyu tekrar havuzuna alır; daha sonra doğru cevaplamak çıkarır.</p>
+        <p>Bu bölümde günlere bağlı tekrar takvimi yoktur; sonuçlar kelimenin kutusunu değiştirmez. Kalıp sonuçları bu tarayıcıda, yarım kalan tur ise bu sekmenin oturumunda saklanır; bulut eşitlemesine ve ilerleme yedeğine dahil değildir.</p>
+      </details>
+    </section>
+
+    <section class="card method-card" aria-labelledby="takip-kapsami">
+      <h2 id="takip-kapsami">Sistem neyi takip eder?</h2>
+      <p>Ana tekrar sistemi kelimenin kutusunu, tekrar tarihini, son çalışma gününü ve “sona at” tercihini takip eder. <b>Kelimenin her anlamı için ayrı bir kutu yoktur.</b> Örneğin establish için “kurmak” ve “saptamak” aynı kelime kaydını paylaşır. Birine “Bildim” demen, diğer anlamın da ayrıca sınandığını göstermez.</p>
+      <p>Aralıklar sabittir. <b>Cevap hızın veya kişisel unutma eğrin tekrar tarihini belirlemez.</b> Kalıp çalışmasındaki soru bazlı sonuçlar da ana kelime takvimine aktarılmaz.</p>
     </section>
 
     <section class="card method-card" aria-labelledby="soru-kaynagi">
