@@ -58,12 +58,12 @@ assert.deepStrictEqual(bugunku(), { t: 3, y: 3, d: 2, m: 0, z: 0, n: 3, b: 2 },
   'ipucuyla bilinen kart yeni ölçümde Bildim sayılmalı');
 
 Il.zatenBiliyorum('delta', 'kelime');
-assert.deepStrictEqual(bugunku(), { t: 3, y: 4, d: 2, m: 1, z: 1, n: 3, b: 2 },
-  '"zaten biliyorum" çalışma hacmine (t) değil ayıklamaya (z) yazılmalı');
+assert.deepStrictEqual(bugunku(), { t: 4, y: 4, d: 3, m: 1, z: 1, n: 4, b: 3 },
+  '"Zaten biliyorum" günlük yanıt ve Bildim toplamında bir kez sayılmalı');
 
 // Aynı kart ikinci kez: yeni sayacı artmaz (m, delta'nın ayıklanmasından kalır).
 Il.dogru('alpha', 'kelime');
-assert.deepStrictEqual(bugunku(), { t: 4, y: 4, d: 3, m: 1, z: 1, n: 4, b: 3 },
+assert.deepStrictEqual(bugunku(), { t: 5, y: 4, d: 4, m: 1, z: 1, n: 5, b: 4 },
   'ikinci kez çalışılan kart yeni sayılmamalı');
 
 // 5. kutuya çıkış mezuniyet olarak bir kez sayılır.

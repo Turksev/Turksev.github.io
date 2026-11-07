@@ -56,7 +56,7 @@
   }
   function report(snapshot, range, today) {
     snapshot = snapshot || {};
-    if ([7,30,90].indexOf(range) < 0) range = 30;
+    if ([1,7,30,90].indexOf(range) < 0) range = 30;
     if (!integer(today)) today = day(new Date());
     var start = today-range+1, pageMap = Object.create(null), featureMap = Object.create(null), seenDays = {};
     var retained=integer(snapshot.retainedFromDay)?snapshot.retainedFromDay:null;

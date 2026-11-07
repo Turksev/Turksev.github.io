@@ -88,6 +88,7 @@ async function main() {
       window.YDS.Depo.paketYaz({'yds-gunluk-kayit':gunluk,'yds-leitner':leitner},'qa-fixture');
     });
     await page.waitForFunction(()=>document.getElementById('bosDurum').hidden);
+    await page.locator('#istatistikAyrintilar > summary').click();
     await page.waitForSelector('#gunlukGrafik svg');
     assert.equal(await page.locator('#gunSec').getAttribute('max'),'2026-09-08','Turkey local today, not previous UTC day');
     assert.match(await page.locator('#donemTarih').innerText(),/8 Eyl$/);
@@ -97,13 +98,13 @@ async function main() {
     // Usage has its own local telemetry namespace; all other saved progress and
     // settings must remain byte-for-byte unchanged while browsing statistics.
     const progressBefore=await page.evaluate(()=>Object.fromEntries(Object.keys(localStorage).filter(k=>!k.startsWith('yds-kullanim-v1:')).sort().map(k=>[k,localStorage.getItem(k)])));
-    for (const days of [7,90,30]) {
+    for (const days of [1,7,90,30]) {
       await page.locator('#aralik button[data-gun="'+days+'"]').click();
       assert.equal(await page.locator('#gunlukTablo tr').count(),days);
       assert.equal(await page.locator('#aralik button[aria-pressed="true"]').count(),1);
       assert.equal(await page.locator('#aralik button[data-gun="'+days+'"]').getAttribute('aria-pressed'),'true');
     }
-    assert.equal(await page.locator('#hizDeger').innerText(),'12,8','Ayiklama is not answer speed');
+    assert.equal(await page.locator('#hizDeger').innerText(),'12,8','Daily average follows the recorded answer totals');
     const yesterday='2026-09-07';
     await page.locator('#gunSec').fill(yesterday);
     await page.locator('#gunSec').dispatchEvent('change');

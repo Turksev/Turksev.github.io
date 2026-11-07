@@ -158,6 +158,7 @@ async function main() {
     const editingPage=await editingContext.newPage();
     await editingPage.clock.install();
     await editingPage.goto(base+'/istatistik.html');await ready(editingPage);
+    await editingPage.locator('#istatistikAyrintilar > summary').click();
     await editingPage.clock.runFor(200);
     const date=editingPage.locator('#gunSec');await date.focus();await date.press('Backspace');
     const unfinishedDate=await date.inputValue();

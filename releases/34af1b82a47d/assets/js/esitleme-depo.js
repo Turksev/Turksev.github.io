@@ -376,10 +376,22 @@
   function hamPaket() {
     var paket = {};
     Object.keys(TIPLER).forEach(function (anahtar) {
-      var v = hamOku(anahtar, undefined);
+      var v = aynaCoz(anahtar,hamOku(anahtar, undefined));
       if (v !== undefined) paket[anahtar] = v;
     });
     return paket;
+  }
+  // These new fields have no legacy consumers. Their recovery mirrors use the
+  // same lossless codec as the envelope, avoiding duplicate multi-megabyte JSON.
+  function kisaAynaAlani(key){return M.kartGecmisiAlanMi(key)||key==='yds-gunluk-sonuc';}
+  function aynaCoz(key,value){
+    if(kisaAynaAlani(key)&&value&&value.__ydsKisaAyna===1){
+      try{return L.paketCoz(value.p)[key];}catch(e){hataBildir(key);return undefined;}
+    }return value;
+  }
+  function aynaKodla(key,value){
+    if(!kisaAynaAlani(key))return value;
+    var p={};p[key]=value;return {__ydsKisaAyna:1,p:L.paketKodla(p)};
   }
 
   function eskiAliasKayitlari(zarf) {
@@ -507,7 +519,9 @@
 
   var YARDIMCI_YEDEKLER = [GECIS_YEDEGI, ALIAS_GECIS_YEDEGI, 'yds-son-yedek'];
   function yardimciCoz(raw) {
-    return raw && raw.__ydsKisaYedek === 1 ? L.paketCoz(raw.p) : raw;
+    if(!raw||raw.__ydsKisaYedek!==1)return raw;
+    if(raw.f===1){var result=kopyala(raw.m);result.veri=L.paketCoz(raw.p);return result;}
+    return L.paketCoz(raw.p);
   }
   function yardimciOku(key, varsayilan) {
     var raw = hamOku(key, varsayilan);
@@ -519,7 +533,14 @@
     var ham = JSON.stringify(value);
     if (ham.length < 1024) return value;
     var compact = { __ydsKisaYedek: 1, p: L.paketKodla(value) };
-    if (!esitMi(L.paketCoz(compact.p), value)) throw new Error('yedek-kodlama-dogrulanamadi');
+    // Encode the nested progress packet as a packet, so its maps retain shape
+    // compression instead of being serialized as one enormous plain value.
+    if(value.veri&&typeof value.veri==='object'&&!Array.isArray(value.veri)){
+      var metadata=kopyala(value);delete metadata.veri;
+      var structured={__ydsKisaYedek:1,f:1,m:metadata,p:L.paketKodla(value.veri)};
+      if(JSON.stringify(structured).length<JSON.stringify(compact).length)compact=structured;
+    }
+    if (!esitMi(yardimciCoz(compact), value)) throw new Error('yedek-kodlama-dogrulanamadi');
     return JSON.stringify(compact).length < ham.length ? compact : value;
   }
 
@@ -678,7 +699,8 @@
   var borcluAlanlar = Object.create(null);
   // Motor bu iki alanı sürüme göre değil cihaz paylarıyla birleştirir: değer, sürüm
   // aynı kalırken büyüyebilir.
-  var PAYLI_ALANLAR = { 'yds-gunluk-kayit': 1, 'yds-yeni-sayac': 1 };
+  var PAYLI_ALANLAR = { 'yds-gunluk-kayit': 1, 'yds-gunluk-sonuc':1, 'yds-yeni-sayac': 1 };
+  (M.KART_GECMISI_ALANLARI||[]).forEach(function(key){PAYLI_ALANLAR[key]=1;});
 
   // İki alan aynı yazımları mı taşıyor? Sürümlü kayıtta sürüm karşılaştırılır (değer
   // değil; binlerce kartta ucuzdur), sürümsüz geçiş kaydında değer.
@@ -722,8 +744,8 @@
       if (hepsiniDogrula === false && varMi === onceVardi &&
           (!varMi || paket[anahtar] === oncekiPaket[anahtar])) return;
       if (varMi) {
-        if (!esitMi(hamOku(anahtar, undefined), paket[anahtar]) &&
-            hamYaz(anahtar, paket[anahtar]) === false) basarili = false;
+        if (!esitMi(aynaCoz(anahtar,hamOku(anahtar, undefined)), paket[anahtar]) &&
+            hamYaz(anahtar, aynaKodla(anahtar,paket[anahtar])) === false) basarili = false;
       } else if (hamOku(anahtar, undefined) !== undefined) {
         if (hamSil(anahtar) === false) basarili = false;
       }
@@ -978,6 +1000,30 @@
     return kaydet(zarf, kaynak || 'yerel', dokunulanlar).basarili;
   }
 
+  // Atomic record patches: omitted records are untouched, never deletions.
+  // This also merges concurrent history/counter components before committing.
+  function paketKayitlariYaz(paket, silinenler, kaynak) {
+    var zarf=guncelZarf(), touched=[];
+    // A concurrent global reset invalidates the whole prepared answer, not only
+    // its history half. The caller can retry from the now-current card state.
+    if(Object.keys(paket||{}).some(function(key){
+      if(!kisaAynaAlani(key))return false;
+      var epoch=zarf.alanlar[key]&&zarf.alanlar[key].r||0;
+      return Object.keys(paket[key]||{}).some(function(id){return M.metaKarsilastir(paket[key][id].q,epoch)!==0;});
+    }))return false;
+    Object.keys(paket||{}).concat(Object.keys(silinenler||{})).forEach(function(key){
+      if(!TIPLER[key]||touched.indexOf(key)!==-1)return;
+      touched.push(key);
+      zarf=alaniDegistir(zarf,key,function(tek){
+        if(Object.prototype.hasOwnProperty.call(paket||{},key))
+          tek=M.kayitlariYaz(tek,key,kayitHaritasi(key,paket[key]),yeniMeta);
+        if(silinenler&&silinenler[key])tek=M.kayitlariSil(tek,key,silinenler[key],yeniMeta);
+        return M.kartGecmisiAlanMi(key)?M.birlestir(tek,{surum:M.SURUM,alanlar:{}}):tek;
+      });
+    });
+    return kaydet(zarf,kaynak||'yerel',touched).basarili;
+  }
+
   function anahtarlariSil(anahtarlar, kaynak) {
     var zarf = guncelZarf();
     var dokunulanlar = [];
@@ -1000,8 +1046,13 @@
   Depo.kayitlariYaz = kayitlariYaz;
   Depo.kayitlariSil = kayitlariSil;
   Depo.paketYaz = paketYaz;
+  Depo.paketKayitlariYaz = paketKayitlariYaz;
   Depo.anahtarlariSil = anahtarlariSil;
   Depo.cihaz = cihaz;
+  // Independent live pages are distinct counter writers; cloned sessionStorage
+  // must not cause concurrent answers to share a history counter component.
+  Depo.aktor = aktor;
+  Depo.alanSifirlama = function(key){var z=guncelZarf(),f=z.alanlar[key];return f&&f.r||0;};
 
   // Diskteki zarf (bu sekmenin gördüğü hâliyle) açık bir işlem taşıyor mu?
   function acikIslemVar() {
@@ -1024,13 +1075,13 @@
     if (!TIPLER[e.key]) return;
     var beklenen = M.paket(guncelZarf());
     var yeni;
-    try { yeni = e.newValue === null ? undefined : JSON.parse(e.newValue); } catch (hata2) { return; }
+    try { yeni = e.newValue === null ? undefined : aynaCoz(e.key,JSON.parse(e.newValue)); } catch (hata2) { return; }
     if (esitMi(beklenen[e.key], yeni)) return;
 
     // Güncelleme öncesinden açık kalan eski bir sekmenin klasik anahtara yazdıklarından
     // yalnız zarfın hiç görmediği ya da sürümsüz tuttuğu kayıtlar zarfa taşınır (aşağıdaki kural).
     var eski;
-    try { eski = e.oldValue === null ? undefined : JSON.parse(e.oldValue); } catch (hata3) { eski = undefined; }
+    try { eski = e.oldValue === null ? undefined : aynaCoz(e.key,JSON.parse(e.oldValue)); } catch (hata3) { eski = undefined; }
     if (yeni === undefined) {
       // Klasik anahtarı kaldıran eski sekmenin hangi yeni kayıtları hiç
       // görmediği bilinemez. Tüm alanı tombstone yapmak daha yeni sekmenin
@@ -1084,6 +1135,7 @@
     paket: function () { return M.paket(guncelZarf()); },
     uygula: uygula,
     paketYaz: paketYaz,
+    paketKayitlariYaz: paketKayitlariYaz,
     anahtarlariSil: anahtarlariSil
   };
 })();

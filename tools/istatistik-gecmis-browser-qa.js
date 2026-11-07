@@ -25,7 +25,8 @@ async function main(){
   try{
     await page.clock.setFixedTime(time(1));await page.goto(base+'/istatistik.html');
     await page.waitForFunction(()=>window.YDS&&typeof window.YDS.Ilerleme.kartGecmisi==='function');
-    assert.match(await page.locator('#tekrarKapsam').innerText(),/henüz|Henüz/,'empty history is explained');
+    assert.equal(await page.locator('#aralik button[aria-pressed="true"]').getAttribute('data-gun'),'1','today is the default period');
+    assert.match(await page.locator('#tekrarKapsam').textContent(),/henüz|Henüz/,'empty history is explained');
     const results=[];
     for(const [day,method] of [[1,'dogru'],[2,'dogru'],[5,'ipucuyla'],[6,'yanlis'],[7,'dogru'],[10,'yanlis'],[11,'dogru'],[14,'dogru'],[21,'dogru'],[22,'testDogru'],[23,'testYanlis'],[24,'dogru'],[25,'dogru']]){
       await page.clock.setFixedTime(time(day));
@@ -48,6 +49,18 @@ async function main(){
     });
     assert.equal(fixture.completed,5);assert.equal(fixture.due,false,'box5 remains outside automatic review');
     assert.equal(fixture.history.events.filter(e=>e.card==='establish').length,13,'every completed answer has one history entry');
+    await page.waitForFunction(()=>document.getElementById('bugunKelimeKapsam').textContent.includes('2 farklı kelimede 2 yanıt'));
+    assert.match(await page.locator('#bugunKelimeOzet').innerText(),/Bildim\s+2/,'already known counts as a known word answer');
+    assert.match(await page.locator('#bugunKelimeOzet').innerText(),/Dün: 1/,'yesterday is compared with today');
+    assert.match(await page.locator('#hizKiyas').innerText(),/Dün 1 yanıt/,'the one-day summary compares daily answers');
+    assert.equal(await page.locator('#istatistikAyrintilar').getAttribute('open'),null,'secondary charts start collapsed');
+    assert.equal(await page.locator('.sort-dot').count(),0,'already-known dot is removed from the calendar');
+    assert.doesNotMatch(await page.locator('main').textContent(),/ayıklama/i,'old terminology is removed from statistics');
+    await page.locator('#bugunKelimeDetay summary').click();
+    assert.match(await page.locator('#bugunZatenDetay').innerText(),/1 “Zaten biliyorum”/);
+    assert.equal(await page.locator('#bugunKelimeTablo tr').count(),2);
+    assert.match(await page.locator('#bugunKutuGecisleri').innerText(),/4\. kutu → 5\. kutu/);
+    assert.match(await page.locator('#bugunKutuGecisleri').innerText(),/Başlanmamış → 5\. kutu/);
     await page.waitForFunction(()=>document.querySelectorAll('#tekrarDusmeler button').length>0);
     await page.locator('#tekrarDusmeler button[data-history-word="establish"]').click();
     await page.waitForFunction(()=>document.querySelectorAll('#tekrarGecmis tr').length===13);
@@ -62,7 +75,7 @@ async function main(){
     assert.equal(await page.locator('#tekrarGecmisKutu').isHidden(),true,'unknown word does not display stale history');
     await page.locator('#tekrarKelimeAra').fill('establish');await page.locator('#tekrarKelimeAra').press('Enter');
     const before=await page.evaluate(()=>JSON.stringify(window.YDS.EsitlemeDepo.paket()));
-    for(const days of [7,90,30])await page.locator('#aralik button[data-gun="'+days+'"]').click();
+    for(const days of [7,90,30,1])await page.locator('#aralik button[data-gun="'+days+'"]').click();
     assert.equal(await page.evaluate(()=>JSON.stringify(window.YDS.EsitlemeDepo.paket())),before,'statistics filters never rewrite learning data');
     const checks=[];
     for(const theme of ['light','dark'])for(const width of [320,375,1280]){
@@ -80,6 +93,7 @@ async function main(){
       assert.deepEqual(violations,[],'history accessibility '+theme+'/'+width);checks.push({theme,width});
       if(process.env.YDS_STATS_SCREENSHOTS&&theme==='light'&&[375,1280].includes(width)){
         await page.locator('#kelimeTekrar').screenshot({path:path.join(process.env.YDS_STATS_SCREENSHOTS,'history-'+width+'.png'),style:'.site-header,.skip-link{visibility:hidden!important}'});
+        await page.locator('#bugunKelime').screenshot({path:path.join(process.env.YDS_STATS_SCREENSHOTS,'today-'+width+'.png'),style:'.site-header,.skip-link{visibility:hidden!important}'});
       }
     }
     // Old totals cannot reveal whether past non-Bildim answers were hinted successes.
@@ -92,6 +106,7 @@ async function main(){
       Y.Depo.paketYaz(empty,'qa-legacy');
     });
     await legacy.waitForFunction(()=>document.getElementById('yanitDengesi').textContent.includes('10'));
+    await legacy.locator('#istatistikAyrintilar summary').first().click();
     assert.match(await legacy.locator('#yanitDengesi').innerText(),/eski|önceki|öncesi/i,'legacy scope is visible');
     assert.doesNotMatch(await legacy.locator('#yanitDengesi').innerText(),/60\s*%/,'legacy unknown hint counts do not become new-rule accuracy');
     await legacyContext.close();

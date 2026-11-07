@@ -46,7 +46,26 @@ a.Il.sifirlaKelime('establish','kelime');now+=86400000;a.Il.dogru('establish','k
 h=a.snapshot();assert.strictEqual(h.events[h.events.length-2].result,'sifirla');assert.strictEqual(h.events.at(-1).previousAt,null);
 a.Il.zatenBiliyorum('establish','kelime');assert.strictEqual(a.Il.kutu('establish','kelime'),5);
 assert.strictEqual(a.Il.vadesiGeldiMi('establish','kelime'),false);
-now+=86400000;a.Il.testDogru('establish','kelime');assert.strictEqual(a.snapshot().events.at(-1).previousAt,null);
+var inclusiveDay=String(a.Il.bugun()),inclusive=a.Il.gunlukKayitlar()[inclusiveDay];
+assert.strictEqual(inclusive.t,2);assert.strictEqual(inclusive.n,2);assert.strictEqual(inclusive.b,2);
+assert.strictEqual(inclusive.z,1,'already-known remains available as a detail');
+var inclusiveStorage=JSON.stringify(a.E.paket());
+for(var read=0;read<3;read++)assert.strictEqual(a.Il.gunlukKayitlar()[inclusiveDay].b,2);
+assert.strictEqual(JSON.stringify(a.E.paket()),inclusiveStorage,'inclusive counts are read-only and never written back');
+var legacyKnown=client(),legacyDay=String(legacyKnown.Il.bugun());
+legacyKnown.D.yaz('yds-gunluk-kayit',{[legacyDay]:{t:10,d:4,y:0,m:3,z:3}});
+var legacyCounts=legacyKnown.Il.gunlukKayitlar()[legacyDay];
+assert.strictEqual(legacyCounts.t,13);assert.strictEqual(legacyCounts.n,3);assert.strictEqual(legacyCounts.b,3);
+assert.strictEqual(legacyCounts.t-legacyCounts.n,10,'older ambiguous answers stay outside assessed success');
+legacyKnown.Il.dogru('new-answer','kelime');
+assert.strictEqual(legacyKnown.Il.gunlukKayitlar()[legacyDay].b,4,'a new answer does not recount legacy already-known choices');
+var savedKnown=clone(legacyKnown.E.paket()),importedKnown=client();
+assert.deepStrictEqual(clone(settings(legacyKnown).validate(savedKnown)),savedKnown,'backup retains raw counts');
+importedKnown.D.paketYaz(savedKnown);
+assert.deepStrictEqual(clone(importedKnown.Il.gunlukKayitlar()),clone(legacyKnown.Il.gunlukKayitlar()),'backup roundtrip counts already-known exactly once');
+var alreadyKnownAt=now;
+now+=86400000;a.Il.testDogru('establish','kelime');assert.strictEqual(a.snapshot().events.at(-1).previousAt,alreadyKnownAt,
+  'already-known is a real successful observation for the following answer');
 assert.strictEqual(a.Il.kutu('establish','kelime'),5,'daily correct never promotes/demotes');
 var totalBefore=JSON.stringify(a.Il.gunlukKayitlar());a.Il.testDogru('onlytest','kelime');var first=now;
 now+=3*86400000;a.Il.testDogru('onlytest','kelime');

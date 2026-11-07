@@ -64,6 +64,7 @@ jobs:
         run: |
           set -euo pipefail
           python tools/aile-cikar.py --check
+          node tools/kelime-bicimleri-uret.js --check
           node tools/kalip-anlam-uygula.js --check
           node tools/kalip-sunum-uret.js --check
           node tools/kalip-calisma-uret.js --check
@@ -92,6 +93,9 @@ jobs:
 
       - name: Dictionary panel, card safety and layout regressions
         run: pnpm test:sozluk
+
+      - name: Word base forms, pronunciation and card layout
+        run: pnpm test:kok
 
       - name: Bilingual phrase coverage and narrow-screen layout
         run: node tools/kalip-browser-qa.js

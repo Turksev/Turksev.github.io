@@ -62,4 +62,24 @@ assert.equal(badModel.partial,true);assert.equal(badModel.events.length,3);asser
 assert.equal(H.history({available:false},dictionary,today).available,false);
 assert.equal(H.recallPeriod(H.history({available:true,events:[]},dictionary,today),7).accuracy,null);
 assert.equal(H.history({available:true,events:[event('html',2,'bildim',1,2,1,'<img src=x>')]},dictionary,today).events.length,0);
+// One-day view compares today's calendar day with yesterday, not the last 24h.
+const dailyModel=H.create({[today-1]:{t:10,n:10,b:6},[today]:{t:15,n:15,b:4}},{},today);
+assert.equal(H.period(dailyModel,1).total.t,15);
+assert.equal(H.period(dailyModel,1).previous.t,10);
+assert.equal(H.period(dailyModel,1).delta,5);
+assert.equal(H.period(dailyModel,1).percent,50);
+assert.equal(H.period(H.create({[today]:{t:15,n:15,b:4}},{},today),1).delta,null,'Missing yesterday is unknown, not zero');
+const review=H.dayReview(h,today);
+assert.equal(review.total,4,'Reset is excluded from answers; already known is included');
+assert.equal(review.words,1,'Repeated answers are not extra unique words');
+assert.equal(review.known,3);assert.equal(review.unknown,1);assert.equal(review.already,1);
+assert.equal(review.up,3);assert.equal(review.down,1);assert.equal(review.same,0);
+assert.equal(review.partial,true,'Pruned detail is labelled incomplete');
+assert.deepEqual(plain(review.rows[0].boxes),[3,2,3,5,null,0,1],'A reset gap cannot appear as a recorded 5→0 answer');
+assert.equal(H.dayReview(h,today-1).total,1);
+assert.equal(H.dayReview(H.history({available:true},dictionary,today),today).covered,false);
+const alreadyAfterReview=H.history({available:true,events:[event('already-after-review',4,'zaten',3,5,1)]},dictionary,today);
+assert.equal(H.recallPeriod(alreadyAfterReview,7).known,1,'Already known with a real prior answer counts as recalled');
+assert.equal(H.recallPeriod(alreadyAfterReview,1).total,0,'One-day period excludes yesterday');
+assert.equal(H.dayReview(alreadyAfterReview,today-1).known,1);
 console.log('İstatistik geçmişi: eski/yeni oran, gerçek süre, ilk/reset/ayıklama ayrımı, kapsam, budama, kimlik ve salt okunur model geçti.');

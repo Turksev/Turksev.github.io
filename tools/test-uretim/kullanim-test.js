@@ -94,5 +94,8 @@ let report=b.H.rapor(snapshot,7,today);assert.equal(report.seconds,60);assert.eq
 assert.equal(report.features.find(r=>r.id==='quiz-bitir').days,1);assert.equal(report.features.find(r=>r.id==='quiz-bitir').count,5);
 assert.equal(report.features.find(r=>r.id==='ipucu').lastDay,today-190);
 assert.equal(b.H.rapor(snapshot,30,today).seconds,120);assert.equal(report.pages.length,b.H.sayfalar.length);
+const todayOnly=b.H.rapor({...snapshot,records:snapshot.records.concat([{v:1,g:today-1,p:'quiz',a:1,s:300,f:{'quiz-bitir':7}}])},1,today);
+assert.equal(todayOnly.start,today);assert.equal(todayOnly.seconds,60,'One-day usage excludes yesterday');
+assert.equal(todayOnly.features.find(r=>r.id==='quiz-bitir').count,5);
 assert.equal(b.H.sayfa('/konu/E01.html'),'konu');assert.equal(b.H.sayfa('/konu/T61.html'),'konu');
 console.log('Usage core: idle/lifecycle, per-writer persistence, reload, BFCache, hidden load, reset, retention, corruption and read-only report passed.');

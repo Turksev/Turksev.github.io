@@ -49,6 +49,8 @@
   var K_GUNLUK = 'yds-gunluk-yeni';     // günlük yeni kelime kotası
   var K_YENI_SAYAC = 'yds-yeni-sayac';  // {g: gün, n: bugün açılan yeni kart (toplam), ek, p: cihaz payları}
   var K_TAVAN = 'yds-gunluk-tavan';     // günlük TOPLAM kart sınırı (yeni + tekrar)
+  var TARIHCE_ALANLARI = Motor && Motor.KART_GECMISI_ALANLARI ? Motor.KART_GECMISI_ALANLARI : [];
+  var tarihceAktor = Depo.aktor || ('h'+Math.random().toString(36).slice(2)+Math.random().toString(36).slice(2)).slice(0,24);
 
   /* Kutu numarasına göre tekrar aralığı (gün). 5. kutu son duraktır:
      kullanıcı ilerlemeyi sıfırlayana kadar öğrenilmiş olarak kalır ve
@@ -203,11 +205,17 @@
   }
 
   function kayitlariSil(adlar, tur) {
+    leitneriTazele();
     var duzeltilmis = (adlar || []).map(function (en) {
       return ilerlemeKimligi(en, tur);
     });
     var aday = leitnerKopyasi();
+    var paket = {};
+    duzeltilmis.forEach(function(en){var oldHistory=false;
+      if(TARIHCE_ALANLARI.length){var key=tarihceAnahtari(en,tur||'kelime');oldHistory=!!(Depo.oku(key.alan,{})||{})[key.kart];}
+      if(aday[en]||oldHistory)tarihcePaketeEkle(paket,en,tur||'kelime','sifirla',aday[en],null,'durum');});
     duzeltilmis.forEach(function (en) { delete aday[en]; });
+    if(TARIHCE_ALANLARI.length){var sil={};sil[K_LEITNER]=duzeltilmis;if(!paketKalici(paket,'kart-sifirla',sil))return false;leitneriTazele();return true;}
     var basarili;
     if (Depo.kayitlariSil) {
       basarili = Depo.kayitlariSil(K_LEITNER, duzeltilmis) !== false;
@@ -403,8 +411,8 @@
        y: o gün ilk kez açılan kart
        d: doğru bilinen kart
        m: 5. kutuya (mezuniyet) ilk kez çıkan kart
-       z: "Zaten biliyorum" ile ayıklanan kart — t'ye dahil DEĞİL, yoksa toplu
-          ayıklama günü gerçek çalışma hızı gibi görünürdü.
+       z: "Zaten biliyorum" işaretlemeleri. Ham t/d/n/b dışında saklanır;
+          gunlukKayitlar bunları istatistik toplamlarına bir kez ekler.
 
      Cihazlar arası: her günün kaydı cihaz payları taşır, p = { cihaz: {t,y,d,m,z} };
      toplam alanlar payların toplamıdır ve okuyucular yalnız toplamı görür. Bu
@@ -414,13 +422,16 @@
      payı sayılır. Sınır: eski sürümle açık kalmış bir sekme payı olmayan toplam
      yazarsa o gün bir kez fazla sayılabilir. */
   var K_GUNLUK_KAYIT = 'yds-gunluk-kayit';
+  var K_GUNLUK_SONUC = 'yds-gunluk-sonuc';
   var GUNLUK_KAYIT_SINIRI = 800;              // ~2 yıl; fazlası en eskiden budanır
-  var GUNLUK_ALANLAR = ['t', 'y', 'd', 'm', 'z'];
+  // n/b are the new, hint-inclusive assessed/known counts. Old t-d cannot
+  // separate failed answers from hinted successes and is never reconstructed.
+  var GUNLUK_ALANLAR = ['t', 'y', 'd', 'm', 'z', 'n', 'b'];
 
   function gunlukKayitlar() {
     var ham = Depo.oku(K_GUNLUK_KAYIT, null);
     var sonuc = {};
-    if (!ham || typeof ham !== 'object' || Array.isArray(ham)) return sonuc;
+    if (!ham || typeof ham !== 'object' || Array.isArray(ham)) ham={};
     Object.keys(ham).forEach(function (g) {
       var kayit = ham[g];
       if (!/^\d{1,7}$/.test(g) || !kayit || typeof kayit !== 'object') return;
@@ -431,6 +442,17 @@
       });
       sonuc[g] = temiz;
     });
+    var yeni=Depo.oku(K_GUNLUK_SONUC,{})||{};
+    Object.keys(yeni).forEach(function(g){if(!/^\d{1,7}$/.test(g)||!yeni[g])return;
+      var r=sonuc[g]||{t:0,y:0,d:0,m:0,z:0,n:0,b:0};r.n=sayacDegeri(yeni[g].n);r.b=sayacDegeri(yeni[g].b);
+      // New per-page counts are a proven lower bound if legacy same-device
+      // counters lost a concurrent tab's increment.
+      r.t=Math.max(r.t,r.n);r.d=Math.max(r.d,r.b);sonuc[g]=r;});
+    // Keep the stored protocol compatible with older tabs/backups. The reader
+    // includes every recorded "already known" choice in assessed/known totals,
+    // including older z counts, without rewriting or double-counting the data.
+    Object.keys(sonuc).forEach(function(g){var r=sonuc[g];
+      ['t','d','n','b'].forEach(function(field){r[field]+=r.z;});});
     return sonuc;
   }
 
@@ -492,19 +514,108 @@
     gunler.sort(function (a, b) { return Number(a) - Number(b); });
     var silinecek = gunler.slice(0, gunler.length - GUNLUK_KAYIT_SINIRI)
       .filter(function (g) { return g !== bugunku; });
-    if (silinecek.length) Depo.kayitlariSil(K_GUNLUK_KAYIT, silinecek);
+    if (silinecek.length) {Depo.kayitlariSil(K_GUNLUK_KAYIT, silinecek);Depo.kayitlariSil(K_GUNLUK_SONUC, silinecek);}
+  }
+
+  function paketKalici(paket,kaynak,sil) {
+    if (Depo.paketKayitlariYaz) return Depo.paketKayitlariYaz(paket,sil||{},kaynak)!==false;
+    var tam={};Object.keys(paket).concat(Object.keys(sil||{})).forEach(function(k){
+      if(k===K_YENI_SAYAC||(Motor&&Motor.TIPLER[k]==='tek')){tam[k]=paket[k];return;}
+      tam[k]=Depo.oku(k,{})||{};Object.keys(paket[k]||{}).forEach(function(id){tam[k][id]=paket[k][id];});
+      (sil&&sil[k]||[]).forEach(function(id){delete tam[k][id];});
+    });paket=tam;
+    if (Depo.paketYaz) return Depo.paketYaz(paket,kaynak)!==false;
+    // Compatibility for small isolated/old clients. The deployed store commits
+    // the whole packet in one envelope write; this fallback rolls back failures.
+    var old={},done=[],ok=true;
+    Object.keys(paket).some(function(k){old[k]=Depo.oku(k,undefined);if(Depo.yaz(k,paket[k])===false){ok=false;return true;}done.push(k);return false;});
+    if(!ok)done.reverse().forEach(function(k){if(old[k]===undefined)Depo.sil(k);else Depo.yaz(k,old[k]);});
+    return ok;
+  }
+  function tarihceAnahtari(id,tur) {
+    var key=tur+':'+id;return {alan:Motor.kartGecmisiAlani(key),kart:key};
+  }
+  var tarihceSira=0;
+  var tarihceDonemAktorleri=Object.create(null);
+  function tarihceYazari(epoch){
+    if(!epoch)return tarihceAktor;
+    if(!tarihceDonemAktorleri[epoch])tarihceDonemAktorleri[epoch]=olayKimligi(Date.now()).split('-')[1];
+    return tarihceDonemAktorleri[epoch];
+  }
+  function olayKimligi(at) {
+    // The page actor is already random and independent of cloned sessions.
+    // A page never reuses its sequence, including across resets/clock rollback.
+    return at.toString(36)+'-'+(++tarihceSira).toString(36).padStart(6,'0')+tarihceAktor.slice(-18);
+  }
+  function tarihcePaketeEkle(paket,id,tur,result,onceki,sonraki,source) {
+    if(!TARIHCE_ALANLARI.length)return;
+    tur=['kelime','obek','cumle'].indexOf(tur)!==-1?tur:'kelime';
+    var key=tarihceAnahtari(id,tur),map=paket[key.alan]||{},stored=Depo.oku(key.alan,{});
+    var old=map[key.kart]||(stored&&stored[key.kart]),at=Date.now(),res=['bildim','bilemedim','zaten','sifirla'].indexOf(result);
+    var epoch=Depo.alanSifirlama?Depo.alanSifirlama(key.alan):0;
+    var valid=Motor.kartGecmisiKaydiGecerli(old)&&Motor.metaKarsilastir(old.q,epoch)>=0,r=valid?JSON.parse(JSON.stringify(old)):
+      {v:1,q:epoch,k:['kelime','obek','cumle'].indexOf(tur),p:{},f:at,u:[],e:[]};
+    var prev=valid && old.u[1]<3 ? parseInt(old.u[0].split('-')[0],36):null;
+    // A legacy client may have reviewed the card without producing an event.
+    // Its later day proves that our last event is no longer the previous answer.
+    if(prev!==null&&onceki&&typeof onceki.c==='number'&&onceki.c>tarihGunu(new Date(prev)))prev=null;
+    // Clock rollback or reset makes the elapsed interval unknown, never negative.
+    if(prev!==null && (!Number.isSafeInteger(prev)||prev>at))prev=null;
+    var event={id:olayKimligi(at),at:at,day:bugun(),result:result,from:onceki&&onceki.k||0,to:sonraki?sonraki.k:(result==='sifirla'?0:(onceki&&onceki.k||0)),
+      previousAt:prev,dueDay:onceki&&typeof onceki.g==='number'?onceki.g:null,source:source||'kart'};
+    var writer=tarihceYazari(epoch),p=r.p[writer]||[0,0,0,0,0];
+    if(res<3)p[res]++;if(res===1 && event.from>event.to)p[3]++;p[4]++;
+    r.p[writer]=p;r.f=Math.min(r.f,at);r.u=[event.id,res];r.e.push(Motor.kartGecmisiOlayKodla(event));
+    r.e=r.e.slice(-20);map[key.kart]=r;paket[key.alan]=Motor.kartGecmisiBuda(map);
+  }
+  function gunlukPaketeEkle(paket,ekler) {
+    if(!ekler)return;
+    var fields=['t','y','d','m','z'],g=String(bugun()),ham=hamGunlukKayitlar(),p=paylariCoz(ham[g],fields),mine=p[cihaz()]||{};
+    fields.forEach(function(a){mine[a]=sayacDegeri(mine[a])+(ekler[a]||0);});
+    p[cihaz()]=mine;var patch={};patch[g]=paylariTopla(p,fields);paket[K_GUNLUK_KAYIT]=patch;
+    if(ekler.n){var daily=Depo.oku(K_GUNLUK_SONUC,{})||{},epoch=Depo.alanSifirlama?Depo.alanSifirlama(K_GUNLUK_SONUC):0;
+      var old=daily[g],shares=paylariCoz(old&&(!Motor||Motor.metaKarsilastir(old.q,epoch)>=0)?old:null,['n','b']);
+      var writer=tarihceYazari(epoch),own=shares[writer]||{n:0,b:0};own.n+=ekler.n;own.b+=ekler.b||0;shares[writer]=own;
+      var value=paylariTopla(shares,['n','b']);value.q=epoch;paket[K_GUNLUK_SONUC]={};paket[K_GUNLUK_SONUC][g]=value;}
+  }
+  function sonucKaydet(en,tur,kayit,result,ekler,source,ekPaket,sil) {
+    var id=ilerlemeKimligi(en,tur),onceki=leitner[id],p=ekPaket||{};
+    if(kayit){var aday={};aday[id]=kayit;p[K_LEITNER]=aday;
+      if((!onceki||!(onceki.k>0))&&kayit.k>0)p[K_YENI_SAYAC]=sayacKaydi(bugunkuSayac(),true,0);}
+    tarihcePaketeEkle(p,id,tur||'kelime',result,onceki,kayit,source);
+    gunlukPaketeEkle(p,ekler);
+    if(!paketKalici(p,'kart-sonucu',sil))return false;
+    leitneriTazele();if(ekler)gunlukBuda(gunlukKayitlar(),String(bugun()));return true;
+  }
+  function kartGecmisi() {
+    var out={available:!!TARIHCE_ALANLARI.length,partial:false,events:[],cards:[],retainedLimit:20000,perCardLimit:20,earliestAt:null,truncated:false};
+    TARIHCE_ALANLARI.forEach(function(key){var map=Depo.oku(key,{});
+      if(!map||typeof map!=='object'||Array.isArray(map)){out.partial=true;return;}
+      Object.keys(map).forEach(function(id){var r=map[id];if(!Motor.kartGecmisiKaydiGecerli(r)){out.partial=true;return;}
+        var kind=['kelime','obek','cumle'][r.k],prefix=kind+':';
+        if(id.indexOf(prefix)!==0||Motor.kartGecmisiAlani(id)!==key){out.partial=true;return;}
+        var card=id.slice(prefix.length),counts=[0,0,0,0,0];
+        Object.keys(r.p).forEach(function(c){for(var i=0;i<5;i++)counts[i]+=r.p[c][i];});
+        var kept=0;r.e.forEach(function(s){var e=Motor.kartGecmisiOlayCoz(s);if(!e){out.partial=true;return;}e.card=card;e.kind=kind;out.events.push(e);kept++;
+          if(out.earliestAt===null||e.at<out.earliestAt)out.earliestAt=e.at;});
+        var pruned=Math.max(0,counts[4]-kept);if(pruned)out.truncated=true;
+        out.cards.push({card:card,kind:kind,known:counts[0],unknown:counts[1],sorted:counts[2],drops:counts[3],total:counts[4],firstAt:r.f,
+          lastAt:parseInt(r.u[0].split('-')[0],36),retained:kept,pruned:pruned});
+      });
+    });
+    out.events.sort(function(a,b){return a.at-b.at||(a.id<b.id?-1:a.id>b.id?1:0);});return out;
   }
 
   /* Ayıklama: "bunu zaten biliyorum". Kelimeyi en üst kutuya koyar, yani
      doğrudan mezun eder. Hızlıca "Bildim" demekten farkı, kelimenin 1. kutuya
      düşüp ertesi gün tekrara gelmemesidir — 4.760 kelimeyi elden geçirirken
      yarın 4.760 tekrarlık çığ oluşmasın diye. */
-  function zatenBiliyorum(en, tur) {
+  function zatenBiliyorum(en, tur, source) {
     leitneriTazele();
     var ilk = yeniMi(en, tur);
     var onceki = kutu(en, tur);
-    if (!kayitYaz(en, kayitKur(EN_UST_KUTU, bugun(), hamKayit(en, tur)), tur)) return false;
-    gunlukIsle({ z: 1, y: ilk ? 1 : 0, m: onceki < EN_UST_KUTU ? 1 : 0 });
+    if (!sonucKaydet(en,tur,kayitKur(EN_UST_KUTU,bugun(),hamKayit(en,tur)),'zaten',
+      {z:1,y:ilk?1:0,m:onceki<EN_UST_KUTU?1:0},source)) return false;
     return EN_UST_KUTU;
   }
 
@@ -516,42 +627,41 @@
   }
 
   /* Doğru bilindi: bir üst kutuya çık, tekrarı ilerlet. */
-  function dogru(en, tur) {
+  function dogru(en, tur, source) {
     leitneriTazele();
     var ilk = yeniMi(en, tur);
     var onceki = kutu(en, tur);
     var k = Math.min(EN_UST_KUTU, onceki + 1);
     var aralik = k >= EN_UST_KUTU ? 0 : ARALIK[k];
-    if (!kayitYaz(en, kayitKur(k, bugun() + aralik, hamKayit(en, tur)), tur)) return false;
-    gunlukIsle({ t: 1, d: 1, y: ilk ? 1 : 0,
-      m: (k >= EN_UST_KUTU && onceki < EN_UST_KUTU) ? 1 : 0 });
+    if (!sonucKaydet(en,tur,kayitKur(k,bugun()+aralik,hamKayit(en,tur)),'bildim',
+      {t:1,d:1,n:1,b:1,y:ilk?1:0,m:(k>=EN_UST_KUTU&&onceki<EN_UST_KUTU)?1:0},source))return false;
     return k;
   }
 
   /* İpucuyla bilindi: terfi ettirme, aynı kutuda bırak ve yeniden zamanla.
      Hiç çalışılmamış bir kelime bu yolla en fazla 1. kutuya girer. */
-  function ipucuyla(en, tur) {
+  function ipucuyla(en, tur, source) {
     leitneriTazele();
     var ilk = yeniMi(en, tur);
     var onceki = kutu(en, tur);
     var k = Math.max(1, onceki);
     var aralik = k >= EN_UST_KUTU ? 0 : ARALIK[k];
-    if (!kayitYaz(en, kayitKur(k, bugun() + aralik, hamKayit(en, tur)), tur)) return false;
-    gunlukIsle({ t: 1, y: ilk ? 1 : 0 });
+    if(!sonucKaydet(en,tur,kayitKur(k,bugun()+aralik,hamKayit(en,tur)),'bildim',
+      {t:1,d:1,n:1,b:1,y:ilk?1:0},source))return false;
     return k;
   }
 
   /* Yanlış bilindi: BİR kutu geri düş (sıfırlanma yok), yarın tekrar sor.
      Bir aydır bildiğin kelimeyi tek şaşırmada baştan başlatmak, tekrar yükünü
      katlıyordu; bir kutu geri düşmek hem cezayı hem yükü ölçülü tutar. */
-  function yanlis(en, tur) {
+  function yanlis(en, tur, source) {
     leitneriTazele();
     var ilk = yeniMi(en, tur);
     var onceki = kutu(en, tur);
     var k = Math.max(1, onceki - 1);
     // Hangi kutuya düşerse düşsün yarın sorulur.
-    if (!kayitYaz(en, kayitKur(k, bugun() + 1, hamKayit(en, tur)), tur)) return false;
-    gunlukIsle({ t: 1, y: ilk ? 1 : 0 });
+    if(!sonucKaydet(en,tur,kayitKur(k,bugun()+1,hamKayit(en,tur)),'bilemedim',
+      {t:1,n:1,y:ilk?1:0},source))return false;
     return k;
   }
 
@@ -593,8 +703,8 @@
 
   var YEDEK_ALANLARI = [
     'yds-leitner', 'yds-yanlis', 'yds-kategori', 'yds-gecmis', 'yds-konular',
-    'yds-test-yanlis', 'yds-rekor', 'yds-yeni-sayac', 'yds-gunluk-kayit'
-  ];
+    'yds-test-yanlis', 'yds-rekor', 'yds-yeni-sayac', 'yds-gunluk-kayit', 'yds-gunluk-sonuc'
+  ].concat(TARIHCE_ALANLARI);
 
   function yedekAl(kapsam, kayitSayisi) {
     var kopya = { z: Date.now(), kapsam: kapsam, veri: {} };
@@ -629,8 +739,11 @@
     // İki tarafı sürümsüz zarf olarak birleştirmek, veri motorundaki alan
     // semantiklerini devreye sokar: daha güçlü kategori/konu, en yüksek yanlış
     // sayısı, daha iyi rekor ve son 50 geçmiş; ayrık kayıtların tümü korunur.
+    var gelen=JSON.parse(JSON.stringify(y.veri));
+    TARIHCE_ALANLARI.concat([K_GUNLUK_SONUC]).forEach(function(a){var epoch=Depo.alanSifirlama?Depo.alanSifirlama(a):0;
+      Object.keys(gelen[a]||{}).forEach(function(id){gelen[a][id].q=epoch;});});
     var birlesmis = Motor.paket(Motor.birlestir(
-      Motor.zarfaCevir(mevcut), Motor.zarfaCevir(y.veri)));
+      Motor.zarfaCevir(mevcut), Motor.zarfaCevir(gelen)));
     if (Depo.paketYaz(birlesmis, 'geri-al') === false) return false;
     leitneriTazele();
     // Yalnız bütün ilerleme alanları kalıcılaştıktan sonra yedeği tüket.
@@ -646,7 +759,7 @@
     // Eski kaynak yerinde kalırsa bir sonraki açılışta sıfırlanan kartları
     // yeniden göç ettirir. Önce bunu güvenle tüket, sonra Leitner'ı sıfırla.
     if (Depo.sil(K_BILINEN) === false) return false;
-    if (Depo.sil(K_LEITNER) === false) return false;
+    if (Depo.anahtarlariSil ? Depo.anahtarlariSil([K_LEITNER].concat(TARIHCE_ALANLARI))===false : Depo.sil(K_LEITNER)===false) return false;
     leitner = {};
     return true;
   }
@@ -890,34 +1003,26 @@
     var d = testDefteri(), k = d[en] || { n: 0 };
     k.n = (k.n || 0) + 1; k.t = Date.now(); k.u = k.t; k.c = 0;
     delete k.sd; d[en] = k;
-    if (!Depo.paketYaz) {
-      if (Depo.yaz(K_TEST_YANLIS, d) === false) return false;
-      return yanlis(ad, tur) !== false;
-    }
     // Wrong-answer notebook, SRS demotion and daily counter are one durable
     // operation. A quota failure cannot leave only half the learning result.
     leitneriTazele();
-    var aday = leitnerKopyasi(), ilk = !aday[en];
-    aday[en] = { k: Math.max(1, ((aday[en] && aday[en].k) || 0) - 1),
+    var onceki=leitner[en];
+    var kayit = { k: Math.max(1, ((onceki && onceki.k) || 0) - 1),
       g: bugun() + 1, c: bugun(), m: 0 };
     var p = {};
-    p[K_TEST_YANLIS] = d; p[K_LEITNER] = aday;
-    if (ilk) p[K_YENI_SAYAC] = sayacKaydi(bugunkuSayac(), true, 0);
-    if (Depo.paketYaz(p, 'test-yanlis') === false) return false;
-    leitneriTazele();
-    return true;
+    p[K_TEST_YANLIS] = {};p[K_TEST_YANLIS][en]=k;
+    return sonucKaydet(ad,tur,kayit,'bilemedim',null,'gunun-testi',p);
   }
 
   function testDogru(en, tur) {
-    en = ilerlemeKimligi(en, tur);
+    var ad=en;en = ilerlemeKimligi(en, tur);
     var d = testDefteri();
-    if (!d[en]) return true;
-    if (d[en].sd === bugun()) return true;
-    d[en].c = (d[en].c || 0) + 1;
-    d[en].sd = bugun();
-    d[en].u = Date.now();
-    if (d[en].c >= 2) delete d[en];
-    return (Object.keys(d).length ? Depo.yaz(K_TEST_YANLIS, d) : Depo.sil(K_TEST_YANLIS)) !== false;
+    var p={},sil={};
+    if(d[en] && d[en].sd!==bugun()){
+      d[en].c=(d[en].c||0)+1;d[en].sd=bugun();d[en].u=Date.now();
+      if(d[en].c>=2)sil[K_TEST_YANLIS]=[en];else {p[K_TEST_YANLIS]={};p[K_TEST_YANLIS][en]=d[en];}
+    }
+    leitneriTazele();return sonucKaydet(ad,tur,null,'bildim',null,'gunun-testi',p,sil);
   }
 
   function testYanlisKumesi(tur) {
@@ -1012,6 +1117,7 @@
     gunlukTavan: gunlukTavan,
     gunlukTavanAyarla: gunlukTavanAyarla,
     gunlukKayitlar: gunlukKayitlar,
+    kartGecmisi: kartGecmisi,
     bekleyenTekrar: bekleyenTekrar,
     birikmisiYay: birikmisiYay,
     bugunAcilanYeni: bugunAcilanYeni,

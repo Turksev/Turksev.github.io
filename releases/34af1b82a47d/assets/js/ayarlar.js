@@ -8,15 +8,15 @@
   var Il = Y.Ilerleme;
   if (!M || !EsitDepo || !Il) return;
 
-  var MAKS_DOSYA = 5 * 1024 * 1024;
+  var MAKS_DOSYA = 16 * 1024 * 1024;
   var YEDEK_TURU = 'yds-ilerleme-yedegi';
   var KURTARMA_ANAHTARI = 'yds-ice-aktarma-kurtarma-v1';
   var UYGULAMA_SURUMU = window.YDS_SURUM || 'yerel-gelistirme';
   var ALANLAR = Object.keys(M.TIPLER);
   var SIFIRLANAN_ALANLAR = [
     'yds-leitner', 'yds-yanlis', 'yds-kategori', 'yds-gecmis', 'yds-konular',
-    'yds-test-yanlis', 'yds-rekor', 'yds-yeni-sayac', 'yds-gunluk-kayit'
-  ];
+    'yds-test-yanlis', 'yds-rekor', 'yds-yeni-sayac', 'yds-gunluk-kayit', 'yds-gunluk-sonuc'
+  ].concat(M.KART_GECMISI_ALANLARI || []);
   var ALAN_ADLARI = {
     'yds-leitner': 'Kelime ve öbek tekrar kutuları',
     'yds-yanlis': 'Soru yanlış defteri',
@@ -29,9 +29,11 @@
     'yds-gunluk-yeni': 'Günlük yeni kart hedefi',
     'yds-gunluk-tavan': 'Günlük toplam kart sınırı',
     'yds-gunluk-kayit': 'Günlük çalışma sayaçları',
+    'yds-gunluk-sonuc': 'Bildim ve Bilemedim günlük ölçümleri',
     'yds-katmanlar': 'Seçili kelime katmanları',
     'yds-eksen': 'Seçili konu haritası ekseni'
   };
+  (M.KART_GECMISI_ALANLARI || []).forEach(function(key,i){ALAN_ADLARI[key]='Kart çalışma geçmişi · bölüm '+(i+1);});
 
   function $(id) { return document.getElementById(id); }
 
@@ -101,7 +103,7 @@
   }
 
   function indir(nesne, ad) {
-    var blob = new Blob([JSON.stringify(nesne, null, 2)], { type: 'application/json' });
+    var blob = new Blob([JSON.stringify(nesne)], { type: 'application/json' });
     var url = URL.createObjectURL(blob);
     var a = document.createElement('a');
     a.href = url;
@@ -191,7 +193,7 @@
   function guvenliJson(v, derinlik, sayac) {
     if (derinlik > 16) throw new Error('Yedek gereğinden fazla iç içe veri içeriyor.');
     sayac.n++;
-    if (sayac.n > 150000) throw new Error('Yedekte izin verilenden fazla kayıt var.');
+    if (sayac.n > 750000) throw new Error('Yedekte izin verilenden fazla kayıt var.');
     if (v === null || typeof v === 'boolean') return;
     if (typeof v === 'number') {
       if (!Number.isFinite(v)) throw new Error('Yedekte geçersiz sayı var.');
@@ -218,10 +220,10 @@
   /* Sayaç kayıtları cihaz payları taşır: p = { cihaz: {...} }. Toplam alanlar
      payların toplamıdır; yedekteki toplam yerine paylar esas alınır. */
   var PAY_KIMLIGI = /^[a-z0-9*]{1,24}$/;
-  function paylariDogrula(v, alanlar, ad) {
+  function paylariDogrula(v, alanlar, ad, sayfaPayi) {
     if (!sadeNesne(v)) throw new Error(ad + ' cihaz payları nesne biçiminde değil.');
     var kimlikler = Object.keys(v);
-    if (kimlikler.length > 64) throw new Error(ad + ' en çok 64 cihaz payı içerebilir.');
+    if (!sayfaPayi && kimlikler.length > 64) throw new Error(ad + ' en çok 64 cihaz payı içerebilir.');
     var p = bosHarita();
     kimlikler.forEach(function (c) {
       if (!PAY_KIMLIGI.test(c)) throw new Error(ad + ' geçersiz bir cihaz payı kimliği içeriyor.');
@@ -257,6 +259,13 @@
       throw new Error(ALAN_ADLARI['yds-gunluk-kayit'] + ' gün kimliği bir gün numarası olmalı: ' + id);
     }
     return String(Number(id));
+  }
+  function gunlukSonucKaydi(v,ad) {
+    alanlariDogrula(v,['n','b','p','q'],['n','b','p','q'],ad);
+    if(!(v.q===0||(typeof v.q==='string'&&/^\d+:[a-z0-9]+$/.test(v.q)&&v.q.length<=80)))throw new Error(ad+' sıfırlama dönemi geçersiz.');
+    var r={q:v.q};paylariTopla(r,paylariDogrula(v.p,['n','b'],ad,true),['n','b']);
+    if(Object.keys(r.p).some(function(c){return r.p[c].b>r.p[c].n;}))throw new Error(ad+' Bildim sayısı yanıt sayısını aşamaz.');
+    return r;
   }
 
   function leitnerKaydi(v, ad) {
@@ -383,6 +392,16 @@
   }
 
   function alaniDogrula(alan, v) {
+    if(M.kartGecmisiAlanMi && M.kartGecmisiAlanMi(alan)){
+      var h=haritaDogrula(v,alan,function(r,ad){
+        if(!M.kartGecmisiKaydiGecerli(r))throw new Error(ad+' geçersiz kart geçmişi içeriyor.');
+        return kopyala(r);
+      });
+      Object.keys(h).forEach(function(id){var prefix=['kelime:','obek:','cumle:'][h[id].k];
+        if(id.indexOf(prefix)!==0||id.length===prefix.length||M.kartGecmisiAlani(id)!==alan)throw new Error(ALAN_ADLARI[alan]+' kart türü ile kimliği uyuşmuyor.');
+      });
+      return M.kartGecmisiBuda(h);
+    }
     if (alan === 'yds-leitner') return haritaDogrula(v, alan, leitnerKaydi, M.eskiIlerlemeKimligi);
     if (alan === 'yds-yanlis') {
       if (!Array.isArray(v) || v.length > 20000) throw new Error(ALAN_ADLARI[alan] + ' en çok 20.000 kayıtlık bir liste olmalı.');
@@ -406,11 +425,11 @@
     if (alan === 'yds-test-yanlis') return haritaDogrula(v, alan, testYanlisKaydi, M.eskiIlerlemeKimligi);
     if (alan === 'yds-gunluk-yeni') return tamSayi(v, 1, 9999, ALAN_ADLARI[alan]);
     if (alan === 'yds-gunluk-tavan') return tamSayi(v, 1, 9999, ALAN_ADLARI[alan]);
-    if (alan === 'yds-gunluk-kayit') {
+    if (alan === 'yds-gunluk-kayit'||alan==='yds-gunluk-sonuc') {
       if (sadeNesne(v) && Object.keys(v).length > 5000) {
         throw new Error(ALAN_ADLARI[alan] + ' en çok 5.000 gün içerebilir.');
       }
-      return haritaDogrula(v, alan, gunlukKaydi, gunKimligi);
+      return haritaDogrula(v, alan, alan==='yds-gunluk-sonuc'?gunlukSonucKaydi:gunlukKaydi, gunKimligi);
     }
     if (alan === 'yds-katmanlar') {
       if (!Array.isArray(v) || v.length > 7) throw new Error(ALAN_ADLARI[alan] + ' 0–7 katman içeren bir liste olmalı.');
@@ -571,6 +590,9 @@
 
   function guvenliBirlestir(mevcut, gelen) {
     mevcut = sadeNesne(mevcut) ? mevcut : {};
+    gelen=kopyala(gelen);
+    (M.KART_GECMISI_ALANLARI||[]).concat(['yds-gunluk-sonuc']).forEach(function(a){var epoch=Y.Depo&&Y.Depo.alanSifirlama?Y.Depo.alanSifirlama(a):0;
+      Object.keys(gelen[a]||{}).forEach(function(id){gelen[a][id].q=epoch;});});
     var sonuc = kopyala(mevcut);
     Object.keys(gelen).forEach(function (a) {
       if (!kendi(mevcut, a)) { sonuc[a] = kopyala(gelen[a]); return; }
@@ -582,6 +604,8 @@
       else if (a === 'yds-rekor') sonuc[a] = rekorBirlestir(mevcut[a], gelen[a]);
       else if (a === 'yds-yeni-sayac') sonuc[a] = sayacBirlestir(mevcut[a], gelen[a]);
       else if (a === 'yds-gunluk-kayit') sonuc[a] = haritaBirlestir(mevcut[a], gelen[a], gunlukGunBirlestir);
+      else if (a === 'yds-gunluk-sonuc') sonuc[a] = haritaBirlestir(mevcut[a], gelen[a], M.gunlukSonucBirlestir);
+      else if (M.kartGecmisiAlanMi && M.kartGecmisiAlanMi(a)) sonuc[a]=M.kartGecmisiBuda(haritaBirlestir(mevcut[a],gelen[a],M.kartGecmisiKaydiBirlestir));
       else if (a === 'yds-test-yanlis') sonuc[a] = haritaBirlestir(mevcut[a], gelen[a], function (x, y) { return yanlisBirlestir(x, y, false); });
       // Çalışma tercihleri çakışırsa bu cihazdaki seçim korunur.
       else sonuc[a] = kopyala(mevcut[a]);
@@ -638,7 +662,7 @@
   function dosyaOku(dosya) {
     if (!dosya) return;
     if (dosya.size > MAKS_DOSYA) {
-      durum('Dosya 5 MB sınırını aşıyor; içe aktarma yapılmadı.', 'err');
+      durum('Dosya 16 MB sınırını aşıyor; içe aktarma yapılmadı.', 'err');
       return;
     }
     dosya.text().then(function (ham) {
@@ -674,7 +698,7 @@
     if (s && s.bagli) ek = '\n\nBulut eşitleme bağlı: sıfırlama diğer cihazlara da yansıyabilir.';
     if (!window.confirm(resetOzeti(EsitDepo.paket()) + '\n\nBu tarayıcıdaki kalıp çalışma sonuçları ve açık kalıp turu da silinecek; bunlar yedeğe dahil değildir.' +
       '\n\nÖnce ilerleme için yerel yedek oluşturulacak; bu yedek geri alınana veya yenisiyle değiştirilene kadar saklanacak.' + ek + '\n\nDevam edilsin mi?')) return false;
-    return window.confirm('SON ONAY\n\nYukarıdaki dokuz ilerleme alanı, yerel kullanım kayıtları ve kalıp çalışma kayıtları silinecek. Dört çalışma tercihin korunacak. Kullanım ve kalıp kayıtları yedekten geri gelmeyecek. Devam edilsin mi?');
+    return window.confirm('SON ONAY\n\nYukarıdaki ilerleme alanları, kart çalışma geçmişi, yerel kullanım kayıtları ve kalıp çalışma kayıtları silinecek. Dört çalışma tercihin korunacak. Kullanım ve kalıp kayıtları yedekten geri gelmeyecek. Devam edilsin mi?');
   }
 
   function esitApi() { return Y.Esitleme || null; }
@@ -745,7 +769,7 @@
     var kalipSilindi = !!(Y.KalipCalismaKayit && Y.KalipCalismaKayit.sifirla());
     ozetCiz();
     if (geriAlCiz) geriAlCiz();
-    durum('Dokuz yerel ilerleme alanı sıfırlandı; dört çalışma tercihi korundu. İlerleme yedeği geri alınana veya yeni bir yedekle değiştirilene kadar kullanılabilir. ' +
+    durum('Yerel ilerleme alanları ve kart çalışma geçmişi sıfırlandı; dört çalışma tercihi korundu. İlerleme yedeği geri alınana veya yeni bir yedekle değiştirilene kadar kullanılabilir. ' +
       (kullanimSilindi ? 'Kullanım kayıtları da silindi; bu kayıtlar geri alınamaz.' : 'Kullanım kayıtları silinemedi. Ayrı kullanım silme düğmesiyle yeniden deneyebilirsin.') +
       (kalipSilindi ? ' Kalıp çalışma kayıtları da sıfırlandı.' : ' Kalıp kayıtları silinemedi; Oyunlar içindeki sıfırlama düğmesiyle yeniden deneyebilirsin.'), kullanimSilindi && kalipSilindi ? 'ok' : 'err');
   });

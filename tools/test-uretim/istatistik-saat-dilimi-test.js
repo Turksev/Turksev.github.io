@@ -24,7 +24,7 @@ if(!process.argv.includes('--zone-child')){
       setAttribute(k,v){this.attrs[k]=v;},getAttribute(k){return this.attrs[k];},addEventListener(k,fn){this.events[k]=fn;},classList:{toggle(){}},querySelectorAll(){return buttons;}});
     return elements.get(id);
   }
-  const buttons=[7,30,90].map(g=>{const e=element('button'+g);e.attrs['data-gun']=String(g);return e;});
+  const buttons=[1,7,30,90].map(g=>{const e=element('button'+g);e.attrs['data-gun']=String(g);return e;});
   const window={YDS:{Depo,Veri:{dizin:[{e:'alpha',k:2},{e:'beta',k:2}]},kacar:v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))},
     addEventListener:(k,fn)=>{(handlers[k]||(handlers[k]=[])).push(fn);},setTimeout:fn=>{timers.set(++sequence,fn);return sequence;},clearTimeout:id=>timers.delete(id),setInterval:()=>0};
   const context=vm.createContext({window,Date:LocalDate,console,document:{getElementById:element,hidden:false,addEventListener(){}}});
@@ -35,16 +35,17 @@ if(!process.argv.includes('--zone-child')){
   assert.equal(localISO(Il.gunTarihi(todayKey)),'2026-09-08');
   const model=()=>H.create(Il.gunlukKayitlar(),Il.tumKayitlar(),Il.bugun(),{decode:Il.gunTarihi,encode:Il.tarihGunu,today:new LocalDate()});
   let m=model();assert.equal(m.today,Date.UTC(2026,8,8)/DAY);assert.equal(H.weekday(m.today),1);
-  assert.equal(H.weeks(m).elapsed,2);assert.equal(H.weeks(m).current,20);assert.equal(H.weeks(m).previous,20);
+  assert.equal(H.weeks(m).elapsed,2);assert.equal(H.weeks(m).current,24);assert.equal(H.weeks(m).previous,24);
   assert.equal(H.weeks(m).items.at(-1).start,Date.UTC(2026,8,7)/DAY);
-  assert.equal(H.period(m,7).speed,10);assert.equal(m.unresolved,0);
+  assert.equal(H.period(m,7).speed,12);assert.equal(m.unresolved,0);
   vm.runInContext(source('assets/js/istatistik.js'),context);
   assert.equal(element('gunSec').max,'2026-09-08');assert.equal(element('gunSec').value,'2026-09-08');
   assert.match(element('donemTarih').textContent,/8 Eyl$/);assert.match(element('gunDetay').innerHTML,/8 Eylül 2026/);
   assert.match(element('haftalikOzet').textContent,/aynı 2 gününde/);
   assert.match(element('isiGrafik').innerHTML,/y="51\.00"[^>]*class="s2 today-cell"/,'Today must be in Tuesday row');
+  element('aralik').events.click.call(element('aralik'),{target:{closest:()=>buttons[1]}});
   element('gunSec').value='2026-09-07';element('gunSec').events.change.call(element('gunSec'));
-  assert.match(element('gunDetay').innerHTML,/7 Eylül 2026/);assert.match(element('gunDetay').innerHTML,/10 yanıt/);
+  assert.match(element('gunDetay').innerHTML,/7 Eylül 2026/);assert.match(element('gunDetay').innerHTML,/12 yanıt/);
   const scenarios=[[2026,8,7],[2024,1,29],[2026,11,31],[2027,0,1],[2026,2,8],[2026,2,9],[2026,10,1],[2026,10,2],[2026,2,29],[2026,2,30],[2026,9,25],[2026,9,26]];
   for(const parts of scenarios){
     const d=new RealDate(...parts,12),key=Il.tarihGunu(d),back=Il.gunTarihi(key);
@@ -54,7 +55,7 @@ if(!process.argv.includes('--zone-child')){
   }
   clock=new RealDate(2026,8,9,12).getTime();for(const fn of handlers.focus)fn();for(const fn of timers.values())fn();timers.clear();
   assert.equal(element('gunSec').max,'2026-09-09');
-  clock=new RealDate(2026,8,7,12).getTime();m=model();assert.equal(H.weeks(m).elapsed,1);assert.equal(H.weeks(m).current,10);
+  clock=new RealDate(2026,8,7,12).getTime();m=model();assert.equal(H.weeks(m).elapsed,1);assert.equal(H.weeks(m).current,12);
   if(process.env.TZ==='Europe/London'){
     assert.equal(Il.gunTarihi(20541),null,'Two local dates share an old key');assert.equal(Il.gunTarihi(20751),null,'Skipped DST key has no local date');
     const logs={};for(const [day,t] of [[27,10],[29,999],[31,10]])logs[legacy(new RealDate(2026,2,day,12))]={t,d:0,y:0,z:0,m:0};

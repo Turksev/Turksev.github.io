@@ -782,7 +782,15 @@ sürüm düşürme, silme işaretçisi ve eski izin listesiyle atomik ret sınan
 
 ### Kelime geçmişi ve hatırlama istatistikleri
 
-İpucuyla bilinen cevaplar da istatistikte “Bildim” sayılır; kutu yükselme ve tekrar
+Kelime kartında cevap açılınca `KelimeBicimleri` mevcut başlık için temel biçimi,
+Türkçe anlamını ve ek/çekim açıklamasını gösterir; ayrı telaffuz düğmesi mevcut
+ses desteğini kullanır. `tools/kelime-bicimleri-uret.js` sözlük ve ileri çekim
+motorundan doğrulanan biçimleri, sınırlı aile ilişkilerini ve açık istisnaları
+`data/kelime-bicimleri.js` dosyasına üretir (`--check` CI'da zorunludur).
+Tarihsel kök veya kör ek silme kullanılmaz; anlamı belirsiz eşsesliler açıklanır.
+Temel biçimi görmek/dinlemek ilerlemeye ek cevap yazmaz.
+
+İpucuyla bilinen cevaplar ve “Zaten biliyorum” seçimleri istatistikte “Bildim” sayılır; kutu yükselme ve tekrar
 aralıkları değişmez. 5. kutu normal tekrar destesine alınmaz. Eski günlük `d`
 sayacında ipuçlu doğrular ayrılmadığı için geçmişi yeniden sınıflandırmak mümkün
 değildir. Yeni cevaplarda `n` değerlendirilen cevap sayısını, `b` ipucuyla bilinenler
@@ -791,11 +799,20 @@ cevapları kapsam notunda ayrıca gösterilir. Günlük çalışma grafikleri ko
 Yeni `n/b` sayaçları `yds-gunluk-sonuc` alanında tutulup okuma sırasında eski günlük
 kayıtlarla birleştirilir; eski sürümün açık kaldığı sekme bu sayaçları silemez.
 
+“Zaten biliyorum” ham `z` alanında ayrı kalır. `gunlukKayitlar()` okuma sırasında
+`z` değerini `t/d/n/b` toplamlarına bir kez ekler; depoya geri yazmaz. Böylece eski
+`z` kayıtları da başarı sayılır, bilinmeyen eski cevaplar yeniden sınıflandırılmaz.
+1 günlük görünüm bugünü dünle karşılaştırır. Günlük kelime özeti gerçek olaylardan
+farklı kelime sayısını, başarı/başarısız cevapları ve kutu geçişlerini gösterir;
+tekrarlanan cevapları farklı kelime gibi saymaz. Eksik olay kapsamı belirtilir.
+İkincil grafikler ve “Zaten biliyorum” sayıları ayrıntılardadır.
+
 Kart, yazma oyunu, Günün testi ve Durum sayfasındaki değerlendirmeler; tarih,
 sonuç, önceki/sonraki kutu ve biliniyorsa önceki gerçek cevap zamanı ile kaydedilir.
 Günün testindeki doğru cevap kutuyu yükseltmez. Ayrıntılı istatistikler yalnız
-mevcut sözlük kelimelerini kapsar; öbek/cümle kimlikleri karışmaz. İlk karşılaşma,
-ayıklama ve sıfırlama hatırlama örneği değildir. Planlanan vadeden gerçek çalışma
+mevcut sözlük kelimelerini kapsar; öbek/cümle kimlikleri karışmaz. İlk karşılaşma
+ve sıfırlama gecikmeli hatırlama örneği değildir. “Zaten biliyorum” başarıdır;
+gerçek önceki cevap zamanı varsa aralık tablosuna da katılır. Planlanan vadeden gerçek çalışma
 zamanı türetilmez. Yanıt süresi ölçülmez ve kişisel unutma eğrisi tahmin edilmez.
 
 `Ilerleme.kartGecmisi()` ayrıntılı olayları ve birikimli kelime sayaçlarını salt

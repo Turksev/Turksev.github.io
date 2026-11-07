@@ -253,8 +253,8 @@
     if (ne === 'sil') {
       if (!Il.listeyiSifirla([ad], tur)) { window.YDS.depolamaUyarisi(); return; }
     } else {
-      var sonuc = ne === 'zaten' ? Il.zatenBiliyorum(ad, tur)
-        : (ne === 'bilmedim' ? Il.yanlis(ad, tur) : Il.dogru(ad, tur));
+      var sonuc = ne === 'zaten' ? Il.zatenBiliyorum(ad, tur, 'durum')
+        : (ne === 'bilmedim' ? Il.yanlis(ad, tur, 'durum') : Il.dogru(ad, tur, 'durum'));
       if (sonuc === false) { window.YDS.depolamaUyarisi(); return; }
     }
 
