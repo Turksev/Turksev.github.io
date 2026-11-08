@@ -409,6 +409,25 @@
 
   /* ---------- kart ---------- */
 
+  var bicimKelime = '';
+  function bicimiCiz(d) {
+    var panel=$('kartBicim');
+    if(!panel)return;
+    var rows=window.YDS.KelimeBicimleri?window.YDS.KelimeBicimleri.entries(d.e):[];
+    panel.hidden=!kartAcik||!rows.length;
+    if(bicimKelime===d.e)return;
+    bicimKelime=d.e;
+    function rowMarkup(r){
+      var family=r.kind==='family';
+      return '<div class="card-base-row">'+(family?'<p class="small muted">Kelime ailesindeki bağlantı</p>':'')+'<div class="card-base-heading"><strong lang="en">'+kacar(r.base)+'</strong>'+
+        (sesDestegi?'<button class="btn ghost sm" type="button" data-base-sound="'+kacar(r.base)+'" aria-label="'+kacar(r.base)+(family?' sözcüğünün':' temel biçiminin')+' telaffuzunu dinle">🔊 '+(family?'İlişkili sözcüğü':'Temel biçimi')+' dinle</button>':'')+'</div>'+
+        '<p>'+kacar(r.meaning)+'</p><p class="card-base-pattern" lang="en">'+kacar(r.pattern)+'</p><p class="small">'+kacar(r.description)+'</p>'+
+        (r.note?'<p class="small muted">'+kacar(r.note)+'</p>':'')+'</div>';
+    }
+    $('kartBicimIcerik').innerHTML=rows.map(function(r){return rowMarkup(r)+
+      (r.chain&&r.chain.length?'<div class="card-base-chain"><p class="small muted">Temel biçimin devamı</p>'+r.chain.map(rowMarkup).join('')+'</div>':'');}).join('');
+  }
+
   /* Deste açıkken başka sayfada (Oyunlar) ya da başka sekmede yanıtlanan kart desteden
      düşer: tekrar günü gelmemiş kelime burada yeniden sorulup aynı gün ikinci kez
      yükselmesin. Bu sayfanın kendi cevabı kartı zaten desteden çıkarır. Deste boşaldıysa
@@ -481,6 +500,7 @@
     }
     $('kartDiger').hidden = !kartAcik || !diger;
     $('kartArka').hidden = !kartAcik;
+    bicimiCiz(d);
     $('kartSayac').textContent = (kartIndex + 1) + ' / ' + suzulmus.length;
     $('seslendir').hidden = !sesDestegi;
 
@@ -878,6 +898,12 @@
     e.stopPropagation();
     var d = suzulmus[kartIndex];
     if (d) seslendir(d.e);
+  });
+  if($('kartBicim'))$('kartBicim').addEventListener('click',function(e){
+    var button=e.target.closest('[data-base-sound]'),d=suzulmus[kartIndex];
+    if(!button||!d||!kartAcik||!window.YDS.KelimeBicimleri)return;
+    var base=button.getAttribute('data-base-sound');
+    if(window.YDS.KelimeBicimleri.entries(d.e).some(function(r){return r.base===base||(r.chain||[]).some(function(parent){return parent.base===base;});}))seslendir(base);
   });
 
   $('temizle').addEventListener('click', function () {

@@ -784,9 +784,18 @@ sürüm düşürme, silme işaretçisi ve eski izin listesiyle atomik ret sınan
 
 Kelime kartında cevap açılınca `KelimeBicimleri` mevcut başlık için temel biçimi,
 Türkçe anlamını ve ek/çekim açıklamasını gösterir; ayrı telaffuz düğmesi mevcut
-ses desteğini kullanır. `tools/kelime-bicimleri-uret.js` sözlük ve ileri çekim
-motorundan doğrulanan biçimleri, sınırlı aile ilişkilerini ve açık istisnaları
+ses desteğini kullanır. Tek anlamlı, doğrulanmış bağlantılarda temel biçimin
+devamını da gösterir (ör. unknown → known → know). Sözlükte ayrı kartı olmayan
+temel biçimlerin onaylı Türkçe karşılığı da görünür.
+`tools/kelime-bicimleri-uret.js` ileri çekim motoru ve aile ilişkilerine ek olarak
+`tools/kelime-bicimleri-inceleme-*.json` dosyalarındaki kabul edilmiş ilişkileri
 `data/kelime-bicimleri.js` dosyasına üretir (`--check` CI'da zorunludur).
+İlk 845 kart dışındaki tüm başlıkların inceleme kapsamı ve reddedilen yanıltıcı
+eşleşmeler bu dosyalarda korunur. `tools/kelime-bicimleri-tara.js` yalnızca aday
+üretir; adaylar otomatik yayımlanmaz. `tools/kelime-bicimleri-kapsam.json` güncel
+kapsamı ve kaynakları kaydeder. Zincirler belirsizlikte veya döngüde durur.
+Doğrudan ek kuralı olmayan açık çağdaş aile ilişkileri `family` türünde, ayrı
+etiketle gösterilir; bunlar temel biçim zincirine katılmaz.
 Tarihsel kök veya kör ek silme kullanılmaz; anlamı belirsiz eşsesliler açıklanır.
 Temel biçimi görmek/dinlemek ilerlemeye ek cevap yazmaz.
 

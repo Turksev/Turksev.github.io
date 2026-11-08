@@ -65,6 +65,7 @@ jobs:
           set -euo pipefail
           python tools/aile-cikar.py --check
           node tools/kelime-bicimleri-uret.js --check
+          node tools/kelime-bicimleri-tara.js --check
           node tools/kalip-anlam-uygula.js --check
           node tools/kalip-sunum-uret.js --check
           node tools/kalip-calisma-uret.js --check

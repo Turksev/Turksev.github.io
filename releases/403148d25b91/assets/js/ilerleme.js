@@ -411,8 +411,8 @@
        y: o gün ilk kez açılan kart
        d: doğru bilinen kart
        m: 5. kutuya (mezuniyet) ilk kez çıkan kart
-       z: "Zaten biliyorum" ile ayıklanan kart — t'ye dahil DEĞİL, yoksa toplu
-          ayıklama günü gerçek çalışma hızı gibi görünürdü.
+       z: "Zaten biliyorum" işaretlemeleri. Ham t/d/n/b dışında saklanır;
+          gunlukKayitlar bunları istatistik toplamlarına bir kez ekler.
 
      Cihazlar arası: her günün kaydı cihaz payları taşır, p = { cihaz: {t,y,d,m,z} };
      toplam alanlar payların toplamıdır ve okuyucular yalnız toplamı görür. Bu
@@ -448,6 +448,11 @@
       // New per-page counts are a proven lower bound if legacy same-device
       // counters lost a concurrent tab's increment.
       r.t=Math.max(r.t,r.n);r.d=Math.max(r.d,r.b);sonuc[g]=r;});
+    // Keep the stored protocol compatible with older tabs/backups. The reader
+    // includes every recorded "already known" choice in assessed/known totals,
+    // including older z counts, without rewriting or double-counting the data.
+    Object.keys(sonuc).forEach(function(g){var r=sonuc[g];
+      ['t','d','n','b'].forEach(function(field){r[field]+=r.z;});});
     return sonuc;
   }
 
@@ -550,7 +555,7 @@
     var epoch=Depo.alanSifirlama?Depo.alanSifirlama(key.alan):0;
     var valid=Motor.kartGecmisiKaydiGecerli(old)&&Motor.metaKarsilastir(old.q,epoch)>=0,r=valid?JSON.parse(JSON.stringify(old)):
       {v:1,q:epoch,k:['kelime','obek','cumle'].indexOf(tur),p:{},f:at,u:[],e:[]};
-    var prev=valid && old.u[1]<2 ? parseInt(old.u[0].split('-')[0],36):null;
+    var prev=valid && old.u[1]<3 ? parseInt(old.u[0].split('-')[0],36):null;
     // A legacy client may have reviewed the card without producing an event.
     // Its later day proves that our last event is no longer the previous answer.
     if(prev!==null&&onceki&&typeof onceki.c==='number'&&onceki.c>tarihGunu(new Date(prev)))prev=null;

@@ -46,9 +46,28 @@ async function main(){
       const violations=await page.evaluate(async()=> (await axe.run('#kartBicim',{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}})).violations);
       assert.deepEqual(violations,[],theme+' '+width+' base panel accessibility');
     }
-    for(const [word,expected] of [['written','write'],['words','word'],['lying','lie'],['putting','putt'],['useful','use'],['building','build']]){
+    for(const [word,expected] of [['written','write'],['words','word'],['lying','lie'],['putting','putt'],['useful','use'],['building','build'],['healthy','health'],['employee','employ'],['imprisoned','imprison']]){
       await card(word);assert.ok((await page.locator('#kartBicim').innerText()).includes(expected));
     }
+    await card('unknown');
+    assert.match(await page.locator('#kartBicim').innerText(),/un- \+ known → unknown/);
+    assert.match(await page.locator('#kartBicim .card-base-chain').innerText(),/know/);
+    assert.match(await page.locator('#kartBicim .card-base-chain').innerText(),/bilmek/);
+    const chainBefore=await page.evaluate(()=>JSON.stringify(window.YDS.EsitlemeDepo.paket()));
+    await page.getByRole('button',{name:'know temel biçiminin telaffuzunu dinle',exact:true}).click();
+    assert.equal(await page.evaluate(()=>window.__spoken.at(-1)),'know');
+    assert.equal(await page.evaluate(()=>JSON.stringify(window.YDS.EsitlemeDepo.paket())),chainBefore,'Chain audio changes no learning records');
+    await page.setViewportSize({width:320,height:850});await page.emulateMedia({colorScheme:'light'});
+    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'Root chain fits narrow screens');
+    if(process.env.YDS_QA_SCREENSHOT)await page.screenshot({path:process.env.YDS_QA_SCREENSHOT,fullPage:true});
+    await card('therapeutic');
+    assert.match(await page.locator('#kartBicim').innerText(),/Kelime ailesindeki bağlantı/);
+    assert.match(await page.locator('#kartBicim').innerText(),/doğrudan ek çıkarma kuralı değildir/);
+    await page.getByRole('button',{name:'therapy sözcüğünün telaffuzunu dinle',exact:true}).click();
+    assert.equal(await page.evaluate(()=>window.__spoken.at(-1)),'therapy');
+    await card('injury');assert.match(await page.locator('#kartBicim').innerText(),/injure/);
+    assert.equal(await page.locator('[data-base-sound="jury"]').count(),0,'injury has no false jury base');
+    for(const word of ['seed','status']){await card(word);assert.equal(await page.locator('#kartBicim').isHidden(),true,word+' has no misleading base');}
     await card('evening');assert.equal(await page.locator('#kartBicim').isHidden(),true,'No even root invented for evening');
     assert.equal(await page.locator('#kartBicimIcerik').innerText(),'','No stale base details');
     assert.deepEqual(errors,[]);console.log('Word base browser QA PASS: visible forms, ambiguity, optional speech, no progress writes, 320–1280 light/dark at 125% text.');
