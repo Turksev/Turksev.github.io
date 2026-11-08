@@ -110,8 +110,8 @@ dizi uzunluğunun anlam sayısına eşitliğini denetler.
 
 ## Konu anlatımı kapsam hattı (08.11.2026 güncellendi)
 
-Konu haritasındaki **140 ünitenin 140 anlatımı da hazırdır**. Altı temel kayıt
-`data/konu-metinleri.js`; T07–T61 kayıtları `data/konu-metinleri-t-ek.js`; E01–E79
+Konu haritasındaki **150 ünitenin 150 anlatımı da hazırdır**. Altı temel kayıt
+`data/konu-metinleri.js`; T07–T61 kayıtları `data/konu-metinleri-t-ek.js`; E01–E89
 kayıtları ise `data/konu-metinleri-e1-ek.js`, `data/konu-metinleri-e2-ek.js` ve `data/konu-metinleri-e3-ek.js` içinde
 tutulur. Konu anlatımı için bekleyen DOCX veya üretim paketi yoktur.
 
@@ -121,7 +121,7 @@ Her anlatım değişikliğinden sonra:
 node tools/test-uretim/konu-kapsam-test.js
 ```
 
-Test temel ve tüm `konu-metinleri-*-ek.js` dosyalarını aynı VM bağlamında yükler; 140/140
+Test temel ve tüm `konu-metinleri-*-ek.js` dosyalarını aynı VM bağlamında yükler; 150/150
 kapsamı, tekil kod sahipliğini, başlık/alan eşleşmesini, gerçek kelime sayısını ve ek
 anlatımların zorunlu pedagojik bölümlerini doğrular.
 

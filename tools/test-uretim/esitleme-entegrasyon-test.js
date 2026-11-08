@@ -46,7 +46,7 @@ sayfalar.forEach(function (dosya) {
     var konuIlerleme = betikler.indexOf('assets/js/ilerleme.js');
     assert.ok(temelKonu >= 0 && tEk === temelKonu + 1 && e1Ek === tEk + 1 &&
       e2Ek === e1Ek + 1 && e3Ek === e2Ek + 1 && konuIlerleme === e3Ek + 1,
-    'konular.html: 140 anlatım dosyası ilerleme betiğinden önce doğru sırada değil');
+    'konular.html: 150 anlatım dosyası ilerleme betiğinden önce doğru sırada değil');
   }
   if (dosya === 'deneme.html') {
     var oturum = betikler.indexOf('assets/js/deneme-oturum.js');

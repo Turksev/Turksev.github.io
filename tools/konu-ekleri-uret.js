@@ -29,7 +29,7 @@ for (const entry of entries) {
   const kelime = (plain.match(/[\p{L}\p{N}]+(?:['’\-][\p{L}\p{N}]+)*/gu)||[]).length;
   lessons[entry.k] = {baslik:entry.ad, ozet:entry.kapsam, html, kelime};
 }
-const data = '/* E69–E79: tools/konu-ekleri/*.html kaynaklarından üretilir. */\nwindow.KONU_METINLERI = Object.assign(window.KONU_METINLERI || {}, '+JSON.stringify(lessons,null,2)+');\n';
+const data = '/* '+entries[0].k+'–'+entries.at(-1).k+': tools/konu-ekleri/*.html kaynaklarından üretilir. */\nwindow.KONU_METINLERI = Object.assign(window.KONU_METINLERI || {}, '+JSON.stringify(lessons,null,2)+');\n';
 const outputs = [[cataloguePath,catalogue], [path.join(root,'data/konu-metinleri-e3-ek.js'),data]];
 for (const [file,text] of outputs) {
   const old = fs.existsSync(file) ? fs.readFileSync(file,'utf8').replace(/\r\n/g,'\n') : '';

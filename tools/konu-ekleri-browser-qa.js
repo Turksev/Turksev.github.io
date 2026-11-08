@@ -28,7 +28,7 @@ async function main() {
       YDS.Ilerleme.konuYaz('E68',{d:1,t:80,n:'Eski İngilizce konusu'});
     });
     const old=await page.evaluate(()=>[YDS.Ilerleme.konu('T01'),YDS.Ilerleme.konu('E68')]);
-    assert.equal(await page.locator('#toplamUnite').innerText(),'140');
+    assert.equal(await page.locator('#toplamUnite').innerText(),'150');
     let questions=0;
     for(const topic of topics) {
       await page.goto(base+'/konular.html?konu='+topic.k);
@@ -57,7 +57,7 @@ async function main() {
           const layout=await page.evaluate(()=>({viewport:innerWidth,scroll:document.documentElement.scrollWidth}));
           assert.ok(layout.scroll<=layout.viewport+1,topic.k+' '+route+' '+theme+' '+width+': '+JSON.stringify(layout));
         }
-        if(topic.k==='E69'||topic.k==='E74') {
+        if(['E69','E74','E80','E82','E85','E89'].includes(topic.k)) {
           await page.addScriptTag({path:require.resolve('axe-core/axe.min.js')});
           const violations=await page.evaluate(async()=> (await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}})).violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)})));
           assert.deepEqual(violations,[],route+': accessibility');
@@ -70,7 +70,7 @@ async function main() {
         }
       }
     }
-    assert.equal(questions,61);
+    assert.equal(questions,111);
     await page.goto(base+'/konular.html?konu=E69');
     assert.deepEqual(await page.evaluate(()=>[YDS.Ilerleme.konu('T01'),YDS.Ilerleme.konu('E68')]),old,'Old progress preserved');
     await page.clock.setFixedTime(new Date('2026-11-15T09:00:00Z'));
@@ -80,22 +80,22 @@ async function main() {
     for(const radio of await page.locator('.tani-oy [data-p="1"]').all()) await radio.click();
     await page.locator('.tani-kaydet').click();
     assert.deepEqual(await page.evaluate(()=>{const d=YDS.Ilerleme.konu('E69');return [d.t,d.g,d.d];}),[85,100,2]);
-    await page.goto(base+'/ara.html?q=E79');
-    await page.locator('a.ara-satir[href="konular.html#E79"]').click();
+    await page.goto(base+'/ara.html?q='+topics.at(-1).k);
+    await page.locator('a.ara-satir[href="konular.html#'+topics.at(-1).k+'"]').click();
     assert.equal(await page.locator('#acikKonuBasligi').innerText(),topics.at(-1).ad);
     await page.goto(base+'/konular.html?konu=E69');
     await page.locator('#konuGovde a[href="konular.html?konu=E70"]').click();
     assert.equal(await page.locator('#acikKonuBasligi').innerText(),topics[1].ad);
     if(process.env.YDS_QA_SCREENSHOTS) {
-      await page.goto(base+'/konular.html?konu=E69');
+      await page.goto(base+'/konular.html?konu=E85');
       await page.setViewportSize({width:1280,height:900});
-      await page.screenshot({path:path.resolve(process.env.YDS_QA_SCREENSHOTS,'konu-E69-desktop.png')});
+      await page.screenshot({path:path.resolve(process.env.YDS_QA_SCREENSHOTS,'konu-E85-desktop.png')});
       await page.setViewportSize({width:375,height:900});
-      await page.screenshot({path:path.resolve(process.env.YDS_QA_SCREENSHOTS,'konu-E69-mobile.png')});
+      await page.screenshot({path:path.resolve(process.env.YDS_QA_SCREENSHOTS,'konu-E85-mobile.png')});
     }
     assert.deepEqual(errors,[],'Browser errors');
     assert.deepEqual(badResponses,[],'Missing local resources');
-    console.log('11 ders, 61 alıştırma, iki görünüm, mobil/masaüstü, erişilebilirlik, arama ve ilerleme kayıtları geçti.');
+    console.log('21 ders, 111 alıştırma, iki görünüm, mobil/masaüstü, erişilebilirlik, arama ve ilerleme kayıtları geçti.');
   } finally { await browser.close(); await new Promise(r=>server.close(r)); }
 }
 main().catch(e=>{console.error(e);server.close();process.exitCode=1;});

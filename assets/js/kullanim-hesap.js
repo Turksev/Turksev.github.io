@@ -26,7 +26,7 @@
     // yükler; son yol parçası gerçek bir sayfaya benzese de o sayfa sayılmaz.
     var topic = /^\/konu\/([ET])(\d{2})\.html$/.exec(path);
     if (topic) {
-      var number = Number(topic[2]), limit = topic[1] === 'E' ? 79 : 61;
+      var number = Number(topic[2]), limit = topic[1] === 'E' ? 89 : 61;
       return number >= 1 && number <= limit ? 'konu' : '404';
     }
     var root = /^\/([a-z0-9-]+)\.html$/.exec(path), id = root && root[1];

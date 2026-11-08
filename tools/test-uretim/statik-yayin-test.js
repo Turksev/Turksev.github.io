@@ -11,7 +11,7 @@ var sayfalar = [
   'ara.html', 'yontem.html', 'ayarlar.html', 'cumleler.html', 'istatistik.html', '404.html'
 ];
 for (var t = 1; t <= 61; t++) sayfalar.push('konu/T' + String(t).padStart(2, '0') + '.html');
-for (var e = 1; e <= 79; e++) sayfalar.push('konu/E' + String(e).padStart(2, '0') + '.html');
+for (var e = 1; e <= 89; e++) sayfalar.push('konu/E' + String(e).padStart(2, '0') + '.html');
 var denetlenen = 0;
 
 function yerelMi(ref) {
@@ -79,7 +79,7 @@ var canonicals = konuSayfalari.map(function (s) {
   assert.ok(m, s + ': canonical yok');
   return m[1];
 });
-assert.strictEqual(new Set(canonicals).size, 140, 'konu canonical adresleri benzersiz değil');
+assert.strictEqual(new Set(canonicals).size, 150, 'konu canonical adresleri benzersiz değil');
 
 console.log('statik-yayın: ' + sayfalar.length + ' sayfa, ' + denetlenen +
   ' yerel bağlantı ve ' + onbellek.length + ' önbellek girdisi başarılı');
