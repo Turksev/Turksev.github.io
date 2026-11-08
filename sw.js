@@ -13,14 +13,14 @@
    dosya listesini ve içerik özetine bağlı worker sürümünü birlikte üretir.
    ============================================================ */
 
-var SURUM = 'yds-v260';
+var SURUM = 'yds-v261';
 /* İçerik özeti — tools/sw-surum.py üretir, elle değiştirme. Yayımlanan
    HTML/JS/CSS/veri dosyaları değişince özet değişir ve betik SURUM'u
    artırır. tools/test-uretim/sw-surum-test.js aynı özeti hesaplayıp
    karşılaştırır: dosya değişip sürüm artmamışsa CI kırmızıya döner.
    (5 Eylül 2026: altı yayın boyunca sürüm v173'te kaldı; kullanıcı yeni
    HTML + eski JS gördü.) */
-var ICERIK_OZETI = '0324ef3e';
+var ICERIK_OZETI = 'ca4d60cf';
 var ONBELLEK = SURUM;
 
 /* Kurulumda indirilenler: sayfalar, kod ve küçük veri dosyaları.

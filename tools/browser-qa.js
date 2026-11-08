@@ -220,18 +220,19 @@ async function main() {
     await acilis.waitForFunction(()=>document.querySelectorAll('.kcard').length===7);
     await sayacBekle();
     assert.equal(await acilis.locator('a.brand').getAttribute('href'),'index.html','Brand opens the landing page');
-    assert.deepEqual(await acilis.locator('.site-nav > a').evaluateAll(as=>as.slice(0,3).map(a=>[a.textContent.trim(),a.getAttribute('href')])),
-      [['Oyunlar','oyunlar.html'],['Ana sayfa','ana-sayfa.html'],['Durumum','durum.html']],'"Oyunlar" is the first tab, then "Ana sayfa" sits left of "Durumum"');
+    assert.deepEqual(await acilis.locator('.site-nav > a').evaluateAll(as=>[as[0],as.at(-1)].map(a=>[a.textContent.trim(),a.getAttribute('href')])),
+      [['Ana sayfa','ana-sayfa.html'],['Oyunlar','oyunlar.html']],'Home is the first tab and Games is the last');
+    assert.equal(await acilis.locator('.site-nav a[href="durum.html"]').count(),0,'Durumum is reached from statistics');
     assert.equal(await acilis.locator('.site-nav a[aria-current="page"]').count(),0,'No tab is current on the landing page');
-    // Konu sayfalarında menü düğmesi yoktur (main.js yüklenmez): dört bağlantı, menü düğmesi kırılımının
-    // (1059 px) altında da başlıkla aynı satırda kalmalı. Dört bağlantı ~500 px'e sığar; yazı tipinden bağımsızdır.
+    // Konu sayfalarında menü düğmesi yoktur (main.js yüklenmez): altı bağlantı, menü düğmesi kırılımının
+    // (1059 px) altında da başlıkla aynı satırda kalmalı.
     const konuBasligi=await context.newPage();
     await konuBasligi.setViewportSize({width:1024,height:768});
     await konuBasligi.goto(base+'/konu/T01.html');
     const konuBaslikBoyu=(await konuBasligi.locator('.site-header').boundingBox()).height;
     assert.ok(konuBaslikBoyu<80,'Topic page header stays on one row at 1024 px: '+konuBaslikBoyu);
     await konuBasligi.close();
-    // Kök sayfalarda (on bir sekme) menü düğmesi 1059 px'e kadar görünür, 1060 px'te açık menü döner (README "Üst menü").
+    // Kök sayfalarda (on sekme) menü düğmesi 1059 px'e kadar görünür, 1060 px'te açık menü döner (README "Üst menü").
     // Yalnız ortam sorgusuna bakar; yazı tipinden bağımsızdır. Sözlük panelli kırılım sozluk-browser-qa.js'te.
     const menuKirilimi=await context.newPage();
     await menuKirilimi.setViewportSize({width:1059,height:768});

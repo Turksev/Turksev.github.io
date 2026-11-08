@@ -1038,18 +1038,21 @@ geldiğidir: `cümle`, `isim`, `zarf`, `eş`, `ikili`. `dz` ise `çekirdek` ya d
 kopyala, yeni bir `id` ver, içindekiler listesine (`nav.toc`) bir satır ekle ve
 `assets/js/ara.js` içindeki `KONULAR` dizinine kaydını gir.
 
-**Üst menü** on bir öğe taşır: ilk sekme *Oyunlar*, ardından Ana sayfa, Durumum,
-İstatistik, *Gramer* grubu, Kelimeler, Aileler, Öbekler, Cümleler, *Sorular* grubu ve Ara.
+**Üst menü** on öğe taşır: Ana sayfa, İstatistik, *Gramer* grubu, Kelimeler,
+Aileler, Öbekler, Cümleler, *Sorular* grubu, Ara ve en sonda *Oyunlar*.
+Durumum sayfasına İstatistik → Öğrenme birikimi içindeki
+“Kutulardaki kelime ve öbekleri gör” bağlantısından ulaşılır.
 İki açılır grup vardır: *Gramer* (Konular, Hızlı Gramer, Bağlaçlar) ve
 *Sorular* (Alıştırma, Deneme). Her ikisi de `<details class="nav-grup">` ile kurulur, bu
 yüzden JS kapalıyken de tıklanınca açılır; `assets/js/main.js` yalnızca “aynı anda tek
 panel açık kalsın” ve “dışarı tıklayınca / Esc ile kapan” davranışını ekler. Açık sayfa
 bir grubun içindeyse grup başlığı `.nav-grup.etkin` ile vurgulanır. Menü blokları, menüsü
 olan 17 kök sayfada birebir aynıdır (`404.html` menüsüzdür); birini değiştirirken hepsini
-değiştir. Konu sayfalarının (`konu/*.html`) dört bağlantılı kısa menüsü
+değiştir. Konu sayfalarının (`konu/*.html`) altı bağlantılı kısa menüsü de Ana sayfa ile
+başlar ve Oyunlar ile biter;
 `tools/seo-uret.js` şablonundan üretilir.
 
-On bir öğe üst bara ancak sıkı ölçülerle (2 px aralık, `.86rem` yazı) tek satırda sığar;
+Üst barda sıkı ölçüler (2 px aralık, `.86rem` yazı) kullanılır;
 bu ölçüler her genişlikte geçerlidir. 1060 px'ten dar ekranda menü düğmesine geçilir;
 sözlük paneli yanda açıkken sayfa daraldığı için bu sınır 1414 px'tir. İki kırılma noktası
 da `assets/css/style.css` içindedir (`max-width: 1059px` ve `html.sozluk-yan` için
