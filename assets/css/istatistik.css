@@ -100,7 +100,7 @@
 .stats-transition-list { list-style:none; margin:12px 0; padding:0; display:grid; gap:8px; }
 .stats-transition-list li { display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px 16px; padding:9px 0; border-bottom:1px solid var(--border); }
 .stats-transition-list span { color:var(--muted); }
-.stats-secondary { margin:20px 0; padding:12px 18px; border:1px solid var(--border); border-radius:14px; background:var(--surface); }
+.stats-secondary { margin:20px 0; font-size:.875rem; }
 .stats-secondary-weekly { margin-top:20px; }
 #bugunKelimeTablo td:last-child { white-space:normal; min-width:230px; }
 @media (max-width:650px) { .stats-today-metrics { grid-template-columns:repeat(2,minmax(0,1fr)); } }
@@ -117,8 +117,8 @@
 .stats-plan h3 { font-size:1rem; }
 .stats-plan input { width:90px; margin:7px 0 12px 8px; }
 .stats-plan p { margin-bottom:10px; font-size:.875rem; }
-.stats-method { margin:24px 0 0; border-top:1px solid var(--border); padding-top:12px; }
-.stats-method div { max-width:88ch; padding:14px 0; }
+.stats-method { margin:20px 0 0; }
+.stats-method div { max-width:88ch; font-size:.875rem; }
 .stats-method p { color:var(--muted); }
 .stats-usage { margin-top:20px; }
 .stats-recall { margin-top:20px; }
