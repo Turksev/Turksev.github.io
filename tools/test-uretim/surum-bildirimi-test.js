@@ -27,7 +27,7 @@ function sekme(bekleyen) {
       classList: { add: function () {} }, setAttribute: function () {}, removeAttribute: function () {},
       getAttribute: function () { return null; }
     },
-    body: { appendChild: function (el) { durum.kutu = el; } },
+    body: { insertBefore: function (el) { durum.kutu = el; } },
     querySelector: function () { return null; },
     querySelectorAll: function () { return []; },
     addEventListener: function () {},
