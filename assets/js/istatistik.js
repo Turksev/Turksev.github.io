@@ -1,10 +1,13 @@
 /* Salt okunur görünüm: ilerlemeye, kotaya, kullanıma veya eşitlemeye yazmaz.
+   Yalnız seçilen dönem bu tarayıcıda bir görünüm tercihi olarak saklanır.
    Ayrı kullanım izleyicisi kendi yaşam döngüsünde kayıt tutar. */
 (function () {
   'use strict';
   var YDS=window.YDS, Il=YDS.Ilerleme, Veri=YDS.Veri, Depo=YDS.Depo, H=YDS.IstatistikHesap;
   var esc=YDS.kacar, $=function(id){return document.getElementById(id);};
-  var range=1, model, summary, remaining=0, selectedDay=null, pending=null, DAY=86400000;
+  var RANGE_KEY='yds-istatistik-aralik';
+  var range=Depo.oku(RANGE_KEY,1), model, summary, remaining=0, selectedDay=null, pending=null, DAY=86400000;
+  if([1,7,30,90].indexOf(range)===-1)range=1;
   var usagePending=null,usageDeferred=false,usageMarkup={};
   var historyModel=null,historySummary=null,historyWord='',wordCatalog=Object.create(null);
   Veri.dizin.forEach(function(item){wordCatalog[item.e.toLowerCase()]=item.e;});
@@ -263,11 +266,15 @@
   function scheduleUsage(){if(usagePending!==null)window.clearTimeout(usagePending);usagePending=window.setTimeout(usage,60);}
   function resumeUsage(){if(usageDeferred)scheduleUsage();}
   var initial=Il.gunlukHedef();$('planHiz').value=Number.isInteger(initial)&&initial>0&&initial<=1000?String(initial):'10';
+  function rangeButtons(){
+    Array.prototype.forEach.call($('aralik').querySelectorAll('button[data-gun]'),function(b){var active=Number(b.getAttribute('data-gun'))===range;b.classList.toggle('acik',active);b.setAttribute('aria-pressed',String(active));});
+  }
   $('aralik').addEventListener('click',function(event){
     var button=event.target.closest('button[data-gun]');if(!button)return;
     var next=Number(button.getAttribute('data-gun'));if([1,7,30,90].indexOf(next)===-1)return;range=next;
+    Depo.yaz(RANGE_KEY,range);
     graphIds.forEach(function(id){followLatest[id]=true;});
-    Array.prototype.forEach.call(this.querySelectorAll('button[data-gun]'),function(b){var active=Number(b.getAttribute('data-gun'))===range;b.classList.toggle('acik',active);b.setAttribute('aria-pressed',String(active));});refresh();
+    rangeButtons();refresh();
   });
   $('gunSec').addEventListener('change',function(){var value=this.value,g=/^\d{4}-\d{2}-\d{2}$/.test(value)?Date.parse(value+'T00:00:00Z')/DAY:NaN;selectedDay=Number.isInteger(g)&&iso(g)===value&&g>=summary.start&&g<=model.today?g:null;detail();});
   $('istatistikAyrintilar').addEventListener('toggle',function(){if(this.open)schedule();});
@@ -293,5 +300,5 @@
   window.addEventListener('resize',schedule);
   document.addEventListener('visibilitychange',function(){if(!document.hidden)schedule();});
   window.setInterval(function(){if(!document.hidden&&model&&H.calendarDay(new Date())!==model.today)schedule();},60000);
-  refresh();
+  rangeButtons();refresh();
 })();

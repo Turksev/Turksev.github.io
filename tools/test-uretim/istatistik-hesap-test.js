@@ -56,7 +56,10 @@ function element(id){if(!elements.has(id)){
   elements.set(id,el);
 }return elements.get(id);}
 const buttons=[1,7,30,90].map(g=>{const e=element('button'+g);e.attrs['data-gun']=String(g);return e;});
-window.YDS.Depo={oku(){return [2,2,'2','bad'];},yaz(){writes++;throw Error('Statistics must not write');}};
+window.YDS.Depo={oku(){return [2,2,'2','bad'];},yaz(key,value){
+  if(key==='yds-istatistik-aralik'){assert.ok([1,7,30,90].includes(value));return true;}
+  writes++;throw Error('Statistics must not write learning or usage data');
+}};
 window.YDS.Veri={dizin:[{e:'alpha',k:2},{e:'beta',k:2},{e:'outside',k:1}]};
 window.YDS.Ilerleme={bugun:()=>today,gunlukKayitlar(){learningReads++;return log;},tumKayitlar:()=>cards,kutu:e=>e==='alpha'?5:0,gunlukHedef:()=>10};
 window.YDS.Kullanim={oku:()=>usageData,sifirla(){throw Error('Statistics must not reset usage');}};
