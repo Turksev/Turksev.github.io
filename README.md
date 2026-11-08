@@ -8,7 +8,7 @@ Yayında: <https://turksev.github.io>
 ## Bu tarayıcıdaki kullanım istatistiği
 
 İstatistik sayfasında ortak 7/30/90 gün seçicisiyle sayfa ziyaretleri, tahmini aktif
-kullanım süresi ve on bir temel eylemin sayısı/kullanıldığı günler gösterilir. 129 konu
+kullanım süresi ve on bir temel eylemin sayısı/kullanıldığı günler gösterilir. 140 konu
 ünitesi hafif, bağımsız izleyiciyle tek "Konu üniteleri" grubunda ölçülür. Görünür
 sayfada son etkileşimin ardından en çok 90 saniye sayılır; bu bir öğrenme başarısı
 veya saatlik hız ölçüsü değildir. Aynı anda kullanılan birden fazla pencerenin
@@ -152,7 +152,7 @@ Tarayıcı denetimi: `pnpm test:sozluk`.
 | `quiz.html` | Alıştırma soruları: 12 kategori, anında çözüm, yanlış defterinden çalışma |
 | `deneme.html` | **Süreli deneme sınavı**: üç sabit 80 soruluk form, geri sayım, soru ızgarası, işaretleme, yenileme sonrası oturum kurtarma, 100 üzerinden YDS puanı, kategori karnesi |
 | `gramer.html` | 10 başlıkta konu anlatımı, kural tabloları ve sınav tuzakları |
-| `konular.html` | Türkçe ve İngilizce eksenli **129/129 YDS ünitesi**: ayrıntılı anlatım, çözüm yolu, tuzaklar ve mini uygulamalar |
+| `konular.html` | Türkçe ve İngilizce eksenli **140/140 YDS ünitesi**: ayrıntılı anlatım, çözüm yolu, tuzaklar ve mini uygulamalar |
 | `baglaclar.html` | Bağlaçlar ve geçiş ifadeleri: çözüm yöntemi, yapı tabloları, filtrelenebilir 155 kayıtlık banka |
 | `ara.html` | Site geneli arama: kelimeler, öbekler, bağlaçlar, sorular, gramer konuları, YDS konu haritası üniteleri ve kelime aileleri — sonuç **tek tıklamayla** açılır |
 
@@ -166,7 +166,7 @@ Tarayıcı denetimi: `pnpm test:sozluk`.
   (80 soruluk A/B/C formlarında 240 farklı soru; doğru şıklar her formda A–E arasında 16'şar kez dağılır)
 - **155 bağlaç** — anlam ilişkisi ve "sonrasında ne gelir" etiketleriyle
 - **10 gramer konusu** — tablolar ve örneklerle
-- **129 YDS konu ünitesi** — Türkçe–İngilizce aktarım sorunları ve İngilizce yapı sistemi
+- **140 YDS konu ünitesi** — Türkçe–İngilizce aktarım sorunları ve İngilizce yapı sistemi
   için çözüm yolu, sık tuzaklar, mini tanı ve gerekçeli cevaplarla eksiksiz anlatım
 
 ### Kelime katmanları
@@ -264,10 +264,10 @@ data/
   sorular-ek.js       özgün ek soru bankası ve pasajlar (üretilir)
   deneme-formlari.js  üç sabit 80 soruluk form ve dengeli şık yerleşimi (üretilir)
   baglaclar.js        bağlaç verisi
-  konular.js          129 ünitenin konu haritası
+  konular.js          140 ünitenin konu haritası
   konu-metinleri.js   temel 6 konu anlatımı
   konu-metinleri-t-ek.js Türkçe ekseninin kalan 55 anlatımı
-  konu-metinleri-e1-ek.js, konu-metinleri-e2-ek.js İngilizce ekseninin 68 anlatımı
+  konu-metinleri-e1-ek.js, konu-metinleri-e2-ek.js, konu-metinleri-e3-ek.js İngilizce ekseninin 79 anlatımı
   kaynak-manifest.json 49 sınav PDF'sinin içerik kopyalamayan provenans kaydı
 tools/                geliştirme/üretim araçları; _config.yml ile canlı yayının dışında
   listeyi-aktar.py    XLSX kaynaklardan kelime/öbek veri dosyalarını üretir
@@ -1083,7 +1083,7 @@ değiştirilmez: `tools/sw-surum.py` içerik özeti değiştiyse sürümü kendi
 
 ## Konu anlatımı kapsamı ve düzenli iş akışı
 
-`data/konular.js` içindeki **129 ünitenin 129'unun da anlatımı hazırdır**. Kapsam bir
+`data/konular.js` içindeki **140 ünitenin 140'ının da anlatımı hazırdır**. Kapsam bir
 belge bekleme kuyruğuna değil, birlikte yüklenen sürümlü JavaScript veri dosyalarına dayanır:
 
 | Dosya | Kapsam |
@@ -1091,7 +1091,10 @@ belge bekleme kuyruğuna değil, birlikte yüklenen sürümlü JavaScript veri d
 | `data/konu-metinleri.js` | İlk 6 temel anlatım |
 | `data/konu-metinleri-t-ek.js` | T07–T61: Türkçe eksenindeki kalan 55 anlatım |
 | `data/konu-metinleri-e1-ek.js` | İngilizce ekseninin ilk ek anlatım grubu |
-| `data/konu-metinleri-e2-ek.js` | İngilizce ekseninin kalan anlatım grubu; iki E ek dosyası birlikte E01–E68'i kapsar |
+| `data/konu-metinleri-e2-ek.js` | İngilizce ekseninin E35–E68 anlatımları |
+| `data/konu-metinleri-e3-ek.js` | Fiil ekleri ve on ek temel konu; E69–E79 |
+
+E69–E79 kaynakları `tools/konu-ekleri.json` ve `tools/konu-ekleri/*.html` dosyalarıdır. `node tools/konu-ekleri-uret.js` harita ve anlatımları üretir; `--check` güncelliği doğrular. Dış kaynak aktarıcısı da bu adımı çalıştırarak yerel ekleri korur.
 
 Yeni içerik veya düzeltme, ünitenin bulunduğu dosyada yapılır. Ek dosyalar mevcut
 `window.KONU_METINLERI` nesnesine kayıt ekler; temel kayıtları sıfırlamaz. Her değişiklikten
@@ -1101,7 +1104,7 @@ sonra kapsam regresyonunu çalıştır:
 node tools/test-uretim/konu-kapsam-test.js
 ```
 
-Test; `data/konular.js` ile anlatım kodlarını karşılaştırır, tam **129/129** kapsamı,
+Test; `data/konular.js` ile anlatım kodlarını karşılaştırır, tam **140/140** kapsamı,
 çift/yersiz kodları, temel + `konu-metinleri-*-ek.js` dosyalarının birlikte yüklenmesini,
 zorunlu alanları, başlık eşleşmesini, gerçek metinle `kelime` sayısını ve ek anlatımların
 pedagojik bölüm yapısını denetler. Test geçmeden konu kapsamı tamamlanmış sayılmaz.

@@ -108,11 +108,11 @@ yildiz-onizleme.html  yıldızların sayfada görünüşünü sınayan tarayıc�
 Zorunlu kural: her kaydın en yüksek yıldızı en az 3. Doğrulayıcı bunu, 1-4 aralığını ve
 dizi uzunluğunun anlam sayısına eşitliğini denetler.
 
-## Konu anlatımı kapsam hattı (29.08.2026 tamamlandı)
+## Konu anlatımı kapsam hattı (08.11.2026 güncellendi)
 
-Konu haritasındaki **129 ünitenin 129 anlatımı da hazırdır**. Altı temel kayıt
-`data/konu-metinleri.js`; T07–T61 kayıtları `data/konu-metinleri-t-ek.js`; E01–E68
-kayıtları ise `data/konu-metinleri-e1-ek.js` ve `data/konu-metinleri-e2-ek.js` içinde
+Konu haritasındaki **140 ünitenin 140 anlatımı da hazırdır**. Altı temel kayıt
+`data/konu-metinleri.js`; T07–T61 kayıtları `data/konu-metinleri-t-ek.js`; E01–E79
+kayıtları ise `data/konu-metinleri-e1-ek.js`, `data/konu-metinleri-e2-ek.js` ve `data/konu-metinleri-e3-ek.js` içinde
 tutulur. Konu anlatımı için bekleyen DOCX veya üretim paketi yoktur.
 
 Her anlatım değişikliğinden sonra:
@@ -121,7 +121,7 @@ Her anlatım değişikliğinden sonra:
 node tools/test-uretim/konu-kapsam-test.js
 ```
 
-Test temel ve tüm `konu-metinleri-*-ek.js` dosyalarını aynı VM bağlamında yükler; 129/129
+Test temel ve tüm `konu-metinleri-*-ek.js` dosyalarını aynı VM bağlamında yükler; 140/140
 kapsamı, tekil kod sahipliğini, başlık/alan eşleşmesini, gerçek kelime sayısını ve ek
 anlatımların zorunlu pedagojik bölümlerini doğrular.
 

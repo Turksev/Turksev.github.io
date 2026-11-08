@@ -10,7 +10,7 @@ const VERI_DIZINI = path.join(KOK, "data");
 const KONULAR_DOSYASI = path.join(VERI_DIZINI, "konular.js");
 const TEMEL_METIN_DOSYASI = path.join(VERI_DIZINI, "konu-metinleri.js");
 const EK_DOSYA_DESENI = /^konu-metinleri-.+-ek\.js$/;
-const BEKLENEN_UNITE_SAYISI = 129;
+const BEKLENEN_UNITE_SAYISI = 140;
 const KELIME_TOLERANS_ORANI = 0.10;
 const ASGARI_KELIME_TOLERANSI = 5;
 

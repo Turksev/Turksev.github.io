@@ -20,7 +20,7 @@ for (const file of fs.readdirSync(root).filter(file => file.endsWith('.html'))) 
 }
 
 const topics = fs.readdirSync(path.join(root, 'konu')).filter(file => file.endsWith('.html'));
-assert.equal(topics.length, 129, 'Update topic route bounds when the published curriculum changes');
+assert.equal(topics.length, 140, 'Update topic route bounds when the published curriculum changes');
 for (const file of topics) {
   assert.equal(H.sayfa('/konu/' + file), 'konu', file + ': published topic');
   assert.equal(H.sayfa('/unknown/konu/' + file), '404', file + ': nested topic lookalike');
@@ -29,7 +29,7 @@ for (const unknown of [
   '/foo/', '/konu/', '/foo/index.html', '/foo/kelimeler.html', '/foo/konu/E01.html',
   '/index/', '/kelimeler/', '/konu.html', '/konu/index.html', '/konu', '/index', '/kelimeler',
   '/unknown.html', '/INDEX.html', '/kelimeler.HTML', '//index.html', '//', '', 'index.html',
-  '/konu/E00.html', '/konu/E69.html', '/konu/T00.html', '/konu/T62.html',
+  '/konu/E00.html', '/konu/E80.html', '/konu/T00.html', '/konu/T62.html',
   '/konu/E1.html', '/konu/T1.html', '/konu/E068.html', '/konu/T061.html',
   '/konu/E999.html', '/konu/T999.html', '/konu/e01.html', '/konu/t01.html', '/konu/A01.html',
   '/konu/E01.html/', '/konu/E01.HTML', '/konu//E01.html', '/konu/E01', null, undefined
@@ -37,4 +37,4 @@ for (const unknown of [
 
 assert.equal(H.ozellikler.find(item => item[0] === 'kart-cevap')[1], 'Çalışma kartını yanıtlama',
   'Card response label refers to the study cards, not all progress controls');
-console.log('Kullanım yolları: gerçek kök sayfalar, 129 konu ve bilinmeyen yollar geçti.');
+console.log('Kullanım yolları: gerçek kök sayfalar, 140 konu ve bilinmeyen yollar geçti.');

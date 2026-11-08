@@ -299,6 +299,9 @@ def main():
     myol = os.path.join(VERI, 'konu-metinleri.js')
     yaz(myol, mbasli + mgovde + '\n};\n')
     print('konu-metinleri  : %.0f KB' % (os.path.getsize(myol) / 1024))
+    # Depoda yazılan ek dersleri dış kaynak aktarımı sonrasında da koru.
+    subprocess.run(['node', str(_yds_site / 'tools' / 'konu-ekleri-uret.js')],
+                   check=True, cwd=str(_yds_site))
 
 
 if __name__ == '__main__':

@@ -13,7 +13,7 @@ const ORIGIN = "https://turksev.github.io";
 
 function readLessons() {
   const context = {window:{}}; vm.createContext(context);
-  for (const file of ['konu-metinleri.js','konu-metinleri-t-ek.js','konu-metinleri-e1-ek.js','konu-metinleri-e2-ek.js']) {
+  for (const file of ['konu-metinleri.js','konu-metinleri-t-ek.js','konu-metinleri-e1-ek.js','konu-metinleri-e2-ek.js','konu-metinleri-e3-ek.js']) {
     vm.runInContext(fs.readFileSync(path.join(ROOT,'data',file),'utf8'),context,{filename:file});
   }
   return context.window.KONU_METINLERI;
@@ -24,6 +24,7 @@ function lessonHtml(topic) {
   const lesson = LESSONS[topic.k];
   if (!lesson || !lesson.html) throw new Error(topic.k + ': yayımlanacak anlatım eksik');
   let body = lesson.html;
+  body = body.replace(/href="konular\.html\?/g, 'href="../konular.html?');
   body = body.replace(/<h2([^>]*)>([^<]*(?:Cevap|cevap|Anahtar|anahtar)[^<]*)<\/h2>([\s\S]*?)(?=<h2|$)/g,
     '<details class="card"><summary>$2</summary>$3</details>');
   body = body.replace(/<table([^>]*)>(\s*)(<tr>\s*(?:<th[\s\S]*?<\/th>\s*)+<\/tr>)/g,
@@ -231,7 +232,7 @@ function topicIndexFor(topics) {
     ).join("") + `</div>`
   ).join("\n");
   return `${INDEX_START}\n` +
-    `<details class="card konu-dizin" style="margin-top:22px"><summary>129 konunun paylaşılabilir bağlantı dizini</summary>` +
+    `<details class="card konu-dizin" style="margin-top:22px"><summary>${topics.length} konunun paylaşılabilir bağlantı dizini</summary>` +
     `<p class="small muted">Bir konuyu doğrudan açmak veya bağlantısını paylaşmak için kodunu seç.</p>${content}</details>\n` +
     `${INDEX_END}`;
 }

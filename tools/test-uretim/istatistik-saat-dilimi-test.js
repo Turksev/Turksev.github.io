@@ -19,6 +19,12 @@ if(!process.argv.includes('--zone-child')){
   const clone=x=>JSON.parse(JSON.stringify(x));
   const Depo={oku:(k,fallback)=>Object.hasOwn(saved,k)?clone(saved[k]):fallback};
   for(const op of ['yaz','sil','paketYaz','kayitlariYaz','anahtarlariSil'])Depo[op]=()=>{writes++;throw Error('Stats changed stored progress');};
+  // Görünüm tercihi, ilerleme kaydı değildir; yalnız dönem seçimine izin ver.
+  const preferences={};
+  Depo.yaz=(key,value)=>{
+    if(key==='yds-istatistik-aralik'){preferences[key]=value;return true;}
+    writes++;throw Error('Stats changed stored progress');
+  };
   function element(id){
     if(!elements.has(id))elements.set(id,{innerHTML:'',textContent:'',value:'',hidden:false,attrs:{},events:{},scrollLeft:0,scrollWidth:680,clientWidth:300,
       setAttribute(k,v){this.attrs[k]=v;},getAttribute(k){return this.attrs[k];},addEventListener(k,fn){this.events[k]=fn;},classList:{toggle(){}},querySelectorAll(){return buttons;}});
@@ -27,7 +33,7 @@ if(!process.argv.includes('--zone-child')){
   const buttons=[1,7,30,90].map(g=>{const e=element('button'+g);e.attrs['data-gun']=String(g);return e;});
   const window={YDS:{Depo,Veri:{dizin:[{e:'alpha',k:2},{e:'beta',k:2}]},kacar:v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))},
     addEventListener:(k,fn)=>{(handlers[k]||(handlers[k]=[])).push(fn);},setTimeout:fn=>{timers.set(++sequence,fn);return sequence;},clearTimeout:id=>timers.delete(id),setInterval:()=>0};
-  const context=vm.createContext({window,Date:LocalDate,console,document:{getElementById:element,hidden:false,addEventListener(){}}});
+  const context=vm.createContext({window,Date:LocalDate,console,document:{getElementById:element,querySelectorAll(){return [];},hidden:false,addEventListener(){}}});
   vm.runInContext(source('assets/js/ilerleme.js'),context);
   vm.runInContext(source('assets/js/istatistik-hesap.js'),context);
   const Il=window.YDS.Ilerleme,H=window.YDS.IstatistikHesap;
@@ -44,6 +50,7 @@ if(!process.argv.includes('--zone-child')){
   assert.match(element('haftalikOzet').textContent,/aynı 2 gününde/);
   assert.match(element('isiGrafik').innerHTML,/y="51\.00"[^>]*class="s2 today-cell"/,'Today must be in Tuesday row');
   element('aralik').events.click.call(element('aralik'),{target:{closest:()=>buttons[1]}});
+  assert.equal(preferences['yds-istatistik-aralik'],7,'Range preference is separate from learning progress');
   element('gunSec').value='2026-09-07';element('gunSec').events.change.call(element('gunSec'));
   assert.match(element('gunDetay').innerHTML,/7 Eylül 2026/);assert.match(element('gunDetay').innerHTML,/12 yanıt/);
   const scenarios=[[2026,8,7],[2024,1,29],[2026,11,31],[2027,0,1],[2026,2,8],[2026,2,9],[2026,10,1],[2026,10,2],[2026,2,29],[2026,2,30],[2026,9,25],[2026,9,26]];

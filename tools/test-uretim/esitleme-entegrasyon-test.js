@@ -42,10 +42,11 @@ sayfalar.forEach(function (dosya) {
     var tEk = betikler.indexOf('data/konu-metinleri-t-ek.js');
     var e1Ek = betikler.indexOf('data/konu-metinleri-e1-ek.js');
     var e2Ek = betikler.indexOf('data/konu-metinleri-e2-ek.js');
+    var e3Ek = betikler.indexOf('data/konu-metinleri-e3-ek.js');
     var konuIlerleme = betikler.indexOf('assets/js/ilerleme.js');
     assert.ok(temelKonu >= 0 && tEk === temelKonu + 1 && e1Ek === tEk + 1 &&
-      e2Ek === e1Ek + 1 && konuIlerleme === e2Ek + 1,
-    'konular.html: 129 anlatım dosyası ilerleme betiğinden önce doğru sırada değil');
+      e2Ek === e1Ek + 1 && e3Ek === e2Ek + 1 && konuIlerleme === e3Ek + 1,
+    'konular.html: 140 anlatım dosyası ilerleme betiğinden önce doğru sırada değil');
   }
   if (dosya === 'deneme.html') {
     var oturum = betikler.indexOf('assets/js/deneme-oturum.js');
@@ -78,7 +79,7 @@ assert.ok(sw.indexOf("'./data/kelime-aliaslari.js'") >= 0,
 assert.ok(sw.indexOf("'./assets/js/deneme-oturum.js'") >= 0,
   'deneme oturum modülü çevrimdışı önbellekte değil');
 ['konu-metinleri.js', 'konu-metinleri-t-ek.js', 'konu-metinleri-e1-ek.js',
-  'konu-metinleri-e2-ek.js'].forEach(function (dosya) {
+  'konu-metinleri-e2-ek.js', 'konu-metinleri-e3-ek.js'].forEach(function (dosya) {
   assert.ok(sw.indexOf("'./data/" + dosya + "'") >= 0, 'önbellekte eksik: ' + dosya);
 });
 assert.ok(!fs.existsSync(path.join(kok, 'assets', 'js', 'esitleme.js')),

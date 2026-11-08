@@ -37,6 +37,10 @@ for (const file of fs.readdirSync(root).filter(x=>x.endsWith('.html'))) {
     s = s.replace(/<meta property="og:(title|description|url)"[^>]*>\s*/g,'');
     s = s.replace('</head>','<meta property="og:title" content="Sayfa bulunamadı — YDS Hazırlık">\n<meta property="og:description" content="Aradığınız sayfa bu adreste yok.">\n</head>');
   }
+  if (file === 'konular.html') {
+    s = s.replace(/(content="[^"]*?)\b\d+ ünite/g, '$1'+n.konu+' ünite');
+    s = s.replace(/(id="toplamUnite">)\d+/, '$1'+n.konu);
+  }
   if (file === 'ana-sayfa.html') {
     const map = {'st-kelime':n.kelime,'st-obek':n.obek,'st-soru':n.soru,'st-baglac':n.baglac,'st-konu':n.konu,'k-kelime':n.kelime,'k-obek':n.obek,'k-aile':n.aile};
     for (const [id,val] of Object.entries(map)) s = s.replace(new RegExp('(id="'+id+'"[^>]*>)[^<]+'), '$1'+tr(val));

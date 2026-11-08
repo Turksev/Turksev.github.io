@@ -1,11 +1,11 @@
 /* ============================================================
-   YDS konu haritaları — 129 ünite (Türkçe eksenli 61 + İngilizce eksenli 68)
+   YDS konu haritaları — 140 ünite (Türkçe eksenli 61 + İngilizce eksenli 79)
    Alanlar: k=kod, ad, kapsam, kat=kategori, katman, etki=YDS etkisi,
             soru=başlıca soru türleri, risk=TR-hata riski, zor=zorluk,
             on=ön koşullar
    Konu anlatımları data/konu-metinleri.js içinde; ilerleme takibi
    tarayıcıda (localStorage) tutulur, bu dosyada değil.
-   tools/konu-aktar.py ile üretilir; elle düzenleme.
+   tools/konu-aktar.py ve tools/konu-ekleri-uret.js üretir; elle düzenleme.
    ============================================================ */
 
 window.KONULAR = [
@@ -140,6 +140,17 @@ window.KONULAR = [
 {"k": "E65", "ad": "Soru biçimleri, tags ve kısa yanıtlar", "kapsam": "Yes/no, wh-, subject questions; question tags ve auxiliary repetition", "kat": "Genel İngilizce", "katman": "İsteğe bağlı", "etki": "Düşük", "soru": "Diyalog için destek", "risk": "Yüksek", "zor": "Kolay", "on": "E01"},
 {"k": "E66", "ad": "Imperatives ve exclamatives", "kapsam": "Let's, directives; What a… / How…; üretim ve genel kullanım", "kat": "Genel İngilizce", "katman": "İsteğe bağlı", "etki": "Düşük", "soru": "Genel İngilizce", "risk": "Orta", "zor": "Kolay", "on": "E01"},
 {"k": "E67", "ad": "Noktalama ve yazım ayrıntıları", "kapsam": "Comma splice, semicolon, colon, apostrophe, hyphenation, capitalization ve citation punctuation", "kat": "Genel İngilizce", "katman": "İsteğe bağlı", "etki": "Düşük", "soru": "Okuma için sınırlı destek", "risk": "Orta", "zor": "Orta", "on": "E03–E04"},
-{"k": "E68", "ad": "Telaffuz, vurgu ve connected speech", "kapsam": "Word/sentence stress, weak forms, silent letters ve spelling–sound mismatch", "kat": "Genel İngilizce", "katman": "İsteğe bağlı", "etki": "Düşük", "soru": "YDS dışı", "risk": "Yüksek", "zor": "Orta", "on": "—"}
+{"k": "E68", "ad": "Telaffuz, vurgu ve connected speech", "kapsam": "Word/sentence stress, weak forms, silent letters ve spelling–sound mismatch", "kat": "Genel İngilizce", "katman": "İsteğe bağlı", "etki": "Düşük", "soru": "YDS dışı", "risk": "Yüksek", "zor": "Orta", "on": "—"},
+{"k": "E69", "ad": "Fiillere -s, -ed ve -ing ekleme kuralları", "kapsam": "try → tries; sessiz harf + y, -es, sessiz e, -ie, harf çiftleme, düzensiz biçimler ve İngiliz–Amerikan yazımı", "kat": "Temel biçimler ve kullanım ayrıntıları", "katman": "Çekirdek 1", "etki": "Doğrudan", "soru": "Dilbilgisi, cloze, çeviri", "risk": "Yüksek", "zor": "Orta", "on": "—"},
+{"k": "E70", "ad": "Düzensiz fiiller ve V1–V2–V3 ayrımı", "kapsam": "Temel biçim, geçmiş zaman ve past participle; fiil aileleri; lie–lay, rise–raise ve read ayrımları", "kat": "Temel biçimler ve kullanım ayrıntıları", "katman": "Çekirdek 1", "etki": "Doğrudan", "soru": "Dilbilgisi, cloze, çeviri", "risk": "Yüksek", "zor": "Orta", "on": "E69"},
+{"k": "E71", "ad": "-s/-es ve -ed eklerinin telaffuzu", "kapsam": "Son harf yerine son ses; /s/, /z/, /ɪz/ ve /t/, /d/, /ɪd/; hece sayısı ve sıfat istisnaları", "kat": "Temel biçimler ve kullanım ayrıntıları", "katman": "Çekirdek 2", "etki": "Dolaylı", "soru": "Kelime tanıma, dinleme desteği", "risk": "Orta", "zor": "Orta", "on": "E69"},
+{"k": "E72", "ad": "Sıfat–zarf ayrımı ve -ly istisnaları", "kapsam": "Adı ve eylemi niteleme; linking verbs; good–well, hard–hardly, late–lately, fast ve friendly", "kat": "Temel biçimler ve kullanım ayrıntıları", "katman": "Çekirdek 1", "etki": "Doğrudan", "soru": "Kelime, dilbilgisi, cloze", "risk": "Yüksek", "zor": "Orta", "on": "—"},
+{"k": "E73", "ad": "-ing ve -ed sıfatları: anlam ve etken–edilgen ilişkisi", "kapsam": "boring–bored, protecting–protected, falling–fallen; Türkçe sıfat-fiil ekleri ve yapıdan anlam çıkarma", "kat": "Temel biçimler ve kullanım ayrıntıları", "katman": "Çekirdek 1", "etki": "Doğrudan", "soru": "Çeviri, cloze, cümle tamamlama", "risk": "Yüksek", "zor": "Orta", "on": "E69, E70"},
+{"k": "E74", "ad": "Özne, nesne, iyelik ve dönüşlü zamirler", "kapsam": "I–me–my–mine–myself tablosu; edattan sonra nesne biçimi, its–it's, by oneself ve tekil they", "kat": "Temel biçimler ve kullanım ayrıntıları", "katman": "Çekirdek 1", "etki": "Doğrudan", "soru": "Dilbilgisi, çeviri, gönderim", "risk": "Yüksek", "zor": "Orta", "on": "—"},
+{"k": "E75", "ad": "Karşılaştırma biçimlerinin yazımı: -er/-est, more/most", "kapsam": "big–bigger, happy–happier; kısa ve uzun sıfatlar, düzensiz karşılaştırmalar, zarflar ve çift işaretleme", "kat": "Temel biçimler ve kullanım ayrıntıları", "katman": "Çekirdek 1", "etki": "Doğrudan", "soru": "Dilbilgisi, cloze, çeviri", "risk": "Orta", "zor": "Orta", "on": "E72"},
+{"k": "E76", "ad": "İngilizcede sayı, tarih, saat ve yüzde ifadeleri", "kapsam": "Ondalık ve binlik ayrımı; sıra sayıları, İngiliz–Amerikan tarihi, saat, yüzde ve yüzde puan", "kat": "Temel biçimler ve kullanım ayrıntıları", "katman": "Çekirdek 2", "etki": "Doğrudan", "soru": "Okuma, çeviri, sayısal veri yorumlama", "risk": "Yüksek", "zor": "Orta", "on": "—"},
+{"k": "E77", "ad": "Soru ve olumsuzlukta be, do, have ve modal seçimi", "kapsam": "Yardımcı fiil seçme matrisi; does/did sonrası temel biçim, have got, özne sorusu ve kısa yanıt", "kat": "Temel biçimler ve kullanım ayrıntıları", "katman": "Çekirdek 1", "etki": "Doğrudan", "soru": "Dilbilgisi, diyalog, çeviri", "risk": "Yüksek", "zor": "Orta", "on": "E69, E70"},
+{"k": "E78", "ad": "too, enough, so ve such", "kapsam": "Aşırılık, yeterlik ve derece; isim–sıfat dizilişi, too much/many, to-infinitive ve that sonucu", "kat": "Temel biçimler ve kullanım ayrıntıları", "katman": "Çekirdek 1", "etki": "Doğrudan", "soru": "Cloze, cümle tamamlama, çeviri", "risk": "Yüksek", "zor": "Orta", "on": "E72"},
+{"k": "E79", "ad": "still, yet, already, just ve artık anlamı", "kapsam": "Hâlâ, henüz, çoktan, az önce; zarfın yeri, no longer ve not ... any more, zaman seçimi", "kat": "Temel biçimler ve kullanım ayrıntıları", "katman": "Çekirdek 1", "etki": "Doğrudan", "soru": "Cloze, çeviri, zaman ilişkileri", "risk": "Yüksek", "zor": "Orta", "on": "E77"}
 ]}
 ];

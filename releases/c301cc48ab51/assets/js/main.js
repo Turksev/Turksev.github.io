@@ -261,6 +261,11 @@
 
   /* ---------- çevrimdışı çalışma ---------- */
 
+  function surumBildiriminiYerlestir(kutu) {
+    var alan = document.querySelector('.site-header') || document.body || document.documentElement;
+    alan.insertBefore(kutu, alan.firstChild);
+  }
+
   function servisCalisaniniKaydet() {
     // file:// üzerinde ve HTTPS olmayan sunucularda çalışmaz; sessizce geç.
     if (!('serviceWorker' in navigator)) return;
@@ -288,7 +293,7 @@
         kayit.waiting.postMessage({ type: 'YENI_SURUMU_ETKINLESTIR' });
       });
       dugmeler[1].addEventListener('click', function () { kutu.remove(); });
-      document.body.appendChild(kutu);
+      surumBildiriminiYerlestir(kutu);
     }
 
     navigator.serviceWorker.addEventListener('controllerchange', function () {
@@ -490,7 +495,7 @@
       kutu.innerHTML = '<span>Site güncellendi; bu sayfa eski sürümde kaldı ve bazı veriler yüklenemiyor.</span>' +
         '<button class="btn sm" type="button">Sayfayı yenile</button>';
       kutu.querySelector('button').addEventListener('click', function () { yenidenYukle('eski-surum'); });
-      (document.body || document.documentElement).appendChild(kutu);
+      surumBildiriminiYerlestir(kutu);
     }).catch(function () {});
   }
 

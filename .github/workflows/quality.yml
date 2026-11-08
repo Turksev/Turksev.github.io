@@ -63,6 +63,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          node tools/konu-ekleri-uret.js --check
           node tools/ceviri-duzeltmeleri-uygula.js --check
           python tools/aile-cikar.py --check
           node tools/kelime-bicimleri-uret.js --check
@@ -86,6 +87,9 @@ jobs:
 
       - name: Browser, keyboard and accessibility regressions
         run: pnpm test:browser
+
+      - name: New topic lessons and diagnostic progress
+        run: node tools/konu-ekleri-browser-qa.js
 
       - name: Local usage, lifecycle and multi-tab regressions
         run: pnpm test:usage
