@@ -68,7 +68,7 @@ window.YDS.kacar=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>'
 window.addEventListener=(k,fn)=>{handlers[k]=fn;};window.setTimeout=fn=>{timeouts.set(++timer,fn);return timer;};
 window.clearTimeout=id=>timeouts.delete(id);window.setInterval=()=>0;
 window.getSelection=()=>selection;
-context.document={getElementById:element,hidden:false,activeElement:null,addEventListener:(k,fn)=>{handlers[k]=fn;}};
+context.document={getElementById:element,querySelectorAll:()=>[],hidden:false,activeElement:null,addEventListener:(k,fn)=>{handlers[k]=fn;}};
 vm.runInContext(source('assets/js/istatistik.js'),context);
 const flush=()=>{for(const fn of timeouts.values())fn();timeouts.clear();};
 assert.equal(element('bosDurum').hidden,false);assert.equal(element('hizDeger').textContent,'—');

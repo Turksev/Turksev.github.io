@@ -40,8 +40,8 @@ async function totals(page) {
   }
   return {pages:Array.from(pages.values()),features:Array.from(features,([id,count])=>({id,count}))};
 }
-async function learningSnapshot(page) {
-  return page.evaluate(prefix=>Object.fromEntries(Object.keys(localStorage).filter(key=>!key.startsWith(prefix)).sort().map(key=>[key,localStorage.getItem(key)])),prefix);
+async function learningSnapshot(page,ignoreViewPreferences=false) {
+  return page.evaluate(({prefix,ignoreViewPreferences})=>Object.fromEntries(Object.keys(localStorage).filter(key=>!key.startsWith(prefix)&&(!ignoreViewPreferences||!['yds-istatistik-aralik','yds-istatistik-bolumler'].includes(key))).sort().map(key=>[key,localStorage.getItem(key)])),{prefix,ignoreViewPreferences});
 }
 async function checkpoint(page) {
   assert.equal(await page.evaluate(()=>window.YDS.Kullanim.yaz()),true,'Usage checkpoint succeeds');
@@ -249,7 +249,7 @@ async function main() {
     await observer.locator('#kullanim').waitFor({state:'visible'});
     await observer.locator('#kullanimPaylar .stats-usage-bar').first().waitFor({state:'visible'});
     assert.equal(await observer.locator('#bosDurum').isVisible(),true,'Usage does not fabricate learning activity');
-    const before=await learningSnapshot(observer);
+    const before=await learningSnapshot(observer,true);
     for (const range of [7,90,30]) {
       await observer.locator('#aralik button[data-gun="'+range+'"]').click();
       assert.equal(await observer.locator('#aralik button[aria-pressed="true"]').count(),1);
@@ -259,7 +259,7 @@ async function main() {
       assert.equal(await observer.locator('#kullanimOzellikler tr').count(),expected.features.length,'Feature catalog is complete');
       assert.ok((await observer.locator('#kullanimOzet').innerText()).trim().length>0,'Usage summary is populated');
     }
-    assert.deepEqual(await learningSnapshot(observer),before,'Usage period controls leave every non-usage key unchanged');
+    assert.deepEqual(await learningSnapshot(observer,true),before,'Usage period controls preserve learning/settings outside local view preferences');
     await observer.locator('#kullanim details summary').click();
     for (const theme of ['light','dark']) for (const width of [320,375,1280]) {
       await observer.emulateMedia({colorScheme:theme});

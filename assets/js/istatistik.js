@@ -1,11 +1,12 @@
 /* Salt okunur görünüm: ilerlemeye, kotaya, kullanıma veya eşitlemeye yazmaz.
-   Yalnız seçilen dönem bu tarayıcıda bir görünüm tercihi olarak saklanır.
+   Seçilen dönem ve bölümlerin açık/kapalı durumu bu tarayıcıda saklanır.
    Ayrı kullanım izleyicisi kendi yaşam döngüsünde kayıt tutar. */
 (function () {
   'use strict';
   var YDS=window.YDS, Il=YDS.Ilerleme, Veri=YDS.Veri, Depo=YDS.Depo, H=YDS.IstatistikHesap;
   var esc=YDS.kacar, $=function(id){return document.getElementById(id);};
   var RANGE_KEY='yds-istatistik-aralik';
+  var SECTIONS_KEY='yds-istatistik-bolumler';
   var range=Depo.oku(RANGE_KEY,1), model, summary, remaining=0, selectedDay=null, pending=null, DAY=86400000;
   if([1,7,30,90].indexOf(range)===-1)range=1;
   var usagePending=null,usageDeferred=false,usageMarkup={};
@@ -265,6 +266,20 @@
   function schedule(){if(pending!==null)window.clearTimeout(pending);pending=window.setTimeout(function(){pending=null;refresh();},60);}
   function scheduleUsage(){if(usagePending!==null)window.clearTimeout(usagePending);usagePending=window.setTimeout(usage,60);}
   function resumeUsage(){if(usageDeferred)scheduleUsage();}
+  var savedSections=Depo.oku(SECTIONS_KEY,{}),sectionState={};
+  if(!savedSections||typeof savedSections!=='object'||Array.isArray(savedSections))savedSections={};
+  Array.prototype.forEach.call(document.querySelectorAll('details[data-stats-section]'),function(panel){
+    var name=panel.getAttribute('data-stats-section');
+    if(Object.prototype.hasOwnProperty.call(savedSections,name)&&typeof savedSections[name]==='boolean'){
+      panel.open=savedSections[name];sectionState[name]=panel.open;
+    }
+    var previous=panel.open;
+    panel.addEventListener('toggle',function(){
+      if(panel.open===previous)return;
+      previous=panel.open;sectionState[name]=panel.open;Depo.yaz(SECTIONS_KEY,sectionState);
+      if(panel.open)schedule();
+    });
+  });
   var initial=Il.gunlukHedef();$('planHiz').value=Number.isInteger(initial)&&initial>0&&initial<=1000?String(initial):'10';
   function rangeButtons(){
     Array.prototype.forEach.call($('aralik').querySelectorAll('button[data-gun]'),function(b){var active=Number(b.getAttribute('data-gun'))===range;b.classList.toggle('acik',active);b.setAttribute('aria-pressed',String(active));});
@@ -277,7 +292,6 @@
     rangeButtons();refresh();
   });
   $('gunSec').addEventListener('change',function(){var value=this.value,g=/^\d{4}-\d{2}-\d{2}$/.test(value)?Date.parse(value+'T00:00:00Z')/DAY:NaN;selectedDay=Number.isInteger(g)&&iso(g)===value&&g>=summary.start&&g<=model.today?g:null;detail();});
-  $('istatistikAyrintilar').addEventListener('toggle',function(){if(this.open)schedule();});
   $('planHiz').addEventListener('input',plan);
   $('tekrarKelimeAra').addEventListener('input',historySuggestions);
   $('tekrarKelimeForm').addEventListener('submit',function(event){
