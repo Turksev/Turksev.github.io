@@ -4,6 +4,7 @@ var fs = require('fs');
 var path = require('path');
 var vm = require('vm');
 var assert = require('assert');
+var baselineCard = require('../ceviri-kaynagi').transformCard;
 
 var kok = path.resolve(__dirname, '..', '..');
 var kaynak = JSON.parse(fs.readFileSync(
@@ -30,7 +31,9 @@ var kartlar = new Map();
 for (katman = 1; katman <= 7; katman++) {
   var katmanKartlari = pencere['KELIME_K' + katman] || {};
   Object.keys(katmanKartlari).forEach(function (en) {
-    kartlar.set(en, katmanKartlari[en]);
+    // The later translation layer is checked separately against its full pairs.
+    // Preserve the exact historical PDF-source assertions on their baseline.
+    kartlar.set(en, baselineCard(en, katmanKartlari[en], 'reverse'));
   });
 }
 

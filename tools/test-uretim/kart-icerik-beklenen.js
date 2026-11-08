@@ -3,6 +3,7 @@
 // comparisons stay exact; no field is globally ignored to accommodate changes.
 const fs = require('node:fs'), path = require('node:path'), assert = require('node:assert/strict');
 const {readCollection, expectedPhrases} = require('../kalip-anlam-kaynagi');
+const {transformCard} = require('../ceviri-kaynagi');
 const usage = readCollection();
 const folder = path.resolve(__dirname, '../kart-icerik-partileri');
 const batches = fs.existsSync(folder) ? fs.readdirSync(folder).filter(f => f.endsWith('.json')).sort()
@@ -40,7 +41,7 @@ function beklenenKart(word, record, includeCollocations = true) {
     result.a.pop();
   }
   if (includeCollocations) result.kl = plain(expectedPhrases(word, result, usage.rows));
-  return result;
+  return transformCard(word, result);
 }
 // Some older source fixtures contain meanings only. Still compare every
 // meaning field exactly after guarded editorial operations, without inventing

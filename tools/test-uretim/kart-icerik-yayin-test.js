@@ -1,9 +1,12 @@
 'use strict';
 const assert = require('node:assert/strict'), fs = require('node:fs'), path = require('node:path'), vm = require('node:vm');
 const {batches, usage} = require('./kart-icerik-beklenen');
+const {baselineCards} = require('../ceviri-kaynagi');
 const root = path.resolve(__dirname, '../..'), w = {}, context = vm.createContext({window: w});
 for (let k = 1; k <= 7; k++) vm.runInContext(fs.readFileSync(path.join(root, 'data/kelime-k' + k + '.js'), 'utf8'), context);
-const cards = Object.assign({}, ...Array.from({length: 7}, (_, i) => w['KELIME_K' + (i + 1)]));
+// Verify the original editorial batches against their exact recorded baseline.
+// ceviri-denetimi-test separately requires every final translation replacement.
+const cards = baselineCards(Object.assign({}, ...Array.from({length: 7}, (_, i) => w['KELIME_K' + (i + 1)])));
 const plain = value => JSON.parse(JSON.stringify(value));
 const seen = new Set(), variants = new Set(), expectedCounts = {corrections: 0, collocations: 0, alternatives: 0, removed_senses: 0};
 assert.ok(batches.length, 'Reviewed editorial sources are required');

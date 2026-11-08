@@ -1,6 +1,7 @@
 'use strict';
 const fs = require('node:fs'), path = require('node:path'), assert = require('node:assert/strict');
 const crypto = require('node:crypto');
+const {baselineCards, transformCard} = require('./ceviri-kaynagi');
 const folder = path.join(__dirname, 'kalip-anlam-partileri');
 function canonical(value) {
   if (Array.isArray(value)) return value.map(canonical);
@@ -8,7 +9,7 @@ function canonical(value) {
   return value;
 }
 function protectedDigest(cards) {
-  const withoutPhrases = Object.fromEntries(Object.entries(cards).map(([word, card]) => {
+  const withoutPhrases = Object.fromEntries(Object.entries(baselineCards(cards)).map(([word, card]) => {
     const {kl, ...retained} = card;
     return [word, retained];
   }));
@@ -65,7 +66,7 @@ function validateRow(row) {
 function expectedPhrases(word, card, rows, acceptApplied = false) {
   const row = rows.get(word);
   assert.ok(row, word + ': missing reviewed usage');
-  assert.deepEqual(card.a.map(a => a.tr), row.expected_senses, word + ': sense guard');
+  assert.deepEqual(transformCard(word, card, 'reverse').a.map(a => a.tr), row.expected_senses, word + ': sense guard');
   const actual = JSON.stringify(card.kl || []);
   assert.ok(actual === JSON.stringify(row.expected) || (acceptApplied &&
     (actual === JSON.stringify(row.replacement) || (row.previous_replacement && actual === JSON.stringify(row.previous_replacement)))), word + ': phrase guard');

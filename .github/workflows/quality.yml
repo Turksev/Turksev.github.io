@@ -63,6 +63,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          node tools/ceviri-duzeltmeleri-uygula.js --check
           python tools/aile-cikar.py --check
           node tools/kelime-bicimleri-uret.js --check
           node tools/kelime-bicimleri-tara.js --check

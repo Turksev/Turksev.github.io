@@ -34,6 +34,7 @@ from yds_paths import site_path, yds_path, scratch_path
 from icerik_kalite import son_kart_duzeltmeleri, son_obek_duzeltmeleri, ek_parti_turlerini_duzelt
 from kart_icerik import uygula as kart_icerigini_uygula
 from kalip_anlamlari import uygula as kalip_anlamlarini_uygula
+from ceviri_duzeltmeleri import uygula as ceviri_duzeltmelerini_uygula
 import io
 import json
 import os
@@ -1522,6 +1523,8 @@ def birlestir(ek_partileri=None):
     son_kart_duzeltmeleri(kelimeler, ek_ornekleri_oku())
     icerik_sonuc = kart_icerigini_uygula(kelimeler)
     kalip_sonuc = kalip_anlamlarini_uygula(kelimeler)
+    ceviri_sonuc = ceviri_duzeltmelerini_uygula(kelimeler)
+    print('  ceviri denetimi    :', ceviri_sonuc, 'anlam kaydi')
     kalipli = sum(bool(k.get('kalip')) for k in kelimeler.values())
     print('  kart icerik denetimi:', icerik_sonuc)
     print('  anlamli kaliplar    :', kalip_sonuc)
