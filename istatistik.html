@@ -91,31 +91,30 @@
 
     <div id="icerikBloklari">
 
-      <section id="bugunKelime" class="stats-panel stats-today" aria-labelledby="bugunKelimeBaslik">
-        <div class="stats-panel-heading"><div><p class="stats-eyebrow">BUGÜN VE DÜN</p><h2 id="bugunKelimeBaslik">Bugün ne yaptım?</h2></div><span class="stats-meta">Yalnız kelimeler · takvim günü</span></div>
-        <p id="bugunKelimeKapsam" class="stats-meta" role="status"></p>
-        <div id="bugunKelimeOzet" class="stats-today-metrics"></div>
-        <p class="stats-meta">Bu döküm kart, oyun ve Günün testi kelime sonuçlarını içerir. Aşağıdaki günlük sayaçlar tüm kart türlerini kapsar; Günün testi yanıtları yalnız bu ayrıntılı dökümde yer alır.</p>
-        <details id="bugunKelimeDetay" class="stats-details" hidden><summary>Bugünün kelimeleri ve kutu değişimleri</summary>
-          <p id="bugunZatenDetay" class="stats-meta"></p>
-          <ul id="bugunKutuGecisleri" class="stats-transition-list"></ul>
-          <div class="stats-table-wrap" tabindex="0" role="region" aria-label="Bugünün kelime sonuçları ve kutu adımları"><table><caption>Her satır bir kelime; Bildim, Bilemedim ve kutu adımları gün içindeki yanıtları gösterir. Eğik çizgi arada kayıtlı bir başlangıç farkı olduğunu belirtir.</caption><thead><tr><th scope="col">Kelime</th><th scope="col">Bildim</th><th scope="col">Bilemedim</th><th scope="col">Kutu adımları</th></tr></thead><tbody id="bugunKelimeTablo"></tbody></table></div>
-        </details>
-      </section>
       <div class="stats-overview">
         <section class="stats-speed" aria-labelledby="hizBaslik">
           <div class="stats-speed-top"><h2 id="hizBaslik">Bugünkü yanıtların</h2><span class="stats-pill" id="kayitKapsam"></span></div>
           <p class="stats-speed-value"><b id="hizDeger">—</b> <span id="hizBirim">yanıt</span></p>
           <p id="hizKiyas" class="stats-speed-compare"></p>
           <div id="hizMini" aria-hidden="true"></div>
-          <p class="stats-speed-note">Kartlar, yazma oyunu ve Durumum değerlendirmeleri. Tekrar yanıtları dahil; Günün testi yukarıdaki kelime dökümünde.</p>
+          <p class="stats-speed-note">Kartlar, yazma oyunu ve Durumum değerlendirmeleri. Tekrar yanıtları dahil; Günün testi aşağıdaki kelime dökümünde.</p>
         </section>
         <div class="stats-metrics" id="ozet"></div>
       </div>
       <div class="stats-insight" id="ritimOzet" role="status"></div>
       <p id="takvimNot" class="stats-meta" hidden></p>
 
-
+      <section id="bugunKelime" class="stats-panel stats-today" aria-labelledby="bugunKelimeBaslik">
+        <div class="stats-panel-heading"><div><p class="stats-eyebrow">BUGÜN VE DÜN</p><h2 id="bugunKelimeBaslik">Bugün ne yaptım?</h2></div><span class="stats-meta">Yalnız kelimeler · takvim günü</span></div>
+        <p id="bugunKelimeKapsam" class="stats-meta" role="status"></p>
+        <div id="bugunKelimeOzet" class="stats-today-metrics"></div>
+        <p class="stats-meta">Bu döküm kart, oyun ve Günün testi kelime sonuçlarını içerir. Yukarıdaki günlük sayaçlar tüm kart türlerini kapsar; Günün testi yanıtları yalnız bu ayrıntılı dökümde yer alır.</p>
+        <details id="bugunKelimeDetay" class="stats-details" hidden><summary>Bugünün kelimeleri ve kutu değişimleri</summary>
+          <p id="bugunZatenDetay" class="stats-meta"></p>
+          <ul id="bugunKutuGecisleri" class="stats-transition-list"></ul>
+          <div class="stats-table-wrap" tabindex="0" role="region" aria-label="Bugünün kelime sonuçları ve kutu adımları"><table><caption>Her satır bir kelime; Bildim, Bilemedim ve kutu adımları gün içindeki yanıtları gösterir. Eğik çizgi arada kayıtlı bir başlangıç farkı olduğunu belirtir.</caption><thead><tr><th scope="col">Kelime</th><th scope="col">Bildim</th><th scope="col">Bilemedim</th><th scope="col">Kutu adımları</th></tr></thead><tbody id="bugunKelimeTablo"></tbody></table></div>
+        </details>
+      </section>
         <section class="stats-panel" aria-labelledby="birikimBaslik">
           <p class="stats-eyebrow">KELİME HAVUZUN</p><h2 id="birikimBaslik">Öğrenme birikimi</h2>
           <p id="birikimOzet" class="stats-meta"></p>
