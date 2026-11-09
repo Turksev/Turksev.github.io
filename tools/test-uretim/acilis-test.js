@@ -86,6 +86,9 @@ esit(ortam({ 'yds-katmanlar': [6, 7] }).Y.Acilis.bugunOzeti().yeni, bos.UYELIK[7
 esit(ortam({ 'yds-katmanlar': [2, 6], 'yds-katman7': true }).Y.Acilis.seciliKatmanlar(), [2, 6]);
 esit(ortam({ 'yds-katmanlar': 'abc' }).Y.Acilis.seciliKatmanlar(), [2]);
 esit(ortam({ 'yds-katmanlar': [9, 0, 'x'] }).Y.Acilis.seciliKatmanlar(), [2]);
+esit(ortam({ 'yds-katmanlar': [] }).Y.Acilis.seciliKatmanlar(), [], 'bilerek boş bırakılan seçim korunur');
+assert.equal(ortam({ 'yds-katmanlar': [] }).Y.Acilis.bugunOzeti().bugun, 0, 'boş seçimde deste boş');
+esit(ortam({ 'yds-katmanlar': ['2', 2, 3.5, 7, 8], 'yds-katman7': true }).Y.Acilis.seciliKatmanlar(), [2, 7], 'tekrar, kesir ve geçersiz katmanlar sayılmaz');
 
 // 4) Katman tamamen mezunsa sıradaki kelimeler vadesi gelenlerden, o da yoksa listenin başından gelir.
 const hepsiMezun = {};

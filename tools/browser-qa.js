@@ -94,7 +94,7 @@ async function main() {
     assert.match(await page.locator('#donemTarih').innerText(),/8 Eyl$/);
     assert.match(await page.locator('#haftalikOzet').innerText(),/aynı 2 gününde/,'Tuesday compares two elapsed weekdays');
     assert.equal(await page.locator('#isiGrafik .today-cell').getAttribute('y'),'51.00','Tuesday row in calendar');
-    assert.match(await page.locator('#birikimOzet').innerText(),/^30 \/ /,'Only actual word cards counted');
+    assert.match(await page.locator('#birikimOzet').innerText(),/^Tüm katmanlar: 30 \/ /,'Only actual word cards counted');
     // Usage and the two local display preferences may change; learning/settings stay intact.
     const progressBefore=await page.evaluate(()=>Object.fromEntries(Object.keys(localStorage).filter(k=>!k.startsWith('yds-kullanim-v1:')&&!['yds-istatistik-aralik','yds-istatistik-bolumler'].includes(k)).sort().map(k=>[k,localStorage.getItem(k)])));
     for (const days of [1,7,90,30]) {
@@ -174,7 +174,7 @@ async function main() {
     await page.evaluate(()=>window.YDS.Depo.anahtarlariSil(['yds-gunluk-kayit'],'qa-clear'));
     await page.waitForFunction(()=>!document.getElementById('bosDurum').hidden);
     assert.equal(await page.locator('#hizDeger').innerText(),'—');
-    assert.match(await page.locator('#birikimOzet').innerText(),/^30 \/ /,'Clearing daily logs preserves word accumulation');
+    assert.match(await page.locator('#birikimOzet').innerText(),/^Tüm katmanlar: 30 \/ /,'Clearing daily logs preserves word accumulation');
     await page.setViewportSize({width:320,height:812});
     const emptyEnlarged=await page.evaluate(()=>{
       document.documentElement.style.fontSize='32px';document.querySelector('main').style.fontFamily='monospace';
@@ -367,17 +367,17 @@ async function main() {
     const ogrenilen=Number(await esit.locator('#p-ogrenilen').innerText());
     // page.clock performance.timeOrigin'i de sahteler; yenilenmeyi pencere işaretiyle sına.
     await esit.evaluate(()=>{window.__qaAyniSayfa=1;});
-    await uzaktanYaz('panelKelimesi',5);
+    await uzaktanYaz('establish',5);
     await esit.clock.runFor(500);
     await esit.waitForFunction(n=>Number(document.getElementById('p-ogrenilen').textContent)===n+1,ogrenilen);
     assert.equal(await esit.evaluate(()=>window.__qaAyniSayfa),1,'Panel updated in place, no reload');
     await esit.goto(base+'/durum.html');
     await esit.waitForFunction(()=>window.YDS.Esitleme&&window.YDS.Esitleme.oturumDurumu().hazir&&/çalışılan|çalışıldı/.test(document.getElementById('sayac').textContent));
-    const once=await esit.evaluate(()=>{const t=document.getElementById('sayac').textContent;const m=t.match(/toplam çalışılan (\d+)/)||t.match(/(\d+) kayıt çalışıldı/);return m?Number(m[1]):NaN;});
+    const once=await esit.evaluate(()=>{const m=document.getElementById('sayac').textContent.match(/bu kapsamda çalışılan (\d+)/);return m?Number(m[1]):NaN;});
     assert.ok(once>0,'Precondition: Durumum lists the synced records');
-    await uzaktanYaz('durumKelimesi',2);
+    await uzaktanYaz('repair',2);
     await esit.clock.runFor(500);
-    await esit.waitForFunction(n=>{const t=document.getElementById('sayac').textContent;const m=t.match(/toplam çalışılan (\d+)/)||t.match(/(\d+) kayıt çalışıldı/);return m&&Number(m[1])===n+1;},once);
+    await esit.waitForFunction(n=>{const m=document.getElementById('sayac').textContent.match(/bu kapsamda çalışılan (\d+)/);return m&&Number(m[1])===n+1;},once);
     assert.equal(diyaloglar,0);
     await esit.goto(base+'/ayarlar.html');
     await esit.waitForFunction(()=>window.YDS.Esitleme&&window.YDS.Esitleme.oturumDurumu().hazir);

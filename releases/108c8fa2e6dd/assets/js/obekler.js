@@ -72,7 +72,7 @@
       var ad = k === 0 ? 'yeni' : (k === 5 ? 'öğrenildi' : k + '. kutu');
       return '<button type="button" class="kutu' + (seciliKutu === k ? ' acik' : '') +
         '" data-k="' + k + '" title="' + (k === 0 ? 'Hiç çalışılmamış öbekler'
-          : (k === 5 ? 'Öğrenilmiş: seyrek bakım tekrarları sürer' : k + '. kutudaki öbekler')) +
+          : (k === 5 ? 'Öğrenilmiş: çalışma destesine yeniden gelmez' : k + '. kutudaki öbekler')) +
         ' — göstermek için tıkla" aria-pressed="' + (seciliKutu === k ? 'true' : 'false') +
         '" aria-label="' + ad + ', ' + o['k' + k] + ' öbek">' +
         '<b>' + o['k' + k] + '</b><i>' + ad + '</i></button>';

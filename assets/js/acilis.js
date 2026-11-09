@@ -15,14 +15,7 @@
 
   /* kelimeler.js ile aynı okuma: varsayılan [2]; 'yds-katman7' bayrağı yoksa eski 6 seçimi 7 sayılır. */
   function seciliKatmanlar() {
-    var s = Depo ? Depo.oku(KATMAN_ANAHTAR, [2]) : [2];
-    if (!Array.isArray(s) || !s.length) s = [2];
-    s = s.map(Number).filter(function (k, i, a) { return k >= 1 && k <= 7 && a.indexOf(k) === i; });
-    if (Depo && !Depo.oku('yds-katman7', false) && s.indexOf(6) !== -1) {
-      s = s.filter(function (k) { return k !== 6; });
-      if (s.indexOf(7) === -1) s.push(7);
-    }
-    return s.length ? s : [2];
+    return Veri.seciliKatmanlar();
   }
 
   function liste(k) {

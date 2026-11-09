@@ -91,6 +91,9 @@ jobs:
       - name: New topic lessons and diagnostic progress
         run: node tools/konu-ekleri-browser-qa.js
 
+      - name: Box counts across pages and filters
+        run: node tools/kutu-dagilim-browser-qa.js
+
       - name: Local usage, lifecycle and multi-tab regressions
         run: pnpm test:usage
 

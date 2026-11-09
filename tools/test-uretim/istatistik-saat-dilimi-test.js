@@ -31,9 +31,11 @@ if(!process.argv.includes('--zone-child')){
     return elements.get(id);
   }
   const buttons=[1,7,30,90].map(g=>{const e=element('button'+g);e.attrs['data-gun']=String(g);return e;});
-  const window={YDS:{Depo,Veri:{dizin:[{e:'alpha',k:2},{e:'beta',k:2}]},kacar:v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))},
+  const window={YDS:{Depo,Veri:{dizin:[{e:'alpha',k:2},{e:'beta',k:2}],seciliKatmanlar:()=>[2]},kacar:v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))},
     addEventListener:(k,fn)=>{(handlers[k]||(handlers[k]=[])).push(fn);},setTimeout:fn=>{timers.set(++sequence,fn);return sequence;},clearTimeout:id=>timers.delete(id),setInterval:()=>0};
   const context=vm.createContext({window,Date:LocalDate,console,document:{getElementById:element,querySelectorAll(){return [];},hidden:false,addEventListener(){}}});
+  window.KELIME_DIZIN=window.YDS.Veri.dizin;
+  vm.runInContext(source('assets/js/veri.js'),context);
   vm.runInContext(source('assets/js/ilerleme.js'),context);
   vm.runInContext(source('assets/js/istatistik-hesap.js'),context);
   const Il=window.YDS.Ilerleme,H=window.YDS.IstatistikHesap;

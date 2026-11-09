@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<script data-yds-release>window.YDS_SURUM="7daccd651a7f";window.YDS_VARLIK_KOKU="/releases/7daccd651a7f/";</script>
+<script data-yds-release>window.YDS_SURUM="108c8fa2e6dd";window.YDS_VARLIK_KOKU="/releases/108c8fa2e6dd/";</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ana sayfa — YDS Hazırlık</title>
@@ -9,7 +9,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%233b5bdb'/><text y='68' x='50' text-anchor='middle' font-size='46' font-family='sans-serif' font-weight='bold' fill='white'>Y</text></svg>">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#3b5bdb">
-<link rel="apple-touch-icon" href="/releases/7daccd651a7f/assets/img/icon-192.png">
+<link rel="apple-touch-icon" href="/releases/108c8fa2e6dd/assets/img/icon-192.png">
 <link rel="canonical" href="https://turksev.github.io/ana-sayfa.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="YDS Hazırlık">
@@ -19,13 +19,13 @@
 <meta property="og:url" content="https://turksev.github.io/ana-sayfa.html">
 <meta property="og:image" content="https://turksev.github.io/assets/img/icon-512.png">
 <meta name="twitter:card" content="summary">
-<link rel="stylesheet" href="/releases/7daccd651a7f/assets/css/style.css">
-<script src="/releases/7daccd651a7f/assets/js/main.js"></script>
-<script src="/releases/7daccd651a7f/data/kelime-aliaslari.js"></script>
-<script src="/releases/7daccd651a7f/assets/js/esitleme-veri.js"></script>
-<script src="/releases/7daccd651a7f/assets/js/esitleme-depo.js"></script>
-<script src="/releases/7daccd651a7f/assets/js/kullanim-hesap.js"></script>
-<script src="/releases/7daccd651a7f/assets/js/kullanim.js"></script>
+<link rel="stylesheet" href="/releases/108c8fa2e6dd/assets/css/style.css">
+<script src="/releases/108c8fa2e6dd/assets/js/main.js"></script>
+<script src="/releases/108c8fa2e6dd/data/kelime-aliaslari.js"></script>
+<script src="/releases/108c8fa2e6dd/assets/js/esitleme-veri.js"></script>
+<script src="/releases/108c8fa2e6dd/assets/js/esitleme-depo.js"></script>
+<script src="/releases/108c8fa2e6dd/assets/js/kullanim-hesap.js"></script>
+<script src="/releases/108c8fa2e6dd/assets/js/kullanim.js"></script>
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta http-equiv="Content-Security-Policy" content="base-uri 'self'; object-src 'none'">
 </head>
@@ -200,8 +200,8 @@
       </div>
       <p class="small muted" style="margin-top:18px">
         Kelime havuzunda ana referans resmî sınav PDF arşividir.
-        <a href="/releases/7daccd651a7f/data/kaynak-manifest.json">49 PDF'nin sınav kimliği ve SHA-256 manifesti</a> ile
-        <a href="/releases/7daccd651a7f/data/kelime-provenans.json">denetlenen kelime başlıklarının öğe düzeyi kaynak kaydı</a>
+        <a href="/releases/108c8fa2e6dd/data/kaynak-manifest.json">49 PDF'nin sınav kimliği ve SHA-256 manifesti</a> ile
+        <a href="/releases/108c8fa2e6dd/data/kelime-provenans.json">denetlenen kelime başlıklarının öğe düzeyi kaynak kaydı</a>
         soru metinlerini kopyalamadan yayımlanır.
       </p>
     </div>
@@ -271,10 +271,11 @@
   </div>
 </footer>
 
-<script src="/releases/7daccd651a7f/data/sayilar.js"></script>
-<script src="/releases/7daccd651a7f/data/yds-dagilim.js"></script>
-<script src="/releases/7daccd651a7f/assets/js/ilerleme.js"></script>
-<script src="/releases/7daccd651a7f/assets/js/veri.js"></script>
+<script src="/releases/108c8fa2e6dd/data/sayilar.js"></script>
+<script src="/releases/108c8fa2e6dd/data/yds-dagilim.js"></script>
+<script src="/releases/108c8fa2e6dd/data/katman-uyelik.js"></script>
+<script src="/releases/108c8fa2e6dd/assets/js/ilerleme.js"></script>
+<script src="/releases/108c8fa2e6dd/assets/js/veri.js"></script>
 <script>
 (function () {
   'use strict';
@@ -305,8 +306,8 @@
     tablo.tBodies[0].innerHTML = satirlar.join('');
   })();
 
-  /* Ana sayfa kelime dizinini (698 KB) yüklemez; özet için toplam sayı
-     (sayilar.js) ve ilerleme kayıtları yeter (denetim B8, 5 Eylül 2026). */
+  /* Hafif katman üyeliği yalnız güncel kelimeleri saydırır; öbekler ve
+     artık katalogda olmayan eski kayıtlar kelime toplamına katılmaz. */
   function $(id) { return document.getElementById(id); }
   function yaz(id, d) { var el = $(id); if (el) el.textContent = d; }
 
@@ -322,7 +323,7 @@
   yaz('k-obek', tr(sayilar.obek));
   yaz('k-aile', tr(sayilar.aile || 1328));
 
-  if (!Il || typeof Il.leitnerOzetSayidan !== 'function') {
+  if (!Il || typeof Il.leitnerOzet !== 'function') {
     $('panel').hidden = true;
     return;
   }
@@ -330,7 +331,15 @@
   /* İlerleme paneli. Açılışta bir kez, sonra bulut ya da başka sekme ilerlemeyi
      değiştirdikçe yerinde yeniden çizilir; her alan iki yönde de yazılır. */
   function paneliCiz() {
-    var o = Il.leitnerOzetSayidan(TOPLAM_KELIME);
+    var uyelik = window.KATMAN_UYELIK || {}, tum = [], secilen = [];
+    var secili = Veri.seciliKatmanlar();
+    Object.keys(uyelik).forEach(function (k) {
+      var liste = uyelik[k].map(function (en) { return { en: en }; });
+      tum = tum.concat(liste);
+      if (secili.indexOf(Number(k)) !== -1) secilen = secilen.concat(liste);
+    });
+    var o = Il.leitnerOzet(tum, 'kelime');
+    var deste = Il.leitnerOzet(secilen, 'kelime');
     var defter = Il.yanlisDefter();
     var karne = Il.kategoriOzet().filter(function (k) { return k.toplam > 0; });
     var gecmis = Il.gecmis();
@@ -339,21 +348,21 @@
     var basladi = o.calisilan > 0 || defter.length > 0 || karne.length > 0 || gecmis.length > 0;
     $('panel').hidden = !basladi;
 
-    $('btnDeste').textContent = o.bugun > 0
-      ? 'Bugünün destesini çalış (' + o.bugun + ' kart)'
+    $('btnDeste').textContent = deste.bugun > 0
+      ? 'Bugünün destesini çalış (' + deste.bugun + ' kart)'
       : 'Kelimelere göz at';
 
     if (!basladi) return false;
 
     /* kelime kutusu */
-    yaz('p-bugun', o.bugun);
+    yaz('p-bugun', deste.bugun);
     yaz('p-ogrenilen', o.ogrenilen);
     $('p-bar').style.width = (TOPLAM_KELIME ? o.ogrenilen / TOPLAM_KELIME * 100 : 0) + '%';
     $('p-bar').parentNode.setAttribute('aria-valuenow', String(TOPLAM_KELIME ? Math.round(o.ogrenilen / TOPLAM_KELIME * 100) : 0));
     $('p-bar').parentNode.setAttribute('aria-label', 'Öğrenilen kelimeler');
     yaz('p-kelimeOzet',
-      (o.tekrar ? o.tekrar + ' tekrar' : 'tekrar yok') +
-      ' + ' + o.acilacakYeni + ' yeni (günlük hedef ' + o.hedef + ') · ' +
+      'Seçili katmanlarda bugün: ' + deste.gosterilecekTekrar + ' tekrar + ' +
+      deste.acilacakYeni + ' yeni · Tüm katmanlar: ' +
       o.calisilan + '/' + TOPLAM_KELIME + ' kelimeye başlandı · zayıf: ' + (o.k1 + o.k2));
 
     /* yanlış defteri */
@@ -419,7 +428,7 @@
 })();
 </script>
 
-<script src="/releases/7daccd651a7f/assets/js/esitleme-ayar.js"></script>
-<script src="/releases/7daccd651a7f/assets/js/esitleme-v2.js"></script>
+<script src="/releases/108c8fa2e6dd/assets/js/esitleme-ayar.js"></script>
+<script src="/releases/108c8fa2e6dd/assets/js/esitleme-v2.js"></script>
 </body>
 </html>

@@ -144,7 +144,7 @@ Tarayıcı denetimi: `pnpm test:sozluk`.
 | `index.html` | Açılış sayfası: hareketli görsel karşılama, **yedi kelime katmanında ne var, ne kaldı** (halka ve çubuklarla öğrenilen/çalışılan/yeni, bugün vadesi gelen tekrar, sıradaki kelimeler), bugünün destesi ve hızlı bağlantılar. Katman kartı Kelimeler sayfasını `?katman=N` ile o katman seçili açar. Marka bağlantısı buraya gelir |
 | `oyunlar.html` | **Oyunlar**: Kelimeyi yaz bölümünde Türkçe anlamdan İngilizce yazım çalışılır ve ortak Leitner ilerlemesine yazılır. Ayrı Kalıp çalışması bölümünde anlam, edat ve cümle yapıları Türkçe açıklamalı sorularla çalışılır; sonuçları yalnız bu tarayıcıda tutulur. |
 | `ana-sayfa.html` | Ana sayfa (üst menüdeki **Ana sayfa** sekmesi): **YDS bölüm dağılımı tablosu** (80 sorunun hangi aralıkta hangi bölüm olduğu) ve ilerleme paneli — tekrar durumu, yanlış defteri, deneme geçmişi, kategori karnesi |
-| `durum.html` | Çalışılmış her şey tek listede (kelime, öbek, aile üyesi): üstte **sistemdeki toplam kayıt**, kutu sekmelerinde sayı ve bu toplama oranı ("hepsi" dahil), arama/süzme/sıralama |
+| `durum.html` | Güncel kelime/öbek kutuları: tür filtresine göre sayılar ve yüzdeler; katalog dışı eski kayıtlar silinmeden ayrı filtrede korunur |
 | `istatistik.html` | **Çalışma hızın ve ritmin**: 7/30/90 günlük dönem kıyası, günlük grafik ve veri tablosu, 26 haftalık takvim, haftalık tempo, kutu birikimi ve varsayımsal ilk tur planı. Ayıklama hız hesabına katılmaz |
 | `kelimeler.html` | 9.379 kelime ve yapı, 7 katman + **aralıklı tekrar (Leitner)**: bugünün destesi, kart modu, ipucu, sesli okuma. Katman düğmesinin üzerine gelince o katmanın **puan aralığı** çıkar |
 | `obekler.html` | 1.854 kelime öbeği (590 deyimsel fiil, 339 edat kalıbı, 864 sabit, 61 geçiş ifadesi) — ayrı Leitner destesi |
@@ -398,6 +398,10 @@ Yıldızlar `tools/anlam-yildiz.js` içindedir ve **anlam metnine** bağlıdır,
 kaynak listedeki sıra değişse bile eşleşme bozulmaz. Katman ve öbek dosyalarına `yz` alanı
 olarak gömülür. Üretim: `tools/test-uretim/yildiz-paketle.py` → agent (`yildiz-brief.md`)
 → `yildiz-dogrula.py`.
+
+**Kutu sayılarının kapsamı (9 Kasım 2026).** İstatistik, açılış sayfasındaki genel ilerleme ve ana sayfanın öğrenilen toplamı güncel 9.379 kelimeyi sayar. Kelimeler sayfasının kutuları seçili katmanlara aittir. Günün destesi bütün ekranlarda aynı seçili katmanlardan hesaplanır. Öbeklerin 1.854 kaydı ayrı sayılır; aynı başlıklı kelime/öbek kimlikleri karışmaz. Durumum'da tür filtresi kutu sayılarını ve yüzde paydasını değiştirir; metin araması yalnız listeyi süzer. Katalog dışı eski kayıtlar ana toplamlardan ayrılır, silinmez. Aileler dahil öğrenildi ölçütü yalnız 5. kutudur. Katman seçimi `Veri.seciliKatmanlar()` ile tekilleştirilir; boş seçim korunur ve eski 6→7 geçişi bütün ekranlarda aynı okunur.
+
+Denetim: `node tools/kutu-dagilim-browser-qa.js` yalıtılmış profilde aynı test kayıtlarını yedi ekran arasında karşılaştırır; gerçek kullanıcı profiline erişmez.
 
 **Kutu süzgeci.** Deste kartındaki kutu sayaçları (yeni · 1–4. kutu · öğrenildi) tıklanabilir:
 bir kutuya basınca liste yalnız o kutudaki kelimeleri/öbekleri gösterir, yeniden basınca süzgeç
