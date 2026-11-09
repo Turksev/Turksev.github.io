@@ -127,9 +127,9 @@
     text('haftalikOzet','Bu hafta '+n(weeks.current)+' yanıt · '+(weeks.comparable?'geçen haftanın aynı '+weeks.elapsed+' gününde '+n(weeks.previous)+' yanıt':'aynı günlerle kıyas için yeterli kayıt yok'));
   }
   function accumulation(){
-    var boxes=[0,0,0,0,0,0],selected=Veri.seciliKatmanlar(),pool=0,started=0;
-    Veri.dizin.forEach(function(item){var k=Il.kutu(item.e,'kelime');if(!Number.isInteger(k)||k<0||k>5)k=0;boxes[k]++;if(selected.indexOf(item.k)!==-1){pool++;if(k>0)started++;}});
-    var total=Veri.dizin.length,learned=total-boxes[0];remaining=Math.max(0,pool-started);
+    var boxes=[0,0,0,0,0,0];
+    Veri.dizin.forEach(function(item){var k=Il.kutu(item.e,'kelime');if(!Number.isInteger(k)||k<0||k>5)k=0;boxes[k]++;});
+    var total=Veri.dizin.length,learned=total-boxes[0];remaining=boxes[0];
     text('birikimOzet','Tüm katmanlar: '+n(learned)+' / '+n(total)+' kelimeye başlandı · '+n(boxes[5])+' kelime 5. kutuda');
     $('kutuGrafik').setAttribute('role','img');$('kutuGrafik').setAttribute('aria-label',n(learned)+' kelimeye başlandı, '+n(boxes[0])+' kelimeye başlanmadı.');
     $('kutuGrafik').innerHTML=boxes.map(function(value,k){return '<span class="box'+k+'" style="width:'+(total?value/total*100:0)+'%"></span>';}).join('');
@@ -138,9 +138,8 @@
   function plan(){
     var input=$('planHiz'),value=Number(input.value),days=H.plan(remaining,value);input.setAttribute('aria-invalid',days===null?'true':'false');
     if(days===null)text('tahminMetin','1 ile 1.000 arasında tam sayı gir.');
-    else if(!Veri.seciliKatmanlar().length)text('tahminMetin','Plan için önce bir kelime katmanı seç.');
-    else if(!remaining)text('tahminMetin','Seçili katmanlardaki bütün kelimelere ilk kaydın oluşturulmuş.');
-    else text('tahminMetin',n(remaining)+' kelimeye henüz başlanmamış. Günde '+n(value)+' yeni kelimeyle ilk tur için '+n(days)+' gün planlayabilirsin.');
+    else if(!remaining)text('tahminMetin','Tüm '+n(Veri.dizin.length)+' kelimeye ilk kaydın oluşturulmuş.');
+    else text('tahminMetin','Toplam '+n(Veri.dizin.length)+' kelimenin '+n(remaining)+' tanesine henüz başlanmamış. Günde '+n(value)+' yeni kelimeyle ilk tur için '+n(days)+' gün planlayabilirsin.');
   }
   function intervalLabel(days){return days===0?'1 günden az':n(days)+'–'+n(days+1)+' gün';}
   function historyDate(at){return new Date(at).toLocaleString('tr-TR',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});}

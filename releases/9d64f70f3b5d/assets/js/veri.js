@@ -239,6 +239,23 @@
     return s;
   }
 
+  /* Bütün ekranlarda aynı seçim: tekil geçerli katmanlar ve eski 6→7 göçü.
+     Boş dizi, kullanıcının bütün katmanları kapatmış olmasıdır. Salt okur. */
+  function seciliKatmanlar() {
+    var depo = window.YDS.Depo;
+    var ham = depo ? depo.oku('yds-katmanlar', [2]) : [2];
+    if (!Array.isArray(ham)) ham = [2];
+    var s = ham.map(Number).filter(function (k, i, a) {
+      return Number.isInteger(k) && KATMANLAR.indexOf(k) !== -1 && a.indexOf(k) === i;
+    });
+    if (ham.length && !s.length) s = [2];
+    if (depo && !depo.oku('yds-katman7', false) && s.indexOf(6) !== -1) {
+      s = s.filter(function (k) { return k !== 6; });
+      if (s.indexOf(7) === -1) s.push(7);
+    }
+    return s.sort(function (a, b) { return a - b; });
+  }
+
   window.YDS.Veri = {
     KATMANLAR: KATMANLAR,
     KATMAN_ADI: KATMAN_ADI,
@@ -255,6 +272,7 @@
     katmanlariYukle: katmanlariYukle,
     katmanYukluMu: katmanYukluMu,
     katmanSayilari: katmanSayilari,
+    seciliKatmanlar: seciliKatmanlar,
     obekleriYukle: obekleriYukle,
     testleriYukle: testleriYukle,
     obekTestleriniYukle: obekTestleriniYukle

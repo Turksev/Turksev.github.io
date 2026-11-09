@@ -28,14 +28,10 @@
 
   var DIZIN = Veri.dizin;
   var seciliKutu = null;          // kutu süzgeci: null | 0..5
-  var secili = Depo.oku(KATMAN_ANAHTAR, [2]);
-  if (!Array.isArray(secili) || !secili.length) secili = [2];
+  var secili = Veri.seciliKatmanlar();
   // Aile üyeleri 6'dan 7'ye taşındı (Geniş+ araya girdi); eski seçimi bir kez taşı.
   if (!Depo.oku('yds-katman7', false)) {
-    if (secili.indexOf(6) !== -1) {
-      secili = secili.filter(function (k) { return k !== 6; }).concat(secili.indexOf(7) === -1 ? [7] : []);
-      Depo.yaz(KATMAN_ANAHTAR, secili);
-    }
+    Depo.yaz(KATMAN_ANAHTAR, secili);
     Depo.yaz('yds-katman7', true);
   }
 
@@ -126,7 +122,7 @@
     var o = Il.leitnerOzet(havuz.map(function (d) { return { en: d.e }; }), ILERLEME_TURU);
 
     $('desteBilgi').textContent = havuz.length
-      ? o.calisilan + '/' + havuz.length + ' kelimeye başlandı · ' + o.ogrenilen + ' öğrenildi'
+      ? 'Seçili katmanlar: ' + o.calisilan + '/' + havuz.length + ' kelimeye başlandı · ' + o.ogrenilen + ' öğrenildi'
       : 'Önce bir katman seç';
 
     // Çubuk genel ilerlemeyi gösterir: öğrenilen / seçili havuz
@@ -782,16 +778,31 @@
      kopya önce depodan tazelenir. */
   function desteyiTazele() {
     Il.tazele();
+    var yeniSecim = Veri.seciliKatmanlar();
+    if (JSON.stringify(yeniSecim) !== JSON.stringify(secili.slice().sort(function (a, b) { return a - b; }))) {
+      secili = yeniSecim;
+      katmanlariUygula();
+      return;
+    }
     if (desteModu && kartModu) { kartCiz(); return; }
     desteyiCiz();
     // Sayaç başka bir ileti gösteriyorsa (deste bitti, katman yükleniyor ya da yüklenemedi)
     // onun yerine geçmez.
-    if (elSayac.textContent === sayacMetni) guncelleSayac();
+    if (elSayac.textContent === sayacMetni) {
+      if (kartModu) guncelleSayac();
+      else {
+        var oncekiGosterilen = gosterilen;
+        filtrele();
+        if (oncekiGosterilen > gosterilen) { gosterilen = oncekiGosterilen; ciz(); }
+      }
+    }
   }
   window.addEventListener('yds-depo-degisti', function (e) {
     var d = e && e.detail;
     if (!d || (d.kaynak !== 'bulut' && d.kaynak !== 'sekme')) return;
-    if (!d.anahtarlar || d.anahtarlar.indexOf('yds-leitner') !== -1) desteyiTazele();
+    if (!d.anahtarlar || d.anahtarlar.some(function (k) {
+      return ['yds-leitner', KATMAN_ANAHTAR, 'yds-katman7'].indexOf(k) !== -1;
+    })) desteyiTazele();
   });
   window.addEventListener('pageshow', function (e) {
     if (e.persisted) desteyiTazele();

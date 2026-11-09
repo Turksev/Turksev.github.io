@@ -53,7 +53,7 @@
     a.u.forEach(function (w) {
       var k = Il.kutu(w);
       if (k > 0) baslanan++;
-      if (k >= 4) ogrenilen++;
+      if (Il.mezunMu(w, 'kelime')) ogrenilen++;
     });
     return { ogrenilen: ogrenilen, baslanan: baslanan, toplam: a.u.length };
   }
@@ -149,7 +149,7 @@
       govde = '<div class="aile-ozet" id="' + govdeId + '">' + a.u.map(function (w) {
         var kk = Il.kutu(w);
         return '<span class="cip' + (w === a.k ? ' kok' : '') +
-               (kk >= 4 ? ' ogrenildi' : (kk > 0 ? ' baslandi' : '')) + '">' +
+               (Il.mezunMu(w, 'kelime') ? ' ogrenildi' : (kk > 0 ? ' baslandi' : '')) + '">' +
                '<span lang="en">' + kacar(w) + '</span></span>';
       }).join('') + '</div>';
     }
@@ -240,7 +240,7 @@
       e.stopPropagation();
       isaretle(yildiz.closest('.uye').getAttribute('data-w'),
                yildiz.getAttribute('data-ne'));
-      ciz();
+      filtrele();
       return;
     }
 
@@ -253,7 +253,7 @@
       if (aile) {
         aile.u.forEach(function (w) { isaretle(w, toplu.getAttribute('data-toplu')); });
       }
-      ciz();
+      filtrele();
       return;
     }
 
@@ -314,4 +314,17 @@
 
   filtrele();
   if (gelenA) aileAc(gelenA);
+
+  function tazele() {
+    Il.tazele();
+    var onceki = gosterilen;
+    filtrele();
+    if (onceki > gosterilen) { gosterilen = onceki; ciz(); }
+  }
+  window.addEventListener('yds-depo-degisti', function (e) {
+    var d = e && e.detail;
+    if (!d || (d.kaynak !== 'bulut' && d.kaynak !== 'sekme')) return;
+    if (!d.anahtarlar || d.anahtarlar.indexOf('yds-leitner') !== -1) tazele();
+  });
+  window.addEventListener('pageshow', function (e) { if (e.persisted) tazele(); });
 })();

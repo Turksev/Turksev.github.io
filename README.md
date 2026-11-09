@@ -401,6 +401,8 @@ olarak gömülür. Üretim: `tools/test-uretim/yildiz-paketle.py` → agent (`yi
 
 **Kutu sayılarının kapsamı (9 Kasım 2026).** İstatistik, açılış sayfasındaki genel ilerleme ve ana sayfanın öğrenilen toplamı güncel 9.379 kelimeyi sayar. Kelimeler sayfasının kutuları seçili katmanlara aittir. Günün destesi bütün ekranlarda aynı seçili katmanlardan hesaplanır. Öbeklerin 1.854 kaydı ayrı sayılır; aynı başlıklı kelime/öbek kimlikleri karışmaz. Durumum'da tür filtresi kutu sayılarını ve yüzde paydasını değiştirir; metin araması yalnız listeyi süzer. Katalog dışı eski kayıtlar ana toplamlardan ayrılır, silinmez. Aileler dahil öğrenildi ölçütü yalnız 5. kutudur. Katman seçimi `Veri.seciliKatmanlar()` ile tekilleştirilir; boş seçim korunur ve eski 6→7 geçişi bütün ekranlarda aynı okunur.
 
+İstatistikteki **Tüm kelimeler için ilk tur planı**, katman seçiminden bağımsız olarak güncel 9.379 kelimenin başlanmamış olanlarını (0. kutu) kapsar. 1–5. kutudakiler ilk tur kalanına eklenmez. Plan alanı günlük yeni kart hedefiyle açılır; burada sayı değiştirmek çalışma ayarını veya ilerlemeyi değiştirmez. Tekrarlar ve 5. kutuya ulaşma süresi bu varsayımsal hesaba dahil değildir.
+
 Denetim: `node tools/kutu-dagilim-browser-qa.js` yalıtılmış profilde aynı test kayıtlarını yedi ekran arasında karşılaştırır; gerçek kullanıcı profiline erişmez.
 
 **Kutu süzgeci.** Deste kartındaki kutu sayaçları (yeni · 1–4. kutu · öğrenildi) tıklanabilir:

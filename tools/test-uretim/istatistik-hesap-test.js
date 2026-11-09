@@ -76,7 +76,7 @@ assert.equal(element('bosDurum').hidden,false);assert.equal(element('hizDeger').
 assert.match(element('kullanimOzet').textContent,/henüz başlamadı/);
 assert.equal(element('kullanimBos').hidden,false);
 assert.match(element('kullanimBosSayfalar').textContent,/henüz ölçüm yok/);
-assert.match(element('tahminMetin').textContent,/1 kelimeye/,'Yinelenen seçili katman havuzu şişirmez');
+assert.match(element('tahminMetin').textContent,/Toplam 3 kelimenin 2 tanesine/,'Plan, seçili olmayan katmandaki başlanmamış kelimeyi de kapsar');
 log={[now]:row(10,100)};handlers['yds-depo-degisti']({detail:{anahtarlar:['yds-gunluk-kayit']}});flush();
 assert.equal(element('hizDeger').textContent,'110,0');assert.equal(element('bosDurum').hidden,true);
 assert.match(element('gunDetay').innerHTML,/100 “Zaten biliyorum”/);

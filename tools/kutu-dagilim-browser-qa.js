@@ -59,6 +59,11 @@ async function main(){
     }
     await page.goto(base+'/istatistik.html');
     assert.deepEqual((await page.locator('#kutuEfsane b').allTextContents()).map(n),words,'İstatistik: tüm kelimeler');
+    const planText=(remaining,pace)=>'Toplam 9.379 kelimenin '+remaining.toLocaleString('tr-TR')+' tanesine henüz başlanmamış. Günde '+pace+' yeni kelimeyle ilk tur için '+Math.ceil(remaining/pace).toLocaleString('tr-TR')+' gün planlayabilirsin.';
+    assert.equal(await page.locator('#tahminMetin').innerText(),planText(words[0],5));
+    await page.locator('#planHiz').fill('40');
+    assert.equal(await page.locator('#tahminMetin').innerText(),planText(words[0],40));
+    assert.equal(await page.evaluate(()=>YDS.Ilerleme.gunlukHedef()),5,'Plan hesabı gerçek günlük hedefi değiştirmez');
     await page.goto(base+'/index.html');
     assert.equal(n(await page.locator('#acilisGenel .r-mezun [data-sayac]').innerText()),words[5],'Açılış: yalnız 5. kutu');
     assert.equal(n(await page.locator('#acilisGenel .r-ogren [data-sayac]').innerText()),total(words.slice(1,5)),'Açılış: 1–4. kutu');
@@ -100,10 +105,11 @@ async function main(){
     assert.equal(n(await page.locator('#p-bugun').innerText()),expectedDeck,'Ana sayfadaki deste seçili katmanlara ait');
     await page.goto(base+'/istatistik.html');
     assert.deepEqual((await page.locator('#kutuEfsane b').allTextContents()).map(n),expectedWords());
-    // Eski katman 6→7 seçimi istatistikte de aynı okunmalı (salt okuma).
+    assert.equal(await page.locator('#tahminMetin').innerText(),planText(expectedWords()[0],5),'Tek katman seçimi tüm kelimeler planını daraltmaz');
+    // Eski katman seçimi de planı daraltmamalı; istatistik salt okunur kalır.
     await page.evaluate(()=>{YDS.Depo.yaz('yds-katmanlar',[6]);YDS.Depo.sil('yds-katman7');});
     await page.reload();
-    assert.match(await page.locator('#tahminMetin').innerText(),new RegExp('^'+expectedWords([7])[0]+' kelime'));
+    assert.equal(await page.locator('#tahminMetin').innerText(),planText(expectedWords()[0],5));
     assert.equal(await page.evaluate(()=>YDS.Depo.oku('yds-katman7',false)),false,'İstatistik tercih göçünü yazmaz');
     await page.goto(base+'/kelimeler.html');
     assert.deepEqual(await wordCounts(),expectedWords([7]));
@@ -112,7 +118,7 @@ async function main(){
     await page.reload();
     assert.deepEqual(await wordCounts(),[0,0,0,0,0,0]);
     await page.goto(base+'/istatistik.html');
-    assert.match(await page.locator('#tahminMetin').innerText(),/önce bir kelime katmanı seç/);
+    assert.equal(await page.locator('#tahminMetin').innerText(),planText(expectedWords()[0],5),'Katman seçilmeden de tüm kelimeler için plan yapılır');
     await page.goto(base+'/oyunlar.html');
     assert.equal(await page.locator('#katmanlar [aria-pressed="true"]').count(),0);
     assert.ok(await page.evaluate(()=>!!YDS.Depo.oku('yds-leitner',{})['audit-retired-word']),'Eski kayıt silinmedi');

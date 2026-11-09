@@ -85,21 +85,13 @@
   /* ---------- katman seçimi (kelimeler.js ile aynı anahtar ve kural) ---------- */
 
   function katmanlariOku() {
-    var s = Depo.oku(KATMAN_ANAHTAR, [2]);
-    if (!Array.isArray(s) || !s.length) s = [2];
-    s = s.map(Number).filter(function (k, i, a) {
-      return k >= 1 && k <= 7 && Math.floor(k) === k && a.indexOf(k) === i;
-    });
+    var s = Veri.seciliKatmanlar();
     // Aile üyeleri 6'dan 7'ye taşındı (Geniş+ araya girdi); eski seçimi bir kez taşı.
     // Bu sayfa seçimi yazabildiği için taşıma ilk yazımdan önce burada yapılır.
     if (!Depo.oku('yds-katman7', false)) {
-      if (s.indexOf(6) !== -1) {
-        s = s.filter(function (k) { return k !== 6; }).concat(s.indexOf(7) === -1 ? [7] : []);
-        Depo.yaz(KATMAN_ANAHTAR, s);
-      }
+      Depo.yaz(KATMAN_ANAHTAR, s);
       Depo.yaz('yds-katman7', true);
     }
-    if (!s.length) s = [2];
     return s.sort(function (a, b) { return a - b; });
   }
 

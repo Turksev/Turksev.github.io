@@ -30,6 +30,7 @@
   var suzulmus = [];
   var gosterilen = SAYFA_BOYU;
   var seciliKutu = 0;       // 0 = hepsi
+  var obekYuklemeHatasi = false;
 
   var $ = function (id) { return document.getElementById(id); };
   var elAra = $('ara'), elTur = $('tur'), elSirala = $('sirala');
@@ -63,7 +64,7 @@
       // Veri henüz yüklenmemiş ya da kayıt artık listede yok
       return { kimlik: kimlik, ad: ad,
                tur: belirliTur || (ad.indexOf(' ') === -1 ? 'kelime' : 'obek'),
-               kutu: ham[kimlik].k, kalan: ham[kimlik].kalan, tr: '', y: '' };
+               kutu: ham[kimlik].k, kalan: ham[kimlik].kalan, tr: '', y: '', arsiv: true };
     });
   }
 
@@ -74,8 +75,7 @@
     return Object.keys(ham).some(function (kimlik) {
       var cozum = Il.kimlikCoz(kimlik);
       if (cozum.tur === 'kelime' || cozum.tur === 'cumle') return false;
-      return cozum.tur === 'obek' ||
-        (!Veri.dizinKaydi(cozum.ad) && cozum.ad.indexOf(' ') !== -1);
+      return cozum.tur === 'obek' || !Veri.dizinKaydi(cozum.ad);
     });
   }
 
@@ -107,22 +107,31 @@
   }
 
   function sekmeleriCiz() {
-    var say = { 0: kayitlar.length, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
-    kayitlar.forEach(function (k) { say[k.kutu] = (say[k.kutu] || 0) + 1; });
+    var kapsam = kapsamKayitlari();
+    var say = { 0: kapsam.length, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+    kapsam.forEach(function (k) { say[k.kutu] = (say[k.kutu] || 0) + 1; });
     var acilan = say[0];
     var sis = sistemToplami();
-    var payda = sis.toplam;
+    var tur = elTur.value;
+    var payda = tur === 'arsiv' ? kapsam.length : (tur ? sis[tur] : sis.toplam);
 
     // 5. kutu tamamlanmıştır; yalnız 1–4. kutuların tekrar vadesi gelebilir.
-    var vadesi = kayitlar.filter(function (k) {
+    var vadesi = kapsam.filter(function (k) {
       return Il.vadesiGeldiMi(k.ad, k.tur);
     }).length;
 
     var ust = $('sistemToplam');
     if (ust) {
-      ust.innerHTML = 'Sistemde toplam <b>' + bin(payda) + '</b> kayıt — ' +
-        bin(sis.kelime) + ' kelime + ' + bin(sis.obek) + ' öbek. ' +
-        'Sekmelerdeki yüzdeler bu toplama göredir.';
+      var arsiv = kayitlar.filter(function (k) { return k.arsiv; }).length;
+      ust.innerHTML = (tur === 'arsiv'
+        ? 'Güncel katalogda bulunmayan <b>' + bin(arsiv) + '</b> eski kayıt. İlerlemen korunur; güncel kelime/öbek toplamlarına katılmaz.'
+        : 'Kapsam: <b>' + (tur === 'kelime' ? bin(sis.kelime) + ' kelime' :
+          tur === 'obek' ? bin(sis.obek) + ' öbek' : bin(sis.kelime) + ' kelime + ' + bin(sis.obek) + ' öbek') +
+          '</b> · tüm katmanlar. Kutu sayıları seçili türe, yüzdeler bu türün toplamına göredir; arama kutu sayılarını değiştirmez.' +
+          (arsiv ? ' Güncel listede olmayan ' + bin(arsiv) + ' eski kayıt Tür → Eski kayıtlar bölümünde korunuyor.' : ''));
+      if (!window.OBEKLER && obekGerekliMi()) ust.innerHTML += obekYuklemeHatasi
+        ? ' Öbek verisi yüklenemedi; öbek sayımı henüz doğrulanamadı.'
+        : ' Öbekler yükleniyor; sayım tamamlanıyor…';
     }
 
     var html = '<button type="button" class="ks' + (seciliKutu === 0 ? ' acik' : '') +
@@ -151,13 +160,18 @@
 
   /* ---------- filtre ve çizim ---------- */
 
+  function kapsamKayitlari() {
+    var tur = elTur.value;
+    return kayitlar.filter(function (k) {
+      if (tur === 'arsiv') return !!k.arsiv;
+      return !k.arsiv && (!tur || k.tur === tur);
+    });
+  }
+
   function filtrele() {
     var q = sadelestir(elAra.value.trim());
-    var tur = elTur.value;
-
-    suzulmus = kayitlar.filter(function (k) {
+    suzulmus = kapsamKayitlari().filter(function (k) {
       if (seciliKutu && k.kutu !== seciliKutu) return false;
-      if (tur && k.tur !== tur) return false;
       if (q && sadelestir(k.ad + ' ' + k.tr + ' ' + k.y).indexOf(q) === -1) return false;
       return true;
     });
@@ -176,7 +190,8 @@
 
   function satir(k) {
     var b = KUTU_BILGI[k.kutu] || { ad: k.kutu + '. kutu', sinif: '' };
-    var vade = k.kalan === 0 ? 'bugün tekrar' : k.kalan + ' gün sonra';
+    var vade = k.kutu === 5 ? 'tamamlandı · yeniden sorulmaz' :
+      (k.kalan === 0 ? 'bugün tekrar' : k.kalan + ' gün sonra');
     var testYanlisi = Il.testYanlisSayisi
       ? Il.testYanlisSayisi(k.ad, k.tur) : 0;
 
@@ -210,6 +225,7 @@
 
   function ciz() {
     sekmeleriCiz();
+    var kapsam = kapsamKayitlari();
 
     var bosMu = suzulmus.length === 0;
     elBos.hidden = !bosMu;
@@ -221,11 +237,11 @@
         : 'Bu filtrelerle eşleşen kayıt yok.';
       elListe.innerHTML = '';
       $('dahaFazla').hidden = true;
-      elSayac.textContent = kayitlar.length + ' kayıt çalışıldı';
+      elSayac.textContent = '0 kayıt gösteriliyor · bu kapsamda çalışılan ' + kapsam.length;
       return;
     }
 
-    elSayac.textContent = suzulmus.length + ' kayıt gösteriliyor · toplam çalışılan ' + kayitlar.length;
+    elSayac.textContent = suzulmus.length + ' kayıt gösteriliyor · bu kapsamda çalışılan ' + kapsam.length;
     elListe.innerHTML = suzulmus.slice(0, gosterilen).map(satir).join('');
 
     var kalan = suzulmus.length - gosterilen;
@@ -285,7 +301,7 @@
   if (obekGerekliMi()) {
     Veri.obekleriYukle()
       .then(function () { kayitlariKur(); filtrele(); })
-      .catch(function () { /* anlamlar boş kalır, liste yine çalışır */ });
+      .catch(function () { obekYuklemeHatasi = true; ciz(); });
   }
 
   // Bulut ya da başka sekme kayıtları değiştirirse liste yerinde yenilenir;
@@ -313,7 +329,8 @@
     if (acik > gosterilen) { gosterilen = acik; ciz(); }
     // Sonradan gelen öbek kaydı anlamsız kalmasın.
     if (!window.OBEKLER && obekGerekliMi()) {
-      Veri.obekleriYukle().then(function () { tazelePlanla(0); }).catch(function () {});
+      Veri.obekleriYukle().then(function () { obekYuklemeHatasi = false; tazelePlanla(0); })
+        .catch(function () { obekYuklemeHatasi = true; ciz(); });
     }
   }
 
