@@ -251,7 +251,7 @@ function sayfaIci() {
     // Destede en az bir kart varken geçerlidir (boş destede düğmenin metni başkadır).
     desteOzet: katmanlar => {
       const ws = T.desteHavuz(katmanlar), o = Il().leitnerOzet(ws.map(w => ({en: w})), 'kelime');
-      return {bilgi: o.calisilan + '/' + ws.length + ' kelimeye başlandı · ' + o.ogrenilen + ' öğrenildi',
+      return {bilgi: 'Seçili katmanlar: ' + o.calisilan + '/' + ws.length + ' kelimeye başlandı · ' + o.ogrenilen + ' öğrenildi',
         kutular: [o.k0, o.k1, o.k2, o.k3, o.k4, o.k5], dugme: 'Bugünü çalış (' + o.bugun + ' kart)',
         // Liste sayacının (#sayac) ilerlemeden gelen sonu.
         sayacSonu: ' · öğrenilen ' + o.ogrenilen + ' · bugün ' + o.gosterilecekTekrar + ' tekrar + ' + o.acilacakYeni + ' yeni'};
@@ -448,7 +448,7 @@ const kelimelerAc = async (page, base) => { await page.goto(base + '/kelimeler.h
 const yeniKotasiniDoldur = async (page, katman) => {
   const d = await page.evaluate(k => {
     const Il = window.YDS.Ilerleme;
-    Il.gunlukHedefAyarla(Math.min(...[...document.getElementById('gunlukHedef').options].map(o => Number(o.value))));
+    Il.gunlukHedefAyarla(5);
     const ws = window.__oyun.desteHavuz([k]).slice(60).filter(w => Il.yeniMi(w, 'kelime')).slice(0, Il.yeniKotasiKalan());
     ws.forEach(w => Il.dogru(w, 'kelime'));
     return {ws, kota: Il.yeniKotasiKalan()};
@@ -4333,7 +4333,7 @@ async function main() {
     // düğmesini getirir (düğme 40 ve üstünde çıkar).
     const f = await page.evaluate(() => {
       const Il = window.YDS.Ilerleme;
-      const tavan = Math.min(...[...document.getElementById('gunlukTavan').options].map(o => Number(o.value)));
+      const tavan = 10;
       Il.gunlukTavanAyarla(tavan);
       const ws = window.__oyun.desteHavuz([2]).slice(0, tavan + 45);
       ws.forEach(w => Il.dogru(w, 'kelime'));
@@ -4393,7 +4393,7 @@ async function main() {
     await kelimelerAc(page, base);
     const f = await page.evaluate(() => {
       const Il = window.YDS.Ilerleme;
-      const tavan = Math.min(...[...document.getElementById('gunlukTavan').options].map(o => Number(o.value)));
+      const tavan = 10;
       Il.gunlukTavanAyarla(tavan);
       const sonrakiler = window.__oyun.desteHavuz([2]).slice(0, tavan + 46), enEski = sonrakiler.pop();
       Il.dogru(enEski, 'kelime');
@@ -4430,8 +4430,8 @@ async function main() {
     return (f.sonrakiler.length + 1) + ' gecikmiş tekrar, tavan ' + f.tavan + '; ekranda kalan kart: ' + f.enEski + ', eski desteden ileri alınan: ' + ileriAlinan.length;
   });
 
-  /* ---------- Kelimeler destesi: katman değişimi, sıfırlama, geri alma ---------- */
-  senaryo('Kelimeler destesi açıkken katman değişimi, sıfırlama ve geri alma desteyi olağan kart moduna çözer: süzgeçler geri gelir, sayaç bütün havuzu gösterir, cevap kartı listeden çıkarmaz', async () => {
+  /* ---------- Kelimeler destesi: katman değişimi ---------- */
+  senaryo('Kelimeler destesi açıkken katman değişimi desteyi olağan kart moduna çözer: süzgeçler geri gelir, sayaç bütün havuzu gösterir, cevap kartı listeden çıkarmaz', async () => {
     const context = await yeni();
     const page = await context.newPage();
     const onaylar = [];
@@ -4491,20 +4491,8 @@ async function main() {
       'Düzenek: ' + ek + '. katman yüklendi, liste sayacı iki katmanın ' + havuzBoyu + ' kelimesini gösteriyor');
     await cozuldu(1, 'Katman değişimi');
     const ikinciCevap = await cevapKisaltmaz(1, 'Katman değişimi');
-    // b) Sıfırlama (iki aşamalı onay kabul edilir): yeniden açılan deste sürerken basılır.
-    await desteAc('sıfırlamadan önce');
-    await page.locator('#sifirla').click();
-    assert.deepEqual(onaylar, ['confirm', 'confirm'], 'Düzenek: sıfırlama iki kez onay sordu');
-    assert.deepEqual([await T(page, 'desteDepo', [ilkCevap, ikinciCevap]), (await T(page, 'desteGor')).geriAl], [[null, null], true], 'Düzenek: sıfırlama kayıtları sildi, "Geri al" göründü');
-    await cozuldu(1, 'Sıfırlama');
-    await cevapKisaltmaz(1, 'Sıfırlama');
-    // c) Geri alma: yeniden açılan deste sürerken "Geri al"a basılır; silinen kayıtlar geri gelir.
-    await desteAc('geri almadan önce');
-    await page.locator('#geriAl').click();
-    assert.deepEqual([(await T(page, 'desteDepo', [ilkCevap])).map(r => r && r.k), (await T(page, 'desteGor')).geriAl], [[1], false], 'Düzenek: geri alma silinen kaydı geri getirdi, kutusu kapandı');
-    await cozuldu(1, 'Geri alma');
-    await page.locator('#sonraki').click();
-    await cevapKisaltmaz(2, 'Geri alma');
+    // Sıfırlama ve geri alma artık İstatistik'te; bağımsız deste-ayar-browser-qa iki onayı ve yedeği sınar.
+    assert.equal(await page.locator('#sifirla').count(),0,'Kelimeler ekranında toplu sıfırlama yok');
     return 'eklenen katman ' + ek + ', havuz ' + havuzBoyu + ' kelime; destede yanıtlanan: ' + ilkCevap;
   });
 
@@ -4517,7 +4505,7 @@ async function main() {
     // Düzenek (0. gün): toplam kart tavanı ve yeni kart hedefi en küçük seçeneklerinde; tavandan iki fazla
     // Çekirdek kelimesi bir kez bilindi (ertesi gün hepsinin vadesi gelir, ikisi tavana sığmaz).
     const f = await page.evaluate(() => {
-      const Il = window.YDS.Ilerleme, enKucuk = id => Math.min(...[...document.getElementById(id).options].map(o => Number(o.value)));
+      const Il = window.YDS.Ilerleme, enKucuk = id => id === 'gunlukTavan' ? 10 : 5;
       const tavan = enKucuk('gunlukTavan'), hedef = enKucuk('gunlukHedef');
       Il.gunlukTavanAyarla(tavan); Il.gunlukHedefAyarla(hedef);
       const havuz = window.__oyun.desteHavuz([2]), vadeli = havuz.slice(0, tavan + 2);
@@ -4854,8 +4842,12 @@ async function main() {
     return w + ' kartı (sonraki ' + w2 + ')';
   }
 
+  const selectedScenarios=process.env.YDS_QA_SCENARIO?new Set(process.env.YDS_QA_SCENARIO.split(',').map(Number)):null;
+  let tested=0;
   try {
     for (let i = 0; i < senaryolar.length; i++) {
+      if(selectedScenarios&&!selectedScenarios.has(i+1))continue;
+      tested++;
       const {ad, govde} = senaryolar[i], no = String(i + 1).padStart(2, ' '), basla = Date.now(), onceki = hatalar.length;
       let hata = null, not = '';
       try { not = await govde() || ''; } catch (h) { hata = h; }
@@ -4878,15 +4870,16 @@ async function main() {
     await new Promise(resolve => server.close(resolve));
   }
   if (basarisiz.length) {
-    throw new Error(basarisiz.length + '/' + senaryolar.length + ' senaryo başarısız:\n' + basarisiz.map(b => b.no + '. ' + b.ad + '\n' +
+    throw new Error(basarisiz.length + '/' + tested + ' senaryo başarısız:\n' + basarisiz.map(b => b.no + '. ' + b.ad + '\n' +
       String(b.hata.stack || b.hata).split('\n').slice(0, 12).join('\n')).join('\n'));
   }
   assert.deepEqual(hatalar, [], 'Sayfa hatası');
-  console.log('Oyunlar Browser QA passed: ' + senaryolar.length + ' senaryo — boş profil, cevap yolları (doğru, ipucuyla, bilemedim), seviyeler, ' +
+  assert.ok(tested>0,'En az bir senaryo çalıştırılmalı');
+  console.log('Oyunlar Browser QA passed: ' + tested + ' senaryo — boş profil, cevap yolları (doğru, ipucuyla, bilemedim), seviyeler, ' +
     'yazım, katmanlar (inmeyen ve yavaş katman dahil), başka sekme, maske, klavye, depolama hatası, yazım çeşidi, yazım zamanı, ' +
     'yerleşim, ipucusuz ve kısa kelime, her kelimede taze sıra, dışarıdan değişiklikte odak ve duyurular, önbellekten dönüş, ' +
     'Dinle (dokunmatik/masaüstü), Ctrl+A, eşitleme beklemesi (yapay olaylarla ve gerçek motorla), odaksız yazma, ' +
-    'Kelimeler destesi (tekrar kartları, yığını dağıtma, katman/sıfırlama/geri alma, deste kapalıyken özet), ' +
+    'Kelimeler destesi (tekrar kartları, yığını dağıtma, katman değişimi, deste kapalıyken özet), ' +
     'dizinde olmayan yazım, "enter" kartı; ' +
     'axe ve taşma açık/koyu 375/1280, sayfa hatası yok.');
 }

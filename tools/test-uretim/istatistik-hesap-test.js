@@ -39,7 +39,8 @@ assert.equal(weeks.previous,20,'Salı günü önceki tam haftanın 70 yanıtıyl
 assert.equal(weeks.comparable,true);assert.equal(weeks.items.length,12);
 assert.equal(H.weeks(H.create({[now]:row(10)}, {},now)).comparable,false);
 assert.equal(H.plan(10,3),4);assert.equal(H.plan(0,10),0);
-for(const pace of [0,-1,1.2,1001,NaN,Infinity])assert.equal(H.plan(10,pace),null);
+for(const pace of [0,-1,1.2,Number.MAX_SAFE_INTEGER+1,NaN,Infinity])assert.equal(H.plan(10,pace),null);
+assert.equal(H.plan(10000,1001),10);
 const legacy={};for(let i=1;i<=4;i++)legacy[now-i]=row(10);
 assert.equal(H.streak(H.create(legacy,{},now)).current,4,'Bugün boşken dünkü seri korunur');
 assert.equal(H.period(H.create({[now-1]:row(10)}, {},now),7).speed,5,'Kayıt başlangıcından sonraki boş gün paydaya dahil');
@@ -84,7 +85,7 @@ element('aralik').events.click.call(element('aralik'),{target:{closest:()=>butto
 assert.equal(buttons[1].attrs['aria-pressed'],'true');assert.equal(buttons[0].attrs['aria-pressed'],'false');
 assert.equal((element('gunlukTablo').innerHTML.match(/<tr>/g)||[]).length,7);
 assert.match(element('hizKiyas').textContent,/Önceki 7 gün/);
-element('planHiz').value='0';element('planHiz').events.input();assert.equal(element('planHiz').attrs['aria-invalid'],'true');
+element('planHiz').value='0';element('planHiz').events.input();assert.equal(element('planHiz').attrs['aria-invalid'],'false');assert.match(element('tahminMetin').textContent,/gün hesabı yapılamaz/);
 element('planHiz').value='3';element('planHiz').events.input();assert.equal(element('planHiz').attrs['aria-invalid'],'false');
 log={};cards={};handlers['yds-depo-degisti']({detail:{anahtarlar:['yds-leitner','yds-gunluk-kayit']}});flush();
 assert.equal(element('bosDurum').hidden,false);assert.equal(element('hizDeger').textContent,'—');

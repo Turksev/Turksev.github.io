@@ -111,7 +111,8 @@ async function main() {
     await page.getByText('Günlük verileri tablo olarak aç',{exact:true}).click();
     assert.equal(await page.locator('#gunlukTablo').isVisible(),true);
     await page.locator('#planHiz').fill('0');
-    assert.equal(await page.locator('#planHiz').getAttribute('aria-invalid'),'true');
+    assert.equal(await page.locator('#planHiz').getAttribute('aria-invalid'),'false');
+    assert.match(await page.locator('#tahminMetin').innerText(),/gün hesabı yapılamaz/);
     await page.locator('#planHiz').fill('25');
     assert.equal(await page.locator('#planHiz').getAttribute('aria-invalid'),'false');
     assert.match(await page.locator('#tahminMetin').innerText(),/Günde 25 yeni kelimeyle/);

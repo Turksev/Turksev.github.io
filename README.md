@@ -334,7 +334,7 @@ bölünüp önümüzdeki günlere yayılır.
 
 Kelimeler ve öbekler aynı kutu tablosunda tutulur; görünür başlığı çakışabilen kayıtlar türü
 belirten kanonik kimliklerle ayrılır (örneğin kelime `@kelime:hand down`, öbek `hand down`).
-Her sayfanın "sıfırla" düğmesi yalnız kendi türündeki kayıtları siler. Aralıkları değiştirmek istersen
+Kelime kutularını sıfırlama İstatistik sayfasındadır; iki ayrı onay, yerel yedek ve Geri al içerir. Öbek sıfırlaması Öbekler sayfasında kalır. Her işlem yalnız kendi türünü sıfırlar. Aralıkları değiştirmek istersen
 `assets/js/ilerleme.js` içindeki `ARALIK` tablosunu düzenle.
 
 Tam ve karma denemelerin yarım kalan oturumu yalnız aynı sekmenin `sessionStorage` alanına
@@ -398,6 +398,8 @@ Yıldızlar `tools/anlam-yildiz.js` içindedir ve **anlam metnine** bağlıdır,
 kaynak listedeki sıra değişse bile eşleşme bozulmaz. Katman ve öbek dosyalarına `yz` alanı
 olarak gömülür. Üretim: `tools/test-uretim/yildiz-paketle.py` → agent (`yildiz-brief.md`)
 → `yildiz-dogrula.py`.
+
+**Elle deste ayarları (10 Kasım 2026).** Kelimeler ve Öbekler'de toplam kart ve yeni kart hedefi 0 veya daha büyük tam sayı olarak yazılır; sabit seçenek listesi ve ürün üst sınırı yoktur. Sayılar JavaScript'in güvenilir tam sayı aralığında doğrulanır. 0 yeni hedefi ek kota bulunsa da yeni kartları durdurur; 0 toplam, ek kota bulunsa da desteyi durdurur. Toplam için Sınırsız ayrı seçilir ve depoda `sinirsiz` olarak saklanır; 9999 dahil sayısal tercihler gerçek sayı olarak korunur. Ayarlar alandan çıkışta kaydedilir; açık günlük deste yeni ayarlara göre yeniden kurulur. Sıfırlama yalnız İstatistik'teki ayrı bölümden, iki onaydan sonra gerçekleşir; geçmiş istatistikler korunur, kelime kutuları için geri alma yedeği oluşturulur. Klavye yardımı temel biçim bölümünün üstündedir.
 
 **Kutu sayılarının kapsamı (9 Kasım 2026).** İstatistik, açılış sayfasındaki genel ilerleme ve ana sayfanın öğrenilen toplamı güncel 9.379 kelimeyi sayar. Kelimeler sayfasının kutuları seçili katmanlara aittir. Günün destesi bütün ekranlarda aynı seçili katmanlardan hesaplanır. Öbeklerin 1.854 kaydı ayrı sayılır; aynı başlıklı kelime/öbek kimlikleri karışmaz. Durumum'da tür filtresi kutu sayılarını ve yüzde paydasını değiştirir; metin araması yalnız listeyi süzer. Katalog dışı eski kayıtlar ana toplamlardan ayrılır, silinmez. Aileler dahil öğrenildi ölçütü yalnız 5. kutudur. Katman seçimi `Veri.seciliKatmanlar()` ile tekilleştirilir; boş seçim korunur ve eski 6→7 geçişi bütün ekranlarda aynı okunur.
 
@@ -565,7 +567,7 @@ Kelimeler sayfasında da geçerlidir: açık duran deste, oyunda ya da başka se
 kartı desteden düşürür; deste kapalıyken deste özeti (kutular, "Bugünü çalış (N kart)") ve
 liste sayacının "öğrenilen … · bugün … tekrar + … yeni" kısmı yenilenir ("Bugünü çalış" da
 özeti, desteyi kurduğu güncel kayıtlarla çizer). Deste açıkken birikmiş tekrarlar günlere dağıtılırsa deste bugünün yeni vadesine
-göre yeniden kurulur; katman değişimi, sıfırlama ve geri alma desteyi kapatır (liste yeni
+göre yeniden kurulur; katman değişimi desteyi kapatır (liste yeni
 havuzdan süzülür, "Bugünü çalış" ile deste yeniden açılır).
 
 **Eşitleme açıksa** kelime hemen gösterilir ve yazılabilir, ama açılıştaki bulut birleşimi

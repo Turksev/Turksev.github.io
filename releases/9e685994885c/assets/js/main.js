@@ -390,16 +390,75 @@
      sorulur: ilki ne silineceğini sayısıyla söyler, ikincisi son uyarıdır.
      Eşitleme açıksa silme diğer cihazlara da gider — bunu da yazarız. */
 
-  function ikiKereSor(ne, sayi) {
+  function ikiKereSor(ne, sayi, yedekli) {
     var esitli = !!(window.FIREBASE_AYAR);
     var ilk = ne + '\n\n' +
       (sayi ? sayi + ' kayıt silinecek.\n' : '') +
-      'Bu işlem geri alınamaz.' +
+      (yedekli ? 'Önce bu tarayıcıda geri alma yedeği oluşturulacak.' : 'Bu işlem geri alınamaz.') +
       (esitli ? '\nEşitleme açıksa silme diğer cihazlarına da yansır.' : '') +
       '\n\nDevam edilsin mi?';
     if (!window.confirm(ilk)) return false;
     return window.confirm('SON UYARI\n\n' +
-      (sayi ? sayi + ' kayıt' : 'İlerlemen') + ' kalıcı olarak silinecek. Gerçekten emin misin?');
+      (sayi ? sayi + ' kayıt' : 'İlerlemen') + (yedekli ? ' sıfırlanacak. Gerçekten emin misin?' : ' kalıcı olarak silinecek. Gerçekten emin misin?'));
+  }
+
+  /* Kelime ve öbek desteleri aynı çalışma ayarlarını kullanır. */
+  function desteAyarlariBagla(sonra) {
+    var hedef = document.getElementById('gunlukHedef');
+    var tavan = document.getElementById('gunlukTavan');
+    var sinirsiz = document.getElementById('gunlukSinirsiz');
+    var mesaj = document.getElementById('desteAyarMesaj');
+    var Il = window.YDS.Ilerleme;
+    var sonHedef, sonTavan;
+    if (!hedef || !tavan || !sinirsiz || !Il) return;
+    function gecerli(el) {
+      var n = Number(el.value);
+      var ok = el.value.trim() !== '' && Number.isSafeInteger(n) && n >= 0;
+      el.setCustomValidity(ok ? '' : '0 veya daha büyük bir tam sayı gir.');
+      el.setAttribute('aria-invalid', ok ? 'false' : 'true');
+      return ok;
+    }
+    function tazele() {
+      var yeniHedef = Il.gunlukHedef(), toplam = Il.gunlukTavan();
+      var degisti = yeniHedef !== sonHedef || toplam !== sonTavan;
+      sonHedef = yeniHedef; sonTavan = toplam;
+      hedef.value = String(yeniHedef);
+      sinirsiz.checked = toplam === Infinity;
+      tavan.disabled = sinirsiz.checked;
+      if (!sinirsiz.checked) tavan.value = String(toplam);
+      else if (!tavan.value) tavan.value = '30';
+      hedef.setCustomValidity(''); tavan.setCustomValidity('');
+      hedef.setAttribute('aria-invalid', 'false'); tavan.setAttribute('aria-invalid', 'false');
+      return degisti;
+    }
+    function kaydet(el) {
+      if (!gecerli(el)) { if (mesaj) mesaj.textContent = 'Ayar kaydedilmedi. 0 veya daha büyük bir tam sayı gir.'; return; }
+      var ok = el === hedef ? Il.gunlukHedefAyarla(el.value) : Il.gunlukTavanAyarla(el.value);
+      if (!ok) { depolamaUyarisi(); return; }
+      sonHedef = Il.gunlukHedef(); sonTavan = Il.gunlukTavan();
+      if (mesaj) mesaj.textContent = 'Deste ayarları kaydedildi.';
+      if (sonra) sonra();
+    }
+    [hedef, tavan].forEach(function (el) {
+      el.addEventListener('input', function () { gecerli(el); });
+      el.addEventListener('change', function () { kaydet(el); });
+    });
+    sinirsiz.addEventListener('change', function () {
+      if (!sinirsiz.checked && !gecerli(tavan)) { tavan.disabled = false; tavan.focus(); return; }
+      if (!Il.gunlukTavanAyarla(sinirsiz.checked ? 'sinirsiz' : tavan.value)) { depolamaUyarisi(); tazele(); return; }
+      tazele();
+      if (mesaj) mesaj.textContent = 'Deste ayarları kaydedildi.';
+      if (sonra) sonra();
+    });
+    window.addEventListener('yds-depo-degisti', function (e) {
+      var d = e && e.detail;
+      if (!d || (d.kaynak !== 'bulut' && d.kaynak !== 'sekme')) return;
+      if (!d.anahtarlar || d.anahtarlar.some(function (k) { return k === 'yds-gunluk-yeni' || k === 'yds-gunluk-tavan'; })) {
+        if (tazele() && sonra) sonra();
+      }
+    });
+    window.addEventListener('pageshow', function (e) { if (e.persisted && tazele() && sonra) sonra(); });
+    tazele();
   }
 
   function depolamaUyarisi() {
@@ -501,7 +560,7 @@
 
   window.YDS = {
     Depo: Depo, sadelestir: sadelestir, karistir: karistir, kacar: kacar,
-    ikiKereSor: ikiKereSor, geriAlKutusu: geriAlKutusu, yildiz: yildiz,
+    ikiKereSor: ikiKereSor, geriAlKutusu: geriAlKutusu, desteAyarlariBagla: desteAyarlariBagla, yildiz: yildiz,
     yenidenYukle: yenidenYukle, depolamaUyarisi: depolamaUyarisi, eskiSurumDenetle: eskiSurumDenetle,
     varlikYolu: function (yol) {
       var kok = window.YDS_VARLIK_KOKU || '';

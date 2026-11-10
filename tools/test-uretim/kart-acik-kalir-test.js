@@ -107,7 +107,7 @@ function context(store) {
       sadelestir: s => s.toLowerCase(), kacar: s => String(s ?? '').replaceAll('&', '&amp;').replaceAll('<', '&lt;'),
       yildiz: () => '', karistir: list => list, varlikYolu: x => x,
       metinSecildi: () => selected, hareket: () => 'auto', depolamaUyarisi: () => warnings++, geriAlKutusu: () => null,
-      ikiKereSor: () => false
+      ikiKereSor: () => false, desteAyarlariBagla: () => {}
     },
     addEventListener(k, fn) {(windowListeners[k] ||= []).push(fn);},
     dispatchEvent(event) {for (const fn of windowListeners[event.type] || []) fn(event);}

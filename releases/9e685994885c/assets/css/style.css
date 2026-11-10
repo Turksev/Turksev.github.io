@@ -395,6 +395,8 @@ code {
   flex-wrap: wrap;
 }
 .filter-field select { min-width: 0; max-width: 100%; }
+.deste-ayar input[type="number"] { width: 9em; min-width: 0; max-width: 100%; }
+.deste-ayar input[aria-invalid="true"] { border-color: var(--err); }
 
 .grid {
   display: grid;
@@ -447,7 +449,7 @@ code {
 
 /* ---------- form öğeleri ---------- */
 
-input[type="search"], input[type="text"], select {
+input[type="search"], input[type="text"], select, .deste-ayar input[type="number"] {
   font: inherit;
   color: var(--text);
   background: var(--surface);
@@ -1393,7 +1395,7 @@ mark {
 }
 
 @media (pointer: coarse) {
-  button, .btn, select, input[type="checkbox"], .star, .ig, .kart-kapat,
+  button, .btn, select, input[type="checkbox"], .deste-ayar input[type="number"], .star, .ig, .kart-kapat,
   .unite-durum, .aile-star, .katman, .kutu { min-height: 44px; }
   .star, .ig, .kart-kapat, .unite-durum, .aile-star { min-width: 44px; }
 }

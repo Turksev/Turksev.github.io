@@ -145,7 +145,9 @@ async function ana() {
 
   const bozuklar = [
     zarf({ 'yds-gunluk-yeni': { n: 20 } }),
-    zarf({ 'yds-gunluk-tavan': 10000 }),
+    zarf({ 'yds-gunluk-tavan': -1 }),
+    zarf({ 'yds-gunluk-yeni': 1.5 }),
+    zarf({ 'yds-gunluk-tavan': Number.MAX_SAFE_INTEGER+1 }),
     zarf({ 'yds-katmanlar': [0, 2] }),
     zarf({ 'yds-eksen': 2 }),
     zarf({ 'yds-rekor': { yuzde: 90, dogru: 8, toplam: 10 } }),
@@ -162,6 +164,10 @@ async function ana() {
   bozuklar.forEach(function (b) {
     assert.throws(function () { api.yedegiDogrula(baglamDegeri(o, b)); });
   });
+  [0,1000,10000,Number.MAX_SAFE_INTEGER].forEach(function(n){
+    assert.doesNotThrow(function(){api.yedegiDogrula(baglamDegeri(o,zarf({'yds-gunluk-yeni':n,'yds-gunluk-tavan':n})));});
+  });
+  assert.doesNotThrow(function(){api.yedegiDogrula(baglamDegeri(o,zarf({'yds-gunluk-yeni':0,'yds-gunluk-tavan':'sinirsiz'})));});
   // Sona atılmış kayıtlar (ilerleme.js sonaAt): çalışılmamış k: 0 + s: 1 ve çalışılmış s: 1 geçerlidir.
   assert.doesNotThrow(function () {
     api.yedegiDogrula(baglamDegeri(o, zarf({ 'yds-leitner': { x: { k: 0, g: 0, c: 20340, m: 0, s: 1 }, y: { k: 2, g: 20350, c: 20347, s: 1 } } })));

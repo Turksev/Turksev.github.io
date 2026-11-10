@@ -423,8 +423,8 @@
     if (alan === 'yds-rekor') return rekorKaydi(v, ALAN_ADLARI[alan]);
     if (alan === 'yds-yeni-sayac') return sayacKaydi(v, ALAN_ADLARI[alan]);
     if (alan === 'yds-test-yanlis') return haritaDogrula(v, alan, testYanlisKaydi, M.eskiIlerlemeKimligi);
-    if (alan === 'yds-gunluk-yeni') return tamSayi(v, 1, 9999, ALAN_ADLARI[alan]);
-    if (alan === 'yds-gunluk-tavan') return tamSayi(v, 1, 9999, ALAN_ADLARI[alan]);
+    if (alan === 'yds-gunluk-yeni') return tamSayi(v, 0, Number.MAX_SAFE_INTEGER, ALAN_ADLARI[alan]);
+    if (alan === 'yds-gunluk-tavan') return v === 'sinirsiz' ? v : tamSayi(v, 0, Number.MAX_SAFE_INTEGER, ALAN_ADLARI[alan]);
     if (alan === 'yds-gunluk-kayit'||alan==='yds-gunluk-sonuc') {
       if (sadeNesne(v) && Object.keys(v).length > 5000) {
         throw new Error(ALAN_ADLARI[alan] + ' en çok 5.000 gün içerebilir.');

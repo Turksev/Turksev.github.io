@@ -149,17 +149,17 @@
     if (o.bekleyen) {
       $('bekleyenNot').innerHTML = '<b>' + o.bekleyen + '</b> tekrar bugünkü sınıra sığmadı, ' +
         'sıradaki günlere kaldı. Daha hızlı eritmek istersen üstteki <b>toplam kart</b> sayısını artır.' +
-        (o.bekleyen >= 40 ? ' <button class="btn ghost sm" type="button" id="yigiiniDagit">Birikmiş tekrarları günlere dağıt</button>' : '');
+        (o.bekleyen >= 40 && o.tavan > 0 && Number.isFinite(o.tavan) ? ' <button class="btn ghost sm" type="button" id="yigiiniDagit">Birikmiş tekrarları günlere dağıt</button>' : '');
     }
     $('desteBasla').disabled = o.bugun === 0;
     testDugmesiGuncelle();
     $('desteBasla').textContent = o.bugun === 0
-      ? (havuz.length ? 'Bugünlük bitti 🎉' : 'Katman seç')
+      ? (havuz.length ? (o.tavan === 0 ? 'Deste duraklatıldı' : 'Bugünlük bitti 🎉') : 'Katman seç')
       : 'Bugünü çalış (' + o.bugun + ' kart)';
 
     // Kota dolduysa ama havuzda yeni kelime kaldıysa devam edebilsin.
     var devam = $('devamEt');
-    devam.hidden = !(o.bugun === 0 && o.yeni > 0);
+    devam.hidden = !(o.bugun === 0 && o.yeni > 0 && o.hedef > 0 && o.tavan > 0);
     devam.textContent = 'Devam et (' + Math.min(o.yeni, o.hedef) + ' kelime daha aç)';
 
     // Destenin neyden oluştuğunu açıkça yaz: tekrar ≠ yeni
@@ -170,6 +170,10 @@
     var metin;
     if (!havuz.length) {
       metin = '';
+    } else if (o.tavan === 0) {
+      metin = 'Toplam kart 0: günlük deste duraklatıldı.';
+    } else if (o.hedef === 0) {
+      metin = 'Yeni kart hedefi 0: yeni kelime açılmaz.' + (o.bugun ? ' Deste: ' + parcalar.join(' + ') + '.' : ' Bugün tekrarı gelen kart yok.');
     } else if (!o.bugun) {
       metin = o.yeni
         ? 'Bugünkü kota doldu (' + o.hedef + ' yeni kelime). Havuzda <b>' + o.yeni +
@@ -179,7 +183,7 @@
       metin = 'Deste: ' + parcalar.join(' + ') + '.';
       if (o.yeni > o.acilacakYeni) {
         metin += ' Havuzda <b>' + o.yeni + '</b> yeni kelime var; günde ' + o.hedef +
-          ' tanesi açılıyor, hepsi ' + Math.ceil(o.yeni / o.hedef) + ' günde biter.';
+          ' yeni kart hedefliyorsun. Toplam kart sınırı ve diğer kart türlerinde açtıkların bugünkü sayıyı azaltabilir.';
       }
     }
     if (o.sonaAtilan) metin += ' Sona attığın <b>' + o.sonaAtilan + '</b> kelime başka kelime kalmayınca gelir.';
@@ -730,7 +734,7 @@
     ciz();
   });
 
-  $('desteBasla').addEventListener('click', function () {
+  function desteyiBaslat(kaydir) {
     // Deste filtreden değil, doğrudan Ilerleme'den kurulur: günlük hedef kadar yeni kelime +
     // kalan yere tekrarı gelenler (Il.destelik). Bellekteki kopya bayat olabilir
     // (bkz. desteyiAyikla): önce depodan tazelenir, deste özeti de aynı kayıtlarla çizilir.
@@ -762,13 +766,9 @@
     $('mod').textContent = 'Liste moduna dön';
     $('disKatman').hidden = true;
     ciz();
-    elKartAlan.scrollIntoView({ behavior: window.YDS.hareket(), block: 'center' });
-  });
-
-  $('gunlukHedef').addEventListener('change', function () {
-    Il.gunlukHedefAyarla(this.value);
-    desteyiCiz();
-  });
+    if (kaydir !== false) elKartAlan.scrollIntoView({ behavior: window.YDS.hareket(), block: 'center' });
+  }
+  $('desteBasla').addEventListener('click', function () { desteyiBaslat(true); });
 
   /* İlerleme başka yerde değişti (başka sekme, bulut ya da Oyunlar sayfasından geri dönüş).
      Deste açıksa yanıtlanmış kartlar düşer, sayaç güncellenir. Deste kapalıysa deste özeti
@@ -789,7 +789,7 @@
     // Sayaç başka bir ileti gösteriyorsa (deste bitti, katman yükleniyor ya da yüklenemedi)
     // onun yerine geçmez.
     if (elSayac.textContent === sayacMetni) {
-      if (kartModu) guncelleSayac();
+      if (kartModu || (seciliKutu === null && !elDurum.value)) guncelleSayac();
       else {
         var oncekiGosterilen = gosterilen;
         filtrele();
@@ -819,11 +819,6 @@
     filtrele();
     desteyiCiz();
     elSayac.scrollIntoView({ behavior: window.YDS.hareket(), block: 'nearest' });
-  });
-
-  $('gunlukTavan').addEventListener('change', function () {
-    Il.gunlukTavanAyarla(this.value);
-    desteyiCiz();
   });
 
   /* Birikmiş tekrarları takvime yay (tek seferlik düzeltme). */
@@ -923,19 +918,6 @@
     filtrele();
   });
 
-  $('sifirla').addEventListener('click', function () {
-    var kelimeAdlari = DIZIN.map(function (d) { return d.e; });
-    var n = kelimeAdlari.filter(function (ad) { return Il.kutu(ad, ILERLEME_TURU) > 0; }).length;
-    if (!window.YDS.ikiKereSor(
-        'Tüm kelime tekrar ilerlemen silinecek. Öbek ilerlemene dokunulmaz.', n)) return;
-    if (!Il.yedekAl('kelime kutuları', n)) { window.YDS.depolamaUyarisi(); return; }
-    if (!Il.listeyiSifirla(kelimeAdlari, ILERLEME_TURU)) { window.YDS.depolamaUyarisi(); return; }
-    desteModu = false;
-    desteyiCiz();
-    filtrele();
-    if (geriAlCiz) geriAlCiz();
-  });
-
   document.addEventListener('keydown', function (e) {
     if (!kartModu || elKartAlan.hidden) return;
     if (e.defaultPrevented || e.repeat || e.isComposing) return;
@@ -967,8 +949,17 @@
 
   /* ---------- başlat ---------- */
   $('toplamKelime').textContent = DIZIN.length.toLocaleString('tr-TR');
-  $('gunlukHedef').value = String(Il.gunlukHedef());
-  $('gunlukTavan').value = String(Il.gunlukTavan());
+  window.YDS.desteAyarlariBagla(function () {
+    desteyiCiz();
+    if (desteModu) {
+      if ($('desteBasla').disabled) {
+        desteModu = false; kartModu = false;
+        $('mod').textContent = 'Kart moduna geç';
+        filtrele();
+        elSayac.textContent = 'Deste yeni ayarlara göre durduruldu.';
+      } else desteyiBaslat(false);
+    }
+  });
   // Arama sayfasından "Kelime sayfasında aç" ile gelen ?q=... sorgusu
   var gelenQ = new URLSearchParams(location.search).get('q');
   if (gelenQ) elAra.value = gelenQ;
@@ -990,8 +981,6 @@
       window.history.replaceState(null, '', location.pathname + (kalan ? '?' + kalan : '') + location.hash);
     } catch (e) {}
   }
-
-  var geriAlCiz = window.YDS.geriAlKutusu(function () { desteModu = false; desteyiCiz(); filtrele(); });
 
   /* Sözlük paneli: çevrilmemiş kartın kendi kelimesi panelde görünürse
      cevap ipucuyla sayılır. Panel yoksa sayfa aynen çalışır. */

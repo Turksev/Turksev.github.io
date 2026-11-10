@@ -337,11 +337,18 @@
 
   function gunlukHedef() {
     var n = Depo.oku(K_GUNLUK, GUNLUK_VARSAYILAN);
-    return (typeof n === 'number' && n > 0) ? n : GUNLUK_VARSAYILAN;
+    return Number.isSafeInteger(n) && n >= 0 ? n : GUNLUK_VARSAYILAN;
+  }
+
+  function kartSayisi(n) {
+    if ((typeof n !== 'number' && typeof n !== 'string') || String(n).trim() === '') return null;
+    var sayi = Number(n);
+    return Number.isSafeInteger(sayi) && sayi >= 0 ? sayi : null;
   }
 
   function gunlukHedefAyarla(n) {
-    return Depo.yaz(K_GUNLUK, Math.max(1, parseInt(n, 10) || GUNLUK_VARSAYILAN)) !== false;
+    var sayi = kartSayisi(n);
+    return sayi !== null && Depo.yaz(K_GUNLUK, sayi) !== false;
   }
 
   /* ---------- günlük toplam kart tavanı ----------
@@ -354,11 +361,14 @@
 
   function gunlukTavan() {
     var n = Depo.oku(K_TAVAN, TAVAN_VARSAYILAN);
-    return (typeof n === 'number' && n > 0) ? n : TAVAN_VARSAYILAN;
+    if (n === 'sinirsiz') return Infinity;
+    return Number.isSafeInteger(n) && n >= 0 ? n : TAVAN_VARSAYILAN;
   }
 
   function gunlukTavanAyarla(n) {
-    return Depo.yaz(K_TAVAN, Math.max(1, parseInt(n, 10) || TAVAN_VARSAYILAN)) !== false;
+    if (n === 'sinirsiz') return Depo.yaz(K_TAVAN, n) !== false;
+    var sayi = kartSayisi(n);
+    return sayi !== null && Depo.yaz(K_TAVAN, sayi) !== false;
   }
 
   function bugunkuSayac() {
@@ -386,7 +396,13 @@
   /* Bugünün kotası = günlük hedef + kullanıcının elle eklediği pay. */
   function yeniKotasiKalan() {
     var s = bugunkuSayac();
-    return Math.max(0, gunlukHedef() + s.ek - s.n);
+    var hedef = gunlukHedef();
+    return hedef === 0 ? 0 : Math.max(0, hedef + s.ek - s.n);
+  }
+
+  function desteKapasitesi() {
+    var tavan = gunlukTavan();
+    return tavan === 0 ? 0 : tavan + bugunkuSayac().ek;
   }
 
   /* "Devam et": kotayı bugünlük genişletir. Hedefi kalıcı değiştirmez. */
@@ -775,7 +791,7 @@
      kararı: önce yeni, sonra tekrar. Eski kural tekrarları öne alıp yeni kartı sıkıştırıyordu;
      tekrar borcu tavanı aşan gün hiç yeni kelime açılmıyordu.) */
   function gunlukYuk(o) {
-    var kapasite = gunlukTavan() + bugunkuSayac().ek;
+    var kapasite = desteKapasitesi();
     o.acilacakYeni = Math.min(o.yeni, o.kotaKalan, kapasite);
     o.gosterilecekTekrar = Math.min(o.tekrar, Math.max(0, kapasite - o.acilacakYeni));
     o.bekleyen = o.tekrar - o.gosterilecekTekrar;
@@ -850,7 +866,7 @@
       dizi.forEach(function (k) { (sonaAtildiMi(k.en, tur) ? sona : oncelikli).push(k); });
       return oncelikli.concat(sona);
     };
-    var kapasite = gunlukTavan() + bugunkuSayac().ek;
+    var kapasite = desteKapasitesi();
     var yeniler = sonaKoy(liste.filter(function (k) { return yeniMi(k.en, tur); }))
                     .slice(0, Math.max(0, Math.min(yeniKotasiKalan(), kapasite)));
 
@@ -866,7 +882,7 @@
   /* Tavana sığmadığı için bugün gösterilmeyen tekrar sayısı (yeni kelimeler yeri önce alır). */
   function bekleyenTekrar(tumKelimeler, tur) {
     var liste = tumKelimeler || [];
-    var kapasite = gunlukTavan() + bugunkuSayac().ek;
+    var kapasite = desteKapasitesi();
     var yeni = liste.filter(function (k) { return yeniMi(k.en, tur); }).length;
     var vadesi = liste.filter(function (k) { return vadesiGeldiMi(k.en, tur); }).length;
     return Math.max(0, vadesi - Math.max(0, kapasite - Math.min(yeni, yeniKotasiKalan(), kapasite)));

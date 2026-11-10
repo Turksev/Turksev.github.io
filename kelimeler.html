@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<script data-yds-release>window.YDS_SURUM="9d64f70f3b5d";window.YDS_VARLIK_KOKU="/releases/9d64f70f3b5d/";</script>
+<script data-yds-release>window.YDS_SURUM="9e685994885c";window.YDS_VARLIK_KOKU="/releases/9e685994885c/";</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kelime Listesi — YDS Hazırlık</title>
@@ -9,7 +9,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%233b5bdb'/><text y='68' x='50' text-anchor='middle' font-size='46' font-family='sans-serif' font-weight='bold' fill='white'>Y</text></svg>">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#3b5bdb">
-<link rel="apple-touch-icon" href="/releases/9d64f70f3b5d/assets/img/icon-192.png">
+<link rel="apple-touch-icon" href="/releases/9e685994885c/assets/img/icon-192.png">
 <link rel="canonical" href="https://turksev.github.io/kelimeler.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="YDS Hazırlık">
@@ -19,13 +19,13 @@
 <meta property="og:url" content="https://turksev.github.io/kelimeler.html">
 <meta property="og:image" content="https://turksev.github.io/assets/img/icon-512.png">
 <meta name="twitter:card" content="summary">
-<link rel="stylesheet" href="/releases/9d64f70f3b5d/assets/css/style.css">
-<script src="/releases/9d64f70f3b5d/assets/js/main.js"></script>
-<script src="/releases/9d64f70f3b5d/data/kelime-aliaslari.js"></script>
-<script src="/releases/9d64f70f3b5d/assets/js/esitleme-veri.js"></script>
-<script src="/releases/9d64f70f3b5d/assets/js/esitleme-depo.js"></script>
-<script src="/releases/9d64f70f3b5d/assets/js/kullanim-hesap.js"></script>
-<script src="/releases/9d64f70f3b5d/assets/js/kullanim.js"></script>
+<link rel="stylesheet" href="/releases/9e685994885c/assets/css/style.css">
+<script src="/releases/9e685994885c/assets/js/main.js"></script>
+<script src="/releases/9e685994885c/data/kelime-aliaslari.js"></script>
+<script src="/releases/9e685994885c/assets/js/esitleme-veri.js"></script>
+<script src="/releases/9e685994885c/assets/js/esitleme-depo.js"></script>
+<script src="/releases/9e685994885c/assets/js/kullanim-hesap.js"></script>
+<script src="/releases/9e685994885c/assets/js/kullanim.js"></script>
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta http-equiv="Content-Security-Policy" content="base-uri 'self'; object-src 'none'">
 </head>
@@ -110,29 +110,16 @@
         <div class="toolbar" style="margin:10px 0 0">
         <label class="small muted filter-field">
           Bugün toplam kart:
-          <select id="gunlukTavan" aria-label="Günlük toplam kart sınırı"
-                  title="Destede en çok kaç kart olsun — yeni kelimeler + tekrarlar">
-            <option value="10">10</option>
-            <option value="20">20</option>
-            <option value="30" selected>30</option>
-            <option value="50">50</option>
-            <option value="80">80</option>
-            <option value="150">150</option>
-            <option value="9999">sınırsız</option>
-          </select>
+          <input type="number" id="gunlukTavan" min="0" step="1" inputmode="numeric" value="30" aria-label="Günlük toplam kart sınırı" aria-describedby="desteAyarAciklama">
         </label>
+        <label class="small muted"><input type="checkbox" id="gunlukSinirsiz"> Toplam kart sınırsız</label>
         <label class="small muted filter-field">
           Bunun yenisi:
-          <select id="gunlukHedef" aria-label="Günlük yeni kart hedefi (kelime, öbek ve cümle ortak)"
-                  title="Her gün kaç yeni karta yer ayrılsın; sayaç kelime, öbek ve cümle kartları için ortaktır, tekrarlar destede kalan yere alınır">
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="20" selected>20</option>
-            <option value="30">30</option>
-            <option value="50">50</option>
-          </select>
+          <input type="number" id="gunlukHedef" min="0" step="1" inputmode="numeric" value="20" aria-label="Günlük yeni kart hedefi (kelime, öbek ve cümle ortak)" aria-describedby="desteAyarAciklama">
         </label>
         </div>
+        <p class="small muted" id="desteAyarAciklama">0 veya daha büyük bir tam sayı yaz; alandan çıkınca kaydedilir. Yeni kart 0 ise yalnız tekrarlar gelir; toplam kart 0 ise deste açılmaz. Bugün açılan yeni kartlar günlük hedefinden düşülür.</p>
+        <p class="small muted" id="desteAyarMesaj" role="status"></p>
       </details>
       <p class="small muted" style="margin:10px 0 0" id="desteAciklama"></p>
       <p class="small muted" style="margin:8px 0 0" id="bekleyenNot" hidden></p>
@@ -267,6 +254,12 @@
         </button>
       </div>
 
+      <p class="center small muted" id="kartKlavye" style="margin-top:14px">
+        Klavye: <code>←</code> <code>→</code> geçiş · <code>boşluk</code> cevabı aç ·
+        <code>H</code> ipucu · <code>1</code> bilemedim · <code>2</code> bildim ·
+        <code>3</code> zaten biliyorum · <code>4</code> sona at · <code>S</code> dinle · <code>/</code> sözlük
+      </p>
+
       <section class="card-base" id="kartBicim" aria-labelledby="kartBicimBaslik" hidden>
         <h3 id="kartBicimBaslik">Temel biçimiyle öğren</h3>
         <div id="kartBicimIcerik"></div>
@@ -274,11 +267,7 @@
       </section>
       <div id="kartDiger" hidden></div>
 
-      <p class="center small muted" style="margin-top:14px">
-        Klavye: <code>←</code> <code>→</code> geçiş · <code>boşluk</code> cevabı aç ·
-        <code>H</code> ipucu · <code>1</code> bilemedim · <code>2</code> bildim ·
-        <code>3</code> zaten biliyorum · <code>4</code> sona at · <code>S</code> dinle · <code>/</code> sözlük
-      </p>
+
     </div>
 
     <div class="empty" id="bos" hidden>
@@ -286,14 +275,7 @@
       <br><button class="btn ghost sm" type="button" id="temizle" style="margin-top:12px">Filtreleri temizle</button>
     </div>
 
-    <p class="small muted" style="margin-top:28px">
-      Yalnız kelime tekrar ilerlemeni silmek istersen:
-      <button class="btn ghost sm" type="button" id="sifirla">Kelime ilerlememi sıfırla</button>
-      <span id="geriAlKutu" hidden>
-        <br><b id="geriAlMetin"></b>
-        <button class="btn sm" type="button" id="geriAl" style="margin-left:8px">Geri al</button>
-      </span>
-    </p>
+
 
   </div>
 </main>
@@ -306,21 +288,21 @@
   </div>
 </footer>
 
-<script src="/releases/9d64f70f3b5d/data/kelime-dizin.js"></script>
-<script src="/releases/9d64f70f3b5d/data/olumsuzlar.js"></script>
-<script src="/releases/9d64f70f3b5d/assets/js/ilerleme.js"></script>
-<script src="/releases/9d64f70f3b5d/assets/js/veri.js"></script>
-<script src="/releases/9d64f70f3b5d/assets/js/cekim.js"></script>
-<script src="/releases/9d64f70f3b5d/data/kelime-bicimleri.js"></script>
-<script src="/releases/9d64f70f3b5d/assets/js/kelime-bicimleri.js"></script>
-<script src="/releases/9d64f70f3b5d/assets/js/gunun-testi.js"></script>
-<script src="/releases/9d64f70f3b5d/assets/js/kelime-bilgi.js"></script>
-<script src="/releases/9d64f70f3b5d/data/kalip-sunum.js"></script>
-<script src="/releases/9d64f70f3b5d/assets/js/kalip-sunum.js"></script>
-<script src="/releases/9d64f70f3b5d/assets/js/arama-ortak.js"></script>
-<script src="/releases/9d64f70f3b5d/assets/js/sozluk.js"></script>
-<script src="/releases/9d64f70f3b5d/assets/js/kelimeler.js"></script>
-<script src="/releases/9d64f70f3b5d/assets/js/esitleme-ayar.js"></script>
-<script src="/releases/9d64f70f3b5d/assets/js/esitleme-v2.js"></script>
+<script src="/releases/9e685994885c/data/kelime-dizin.js"></script>
+<script src="/releases/9e685994885c/data/olumsuzlar.js"></script>
+<script src="/releases/9e685994885c/assets/js/ilerleme.js"></script>
+<script src="/releases/9e685994885c/assets/js/veri.js"></script>
+<script src="/releases/9e685994885c/assets/js/cekim.js"></script>
+<script src="/releases/9e685994885c/data/kelime-bicimleri.js"></script>
+<script src="/releases/9e685994885c/assets/js/kelime-bicimleri.js"></script>
+<script src="/releases/9e685994885c/assets/js/gunun-testi.js"></script>
+<script src="/releases/9e685994885c/assets/js/kelime-bilgi.js"></script>
+<script src="/releases/9e685994885c/data/kalip-sunum.js"></script>
+<script src="/releases/9e685994885c/assets/js/kalip-sunum.js"></script>
+<script src="/releases/9e685994885c/assets/js/arama-ortak.js"></script>
+<script src="/releases/9e685994885c/assets/js/sozluk.js"></script>
+<script src="/releases/9e685994885c/assets/js/kelimeler.js"></script>
+<script src="/releases/9e685994885c/assets/js/esitleme-ayar.js"></script>
+<script src="/releases/9e685994885c/assets/js/esitleme-v2.js"></script>
 </body>
 </html>

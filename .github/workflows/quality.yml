@@ -94,6 +94,9 @@ jobs:
       - name: Box counts across pages and filters
         run: node tools/kutu-dagilim-browser-qa.js
 
+      - name: Manual deck limits and confirmed vocabulary reset
+        run: node tools/deste-ayar-browser-qa.js
+
       - name: Local usage, lifecycle and multi-tab regressions
         run: pnpm test:usage
 

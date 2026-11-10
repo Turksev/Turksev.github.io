@@ -86,19 +86,23 @@
     testDugmesiGuncelle();
     $('desteBasla').disabled = o.bugun === 0;
     $('desteBasla').textContent = o.bugun === 0
-      ? 'Bugünlük bitti 🎉'
+      ? (o.tavan === 0 ? 'Deste duraklatıldı' : 'Bugünlük bitti 🎉')
       : 'Bugünü çalış (' + o.bugun + ' kart)';
 
     var devam = $('devamEt');
-    devam.hidden = !(o.bugun === 0 && o.yeni > 0);
+    devam.hidden = !(o.bugun === 0 && o.yeni > 0 && o.hedef > 0 && o.tavan > 0);
     devam.textContent = 'Devam et (' + Math.min(o.yeni, o.hedef) + ' öbek daha aç)';
 
     var parcalar = [];
-    if (o.tekrar) parcalar.push('<b>' + o.tekrar + '</b> tekrarı gelen');
+    if (o.gosterilecekTekrar) parcalar.push('<b>' + o.gosterilecekTekrar + '</b> tekrar');
     if (o.acilacakYeni) parcalar.push('<b>' + o.acilacakYeni + '</b> yeni öbek');
 
     var metin;
-    if (!o.bugun) {
+    if (o.tavan === 0) {
+      metin = 'Toplam kart 0: günlük deste duraklatıldı.';
+    } else if (o.hedef === 0) {
+      metin = 'Yeni kart hedefi 0: yeni öbek açılmaz.' + (o.bugun ? ' Deste: ' + parcalar.join(' + ') + '.' : ' Bugün tekrarı gelen kart yok.');
+    } else if (!o.bugun) {
       metin = o.yeni
         ? 'Bugünkü kota doldu (' + o.hedef + ' yeni öbek). Havuzda <b>' + o.yeni +
           '</b> öbek bekliyor — yarın açılır ya da <b>Devam et</b> ile bugün devam edersin.'
@@ -107,7 +111,7 @@
       metin = 'Deste: ' + parcalar.join(' + ') + '.';
       if (o.yeni > o.acilacakYeni) {
         metin += ' Havuzda <b>' + o.yeni + '</b> yeni öbek var; günde ' + o.hedef +
-          ' tanesi açılıyor, hepsi ' + Math.ceil(o.yeni / o.hedef) + ' günde biter.';
+          ' yeni kart hedefliyorsun. Toplam kart sınırı ve diğer kart türlerinde açtıkların bugünkü sayıyı azaltabilir.';
       }
     }
     $('desteAciklama').innerHTML = metin;
@@ -452,7 +456,7 @@
   $('testDavetBasla').addEventListener('click', testiBaslat);
   $('testDavetKapat').addEventListener('click', function () { $('testDavet').hidden = true; });
 
-  $('desteBasla').addEventListener('click', function () {
+  function desteyiBaslat(kaydir) {
     var destelik = Il.destelik(leitnerListesi(), ILERLEME_TURU);
     var kume = {};
     destelik.forEach(function (x) { kume[x.en] = true; });
@@ -474,8 +478,9 @@
     gosterilen = SAYFA_BOYU;
     $('mod').textContent = 'Liste moduna dön';
     ciz();
-    elKartAlan.scrollIntoView({ behavior: window.YDS.hareket(), block: 'center' });
-  });
+    if (kaydir !== false) elKartAlan.scrollIntoView({ behavior: window.YDS.hareket(), block: 'center' });
+  }
+  $('desteBasla').addEventListener('click', function () { desteyiBaslat(true); });
 
   /* Kutuya tıkla: yalnız o kutudaki öbekler. Yeniden tıklamak süzgeci kaldırır. */
   $('kutular').addEventListener('click', function (e) {
@@ -488,16 +493,6 @@
     filtrele();
     desteyiCiz();
     elSayac.scrollIntoView({ behavior: window.YDS.hareket(), block: 'nearest' });
-  });
-
-  $('gunlukTavan').addEventListener('change', function () {
-    Il.gunlukTavanAyarla(this.value);
-    desteyiCiz();
-  });
-
-  $('gunlukHedef').addEventListener('change', function () {
-    Il.gunlukHedefAyarla(this.value);
-    desteyiCiz();
   });
 
   $('devamEt').addEventListener('click', function () {
@@ -575,8 +570,17 @@
   /* ---------- başlat ---------- */
 
   if (window.SAYILAR) $('toplamObek').textContent = window.SAYILAR.obek.toLocaleString('tr-TR');
-  $('gunlukHedef').value = String(Il.gunlukHedef());
-  $('gunlukTavan').value = String(Il.gunlukTavan());
+  window.YDS.desteAyarlariBagla(function () {
+    desteyiCiz();
+    if (desteModu) {
+      if ($('desteBasla').disabled) {
+        desteModu = false; kartModu = false;
+        $('mod').textContent = 'Kart moduna geç';
+        filtrele();
+        elSayac.textContent = 'Deste yeni ayarlara göre durduruldu.';
+      } else desteyiBaslat(false);
+    }
+  });
 
   /* Sözlük paneli: çevrilmemiş kartın kendi öbeği panelde görünürse
      cevap ipucuyla sayılır. Panel yoksa sayfa aynen çalışır. */

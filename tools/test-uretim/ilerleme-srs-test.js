@@ -201,4 +201,22 @@ delete Depo.cihaz;
   for (var m = 0; m < 50; m++) assert.strictEqual(yeni['mezun' + m].g, gun - 60 - m, 'mezun kartın tarihi değişmez');
 })();
 
-console.log('ilerleme-SRS: son kutu, tekrar önceliği, yanlış defteri, farklı-soru özeti, cihaz paylı sayaçlar ve birikmiş dağıtımı başarılı');
+// Elle hedefler: sıfır, büyük değerler ve gerçek sınırsız seçenek.
+bellek.clear();Il.tazele();
+var buyukHavuz=Array.from({length:12000},function(_,i){return {en:'manual-card-'+i};});
+assert.strictEqual(Il.gunlukHedefAyarla('12000'),true);
+assert.strictEqual(Il.gunlukTavanAyarla('sinirsiz'),true);
+assert.strictEqual(bellek.get('yds-gunluk-tavan'),'sinirsiz');
+assert.strictEqual(Il.destelik(buyukHavuz,'kelime').length,12000,'Sınırsız eski 9999 tavanına takılmaz');
+assert.strictEqual(Il.gunlukTavanAyarla(9999),true);
+assert.strictEqual(Il.destelik(buyukHavuz,'kelime').length,9999,'Elle yazılan 9999 gerçek bir sayı olarak korunur');
+Il.kotaArtir(10);Il.gunlukHedefAyarla(0);
+assert.strictEqual(Il.yeniKotasiKalan(),0,'0 yeni hedefi ek kotayı da kapatır');
+Il.gunlukHedefAyarla(1000);Il.gunlukTavanAyarla(0);
+assert.strictEqual(Il.destelik(buyukHavuz,'kelime').length,0,'0 toplam, ek kotayla aşılmaz');
+for(var bad of ['',-1,'1.5',NaN,Infinity,null,Number.MAX_SAFE_INTEGER+1]){
+  assert.strictEqual(Il.gunlukHedefAyarla(bad),false);
+  assert.strictEqual(Il.gunlukTavanAyarla(bad),false);
+}
+assert.strictEqual(Il.gunlukHedef(),1000);assert.strictEqual(Il.gunlukTavan(),0);
+console.log('ilerleme-SRS: kutular, günlük hedefler (0/büyük/sınırsız), tekrar önceliği, sayaçlar ve dağıtım başarılı');
