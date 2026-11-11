@@ -1049,7 +1049,7 @@ geldiğidir: `cümle`, `isim`, `zarf`, `eş`, `ikili`. `dz` ise `çekirdek` ya d
 kopyala, yeni bir `id` ver, içindekiler listesine (`nav.toc`) bir satır ekle ve
 `assets/js/ara.js` içindeki `KONULAR` dizinine kaydını gir.
 
-**Üst menü** on öğe taşır: Ana sayfa, İstatistik, *Gramer* grubu, Kelimeler,
+**Üst menü** on öğe taşır: Ana sayfa, Kelimeler, İstatistik, *Gramer* grubu,
 Aileler, Öbekler, Cümleler, *Sorular* grubu, Ara ve en sonda *Oyunlar*.
 Durumum sayfasına İstatistik → Öğrenme birikimi içindeki
 “Kutulardaki kelime ve öbekleri gör” bağlantısından ulaşılır.
@@ -1058,9 +1058,9 @@ Durumum sayfasına İstatistik → Öğrenme birikimi içindeki
 yüzden JS kapalıyken de tıklanınca açılır; `assets/js/main.js` yalnızca “aynı anda tek
 panel açık kalsın” ve “dışarı tıklayınca / Esc ile kapan” davranışını ekler. Açık sayfa
 bir grubun içindeyse grup başlığı `.nav-grup.etkin` ile vurgulanır. Menü blokları, menüsü
-olan 17 kök sayfada birebir aynıdır (`404.html` menüsüzdür); birini değiştirirken hepsini
+olan 18 kök sayfada birebir aynıdır (`404.html` menüsüzdür); birini değiştirirken hepsini
 değiştir. Konu sayfalarının (`konu/*.html`) altı bağlantılı kısa menüsü de Ana sayfa ile
-başlar ve Oyunlar ile biter;
+başlar, ikinci sırada Kelimeler bulunur ve Oyunlar ile biter;
 `tools/seo-uret.js` şablonundan üretilir.
 
 Üst barda sıkı ölçüler (2 px aralık, `.86rem` yazı) kullanılır;

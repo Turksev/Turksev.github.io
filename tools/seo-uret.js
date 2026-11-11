@@ -148,8 +148,8 @@ function pageFor(topic, index, topics) {
     <a class="brand" href="../index.html"><span class="dot">YDS</span> Hazırlık</a>
     <nav class="site-nav" aria-label="Ana menü">
       <a href="../ana-sayfa.html">Ana sayfa</a>
-      <a href="../konular.html">Konular</a>
       <a href="../kelimeler.html">Kelimeler</a>
+      <a href="../konular.html">Konular</a>
       <a href="../quiz.html">Alıştırma</a>
       <a href="../deneme.html">Deneme</a>
       <a href="../oyunlar.html">Oyunlar</a>
