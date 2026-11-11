@@ -147,6 +147,7 @@ Tarayıcı denetimi: `pnpm test:sozluk`.
 | `durum.html` | Güncel kelime/öbek kutuları: tür filtresine göre sayılar ve yüzdeler; katalog dışı eski kayıtlar silinmeden ayrı filtrede korunur |
 | `istatistik.html` | **Çalışma hızın ve ritmin**: 7/30/90 günlük dönem kıyası, günlük grafik ve veri tablosu, 26 haftalık takvim, haftalık tempo, kutu birikimi ve varsayımsal ilk tur planı. Ayıklama hız hesabına katılmaz |
 | `kelimeler.html` | 9.379 kelime ve yapı, 7 katman + **aralıklı tekrar (Leitner)**: bugünün destesi, kart modu, ipucu, sesli okuma. Katman düğmesinin üzerine gelince o katmanın **puan aralığı** çıkar |
+| `favoriler.html` | Kelime kartındaki yıldızla oluşturulan kişisel liste; arama, karışık ek tekrar ve yalnız zorlanılanları yeniden çalışma. Kutu, kota ve ana yanıt istatistiklerine yazmaz. |
 | `obekler.html` | 1.854 kelime öbeği (590 deyimsel fiil, 339 edat kalıbı, 864 sabit, 61 geçiş ifadesi) — ayrı Leitner destesi |
 | `cumleler.html` | 8.065 sınav cümlesi ve Türkçe çevirisi (2013–2026, sınav + bölüm + soru no); liste ve kart modu, kutu (Leitner) ilerlemesi, yıl/bölüm filtresi |
 | `quiz.html` | Alıştırma soruları: 12 kategori, anında çözüm, yanlış defterinden çalışma |
@@ -400,6 +401,8 @@ olarak gömülür. Üretim: `tools/test-uretim/yildiz-paketle.py` → agent (`yi
 → `yildiz-dogrula.py`.
 
 **Elle deste ayarları (10 Kasım 2026).** Kelimeler ve Öbekler'de toplam kart ve yeni kart hedefi 0 veya daha büyük tam sayı olarak yazılır; sabit seçenek listesi ve ürün üst sınırı yoktur. Sayılar JavaScript'in güvenilir tam sayı aralığında doğrulanır. 0 yeni hedefi ek kota bulunsa da yeni kartları durdurur; 0 toplam, ek kota bulunsa da desteyi durdurur. Toplam için Sınırsız ayrı seçilir ve depoda `sinirsiz` olarak saklanır; 9999 dahil sayısal tercihler gerçek sayı olarak korunur. Ayarlar alandan çıkışta kaydedilir; açık günlük deste yeni ayarlara göre yeniden kurulur. Sıfırlama yalnız İstatistik'teki ayrı bölümden, iki onaydan sonra gerçekleşir; geçmiş istatistikler korunur, kelime kutuları için geri alma yedeği oluşturulur. Klavye yardımı temel biçim bölümünün üstündedir.
+
+**Favori kelimeler (11 Kasım 2026).** Kartın sağ üstündeki bağımsız yıldız ve liste satırındaki yıldız `yds-favoriler` alanına kanonik kelime adı → eklenme zamanı kaydeder. Kayıt bazında yazma/silme mevcut eşitleme motorunu kullanır; silme işaretleri eski çevrimdışı seçimin yeniden gelmesini önler. Favoriler, JSON yedeğinde doğrulanıp mevcut listeyle birleştirilir; öğrenme ilerlemesini sıfırlamak favorileri silmez. `favoriler.html` seçili katmandan bağımsız arama, karışık tur, Türkçe anlam/örnek/kalıp/temel biçim ve zorlanılanları yeniden çalışma sunar. Yanıtlar yalnız sayfanın belleğinde kalır; Leitner, yeni kart kotası, günlük sonuçlar veya kart geçmişine yazılmaz. 5. kutudaki favori yalnız kullanıcının başlattığı ek turda görünür. Yıldız, kartı açan `role=button` öğesinin dışında bağımsız düğmedir; tıklama/Enter/boşluk cevabı açmaz. Yeni alanın Firestore izni site yayınından önce dağıtılmalıdır. `tools/favoriler-browser-qa.js`, veri birleştirme, yedek ve gerçek Firestore emülatörü testleri bu davranışları kapsar.
 
 **Kutu sayılarının kapsamı (9 Kasım 2026).** İstatistik, açılış sayfasındaki genel ilerleme ve ana sayfanın öğrenilen toplamı güncel 9.379 kelimeyi sayar. Kelimeler sayfasının kutuları seçili katmanlara aittir. Günün destesi bütün ekranlarda aynı seçili katmanlardan hesaplanır. Öbeklerin 1.854 kaydı ayrı sayılır; aynı başlıklı kelime/öbek kimlikleri karışmaz. Durumum'da tür filtresi kutu sayılarını ve yüzde paydasını değiştirir; metin araması yalnız listeyi süzer. Katalog dışı eski kayıtlar ana toplamlardan ayrılır, silinmez. Aileler dahil öğrenildi ölçütü yalnız 5. kutudur. Katman seçimi `Veri.seciliKatmanlar()` ile tekilleştirilir; boş seçim korunur ve eski 6→7 geçişi bütün ekranlarda aynı okunur.
 
@@ -763,7 +766,7 @@ firebase deploy --only firestore:rules --project yds-hazirlik-d05ce
 ```
 
 Kurallar, oturum açmış kullanıcıya yalnız `kullanicilar/{kendi uid'si}` ağacını açar;
-eski kök zarfı ile 14 temel alan ve 16 kelime geçmişi alanının kimliğini, şemasını ve boyut üst sınırını
+eski kök zarfı ile 15 temel alan ve 16 kelime geçmişi alanının kimliğini, şemasını ve boyut üst sınırını
 doğrular. `apiKey` gizli değildir (tarayıcıya zaten iner); veriyi koruyan bu kurallardır.
 Statik regresyon:
 

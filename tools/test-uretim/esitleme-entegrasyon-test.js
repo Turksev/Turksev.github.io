@@ -6,7 +6,7 @@ var assert = require('assert');
 var kok = path.resolve(__dirname, '..', '..');
 var releaseKok = JSON.parse(fs.readFileSync(path.join(kok, 'release-manifest.json'), 'utf8')).kok;
 var sayfalar = [
-  'index.html', 'ana-sayfa.html', 'oyunlar.html', 'durum.html', 'konular.html', 'kelimeler.html',
+  'index.html', 'ana-sayfa.html', 'oyunlar.html', 'durum.html', 'konular.html', 'kelimeler.html', 'favoriler.html',
   'aileler.html', 'obekler.html', 'quiz.html', 'deneme.html', 'gramer.html', 'baglaclar.html',
   'ara.html', 'cumleler.html', 'istatistik.html'
 ];

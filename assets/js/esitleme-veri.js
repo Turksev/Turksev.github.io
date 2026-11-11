@@ -18,6 +18,7 @@
     'yds-kategori': 'nesne',
     'yds-gecmis': 'gecmis-dizi',
     'yds-konular': 'nesne',
+    'yds-favoriler': 'nesne',
     'yds-rekor': 'tek',
     'yds-yeni-sayac': 'tek',
     'yds-test-yanlis': 'nesne',
@@ -198,6 +199,7 @@
   }
 
   function kayitKimliginiNormallestir(anahtar, id) {
+    if (anahtar === 'yds-favoriler') return kelimeKimligi(id);
     return (anahtar === 'yds-leitner' || anahtar === 'yds-test-yanlis')
       ? eskiIlerlemeKimligi(id) : id;
   }

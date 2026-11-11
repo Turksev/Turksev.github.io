@@ -6,7 +6,7 @@ var assert = require('assert');
 
 var kok = path.resolve(__dirname, '..', '..');
 var sayfalar = [
-  'index.html', 'ana-sayfa.html', 'oyunlar.html', 'durum.html', 'konular.html', 'kelimeler.html',
+  'index.html', 'ana-sayfa.html', 'oyunlar.html', 'durum.html', 'konular.html', 'kelimeler.html', 'favoriler.html',
   'aileler.html', 'obekler.html', 'quiz.html', 'deneme.html', 'gramer.html', 'baglaclar.html',
   'ara.html', 'yontem.html', 'ayarlar.html', 'cumleler.html', 'istatistik.html', '404.html'
 ];

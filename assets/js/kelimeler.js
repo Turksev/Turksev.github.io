@@ -21,6 +21,7 @@
   var karistir = window.YDS.karistir;
   var Il = window.YDS.Ilerleme;
   var Veri = window.YDS.Veri;
+  var Favoriler = window.YDS.Favoriler;
   var ILERLEME_TURU = 'kelime';
 
   var KATMAN_ANAHTAR = 'yds-katmanlar';
@@ -347,6 +348,7 @@
           '</div>' +
         '</div>' +
         '<div class="act">' +
+          (Favoriler ? Favoriler.dugmeHtml(d.e) : '') +
           '<button class="star bilgi" type="button" data-ne="bilgi" title="Sınavdaki kullanımı" aria-label="' +
             kacar(d.e) + ' kelimesinin sınavdaki kullanımını göster">ℹ</button>' +
           '<button class="btn ghost sm" type="button" data-ne="calis" aria-label="' + kacar(d.e) +
@@ -467,6 +469,7 @@
     }
 
     $('kartOn').textContent = d.e;
+    if (Favoriler) Favoriler.dugmeCiz($('kartFavori'), d.e);
     var sonaAtildi = Il.sonaAtildiMi(d.e, ILERLEME_TURU);
     $('kartKutu').innerHTML = KUTU_ADI[Il.kutu(d.e, ILERLEME_TURU)] +
       (Il.mezunMu(d.e, ILERLEME_TURU) ? ' · öğrenildi, yeniden sorulmaz'

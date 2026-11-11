@@ -77,6 +77,7 @@ function tumAlanlar() {
     'yds-kategori': { constructor: { d: 3, y: 1, r: [{ id: 's1', d: 1, t: 1000 }] } },
     'yds-gecmis': [{ t: 1000, d: 8, n: 10, y: 80, m: 'alistirma', f: '', a: '' }],
     'yds-konular': { T01: { d: 1, t: 80, g: null, n: 'not', ta: 20000, u: 1000 } },
+    'yds-favoriler': { alpha: 1794344400000 },
     'yds-rekor': { yuzde: 80, dogru: 8, toplam: 10 },
     'yds-yeni-sayac': { g: 20000, n: 4 },
     'yds-test-yanlis': { prototype: { n: 1, t: 1000 } },
@@ -144,6 +145,9 @@ async function ana() {
   assert.deepStrictEqual(JSON.parse(JSON.stringify(sayacBirlesimi['yds-yeni-sayac'])), { g: 20340, n: 7, ek: 5, p: { pc: { n: 3 }, tel: { n: 4 } } });
 
   const bozuklar = [
+    zarf({ 'yds-favoriler': { alpha: true } }),
+    zarf({ 'yds-favoriler': { alpha: -1 } }),
+    zarf({ 'yds-favoriler': { alpha: 1.5 } }),
     zarf({ 'yds-gunluk-yeni': { n: 20 } }),
     zarf({ 'yds-gunluk-tavan': -1 }),
     zarf({ 'yds-gunluk-yeni': 1.5 }),
@@ -178,12 +182,14 @@ async function ana() {
   assert.strictEqual({}.k, undefined, 'prototype pollution olmamalı');
 
   const mevcut = {
+    'yds-favoriler': { alpha: 1000, beta: 1500 },
     'yds-leitner': { prototype: { k: 4, g: 100, c: 90 } },
     'yds-rekor': { yuzde: 90, dogru: 9, toplam: 10 },
     'yds-gunluk-yeni': 30,
     'yds-katmanlar': [6]
   };
   const gelen = {
+    'yds-favoriler': { alpha: 2000, gamma: 2500 },
     'yds-leitner': JSON.parse('{"prototype":{"k":3,"g":999},"constructor":{"k":2,"g":200}}'),
     'yds-rekor': { yuzde: 80, dogru: 8, toplam: 10 },
     'yds-gunluk-yeni': 5,
@@ -191,6 +197,7 @@ async function ana() {
     'yds-eksen': 1
   };
   const birlesmis = api.guvenliBirlestir(baglamDegeri(o, mevcut), baglamDegeri(o, gelen));
+  assert.deepStrictEqual(JSON.parse(JSON.stringify(birlesmis['yds-favoriler'])), { alpha: 2000, beta: 1500, gamma: 2500 }, 'favori yedeği mevcut seçimi kaybetmeden birleşmeli');
   assert.deepStrictEqual(JSON.parse(JSON.stringify(birlesmis['yds-leitner'].prototype)), mevcut['yds-leitner'].prototype,
     'daha düşük kutu veya ileri tarih mevcut kaydı geriletmemeli');
   assert.strictEqual(birlesmis['yds-leitner'].constructor.k, 2);
@@ -249,7 +256,8 @@ async function ana() {
   ['Kelime ve öbek', 'Soru yanlış', 'Kategori', 'Deneme', 'Konu', 'Bağlam', 'En iyi', 'Bugün açılan', 'Günlük çalışma sayaçları'].forEach(function (ad) {
     assert.ok(reset.indexOf(ad) !== -1, 'reset özeti alanı içermeli: ' + ad);
   });
-  assert.ok(reset.indexOf('Korunacak 4 çalışma tercihi') !== -1);
+  assert.ok(reset.indexOf('Korunacak çalışma tercihlerin ve listen') !== -1);
+  assert.ok(reset.indexOf('Favori kelime listen') !== -1);
   assert.ok(reset.indexOf('Sıfırlanacak 26 ilerleme alanı') !== -1);
   assert.ok(reset.indexOf('Kart çalışma geçmişi') !== -1);
   assert.ok(reset.indexOf('Bildim ve Bilemedim günlük ölçümleri') !== -1);

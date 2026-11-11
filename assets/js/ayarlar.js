@@ -23,6 +23,7 @@
     'yds-kategori': 'Kategori performansı',
     'yds-gecmis': 'Deneme ve alıştırma geçmişi',
     'yds-konular': 'Konu haritası ölçümleri ve notları',
+    'yds-favoriler': 'Favori kelimeler',
     'yds-rekor': 'En iyi alıştırma sonucu',
     'yds-yeni-sayac': 'Bugün açılan yeni kart sayısı',
     'yds-test-yanlis': 'Bağlam testi yanlışları',
@@ -420,6 +421,7 @@
       return v.map(function (x, i) { return gecmisKaydi(x, ALAN_ADLARI[alan] + ' / ' + (i + 1)); });
     }
     if (alan === 'yds-konular') return haritaDogrula(v, alan, konuKaydi);
+    if (alan === 'yds-favoriler') return haritaDogrula(v, alan, function (t, ad) { return tamSayi(t, 1, 8640000000000000, ad); }, M.kelimeKimligi);
     if (alan === 'yds-rekor') return rekorKaydi(v, ALAN_ADLARI[alan]);
     if (alan === 'yds-yeni-sayac') return sayacKaydi(v, ALAN_ADLARI[alan]);
     if (alan === 'yds-test-yanlis') return haritaDogrula(v, alan, testYanlisKaydi, M.eskiIlerlemeKimligi);
@@ -601,6 +603,7 @@
       else if (a === 'yds-kategori') sonuc[a] = haritaBirlestir(mevcut[a], gelen[a], kategoriBirlestir);
       else if (a === 'yds-gecmis') sonuc[a] = gecmisBirlestir(mevcut[a], gelen[a]);
       else if (a === 'yds-konular') sonuc[a] = haritaBirlestir(mevcut[a], gelen[a], konuBirlestir);
+      else if (a === 'yds-favoriler') sonuc[a] = haritaBirlestir(mevcut[a], gelen[a], function (x, y) { return Math.max(x, y); });
       else if (a === 'yds-rekor') sonuc[a] = rekorBirlestir(mevcut[a], gelen[a]);
       else if (a === 'yds-yeni-sayac') sonuc[a] = sayacBirlestir(mevcut[a], gelen[a]);
       else if (a === 'yds-gunluk-kayit') sonuc[a] = haritaBirlestir(mevcut[a], gelen[a], gunlukGunBirlestir);
@@ -686,8 +689,9 @@
       return '• ' + ALAN_ADLARI[a] + ': ' + (kendi(paket, a) ? kayitSayisi(paket[a]) : 0);
     });
     return 'Sıfırlanacak ' + SIFIRLANAN_ALANLAR.length + ' ilerleme alanı:\n' + satirlar.join('\n') +
-      '\n• Varsa eski sürüm uyumluluk kaydı\n\nKorunacak 4 çalışma tercihi:\n' +
+      '\n• Varsa eski sürüm uyumluluk kaydı\n\nKorunacak çalışma tercihlerin ve listen:\n' +
       '• Günlük yeni kart hedefi\n• Günlük toplam kart sınırı\n• Seçili kelime katmanları\n• Seçili konu haritası ekseni' +
+      '\n• Favori kelime listen' +
       '\n\nAyrıca bu tarayıcıdaki kullanım kayıtları silinecek. Kullanım kayıtları yedeğe girmez ve geri alınamaz.';
   }
 
@@ -698,7 +702,7 @@
     if (s && s.bagli) ek = '\n\nBulut eşitleme bağlı: sıfırlama diğer cihazlara da yansıyabilir.';
     if (!window.confirm(resetOzeti(EsitDepo.paket()) + '\n\nBu tarayıcıdaki kalıp çalışma sonuçları ve açık kalıp turu da silinecek; bunlar yedeğe dahil değildir.' +
       '\n\nÖnce ilerleme için yerel yedek oluşturulacak; bu yedek geri alınana veya yenisiyle değiştirilene kadar saklanacak.' + ek + '\n\nDevam edilsin mi?')) return false;
-    return window.confirm('SON ONAY\n\nYukarıdaki ilerleme alanları, kart çalışma geçmişi, yerel kullanım kayıtları ve kalıp çalışma kayıtları silinecek. Dört çalışma tercihin korunacak. Kullanım ve kalıp kayıtları yedekten geri gelmeyecek. Devam edilsin mi?');
+    return window.confirm('SON ONAY\n\nYukarıdaki ilerleme alanları, kart çalışma geçmişi, yerel kullanım kayıtları ve kalıp çalışma kayıtları silinecek. Dört çalışma tercihin ve favorilerin korunacak. Kullanım ve kalıp kayıtları yedekten geri gelmeyecek. Devam edilsin mi?');
   }
 
   function esitApi() { return Y.Esitleme || null; }

@@ -97,6 +97,9 @@ jobs:
       - name: Manual deck limits and confirmed vocabulary reset
         run: node tools/deste-ayar-browser-qa.js
 
+      - name: Favorite words, independent practice and persistence
+        run: node tools/favoriler-browser-qa.js
+
       - name: Local usage, lifecycle and multi-tab regressions
         run: pnpm test:usage
 

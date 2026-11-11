@@ -10,12 +10,13 @@ const root=path.resolve(__dirname,'..'),rules=fs.readFileSync(path.join(root,'fi
 const window={YDS:{}};vm.runInNewContext(fs.readFileSync(path.join(root,'assets/js/esitleme-veri.js'),'utf8'),{window,console});
 const M=window.YDS.EsitlemeMotoru;
 const historyFields=Array.from({length:16},(_,i)=>'yds-kart-gecmisi-'+i);
-const resultField='yds-gunluk-sonuc',newFields=[...historyFields,resultField];
+const resultField='yds-gunluk-sonuc',favoriteField='yds-favoriler',newFields=[...historyFields,resultField,favoriteField];
 assert.equal(M.TIPLER[resultField],'nesne','The new hint-inclusive daily results must be synchronized');
 assert.deepEqual(Object.keys(M.TIPLER).filter(key=>key.startsWith('yds-kart-gecmisi-')).sort(),historyFields.slice().sort(),
   'The deployed rules test must cover exactly the 16 runtime history fields');
 const fixture={'yds-leitner':{alpha:{k:1,g:20703,c:20703,m:0}},'yds-gunluk-kayit':{'20703':{t:1,d:1,y:1,z:0,m:0}}};
 fixture[resultField]={'20703':{n:1,b:1,p:{emutest01:{n:1,b:1}},q:0}};
+fixture[favoriteField]={alpha:1794344400000};
 historyFields.forEach((key,i)=>{
   const at=1792886400000+i,id=at.toString(36)+'-emutest01';
   const event={id,at,day:20703,result:'bildim',from:1,to:2,previousAt:null,dueDay:20703,source:'kart'};
@@ -51,6 +52,18 @@ async function main(){
     }
   });
   await check('unknown field name denied',()=>assertFails(setDoc(doc(own,route('stats-owner','yds-unknown')),make('yds-unknown'))));
+  await check('favorites: owner can persist actual v2 records; other users cannot read, write or delete',async()=>{
+    const ref=doc(own,route('stats-owner',favoriteField));
+    await assertSucceeds(setDoc(ref,make(favoriteField)));
+    assert.deepEqual(JSON.parse((await assertSucceeds(getDoc(ref))).data().json),JSON.parse(M.bulutAlanJson(favoriteField,envelope.alanlar[favoriteField])));
+    await assertSucceeds(setDoc(ref,make(favoriteField,{zaman:101})));
+    for(const db of [other,anon]){
+      const foreign=doc(db,route('stats-owner',favoriteField));
+      await assertFails(getDoc(foreign));await assertFails(setDoc(foreign,make(favoriteField)));await assertFails(deleteDoc(foreign));
+    }
+    for(const extra of [{anahtar:'yds-leitner'},{surum:3},{extra:true},{json:''}])await assertFails(setDoc(ref,make(favoriteField,extra)));
+    await assertSucceeds(deleteDoc(ref));await assertSucceeds(setDoc(ref,make(favoriteField)));
+  });
   await check('schema, identity and daily version validation',async()=>{
     for(const extra of [{anahtar:'yds-leitner'},{extra:true},{zaman:'100'},{json:17},{json:''},{surum:3},{surum:1}])await assertFails(setDoc(doc(own,daily),make('yds-gunluk-kayit',extra)));
   });

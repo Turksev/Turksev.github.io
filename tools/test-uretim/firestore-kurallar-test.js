@@ -39,7 +39,7 @@ assert.ok(/request\.resource\.data\.surum\s*==\s*3\s*&&\s*\(alan\s*==\s*'yds-lei
 assert.ok(/request\.resource\.data\.surum\s*>=\s*resource\.data\.surum/.test(kurallar),
   'mevcut sürüm 3 alanın eski istemci tarafından sürüm 2 ile ezilmesi engellenmiyor');
 [
-  'yds-leitner', 'yds-yanlis', 'yds-kategori', 'yds-gecmis', 'yds-konular',
+  'yds-leitner', 'yds-yanlis', 'yds-kategori', 'yds-gecmis', 'yds-konular', 'yds-favoriler',
   'yds-rekor', 'yds-yeni-sayac', 'yds-test-yanlis', 'yds-gunluk-yeni',
   'yds-gunluk-tavan', 'yds-gunluk-kayit', 'yds-gunluk-sonuc', 'yds-katmanlar', 'yds-eksen'
 ].forEach(function (alan) {
@@ -113,4 +113,4 @@ assert.ok(/hasOnly\(\['silindi', 'zaman'\]\)/.test(kurallar));
 assert.ok(/request\.resource\.data\.silindi\s*==\s*true/.test(kurallar));
 assert.ok(/request\.resource\.data\.zaman\s+is\s+int/.test(kurallar));
 
-console.log('firestore-kurallar: sahiplik + silme işaretçisi + v2/v3 yükseltme kilidi + 14 alan ve 16 tarihçe parçası başarılı');
+console.log('firestore-kurallar: sahiplik + silme işaretçisi + v2/v3 yükseltme kilidi + 15 alan ve 16 tarihçe parçası başarılı');

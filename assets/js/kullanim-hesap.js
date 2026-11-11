@@ -4,7 +4,7 @@
   var Y = window.YDS = window.YDS || {}, DAY = 86400000;
   var pages = [
     ['index','Açılış sayfası'],['ana-sayfa','Ana sayfa'],['oyunlar','Oyunlar'],['kelimeler','Kelimeler'],['obekler','Öbekler'],['cumleler','Cümleler'],
-    ['aileler','Kelime aileleri'],['quiz','Quiz'],['deneme','Deneme'],['gramer','Gramer'],
+    ['favoriler','Favorilerim'],['aileler','Kelime aileleri'],['quiz','Quiz'],['deneme','Deneme'],['gramer','Gramer'],
     ['baglaclar','Bağlaçlar'],['konular','Konu haritası'],['konu','Konu üniteleri'],
     ['ara','Arama'],['durum','Çalışma durumu'],['istatistik','İstatistik'],['ayarlar','Ayarlar'],
     ['yontem','Yöntem'],['404','Bulunamayan sayfa']

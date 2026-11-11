@@ -40,7 +40,7 @@ async function main() {
     for (const theme of ['light','dark']) for (const width of [375,1280]) {
       await page.emulateMedia({colorScheme:theme});
       await page.setViewportSize({width,height:812});
-      for (const route of ['index.html','ana-sayfa.html','oyunlar.html','kelimeler.html','obekler.html','aileler.html','cumleler.html','baglaclar.html','gramer.html','konular.html','deneme.html','ayarlar.html','istatistik.html','konu/T01.html','konu/E68.html']) {
+      for (const route of ['index.html','ana-sayfa.html','oyunlar.html','kelimeler.html','favoriler.html','obekler.html','aileler.html','cumleler.html','baglaclar.html','gramer.html','konular.html','deneme.html','ayarlar.html','istatistik.html','konu/T01.html','konu/E68.html']) {
         await page.goto(base+'/'+route);
         // Giriş animasyonu (opacity) bitmeden ölçülen metin düşük kontrastlı görünür; sonsuz döngüler dekoratiftir.
         await page.waitForFunction(()=>document.getAnimations().every(a=>{const t=a.effect.getTiming();return a.playState!=='running'||t.iterations===Infinity||t.duration>=5000;}));
