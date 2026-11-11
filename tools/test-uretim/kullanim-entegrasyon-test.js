@@ -83,11 +83,14 @@ async function main() {
     assert.match(source, /ipucuBtn'\)\.addEventListener\('click',[\s\S]*?ipucuAc\(\)/, 'mouse invokes the shared hint handler');
     assert.match(source, /e\.key\.toLowerCase\(\) === 'h'[\s\S]*?ipucuAc\(\)/, 'keyboard invokes the shared hint handler');
     const start = fixture(file, {havuz: [{e: 'word'}], TUM: [{f: 'phrase'}], leitnerListesi: () => [{en: 'phrase'}]});
+    start.load('desteyiBaslat');
+    assert.match(source, /desteBasla'\)\.addEventListener\('click', function \(\) \{ desteyiBaslat\(true\); \}\);/,
+      file + ': button invokes the shared deck starter');
     start.context.Il.destelik = () => [];
-    start.call(listenerSource(file, 'desteBasla'));
+    start.call('desteyiBaslat(true)');
     assert.deepEqual(start.events, [], file + ': empty deck does not start');
     start.context.Il.destelik = () => [{en: file === 'kelimeler.js' ? 'word' : 'phrase'}];
-    start.call(listenerSource(file, 'desteBasla'));
+    start.call('desteyiBaslat(true)');
     assert.deepEqual(start.events, ['deste-baslat'], file + ': valid deck starts');
   }
   const quiz = fixture('quiz.js', {test: [], testHazirla: noop, alert: noop});

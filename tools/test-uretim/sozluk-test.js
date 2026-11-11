@@ -6,7 +6,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const kok = path.resolve(__dirname, '../..');
-const oku = dosya => fs.readFileSync(path.join(kok, dosya), 'utf8');
+const oku = dosya => fs.readFileSync(path.join(kok, dosya), 'utf8').replace(/\r\n?/g, '\n');
 const noop = () => {};
 
 function betikler(html) {
@@ -57,6 +57,7 @@ function fonksiyon(dosya, ad) {
   const bas = kaynak.indexOf('  function ' + ad + '(');
   assert.ok(bas >= 0, dosya + ': ' + ad);
   const son = kaynak.indexOf('\n  }\n', bas);
+  assert.ok(son > bas, dosya + ': ' + ad + ' fonksiyon sonu bulunamadı');
   return kaynak.slice(bas, son + 4);
 }
 for (const [dosya, alan] of [['kelimeler.js', 'e'], ['obekler.js', 'f']]) {
