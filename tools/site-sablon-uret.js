@@ -11,8 +11,8 @@ for (const file of fs.readdirSync(root).filter(x=>x.endsWith('.html'))) {
   const p = path.join(root,file); let s = fs.readFileSync(p,'utf8');
   // Kalıpların gösterildiği her yüz aynı içerik önceliklerini kullanır.
   s = s.replace(/<script\b[^>]*src="[^"]*(?:data\/kalip-sunum|assets\/js\/kalip-sunum)\.js"[^>]*><\/script>\s*/g, '');
-  if (/assets\/js\/(?:sozluk|oyunlar|ara)\.js/.test(s)) {
-    s = s.replace(/(<script\b[^>]*src="[^"]*assets\/js\/(?:arama-ortak|sozluk|oyunlar|ara)\.js"[^>]*><\/script>)/,
+  if (/assets\/js\/(?:sozluk|oyunlar|ara|favoriler)\.js/.test(s)) {
+    s = s.replace(/(<script\b[^>]*src="[^"]*assets\/js\/(?:arama-ortak|sozluk|oyunlar|ara|favoriler)\.js"[^>]*><\/script>)/,
       '<script src="data/kalip-sunum.js"></script>\n<script src="assets/js/kalip-sunum.js"></script>\n$1');
   }
   // Tek bağımsız izleyici çifti; kaynak ve önceki değişmez yayın yolları aynı kurala uyar.
