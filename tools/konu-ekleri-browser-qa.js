@@ -57,6 +57,14 @@ async function main() {
           const layout=await page.evaluate(()=>({viewport:innerWidth,scroll:document.documentElement.scrollWidth}));
           assert.ok(layout.scroll<=layout.viewport+1,topic.k+' '+route+' '+theme+' '+width+': '+JSON.stringify(layout));
         }
+        if(topic.k==='E83') {
+          // Linux sistem fontunda görülen başlık taşmasını Windows'ta da yakala.
+          // Yazıyı büyütmek, kullanıcı yazı tipi/erişilebilirlik ayarlarını da kapsar.
+          await page.setViewportSize({width:320,height:900});
+          const font=await page.addStyleTag({content:'#acikKonuBasligi, .prose-wrap h1 {font-family:Verdana,sans-serif;font-size:2.25rem}'});
+          assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),route+': uzun başlık farklı ve büyük yazı tipiyle taşmamalı');
+          await font.evaluate(el=>el.remove());
+        }
         if(['E69','E74','E80','E82','E85','E89'].includes(topic.k)) {
           await page.addScriptTag({path:require.resolve('axe-core/axe.min.js')});
           const violations=await page.evaluate(async()=> (await axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}})).violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)})));

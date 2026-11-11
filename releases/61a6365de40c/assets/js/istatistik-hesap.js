@@ -105,7 +105,7 @@
     return {items:items,elapsed:elapsed,current:sum(m,monday,m.today).t,previous:sum(m,earlier,earlier+elapsed-1).t,comparable:comparable};
   }
   function plan(remaining, pace) {
-    if (!Number.isInteger(pace) || pace<1 || pace>1000) return null;
+    if (!Number.isSafeInteger(pace) || pace<1) return null;
     return Math.ceil(Math.max(0,remaining)/pace);
   }
   // Ayrıntılı olaylardan yalnız mevcut sözlük kelimeleri. Günlük toplamlar,

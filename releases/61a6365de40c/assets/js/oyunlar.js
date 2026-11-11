@@ -89,7 +89,7 @@
     // Aile üyeleri 6'dan 7'ye taşındı (Geniş+ araya girdi); eski seçimi bir kez taşı.
     // Bu sayfa seçimi yazabildiği için taşıma ilk yazımdan önce burada yapılır.
     if (!Depo.oku('yds-katman7', false)) {
-      Depo.yaz(KATMAN_ANAHTAR, s);
+      if (Depo.oku(KATMAN_ANAHTAR, null) !== null) Depo.yaz(KATMAN_ANAHTAR, s);
       Depo.yaz('yds-katman7', true);
     }
     return s.sort(function (a, b) { return a - b; });

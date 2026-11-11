@@ -136,9 +136,10 @@
     $('kutuEfsane').innerHTML=boxes.map(function(value,k){return '<div><i class="box'+k+'"></i>'+(k?k+'. kutu':'Başlanmamış')+'<b>'+n(value)+'</b><small>'+(total?n(value/total*100,1):'0')+'%</small></div>';}).join('');plan();
   }
   function plan(){
-    var input=$('planHiz'),value=Number(input.value),days=H.plan(remaining,value);input.setAttribute('aria-invalid',days===null?'true':'false');
-    if(days===null)text('tahminMetin','1 ile 1.000 arasında tam sayı gir.');
+    var input=$('planHiz'),value=Number(input.value),valid=input.value.trim()!==''&&Number.isSafeInteger(value)&&value>=0,days=H.plan(remaining,value);input.setAttribute('aria-invalid',valid?'false':'true');
+    if(!valid)text('tahminMetin','0 veya daha büyük bir tam sayı gir.');
     else if(!remaining)text('tahminMetin','Tüm '+n(Veri.dizin.length)+' kelimeye ilk kaydın oluşturulmuş.');
+    else if(value===0)text('tahminMetin','Günde 0 yeni kelimeyle ilk tur için gün hesabı yapılamaz. Hesaplamak için sıfırdan büyük bir sayı gir.');
     else text('tahminMetin','Toplam '+n(Veri.dizin.length)+' kelimenin '+n(remaining)+' tanesine henüz başlanmamış. Günde '+n(value)+' yeni kelimeyle ilk tur için '+n(days)+' gün planlayabilirsin.');
   }
   function intervalLabel(days){return days===0?'1 günden az':n(days)+'–'+n(days+1)+' gün';}
@@ -277,7 +278,19 @@
       if(panel.open)schedule();
     });
   });
-  var initial=Il.gunlukHedef();$('planHiz').value=Number.isInteger(initial)&&initial>0&&initial<=1000?String(initial):'10';
+  var initial=Il.gunlukHedef();$('planHiz').value=Number.isSafeInteger(initial)&&initial>=0?String(initial):'10';
+  var geriAlCiz=YDS.geriAlKutusu?YDS.geriAlKutusu(function(){Il.tazele();refresh();text('kelimeSifirlamaDurum','Kelime ilerlemen geri alındı.');}):null;
+  $('kelimeSifirla').addEventListener('click',function(){
+    Il.tazele();
+    var adlar=Veri.dizin.map(function(d){return d.e;});
+    var count=adlar.filter(function(ad){return Il.kutu(ad,'kelime')>0||Il.sonaAtildiMi(ad,'kelime');}).length;
+    if(!count){text('kelimeSifirlamaDurum','Sıfırlanacak kelime ilerlemesi yok.');return;}
+    if(!YDS.ikiKereSor('Tüm kelime kutuların sıfırlanacak. Öbek ve cümle kutuların, geçmiş çalışma istatistiklerin ve günlük ayarların korunacak.',count,true))return;
+    if(!Il.yedekAl('kelime kutuları',count)){YDS.depolamaUyarisi();return;}
+    if(!Il.listeyiSifirla(adlar,'kelime')){YDS.depolamaUyarisi();if(geriAlCiz)geriAlCiz();return;}
+    refresh();if(geriAlCiz)geriAlCiz();
+    text('kelimeSifirlamaDurum',n(count)+' kelimenin kutu ilerlemesi sıfırlandı. Geri al düğmesiyle geri getirebilirsin.');
+  });
   function rangeButtons(){
     Array.prototype.forEach.call($('aralik').querySelectorAll('button[data-gun]'),function(b){var active=Number(b.getAttribute('data-gun'))===range;b.classList.toggle('acik',active);b.setAttribute('aria-pressed',String(active));});
   }

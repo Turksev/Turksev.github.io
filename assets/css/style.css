@@ -1022,6 +1022,8 @@ button.kutu:hover { border-color: var(--accent); }
 
 /* Tirelerle uzayan terimler ("Opinion-size-age-shape-…") dar sütunu taşırmasın */
 #konuGovde, .konu-anlatim { overflow-wrap: break-word; }
+/* Uzun konu adları farklı sistem yazı tiplerinde de dar ekrana sığsın. */
+#acikKonuBasligi, .prose-wrap h1 { overflow-wrap: anywhere; }
 
 .eg {
   background: var(--surface);
